@@ -1,0 +1,139 @@
+add_namespace = useful-events-quarior-annexion_ultimatum
+
+#FROM demands ROOT annexation
+country_event = {
+	id =  useful-events-quarior-annexion_ultimatum.1
+	title =  useful-events-quarior-annexion_ultimatum.1.t
+	desc = useful-events-quarior-annexion_ultimatum.1.d
+	picture = GFX_report_event_lithuanian_ultimatum
+	
+	is_triggered_only = yes
+	
+	#Sure!
+	option = {
+		name =  useful-events-quarior-annexion_ultimatum.1.a
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = -25
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.25
+				}
+			}
+			modifier = {
+				add = 20
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 0.1
+				is_in_faction = yes
+			}
+		}
+		FROM = {
+			country_event = { hours = 2 id =  useful-events-quarior-annexion_ultimatum.2 }
+		}
+		custom_effect_tooltip = GAME_OVER_TT
+	}
+	
+	#No thank you
+	option = {
+		name =  useful-events-quarior-annexion_ultimatum.1.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.2
+				}
+			}
+			modifier = {
+				add = 20
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+			modifier = {
+				factor = 2
+				is_in_faction = yes
+				NOT = { is_in_faction_with = FROM }
+			}
+			modifier = {
+				any_other_country = {
+					has_guaranteed = ROOT
+				}
+				factor = 5 #i've got friends
+			}
+			modifier = {
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ROOT
+				}
+				factor = 5 #i've got big friends
+			}
+		}
+		FROM = {
+			add_opinion_modifier = { target = PREV modifier = POL_annexation_refused }
+			country_event = { hours = 2 id =  useful-events-quarior-annexion_ultimatum.3 }
+			if = { 
+				limit = { is_in_faction_with = ROOT }
+				remove_from_faction = ROOT
+			}
+		}
+	}
+}
+
+#FROM says yes
+country_event = {
+	id =  useful-events-quarior-annexion_ultimatum.2
+	title =  useful-events-quarior-annexion_ultimatum.2.t
+	desc =  useful-events-quarior-annexion_ultimatum.2.d
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	#Awesome!
+	option = {
+		name =  useful-events-quarior-annexion_ultimatum.2.a
+		ai_chance = {
+			base = 30
+		}
+		annex_country = { target = FROM transfer_troops = yes }
+	}
+}
+
+#FROM says no
+country_event = {
+	id =  useful-events-quarior-annexion_ultimatum.3
+	title =  useful-events-quarior-annexion_ultimatum.3.t
+	desc =  useful-events-quarior-annexion_ultimatum.3.d
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	#How 'bout I do anyway
+	option = {
+		name =  useful-events-quarior-annexion_ultimatum.3.a
+		ai_chance = {
+			base = 30
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+		}
+		FROM = {
+			every_core_state = {
+				add_claim_by = ROOT
+			}
+		}
+	}
+}

@@ -1,0 +1,95 @@
+#	Example:
+# 
+#	example_dynamic_modifier = {
+#		icon = "GFX_idea_unknown" # optional, will show up in guis if icon is specified
+#		enable = { always = yes } #optional, the modifier won't apply if not enabled
+#		remove_trigger = { always = no } #optional, will remove the modifier if true
+#       attacker_modifier = no  # if yes this modifier will also be read in combat for 
+#                               # people engaging in the combat even if not in the state
+#
+#		# list of modifiers
+#		fuel_cost = 321
+#		max_fuel = var_max_fuel # will be taken from a variable
+#	}
+#
+#
+#	In a script file:
+#
+#	effect = {
+#		add_dynamic_modifier = {
+#			modifier = example_dynamic_modifier
+#			scope = GER # optional, if you specify this your dynamic modifier scoped to this scope (root is the effect scope)
+#			days = 14 # optional, will be removed after this many days passes
+#		}
+#	}
+#
+#	can be added to countries, states or unit leaders
+#	will only updated daily, unless forced by force_update_dynamic_modifier effect
+
+MON_legacy_of_the_khans_dynamic_modifier = { #NATIONAL SPIRIT
+	icon = GFX_idea_mon_spirit_of_the_khans
+
+	enable = { always = yes }
+
+	#INITIAL
+	cavalry_attack_factor = MON_legacy_of_the_khans_cavalry_attack_factor #0.15
+	cavalry_defence_factor = MON_legacy_of_the_khans_cavalry_defence_factor #0.15
+	modifier_army_sub_unit_cavalry_speed_factor = MON_legacy_of_the_khans_cavalry_speed_factor #0.15
+
+	#FUTURE
+	max_command_power_mult = MON_legacy_of_the_khans_cp_max_mult #0
+	supply_consumption_factor = MON_legacy_of_the_khans_supply_consumption_factor #0
+	out_of_supply_factor = MON_legacy_of_the_khans_out_of_supply_factor #0
+	winter_attrition_factor = MON_legacy_of_the_khans_winter_attrition_factor #0
+	heat_attrition_factor = MON_legacy_of_the_khans_heat_attrition_factor #0
+	terrain_penalty_reduction = MON_legacy_of_the_khans_terrain_penalty_reduction #0
+	motorized_attack_factor = MON_legacy_of_the_khans_motorized_attack_factor #0
+	motorized_defence_factor = MON_legacy_of_the_khans_motorized_defence_factor #0
+	mechanized_attack_factor = MON_legacy_of_the_khans_mechanized_attack_factor #0
+	mechanized_defence_factor = MON_legacy_of_the_khans_mechanized_defence_factor #0
+	army_armor_speed_factor = MON_legacy_of_the_khans_armor_speed_factor #0
+	research_speed_factor = MON_legacy_of_the_khans_research_speed_factor #0
+	army_org_factor = MON_legacy_of_the_khans_army_org_factor #0 
+	training_time_factor = MON_legacy_of_the_khans_training_time_factor #0
+	experience_gain_factor = MON_legacy_of_the_khans_experience_gain_factor #0
+	air_ace_generation_chance_factor = MON_legacy_of_the_khans_ace_gen_chance_factor #0
+	grant_medal_cost_factor = MON_legacy_of_the_khans_grant_medal_cost_factor #0
+	conscription = MON_legacy_of_the_khans_conscription #0
+}
+
+MON_five_year_plan_dynamic_modifier = {
+	icon = GFX_idea_SOV_second_five_year_plan
+
+	enable = { always = yes }
+
+	production_speed_infrastructure_factor = MON_five_year_plan_infra
+	production_speed_rail_way_factor = MON_five_year_plan_rail
+	production_speed_industrial_complex_factor = MON_five_year_plan_cic
+	production_speed_arms_factory_factor = MON_five_year_plan_mic
+	production_speed_synthetic_refinery_factor = MON_five_year_plan_synth
+	production_speed_supply_node_factor = MON_five_year_plan_supply
+	local_resources_factor = MON_five_year_plan_resources
+	research_speed_factor = MON_five_year_plan_research
+	consumer_goods_factor = MON_five_year_plan_consumer
+	
+}
+
+MON_resistance_active_here = {
+	enable = { always = yes }
+	remove_trigger = {
+		AND = {
+			OWNER = { NOT = { original_tag = SOV } }
+			OR = {
+				NOT = { is_core_of = MEN }
+				OWNER = { original_tag = MEN }
+				OWNER = { original_tag = MON }
+			}
+		}
+	}
+	#icon = GFX_modifiers_generic_military_plans
+	icon = GFX_modifiers_generic_resistance
+	local_manpower = -0.2
+	local_supplies = -0.1
+	local_resources_factor = -0.1
+	local_non_core_supply_impact_factor = -0.5
+}

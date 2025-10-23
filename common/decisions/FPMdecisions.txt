@@ -1,0 +1,4395 @@
+FPM_debug = {
+
+	FPM_armistice_testing= {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			ENG = {
+				add_to_faction = FRA
+			}
+			set_country_flag = FPM_armistice_testing_flag
+			GER = {
+				declare_war_on = {
+					target = ROOT
+					type = annex_everything
+				}
+			}
+			ENG = {
+				add_to_war = {
+					targeted_alliance = FRA
+					enemy = GER
+				}
+			}
+			complete_national_focus = FRA_begin_rearmament
+			complete_national_focus = FRA_they_shall_not_pass2
+		}
+	}
+	
+	FPM_inflation_debug_r = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			clr_country_flag = FRA_inflation_1
+			clr_country_flag = FRA_inflation_2
+			clr_country_flag = FRA_inflation_3
+			clr_country_flag = FRA_inflation_4
+			clr_country_flag = FRA_inflation_5
+		}
+	}
+	FPM_monetary_debug_c = {
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = clear_monetary_policy_flag
+			clr_country_flag = monetary_policy_in_progress
+		}
+	}
+
+	FPM_raise_inflation = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_inflation_increase = yes
+		}
+	}
+	FPM_lower_inflation = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_inflation_decrease = yes
+		}
+	}
+	FPM_increase_1 = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_econ_increase_1 = yes
+		}
+	}
+	FPM_increase_2 = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_econ_increase_2 = yes
+		}
+	}
+	FPM_increase_3 = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_econ_increase_3 = yes
+		}
+	}
+	FPM_increase_4 = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_econ_increase_4 = yes
+		}
+	}
+	FPM_increase_5 = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_econ_increase_5 = yes
+		}
+	}
+	FPM_decrease_1 = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_econ_decrease_1 = yes
+		}
+	}
+	FPM_decrease_2 = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_econ_decrease_2 = yes
+		}
+	}
+	FPM_decrease_3 = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_econ_decrease_3 = yes
+		}
+	}
+	FPM_decrease_4 = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_econ_decrease_4 = yes
+		}
+	}
+	FPM_decrease_5 = {
+
+		icon = ger_mefo_bills
+
+		available = { }
+
+		visible = {
+			is_debug = yes
+		}
+
+		complete_effect = {
+			FPM_econ_decrease_5 = yes
+		}
+	}
+}
+
+political_actions = {
+
+	FPM_the_popular_front_mission = { #popular front mission
+		days_mission_timeout = 420
+		priority = 20
+		fire_only_once = yes
+		available = {
+			#has_completed_focus = FRA_request_emergency_powers
+			custom_trigger_tooltip = { #econ
+				tooltip = FPM_below_15_econ_spirit
+				check_variable = {
+					FPM_eco_consumer_goods_factor < 0.3
+				}
+			}
+			has_stability > 0.5 #stab
+			OR = { #spanish civil war
+				AND = {
+					custom_trigger_tooltip = {
+						tooltip = FPM_non_intervention_tooltip
+						has_country_flag = FRA_non_intervention
+					}
+					communism < 0.09
+				}
+				AND = {
+					custom_trigger_tooltip = {
+						tooltip = FPM_intervention_tooltip
+						OR = {
+							has_country_flag = FRA_non_military_aid_allowed
+							has_country_flag = FRA_arms_purchases_allowed
+							has_country_flag = FRA_sending_weapons_allowed
+							has_country_flag = FRA_volunteer_work_allowed
+							has_country_flag = FRA_covert_intervention_allowed
+						}
+					}
+					communism > 0.29
+				}
+			}
+		}
+		visible = {
+			original_tag = FRA
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		complete_effect = {
+			country_event = {
+				id = francepm.3
+			}		
+		}
+		timeout_effect = {
+			country_event = {
+				id = francepm.12
+			}
+		}
+
+	}
+
+	FPM_the_national_bloc_mission = { #national bloc missions
+		days_mission_timeout = 610
+		priority = 20
+		fire_only_once = yes
+		available = { 
+			custom_trigger_tooltip = { #econ
+				tooltip = FPM_below_20_econ_spirit
+				check_variable = {
+					FPM_eco_consumer_goods_factor < 0.2
+				}
+			}
+			has_completed_focus = FRA_law_and_order #government reform
+			has_completed_focus = FRA_ban_communism
+			has_stability > 0.66 #stability
+		}
+		visible = {
+			original_tag = FRA
+			
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		complete_effect = {
+			if = {
+				limit = {
+					OR = {
+						has_completed_focus = FRA_utilize_the_leagues
+					}
+				}
+				country_event = {
+					id = francepm.18
+				}
+			}
+
+
+			else = {
+				country_event = {
+					id = francepm.20
+				}		
+			}
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					OR = {
+						has_completed_focus = FRA_utilize_the_leagues
+					}				
+				}
+				country_event = {
+					id = francepm.19
+				}
+
+				else = {
+					country_event = {
+						id = francepm.17
+					}
+				}
+
+			}
+
+		}
+
+	}
+
+	FPM_restore_the_popular_front = { #chautemps tries to fix the popular front
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			has_country_leader = {
+				character = FRA_camille_chautemps
+				ruling_only = yes
+			}
+		}
+
+		available = {
+			has_stability > 0.6
+		}
+
+		fire_only_once = yes
+		cost = 75
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		complete_effect = {
+			remove_country_leader_trait = ineffective_leadership
+			activate_mission = FPM_the_popular_front_mission_2
+			set_country_flag = chautemps_attemps_to_restore_pop_front
+		}
+	}
+
+	FPM_the_popular_front_mission_2 = {
+		days_mission_timeout = 210
+		priority = 20
+		fire_only_once = yes
+		available = {
+			custom_trigger_tooltip = { #econ
+				tooltip = FPM_below_15_econ_spirit
+				check_variable = {
+					FPM_eco_consumer_goods_factor < 0.3
+				}
+			}
+			has_stability > 0.75			
+			OR = {
+				threat < 0.15
+				has_war_support > 0.25
+			}
+		}
+		visible = {
+			original_tag = FRA
+			
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		complete_effect = {
+			country_event = {
+				id = francepm.15
+			}
+		}
+		timeout_effect = {
+			country_event = {
+				id = francepm.16
+			}
+		}
+
+	}
+
+	FPM_form_union_gov_1 = { #blum tries to form a union gov from left-centre-right
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			has_country_leader = {
+				character = FRA_leon_blum
+				ruling_only = yes
+			}
+			has_idea = FPM_the_popular_front_2
+		}
+
+		available = {
+			has_stability > 0.60
+		}
+
+		fire_only_once = yes
+		cost = 50
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = FPM_the_popular_front_2
+				add_idea = FPM_national_unity_government_1
+			}
+			set_country_flag = FPM_national_union_gov
+			set_country_flag = FPM_limited_coalition
+		}
+	}
+
+	FPM_form_union_gov_2 = { #blum tries to form a union gov from left-right
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			has_country_leader = {
+				character = FRA_leon_blum
+				ruling_only = yes
+			}
+			has_idea = FPM_the_popular_front_2
+		}
+
+		available = {
+			has_stability > 0.75
+		}
+
+		fire_only_once = yes
+		cost = 50
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = FPM_the_popular_front_2
+				add_idea = FPM_national_unity_government_2
+			}
+			set_country_flag = FPM_national_union_gov
+			set_country_flag = FPM_full_coalition
+		}
+	}
+	
+	FPM_national_union_government = { #get the union gov done within this timespan or fail
+		days_mission_timeout = 26
+		priority = 20
+		fire_only_once = yes
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FPM_nat_union_gov_formed
+				has_country_flag = FPM_national_union_gov
+			}
+		}
+		visible = {
+			original_tag = FRA
+			
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		complete_effect = {
+			country_event = {
+				id = francepm.4
+			}
+		}
+		timeout_effect = {
+			country_event = {
+				id = francepm.16
+			}
+		}
+
+	}
+}
+
+#who knows if this works tbh
+FPM_eastern_european_diplomacy_cat = {
+	FRA_pressure_country_government_east_europe = {
+		priority = 50
+
+		icon = generic_political_discourse
+
+		ai_will_do = {
+			base = 0.8
+			modifier = {
+				factor = 2
+				has_political_power > 160
+			}
+			modifier = { #If ideological rallies happened, then it's better
+				factor = 4
+			}
+			modifier = { #Do it only once, don't spam
+				factor = 0
+				FROM = { has_country_flag = FRA_government_pressured_flag }
+			}
+		}
+
+		targets = { YUG ROM CZE }
+
+		target_trigger = {
+			SOV_basic_pressure_government_triggers = yes
+		}
+
+		target_root_trigger = {
+			has_completed_focus = FRA_reconnect_to_the_balkans
+			is_subject = no
+		}
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		available = {
+			is_faction_leader = yes
+			FROM = {
+				has_opinion = {
+					target = ROOT
+					value > 49
+				}
+				SOV_is_valid_subject = yes # Italy might not give a sh*t about their petty overlord ;)
+				NOT = { has_war_with = ROOT }
+			}
+			NOT = { has_country_flag = ITA_pressure_government_active_flag }
+		}
+
+		visible = {
+		}
+
+		days_remove = 1
+
+		days_re_enable = 365
+
+		cost = 50
+
+		modifier = {
+			political_power_gain = -0.25
+		}
+
+		complete_effect = {
+			set_country_flag = ITA_pressure_government_active_flag
+		}
+
+		remove_effect = {
+			FROM = {
+				country_event = { id = NSB_soviet_foreign_politics_events.1 hours = 4 random_hours = 2 }
+				set_country_flag = FRA_government_pressured_flag #For AI weights - don't spam
+			}
+			custom_effect_tooltip = SOV_pressure_government_effects_tt
+			custom_effect_tooltip = ITA_pressure_government_cd_tt
+		}
+	}
+
+	FRA_promote_ideology_rallies_east_europe = {
+		priority = 50
+
+		icon = generic_political_rally
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 2
+				has_political_power > 160
+			}
+		}
+
+		targets = { YUG ROM CZE }
+
+		target_trigger = {
+			SOV_basic_promote_rallies_triggers = yes
+		}
+
+		target_root_trigger = {
+			has_completed_focus = FRA_reconnect_to_the_balkans
+		}
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		available = {
+			FROM = {
+				SOV_is_valid_subject = yes # Italy might not give a sh*t about their petty overlord ;)
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		visible = {
+		}
+
+		days_remove = 90
+
+		fire_only_once = yes
+
+		cost = 50
+
+		modifier = {
+			political_power_gain = -0.25
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			FROM = {
+				country_event = { id = NSB_soviet_foreign_politics_events.2 hours = 4 random_hours = 2 }
+			}
+			custom_effect_tooltip = SOV_promote_rallies_effects_tt
+			custom_effect_tooltip = SOV_promote_ideological_rallies_cd_tt
+		}
+	}
+
+	FRA_pressure_country_government_pol = {
+		priority = 50
+
+		icon = generic_political_discourse
+
+		ai_will_do = {
+			base = 0.8
+			modifier = {
+				factor = 2
+				has_political_power > 160
+			}
+			modifier = { #Do it only once, don't spam
+				factor = 0
+				FROM = { has_country_flag = FRA_government_pressured_flag }
+			}
+		}
+
+		targets = { POL }
+
+		target_trigger = {
+			SOV_basic_pressure_government_triggers = yes
+		}
+
+		target_root_trigger = {
+			has_completed_focus = FRA_ally_with_the_poles
+			is_subject = no
+		}
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		available = {
+			is_faction_leader = yes
+			FROM = {
+				has_opinion = {
+					target = ROOT
+					value > 49
+				}
+				SOV_is_valid_subject = yes # Italy might not give a sh*t about their petty overlord ;)
+				NOT = { has_war_with = ROOT }
+			}
+			NOT = { has_country_flag = ITA_pressure_government_active_flag }
+		}
+
+		visible = {
+		}
+
+		days_remove = 1
+
+		days_re_enable = 365
+
+		cost = 50
+
+		modifier = {
+			political_power_gain = -0.25
+		}
+
+		complete_effect = {
+			set_country_flag = ITA_pressure_government_active_flag
+		}
+
+		remove_effect = {
+			FROM = {
+				country_event = { id = NSB_soviet_foreign_politics_events.1 hours = 4 random_hours = 2 }
+				set_country_flag = FRA_government_pressured_flag #For AI weights - don't spam
+			}
+			custom_effect_tooltip = SOV_pressure_government_effects_tt
+			custom_effect_tooltip = ITA_pressure_government_cd_tt
+		}
+	}
+
+	FRA_promote_ideology_rallies_pol = {
+		priority = 50
+
+		icon = generic_political_rally
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 2
+				has_political_power > 160
+			}
+		}
+
+		targets = { POL }
+
+		target_trigger = {
+			SOV_basic_promote_rallies_triggers = yes
+		}
+
+		target_root_trigger = {
+			has_completed_focus = FRA_ally_with_the_poles
+		}
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		available = {
+			FROM = {
+				SOV_is_valid_subject = yes # Italy might not give a sh*t about their petty overlord ;)
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		visible = {
+		}
+
+		days_remove = 90
+
+		fire_only_once = yes
+
+		cost = 50
+
+		modifier = {
+			political_power_gain = -0.25
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			FROM = {
+				country_event = { id = NSB_soviet_foreign_politics_events.2 hours = 4 random_hours = 2 }
+			}
+			custom_effect_tooltip = SOV_promote_rallies_effects_tt
+			custom_effect_tooltip = SOV_promote_ideological_rallies_cd_tt
+		}
+	}
+}
+
+economy_decisions = {
+
+	#Indochina Railway
+	FPM_trans_indochinois = {
+
+	icon = GFX_decision_generic_train
+
+	allowed = {
+		original_tag = VIN
+	}
+
+	visible = {
+	}
+
+	available = {
+	}
+	state_target = yes
+	targets = { 286 }
+
+	priority = 10
+
+	fire_only_once = yes
+
+	cost = 15
+	days_remove = 90
+	ai_will_do = {
+		factor = 500
+	}
+
+	modifier = {
+		civilian_factory_use = 1
+	}
+
+	complete_effect = {
+			build_railway = {
+				path = { 10162 4405 4334 1300 4255 10137 }
+			}
+		}
+	}
+
+	#The Right
+	FPM_economic_growth = {
+		icon = gre_paying_ifc_debt
+		days_mission_timeout = 33
+		priority = 20
+		fire_only_once = no
+		available = {
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = FPM_not_has_ie
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+			}
+		}
+		visible = {
+			original_tag = FRA
+		}
+		activation = {
+			always = no
+		}
+		is_good = yes
+		timeout_effect = {
+			activate_mission = FPM_economic_growth
+			FPM_econ_increase_1 = yes
+		}
+	}
+
+	#The Left
+	FPM_mobilize_the_economy = {
+
+		icon = generic_industry
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+			has_completed_focus = FRA_nationalize_key_industry
+			has_country_flag = popular_front_victory
+			has_capitulated = no
+		}
+
+		available = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			has_capitulated = no
+			has_completed_focus = FRA_dirigisme
+			custom_trigger_tooltip = {
+				tooltip = FPM_has_ie
+				has_dynamic_modifier = {
+					modifier = FRA_economy_dynamic_modifier
+				}
+			}
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		days_remove = 90
+		ai_will_do = {
+			factor = 500
+		}
+
+		complete_effect = {
+			random_list = {
+				80 = {
+					FPM_econ_increase_5 = yes
+				}
+				20 = {
+					FPM_econ_decrease_3 = yes
+				}
+
+			}
+		}
+	}
+
+	#The Center (Popular Front Route)
+	FPM_invite_foreign_investment = {
+		icon = hol_attract_foreign_investors
+
+		visible = {
+			has_country_leader_ideology = liberalism
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+			has_completed_focus = FRA_form_the_popular_front
+			has_country_flag = repealed_socialist_legislation
+			has_country_flag = FPM_election_happened
+			has_capitulated = no
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = liberalism
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+			has_capitulated = no
+			has_completed_focus = FRA_end_capital_flight
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		days_remove = 90
+
+		modifier = {
+			stability_factor = -0.03
+		}
+
+		complete_effect = {
+			random_list = {
+				20 = {
+					FPM_econ_increase_1 = yes
+				}
+				20 = {
+					FPM_econ_increase_2 = yes
+				}
+				20 = {
+					FPM_econ_increase_3 = yes
+				}
+				20 = {
+					FPM_econ_increase_4 = yes
+				}
+				20 = {
+					FPM_econ_increase_5 = yes
+				}
+			}
+		}
+	}
+
+	#Emergency Economic relief to help people who are bad at the game
+	FPM_emergency_economic_relief = {
+
+		icon = generic_fundraising
+
+		visible = {
+			check_variable = {
+				FPM_eco_consumer_goods_factor > 0.49
+			}
+			original_tag = FRA
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FPM_emergency_economic_relief_tt
+				check_variable = {
+					FPM_eco_consumer_goods_factor > 0.59
+				}
+				original_tag = FRA
+				has_dynamic_modifier = {
+					modifier = FRA_economy_dynamic_modifier
+				}
+			}
+		}
+
+		cost = FPM_eco_decision_high
+
+		complete_effect = {
+			add_stability = -0.1
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.1
+			}
+			add_to_variable = {
+				FPM_eco_consumer_goods_factor = -0.1
+			}
+			add_to_variable = {
+				FPM_eco_industrial_capacity_factory = 0.1
+			}
+			add_to_variable = {
+				FPM_eco_industrial_capacity_dockyard = 0.1
+			}
+			custom_effect_tooltip = FPM_fe_p5
+		}
+	}
+
+	FPM_divert_funds = {
+
+		icon = generic_merge_plant_tank
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				GER = {
+					has_completed_focus = GER_remilitarize_the_rhineland
+					has_completed_focus = GER_oppose_hitler_ww
+				}
+				ITA = {
+					owns_state = 271
+				}
+				JAP = {
+					has_completed_focus = JAP_intervene_in_china
+				}
+				threat > 0.1
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			threat > 0.15
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			industrial_capacity_factory = 0.05
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				FPM_econ_increase_1 = yes
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			has_capitulated = yes
+		}
+	}
+
+	FPM_collective_bargaining = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			has_country_flag = popular_front_victory
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = fall_of_france
+				}
+			}
+		}
+
+		available = {
+			OR = {
+				has_completed_focus = FRA_reform_the_labour_laws
+				has_completed_focus = FRA_industrial_collectivization
+			}
+			OR = {	
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}		
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = 0.02
+			party_popularity_stability_factor = 0.05
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				FPM_econ_increase_2 = yes
+				add_days_mission_timeout = {
+					mission = FPM_rising_inflation
+					days = -10
+				}
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = repealed_socialist_legislation
+					has_country_flag = repealed_socialist_legislation
+				}
+				has_government = fascism
+				has_government = neutrality
+				has_capitulated = yes
+			}
+		}
+
+	}
+
+	FPM_fourty_hour_work_week = {
+
+		icon = generic_industry
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			has_country_flag = popular_front_victory
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = fall_of_france
+				}
+			}
+		}
+
+		available = {
+			OR = {
+				has_completed_focus = FRA_reform_the_labour_laws
+				has_completed_focus = FRA_industrial_collectivization
+			}
+			OR = {	
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}		
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = 0.02
+			production_factory_efficiency_gain_factor = 0.1
+			production_factory_max_efficiency_factor = -0.05
+			stability_factor = 0.025
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				FPM_econ_increase_2 = yes
+				add_days_mission_timeout = {
+					mission = FPM_rising_inflation
+					days = -10
+				}
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = repealed_socialist_legislation
+					has_country_flag = repealed_socialist_legislation
+				}
+				has_government = fascism
+				has_government = neutrality
+				has_capitulated = yes
+			}
+		}
+
+	}
+
+	FPM_paid_vacations = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			has_country_flag = popular_front_victory
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = fall_of_france
+				}
+			}
+		}
+
+		available = {
+			OR = {
+				has_completed_focus = FRA_reform_the_labour_laws
+				has_completed_focus = FRA_industrial_collectivization
+			}
+			OR = {	
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}		
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = 0.02
+			production_speed_buildings_factor = 0.05
+			stability_factor = 0.025
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_2 = yes
+				add_days_mission_timeout = {
+					mission = FPM_rising_inflation
+					days = -10
+				}
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = repealed_socialist_legislation
+					has_country_flag = repealed_socialist_legislation
+				}
+				has_government = fascism
+				has_government = neutrality
+				has_capitulated = yes
+			}
+		}
+
+	}
+
+	FPM_workplace_safety = {
+
+		icon = eng_trade_union_support
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			has_country_flag = popular_front_victory
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = fall_of_france
+				}
+			}
+		}
+
+		available = {
+			OR = {
+				has_completed_focus = FRA_reform_the_labour_laws
+				has_completed_focus = FRA_industrial_collectivization
+			}
+			OR = {	
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}		
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = 0.02
+			stability_factor = 0.025
+			production_factory_efficiency_gain_factor = -0.05
+			production_factory_max_efficiency_factor = 0.1
+			production_oil_factor = -0.1
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_2 = yes
+				add_days_mission_timeout = {
+					mission = FPM_rising_inflation
+					days = -10
+				}
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = repealed_socialist_legislation
+					has_country_flag = repealed_socialist_legislation
+				}
+				has_government = fascism
+				has_government = neutrality
+				has_capitulated = yes
+			}
+		}
+
+	}
+
+	FPM_offer_loans = {
+
+		icon = generic_merge_plant_materiel
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_country_leader_ideology = liberalism
+				has_government = communism
+			}
+			has_country_flag = popular_front_victory
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = fall_of_france
+				}
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = socialism
+				has_country_leader_ideology = liberalism
+				has_government = communism
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}		
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = -0.01
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_2 = yes
+				add_days_mission_timeout = {
+					mission = FPM_rising_inflation
+					days = -10
+				}
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			OR = {
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+				has_capitulated = yes
+			}
+		}
+
+	}
+	
+	FPM_public_works = {
+
+		icon = generic_factory
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			has_country_flag = popular_front_victory
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}		
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			production_speed_buildings_factor = 0.05
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_2 = yes
+				add_days_mission_timeout = {
+					mission = FPM_rising_inflation
+					days = -10
+				}
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = repealed_socialist_legislation
+					has_country_flag = repealed_socialist_legislation
+				}
+				has_government = fascism
+				has_government = neutrality
+				has_capitulated = yes
+			}
+		}
+	}
+
+	FPM_collectivize_economy = {
+
+		icon = generic_wreckers
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			has_country_flag = popular_front_victory
+			has_capitulated = no
+			OR = {
+				has_country_flag = political_crisis_over
+				has_completed_focus = FRA_invite_communist_ministers
+			}
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			IF = {
+				limit = {
+					has_completed_focus = FRA_invite_communist_ministers
+				}
+				has_completed_focus = FRA_agricultural_collectivization
+			}
+			else = {
+				has_country_flag = political_crisis_over
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = 0.03
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_4 = yes
+				add_days_mission_timeout = {
+					mission = FPM_rising_inflation
+					days = -20
+				}
+				FPM_inflation_increase = yes
+			}
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		remove_trigger = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = repealed_socialist_legislation
+					has_country_flag = repealed_socialist_legislation
+				}
+				has_government = fascism
+				has_government = neutrality
+				has_capitulated = yes
+			}
+		}
+	}
+
+	FPM_expand_heavy_industry = {
+
+		icon = generic_merge_plant_aircraft
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			has_country_flag = popular_front_victory
+			has_capitulated = no
+			OR = {
+				has_country_flag = political_crisis_over
+				has_completed_focus = FRA_invite_communist_ministers
+			}
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			IF = {
+				limit = {
+					has_completed_focus = FRA_invite_communist_ministers
+				}
+				has_completed_focus = FRA_agricultural_collectivization
+			}
+			else = {
+				has_country_flag = political_crisis_over
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = 0.03
+			production_speed_arms_factory_factor = 0.075
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_4 = yes
+				add_days_mission_timeout = {
+					mission = FPM_rising_inflation
+					days = -20
+				}
+				FPM_inflation_increase = yes
+			}
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		remove_trigger = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = repealed_socialist_legislation
+					has_country_flag = repealed_socialist_legislation
+				}
+				has_government = fascism
+				has_government = neutrality
+				has_capitulated = yes
+			}
+		}
+	}
+
+	FPM_promote_workplace_democracy = {
+
+		icon = eng_trade_unions_demand
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			has_country_flag = popular_front_victory
+			has_capitulated = no
+			OR = {
+				has_country_flag = political_crisis_over
+				has_completed_focus = FRA_invite_communist_ministers
+			}
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = socialism
+				has_government = communism
+			}
+			IF = {
+				limit = {
+					has_completed_focus = FRA_invite_communist_ministers
+				}
+				has_completed_focus = FRA_agricultural_collectivization
+			}
+			else = {
+				has_country_flag = political_crisis_over
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = -0.04
+			production_speed_buildings_factor = -0.04
+			industrial_capacity_factory = -0.04
+			industrial_capacity_dockyard = -0.04
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_4 = yes
+				add_days_mission_timeout = {
+					mission = FPM_rising_inflation
+					days = -20
+				}
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = repealed_socialist_legislation
+					has_country_flag = repealed_socialist_legislation
+				}
+				has_government = fascism
+				has_government = neutrality
+				has_capitulated = yes
+			}
+		}
+	}
+
+	FPM_nationalize_the_railroads = {
+
+		icon = generic_construction
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = socialism
+				has_country_leader_ideology = liberalism				
+				has_government = communism
+			}
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_country_flag = FPM_election_happened
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = socialism
+				has_country_leader_ideology = liberalism
+				has_government = communism
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+		days_remove = -1
+
+		modifier = {
+			production_speed_rail_way_factor = 0.1
+			production_speed_supply_node_factor = 0.05
+			supply_node_range = 0.05
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				add_days_mission_timeout = {
+					mission = FPM_rising_inflation
+					days = -10
+				}
+				FPM_econ_increase_1 = yes
+				FPM_inflation_increase = yes
+			}
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = sncf
+			hidden_effect= {
+				set_country_flag = FPM_formed_sncf
+			}
+		}
+
+		remove_trigger = {
+			NOT = {
+				OR = {	
+					has_country_leader_ideology = socialism
+					has_country_leader_ideology = liberalism
+					has_government = communism
+					has_capitulated = yes
+				}
+			}
+		}
+	}
+
+	# FPM_repeal_socialist_legislation = {
+
+	# 	icon = generic_break_treaty
+
+	# 	allowed = {
+	# 		original_tag = FRA
+	# 	}
+
+	# 	visible = {
+	# 		OR = {
+	# 			has_country_leader_ideology = liberalism
+	# 			has_country_leader_ideology = conservatism
+	# 			has_government = fascism
+	# 			has_government = neutrality
+	# 		}
+	# 		has_country_flag = popular_front_victory
+	# 		NOT = {
+	# 			has_global_flag = fall_of_france
+	# 		}
+	# 	}
+
+	# 	available = {
+	# 		OR = {	
+	# 			has_country_leader_ideology = liberalism
+	# 			has_country_leader_ideology = conservatism
+	# 			has_government = fascism
+	# 			has_government = neutrality
+	# 		}
+	# 		OR = {
+	# 			has_idea = paul_reynaud
+	# 			has_country_leader = {
+	# 				name = "Paul Reynaud"
+	# 				ruling_only = yes
+	# 			}
+	# 		}
+	# 		NOT = {
+	# 			has_country_flag = FRA_inflation_5
+	# 		}
+	# 	}
+
+	# 	cost = FPM_eco_decision_cost_medium
+	# 	fire_only_once = yes
+	# 	priority = 10
+
+	# 	complete_effect = {
+	# 		custom_effect_tooltip = FPM_socialist_legislation_repealed
+	# 		set_country_flag = repealed_socialist_legislation
+	# 	}
+	# }
+
+	FPM_form_the_cartels = {
+
+		icon = gre_investment_decisions
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			NOT = {
+				has_idea = FPM_business_cartels
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		fire_only_once = yes
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_2 = yes
+				FPM_inflation_increase = yes
+			}
+			add_ideas = FPM_business_cartels
+		}
+	}
+
+	FPM_combat_the_cartels = {
+
+		icon = generic_break_treaty
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			NOT = {
+				OR = {
+					has_completed_focus = FRA_utilize_the_leagues
+				}
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_idea = FPM_business_cartels
+		}
+
+		available = {
+			NOT = {
+				OR = {
+					has_completed_focus = FRA_utilize_the_leagues
+				}
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		fire_only_once = yes
+
+		days_remove = 180
+
+		modifier = {
+			stability_factor = -0.05
+			stability_weekly = 0.005 
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_decrease_3 = yes
+				FPM_inflation_decrease = yes
+			}
+			remove_ideas = FPM_business_cartels
+			add_stability = 0.1
+		}
+	}
+
+	FPM_integrate_the_cartels = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = FRA_utilize_the_leagues
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_idea = FPM_business_cartels
+		}
+
+		available = {
+			OR = {
+				has_completed_focus = FRA_utilize_the_leagues
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		fire_only_once = yes
+
+		days_remove = 180
+
+		modifier = {
+			stability_weekly = 0.005
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				FPM_econ_increase_2 = yes
+			}
+			swap_ideas = {
+				remove_idea = FPM_business_cartels
+				add_idea = FPM_integrated_business_cartels
+			}
+			add_stability = 0.05
+		}
+	}
+
+	FPM_raise_taxes = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = liberalism
+				has_government = fascism
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = liberalism
+				has_government = fascism
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = 0.03
+			stability_factor = -0.03
+			production_speed_buildings_factor = 0.075
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_1 = yes
+				FPM_inflation_decrease = yes
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_lower_taxes = {
+
+		icon = generic_political_discourse
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = conservatism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = conservatism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = -0.03
+			stability_factor = 0.03
+			production_speed_buildings_factor = -0.05
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_2 = yes
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_cut_social_spending = {
+
+		icon = hol_attract_foreign_investors
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = liberalism
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = liberalism
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			production_factory_max_efficiency_factor = 0.05
+			stability_factor = -0.025
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_1 = yes
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_restrict_unions = {
+
+		icon = generic_police_action
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = liberalism
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = liberalism
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			communism_drift = -0.01
+			stability_factor = 0.025
+			party_popularity_stability_factor = 0.05
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_1 = yes
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_work_week = {
+
+		icon = generic_industry
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = liberalism
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = liberalism
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			industrial_capacity_factory = 0.05
+			production_factory_efficiency_gain_factor = 0.05
+			stability_factor = -0.025
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_1 = yes
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_family_allowances = {
+
+		icon = SOV_place_hq
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = liberalism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = liberalism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			monthly_population = 0.05
+			stability_factor = 0.05
+			civilian_factory_use = 1
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_1 = yes
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_vocational_education= {
+
+		icon = generic_research
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = liberalism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = liberalism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			line_change_production_efficiency_factor = 0.05
+			production_factory_start_efficiency_factor = 0.025
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_1 = yes
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_increase_military_budget = {
+
+		icon = generic_military
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = liberalism
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = liberalism
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_1 = yes
+				FPM_inflation_increase = yes
+			}
+		}
+
+		modifier = {
+			conscription = 0.01
+			mobilization_speed = 0.05
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_begin_privatization = {
+
+		icon = SOV_place_hq
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			global_building_slots_factor = 0.2
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_1 = yes
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_lower_pensions = {
+
+		icon = generic_break_treaty
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = -0.02
+			recruitable_population_factor = -0.05
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				FPM_econ_increase_1 = yes
+				add_days_mission_timeout = {
+					mission = FPM_rising_inflation
+					days = 30
+				}
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_connect_the_country = {
+
+		icon = generic_construction
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+		}
+
+		cost = FPM_eco_decision_cost_low
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			production_speed_infrastructure_factor = 0.1
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_1 = yes
+				FPM_inflation_increase = yes
+				14 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				19 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				21 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				735 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_lower_price_floors = {
+
+		icon = generic_decision
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			stability_factor = -0.03
+			production_speed_industrial_complex_factor = 0.025
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_2 = yes
+				FPM_inflation_decrease = yes
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_trade_liberalization = {
+
+		icon = hol_exchange_intelligence_data
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = liberalism
+				has_country_leader_ideology = conservatism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_stimulate_the_dynamic_market
+		}
+
+		available = {
+			OR = {
+				has_country_leader_ideology = liberalism	
+				has_country_leader_ideology = conservatism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			trade_opinion_factor = 0.1
+		}
+
+		complete_effect = {
+			if = {
+				if = {
+					limit = {
+						has_idea = export_focus
+					}
+					add_ideas = free_trade
+				}
+				else_if = {
+					limit = {
+						has_idea = limited_exports
+					}
+					add_ideas = export_focus
+				}
+				else_if = {
+					limit = { 
+						has_idea = closed_economy
+					}
+					add_ideas = limited_exports
+				}
+				else = {
+					random_owned_state = {
+						limit = {
+							is_controlled_by = ROOT
+							is_core_of = ROOT
+							free_building_slots = {
+								building = arms_factory
+								size > 1
+								include_locked = yes
+							}
+						}
+						add_extra_state_shared_building_slots = 2
+						add_building_construction = {
+							type = industrial_complex
+							level = 2
+							instant_build = yes
+						}
+					}
+				}
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_2 = yes
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_government = fascism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_promote_investment = {
+
+		icon = eng_trade_unions_support
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_stimulate_the_dynamic_market
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			production_speed_buildings_factor = 0.05
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_2 = yes
+				FPM_inflation_increase = yes
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_industrial_organization = {
+
+		icon = generic_wreckers
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			OR = {
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			has_country_flag = FPM_election_happened
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_stimulate_the_dynamic_market
+		}
+
+		available = {
+			OR = {	
+				has_country_leader_ideology = conservatism
+				has_government = fascism
+				has_government = neutrality
+			}
+			IF = {
+				limit = {
+					has_country_flag = popular_front_victory
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = repealed_socialist_legislation
+					tooltip = repealed_socialist_legislation
+				}
+			}
+		}
+
+		cost = FPM_eco_decision_cost_medium
+		fire_only_once = yes
+
+		days_remove = -1
+
+		modifier = {
+			consumer_goods_factor = 0.03
+			production_speed_arms_factory_factor = 0.05
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = FRA_economy_dynamic_modifier
+					}
+				}
+				
+				FPM_econ_increase_2 = yes
+				FPM_inflation_increase = yes
+			}
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		remove_trigger = {
+			has_country_leader_ideology = socialism
+			has_government = communism
+			has_capitulated = yes
+		}
+	}
+
+	FPM_civs1 = {
+		icon = generic_merge_plant_materiel
+		priority = 10
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			industrial_complex > 0
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		available = {
+			industrial_complex > FPM_civ_decision_start 
+			has_capitulated = no
+		}
+		cost = FPM_eco_decision_cost_low
+		complete_effect = {
+			if = {
+				limit = {
+					has_completed_focus = FRA_general_work_council
+				}
+				add_to_variable = { FPM_civ_decision_start = 5 }
+				FPM_econ_increase_2 = yes
+			}
+			else = {
+				add_to_variable = { FPM_civ_decision_start = 5 }
+				FPM_econ_increase_1 = yes
+			}
+		}
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+	FPM_mils1 = {
+		icon = generic_merge_plant_tank
+		priority = 10
+		allowed = {
+			original_tag = FRA
+		}
+		visible = {
+			arms_factory > 0
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		available = {
+			arms_factory > FPM_mil_decision_start 
+			has_capitulated = no
+		}
+		cost = FPM_eco_decision_cost_low
+		ai_will_do = {
+			factor = 250
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					has_completed_focus = FRA_dirigisme_alt
+				}
+				FPM_econ_increase_2 = yes
+				add_to_variable = { FPM_mil_decision_start = 10 }
+			}
+			else = {
+				FPM_econ_increase_1 = yes
+				add_to_variable = { FPM_mil_decision_start = 10 }
+			}
+		}
+	}
+}
+
+FPM_inflation = {
+	
+	FPM_rising_inflation = {
+		icon = gre_paying_ifc_debt
+		days_mission_timeout = 90
+		priority = 20
+		fire_only_once = no
+		available = {
+			OR = {
+				has_war = yes
+				NOT = {
+					custom_trigger_tooltip = {
+						tooltip = FPM_not_has_ie
+						has_dynamic_modifier = {
+							modifier = FRA_economy_dynamic_modifier
+						}
+					}
+					hidden_trigger = {
+						has_global_flag = fall_of_france
+					}
+				}
+			}
+		}
+		visible = {
+			original_tag = FRA	
+		}
+		activation = {
+			has_war = no
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+		is_good = yes
+		timeout_effect = {
+			activate_mission = FPM_rising_inflation
+			if = {
+				limit = {
+					has_country_flag = FRA_inflation_1
+					is_ai = no
+				}
+				FPM_econ_decrease_1 = yes
+				random_list = {
+					85 ={
+					}
+					15 = {
+						custom_effect_tooltip = FPM_increase_inflation
+						hidden_effect = {
+							FPM_inflation_increase = yes
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = FRA_inflation_2
+					is_ai = no
+				}
+				FPM_econ_decrease_2 = yes
+				random_list = {
+					90 ={
+					}
+					10 = {
+						custom_effect_tooltip = FPM_increase_inflation
+						hidden_effect = {
+							FPM_inflation_increase = yes
+						}					
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = FRA_inflation_3
+					is_ai = no
+				}
+				FPM_econ_decrease_3 = yes
+				random_list = {
+					95 ={
+					}
+					5 = {
+						custom_effect_tooltip = FPM_increase_inflation
+						hidden_effect = {
+							FPM_inflation_increase = yes
+						}						
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = FRA_inflation_4
+					is_ai = no
+				}
+				FPM_econ_decrease_4 = yes
+
+			}
+			else_if = {
+				limit = {
+					has_country_flag = FRA_inflation_5
+					is_ai = no
+				}
+				FPM_econ_decrease_5 = yes
+			}
+			else = { #simplified inflation system for AI
+				if = {
+					limit = {
+						check_variable = {
+							FPM_eco_consumer_goods_factor > 0.2
+						}
+					}
+					add_political_power = -20
+				}
+				else = {
+					FPM_econ_decrease_1 = yes
+				}
+			}
+		}
+	}
+
+	FPM_increase_interest_rates = {
+
+		icon = ger_mefo_bills
+
+		available = { 
+			NOT = {
+				has_country_flag = FRA_inflation_1
+			}
+			custom_trigger_tooltip = {
+				tooltip = no_monetary_policy_in_progress
+				NOT = {
+					has_country_flag = monetary_policy_in_progress
+				}
+			}
+		}
+		visible = {
+			always = yes
+		}
+		days_remove = 50
+
+		fire_only_once = no
+
+		cost = FPM_eco_decision_cost_medium
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				OR = {
+					has_country_flag = FRA_inflation_2
+					has_country_flag = FRA_inflation_3
+					has_country_flag = FRA_inflation_4
+					has_country_flag = FRA_inflation_5
+				}
+				factor = 150
+			}
+			modifier = {
+				has_completed_focus = FRA_request_emergency_powers
+				factor = -150
+			}
+		}
+		
+		complete_effect = {
+			set_country_flag = monetary_policy_in_progress
+			add_to_variable = {
+				FPM_eco_consumer_goods_factor = 0.02
+			}
+			add_to_variable = {
+				FPM_eco_industrial_capacity_factory = -0.01
+			}
+			add_to_variable = {
+				FPM_eco_industrial_capacity_dockyard = -0.01
+			}
+			custom_effect_tooltip = FPM_increase_interest_rates_tt
+			FPM_inflation_decrease = yes
+		}
+
+		remove_effect = {
+			clr_country_flag = monetary_policy_in_progress
+		}
+	}
+
+	FPM_decrease_interest_rates = {
+
+		icon = ger_mefo_bills
+
+		available = { 
+			NOT = {
+				has_country_flag = FRA_inflation_5
+			}
+			custom_trigger_tooltip = {
+				tooltip = no_monetary_policy_in_progress
+				NOT = {
+					has_country_flag = monetary_policy_in_progress
+				}
+			}
+		}
+		visible = {
+			always = yes
+		}
+		days_remove = 50
+
+		fire_only_once = no
+
+		cost = FPM_eco_decision_cost_medium
+
+		complete_effect = {
+			set_country_flag = monetary_policy_in_progress
+			add_to_variable = {
+				FPM_eco_consumer_goods_factor = -0.02
+			}
+			add_to_variable = {
+				FPM_eco_industrial_capacity_factory = 0.01
+			}
+			add_to_variable = {
+				FPM_eco_industrial_capacity_dockyard = 0.01
+			}
+			custom_effect_tooltip = FPM_decrease_interest_rates_tt
+			FPM_inflation_increase = yes
+
+		}
+
+		remove_effect = {
+			clr_country_flag = monetary_policy_in_progress
+		}
+	}
+
+	# FPM_devalue_currency = {
+
+	# 	icon = gre_investment_decisions
+
+	# 	allowed = {
+	# 		original_tag = FRA
+	# 	}
+
+	# 	visible = {
+	# 		has_capitulated = no
+	# 	}
+
+	# 	available = {
+	# 		has_completed_focus = FRA_devalue_the_franc
+	# 		custom_trigger_tooltip = {
+	# 			tooltip = FPM_trade_policy_in_progress
+	# 			NOT = {
+	# 				has_country_flag = trade_policy_in_progress
+	# 			}
+	# 			NOT = {
+	# 				has_idea = FPM_devalue_the_franc
+	# 			}
+	# 		}
+	# 		has_capitulated = no
+	# 	}
+
+	# 	cost = FPM_eco_decision_cost_medium
+
+	# 	days_remove = 90
+
+	# 	complete_effect = {
+	# 		set_country_flag = trade_policy_in_progress
+	# 		add_days_mission_timeout = {
+	# 			mission = FPM_rising_inflation
+	# 			days = -30
+	# 		}
+	# 	}
+
+	# 	modifier = {
+	# 		consumer_goods_factor = -0.05
+	# 		trade_opinion_factor = 0.1
+	# 		stability_factor = -0.05
+
+	# 	}
+
+	# 	remove_effect = {
+	# 		clr_country_flag = trade_policy_in_progress
+	# 	}
+	# }
+
+	# FPM_raise_the_exchange_rate = {
+
+	# 	icon = gre_investment_decisions
+
+	# 	allowed = {
+	# 		original_tag = FRA
+	# 	}
+
+	# 	visible = {
+	# 		has_capitulated = no
+	# 	}
+
+	# 	available = {
+	# 		has_completed_focus = FRA_devalue_the_franc
+	# 		custom_trigger_tooltip = {
+	# 			tooltip = FPM_trade_policy_in_progress
+	# 			NOT = {
+	# 				has_country_flag = trade_policy_in_progress
+	# 			}
+	# 			NOT = {
+	# 				has_idea = FPM_devalue_the_franc
+	# 			}
+	# 		}
+	# 		has_capitulated = no
+	# 	}
+
+	# 	cost = FPM_eco_decision_cost_medium
+
+	# 	days_remove = 90
+
+	# 	complete_effect = {
+	# 		set_country_flag = trade_policy_in_progress
+	# 		add_days_mission_timeout = {
+	# 			mission = FPM_rising_inflation
+	# 			days = 30
+	# 		}
+	# 	}
+
+	# 	modifier = {
+	# 		consumer_goods_factor = 0.05
+	# 		trade_opinion_factor = -0.1
+	# 	}
+
+	# 	remove_effect = {
+	# 		clr_country_flag = trade_policy_in_progress
+	# 	}
+	# }
+
+	FPM_increase_reserve_requirements = {
+
+		icon = hol_attract_foreign_investors
+
+		available = { 
+			NOT = {
+				has_country_flag = FRA_inflation_1
+			}
+			custom_trigger_tooltip = {
+				tooltip = no_monetary_policy_in_progress
+				NOT = {
+					has_country_flag = monetary_policy_in_progress
+				}
+			}
+		}
+		visible = {
+			always = yes
+		}
+		days_remove = 50
+
+		fire_only_once = no
+
+		cost = FPM_eco_decision_high
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				OR = {
+					has_country_flag = FRA_inflation_2
+					has_country_flag = FRA_inflation_3
+					has_country_flag = FRA_inflation_4
+					has_country_flag = FRA_inflation_5
+				}
+				factor = 150
+			}
+			modifier = {
+				NOT = {
+					has_completed_focus = FRA_request_emergency_powers
+				} 
+				factor = -150
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = monetary_policy_in_progress
+			
+			FPM_inflation_decrease = yes
+		}
+
+		remove_effect = {
+			clr_country_flag = monetary_policy_in_progress
+		}
+	}
+
+	FPM_control_the_banks = {
+
+		icon = GFX_decision_eng_trade_unions_demand
+
+		available = { 
+		}
+
+		visible = {
+			has_completed_focus = FRA_form_the_popular_front
+			always = yes
+		}
+
+		fire_only_once = yes
+
+		cost = FPM_eco_decision_high
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				OR = {
+					has_country_flag = FRA_inflation_2
+					has_country_flag = FRA_inflation_3
+					has_country_flag = FRA_inflation_4
+					has_country_flag = FRA_inflation_5
+				}
+				factor = 150
+			}
+			modifier = {
+				NOT = {
+					has_completed_focus = FRA_request_emergency_powers
+				} 
+				factor = -150
+			}
+		}
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = FPM_rising_inflation
+				days = 120
+			}
+		}
+	}
+
+	FPM_cooperate_with_the_banks = {
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		available = { 
+			NOT = {
+				OR = {
+					has_country_flag = FRA_inflation_1
+					has_country_flag = FRA_inflation_2
+				}
+			}
+		}
+		visible = {
+			has_completed_focus = FRA_revive_the_national_bloc
+			always = yes
+		}
+
+		fire_only_once = yes
+
+		cost = FPM_eco_decision_high
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				OR = {
+					has_country_flag = FRA_inflation_2
+					has_country_flag = FRA_inflation_3
+					has_country_flag = FRA_inflation_4
+					has_country_flag = FRA_inflation_5
+				}
+				factor = 150
+			}
+			modifier = {
+				NOT = {
+					has_completed_focus = FRA_request_emergency_powers
+				} 
+				factor = -150
+			}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = FPM_cooperate_with_the_banks_tt
+			hidden_effect = {
+				FPM_inflation_decrease = yes
+				FPM_inflation_decrease = yes
+			}
+		}
+	}
+}
+
+FPM_embrace_the_strike_wave_cat = {
+	FPM_military_plot = {
+		days_mission_timeout = FPM_military_plot_var?400
+		priority = 30
+		fire_only_once = yes
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		visible = {
+			original_tag = FRA
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			custom_effect_tooltip = FPM_fra_civil_war_support
+			set_temp_variable = { FRA_rw_support = party_popularity@fascism }
+			add_to_temp_variable = { FRA_rw_support = party_popularity@neutrality }
+			if = {
+				limit = {
+					has_country_flag = rw_dems_radicalized
+				}
+				set_temp_variable = { FRA_rw_dem_support = party_popularity@democratic }
+				multiply_temp_variable = { FRA_rw_dem_support = 0.5 }
+				add_to_temp_variable = { FRA_rw_support = FRA_rw_dem_support }
+			}
+			if = {
+				limit = {
+					has_country_flag = capitalists_radicalized
+				}
+				multiply_temp_variable = { FRA_rw_support = 0.75 }
+			}
+			else = {
+				multiply_temp_variable = { FRA_rw_support = 0.5 }
+			}
+			start_civil_war = {
+				size = FRA_rw_support
+				ideology = fascism
+			}
+			set_country_flag = military_coup_attempted
+		}
+	}
+
+	FPM_support_strikes = {
+		
+		icon = generic_civil_support
+		priority = 10
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			has_capitulated = no
+			has_active_mission = FPM_military_plot
+		}
+
+		available = {
+			has_active_mission = FPM_military_plot
+			has_completed_focus = FRA_invite_communist_ministers
+		}
+
+		cost = 20
+
+		days_remove = 50
+
+		complete_effect = {
+			add_to_variable = {	FPM_strike_industrial_capacity_factory = -0.05 }
+			add_to_variable = {	FPM_strike_industrial_capacity_dockyard = -0.05 }
+			custom_effect_tooltip = FPM_modify_strikes
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_days_mission_timeout = {
+				mission = FPM_military_plot
+				days = -50
+			}
+		}
+
+		modifier = {
+			stability_factor = -0.05
+		}
+	}
+
+	FPM_rally_feminist_movement = {
+		
+		icon = generic_political_rally
+		priority = 10
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			has_capitulated = no
+			has_active_mission = FPM_military_plot
+		}
+
+		available = {
+			has_active_mission = FPM_military_plot
+			has_completed_focus = FRA_role_of_the_sexes
+		}
+
+		cost = 10
+
+		days_remove = 50
+
+		complete_effect = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_days_mission_timeout = {
+				mission = FPM_military_plot
+				days = -50
+			}
+		}
+
+		modifier = {
+			stability_factor = -0.025
+			political_power_factor = -0.25
+		}
+	}
+
+	FPM_concessions_to_the_radicals = {
+		
+		icon = hol_exchange_intelligence_data
+		priority = 10
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			has_capitulated = no
+			has_active_mission = FPM_military_plot
+		}
+
+		available = {
+			has_active_mission = FPM_military_plot
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = FPM_military_plot
+				days = 100
+			}
+			custom_effect_tooltip = concessions_to_the_radicals_tt
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+		}
+	}
+
+	FPM_urge_restraint = {
+		
+		icon = eng_propaganda_campaigns
+		priority = 10
+		allowed = {
+			original_tag = FRA
+		}
+
+		visible = {
+			has_capitulated = no
+			has_active_mission = FPM_military_plot
+		}
+
+		available = {
+			has_active_mission = FPM_military_plot
+		}
+
+		cost = 15
+		days_remove = 75
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = FPM_military_plot
+				days = 75
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = -0.025
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.025
+			}
+		}
+
+		modifier = {
+			political_power_factor = 0.15
+			stability_weekly = 0.005
+		}
+	}
+
+	FPM_purge_the_military = {
+
+		icon = generic_assassination
+		priority = 20
+		visible = {
+			has_capitulated = no
+			has_active_mission = FPM_military_plot
+		}
+		
+		allowed = {
+			original_tag = FRA
+		}
+
+		available = {
+			has_active_mission = FPM_military_plot
+			has_completed_focus = FRA_force_the_issue
+		}
+		
+		ai_will_do = {
+			base = 999 #AVOID COUP PLEASE AI???
+		}
+		fire_only_once = yes
+
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+			remove_mission = FPM_military_plot
+			add_timed_idea = {
+				idea = FPM_purged_military
+				days = 365
+			}
+			retire_character = FRA_charles_huntziger
+			retire_character = FRA_robert_altmayer
+			retire_character = FRA_charles_nogues
+			retire_character = FRA_jean_marie_bergeret
+			retire_character = FRA_francois_darlan 
+			retire_character = FRA_jean_francois_jannekeyn
+		}
+	}
+}
+
+FPM_form_european_commune_cat = {
+	
+	form_european_commune = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = FRA
+			}
+		}
+
+		available = {
+			has_completed_focus = FRA_european_commune
+			is_subject = no
+			controls_state = 8
+			# Netherlands
+			custom_trigger_tooltip = {
+				tooltip = form_eu_netherlands_required_states_tt
+				controls_state = 7
+				controls_state = 35
+				controls_state = 36
+			}
+			# Belgium
+			custom_trigger_tooltip = {
+				tooltip = form_eu_belgium_required_states_tt
+				controls_state = 6
+				controls_state = 34
+			}
+			# France
+			custom_trigger_tooltip = {
+				tooltip = form_eu_france_required_states_tt
+				controls_state = 29
+				controls_state = 18
+				controls_state = 17
+				controls_state = 28
+				controls_state = 15
+				controls_state = 16
+				controls_state = 27
+				controls_state = 14
+				controls_state = 30
+				controls_state = 24
+				controls_state = 23
+				controls_state = 33
+				controls_state = 26
+				controls_state = 20
+				controls_state = 32
+				controls_state = 735
+				controls_state = 25
+				controls_state = 22
+				controls_state = 21
+				controls_state = 851
+				controls_state = 19
+				controls_state = 20
+				controls_state = 1
+				controls_state = 785
+				controls_state = 31
+			}
+			# Italy
+			custom_trigger_tooltip = {
+				tooltip = form_eu_italy_required_states_tt
+				controls_state = 158
+				controls_state = 159
+				controls_state = 39
+				controls_state = 160
+				controls_state = 161
+				controls_state = 162
+				controls_state = 157
+				controls_state = 2
+				controls_state = 117
+				controls_state = 156
+				controls_state = 115
+				controls_state = 114
+				controls_state = 736
+				controls_state = 163
+				controls_state = 849
+				controls_state = 850
+				controls_state = 852
+			}
+			# Germany
+			custom_trigger_tooltip = {
+				tooltip = form_country_germany_required_states_tt
+				controls_state = 51
+				controls_state = 42
+				controls_state = 56
+				controls_state = 57
+				controls_state = 55
+				controls_state = 50
+				controls_state = 59
+				controls_state = 58
+				controls_state = 60
+				controls_state = 54
+				controls_state = 52
+				controls_state = 53
+				controls_state = 61
+				controls_state = 64
+				controls_state = 65
+				controls_state = 62
+				controls_state = 68
+				controls_state = 66
+				controls_state = 67
+				controls_state = 63
+			}
+		}
+
+		visible = {
+			original_tag = FRA
+			has_government = communism
+			has_completed_focus = FRA_loyalty_to_the_cause
+			is_major = yes
+		}
+		complete_effect = {
+			set_cosmetic_tag = EUR_COMMUNE
+			8 = { add_core_of = ROOT }
+			# Netherlands
+			custom_effect_tooltip = form_eu_netherlands_coring_states_tt 
+			hidden_effect = {
+				7 = { add_core_of = ROOT }
+				35 = { add_core_of = ROOT }
+				36 = { add_core_of = ROOT }
+			}
+			# Belgium
+			custom_effect_tooltip = form_eu_belgium_coring_states_tt
+			hidden_effect = {
+				6 = { add_core_of = ROOT }
+				34 = { add_core_of = ROOT }
+			}
+			# France
+			custom_effect_tooltip = form_eu_france_coring_states_tt
+			hidden_effect = {
+				29 = { add_core_of = ROOT }
+				18 = { add_core_of = ROOT }
+				17 = { add_core_of = ROOT }
+				28 = { add_core_of = ROOT }
+				15 = { add_core_of = ROOT }
+				16 = { add_core_of = ROOT }
+				27 = { add_core_of = ROOT }
+				14 = { add_core_of = ROOT }
+				30 = { add_core_of = ROOT }
+				24 = { add_core_of = ROOT }
+				23 = { add_core_of = ROOT }
+				33 = { add_core_of = ROOT }
+				26 = { add_core_of = ROOT }
+				20 = { add_core_of = ROOT }
+				32 = { add_core_of = ROOT }
+				735 = { add_core_of = ROOT }
+				25 = { add_core_of = ROOT }
+				22 = { add_core_of = ROOT }
+				21 = { add_core_of = ROOT }
+				851 = { add_core_of = ROOT }
+				19 = { add_core_of = ROOT }
+				20 = { add_core_of = ROOT }
+				1 = { add_core_of = ROOT }
+				785 = { add_core_of = ROOT }
+				31 = { add_core_of = ROOT }
+			}
+			# Italy
+			custom_effect_tooltip = form_eu_italy_coring_states_tt
+			hidden_effect = {
+				158 = { add_core_of = ROOT }
+				159 = { add_core_of = ROOT }
+				39 = { add_core_of = ROOT }
+				160 = { add_core_of = ROOT }
+				161 = { add_core_of = ROOT }
+				162 = { add_core_of = ROOT }
+				157 = { add_core_of = ROOT }
+				2 = { add_core_of = ROOT }
+				117 = { add_core_of = ROOT }
+				156 = { add_core_of = ROOT }
+				115 = { add_core_of = ROOT }
+				114 = { add_core_of = ROOT }
+				736 = { add_core_of = ROOT }
+				163 = { add_core_of = ROOT }
+				849 = { add_core_of = ROOT }
+				850 = { add_core_of = ROOT }
+				852 = { add_core_of = ROOT }
+			}
+			# Germany
+			custom_effect_tooltip = form_country_germany_coring_states_tt
+			hidden_effect = {
+				51 = { add_core_of = ROOT }
+				42 = { add_core_of = ROOT }
+				56 = { add_core_of = ROOT }
+				57 = { add_core_of = ROOT }
+				55 = { add_core_of = ROOT }
+				50 = { add_core_of = ROOT }
+				59 = { add_core_of = ROOT }
+				58 = { add_core_of = ROOT }
+				60 = { add_core_of = ROOT }
+				54 = { add_core_of = ROOT }
+				52 = { add_core_of = ROOT }
+				53 = { add_core_of = ROOT }
+				61 = { add_core_of = ROOT }
+				64 = { add_core_of = ROOT }
+				65 = { add_core_of = ROOT }
+				62 = { add_core_of = ROOT }
+				68 = { add_core_of = ROOT }
+				66 = { add_core_of = ROOT }
+				67 = { add_core_of = ROOT }
+				63 = { add_core_of = ROOT }
+				5 = { add_core_of = ROOT }
+				763 = { add_core_of = ROOT }
+				909 = { add_core_of = ROOT }
+			}
+			# Austria
+			custom_effect_tooltip = form_country_austria_coring_states_tt
+			hidden_effect = {
+				848 = { add_core_of = ROOT }
+				153 = { add_core_of = ROOT }
+				152 = { add_core_of = ROOT }
+				4 = { add_core_of = ROOT }
+			}
+			# Swiss
+			custom_effect_tooltip = form_country_switzerland_coring_states_tt
+			hidden_effect = {
+				845 = { add_core_of = ROOT }
+				3 = { add_core_of = ROOT }
+				847 = { add_core_of = ROOT }
+				151 = { add_core_of = ROOT }
+				846 = { add_core_of = ROOT }
+			}
+			hidden_effect = {
+				news_event = { id = wtt_news.62 hours = 6 }
+				set_global_flag = form_european_union_flag
+				set_country_flag = form_european_union_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+
+FPM_rebuilding_france = {
+
+	FRA_rebuild_state = {
+		icon = GFX_decision_generic_construction
+		available = {
+			has_completed_focus = FRA_the_marshall_plan
+			num_of_civilian_factories_available_for_projects > 4
+		}
+
+		visible = { 
+			has_completed_focus = FRA_the_marshall_plan 
+			any_owned_state = {
+				has_dynamic_modifier = {
+					modifier = FRA_economic_devastation
+				}
+			}
+		}
+
+		state_target = yes
+		targets = { 29 785 18 28 17 15 16 24 30 14 27 20 26 33 23 25 19 806 31 22 32 21 851 735 }
+		target_trigger = {
+			FROM = {
+				has_dynamic_modifier = {
+					modifier = FRA_economic_devastation
+				}
+			}
+		}
+		on_map_mode = map_and_decisions_view
+
+		cost = FPM_econ_recovery_cost
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 4
+		}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = {
+					modifier = FRA_economic_devastation
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				has_stability < 0.3
+				factor = 0
+			}
+		}
+	}
+
+	
+}

@@ -1,0 +1,4630 @@
+﻿###########################
+# French Prime Minister Events
+###########################
+
+add_namespace = francepm
+add_namespace = fpmmilplot
+add_namespace = fpmnewrev
+add_namespace = fpmdiploevents
+add_namespace = fpmleagues
+add_namespace = fpmsalengro
+add_namespace = fpmcagoule
+add_namespace = fpmprovgov
+
+#mod
+
+#Pierre Laval Resigns/Hoare-Laval Pact
+country_event = {
+	id = francepm.1
+	title = francepm.1.t 
+	desc = francepm.1.d
+	picture = GFX_report_event_pierre_laval
+	
+	trigger = {
+		original_tag = FRA
+		has_government = democratic
+		ITA = { 
+			has_war_with = ETH 
+		}
+		date > 1936.1.24 
+		has_start_date < 1936.01.02
+		NOT = {
+			has_country_flag = FPM_armistice_testing_flag
+		}
+	}
+	
+	mean_time_to_happen =  {
+		days = 7
+	}
+	fire_only_once = yes 
+	
+	option = {
+		name = francepm.1.a
+		remove_country_leader_role = {
+			character = FRA_pierre_laval
+			ideology = conservatism
+		} 
+		create_country_leader = {
+			name = "Albert Sarraut"
+			picture = "Portrait_FRA_Albert_Sarraut.dds"
+			expire = "1965.1.1"
+			ideology = liberalism
+			traits = {
+					caretaker_government
+			}
+		}
+		#FRA_stout_defender_add_effect = yes
+		custom_effect_tooltip = flandin_pm
+		custom_effect_tooltip = political_crisis_start
+		set_country_flag = political_crisis_start
+		hidden_effect = {
+			add_ideas = FRA_political_crisis_idea
+		}
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEFAULT
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEMOCRATIC_HISTORICAL
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEMOCRATIC_ALTERNATE
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = COMMUNIST
+					}
+					is_historical_focus_on = yes
+				}
+			}
+		}
+	}
+	option = {
+		name = francepm.1.b
+		add_political_power = -50
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.025
+		}
+		custom_effect_tooltip = laval_pm
+		custom_effect_tooltip = political_crisis_start
+		set_country_flag = political_crisis_start
+		hidden_effect = {
+			add_ideas = FRA_political_crisis_idea
+		}
+		set_country_flag = laval_in_power
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = FASCIST
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = ORLEANIST
+					}
+
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = LEGITIMIST
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = BONAPARTIST
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEFAULT
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEMOCRATIC_HISTORICAL
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEMOCRATIC_ALTERNATE
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = COMMUNIST
+					}
+					is_historical_focus_on = yes
+				}
+			}
+		}
+	}
+}
+
+# Finland Consequences
+country_event = {
+    id = francepm.2
+    title = francepm.2.t
+    desc = {
+		trigger = {
+			has_country_leader = {
+				character = FRA_edouard_daladier
+				ruling_only = yes
+			}
+		}
+		text = francepm.2.d_1
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				has_country_leader = {
+					character = FRA_edouard_daladier
+					ruling_only = yes
+				}
+			}
+		}
+		text = francepm.2.d_2
+	}
+    picture = GFX_report_event_soviet_finnish_pact
+
+    trigger = {
+		NOT = {
+			OR = {
+				has_completed_focus = FRA_support_the_finns
+				has_war_with = SOV
+			}
+		}
+		NOT = {
+			has_country_flag = daladier_resigned
+		}
+        original_tag = FRA	
+        has_government = democratic
+		SOV = {
+			owns_state = 147 
+		}
+		has_capitulated = no
+    }
+
+    mean_time_to_happen = {
+        days = 1
+    }
+	fire_only_once = yes
+
+    option = {
+        name = francepm.2.a
+		trigger = {
+			has_country_leader = {
+				character = FRA_edouard_daladier
+				ruling_only = yes
+			}
+		}
+		remove_country_leader_role = {
+			character = FRA_edouard_daladier
+			ideology = liberalism
+		}
+		add_country_leader_role = {
+			character = FRA_paul_reynaud
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					economic_liberal
+					little_clemenceau
+				}
+			}
+			promote_leader = yes
+		}
+		#FRA_stout_defender_add_effect = yes
+        set_country_flag = daladier_resigned
+		add_war_support = -0.05
+		set_party_name = {
+			ideology = democratic
+			long_name = FPM_dvd_long
+			name = FPM_dvd
+		}
+		add_ideas = FPM_national_unity_government_1
+    }
+	option = {
+		name = francepm.2.b
+		trigger = {
+			has_country_leader = {
+				character = FRA_paul_reynaud
+				ruling_only = yes
+			}
+		}
+		remove_country_leader_role = {
+			character = FRA_paul_reynaud
+			ideology = liberalism
+		}
+		add_country_leader_role = {
+			character = FRA_edouard_daladier
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					the_bull_of_vaucluse
+				}
+			}
+			promote_leader = yes
+		}
+		#FRA_stout_defender_add_effect = yes
+		add_war_support = -0.05
+	}
+	option = {
+		name = francepm.2.b
+		trigger = {
+			OR = {
+				has_country_leader = {
+					character = FRA_edouard_herriot
+				}
+				has_country_leader = {
+					character = FRA_camille_chautemps
+					ruling_only = yes
+				}
+			}
+
+		}
+		if = {
+			limit = { has_country_leader = { character = FRA_camille_chautemps } }
+			remove_country_leader_role = {
+				character = FRA_camille_chautemps
+				ideology = socialism
+			}
+		}
+		if = {
+			limit = { has_country_leader = { character = FRA_edouard_herriot } }
+			remove_country_leader_role = {
+				character = FRA_edouard_herriot
+				ideology = liberalism
+			}
+		}
+		add_country_leader_role = {
+			character = FRA_paul_reynaud
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					economic_liberal
+					little_clemenceau
+				}
+			}
+			promote_leader = yes
+		}
+		#FRA_stout_defender_add_effect = yes
+        set_country_flag = daladier_resigned
+		add_war_support = -0.05
+		set_party_name = {
+			ideology = democratic
+			long_name = FPM_dvd_long
+			name = FPM_dvd
+		}
+		add_ideas = FPM_national_unity_government_1
+	}
+	option = {
+		name = francepm.2.b
+		trigger = {
+			has_country_leader = {
+				character = FRA_leon_blum
+				ruling_only = yes
+			}
+		}
+		remove_country_leader_role = {
+			character = FRA_leon_blum
+			ideology = socialism
+		}
+		add_country_leader_role = {
+			character = FRA_camille_chautemps
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = socialism
+				traits = {
+					agreeable_centrist
+				}
+			}
+			promote_leader = yes
+		}
+		set_country_flag = chautempsgood
+		#FRA_stout_defender_add_effect = yes
+		add_war_support = -0.05
+	}
+	option = {
+		name = francepm.2.a
+		trigger = {
+			has_country_leader = {
+				character = FRA_pierre_etienne_flandin
+				ruling_only = yes
+			}
+		}
+		remove_country_leader_role = {
+			character = FRA_pierre_etienne_flandin
+			ideology = conservatism
+		}
+		add_country_leader_role = {
+			character = FRA_paul_reynaud
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					economic_liberal
+					little_clemenceau
+				}
+			}
+			promote_leader = yes
+		}		
+		#FRA_stout_defender_add_effect = yes
+		add_war_support = -0.05
+	}
+	option = {
+		name = francepm.2.a
+		trigger = {
+			has_country_leader = {
+				character = FRA_pierre_laval
+				ruling_only = yes
+			}
+		}
+		remove_country_leader_role = {
+			character = FRA_pierre_etienne_flandin
+			ideology = conservatism
+		}
+		add_country_leader_role = {
+			character = FRA_paul_reynaud
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					economic_liberal
+					little_clemenceau
+				}
+			}
+			promote_leader = yes
+		}		
+		#FRA_stout_defender_add_effect = yes
+		add_war_support = -0.05
+	}
+}
+
+#blum accident
+country_event = {
+	id = france.350
+	title = france.350.t
+	desc = france.350.d
+	picture = GFX_report_event_FRA_blum_attacked
+
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = FRA
+		date > 1936.02.05
+		date < 1936.03.05	
+	 	has_idea = FPM_disjointed_government1
+    }
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = france.350.a
+		add_stability = -0.01
+		add_political_power = -10
+	}
+}
+
+#Why die for danzig?
+country_event = {
+	id = france.351
+	title = france.351.t
+	desc = france.351.d
+	picture = GFX_report_event_german_polish_border
+
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = FRA
+		has_government = democratic
+		GER = {
+			OR = {
+				has_completed_focus = GER_danzig_or_war
+				focus_progress = {
+					focus = GER_danzig_or_war
+					progress > 0.01
+				}
+				has_war_with = POL
+			}
+		}
+	 	has_idea = FPM_disjointed_government1
+    }
+
+	mean_time_to_happen = {
+		days = 35
+	}
+	
+	option = {
+		name = france.351.a
+		add_war_support = -0.05
+	}
+}
+
+#Popular Front Succeeds
+country_event = {
+	id = francepm.3
+	title = francepm.3.t
+	desc = francepm.3.d
+	picture = GFX_report_event_generic_rally2
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = francepm.3.a
+		add_political_power = 150
+		add_stability = 0.05
+		custom_effect_tooltip = FPM_new_economic_policies
+		custom_effect_tooltip = political_crisis_end
+		set_country_flag = political_crisis_over
+	}
+}
+
+#National Union Government
+country_event = {
+	id = francepm.4
+	title = francepm.4.t
+	desc = {
+		trigger = {
+			has_country_flag = FPM_limited_coalition
+		}
+		text = francepm.4.d1
+	}
+	desc = {
+		trigger = {
+			has_country_flag = FPM_full_coalition
+		}
+		text = francepm.4.d2
+	}
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = francepm.4.a
+		add_political_power = 150
+		add_stability = 0.05
+		add_country_leader_role = {
+			character = FRA_edouard_herriot
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					agreeable_centrist
+				}
+			}
+			promote_leader = yes
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = FRA_democratic_party_long
+			name = FRA_democratic_party
+		}
+		custom_effect_tooltip = political_crisis_end
+		set_country_flag = political_crisis_over
+	}
+}
+
+#Revival of the Bloc Nationale, Laval
+country_event = {
+	id = francepm.5
+	title = francepm.5.t
+	desc = francepm.5.d
+	picture = GFX_report_event_pierre_laval
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = francepm.5.a
+		activate_mission = FPM_the_national_bloc_mission
+	}
+}
+
+#Revival of the Bloc Nationale, Flandin
+country_event = {
+	id = francepm.6
+	title = francepm.6.t
+	desc = francepm.6.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = francepm.6.a
+		activate_mission = FPM_the_national_bloc_mission
+	}
+}
+
+#Antisemitic Protests
+country_event = {
+	id = francepm.8
+	title = francepm.8.t
+	desc = francepm.8.d
+	picture = GFX_report_event_generic_riot
+
+	trigger = {
+		original_tag = FRA
+		has_country_leader = {
+			character = FRA_leon_blum
+			ruling_only = yes
+		}
+		has_country_flag = FPM_political_violence
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 365
+	}
+
+	option = {
+		name = francepm.8.a
+		add_stability = -0.1
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.05
+		}
+	}
+	option = {
+		name = francepm.8.b
+		add_political_power = -50
+	}
+}
+
+#The Winter War
+country_event = {
+	id = francepm.9
+	title = francepm.9.t
+	desc = francepm.9.d
+	picture = GFX_report_event_finnish_soldiers_snow
+
+	trigger = {
+		original_tag = FRA
+		has_government = democratic
+		FIN = {
+			has_war_with = SOV
+		}
+
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = francepm.9.a
+		custom_effect_tooltip = FPM_winter_war
+	}
+	
+	#TODO, Bombing of Baku
+	#option = {
+	#	name = francepm.9.b
+	#	declare_war_on = {
+	#		target = SOV
+	#		type = annex_everything
+	#		}
+    #	}
+}
+
+#1936 Elections
+country_event = { 
+	id = francepm.10
+	title = francepm.10.t
+	desc = francepm.10.d
+	picture = GFX_report_event_election_vote
+
+	is_triggered_only = yes
+	
+	trigger = {
+		original_tag = FRA
+		has_government = democratic
+		date > 1936.1.1
+		date < 1937.1.1
+	}
+	fire_only_once = yes
+	
+	option = {
+		name = francepm.10.a
+		set_country_flag = popular_front_victory
+		set_country_flag = FPM_election_happened
+		add_political_power = 200
+		complete_national_focus = FRA_form_the_popular_front
+		add_ideas = {
+			FPM_the_popular_front_1
+		}
+		mark_focus_tree_layout_dirty = yes
+		custom_effect_tooltip = FPM_new_economic_policies
+		country_event = {
+			id = francepm.11
+			days = 0
+		}
+		if = {
+			limit = {
+				has_country_leader = {
+					character = FRA_pierre_laval
+					ruling_only = yes
+				}
+			}
+			remove_country_leader_role = {
+				character = FRA_pierre_laval
+				ideology = conservatism
+			}
+		}
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEFAULT
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEMOCRATIC_HISTORICAL
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEMOCRATIC_ALTERNATE
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = COMMUNIST
+					}
+					is_historical_focus_on = yes
+				}
+			}
+		}
+	}
+	option = {  
+		name = francepm.10.b
+		set_country_flag = national_bloc_victory
+		set_country_flag = FPM_election_happened
+		trigger = {
+			has_country_flag = laval_in_power
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = FASCIST
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = ORLEANIST
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = LEGITIMIST
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = BONAPARTIST
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEFAULT
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEMOCRATIC_HISTORICAL
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEMOCRATIC_ALTERNATE
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = COMMUNIST
+					}
+					is_historical_focus_on = yes
+				}
+			}
+		}
+		add_political_power = 200
+		complete_national_focus = FRA_revive_the_national_bloc
+		add_ideas = {
+			FPM_the_national_bloc_1
+		}
+		country_event = {
+			id = francepm.5
+			days = 0
+		}
+		custom_effect_tooltip = FPM_new_economic_policies
+
+
+	}
+	option = {  
+		name = francepm.10.c
+		set_country_flag = national_bloc_victory
+		set_country_flag = FPM_election_happened
+		trigger = {
+			NOT = {
+				has_country_flag = laval_in_power
+			}
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = FASCIST
+					}
+					AND = {
+						GER = { has_completed_focus = GER_oppose_hitler }
+						has_game_rule = {
+							rule = FRA_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = ORLEANIST
+					}
+
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = LEGITIMIST
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = BONAPARTIST
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEFAULT
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEMOCRATIC_HISTORICAL
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = DEMOCRATIC_ALTERNATE
+					}
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = COMMUNIST
+					}
+					is_historical_focus_on = yes
+				}
+			}
+		}
+		add_political_power = 200
+		complete_national_focus = FRA_revive_the_national_bloc
+		add_ideas = {
+			FPM_the_national_bloc_1
+		}
+		country_event = {
+			id = francepm.6
+			days = 0
+		}
+		custom_effect_tooltip = FPM_new_economic_policies
+	}
+}
+
+#French Economy is bad
+country_event = { 
+	id = francepm.11
+	title = francepm.11.t
+	desc = francepm.11.d
+	picture = GFX_report_event_FRA_pop_front_strikes
+
+	is_triggered_only = yes
+
+	option = {
+		name = francepm.11.a
+		FPM_econ_decrease_5 = yes
+		custom_effect_tooltip = FPM_add_commie_strikes
+		hidden_effect = {
+			add_dynamic_modifier = {
+				modifier = FRA_commie_strikes_modifier
+			}
+		}
+		activate_mission = FPM_the_popular_front_mission
+		hidden_effect = { #give ai popular front more leeway for little entente
+			if = {
+				limit = {
+					FRA = {
+						is_ai = yes
+					}
+					OR = {
+						AND = {
+							ENG = { has_completed_focus = ENG_a_change_in_course }
+							NOT = { GER = { has_completed_focus = GER_oppose_hitler } }
+						}
+						has_country_flag = FRA_AI_DEMOCRATIC_ALTERNATE
+						has_game_rule = {
+							rule = FRA_ai_behavior
+							option = DEMOCRATIC_ALTERNATE
+						}
+					}
+				}
+				add_days_mission_timeout = {
+					mission = FPM_the_popular_front_mission
+					days = 70
+				}
+			}
+		}
+	}
+}
+
+#Failure of the Popular Front
+country_event = {
+	id = francepm.12
+	title = francepm.12.t
+	desc = francepm.12.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = francepm.12.a
+		if = {
+			limit = {
+				has_idea = leon_blum
+			}
+			add_political_power = 150
+		}
+		swap_ideas = {
+			remove_idea = FPM_the_popular_front_1
+			add_idea = FPM_the_popular_front_2
+		}
+		remove_country_leader_role = {
+			character = FRA_leon_blum
+			ideology = socialism
+		}
+		add_country_leader_role = {
+			character = FRA_camille_chautemps
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = socialism
+				traits = {
+					ineffective_leadership
+				}
+			}
+			promote_leader = yes
+		}		
+		#FRA_stout_defender_add_effect = yes
+		set_party_name = { #make into parti radical
+			ideology = democratic 
+			long_name = FRA_democratic_party
+			name = FRA_democratic_party
+		}
+	}
+}
+
+#Popular Front needs to respond to Spanish Civil War
+country_event = {
+	id = francepm.13
+	title = francepm.13.t
+	desc = francepm.13.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	fire_only_once = yes
+	trigger = {
+		original_tag = FRA
+		has_government = democratic
+		has_completed_focus = FRA_form_the_popular_front
+		has_global_flag = spanish_civil_war
+		has_start_date < 1936.01.02
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = francepm.13.a
+		custom_effect_tooltip = FPM_scw_tooltip
+		add_stability = -0.05
+		set_country_flag = FPM_scw_happened
+		set_country_flag = FRA_non_intervention
+	}
+}
+
+#Chautemps Resigns
+country_event = {
+	id = francepm.14
+	title = francepm.14.t
+	desc = { #Anchluss
+		text = francepm.14.d_1
+		trigger = {
+			GER = {
+				has_completed_focus = GER_anschluss
+			}
+		}
+	}
+	desc = { #Rising Tensions
+		text = francepm.14.d_2
+		trigger = {
+			GER = {
+				NOT = {
+					has_completed_focus = GER_anschluss
+				}
+			}
+			threat > 0.25
+			date > 1938.3.13
+		}
+	}
+	desc = { #Economic Troubles
+		text = francepm.14.d_3
+		trigger = {
+			GER = {
+				NOT = {
+					has_completed_focus = GER_anschluss
+				}
+			}
+			threat < 0.25
+			date > 1938.3.13
+		}
+	}
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	trigger = {
+		original_tag = FRA
+		has_government = democratic
+		has_start_date < 1936.01.02
+		has_capitulated = no
+		has_country_leader = {
+			character = FRA_camille_chautemps
+			ruling_only = yes
+		}
+		NOT = {
+				has_country_flag = chautempsgood
+			}
+		NOT = {
+			has_idea = FPM_the_popular_front_4
+			has_idea = FPM_the_popular_front_5
+		}
+		OR = {
+			AND = {
+				GER = {
+					has_completed_focus = GER_anschluss
+				}
+				date > 1938.1.1
+			}
+			AND = {
+				GER = {
+					NOT = {
+						has_completed_focus = GER_anschluss
+					}
+				}
+				threat > 0.25
+				date > 1938.3.13
+			}
+			AND = {
+				GER = {
+					NOT = {
+						has_completed_focus = GER_anschluss
+					}
+				}
+				threat < 0.25
+				date > 1938.3.13
+
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = francepm.14.a
+		remove_country_leader_role = {
+			character = FRA_camille_chautemps
+			ideology = socialism
+		}
+		add_country_leader_role = {
+			character = FRA_leon_blum
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = socialism
+				traits = {
+					reluctant_interventionist
+				}
+			}
+			promote_leader = yes
+		}		
+		#FRA_stout_defender_add_effect = yes
+		add_political_power = 50
+		# add_war_support = 0.05
+		set_party_name = {
+			ideology = democratic
+			long_name = FPM_sfio_long
+			name = FPM_sfio
+		}
+		activate_mission = FPM_national_union_government
+		mark_focus_tree_layout_dirty = yes #Remember that this is for debug purposes, don't remove 
+		#i don't remember why this is for debug purposes but like I'm not going to remove it (several months later)
+	}
+}
+
+#Chautemps succeeds
+country_event = {
+	id = francepm.15
+	title = francepm.15.t
+	desc = francepm.15.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = francepm.15.a
+		swap_ideas = {
+			remove_idea = FPM_the_popular_front_4
+			add_idea = FPM_the_popular_front_5
+		}
+		add_country_leader_trait = agreeable_centrist
+	}
+}
+
+#Daladier becomes PM
+country_event = {
+	id = francepm.16
+	title = francepm.16.t
+	desc = francepm.16.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = francepm.16.a
+		if = {
+			limit = {
+				has_idea = FPM_the_popular_front_2
+			}
+			remove_ideas = FPM_the_popular_front_2
+		}
+		if = {
+			limit = {
+				has_idea = FPM_the_popular_front_4
+			}
+			remove_ideas = FPM_the_popular_front_4
+		}
+		add_country_leader_role = {
+			character = FRA_edouard_daladier
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					the_bull_of_vaucluse
+				}
+			}
+			promote_leader = yes
+		}		
+		set_party_name = {
+			ideology = democratic
+			long_name = FRA_democratic_party
+			name = FRA_democratic_party
+		}
+		add_political_power = 50
+		custom_effect_tooltip = FPM_new_economic_policies
+		custom_effect_tooltip = political_crisis_end
+		set_country_flag = political_crisis_over
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+#The Rise of the Center (Reynaud becomes PM if National Bloc fails)
+country_event = {
+	id = francepm.17
+	title = francepm.17.t
+	desc = {
+		text = francepm.17.a_1
+		trigger = {
+			has_country_leader = {
+				character = FRA_pierre_etienne_flandin
+				ruling_only = yes
+			}
+		}
+	}
+	desc = {
+		text = francepm.17.a_2
+		trigger = {
+			has_country_leader = {
+				character = FRA_pierre_laval
+				ruling_only = yes
+			}
+		}
+	}
+	picture = GFX_report_event_journalists_speech
+
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		set_country_flag = FPM_centre_rose
+	}
+
+	option = {
+		name = francepm.17.a
+		if = {
+			limit = {
+				has_idea = paul_reynaud
+			}
+			add_political_power = 150
+		}
+		retire_country_leader = yes
+		add_country_leader_role = {
+			character = FRA_paul_reynaud
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					economic_liberal
+					little_clemenceau
+				}
+			}
+			promote_leader = yes
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = FPM_dvd_long
+			name = FPM_dvd
+		}
+		#FRA_stout_defender_add_effect = yes
+		set_party_name = {
+			ideology = democratic
+			long_name = FPM_ad_long
+			name = FPM_ad
+		}
+		add_stability = -0.05
+		custom_effect_tooltip = political_crisis_end
+		set_country_flag = political_crisis_over
+	}
+}
+
+#Delay election to 1942?
+country_event = {
+	id = francepm.18
+	title = francepm.18.t
+	desc = francepm.18.d
+	picture = GFX_report_event_election_vote
+
+	trigger = {
+		date > 1939.6.30
+		has_government = democratic
+		original_tag = FRA
+		threat > 0.2
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = francepm.18.a
+		set_country_flag = FPM_delayed_elections
+		custom_effect_tooltip = FPM_delay_elections
+		hidden_effect = {
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				last_election = 1938.5.1
+				election_frequency = 48
+			}
+		}
+		add_stability = 0.03
+		ai_chance = {
+			factor = 100
+		}
+	}
+	option = {
+		name = francepm.18.b
+		add_political_power = 20
+	}
+}
+
+#1940/42 Elections
+country_event = {
+	id = francepm.19
+	title = francepm.19.t
+	desc = {
+		text = francepm.19.d1
+		trigger = {
+			NOT = {
+				has_completed_focus = FRA_ban_the_leagues
+			}
+		}
+	}
+	desc = {
+		text = francepm.19.d2
+		trigger = {
+			has_completed_focus = FRA_ban_the_leagues
+		}
+	}
+	picture = GFX_report_event_election_vote
+
+	is_triggered_only = yes
+	
+	trigger = {
+		original_tag = FRA
+		has_government = democratic
+		if = {
+			limit = {
+				has_country_flag = FPM_delayed_elections
+			}
+			date > 1942.1.1
+			date < 1943.1.1
+		}
+		else = {
+			date > 1940.1.1
+			date < 1941.1.1
+		}
+		has_capitulated = no
+	}
+	fire_only_once = yes
+
+	#The Left!
+	option = {
+		name = francepm.19.a
+		if = {
+			limit = {
+				has_country_leader = {
+					character = FRA_leon_blum
+					ruling_only = yes
+				}
+			}
+			if = {
+				limit = {
+					has_idea = FPM_union_sacree
+				}
+				swap_ruler_traits = {
+					remove = reluctant_interventionist
+					add = FPM_steadfast_interventionist
+				}
+			}
+		}
+		else_if = { #Secret option ;)
+			limit = { 
+				has_country_leader = {
+					character = FRA_camille_chautemps
+					ruling_only = yes
+				}
+			}
+			add_country_leader_role = {
+				character = FRA_maurice_thorez
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = socialism
+					traits = {
+						son_of_the_people
+					}
+				}
+				promote_leader = yes
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = FRA_communism_party_long
+				name = FRA_communism_party
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = FRA_vincent_auriol
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = socialism
+					traits = {
+						reluctant_interventionist
+					}
+				}
+				promote_leader = yes
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = FPM_sfio_long
+				name = FPM_sfio
+			}
+		}
+		#FRA_stout_defender_add_effect = yes
+	}
+
+	#The Center!
+	option = {
+		name = francepm.19.b
+		if = {
+			limit = {
+				OR = {
+					has_country_leader = {
+						character = FRA_edouard_herriot
+					}
+					has_country_leader = {
+						character = FRA_camille_chautemps
+						ruling_only = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_idea = FPM_union_sacree
+				}
+				swap_ruler_traits = {
+					remove = agreeable_centrist
+					add = agreeable_centrist_2
+				}
+			}
+		}
+		else_if = {
+			limit = { 
+				has_country_leader = {
+					character = FRA_edouard_daladier
+					ruling_only = yes
+				}
+			}
+			if = {
+				limit = {
+					has_idea = FPM_union_sacree
+				}
+				swap_ruler_traits = {
+					remove = the_bull_of_vaucluse
+					add = the_bull_of_vaucluse_2
+				}
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = FRA_edouard_daladier
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = liberalism
+					traits = {
+						the_bull_of_vaucluse
+					}
+				}
+				promote_leader = yes
+			}
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = FRA_democratic_party_long
+			name = FRA_democratic_party
+		}
+		#FRA_stout_defender_add_effect = yes
+	}
+
+	#The Right!
+	option = {
+		name = francepm.19.c
+		if = {
+			limit = {
+				has_country_leader = {
+					character = FRA_paul_reynaud
+					ruling_only = yes
+				}
+			}
+			if = {
+				limit = {
+					has_idea = FPM_union_sacree
+				}
+				swap_ruler_traits = {
+					remove = economic_liberal   
+					add = economic_liberal_2
+				}
+			}
+		}
+		else_if = {
+			limit = { 
+				has_country_leader = {
+					character = FRA_pierre_etienne_flandin
+					ruling_only = yes
+				}
+			}
+			if = {
+				limit = {
+					has_idea = FPM_union_sacree
+				}
+				swap_ruler_traits = {
+					remove = centrist_authoritarian
+					add = centrist_authoritarian_2
+				}
+			}
+		}
+		else_if = {
+			limit = { 
+				has_country_leader = {
+					character = FRA_pierre_laval
+					ruling_only = yes
+				}
+			}
+			if = {
+				limit = {
+					has_idea = FPM_union_sacree
+				}
+				swap_ruler_traits = {
+					remove = laval_trait
+					add = FPM_tenacious_negotiator
+				}
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = FRA_paul_reynaud
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = liberalism
+					traits = {
+						 economic_liberal
+						little_clemenceau 
+					}
+				}
+				promote_leader = yes
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = FPM_dvd_long
+				name = FPM_dvd
+			}
+		}
+		#FRA_stout_defender_add_effect = yes
+	}
+
+	#Secreter Option :O
+	option = {
+		name = francepm.19.e
+		trigger = {
+			has_completed_focus = FRA_ban_the_leagues
+		}
+		add_country_leader_role = {
+			character = FRA_francois_de_la_rocque
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = conservatism
+				traits = {
+					FPM_social_nationalist
+				}
+			}
+			promote_leader = yes
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = FRA_fascism_party_rocque_long
+			name = FRA_fascism_party_rocque
+		}
+		#FRA_stout_defender_add_effect = yes
+	}
+}
+
+#National Bloc Success
+country_event = {
+	id = francepm.20
+	title = francepm.20.t
+	desc = francepm.20.d
+	picture = GFX_report_event_journalists_speech
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = francepm.20.a
+		add_political_power = 100
+		custom_effect_tooltip = political_crisis_end
+		set_country_flag = political_crisis_over
+	}
+}
+
+#hidden syria event
+country_event = {
+	id = francepm.21
+	hidden = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		SYR = {
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 60
+			}
+			retire_country_leader = yes 
+			create_country_leader = {
+				name = "Antoun Saadeh"
+				picture = "syriaman.dds"
+				expire = "1965.1.1"
+				ideology = fascism_ideology
+			}
+		}
+	}
+}
+
+#Syrian Revolt
+country_event = {
+	id = francepm.22
+	title = francepm.22.t
+	desc = francepm.22.d
+	picture = GFX_report_event_tur_kurdish_guerillas
+
+	fire_only_once = yes
+	trigger = {
+		original_tag = FRA
+		date > 1943.2.3
+		OR = {
+			FRA = {
+			controls_state = 554
+			controls_state = 680
+			controls_state = 677
+			}
+			AND  = {
+				SYR = {
+				controls_state = 554
+				controls_state = 680
+				controls_state = 677
+				}
+			SYR = {
+				is_subject_of = FRA
+				NOT = {
+					has_autonomy_state = autonomy_dominion
+					}
+				}
+			}
+		}
+		FRA = {
+			has_capitulated = no
+		}
+	}
+	mean_time_to_happen = {
+		days = 365
+	}
+	option = {
+		name = francepm.22.a
+		custom_effect_tooltip = FPM_syrian_revolt
+		hidden_effect = {
+			IF = {
+				limit = {
+					SYR = {
+						is_subject_of = FRA
+					}
+				}
+				set_autonomy = {
+					target = SYR
+					autonomy_state = autonomy_free
+				}
+				SYR = {
+					declare_war_on = {
+						target = FRA
+						type = independence_wargoal
+					}
+				}
+			}
+			else = {
+				677 = {
+					remove_core_of = SYR
+					add_resistance = 100
+				}
+				680 = {
+					remove_core_of = SYR
+					add_resistance = 100
+				}
+				554 = {
+					remove_core_of = SYR
+					add_resistance = 100
+				}
+			}
+		}
+		set_global_flag = syrian_revolt
+		FRA ={
+			country_event = {
+				id = francepm.21
+				days = 7
+			}
+		}
+	}
+}
+
+#France economy is good
+country_event = {
+	id = francepm.23
+	title = francepm.23.t
+	desc = francepm.23.d
+	picture = GFX_report_event_communists_cheer
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	# trigger = {
+	# 	OR = {
+	# 		check_variable = {
+	# 			FPM_eco_consumer_goods_factor = 0
+	# 		}
+	# 		check_variable = {
+	# 			FPM_eco_consumer_goods_factor < 0
+	# 		}
+	# 	}
+	# 	original_tag = FRA
+	# 	has_dynamic_modifier = {
+	# 		modifier = FRA_economy_dynamic_modifier
+	# 	}	
+	# }
+	# mean_time_to_happen = {
+	# 	days = 1
+	# }
+	
+	immediate = {
+		hidden_effect = {
+			custom_effect_tooltip = FPM_remove_ie
+			add_stability = 0.05
+			hidden_effect = {
+				remove_dynamic_modifier = {
+					modifier = FRA_economy_dynamic_modifier
+				}
+				clr_country_flag = FRA_inflation_1
+				clr_country_flag = FRA_inflation_2
+				clr_country_flag = FRA_inflation_3
+				clr_country_flag = FRA_inflation_4
+				clr_country_flag = FRA_inflation_5
+			}
+		}
+	}
+
+	option = {
+		name = francepm.23.a
+		effect_tooltip = {
+			custom_effect_tooltip = FPM_remove_ie
+			add_stability = 0.05
+			hidden_effect = {
+				remove_dynamic_modifier = {
+					modifier = FRA_economy_dynamic_modifier
+				}
+				clr_country_flag = FRA_inflation_1
+				clr_country_flag = FRA_inflation_2
+				clr_country_flag = FRA_inflation_3
+				clr_country_flag = FRA_inflation_4
+				clr_country_flag = FRA_inflation_5
+			}
+		}
+	}
+}
+
+#hatay state establishment
+# country_event = {
+# 	id = francepm.24
+# 	title = francepm.24.t
+# 	desc = francepm.24.d
+# 	picture = GFX_report_event_tur_britain
+
+# 	fire_only_once = yes
+# 	trigger = {
+# 		original_tag = FRA
+# 		TUR = {
+# 			focus_progress = {
+# 				focus = TUR_the_hatay_issue
+# 				progress > 0.01
+# 			}
+# 		}
+# 		799 = {
+# 			is_owned_and_controlled_by = SYR
+# 		}
+# 	}
+# 	mean_time_to_happen = {
+# 		days = 1
+# 	}
+
+# 	option = {
+# 		name = francepm.24.a
+# 		transfer_state = 799
+# 	}
+# }
+
+#debug
+country_event = {
+	id = francepm.30
+	hidden = yes
+	is_triggered_only = yes
+
+	option = {
+		remove_ideas = maurice_gamelin	
+	}
+
+	option = {
+		add_ideas = maurice_gamelin	
+	}
+}
+
+#For alternate ai strategies where they don't take matignon in time because ai strategies are annoying
+country_event = {
+	id = francepm.31
+	hidden = yes
+	trigger = {
+		original_tag = FRA
+		has_dynamic_modifier = { modifier = FRA_commie_strikes_modifier }
+		is_ai = yes
+		is_historical_focus_on = no 
+	}
+	mean_time_to_happen = {
+		days = 70
+	}
+	immediate = {
+		remove_dynamic_modifier = {
+			modifier = FRA_commie_strikes_modifier
+		}
+	}
+}
+
+
+#Another AI event in the case France doesn't join the allies for some reason
+country_event = {
+	id = francepm.32
+	hidden = yes
+	trigger = {
+		original_tag = FRA
+		has_government = democratic
+		date > 1939.1.1
+		is_ai = yes
+		OR = {
+			has_game_rule = {
+				rule = FRA_ai_behavior
+				option = DEFAULT
+			}
+			has_game_rule = {
+				rule = FRA_ai_behavior
+				option = DEMOCRATIC_HISTORICAL
+			}
+		}
+		has_opinion = {
+			target = ENG
+			value > 10
+		}
+	}
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 70
+	}
+
+	immediate = {
+		ENG = {
+			add_to_faction = FRA
+		}
+	}
+}
+
+#debug events so I don't have to add decisions when I want to test certain things
+country_event = {
+	id = francepm.35
+	title = francepm.35.t
+	desc = francepm.35.d
+	is_triggered_only = yes
+	option = {
+		name = francepm.35.a
+		every_core_state = {
+			add_dynamic_modifier = {
+				modifier = FRA_economic_devastation
+			}
+		}
+	}
+}
+
+#alt hist - reynaud from failed nat bloc resigns after failing to protect sudetenland 
+country_event = {
+	id = francepm.36
+	title = francepm.36.t
+	desc = francepm.36.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = FRA
+		has_government = democratic
+		date < 1939.1.1
+		has_country_leader = {
+			character = FRA_paul_reynaud
+		}
+		NOT = {
+			has_war_with = GER
+		}
+		GER = {
+			has_country_flag = sudetenland_acquired
+			has_completed_focus = GER_demand_sudetenland
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = francepm.17.b
+		add_country_leader_role = {
+			character = FRA_edouard_daladier
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = conservatism
+				traits = {
+					the_bull_of_vaucluse
+				}
+			}
+			promote_leader = yes
+		}		
+		set_party_name = {
+			ideology = democratic
+			long_name = FRA_democratic_party
+			name = FRA_democratic_party
+		}
+		add_stability = -0.05
+	}
+}
+
+
+
+
+#####################################################################################################################################################################
+#mil plot events
+
+#leagues organize
+country_event = {
+	id = fpmmilplot.1
+	title = fpmmilplot.1.t
+	desc = fpmmilplot.1.d
+	picture = GFX_report_event_generic_riot
+
+	trigger = {
+		original_tag = FRA
+		has_active_mission = FPM_military_plot
+		NOT = {
+			has_completed_focus = FRA_ban_the_leagues
+		}
+	}
+	mean_time_to_happen = {
+		days = 100
+	}
+	fire_only_once = yes
+	
+	option = {
+		name = fpmmilplot.1.a
+		add_days_mission_timeout = {
+			mission = FPM_military_plot
+			days = -35
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.05
+		}
+		set_country_flag = right_mobilized
+	}
+}
+
+#far right organizes
+country_event = {
+	id = fpmmilplot.2
+	title = fpmmilplot.2.t
+	desc = fpmmilplot.2.d
+	picture = GFX_report_event_generic_rally
+
+	trigger = {
+		original_tag = FRA
+		has_active_mission = FPM_military_plot
+		has_completed_focus = FRA_ban_the_leagues
+		NOT = {
+			has_country_flag = right_mobilized
+		}
+	}
+	mean_time_to_happen = {
+		days = 200
+	}
+	fire_only_once = yes
+	
+	option = {
+		name = fpmmilplot.2.a
+		add_days_mission_timeout = {
+			mission = FPM_military_plot
+			days = -35
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.025
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.025
+		}
+	}
+}
+
+#political polarization
+country_event = {
+	id = fpmmilplot.3
+	title = fpmmilplot.3.t
+	desc = fpmmilplot.3.d
+	picture = GFX_report_event_gathering_protest
+
+	trigger = {
+		original_tag = FRA
+		has_active_mission = FPM_military_plot
+		set_temp_variable = { FRA_rw_support = party_popularity@neutrality }
+		add_to_temp_variable = { FRA_rw_support = party_popularity@fascism }
+		check_variable = { FRA_rw_support > 0.2 }
+		communism > 0.2
+	}
+	mean_time_to_happen = {
+		days = 150
+	}
+	fire_only_once = yes
+	
+	option = {
+		name = fpmmilplot.3.a
+		add_days_mission_timeout = {
+			mission = FPM_military_plot
+			days = 35
+		}	
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.05
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.05
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = -0.05
+		}
+	}
+}
+
+#capitalists radicalize
+country_event = {
+	id = fpmmilplot.4
+	title = fpmmilplot.4.t
+	desc = fpmmilplot.4.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+	
+	option = {
+		name = fpmmilplot.4.a
+		add_days_mission_timeout = {
+			mission = FPM_military_plot
+			days = -35
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.025
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.025
+		}
+		set_country_flag = capitalists_radicalized
+	}
+}
+
+#rw democrats radicalize
+country_event = {
+	id = fpmmilplot.5
+	title = fpmmilplot.5.t
+	desc = fpmmilplot.5.d
+	picture = GFX_report_event_generic_parliament
+
+	is_triggered_only = yes
+	
+	option = {
+		name = fpmmilplot.5.a
+		add_days_mission_timeout = {
+			mission = FPM_military_plot
+			days = -35
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.025
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.025
+		}
+		set_country_flag = rw_dems_radicalized
+	}
+}
+
+
+
+#####################################################################################################################################################################
+#newrevolution events
+
+#New Constitution
+country_event = {
+	id = fpmnewrev.1
+	title = fpmnewrev.1.t
+	desc = fpmnewrev.1.d
+	picture = GFX_report_event_generic_communist_congress
+
+	is_triggered_only = yes
+	
+	option = {
+		name = fpmnewrev.1.a
+		swap_ideas = {
+			remove_idea = FPM_the_popular_front_3
+			add_idea = FPM_nicods_constitution
+		}
+		promote_character  = FRA_rene_nicod
+		add_trait = {
+			character = FRA_rene_nicod
+			trait = reluctant_veteran
+			ideology = marxism
+		}
+		set_party_name = {
+			ideology = communism
+			long_name = FRA_union_populaire_long
+			name = FRA_union_populaire
+		}
+		hidden_effect = {
+			create_country_leader = {
+				name = "Léon Blum"
+				picture = "Portrait_Fra_Leon_Blum.dds"
+				expire = "1965.1.1"
+				ideology = socialism
+				traits = {
+					reluctant_interventionist
+					ICE_minister_of_finance_moller
+				}
+			}		
+		}
+	}
+	option = {
+		name = fpmnewrev.1.b
+		swap_ideas = {
+			remove_idea = FPM_the_popular_front_3
+			add_idea = FPM_thorez_constitution
+		}
+		add_country_leader_trait = son_of_the_people
+		hidden_effect = {
+			create_country_leader = {
+				name = "Léon Blum"
+				picture = "Portrait_Fra_Leon_Blum.dds"
+				expire = "1965.1.1"
+				ideology = socialism
+				traits = {
+					reluctant_interventionist
+					ICE_minister_of_finance_moller
+				}
+			}		
+		}
+
+	}
+}
+
+#the reign of terror 
+country_event = {
+	id = fpmnewrev.2
+	title = fpmnewrev.2.t
+	desc = fpmnewrev.2.d
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	is_triggered_only = yes
+	
+	option = {
+		name = fpmnewrev.2.a
+		add_timed_idea = {
+			idea = FPM_purged_administration_1
+			days = 180
+		}
+		add_stability = 0.05
+		add_political_power = 100
+		add_country_leader_trait = devout_stalinist
+		hidden_effect = {
+			create_country_leader = {
+				name = "Léon Blum"
+				picture = "Portrait_Fra_Leon_Blum.dds"
+				expire = "1965.1.1"
+				ideology = socialism
+				traits = {
+					reluctant_interventionist
+					ICE_minister_of_finance_moller
+				}
+			}
+		}
+	}
+	#we do a little purging
+	option = {
+		name = fpmnewrev.2.b
+		add_timed_idea = {
+			idea = FPM_purged_administration_2
+			days = 90
+		}
+		add_stability = 0.1
+		add_political_power = 50
+		country_event = {
+			id = fpmnewrev.4
+			days = 0
+		}
+		custom_effect_tooltip = FRA_DUCLOS_COUP
+	}
+}
+
+#Yes or no to suffrage?
+country_event = {
+	id = fpmnewrev.3
+	title = fpmnewrev.3.t
+	desc = fpmnewrev.3.d
+	picture = GFX_report_event_election_vote
+
+	is_triggered_only = yes
+	
+	option = {
+		name = fpmnewrev.3.a
+		add_ideas = FRA_womens_suffrage
+		hidden_effect = {
+			IF = {
+				limit = {
+					has_active_mission = FPM_military_plot
+					NOT = {
+						has_country_flag = rw_dems_radicalized
+					}
+				}
+				random_list = {
+					25 = {
+					}
+					75 = {
+						country_event = {
+							id = fpmmilplot.5
+							days = 7
+							random_days = 21
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = fpmnewrev.3.b
+		add_ideas = FPM_restricted_voting
+		add_days_mission_timeout = {
+			mission = FPM_military_plot
+			days = 70
+		}
+	}
+}
+
+#whoops the paramilitaries couped us how could we ever expect that to happen
+country_event = {
+	id = fpmnewrev.4
+	title = fpmnewrev.4.t
+	desc = fpmnewrev.4.d
+	picture = GFX_report_event_france_victory_syria
+
+	is_triggered_only = yes
+	
+	option = {
+		name = fpmnewrev.4.a
+		promote_character  = FRA_jacques_duclos
+		add_country_leader_trait = proletarian_internationalist
+		division_template = {
+			name = "Groupes de défense antifascistes"
+			priority = 2
+			division_names_group = FRA_INF_01
+			regiments = {
+				militia = { x = 0 y = 0 }
+				militia = { x = 0 y = 1 }
+				militia = { x = 0 y = 2 }
+	
+				militia = { x = 1 y = 0 }
+				militia = { x = 1 y = 1 }
+				militia = { x = 1 y = 2 }
+	
+				militia = { x = 2 y = 0 }
+				militia = { x = 2 y = 1 }
+				militia = { x = 2 y = 2 }
+
+				militia = { x = 3 y = 0 }
+				militia = { x = 3 y = 1 }
+				militia = { x = 3 y = 2 }
+			}
+		}
+		random_owned_controlled_state = {
+			limit = { ROOT = { has_full_control_of_state = PREV } }
+			prioritize = { 16 } #Paris
+			create_unit = {
+				division = "name = \"Groupes de défense antifascistes\" division_template = \"Groupes de défense antifascistes\" start_experience_factor = 0.5" 
+				owner = FRA
+			}
+			create_unit = {
+				division = "name = \"Groupes de défense antifascistes\" division_template = \"Groupes de défense antifascistes\" start_experience_factor = 0.5" 
+				owner = FRA
+			}
+		}
+		hidden_effect = {
+			set_cosmetic_tag = FRA_duclos
+			create_country_leader = {
+				name = "Léon Blum"
+				picture = "Portrait_Fra_Leon_Blum.dds"
+				expire = "1965.1.1"
+				ideology = socialism
+				traits = {
+					reluctant_interventionist
+				}
+			}	
+		}
+	}
+}
+
+#####################################################################################################################################################################
+#diplomatic events
+
+#give up bessarabia
+
+country_event = {
+	id = fpmdiploevents.1
+	title = fpmdiploevents.1.t
+	desc = fpmdiploevents.1.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+	
+	#ok
+	option = {
+		name = fpmdiploevents.1.a
+		ai_chance = {
+			base = 90
+		}
+		SOV = {
+			country_event = { days = 1 id = soviet.4 }
+		}
+		set_country_flag = bessarabia_ceded
+	}
+
+	#no fuck off
+	option = {
+		name = fpm.diploevents.1.b
+		ai_chance = {
+			base = 10
+		}
+		SOV = {
+			country_event = { days = 1 id = soviet.5 }
+			effect_tooltip = {
+				create_wargoal = {
+					type = take_state
+					target = ROM
+					generator = { 78 }
+				}
+			}
+		}
+		leave_faction = yes
+	}
+}
+
+#hidden trigger for stupid shit regarding bessarabia
+country_event = {
+	id = fpmdiploevents.2
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_other_country = {
+			limit = { 
+				owns_state = 78
+				is_in_faction_with = ROOT 
+			}
+			add_opinion_modifier = { target = SOV modifier = claimed_bessarabia }
+			add_opinion_modifier = { target = FRA modifier = concessions_to_soviets }
+			set_country_flag = SOV_added_claimed_bessarabia
+			country_event = { id = fpmdiploevents.1 hours = 16 random_hours = 8 }
+		}
+		if = { 
+			limit = {
+				any_other_country = {
+					owns_state = 78
+					NOT = {	owns_state = 80 }
+				}
+			}
+			random_other_country = {
+				limit = { 
+					owns_state = 80 
+					is_in_faction_with = ROOT 
+					NOT = { has_country_flag = SOV_added_claimed_bessarabia }
+				}
+				add_opinion_modifier = { target = SOV modifier = claimed_bucovina }
+				add_opinion_modifier = { target = FRA modifier = concessions_to_soviets }
+				country_event = { id = fpmdiploevents.1 hours = 16 random_hours = 8 }
+			}
+		}
+		if = {
+			limit = {
+				AND = {
+					any_other_country = {
+						owns_state = 78
+						NOT = {	owns_state = 766 }
+					}
+					any_other_country = {
+						owns_state = 80
+						NOT = {	owns_state = 766 }
+					}
+				}
+			}
+			random_other_country = {
+				limit = { 
+					owns_state = 766
+					is_in_faction_with = ROOT 
+					NOT = { has_country_flag = SOV_added_claimed_bessarabia }
+				}
+				add_opinion_modifier = { target = SOV modifier = claimed_bucovina }
+				add_opinion_modifier = { target = FRA modifier = concessions_to_soviets }
+				country_event = { id = fpmdiploevents.1 hours = 16 random_hours = 8 }
+			}
+		}
+	}
+}
+
+#poland
+country_event = {
+	id = fpmdiploevents.3
+	title = fpmdiploevents.3.t
+	desc = fpmdiploevents.3.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#become a soviet puppet
+	option = {
+		name = fpmdiploevents.3.a
+		ai_chance = {
+			base = 75
+		}
+		custom_effect_tooltip = fpm_sov_puppet_warning
+		SOV = {
+			set_autonomy = {
+				target = POL
+				autonomy_state = autonomy_colony
+			}
+			country_event = {
+				id = fpmdiploevents.8
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					OR = {
+						has_completed_focus = POL_complete_april_constitution
+						has_completed_focus = POL_assemble_the_regency_council
+						AND = {
+							has_completed_focus = POL_nationalist_constitution
+							NOT = {
+								has_completed_focus = POL_reopen_national_elections
+								has_completed_focus = POL_riot_of_37
+							}
+						}
+					}
+				}
+				set_politics = {
+					ruling_party = neutrality
+				}
+				set_cosmetic_tag = POL_neutrality
+			}
+			else_if = {
+				limit = {
+					OR ={
+						has_completed_focus = POL_reopen_national_elections
+						has_completed_focus = POL_riot_of_37
+					}
+				}
+				set_politics = {
+					ruling_party = fascism
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = POL_elect_a_PSL_leader
+				}
+				set_politics = {
+					ruling_party = democratic
+				}
+			}
+		}
+	}
+
+	#poland is not yet lost!
+	option = {
+		name = fpmdiploevents.3.b
+		ai_chance = {
+			base = 25
+			modifier = {
+				has_government = fascism
+				factor = 50
+			}
+		}
+		SOV = {
+			create_wargoal = {
+				target = POL
+				type = puppet_wargoal_focus
+			}
+			country_event = {
+				id = fpmdiploevents.9
+			}
+		}
+	}
+}
+
+#puppet europe as world rev france
+country_event = {
+	id = fpmdiploevents.4
+	title = fpmdiploevents.4.t
+	desc = fpmdiploevents.4.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#become a french puppet
+	option = {
+		name = fpmdiploevents.4.a
+		ai_chance = {
+			base = 90
+		}
+		FROM = {
+			puppet = ROOT
+			country_event = { id = fpmdiploevents.5 }
+		}
+		add_ideas = FPM_european_integration
+
+	}
+
+	#wow so much anti-imperialism huh france
+	option = {
+		name = fpmdiploevents.4.b
+		ai_chance = {
+			base = 10
+		}
+		leave_faction = yes
+		FROM = {
+			create_wargoal = {
+				target = ROOT
+				type = puppet_wargoal_focus
+			}
+			country_event = { id = fpmdiploevents.6 }
+		}
+	}
+}
+
+#country accepted
+country_event = {
+	id = fpmdiploevents.5
+	title = fpmdiploevents.5.t
+	desc = fpmdiploevents.5.d
+	picture = GFX_report_event_france_victory_syria
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#awesome
+	option = {
+		name = fpmdiploevents.5.a
+		effect_tooltip = {
+			ROOT = {
+				puppet = FROM
+			}
+			FROM = {
+				add_ideas = FPM_european_integration
+			}
+		}
+	}
+}
+
+#country denied puppet
+country_event = {
+	id = fpmdiploevents.6
+	title = fpmdiploevents.6.t
+	desc = fpmdiploevents.6.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#ayo we have to fight you now
+	option = {
+		name = fpmdiploevents.6.a
+		effect_tooltip = {
+			ROOT = {
+				create_wargoal = {
+					target = FROM
+					type = puppet_wargoal_focus
+				}
+			}
+			FROM = {
+				leave_faction = yes
+			}
+		}
+	}
+}
+
+#france pressures poland notice for sov
+country_event = {
+	id = fpmdiploevents.7
+	title = fpmdiploevents.7.t
+	desc = fpmdiploevents.7.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#wonderful
+	option = {
+		name = fpmdiploevents.7.a
+	}
+}
+
+#notice for sov pol accepts
+country_event = {
+	id = fpmdiploevents.8
+	title = fpmdiploevents.8.t
+	desc = fpmdiploevents.8.d
+	picture = GFX_report_event_soviet_army_greeted
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#wonderful
+	option = {
+		name = fpmdiploevents.8.a
+		effect_tooltip = {
+			SOV = {
+				set_autonomy = {
+					target = POL
+					autonomy_state = autonomy_colony
+				}
+			}
+		}
+	}
+}
+
+#notice for sov pol reject
+country_event = {
+	id = fpmdiploevents.9
+	title = fpmdiploevents.9.t
+	desc = fpmdiploevents.9.d
+	picture = GFX_report_event_stalin_02
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#war time
+	option = {
+		name = fpmdiploevents.9.a
+		effect_tooltip = {
+			SOV = {
+				create_wargoal = {
+					target = POL
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+	}
+}
+
+#france is trying to coup us
+country_event = {
+	id = fpmdiploevents.10
+	title = fpmdiploevents.10.t
+	desc = fpmdiploevents.10.d
+	picture = GFX_report_event_generic_strike
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#we gotta stop this revolution bro
+	option = {
+		name = fpmdiploevents.10.a
+		custom_effect_tooltip = FPM_stop_workers_revolution
+	}
+}
+
+#Revolution failed
+country_event = {
+	id = fpmdiploevents.11
+	title = fpmdiploevents.11.t
+	desc = fpmdiploevents.11.d
+	picture = GFX_report_event_generic_strike
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	option = {
+		name = fpmdiploevents.11.a
+	}
+}
+
+#Revolution succeeded
+country_event = {
+	id = fpmdiploevents.12
+	title = fpmdiploevents.12.t
+	desc = fpmdiploevents.12.d
+	picture = GFX_report_event_generic_strike
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	option = {
+		name = fpmdiploevents.12.a
+	}
+}
+
+#france demands nations compliance
+country_event = {
+	id = fpmdiploevents.13
+	title = fpmdiploevents.13.t
+	desc = {
+		trigger = {
+			original_tag = BEL
+		}
+		text = fpmdiploevents.13.d1
+	}
+	desc = {
+		trigger = {
+			original_tag = LUX
+		}
+		text = fpmdiploevents.13.d2
+	}
+	desc = {
+		trigger = {
+			original_tag = ROM
+		}
+		text = fpmdiploevents.13.d3
+	}
+	desc = {
+		trigger = {
+			original_tag = TUR
+		}
+		text = fpmdiploevents.13.d4
+	}
+	picture = GFX_report_event_french_british_officers
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#okey
+	option = {
+		name = fpmdiploevents.13.a
+		ai_chance = {
+			factor = 75
+		}
+		FRA = {
+			country_event = {
+				id = fpmdiploevents.14
+			}
+			set_autonomy = {
+				target = ROOT
+				autonomy_state = autonomy_dominion
+			}
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = "FRA"
+			value = 200
+		}
+	}
+
+	#no
+	option = {
+		name = fpmdiploevents.13.b
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 100
+				is_in_faction = yes
+			}
+		}
+		effect_tooltip = {
+			FRA = {
+				create_wargoal = {
+					target = ROOT
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+		FRA = {
+			country_event = {
+				id = fpmdiploevents.15
+			}
+		}
+	}
+}
+
+#belgium says yes
+country_event = {
+	id = fpmdiploevents.14
+	title = fpmdiploevents.14.t
+	desc = {
+		trigger = {
+			FROM = {
+				tag = BEL
+			}
+		}
+		text = fpmdiploevents.14.d1
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				FROM = {
+					tag = BEL
+				}
+			}
+		}
+		text = fpmdiploevents.14.d2
+	}	picture = GFX_report_event_french_british_officers
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#coolio
+	option = {
+		name = fpmdiploevents.14.a
+		effect_tooltip = {
+			set_autonomy = {
+				target = FROM
+				autonomy_state = autonomy_dominion
+			}
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = "BEL"
+			value = 200
+		}
+	}
+}
+
+#belgium says no 
+country_event = {
+	id = fpmdiploevents.15
+	title = fpmdiploevents.15.t
+	desc = {
+		trigger = {
+			FROM = {
+				tag = BEL
+			}
+		}
+		text = fpmdiploevents.15.d1
+	}
+	desc = {
+		trigger = {
+			NOT = {
+				FROM = {
+					tag = BEL
+				}
+			}
+		}
+		text = fpmdiploevents.15.d2
+	}	
+	picture = GFX_report_event_french_tanks
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#totally uncool man
+	option = {
+		name = fpmdiploevents.15.a
+		create_wargoal = {
+			target = FROM
+			type = puppet_wargoal_focus
+		}
+	}
+	option = {
+		name = fpmdiploevents.15.b
+	}
+}
+
+#you should stop trading with germany NOW!
+country_event = {
+	id = fpmdiploevents.16
+	title = fpmdiploevents.16.t
+	desc = fpmdiploevents.16.d
+	picture = GFX_report_event_french_british_officers
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#okey
+	option = {
+		name = fpmdiploevents.16.a
+		ai_chance = {
+			factor = 75
+		}
+		FRA = {
+			country_event = {
+				id = fpmdiploevents.17
+			}
+		}
+		every_other_country = {
+			limit = {
+				has_war_with = FRA
+				NOT = {
+					has_war_with = ROOT
+				}
+			}
+			ROOT = {
+				send_embargo = PREV
+			}
+		}
+		give_military_access = FRA
+		effect_tooltip = {
+			FRA = {
+				give_guarantee = ROOT
+			}
+		}
+ 	}
+
+	#no
+	option = {
+		name = fpmdiploevents.16.b
+		ai_chance = {
+			factor = 25
+		}
+		FRA = {
+			country_event = {
+				id = fpmdiploevents.18
+			}
+		}
+		effect_tooltip = {
+			FRA = {
+				create_wargoal = {
+					target = ROOT
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+	}
+}
+
+#scandinavia stopped trading
+country_event = {
+	id = fpmdiploevents.17
+	title = fpmdiploevents.17.t
+	desc = fpmdiploevents.17.d
+	picture = GFX_report_event_french_british_officers
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#coolio
+	option = {
+		name = fpmdiploevents.14.a
+		FRA = {
+			give_guarantee = FROm
+		}
+	}
+}
+
+#scandinavia continued trading
+country_event = {
+	id = fpmdiploevents.18
+	title = fpmdiploevents.18.t
+	desc = fpmdiploevents.18.d
+	picture = GFX_report_event_french_tanks
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#totally uncool man
+	option = {
+		name = fpmdiploevents.15.a
+		create_wargoal = {
+			target = FROM
+			type = puppet_wargoal_focus
+		}
+	}
+	option = {
+		name = fpmdiploevents.15.b
+	}
+}
+
+#operation pike
+country_event = {
+	id = fpmdiploevents.19
+	title = fpmdiploevents.19.t
+	desc = fpmdiploevents.19.d
+	picture = GFX_report_event_generic_bombers
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#ohhh noo not the oil
+	option = {
+		name = fpmdiploevents.19.a
+		229 = {
+			add_dynamic_modifier = { modifier = FRA_operation_pike }
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+	}
+}
+
+#all this for a little entente news event
+country_event = {
+	id = fpmdiploevents.20
+	title = generic.5.t
+	desc = { # FROM and ROOT are Democratic
+		text = generic.5.d.a
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = democratic
+				}
+				has_government = democratic
+			}
+		}
+	}
+	desc = { # FROM and ROOT are Fascist
+		text = generic.5.d.b
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = fascism
+				}
+				has_government = fascism
+			}
+		}
+	}
+	desc = { # FROM and ROOT are Communist
+		text = generic.5.d.c
+		trigger = {
+			AND = {
+				FROM = {
+					has_government = communism
+				}
+				has_government = communism
+			}
+		}
+	}
+	desc = { # FROM and ROOT are different ideologies
+		text = generic.5.d.e
+		trigger = {
+			NOT = {
+				AND = {
+					FROM = {
+						has_government = democratic
+					}
+					has_government = democratic
+				}
+				AND = {
+					FROM = {
+						has_government = fascism
+					}
+					has_government = fascism
+				}
+				AND = {
+					FROM = {
+						has_government = communism
+					}
+					has_government = communism
+				}
+			}
+		}
+	}
+	picture = GFX_report_event_generic_read_write
+
+	immediate = {
+		hidden_effect = {
+			save_event_target_as = alliance_applicant
+			FROM = {
+				save_event_target_as = alliance_inviter
+			}
+		}
+	}
+
+	is_triggered_only = yes
+	
+	option = { #Agree / Both Democratic
+		name = generic.5.a
+		trigger = {
+			is_in_faction = no
+			AND = {
+				FROM = {
+					has_government = democratic
+				}
+				has_government = democratic
+			}
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				original_tag = FRA
+				is_in_faction_with = POL
+				POL = { has_completed_focus = POL_morges_pact }
+			}
+		}
+		FROM = {
+			faction_leader = {
+				add_to_faction = ROOT
+			}
+			country_event = { id = generic.6 hours = 6 } 
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = FROM
+			value = 200
+		}
+		hidden_effect = {
+			set_country_flag = alliance_applicant@ROOT
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+			news_event = { id = news.177 hours = 12 }
+		}
+	}
+	option = { #Agree / Both Fascist
+		name = generic.5.b
+		trigger = {
+			is_in_faction = no
+			AND = {
+				FROM = {
+					has_government = fascism
+				}
+				has_government = fascism
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		FROM = { 
+			add_to_faction = ROOT
+			country_event = { id = generic.6 hours = 6 } 
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = FROM
+			value = 200
+		}
+		hidden_effect = {
+			set_country_flag = alliance_applicant@ROOT
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+			news_event = { id = news.177 hours = 12 }
+		}
+	}
+	option = { #Agree / Both Communist
+		name = generic.5.c
+		trigger = {
+			is_in_faction = no
+			AND = {
+				FROM = {
+					has_government = communism
+				}
+				has_government = communism
+			}
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				original_tag = FRA
+				is_in_faction_with = POL
+				POL = { has_completed_focus = POL_morges_pact }
+			}
+		}
+		FROM = { 
+			add_to_faction = ROOT
+			country_event = { id = generic.6 hours = 6 }
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = FROM
+			value = 200
+		}
+		hidden_effect = {
+			set_country_flag = alliance_applicant@ROOT
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+			news_event = { id = news.177 hours = 12 }
+		}
+	}
+	option = { #Agree / Both different
+		name = generic.5.e
+		trigger = {
+			is_in_faction = no
+			NOT = {
+				AND = {
+					FROM = {
+						has_government = democratic
+					}
+					has_government = democratic
+				}
+				AND = {
+					FROM = {
+						has_government = fascism
+					}
+					has_government = fascism
+				}
+				AND = {
+					FROM = {
+						has_government = communism
+					}
+					has_government = communism
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+			
+			modifier = {
+				factor = 0.5
+				has_war = no
+				FROM = {
+					has_war = yes
+				}
+			}
+			
+			modifier = {
+				factor = 0.5
+				NOT = {
+					has_government = neutrality
+				}
+			}
+			
+			modifier = {
+				factor = 0.75
+				FROM = {
+					is_major = no
+				}
+			}
+			
+			modifier = {
+				factor = 0
+				original_tag = FRA
+				is_in_faction_with = POL
+				POL = { has_completed_focus = POL_morges_pact }
+			}
+		}
+		FROM = { 
+			faction_leader = {
+				add_to_faction = ROOT
+			}
+			
+			country_event = { id = generic.6 hours = 6 }
+		}
+		if = {
+			limit = {
+				is_literally_china = yes
+				has_DLC = "Waking the Tiger"
+			}
+			CHI_set_ally_strat_on_current_leader = yes #sets ally strategy to current Chinese leader
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = FROM
+			value = 200
+		}
+		hidden_effect = {
+			set_country_flag = alliance_applicant@ROOT
+			FROM = { set_country_flag = alliance_inviter@ROOT }
+			news_event = { id = news.177 hours = 12 }
+		}
+	}
+	option = { #Reject
+		name = generic.2.f
+		trigger = {
+			is_in_faction = no
+		}
+		ai_chance = {
+			factor = 50
+			
+			modifier = {
+				factor = 0
+				FROM = {
+					original_tag = YUG
+					has_government = communism
+				}
+				has_government = communism
+			}
+			
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = FROM
+					value > 65
+				}
+			}
+			
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = FROM
+					value > 35
+				}
+			}
+			
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = FROM
+					value > 5
+				}
+			}
+			
+			modifier = {
+				factor = 2.0
+				has_opinion = {
+					target = FROM
+					value < 35
+				}
+			}
+			
+			modifier = {
+				factor = 2.0
+				has_opinion = {
+					target = FROM
+					value < 65
+				}
+			}
+			
+			modifier = {
+				factor = 0.1
+				has_war = yes
+				FROM = {
+					has_war = no
+				}
+			}
+			
+			modifier = {
+				factor = 0.1
+				FROM = {
+					is_major = yes
+				}
+			}
+
+			modifier = {
+				factor = 0
+				tag = SPC
+				FROM = {
+					original_tag = SOV
+					has_completed_focus = SOV_covert_support_for_spanish_poum
+				}
+			}
+		}
+		FROM = { 
+			country_event = { id = generic.7 hours = 6 }
+		}
+	}
+	option = { #Reject if in faction
+		name = generic.2.g
+		trigger = {
+			is_in_faction = yes
+		}
+		FROM = { 
+			country_event = { id = generic.7 hours = 6 }
+		}
+	}
+}
+
+#France wants to join allies
+country_event = {
+	id = fpmdiploevents.21
+	title = britain.13.t
+	desc = britain.13.d
+	picture = GFX_report_event_degaulle_churchill
+
+	is_triggered_only = yes
+	
+	option = {
+		name = britain.13.a
+		add_to_faction = FROM
+		FROM = {
+			add_ai_strategy = {
+				type = alliance
+				id = "ENG"
+				value = 200
+			}
+		}
+		FROM = { country_event = { id = france.29} }
+		hidden_effect = {
+			news_event = { id = newsfml.175 }
+		}
+	}
+	
+	option = {
+		name = britain.13.b
+		ai_chance = { factor = 0 }
+		FROM = { 
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = FRA_go_with_britain_reject
+			}
+			country_event = { id = france.30 }
+		}
+		hidden_effect = {
+			news_event = { id = news.176 }
+		}
+	}
+}
+
+#France offers Schleswig-Holstein
+country_event = {
+	id = fpmdiploevents.22
+	title = fpmdiploevents.22.t
+	desc = fpmdiploevents.22.d
+	picture = GFX_report_event_french_british_officers
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#okey
+	option = {
+		name = fpmdiploevents.22.a
+		ai_chance = {
+			factor = 75
+		}
+		FRA = {
+			country_event = {
+				id = fpmdiploevents.23
+			}
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = "FRA"
+			value = 200
+		}
+		transfer_state = 909
+		transfer_state = 58
+	}
+
+	#no
+	option = {
+		name = fpmdiploevents.22.b
+		ai_chance = {
+			factor = 25
+		}
+		FRA = {
+			country_event = {
+				id = fpmdiploevents.24
+			}
+		}
+	}
+}
+
+country_event = {
+	id = fpmdiploevents.23
+	title = fpmdiploevents.23.t
+	desc = fpmdiploevents.23.d
+	picture = GFX_report_event_french_british_officers
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#okey
+	option = {
+		name = fpmdiploevents.23.a
+		effect_tooltip = {
+			DEN = {
+				transfer_state = 909
+				transfer_state = 58
+			}
+		}
+	}
+}
+
+country_event = {
+	id = fpmdiploevents.24
+	title = fpmdiploevents.24.t
+	desc = fpmdiploevents.24.d
+	picture = GFX_report_event_french_british_officers
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#okey
+	option = {
+		name = fpmdiploevents.24.a
+		SHL = {
+			transfer_state = 58
+			add_state_core = 58
+			transfer_state = 909
+			add_state_core = 909
+		}
+		puppet = SHL
+	}
+}
+
+country_event = {
+	id = fpmdiploevents.25
+	title = fpmdiploevents.25.t
+	desc = fpmdiploevents.25.d
+	picture = GFX_report_event_france_victory_syria
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#okey
+	option = {
+		name = fpmdiploevents.25.a
+		ai_chance = {
+			base = 90
+		}
+		FRA = {
+			country_event = {
+				id = fpmdiploevents.26
+			}
+			transfer_state = 350
+			transfer_state = 352
+			transfer_state = 353
+			transfer_state = 800
+			transfer_state = 344
+		}
+	}
+
+	#no
+	option = {
+		name = fpmdiploevents.25.b
+		ai_chance = {
+			base = 10
+		}
+		FRA = {
+			country_event = {
+				id = fpmdiploevents.27
+			}
+		}
+	}
+}
+
+country_event = {
+	id = fpmdiploevents.26
+	title = fpmdiploevents.26.t
+	desc = fpmdiploevents.26.d
+	picture = GFX_report_event_france_victory_syria
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#okey
+	option = {
+		name = fpmdiploevents.26.a
+		effect_tooltip = {
+			transfer_state = 350
+			transfer_state = 352
+			transfer_state = 353
+			transfer_state = 800
+			transfer_state = 344
+		}
+	}
+}
+
+country_event = {
+	id = fpmdiploevents.27
+	title = fpmdiploevents.27.t
+	desc = fpmdiploevents.27.d
+	picture = GFX_report_event_france_victory_syria
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#okey
+	option = {
+		name = fpmdiploevents.27.a
+		every_other_country = {
+			limit = {
+				OR = {
+					owns_state = 350
+					owns_state = 352
+					owns_state = 353
+					owns_state = 800
+					owns_state = 344
+				}
+			}
+			ROOT = {
+				create_wargoal = {
+					target = PREV
+					type = take_state_focus
+					generator = { 350 352 353 800 344}
+				}
+			}
+		}
+	}
+}
+
+##FPM LEAGUE EVENTS
+
+#starting strikes
+country_event = {
+	id = fpmleagues.1
+	title = fpmleagues.1.t
+	desc = fpmleagues.1.d
+	picture = GFX_report_event_generic_strike
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#oh no strikes
+	option = {
+		name = fpmleagues.1.a
+		16 = {
+			add_dynamic_modifier = { modifier = FRA_local_strikes }
+		}
+		18 = {
+			add_dynamic_modifier = { modifier = FRA_local_strikes }
+		}
+		31 = {
+			add_dynamic_modifier = { modifier = FRA_local_strikes }
+		}
+		22 = {
+			add_dynamic_modifier = { modifier = FRA_local_strikes }
+		}
+		32 = {
+			add_dynamic_modifier = { modifier = FRA_local_strikes }
+		}
+		33 = {
+			add_dynamic_modifier = { modifier = FRA_local_strikes }
+		}
+		27 = {
+			add_dynamic_modifier = { modifier = FRA_local_strikes }
+		}
+		set_country_flag = {
+			flag = fpm_no_new_strikes
+			value = 1
+			days = 90
+		}
+	}
+}
+
+#new strikes if stab is too low
+country_event = {
+	id = fpmleagues.2
+	title = fpmleagues.2.t
+	desc = fpmleagues.2.d
+	picture = GFX_report_event_generic_riot
+
+	trigger = {
+		has_completed_focus = FRA_utilize_the_leagues
+		not = {
+			has_country_flag = fpm_no_new_strikes
+		}
+		has_stability < 0.5
+	}
+
+	mean_time_to_happen = {
+		days = 45
+	}
+	
+	#oh no strikes
+	option = {
+		name = fpmleagues.2.a
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = FRA
+				NOT = {
+					has_dynamic_modifier = {
+						modifier = FRA_local_strikes
+					}
+				}
+			}
+			add_dynamic_modifier = { modifier = FRA_local_strikes }
+		}
+		set_country_flag = {
+			flag = fpm_no_new_strikes
+			value = 1
+			days = 120
+		}
+	}
+}
+
+#Monarchy event chain, 1st Event, Constitution
+country_event = {
+	id = fpmleagues.3
+	title = fpmleagues.3.t
+	desc = fpmleagues.3.d
+	picture = GFX_report_event_gre_megali_conference_signing
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = fpmleagues.4
+				days = 45
+			}	
+		}
+	}
+	
+	#
+	option = {
+		name = fpmleagues.3.a
+		add_political_power = 50
+		FPM_add_orle_strength = yes
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_ORLEANIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = ORLEANIST
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = fpmleagues.3.b
+		add_stability = 0.05
+		FPM_add_legi_strength = yes
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_LEGITIMIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = LEGITIMIST
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = fpmleagues.3.c
+		add_war_support = 0.05
+		FPM_add_bona_strength = yes
+
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_BONAPARTIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = BONAPARTIST
+					}
+				}
+			}
+		}
+	}
+}
+
+#sussiety
+country_event = {
+	id = fpmleagues.4
+	title = fpmleagues.4.t
+	desc = fpmleagues.4.d
+	picture = GFX_report_event_tur_political_rally
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = fpmleagues.5
+				days = 45
+			}
+		}
+	}
+	
+	#
+	option = {
+		name = fpmleagues.4.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}
+		FPM_add_orle_strength = yes
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_ORLEANIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = ORLEANIST
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = fpmleagues.4.b
+		every_core_state = {
+			limit = {
+				is_owned_and_controlled_by = FRA
+			}
+			add_extra_state_shared_building_slots = 1
+		}
+		FPM_add_legi_strength = yes		
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_LEGITIMIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = LEGITIMIST
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = fpmleagues.4.c
+		add_ideas = FPM_popular_army
+		FPM_add_bona_strength = yes		
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_BONAPARTIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = BONAPARTIST
+					}
+				}
+			}
+		}
+	}
+}
+
+#Media
+country_event = {
+	id = fpmleagues.5
+	title = fpmleagues.5.t
+	desc = fpmleagues.5.d
+	picture = GFX_report_event_journalists_speech
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = fpmleagues.6
+				days = 45
+			}
+		}
+	}
+	
+	#
+	option = {
+		name = fpmleagues.5.a
+		add_ideas = FPM_media_connections
+		FPM_add_orle_strength = yes
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_ORLEANIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = ORLEANIST
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = fpmleagues.5.b
+		add_ideas = FPM_absolutism
+		FPM_add_legi_strength = yes		
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_LEGITIMIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = LEGITIMIST
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = fpmleagues.5.c
+		add_ideas = FPM_war_heroes
+		FPM_add_bona_strength = yes		
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_BONAPARTIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = BONAPARTIST
+					}
+				}
+			}
+		}
+	}
+}
+
+#Specific groups
+country_event = {
+	id = fpmleagues.6
+	title = fpmleagues.6.t
+	desc = fpmleagues.6.d
+	picture = GFX_report_event_journalists_speech
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = fpmleagues.7
+				days = 45
+			}
+		}
+	}
+	
+	#
+	option = {
+		name = fpmleagues.6.a
+		add_manpower = 250000
+		FPM_add_orle_strength = yes
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_ORLEANIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = ORLEANIST
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = fpmleagues.6.b
+		add_tech_bonus = {
+			name = aristocratic_research_funding
+			bonus = 0.5
+			uses = 1
+			category = electronics
+		}
+		FPM_add_legi_strength = yes		
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_LEGITIMIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = LEGITIMIST
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = fpmleagues.6.c
+		add_ideas = FPM_revolutionary_wave
+		FPM_add_bona_strength = yes		
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_BONAPARTIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = BONAPARTIST
+					}
+				}
+			}
+		}
+	}
+}
+
+#the monarchs themselves
+country_event = {
+	id = fpmleagues.7
+	title = fpmleagues.7.t
+	desc = fpmleagues.7.d
+	picture = GFX_report_event_german_parade_paris
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#
+	option = {
+		name = fpmleagues.7.a
+		add_ideas = FPM_popular_monarchy
+		hidden_effect = {
+			FPM_add_orle_strength = yes
+			FPM_add_orle_strength = yes
+		}
+		custom_effect_tooltip = ORLE_strength_add_10
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_ORLEANIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = ORLEANIST
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = fpmleagues.7.b
+		add_offsite_building = {
+			type = industrial_complex
+			level = 5
+		}
+		hidden_effect = {
+			FPM_add_legi_strength = yes
+			FPM_add_legi_strength = yes
+		}
+		custom_effect_tooltip = LEGI_strength_add_10		
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_LEGITIMIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = LEGITIMIST
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = fpmleagues.7.c
+		army_experience = 33
+		hidden_effect = {
+			FPM_add_bona_strength = yes
+			FPM_add_bona_strength = yes
+		}
+		custom_effect_tooltip = BONA_strength_add_10		
+		ai_chance = {
+			base = 0
+			modifier = {
+				factor = 100
+				OR = {
+					has_country_flag = FRA_AI_BONAPARTIST
+					has_game_rule = {
+						rule = FRA_ai_behavior
+						option = BONAPARTIST
+					}
+				}
+			}
+		}
+	}
+}
+
+#Spanish carlists send suport
+country_event = {
+	id = fpmleagues.8
+	title = fpmleagues.8.t
+	desc = fpmleagues.8.d
+	picture = GFX_report_event_spr_carlists2
+
+	trigger = {
+		any_other_country = {
+			has_completed_focus = SPA_supremacy_of_the_communion
+		}
+	}
+	fire_only_once = yes
+
+	option = {
+		name = fpmleagues.8.a		
+		FPM_add_legi_strength = yes
+	}
+}
+
+#Coronation event
+country_event = {
+	id = fpmleagues.9
+	title = fpmleagues.9.t
+	desc = fpmleagues.9.d
+	picture = GFX_report_event_generic_parliament
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+	
+	#
+	option = {
+		name = fpmleagues.9.a
+		trigger = {
+			check_variable = {
+				ORLE_strength > LEGI_strength
+			}
+			check_variable = {
+				ORLE_strength > BONA_strength
+			}
+		}
+		complete_national_focus = FRA_orleanist_restoration
+		add_ideas = FRA_dynastic_disagreement
+	}
+	option = {
+		name = fpmleagues.9.b
+		trigger = {
+			check_variable = {
+				LEGI_strength > ORLE_strength
+			}
+			check_variable = {
+				LEGI_strength > BONA_strength
+			}
+		}
+		complete_national_focus = FRA_the_legitimate_heir
+		add_ideas = FRA_dynastic_disagreement
+	}
+	option = {
+		name = fpmleagues.9.c
+		trigger = {
+			check_variable = {
+				BONA_strength > ORLE_strength
+			}
+			check_variable = {
+				BONA_strength > LEGI_strength
+			}
+		}
+		complete_national_focus = FRA_proclaim_the_third_empire
+		add_ideas = FRA_dynastic_disagreement
+	}
+}
+
+#Yes or no to moderation as de la rocque
+country_event = {
+	id = fpmleagues.10
+	title = fpmleagues.10.t
+	desc = fpmleagues.10.d
+	picture = GFX_report_event_fascist_gathering
+
+	is_triggered_only = yes
+
+	option = {
+		name = fpmleagues.10.a
+		if = {
+			limit = {
+				has_idea = francois_de_la_rocque
+			}
+			add_political_power = 150
+		}
+		add_country_leader_role = {
+			character = FRA_francois_de_la_rocque
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = moderatism
+				traits = {
+					FPM_social_nationalist
+					retired_officer
+				}
+			}
+			promote_leader = yes
+		}
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = yes
+		}
+		set_party_name = {
+			ideology = neutrality
+			long_name = FRA_fascism_party_rocque_long
+			name = FRA_fascism_party_rocque
+		}
+		set_party_name = {
+			ideology = fascism
+			long_name = FRA_fascism_party_francisque
+			name = FRA_fascism_party_francisque
+		}
+		add_stability = 0.1
+		set_cosmetic_tag = FRA_LA_ROCQUE
+		create_faction = FRA_latin_entente	
+	}
+	option = {
+		add_country_leader_role = {
+			character = FRA_francois_de_la_rocque
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = fascism_ideology
+				traits = {
+					FPM_social_nationalist
+					retired_officer
+				}
+			}
+			promote_leader = yes
+		}
+		set_party_name = {
+					ideology = fascism
+					long_name = FRA_fascism_party_croix_de_feu
+					name = FRA_fascism_party_croix_de_feu
+				}
+		name = fpmleagues.10.b
+		add_political_power = 50
+		set_cosmetic_tag = FRA_LA_ROCQUE
+		create_faction = FRA_latin_entente
+	}
+}
+
+#Orleanist death event
+country_event = {
+	id = fpmleagues.11
+	title = fpmleagues.11.t
+	desc = fpmleagues.11.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		has_completed_focus = FRA_orleanist_restoration
+		date > 1940.8.25
+		OR = {
+			has_country_leader = {
+				character = FRA_jean_duke_of_guise
+			}
+			has_idea = FPM_jean_3
+		}
+	}
+	mean_time_to_happen = {
+		days = 365
+	}
+	fire_only_once = yes
+
+	option = {
+		name = fpmleagues.11.a
+		if = {
+			limit = {
+				OR = {
+					has_completed_focus = FRA_action_francais
+					has_completed_focus = FRA_constitutional_monarchy
+				}
+			}
+			swap_ideas = {
+				remove_idea = FPM_jean_3
+				add_idea = FPM_henri_6
+			}
+		}
+		else = {
+			kill_country_leader = yes
+			add_country_leader_role = {
+				character = FRA_henry_count_of_paris
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = moderatism
+					traits = {
+						count_of_paris
+					}
+				}
+				promote_leader = yes
+			}
+			if = {
+				limit = {
+					has_completed_focus = FRA_the_first_citizen_of_the_state
+				}
+				add_country_leader_trait = constitutional_monarch
+			}
+			if = {
+				limit = {
+					has_completed_focus = FRA_defender_of_liberty
+				}
+				add_country_leader_trait = FPM_defender_of_liberty
+			}
+		}
+	}
+}
+
+#Legitimist Death Event
+country_event = {
+	id = fpmleagues.12
+	title = fpmleagues.12.t
+	desc = fpmleagues.12.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		has_completed_focus = FRA_the_legitimate_heir
+		date > 1941.2.21
+		has_country_leader = {
+			character = FRA_alphonse_i
+		}
+	}
+	mean_time_to_happen = {
+		days = 365
+	}
+	fire_only_once = yes
+
+	option = {
+		name = fpmleagues.11.a
+		kill_country_leader = yes
+		add_country_leader_role = {
+			character = FRA_jacques_ii
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					the_legitimist
+				}
+			}
+			promote_leader = yes
+		}
+	}
+}
+
+#Democratic Orleanist Prime Minister
+country_event = {
+	id = fpmleagues.13
+	title = fpmleagues.13.t
+	desc = fpmleagues.13.d
+	picture = GFX_report_event_fascist_gathering
+
+	is_triggered_only = yes
+
+	option = {
+		name = fpmleagues.13.a
+		add_country_leader_role = {
+			character = FRA_francois_de_la_rocque
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = conservatism
+				traits = {
+					FPM_social_nationalist
+				}
+			}
+			promote_leader = yes
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = FRA_fascism_party_rocque_long
+			name = FRA_fascism_party_rocque
+		}
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+			last_election = 1938.5.1
+			election_frequency = 48
+		}
+	}
+	option = {
+		name = fpmleagues.13.b
+		add_country_leader_role = {
+			character = FRA_charles_de_gaulle
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = conservatism
+				traits = {
+					FPM_le_general
+				}
+			}
+			promote_leader = yes
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = FRA_rpf_long
+			name = FRA_rpf
+		}
+		add_political_power = 50
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+			last_election = 1938.5.1
+			election_frequency = 48
+		}
+	}
+}
+
+#################################################
+#Salengro Events
+
+#Salengro commits suicide
+country_event = {
+	id = fpmsalengro.1
+	title = fpmsalengro.1.t
+	desc = fpmsalengro.1.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		date < 1939.01.01
+		has_completed_focus = FRA_form_the_popular_front
+		OR = {
+			fascism > 0.1
+			neutrality > 0.1
+			NOT = {
+				has_completed_focus = FRA_ban_the_leagues
+			}
+		}
+		NOT = {
+			has_country_flag = FPM_salengro_saved
+		}
+	}
+	mean_time_to_happen = {
+		days = 360
+	}
+	fire_only_once = yes
+
+	option = {
+		name = fpmsalengro.1.a
+		custom_effect_tooltip = FPM_salengro_suicide
+		hidden_effect = {
+			retire_character = FRA_roger_salengro
+		}
+	}
+}
+
+#Salengro proven not guilty
+country_event = {
+	id = fpmsalengro.2
+	title = fpmsalengro.2.t
+	desc = fpmsalengro.2.d
+	picture = GFX_report_event_france_parade
+
+	trigger = {
+		has_completed_focus = FRA_form_the_popular_front
+		AND = {
+			fascism < 0.1
+			neutrality < 0.1
+			date > 1936.10.29
+		}
+	}
+	mean_time_to_happen = {
+		days = 180
+	}
+	fire_only_once = yes
+
+	option = {
+		name = fpmsalengro.2.a
+		remove_trait = {
+			character = FRA_roger_salengro
+			slot = political_advisor
+			trait = FPM_accused_deserter
+		}
+		add_trait = {
+			character = FRA_roger_salengro
+			slot = political_advisor
+			trait = FPM_socialist_minister
+		}
+		set_country_flag = FPM_salengro_saved
+	}
+}
+
+
+
+#La Cagoule events
+
+#fund la cagoule?
+country_event = {
+	id = fpmcagoule.1
+	title = fpmcagoule.1.t
+	desc = fpmcagoule.1.d
+	picture = GFX_report_event_generic_rifles
+
+	trigger = {
+		original_tag = ITA
+		has_government = fascism
+		FRA = {
+			OR = {
+				has_government = communism
+				has_government = democratic
+			}
+			has_completed_focus = FRA_ban_the_leagues
+		}
+		NOT = {
+			has_war_with = FRA
+		}
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	fire_only_once = yes
+
+	option = {
+		name = fpmcagoule.1.a
+		ai_chance = {
+			base = 100
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -250
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.02
+		}
+		custom_effect_tooltip = fpmcagoule_tt
+		hidden_effect = {
+			FRA = {
+				country_event = {
+					id = fpmcagoule.2
+					days = 140
+				}
+			}
+		}
+	}
+
+	option = {
+		name = fpmcagoule.1.b
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+#cagoule assassinations
+country_event = {
+	id = fpmcagoule.2
+	title = fpmcagoule.2.t
+	desc = fpmcagoule.2.d
+	picture = GFX_report_event_europe_funeral
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = fpmcagoule.2.a
+		add_political_power = -15
+		add_stability = -0.025
+		hidden_effect = {
+			FRA = {
+				country_event = {
+					id = fpmcagoule.3
+					days = 94
+				}
+			}
+		}
+	}
+}
+
+#cagoule bombings
+country_event = {
+	id = fpmcagoule.3
+	title = fpmcagoule.3.t
+	desc = fpmcagoule.3.d
+	picture = GFX_report_event_FIN_helsinki_bombed
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = fpmcagoule.3.a
+		add_stability = -0.025
+		random_owned_state = {
+			limit = {
+				industrial_complex > 0
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 0.2
+			}
+			prioritize = {
+				16
+			}
+		}
+		hidden_effect = {
+			FRA = {
+				country_event = {
+					id = fpmcagoule.4
+					days = 65
+				}
+			}
+		}
+	}
+}
+
+#cagoule arrests
+country_event = {
+	id = fpmcagoule.4
+	title = fpmcagoule.4.t
+	desc = fpmcagoule.4.d
+	picture = GFX_report_event_soldiers_in_france
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = fpmcagoule.4.a
+		add_stability = 0.06
+	}
+}
+
+
+country_event = {
+	id = fpmprovgov.1
+	title = fpmprovgov.1.t
+	desc = fpmprovgov.1.d
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = fpmprovgov.1.a
+		add_country_leader_role = {
+			character = FRA_felix_gouin
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = socialism
+			}
+			promote_leader = yes
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = FPM_sfio_long
+			name = FPM_sfio
+		}
+	}
+}
+

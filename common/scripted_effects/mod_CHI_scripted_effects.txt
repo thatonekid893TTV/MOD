@@ -1,0 +1,170 @@
+#Add to scripted triggers if more levels of hyper inflation is added
+CHI_ccp_kmt_clear_all = {
+	remove_ideas = {
+		CHI_ccp_kmt_1
+		CHI_ccp_kmt_2
+		CHI_ccp_kmt_3
+		CHI_ccp_kmt_4
+		CHI_ccp_kmt_5
+	}
+}
+
+#Important to put HIGHEST first
+CHI_ccp_kmt_level_up = {
+	# level 5 not relevant. Cannot go above.
+	#custom_effect_tooltip = CHI_ccp_up_tt
+	if = {
+		limit = { has_idea = CHI_ccp_kmt_4 }
+		swap_ideas = {
+			remove_idea = CHI_ccp_kmt_4
+			add_idea = CHI_ccp_kmt_5
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHI_ccp_kmt_3 }
+		swap_ideas = {
+			remove_idea = CHI_ccp_kmt_3
+			add_idea = CHI_ccp_kmt_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHI_ccp_kmt_2 }
+		swap_ideas = {
+			remove_idea = CHI_ccp_kmt_2
+			add_idea = CHI_ccp_kmt_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHI_ccp_kmt_1 }
+		swap_ideas = {
+			remove_idea = CHI_ccp_kmt_1
+			add_idea = CHI_ccp_kmt_2
+		}
+	}
+	else_if = {
+		limit = { NOT = { OR = {
+			has_idea = CHI_ccp_kmt_1
+			has_idea = CHI_ccp_kmt_2
+			has_idea = CHI_ccp_kmt_3
+			has_idea = CHI_ccp_kmt_4} }
+		}
+		add_ideas = CHI_ccp_kmt_3
+	}
+}
+
+##########################################################################
+
+#Add to scripted triggers if more levels of hyper inflation is added
+CHI_end_of_golden_decade_clear_all = {
+	remove_ideas = {
+		CHI_end_of_golden_decade1
+		CHI_end_of_golden_decade2
+		CHI_end_of_golden_decade3
+	}
+}
+
+#Important to put LOWEST first
+CHI_end_of_golden_decade_level_down = {
+#custom_effect_tooltip = CHI_ccp_down_tt
+	# if = {
+	# 	limit = { has_idea = CHI_ccp_kmt_1 }
+	# 	#Makes the tooltip clearer if player looks at the effect early in the game
+	# 	effect_tooltip = {
+	# 		swap_ideas = {
+	# 			remove_idea = CHI_ccp_kmt_1
+	# 			add_idea = CHI_ccp_kmt_none
+	# 		}
+	# 	}
+	# 	hidden_effect = { remove_ideas = CHI_ccp_kmt_1 }
+	# }
+	if = {
+		limit = { has_idea = CHI_end_of_golden_decade0 }
+		swap_ideas = {
+			remove_idea = CHI_end_of_golden_decade0
+			add_idea = CHI_new_golden_decade
+		}
+	}
+	if = {
+		limit = { has_idea = CHI_end_of_golden_decade1 }
+		swap_ideas = {
+			remove_idea = CHI_end_of_golden_decade1
+			add_idea = CHI_end_of_golden_decade0
+		}
+	}
+	if = {
+		limit = { has_idea = CHI_end_of_golden_decade2 }
+		swap_ideas = {
+			remove_idea = CHI_end_of_golden_decade2
+			add_idea = CHI_end_of_golden_decade1
+		}
+	}
+	if = {
+		limit = { has_idea = CHI_end_of_golden_decade3 }
+		swap_ideas = {
+			remove_idea = CHI_end_of_golden_decade3
+			add_idea = CHI_end_of_golden_decade2
+		}
+	}
+}
+
+
+
+##########################################################################
+
+#Important to put LOWEST first
+CHI_factory_strikes_level_down = {
+#custom_effect_tooltip = CHI_ccp_down_tt
+	# if = {
+	# 	limit = { has_idea = CHI_ccp_kmt_1 }
+	# 	#Makes the tooltip clearer if player looks at the effect early in the game
+	# 	effect_tooltip = {
+	# 		swap_ideas = {
+	# 			remove_idea = CHI_ccp_kmt_1
+	# 			add_idea = CHI_ccp_kmt_none
+	# 		}
+	# 	}
+	# 	hidden_effect = { remove_ideas = CHI_ccp_kmt_1 }
+	# }
+	if = {
+		limit = { has_idea = CHI_factory_boost2 }
+		swap_ideas = {
+			remove_idea = CHI_factory_boost2
+			add_idea = CHI_factory_boost3
+		}
+	}
+	if = {
+		limit = { has_idea = CHI_factory_boost1 }
+		swap_ideas = {
+			remove_idea = CHI_factory_boost1
+			add_idea = CHI_factory_boost2
+		}
+	}
+	if = {
+		limit = { has_idea = CHI_factory_strikes0 }
+		swap_ideas = {
+			remove_idea = CHI_factory_strikes0
+			add_idea = CHI_factory_boost1
+		}
+	}
+	if = {
+		limit = { has_idea = CHI_factory_strikes1 }
+		swap_ideas = {
+			remove_idea = CHI_factory_strikes1
+			add_idea = CHI_factory_strikes0
+		}
+	}
+	if = {
+		limit = { has_idea = CHI_factory_strikes2 }
+		swap_ideas = {
+			remove_idea = CHI_factory_strikes2
+			add_idea = CHI_factory_strikes1
+		}
+	}
+	if = {
+		limit = { has_idea = CHI_factory_strikes3 }
+		swap_ideas = {
+			remove_idea = CHI_factory_strikes3
+			add_idea = CHI_factory_strikes2
+		}
+	}
+}

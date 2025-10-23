@@ -1,0 +1,188 @@
+MAN_low_legitimacy_clear_all = {
+	if = {
+		limit = { has_idea = MAN_low_legitimacy_1 }
+		remove_ideas = MAN_low_legitimacy_1
+	}
+	else_if = {
+		limit = { has_idea = MAN_low_legitimacy_2 }
+		remove_ideas = MAN_low_legitimacy_2
+	}
+	else_if = {
+		limit = { has_idea = MAN_low_legitimacy_3 }
+		remove_ideas = MAN_low_legitimacy_3
+	}
+	else_if = {
+		limit = { has_idea = MAN_low_legitimacy_4 }
+		remove_ideas = MAN_low_legitimacy_4
+	}
+	else_if = {
+		limit = { has_idea = MAN_low_legitimacy_5 }
+		remove_ideas = MAN_low_legitimacy_5
+	}
+}
+
+MAN_foreign_support_level_up = {
+	if = {
+		limit = {
+			has_idea = MAN_foreign_support2
+		}
+		swap_ideas = {
+			remove_idea = MAN_foreign_support2
+			add_idea = MAN_foreign_support3
+		}
+	}
+	if = {
+		limit = {
+			has_idea = MAN_foreign_support1
+			NOT = { has_idea = MAN_foreign_support3 }
+		}
+		swap_ideas = {
+			remove_idea = MAN_foreign_support1
+			add_idea = MAN_foreign_support2
+		}
+	}
+	if = {
+		limit = {
+			NOT = { has_idea = MAN_foreign_support1 }
+			NOT = { has_idea = MAN_foreign_support2 }
+			NOT = { has_idea = MAN_foreign_support3 }
+		}
+		swap_ideas = {
+			remove_idea = MAN_disobedience
+			add_idea = MAN_foreign_support1
+		}
+	}
+
+}
+
+#Important to put LOWEST first
+MAN_low_legitimacy_level_down = {
+	if = {
+		limit = { has_idea = MAN_low_legitimacy_1 }
+		#Makes the tooltip clearer if player looks at the effect early in the game
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = MAN_low_legitimacy_2
+				add_idea = MAN_low_legitimacy_1
+			}
+		}
+		hidden_effect = { remove_ideas = MAN_low_legitimacy_1 }
+	}
+	if = {
+		limit = { has_idea = MAN_low_legitimacy_2 }
+		swap_ideas = {
+			remove_idea = MAN_low_legitimacy_2
+			add_idea = MAN_low_legitimacy_1
+		}
+	}
+	if = {
+		limit = { has_idea = MAN_low_legitimacy_3 }
+		swap_ideas = {
+			remove_idea = MAN_low_legitimacy_3
+			add_idea = MAN_low_legitimacy_2
+		}
+	}
+	if = {
+		limit = { has_idea = MAN_low_legitimacy_4 }
+		swap_ideas = {
+			remove_idea = MAN_low_legitimacy_4
+			add_idea = MAN_low_legitimacy_3
+		}
+	}
+	if = {
+		limit = { has_idea = MAN_low_legitimacy_5 }
+		swap_ideas = {
+			remove_idea = MAN_low_legitimacy_5
+			add_idea = MAN_low_legitimacy_4
+		}
+	}
+}
+
+
+MAN_soviet_influence_increase = {
+	add_to_variable  = { man_soviet_influence = 0.01 }
+	clamp_variable = {
+		var = man_soviet_influence
+		min = 0.02
+		max = 0.20
+	}
+	custom_effect_tooltip = man_soviet_influence_increase_tt
+	if = {
+		limit = {
+			check_variable = { man_soviet_influence = 0.19 compare = greater_than_or_equals }
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+	}
+}
+
+MAN_soviet_influence_decrease = {
+	add_to_variable  = { man_soviet_influence = -0.01 }
+	clamp_variable = {
+		var = man_soviet_influence
+		min = 0.02
+		max = 0.20
+	}
+	custom_effect_tooltip = man_soviet_influence_decrease_tt
+	if = {
+		limit = { check_variable = { man_soviet_influence = 0.03 compare = less_than_or_equals } }
+		add_popularity = {
+			ideology = communism
+			popularity = -0.03
+		}
+	}
+}
+
+SOV_manchu_influence = {
+	MAN = {
+		add_to_variable  = { man_soviet_influence = 0.02 }
+		clamp_variable = {
+			var = man_soviet_influence
+			min = 0.02
+			max = 0.20
+		}
+		custom_effect_tooltip = man_sov_soviet_influence_increase_tt
+		if = {
+			limit = {
+				MAN = {
+					check_variable = { man_soviet_influence = 0.19 compare = greater_than_or_equals }
+				}
+			}
+			MAN = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.05
+				}
+				add_political_power = -15
+			}
+		}
+	}
+}
+
+SOV_manchu_influence_slightly = {
+	MAN = {
+		add_to_variable  = { man_soviet_influence = 0.01 }
+		clamp_variable = {
+			var = man_soviet_influence
+			min = 0.02
+			max = 0.20
+		}
+		custom_effect_tooltip = man_sov_soviet_influence_increase_slightly_tt
+		if = {
+			limit = {
+				MAN = {
+					check_variable = { man_soviet_influence = 0.19 compare = greater_than_or_equals }
+				}
+			}
+			MAN = {
+				add_popularity = {
+					ideology = communism
+					popularity = 0.05
+				}
+				add_political_power = -5
+			}
+		}
+	}
+}

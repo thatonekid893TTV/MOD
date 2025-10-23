@@ -1,0 +1,233 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						country_exists = EGY
+					}
+				}
+				set_global_flag = wo_bushi_56_flag
+				ENG = {
+					release = EGY
+					set_autonomy = {
+						target = EGY
+						autonomy_state = autonomy_dominion
+					}
+				}
+				EGY = {
+					set_popularities = {
+						neutrality = 80
+						democratic = 15
+						fascism = 5
+					}
+					set_politics = {
+						ruling_party = neutrality
+						elections_allowed = no
+					}
+					create_country_leader = {
+						name = aiji_Hassan_Al_Banna
+						picture = GFX_portrait_leader_EGY_aiji_Hassan_Al_Banna
+						expire = "1965.1.1"
+						ideology = fascism_ideology
+						traits = {
+						}
+					}
+				}
+				1014 = {
+					add_resource = {
+						type = oil
+						amount = 12
+					}
+				}
+				859 = {
+					add_resource = {
+						type = oil
+						amount = -2
+					}
+				}
+				SAU = {
+					give_resource_rights = {
+						receiver = USA
+						state = 859
+					}
+				}
+				765 = {
+					add_resource = {
+						type = oil
+						amount = 5
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					country_exists = EGY
+				}
+				ENG = {
+					country_event = SAU_teshu_shijian.18
+				}
+			}
+			SAU = {
+				retire_character = generic_fascist_demagogue
+				retire_character = generic_democratic_reformer
+				retire_character = generic_communist_revolutionary
+				retire_character = generic_head_of_intelligence
+				remove_ideas = SAU_islamic_traditions_ns
+				remove_ideas = SAU_nueji_kaiju_ns
+				remove_ideas = SAU_yihewan_de_yubo_1
+				remove_ideas = SAU_xijila
+			}
+			ENG = {
+				release = QAT
+				set_autonomy = {
+					target = QAT
+					autonomy_state = autonomy_colony
+					end_wars = no
+					end_civil_wars = no
+				}
+				release = BHR
+				set_autonomy = {
+					target = BHR
+					autonomy_state = autonomy_colony
+					end_wars = no
+					end_civil_wars = no
+				}
+			}
+			QAT = {
+				set_popularities = {
+					democratic = 20
+					fascism = 1
+					communism = 9
+					neutrality = 70
+				}
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+			}
+			BHR = {
+				set_popularities = {
+					democratic = 20
+					fascism = 1
+					communism = 9
+					neutrality = 70
+				}
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+				add_ideas = Sir_Charles_Dalrymple_Belgrave
+			}
+		}
+	}
+	on_monthly_SAU = {
+		effect = {
+			IF = {
+				limit = {
+					has_completed_focus = Saudi_Arabia_gongye_dianqihua_jihua
+					any_core_state = {
+						NOT = {
+							has_dynamic_modifier = {
+								modifier = AFG_electrification_modifier
+							}
+						}
+					}
+				}
+				IF = {
+					limit = {
+						check_variable = {
+							SAU_electrification_cooldown > 0
+						}
+					}
+					set_variable = {
+						SAU_electrification_cooldown = 0
+					}
+					random_core_state = {
+						limit = {
+							has_dynamic_modifier = {
+								modifier = AFG_electrification_modifier
+							}
+							NOT = {
+								OR = {
+									is_island_state = yes
+									has_state_category = small_island
+									has_state_category = tiny_island
+								}
+							}
+						}
+						random_neighbor_state = {
+							limit = {
+								NOT = {
+									has_dynamic_modifier = {
+										modifier = AFG_electrification_modifier
+									}
+								}
+								is_core_of = ROOT
+							}
+							add_dynamic_modifier = {
+								modifier = AFG_electrification_modifier
+							}
+						}
+					}
+				}
+				ELSE = {
+					add_to_variable = {
+						SAU_electrification_cooldown = 1
+					}
+				}
+			}
+		}
+	}
+	on_war_relation_added = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						original_tag = SAU
+						has_country_flag = SAU_sold_oil_flag
+					}
+					ROOT = {
+						NOT = {
+							original_tag = SAU
+						}
+						has_country_flag = SAU_has_SAU_resource_rights
+					}
+				}
+				ROOT = {
+					remove_resource_rights = 859
+				}
+				FROM = {
+					add_offsite_building = {
+						type = industrial_complex
+						level = -5
+					}
+				}
+			}
+			if = {
+				limit = {
+					AND = {
+						ROOT = {
+							original_tag = SAU
+							has_country_flag = SAU_sold_oil_flag
+						}
+						FROM = {
+							NOT = {
+								original_tag = SAU
+							}
+							has_country_flag = SAU_has_SAU_resource_rights
+						}
+					}
+				}
+				FROM = {
+					remove_resource_rights = 859
+				}
+				ROOT = {
+					add_offsite_building = {
+						type = industrial_complex
+						level = -5
+					}
+				}
+			}
+		}
+	}
+}

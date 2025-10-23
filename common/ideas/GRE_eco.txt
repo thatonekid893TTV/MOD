@@ -1,0 +1,64 @@
+ ideas = {
+    economy = {
+	    law = yes
+		use_list_view = yes
+		
+		omega_plan = {
+
+            picture = gre_astilleros_onassis
+		    allowed = {
+			    original_tag = GRE	
+			}
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_expected_value = 0.30
+				production_speed_industrial_complex_factor = 0.35
+                production_speed_fuel_silo_factor = 0.3
+				production_speed_synthetic_refinery_factor = 0.3				
+				production_speed_dockyard_factor = 0.25
+				max_fuel_factor = 0.5
+				fuel_gain_factor = 0.25
+				
+			}
+            visible = { has_completed_focus = GRE_onassis_the_great }
+			allowed_to_remove = {
+				has_war = yes
+			}
+            
+			cancel_if_invalid = no
+		}
+		
+	
+		
+		ifc_economy = {
+
+            picture = ifc_economy
+			
+			removal_cost = -1
+            allowed = {
+				always = no
+			}
+			modifier = {
+				consumer_goods_expected_value = 0.5
+				production_speed_industrial_complex_factor = -0.25
+				production_speed_arms_factory_factor = -0.5
+				production_speed_dockyard_factor = 0.25
+			    conversion_cost_civ_to_mil_factor= 0.2
+				conversion_cost_mil_to_civ_factor = 0.2
+				civilian_intel_to_others = 20
+				army_intel_to_others = 20
+				navy_intel_to_others = 20
+				airforce_intel_to_others = 20
+				custom_modifier_tooltip = GRE_debt_paid_total_tt
+			}
+			allowed_to_remove = {
+			    check_variable = { var = GRE_debt_to_the_ifc_britain_var value = 0 compare = equals }
+				check_variable = { var = GRE_debt_to_the_ifc_france_var value = 0 compare = equals }
+				check_variable = { var = GRE_debt_to_the_ifc_italy_var value = 0 compare = equals }
+			}
+
+			cancel_if_invalid = no
+		}	
+    }
+}

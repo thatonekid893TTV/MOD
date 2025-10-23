@@ -1,0 +1,64 @@
+add_namespace = tunisia
+
+#moncef go leader
+country_event = {
+	id = tunisia.333
+	title = tunisia.333.t
+	desc = tunisia.333.d
+	picture = GFX_report_event_generic_handshake
+
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = TUN
+		date > 1942.19.06
+		FRA = { has_government = democratic }
+		is_subject = yes
+  	 }
+
+	option = {
+		name = tunisia.333.a
+		create_country_leader = {
+			name = "Moncef Bey"
+			picture = "Moncef_Bey.dds"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = {
+					nationalist_symbol
+			}
+		}
+	}
+}
+#lamine go leader
+country_event = {
+	id = tunisia.334
+	title = tunisia.334.t
+	desc = tunisia.334.d
+	picture = GFX_report_event_generic_handshake
+
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = TUN
+		date > 1943.15.05
+		FRA = { has_government = democratic }
+		is_subject = yes
+  	 }
+
+	option = {
+		name = tunisia.334.a
+		create_country_leader = {
+			name = "Lamine Bey"
+			picture = "Lamine_Bey.dds"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = {
+					pro_allied_governor_general_2
+			}
+		}
+	}
+}
+
+
+
+

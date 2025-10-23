@@ -1,0 +1,131 @@
+
+### TANKS
+#POSITION
+@tank_1_X = 9
+@tank_1_Y = 2
+@tank_2_X = 9
+@tank_2_Y = 3
+@tank_3_X = 9
+@tank_3_Y = 4
+#BONUSES
+@tank_max_speed = 0.05
+@tank_production_capacity_factor = 0.05
+@tank_soft_attack = 0.05
+
+
+### SHIPS
+#POISTION
+@ship_1_X = 9
+@ship_1_Y = 3
+@ship_2_X = 9
+@ship_2_Y = 4
+@ship_3_X = 8
+@ship_3_Y = 4
+#BONUSES
+@ship_cruiser_production_cost_factor = -0.1
+@ship_destroyer_production_cost_factor = -0.1
+@ship_submarine_production_cost_factor = -0.1
+@ship_production_capacity_factor = -0.05
+@ship_mines_sweeping = 0.1
+@ship_mines_planting = 0.1
+
+### AIRCRAFT
+#POSITION
+@aircraft_1_X = 9
+@aircraft_1_Y = 2
+@aircraft_2_X = 9
+@aircraft_2_Y = 3
+@aircraft_3_X = 9
+@aircraft_3_Y = 4
+#BONUSES
+@aircraft_production_cost_factor = -0.05
+@aircraft_air_agility = 0.05
+@aircraft_air_defence = 0.1
+@aircraft_surface_detection = 0.15
+@aircraft_sub_detection = 0.15
+
+### MATERIEL
+#POSITION
+@materiel_1_X = 9
+@materiel_1_Y = 2
+@materiel_2_X = 9
+@materiel_2_Y = 3
+@materiel_3_X = 9
+@materiel_3_Y = 4
+#BONUSES
+@artillery_production_cost_factor = -0.1
+@infantry_equipment_production_cost_factor = -0.1
+@motorized_production_cost_factor = -0.1
+@materiel_production_efficiency_cap_factor = 0.1
+@materiel_production_capacity_factor = 0.1
+
+
+ICE_asi_tanks = {
+	include = DECMOD_armor_design_union
+	icon = GFX_idea_ICE_asi_tanks
+	name = ICE_ASI
+	
+	allowed = {
+		original_tag = ICE
+	}
+}
+
+ICE_asi_guns = {
+	include = DECMOD_infantry_equipment_design_union
+	icon = GFX_idea_ICE_asi_guns
+	name = ICE_ASI
+	
+	allowed = {
+		original_tag = ICE
+	}
+}
+
+ICE_asi_artillery = {
+	include = DECMOD_artillery_design_union
+	icon = GFX_idea_ICE_asi_artillery
+	name = ICE_ASI
+	
+	allowed = {
+		original_tag = ICE
+	}
+}
+
+ICE_asi_support_eq = {
+	include = DECMOD_support_equipment_design_union
+	icon = GFX_idea_ICE_asi_support_eq
+	name = ICE_ASI
+	
+	allowed = {
+		original_tag = ICE
+	}
+}
+
+ICE_asi_automotive = {
+	include = DECMOD_car_design_union
+	icon = GFX_idea_ICE_asi_automotive
+	name = ICE_ASI
+	
+	allowed = {
+		original_tag = ICE
+	}
+}
+
+ICE_asi_planes = {
+	include = DECMOD_plane_design_union
+	icon = GFX_idea_ICE_asi_planes
+	name = ICE_ASI
+	
+	allowed = {
+		original_tag = ICE
+	}
+}
+
+ICE_asi_ships = {
+	include = DECMOD_dockworker_design_union
+	icon = GFX_idea_ICE_asi_ships
+	name = ICE_ASI
+	
+	allowed = {
+		original_tag = ICE
+	}
+}

@@ -1,0 +1,96 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			FRA = {
+				remove_ideas = FPM_inefficient_economy_fake
+			}
+		}
+	}
+
+	on_new_term_election = {
+		random_events = {
+			100 = francepm.10
+			100 = francepm.19
+		}
+	}
+
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					tag = GER
+					FROM = {
+						original_tag = FRA
+					}
+					FROM.FROM = {
+						state = 16
+					}
+					FRA = {
+						has_capitulated = no
+					}
+					NOT = { has_global_flag = fall_of_france }
+				}
+				FRA = {
+					country_event = france.101
+				}
+			}
+			if = {
+				limit = {
+					tag = FRA
+					has_country_leader = {
+						character = FRA_charles_de_gaulle
+					}
+					FROM.FROM = {
+						is_core_of = ROOT
+						not = { has_state_flag = FRA_core_state_economic_devastation }
+					}
+				}
+				FROM.FROM = {
+					set_state_flag = FRA_core_state_economic_devastation
+					add_dynamic_modifier = {
+						modifier = FRA_economic_devastation
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						tag = FRA
+					}
+					FROM.FROM = {
+						is_core_of = FRA
+						has_state_flag = FRA_core_state_economic_devastation
+						has_dynamic_modifier = {
+							modifier = FRA_economic_devastation
+						}
+					}
+				}
+				FROM.FROM = {
+					clr_state_flag = FRA_core_state_economic_devastation
+					remove_dynamic_modifier = {
+						modifier = FRA_economic_devastation
+					}
+					if = {
+						limit = {
+							industrial_complex > 0
+						}
+						damage_building = { type = industrial_complex damage = 1.2 }
+					}
+					if = {
+						limit = {
+							arms_factory > 0
+						}
+						damage_building = { type = arms_factory damage = 1.2 }
+					}
+					if = {
+						limit = {
+							infrastructure > 0
+						}
+						damage_building = { type = infrastructure damage = 2.4 }
+					}
+				}
+			}
+		}
+		
+	}
+}

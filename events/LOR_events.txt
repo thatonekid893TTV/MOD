@@ -1,0 +1,2118 @@
+add_namespace = LOR
+
+#country_event = { #1 Dec Union Day
+#    id = LOR.1
+#    title = LOR.1.t
+#    d = LOR.1.d
+#	major = yes
+#    is_triggered_only = no
+#	
+#    option = {
+#        name = LOR.1.a
+#        ai_chance = { factor = 1}
+#        hidden_effect = {
+
+#		}
+#    }
+#}
+
+
+country_event = { #by blood to preserve greater romania
+    id = LOR.2
+    title = LOR.2.t
+    desc = LOR.2.d
+    picture = GFX_by_blood_to_preserve_romania
+    is_triggered_only = yes
+	
+    option = {
+        name = LOR.2.a
+        ai_chance = { factor = 1}
+        hidden_effect = {
+
+		}
+    }
+}
+
+country_event = { #internal government problems
+    id = LOR.3
+    title = LOR.3.t
+    desc = LOR.3.d
+    picture = GFX_internal_government_problems
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.3.a
+        ai_chance = { factor = 1}
+        hidden_effect = {
+            complete_national_focus = ROM_agrarian_party
+		}
+    }
+    option = {
+        name = LOR.3.b
+        ai_chance = { factor = 1}
+        hidden_effect = {
+            complete_national_focus = ROM_national_liberal_path
+		}
+    }
+}
+
+
+
+country_event = { #Agrarian Party
+    id = LOR.4
+    title = LOR.4.t
+    desc = LOR.4.d
+	major = yes
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.4.a
+        ai_chance = { factor = 1}
+        hidden_effect = {
+            ROM = {
+                add_ideas = agrarian_reform_1
+            }
+        }
+    }
+}
+
+country_event = { #National-Liberal Party
+    id = LOR.5
+    title = LOR.5.t
+    desc = LOR.5.d
+	major = yes
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.5.a
+        ai_chance = { factor = 1}
+        ROM = {
+            create_country_leader = {
+                name = "Dinu Brătianu"
+                desc = ""
+                picture = "gfx/leaders/ROM/ROM_leader_portrait_dinu_bratianu.png"
+                expire = "1965.1.1"
+                ideology = liberalism 
+                traits = {
+                    #
+                }
+            }
+        }
+        hidden_effect = {
+
+		}
+    }
+}
+
+country_event = { #status of the monarchy
+    id = LOR.6
+    title = LOR.6.t
+    desc = LOR.6.d
+	major = yes
+    picture = GFX_status_of_the_monarchy
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.6.a
+        ai_chance = { factor = 1}
+        ROM = {
+                create_country_leader = {
+                    name = "Zelea Codreanu"
+                    desc = ""
+                    picture = "gfx/leaders/ROM/ROM_portrait_codreanu.png"
+                    expire = "1965.1.1"
+                    ideology = despotism
+                    traits = {
+                     #
+                }
+            }
+        }
+        hidden_effect = {
+      
+		}
+    }
+}
+
+
+country_event = { #arrest codreanu
+    id = LOR.7
+    title = LOR.7.t
+    desc = LOR.7.d
+	major = yes
+    picture = GFX_arrest_codreanu
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.7.a
+        ai_chance = { factor = 1}
+        hidden_effect = {
+
+		}
+    }
+}
+
+country_event = { #end carol II lifestyle
+    id = LOR.8
+    title = LOR.8.t
+    desc = LOR.8.d
+	major = yes
+    picture = GFX_carol_lifesteal
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.8.a
+        ai_chance = { factor = 1}
+        hidden_effect = {
+            add_ideas = end_of_carol_ii_lifestyle
+		}
+    }
+}
+
+country_event = { #carol II executes legionaries
+    id = LOR.9
+    title = LOR.9.t
+    desc = LOR.9.d
+	major = yes
+    picture = GFX_carol_executes_legionaries
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.9.a
+        ai_chance = { factor = 1}
+        hidden_effect = {
+           
+		}
+    }
+}
+
+country_event = { #carol II overthrows the government
+    id = LOR.10
+    title = LOR.10.t
+    desc = LOR.10.d
+	major = yes
+    picture = GFX_carol_overthrows_the_government
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.10.a
+        ai_chance = { factor = 1}
+        ROM = {
+            create_country_leader = {
+                name = "Carol II of Romania"
+                desc = ""
+                picture = "gfx/leaders/ROM/ROM_portrait_Carol_II.png"
+                expire = "1965.1.1"
+                ideology = despotism
+                traits = {
+                    #
+                }
+            }
+        }
+        hidden_effect = {
+           ROM = {
+             set_politics = {
+                ruling_party = neutrality
+                elections_allowed = no
+                }
+            }
+		}
+    }
+}
+
+country_event = { #the august coup
+    id = LOR.11
+    title = LOR.11.t
+    desc = LOR.11.d
+	major = yes
+    picture = GFX_the_august_coup
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.11.a
+        ai_chance = { factor = 1}
+    
+        hidden_effect = {
+      
+		}
+    }
+}
+
+country_event = { #the new decate path
+    id = LOR.12
+    title = LOR.12.t
+    desc = LOR.12.d
+	major = yes
+    picture = GFX_the_august_coup
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.12.a
+        ai_chance = { factor = 1}
+        hidden_effect = {
+           
+		}
+    }
+}
+
+country_event = { #communist coup
+    id = LOR.14
+    title = LOR.14.t
+    desc = LOR.14.d
+	major = yes
+    picture = GFX_the_august_coup
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.14.a
+        ai_chance = { factor = 1}
+        hidden_effect = {
+           remove_ideas = political_instability
+		}
+    }
+}
+
+
+country_event = { #congress of the party
+    id = LOR.13
+    title = LOR.13.t
+    desc = LOR.13.d
+	major = yes
+    picture = GFX_the_august_coup
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.13.a
+        ai_chance = { factor = 1}
+        hidden_effect = {
+            ROM = {
+                create_country_leader = {
+                    name = "Gheorghe Gheorghiu Dej"
+                    desc = ""
+                    picture = "gfx/leaders/ROM/ROM_leader_portrait_dej.png"
+                    expire = "1965.1.1"
+                    ideology = stalinism
+                    traits = {
+                        #
+                    }
+                }
+            }
+		}
+    }
+    option = {
+        name = LOR.13.b
+        ai_chance = { factor = 1}  
+        hidden_effect = {
+          ROM = {
+            create_country_leader = {
+                name = "Ana Pauker"
+                desc = ""
+                picture = "gfx/leaders/ROM/ROM_leader_portrait_ana_pauker.png"
+                expire = "1965.1.1"
+                ideology = stalinism
+                traits = {
+                    #
+                }
+            }
+          }
+		}
+    }
+}
+
+
+country_event = { #socialist federation
+    id = LOR.15
+    title = LOR.15.t
+    desc = LOR.15.d
+	major = yes
+    picture = GFX_the_august_coup
+    is_triggered_only = yes
+		
+	option = {
+        name = LOR.15.a
+        ROM = {
+            #Bul
+            add_state_core = 211
+            add_state_core = 801
+            add_state_core = 212
+            add_state_core = 48
+            #Hun
+            add_state_core = 154
+            add_state_core = 43
+            add_state_core = 155
+            #Yug
+            add_state_core = 104
+            add_state_core = 109
+            add_state_core = 103
+            add_state_core = 804
+            add_state_core = 802
+            add_state_core = 106
+            add_state_core = 105
+            add_state_core = 108
+            add_state_core = 107
+            add_state_core = 107
+            add_state_core = 102
+            #Alb
+            add_state_core = 44
+            add_state_core = 805
+            #Gre
+            add_state_core = 187
+            add_state_core = 47
+            add_state_core = 731
+            add_state_core = 182
+            add_state_core = 185
+            add_state_core = 186
+            add_state_core = 184
+        }
+    }
+}
+
+country_event = { #legacy of the royal familly 
+    id = LOR.16
+    title = LOR.16.t
+    desc = LOR.16.d
+	major = yes
+    picture = GFX_the_august_coup
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.16.a
+        ai_chance = { factor = 1}
+        hidden_effect = {
+           
+		}
+    }
+}
+
+country_event = { #Royal Council
+    id = LOR.17
+    title = LOR.17.t
+    desc = LOR.17.d
+	major = yes
+    picture = GFX_the_august_coup
+    is_triggered_only = yes
+	fire_only_once = yes
+	
+    option = {
+        name = LOR.17.a
+        ai_chance = { factor = 1}
+        ROM = {
+            create_country_leader = {
+                name = "Carol II of Romania"
+                desc = ""
+                picture = "gfx/leaders/ROM/ROM_portrait_Carol_II.png"
+                expire = "1965.1.1"
+                ideology = despotism
+                traits = {
+                    #
+                }
+            }
+        }
+        complete_national_focus = ROM_all_heil_the_new_king
+        hidden_effect = {
+            ROM = {
+                set_politics = {
+                    ruling_party = neutrality
+                    elections_allowed = no  
+                }
+                set_popularities = {
+                    democratic = 10
+                    neutrality = 90
+                    fascism = 0 #Banned
+                    communism = 0 #Banned
+                }
+                remove_ideas = political_instability 
+            }
+		}
+    }
+    option = {
+        name = LOR.17.c
+        ai_chance = { factor = 1}
+        ROM = {
+            country_event = {
+                id = LOR.39
+                days = 5
+            }
+        }
+        hidden_effect = {
+            ROM = {
+                    create_country_leader = {
+                        name = "Royal Council"
+                        desc = ""
+                        picture = "gfx/leaders/ROM/ROM_leader_portrait_Royal_Concil.png"
+                        expire = "1965.1.1"
+                        ideology = despotism
+                        traits = {
+                            #
+                        }
+                    }
+                }
+                remove_ideas = political_instability 
+                hidden_effect = {
+                    ROM = {
+                        set_politics = {
+                            ruling_party = neutrality
+                            elections_allowed = no  
+                        }
+                        set_popularities = {
+                            democratic = 10
+                            neutrality = 90
+                            fascism = 0 #Banned
+                            communism = 0 #Banned
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+country_event = { #Monarch Act
+    id = LOR.18
+    title = LOR.18.t
+    desc = LOR.18.d
+	major = yes
+    picture = GFX_the_august_coup
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.18.a
+        ai_chance = { factor = 1}
+        
+    }
+}
+
+country_event = { #Low succesion
+    id = LOR.19
+    title = LOR.19.t
+    desc = LOR.19.d
+	major = yes
+    picture = GFX_the_august_coup
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.19.a
+        ai_chance = { factor = 1}
+        hidden_effect = {
+           
+		}
+    }
+}
+
+country_event = { #Ultimatum to Bulgaria
+	id = LOR.20
+	title = LOR.20.t
+	desc = LOR.20.d
+	picture = GFX_report_event_romanian_soldiers
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = LOR.20.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				strength_ratio = { tag = ROM ratio < 0.8 }
+				factor = 2
+			}
+			modifier = {
+				strength_ratio = { tag = ROM ratio < 0.5 }
+				factor = 10
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 0.5
+			}
+		}
+		ROM = { country_event = LOR.21 }
+	}
+
+	option = { 
+		name = LOR.20.b
+		ai_chance = {
+			factor = 70
+			modifier = {
+				is_in_faction = no
+				factor = 0.5
+			}
+		}
+		ROM = { country_event = LOR.22}	
+	}
+
+}
+
+country_event = { #Bulgaria Accepts
+	id = LOR.21 
+	title = LOR.21.t
+	desc = LOR.21.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+
+	option = { 
+		name = LOR.21.a
+		puppet = BUL
+		hidden_effect = {
+			news_event = { id = news.318 days = 1 }
+		}
+	}
+
+}
+
+
+country_event = {#Bulgaria refuses
+	id = LOR.22
+	title = LOR.22.t
+	desc = LOR.22.d
+	picture = GFX_report_event_bulgarian_soldiers
+	
+	is_triggered_only = yes
+
+	option = { 
+		name = LOR.22.a
+		ai_chance = {
+			factor = 90
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = BUL
+		}
+		news_event = { id = news.319 days = 1 }
+	}
+
+}
+
+
+country_event = { #Ofer Puppeting Hun
+	id = LOR.23
+	title = LOR.23.t
+	desc = LOR.23.d
+	picture = GFX_report_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = LOR.23.a
+		ai_chance = {
+			factor = 25
+		}
+		ROM = { country_event = LOR.24 }
+	}
+
+	option = { 
+		name = LOR.23.c
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				ROM = {
+					is_in_faction = no
+				}
+			}
+			modifier = {
+				factor = 10
+				is_in_faction = yes
+			}
+		}
+		ROM = { country_event = LOR.25 }	
+	}
+
+}
+
+country_event = {#hungary become puppet
+	id = LOR.24 
+	title = LOR.24.t
+	desc = LOR.24.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = LOR.24.a
+		puppet = HUN
+		set_country_flag = ROM_HUN_aligned
+	}
+
+}
+
+country_event = { #Hungary Refuse
+	id = LOR.25 
+	title = LOR.25.t
+	desc = LOR.25.d
+	picture = GFX_report_event_hungarian_soldiers
+	
+	is_triggered_only = yes
+    
+	option = { #war
+		name = LOR.25.b
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_war = yes
+				factor = 0
+			}
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = HUN
+		}
+	}
+}
+
+news_event = { #rise of empire of great romania
+    id = LOR.26
+    title = LOR.26.t
+    desc = LOR.26.d
+    picture = GFX_the_august_coup
+    is_triggered_only = yes
+		
+	
+    option = {
+        name = LOR.26.a
+        ai_chance = { factor = 1}
+        set_cosmetic_tag = ROM_empire_of_great_romania_cosmetic
+        ROM = {
+            add_state_core = 211
+            add_state_core = 801
+            add_state_core = 212
+            add_state_core = 48
+            #Hun
+            add_state_core = 154
+            add_state_core = 43
+            add_state_core = 155
+            #Yug
+            add_state_core = 104
+            add_state_core = 109
+            add_state_core = 103
+            add_state_core = 804
+            add_state_core = 802
+            add_state_core = 106
+            add_state_core = 105
+            add_state_core = 108
+            add_state_core = 107
+            add_state_core = 107
+            add_state_core = 102
+            #Alb
+            add_state_core = 44
+            add_state_core = 805
+            #Gre
+            add_state_core = 187
+            add_state_core = 47
+            add_state_core = 731
+            add_state_core = 182
+            add_state_core = 185
+            add_state_core = 186
+            add_state_core = 184
+        }
+        ROM = {
+            set_state_owner = 211
+            set_state_owner = 801
+            set_state_owner = 212
+            set_state_owner = 48
+            #Hun
+            set_state_owner = 154
+            set_state_owner = 43
+            set_state_owner = 155
+            #Yug
+            set_state_owner = 104
+            set_state_owner = 109
+            set_state_owner = 103
+            set_state_owner = 804
+            set_state_owner = 802
+            set_state_owner = 106
+            set_state_owner = 105
+            set_state_owner = 108
+            set_state_owner = 107
+            set_state_owner = 107
+            set_state_owner = 102
+            #Alb
+            set_state_owner = 44
+            set_state_owner = 805
+            #Gre
+            set_state_owner = 187
+            set_state_owner = 47
+            set_state_owner = 731
+            set_state_owner = 182
+            set_state_owner = 185
+            set_state_owner = 186
+            set_state_owner = 184
+        }
+        hidden_effect = {
+
+		}
+    }
+}
+
+country_event = {#March of the Legionaries
+	id = LOR.27 
+	title = LOR.27.t
+	desc = LOR.27.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+
+	option = { 
+		name = LOR.27.a
+
+	}
+}
+
+country_event = {#Dacia
+    id = LOR.28
+    title = LOR.28.t
+    desc = LOR.28.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.28.a
+        set_country_flag = ROM_path_of_secret_dacia_flag
+        unlock_national_focus = ROM_path_of_secret_dacia
+            ROM = {
+                create_country_leader = {
+                    name = "Maria of Romania"
+                    desc = ""
+                    picture = "gfx/leaders/ROM/ROM_portrait_Queen_Maria.png"
+                    expire = "1965.1.1"
+                    ideology = despotism
+                    traits = {
+                     #
+                }   
+            }
+        }
+        hidden_effect = {
+            load_focus_tree = {
+                tree = ROM_focus_tree   
+                keep_completed = yes
+            }
+            mark_focus_tree_layout_dirty = yes 
+        }
+    }
+}
+
+country_event = {#Royal Decret
+    id = LOR.29
+    title = LOR.29.t
+    desc = LOR.29.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.29.a
+
+    }
+}
+
+country_event = {#Blood of Decebal
+    id = LOR.30
+    title = LOR.30.t
+    desc = LOR.30.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.30.a
+
+    }
+}
+
+country_event = {#Blood of Burebista
+    id = LOR.31
+    title = LOR.31.t
+    desc = LOR.31.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.31.a
+
+    }
+}
+
+country_event = {#Demand Ruthenia -> Send
+    id = LOR.32
+    title = LOR.32.t
+    desc = LOR.32.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.32.a
+        ROM = {country_event = LOR.33}
+    }
+    option = { 
+        name = LOR.32.b
+        ROM = {country_event = LOR.34}
+
+    }
+}
+country_event = {#Demand Ruthenia -> Accept
+    id = LOR.33
+    title = LOR.33.t
+    desc = LOR.33.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.33.a
+        ROM = {set_state_owner = 73}
+        CZE = {release = SLO}
+
+        hidden_effect = {
+            SLO = {
+                set_state_owner = 664
+                set_state_owner = 71
+                set_state_owner = 70
+                add_state_core = 664
+                add_state_core = 71
+                add_state_core = 70
+            }
+        }
+    }
+}
+
+country_event = {#Demand Ruthenia -> Rejects
+    id = LOR.34
+    title = LOR.34.t
+    desc = LOR.34.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.34.a
+        create_wargoal = {
+            type = puppet_wargoal_focus
+            target = CZE
+        }
+    }
+}
+
+country_event = {#Slovakia Puppet -> Send
+    id = LOR.35
+    title = LOR.35.t
+    desc = LOR.35.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.35.a
+        ROM = {country_event = LOR.36}
+    }
+    option = { 
+        name = LOR.35.b
+        ROM = {country_event = LOR.37}
+
+    }
+}
+country_event = {#Slovakia Puppet -> Accept
+    id = LOR.36
+    title = LOR.36.t
+    desc = LOR.36.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.36.a
+        ROM = {puppet = SLO}
+    }
+}
+
+country_event = {#Slovakia Puppet-> Rejects
+    id = LOR.37
+    title = LOR.37.t
+    desc = LOR.37.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.37.a
+        create_wargoal = {
+            type = puppet_wargoal_focus
+            target = SLO
+        }
+    }
+}
+
+country_event = {#rebirth of dacia
+    id = LOR.38
+    title = LOR.38.t
+    desc = LOR.38.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = { 
+        name = LOR.38.a
+        set_cosmetic_tag = ROM_dacian_empire_cosmetic
+    }
+}
+
+country_event = {#the heirs visit the villa
+    id = LOR.39
+    title = LOR.39.t
+    desc = LOR.39.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = { 
+        name = LOR.39.a
+        hidden_effect = {
+            country_event = {
+                id = LOR.40
+                days = 5
+            }
+        }
+    }
+}
+
+country_event = {#Legionaries storms the villa and kill Carol II, and Nicolae I
+    id = LOR.40
+    title = LOR.40.t
+    desc = LOR.40.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = { 
+        name = LOR.40.a
+        hidden_effect = {
+            country_event = {
+                id = LOR.41
+                days = 5
+            }
+        }
+    }
+}
+
+country_event = {#Maria's back story
+    id = LOR.41
+    title = LOR.41.t
+    desc = LOR.41.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = { 
+        name = LOR.41.a
+        country_event = {
+            id = LOR.28
+            days = 5
+        }
+    }
+    option = { 
+        name = LOR.41.b 
+        hidden_effect = {
+            ROM = {
+                country_event = {
+                    id = LOR.61
+                    random_days = 5
+                }
+            }
+        }
+    }
+}
+
+country_event = {#a true republic
+    id = LOR.42
+    title = LOR.42.t
+    desc = LOR.42.d
+    picture = GFX_report_event_generic_sign_treaty2
+    fire_only_once = yes
+    
+    trigger = {
+
+    }
+
+    option = { 
+        name = LOR.42.a
+    }
+}
+
+country_event = {#in the king name
+    id = LOR.43
+    title = LOR.43.t
+    desc = LOR.43.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.43.a
+        ROM = {
+            add_to_faction = ROOT
+            country_event = {
+                id = LOR.44
+                days = 1
+            }
+        }
+    }
+    option = { 
+        name = LOR.43.b
+        ROM = {
+            country_event = {
+                id = LOR.45
+                days = 1
+            }
+        }
+    }
+}
+
+country_event = {#accept invitation
+    id = LOR.44
+    title = LOR.44.t
+    desc = LOR.44.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.44.a
+     
+    }
+}
+
+country_event = {#reject invitation
+    id = LOR.45
+    title = LOR.45.t
+    desc = LOR.45.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.45.a
+        ROM = {
+            add_opinion_modifier = {
+                target = ROOT
+                modifier = faction_traitor
+            }   
+        }
+    }
+}
+
+country_event = {#Balkan Federation + Mechanics
+    id = LOR.46
+    title = LOR.46.t
+    desc = LOR.46.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.46.a #Accept
+        ROM = {
+            country_event = {
+                id = LOR.47
+                days = 1
+            }
+        }
+    }
+    option = { 
+        name = LOR.46.b #Reject
+        ROM = {
+            country_event = {
+                id = LOR.48
+                days = 1
+            }
+        }
+    }
+}
+
+country_event = {#accepted invitation
+    id = LOR.47
+    title = LOR.47.t
+    desc = LOR.47.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.47.a  
+        annex_country = {
+            target = FROM
+        }
+    }
+}
+
+country_event = {#reject invitation
+    id = LOR.48
+    title = LOR.48.t
+    desc = LOR.48.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.48.a
+            create_wargoal = {
+                target = FROM
+                type = annex_everything
+            }
+        }   
+    }
+    
+country_event = {#Rise of the balkan federation
+    id = LOR.49
+    title = LOR.49.t
+    desc = LOR.49.d
+    picture = GFX_balkan_federation
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.49.a   
+    }
+}
+
+news_event = {#peace in Europe
+    id = LOR.50
+    title = LOR.50.t
+    desc = LOR.50.d
+    picture = GFX_end_of_the_war
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.50.a   
+    }
+}
+
+news_event = {#peace in Europe
+    id = LOR.51
+    title = LOR.51.t
+    desc = LOR.51.d
+    picture = GFX_end_of_the_war
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.51.a   
+    }
+}
+
+country_event = {#Generals Sway succes
+    id = LOR.52
+    title = LOR.52.t
+    desc = LOR.52.d
+    picture = GFX_bulgarian_generals
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.52.a 
+        custom_effect_tooltip = ROM_sway_generals_succes_tt
+        add_to_variable = {
+            var = ROM_coup_support_bul
+            value = 30
+        }
+    }
+}
+
+country_event = {#Generals Sway fail
+    id = LOR.53
+    title = LOR.53.t
+    desc = LOR.53.d
+    picture = GFX_bulgarian_generals
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.53.a
+        custom_effect_tooltip = ROM_sway_generals_fail_tt
+        subtract_from_variable = {
+            var = ROM_coup_support_bul
+            value = 30
+        }   
+    }
+}
+
+
+country_event = {#Royal Visit in Sofia
+    id = LOR.54
+    title = LOR.54.t
+    desc = LOR.54.d
+    #picture = GFX_bulgarian_generals
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.54.a  
+    }
+}
+
+country_event = {#Coup in Bulgaria is prepating
+    id = LOR.55
+    title = LOR.55.t
+    desc = LOR.55.d
+    #picture = GFX_bulgarian_generals
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.55.a  
+    }
+}
+
+country_event = {#Agents are in place
+    id = LOR.56
+    title = LOR.56.t
+    desc = LOR.56.d
+    #picture = GFX_bulgarian_generals
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.56.a  
+    }
+}
+
+country_event = {#Investments in Bulgaria
+    id = LOR.57
+    title = LOR.57.t
+    desc = LOR.57.d
+    #picture = GFX_bulgarian_generals
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.57.a  
+    }
+}
+
+country_event = {#Relations with Bulgaria
+    id = LOR.58
+    title = LOR.58.t
+    desc = LOR.58.d
+    #picture = GFX_bulgarian_generals
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.58.a  
+    }
+}
+
+country_event = {#Failed coup in Bulgaria
+    id = LOR.59
+    title = LOR.59.t
+    desc = LOR.59.d
+    #picture = GFX_bulgarian_generals
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.59.a  
+    }
+}
+
+country_event = {#Succesfull coup in Bulgaria
+    id = LOR.60
+    title = LOR.60.t
+    desc = LOR.60.d
+    #picture = GFX_bulgarian_generals
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.60.a  
+    }
+}
+
+country_event = {#Maria refuses the throne
+    id = LOR.61
+    title = LOR.61.t
+    desc = LOR.61.d
+    #picture = GFX_bulgarian_generals
+ 
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = { 
+        name = LOR.61.a 
+        hidden_effect = {
+            ROM = {
+                country_event = {
+                    id = LOR.62
+                    days = 3
+                }
+            }
+        }
+    }
+    option = { #Mihai Refuses the Throne
+        name = LOR.62.b
+        hidden_effect = {
+            ROM = {
+                country_event = {
+                    id = LOR.99
+                    days = 3
+                }
+            }
+        }  
+    }
+}
+
+country_event = {#Mihai I takes the throne
+    id = LOR.62
+    title = LOR.62.t
+    desc = LOR.62.d
+    #picture = GFX_bulgarian_generals
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = { 
+        name = LOR.62.a
+        hidden_effect = {
+            ROM = {
+                country_event = {
+                    id = LOR.63
+                    days = 3
+                }
+            }
+        }  
+    }
+}
+
+country_event = {#Mihai I is crowned the king of Romania
+    id = LOR.63
+    title = LOR.63.t
+    desc = LOR.63.d
+    #picture = GFX_bulgarian_generals
+    is_triggered_only = yes
+    fire_only_once = yes
+    
+    option = { 
+        name = LOR.63.a
+        unlock_national_focus = ROM_vlaho_bulgarian_tsardom
+        set_country_flag = ROM_vlaho_bulgarian_tsardom_flag
+        ROM = {
+            create_country_leader = {
+                name = "Mihai I of Romania"
+                desc = ""
+                picture = "gfx/leaders/ROM/GFX_portrait_Mihai_I.png"
+                expire = "1965.1.1"
+                ideology = despotism
+                traits = {
+                    #
+                }   
+            }
+            set_country_flag = ROM_bulgarian_showdown_flag
+            load_focus_tree = {
+                tree = ROM_focus_tree   
+                keep_completed = yes
+            }
+            mark_focus_tree_layout_dirty = yes
+        }
+    }
+}
+
+
+country_event = {#Ultimatum
+    id = LOR.64
+    title = LOR.64.t
+    desc = LOR.64.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.64.a
+        ROM = {
+            set_autonomy = {
+                target = ROOT
+                autonomy_state = autonomy_free
+                end_wars = no
+                end_civil_wars = no
+            }
+            country_event = {
+                id = LOR.65
+                days = 1
+            }
+        }
+    }
+    option = { 
+        name = LOR.64.b
+        ROM = {
+            country_event = {
+                id = LOR.66
+                days = 1
+            }
+        }
+    }
+}
+
+country_event = {#accept invitation
+    id = LOR.65
+    title = LOR.65.t
+    desc = LOR.65.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.65.a
+        if = {
+            limit = {
+                has_dlc = "No Step Back"
+                has_dlc = "Together for Victory"
+            }
+            set_autonomy = {
+                target = FROM
+                autonomy_state = autonomy_personal_union
+                end_wars = yes
+                end_civil_wars = no
+            }
+        }
+        else = {
+            puppet = {
+                target = FROM
+                end_wars = no
+            }
+        }
+    }
+}
+
+country_event = {#reject invitation
+    id = LOR.66
+    title = LOR.66.t
+    desc = LOR.66.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.66.a
+        ROM = {
+            create_wargoal = {
+                target = FROM
+                type = take_state_focus
+            }
+        }
+    }
+}
+
+news_event = {#Romanian Army enters Budapest
+    id = LOR.67
+    title = LOR.67.t
+    desc = LOR.67.d
+    picture = GFX_fall_of_budapest
+    is_triggered_only = no
+
+    major = yes
+
+    #fire_only_once = yes
+
+    mean_time_to_happen = {
+        days = 2
+    }
+
+
+    trigger = {
+        ROM = { 
+            has_war_with = HUN
+            controls_province = 9660
+        }
+        NOT = { has_global_flag = fall_of_budapest_rom }
+    }
+
+    immediate = {
+        set_global_flag = fall_of_budapest_rom
+    }
+
+    immediate = {
+        hidden_effect = {
+            sound_effect = drum_bun
+        }
+    }
+
+    option = { 
+        name = LOR.67.a  
+    }
+}
+
+
+country_event = { ##March in Bucuresti
+    id = LOR.68
+    title = LOR.68.t
+    desc = LOR.68.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.68.a
+    }
+}
+
+country_event = { ##Codreanu is in charge
+    id = LOR.69
+    title = LOR.69.t
+    desc = LOR.69.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.69.a
+    }
+}
+
+country_event = { ##Sima is in charge
+    id = LOR.70
+    title = LOR.70.t
+    desc = LOR.70.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.70.a
+    }
+}
+
+country_event = { ##King comprimise
+    id = LOR.71
+    title = LOR.71.t
+    desc = LOR.71.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.71.a
+    }
+}
+
+country_event = {#codreanu assasinated
+    id = LOR.72
+    title = LOR.72.t
+    desc = LOR.72.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.72.a
+    }
+}
+
+country_event = { #Ultimatum to Hungary
+    id = LOR.75
+    title = LOR.75.t
+    desc = LOR.75.d
+    picture = GFX_report_event_romanian_soldiers
+    
+    is_triggered_only = yes
+    
+    option = { 
+        name = LOR.75.a
+        ai_chance = {
+            factor = 30
+            modifier = {
+                strength_ratio = { tag = ROM ratio < 0.8 }
+                factor = 2
+            }
+            modifier = {
+                strength_ratio = { tag = ROM ratio < 0.5 }
+                factor = 10
+            }
+        }
+        ROM = { country_event = LOR.76 }
+    }
+
+    option = { 
+        name = LOR.75.b
+        ai_chance = {
+            factor = 70
+            modifier = {
+                is_in_faction = no
+                factor = 0.5
+            }
+        }
+        ROM = { country_event = LOR.77} 
+    }
+
+}
+
+country_event = { #Hungary Accepts
+    id = LOR.76 
+    title = LOR.76.t
+    desc = LOR.76.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.76.a
+        set_state_owner = 154
+    }
+}
+
+
+country_event = {#Hungary refuses
+    id = LOR.77
+    title = LOR.77.t
+    desc = LOR.77.d
+    picture = GFX_report_event_bulgarian_soldiers
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.77.a
+        ai_chance = {
+            factor = 90
+        }
+        create_wargoal = {
+            type = puppet_wargoal_focus
+            target = HUN
+        }
+    }
+
+}
+
+country_event = { #Ultimatum to Cze
+    id = LOR.78
+    title = LOR.78.t
+    desc = LOR.78.d
+    picture = GFX_report_event_romanian_soldiers
+    
+    is_triggered_only = yes
+    
+    option = { 
+        name = LOR.78.a
+        ai_chance = {
+            factor = 30
+            modifier = {
+                strength_ratio = { tag = ROM ratio < 0.8 }
+                factor = 2
+            }
+            modifier = {
+                strength_ratio = { tag = ROM ratio < 0.5 }
+                factor = 10
+            }
+        }
+        ROM = { country_event = LOR.77 }
+    }
+
+    option = { 
+        name = LOR.78.b
+        ai_chance = {
+            factor = 70
+            modifier = {
+                is_in_faction = no
+                factor = 0.5
+            }
+        }
+        ROM = { country_event = LOR.79} 
+    }
+
+}
+
+country_event = { #Cze Accepts
+    id = LOR.79 
+    title = LOR.79.t
+    desc = LOR.79.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.79.a
+        set_state_owner = 73
+    }
+}
+
+
+country_event = {#Cze refuses
+    id = LOR.80
+    title = LOR.80.t
+    desc = LOR.80.d
+    picture = GFX_report_event_bulgarian_soldiers
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.80.a
+        ai_chance = {
+            factor = 90
+        }
+        create_wargoal = {
+            type = puppet_wargoal_focus
+            target = CZE
+        }
+    }
+}
+
+country_event = { #Ultimatum to Yug
+    id = LOR.81
+    title = LOR.81.t
+    desc = LOR.81.d
+    picture = GFX_report_event_romanian_soldiers
+    
+    is_triggered_only = yes
+    
+    option = { 
+        name = LOR.81.a
+        ai_chance = {
+            factor = 30
+            modifier = {
+                strength_ratio = { tag = ROM ratio < 0.8 }
+                factor = 2
+            }
+            modifier = {
+                strength_ratio = { tag = ROM ratio < 0.5 }
+                factor = 10
+            }
+        }
+        ROM = { country_event = LOR.82 }
+    }
+
+    option = { 
+        name = LOR.81.b
+        ai_chance = {
+            factor = 70
+            modifier = {
+                is_in_faction = no
+                factor = 0.5
+            }
+        }
+        ROM = { country_event = LOR.79} 
+    }
+
+}
+
+country_event = { #Cze Accepts
+    id = LOR.82 
+    title = LOR.82.t
+    desc = LOR.82.d
+    picture = GFX_report_event_generic_sign_treaty2
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.82.a
+        set_state_owner = 73
+    }
+}
+
+
+country_event = {#Cze refuses
+    id = LOR.83
+    title = LOR.83.t
+    desc = LOR.83.d
+    picture = GFX_report_event_bulgarian_soldiers
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.83.a
+        ai_chance = {
+            factor = 90
+        }
+        create_wargoal = {
+            type = puppet_wargoal_focus
+            target = CZE
+        }
+    }
+}
+
+country_event = { #Trial of Legionaries Begins
+    id = LOR.84
+    title = LOR.84.t
+    desc = LOR.84.d
+    picture = GFX_report_event_bulgarian_soldiers
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.84.a
+        ai_chance = {
+            factor = 90
+        }
+    }
+}
+
+country_event = { #Trial of Sima
+    id = LOR.85
+    title = LOR.85.t
+    desc = LOR.85.d
+    picture = GFX_report_event_bulgarian_soldiers
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.85.a
+        ai_chance = {
+            factor = 90
+        }
+    }
+}
+
+country_event = { #Trial of Codreanu
+    id = LOR.86
+    title = LOR.86.t
+    desc = LOR.86.d
+    picture = GFX_report_event_bulgarian_soldiers
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.86.a
+        ai_chance = {
+            factor = 90
+        }
+    }
+}
+
+country_event = {#Romanian Civil War
+    id = LOR.87
+    title = LOR.87.t
+    desc = LOR.87.d
+    picture = GFX_fall_of_budapest
+
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.87.a 
+        set_country_flag = ROM_legionary_rebelion_happen
+        start_civil_war = {
+            ruling_party = neutrality
+            ideology = ROOT
+            size = 0.5
+            keep_all_characters = yes   
+        }
+        ROM = {
+            add_country_leader_role = {
+                character = ROM_ion_antonescu_new
+                promote_leader = yes
+                country_leader = {
+                    ideology = despotism    
+                    expire = "1965.1.1.1"
+                    traits = { war_industrialist }
+                }
+            }
+        }
+    }
+}
+
+country_event = { #King Carol II Abdicates
+    id = LOR.88
+    title = LOR.88.t
+    desc = LOR.88.d
+    picture = GFX_report_event_bulgarian_soldiers
+    
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.88.a
+        ai_chance = {
+            factor = 90
+        }
+    }
+}
+
+country_event = {#No Deal with Hungarians
+    id = LOR.89
+    title = LOR.89.t
+    desc = LOR.89.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.89.a
+        ai_chance = {
+            factor = 50
+        }
+        set_global_flag = ROM_no_deal_for_transylvania
+        ROM = {country_event = LOR.90}
+    }
+    option = {
+        name = LOR.89.b
+        ai_chance = {
+            factor = 50
+        }
+        ROM = {country_event = LOR.91}
+    }
+}
+
+country_event = {#accept treaty
+    id = LOR.90
+    title = LOR.90.t
+    desc = LOR.90.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.89.a
+        ai_chance = {
+            factor = 50
+        }
+        news_event = LOR.92
+    }
+}
+
+country_event = {#reject treaty
+    id = LOR.91
+    title = LOR.91.t
+    desc = LOR.91.d
+    picture = GFX_report_event_generic_sign_treaty2
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.91.a
+        ai_chance = {
+            factor = 50
+        }
+    }
+}
+
+
+
+
+news_event = { #Transylvanian deal is signed
+    id = LOR.92 
+    title = LOR.92.t
+    desc = LOR.92.d
+
+    major = yes
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.92.a
+        ai_chance = {
+            factor = 50
+        }
+    }
+}
+
+
+
+country_event = { #Nicoale's Dream
+    id = LOR.93 
+    title = LOR.93.t
+    desc = LOR.93.d
+
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.93.a
+        ai_chance = {
+            factor = 50
+        }
+    }
+}
+
+
+country_event = { #Hopes of the Pheonix
+    id = LOR.94 
+    title = LOR.94.t
+    desc = LOR.94.d
+
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.94.a
+        ai_chance = {
+            factor = 50
+        }
+    }
+}
+
+
+country_event = { #The Judgment Day is Awaiting
+    id = LOR.95 
+    title = LOR.95.t
+    desc = LOR.95.d
+
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.95.a
+        ai_chance = {
+            factor = 50
+        }
+    }
+}
+
+country_event = { #Failed to get enought support for the claim
+    id = LOR.96 
+    title = LOR.96.t
+    desc = LOR.96.d
+
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.96.a
+        ai_chance = {
+            factor = 50
+        }
+    }
+}
+
+country_event = { #Prepare the Coronation
+    id = LOR.97 
+    title = LOR.97.t
+    desc = LOR.97.d
+
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.97.a
+        ai_chance = {
+            factor = 50
+        }
+    }
+}
+
+country_event = { #Prepare the Coronation
+    id = LOR.98 
+    title = LOR.98.t
+    desc = LOR.98.d
+
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.98.a
+        ai_chance = {
+            factor = 50
+        }
+    }
+}
+
+country_event = { #Nicolae is the new king
+    id = LOR.99 
+    title = LOR.99.t
+    desc = LOR.99.d
+
+    is_triggered_only = yes
+
+    option = { 
+        name = LOR.99.a
+        ai_chance = {
+            factor = 50
+        }
+        set_country_flag = ROM_the_double_headed_eagle_is_reborn_flag
+        complete_national_focus = ROM_the_double_headed_eagle_is_reborn
+        ROM = {
+            create_country_leader = {
+                name = "Nicolae I"
+                desc = ""
+                picture = "gfx/leaders/ROM/ROM_leader_portrait_king_nicolae.png"
+                expire = "1965.1.1"
+                ideology = despotism
+                traits = {
+                    #
+                }   
+            }
+        }
+        hidden_effect = {
+            load_focus_tree = {
+                tree = ROM_focus_tree   
+                keep_completed = yes
+            }
+            mark_focus_tree_layout_dirty = yes
+        }
+    }
+}

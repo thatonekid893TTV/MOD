@@ -1,0 +1,1532 @@
+FRA_maginot_category = {
+	FRA_corf = {
+		icon = GFX_decision_eng_trade_unions_support
+		priority = 100
+		allowed = {
+			original_tag = FRA
+		}
+		cost = 20
+		fire_only_once = yes
+		available = {
+			has_war = no
+		}
+		ai_will_do = {
+			base = 10
+		}
+		visible = {
+			tag = FRA
+		}
+
+		complete_effect = {
+			add_command_power = 25
+		}
+		days_remove = 180
+		modifier = {
+				production_speed_bunker_factor = 0.25
+		}
+	}
+	FRA_maginot_politic = {
+		icon = GFX_decision_generic_welfare
+		priority = 95
+		allowed = {
+			original_tag = FRA
+		}
+		custom_cost_text = decision_cost_CP_15_ArmXP_15
+		custom_cost_trigger = {
+			command_power > 14
+			has_army_experience > 14
+		}
+		fire_only_once = yes
+		available = {
+			has_war = no
+			has_government = democratic
+			has_idea = FRA_army_tensions
+		}
+		ai_will_do = {
+			base = 0
+		}
+		visible = {
+			tag = FRA
+		}
+
+		complete_effect = {
+			add_political_power = 50
+			hidden_effect = {
+				army_experience = -15
+				add_command_power = -15
+			}
+		}
+	}
+ 	FRA_saarland_forts = {
+	
+		icon = GFX_decision_hol_inundate_water_lines
+		ai_will_do = {
+			factor = 200
+		}
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+			28 = {
+				add_province_modifier = {
+					static_modifiers = { flooded }
+					province = {
+						id = 3629
+					}
+				}
+			}
+		}
+		fire_only_once = no
+		available = {
+			has_war_with = GER
+			has_completed_focus = FRA_defensive_focus
+			controls_state = 28
+		}
+		visible = {
+			controls_state = 28
+		}
+		remove_trigger = {
+			has_war = no
+        	}
+		days_remove = -1	
+		highlight_states = {
+			highlight_state_targets = { state = 28 }
+			highlight_provinces = {
+				3629
+			}
+			highlight_only_provinces = yes
+		}
+		modifier = {
+			civilian_factory_use = 1
+		}
+	}
+	FRA_sedan_forts = {
+	
+		icon = GFX_decision_generic_fortification
+		ai_will_do = {
+			factor = 0
+		}
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+		}
+		fire_only_once = yes
+		available = {
+			controls_state = 18
+			FRA = { has_completed_focus = FRA_defensive_focus }
+		}
+		visible = {
+			controls_state = 18
+		}
+		days_remove = 70
+		modifier = {
+			civilian_factory_use = 1
+		}
+		highlight_states = {
+			highlight_provinces = {
+				3560
+				9472
+			}
+		}
+		remove_effect = {
+			18 = {
+				add_building_construction = {
+					type = bunker
+					province = 3560
+					level = 2
+				}
+			}
+			18 = {
+				add_building_construction = {
+					type = bunker
+					province = 9472
+					level = 2
+				}
+			}
+		}
+	}
+	FRA_spain_forts = {
+	
+		icon = GFX_decision_generic_mountain_fortification
+		ai_will_do = {
+			factor = 0
+		}
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+		}
+		fire_only_once = yes
+		available = {
+			controls_state = 806
+			controls_state = 31
+			FRA = { has_completed_focus = FRA_defensive_focus }
+		}
+		visible = {
+			controls_state = 18
+		}
+		days_remove = 75
+		modifier = {
+			civilian_factory_use = 3
+		}
+		highlight_states = {
+			highlight_provinces = {
+				743	
+				11697
+				9853
+				6915
+				6931
+				3915
+				9882
+				9884
+			}
+		}
+		remove_effect = {
+			806 = {
+				add_building_construction = {
+					type = bunker
+					province = 743
+					level = 3
+				}
+			}
+			806 = {
+				add_building_construction = {
+					type = bunker
+					province = 11697
+					level = 3
+				}
+			}
+			31 = {
+				add_building_construction = {
+					type = bunker
+					province = 9853
+					level = 3
+				}
+			}
+			31 = {
+				add_building_construction = {
+					type = bunker
+					province = 6915
+					level = 3
+				}
+			}	
+			31 = {
+				add_building_construction = {
+					type = bunker
+					province = 6931
+					level = 3
+				}
+			}
+			31 = {
+				add_building_construction = {
+					type = bunker
+					province = 3915
+					level = 3
+				}
+			}
+			31 = {
+				add_building_construction = {
+					type = bunker
+					province = 9882
+					level = 3
+				}
+			}
+			31 = {
+				add_building_construction = {
+					type = bunker
+					province = 9884
+					level = 3
+				}
+			}
+		}
+	}
+	FRA_chavineau = {
+	
+		icon = GFX_decision_generic_fortification
+		ai_will_do = {
+			factor = 100
+		}
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+		}
+		fire_only_once = yes
+		available = {
+			controls_state = 15
+			controls_state = 785
+			FRA = { has_completed_focus = FRA_defensive_focus }
+		}
+		visible = {
+			controls_state = 17
+		}
+		days_remove = 70
+		highlight_states = {
+			highlight_provinces = {
+				6585		
+				9561
+				11549
+				6569
+			}
+		}
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			785 = {
+				add_building_construction = {
+					type = bunker
+					province = 6585
+					level = 2
+				}
+				add_building_construction = {
+					type = bunker
+					province = 9561
+					level = 2
+				}
+				add_building_construction = {
+					type = bunker
+					province = 11549
+					level = 2
+				}
+			}
+			15 = {
+				add_building_construction = {
+					type = bunker
+					province = 6569
+					level = 2
+				}
+			}
+		}
+	}
+	FRA_swiss_forts = {
+	
+		icon = GFX_decision_generic_fortification
+		ai_will_do = {
+			factor = 0
+		}
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+		}
+		fire_only_once = yes
+		available = {
+			controls_state = 17
+			controls_state = 735
+			controls_state = 20
+			FRA = { has_completed_focus = FRA_defensive_focus }
+		}
+		visible = {
+			controls_state = 17
+			controls_state = 735
+			controls_state = 20
+		}
+		highlight_states = {
+			highlight_provinces = {
+				9603
+				11573
+				6639
+				6668
+				3666
+				698
+				3646
+			}
+		}
+		days_remove = 35
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			17 = {
+				add_building_construction = {
+					type = bunker
+					province = 3666
+					level = 1
+				}
+				add_building_construction = {
+					type = bunker
+					province = 698
+					level = 1
+				}
+				add_building_construction = {
+					type = bunker
+					province = 3646
+					level = 1
+				}
+			735 = {
+				add_building_construction = {
+					type = bunker
+					province = 9603
+					level = 1
+				}
+				add_building_construction = {
+					type = bunker
+					province = 11573
+					level = 1
+					}
+			20 = {
+				add_building_construction = {
+					type = bunker
+					province = 6639
+					level = 1
+				}
+				add_building_construction = {
+					type = bunker
+					province = 6668
+					level = 1
+						}
+					}
+				}	
+			}
+		}		
+	}
+	FRA_alpine_maginot = {
+	
+		icon = GFX_decision_generic_mountain_fortification
+		ai_will_do = {
+			factor = 0
+		}
+		custom_cost_trigger = {
+			command_power > 49
+		}
+		custom_cost_text = decision_cost_CP_50
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+		fire_only_once = yes
+		available = {
+			735 = { is_controlled_by = ROOT }
+			FRA = { has_completed_focus = FRA_extend_the_maginot_line }
+		}
+		visible = {
+			735 = { is_controlled_by = ROOT }
+		}
+		highlight_states = {
+			highlight_provinces = {
+				764
+				9909
+				3959
+				6975
+				3764
+				9745
+				778
+			}
+		}
+		days_remove = 240
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			ROOT = { country_event = { id = france.3 } }
+			effect_tooltip = {
+				735 = {
+					add_building_construction = {
+						type = anti_air_building
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 764
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 9909
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 3959
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 6975
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 3764
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 9745
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 778
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
+			ITA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = FRA_alpine_forts
+				}
+			}
+		}
+	}
+	FRA_extand_maginot = {
+	
+		icon = GFX_decision_generic_fortification
+		ai_will_do = {
+			factor = 0
+		}
+		custom_cost_trigger = {
+			command_power > 49
+		}
+		custom_cost_text = decision_cost_CP_50
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+		fire_only_once = yes
+		available = {
+			18 = { is_controlled_by = ROOT }
+			29 = { is_controlled_by = ROOT }
+			785 = { is_controlled_by = ROOT }
+			FRA = { has_completed_focus = FRA_extend_the_maginot_line }
+		}
+		visible = {
+			18 = { is_controlled_by = ROOT }
+			29 = { is_controlled_by = ROOT }
+			785 = { is_controlled_by = ROOT }
+		}
+		days_remove = 300
+		modifier = {
+			civilian_factory_use = 4
+		}
+		highlight_states = {
+			highlight_provinces = {
+				5291
+				3560
+				9472
+				11606
+				11483
+				575
+				3447
+			}
+		}
+		remove_effect = {
+			set_global_flag = FML_expand_maginot
+			ROOT = { country_event = { id = france.2 } }
+			effect_tooltip = {
+				18 = {
+					add_building_construction = {
+						type = bunker
+						province = 5291
+						level = 5
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 3560
+						level = 5
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 9472
+						level = 5
+						instant_build = yes
+					}
+				}
+				29 = {
+					add_building_construction = {
+						type = bunker
+						province = 11606
+						level = 5
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 11483
+						level = 5
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 575
+						level = 5
+						instant_build = yes
+					}
+				}
+				785 = {
+					add_building_construction = {
+						type = bunker
+						province = 3447
+						level = 5
+						instant_build = yes
+					}
+				}
+			}
+			BEL = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = FRA_extend_the_maginot_line_focus_neg
+				}
+				add_opinion_modifier = {
+					target = GER
+					modifier = FRA_extend_the_maginot_line_focus_pos
+				}
+			}
+		}
+	}
+}
+
+FRA_weygand_category = {
+	FRA_maginot_speech2 = { 
+		priority = 120
+
+		icon = GFX_decision_generic_speech
+
+		available = {
+			has_war_with = GER
+			NOT = {
+				controls_state = 42
+			}
+			is_ally_with = ENG
+			POL = { is_ally_with = ENG }
+			original_tag = FRA
+			BEL = {
+ 		  	NOT = {
+   			 	has_war_with = GER
+ 			 	}
+			}
+			HOL = {
+ 		  	NOT = {
+   			 	has_war_with = GER
+ 			 	}
+			}
+			surrender_progress < 0.01
+		}
+
+		visible = {
+			has_country_leader = {
+				character = FRA_paul_reynaud
+				ruling_only = yes
+			}
+			has_war_with = GER
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+		}
+
+		allowed = {
+			tag = FRA
+		}
+
+		fire_only_once = yes
+		
+		remove_trigger = {
+			has_war = no
+      		  }
+
+		ai_will_do = {
+			base = 200
+		}
+
+		complete_effect = {
+			add_war_support = 0.02
+			hidden_effect = {
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					FRA = {
+						scoped_play_song = reynaud_allocution
+					}
+				}
+				else = {
+					play_song = reynaud_allocution
+				}
+			}
+		}
+	}
+	war_herrison_defense = { 
+		priority = 70
+
+		icon = GFX_decision_generic_prepare_civil_war
+
+		available = {
+			has_country_flag = weygand_promoted
+			NOT = {
+				has_country_flag = weygandcooldown
+			}
+		}
+
+		visible = {
+			has_war = yes
+			has_war_with_non_exiled_country = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+		}
+
+		allowed = {
+			tag = FRA
+		}
+
+		fire_only_once = no
+
+		days_remove = 40
+		
+		remove_trigger = {
+			has_war = no
+        	}
+		
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+				set_country_flag = weygandcooldown
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = weygandcooldown
+			}
+		}
+
+		modifier = {
+			army_defence_factor = 0.05
+			army_morale_factor = 0.05
+			dig_in_speed_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	FRA_weygand_general = {
+		priority = 100
+
+		icon = GFX_decision_french_helmet
+
+		available = {
+			has_war = yes
+			or = {
+					surrender_progress > 0.01
+					has_completed_focus = FRA_wargames
+			}
+		}
+		visible = {
+			has_war = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+			is_ai = no
+		}
+
+		days_remove = -1
+
+		ai_will_do = {
+			base = 200
+		}
+		custom_cost_trigger = {
+			command_power > 49
+		}
+		custom_cost_text = decision_cost_CP_50
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			FRA = { country_event = { id = france.334 } }
+			if = {
+				limit = {
+					has_idea = maurice_gamelin
+				}
+				remove_ideas = maurice_gamelin	
+				add_ideas = maxime_weygand
+			}
+			set_country_flag = weygand_promoted
+		}
+	}
+
+	FRA_add_new_generals = {
+		priority = 90
+
+		icon = GFX_decision_french_helmet
+
+		available = {
+			has_country_flag = weygand_promoted
+			NOT = {
+				has_country_flag = weygandcooldown
+			}
+		}
+
+		visible = {
+			has_war = yes
+			has_war_with_non_exiled_country = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+		}
+
+		days_remove = -1
+
+		ai_will_do = {
+			base = 500
+		}
+		custom_cost_trigger = {
+			command_power > 9
+		}
+		custom_cost_text = decision_cost_CP_10
+
+		fire_only_once = yes
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			add_war_support = 0.02
+			FRA_robert_altmayer = {
+				add_corps_commander_role = {
+					traits={ cavalry_officer organizer harsh_leader }
+					skill=3
+					attack_skill=2
+					defense_skill=3
+					planning_skill=2
+					logistics_skill=2
+				} 
+			}
+			FRA_touchon = {
+				add_corps_commander_role = {
+					traits={ infantry_officer trait_mountaineer winter_specialist }
+						skill = 3
+						attack_skill = 2
+						defense_skill = 2
+						planning_skill = 4
+						logistics_skill = 1
+				} 
+			}
+			FRA_hering = {
+				add_corps_commander_role = {
+					traits={ infantry_officer organizer engineer_officer }
+						skill=3
+						attack_skill=2
+						defense_skill=2
+						planning_skill=4
+						logistics_skill=2
+
+				} 
+			}
+			FRA_aubert_frere = {
+				add_corps_commander_role = {
+					traits={ infantry_officer career_officer organizer }
+					skill = 3
+					attack_skill = 2
+					defense_skill = 4
+					planning_skill = 4
+					logistics_skill = 2
+				} 
+			}
+			FRA_henry_freydenberg = {
+				add_corps_commander_role = {
+					traits={ old_guard infantry_officer desert_fox }
+					skill=2
+					attack_skill=1
+					defense_skill=2
+					planning_skill=2
+					logistics_skill=3
+	
+				} 
+			}
+
+		}
+	}
+
+	FRA_weygand_general_ai = {
+		priority = 50
+
+		icon = GFX_decision_french_helmet
+
+		available = {
+			has_war = yes
+			surrender_progress > 0.01
+		}
+		visible = {
+			has_war = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+			is_ai = yes
+		}
+
+		days_remove = -1
+
+		ai_will_do = {
+			base = 200
+		}
+
+		fire_only_once = yes
+		complete_effect = {
+			FRA = { country_event = { id = france.334 } }
+			if = {
+				limit = {
+					has_idea = maurice_gamelin
+				}
+				remove_ideas = maurice_gamelin	
+				add_ideas = maxime_weygand
+			}
+			FRA_maxime_weygand = {
+				add_field_marshal_role = {
+					traits={ inflexible_strategist career_officer skilled_staffer cavalry_officer war_hero }
+					skill = 5
+					attack_skill = 4
+					defense_skill = 5
+					planning_skill = 4
+					logistics_skill = 4
+				} 
+			}
+			set_country_flag = weygand_promoted
+		}
+	}
+
+	war_heritors_ww1 = { 
+		priority = 70
+
+		icon = GFX_decision_generic_nationalism
+
+		available = {
+			has_country_flag = weygand_promoted
+			NOT = {
+				has_country_flag = weygandcooldown
+			}
+		}
+
+		visible = {
+			has_war = yes
+			has_war_with_non_exiled_country = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+		}
+
+		allowed = {
+			tag = FRA
+		}
+
+		days_remove = 45
+		
+		remove_trigger = {
+			has_war = no
+        }
+		
+		custom_cost_trigger = {
+			command_power > 74
+		}
+		custom_cost_text = decision_cost_CP_75
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -75
+				set_country_flag = weygandcooldown
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = weygandcooldown
+			}
+		}
+
+		modifier = {
+			army_attack_speed_factor = 0.10
+			army_morale_factor = 0.05
+			initiative_factor = 0.10
+			recon_factor = 0.05
+			planning_speed = 0.10
+			terrain_penalty_reduction = 0.08
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	FRA_ww1_stock = {
+		priority = 20
+
+		icon = GFX_decision_generic_industry
+
+		available = {
+			surrender_progress > 0.01
+			has_country_flag = weygand_promoted
+			NOT = {
+				has_country_flag = weygandcooldown
+			}
+		}
+
+		visible = {
+			has_war = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+		}
+
+		days_remove = -1
+
+		ai_will_do = {
+			base = 200
+		}
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 8000
+			}
+		add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 2500
+			}
+		}
+	}
+
+	FRA_heritor_of_foch = {
+		priority = -50
+
+		icon = GFX_decision_generic_military
+
+		available = {
+			has_country_flag = weygand_promoted
+			NOT = {
+				has_country_flag = weygandcooldown
+			}
+		}
+
+		visible = {
+			has_war = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+		}
+
+		days_remove = -1
+
+		ai_will_do = {
+			base = 50
+		}
+		cost = 35
+		fire_only_once = yes
+		complete_effect = {
+			add_war_support = 0.05
+			add_stability = 0.05
+		}
+	}
+
+
+	FRA_last_defense = {
+		priority = 10
+
+		icon = GFX_decision_french_helmet
+
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 5
+				FROM = {
+					OR = {
+						state = 26 #auvergne
+						state = 21 #bouches du rhone
+						state = 20 #rhone
+						state = 30 #loire
+					}
+				}
+			}
+		}
+
+		state_target = yes
+		targets = { 29 785 18 28 17 15 16 24 30 14 27 20 26 33 23 25 19 806 31 22 32 21 851 735 }
+		on_map_mode = map_only
+
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				is_core_of = FRA
+				any_neighbor_state = {
+					controller = { has_war_with = ROOT }
+				}
+			}
+		}
+
+		fire_only_once = no
+
+		days_remove = 25
+		
+		remove_trigger = {
+			has_war = no
+        }
+		
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+			FROM = {
+				remove_dynamic_modifier = {
+					modifier = FRA_last_defense
+				}
+			}
+		}
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = {
+					modifier = FRA_last_defense
+				}
+			}
+		}
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		available = {
+			surrender_progress > 0.20
+			has_country_flag = weygand_promoted
+		}
+	
+		visible = {
+			has_war = yes
+			has_war_with_non_exiled_country = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			surrender_progress > 0.20
+			has_country_flag = weygand_promoted
+		}
+
+		ai_will_do = {
+			base = 95
+		}
+	}
+
+	war_stop_exode = { 
+        priority = 10
+
+        icon = GFX_decision_generic_police_action
+
+        available = {
+            has_country_flag = weygand_promoted
+            NOT = {
+                has_country_flag = weygandcooldown
+            }
+        }
+
+        visible = {
+            has_idea = FRA_refugees
+            has_war = yes
+            has_war_with_non_exiled_country = yes
+            NOT = {
+                has_global_flag = fall_of_france
+            }
+            has_completed_focus = FRA_they_shall_not_pass2
+        }
+
+        allowed = {
+            tag = FRA
+        }
+
+        fire_only_once = yes
+
+		ai_will_do = {
+            base = 0
+		}
+
+		ai_hint_pp_cost = 25
+		custom_cost_trigger = {
+			has_political_power > 24
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25_pp_50
+        complete_effect = {
+            remove_ideas = FRA_refugees
+            hidden_effect = {
+				add_command_power = -25
+				add_political_power = -50
+				set_country_flag = weygandcooldown
+            }
+        }
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = weygandcooldown
+			}
+		}
+    }
+
+	war_manoevre = { 
+		priority = 70
+
+		icon = GFX_decision_generic_trucks
+
+		available = {
+			has_country_flag = weygand_promoted
+			NOT = {
+				has_country_flag = weygandcooldown
+			}
+		}
+
+		visible = {
+			has_war = yes
+			has_war_with_non_exiled_country = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+		}
+
+		allowed = {
+			tag = FRA
+		}
+
+		fire_only_once = no
+
+		days_remove = 35
+		
+		remove_trigger = {
+			has_war = no
+        }
+		
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+				set_country_flag = weygandcooldown
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = weygandcooldown
+			}
+		}
+
+		modifier = {
+			army_speed_factor = 0.05
+			army_attack_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	war_somme_aisne = { 
+		priority = 75
+
+		icon = GFX_decision_border_war
+
+		available = {
+			has_country_flag = weygand_promoted
+			surrender_progress > 0.15
+			NOT = {
+				has_country_flag = weygandcooldown
+			}
+		}
+
+		visible = {
+			has_war = yes
+			has_war_with_non_exiled_country = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+		}
+
+		allowed = {
+			tag = FRA
+		}
+		
+		fire_only_once = yes
+
+		days_remove = 40
+		
+		remove_trigger = {
+			has_war = no
+        }
+
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+				set_country_flag = weygandcooldown
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = weygandcooldown
+			}
+		}
+
+		modifier = {
+			pocket_penalty = -0.15
+			army_core_defence_factor = 0.1
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				add = 80
+				surrender_progress > 0.15
+			}
+		}
+	}
+
+	war_help_british_ai = {
+		priority = 50
+
+		icon = GFX_decision_french_helmet
+
+		available = {
+			has_country_flag = weygand_promoted
+			surrender_progress > 0.20
+			ENG = {
+				 has_war_with = GER
+			}
+			is_ally_with = ENG
+		}
+		visible = {
+			has_war = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+			is_ai = yes
+		}
+
+		days_remove = -1
+
+		ai_will_do = {
+			base = 500
+		}
+
+		fire_only_once = yes
+		complete_effect = {
+			news_event = { id = newsfml.120 days = 1 random_days = 1 }
+			ENG = {
+				add_timed_idea = { idea = FRA_op_dynamo days = 60 }
+			}
+		}
+		remove_effect = {
+		}
+
+		modifier = {
+			army_core_defence_factor = 0.13
+			out_of_supply_factor = -0.2
+			transport_capacity = -0.15
+			convoy_escort_efficiency = 0.1
+			navy_weather_penalty = -0.15
+			dig_in_speed_factor = 0.10
+			weekly_manpower = -10000 
+		}
+
+		ai_will_do = {
+			base = 200
+			modifier = {
+				add = 30
+				surrender_progress > 0.50
+			}
+		}
+	}
+
+	war_help_british = { 
+		priority = 75
+
+		icon = GFX_decision_generic_protection
+
+		available = {
+			has_country_flag = weygand_promoted
+			surrender_progress > 0.10
+			ENG = {
+				 has_war_with = GER
+			}
+			is_ally_with = ENG
+			NOT = {
+				has_country_flag = weygandcooldown
+			}
+		}
+
+		visible = {
+			has_war = yes
+			has_war_with_non_exiled_country = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+		}
+
+		allowed = {
+			tag = FRA
+		}
+		
+		fire_only_once = yes
+
+		days_remove = 40
+		
+		remove_trigger = {
+			has_war = no
+        }
+
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			news_event = { id = newsfml.120 days = 1 random_days = 1 }
+			ENG = {
+				add_timed_idea = { idea = FRA_op_dynamo days = 60 }
+			}
+			hidden_effect = {
+				add_command_power = -25
+				set_country_flag = weygandcooldown
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = weygandcooldown
+			}
+		}
+
+		modifier = {
+			army_core_defence_factor = 0.13
+			out_of_supply_factor = -0.2
+			transport_capacity = -0.15
+			convoy_escort_efficiency = 0.1
+			navy_weather_penalty = -0.15
+			dig_in_speed_factor = 0.10
+			weekly_manpower = -8000 
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 0
+				surrender_progress > 0.50
+			}
+		}
+	}
+
+	war_fallback = { 
+		priority = 30
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		available = {
+			has_country_flag = weygand_promoted
+			NOT = {
+				has_country_flag = weygandcooldown
+			}
+			surrender_progress > 0.05
+		}
+
+		visible = {
+			has_war = yes
+			has_war_with_non_exiled_country = yes
+			NOT = {
+				has_global_flag = fall_of_france
+			}
+			has_completed_focus = FRA_they_shall_not_pass2
+		}
+
+		allowed = {
+			tag = FRA
+		}
+
+		fire_only_once = no
+
+		days_remove = 20
+		
+		remove_trigger = {
+			has_war = no
+        }
+		
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+				set_country_flag = weygandcooldown
+			}
+		}
+		remove_effect = {
+			hidden_effect = {
+				clr_country_flag = weygandcooldown
+			}
+		}
+
+		modifier = {
+			army_org_regain = 0.1
+			army_speed_factor = 0.05
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+	}
+}

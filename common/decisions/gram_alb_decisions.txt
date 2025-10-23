@@ -1,0 +1,4828 @@
+#Check gram_alb_decision_categories.txt on how to label this
+
+#Italian Investment Into Albania #!# - Italian Decisions for Investments
+
+#Italian Investment #!#
+
+gram_decision_alb_italian_investment = {
+	
+	#Requst Italian Industrial Investment
+	request_italian_industrial_investment = {
+		icon = GFX_gram_decision_icon_alb_italian_industrial_investment
+		cost = 150
+		ai_will_do = {
+			base = 20
+		}
+
+		days_remove = 250
+
+		remove_effect = {
+
+			random_core_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_core_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		complete_effect = {
+		
+			if = { #If you have reached the maximum level
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_10
+				}
+				add_stability = -0.05
+				
+				if = {
+					limit = {
+						has_government = neutrality
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.05
+					}
+				}
+
+				if = {
+					limit = {
+						has_government = communism
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.05
+					}
+				}
+
+				if = {
+					limit = {
+						has_government = fascism
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.05
+					}
+				}
+
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.05
+					}
+				}
+			}
+
+			if = { #From idea 9 to 10
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_9
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_9
+						add_idea = gram_idea_alb_treaty_of_tirana_10
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 8 to 10
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_8
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_8
+						add_idea = gram_idea_alb_treaty_of_tirana_10
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 7 to 9
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_7
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_7
+						add_idea = gram_idea_alb_treaty_of_tirana_9
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 6 to 8
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_6
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_6
+						add_idea = gram_idea_alb_treaty_of_tirana_8
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 5 to 7
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_5
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_5
+						add_idea = gram_idea_alb_treaty_of_tirana_7
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 4 to 6
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_4
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_4
+						add_idea = gram_idea_alb_treaty_of_tirana_6
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 3 to 5
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_3
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_3
+						add_idea = gram_idea_alb_treaty_of_tirana_5
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 2 to 4
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_2
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_2
+						add_idea = gram_idea_alb_treaty_of_tirana_4
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 1 to 3
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_1
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_1
+						add_idea = gram_idea_alb_treaty_of_tirana_3
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		}
+	}
+
+	#Request Help From Italy for Mineral Excavation
+	request_help_from_italy_for_mineral_excavation = {
+		icon = GFX_gram_decision_icon_alb_italian_mineral_excavations
+		cost = 100
+		ai_will_do = {
+			base = 20
+		}
+
+		days_remove = 150
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = maximum_use_of_three_times_tt
+				NOT = {
+					has_country_flag = gram_flag_alb_italian_mining_3
+				}
+			}
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = gram_flag_alb_italian_mining_1
+					has_country_flag = gram_flag_alb_italian_mining_2
+					NOT = { has_country_flag = gram_flag_alb_italian_mining_3 }
+				}
+
+				set_country_flag = gram_flag_alb_italian_mining_3
+				
+				add_resource = {
+					type = chromium
+					amount = 4
+					state = 44
+				}
+
+				add_resource = {
+					type = oil
+					amount = 3
+					state = 934
+				}
+
+				add_resource = {
+					type = steel
+					amount = 2
+					state = 934
+				}
+
+				add_resource = {
+					type = tungsten
+					amount = 6
+					state = 805
+				}
+
+			}
+
+			if = {
+				limit = {
+					has_country_flag = gram_flag_alb_italian_mining_1
+					NOT = { has_country_flag = gram_flag_alb_italian_mining_2 }
+					NOT = { has_country_flag = gram_flag_alb_italian_mining_3 }
+				}
+
+				set_country_flag = gram_flag_alb_italian_mining_2
+				
+				add_resource = {
+					type = steel
+					amount = 4
+					state = 44
+				}
+
+				add_resource = {
+					type = chromium
+					amount = 2
+					state = 934
+				}
+
+				add_resource = {
+					type = oil
+					amount = 2
+					state = 934
+				}
+
+				add_resource = {
+					type = oil
+					amount = 3
+					state = 805
+				}
+
+			}
+
+			if = {
+				limit = {
+					NOT = { has_country_flag = gram_flag_alb_italian_mining_1 }
+					NOT = { has_country_flag = gram_flag_alb_italian_mining_2 }
+					NOT = { has_country_flag = gram_flag_alb_italian_mining_3 }					
+				}
+
+				set_country_flag = gram_flag_alb_italian_mining_1
+				
+				add_resource = {
+					type = steel
+					amount = 6
+					state = 44
+				}
+
+				add_resource = {
+					type = chromium
+					amount = 3
+					state = 934
+				}
+
+			}
+		}
+
+		complete_effect = {
+		
+			if = { #If you have reached the maximum level
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_10
+				}
+				add_stability = -0.05
+				
+				if = {
+					limit = {
+						has_government = neutrality
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.05
+					}
+				}
+
+				if = {
+					limit = {
+						has_government = communism
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.05
+					}
+				}
+
+				if = {
+					limit = {
+						has_government = fascism
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.05
+					}
+				}
+
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.05
+					}
+				}
+
+				custom_effect_tooltip = empty_divide_tt
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+
+			}
+
+			if = { #From idea 9 to 10
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_9
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_9
+						add_idea = gram_idea_alb_treaty_of_tirana_10
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 8 to 10
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_8
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_8
+						add_idea = gram_idea_alb_treaty_of_tirana_10
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 7 to 9
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_7
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_7
+						add_idea = gram_idea_alb_treaty_of_tirana_9
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 6 to 8
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_6
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_6
+						add_idea = gram_idea_alb_treaty_of_tirana_8
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 5 to 7
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_5
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_5
+						add_idea = gram_idea_alb_treaty_of_tirana_7
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 4 to 6
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_4
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_4
+						add_idea = gram_idea_alb_treaty_of_tirana_6
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 3 to 5
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_3
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_3
+						add_idea = gram_idea_alb_treaty_of_tirana_5
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 2 to 4
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_2
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_2
+						add_idea = gram_idea_alb_treaty_of_tirana_4
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 1 to 3
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_1
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_1
+						add_idea = gram_idea_alb_treaty_of_tirana_3
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		}
+	}
+
+	#Purchase Italian Guns
+	purchase_italian_guns = {
+		icon = GFX_gram_decision_icon_alb_purchase_italian_guns
+		cost = 100
+		ai_will_do = {
+			base = 20
+		}
+
+		days_remove = 700
+
+		complete_effect = {
+			
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 3000
+				producer = ITA
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+
+			if = { #If you have reached the maximum level
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_10
+				}
+				add_stability = -0.05
+				
+				if = {
+					limit = {
+						has_government = neutrality
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.05
+					}
+				}
+
+				if = {
+					limit = {
+						has_government = communism
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.05
+					}
+				}
+
+				if = {
+					limit = {
+						has_government = fascism
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.05
+					}
+				}
+
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = 0.05
+					}
+				}
+
+				custom_effect_tooltip = empty_divide_tt
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+
+			}
+
+			if = { #From idea 9 to 10
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_9
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_9
+						add_idea = gram_idea_alb_treaty_of_tirana_10
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 8 to 10
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_8
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_8
+						add_idea = gram_idea_alb_treaty_of_tirana_10
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 7 to 9
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_7
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_7
+						add_idea = gram_idea_alb_treaty_of_tirana_9
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 6 to 8
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_6
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_6
+						add_idea = gram_idea_alb_treaty_of_tirana_8
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 5 to 7
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_5
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_5
+						add_idea = gram_idea_alb_treaty_of_tirana_7
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 4 to 6
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_4
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_4
+						add_idea = gram_idea_alb_treaty_of_tirana_6
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 3 to 5
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_3
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_3
+						add_idea = gram_idea_alb_treaty_of_tirana_5
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 2 to 4
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_2
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_2
+						add_idea = gram_idea_alb_treaty_of_tirana_4
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 1 to 3
+				limit = {
+					has_idea = gram_idea_alb_treaty_of_tirana_1
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_1
+						add_idea = gram_idea_alb_treaty_of_tirana_3
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_goes_up_2_levels_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		}
+	}
+	
+	#Loan Payment to Italy
+	loan_payment_to_italy = {
+		icon = GFX_gram_decision_icon_alb_loan_payment_to_italy
+		cost = 50
+		ai_will_do = {
+			base = 80
+		}
+
+		days_remove = 75
+
+		complete_effect = {
+
+			add_timed_idea = {
+				idea = gram_idea_alb_loan_payment_paying
+				days = 50
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+
+			ITA = {
+				add_timed_idea = {
+					idea = gram_idea_alb_loan_payment_receiving
+					days = 50
+				}
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+
+			if = { #If you are at level 1, you will get some stability
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_1 
+				}
+				add_stability = 0.025
+				custom_effect_tooltip = empty_divide_tt
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 2 to 1
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_2 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_2
+						add_idea = gram_idea_alb_treaty_of_tirana_1
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 3 to 2
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_3 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_3
+						add_idea = gram_idea_alb_treaty_of_tirana_2
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 4 to 3
+				limit = { has_idea = gram_idea_alb_treaty_of_tirana_4 }
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_4
+						add_idea = gram_idea_alb_treaty_of_tirana_3
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 5 to 4
+				limit = { has_idea = gram_idea_alb_treaty_of_tirana_5 }
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_5
+						add_idea = gram_idea_alb_treaty_of_tirana_4
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 6 to 5
+				limit = { has_idea = gram_idea_alb_treaty_of_tirana_6 }
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_6
+						add_idea = gram_idea_alb_treaty_of_tirana_5
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 7 to 6 
+				limit = { has_idea = gram_idea_alb_treaty_of_tirana_7 }
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_7
+						add_idea = gram_idea_alb_treaty_of_tirana_6
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 8 to 7
+				limit = { has_idea = gram_idea_alb_treaty_of_tirana_8 }
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_8
+						add_idea = gram_idea_alb_treaty_of_tirana_7
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 9 to 8
+				limit = { has_idea = gram_idea_alb_treaty_of_tirana_9 }
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_9
+						add_idea = gram_idea_alb_treaty_of_tirana_8
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 10 to 9
+				limit = { has_idea = gram_idea_alb_treaty_of_tirana_10 }
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_10
+						add_idea = gram_idea_alb_treaty_of_tirana_9
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		}
+	}
+
+	#Political Correctness
+	political_correctness_2 = { #It is 2 because "Political Correctness" alredy exists
+	icon = GFX_gram_decision_icon_alb_political_correctness
+	cost = 125
+	ai_will_do = {
+		base = 60
+	}
+
+	days_remove = 250
+
+		complete_effect = {
+
+			if = { #Fascism gain
+				limit = {
+					OR = {
+						has_idea = gram_idea_alb_treaty_of_tirana_2
+						has_idea = gram_idea_alb_treaty_of_tirana_3
+						has_idea = gram_idea_alb_treaty_of_tirana_4
+						has_idea = gram_idea_alb_treaty_of_tirana_5
+						has_idea = gram_idea_alb_treaty_of_tirana_6
+						has_idea = gram_idea_alb_treaty_of_tirana_7
+						has_idea = gram_idea_alb_treaty_of_tirana_8
+						has_idea = gram_idea_alb_treaty_of_tirana_9
+						has_idea = gram_idea_alb_treaty_of_tirana_10	
+					}
+				}
+
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = {
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_1 
+				}
+				add_stability = 0.1
+				custom_effect_tooltip = empty_divide_tt
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 2 to 1
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_2 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_2
+						add_idea = gram_idea_alb_treaty_of_tirana_1
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 3 to 1
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_3 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_3
+						add_idea = gram_idea_alb_treaty_of_tirana_1
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 4 to 1
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_4 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_4
+						add_idea = gram_idea_alb_treaty_of_tirana_1
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 5 to 2
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_5 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_5
+						add_idea = gram_idea_alb_treaty_of_tirana_2
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 6 to 3
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_6 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_6
+						add_idea = gram_idea_alb_treaty_of_tirana_3
+					}
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 7 to 4
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_7 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_7
+						add_idea = gram_idea_alb_treaty_of_tirana_4
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 8 to 5
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_8 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_8
+						add_idea = gram_idea_alb_treaty_of_tirana_5
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 9 to 6
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_9 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_9
+						add_idea = gram_idea_alb_treaty_of_tirana_6
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 10 to 7
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_10 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_10
+						add_idea = gram_idea_alb_treaty_of_tirana_7
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_down_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		}
+	}
+
+	#Increasing Italian Grip
+	increasing_italian_grip_over_our_economy = {
+		icon = GFX_gram_decision_icon_alb_increasing_italian_grip
+		is_good = yes
+		
+		days_mission_timeout = 150 #How long will the mission go for
+		days_remove = 0 #How long for the mission to get removed
+		days_re_enable = 0 #Cooldown for the decision to reaper
+
+		#Message to myself - If you wish to remove Italian Investment 
+		#remove both allow_ticking flag and the italian_investment
+
+		available = { #Checker 
+			hidden_trigger = {
+				OR = {
+					ALB = { 
+						has_war_with = ITA 
+					}
+					NOT = { 
+						has_country_flag = gram_flag_alb_allow_ticking_for_investments 
+					}
+				}
+			}
+		}
+
+		activation = { #Used so the mission wont keep reapering
+			has_country_flag = gram_flag_alb_allow_ticking_for_investments
+		}
+
+		complete_effect = { #If the mission fails it removes the country flags
+			clr_country_flag = gram_flag_alb_italian_investment
+			clr_country_flag = gram_flag_alb_allow_ticking_for_investments
+		}
+
+		timeout_effect = {
+			
+			if = { #If you reached the max level for treaty of tirana, this stuff will happend
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_10
+				}
+
+				if = { #If you are the puppet, this will lower your autonomy, and some stability
+					limit = { 
+						is_subject = yes 
+					}
+
+					add_autonomy_score = {
+						value = -200
+					}
+
+					custom_effect_tooltip = empty_divide_tt
+					add_stability = -0.05
+				}
+
+				if = { #If you are not a puppet, just lose some stability
+					limit = { 
+						is_subject = no 
+					}
+
+					custom_effect_tooltip = empty_divide_tt
+					add_stability = -0.05
+				}
+				custom_effect_tooltip = empty_divide_tt
+				custom_effect_tooltip = treaty_of_tirana_max_level_tt
+			}
+
+			if = { #From idea 9 to 10
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_9 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_9
+						add_idea = gram_idea_alb_treaty_of_tirana_10
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_up_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 8 to 9
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_8 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_8
+						add_idea = gram_idea_alb_treaty_of_tirana_9
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_up_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 7 to 8
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_7 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_7
+						add_idea = gram_idea_alb_treaty_of_tirana_8
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_up_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 6 to 7
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_6 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_6
+						add_idea = gram_idea_alb_treaty_of_tirana_7
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_up_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 5 to 6
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_5 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_5
+						add_idea = gram_idea_alb_treaty_of_tirana_6
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_up_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 4 to 5
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_4 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_4
+						add_idea = gram_idea_alb_treaty_of_tirana_5
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_up_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 3 to 4
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_3 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_3
+						add_idea = gram_idea_alb_treaty_of_tirana_4
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_up_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 2 to 3
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_2 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_2
+						add_idea = gram_idea_alb_treaty_of_tirana_3
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_up_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #From idea 1 to 2
+				limit = { 
+					has_idea = gram_idea_alb_treaty_of_tirana_1 
+				}
+				hidden_effect = {
+					swap_ideas = {
+						remove_idea = gram_idea_alb_treaty_of_tirana_1
+						add_idea = gram_idea_alb_treaty_of_tirana_2
+					}			
+				}
+				custom_effect_tooltip = treaty_of_tirana_level_goes_up_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = {
+				limit = {
+					OR = {
+						has_idea = gram_idea_alb_treaty_of_tirana_1
+						has_idea = gram_idea_alb_treaty_of_tirana_2
+						has_idea = gram_idea_alb_treaty_of_tirana_3
+						has_idea = gram_idea_alb_treaty_of_tirana_4
+						has_idea = gram_idea_alb_treaty_of_tirana_5
+						has_idea = gram_idea_alb_treaty_of_tirana_6
+						has_idea = gram_idea_alb_treaty_of_tirana_7
+						has_country_flag = gram_flag_alb_goverment_taken_over
+					}
+				}
+				random_list = {
+					35 = { 
+						country_event = gram_event_alb_italian_industrial_investment.1 
+					}
+					25 = {
+						country_event = gram_event_alb_joint_military_exercise.1
+					}
+					40 = {
+						custom_effect_tooltip = nothing_will_happen_tt
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					OR = {
+						has_idea = gram_idea_alb_treaty_of_tirana_8
+						has_idea = gram_idea_alb_treaty_of_tirana_9
+						has_idea = gram_idea_alb_treaty_of_tirana_10						
+					}
+					NOT = { has_country_flag = gram_flag_alb_goverment_taken_over }
+				}
+				set_country_flag = gram_flag_alb_goverment_taken_over
+				country_event = gram_event_alb_goverment_takeover.1
+			}
+		}
+	}
+}
+
+#2 Year Plan #!#
+gram_decision_alb_2_year_plan = {
+	#Productivity
+	focus_on_productivity = {
+		icon = GFX_gram_decision_icon_alb_focus_on_productivity
+		days_remove = 720
+		cost = 75
+		available = {
+
+			custom_trigger_tooltip = {
+				tooltip = doesnt_have_two_year_plan_active_tt
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_construction } #Construction
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_resource_extraction } #Extraction
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_civilian_construction } #Civilian
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_military_construction } #Military
+			}
+
+		}
+		complete_effect = {
+			add_ideas = gram_idea_alb_2_year_plan_focus_on_productivity
+		}
+		remove_effect = {
+			remove_ideas = gram_idea_alb_2_year_plan_focus_on_productivity
+		}
+	}
+
+	#Construction
+	focus_on_construction = {
+		icon = GFX_gram_decision_icon_alb_focus_on_construction
+		days_remove = 720
+		cost = 75
+		available = {
+
+			custom_trigger_tooltip = {
+				tooltip = doesnt_have_two_year_plan_active_tt
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_productivity } #Productivity
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_resource_extraction } #Extraction
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_civilian_construction } #Civilian 
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_military_construction } #Military
+			}
+
+		}
+		complete_effect = {
+			add_ideas = gram_idea_alb_2_year_plan_focus_on_construction
+		}
+		remove_effect = {
+			remove_ideas = gram_idea_alb_2_year_plan_focus_on_construction
+		}
+	}
+
+	#Extraction
+	focus_on_resource_extraction = {
+		icon = GFX_gram_decision_icon_alb_focus_on_resource_extraction
+		days_remove = 720
+		cost = 75
+		available = {
+
+			custom_trigger_tooltip = {
+				tooltip = doesnt_have_two_year_plan_active_tt
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_productivity } #Productivity
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_construction } #Construction
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_civilian_construction } #Civilian
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_military_construction } #Military
+			}
+
+		}
+		complete_effect = {
+			add_ideas = gram_idea_alb_2_year_plan_focus_on_resource_extraction
+		}
+		remove_effect = {
+			remove_ideas = gram_idea_alb_2_year_plan_focus_on_resource_extraction
+		}
+	}
+
+	#Civilian
+	focus_on_civilian_construction = {
+		icon = GFX_gram_decision_icon_alb_focus_on_civilian_construction
+		days_remove = 720
+		cost = 75
+		available = {
+
+			custom_trigger_tooltip = {
+				tooltip = doesnt_have_two_year_plan_active_tt
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_productivity } #Productivity
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_construction } #Construction
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_resource_extraction } #Extraction
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_military_construction } #Military
+			}
+
+		}
+		complete_effect = {
+			add_ideas = gram_idea_alb_2_year_plan_focus_on_civilian_construction
+		}
+		remove_effect = {
+			remove_ideas = gram_idea_alb_2_year_plan_focus_on_civilian_construction
+		}
+	}
+
+	#Military
+	focus_on_military_construction = {
+		icon = GFX_gram_decision_icon_alb_focus_on_military_construction
+		days_remove = 720
+		cost = 75
+		available = {
+
+			custom_trigger_tooltip = {
+				tooltip = doesnt_have_two_year_plan_active_tt
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_productivity } #Productivity
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_construction } #Construction
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_resource_extraction } #Extraction
+				NOT = { has_idea = gram_idea_alb_2_year_plan_focus_on_civilian_construction } #Civilian
+			}
+
+		}
+		complete_effect = {
+			add_ideas = gram_idea_alb_2_year_plan_focus_on_military_construction
+		}
+		remove_effect = {
+			remove_ideas = gram_idea_alb_2_year_plan_focus_on_military_construction
+		}
+	}
+
+}
+
+#Back in Control #!#
+gram_decision_alb_back_in_control = {
+	back_in_control_1 = {
+		icon = GFX_gram_decision_icon_alb_back_in_control
+		fire_only_once = yes
+		days_remove = 5
+		ai_will_do = { base = 100 }
+		available = {
+			ROOT = { 
+				has_war = no 
+			}
+			ROOT = { 
+				has_civil_war = no 
+			}
+		}
+		complete_effect = {
+
+			add_stability = 0.2
+			add_war_support = 0.1
+			add_political_power = 200
+
+			news_event = gram_event_alb_end_of_italian_civil_war.1
+
+			if = { #If Italy was at war with UK, the UK will get control over Libya
+				limit = { 
+					has_global_flag = gram_flag_alb_italy_was_at_war_with_eng 
+					ENG = { 
+						exists = yes 
+						has_capitulated = no 
+					} 
+				}
+				ROOT = { 
+					release = LBA 
+				}
+				ENG = { 
+					puppet = LBA 
+				}
+			}
+
+			if = { #If Italy was at war with France, the French will get control over Sardegna and Resource Rights over Piemonte
+				limit = { 
+					has_global_flag = gram_flag_alb_italy_was_at_war_with_fra 
+					FRA = { 
+						exists = yes 
+						has_capitulated = no
+					} 
+				}
+				114 = { 
+					transfer_state_to = FRA 
+				}
+				give_resource_rights = { 
+					receiver = FRA 
+					state = 158 
+				}
+			}
+
+			if = { #If Italy was at war with Ethiopia, the Ethiopia will get control over Eritrea, Afar, Somaliland and Jubaland
+				limit = { 
+					has_global_flag = gram_flag_alb_italy_was_at_war_with_eth 
+					ETH = { 
+						exists = yes 
+					} 
+				}
+				550 = { transfer_state_to = ETH }
+				908 = { transfer_state_to = ETH }
+				559 = { transfer_state_to = ETH }
+				844 = { transfer_state_to = ETH }
+			}
+
+			hidden_effect = {
+				clr_country_flag = gram_flag_alb_new_italian_republic
+			}
+		}
+	}
+}
+
+#Balkan Project #!#
+
+#Bulgaria
+gram_decision_alb_balkan_project_bulgaria = {
+	boost_communist_influence_bulgaria = {
+		icon = GFX_gram_decision_icon_alb_boost_communist_influence
+		cost = 25
+		days_re_enable = 25
+		available = { 
+			NOT = { 
+				BUL = { 
+					has_government = communism 
+				} 
+			}
+			BUL = { 
+				has_civil_war = no 
+			}
+			BUL = { 
+				is_subject = no 
+			}
+			BUL = { 
+				has_capitulated = no 
+			}
+			BUL = { 
+				exists = yes 
+			}
+			BUL = { 
+				is_in_faction = no 
+			}
+			NOT = {
+				BUL = { 
+					has_war_with = ROOT
+				} 
+			}
+		}
+
+		complete_effect = {
+			BUL = { 
+				add_popularity = { 
+					ideology = communism 
+					popularity = 0.075 
+				}
+				add_stability = -0.05 
+			}
+		}			
+	}
+
+	secretly_overthrow_the_goverment_bulgaria = {
+		icon = GFX_gram_decision_icon_alb_overthrow_the_goverment
+		cost = 100
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			BUL = { 
+				communism > 0.4 
+			}
+			NOT = { 
+				BUL = { 
+					has_government = communism 
+				} 
+			}
+			BUL = { 
+				has_civil_war = no 
+			}
+			BUL = { 
+				has_capitulated = no 
+			}
+			BUL = { 
+				exists = yes
+			}
+			BUL = { 
+				is_subject = no
+			}
+			BUL = { 
+				is_in_faction = no 
+			}
+			NOT = { 
+				BUL = { 
+					has_war_with = ROOT 
+				} 
+			}
+		}
+
+		complete_effect = {
+			BUL = {
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = no
+				}
+			}
+		}
+	}
+
+	pressure_them_into_joining_our_faction_bulgaria = {
+		icon = GFX_gram_decision_icon_alb_pressure_into_joining_the_faction
+		cost = 50
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			BUL = { 
+				has_civil_war = no 
+			}
+			BUL = { 
+				is_subject = no 
+			}
+			BUL = { 
+				has_capitulated = no 
+			}
+			BUL = { 
+				exists = yes 
+			}
+			BUL = { 
+				is_in_faction = no 
+			}
+			NOT = {
+				BUL = { 
+					has_war_with = ROOT 
+				} 
+			}
+			BUL = { 
+				has_government = communism 
+			}
+			ROOT = { 
+				is_faction_leader = yes 
+			}
+		}
+
+		complete_effect = {
+			BUL = { 
+				country_event = { 
+					id = gram_event_alb_opportunity_to_become_a_partner_in_balkan_project.1 
+					hours = 12 
+				} 
+			}
+		}
+	}
+
+	pressure_them_into_submission_bulgaria = {
+		icon = GFX_gram_decision_icon_alb_pressure_them_into_submission
+		cost = 100
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			BUL = { 
+				has_civil_war = no 
+			}
+			BUL = { 
+				is_subject = no
+			}
+			BUL = { 
+				has_capitulated = no 
+			}
+			BUL = { 
+				exists = yes 
+			}
+			NOT = {
+				BUL = { 
+					has_war_with = ROOT 
+				} 
+			}
+			BUL = { 
+				has_government = communism 
+			}
+			BUL = { 
+				is_in_faction_with = ROOT 
+			}
+			ROOT = { 
+				is_faction_leader = yes 
+			}
+		}
+
+		complete_effect = {
+			BUL = { 
+				country_event = { 
+					id = gram_event_alb_proposal_of_closer_unity.1 
+					hours = 12 
+				} 
+			}
+			hidden_effect = {
+				clr_country_flag = gram_flag_alb_balkan_project_bulgaria
+			}
+		}		
+	}
+}
+
+#Greece
+gram_decision_alb_balkan_project_greece = {
+	boost_communist_influence_greece = {
+		icon = GFX_gram_decision_icon_alb_boost_communist_influence
+		cost = 25
+		days_re_enable = 25
+		available = { 
+			NOT = { 
+				GRE = { 
+					has_government = communism 
+				} 
+			}
+			GRE = { 
+				has_civil_war = no 
+			}
+			GRE = {
+				is_subject = no 
+			}
+			GRE = { 
+				has_capitulated = no 
+			}
+			GRE = { 
+				exists = yes 
+			}		
+			GRE = { 
+				is_in_faction = no 
+			}
+			NOT = { 
+				GRE = { 
+					has_war_with = ROOT 
+				} 
+			}
+		}
+
+		complete_effect = {
+			GRE = { 
+				add_popularity = { 
+					ideology = communism 
+					popularity = 0.075 
+				}
+				add_stability = -0.05 
+			}
+		}
+	}
+
+	secretly_overthrow_the_goverment_greece = {
+		icon = GFX_gram_decision_icon_alb_overthrow_the_goverment
+		cost = 100
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			GRE = { 
+				communism > 0.4 
+			}
+			NOT = { 
+				GRE = { 
+					has_government = communism 
+				} 
+			}
+			GRE = { 
+				has_civil_war = no 
+			}
+			GRE = { 
+				has_capitulated = no 
+			}
+			GRE = { 
+				exists = yes 
+			}	
+			GRE = { 
+				is_subject = no 
+			}
+			GRE = { 
+				is_in_faction = no 
+			}
+			NOT = { 
+				GRE = { 
+					has_war_with = ROOT 
+				} 
+			}
+		}
+
+		complete_effect = {
+			GRE = {
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = no
+				}
+			}
+		}
+	}
+
+	pressure_them_into_joining_our_faction_greece = {
+		icon = GFX_gram_decision_icon_alb_pressure_into_joining_the_faction
+		cost = 50
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			GRE = { 
+				has_civil_war = no 
+			}
+			GRE = { 
+				is_subject = no 
+			}
+			GRE = { 
+				has_capitulated = no 
+			}
+			GRE = { 
+				exists = yes 
+			}	
+			GRE = { 
+				is_in_faction = no 
+			}
+			NOT = { 
+				GRE = { 
+					has_war_with = ROOT 
+				} 
+			}
+			GRE = { 
+				has_government = communism 
+			}
+			ROOT = { 
+				is_faction_leader = yes 
+			}
+		}
+
+		complete_effect = {
+			GRE = { 
+				country_event = { 
+					id = gram_event_alb_opportunity_to_become_a_partner_in_balkan_project.1 
+					hours = 12 
+				} 
+			}
+		}
+	}
+
+	pressure_them_into_submission_greece = {
+		icon = GFX_gram_decision_icon_alb_pressure_them_into_submission
+		cost = 100
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			GRE = { 
+				has_civil_war = no 
+			}
+			GRE = { 
+				is_subject = no 
+			}
+			GRE = { 
+				has_capitulated = no 
+			}
+			GRE = { 
+				exists = yes 
+			}	
+			NOT = { 
+				GRE = { 
+					has_war_with = ROOT 
+				} 
+			}
+			GRE = { 
+				has_government = communism
+			}
+			GRE = { 
+				is_in_faction_with = ROOT 
+			}
+			ROOT = { 
+				is_faction_leader = yes 
+			}
+		}
+
+		complete_effect = {
+			GRE = { 
+				country_event = { 
+					id = gram_event_alb_proposal_of_closer_unity.1 
+					hours = 12 
+				} 
+			}
+			hidden_effect = {
+				clr_country_flag = gram_flag_alb_balkan_project_greece
+			}
+		}
+	}
+}
+
+#Romania
+gram_decision_alb_balkan_project_romania = {
+	boost_communist_influence_romania = {
+		icon = GFX_gram_decision_icon_alb_boost_communist_influence
+		cost = 25
+		days_re_enable = 25
+		available = { 
+			NOT = { 
+				ROM = { 
+					has_government = communism 
+				} 
+			}
+			ROM = { 
+				has_civil_war = no 
+			}
+			ROM = { 
+				is_subject = no 
+			}
+			ROM = {
+				has_capitulated = no 
+			}
+			ROM = { 
+				exists = yes 
+			}		
+			ROM = { 
+				is_in_faction = no
+			}
+			NOT = { 
+				ROM = { 
+					has_war_with = ROOT 
+				} 
+			}
+		}
+
+		complete_effect = {
+			ROM = { 
+				add_popularity = { 
+					ideology = communism 
+					popularity = 0.075 
+				}
+				add_stability = -0.05 
+			}
+		}
+	}
+
+	secretly_overthrow_the_goverment_romania = {
+		icon = GFX_gram_decision_icon_alb_overthrow_the_goverment
+		cost = 100
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			ROM = { 
+				communism > 0.4 
+			}
+			NOT = { 
+				ROM = { 
+					has_government = communism 
+				} 
+			}
+			ROM = { 
+				has_civil_war = no 
+			}
+			ROM = { 
+				has_capitulated = no 
+			}
+			ROM = { 
+				exists = yes 
+			}	
+			ROM = { 
+				is_subject = no 
+			}
+			ROM = { 
+				is_in_faction = no 
+			}
+			NOT = { 
+				ROM = { 
+					has_war_with = ROOT 
+				} 
+			}
+		}
+
+		complete_effect = {
+			ROM = {
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = no
+				}
+			}
+		}
+	}
+
+	pressure_them_into_joining_our_faction_romania = {
+		icon = GFX_gram_decision_icon_alb_pressure_into_joining_the_faction
+		cost = 50
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			ROM = { 
+				has_civil_war = no 
+			}
+			ROM = { 
+				is_subject = no 
+			}
+			ROM = { 
+				has_capitulated = no 
+			}
+			ROM = { 
+				exists = yes 
+			}	
+			ROM = {
+				is_in_faction = no 
+			}
+			NOT = { 
+				ROM = { 
+					has_war_with = ROOT 
+				} 
+			}
+			ROM = { 
+				has_government = communism 
+			}
+			ROOT = { 
+				is_faction_leader = yes 
+			}
+		}
+
+		complete_effect = {
+			ROM = { 
+				country_event = { 
+					id = gram_event_alb_opportunity_to_become_a_partner_in_balkan_project.1 
+					hours = 12 
+				} 
+			}
+		}
+	}
+
+	pressure_them_into_submission_romania = {
+		icon = GFX_gram_decision_icon_alb_pressure_them_into_submission
+		cost = 100
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			ROM = { 
+				has_civil_war = no 
+			}
+			ROM = { 
+				is_subject = no 
+			}
+			ROM = { 
+				has_capitulated = no 
+			}
+			ROM = { 
+				exists = yes 
+			}	
+			NOT = { 
+				ROM = { 
+					has_war_with = ROOT 
+				} 
+			}
+			ROM = { 
+				has_government = communism 
+			}
+			ROM = { 
+				is_in_faction_with = ROOT 
+			}
+			ROOT = { 
+				is_faction_leader = yes 
+			}
+		}
+
+		complete_effect = {
+			ROM = { 
+				country_event = { 
+					id = gram_event_alb_proposal_of_closer_unity.1 
+					hours = 12 
+				} 
+			}
+			hidden_effect = {
+				clr_country_flag = gram_flag_alb_balkan_project_romania
+			}
+		}
+	}
+}
+
+#Yugoslavia 
+gram_decision_alb_balkan_project_yugoslavia = {
+	boost_communist_influence_yugoslavia = {
+		icon = GFX_gram_decision_icon_alb_boost_communist_influence
+		cost = 25
+		days_re_enable = 25
+		available = { 
+			NOT = { 
+				YUG = { 
+					has_government = communism 
+				} 
+			}
+			YUG = { 
+				has_civil_war = no 
+			}
+			YUG = { 
+				has_capitulated = no 
+			}
+			YUG = { 
+				exists = yes 
+			}	
+			YUG = { 
+				is_subject = no 
+			}
+			YUG = { 
+				is_in_faction = no 
+			}
+			NOT = { 
+				YUG = { 
+					has_war_with = ROOT 
+				} 
+			}
+		}
+
+		complete_effect = {
+			YUG = { 
+				add_popularity = { 
+					ideology = communism 
+					popularity = 0.075 
+				}
+				add_stability = -0.05 
+			}
+		}
+	}
+
+	secretly_overthrow_the_goverment_yugoslavia = {
+		icon = GFX_gram_decision_icon_alb_overthrow_the_goverment
+		cost = 100
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			YUG = { 
+				communism > 0.4 
+			}
+			NOT = { 
+				YUG = { 
+					has_government = communism 
+				} 
+			}
+			YUG = { 
+				has_civil_war = no 
+			}
+			YUG = { 
+				has_capitulated = no 
+			}
+			YUG = { 
+				exists = yes 
+			}	
+			YUG = { 
+				is_subject = no 
+			}
+			YUG = { 
+				is_in_faction = no 
+			}
+			NOT = { 
+				YUG = { 
+					has_war_with = ROOT 
+				} 
+			}
+		}
+
+		complete_effect = {
+			YUG = {
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = no
+				}
+			}
+		}
+	}
+
+	pressure_them_into_joining_our_faction_yugoslavia = {
+		icon = GFX_gram_decision_icon_alb_pressure_into_joining_the_faction
+		cost = 50
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			YUG = { 
+				has_civil_war = no 
+			}
+			YUG = { 
+				is_subject = no 
+			}
+			YUG = { 
+				has_capitulated = no
+			}
+			YUG = { 
+				exists = yes 
+			}	
+			YUG = {
+				is_in_faction = no 
+			}
+			NOT = { 
+				YUG = { 
+					has_war_with = ROOT 
+				} 
+			}
+			YUG = { 
+				has_government = communism 
+			}
+			ROOT = { 
+				is_faction_leader = yes 
+			}
+		}
+
+		complete_effect = {
+			YUG = { 
+				country_event = { 
+					id = gram_event_alb_opportunity_to_become_a_partner_in_balkan_project.1 
+					hours = 12 
+				} 
+			}
+		}
+	}
+
+	pressure_them_into_submission_yugoslavia = {
+		icon = GFX_gram_decision_icon_alb_pressure_them_into_submission
+		cost = 100
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			YUG = { 
+				has_civil_war = no 
+			}
+			YUG = { 
+				is_subject = no 
+			}
+			YUG = { 
+				has_capitulated = no 
+			}
+			YUG = { 
+				exists = yes 
+			}	
+			NOT = { 
+				YUG = { 
+					has_war_with = ROOT 
+				} 
+			}
+			YUG = { 
+				has_government = communism 
+			}
+			YUG = { 
+				is_in_faction_with = ROOT 
+			}
+			ROOT = { 
+				is_faction_leader = yes
+			}
+		}
+		
+		complete_effect = {
+			YUG = { 
+				country_event = { 
+					id = gram_event_alb_proposal_of_closer_unity.1 
+					hours = 12 
+				} 
+			}
+			hidden_effect = {
+				clr_country_flag = gram_flag_alb_balkan_project_yugoslavia
+			}
+		}
+	}
+}
+
+#Crumbling Nation #!#
+gram_decision_alb_crumbling_nation = {
+
+	#Slovenia Decision 1
+	help_the_independence_movement_in_slovenia = {
+		icon = GFX_gram_decision_icon_alb_help_the_independence_movement
+		cost = 50
+		available = { 
+			SLV = { 
+				NOT = { 
+					has_autonomy_state = autonomy_dominion 
+				} 
+			} 
+		}
+
+		days_remove = 50
+
+		remove_effect = {
+	
+			custom_effect_tooltip = crumbling_nation_force_of_autonomy_tt
+
+			#For anyone who wants to start modding, order of executions does matter, specially here
+
+			if = { #Checker for Puppet > Colony - Slovenia
+				limit = { 
+					SLV = {
+						exists = yes 
+						is_puppet_of = YUG 
+						has_autonomy_state = autonomy_puppet 
+						compare_autonomy_progress_ratio > 0.85
+					} 
+				}
+				YUG = { 
+					set_autonomy = { 
+						target = SLV 
+						autonomy_state = autonomy_colony 
+						freedom_level = 0.05 
+					} 
+				}
+			}
+
+			else_if = { #Checker for Colony > Dominion - Slovenia
+				limit = { 
+					SLV = { 
+						exists = yes 
+						is_puppet_of = YUG 
+						has_autonomy_state = autonomy_colony
+						compare_autonomy_progress_ratio > 0.85
+					} 
+				}
+				YUG = { 
+					set_autonomy = { 
+						target = SLV 
+						autonomy_state = autonomy_dominion 
+						freedom_level = 0.05 
+					} 
+				}
+			}
+
+			if = {
+				limit = { 
+					SLV = { 
+						exists = yes 
+						is_puppet_of = YUG 
+					} 
+				}
+				SLV = { 
+					add_autonomy_score = { 
+						value = 150 
+					} 
+				}
+			}
+		}
+	}
+
+	#Croatia Decision 1
+	help_the_independence_movement_in_croatia = {
+		icon = GFX_gram_decision_icon_alb_help_the_independence_movement
+		cost = 50
+		available = { 
+			CRO = { 
+				NOT = { 
+					has_autonomy_state = autonomy_dominion
+				} 
+			} 
+		}
+		days_remove = 50
+		remove_effect = {
+
+			custom_effect_tooltip = crumbling_nation_force_of_autonomy_tt
+
+			if = { #Checker for Puppet > Colony - Croatia
+				limit = { 
+					CRO = {
+						exists = yes 
+						is_puppet_of = YUG 
+						has_autonomy_state = autonomy_puppet 
+						compare_autonomy_progress_ratio > 0.85
+					} 
+				}
+				YUG = { 
+					set_autonomy = { 
+						target = CRO 
+						autonomy_state = autonomy_colony 
+						freedom_level = 0.05 
+					} 
+				}
+			}
+
+			else_if = { #Checker for Colony > Dominion - Croatia
+				limit = { 
+					CRO = { 
+						exists = yes 
+						is_puppet_of = YUG 
+						has_autonomy_state = autonomy_colony
+						compare_autonomy_progress_ratio > 0.85
+					} 
+				}
+				YUG = { 
+					set_autonomy = { 
+						target = CRO 
+						autonomy_state = autonomy_dominion 
+						freedom_level = 0.05
+					} 
+				}
+			}
+
+			if = {
+				limit = { 
+					CRO = { 
+						exists = yes 
+						is_puppet_of = YUG 
+					} 
+				}
+				CRO = { 
+					add_autonomy_score = { 
+						value = 150 
+					} 
+				}
+			}
+		}
+	}
+
+	#Bosnia Decision 1
+	help_the_independence_movement_in_bosnia = {
+		icon = GFX_gram_decision_icon_alb_help_the_independence_movement
+		cost = 50
+		available = { 
+			BOS = { 
+				NOT = { 
+					has_autonomy_state = autonomy_dominion 
+				} 
+			} 
+		}
+		days_remove = 50
+		remove_effect = {
+
+			custom_effect_tooltip = crumbling_nation_force_of_autonomy_tt
+
+			if = { #Checker for Puppet > Colony - Bosnia
+				limit = { 
+					BOS = {
+						exists = yes 
+						is_puppet_of = YUG 
+						has_autonomy_state = autonomy_puppet 
+						compare_autonomy_progress_ratio > 0.85
+					} 
+				}
+				YUG = { 
+					set_autonomy = { 
+						target = BOS 
+						autonomy_state = autonomy_colony 
+						freedom_level = 0.05 
+					} 
+				}
+			}
+
+			else_if = { #Checker for Colony > Dominion - Bosnia
+				limit = { 
+					BOS = { 
+						exists = yes 
+						is_puppet_of = YUG 
+						has_autonomy_state = autonomy_colony
+						compare_autonomy_progress_ratio > 0.85
+					} 
+				}
+				YUG = { 
+					set_autonomy = { 
+						target = BOS 
+						autonomy_state = autonomy_dominion 
+						freedom_level = 0.05 
+					} 
+				}
+			}
+
+			if = {
+				limit = { 
+					BOS = { 
+						exists = yes 
+						is_puppet_of = YUG 
+					} 
+				}
+				BOS = { 
+					add_autonomy_score = { 
+						value = 150 
+					} 
+				}
+			}
+		}
+	}
+
+	#Montenegro Decision 1
+	help_the_independence_movement_in_montenegro = {
+		icon = GFX_gram_decision_icon_alb_help_the_independence_movement
+		cost = 50
+
+		available = { 
+			MNT = { 
+				NOT = { 
+					has_autonomy_state = autonomy_dominion 
+				} 
+			} 
+		}
+		days_remove = 50
+		remove_effect = {
+
+			custom_effect_tooltip = crumbling_nation_force_of_autonomy_tt
+
+			if = { #Checker for Puppet > Colony - Montenegro
+				limit = { 
+					MNT = {
+						exists = yes 
+						is_puppet_of = YUG 
+						has_autonomy_state = autonomy_puppet 
+						compare_autonomy_progress_ratio > 0.85
+					} 
+				}
+				YUG = { 
+					set_autonomy = { 
+						target = MNT 
+						autonomy_state = autonomy_colony 
+						freedom_level = 0.05 
+					} 
+				}
+			}
+
+			else_if = { #Checker for Colony > Dominion - Montenegro
+				limit = { 
+					MNT = { 
+						exists = yes 
+						is_puppet_of = YUG 
+						has_autonomy_state = autonomy_colony
+						compare_autonomy_progress_ratio > 0.85
+					} 
+				}
+				YUG = { 
+					set_autonomy = { 
+						target = MNT
+						autonomy_state = autonomy_dominion 
+						freedom_level = 0.05 
+					} 
+				}
+			}
+
+			if = {
+				limit = { 
+					MNT = { 
+						exists = yes 
+						is_puppet_of = YUG 
+					} 
+				}
+				MNT = { 
+					add_autonomy_score = { 
+						value = 150 
+					} 
+				}
+			}
+		}
+	}
+
+	#Slovenia Decision 2
+	fund_the_movement_in_slovenia = {
+		icon = GFX_gram_decision_icon_alb_fund_the_movement
+		cost = 100
+		days_remove = 200
+		available = { 
+			SLV = { 
+				exists = yes 
+				is_subject_of = YUG 
+			}
+			hidden_trigger = {
+				NOT = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				} 
+			}
+		}
+	
+		#Giving Effect
+		complete_effect = { 
+
+			#Tooltips
+			if = { #You still dont have the national spirit
+				limit = { 
+					NOT = { 
+						has_idea = gram_idea_alb_founding_other_nations_independence_4 
+						has_idea = gram_idea_alb_founding_other_nations_independence_3
+						has_idea = gram_idea_alb_founding_other_nations_independence_2
+						has_idea = gram_idea_alb_founding_other_nations_independence_1
+					} 
+				}
+				custom_effect_tooltip = crumbling_nation_no_idea_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #You have all 4 Ideas - You wont see this option
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_4_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		
+			if = { #You have 3 Ideas
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_3 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		
+			if = { #You have 2 Ideas
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_2 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_2_tt	
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #You have 1 Idea
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_1_tt	
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			#Effect
+			if = { #If the you dont have an idea alredy, you will get one dont worry
+				limit = { 
+					NOT = { 
+						has_idea = gram_idea_alb_founding_other_nations_independence_1
+						has_idea = gram_idea_alb_founding_other_nations_independence_2
+						has_idea = gram_idea_alb_founding_other_nations_independence_3 
+						has_idea = gram_idea_alb_founding_other_nations_independence_4 
+					} 
+				}
+				SLV = { 
+					add_autonomy_score = { 
+						value = 600 
+					}
+				}
+				add_ideas = gram_idea_alb_founding_other_nations_independence_1
+			}
+
+			else_if = { #If you have Idea 1, you shall get Idea 2
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				SLV = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_1
+					add_idea = gram_idea_alb_founding_other_nations_independence_2
+				}
+			}
+
+			else_if = { #If you have Idea 2, you shall get Idea 3
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_2 
+				}
+				SLV = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_2
+					add_idea = gram_idea_alb_founding_other_nations_independence_3
+				}
+			}
+
+			else_if = { #If you have Idea 3, you shall get Idea 4
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_3 
+				}
+				SLV = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_3
+					add_idea = gram_idea_alb_founding_other_nations_independence_4
+				}	
+			}
+
+		}
+		
+		#Removing Effect
+		remove_effect = {
+			if = { #If you have Idea 1, you will lose it (Oh nooo, anyway)
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				remove_ideas = gram_idea_alb_founding_other_nations_independence_1
+			}
+
+			else_if = { #If you have Idea 4, you shall get Idea 3
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_4
+					add_idea = gram_idea_alb_founding_other_nations_independence_3
+				}
+			}
+
+				else_if = { #If you have Idea 3, you shall get Idea 2
+					limit = { 
+						has_idea = gram_idea_alb_founding_other_nations_independence_3 
+					}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_3
+					add_idea = gram_idea_alb_founding_other_nations_independence_2
+				}
+			}
+
+				else_if = { #If you have Idea 2, you shall get Idea 1
+					limit = { 
+						has_idea = gram_idea_alb_founding_other_nations_independence_2 
+					}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_2
+					add_idea = gram_idea_alb_founding_other_nations_independence_1
+				}
+			}
+		}
+	}
+
+	#Croatia Decision 2
+	fund_the_movement_in_croatia = {
+		icon = GFX_gram_decision_icon_alb_fund_the_movement
+		cost = 100
+		days_remove = 200
+		available = { 
+			CRO = { 
+				exists = yes 
+				is_subject_of = YUG 
+			}
+			hidden_trigger = { 
+				NOT = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				} 
+			}
+		}
+	
+		#Giving Effect
+		complete_effect = { 
+
+			#Tooltips
+			if = { #You still dont have the national spirit
+				limit = { 
+					NOT = { 
+						has_idea = gram_idea_alb_founding_other_nations_independence_4 
+						has_idea = gram_idea_alb_founding_other_nations_independence_3
+						has_idea = gram_idea_alb_founding_other_nations_independence_2
+						has_idea = gram_idea_alb_founding_other_nations_independence_1
+					} 
+				}
+				custom_effect_tooltip = crumbling_nation_no_idea_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		
+			if = { #You have all 4 Ideas - You wont see this option
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_4_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		
+			if = { #You have 3 Ideas
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_3 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		
+			if = { #You have 2 Ideas
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_2 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_2_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		
+			if = { #You have 1 Idea
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+		
+			#Effect
+			if = { #If the you dont have an idea alredy, you will get one dont worry
+				limit = { 
+					NOT = { 
+						has_idea = gram_idea_alb_founding_other_nations_independence_1
+						has_idea = gram_idea_alb_founding_other_nations_independence_2
+						has_idea = gram_idea_alb_founding_other_nations_independence_3 
+						has_idea = gram_idea_alb_founding_other_nations_independence_4 
+					} 
+				}
+				CRO = {
+					 add_autonomy_score = {
+						value = 600 
+					} 
+				}
+				add_ideas = gram_idea_alb_founding_other_nations_independence_1
+			}
+		
+			else_if = { #If you have Idea 1, you shall get Idea 2
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				CRO = {
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_1
+					add_idea = gram_idea_alb_founding_other_nations_independence_2
+				}
+			}
+		
+			else_if = { #If you have Idea 2, you shall get Idea 3
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_2 
+				}
+				CRO = { 
+					add_autonomy_score = { 
+						value = 600 
+					}
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_2
+					add_idea = gram_idea_alb_founding_other_nations_independence_3
+				}
+			}
+		
+			else_if = { #If you have Idea 3, you shall get Idea 4
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_3 
+				}
+				CRO = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_3
+					add_idea = gram_idea_alb_founding_other_nations_independence_4
+				}
+			}
+
+		}
+
+		#Removing Effect
+		remove_effect = {
+
+			if = { #If you have Idea 1, you will lose it (Oh nooo, anyway)
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				remove_ideas = gram_idea_alb_founding_other_nations_independence_1
+			}
+		
+			else_if = { #If you have Idea 4, you shall get Idea 3
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_4
+					add_idea = gram_idea_alb_founding_other_nations_independence_3
+				}
+			}
+		
+			else_if = { #If you have Idea 3, you shall get Idea 2
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_3 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_3
+					add_idea = gram_idea_alb_founding_other_nations_independence_2
+				}
+			}
+		
+			else_if = { #If you have Idea 2, you shall get Idea 1
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_2 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_2
+					add_idea = gram_idea_alb_founding_other_nations_independence_1
+				}
+			}
+		}
+	}
+		
+	#Bosnia Decision 2
+	fund_the_movement_in_bosnia = {
+		icon = GFX_gram_decision_icon_alb_fund_the_movement
+		cost = 100
+		days_remove = 200
+		available = { 
+			BOS = { 
+				exists = yes 
+				is_subject_of = YUG 
+			}
+			hidden_trigger = { 
+				NOT = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				} 
+			}
+		}
+	
+		#Giving Effect
+		complete_effect = { 
+
+			#Tooltips
+			if = { #You still dont have the national spirit
+				limit = { 
+					NOT = { 
+						has_idea = gram_idea_alb_founding_other_nations_independence_4 
+						has_idea = gram_idea_alb_founding_other_nations_independence_3
+						has_idea = gram_idea_alb_founding_other_nations_independence_2
+						has_idea = gram_idea_alb_founding_other_nations_independence_1
+					} 
+				}
+				custom_effect_tooltip = crumbling_nation_no_idea_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #You have all 4 Ideas
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_4_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #You have 3 Ideas
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_3
+				}
+				custom_effect_tooltip = crumbling_nation_idea_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #You have 2 Ideas
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_2 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_2_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #You have 1 Idea
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			#Effect
+			if = { #If the you dont have an idea alredy, you will get one dont worry
+				limit = { 
+					NOT = { 
+						has_idea = gram_idea_alb_founding_other_nations_independence_1
+						has_idea = gram_idea_alb_founding_other_nations_independence_2
+						has_idea = gram_idea_alb_founding_other_nations_independence_3 
+						has_idea = gram_idea_alb_founding_other_nations_independence_4 
+					} 
+				}
+				BOS = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				add_ideas = gram_idea_alb_founding_other_nations_independence_1
+			}
+
+			else_if = { #If you have Idea 1, you shall get Idea 2
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				BOS = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_1
+					add_idea = gram_idea_alb_founding_other_nations_independence_2
+				}
+			}
+
+			else_if = { #If you have Idea 2, you shall get Idea 3
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_2 
+				}
+				BOS = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_2
+					add_idea = gram_idea_alb_founding_other_nations_independence_3
+				}
+			}
+
+			else_if = { #If you have Idea 3, you shall get Idea 4
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_3 
+				}
+				BOS = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_3
+					add_idea = gram_idea_alb_founding_other_nations_independence_4
+				}
+			}
+		}
+	
+		#Removing Effect
+		remove_effect = {
+			if = { #If you have Idea 1, you will lose it (Oh nooo, anyway)
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				remove_ideas = gram_idea_alb_founding_other_nations_independence_1
+			}
+
+			else_if = { #If you have Idea 4, you shall get Idea 3
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_4
+					add_idea = gram_idea_alb_founding_other_nations_independence_3
+				}
+			}
+
+			else_if = { #If you have Idea 3, you shall get Idea 2
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_3 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_3
+					add_idea = gram_idea_alb_founding_other_nations_independence_2
+				}
+			}
+
+			else_if = { #If you have Idea 2, you shall get Idea 1
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_2 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_2
+					add_idea = gram_idea_alb_founding_other_nations_independence_1
+				}
+			}
+		}
+	}
+
+	#Montenegro Decision 2
+	fund_the_movement_in_montenegro = {
+		icon = GFX_gram_decision_icon_alb_fund_the_movement
+		cost = 100
+		days_remove = 200
+		available = { 
+			MNT = { 
+				exists = yes 
+				is_subject_of = YUG 
+			}
+			hidden_trigger = { 
+				NOT = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				} 
+			}
+		}
+	
+		#Giving Effect
+		complete_effect = { 
+	
+			#Tooltips
+			if = { #You still dont have the national spirit
+				limit = { 
+					NOT = { 
+						has_idea = gram_idea_alb_founding_other_nations_independence_4 
+						has_idea = gram_idea_alb_founding_other_nations_independence_3
+						has_idea = gram_idea_alb_founding_other_nations_independence_2
+						has_idea = gram_idea_alb_founding_other_nations_independence_1
+					} 
+				}
+				custom_effect_tooltip = crumbling_nation_no_idea_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #You have all 4 Ideas - You wont see this option
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_4_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #You have 3 Ideas
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_3 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_3_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #You have 2 Ideas
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_2 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_2_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #You have 1 Idea
+				limit = {  
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				custom_effect_tooltip = crumbling_nation_idea_1_tt
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			#Effect
+			if = { #If the you dont have an idea alredy, you will get one dont worry
+				limit = { 
+					NOT = { 
+						has_idea = gram_idea_alb_founding_other_nations_independence_1
+						has_idea = gram_idea_alb_founding_other_nations_independence_2
+						has_idea = gram_idea_alb_founding_other_nations_independence_3 
+						has_idea = gram_idea_alb_founding_other_nations_independence_4 
+					} 
+				}
+				MNT = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				add_ideas = gram_idea_alb_founding_other_nations_independence_1
+			}
+
+			else_if = { #If you have Idea 1, you shall get Idea 2
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				MNT = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_1
+					add_idea = gram_idea_alb_founding_other_nations_independence_2
+				}
+			}
+
+			else_if = { #If you have Idea 2, you shall get Idea 3
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_2 
+				}
+				MNT = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_2
+					add_idea = gram_idea_alb_founding_other_nations_independence_3
+				}
+			}
+
+			else_if = { #If you have Idea 3, you shall get Idea 4
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_3 
+				}
+				MNT = { 
+					add_autonomy_score = { 
+						value = 600 
+					} 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_3
+					add_idea = gram_idea_alb_founding_other_nations_independence_4
+				}
+			}
+		}
+	
+		#Removing Effect
+		remove_effect = {
+			if = { #If you have Idea 1, you will lose it (Oh nooo, anyway)
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_1 
+				}
+				remove_ideas = gram_idea_alb_founding_other_nations_independence_1
+			}
+
+			else_if = { #If you have Idea 4, you shall get Idea 3
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_4 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_4
+					add_idea = gram_idea_alb_founding_other_nations_independence_3
+				}
+			}
+
+			else_if = { #If you have Idea 3, you shall get Idea 2
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_3 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_3
+					add_idea = gram_idea_alb_founding_other_nations_independence_2
+				}
+			}
+
+			else_if = { #If you have Idea 2, you shall get Idea 1
+				limit = { 
+					has_idea = gram_idea_alb_founding_other_nations_independence_2 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_founding_other_nations_independence_2
+					add_idea = gram_idea_alb_founding_other_nations_independence_1
+				}
+			}
+		}
+	}
+
+	#Force the Issue
+	force_the_issue_on_the_serbs = {
+		icon = GFX_gram_decision_icon_alb_force_the_issue_on_the_serbs
+		
+		available = {
+	
+			if = { #Checker for Slovenia
+				limit = { 
+					SLV = { 
+						exists = yes 
+						is_subject_of = YUG 
+					} 
+				} 
+				SLV = { 
+					has_autonomy_state = autonomy_dominion 
+				}  		 				 
+			}
+
+			if = { #Checker for Croatia
+				limit = { 
+					CRO = { 
+						exists = yes 
+						is_subject_of = YUG 
+					} 
+				}
+				CRO = { 
+					has_autonomy_state = autonomy_dominion  
+				}
+			}
+
+			if = { #Checker for Bosnia
+				limit = { 
+					BOS = { 
+						exists = yes 
+						is_subject_of = YUG 
+					} 
+				}
+				BOS = { 
+					has_autonomy_state = autonomy_dominion 
+				}
+			}
+
+			if = { #Checker for Montenegro
+				limit = { 
+					MNT = { 
+						exists = yes 
+						is_subject_of = YUG 
+					} 
+				}
+				MNT = { 
+					has_autonomy_state = autonomy_dominion 
+				}
+			}
+		}
+
+		complete_effect = {
+
+			YUG = { 
+				country_event = { 
+					id = gram_event_alb_push_for_independence.1 
+					hours = 12 
+				} 
+			}
+			clr_country_flag = gram_flag_alb_crumbling_nation_hoxha
+		}
+	}
+}
+
+#Cult of Personality #!#
+gram_decision_alb_cult_of_personality = {
+	the_great_leader = {
+		icon = GFX_gram_decision_icon_alb_the_great_leader
+		cost = 50
+		days_remove = 180
+		available = {
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_architect }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_teacher }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_judge }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_hero_of_the_partizans }
+		}
+		complete_effect = {
+			if = {
+				limit = { 
+					has_country_leader = { 
+						character = gram_character_ALB_enver_hoxha 
+						ruling_only = yes 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					add_country_leader_trait = gram_trait_the_great_leader 
+				}
+			}
+		}
+		remove_effect = {
+			#If Hoxha is current leader
+			if = {
+				limit = { 
+					has_country_leader = { 
+						character = gram_character_ALB_enver_hoxha 
+						ruling_only = yes 
+					} 
+				}	
+				gram_character_ALB_enver_hoxha = { 
+					remove_country_leader_trait = gram_trait_the_great_leader 
+				}
+			}
+
+			#If Hoxha isn't the current leader
+			else_if = {
+				limit = { 
+					NOT = { 
+						has_country_leader = { 
+							character = gram_character_ALB_enver_hoxha 
+							ruling_only = yes 
+						} 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					remove_country_leader_trait = gram_trait_the_great_leader 
+				}
+			}		
+		}
+	}
+
+	the_great_architect = {
+		icon = GFX_gram_decision_icon_alb_the_great_architect
+		cost = 50
+		days_remove = 180
+		available = {
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_leader }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_teacher }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_judge }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_hero_of_the_partizans }
+		}
+		complete_effect = {
+			if = {
+				limit = { 
+					has_country_leader = { 
+						character = gram_character_ALB_enver_hoxha 
+						ruling_only = yes 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					add_country_leader_trait = gram_trait_the_great_architect 
+				}
+			}
+		}
+
+		remove_effect = {
+			#If Hoxha is current leader
+				if = {
+					limit = { 
+						has_country_leader = { 
+							character = gram_character_ALB_enver_hoxha 
+							ruling_only = yes 
+						} 
+					}
+					gram_character_ALB_enver_hoxha = { 
+						remove_country_leader_trait = gram_trait_the_great_architect
+					}
+				}
+
+			#If Hoxha isn't the current leader
+			else_if = {
+				limit = { 
+					NOT = { 
+						has_country_leader = { 
+							character = gram_character_ALB_enver_hoxha 
+							ruling_only = yes 
+						} 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					remove_country_leader_trait = gram_trait_the_great_architect 
+				}
+			}		
+		}
+	}
+
+	the_great_teacher = {
+		icon = GFX_gram_decision_icon_alb_the_great_teacher
+		cost = 50
+		days_remove = 180
+		available = {
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_leader }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_architect }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_judge }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_hero_of_the_partizans }
+		}
+		complete_effect = {
+			if = {
+				limit = { 
+					has_country_leader = { 
+						character = gram_character_ALB_enver_hoxha 
+						ruling_only = yes 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					add_country_leader_trait = gram_trait_the_great_teacher 
+				}
+			}
+		}
+
+		remove_effect = {
+			#If Hoxha is current leader
+			if = {
+				limit = { 
+					has_country_leader = { 
+						character = gram_character_ALB_enver_hoxha 
+						ruling_only = yes 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					remove_country_leader_trait = gram_trait_the_great_teacher 
+				}
+			}
+
+			#If Hoxha isn't the current leader
+			else_if = {
+				limit = { 
+					NOT = { 
+						has_country_leader = { 
+							character = gram_character_ALB_enver_hoxha 
+							ruling_only = yes 
+						} 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					remove_country_leader_trait = gram_trait_the_great_teacher 
+				}
+			}		
+		}
+	}
+
+	the_great_judge = {
+		icon = GFX_gram_decision_icon_alb_the_great_judge
+		cost = 50
+		days_remove = 180
+		available = {
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_leader }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_architect }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_teacher }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_hero_of_the_partizans }
+		}
+		complete_effect = {
+			if = {
+				limit = { 
+					has_country_leader = { 
+						character = gram_character_ALB_enver_hoxha 
+						ruling_only = yes 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					add_country_leader_trait = gram_trait_the_great_judge 
+				}
+			}
+		}
+
+		remove_effect = {
+			#If Hoxha is current leader
+			if = {
+				limit = { 
+					has_country_leader = { 
+						character = gram_character_ALB_enver_hoxha 
+						ruling_only = yes 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					remove_country_leader_trait = gram_trait_the_great_judge 
+				}
+			}
+
+			#If Hoxha isn't the current leader
+			else_if = {
+				limit = {
+					NOT = { 
+						has_country_leader = { 
+							character = ALB_enver_hoxha 
+							ruling_only = yes 
+						} 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					remove_country_leader_trait = gram_trait_the_great_judge 
+				}
+			}		
+		}
+	}
+
+	the_great_hero_of_the_partisans = {
+		icon = GFX_gram_decision_icon_alb_the_great_hero_of_the_partisans
+		cost = 50
+		days_remove = 180
+		available = {
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_leader }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_architect }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_teacher }
+			NOT = { has_country_leader_with_trait = gram_trait_the_great_judge }
+		}
+		complete_effect = {
+			if = {
+				limit = { 
+					has_country_leader = { 
+						character = gram_character_ALB_enver_hoxha 
+						ruling_only = yes 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					add_country_leader_trait = gram_trait_the_great_hero_of_the_partizans 
+				}
+			}
+		}
+
+		remove_effect = {
+		#If Hoxha is current leader
+			if = {
+				limit = { 
+					has_country_leader = { 
+						character = gram_character_ALB_enver_hoxha 
+						ruling_only = yes 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					remove_country_leader_trait = gram_trait_the_great_hero_of_the_partizans 
+				}
+			}
+
+			#If Hoxha isn't the current leader
+			else_if = {
+				limit = { 
+					NOT = { 
+						has_country_leader = { 
+							character = gram_character_ALB_enver_hoxha 
+							ruling_only = yes 
+						} 
+					} 
+				}
+				gram_character_ALB_enver_hoxha = { 
+					remove_country_leader_trait = gram_trait_the_great_hero_of_the_partizans 
+				}
+			}
+		}
+	}
+}
+
+#Deal With Mussolini #!#
+gram_decision_alb_deal_with_mussolini = {
+	anti_fascist_protests = {
+		icon = GFX_gram_decision_icon_alb_anti_fascist_protests
+		cost = 50
+		days_re_enable = 50
+		
+		available = {
+			ITA = { 
+				ITA_is_kinda_fascist = yes 
+			}
+			ITA = { 
+				has_civil_war = no 
+			}
+			ITA = { 
+				is_subject = no 
+			}
+			ITA = { 
+				has_capitulated = no 
+			}
+			ITA = { 
+				exists = yes
+			}
+		}
+
+		complete_effect = {
+			ITA = { 
+				add_popularity = { 
+					ideology = communism 
+					popularity = 0.05 
+				}
+				add_popularity = { 
+					ideology = fascism 
+					popularity = -0.025 
+				}
+				add_stability = -0.05
+			}
+		}
+	}
+
+	arms_for_revolutionaries = {
+		icon = GFX_gram_decision_icon_alb_arms_for_revolutionaries
+		cost = 75
+		days_re_enable = 75
+				
+		available = {
+			has_equipment = { 
+				infantry_equipment > 999 
+			}
+			ITA = { 
+				ITA_is_kinda_fascist = yes 
+			}
+			ITA = { 
+				has_civil_war = no 
+			}
+			ITA = { 
+				is_subject = no 
+			}
+			ITA = { 
+				has_capitulated = no 
+			}
+			ITA = { 
+				exists = yes
+			}
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
+			}
+			ITA = {
+				add_popularity = { 
+					ideology = communism 
+					popularity = 0.15 
+				}
+				add_stability = -0.1
+			}
+		}
+	}
+
+	start_the_uprising = {
+		icon = GFX_gram_decision_icon_alb_start_the_uprising
+		cost = 100
+		fire_only_once = yes
+		days_remove = 5
+		
+		available = {
+			ITA = { 
+				communism > 0.45 
+			}
+			ITA = { 
+				ITA_is_kinda_fascist = yes 
+			}
+			ITA = {
+				has_civil_war = no 
+			}
+			ITA = { 
+				is_subject = no 
+			}
+			ITA = { 
+				has_capitulated = no 
+			}
+			ITA = { 
+				exists = yes 
+			}
+		}
+
+		complete_effect = {
+	   		ITA = { 
+				start_civil_war = { 
+					ideology = communism 
+					size = 0.6
+					capital = 159 
+					states = { 158 159 850 39 160 736 852 161 162 }
+					add_timed_idea = { 
+						idea = gram_idea_alb_internal_clashes 
+						years = 2 
+					}
+					set_country_flag = gram_flag_alb_new_italian_republic
+				} 
+			}
+			hidden_effect = {
+				ITA = {	
+					add_timed_idea = { 
+						idea = gram_idea_alb_internal_clashes 
+						years = 2 
+					} 
+				}
+				ITA = { 
+					add_popularity = {
+						ideology = communism
+						popularity = -0.45
+					} 
+				}
+
+				if = { #If Italy was at war with UK
+					limit = { 
+						ITA = { 
+							has_war_with = ENG 
+						} 
+					}
+					set_global_flag = gram_flag_alb_italy_was_at_war_with_eng 
+				}
+
+				if = { #If Italy was at war with France
+					limit = { 
+						ITA = { 
+							has_war_with = FRA 
+						} 
+					}
+					set_global_flag = gram_flag_alb_italy_was_at_war_with_fra  
+				}
+
+				if = { #If Italy was at war with Ethiopia
+					limit = { 
+						ITA = { 
+							has_war_with = ETH 
+						} 
+					}
+					set_global_flag = gram_flag_alb_italy_was_at_war_with_eth
+				}
+
+				if = { #If Italy is faction leader, but not at war - Dismantle the Faction
+					limit = { 
+						ITA = { 
+							is_faction_leader = yes 
+							has_war = no 
+						}
+					}
+					ITA = { 
+						dismantle_faction = yes 
+					}
+				}
+
+				if = { #If Italy is faction leader, and in the war - Dismantle the Faction and White Peace
+					limit = { 
+						ITA = { 
+							is_faction_leader = yes 
+							has_war = yes 
+						} 
+					}
+					ITA = { 
+						every_country = { 
+							limit = { 
+								has_war_with = ITA 
+								NOT = { 
+									civilwar_target = ITA 
+								} 
+							}
+						white_peace = ITA
+						} 
+					}
+					ITA = { 
+						dismantle_faction = yes 
+					}
+				}
+
+				if = { #If Italy is in the faction, but not in any war - Leave Faction
+					limit = { 
+						ITA = { 
+							is_in_faction = yes 
+							has_war = no 
+						}
+					}
+					ITA = { 
+						leave_faction = yes 
+					}
+				}
+
+				if = { #If Italy is in the faction, and in the war - Leave the Faction and White Peace
+					limit = { 
+						ITA = { 
+							is_in_faction = yes 
+							has_war = yes 
+						} 
+					}
+					ITA = { 
+						every_country = { 
+							limit = { 
+								has_war_with = ITA 
+								NOT = { 
+									civilwar_target = ITA 
+								} 
+							}
+							white_peace = ITA 
+						} 
+					}
+					ITA = { 
+						leave_faction = yes 
+					}
+				}
+		
+				if = { #If Italy is not in the factio, but it is in the war - White Peace
+					limit = { 
+						ITA = { 
+							is_in_faction = no 
+							has_war = yes 
+						} 
+					}
+					ITA = { 
+						every_country = { 
+							limit = { 
+								has_war_with = ITA 
+								NOT = { 
+									civilwar_target = ITA 
+								} 
+							}
+							white_peace = ITA 
+						} 
+					}
+				}
+			}
+
+			clr_country_flag = gram_flag_alb_planning_of_italian_uprising
+			news_event = gram_event_alb_italy_breaks_into_civil_war.1 
+
+		}
+	}
+}
+
+#Expansion Plans #!#
+gram_decision_alb_expansion_plans = {
+	assert_control_over_states_of_zara_and_istria = {
+		icon = GFX_gram_decision_icon_alb_assert_control_over
+		fire_only_once = yes
+
+		visible = {
+			ROOT = { 
+				NOT = { 
+					owns_state = 736
+					owns_state = 852
+					owns_state = 163
+				} 
+			}
+		}
+		complete_effect = {
+			every_country = {
+				limit = { 
+					OR = { 
+						owns_state = 736 
+						owns_state = 852 
+						owns_state = 163 
+					} 
+				}
+				ROOT = { 
+					create_wargoal = {
+						type = annex_everything		
+						target = PREV
+					}			
+				}
+			}
+		}
+	}
+
+	assert_control_over_bosphorus = {
+		icon = GFX_gram_decision_icon_alb_assert_control_over
+		fire_only_once = yes
+		visible = {
+			ROOT = { 
+				NOT = { 
+					owns_state = 341 
+					owns_state = 797 
+				} 
+			}
+		}
+		complete_effect = {
+			every_country = {
+				limit = { 
+					OR = { 
+						owns_state = 341 
+						owns_state = 797 
+					} 
+				}
+				ROOT = { 
+					create_wargoal = {
+						type = annex_everything		
+						target = PREV
+					}			
+				}
+			}
+		}
+	}
+
+	plan_north = {
+		icon = GFX_gram_decision_icon_alb_plan_north
+		fire_only_once = yes
+		visible = {
+			ROOT = {
+				NOT = { 
+					owns_state = 155
+					owns_state = 154
+					owns_state = 43
+					owns_state = 664
+					owns_state = 70
+					owns_state = 71
+					owns_state = 73
+					OR = { 
+						HUN = { 
+							is_puppet_of = ALB 
+						} 
+						SLO = { 
+							is_puppet_of = ALB 
+						} 
+					} 
+				} 
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 155
+				state = 154
+				state = 43
+				state = 664
+				state = 70
+				state = 71
+				state = 73
+				state = 974
+				state = 973
+			}
+		}
+		complete_effect = {
+			ALB = { 
+				add_state_claim = 155
+				add_state_claim = 154
+				add_state_claim = 43
+				add_state_claim = 664
+				add_state_claim = 70
+				add_state_claim = 71
+				add_state_claim = 73
+				add_state_claim = 974
+				add_state_claim = 973
+			}
+			every_country = {
+				limit = { 
+					OR = {
+						owns_state = 155 
+						owns_state = 154
+						owns_state = 43 
+						owns_state = 664 
+						owns_state = 70 
+						owns_state = 71 
+						owns_state = 73 
+						owns_state = 974
+						owns_state = 973
+					}
+				}
+				ROOT = { 
+					create_wargoal = {
+						type = annex_everything		
+						target = PREV
+					}			
+				}
+			}
+		}
+	}
+
+	integration_of_land_in_the_north_plan = {
+		icon = GFX_gram_decision_icon_alb_integration_of_land
+		fire_only_once = yes
+		available = {
+			owns_state = 155
+			owns_state = 154
+			owns_state = 43
+			owns_state = 664
+			owns_state = 70
+			owns_state = 71
+			owns_state = 73	
+			owns_state = 974
+			owns_state = 973	
+		}
+		complete_effect = {
+			155 = { add_core_of = ROOT }
+			154 = { add_core_of = ROOT }
+			43 = { add_core_of = ROOT }
+			664 = { add_core_of = ROOT }
+			70 = { add_core_of = ROOT }
+			71 = { add_core_of = ROOT }
+			73 = { add_core_of = ROOT }
+			974 = { add_core_of = ROOT }
+			973 = { add_core_of = ROOT }
+		}
+	}
+	
+	integration_of_bosporus = {
+		icon = GFX_gram_decision_icon_alb_integration_of_land
+		fire_only_once = yes
+		available = {
+			owns_state = 341
+			owns_state = 797
+		}
+		complete_effect = {
+			341 = { add_core_of = ROOT }
+			797 = { add_core_of = ROOT }
+		}
+	}
+}
+
+#Faction Expansion #!#
+gram_decision_alb_faction_expansion = {
+	invite_iraq = {
+		icon = GFX_gram_decision_icon_alb_invite_nation_into_faction
+		cost = 75
+		fire_only_once = yes
+
+		available = {
+
+			ALB = {
+				is_subject = no
+				is_faction_leader = yes
+			}
+
+			IRQ = {
+				is_subject = no
+				is_in_faction = no
+			}
+
+		}
+
+		complete_effect = {
+			IRQ = { 
+				country_event = { 
+					id = gram_event_alb_invitation_into_dii_imperi.1 
+					hours = 36 
+				}
+			}			
+		}
+	}
+
+	invite_iran = {
+		icon = GFX_gram_decision_icon_alb_invite_nation_into_faction
+		cost = 75
+		fire_only_once = yes
+
+		available = {
+			ALB = {
+				is_subject = no
+				is_faction_leader = yes
+			}
+
+			PER = {
+				is_subject = no
+				is_in_faction = no
+			}
+
+		}
+	
+		complete_effect = {
+			PER = { 
+				country_event = { 
+					id = gram_event_alb_invitation_into_dii_imperi.1 
+					hours = 36 
+				}
+			}			
+		}
+	}
+
+	invite_afganistan = {
+		icon = GFX_gram_decision_icon_alb_invite_nation_into_faction
+		cost = 75
+		fire_only_once = yes
+
+		available = {
+
+			ALB = {
+				is_subject = no
+				is_faction_leader = yes
+			}
+
+			AFG = {
+				is_subject = no
+				is_in_faction = no
+			}
+
+		}
+	
+		complete_effect = {
+			AFG = { 
+				country_event = { 
+					id = gram_event_alb_invitation_into_dii_imperi.1 
+					hours = 36
+				}
+			}			
+		}	
+	}
+
+	invite_spain = {
+		icon = GFX_gram_decision_icon_alb_invite_nation_into_faction
+		cost = 75
+		fire_only_once = yes
+
+		available = {
+
+			ALB = {
+				is_subject = no
+				is_faction_leader = yes
+			}
+
+			SPR = {
+				is_subject = no
+				is_in_faction = no
+			}
+
+		}
+	
+		complete_effect = {
+			SPR = { 
+				country_event = { 
+					id = gram_event_alb_invitation_into_dii_imperi.1 
+					hours = 36 
+				}
+			}			
+		}	
+	}
+
+	invite_portugal = {
+		icon = GFX_gram_decision_icon_alb_invite_nation_into_faction
+		cost = 75
+		fire_only_once = yes
+
+		available = {
+
+			ALB = {
+				is_subject = no
+				is_faction_leader = yes
+			}
+
+			POR = {
+				is_subject = no
+				is_in_faction = no
+			}
+
+		}
+	
+		complete_effect = {
+			POR = { 
+				country_event = { 
+					id = gram_event_alb_invitation_into_dii_imperi.1 
+					hours = 36 
+				}
+			}			
+		}	
+	}
+}
+
+#Invest Into Rural Areas #!#
+gram_decision_alb_investment_into_rural_areas = {
+	investment_in_serbia = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+	
+		available = {
+			owns_state = 107 
+		}		
+		remove_effect = {
+			107 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	    	}		
+		}
+	}
+
+	investment_in_morava = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 108 
+		}		
+		remove_effect = {
+			108 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}	
+		}
+	}
+
+	investment_in_macedonia = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 106 
+		}		
+		remove_effect = {
+			106 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	    	}		
+		}
+	}
+
+	investment_in_epirus = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 185 
+		}		
+		remove_effect = {
+			185 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	   		}		
+		}
+	}
+
+	investment_in_attica = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 47 
+		}		
+		remove_effect = {
+			47 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	   		}		
+		}
+	}
+
+	investment_in_peloponnese = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 186 
+		}		
+		remove_effect = {
+			186 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	   		}		
+		}
+	}
+
+	investment_in_plovdiv = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 212 
+		}		
+		remove_effect = {
+			212 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+				type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	   		}		
+		}
+	}
+
+	investment_in_burgas = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 211 
+		}		
+		remove_effect = {
+			211 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	    	}		
+		}
+	}
+
+	investment_in_moesia = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 801 
+		}		
+		remove_effect = {
+			801 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	    	}		
+		}
+	}
+
+	investment_in_oltenia = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 81 
+		}		
+		remove_effect = {
+			81 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	    	}		
+		}
+	}
+
+	investment_in_transylvania = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 84
+		}			
+		remove_effect = {
+			84 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	   		}		
+		}
+	}
+
+	investment_in_moldova = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 79 
+		}		
+		remove_effect = {
+			79 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	  		}		
+		}
+	}
+
+	investment_in_banat = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 82 
+		}		
+		remove_effect = {
+			82 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	   		}		
+		}
+	}
+
+	investment_in_bosnia = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 104 
+		}		
+		remove_effect = {
+			104 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	   		}		
+		}
+	}
+
+	investment_in_croatia = {
+		icon = GFX_gram_decision_icon_alb_investment_in_state
+		cost = 75
+		fire_only_once = yes
+		days_remove = 180
+
+		available = { 
+			owns_state = 109 
+		}		
+		remove_effect = {
+			109 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	    	}		
+		}
+	}
+}
+
+#Monarchy Is Back #!#
+gram_decision_alb_monarchy_is_back = {
+	pick_the_new_successor = {
+		icon = GFX_gram_decision_icon_alb_pick_the_new_successor
+		fire_only_once = yes
+		ai_will_do = { 
+			base = 100 
+		}
+
+		complete_effect = {
+			country_event = gram_event_alb_picking_the_new_successor.1
+		}
+	}
+}
+
+#Preparations for Invasion #!#
+gram_decision_alb_preparations_for_invasion = {
+	start_preparations_for_invasion = { #One of cooler decisions i made
+		icon = GFX_gram_decision_icon_alb_start_preparations_for_invasion
+
+		ai_will_do = { base = 100 }
+		
+		available = {
+			OR = {
+				any_country = { 
+					is_justifying_wargoal_against = ALB 
+				}
+				any_country = { 
+					has_wargoal_against = ALB 
+				}
+				any_country = { 
+					has_war_with = ALB 
+				}
+			}
+		}
+
+		visible = {
+			NOT = { 
+				has_idea = gram_idea_alb_preparations_for_invasion_idea 
+			}
+		}
+
+		complete_effect = {
+			add_ideas = gram_idea_alb_preparations_for_invasion_idea
+		}
+	}
+
+	end_preparations_for_invasion = {
+		icon = GFX_gram_decision_icon_alb_start_preparations_for_invasion
+
+		ai_will_do = {
+			base = 10
+		}
+
+		available = {
+			NOT = { 
+				has_decision = yugoslav_border_fortifications 
+			}
+			NOT = { 
+				has_decision = greek_border_fortifications 
+			}
+			has_war = no
+		}
+
+		visible = {
+			has_idea = gram_idea_alb_preparations_for_invasion_idea
+		}
+		complete_effect = {
+			remove_ideas = gram_idea_alb_preparations_for_invasion_idea
+		}
+	}
+
+	yugoslav_border_fortifications = {
+		icon = GFX_gram_decision_icon_alb_border_fortifications
+		fire_only_once = yes
+		ai_will_do = { 
+			base = 50 
+		}
+		cost = 150
+		days_remove = 150
+
+		available = {
+			has_idea = gram_idea_alb_preparations_for_invasion_idea
+		}
+
+		remove_effect = {
+
+			custom_effect_tooltip = fortifications_preparations_tt
+			custom_effect_tooltip = empty_divide_tt
+
+			934 = {
+				add_building_construction = { 
+					type = bunker 
+					province = 9780 
+					level = 3 
+					instant_build = yes 
+				}
+				add_building_construction = { 
+					type = bunker 
+					province = 3896 
+					level = 3 
+					instant_build = yes 
+				}
+				add_building_construction = { 
+					type = bunker 
+					province = 11762 
+					level = 3 
+					instant_build = yes 
+				}
+				add_building_construction = { 
+					type = coastal_bunker 
+					province = 11767 
+					level = 3 
+					instant_build = yes 
+				}
+				add_building_construction = { 
+					type = coastal_bunker 
+					province = 13255 
+					level = 3 
+					instant_build = yes 
+				}
+			}
+			44 = {
+				add_building_construction = { 
+					type = bunker 
+					province = 9875 
+					level = 3 
+					instant_build = yes 
+				}
+				add_building_construction = { 
+					type = bunker 
+					province = 6900 
+					level = 3 
+					instant_build = yes 
+				}
+			}
+		}
+	}
+
+	greek_border_fortifications = {
+		icon = GFX_gram_decision_icon_alb_border_fortifications
+		fire_only_once = yes
+		ai_will_do = { 
+			base = 50 
+		}
+		cost = 50
+		days_remove = 50
+
+		available = {
+			has_idea = gram_idea_alb_preparations_for_invasion_idea
+		}		
+
+		remove_effect = {
+
+			custom_effect_tooltip = fortifications_preparations_tt
+			custom_effect_tooltip = empty_divide_tt
+			
+			805 = {
+				add_building_construction = { 
+					type = bunker 
+					province = 13235 
+					level = 3 
+					instant_build = yes 
+				}
+				add_building_construction = { 
+					type = bunker 
+					province = 13234 
+					level = 3 
+					instant_build = yes 
+				}
+				add_building_construction = { 
+					type = bunker 
+					province = 914 
+					level = 3 
+					instant_build = yes 
+				}
+			}
+		}
+	}
+}
+
+#Reclamation of the Empire #!#
+gram_decision_alb_reclamation_of_empire = {
+	triumph_for_italy = {
+		icon = GFX_gram_decision_icon_alb_triumph_for_nation
+		fire_only_once = yes
+		days_remove = 5
+		available = { 
+	   		controls_state = 158
+    	    controls_state = 159
+    	    controls_state = 39
+	   		controls_state = 160
+	    	controls_state = 161
+	    	controls_state = 162
+	    	controls_state = 157
+	    	controls_state = 2
+	    	controls_state = 117
+	    	controls_state = 156
+	    	controls_state = 115
+	    	controls_state = 736
+	    	controls_state = 849
+	    	controls_state = 850
+	    	controls_state = 852
+	    	controls_state = 163 
+	    }
+		highlight_states = {
+			highlight_state_targets = {
+				state = 158
+				state = 159
+				state = 39
+				state = 160
+				state = 161
+				state = 162
+				state = 157
+				state = 2
+				state = 117
+				state = 156
+				state = 115
+				state = 736
+				state = 849
+				state = 850
+				state = 852
+				state = 163
+			}	
+	    }
+		complete_effect = {
+			158 = { add_core_of = ROOT }
+			159 = { add_core_of = ROOT }
+			39 = { add_core_of = ROOT }
+			160 = { add_core_of = ROOT }
+			161 = { add_core_of = ROOT }
+			162 = { add_core_of = ROOT }
+			157 = { add_core_of = ROOT }
+			2 = { add_core_of = ROOT }
+			117 = { add_core_of = ROOT }
+			156 = { add_core_of = ROOT }
+			115 = { add_core_of = ROOT }
+			736 = { add_core_of = ROOT }
+			849 = { add_core_of = ROOT }
+			850 = { add_core_of = ROOT }
+			852 = { add_core_of = ROOT }
+			163 = { add_core_of = ROOT }
+		}
+	}
+	triumph_for_levant = {
+		icon = GFX_gram_decision_icon_alb_triumph_for_nation
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			controls_state = 677
+			controls_state = 680
+			controls_state = 553
+			controls_state = 554
+			controls_state = 164
+			controls_state = 453
+			controls_state = 454
+			controls_state = 455
+			controls_state = 183
+			controls_state = 799
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 677
+				state = 680
+				state = 553
+				state = 554
+				state = 164
+				state = 453
+				state = 454
+				state = 455
+				state = 183
+				state = 799
+			}
+		}
+		complete_effect = {
+			677 = { add_core_of = ROOT }
+			680 = { add_core_of = ROOT }
+			553 = { add_core_of = ROOT } 
+			554 = { add_core_of = ROOT }
+			164 = { add_core_of = ROOT }
+			453 = { add_core_of = ROOT }
+			454 = { add_core_of = ROOT }
+			455 = { add_core_of = ROOT }
+			183 = { add_core_of = ROOT }
+			799 = { add_core_of = ROOT }
+		}
+	}
+	triumph_for_egypt_and_tunis = {
+		icon = GFX_gram_decision_icon_alb_triumph_for_nation
+		fire_only_once = yes
+		days_remove = 5
+		available = {
+			controls_state = 458
+			controls_state = 665
+			controls_state = 449
+			controls_state = 662
+			controls_state = 448
+			controls_state = 661
+			controls_state = 450
+			controls_state = 451
+			controls_state = 663
+			controls_state = 452
+			controls_state = 447
+			controls_state = 446
+			controls_state = 456
+			controls_state = 457
+			controls_state = 907	
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 458
+				state = 665
+				state = 449
+				state = 662
+				state = 448
+				state = 661
+				state = 450
+				state = 451
+				state = 663
+				state = 452
+				state = 447
+				state = 446
+				state = 456
+				state = 457
+				state = 907
+			}
+		}
+		complete_effect = {
+			458 = { add_core_of = ROOT }
+			665 = { add_core_of = ROOT }
+			449 = { add_core_of = ROOT }
+			662 = { add_core_of = ROOT }
+			448 = { add_core_of = ROOT }
+			661 = { add_core_of = ROOT }
+			450 = { add_core_of = ROOT }
+			451 = { add_core_of = ROOT }
+			663 = { add_core_of = ROOT }
+			452 = { add_core_of = ROOT }
+			447 = { add_core_of = ROOT }
+			446 = { add_core_of = ROOT }
+			456 = { add_core_of = ROOT }
+			457 = { add_core_of = ROOT }
+			907 = { add_core_of = ROOT }
+		}
+	}
+}
+
+#The New Capital #!#
+gram_decision_alb_the_new_capital = {
+	chose_the_new_capital = {
+		icon = GFX_gram_decision_icon_alb_chose_the_new_capital
+		complete_effect = {
+			ALB = { 
+				country_event = { 
+					id = gram_event_alb_new_capital_balkan.1
+				} 
+			}
+		}
+	}
+}

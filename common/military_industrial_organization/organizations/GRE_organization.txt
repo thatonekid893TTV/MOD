@@ -1,0 +1,445 @@
+#####################
+
+###  ##  #  # # #  ## 
+ #  #  # ## # # # #   
+ #  #### # ## ##   #  
+ #  #  # #  # # #   # 
+ #  #  # #  # # # ## 
+
+ #################### 
+GRE_spap = {
+	include = generic_medium_tank_organization
+	icon = GFX_idea_spap
+	
+	allowed = {	
+	
+			tag = GRE 
+		
+		
+	}
+	available = {GRE = {  has_completed_focus = GRE_crack_down_on_foreign_monopolies }}
+	initial_trait = {
+		equipment_bonus = {
+			hard_attack = 0.1
+			soft_attack = 0.1
+			
+		}
+	}	
+	add_trait = { 
+		token = GRE_mio_trait_new_industrialization_program
+		name = ITA_new_industrialization_program
+		icon = GFX_generic_mio_department_icon_tank_general_production
+		special_trait_background = yes
+
+		position = { x=9 y=3 }
+		
+		available = {
+			
+		}
+
+		organization_modifier = {
+			
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.2
+		}
+	}		
+} 
+GRE_tangalakis_temax_organization = {
+	include = generic_infantry_tank_organization
+	icon = GFX_idea_tangalakis_temax
+	
+	allowed = {	
+	
+			tag = GRE 
+		
+		
+	}
+	initial_trait = {
+		equipment_bonus = {
+			reliability = 0.15
+			
+		}
+	}	
+}
+GRE_fiat_organization = {
+	include = generic_tank_refurbishment_plant_organization
+	icon = GFX_idea_fiat
+	
+	allowed = {	
+		
+		tag = GRE 
+			
+		
+	}
+	available = { GRE = { has_completed_focus = GRE_cooperate_with_foreign_monopolies }}
+
+
+
+	add_trait = { 
+		token = GRE_mio_trait_new_industrialization_program
+		name = ITA_new_industrialization_program
+		icon = GFX_generic_mio_department_icon_tank_general_production
+		special_trait_background = yes
+
+		position = { x=9 y=0 }
+		
+		available = {
+			
+		}
+
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.1
+		}
+
+		production_bonus = {
+			production_capacity_factor = 0.2
+		}
+	}	
+
+	
+	
+}
+GRE_man_organization = {
+	include = generic_heavy_tank_organization
+	icon = GFX_idea_GER_MAN
+	
+	allowed = {	
+	
+			tag = GRE 
+			
+		
+	}
+	available = { GRE = { has_completed_focus = GRE_cooperate_with_foreign_monopolies }}
+	
+}
+GRE_vickers_armstrong_eng_organization = {
+	include = generic_medium_tank_organization
+	icon = GFX_idea_vickers_armstrong_eng
+	
+	allowed = {	
+
+			tag = GRE
+		
+	}
+
+    available = { GRE = { has_completed_focus = GRE_cooperate_with_foreign_monopolies }}
+	
+	
+	initial_trait = {
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
+		equipment_bonus = {
+			maximum_speed = 0.1
+			reliability = 0.05
+			armor_value = -0.1
+		}
+	}
+
+	add_trait = { 
+		token = GRE_mio_trait_expanded_turret_capacity
+		name = ENG_mio_trait_expanded_turret_capacity
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_engine
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = generic_mio_trait_all_round_cupola
+
+		any_parent = { generic_mio_trait_all_round_cupola }
+		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
+
+		equipment_bonus = {
+			reliability = 0.05
+			armor_value = 0.05
+			breakthrough = 0.05
+		}
+	}
+
+	add_trait = { 
+		token = GRE_mio_trait_expanded_production_facilities
+		name = ENG_mio_trait_expanded_production_facilities
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+		special_trait_background = yes
+
+		position = { x=2 y=1 }
+		relative_position_id = generic_mio_trait_simplified_turret_design
+
+		all_parents = { generic_mio_trait_simplified_turret_design generic_mio_trait_armor_steel_working }
+		production_bonus = {
+			production_efficiency_cap_factor = 0.1
+			production_efficiency_gain_factor = 0.1
+		}
+		
+	}
+}
+GRE_biamax_organization = {
+	include = generic_mobile_tank_organization
+	icon = GFX_idea_gre_biamax
+	allowed = {	
+		tag = GRE
+
+	}
+	available = {
+		GRE = { has_completed_focus = GRE_cooperate_with_foreign_monopolies}
+	}
+}
+
+#####################
+
+ ## #  # ### ###   ## 
+#   #  #  #  #  # #   
+ #  ####  #  ###   #  
+  # #  #  #  #      # 
+##  #  # ### #    ##  
+ 
+#####################
+GRE_Neorion_organization = {
+	include = generic_submarine_organization
+	icon = GFX_idea_Neorion
+	allowed = {	
+		tag = GRE
+
+	}
+	initial_trait = {
+	equipment_bonus = {
+			sub_visibility = -0.15
+			mines_sweeping = 0.5
+		}
+		}
+		available = { GRE ={ has_completed_focus = GRE_crack_down_on_foreign_monopolies }}
+}
+GRE_royal_hellenic_naval_shipyard_organization = {
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_royal_hellenic_naval_shipyard
+	allowed = {	
+		tag = GRE
+
+	}
+}
+GRE_royal_hellenic_naval_shipyard_bftb_organization = {
+	name = GRE_royal_hellenic_naval_shipyard_organization
+	include = generic_battle_line_ship_organization
+	icon = GFX_idea_gre_royal_hellenic_naval_shipyard
+	allowed = {	
+		tag = GRE
+	
+	}
+	
+}
+GRE_basileiades_organization = {
+	include = generic_raider_ship_organization
+	icon = GFX_idea_gre_basileiades
+	allowed = {	
+		tag = GRE
+
+	}
+}
+GRE_astilleros_onassis_organization = {
+	include = generic_escort_ship_organization
+	icon = GFX_idea_gre_astilleros_onassis
+	allowed = {	
+		tag = GRE
+
+	}
+	available = { GRE = { has_completed_focus = GRE_crack_down_on_foreign_monopolies }}
+	initial_trait = {
+	equipment_bonus = {
+			sub_attack = 0.2
+			build_cost_ic = -0.2
+			naval_range = 0.1
+			reliability = 0.1
+			max_strength = 0.15
+		}
+		production_bonus = {
+			production_capacity_factor = 0.25
+		}
+		}
+}
+
+
+###########################
+
+###  #    ##  #  # ###  ## 
+#  # #   #  # ## # #   #   
+###  #   #### # ## ##   #  
+#    #   #  # #  # #     # 
+#    ### #  # #  # ### ##  
+
+###########################
+GRE_KEA_organization = {
+	include = generic_general_aircraft_organization
+	icon = GFX_idea_kea
+	allowed = {	
+		tag = GRE
+	}
+		available = { GRE = { has_completed_focus = GRE_crack_down_on_foreign_monopolies }}
+	add_trait = { 
+		token = GRE_mio_trait_new_industrialization_program
+		name = ITA_new_industrialization_program
+		icon = GFX_generic_mio_department_icon_tank_general_production
+		special_trait_background = yes
+
+		position = { x=9 y=3 }
+		
+		available = {
+			
+		}
+          equipment_bonus = {
+			build_cost_ic = -0.1
+		}
+	
+
+		production_bonus = {
+			production_capacity_factor = 0.15
+			
+		}
+	}	
+}
+GRE_gnaf_organization = {
+	include = generic_light_aircraft_organization
+	icon = GFX_idea_generic_air_manufacturer_3
+	allowed = {	
+		tag = GRE
+	}
+}
+GRE_aekkea_organization = {
+	include = generic_medium_aircraft_organization
+	icon = GFX_idea_gre_phaliron_aekka
+	allowed = {	
+		tag = GRE
+		
+	}
+}
+GRE_phaliron_aircraft_organization = {
+	include = generic_cas_aircraft_organization
+	icon = GFX_idea_gre_phaliron_aircraft
+	allowed = {	
+		tag = GRE
+
+	}
+}
+
+################################### 
+
+#   #  ##  ### ### ###  ### ### #   
+## ## #  #  #  #   #  #  #  #   #   
+# # # ####  #  ##  ###   #  ##  #   
+#   # #  #  #  #   #  #  #  #   #   
+#   # #  #  #  ### #  # ### ### ### 
+
+
+###################################
+
+GRE_pyrkal_organization = {
+	include = generic_support_equipment_organization
+	icon = GFX_idea_gre_pyrkal
+	allowed = {	
+		tag = GRE
+
+	}
+	
+}
+GRE_petropoulos_organization = {
+	include = generic_armored_car_organization
+	icon = GFX_idea_gre_petropoulos
+	allowed = {	
+		tag = GRE
+
+	}
+	
+}
+GRE_rsaf_enfield_organization = {
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_rsaf_enfield
+
+	allowed = {	
+		
+			tag = GRE 
+			
+	}
+available = { GRE = { has_completed_focus = GRE_cooperate_with_foreign_monopolies } }
+	
+
+	override_trait = { 
+		token = generic_mio_trait_anti_vechicle_land_mines	
+		name = ENG_mio_trait_piat	
+		icon = GFX_generic_mio_trait_icon_hard_attack
+		special_trait_background = yes
+
+		equipment_bonus = {
+			hard_attack = 0.1
+			defense = 0.1
+			breakthrough = 0.0.5
+		}
+	}
+
+	add_trait = { 
+		token = GRE_mio_trait_sten_submachine_guns	
+		name = ENG_mio_trait_sten_submachine_guns	
+		icon = GFX_generic_mio_trait_icon_ap_attack
+		special_trait_background = yes
+
+		position = { x=1 y=1 }
+		relative_position_id = generic_mio_trait_drum_pattern_sights
+
+		any_parent = { generic_mio_trait_reinforced_stocks generic_mio_trait_drum_pattern_sights }
+
+		equipment_bonus = {
+			reliability = 0.08
+			soft_attack = 0.05
+			ap_attack = 0.07
+		}
+	}
+}
+GRE_rheinmetall_organization = {
+	include = generic_artillery_organization
+	icon = GFX_idea_rheinmetall
+	available = { GRE = { has_completed_focus = GRE_cooperate_with_foreign_monopolies }}
+	allowed = {	
+	
+			tag = GRE
+	}
+	initial_trait = {
+		equipment_bonus = {
+			build_cost_ic = -0.15
+		}
+	}	
+}
+GRE_ford_motor_company_organization = {
+	include = generic_motorized_mechanized_organization
+	icon = GFX_idea_ford_motor_company
+	
+	allowed = {	 
+		tag = GRE
+	}
+
+available = { GRE = { has_completed_focus = GRE_cooperate_with_foreign_monopolies }}
+	
+	initial_trait = {
+		equipment_bonus = {
+			build_cost_ic = -0.08
+		}
+	}
+}
+GRE_grabin_design_bureau_organization = {
+	include = generic_artillery_organization
+	icon = GFX_idea_grabin_design_bureau
+	
+	allowed = {	
+	
+			tag = GRE 
+		
+		
+	}
+	available = { GRE = { has_completed_focus = GRE_cooperate_with_foreign_monopolies }}
+	initial_trait = {
+		equipment_bonus = {
+			reliability = 0.1
+			soft_attack = 0.1
+			
+		}
+	}	
+}
+

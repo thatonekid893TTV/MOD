@@ -1,0 +1,1520 @@
+@DAYS_DETERMINED = 180 #Used for propaganda campaign SOV_heroes_forward -> Value should be the same as SOV_default_propaganda_campaign_duration
+
+
+debug_decisions = {
+	MON_debug_show_propaganda_system = { #This is a duplicate of the decision present in the Paranoia category
+		priority = 201
+
+		icon = eng_ally_imperialist_coup
+
+		allowed = {
+			original_tag = MON
+		}
+
+		available = {
+			always = yes
+		}
+
+		visible = {
+			#NOT = { has_country_flag = MON_debug_show_propaganda_system_flag }
+		}
+
+		cost = 0
+
+		complete_effect = {
+			custom_effect_tooltip = "This will make the Propaganda system visible in the tab. It does NOT activate the Propaganda system."
+			set_country_flag = MON_debug_show_propaganda_system_flag
+		}
+	}
+}
+
+MON_propaganda_campaigns = {
+	MON_debug_unlock_slot = {
+		priority = 59
+
+		icon = eng_ally_imperialist_coup
+
+		allowed = {
+			original_tag = MON
+		}
+
+		available = {
+			OR = {
+				check_variable = { MON_poster_left_icon_frame = MON_propaganda_locked_slot_index }
+				check_variable = { MON_poster_center_icon_frame = MON_propaganda_locked_slot_index }
+				check_variable = { MON_poster_right_icon_frame = MON_propaganda_locked_slot_index }
+			}
+		}
+
+		visible = {
+			OR = {
+				check_variable = { MON_poster_left_icon_frame = MON_propaganda_locked_slot_index }
+				check_variable = { MON_poster_center_icon_frame = MON_propaganda_locked_slot_index }
+				check_variable = { MON_poster_right_icon_frame = MON_propaganda_locked_slot_index }
+			}
+			is_debug = yes
+		}
+
+		cost = 0
+
+		complete_effect = {
+			MON_unlock_propaganda_campaign_slot_effect = yes
+		}
+	}
+
+	MON_debug_MAKE_CAMPAIGNS_FASTER_HERE = {
+		priority = 51
+
+		icon = eng_ally_imperialist_coup
+
+		allowed = {
+			original_tag = MON
+		}
+
+		available = {
+			always = yes
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = MON_debug_fast_propaganda_campaigns_flag
+			}
+			is_debug = yes
+		}
+
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = MON_debug_fast_propaganda_campaigns_flag
+			set_variable = { MON_default_propaganda_campaign_duration = 5 }
+			set_variable = { MON_default_propaganda_campaign_cooldown = 1 }
+			set_variable = { MON_default_propaganda_campaign_old_days = 2 }
+		}
+	}
+
+	MON_debug_REGULAR_CAMPAIGN_DURATION_HERE = {
+		priority = 51
+
+		icon = eng_ally_imperialist_coup
+
+		allowed = {
+			original_tag = MON
+		}
+
+		available = {
+			always = yes
+		}
+
+		visible = {
+			has_country_flag = MON_debug_fast_propaganda_campaigns_flag
+			is_debug = yes
+		}
+
+		cost = 0
+
+		complete_effect = {
+			clr_country_flag = MON_debug_fast_propaganda_campaigns_flag
+			set_variable = { MON_default_propaganda_campaign_duration = 180 }
+			set_variable = { MON_default_propaganda_campaign_cooldown = 90 }
+			set_variable = { MON_default_propaganda_campaign_old_days = 150 }
+		}
+	}
+
+	MON_debug_UNLOCK_ALL_CAMPAIGNS = {
+		priority = 50
+
+		icon = eng_ally_imperialist_coup
+
+		allowed = {
+			original_tag = MON
+		}
+
+		available = {
+			always = yes
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag
+			}
+			is_debug = yes
+		}
+
+		cost = 0
+
+		complete_effect = {
+			set_country_flag = MON_debug_unlock_propaganda_campaigns_flag
+		}
+	}
+
+	MON_propaganda_state_of_industry = { # ID = 3
+		priority = 3
+
+		icon = eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				add = 10
+				has_dynamic_modifier = { modifier = MON_five_year_plan_dynamic_modifier }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_state_of_industry_cost > 30 } #Less likely to do it a third time
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_state_of_industry_cost > 45 } #Even less likely to do it a fourth time
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_state_of_industry_cost > 90 } #Shouldn't even consider doing it a fifth time
+			}
+		}
+
+		allowed = {
+			original_tag = MON
+		}
+
+		available = {
+			MON_propaganda_poster_slot_available = yes
+		}
+
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				AND = {
+					has_completed_focus = MON_state_publishing_company
+					NOT = { has_completed_focus = MON_improve_literacy_rates }
+				}
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+
+		days_remove = MON_default_propaganda_campaign_duration
+
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+
+		cost = MON_propaganda_state_of_industry_cost 
+
+		modifier = {
+			production_speed_buildings_factor = 0.1
+		}
+
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 3 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 3 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+
+			# Okay this looks dumb I know but it's better than having to change 24 operations each time we feel like tweaking how propaganda campaign's cost escalates
+			set_variable = { MON_propaganda_cost = MON_propaganda_state_of_industry_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_state_of_industry_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_state_industrial_plans = { # ID = 4
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_state_industrial_plans_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_state_industrial_plans_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_state_industrial_plans_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_improve_literacy_rates
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_state_industrial_plans_cost 
+		modifier = {
+			production_speed_buildings_factor = 0.15
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 4 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 4 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_state_industrial_plans_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_state_industrial_plans_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_work_of_a_faithful_master = { # ID = 5
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_work_of_a_faithful_master_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_work_of_a_faithful_master_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_work_of_a_faithful_master_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_state_publishing_company
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_work_of_a_faithful_master_cost 
+		modifier = {
+			industrial_capacity_factory = 0.075
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 5 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 5 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_work_of_a_faithful_master_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_work_of_a_faithful_master_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_improvement_in_coal_production = { # ID = 6
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_improvement_in_coal_production_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_improvement_in_coal_production_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_improvement_in_coal_production_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			has_completed_focus = MON_nalaikh_coal_mine
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_improve_literacy_rates
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_improvement_in_coal_production_cost 
+		modifier = {
+			local_resources = 0.15
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 6 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 6 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_improvement_in_coal_production_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_improvement_in_coal_production_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_learn_to_read = { # ID = 7
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_learn_to_read_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_learn_to_read_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_learn_to_read_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_mongolian_socialism
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_learn_to_read_cost 
+		modifier = {
+			research_speed_factor = 0.05
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 7 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 7 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_learn_to_read_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_learn_to_read_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_improvement_of_schools = { # ID = 8
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_improvement_of_schools_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_improvement_of_schools_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_improvement_of_schools_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_improve_literacy_rates
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_improvement_of_schools_cost 
+		modifier = {
+			research_speed_factor = 0.075
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 8 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 8 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_improvement_of_schools_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_improvement_of_schools_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_improve_socialist_economy = { # ID = 9
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_improve_socialist_economy_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_improve_socialist_economy_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_improve_socialist_economy_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_state_publishing_company
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_improve_socialist_economy_cost 
+		modifier = {
+			production_factory_efficiency_gain_factor = 0.2
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 9 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 9 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_improve_socialist_economy_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_improve_socialist_economy_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_beloved_leader_choibalsan = { # ID = 10
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_beloved_leader_choibalsan_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_beloved_leader_choibalsan_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_beloved_leader_choibalsan_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			has_country_leader = { character = MON_khorloogiin_choibalsan }
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				AND = {
+					has_completed_focus = MON_the_flowering_future
+					has_country_leader = { character = MON_khorloogiin_choibalsan }
+				}
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_beloved_leader_choibalsan_cost 
+		modifier = {
+			political_power_factor = 0.1
+			stability_weekly = 0.002
+			war_support_weekly = 0.002
+			communism_drift = 0.05
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 10 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 10 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_beloved_leader_choibalsan_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_beloved_leader_choibalsan_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_get_a_lot_of_hay = { # ID = 11
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_get_a_lot_of_hay_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_get_a_lot_of_hay_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_get_a_lot_of_hay_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_state_publishing_company
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_get_a_lot_of_hay_cost 
+		modifier = {
+			consumer_goods_factor = -0.15
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 11 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 11 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_get_a_lot_of_hay_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_get_a_lot_of_hay_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_raise_hand_for_independence = { # ID = 12
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_raise_hand_for_independence_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_raise_hand_for_independence_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_raise_hand_for_independence_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			is_subject = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				AND = {
+					has_completed_focus = MON_state_publishing_company
+					is_subject = yes
+				}
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_raise_hand_for_independence_cost 
+		modifier = {
+			autonomy_gain = 0.5
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 12 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 12 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_raise_hand_for_independence_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_raise_hand_for_independence_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_enemy_could_not_penetrate = { # ID = 13
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_enemy_could_not_penetrate_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_enemy_could_not_penetrate_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_enemy_could_not_penetrate_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			is_ally_with = SOV
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				AND = {
+					has_completed_focus = MON_state_publishing_company
+					is_ally_with = SOV
+				}
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_enemy_could_not_penetrate_cost 
+		modifier = {
+			army_defence_factor = 0.05
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 13 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 13 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_enemy_could_not_penetrate_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_enemy_could_not_penetrate_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_wrath_of_the_people = { # ID = 14
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_wrath_of_the_people_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_wrath_of_the_people_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_wrath_of_the_people_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			surrender_progress > 0
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_state_publishing_company
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_wrath_of_the_people_cost 
+		modifier = {
+			army_core_attack_factor = 0.1
+			army_core_defence_factor = 0.05
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 14 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 14 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_wrath_of_the_people_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_wrath_of_the_people_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_be_a_hero = { # ID = 15
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_be_a_hero_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_be_a_hero_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_be_a_hero_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			has_war = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_the_flowering_future
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_be_a_hero_cost 
+		modifier = {
+			research_speed_factor = 0.02
+			communism_drift = 0.05
+			army_morale_factor = 0.05
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 15 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 15 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_be_a_hero_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_be_a_hero_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_raise_the_flag_of_victory = { # ID = 16
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_raise_the_flag_of_victory_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_raise_the_flag_of_victory_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_raise_the_flag_of_victory_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			has_war = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_the_flowering_future
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_raise_the_flag_of_victory_cost 
+		modifier = {
+			army_attack_factor = 0.05
+			army_speed_factor = 0.1
+			org_loss_when_moving = -0.05
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 16 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 16 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_raise_the_flag_of_victory_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_raise_the_flag_of_victory_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_throw_the_grenade_far = { # ID = 17
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_throw_the_grenade_far_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_throw_the_grenade_far_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_throw_the_grenade_far_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			has_war = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_state_publishing_company
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_throw_the_grenade_far_cost 
+		modifier = {
+			army_attack_factor = 0.05
+			fortification_collateral_chance = 0.2
+			fortification_damage = 0.1
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 17 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 17 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_throw_the_grenade_far_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_throw_the_grenade_far_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_take_care_of_the_soldiers = { # ID = 18
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_take_care_of_the_soldiers_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_take_care_of_the_soldiers_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_take_care_of_the_soldiers_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_state_publishing_company
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_take_care_of_the_soldiers_cost 
+		modifier = {
+			attrition = -0.1
+			experience_loss_factor = -0.15
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 18 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 18 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_take_care_of_the_soldiers_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_take_care_of_the_soldiers_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_severe_winter_weather = { # ID = 19
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_severe_winter_weather_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_severe_winter_weather_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_severe_winter_weather_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_state_publishing_company
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_severe_winter_weather_cost 
+		modifier = {
+			winter_attrition_factor = -0.15
+			acclimatization_cold_climate_gain_factor = 0.2
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 19 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 19 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_severe_winter_weather_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_severe_winter_weather_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_shook_hands = { # ID = 20
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_shook_hands_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_shook_hands_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_shook_hands_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			is_ally_with = SOV
+			has_war = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				AND = {
+					has_completed_focus = MON_state_publishing_company
+					is_ally_with = SOV
+				}
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_shook_hands_cost 
+		modifier = {
+			air_strategic_bomber_defence_factor = 0.02
+			air_strategic_bomber_bombing_factor = 0.05
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 20 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 20 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_shook_hands_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_shook_hands_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_study_military_science = { # ID = 21
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_study_military_science_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_study_military_science_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_study_military_science_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				has_completed_focus = MON_state_publishing_company
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_study_military_science_cost 
+		modifier = {
+			experience_gain_army_factor = 0.15
+			command_power_gain_mult = 0.15
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 21 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 21 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_study_military_science_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_study_military_science_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_tank_convoy = { # ID = 22
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_tank_convoy_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_tank_convoy_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_tank_convoy_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			has_country_leader = { character = MON_khorloogiin_choibalsan }
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				AND = {
+					has_completed_focus = MON_improve_literacy_rates
+					has_country_leader = { character = MON_khorloogiin_choibalsan }
+				}
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_tank_convoy_cost 
+		modifier = {
+			army_armor_attack_factor = 0.1
+	   		army_armor_defence_factor = 0.1
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 22 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 22 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_tank_convoy_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_tank_convoy_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_two_heroes_united = { # ID = 23
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_two_heroes_united_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_two_heroes_united_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_two_heroes_united_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			is_ally_with = SOV
+			has_war = yes
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				AND = {
+					has_completed_focus = MON_the_flowering_future
+					is_ally_with = SOV
+				}
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_two_heroes_united_cost 
+		modifier = {
+			army_org_factor = 0.05
+			out_of_supply_factor = -0.1
+			#no_supply_grace = 70
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 23 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 23 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_two_heroes_united_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_two_heroes_united_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_khalkha_heroes_are_coming = { # ID = 24
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				check_variable = { has_war_with = JAP }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_khalkha_heroes_are_coming_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_khalkha_heroes_are_coming_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_khalkha_heroes_are_coming_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			NOT = { is_ally_with = JAP }
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				AND = {
+					has_completed_focus = MON_state_publishing_company
+					NOT = { is_ally_with = JAP }
+				}
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_khalkha_heroes_are_coming_cost 
+		targeted_modifier = {
+			tag = JAP
+			attack_bonus_against = 0.1
+			defense_bonus_against = 0.1
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 24 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 24 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_khalkha_heroes_are_coming_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_khalkha_heroes_are_coming_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_destroy_german_fascism = { # ID = 25
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				check_variable = { has_war_with = GER }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_destroy_german_fascism_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_destroy_german_fascism_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_destroy_german_fascism_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			is_ally_with = SOV
+			NOT = { is_ally_with = GER }
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				AND = {
+					has_completed_focus = MON_state_publishing_company
+					is_ally_with = SOV
+					NOT = { is_ally_with = GER }
+				}
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_destroy_german_fascism_cost 
+		targeted_modifier = {
+			tag = GER
+			attack_bonus_against = 0.1
+			defense_bonus_against = 0.1
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 25 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 25 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_destroy_german_fascism_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_destroy_german_fascism_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+	MON_propaganda_wings_of_friendship = { # ID = 26
+		priority = 3
+		icon = eng_propaganda_campaigns
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_wings_of_friendship_cost > 30 }
+			}
+			modifier = {
+				factor = 0.1
+				check_variable = { MON_propaganda_wings_of_friendship_cost > 45 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { MON_propaganda_wings_of_friendship_cost > 90 }
+			}
+		}
+		allowed = {
+			original_tag = MON
+		}
+		available = {
+			MON_propaganda_poster_slot_available = yes
+			is_ally_with = SOV
+			has_tech = experimental_rockets
+		}
+		visible = {
+			MON_propaganda_poster_slot_available = yes
+			OR = {
+				AND = {
+					has_completed_focus = MON_the_flowering_future
+					is_ally_with = SOV
+					has_tech = experimental_rockets 
+				}
+				has_country_flag = MON_debug_unlock_propaganda_campaigns_flag #debug
+			}
+		}
+		days_remove = MON_default_propaganda_campaign_duration
+		days_re_enable = MON_default_propaganda_campaign_cooldown
+		cost = MON_propaganda_wings_of_friendship_cost 
+		modifier = {
+			rocket_attack_factor = 0.15
+		}
+		complete_effect = {
+			set_variable = { MON_new_propaganda_campaign = 26 }
+			MON_pick_propaganda_campaign_slot_effect = yes
+			MON_achievement_propaganda_counter_effect = yes
+		}
+		remove_effect = {
+			set_variable = { MON_propaganda_campaign_to_remove = 26 }
+			MON_reset_propaganda_campaign_slot_effect = yes
+			set_variable = { MON_propaganda_cost = MON_propaganda_wings_of_friendship_cost }
+			MON_increase_propaganda_campaign_cost_effect = yes
+			set_variable = { MON_propaganda_wings_of_friendship_cost = MON_propaganda_cost }
+			clear_variable = MON_propaganda_cost
+			custom_effect_tooltip = MON_propaganda_campaign_cooldown_tt
+		}
+	}
+
+
+}

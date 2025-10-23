@@ -1,0 +1,149 @@
+################
+##### DEN ######
+################
+
+DEN_social_reforms = {
+
+	icon = decision_category_generic_political_actions
+
+	#picture = GFX_decision_cat_picture_organize_the_blackshirts
+	
+	allowed = {
+		tag = DEN
+	}
+
+	#on_map_area = no
+
+	priority = {
+		base = 0
+		modifier = {
+			add = 10
+			has_completed_focus = DEN_Social_programs
+		}
+	}
+
+	visible = {
+		has_completed_focus = DEN_Social_programs
+		has_government = democratic
+	}
+}
+DEN_conscripts = {
+
+	icon = decision_category_generic_political_actions
+
+	#picture = GFX_decision_cat_picture_organize_the_blackshirts
+	
+	allowed = {
+		tag = DEN
+	}
+
+	#on_map_area = no
+
+	priority = {
+		base = 0
+		modifier = {
+			add = 10
+			has_completed_focus = DEN_hjemmevaernet
+		}
+	}
+
+	visible = {
+		has_completed_focus = DEN_hjemmevaernet
+	}
+}
+DEN_minelaying_decision = {
+	icon = decision_category_generic_political_actions
+
+	#picture = GFX_decision_cat_picture_organize_the_blackshirts
+	
+	allowed = {
+		tag = DEN
+	}
+
+	#on_map_area = {
+	#	state = 37
+	#	name = SPR_the_inevitable_civil_war_map_category_name
+	#	zoom = 250
+	#}
+
+	priority = {
+		base = 0
+		modifier = {
+			add = 10
+			has_completed_focus = DEN_minelaying
+		}
+	}
+
+	visible = {
+		has_completed_focus = DEN_minelaying
+	}
+}
+DEN_rebuild_the_grand_fleet = {
+
+	icon = decision_category_generic_political_actions
+
+	#picture = GFX_decision_cat_picture_organize_the_blackshirts
+	
+	allowed = {
+		tag = DEN
+	}
+
+	#on_map_area = no
+
+	priority = {
+		base = 0
+		modifier = {
+			add = 10
+			has_completed_focus = DEN_Rebuild_the_grand_fleet
+		}
+	}
+
+	visible = {
+		has_completed_focus = DEN_Rebuild_the_grand_fleet
+	}
+}
+
+DEN_occupation_DEN = {
+	
+	icon = hol_gateway_to_europe
+
+	allowed = {
+		original_tag = DEN
+		always = no
+	}
+
+	picture = GFX_decision_cat_picture_gateway_to_europe
+	priority = {
+		base = 10
+	}
+
+	visible_when_empty = yes
+
+	visible = {
+		is_subject_of = GER
+	}
+}
+
+DEN_occupation_GER = {
+	
+	icon = hol_gateway_to_europe
+
+	allowed = {
+		original_tag = GER
+		always = no
+	}
+
+	#picture = GFX_decision_cat_picture_gateway_to_europe
+	priority = {
+		base = 10
+	}
+
+	visible_when_empty = yes
+
+	visible = {
+		has_government = fascism
+		DEN_COOP = {
+			is_subject_of = GER
+		}
+	}
+}

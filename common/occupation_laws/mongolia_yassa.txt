@@ -1,0 +1,25 @@
+yassa = {
+	icon = 16
+	sound_effect = "Martial_Law_Interface_Military_Governor_Occupation"
+
+	fallback_law = foreign_civilian_oversight 
+
+	visible = {
+		original_tag = MON
+		has_completed_focus = MON_pax_mongolica
+	}
+
+	state_modifier = {
+		resistance_target = -0.3
+		required_garrison_factor = -0.15
+		resistance_damage_to_garrison = -0.2
+		local_factories = 0.15
+		local_resources = 0.15
+		local_manpower = 0.025
+	}
+
+
+	ai_will_do = {
+		base = 1000
+	}
+}

@@ -1,0 +1,188 @@
+add_namespace = newsfml
+
+#exposition universal
+news_event = {
+	id = newsfml.112
+	title = newsfml.112.t
+	desc = newsfml.112.d
+	picture = GFX_report_event_FRA_exposition_universelle
+	
+	major = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = newsfml.112.a
+	}
+}
+news_event = {
+	id = newsfml.100
+	title = newsfml.100.t
+	desc = newsfml.100.d
+	picture = GFX_report_event_FRA_lyon
+	
+	major = yes
+	
+	trigger = {
+		20 = { is_controlled_by = GER }
+		20 = { is_owned_by = FRA }
+		FRA = { has_war_with = GER }
+		NOT = { has_global_flag = fall_of_lyon_ger }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_lyon_ger
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = newsfml.112.a
+		trigger = {
+			NOT = {
+				TAG = GER
+				TAG = FRA
+			}
+		}
+	}
+	option = {
+		name = newsfml.100.b
+		trigger = { TAG = GER }
+	}
+	option = {
+		name = news.100.c
+		trigger = { TAG = FRA }
+	}
+}
+news_event = {
+	id = newsfml.120
+	title = newsfml.120.t
+	desc = newsfml.120.d
+	picture = GFX_report_event_FRA_dunkirk
+	
+	major = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = newsfml.120.a
+	}
+}
+news_event = {
+	id = newsfml.121
+	title = newsfml.121.t
+	desc = newsfml.121.d
+	picture = GFX_news_event_churchill_degaulle
+	
+	major = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = newsfml.121.a
+	}
+}
+#sabordage a toulon2
+news_event = {
+	id = newsfml.114
+	title = newsfml.114.t
+	desc = newsfml.114.d
+	picture = GFX_news_event_french_fleet_scuttled
+	
+	major = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = newsfml.114.a
+	}
+}
+
+#phoney war
+news_event = {
+	id = newsfml.113
+	title = newsfml.113.t
+	desc = newsfml.113.d
+	picture = GFX_report_event_FRA_phoney_war2
+	
+	major = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = newsfml.113.a
+	}
+}	
+
+#britain france alliance
+news_event = {
+	id = newsfml.175
+	title = news.175.t
+	desc = news.175.d
+	picture = GFX_report_event_FRA_chamberlain_daladier
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#We stand together.
+	option = {
+		name = news.175.a
+		trigger = {
+			OR = {
+				tag = ENG
+				tag = FRA
+			}
+		}
+	}
+
+	#They are preparing for the worst.
+	option = {
+		name = news.175.b
+		trigger = {
+			FRA = {
+				has_war = no
+			}
+			NOT = {
+				OR = {
+					tag = FRA
+					tag = ENG
+					tag = GER
+				}
+			}
+		}
+	}
+
+	#Banding together like cornered rats.
+	option = {
+		name = news.175.c
+		trigger = {
+			OR = {
+				tag = GER
+				has_war_with = FRA
+			}
+		}
+	}
+
+	#Britain has thrown in their lot.
+	option = {
+		name = news.175.e
+		trigger = {
+			FRA = {
+				has_war = yes
+			}
+			NOT = {
+				has_war_with = FRA
+			}
+			NOT = {
+				OR = {
+					tag = FRA
+					tag = ENG
+					tag = GER
+				}
+			}
+		}
+	}
+}

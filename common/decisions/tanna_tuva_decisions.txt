@@ -1,0 +1,1687 @@
+######################
+#Tannu_Tuva_Decisions#
+######################
+Send_Equipment_To_Russia_category = {
+	Send_Infantry_Equipment_To_Russia = {	
+		icon = GFX_decision_ger_military_buildup
+		available = {
+            has_equipment = { infantry_equipment > 1001 }
+		}
+		
+		fire_only_once = no
+		days_re_enable = 10
+
+		visible = {
+            has_completed_focus = Licensensing_Manufacturing
+			ROOT = {
+				tag = TAN
+			}
+		}		
+
+		cost = 5
+        days_remove = 5
+        custom_cost_text = decision_cost_ie_1000
+		complete_effect = {	
+			custom_effect_tooltip = "This sends 1000 units of infantry equipent to the Soviet Union."
+            TAN = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = -1000
+                }
+            }
+		}
+
+        remove_effect = {
+            SOV = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 1000
+                }
+            }
+        }
+
+		ai_will_do = {
+			factor = 90			
+		}
+    }
+	Send_Support_Equipment_To_Russia = {	
+		icon = GFX_decision_generic_consumer_goods
+		available = {
+            has_equipment = { support_equipment > 1001 }
+		}
+		
+		fire_only_once = no
+		days_re_enable = 10
+
+		visible = {
+			ROOT = {
+				tag = TAN
+			}
+            has_completed_focus = Licensensing_Manufacturing
+		}		
+
+		cost = 5
+        days_remove = 5
+		complete_effect = {	
+			custom_effect_tooltip = "This sends 100 units of suport equipment to the Soviet Union."
+            TAN = {
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = -100
+                }
+            }
+		}
+
+        remove_effect = {
+            SOV = {
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 100
+                }
+            }
+        }
+
+		ai_will_do = {
+			factor = 90			
+		}
+    }
+    Send_Artillery_To_Russia = {	
+		icon = GFX_decision_icon_default
+		available = {
+            has_equipment = { artillery > 11 }
+		}
+		
+		fire_only_once = no
+		days_re_enable = 10
+
+		visible = {
+            has_completed_focus = Licensensing_Manufacturing
+			ROOT = {
+				tag = TAN
+			}
+		}		
+
+		cost = 5
+        days_remove = 5
+        custom_cost_text = decision_cost_ie_100
+		complete_effect = {	
+			custom_effect_tooltip = "This sends 10 units of artillery to the Soviet Union."
+            TAN = {
+                add_equipment_to_stockpile = {
+                    type = artillery
+                    amount = -10
+                }
+            }
+		}
+
+        remove_effect = {
+            SOV = {
+                add_equipment_to_stockpile = {
+                    type = artillery
+                    amount = 10
+                }
+            }
+        }
+
+		ai_will_do = {
+			factor = 90			
+		}
+    }
+    Send_Trucks_To_Russia = {	
+		icon = GFX_decision_generic_motorized
+		available = {
+            has_equipment = { truck > 11 }
+		}
+		
+		fire_only_once = no
+		days_re_enable = 10
+
+		visible = {
+			ROOT = {
+				tag = TAN
+			}
+            has_completed_focus = Licensensing_Manufacturing
+		}		
+
+		cost = 5
+        days_remove = 5
+		complete_effect = {	
+			custom_effect_tooltip = "This sends 10 trucks to the Soviet Union."
+            TAN = {
+                add_equipment_to_stockpile = {
+                    type = truck
+                    amount = -10
+                }
+            }
+		}
+
+        remove_effect = {
+            SOV = {
+                add_equipment_to_stockpile = {
+                    type = truck
+                    amount = 10
+                }
+            }
+        }
+
+		ai_will_do = {
+			factor = 90			
+		}
+    }
+    Send_Light_Tanks_To_Russia = {	
+		icon = GFX_decision_generic_tank
+		available = {
+            has_equipment = { light_tank > 11 }
+		}
+		
+		fire_only_once = no
+		days_re_enable = 10
+
+		visible = {
+			ROOT = {
+				tag = TAN
+			}
+            has_completed_focus = Licensensing_Manufacturing
+		}		
+
+		cost = 5
+        days_remove = 5
+#        custom_cost_text = decision_cost_ie_100
+		complete_effect = {	
+			custom_effect_tooltip = "This sends 10 light tanks to the Soviet Union."
+            TAN = {
+                add_equipment_to_stockpile = {
+                    type = light_tank
+                    amount = -10
+                }
+            }
+		}
+
+        remove_effect = {
+            SOV = {
+                add_equipment_to_stockpile = {
+                    type = light_tank
+                    amount = 10
+                }
+            }
+        }
+
+		ai_will_do = {
+			factor = 90			
+		}
+    }
+}
+Raid_Military_Camps = {
+	Prioritize_Stealing_Infantry_Equipment = {	
+		icon = GFX_decision_ger_military_buildup
+		available = {
+			TAN = {
+				has_war_with = SOV
+			}
+		}
+		
+		fire_only_once = no
+		days_re_enable = 10
+
+		visible = {
+			ROOT = {
+				tag = TAN
+			}
+			has_completed_focus = Living_Off_The_Land
+		}		
+
+		cost = 15
+        days_remove = 5
+		complete_effect = {	
+			custom_effect_tooltip = "We will send some of our soilders to raid a nearby military camp for infantry equipment."
+            TAN = {
+				add_manpower = -100
+            }
+		}
+
+        remove_effect = {
+            TAN = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = 1000
+                }
+				add_manpower = 97
+            }
+			SOV = {
+                add_equipment_to_stockpile = {
+                    type = infantry_equipment
+                    amount = -1000
+                }
+				add_manpower = -104
+            }
+        }
+
+		ai_will_do = {
+			factor = 90			
+		}
+    }
+	Priortize_Stealing_Support_Equipment = {	
+		icon = GFX_decision_generic_consumer_goods
+		available = {
+			TAN = {
+				has_war_with = SOV
+			}
+		}
+		
+		fire_only_once = no
+		days_re_enable = 10
+
+		visible = {
+			ROOT = {
+				tag = TAN
+			}
+            has_completed_focus = Living_Off_The_Land
+		}		
+
+		cost = 15
+        days_remove = 5
+		complete_effect = {	
+			custom_effect_tooltip = "This will order some soilders to steal from a nearby military camp for support equipment."
+            TAN = {
+				add_manpower = -100
+            }
+		}
+
+        remove_effect = {
+            TAN = {
+                add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = 1000
+                }
+            }
+			SOV = {
+				add_equipment_to_stockpile = {
+                    type = support_equipment
+                    amount = -1000
+                }
+			}
+        }
+
+		ai_will_do = {
+			factor = 90			
+		}
+    }
+    Priortize_Stealing_Artillery = {	
+		icon = GFX_decision_icon_default
+		available = {
+			TAN = {
+				has_war_with = SOV
+			}
+		}
+		
+		fire_only_once = no
+		days_re_enable = 10
+
+		visible = {
+            has_completed_focus = Living_Off_The_Land
+			ROOT = {
+				tag = TAN
+			}
+		}		
+
+		cost = 15
+        days_remove = 5
+        custom_cost_text = decision_cost_ie_100
+		complete_effect = {	
+			custom_effect_tooltip = "This sends 10 units of artillery to the Soviet Union."
+            TAN = {
+				add_manpower = -154
+            }
+		}
+
+        remove_effect = {
+            TAN = {
+				add_war_support = 0.05
+                add_equipment_to_stockpile = {
+                    type = artillery
+                    amount = 100
+                }
+				add_manpower = 103
+            }
+			SOV = {
+				add_war_support = -0.05
+                add_equipment_to_stockpile = {
+                    type = artillery
+                    amount = -100
+                }
+            }
+        }
+
+		ai_will_do = {
+			factor = 90			
+		}
+    }
+    Priortize_Stealing_Trucks = {	
+		icon = GFX_decision_generic_motorized
+		available = {
+			TAN = {
+				has_war_with = SOV
+			}
+		}
+		
+		fire_only_once = no
+		days_re_enable = 10
+
+		visible = {
+			ROOT = {
+				tag = TAN
+			}
+            has_completed_focus = Living_Off_The_Land
+		}		
+
+		cost = 20
+        days_remove = 5
+		complete_effect = {	
+			custom_effect_tooltip = "This will send a few soilders to steal trucks from an enemy military camp."
+            TAN = {
+				add_manpower = -100
+            }
+		}
+
+        remove_effect = {
+            TAN = {
+                add_equipment_to_stockpile = {
+                    type = truck
+                    amount = 85
+                }
+				add_war_support = 0.05
+				add_manpower = 95
+            }
+			SOV = {
+                add_equipment_to_stockpile = {
+                    type = truck
+                    amount = -98
+                }
+				add_war_support = -0.05
+            }
+        }
+
+		ai_will_do = {
+			factor = 90			
+		}
+    }
+    Priortize_Stealing_Light_Tanks = {	
+		icon = GFX_decision_generic_tank
+		available = {
+			SOV = {
+				has_equipment = { light_tank > 100 }
+			}
+			TAN = {
+				has_war_with = SOV
+			}
+		}
+		
+		fire_only_once = no
+		days_re_enable = 10
+
+		visible = {
+			ROOT = {
+				tag = TAN
+			}
+            has_completed_focus = Living_Off_The_Land
+		}		
+
+		cost = 25
+        days_remove = 5
+#        custom_cost_text = decision_cost_ie_100
+		complete_effect = {	
+			custom_effect_tooltip = "This sends a few soilders to go and drive away with the enemy's tanks."
+            TAN = {
+				add_manpower = -160
+            }
+		}
+
+        remove_effect = {
+            TAN = {
+                add_equipment_to_stockpile = {
+                    type = light_tank
+                    amount = 100
+                }
+				add_war_support = 0.08
+				add_manpower = 138
+            }
+			SOV = {
+                add_equipment_to_stockpile = {
+                    type = light_tank
+                    amount = -148
+                }
+				add_war_support = -0.05
+            }
+        }
+
+		ai_will_do = {
+			factor = 90			
+		}
+    }
+}
+Stomp_Out_The_Old_Believers_category = {
+	Locate_The_Settlements = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_government = fascism
+		}
+		fire_only_once = no		
+		days_re_enable = 5
+		visible = {	
+			ROOT = {
+				is_ai = no
+			}
+		}		
+		cost = 5
+		complete_effect = {	
+			TAN = {
+				add_manpower = 1302
+				custom_effect_tooltip = "This will increase our total manpower."
+			}
+		}
+		hidden_effect = {
+			add_ideas = hiddden_found_old_believers
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Arrest_Old_Believer_Leaders = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_idea = hiddden_found_old_believers
+		}
+		fire_only_once = no		
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			custom_effect_tooltip = "This allows us to move the Old Believers."
+			add_stability = -0.02
+		}
+		hidden_effect = {
+			remove_ideas = hiddden_found_old_believers
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Force_Old_Believers_To_Move = {
+		icon = GFX_decision_icon_default
+		available = {
+			NOT = {
+				has_idea = hiddden_found_old_believers
+			}
+		}
+		fire_only_once = yes		
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			add_manpower = 293
+		}
+		hidden_effect = {
+			add_idea = hidden_old_believers_moved
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+    Ban_The_Religion = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_idea = hidden_old_believers_moved
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			add_stability = -0.02
+			custom_effect_tooltip = "This will allow us to intergrate the Old Believers."
+		}
+		hidden_effect = {
+			remove_ideas =  hidden_old_believers_moved
+			add_ideas = hidden_ob_banned
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+    Integrate_Old_Believers = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_idea = hidden_ob_banned
+		}
+		fire_only_once = yes
+		days_re_enable = 5
+		visible = {	
+ 
+		}		
+		cost = 5
+		complete_effect = {	
+			add_stability = 0.114
+			add_manpower = 12929
+		}
+		hidden_effect = {
+			remove_ideas = hidden_ob_banned
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+}
+The_Sacred_War_category = {
+	Rally_The_Troops = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_war = yes
+		}
+		fire_only_once = no		
+		days_re_enable = 45
+		visible = {	
+
+		}		
+		cost = 15
+		complete_effect = {	
+			add_timed_idea = {
+				idea = TAN_Motivated_Troops
+				days = 15
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+    Give_Out_A_Speech = {
+		icon = tur_fevzi_cakmak
+		available = {
+		}
+		fire_only_once = no		
+		days_re_enable = 45
+		visible = {	
+
+		}		
+		cost = 15
+		complete_effect = {	
+			add_timed_idea = {
+				idea = TAN_Amazing_Speech
+				days = 15
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+    Production_Propoganda = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_war = yes
+		}
+		fire_only_once = no		
+		days_re_enable = 45
+		visible = {
+			
+		}
+		cost = 5
+		complete_effect = {	
+			add_timed_idea = {
+				idea = TAN_production_propoganda
+				days = 30
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+    Not_A_Step_Back = {
+		icon = GFX_decision_icon_default
+		available = {
+			has_war = yes
+		}
+		fire_only_once = no		
+		days_re_enable = 80
+		visible = {	
+
+		}		
+		cost = 35
+		complete_effect = {	
+			add_timed_idea = {
+				idea = TAN_Order_227
+				days = 65
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+}
+Das_Dug_Mountain_Disupute_category = {
+	Discuss_The_Dispute = {
+		icon = GFX_decision_icon_default
+		available = {
+		}
+		fire_only_once = yes		
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 25
+		complete_effect = {	
+			SOV = {
+				country_event = {
+					id = tanna_tuva.56
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+}
+Under_One_Banner_category = {
+	Siberian_Unification_Propoganda = {
+		icon = GFX_decision_icon_default
+		available = {
+		}
+		fire_only_once = no		
+		days_re_enable = 30
+		visible = {	
+			has_completed_focus = Under_One_Banner
+		}		
+		cost = 25
+		complete_effect = {	
+			add_war_support = 0.1
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Recruit_From_Siberia = {
+		icon = GFX_decision_icon_default
+		available = {
+		}
+		fire_only_once = no		
+		days_re_enable = 30
+		visible = {	
+			has_completed_focus = Under_One_Banner
+		}		
+		cost = 25
+		complete_effect = {	
+			add_manpower = 1500
+		}
+		hidden_effect = {
+			SOV = {
+				add_manpower = -1500
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+}
+Negotiate_With_The_Soviets_category = {
+    Ural_Question = {
+		icon = GFX_decision_icon_default
+		available = {
+			country_exists = SOV
+			country_exists = TAN
+		}
+		fire_only_once = yes		
+		days_re_enable = 5
+		visible = {	
+			has_completed_focus = Negotiate_With_The_Soviets
+		}		
+		cost = 50
+		complete_effect = {	
+			SOV = {
+				country_event = {
+					id = tanna_tuva.51
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+    Siberia_Question = {
+		icon = GFX_decision_icon_default
+		available = {
+			country_exists = SOV
+			country_exists = TAN
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+			has_completed_focus = Negotiate_With_The_Soviets
+		}		
+		cost = 50
+		complete_effect = {	
+			SOV = {
+				country_event = {
+					id = tanna_tuva.52
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+    Far_East_Question = {
+		icon = GFX_decision_icon_default
+		available = {
+			country_exists = SOV
+			country_exists = TAN
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+			has_completed_focus = Negotiate_With_The_Soviets
+		}		
+		cost = 50
+		complete_effect = {	
+			SOV = {
+				country_event = {
+					id = tanna_tuva.53
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Vladivostock_Question = {
+		icon = GFX_decision_icon_default
+		available = {
+			country_exists = SOV
+			country_exists = TAN
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+			has_completed_focus = Negotiate_With_The_Soviets
+		}		
+		cost = 50
+		complete_effect = {	
+			SOV = {
+				country_event = {
+					id = tanna_tuva.54
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+	}
+}
+Undo_European_Sins_category = {
+
+}
+Turkestan_Dream_idea = {
+    Influence_Local_Politicians = {
+		icon = GFX_decision_icon_default
+		available = {
+		}
+		fire_only_once = no		
+		days_re_enable = 5
+		visible = {	
+ 
+		}		
+		cost = 50
+		complete_effect = {	
+			custom_effect_tooltip = "Swaying local politicians and people will tip the negotiations in our favor."
+		}
+		hidden_effect = {
+			SOV = {
+				add_ideas = hidden_Turkestan_Politicians_Swayed
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+    Central_Asia_Question = {
+		icon = GFX_decision_icon_default
+		available = {
+		}
+		fire_only_once = yes		
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 100
+		complete_effect = {	
+			SOV = {
+				country_event = {
+					id = country_event.55
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+}
+Intergrate_Mongolia = {
+    Full_Intergration = {
+		icon = GFX_decision_category_generic_political_actions
+		available = {
+		}
+		fire_only_once = no		
+		days_re_enable = 5
+		visible = {	
+ 
+		}		
+		cost = 150
+		complete_effect = {	
+			add_state_core = 818
+			add_state_core = 330
+			add_state_core = 817
+			add_state_core = 819
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+}
+Preparing_For_The_Coup_category = {
+    Militarize_The_Old_Believers = {
+		icon = GFX_decision_generic_army_support
+		available = {
+		}
+		fire_only_once = no		
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			add_war_support = 0.10
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.05
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+    Influence_Tuvan_Politics = {
+		icon = GFX_decision_eng_propaganda_campaigns
+		available = {
+		}
+		fire_only_once = no		
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 40
+		complete_effect = {	
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.15
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+    Appoint_Religious_Leaders = {
+		icon = GFX_decision_SOV_place_hq
+		available = {
+		}
+		fire_only_once = no		
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 80
+		complete_effect = {	
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.249
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+}
+Organize_The_Tuvan_Tribes = {
+	Organize_The_Western_Tribes = {
+		icon = GFX_decision_generic_decision
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 15
+		complete_effect = {	
+			329 = {
+				add_manpower = 1928
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Organize_The_Eastern_Tribes = {
+		icon = GFX_decision_generic_decision
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 10
+		complete_effect = {	
+			329 = {
+				add_manpower = 639
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Organize_The_Southern_Tribes = {
+		icon = GFX_decision_generic_decision
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 10
+		complete_effect = {	
+			329 = {
+				add_manpower = 982
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Organize_The_Northern_Tribes = {
+		icon = GFX_decision_generic_decision
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 10
+		complete_effect = {	
+			329 = {
+				add_manpower = 1329
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Organize_The_Mongol_Tribes = {
+		icon = GFX_decision_generic_decision
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			329 = {
+				add_manpower = 592
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Organize_The_Altai_Tribes = {
+		icon = GFX_decision_generic_decision
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			329 = {
+				add_manpower = 403
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+}
+TAN_Local_Plans_category = {
+	Local_Plans_decisions = {
+		icon = hol_draw_up_staff_plans
+
+		state_target = yes
+
+		available = {
+			FROM = {
+				OR = {
+					AND = {
+						is_controlled_by = TAN
+						any_neighbor_state = {
+							is_controlled_by = SOV
+						}
+					}
+					AND = {
+						is_controlled_by = SOV
+						any_neighbor_state = {
+							is_controlled_by = TAN
+						}
+					}
+				}
+				ROOT = {
+					has_completed_focus = Local_Plans
+					has_war_with = SOV
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					AND = {
+						is_controlled_by = TAN
+						any_neighbor_state = {
+							is_controlled_by = SOV
+						}
+					}
+					AND = {
+						is_controlled_by = SOV
+						any_neighbor_state = {
+							is_controlled_by = TAN
+						}
+					}
+				}
+			}
+		}
+		visible = {
+			FROM = {
+				OR = {
+					AND = {
+						is_controlled_by = TAN
+						any_neighbor_state = {
+							is_controlled_by = SOV
+						}
+					}
+					AND = {
+						is_controlled_by = TAN
+						any_neighbor_state = {
+							is_controlled_by = SOV
+						}
+					}
+				}
+				ROOT = {
+					has_completed_focus = Local_Plans
+				}
+			}
+		}
+
+		fire_only_once = no
+		cost = 50
+
+		days_re_enable = 20
+		on_map_mode = map_only
+		complete_effect = {
+			FROM = { 
+				add_dynamic_modifier = {
+					modifier = POL_anti_german_offensive
+					days = 60
+					scope = POL
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+	}
+}
+
+Invite_German_Companies = {
+	Invite_Messerschmitt = {
+		icon = GFX_decision_generic_air
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_tech_bonus = {
+					name = bomber_bonus
+					bonus = 1.0
+					uses = 1
+					category = medium_air
+					category = light_air			
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = bomber_bonus
+					bonus = 1.0
+					uses = 1
+					category = tactical_bomber
+					category = cas_bomber			
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_Mauser = {
+		icon = GFX_decision_generic_prepare_civil_war
+		available = {
+		}
+		fire_only_once = yes
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_Krupp = {
+		icon = GFX_decision_steel
+		available = {
+		}
+		fire_only_once = yes
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			add_resource = {
+    			type = steel
+    			amount = 3
+    			state = 329
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_Siemens = {
+		icon = GFX_decision_ger_military_buildup
+		available = {
+		}
+		fire_only_once = yes
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}				
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_IG_Farben = {
+		icon = GFX_decision_generic_research
+		available = {
+		}
+		fire_only_once = yes
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			add_ideas = Research_Bonus_idea
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+}
+Invite_Zaibutus_Companies = {
+	Invite_Mitsubishi = {
+		icon = GFX_decision_generic_air
+		available = {
+		}
+		fire_only_once = yes
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_tech_bonus = {
+					name = bomber_bonus
+					bonus = 1.0
+					uses = 1
+					category = medium_air
+					category = light_air			
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = bomber_bonus
+					bonus = 1.0
+					uses = 1
+					category = tactical_bomber
+					category = cas_bomber			
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_Aichi = {
+		icon = GFX_decision_generic_construction
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}				
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_Nakajima = {
+		icon = GFX_decision_generic_air
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_tech_bonus = {
+					name = bomber_bonus
+					bonus = 1.0
+					uses = 1
+					category = medium_air
+					category = light_air			
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = bomber_bonus
+					bonus = 1.0
+					uses = 1
+					category = tactical_bomber
+					category = cas_bomber			
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_Nissan = {
+		icon = GFX_decision_generic_tank
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
+				add_tech_bonus = {
+					bonus = 1.0
+					uses = 1
+					name = mech_army_bonus
+					technology = basic_medium_tank
+					technology = improved_medium_tank
+					technology = advanced_medium_tank
+					technology = mechanised_infantry
+				}	
+			}
+			else = {
+				add_tech_bonus = {
+					bonus = 1.0
+					uses = 1
+					name = mech_army_bonus
+					technology = basic_medium_tank_chassis
+					technology = improved_medium_tank_chassis
+					technology = advanced_medium_tank_chassis
+					technology = mechanised_infantry
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_Kawasaki = {
+		icon = GFX_decision_steel
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			add_resource = {
+    			type = steel
+    			amount = 3
+    			state = 329
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_Idenmitsu_Kosan = {
+		icon = GFX_decision_oil
+		available = {
+		}
+		fire_only_once = yes
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}				
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+}
+Invite_Western_Companies = {
+	Invite_Chryser = {
+		icon = GFX_decision_generic_tank
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
+				add_tech_bonus = {
+					bonus = 1.0
+					uses = 1
+					name = mech_army_bonus
+					technology = basic_medium_tank
+					technology = improved_medium_tank
+					technology = advanced_medium_tank
+					technology = mechanised_infantry
+				}	
+			}
+			else = {
+				add_tech_bonus = {
+					bonus = 1.0
+					uses = 1
+					name = mech_army_bonus
+					technology = basic_medium_tank_chassis
+					technology = improved_medium_tank_chassis
+					technology = advanced_medium_tank_chassis
+					technology = mechanised_infantry
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_Lockheed = {
+		icon = GFX_decision_generic_air
+		available = {
+		}
+		fire_only_once = yes		
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			if = {
+				limit = {
+					has_dlc = "By Blood Alone"
+				}
+				add_tech_bonus = {
+					name = bomber_bonus
+					bonus = 1.0
+					uses = 1
+					category = medium_air
+					category = light_air			
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = bomber_bonus
+					bonus = 1.0
+					uses = 1
+					category = tactical_bomber
+					category = cas_bomber			
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_General_Motors = {
+		icon = GFX_decision_generic_tank
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "No Step Back"
+					}
+				}
+				add_tech_bonus = {
+					bonus = 1.0
+					uses = 1
+					name = mech_army_bonus
+					technology = basic_medium_tank
+					technology = improved_medium_tank
+					technology = advanced_medium_tank
+					technology = mechanised_infantry
+				}	
+			}
+			else = {
+				add_tech_bonus = {
+					bonus = 1.0
+					uses = 1
+					name = mech_army_bonus
+					technology = basic_medium_tank_chassis
+					technology = improved_medium_tank_chassis
+					technology = advanced_medium_tank_chassis
+					technology = mechanised_infantry
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_Standard_Oil_of_California = {
+		icon = GFX_decision_oil
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+
+		}		
+		cost = 5
+		complete_effect = {	
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}				
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_MAS = {
+		icon = GFX_decision_generic_prepare_civil_war
+		available = {
+		}
+		fire_only_once = yes		
+		days_re_enable = 5
+		visible = {	
+ 
+		}		
+		cost = 5
+		complete_effect = {	
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}				
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_Polymer_Corporation = {
+		icon = GFX_decision_generic_construction
+		available = {
+		}
+		fire_only_once = yes		
+		days_re_enable = 5
+		visible = {	
+ 
+		}		
+		cost = 5
+		complete_effect = {	
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}				
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+	Invite_COMESA = {
+		icon = GFX_decision_generic_industry
+		available = {
+		}
+		fire_only_once = yes	
+		days_re_enable = 5
+		visible = {	
+ 
+		}		
+		cost = 5
+		complete_effect = {	
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}				
+			}
+		}
+		ai_will_do = {
+			factor = 0			
+		}
+    }
+}

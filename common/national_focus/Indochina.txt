@@ -1,0 +1,1267 @@
+﻿focus_tree = {
+	id = indochina_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 0
+			tag = VIN
+		}
+	}
+	
+	default = no
+	continuous_focus_position = { x = 50 y = 1350 }
+
+	focus = {
+		id = VIN_stay_colony
+		icon = GFX_focus_por_luso_tropicalism
+		x = 18
+		y = 0
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = {}
+		mutually_exclusive = { }
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+
+		bypass = {
+
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_TFV_AUTONOMY }
+
+		completion_reward = {
+			add_political_power = 120
+			add_autonomy_ratio = {
+				value = -0.5
+			}
+		}
+	}
+
+	# focus = {
+	# 	id = VIN_no_more_colony
+	# 	icon = GFX_focus_attack_france
+	# 	x = 5
+	# 	y = 0
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = {}
+	# 	mutually_exclusive = { }
+	# 	available = {
+	# 		OR = {
+	# 			has_completed_focus = FRA_the_blum_viollette_proposal
+	# 			has_capitulated = yes
+	# 		}
+	# 		459 = {
+	# 			is_owned_and_controlled_by = FRA
+	# 		}
+	# 		460 = {
+	# 			is_owned_and_controlled_by = FRA
+	# 		}
+	# 	}
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+
+	# 	available = {
+	# 	}
+
+	# 	bypass = {
+
+	# 	}
+
+	# 	available_if_capitulated = yes
+	# 	search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_TFV_AUTONOMY }
+
+	# 	completion_reward = {
+	# 		add_political_power = 120
+	# 		add_autonomy_ratio = {
+	# 			value = -0.5
+	# 		}
+	# 	}
+	# }
+
+	focus = {
+		id = VIN_popular_front
+		icon = GFX_focus_por_workers_of_iberia
+		x = 18
+		y = 4
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { 
+			focus = VIN_stay_colony
+		}
+		available = {
+			FRA = {
+            	has_completed_focus = FRA_form_the_popular_front
+       		}	
+		}
+		cost = 10
+		relative_position_id = ICN_stay_colony
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+				add_stability = 0.10
+			}
+		}
+
+	focus = {
+		id = VIN_respect_vietnam_culture
+		icon = GFX_focus_jap_spiritual_mobilization
+		x = -2
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { 
+			focus = VIN_popular_front
+		}
+		available = {
+			FRA = {
+            			has_completed_focus = FRA_form_the_popular_front
+       			}	
+		}
+		cost = 10
+		relative_position_id = VIN_popular_front
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+				add_ideas = { VIN_culture_respected }
+			}
+		}
+
+	# focus = {
+	# 	id = VIN_the_national_revolution
+	# 	icon = GFX_focus_generic_strike_at_democracy1
+	# 	x = -5
+	# 	y = 1
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_no_more_colony
+	# 	}
+	# 	relative_position_id = VIN_no_more_colony
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_STABILITY }
+	# 	completion_reward = {
+	# 		add_stability = 0.1
+	# 	}
+	# }
+	# focus = {
+	# 	id = VIN_long_term_economic_planning
+	# 	icon = GFX_goal_generic_construct_civilian
+	# 	x = -2
+	# 	y = 1
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_the_national_revolution
+	# 	}
+	# 	relative_position_id = VIN_the_national_revolution
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_INDUSTRY }
+	# 	completion_reward = {
+	# 		add_tech_bonus = {
+	# 			name = VIN_long_term_economic_planning
+	# 			category = industry
+	# 			uses = 2
+	# 			bonus = 1
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = VIN_aid_small_businesses
+	# 	icon = GFX_goal_generic_consumer_goods
+	# 	x = 0
+	# 	y = 2
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_long_term_economic_planning
+	# 	}
+	# 	relative_position_id = VIN_long_term_economic_planning
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_INDUSTRY }
+	# 	completion_reward = {
+	# 		random_owned_state = {
+	# 			limit = {
+	# 				is_fully_controlled_by = ROOT
+	# 				is_core_of = ROOT
+	# 				free_building_slots = {
+	# 					building = industrial_complex
+	# 					size > 1
+	# 					include_locked = yes
+	# 				}
+	# 			}
+	# 			add_extra_state_shared_building_slots = 2
+	# 			add_building_construction = {
+	# 				type = industrial_complex
+	# 				level = 2
+	# 				instant_build = yes
+	# 			}
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = VIN_venerate_the_craftsman
+	# 	icon = GFX_goal_generic_production
+	# 	x = 0
+	# 	y = 2
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_aid_small_businesses
+	# 	}
+	# 	relative_position_id = VIN_aid_small_businesses
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_INDUSTRY }
+	# 	completion_reward = {
+	# 		add_ideas = { FRA_venerate_the_craftsman }
+	# 	}
+	# }
+	# focus = {
+	# 	id = VIN_down_with_marianne
+	# 	icon = GFX_focus_focus_fra_down_marianne
+	# 	x = 0
+	# 	y = 1
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_the_national_revolution
+	# 	}
+	# 	relative_position_id = VIN_the_national_revolution
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	completion_reward = {
+	# 		add_timed_idea = { 
+	# 			idea = FRA_down_with_marianne 
+	# 			days = 730
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = VIN_up_with_jean_darc
+	# 	icon = GFX_focus_up_joan_of_arc
+	# 	x = 0
+	# 	y = 2
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_down_with_marianne
+	# 	}
+	# 	relative_position_id = VIN_down_with_marianne
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	completion_reward = {
+	# 		add_timed_idea = { 
+	# 			idea = FRA_up_with_jean_darc 
+	# 			days = 730
+	# 		}
+	# 	}
+	# }
+	# focus = {
+	# 	id = VIN_celebrate_motherhood
+	# 	icon = GFX_goal_generic_propaganda
+	# 	x = 0
+	# 	y = 2
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_up_with_jean_darc
+	# 	}
+	# 	relative_position_id = VIN_up_with_jean_darc
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_STABILITY }
+	# 	completion_reward = {
+	# 		add_stability = 0.05
+	# 	}
+	# }
+	# focus = {
+	# 	id = VIN_prosecute_the_losers
+	# 	icon = GFX_goal_generic_neutrality_focus
+	# 	x = 2
+	# 	y = 1
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_the_national_revolution
+	# 	}
+	# 	relative_position_id = VIN_the_national_revolution
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	# 	completion_reward = {
+	# 		add_war_support = 0.05
+	# 	}
+	# }
+	# focus = {
+	# 	id = VIN_concessions_to_the_germans
+	# 	icon = GFX_focus_chi_mission_to_germany
+	# 	x = 0
+	# 	y = 2
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_prosecute_the_losers
+	# 	}
+	# 	relative_position_id = VIN_prosecute_the_losers
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+	# 		16 = {
+	# 			is_controlled_by = GER
+	# 		}
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_FRA_OCCUPATION_COST }
+	# 	completion_reward = {
+	# 		unlock_decision_category_tooltip = VIN_concessions_to_the_germans
+	# 	}
+	# }
+	# focus = {
+	# 	id = VIN_mandatory_work_service
+	# 	icon = GFX_goal_generic_construction2
+	# 	x = 0
+	# 	y = 2
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_concessions_to_the_germans
+	# 	}
+	# 	relative_position_id = VIN_concessions_to_the_germans
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_FRA_OCCUPATION_COST }
+	# 	completion_reward = {
+	# 		reduce_occupation_cost_effect = yes
+	# 		add_ideas = { FRA_mandatory_work_service }
+	# 	}
+	# }
+	# focus = {
+	# 	id = VIN_a_nation_reborn
+	# 	icon = GFX_goal_support_fascism
+	# 	x = 0
+	# 	y = 2
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_celebrate_motherhood
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_venerate_the_craftsman
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_mandatory_work_serVINe
+	# 	}
+	# 	relative_position_id = VIN_celebrate_motherhood
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+			
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	search_filters = { FOCUS_FILTER_STABILITY }
+	# 	completion_reward = {
+	# 		add_stability = 0.1
+	# 	}
+	# }
+	# focus = {
+	# 	id = VIN_end_the_occupation
+	# 	icon = GFX_goal_generic_territory_or_war
+	# 	x = 0
+	# 	y = 2
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	prerequisite = { 
+	# 		focus = VIN_a_nation_reborn
+	# 	}
+	# 	relative_position_id = VIN_a_nation_reborn
+		
+	# 	cost = 10
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 		modifier = {
+	# 			is_historical_focus_on = yes
+	# 			NOT = {
+	# 				GER = { owns_state = 219 } 
+	# 			}
+	# 			factor = 0
+	# 		}
+	# 	}
+	# 	available = {
+	# 		16 = {
+	# 			NOT = {
+	# 				is_controlled_by = ROOT
+	# 			}
+	# 		}
+	# 	}
+		
+	# 	bypass = {
+
+	# 	}
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	completion_reward = {
+	# 		set_rule = {
+	# 			can_join_factions = yes
+	# 			can_not_declare_war = no
+	# 			can_create_factions = yes
+	# 		}
+	# 		remove_occupation_cost_effect = yes
+	# 		if = {
+	# 			limit = {
+	# 				has_idea = VIN_produce_aircraft_parts
+	# 			}
+	# 			remove_ideas = VIN_produce_aircraft_parts
+	# 		}
+	# 		GER = { 
+	# 			country_event = lar_end_the_occupation.1 
+	# 			if = { limit = { has_idea = VIN_aircraft_parts }
+	# 				remove_ideas = VIN_aircraft_parts
+	# 			}
+	# 		}
+	# 	}
+	# }
+	focus = {
+		id = VIN_national_bloc
+		icon = GFX_focus_CZE_german_puppet
+		x = 11
+		y = 2
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { 
+			focus = VIN_stay_colony
+		}
+		available = {
+			FRA = {
+            			has_completed_focus = FRA_revive_the_national_bloc
+       			}	
+		}
+		cost = 10
+		relative_position_id = ICN_stay_colony
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+				add_stability = 0.10
+				remove_ideas = VIN_communist
+				remove_ideas = VIN_yen_bai
+			}
+		}
+
+		focus = {
+		id = VIN_industrial_expansion
+		icon = GFX_focus_generic_industry_2
+		available = {
+		}
+		prerequisite = { focus = VIN_boost_war_production focus = VIN_brevie_politic }
+		x = -6
+		y = 3
+		relative_position_id = VIN_popular_front
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		bypass = {
+			
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_offsite_building = {
+				type = arms_factory
+				level = 2
+			}
+			add_offsite_building = {
+				type = industrial_complex
+				level = 3
+			}
+		}
+	}
+	focus = {
+		id = VIN_developpement
+		available = {	
+			OR = {
+				has_full_control_of_state = 671
+				671 = {
+					owner = { is_subject_of = ROOT }
+				}
+			}					
+		}
+
+		bypass = {		
+		}
+		prerequisite = { focus = VIN_industrial_expansion }
+			
+		icon = GFX_focus_generic_improve_roads
+		x = -2
+		y = 2
+
+		relative_position_id = VIN_industrial_expansion
+		cost = 10
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = { 
+			671 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = VIN_developpement2
+		available = {	
+			OR = {
+				has_full_control_of_state = 286
+				286 = {
+					owner = { is_subject_of = ROOT }
+				}
+			}					
+		}
+
+		bypass = {		
+		}
+		prerequisite = { focus = VIN_industrial_expansion }
+			
+		icon = GFX_focus_ITA_grande_rivolta_rurale
+		x = 2
+		y = 2
+
+		relative_position_id = VIN_industrial_expansion
+		cost = 10
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		completion_reward = { 
+			286 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+
+				add_resource = {
+					type = rubber
+					amount = 8
+				}
+			}
+		}
+	}
+	focus = {
+		id = VIN_developpement3
+		icon = GFX_goal_generic_construction2
+		x = 2
+		y = 2
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { 
+			focus = VIN_developpement2
+			focus = VIN_developpement
+		}
+		relative_position_id = VIN_developpement
+		
+		cost = 15
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			remove_ideas = VIN_agrian_colony
+		}
+	}
+	focus = {
+		id = VIN_war_support
+		icon = GFX_focus_ETH_peacekeeping_forces
+		x = -2
+		y = 2
+		offset = {
+			x = 0
+			y = 2
+		}
+		prerequisite = { 
+			focus = VIN_national_bloc
+		}
+		available = {
+			FRA = {
+            			has_completed_focus = FRA_revive_the_national_bloc
+       			}	
+		}
+		cost = 10
+		relative_position_id = VIN_national_bloc
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+				add_war_support = 0.15
+			}
+		}
+
+	focus = {
+		id = VIN_boost_war_production
+		icon = GFX_focus_SOV_organize_wreckers
+		x = 2
+		y = 2
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { 
+			focus = VIN_national_bloc
+		}
+		available = {
+			FRA = {
+            			has_completed_focus = FRA_revive_the_national_bloc
+       			}	
+		}
+		cost = 10
+		relative_position_id = VIN_national_bloc
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+				add_ideas = { VIN_war_production }
+			}
+		}
+
+	focus = {
+		id = VIN_brevie_politic
+		icon = GFX_goal_continuous_increase_nu
+		x = -1
+		y = 2
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { 
+			focus = VIN_popular_front
+		}
+		relative_position_id = VIN_popular_front
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			remove_ideas = VIN_yen_bai
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = VIN_communism_threat
+		icon = GFX_goal_anti_comintern_pact
+		x = 1
+		y = 2
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { 
+			focus = VIN_popular_front
+		}
+		relative_position_id = VIN_popular_front
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			remove_ideas = VIN_communist
+		}
+	}
+	focus = {
+		id = VIN_rebuild_the_military
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 8
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { 
+			focus = VIN_stay_colony
+		}
+		relative_position_id = VIN_stay_colony
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+			num_of_military_factories > 34
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_ideas = { FRA_rebuild_the_military }
+		}
+	}
+	focus = {
+		id = VIN_finish_the_naval_buildup
+		icon = GFX_focus_generic_refit_civilian_ships
+		x = -2
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { 
+			focus = VIN_rebuild_the_military
+		}
+		relative_position_id = VIN_rebuild_the_military
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			navy_experience = 50
+			random_owned_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					is_core_of = ROOT
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = VIN_colonial_assimilation_policy
+		available = {
+			any_owned_state = {
+				NOT = { is_core_of = ROOT }
+			}
+		}
+
+		bypass = {
+		}
+		
+		prerequisite = { focus = VIN_finish_the_naval_buildup }
+
+		relative_position_id = VIN_finish_the_naval_buildup
+		icon = GFX_focus_generic_military_academy
+		x = 0
+		y = 1
+
+		cost = 10
+		search_filters = {FOCUS_FILTER_MANPOWER}
+		completion_reward = {
+			add_ideas = POR_colonial_assimilation_policy
+		}
+	}
+	
+	focus = {
+		id = VIN_colonial_army
+		available = {
+			any_owned_state = {
+				NOT = { is_core_of = ROOT }
+			}
+		}
+
+		bypass = {		
+		}
+		prerequisite = { focus = VIN_colonial_assimilation_policy }
+
+		icon = GFX_focus_FRA_rearmament
+		x = 0
+		y = 1
+
+		relative_position_id = VIN_colonial_assimilation_policy
+		cost = 10
+		search_filters = {FOCUS_FILTER_MANPOWER}
+		completion_reward = {
+			add_ideas = POR_colonial_army
+		}
+	}
+	focus = {
+		id = VIN_foreign_legion
+		icon = GFX_focus_FRA_foreign_legion
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { focus = VIN_rebuild_the_military }
+		mutually_exclusive = { }
+		relative_position_id = VIN_rebuild_the_military
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_ARMY_XP}
+
+		completion_reward = {
+			custom_effect_tooltip = ITA_battaglioni_d_assalto_tt
+			hidden_effect = {
+				set_technology = { blackshirt_assault_battalion_tech = 1 popup = no }
+			}
+			army_experience = 5
+			add_ideas = { FRA_foreign }
+		}
+	}
+	focus = {
+		id = VIN_thailand_war
+		icon = GFX_focus_FRA_groupes_francs
+		x = 0
+		y = 2
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { 
+			focus = VIN_foreign_legion
+		}
+		relative_position_id = VIN_foreign_legion
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_ideas = { VIN_preparation_thailand }
+			add_doctrine_cost_reduction = {
+				name = VIN_analyze_our_defeat
+				category = land_doctrine
+				uses = 2
+				cost_reduction = 0.5
+			}
+		}
+	}
+	focus = {
+		id = VIN_forts_focus
+		icon = GFX_focus_generic_coastal_fort
+		prerequisite = { focus = VIN_rebuild_the_military }
+		x = 2
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = VIN_rebuild_the_military
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = FRA_fortification_focus
+		}
+	}
+	focus = {
+		id = VIN_research
+		icon = GFX_focus_research2
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = { 
+			focus = VIN_forts_focus
+		}
+		relative_position_id = VIN_forts_focus
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			
+		}
+		
+		bypass = {
+
+		}
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = VIN_hold
+		icon = GFX_focus_FRA_france_adrian
+		prerequisite = { focus = VIN_research }
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = VIN_research
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			if = {
+				limit = { not = { has_dlc = "Man the Guns" } }
+				add_manpower = 10000
+			}
+			else = {
+				add_manpower = 10000
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 5000
+			}
+		}
+	}
+
+}

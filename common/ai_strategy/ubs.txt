@@ -1,0 +1,106 @@
+SOV_third_mongolian_rev_strat1 = { # SOV hates you for kicking out SOV-friendly faction
+	allowed = { original_tag = SOV }
+	enable = { 
+		MON = { 
+			has_completed_focus = MON_third_mongolian_revolution 
+			has_government = communism
+		} 
+		has_government = communism
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = antagonize
+		id = MON
+		value = 50
+	}
+	ai_strategy = {
+		type = equipment_market_trade_desire
+		id = MON # desired trade partner
+		value = -50 # Increases the acceptance and desire values by this
+	}
+}
+
+SOV_third_mongolian_rev_strat2 = { # ... & Stalin really hates you
+	allowed = { original_tag = SOV }
+	enable = { 
+		MON = { has_completed_focus = MON_third_mongolian_revolution } 
+		has_country_leader = { character = SOV_iosif_stalin }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = antagonize
+		id = MON
+		value = 100
+	}
+	ai_strategy = {
+		type = equipment_market_trade_desire
+		id = MON # desired trade partner
+		value = -50 # Increases the acceptance and desire values by this
+	}
+}
+
+SOV_third_mongolian_rev_strat1 = {
+	allowed = { original_tag = SOV }
+	enable = { MON = { has_completed_focus = MON_third_mongolian_revolution } }
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = antagonize
+		id = MON
+		value = 50
+	}
+	ai_strategy = {
+		type = alliance
+		id = MON
+		value = -50
+	}
+}
+
+SOV_non_soviet_mon = {
+	allowed = { original_tag = SOV }
+	enable = { 
+		MON = { not = { has_government = communism } }
+		not = { has_government = communism }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = antagonize
+		id = MON
+		value = -50
+	}
+	ai_strategy = {
+		type = alliance
+		id = MON
+		value = 50
+	}
+}
+
+USA_mon_friend = {
+	allowed = { original_tag = USA }
+	enable = { MON = { MON_owen_lattimore = { is_political_advisor = yes } } }
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = befriend
+		id = MON
+		value = 50
+	}
+	ai_strategy = {
+		type = alliance
+		id = MON
+		value = 50
+	}
+	ai_strategy = {
+		type = support
+		id = MON
+		value = 25
+	}
+	ai_strategy = {
+		type = protect
+		id = MON
+		value = 25
+	}
+	ai_strategy = {
+		type = equipment_market_trade_desire
+		id = MON # desired trade partner
+		value = 50 # Increases the acceptance and desire values by this
+	}
+}

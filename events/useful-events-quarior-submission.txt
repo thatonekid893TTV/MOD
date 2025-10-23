@@ -1,0 +1,246 @@
+add_namespace = useful-events-quarior-submission
+
+country_event = {
+	id = useful-events-quarior-submission.1
+	title = useful-events-quarior-submission.1.t
+	desc = useful-events-quarior-submission.1.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	# Become a puppet
+	option = {
+		name = useful-events-quarior-submission.1.a
+		
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = FROM
+					value > 75
+				}
+			}
+			modifier = {
+				factor = 1.5
+				ROOT = {
+					check_variable = {
+						var = party_popularity@FROM
+						value = 0.5
+						compare = greater_than
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.8
+				}
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.2
+				}
+			}
+			modifier = {
+				factor = 100
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						is_in_faction = yes
+						NOT = { is_in_faction_with = FROM }
+					}
+					AND = {
+						is_subject = yes
+						NOT = { is_subject_of = FROM }
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				has_war_with = FROM
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					has_elections = yes
+				}
+			}
+			set_politics = {
+				ruling_party = FROM
+				elections_allowed = yes
+			}
+		}
+		else = {
+			set_politics = {
+				ruling_party = FROM
+				elections_allowed = no
+			}
+		}
+		FROM = {
+			puppet = ROOT
+			hidden_effect = {
+				country_event = { id = useful-events-quarior-submission.2 hours = 1 }
+			}
+		}
+	}
+	
+	
+	#REFUSE
+	option = {
+		name = useful-events-quarior-submission.1.b
+		
+		ai_chance = {
+			base = 10
+			
+			modifier = {
+				factor = 0.5
+				FROM = {
+					NOT = {
+						has_government = ROOT
+					}
+				}
+				is_in_faction = no
+			}
+		}
+		
+		
+		FROM = {
+			effect_tooltip = {
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = ROOT
+				}
+			}
+			hidden_effect = {
+				country_event = { id = useful-events-quarior-submission.3 hours = 1 }
+			}
+		}
+		
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = SOV_pressured_our_government
+			}
+		}
+	}
+}
+
+# Country becomes a puppet
+country_event = {
+	id = useful-events-quarior-submission.2
+	title = useful-events-quarior-submission.2.t
+	desc = useful-events-quarior-submission.2.desc
+	picture = GFX_report_event_generic_military_parade
+	
+	is_triggered_only = yes
+	
+	#Cool
+	option = {
+		name = useful-events-quarior-submission.2.a
+		effect_tooltip = {
+			FROM = {
+				if = {
+					limit = {
+						ROOT = {
+							has_elections = yes
+						}
+					}
+					set_politics = {
+						ruling_party = ROOT
+						elections_allowed = yes
+					}
+				}
+				else = {
+					set_politics = {
+						ruling_party = ROOT
+						elections_allowed = no
+					}
+				}
+			}
+			puppet = FROM
+		}
+	}
+}
+
+# Country refuses
+country_event = {
+	id = useful-events-quarior-submission.3
+	title = useful-events-quarior-submission.3.t
+	desc = useful-events-quarior-submission.3.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	#Invade
+	option = {
+		name = useful-events-quarior-submission.3.a
+		
+		ai_chance = {
+			base = 2
+			modifier = {
+				add = 1
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.5
+				}
+			}
+		}
+		
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
+		
+		effect_tooltip = {
+			FROM = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = SOV_pressured_our_government
+				}
+			}
+		}
+	}
+	
+	#Respect
+	option = {
+		name = useful-events-quarior-submission.3.b
+		
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				FROM = {
+					is_in_faction = yes
+				}
+			}
+			modifier = {
+				add = 1
+				FROM = {
+					is_in_faction = yes
+					NOT = {
+						is_in_faction_with = ROOT
+					}
+					any_allied_country = {
+						is_major = yes
+					}
+				}
+			}
+		}
+	}
+}

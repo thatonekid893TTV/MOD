@@ -1,0 +1,223 @@
+MON_incite_resistance_operation = { ### 8 2/40
+	icon = GFX_operations_boost_resistance
+	map_icon = GFX_operations_boost_resistance_map
+	name = MON_incite_resistance_operation
+	desc = MON_incite_resistance_operation_desc
+	priority = 8
+	
+	cost_multiplier = 0#.25
+	
+	days = 60
+	network_strength = 35
+	operatives = 1
+
+	allowed = { original_tag = MON }
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		FROM = {
+			original_tag = SOV
+			any_controlled_state = {
+				has_dynamic_modifier = { modifier = MON_resistance_active_here }
+			}
+		}
+
+	}
+
+	selection_target = {
+		targets = { FROM }
+	}
+
+	selection_target_state = {
+		has_dynamic_modifier = { modifier = MON_resistance_active_here }
+	}
+
+	equipment = {
+		infantry_equipment = 500
+	}
+
+	risk_chance = 0.2
+	experience = 1.5
+	outcome_extra_chance = 0.5
+	outcome_modifiers = { boost_resistance_factor }
+	outcome_execute = {
+		FROM.FROM = {
+			IF = {
+				limit = { has_resistance = yes }
+				add_resistance = 10
+			}
+			ELSE = {
+				force_enable_resistance = FROM
+				start_resistance = yes 
+			}
+			add_resistance_target = { 
+				amount = 50
+				tooltip = intelligency_agency_resistance_boost_tt
+			}
+		}
+	}
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = { #critical success
+				FROM.FROM = {
+					add_resistance = 30
+					add_compliance = -10
+				}
+			}
+			33 = { #good success
+				FROM.FROM = {
+					add_resistance = 20
+					add_compliance = -5
+				}
+			}
+			34 = { #basic success
+				FROM.FROM = {
+					add_resistance = 10
+				}
+			}
+		}
+	}
+
+	outcome_potential = {
+		custom_effect_tooltip = MON_incite_resistance_operation_tt
+	}
+
+	
+	target_weight = {
+		base = 100
+		modifier = {
+			add = boost_resistance_chance
+		}
+	}
+	
+	phases = { #infiltration 
+		infiltration_border = { base = 33 } 
+		infiltration_paradrop = { base = 33 } 
+		infiltration_diplomatic = { base = 33 } 
+	}
+	phases = { 
+		lar_communist_uprising_organise_cells = { base = 33 }
+		lar_communist_uprising_infiltrate_civil_service = { base = 33 }
+		lar_communist_uprising_organize_strikes = { base = 33 }
+	}
+	phases = { 
+		lar_communist_uprising_train_workers_militia = { base = 25 }
+	}
+}
+
+MON_incite_resistance_operation_men = { ### 8 2/40
+	icon = GFX_operations_boost_resistance
+	map_icon = GFX_operations_boost_resistance_map
+	name = MON_incite_resistance_operation_men
+	desc = MON_incite_resistance_operation_men_desc
+	priority = 8
+	
+	cost_multiplier = 0#.25
+	
+	days = 60
+	network_strength = 35
+	operatives = 1
+
+	allowed = { original_tag = MON }
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		FROM = {
+			NOT = { original_tag = MEN }
+			any_controlled_state = {
+				has_dynamic_modifier = { modifier = MON_resistance_active_here }
+				is_core_of = MEN
+			}
+		}
+
+	}
+
+	selection_target = {
+		targets = { FROM }
+	}
+
+	selection_target_state = {
+		has_dynamic_modifier = { modifier = MON_resistance_active_here }
+	}
+
+	equipment = {
+		infantry_equipment = 500
+	}
+
+	risk_chance = 0.2
+	experience = 1.5
+	outcome_extra_chance = 0.5
+	outcome_modifiers = { boost_resistance_factor }
+	outcome_execute = {
+		FROM.FROM = {
+			IF = {
+				limit = { has_resistance = yes }
+				add_resistance = 10
+			}
+			ELSE = {
+				force_enable_resistance = {
+					clear = no
+					occupier = FROM
+					occupied = MEN
+				}
+				start_resistance = yes 
+			}
+			add_resistance_target = { 
+				amount = 50
+				tooltip = intelligency_agency_resistance_boost_tt
+			}
+		}
+	}
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = { #critical success
+				FROM.FROM = {
+					add_resistance = 30
+					add_compliance = -10
+				}
+			}
+			33 = { #good success
+				FROM.FROM = {
+					add_resistance = 20
+					add_compliance = -5
+				}
+			}
+			34 = { #basic success
+				FROM.FROM = {
+					add_resistance = 10
+				}
+			}
+		}
+	}
+
+	outcome_potential = {
+		custom_effect_tooltip = MON_incite_resistance_operation_tt
+	}
+
+	
+	target_weight = {
+		base = 100
+		modifier = {
+			add = boost_resistance_chance
+		}
+	}
+	
+	phases = { #infiltration 
+		infiltration_border = { base = 33 } 
+		infiltration_paradrop = { base = 33 } 
+		infiltration_diplomatic = { base = 33 } 
+	}
+	phases = { 
+		lar_communist_uprising_organise_cells = { base = 33 }
+		lar_communist_uprising_infiltrate_civil_service = { base = 33 }
+		lar_communist_uprising_organize_strikes = { base = 33 }
+	}
+	phases = { 
+		lar_communist_uprising_train_workers_militia = { base = 25 }
+	}
+}
+

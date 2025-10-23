@@ -1,0 +1,8967 @@
+search_filter_prios = {
+	FOCUS_FILTER_POLITICAL = 1010
+	FOCUS_FILTER_RESEARCH = 522
+	FOCUS_FILTER_INDUSTRY = 509
+	FOCUS_FILTER_MANPOWER = 220
+	FOCUS_FILTER_PROPAGANDA = 110
+	FOCUS_FILTER_ARMY_XP = 103
+	FOCUS_FILTER_NAVY_XP = 102
+	FOCUS_FILTER_AIR_XP = 101
+}
+
+focus_tree = {
+	id = tuvan_focus
+	continuous_focus_position = { x = 200 y = 3000 }
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = TAN
+		}
+	}
+	
+	default = no
+	reset_on_civilwar = no
+
+
+
+##ICONS_DONE##
+
+####################### 
+#Historical_Tannu_Tuva#
+#######################
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL }
+		id = The_Chairmans_Speech
+		icon = GFX_goal_generic_propaganda
+
+		x = 39
+		y = 0
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			country_event = {
+				id = tanna_tuva.21
+			}
+			country_event = {
+				id = tanna_tuva.20
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Unite_The_Opposition
+		icon = GFX_focus_spr_masters_of_our_own_fate
+		prerequisite = { focus = The_Chairmans_Speech }
+		mutually_exclusive = { focus = Destory_The_Opposition }
+
+		x = 36.25
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+			stability < 0.05
+		}
+		completion_reward = {
+			leave_faction = yes
+			country_event = {
+				id = tanna_tuva.28
+			}
+			add_war_support = 0.15
+			add_stability = -0.25
+			
+			
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Destory_The_Opposition
+		icon = GFX_focus_spr_crush_the_revolution
+		search_filters = { }
+		prerequisite = { focus = The_Chairmans_Speech }
+		mutually_exclusive = { focus = Unite_The_Opposition }
+
+		x = 7
+		y = 1
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			TAN = {
+				country_event = { 
+					id = tanna_tuva.22
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Frame_Dazhy
+		icon = GFX_focus_SOV_military_purge
+		search_filters = { }
+		prerequisite = { focus = Destory_The_Opposition }
+
+		x = 7
+		y = 2
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			TAN = {
+				country_event = { 
+					id = tanna_tuva.23
+				}
+			}
+			remove_ideas = TAN_The_Opposition
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Execute_The_Opposition
+		icon = GFX_focus_ITA_banda_carita
+		prerequisite = { focus = Frame_Dazhy }
+
+		x = 6
+		y = 3
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			country_event = { 
+				id = tanna_tuva.24
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_PROPAGANDA }
+		id = Inform_The_Public
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = Frame_Dazhy }
+
+		x = 8
+		y = 3
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			country_event = { 
+				id = tanna_tuva.25
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Tokas_Tannu_Tuva
+		icon = GFX_goal_support_communism
+		prerequisite = { focus = Inform_The_Public }
+		prerequisite = { focus = Execute_The_Opposition }
+
+		x = 7
+		y = 4
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			country_event = { 
+				id = tanna_tuva.26
+			}
+			country_event = {
+				id = tanna_tuva.57
+			}
+			add_stability = 0.02
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = The_Tuvan_Five_Year_Plan
+		icon = GFX_focus_generic_communist_industry
+		prerequisite = { focus = Tokas_Tannu_Tuva }
+
+		x = 7
+		y = 5
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			country_event = { 
+				id = tanna_tuva.27
+			}
+			unlock_decision_category_tooltip = Tuvan_Five_Year_Plan_Category
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Issue_The_Aksa
+		icon = GFX_focus_mex_privatisation
+		prerequisite = { focus = The_Tuvan_Five_Year_Plan }
+
+		x = 4
+		y = 6
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_ideas = Very_Inflated_Currency
+			remove_ideas = Hyper_Inflated_Currency
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Industrilizing_The_Land
+		icon = GFX_goal_generic_construction
+		prerequisite = { focus = Issue_The_Aksa }
+		prerequisite = { focus = The_Tuvan_Five_Year_Plan }
+
+		x = 2
+		y = 7
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = Inflated_Currency
+			remove_ideas = Very_Inflated_Currency
+			add_stability = 0.03
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Achnoledge_Collectivizations_Failures
+		icon = GFX_focus_SOV_the_last_purge
+		prerequisite = { focus = Industrilizing_The_Land }
+		mutually_exclusive = { focus = Second_Attempt_At_Collectivization }
+
+		x = 1
+		y = 8
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_stability = 0.06
+			add_political_power = 5
+			
+			
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Monetize_Horses
+		icon = GFX_focus_generic_horse_studs
+		prerequisite = { focus = Achnoledge_Collectivizations_Failures }
+
+		x = 1
+		y = 9.5
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ARMY_XP }
+		id = Calvary_Army
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = Monetize_Horses }
+
+		x = 1
+		y = 11
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			army_experience =  100
+			add_ideas = TAN_Calvary_Army
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Second_Attempt_At_Collectivization
+		icon = GFX_focus_prc_agrarian_socialism
+		prerequisite = { focus = Industrilizing_The_Land }
+		mutually_exclusive = { focus = Achnoledge_Collectivizations_Failures }
+
+		x = 3
+		y = 8
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			country_event = {
+				id = tanna_tuva.33
+			}
+			add_stability = -0.205
+			
+			
+			add_ideas = TAN_Collectivization_Distrust
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Open_More_Factories
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = Second_Attempt_At_Collectivization }
+
+		x = 3
+		y = 9.5
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Asbestos_Manufacturing_Plant
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = Open_More_Factories }
+
+		x = 3
+		y = 11
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Opening_Mines
+		icon = GFX_focus_generic_mining_industry
+		prerequisite = { focus = Asbestos_Manufacturing_Plant }
+
+		x = 6
+		y = 13
+		cost = 12
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_resource = {
+				type = steel
+				amount = 8
+				state = 329
+			}
+			add_resource = {
+				type = chromium
+				amount = 3
+				state = 329
+			}		
+			add_resource = {
+				type = tungsten
+				amount = 3
+				state = 329
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Controlling_Tuvan_Culture
+		icon = GFX_focus_YUG_pan_slavic_congress
+		prerequisite = { focus = The_Tuvan_Five_Year_Plan }
+
+		x = 7
+		y = 7
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			country_event = {
+				id = tanna_tuva.35
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Enforce_Collectivization_Policies
+		icon = GFX_focus_SWE_socialist_reforms
+		prerequisite = { focus = Controlling_Tuvan_Culture }
+		prerequisite = { focus = Second_Attempt_At_Collectivization }
+
+		x = 7
+		y = 9
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+			NOT = {
+				has_idea = Inefficient_Government
+			}
+		}
+		available = {
+
+		}
+		completion_reward = {
+			
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Build_Up_The_Towns
+		icon = GFX_focus_generic_modernize_industry
+		prerequisite = { focus = Enforce_Collectivization_Policies }
+
+		x = 6
+		y = 10
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_manpower = 1482
+			}
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Build_Up_Local_Infantructure
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = Enforce_Collectivization_Policies }
+
+		x = 8
+		y = 10.5
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_RESEARCH}
+		id = Open_Kyzl_University
+		icon = GFX_focus_research
+		prerequisite = { focus = Build_Up_The_Towns }
+
+		x = 6
+		y = 11
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Controlling_Tuvan_Polotics
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = The_Tuvan_Five_Year_Plan }
+
+		x = 12
+		y = 7
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Das_Dug_Mountain_Despute_focus
+		icon = GFX_focus_GRE_a_land_of_mountains
+		prerequisite = { focus = Tokas_Tannu_Tuva focus = Dazhys_Vision }
+
+		x = 11
+		y = 5
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+			NOT = {
+				country_exists = MON
+			}
+			NOT = {
+				country_exists = SOV
+			}
+		}
+		available = {
+			country_exists = MON
+			country_exists = SOV
+			SOV = {
+				has_government = communism
+			}
+			MON = {
+				has_government = communism
+			}
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = Das_Dug_Mountain_Disupute_category
+
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = The_Red_Capital
+		icon = GFX_focus_SOV_builder_of_the_red_army
+		prerequisite = { focus = Tokas_Tannu_Tuva focus = Dazhys_Vision }
+
+		x = 16
+		y = 5
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_stability = 0.10
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_AIR_XP }
+		id = Kyzyl_Airport
+		icon = GFX_focus_generic_air_bases
+		prerequisite = { focus = The_Red_Capital }
+
+		x = 14
+		y = 6.5
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Government_Owned_Munitions_Plan
+		icon = GFX_focus_generic_communist_industry
+		prerequisite = { focus = The_Red_Capital }
+
+		x = 16
+		y = 6.5
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Open_Government_Offices
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = The_Red_Capital }
+
+		x = 18
+		y = 6
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = Recently_Removed_Corruption
+				days = 100
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = The_Postal_System_Rework
+		icon = GFX_focus_SOV_the_road_of_life
+		prerequisite = { focus = Open_Government_Offices }
+
+		x = 18
+		y = 7.5
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_ideas = Tuvan_Postal_Network
+			custom_effect_tooltip = "The postal service will also be able to supply our troops!"
+		}
+	}
+#	focus = {
+#	search_filters = { FOCUS_FILTER_AIR_XP}
+#		id = Tuvan_Airways
+#		icon = GFX_focus_generic_long_range_aircraft
+#		prerequisite = { focus = Kyzyl_Airport }
+#		prerequisite = { focus = Government_Owned_Munitions_Plan }
+#
+#		x = 15
+#		y = 7
+#		cost = 10
+#		
+#		available_if_capitulated = no
+#		bypass = {
+#
+#		}
+#		available = {
+#
+#		}
+#		completion_reward = {
+#			add_equipment_to_stockpile = {
+#				type = air_transport
+#				amount = 20
+#				producer = SOV
+#			}
+#		}
+#	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Ban_Religion
+		icon = GFX_focus_BRA_state_atheism
+		prerequisite = { focus = Controlling_Tuvan_Polotics }
+		prerequisite = { focus = Controlling_Tuvan_Culture }
+		mutually_exclusive = { focus = State_Supervised_Religion }
+
+		x = 10
+		y = 8
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_ideas = TAN_Banned_Religion
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Erase_The_Nomad_Culture
+		icon = GFX_focus_generic_full_employment
+		prerequisite = { focus = Controlling_Tuvan_Polotics focus = State_Supervised_Religion focus = State_Issued_Propoganda }
+		prerequisite = { focus = Enforce_Collectivization_Policies }
+		mutually_exclusive = { focus = Modify_Tuvan_Culture }
+		x = 10
+		y = 10
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_stability = -0.3
+			add_ideas = Noamd_Culture_Erased
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Modify_Tuvan_Culture
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = Controlling_Tuvan_Polotics focus = State_Supervised_Religion focus = State_Issued_Propoganda}
+		mutually_exclusive = { focus = Erase_The_Nomad_Culture }
+		x = 12
+		y = 10
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_stability = -0.15
+			add_ideas = Compormise_On_Tuvan_Culture
+		}
+	}
+	focus = {
+	search_filters = {  FOCUS_FILTER_POLITICAL }
+		id = State_Supervised_Religion
+		icon = GFX_focus_SWI_embrace_rote_drei
+		prerequisite = { focus = Controlling_Tuvan_Polotics }
+		prerequisite = { focus = Controlling_Tuvan_Culture }
+		mutually_exclusive = { focus = Ban_Religion }
+
+		x = 12
+		y = 8
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_ideas = State_Supervised_Religion_idea
+
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL }
+		id = The_Tuvan_Youth
+		icon = GFX_goal_generic_more_territorial_claims
+		prerequisite = { focus = Erase_The_Nomad_Culture focus = Modify_Tuvan_Culture }
+
+		x = 11
+		y = 12
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_ideas = Tuvan_Culture_Controlled
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Invite_The_NKVD
+		icon = GFX_focus_SWI_embrace_rote_drei
+		prerequisite = { focus = Controlling_Tuvan_Polotics }
+
+		x = 14
+		y = 8
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			remove_ideas = Revolution_Protection_Laws
+			add_ideas = TAN_NKVD
+		}
+	}
+	focus = {
+	search_filters = {  FOCUS_FILTER_PROPAGANDA }
+		id = State_Issued_Propoganda
+		icon = GFX_focus_ETH_callout_to_the_world
+		prerequisite = { focus = Invite_The_NKVD }
+
+		x = 14
+		y = 9
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_stability = 0.09
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+	search_filters = {  FOCUS_FILTER_POLITICAL }
+		id = For_The_Revolution
+		icon = GFX_focus_SWE_refuge_for_revolutionaries
+		prerequisite = { focus = State_Issued_Propoganda }
+
+		x = 14
+		y = 11
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Sovietization
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		prerequisite = { focus = For_The_Revolution }
+		prerequisite = { focus = The_Tuvan_Youth }
+		prerequisite = { focus = Open_Kyzl_University }
+
+
+		x = 10
+		y = 13
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			NOT = {
+				has_idea = TAN_Collectivization_Distrust
+				has_idea = TAN_Trauma_From_Collectivization
+			}
+		}
+		available = {
+			has_idea = Inefficient_Government
+		}
+		completion_reward = {
+			add_ideas = Stable_Economy
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Rewrite_The_Constitution
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = Sovietization }
+
+
+		x = 10
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_stability = 0.1852
+			add_ideas = Collectived_Society
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Join_The_USSR
+		icon = GFX_focus_SOV_socialism_in_one_country
+		prerequisite = { focus = Rewrite_The_Constitution }
+		mutually_exclusive = { focus = Autonomy_In_The_USSR }
+
+
+		x = 8
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			SOV = { 
+				country_event = {
+					id = tanna_tuva.2
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Autonomy_In_The_USSR
+		icon = GFX_focus_SOV_the_supreme_soviet
+		prerequisite = { focus = Rewrite_The_Constitution focus = Soviet_Investments }
+		mutually_exclusive = { focus = Join_The_USSR }
+
+
+		x = 12
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			SOV = {
+				country_event = {
+					id = tanna_tuva.3
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Advise_Mongolia_To_Do_The_Same
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		prerequisite = { focus = Autonomy_In_The_USSR }
+
+
+		x = 12
+		y = 18
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+		MON = {
+			is_puppet_of = SOV
+		}
+		}
+		available = {
+		TAN = {
+			is_puppet_of = SOV
+		}
+		}
+		completion_reward = {
+			MON = {
+				country_event = {
+					id = tanna_tuva.45
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_RESEARCH }
+		id = Uranium_Deposits
+		icon = GFX_focus_wonderweapons
+		prerequisite = { focus = Opening_Mines }
+		prerequisite = { focus = Sovietization }
+
+
+		x = 6
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			has_idea = Tuvan_Uranium_Deposits
+		}
+		available = {
+			is_in_faction_with = SOV
+		}
+		completion_reward = {
+			add_ideas = Tuvan_Uranium_Deposits
+			country_event = {
+				id = tanna_tuva.34
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = The_Sacred_War
+		icon = GFX_focus_SOV_the_glory_of_the_red_army_communism
+		prerequisite = { focus = Calvary_Army focus = Asbestos_Manufacturing_Plant }
+		prerequisite = { focus = Open_Kyzl_University }
+		prerequisite = { focus = For_The_Revolution }
+
+
+		x = 2
+		y = 13
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+			is_ally_with = SOV
+			has_war_with = GER
+			SOV = {
+				has_war_with = GER
+			}
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = The_Sacred_War_category
+			add_ideas = TAN_The_Sacred_War
+			add_war_support = 0.10
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Donate_Gold_Reserves
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		prerequisite = { focus = The_Sacred_War }
+
+
+		x = 4
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			has_war = no
+		}
+		available = {
+			is_ally_with = SOV
+			has_war_with = GER
+			SOV = {
+				has_war_with = GER
+			}
+		}
+		completion_reward = {
+			SOV = {
+				add_timed_idea = {
+					idea = TAN_Donated_Gold_Reserves
+					days = 381
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Extract_Gold
+		icon = GFX_focus_generic_resource_extraction
+		prerequisite = { focus = Donate_Gold_Reserves }
+		prerequisite = { focus = Opening_Mines}
+
+
+		x = 4
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			has_war = no
+		}
+		available = {
+			is_ally_with = SOV
+			has_war_with = GER
+			SOV = {
+				has_war_with = GER
+			}
+		}
+		completion_reward = {
+			SOV = {
+				add_timed_idea = {
+					idea = TAN_Donates_Gold
+					days = 600
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ARMY_XP }
+		id = Rise_Tuvans
+		icon = GFX_focus_generic_workers_and_farmers_rise
+		prerequisite = { focus = The_Sacred_War }
+
+
+		x = 0
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			has_war = no
+		}
+		available = {
+			is_ally_with = SOV
+			has_war_with = GER
+			SOV = {
+				has_war_with = GER
+			}
+		}
+		completion_reward = {
+			add_ideas = Tuvans_Rise_idea
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ARMY_XP }
+		id = The_Pride_Of_Tuvan_Calvary
+		icon = GFX_focus_SOV_builder_of_the_red_army
+		prerequisite = { focus = Rise_Tuvans }
+
+
+		x = 0
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			has_war = no
+		}
+		available = {
+			is_ally_with = SOV
+			has_war_with = GER
+			SOV = {
+				has_war_with = GER
+			}
+			has_army_experience = 50
+		}
+		completion_reward = {
+			add_ideas = Pride_Of_Tuvan_Cavary
+			remove_ideas = Partially_Modernized_Army
+			add_timed_idea = {
+				IDEA = Newly_Modernized_Army
+				days = 140
+			}
+			custom_effect_tooltip = "The Tuvan people take great pride in their nation and culture. This sense of natiional pride will only make them stronger."
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Miitary_Factories
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = The_Sacred_War }
+
+
+		x = 2
+		y = 14
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+			has_war = no
+		}
+		available = {
+			is_ally_with = SOV
+			has_war_with = GER
+			SOV = {
+				has_war_with = GER
+			}
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Licensensing_Manufacturing
+		icon = GFX_focus_generic_license_production
+		prerequisite = { focus = Miitary_Factories }
+
+
+		x = 2
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			has_war = no
+		}
+		available = {
+			is_ally_with = SOV
+			has_war_with = GER
+			SOV = {
+				has_war_with = GER
+			}
+		}
+		completion_reward = {
+			add_ideas = Producing_Soviet_Arms
+			unlock_decision_category_tooltip = Send_Equipment_To_Russia_category
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Reconstruction
+		icon = GFX_goal_generic_soviet_construction
+		prerequisite = { focus = The_Pride_Of_Tuvan_Calvary focus = Licensensing_Manufacturing focus = Extract_Gold }
+
+
+		x = 2
+		y = 17
+		cost = 15
+		
+		available_if_capitulated = no
+		bypass = {
+		}
+		available = {
+			is_ally_with = SOV
+			has_war = no
+		}
+		completion_reward = {
+			hidden_effect = {
+				country_event = {
+					id = tanna_tuva.50
+				}
+			}
+			TAN = {
+				add_ideas = TAN_Tuvan_Reconstruction_Aid
+			}
+			SOV = {
+				add_ideas = SOV_TAN_Tuvan_Reconstruction_Aid
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Aid_The_Republicans
+		icon = GFX_focus_generic_befriend_republican_spain_focus
+		prerequisite = { focus = Destory_The_Opposition  focus = Dazhys_Vision }
+
+
+		x = 14
+		y = 3.5
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+		}
+		available = {
+			SPR_scw_in_progress = yes
+		}
+		completion_reward = {
+			effect_tooltip = {
+				add_ideas = SPR_war_involvement
+			}
+			if = {
+				limit = {
+					has_government = fascism
+				}
+				hidden_effect = {
+					add_ideas = SPR_war_involvement_spa
+				}
+				SPA = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = generic_supported_spain_civil_war	
+					}
+				}
+				add_ai_strategy = {
+			        type = support
+			        id = SPA
+			        value = 500
+			    }
+			}
+			else = {
+				hidden_effect = {
+					add_ideas = SPR_war_involvement_spr
+				}
+				SPD = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = generic_supported_spain_civil_war	
+					}
+				}
+				add_ai_strategy = {
+			        type = support
+			        id = SPD
+			        value = 500
+			    }
+			}
+		}
+	}
+################
+#The_Opposition#
+################
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Dazhys_Vision
+		icon = GFX_focus_BRA_cohen_plan
+		prerequisite = { focus = Unite_The_Opposition }
+		mutually_exclusive = { focus = Nationalism }
+
+
+		x = 23
+		y = 2
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			country_event = {
+				id = tanna_tuva.29
+			}
+			promote_character = {
+				character = TAN_Sat_Churmit_Dazhy
+				ideology = marxism
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = The_Stalinists_Fate
+		icon = GFX_focus_fra_loyalty_stalin
+		prerequisite = { focus = Dazhys_Vision }
+
+
+		x = 23
+		y = 3
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			country_event = {
+				id = tanna_tuva.42
+			}
+			remove_ideas = Revolution_Protection_Laws
+			
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Protect_The_Monestaries
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = The_Stalinists_Fate }
+
+
+		x = 21
+		y = 4
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+			add_stability = 0.15
+		}
+		completion_reward = {
+			add_stability = 0.15
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Kuular_Donduks_Dream
+		icon = GFX_focus_YUG_pan_slavic_congress
+		prerequisite = { focus = The_Stalinists_Fate }
+
+
+		x = 25
+		y = 4
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+			
+		}
+		completion_reward = {
+			add_stability = 0.15
+			remove_ideas = TAN_Trauma_From_Collectivization
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Make_Buddahism_The_State_Religion
+		icon = GFX_focus_smiling_buddha
+		prerequisite = { focus = Protect_The_Monestaries }
+		prerequisite = { focus = Kuular_Donduks_Dream }
+
+
+		x = 21
+		y = 5
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.08
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Tuvan_Nomadism
+		icon = GFX_focus_ETH_sway_the_warlords
+		prerequisite = { focus = Protect_The_Monestaries }
+		prerequisite = { focus = Kuular_Donduks_Dream }
+
+
+		x = 25
+		y = 5
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_war_support = 0.01
+			add_ideas = TAN_Tuvan_Nomadism_idea
+			add_political_power = 50
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_MANPOWER }
+		id = Organized_Nomadic_Groups
+		icon = GFX_focus_ETH_support_from_the_japanese_communists
+		prerequisite = { focus = Tuvan_Nomadism }
+
+
+		x = 25
+		y = 6
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = Organize_The_Tuvan_Tribes
+			custom_effect_tooltip = "Organizing the Tuvan tribes will update our census. This will overall increase the nation's manpower."
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Promot_Settlements
+		icon = GFX_focus_SWE_hygienic_housing
+		prerequisite = { focus = Tuvan_Nomadism }
+
+
+		x = 27
+		y = 6
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_manpower = 1039
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Work_With_The_Rebels
+		icon = GFX_goal_tripartite_pact
+		prerequisite = { focus = Organized_Nomadic_Groups }
+
+
+		x = 25
+		y = 7
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.03
+			add_political_power = 150
+			army_experience =  50
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Tuvan_Towns
+		icon = GFX_focus_SWE_urbanization
+		prerequisite = { focus = Promot_Settlements }
+
+
+		x = 27
+		y = 7
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Establish_A_State_Bank
+		icon = GFX_focus_fra_devalue_the_franc
+		prerequisite = { focus = Tuvan_Towns }
+
+		x = 26
+		y = 8
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+			OR = {
+				has_idea = Inflated_Currency
+				has_idea = Stable_Economy
+			}
+			OR = {
+				has_idea = Efficient_Government
+				has_idea = Inefficient_Government
+			}
+		}
+		completion_reward = {
+			add_stability = 0.15
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Preserve_Our_Culture
+		icon = GFX_goal_generic_defence
+		prerequisite = { focus = Tuvan_Towns }
+		prerequisite = { focus =  Work_With_The_Rebels }
+
+		x = 29
+		y = 9
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+			has_idea = hidden_nationalists_intergrated
+		}
+		completion_reward = {
+			add_war_support = 0.219
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_RESEARCH }
+		id = Budishst_Religious_Schools
+		icon = GFX_focus_research
+		prerequisite = { focus = Make_Buddahism_The_State_Religion }
+
+		x = 21
+		y = 6
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Horse_Industry
+		icon = GFX_focus_generic_horse_studs
+		prerequisite = { focus = Tuvan_Nomadism }
+
+		x = 23
+		y = 6
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_RESEARCH }
+		id = Moving_Schools
+		icon = GFX_focus_generic_truck
+		prerequisite = { focus = Horse_Industry }
+		prerequisite = { focus = Budishst_Religious_Schools }
+
+		x = 22
+		y = 7.5
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_ideas = TAN_Moving_Schools
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Basic_Tuvan_Industry
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = Horse_Industry }
+		prerequisite = { focus = Budishst_Religious_Schools }
+
+		x = 23
+		y = 8
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_RESEARCH }
+		id = Busshadhist_Tuvan_University
+		icon = GFX_focus_generic_university_3
+		prerequisite = { focus = Budishst_Religious_Schools }
+
+		x = 20
+		y = 8
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_research_slot = 2
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_RESEARCH }
+		id = Send_Students_Abroad
+		icon = GFX_focus_generic_university_2
+		prerequisite = { focus = Busshadhist_Tuvan_University focus = Invite_The_NKVD }
+		prerequisite = { focus = The_Postal_System_Rework }
+		x = 18
+		y = 9.5
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			country_event = {
+				id = tanna_tuva.36
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Make_Ammends_To_Moscow
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		prerequisite = { focus = Send_Students_Abroad }
+		mutually_exclusive = { focus = Westernization }
+		mutually_exclusive = { focus = Tuvan_Defense_Plan }
+
+		x = 16.5
+		y = 11
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			is_in_faction_with = SOV
+		}
+		available = {
+			has_idea = Sending_Students_To_Russia
+			NOT = {
+				is_in_faction_with = SOV
+			}
+		}
+		completion_reward = {
+			TAN = {
+				country_event = {
+					id = tanna_tuva.38
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Soviet_Investments
+		icon = GFX_focus_SWE_the_beast_stirs
+		prerequisite = { focus = Make_Ammends_To_Moscow }
+
+		x = 16.5
+		y = 13
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Westernization
+		icon = GFX_focus_generic_befriend_usa
+		prerequisite = { focus = Send_Students_Abroad }
+		prerequisite = { focus = Busshadhist_Tuvan_University}
+		mutually_exclusive = { focus = Make_Ammends_To_Moscow }
+
+		x = 19.5
+		y = 11
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.15
+			}
+			add_political_power = 10
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Invite_Western_Financial_Investments
+		icon = GFX_focus_usa_union_representation_act
+		prerequisite = { focus = Westernization}
+
+		x = 19.5
+		y = 13
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			USA = {
+				country_event = {
+					id = tanna_tuva.43
+				}
+			}
+			ENG = {
+				country_event = {
+					id = tanna_tuva.43
+				}
+			}
+			FRA = {
+				country_event = {
+					id = tanna_tuva.43
+				}
+			}
+			BEL = {
+				country_event = {
+					id = tanna_tuva.43
+				}
+			}
+			LUX = {
+				country_event = {
+					id = tanna_tuva.43
+				}
+			}
+			HOL = {
+				country_event = {
+					id = tanna_tuva.43
+				}
+			}
+			POL = {
+				country_event = {
+					id = tanna_tuva.43
+				}
+			}
+			SWE = {
+				country_event = {
+					id = tanna_tuva.43
+				}
+			}
+			ARG = {
+				country_event = {
+					id = tanna_tuva.43
+				}
+			}
+			BRA = {
+				country_event = {
+					id = tanna_tuva.43
+				}
+			}
+			CAN = {
+				country_event = {
+					id = tanna_tuva.43
+				}
+			}
+			unlock_decision_category_tooltip = Invite_Western_Companies
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ARMY_XP }
+		id = Tuvan_Calvary_Army
+		icon = GFX_focus_SOV_the_glory_of_the_red_army_communism
+		prerequisite = { focus = Basic_Tuvan_Industry }
+
+		x = 23
+		y = 9
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_ideas = Pride_Of_Tuvan_Cavary
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Weapons_Development
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = Basic_Tuvan_Industry }
+		prerequisite = { focus = Busshadhist_Tuvan_University }
+
+		x = 21.5
+		y = 9
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Tuvan_Mining_Cooperation
+		icon = GFX_focus_generic_aluminum
+		prerequisite = { focus = Basic_Tuvan_Industry }
+		prerequisite = { focus = Establish_A_State_Bank }
+
+		x = 25
+		y = 10
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_resource = {
+				type = steel
+				amount = 8
+				state = 329
+			}
+			add_resource = {
+				type = chromium
+				amount = 3
+				state = 329
+			}		
+			add_resource = {
+				type = tungsten
+				amount = 3
+				state = 329
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ARMY_XP }
+		id = Tuvan_Defense_Plan
+		icon = GFX_focus_hol_the_foundations_of_defense
+		prerequisite = { focus = Weapons_Development }
+		prerequisite = { focus = Tuvan_Calvary_Army }
+		mutually_exclusive = { focus = A_Siberian_State }
+		mutually_exclusive = { focus = Make_Ammends_To_Moscow }
+
+		x = 23
+		y = 11
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_timed_idea = {
+				idea = Tuvan_Defense_Plan
+				days = 100
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Opressors_From_The_North
+		icon = GFX_focus_attack_soviet
+		prerequisite = { focus = Tuvan_Defense_Plan }
+
+		x = 22
+		y = 12
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			army_experience =  50
+			every_owned_state = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border_country = SOV
+					}
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Cowards_From_To_South
+		icon = GFX_focus_generic_attack_mongolia
+		prerequisite = { focus = Tuvan_Defense_Plan }
+
+		x = 24
+		y = 12
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			army_experience =  50
+			every_owned_state = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border_country = MON
+					}
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Conservitism_Our_Savior
+		icon = GFX_focus_SOV_purge_zinovyevists
+		prerequisite = { focus = Cowards_From_To_South focus = Opressors_From_The_North }
+		mutually_exclusive = { focus = A_State_For_Tuvans }
+
+		x = 24
+		y = 13
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_war_support = 0.10
+			add_stability = -0.05
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ARMY_XP }
+		id = Traditional_Warfare
+		icon = GFX_goal_generic_cavalry
+		prerequisite = { focus = Conservitism_Our_Savior }
+
+		x = 24
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			has_idea = Tuvan_Calvary_Army
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_ideas = Tuvan_Calvary_Army
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Dazhy_Knows_Best
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		prerequisite = { focus = Traditional_Warfare }
+
+		x = 24
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			remove_ideas = Revolution_Protection_Laws
+			add_ideas = Dazhy_Knows_Best
+			add_stability = -0.124
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Closed_Nation
+		icon = GFX_focus_usa_voter_registration_act
+		prerequisite = { focus = Conservitism_Our_Savior }
+
+		x = 26
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			has_idea = Closed_Economy
+		}
+		available = {
+			NOT = {
+				has_idea = Closed_Economy
+			}
+		}
+		completion_reward = {
+			add_ideas = Closed_Economy
+			remove_ideas = Inflated_Currency
+			remove_ideas = Very_Inflated_Currency
+			remove_ideas = Hyper_Inflated_Currency
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Liberate_Our_Mongolian_Brothers
+		icon = GFX_focus_generic_attack_mongolia
+		prerequisite = { focus = Closed_Nation }
+		prerequisite = { focus = Dazhy_Knows_Best }
+		mutually_exclusive = { focus = Rile_Central_Asia }
+
+		x = 25
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = MON
+				generator = { 818 820 330 817 819 }
+				expire = 365
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = A_State_For_Tuvans
+		icon = GFX_focus_SOV_ally_zinovyevists
+		prerequisite = { focus = Opressors_From_The_North }
+		prerequisite = { focus = Cowards_From_To_South }
+		mutually_exclusive = { focus = Conservitism_Our_Savior }
+
+		x = 22
+		y = 13
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_war_support = 0.02
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.01
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Listen_To_The_New_Generation
+		icon = GFX_focus_spr_torchbearers_of_tomorrow
+		prerequisite = { focus = A_State_For_Tuvans }
+
+		x = 22
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+			has_focus = Send_Students_Abroad
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = democracy
+				popularity = 0.10
+			}
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Democracy
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = Listen_To_The_New_Generation }
+
+		x = 21
+		y = 15.5
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+			democracy > 0.15
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = democracy
+				popularity = 0.15
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+			promote_character = {
+				character = TAN_Amban_Noyan
+				ideology = liberalism
+			}
+			add_ideas = Tuvan_Democracy
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Capitalism
+		icon = GFX_focus_mex_privatisation
+		prerequisite = { focus = Listen_To_The_New_Generation }
+		prerequisite = { focus = Invite_Western_Financial_Investments }
+
+		x = 18
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_ideas = TAN_Capitalist_Economy
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Open_elections
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = Democracy }
+
+		x = 22
+		y = 18
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+			democracy > 0.5
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = democracy
+				popularity = 0.15
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				election_frequency = 48
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Promot_Free_Speech
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = Democracy }
+
+		x = 20
+		y = 17
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = democracy
+				popularity = 0.08
+			}
+			remove_ideas = Revolution_Protection_Laws
+			remove_ideas = Communist_Policies
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_RESEARCH }
+		id = Import_Books
+		icon = GFX_focus_SWE_education_reform
+		prerequisite = { focus = Promot_Free_Speech }
+
+		x = 20
+		y = 18
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			has_idea = Research_Bonus_idea
+		}
+		available = {
+			NOT = {
+				has_idea = Research_Bonus_idea
+			}
+		}
+		completion_reward = {
+			add_ideas = Research_Bonus_idea
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Promote_Buisnesses
+		icon = GFX_focus_SWE_rations
+		prerequisite = { focus = Capitalism }
+
+		x = 18
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Join_The_Allies
+		icon = GFX_focus_chi_british_cooperation
+		prerequisite = { focus = Import_Books }
+		prerequisite = { focus = Open_elections}
+
+		x = 21
+		y = 19
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			TAN = {
+				country_event = {
+					id = tanna_tuva.48
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Strike_The_Oppressors
+		icon = GFX_focus_attack_soviet
+		prerequisite = { focus = Join_The_Allies }
+
+		x = 21
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			declare_war_on = {
+				target = SOV
+				type = puppet_wargoal_focus
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Expand_Tuv_Corp
+		icon = GFX_focus_spa_the_spanish_miracle
+		prerequisite = { focus = Promote_Buisnesses }
+
+		x = 18
+		y = 17
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+
+		}
+		available = {
+
+		}
+		completion_reward = {
+			add_resource = {
+				type = steel
+				amount = 4
+				state = 329
+			}
+			add_resource = {
+				type = chromium
+				amount = 1
+				state = 329
+			}		
+			add_resource = {
+				type = tungsten
+				amount = 1
+				state = 329
+			}
+		}
+	}
+#	focus = {
+#		id = Expertor_Of_Precious_Dirt
+#		icon = GFX_focus_generic_tungsten
+#		prerequisite = { focus = Expand_Tuv_Corp }
+#
+#		x = 16
+#		y = 18
+#		cost = 5
+#		
+#		available_if_capitulated = no
+#		bypass = {
+#
+#		}
+#		available = {
+#
+#		}
+#		completion_reward = {
+#
+#		}
+#	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Match_The_Gold_Standard
+		icon = GFX_focus_hol_abandon_the_gold_standard
+		prerequisite = { focus = Expand_Tuv_Corp }
+
+		x = 18
+		y = 18
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			NOT = {
+				has_idea = Inflated_Currency
+				has_idea = Very_Inflated_Currency
+				has_idea = Hyper_Inflated_Currency
+			}
+		}
+		available = {
+			OR = {
+				has_idea = Inflated_Currency
+				has_idea = Very_Inflated_Currency
+				has_idea = Hyper_Inflated_Currency
+			}
+		}
+		completion_reward = {
+			remove_ideas = Inflated_Currency
+			remove_ideas = Very_Inflated_Currency
+			remove_ideas = Hyper_Inflated_Currency
+			add_stability = 0.05
+		}
+	}
+################
+#Siberian_Union#
+################
+
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = A_Siberian_State
+		icon = GFX_focus_FIN_patriotic_peoples_movement
+		prerequisite = { focus = Preserve_Our_Culture focus = Siberian_Nationalism }
+		mutually_exclusive = { focus = Tuvan_Defense_Plan }
+
+		x = 31
+		y = 11
+		cost = 5
+		
+		available_if_capitulated = no
+
+		available = {
+			OR = {
+			has_government = facism
+			has_government = communism
+			}
+		}
+
+		completion_reward = {
+			
+			
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_MANPOWER }
+		id = Encourage_Siberian_Immigration
+		icon = GFX_focus_FIN_utilize_the_sami
+		prerequisite = { focus = A_Siberian_State }
+
+		x = 30
+		y = 12
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = Immigration_idea
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_MANPOWER}
+		id = Siberian_People_Propoganda
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = A_Siberian_State }
+		available_if_capitulated = no 
+		x = 32
+		y = 12
+		cost = 10
+
+		select_effect = {
+			add_war_support = 0.1
+		}
+
+		completion_reward = {
+			remove_ideas = Immigration_idea
+			random_owned_state = {
+				limit = { is_fully_controlled_by = TAN }
+				add_manpower = 11638
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = For_Siberians
+		icon = GFX_focus_SWE_en_svensk_tiger
+		prerequisite = { focus = Siberian_People_Propoganda focus = Encourage_Siberian_Immigration }
+		mutually_exclusive = { focus = Numerous_Laborers }
+
+		x = 31
+		y = 13
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Under_One_Banner
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = For_Siberians }
+		mutually_exclusive = { focus = Siberians_Under_The_Tuvan_Flag }
+		x = 33
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			unlock_decision_category_tooltip = Under_One_Banner_category
+			unlock_decision_tooltip = Propoganda_decision
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_MANPOWER}
+		id = Siberians_Under_The_Tuvan_Flag
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = For_Siberians }
+		mutually_exclusive = { focus = Under_One_Banner }
+		x = 29
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			329 = {
+				add_manpower = 12293
+			}
+		hidden_effect = {
+			set_cosmetic_tag = TAN_Siberians_Under_The_Tuvan_Flag
+		}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Rile_Sibera
+		icon = GFX_focus_spr_torchbearers_of_tomorrow
+		prerequisite = { focus = Under_One_Banner }
+
+		x = 33
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			#COME BACK TO UNLOCK DECISIONS
+			custom_effect_tooltip = " Aiming to unifty Turkestan will make us loose all the cores needed for Siberia. "
+			unlock_decision_tooltip = Siberian_Propoganda
+			unlock_decision_tooltip = Fund_Siberian_Nationalist_Movements
+			unlock_decision_tooltip = Support_Siberian_Protests
+			add_state_core = 824
+			add_state_core = 577
+			add_state_core = 403
+			add_state_core = 571
+			add_state_core = 578
+			add_state_core = 570
+			add_state_core = 40
+			add_state_core = 516
+			add_state_core = 576
+			add_state_core = 568
+			add_state_core = 569
+			add_state_core = 654
+			add_state_core = 567
+			add_state_core = 575
+			add_state_core = 878
+			add_state_core = 566
+			add_state_core = 564
+			add_state_core = 565
+			add_state_core = 876
+			add_state_core = 563
+			add_state_core = 574
+			add_state_core = 877
+			add_state_core = 329
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Rile_The_Urals
+		icon = GFX_focus_ARG_march_to_la_casa_rosada
+		prerequisite = { focus = Under_One_Banner }
+
+		x = 31
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			custom_effect_tooltip = " Aiming to unifty Turkestan will make us loose all the cores needed for Siberia. "
+			unlock_decision_tooltip = Uralian_Propoganda
+			unlock_decision_tooltip = Fund_Uralian_Nationalist_Movements
+			unlock_decision_tooltip = Support_Uralian_Protests
+			add_state_core = 573
+			add_state_core = 572
+			add_state_core = 582
+			add_state_core = 580
+			add_state_core = 581
+			add_state_core = 579
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Rile_The_Far_East
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		prerequisite = { focus = Under_One_Banner }
+
+		x = 35
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+						custom_effect_tooltip = " Aiming to unifty Turkestan will make us loose all the cores needed for Siberia. "
+			#COME BACK TO UNLOCK DECISIONS
+			unlock_decision_tooltip = Far_Eastern_Propoganda
+			unlock_decision_tooltip = Fund_Far_Eastern_Nationalist_Movements
+			unlock_decision_tooltip = Support_Far_Eastern_Protests
+			add_state_core = 561
+			add_state_core = 657
+			add_state_core = 560
+			add_state_core = 409
+			add_state_core = 655
+			add_state_core = 562
+			add_state_core = 874
+			add_state_core = 822
+			add_state_core = 637
+			add_state_core = 875
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Vladivostock
+		icon = GFX_focus_ITA_corpo_volontari_della_liberta
+		prerequisite = { focus = Rile_The_Far_East }
+
+		x = 36
+		y = 16
+		cost = 7
+		
+		available_if_capitulated = no
+
+		available = {
+			has_political_power > 50
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_state_core = 409
+			custom_effect_tooltip = " Aiming to unifty Turkestan will make us loose all the cores needed for Siberia. "
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ANNEXATION }
+		id = Negotiate_With_The_Soviets
+		icon = GFX_focus_NOR_empower_sivorg
+		prerequisite = { focus = Rile_Sibera }
+		prerequisite = { focus = Rile_The_Far_East }
+		prerequisite = { focus = Rile_The_Urals }
+		prerequisite = {focus = Vladivostock }
+		mutually_exclusive = { focus = The_Turkic_Idea }
+		mutually_exclusive = { focus = Strike }
+		available = {
+			country_exists = SOV
+		}
+		x = 32
+		y = 17
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 100
+			unlock_decision_category_tooltip = Negotiate_With_The_Soviets_category
+			custom_effect_tooltip = "The Soviet Union is more likly to accept if world tension is high, they have a high opinion of us, we have a non-agression pact with them, Germany has invaded France, or is about to declare war on the Soviet Union."
+			custom_effect_tooltip = "If the Soviet Union declines, they might declare war on us as they may think we have insulted them."
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Rile_Central_Asia
+		icon = GFX_focus_TUR_turanist_ambition
+		prerequisite = { focus = Rile_The_Urals focus = Conservitism_Our_Savior }
+		mutually_exclusive = { focus = The_Siberian_Identity }
+		mutually_exclusive = { focus = Liberate_Our_Mongolian_Brothers}
+
+		x = 28
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_core = 588
+			add_state_core = 882
+			add_state_core = 589
+			add_state_core = 881
+			add_state_core = 590
+			add_state_core = 583
+			add_state_core = 402
+			add_state_core = 406
+			add_state_core = 587
+			add_state_core = 823
+			add_state_core = 831
+			add_state_core = 832
+			add_state_core = 585
+			add_state_core = 404
+			add_state_core = 405
+			add_state_core = 830
+			add_state_core = 742
+			add_state_core = 732
+			add_state_core = 586
+			add_state_core = 584
+			add_state_claim = 654
+			unlock_decision_category_tooltip = Turkestan_Dream_idea
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Strike
+		icon = GFX_focus_ETH_freedom_at_gunpoint
+		prerequisite = { focus = Rile_Sibera }
+		prerequisite = { focus = Rile_The_Far_East }
+		prerequisite = { focus = Rile_The_Urals }
+		mutually_exclusive = { focus = The_Turkic_Idea }
+		mutually_exclusive = { focus = Strike }
+		mutually_exclusive = { focus = Negotiate_With_The_Soviets }
+
+		x = 34
+		y = 17
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 654
+			add_state_claim = 40
+			add_state_claim = 569
+			add_state_claim = 568
+			add_state_claim = 329
+			add_state_claim = 567
+			add_state_claim = 566
+			add_state_claim = 564
+			add_state_claim = 563
+			add_state_claim = 565
+			add_state_claim = 561
+			add_state_claim = 574
+			add_state_claim = 576
+			add_state_claim = 562
+			add_state_claim = 874
+			add_state_claim = 644
+			add_state_claim = 876
+			add_state_claim = 877
+			add_state_claim = 637
+			add_state_claim = 822
+			add_state_claim = 878
+		}
+	}
+#	focus = {
+#		id = The_Siberian_Identity
+#		icon = GFX_focus_ICE_embrace_the_workers_revolution
+#		prerequisite = { focus = Rile_Sibera focus = Rile_The_Far_East focus = Rile_The_Urals }
+#
+#		x = 41
+#		y = 15
+#		cost = 5i
+#		
+#		available_if_capitulated = no
+#
+#		completion_reward = {
+#		}
+#	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = The_People_Republic_of_Siberia
+		icon = GFX_focus_SWE_Sami_reconcilliation
+		prerequisite = { focus = Negotiate_With_The_Soviets focus = Strike focus = Winter_Experts }
+		mutually_exclusive = { focus = The_Turkic_Peoples_Republic }
+
+		x = 39
+		y = 18
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			controls_state = 561
+			controls_state = 657
+			controls_state = 560
+			controls_state = 409
+			controls_state = 655
+			controls_state = 562
+			controls_state = 874
+			controls_state = 822
+			controls_state = 637
+			controls_state = 875
+			controls_state = 573
+			controls_state = 572
+			controls_state = 582
+			controls_state = 580
+			controls_state = 581
+			controls_state = 579
+			controls_state = 824
+			controls_state = 577
+			controls_state = 403
+			controls_state = 571
+			controls_state = 578
+			controls_state = 570
+			controls_state = 40
+			controls_state = 516
+			controls_state = 576
+			controls_state = 568
+			controls_state = 569
+			controls_state = 654
+			controls_state = 567
+			controls_state = 575
+			controls_state = 878
+			controls_state = 566
+			controls_state = 564
+			controls_state = 565
+			controls_state = 876
+			controls_state = 563
+			controls_state = 574
+			controls_state = 877
+			controls_state = 329
+		}
+		completion_reward = {
+			country_event = { id = tanna_tuva_news.1 hours = 0.5 random_hours = 1.5 }
+			
+			add_ideas = Efficient_Government
+			custom_effect_tooltip = "Tannu Tuva will now be known as The Siberian State."
+		}
+		hidden_effect = {
+			set_cosmetic_tag = TAN_Unified_Siberia
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Contructing_The_Siberian_Nation
+		icon = GFX_goal_generic_construct_civilian
+		prerequisite = { focus = The_People_Republic_of_Siberia }
+
+		x = 35
+		y = 19
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = Contructing_Siberia
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Uralian_Mines
+		icon = GFX_focus_generic_mining_industry
+		prerequisite = { focus = Contructing_The_Siberian_Nation }
+
+		x = 33
+		y = 20
+		cost = 10
+		
+		available_if_capitulated = no
+
+		available = {
+			owns_state = 573
+			owns_state = 653
+			owns_state = 580
+			owns_state = 579
+			owns_state = 581
+			owns_state = 572
+			owns_state = 582
+		}
+		completion_reward = {
+			add_resource = {
+    			type = oil
+    			amount = 2
+    			state = 579
+			}
+			add_resource = {
+    			type = oil
+    			amount = 1
+    			state = 580
+			}
+			add_resource = {
+    			type = steel
+    			amount = 5
+    			state = 653
+			}
+			add_resource = {
+    			type = aluminum
+    			amount = 3
+    			state = 572
+			}	
+			add_resource = {
+    			type = aluminum
+    			amount = 6
+    			state = 573
+			}	
+			add_resource = {
+    			type = tungsten
+    			amount = 2
+    			state = 573
+			}	
+			add_resource = {
+    			type = chromium
+    			amount = 2
+    			state = 581
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Sverdlovck_Factories
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = Uralian_Mines }
+
+		x = 33
+		y = 21
+		cost = 10
+		
+		available_if_capitulated = no
+
+		available = {
+			owns_state = 653
+			controls_state = 653
+		}
+
+		completion_reward = {
+			653 = { 
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = no
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Cheyabinsk_Military_Factories
+		icon = GFX_focus_SWI_issue_war_bonds
+		prerequisite = { focus = Sverdlovck_Factories }
+
+		x = 33
+		y = 22
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			572 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}				
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Tobolsk_Hydroelectrical_Dam
+		icon = GFX_focus_generic_hydroelectric_energy
+		prerequisite = { focus = Cheyabinsk_Military_Factories}
+
+		x = 33
+		y = 23
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			580 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}				
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = no
+				}
+			}				
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Siberian_Forests
+		icon = GFX_focus_CHL_expand_the_forestry
+		prerequisite = { focus = Contructing_The_Siberian_Nation }
+
+		x = 35
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			570 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			578 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			568 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			564 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Novosibirsk_Forestry_Industry
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = Siberian_Forests }
+
+		x = 35
+		y = 21
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			570 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+
+			}			
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Irkutsk_Regional_Center
+		icon = GFX_focus_POL_warsaw_main_station
+		prerequisite = { focus = Novosibirsk_Forestry_Industry }
+
+		x = 35
+		y = 22
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			566 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}		
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}		
+			}
+			575 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}				
+			}
+			576 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			564 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Bratsk_Investments
+		icon = GFX_focus_ARG_universidad_de_buenos_aires
+		prerequisite = { focus = Irkutsk_Regional_Center }
+
+		x = 35
+		y = 23
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			567 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Far_Eastern_Education
+		icon = GFX_focus_generic_university_1
+		prerequisite = { focus = Contructing_The_Siberian_Nation }
+
+		x = 37
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = Far_Eastern_Education_idea
+				days = 96
+			}
+			add_research_slot = 1
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Expand_The_Vladivostock_Ship_Yards
+		icon = GFX_focus_POL_develop_polish_shipbuilding
+		prerequisite = { focus = Far_Eastern_Education }
+
+		x = 37
+		y = 21
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			408 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Yakutsk_Diamond_Mines
+		icon = GFX_focus_generic_agricultural_subsidies
+		prerequisite = { focus = Expand_The_Vladivostock_Ship_Yards }
+
+		x = 37
+		y = 22
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			574 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes					
+				}	
+				add_resource = {
+					type = chromium
+					amount = 3
+					state = 574
+				}		
+				add_resource = {
+					type = tungsten
+					amount = 3
+					state = 574
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Magaden_Fishing
+		icon = GFX_focus_SWE_state_paid_vacation
+		prerequisite = { focus = Yakutsk_Diamond_Mines }
+
+		x = 37
+		y = 23
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			560  = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes					
+				}	
+			}
+			562  = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes					
+				}	
+			}
+			847  = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes					
+				}	
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = National_Infunstructure_Project_One
+		icon = GFX_focus_generic_road_investment
+		prerequisite = { focus = Magaden_Fishing focus = Bratsk_Investments focus = Tobolsk_Hydroelectrical_Dam }
+
+		x = 34
+		y = 24.5
+		cost = 20
+		   
+		available_if_capitulated = no
+
+		completion_reward = {
+			custom_effect_tooltip = " This may boost our resource extraction! "
+			329  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
+			568  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			567  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			563  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			561  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			657  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			409  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			560  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			562  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			569  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			576  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			578  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			577  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			580  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			653  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			876  = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Regional_Financial_Hubs
+		icon = GFX_focus_spa_the_spanish_miracle
+		prerequisite = { focus = Magaden_Fishing }
+		prerequisite = { focus = Bratsk_Investments }
+		prerequisite = { focus = Tobolsk_Hydroelectrical_Dam }
+		
+		x = 36
+		y = 24
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = Regional_Financial_Hub_idea
+
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = The_Shining_Capitol
+		icon = GFX_focus_SWE_urbanization
+		prerequisite = { focus = Regional_Financial_Hubs }
+		
+		x = 36
+		y = 25
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			329  = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = The_Siberian_Superpower
+		icon = GFX_focus_SWE_let_fly_all_guns
+		prerequisite = { focus = The_Shining_Capitol focus = Proclaim_The_Might_of_Siberia }
+		prerequisite = { focus = Siberian_Skies }
+		x = 39
+		y = 26
+		cost = 2
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = Siberian_Superpower_idea
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory 
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Siberian_Army
+		icon = GFX_focus_SOV_the_glory_of_the_red_army_alternative
+		prerequisite = { focus = The_People_Republic_of_Siberia }
+
+		x = 39
+		y = 19
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory 
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Masters_of_the_Cold
+		icon = GFX_focus_generic_winter_warfare
+		prerequisite = { focus = Siberian_Army }
+
+		x = 39
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = Winter_Training
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_RESEARCH}
+		id = Mechnization_Investments
+		icon = GFX_focus_FIN_salvaged_and_retooled
+		prerequisite = { focus = Masters_of_the_Cold }
+
+		x = 39
+		y = 21
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 1.0
+				technology = motorised_infantry
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Military_Investments_and_Expansion
+		icon = GFX_focus_SWE_landsverk
+		prerequisite = { focus = Mechnization_Investments }
+
+		x = 39
+		y = 22
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory 
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_AIR_XP}
+		id = Siberian_Skies
+		icon = GFX_focus_generic_copy_plane_designs
+		prerequisite = { focus = Military_Investments_and_Expansion }
+
+		x = 39
+		y = 23
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 1.5
+				uses = 3
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Glory_To_The_Siberian_People
+		icon = GFX_focus_SOV_the_glory_of_the_red_army_alternative
+		prerequisite = { focus = The_People_Republic_of_Siberia }
+
+		x = 43
+		y = 19
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 100
+			add_war_support = 0.4
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Liberate_Sahkalin
+		icon = GFX_focus_attack_japan
+		prerequisite = { focus = Glory_To_The_Siberian_People }
+
+		x = 41
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 537
+			add_state_core = 537
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ANNEXATION }
+		id = Free_The_Ainu
+		icon = GFX_focus_AST_war_japan
+		prerequisite = { focus = Liberate_Sahkalin }
+
+		x = 41
+		y = 21
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			declare_war_on = {
+				target = JAP
+				type = puppet
+			}
+			add_state_core = 536
+			add_state_core = 555
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ANNEXATION }
+		id = Manchurian_Cries
+		icon = GFX_focus_jap_cast_the_die
+		prerequisite = { focus = Free_The_Ainu }
+
+		x = 41
+		y = 22
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			declare_war_on = {
+				target = MAN
+				type = puppet
+			}
+			add_state_claim = 761
+			add_state_claim = 714
+			add_state_claim = 717
+			add_state_claim = 328
+			add_state_claim = 715
+			add_state_claim = 716
+			add_state_claim = 745
+			add_state_claim = 610
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Liberate_The_Inuits
+		icon = GFX_focus_SOV_recover_alaska
+		prerequisite = { focus = Glory_To_The_Siberian_People }
+
+		x = 43
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			create_wargoal = {
+				type = take_state_focus
+				target = USA
+				generator = { 650 463 }
+				expire = 180
+			}
+			add_state_claim = 650
+			add_state_claim = 463
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Nanuvuts
+		icon = GFX_focus_attack_canada
+		prerequisite = { focus = Liberate_The_Inuits }
+
+		x = 43
+		y = 22
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			create_wargoal = {
+				type = take_state_focus
+				target = CAN
+				generator = { 864 739 471 472 865 867 683 866 466 }
+				expire = 180
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Mongolian_Subjegation
+		icon = GFX_focus_MON_nationalist_sentiment
+		prerequisite = { focus = Glory_To_The_Siberian_People }
+
+		x = 45
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 818
+			add_state_claim = 820
+			add_state_claim = 330
+			add_state_claim = 817
+			add_state_claim = 819
+			TAN = {
+			create_wargoal = {
+				type = puppet
+				target = MON
+				expire = 180
+			}
+		}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ANNEXATION }
+		id = Inner_Mongolian_Annexation
+		icon = GFX_focus_generic_annex_country_2
+		prerequisite = { focus = Mongolian_Subjegation }
+
+		x = 45
+		y = 22
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 612
+			add_state_claim = 611
+			create_wargoal = {
+				type = puppet
+				target = MEN
+				expire = 180
+			}	
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Proclaim_The_Might_of_Siberia
+		icon = GFX_focus_SOV_proclaim_soviet_hegemony
+		prerequisite = { focus = Manchurian_Cries }
+		prerequisite = { focus = Nanuvuts }
+		prerequisite = { focus = Inner_Mongolian_Annexation }
+
+		x = 43
+		y = 23.5
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = 0.3
+			add_war_support = 0.3
+			add_political_power = 40
+		}
+	}
+##ICONS_DONE##
+
+######################
+##TURKIC_NATION_PATH##
+######################
+
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = The_Turkic_Idea
+		icon = GFX_focus_TUR_ratify_the_six_arrows
+		prerequisite = { focus = Rile_Central_Asia }
+		mutually_exclusive = { focus = Negotiate_With_The_Soviets }
+		mutually_exclusive = { focus = Strike }
+
+		x = 27
+		y = 17
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 50
+			unlock_decision_category_tooltip = Turkestan_Dream_idea
+
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = The_Turkic_Peoples_Republic
+		icon = GFX_focus_TUR_loosen_the_laws_on_secularism
+		prerequisite = { focus = Negotiate_With_The_Soviets focus = Strike  focus = The_Turkic_Idea focus = Turkic_Empire focus = Desert_Experts }
+		mutually_exclusive = { focus = The_People_Republic_of_Siberia}
+
+		x = 27
+		y = 18
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			always = false
+			custom_effect_tooltip = "This part of the focus tree is locked due to it being incomplete and not ready for play yet."
+			controls_state = 588
+			controls_state = 882
+			controls_state = 589
+			controls_state = 881
+			controls_state = 590
+			controls_state = 583
+			controls_state = 402
+			controls_state = 406
+			controls_state = 587
+			controls_state = 823
+			controls_state = 831
+			controls_state = 832
+			controls_state = 585
+			controls_state = 404
+			controls_state = 405
+			controls_state = 830
+			controls_state = 742
+			controls_state = 732
+			controls_state = 586
+			controls_state = 584
+			controls_state = 654
+		}
+		completion_reward = {
+			
+			custom_effect_tooltip = "Tannu Tuva will be known as Turkestan."
+			custom_effect_tooltip = "Any cores on Siberia, the Urals, and the Far East will be lost if you take this focus."
+		}
+		hidden_effect = {
+			set_cosmetic_tag = TAN_Unified_Turkestan
+			remove_state_core = 824
+			remove_state_core = 577
+			remove_state_core = 403
+			remove_state_core = 571
+			remove_state_core = 578
+			remove_state_core = 570
+			remove_state_core = 40
+			remove_state_core = 516
+			remove_state_core = 576
+			remove_state_core = 568
+			remove_state_core = 569
+			remove_state_core = 654
+			remove_state_core = 567
+			remove_state_core = 575
+			remove_state_core = 878
+			remove_state_core = 566
+			remove_state_core = 564
+			remove_state_core = 565
+			remove_state_core = 876
+			remove_state_core = 563
+			remove_state_core = 574
+			remove_state_core = 877
+			remove_state_core = 329
+			remove_state_core = 573
+			remove_state_core = 572
+			remove_state_core = 582
+			remove_state_core = 580
+			remove_state_core = 581
+			remove_state_core = 579
+			remove_state_core = 561
+			remove_state_core = 657
+			remove_state_core = 560
+			remove_state_core = 409
+			remove_state_core = 655
+			remove_state_core = 562
+			remove_state_core = 874
+			remove_state_core = 822
+			remove_state_core = 637
+			remove_state_core = 875
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Modernize_The_Infant_Nation
+		icon = GFX_focus_generic_modernize_industry
+		prerequisite = { focus = The_Turkic_Peoples_Republic }
+
+		x = 27
+		y = 19
+		cost = 1
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = 0.15
+			add_war_support = 0.1
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Modernize_The_Army
+		icon = GFX_focus_chi_army_reform
+		prerequisite = { focus = Modernize_The_Infant_Nation }
+
+		x = 25
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			army_experience =  150
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Calvery_Regiments
+		icon = GFX_focus_FIN_strengthen_military_administration
+		prerequisite = { focus = Modernize_The_Army }
+  
+		x = 25
+		y = 21
+		cost = 5
+		available = {
+			NOT = {
+				has_idea = Calvary_Army
+			}
+		}
+		bypass = {
+			has_idea = Calvary_Army
+		}
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = Calvary_Army
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ARMY_XP }
+		id = New_Hordes
+		icon = GFX_focus_generic_truck
+		prerequisite = { focus = Calvery_Regiments }
+
+		x = 25
+		y = 22
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Invest_In_Farms
+		icon = GFX_focus_generic_farmland
+		prerequisite = { focus = Modernize_The_Infant_Nation }
+
+		x = 27
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Industrialization_Policies
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = Invest_In_Farms }
+
+		x = 27
+		y = 21
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Turkic_Weapons
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = Industrialization_Policies }
+
+		x = 27
+		y = 22
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION }
+		id = Annex_Sinkiang
+		icon = GFX_focus_generic_befriend_sinkiang
+		prerequisite = { focus = The_Turkic_Peoples_Republic }
+
+		x = 29
+		y = 19
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			create_wargoal = {
+				type = take_state_focus
+				target = SIK
+				generator = { 618 }
+				expire = 180
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Turkic_Superiority
+		icon = GFX_focus_generic_support_the_left_right
+		prerequisite = { focus = Turkic_People_United }
+		prerequisite = { focus = Turkic_Weapons }
+		prerequisite = { focus = New_Hordes }
+		prerequisite = { focus = Outside_Investors }
+
+
+		x = 27
+		y = 24
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_war_support = 0.21
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Monetary_Potential
+		icon = GFX_focus_mex_privatisation
+		prerequisite = { focus = Modernize_The_Infant_Nation }
+
+		x = 29
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Open_Mines
+		icon = GFX_focus_generic_mining_industry
+		prerequisite = { focus = Monetary_Potential }
+
+		x = 29
+		y = 21
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Outside_Investors
+		icon = GFX_focus_generic_american_investments
+		prerequisite = { focus = Open_Mines }
+
+		x = 29
+		y = 22
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Silk_Road_Revival
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = Outside_Investors }
+
+		x = 30
+		y = 23
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 3 }
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Turkic_Infantructure_Projects
+		icon = GFX_focus_SOV_the_road_of_life
+		prerequisite = { focus = Silk_Road_Revival }
+
+		x = 30
+		y = 24
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Turkestan_United
+		icon = GFX_goal_generic_attack_allies
+		prerequisite = { focus = Turkic_Infantructure_Projects }
+		prerequisite = { focus = Turkic_Superiority }
+		mutually_exclusive = { focus = Turanist_Dream }
+
+		x = 27
+		y = 26
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			set_cosmetic_tag = TAN_Unified_Turkestan
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Turanist_Dream
+		icon = GFX_focus_CHL_address_the_mapuche_conflict
+		prerequisite = { focus = Turkic_Infantructure_Projects }
+		prerequisite = { focus = Turkic_Superiority }
+		mutually_exclusive = { focus = Turkestan_United }
+
+		x = 30
+		y = 26
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_war_support = 0.21
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ANNEXATION}
+		id = Fin_Urga
+		icon = GFX_focus_TUR_crowning_ourselves_with_the_fin_ugor
+		prerequisite = { focus = Turanist_Dream }
+
+		x = 31
+		y = 27
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			declare_war_on = {
+				target = FIN
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Turkey_The_Final_Piece
+		icon = GFX_focus_generic_attack_turkey
+		prerequisite = { focus = Turanist_Dream }
+
+		x = 29
+		y = 27
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			declare_war_on = {
+				target = TUR
+				type = annex_everything
+			}
+		}
+	}
+
+##ICONS_DONE##
+
+#############
+#FACISM_PATH#
+#############
+
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Nationalism
+		icon = GFX_goal_support_fascism
+		prerequisite = { focus = Unite_The_Opposition }
+		mutually_exclusive = { focus = Dazhys_Vision }
+		mutually_exclusive = { focus = Democratization }
+
+		x = 48.5
+		y = 2
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			OR = {
+				has_idea = Extremely_Weak_Government
+				
+			}
+		}
+		completion_reward = {
+			add_political_power = 200
+			country_event = {
+				id = tanna_tuva.30
+			}
+            add_popularity = { 
+                ideology = fascism
+                popularity = 0.05
+            }
+			set_party_name = { 
+                ideology = fascism
+                long_name = " The Tuvan Nationalist and Fascist United Front "
+                name = " The Tuvan Nationalist Party " 
+            }
+			set_party_name = { 
+                ideology = democratic
+                long_name = " The Anti-Nationalist Front of Tanna Tuva "
+                name = " The Tuvan Democratic Party " 
+            }
+			remove_ideas = Revolution_Protection_Laws
+			remove_ideas = Communist_Policies
+			remove_ideas = TAN_Trauma_From_Collectivization
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Facist_Proganda
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = Nationalism }
+
+		x = 48.5
+		y = 3
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 250
+			add_timed_idea = {
+				idea = Nationalist_Propoganda
+				days = 120
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_PROPAGANDA }
+		id = Instate_Facist_Members
+		icon = GFX_focus_LAT_banish_clemins
+		prerequisite = { focus = Facist_Proganda }
+
+		x = 48.5
+		y = 4
+		cost = 10
+		
+		available_if_capitulated = no
+
+		available = {
+			fascism > 0.05
+		}
+
+		completion_reward = {
+			add_political_power = 75
+			add_timed_idea = {
+				add_ideas = TAN_Instating_Facist_Members
+				days = 181
+			}
+			remove_ideas = TAN_Disagreements_Between_The_Groups
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Execute_The_Communists
+		icon = GFX_focus_SOV_purge_bukharinists
+		prerequisite = { focus = Facist_Proganda }
+
+		x = 46.5
+		y = 4
+		cost = 10
+		
+		available_if_capitulated = no
+
+		available = {
+			fascism > 0.1
+		}
+
+		completion_reward = {
+			add_political_power = 50
+			add_timed_idea = {
+				idea = TAN_Executing_The_Communists
+				days = 100
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Execute_The_Republicans
+		icon = GFX_focus_SOV_purge_zinovyevists
+		prerequisite = { focus = Facist_Proganda }
+
+		x = 50.5
+		y = 4
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			fascism > 0.01
+		}
+		completion_reward = {
+			add_political_power = 10
+			add_timed_idea = {
+				idea = TAN_Executing_The_Republicans
+				days = 30
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Limit_Buddahism
+		icon = GFX_focus_generic_fascist_troops
+		prerequisite = { focus = Execute_The_Communists }
+		prerequisite = { focus = Instate_Facist_Members }
+		prerequisite = { focus = Execute_The_Republicans }
+
+		x = 48.5
+		y = 5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			fascism > 0.3
+		}
+		completion_reward = {
+			set_politics = {
+				ruling_party = fascism
+			}
+			promote_character = {
+				character = TAN_Bay_Kara_Dolchanmaa
+				ideology = fascism_ideology
+			}
+			add_ideas = State_Supervised_Religion_idea
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Supress_The_Old_Believers
+		icon = GFX_focus_ARG_state_atheism
+		prerequisite = { focus = Limit_Buddahism }
+		mutually_exclusive = { focus = Now_Is_The_Time }
+
+		x = 39
+		y = 6
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			country_event = {
+				id = tanna_tuva.31
+			}
+			add_stability = -0.05
+			add_war_support = 0.05
+			add_political_power = 100
+			#unlock_decision_category_tooltip = Stomp_Out_The_Old_Believers_category
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Siberian_Nationalism
+		icon = GFX_focus_ARG_march_to_la_casa_rosada
+		prerequisite = { focus = Supress_The_Old_Believers }
+		mutually_exclusive = { focus = Tuvan_Nationalism }
+
+		x = 33
+		y = 7
+		cost = 5
+		
+		available_if_capitulated = no
+
+		available = {
+			has_government = fascism
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Tuvan_Nationalism
+		icon = GFX_focus_ICE_state_corporatism
+		prerequisite = { focus = Supress_The_Old_Believers }
+		mutually_exclusive = { focus = Siberian_Nationalism }
+
+		x = 45
+		y = 7
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stabilty = 0.15
+			add_political_power = 20
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.155
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Indoctrinate_The_Youth
+		icon = GFX_focus_ITA_generic_fascist_workers
+		prerequisite = { focus = Tuvan_Nationalism }
+
+		x = 45
+		y = 9
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = For_Tannu_Tuva_idea
+				days = 365
+			}
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_RESEARCH }
+		id = Nationalist_Research
+		icon = GFX_focus_research
+		prerequisite = { focus = Indoctrinate_The_Youth }
+
+		x = 45
+		y = 11
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_RESEARCH }
+		id = Foreign_Professors
+		icon = GFX_focus_generic_university_2
+		prerequisite = { focus = Nationalist_Research }
+
+		x = 45
+		y = 12
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Ally_With_Germany
+		icon = GFX_focus_chi_mission_to_germany
+		prerequisite = { focus = Tuvan_Nationalism }
+		mutually_exclusive = { focus = Ally_With_Japan }
+
+		x = 39
+		y = 8
+		cost = 10
+		
+		available_if_capitulated = no
+
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			add_opinion_modifier = {
+				target = GER
+				modifier = TAN_German_Allignment
+			}
+			GER = {
+				country_event = {
+					id = tanna_tuva.47
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Produce_German_Arms
+		icon = GFX_focus_BRA_acquire_german_tanks
+		prerequisite = { focus = Ally_With_Germany }
+
+		x = 39
+		y = 9
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			add_ideas = Producing_German_Arms_idea
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Arms_Manufactuing_Expansion
+		icon = GFX_focus_SWI_embrace_panoramaheim
+		prerequisite = { focus = Produce_German_Arms }
+
+		x = 41
+		y = 10
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Tuvan-German_Join_Arsenal_Development
+		icon = GFX_focus_generic_combined_arms
+		prerequisite = { focus = Arms_Manufactuing_Expansion }
+		prerequisite = { focus = Expand_German_Trade }
+		prerequisite = { focus = Fund_Factory_Works }
+
+		x = 43
+		y = 12
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			329 = {
+				329 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ARMY_XP }
+		id = German_Military_Advisors
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = Tuvan-German_Join_Arsenal_Development }
+
+		x = 43
+		y = 13
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			329 = {
+				add_ideas = TAN_German_advisors
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = German_Intergration
+		icon = GFX_focus_chi_mission_to_germany
+		prerequisite = { focus = German_Military_Advisors }
+		mutually_exclusive = { focus = Central_Asia_Offensive }
+		mutually_exclusive = { focus = Siberian_Offensive }
+
+		x = 43
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			add_opinion_modifier = {
+				target = ger
+				modifier = TAN_Closer_Ties_To_gERMANY
+			}
+			add_ideas = Efficient_Government
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Reichkommosariat_Tannu_Tuva
+		icon = GFX_focus_ger_reichskommisariats
+		prerequisite = { focus = German_Intergration }
+
+		x = 43
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			GER = {
+				puppet = TAN
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Reichkommosariat_Sibirien
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = Reichkommosariat_Tannu_Tuva }
+
+		x = 43
+		y = 17
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			add_state_core = 824
+			add_state_core = 577
+			add_state_core = 403
+			add_state_core = 571
+			add_state_core = 578
+			add_state_core = 570
+			add_state_core = 40
+			add_state_core = 516
+			add_state_core = 576
+			add_state_core = 568
+			add_state_core = 569
+			add_state_core = 654
+			add_state_core = 567
+			add_state_core = 575
+			add_state_core = 878
+			add_state_core = 566
+			add_state_core = 564
+			add_state_core = 565
+			add_state_core = 876
+			add_state_core = 563
+			add_state_core = 574
+			add_state_core = 877
+			add_state_core = 329
+			GER = {
+				country_event = {
+					id = tanna_tuva.49
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Invite_German_Companies
+		icon = GFX_focus_SWI_promote_henne
+		prerequisite = { focus = Produce_German_Arms }
+
+		x = 37
+		y = 10
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_MANPOWER }
+		id = Bring_in_Germanys_Prisoners
+		icon = GFX_focus_CZE_german_puppet
+		prerequisite = { focus = Invite_German_Companies }
+
+		x = 35
+		y = 12
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			add_manpower = 11593
+			add_ideas = TAN_Prison_Labor
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Produce_Weapon_Parts
+		icon = GFX_focus_SWE_SKF_ball_bearings
+		prerequisite = { focus = Invite_German_Companies }
+		prerequisite = { focus = Expand_German_Trade }
+
+		x = 37
+		y = 12
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			remove_ideas = Producing_German_Arms_idea
+			add_ideas = TAN_Producing_Weapon_Parts
+			329 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Expand_German_Trade
+		icon = GFX_focus_generic_german_trade
+		prerequisite = { focus = Produce_German_Arms }
+
+		x = 39
+		y = 10.5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			GER = {
+				has_government = fascism
+			}
+		}
+		bypass = {
+			GER = {
+				is_puppet = yes
+			}
+		}
+		completion_reward = {
+			329 = { 
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Expand_Into_Russia
+		icon = GFX_focus_attack_soviet
+		prerequisite = { focus = Expand_German_Trade }
+
+		x = 39
+		y = 13
+		cost = 5
+		
+		available_if_capitulated = no
+
+		bypass = {
+			SOV = {
+				is_puppet_of = TAN
+			}
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = Russian_Offensive_idea
+				days = 600
+			}
+			declare_war_on = {
+				target = SOV
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Siberian_Offensive
+		icon = GFX_focus_attack_soviet
+		prerequisite = { focus = Expand_Into_Russia }
+		mutually_exclusive = { focus = Central_Asia_Offensive }
+		mutually_exclusive = { focus = German_Intergration }
+
+		x = 40
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_core = 561
+			add_state_core = 657
+			add_state_core = 560
+			add_state_core = 409
+			add_state_core = 655
+			add_state_core = 562
+			add_state_core = 874
+			add_state_core = 822
+			add_state_core = 637
+			add_state_core = 875
+			add_state_core = 573
+			add_state_core = 572
+			add_state_core = 582
+			add_state_core = 580
+			add_state_core = 581
+			add_state_core = 579
+			add_state_core = 824
+			add_state_core = 577
+			add_state_core = 403
+			add_state_core = 571
+			add_state_core = 578
+			add_state_core = 570
+			add_state_core = 40
+			add_state_core = 516
+			add_state_core = 576
+			add_state_core = 568
+			add_state_core = 569
+			add_state_core = 654
+			add_state_core = 567
+			add_state_core = 575
+			add_state_core = 878
+			add_state_core = 566
+			add_state_core = 564
+			add_state_core = 565
+			add_state_core = 876
+			add_state_core = 563
+			add_state_core = 574
+			add_state_core = 877
+			add_state_core = 329
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Winter_Experts
+		icon = GFX_focus_generic_winter_warfare
+		prerequisite = { focus = Siberian_Offensive  }
+
+		x = 40
+		y = 17
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = Winter_Experts_idea_idea
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ANNEXATION }
+		id = Central_Asia_Offensive
+		icon = GFX_focus_TUR_turanist_ambition
+		prerequisite = { focus = Expand_Into_Russia }
+		mutually_exclusive = { focus = Siberian_Offensive }
+		mutually_exclusive = { focus = Central_Asia_Offensive }
+
+		x = 38
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_core = 588
+			add_state_core = 882
+			add_state_core = 589
+			add_state_core = 881
+			add_state_core = 590
+			add_state_core = 583
+			add_state_core = 402
+			add_state_core = 406
+			add_state_core = 587
+			add_state_core = 823
+			add_state_core = 831
+			add_state_core = 832
+			add_state_core = 585
+			add_state_core = 404
+			add_state_core = 405
+			add_state_core = 830
+			add_state_core = 742
+			add_state_core = 732
+			add_state_core = 586
+			add_state_core = 584
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Desert_Experts
+		icon = GFX_focus_ITA_topple_amhara_rulers
+		prerequisite = { focus = Central_Asia_Offensive }
+
+		x = 38
+		y = 17
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = Desert_Experts_idea_idea
+		}
+	}
+#	focus = {
+#	search_filters = { }
+#		id = Turkic_Empire
+#		icon = GFX_focus_TUR_loosen_the_laws_on_secularism
+#		prerequisite = { focus = Desert_Experts }
+#		mutually_exclusive = { focus = Siberian_Empire }
+#		mutually_exclusive = { focus = Tuvan_Nationalist_State }
+#		x = 47
+#		y = 17
+#		cost = 5
+#		
+#		available_if_capitulated = no
+#
+#		completion_reward = {
+#		}
+#	}
+#	focus = {
+#	search_filters = { }
+#		id = Siberian_Empire
+#		icon = GFX_focus_NOR_nasjonal_samling
+#		prerequisite = { focus = Winter_Experts }
+#		mutually_exclusive = { focus = Turkic_Empire }
+#		mutually_exclusive = { focus = Tuvan_Nationalist_State}
+#
+##		x = 45
+#		y = 17
+#		cost = 5
+#		
+#		available_if_capitulated = no
+#
+#		completion_reward = {
+#		}
+#	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Ally_With_Japan
+		icon = GFX_focus_chi_collaboration_with_the_japanese
+		prerequisite = { focus = Tuvan_Nationalism }
+		mutually_exclusive = { focus = Ally_With_Germany }
+
+		x = 50
+		y = 8
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_opinion_modifier = {
+				target = JAP
+				modifier = TAN_Japanese_Allignment
+			}
+			JAP = {
+				country_event = {
+					id = tanna_tuva.46
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Support_The_Japanese_Conquest_Of_China
+		icon = GFX_focus_attack_china
+		prerequisite = { focus = Ally_With_Japan }
+
+		x = 50
+		y = 9
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+			has_political_power > 31
+		}
+		completion_reward = {
+			add_war_support = -0.05
+			add_political_power = -30
+			create_wargoal = {
+				type = take_state_focus
+				target = CHI
+				generator = { 744 }
+				expire = 180
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Invite_The_Zaibutas
+		icon = GFX_focus_jap_zaibatsu
+		prerequisite = { focus = Ally_With_Japan }
+		prerequisite = { focus = Gun_Workshops }
+
+		x = 47
+		y = 12
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			add_ideas = TAN_Zaibutas
+
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			unlock_decision_category_tooltip = Invite_Zaibutus_Companies
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Expand_The_Zaibutus_Factories
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = Invite_The_Zaibutas }
+
+		x = 47
+		y = 14.5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Closer_Japanese_Ties
+		icon = GFX_focus_chi_collaboration_with_the_japanese
+		prerequisite = { focus = Expand_The_Zaibutus_Factories }
+		prerequisite = { focus = TAN_Invite_Japanese_Settlers }
+
+		x = 47
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			add_opinion_modifier = {
+				target = JAP
+				modifier = TAN_Closer_Ties_To_Japan
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL}
+		id = Become_A_Japanese_Protectorate
+		icon = GFX_focus_jap_showa_restoration
+		prerequisite = { focus = Closer_Japanese_Ties }
+		mutually_exclusive = { focus = The_Great_Mongol_Nation }
+
+		x = 47
+		y = 17
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			JAP = {
+				puppet = {
+					target = TAN
+					end_wars = no
+				}
+			}
+			add_ideas = Efficient_Government
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Japanese_Colonial_Management
+		icon = GFX_focus_jap_cast_the_die
+		prerequisite = { focus = Become_A_Japanese_Protectorate }
+
+		x = 47
+		y = 18
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			annex_country = {
+				target = MAN
+				transfer_troops = yes
+			}
+			annex_country = {
+				target = MEN
+				transfer_troops = yes
+			}
+			TAN = {
+				set_cosmetic_tag = TAN_Japanese_Colonial_Management
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ARMY_XP }
+		id = Japanese_Military_Advisors
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = Support_The_Japanese_Conquest_Of_China }
+
+		x = 53
+		y = 10
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			add_ideas = TAN_Japanese_Advisors
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Organize_Military_Exercises
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = Japanese_Military_Advisors }
+
+		x = 53
+		y = 11
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			army_experience =  150
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_NAVY_XP}
+		id = Japanese_Naval_Information
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = Organize_Military_Exercises }
+
+		x = 53
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			any_state = {
+				is_coastal = yes
+				is_controlled_by = ROOT
+			}
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			navy_experience = 25
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							dockyard > 0
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+					any_owned_state = {
+						is_coastal = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_coastal = yes
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				set_country_flag = naval_effort_built
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					any_owned_state = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				set_country_flag = naval_effort_built
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+				}
+				random_state = {
+					limit = {
+						controller = { tag = ROOT }
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+			}			
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_NAVY_XP }
+		id = Tuvan_Destroyers
+		icon = GFX_focus_generic_destroyer
+		prerequisite = { focus = Japanese_Naval_Information }
+
+		x = 53
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = dd_tech
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Firing_Exercises
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = Organize_Military_Exercises }
+
+		x = 52
+		y = 12.5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			army_experience =  100
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Strengthen_The_Will
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = Organize_Military_Exercises }
+
+		x = 54
+		y = 12.5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			add_ideas = Strengthened_Will
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_RESEARCH}
+		id = Zaibutas_Research_Personel
+		icon = GFX_focus_research
+		prerequisite = { focus = Invite_The_Zaibutas }
+
+		x = 46
+		y = 13.5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			add_ideas = Research_Bonus_idea
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_MANPOWER}
+		id = TAN_Invite_Japanese_Settlers
+		icon = GFX_focus_jap_pacific_guardian
+		prerequisite = { focus = Invite_The_Zaibutas }
+
+		x = 48
+		y = 13.5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			is_ally_with = JAP
+		}
+		completion_reward = {
+			329 = {
+				add_manpower = 19827
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ANNEXATION }
+		id = Go_Through_Mongolia
+		icon = GFX_focus_generic_attack_mongolia
+		prerequisite = { focus = Support_The_Japanese_Conquest_Of_China }
+
+		x = 50
+		y = 10
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			declare_war_on = {
+				target = MON
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ANNEXATION }
+		id = Horseback_Raiders
+		icon = GFX_focus_generic_horse_studs
+		prerequisite = { focus = Go_Through_Mongolia }
+		mutually_exclusive = { focus = Instate_Anti-Communist_Government }
+
+		x = 49
+		y = 11
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			unlock_decision_category_tooltip = Intergrate_Mongolia
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Instate_Anti-Communist_Government
+		icon = GFX_goal_anti_comintern_pact
+		prerequisite = { focus = Go_Through_Mongolia }
+		mutually_exclusive = { focus = Horseback_Raiders }
+
+		x = 51
+		y = 11
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			country_exists = MON
+			MON = {
+				is_puppet_of = TAN
+			}
+		}
+		available = {
+			controls_state = 818
+			controls_state = 330
+			controls_state = 817
+			controls_state = 819
+		}
+		completion_reward = {
+			release_puppet_on_controlled = MON
+			add_state_core = 818
+			add_state_core = 330
+			add_state_core = 817
+			add_state_core = 819
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Efficient_Factories
+		icon = GFX_focus_generic_reorient_production
+		prerequisite = { focus = Horseback_Raiders }
+
+		x = 49
+		y = 12
+		cost = 5
+		
+		available_if_capitulated = no
+
+		available = {
+			controls_state = 330
+		}
+		completion_reward = {
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Tuvans_In_Sinkiang
+		icon = GFX_focus_CZE_german_puppet
+		prerequisite = { focus = Instate_Anti-Communist_Government focus = Efficient_Factories }
+		prerequisite = {  focus = Firing_Exercises }
+
+		x = 50
+		y = 13.5
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_core = 618
+			add_war_support = 0.1
+			create_wargoal = {
+				type = take_state_focus
+				target = SIK
+				generator = { 618 }
+				expire = 180
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = The_Inner-Mongolia_Question
+		icon = GFX_focus_ETH_support_from_the_japanese_communists
+		prerequisite = { focus = Tuvans_In_Sinkiang }
+
+		x = 50
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			NOT = {
+					MEN = {
+						controls_state = 611
+						controls_state = 621
+					}
+				}
+		}
+		available = {
+			country_exists = MEN
+			is_in_faction_with = JAP
+			OR = {
+				MEN = {
+					OR = {
+						MEN = {
+							is_puppet_of = JAP
+						}
+						country_exists = MEN
+					}
+				}
+				JAP = {
+					controls_state = 621
+					controls_state = 611
+					controls_state = 612 
+				}
+			}
+		}
+		completion_reward = {
+			JAP = {
+				country_event = {
+					id = tanna_tuva.8
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Intergrate_Inner_Mongolia
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = The_Inner-Mongolia_Question }
+
+		x = 51.5
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			TAN = {
+				add_state_core = 621
+				add_state_core = 611
+				add_state_core = 612 
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = The_Great_Mongol_Nation
+		icon = GFX_focus_MON_nationalist_sentiment
+		prerequisite = { focus = The_Inner-Mongolia_Question }
+		mutually_exclusive = { focus = Become_A_Japanese_Protectorate }
+
+		x = 50
+		y = 17
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {	
+			custom_effect_tooltip = "Tannu Tuva will be known as the Mongol Empire."
+		}
+		hidden_effect = {
+			set_cosmetic_tag = TAN_Mongol_Empire
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Just_Like_The_Horde
+		icon = GFX_focus_generic_horse_studs
+		prerequisite = { focus = The_Great_Mongol_Nation }
+		mutually_exclusive = { focus = A_New_Horde }
+		x = 49
+		y = 18
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = Legacy_Of_The_Horde_idea
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_MANPOWER}
+		id = Mass_Conscription
+		icon = GFX_focus_generic_manpower
+		prerequisite = { focus = Just_Like_The_Horde }
+
+		x = 49
+		y = 19
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_political_power > 51
+		}
+		bypass = {
+			has_idea = Extensive_Conscription
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_war = no
+				}
+				add_stability = -0.1
+				add_war_support = -0.1
+				add_political_power = -35
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_idea = Extensive_Conscription }
+			}
+			add_ideas = Extensive_Conscription
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Ancient_Logistics_Strategies
+		icon = GFX_focus_FIN_the_lone_wolf
+		prerequisite = { focus = Mass_Conscription }
+
+		x = 49
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = Improved_Logistics
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_RESEARCH}
+		id = A_New_Horde
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = The_Great_Mongol_Nation }
+		mutually_exclusive = { focus = Just_Like_The_Horde }
+		x = 51
+		y = 18
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = {
+				add_idea = Research_Bonus_idea
+				days = 150
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_RESEARCH}
+		id = Motorization_Efforts
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = A_New_Horde }
+		x = 51
+		y = 19
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 1.8
+				technology = motorised_infantry
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Building_The_New_Horde
+		icon = GFX_focus_CHL_domestic_production_of_the_willys_mb
+		prerequisite = { focus = Motorization_Efforts }
+		x = 51
+		y = 20
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = {
+				add_idea = Buidling_The_New_Horde_idea
+				days = 100
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = The_Golden_Horde_Returns
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = Building_The_New_Horde focus = Ancient_Logistics_Strategies}
+		x = 50
+		y = 21
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_war_support = 0.25
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Reconquest_Of_China
+		icon = GFX_focus_chi_one_china_policy
+		prerequisite = { focus = The_Golden_Horde_Returns }
+
+		x = 48
+		y = 22
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
+			every_state = {
+				limit = { is_core_of = CHI }
+				add_state_claim = TAN
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Strike_The_South
+		icon = GFX_focus_jap_strike_south
+		prerequisite = { focus = Reconquest_Of_China }
+
+		x = 46
+		y = 23.5
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 671
+			add_state_claim = 670
+			add_state_claim = 286
+			add_state_claim = 868
+			add_state_claim = 289
+			add_state_claim = 724
+			add_state_claim = 335
+			add_state_claim = 672
+			add_state_claim = 335
+			add_state_claim = 333
+			add_state_claim = 673
+			add_state_claim = 667
+			add_state_claim = 668
+			add_state_claim = 738
+			add_state_claim = 669
+			add_state_claim = 626
+			add_state_claim = 628
+			add_state_claim = 625
+			add_state_claim = 627
+			add_state_claim = 327
+			add_state_claim = 623
+			add_state_claim = 647
+			add_state_claim = 523
+			add_state_claim = 737
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = March_Into_Goryeo
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = { focus = Reconquest_Of_China }
+
+		x = 48
+		y = 23
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 527
+			add_state_claim = 525
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Western_Invasions
+		icon = GFX_focus_generic_annex_country_2
+		prerequisite = { focus = Reconquest_Of_China }
+
+		x = 50
+		y = 23
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 20
+			add_war_support = 0.15
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Plunge_Into_Iran
+		icon = GFX_focus_generic_attack_iran
+		prerequisite = { focus = Western_Invasions }
+
+		x = 50
+		y = 24
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			declare_war_on = {
+				target = IRA
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Victory_In_The_Indus
+		icon = GFX_focus_RAJ_indian_gentlemen_offcers
+		prerequisite = { focus = Western_Invasions }
+
+		x = 51
+		y = 26
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			declare_war_on = {
+				target = AFG
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = RAJ
+				type = annex_everything
+			}
+			declare_war_on = {
+				target = PAK
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ANNEXATION }
+		id = Ride_Into_Anakara
+		icon = GFX_focus_generic_attack_turkey
+		prerequisite = { focus = Plunge_Into_Iran }
+
+		x = 50
+		y = 25
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			declare_war_on = {
+				target = TUR
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ANNEXATION }
+		id = Unite_All_The_Mongol_Tribes
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = The_Golden_Horde_Returns }
+
+		x = 52
+		y = 22
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 567
+			add_state_claim = 566
+			add_state_claim = 564
+			add_state_claim = 563
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_MANPOWER }
+		id = Citizens_Of_The_Empire
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = Unite_All_The_Mongol_Tribes }
+
+		x = 54
+		y = 23
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = TAN_Mongol_Empire_Citizenship
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Retake_Kieven_Rus
+		icon = GFX_focus_attack_soviet
+		prerequisite = { focus = Unite_All_The_Mongol_Tribes }
+
+		x = 52
+		y = 23
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			declare_war_on = {
+				target = SOV
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Strike_Warsaw
+		icon = GFX_focus_generic_attack_poland
+		prerequisite = { focus = Retake_Kieven_Rus }
+
+		x = 52
+		y = 24
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			declare_war_on = {
+				target = POL
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ANNEXATION}
+		id = Batulu_Sails
+		icon = GFX_focus_attack_japan
+		prerequisite = { focus = March_Into_Goryeo }
+
+		x = 48
+		y = 24
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			declare_war_on = {
+				target = JAP
+				type = annex_everything
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Fund_Factory_Works
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = Indoctrinate_The_Youth }
+
+		x = 44
+		y = 10
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = Funding_Factory_Works_idea
+				days = 100
+			}
+			remove_ideas = Hyper_Inflated_Currency
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Gun_Workshops
+		icon = GFX_focus_SWI_issue_war_bonds
+		prerequisite = { focus = Indoctrinate_The_Youth }
+
+		x = 46
+		y = 10
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}				
+			}
+		}
+	}
+
+##ICONS_DONE##
+
+######################
+##Old_Believers_Path##
+######################
+
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Now_Is_The_Time
+		icon = GFX_focus_GRE_an_orthodox_state
+		prerequisite = { focus = Limit_Buddahism }
+		mutually_exclusive = { focus = Supress_The_Old_Believers }
+
+		x = 62
+		y = 6
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = fascism
+		}
+		completion_reward = {
+			custom_effect_tooltip = "This path is not fully completed yet. Play at your own risk."
+			add_political_power = 35
+			TAN = {
+				country_event = {
+					id = tanna_tuva.9
+				}
+			}
+		}
+		hidden_effect = {
+			
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Show_Ourselves
+		icon = GFX_focus_POL_sanation_left
+		prerequisite = { focus = Now_Is_The_Time }
+
+		x = 62
+		y = 7
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			has_government = fascism
+		}
+		completion_reward = {
+			add_political_power = 45
+			TAN = {
+				country_event = {
+					id = tanna_tuva.10
+				}
+				country_event = {
+					id = tanna_tuva.11
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Infiltrate_The_Tuvan_Parliment
+		icon = GFX_focus_NOR_continue_nygaardsvold_government
+		prerequisite = { focus = Show_Ourselves }
+
+		x = 62
+		y = 8
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			has_government = fascism
+		}
+		completion_reward = {
+			add_political_power = 205
+			add_ideas = Infiltrating_The_Tuvan_Parliment
+			
+			
+			unlock_decision_category_tooltip = Preparing_For_The_Coup_category
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY}
+		id = Invest_In_Old_Believers_Villages
+		icon = GFX_focus_generic_road_investment
+		prerequisite = { focus = Infiltrate_The_Tuvan_Parliment }
+
+		x = 61
+		y = 9
+		cost = 10
+		
+		available_if_capitulated = no
+		bypass = {
+			329 = {
+				infrastructure > 3
+			}
+		}
+		available = {
+			nuetral > 0.1
+		}
+
+		completion_reward = {
+			329 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}				
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Prepare_For_The_Coup
+		icon = GFX_focus_BRA_rio_protocol
+		prerequisite = { focus = Infiltrate_The_Tuvan_Parliment }
+
+		x = 63
+		y = 9
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			nuetral > 0.2
+		}
+
+		completion_reward = {
+			unlock_decision_category_tooltip = Preparing_For_The_Coup_category
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.1
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = The_Religous_Coup
+		icon = GFX_focus_ARG_march_to_la_casa_rosada
+		prerequisite = { focus = Prepare_For_The_Coup }
+		prerequisite = { focus = Invest_In_Old_Believers_Villages }
+
+		x = 62
+		y = 10
+		cost = 2
+		
+		available_if_capitulated = no
+		available = {
+			nuetral > 0.3
+		}
+		completion_reward = {
+			add_stability = -0.5
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = no
+				election_frequency = 48
+			}
+			promote_character = {
+				character = TAN_Veniamin_Mikhailov
+				ideology = centrism
+			}
+			remove_ideas = Nationalist_Propoganda
+			remove_ideas = TAN_Executing_The_Communists
+			remove_ideas = TAN_Executing_The_Republicans
+			remove_ideas = State_Supervised_Religion_idea
+			custom_effect_tooltip = "Tannu Tuva will be now known as the Provisional Old Believers State soon."
+		}
+		hidden_effect = {
+			set_cosmetic_tag = TAN_Old_Believers_State
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Incorportate_The_Tuvans
+		icon = GFX_focus_generic_concessions
+		prerequisite = { focus = The_Religous_Coup }
+
+		x = 62
+		y = 11
+		cost = 4
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			add_stability = 0.45
+			set_cosmetic_tag = TAN_Old_Believers_State
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Preparations_For_The_Return
+		icon = GFX_focus_BRA_rio_protocol
+		prerequisite = { focus = Incorportate_The_Tuvans }
+		mutually_exclusive = { focus = The_Safe_Heaven }
+
+		x = 59
+		y = 12
+		cost = 1
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			add_war_support = 0.3
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Foreign_Support
+		icon = GFX_focus_BRA_reach_out_to_military_dem
+		prerequisite = { focus = Preparations_For_The_Return }
+
+		x = 57
+		y = 13
+		cost = 1
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Send_Ambassadors_To_The_Germans
+		icon = GFX_focus_chi_mission_to_germany
+		prerequisite = { focus = Foreign_Support }
+
+		x = 56
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			GER = {
+				country_event = {
+					id = tanna_tuva.12
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Send_Ambassadors_To_The_Japanese
+		icon = GFX_focus_chi_collaboration_with_the_japanese
+		prerequisite = { focus = Send_Ambassadors_To_The_Germans }
+
+		x = 56
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			JAP = {
+				country_event = {
+					id = tanna_tuva.13
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_MANPOWER }
+		id = Send_Our_Word_Abroad
+		icon = GFX_focus_SWE_radiotjanst
+		prerequisite = { focus = Send_Ambassadors_To_The_Japanese }
+
+		x = 56
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			TAN = {
+				country_event = {
+					id = tanna_tuva.14
+				}
+			}
+		}
+		hidden_effect = {
+			329 = {
+				add_manpower = 20000
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_MANPOWER}
+		id = Calling_Our_Brothers
+		icon = GFX_focus_generic_catholic_dominion
+		prerequisite = { focus = Foreign_Support }
+
+		x = 58
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			TAN = {
+				country_event = {
+					id = tanna_tuva.15
+				}
+			}
+		}
+		hidden_effect = {
+			329 = {
+				add_manpower = 15291
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Soviet_Sympathizers
+		icon = GFX_focus_BRA_socialist_theologians
+		prerequisite = { focus = Calling_Our_Brothers }
+
+		x = 58
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			TAN = {
+				country_event = {
+					id = tanna_tuva.16
+				}
+			}
+		}
+		hidden_effect = {
+			329 = {
+				add_manpower = 12390
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = White_Russian_Support
+		icon = GFX_focus_SOV_approach_semyonov
+		prerequisite = { focus = Soviet_Sympathizers }
+
+		x = 58
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			TAN = {
+				country_event = {
+					id = tanna_tuva.17
+				}
+			}
+		}
+		hidden_effect = {
+			329 = {
+				add_manpower = 18292
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Military_Build_Up
+		icon = GFX_focus_FIN_strengthen_military_administration
+		prerequisite = { focus = Preparations_For_The_Return}
+
+		x = 61
+		y = 13
+		cost = 1
+		
+		available_if_capitulated = no
+		bypass = {
+		}
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}				
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Training_The_Troops
+		icon = GFX_focus_generic_manpower
+		prerequisite = { focus = Military_Build_Up }
+
+		x = 60
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			army_experience =  100
+			add_ideas = Preparing_For_The_Holy_War
+			custom_effect_tooltip = " Once we go to war, we will loose this idea. "
+		}
+		hidden_effect = {
+			329 = {
+				add_manpower = 1928
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ARMY_XP}
+		id = Winter_Training
+		icon = GFX_focus_generic_winter_warfare
+		prerequisite = { focus = Training_The_Troops }
+
+		x = 60
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			add_ideas = Winter_Experts_idea_idea
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ARMY_XP }
+		id = Living_Off_The_Land
+		icon = GFX_focus_SMB_special_forces_option_1
+		prerequisite = { focus = Winter_Training }
+
+		x = 60
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			add_ideas = Improved_Logistics
+			unlock_decision_category_tooltip = Raid_Military_Camps
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Economic_Build_Up
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = Military_Build_Up }
+
+		x = 62
+		y = 14
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			add_ideas = Economic_Build_Up_idea
+			329 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}				
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = SteeL_Mills
+		icon = GFX_focus_generic_steel
+		prerequisite = { focus = Economic_Build_Up }
+
+		x = 62
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			add_resource = {
+    			type = steel
+    			amount = 20
+    			state = 329
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_INDUSTRY }
+		id = Weapons_For_God
+		icon = GFX_focus_FIN_weapon_caches
+		prerequisite = { focus = SteeL_Mills }
+
+		x = 62
+		y = 16
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			add_ideas = Weapons_For_God_idea
+			329 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}				
+			}
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_ARMY_XP }
+		id = Local_Plans
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = Weapons_For_God focus = Send_Our_Word_Abroad focus = White_Russian_Support focus = Living_Off_The_Land}
+
+		x = 59
+		y = 17
+		cost = 2
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = TAN_Local_Plans_category
+			division_template = {
+				name = "Old Believer Militias"
+				is_locked = no
+				division_cap = 100 
+				division_names_group = TAN_OD
+				priority = 0
+				template_counter = 0
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 1 y = 3 }
+				}
+				support = {
+				}
+			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = The_Russian_Holy_War
+		icon = GFX_focus_FIN_chaplains
+		prerequisite = { focus = Local_Plans }
+
+		x = 59
+		y = 18
+		cost = 1
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			MON = {
+				leave_faction = yes
+			}
+			TAN = {
+				add_ideas = TAN_The_Russian_Holy_War
+				add_stability = 0.3
+				add_war_support = 0.5
+			}
+			SOV = {
+				add_ideas = SOV_The_Russian_Holy_War
+				add_stability = -0.3
+				add_war_support = -0.5
+			}
+			declare_war_on = {
+				target = SOV
+				type = annex_everything
+			}
+			every_state = {
+				limit = { is_core_of = SOV }
+				add_core_of = ROOT
+			}
+			custom_effect_tooltip = "Our nation will known as the Russian State of Old Believers."
+		}
+		hidden_effect = {
+			set_cosmetic_tag = TAN_Russian_Old_Believers_State
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_ANNEXATION}
+		id = Unite_The_Old_Believers
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = The_Russian_Holy_War }
+
+		x = 58
+		y = 19.5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			add_war_support = 0.15
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_MANPOWER}
+		id = Free_The_Gulags
+		icon = GFX_focus_BRA_free_prestes
+		prerequisite = { focus = The_Russian_Holy_War }
+		available = {
+			has_government = neutrality
+		}
+		x = 60
+		y = 19
+		cost = 10
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_manpower = 500000
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_MANPOWER }
+		id = Russian_Old_Believers_In_America
+		icon = GFX_focus_BRA_north_and_south_america
+		prerequisite = { focus = Unite_The_Old_Believers }
+
+		x = 57
+		y = 21.5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			USA = {
+				country_event = {
+					id = tanna_tuva.18
+				}
+			}
+			custom_effect_tooltip = "If America allows its Old Believer population to go, our manpower will increase! However, America will not make a public statement regarding this."
+		}
+	}
+	focus = {
+	search_filters = {FOCUS_FILTER_POLITICAL }
+		id = Correcting_Past_Mistakes
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = Free_The_Gulags }
+		available = {
+			has_government = neutrality
+		}
+		x = 60
+		y = 20
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.3
+			add_war_support = 0.35
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = Russian_Orthodox
+		icon = GFX_focus_SOV_third_rome
+		prerequisite = { focus = Correcting_Past_Mistakes focus = Unite_The_Old_Believers }
+		available = {
+			has_government = neutrality
+		}
+		x = 59
+		y = 22
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = 0.35
+			add_war_support = 0.15
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = The_Safe_Heaven
+		icon = GFX_focus_SOV_third_rome
+		prerequisite = { focus = Incorportate_The_Tuvans }
+		mutually_exclusive = { focus = Preparations_For_The_Return }
+
+		x = 65
+		y = 12
+		cost = 1
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+			
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 10
+
+			custom_effect_tooltip = "Our nation will be known as the State of Old Believers."
+		}
+		hidden_effect = {
+			set_cosmetic_tag = TAN_Independent_Old_Believers_State
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Seek_Western_Protection
+		icon = GFX_focus_SOV_rebuild_the_savior_cathedral
+		prerequisite = { focus = The_Safe_Heaven }
+
+		x = 65
+		y = 13
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			has_government = neutrality
+		}
+		completion_reward = {
+			TAN = {
+				country_event = {
+					id = tanna_tuva.19
+				}
+			} 
+			custom_effect_tooltip = " Depending on the state of world, the countries we ask might reject our plea for garentee. "
+		}
+	}
+
+	#Achnowledge the Weak Government#
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = WIK_Recognize_the_Weak_Government
+		icon = GFX_focus_generic_national_security
+		prerequisite = { focus = The_Chairmans_Speech }
+
+		x = 80
+		y = 1
+		cost = 1
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			swap_ideas = {
+				remove_idea = Extremely_Weak_Government
+				add_idea = Very_Weak_Government
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = WIK_Investigate_The_Government
+		icon = GFX_focus_generic_conspiracy
+		prerequisite = { focus = WIK_Recognize_the_Weak_Government }
+
+		x = 80
+		y = 2
+		cost = 1
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.1
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = WIK_Increase_Government_Pay
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = WIK_Investigate_The_Government }
+
+		x = 77
+		y = 3
+		cost = 1
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_stability = 0.15
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Organize_Regional_Provinces
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = WIK_Increase_Government_Pay }
+
+		x = 78
+		y = 4
+		cost = 2
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_stability = 0.07
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Strengthen_the_Communication_Lines
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = Organize_Regional_Provinces }
+
+		x = 78
+		y = 5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Very_Weak_Government
+				add_idea = Weak_Government
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Revise_the_Laws
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = WIK_Increase_Government_Pay }
+
+		x = 76
+		y = 4
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Enforce_the_Laws
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = Revise_the_Laws }
+
+		x = 76
+		y = 5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_stability = 0.15
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Tuvan_Police_Force
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = Enforce_the_Laws }
+		prerequisite = { focus = Strengthen_the_Communication_Lines }
+
+		x = 77
+		y = 6
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Weak_Government
+				add_idea = Inefficient_Government
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Destory_Nationwide_Corruption
+		icon = GFX_focus_ARG_crackdown_on_corruption
+		prerequisite = { focus = WIK_Investigate_The_Government }
+		prerequisite = { focus = WIK_Increase_Government_Pay }
+
+		x = 83
+		y = 4
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			remove_ideas = Nationwide_Corruption
+			add_timed_idea = {
+				idea = Recently_Removed_Corruption
+				days = 60
+			}
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Land_Reform
+		icon = GFX_focus_generic_land_reclamation
+		prerequisite = { focus = Organize_Regional_Provinces }
+		prerequisite = { focus = Destory_Nationwide_Corruption }
+
+		x = 80
+		y = 5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		id = Tuvan_Military_Barracks
+		icon = GFX_goal_rhineland
+		prerequisite = { focus = Land_Reform }
+
+		x = 80
+		y = 6
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			army_experience =  25
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Tax_Reform
+		icon = GFX_focus_fra_devalue_the_franc
+		prerequisite = { focus = Land_Reform }
+		prerequisite = { focus = Destory_Nationwide_Corruption }
+
+		x = 83
+		y = 6
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_stability = 0.025
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		id = Adress_the_Weak_Army
+		icon = GFX_focus_generic_court
+		prerequisite = { focus = Tuvan_Military_Barracks }
+		prerequisite = { focus = Tuvan_Police_Force }
+
+		x = 78
+		y = 7
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			army_experience =  10
+			swap_ideas = {
+				add_idea = Efficient_Government
+				remove_idea = Inefficient_Government				
+			}
+			swap_ideas = {
+				remove_idea = Lacking_Military
+				add_idea = Partially_Modernized_Army				
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		id = Military_Exercises
+		icon = GFX_focus_chi_army_reform
+		prerequisite = { focus = Adress_the_Weak_Army }
+
+		x = 78
+		y = 8
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			army_experience =  50
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Weapons_Manufacturing
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = Military_Exercises }
+		prerequisite = { focus = Industrial_Investments }
+
+		x = 80
+		y = 9
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Infantry_Equipment_Effort
+		icon = GFX_focus_ETH_freedom_at_gunpoint
+		prerequisite = { focus = Weapons_Manufacturing }
+
+		x = 80
+		y = 10
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Transport_Effort
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = Infantry_Equipment_Effort }
+
+		x = 80
+		y = 11
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 1.0
+				technology = motorised_infantry
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		id = Send_Officers_Abroad
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = Military_Exercises }
+
+		x = 76
+		y = 9
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			army_experience =  50
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		id = War_Games
+		icon = GFX_focus_generic_military_academy
+		prerequisite = { focus = Send_Officers_Abroad }
+
+		x = 76
+		y = 10
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		id = Support_Our_Soilders
+		icon = GFX_focus_SOV_restore_cossack_units
+		prerequisite = { focus = War_Games }
+		prerequisite = { focus = Infantry_Equipment_Effort }
+
+		x = 78
+		y = 11
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			army_experience =  50
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		id = Doctrine_Effort
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = War_Games }
+
+		x = 76
+		y = 11
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			army_experience =  50
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Modernizing_Our_Weapons
+		icon = GFX_focus_generic_modernize_industry
+		prerequisite = { focus = Doctrine_Effort }
+		prerequisite = { focus = Support_Our_Soilders }
+		prerequisite = { focus = Transport_Effort } 
+
+		x = 77
+		y = 13
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Partially_Modernized_Army
+				add_idea = Newly_Modernized_Army
+			}
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		id = Conscription_Revisions
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = Modernizing_Our_Weapons }
+
+		x = 77
+		y = 14
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = Conscription_Revisions_idea
+				days = 270
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		id = Learned_From_Experience
+		icon = GFX_focus_prc_infiltration
+		prerequisite = { focus = Conscription_Revisions }
+
+		x = 77
+		y = 15
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Newly_Modernized_Army
+				add_idea = Modernized_Army
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Bang_Bang
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = Support_Our_Soilders }
+		prerequisite = { focus = Transport_Effort }
+
+		x = 79
+		y = 13
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Horses_of_Steel
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = Bang_Bang }
+
+		x = 79
+		y = 14
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = armor_bonus
+				bonus = 1.0
+				uses = 2
+				category = armor
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Tank_Killers
+		icon = GFX_focus_usa_tank_destroyer_doctrine
+		prerequisite = { focus = Horses_of_Steel }
+
+		x = 79
+		y = 15
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				ahead_reduction = 2
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = The_Other_Fronts
+		icon = GFX_goal_generic_navy_carrier
+		prerequisite = { focus = War_Games }
+
+		x = 72
+		y = 12
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			air_experience = 25
+			navy_experience = 25
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		id = The_Sky
+		icon = GFX_goal_generic_air_fighter2
+		prerequisite = { focus = The_Other_Fronts }
+		prerequisite = { focus = Modernizing_Our_Weapons}
+
+		x = 74
+		y = 14
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			air_experience = 100
+			329 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Small_and_Agile
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = The_Sky }
+
+		x = 73
+		y = 15
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 1.0
+				uses = 2
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Large_and_Destructive
+		icon = GFX_goal_generic_air_bomber
+		prerequisite = { focus = The_Sky }
+
+		x = 75
+		y = 15
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = bomber_bonus
+				bonus = 1.0
+				uses = 2
+				category = cat_strategic_bomber
+				category = tactical_bomber
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = IMproved_Bomb_Sights
+		icon = GFX_goal_generic_air_naval_bomber
+		prerequisite = { focus = Large_and_Destructive }
+
+		x = 75
+		y = 17.5
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			air_experience = 15
+			add_tech_bonus = {
+				name = bomber_bonus
+				bonus = 1.0
+				uses = 2
+				category = cat_strategic_bomber
+				category = tactical_bomber
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		id = War_Games_in_the_Air
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = The_Sky }
+
+		x = 74
+		y = 16.5
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			air_experience = 25
+			if = {
+				limit = {
+					capital_scope = {
+						OR = {
+							NOT = { is_controlled_by = ROOT }
+							NOT = {
+								free_building_slots = {
+									building = air_base
+									size > 1
+								}
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+			if = {
+				limit = {
+					capital_scope = {
+						is_controlled_by = ROOT
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}				
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+			add_doctrine_cost_reduction = {
+				name =  air_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		id = The_Sea
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { focus = The_Other_Fronts }
+
+		x = 70
+		y = 14
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+
+		}
+		completion_reward = {
+			navy_experience = 100
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = WIK_Building_the_Dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = The_Sea }
+
+		x = 70
+		y = 15
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			any_state = {
+				is_coastal = yes
+				is_controlled_by = ROOT
+			}
+		}
+		completion_reward = {
+			navy_experience = 25
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							dockyard > 0
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+					any_owned_state = {
+						is_coastal = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_coastal = yes
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				set_country_flag = naval_effort_built
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					any_owned_state = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				set_country_flag = naval_effort_built
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+				}
+				random_state = {
+					limit = {
+						controller = { tag = ROOT }
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+			}			
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		id = Agile_Fleet
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = WIK_Building_the_Dockyards }
+
+		x = 69
+		y = 16
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+		}
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = sub_op_bonus
+				cost_reduction = 0.5
+				uses = 2
+				technology = convoy_interdiction_ti
+				technology = unrestricted_submarine_warfare
+				technology = wolfpacks
+				technology = advanced_submarine_warfare
+				technology = combined_operations_raiding
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		id = Practice_Speed
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = Agile_Fleet }
+
+		x = 68
+		y = 19
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+
+		}
+		completion_reward = {
+			completion_reward = {
+				add_tech_bonus = {
+					name = dd_bonus
+					bonus = 1.0
+					ahead_reduction = 2
+					uses = 1
+					category = dd_tech
+				}
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		id = Practice_Aiming
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = WIK_Powerful_Fleet }
+
+		x = 72
+		y = 19
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+
+		}
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = fleet_in_being_bonus
+				cost_reduction = 0.25
+				uses = 2
+				category = fleet_in_being_tree
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = WIK_Fast_Destroyers
+		icon = GFX_focus_generic_destroyer
+		prerequisite = { focus = Agile_Fleet }
+
+		x = 69
+		y = 18
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = dd_tech
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = WIK_Undersea_Wolves
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = Agile_Fleet }
+
+		x = 67
+		y = 18
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = ss_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = ss_tech
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Grand_Battleships
+		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = WIK_Powerful_Fleet }
+
+		x = 71
+		y = 18
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = battleship_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = bc_tech
+				category = bb_tech
+				category = cv_tech
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Floating_Air_Bases
+		icon = GFX_goal_generic_navy_carrier
+		prerequisite = { focus = WIK_Powerful_Fleet }
+		prerequisite = { focus = War_Games_in_the_Air }
+
+		x = 73
+		y = 18
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = capital_ships_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = bc_tech
+				category = bb_tech
+				category = cv_tech
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Warship_Cruisers
+		icon = GFX_focus_generic_cruiser2
+		prerequisite = { focus = Agile_Fleet focus = WIK_Powerful_Fleet }
+
+		x = 70
+		y = 17
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = cr_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = cl_tech
+				category = ca_tech
+			}
+		}
+
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = WIK_Powerful_Fleet
+		icon = GFX_focus_SMB_blue_water_fleet
+		prerequisite = { focus = WIK_Building_the_Dockyards }
+
+		x = 71
+		y = 16
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+
+		}
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = fleet_in_being_bonus
+				cost_reduction = 0.25
+				uses = 2
+				category = fleet_in_being_tree
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		id = Naval_Exercises
+		icon = GFX_focus_generic_merchant_fleet
+		prerequisite = { focus = Practice_Speed focus = Practice_Aiming }
+
+		x = 70
+		y = 20
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+
+		}
+		completion_reward = {
+			navy_experience = 100
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Industrial_Investments
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = Tuvan_Military_Barracks }
+		prerequisite = { focus = Tax_Reform }
+
+		x = 82
+		y = 7
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Hyper_Inflated_Currency
+				add_idea = Inflated_Currency				
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Production_Methods
+		icon = GFX_goal_generic_production2
+		prerequisite = { focus = Industrial_Investments }
+
+		x = 84.5
+		y = 8.5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Very_Inflated_Currency
+				add_idea = Inflated_Currency
+			}
+			add_tech_bonus = {
+				name = CHI_unified_industrial_planning
+				bonus = 1.0
+				uses = 2
+				category = industry
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Computer_Aided_Research
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = Production_Methods }
+
+		x = 84.5
+		y = 10
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Chemical_Institute
+		icon = GFX_focus_research
+		prerequisite = { focus = Computer_Aided_Research }
+
+		x = 87
+		y = 11
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		id = Nuclear_Possibilities
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = Chemical_Institute }
+
+		x = 88
+		y = 15
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = nuclear_bonus
+				ahead_reduction = 2
+				category = nuclear
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Tuvan_Autarky
+		icon = GFX_goal_generic_oil_refinery
+		prerequisite = { focus = Chemical_Institute }
+
+		x = 86
+		y = 13
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Oil_Advancements
+		icon = GFX_focus_generic_stockpile_fuel
+		prerequisite = { focus = Tuvan_Autarky }
+
+		x = 86
+		y = 15
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = CHI_unified_industrial_planning
+				bonus = 1.0
+				uses = 2
+				category = industry
+			}
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Increased_Production_Efficiency
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = Industrial_Investments }
+		prerequisite = { focus = Weapons_Manufacturing }
+		prerequisite = { focus = Production_Methods }
+
+		x = 82
+		y = 10.5
+		cost = 5
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = Inflated_Currency
+				add_idea = Stable_Economy				
+			}
+			add_stability = 0.03
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Radio_Investments
+		icon = GFX_goal_generic_radar
+		prerequisite = { focus = Increased_Production_Efficiency }
+		prerequisite = { focus = Computer_Aided_Research }
+
+		x = 84.5
+		y = 12
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_ideas = Radio_Tuva
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Industrial_Expansion_Program
+		icon = GFX_focus_generic_industry_3
+		prerequisite = { focus = Increased_Production_Efficiency }
+
+		x = 82
+		y = 13
+		cost = 5
+		
+		available_if_capitulated = no
+		bypass = {
+			has_completed_focus = The_Tuvan_Five_Year_Plan
+		}
+		available = {
+			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = CHI_unified_industrial_planning
+				bonus = 1.5
+				uses = 1
+				category = industry
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Construction_Company
+		icon = GFX_goal_generic_construction
+		prerequisite = { focus = Industrial_Expansion_Program }
+
+		x = 81
+		y = 14
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = CHI_unified_industrial_planning
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Expand_the_Construction_Company
+		icon = GFX_goal_generic_construct_civilian
+		prerequisite = { focus = Construction_Company }
+
+		x = 81
+		y = 15
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = CHI_unified_industrial_planning
+				bonus = 1.0
+				uses = 2
+				category = industry
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Expand_the_Military_Arms_Industry
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = Industrial_Expansion_Program }
+
+		x = 83
+		y = 14
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		id = Giving_The_People_Jobs
+		icon = GFX_focus_generic_workers
+		prerequisite = { focus = Expand_the_Military_Arms_Industry }
+
+		x = 83
+		y = 15
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			add_stabilty = 0.18
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Expand_the_Land_Reforms
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = Giving_The_People_Jobs }
+		prerequisite = { focus = Expand_the_Construction_Company }
+
+		x = 82
+		y = 16
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+	focus = {
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = Urbanization
+		icon = GFX_focus_generic_industrialists
+		prerequisite = { focus = Expand_the_Land_Reforms }
+
+		x = 82
+		y = 18
+		cost = 10
+		
+		available_if_capitulated = no
+		available = {
+			
+		}
+		completion_reward = {
+			329 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+}

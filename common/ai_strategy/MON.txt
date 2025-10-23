@@ -1,0 +1,224 @@
+MON_mission_strategy = {
+
+	allowed = {
+		original_tag = MON
+	}
+	enable = {
+		has_active_mission = MON_nkvd_crackdown
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = pp_spend_priority
+		id = decision
+		value = 20
+	}
+
+}
+
+MON_reserve_pp_for_indep = {
+
+	allowed = {
+		original_tag = MON
+	}
+	enable = {
+		has_country_leader = {
+    			character = MON_peljidiin_genden
+    			ruling_only = yes
+		}
+		is_subject = yes
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = pp_spend_amount
+		id = decision
+		value = 300
+	}
+
+}
+
+MON_civil_war_sov_go_away = {
+
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		MON = { has_civil_war = yes }
+		threat < 0.5
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = area_priority
+
+		id = mongolia_tuva
+
+		value = -10
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = MON
+		value = -10
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = MON
+		value = 10
+	}
+ai_strategy = {
+    type = front_unit_request
+    tag = MON
+    value = -10
+}
+
+}
+
+MON_civil_war = {
+
+	allowed = {
+		original_tag = MON
+	}
+	enable = {
+		has_civil_war = yes
+	}
+
+	abort = {
+		threat > 0.45
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = SOV
+		value = -20
+	}
+
+	ai_strategy = {
+		type = front_control
+		tag = SOV
+		#ratio = 0.1
+		priority = -10
+		ordertype = front
+	}
+
+	ai_strategy = {
+		type = prepare_for_war
+		id = TAN
+		value = -20
+	}
+
+	ai_strategy = {
+		type = front_control
+		tag = TAN
+		#ratio = 0.1
+		priority = -10
+		ordertype = front
+	}
+
+	ai_strategy = {
+		type = pp_spend_priority
+		id = decision
+		value = 100
+	}
+
+}
+
+
+MON_attack_japan = {
+
+	allowed = {
+		original_tag = MON
+	}
+	enable = {
+		is_in_faction = yes
+		JAP = { surrender_progress > 0 }
+		or = {
+			is_historical_focus_on = no
+			date > 1945.1.1
+		}
+	}
+	abort = {
+		or = {
+			is_ally_with = JAP
+			any_other_country = {
+				is_in_faction_with = ROOT
+				surrender_progress > 0
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = antagonize
+		id = JAP
+		value = 200
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = JAP
+		value = 200
+	}
+
+}
+
+MON_befriend_japan = {
+
+	allowed = {
+		original_tag = MON
+	}
+	enable = {
+		is_in_faction = no
+		JAP = { surrender_progress < 0.01 }
+		or = {
+			has_government = JAP
+			not = {
+				JAP = { has_government = communism }
+				has_government = communism
+			}
+		}
+	}
+	abort = {
+		
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = alliance
+		id = JAP
+		value = 200
+	}
+
+}
+
+MON_russia = {
+
+	allowed = {
+		original_tag = MON
+	}
+	enable = {
+		SOV = { 
+			not = { has_government = communism } 
+			surrender_progress < 0.01
+		}
+		or = {
+			has_government = neutrality
+			has_government = fascism
+		}
+	}
+	abort = {
+		
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = alliance
+		id = SOV
+		value = 200
+	}
+
+}

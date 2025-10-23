@@ -1,0 +1,28 @@
+ICE_ADD_RAIDING_SPOILS_IDEA = {
+	if = {
+		limit = {
+			not = {
+				has_idea = idea_ice_spoils_of_raids
+			}
+		}
+		add_timed_idea = {
+			idea = idea_ice_spoils_of_raids
+			days = 100
+		}
+	}
+	if = {
+		limit = {
+			has_idea = idea_ice_spoils_of_raids
+		}
+		modify_timed_idea = {
+			idea = idea_ice_spoils_of_raids
+			days = 70
+		}
+	}
+}
+
+ICE_VARANGIAN_GUARD_EFFECT = {
+	add_ideas = idea_ice_varangian_guard
+	add_manpower = 5000
+	army_experience = 50
+}

@@ -1,0 +1,73 @@
+﻿
+add_namespace = ICE_events_decmod
+
+#ask friendship
+country_event = {
+	id = ICE_events_decmod.1
+	title = ICE_events_decmod.1.t
+	desc = ICE_events_decmod.1.desc
+	picture = GFX_report_event_iceland_volcano
+	
+	is_triggered_only = yes
+	
+	#Axe
+	option = {
+		name = ICE_events_decmod.1.a
+		ai_chance = {
+			base = 0
+		}
+		add_country_leader_trait = ice_has_volcanic_axe
+	}
+	#Shield
+	option = {
+		name = ICE_events_decmod.1.b
+		ai_chance = {
+			base = 0
+		}
+		add_country_leader_trait = ice_has_volcanic_shield
+	}
+	#Ring
+	option = {
+		name = ICE_events_decmod.1.c
+		trigger = {
+			has_government = fascism
+		}
+		ai_chance = {
+			base = 10
+		}
+		add_country_leader_trait = ice_has_volcanic_ring
+	}
+	#Crown
+	option = {
+		name = ICE_events_decmod.1.d
+		trigger = {
+			has_government = neutrality
+		}
+		ai_chance = {
+			base = 10
+		}
+		add_country_leader_trait = ice_has_volcanic_crown
+	}
+	#Hammer
+	option = {
+		name = ICE_events_decmod.1.e
+		trigger = {
+			has_government = communism
+		}
+		ai_chance = {
+			base = 10
+		}
+		add_country_leader_trait = ice_has_volcanic_hammer
+	}
+	#Armor
+	option = {
+		name = ICE_events_decmod.1.f
+		trigger = {
+			has_government = democratic
+		}
+		ai_chance = {
+			base = 10
+		}
+		add_country_leader_trait = ice_has_volcanic_armor
+	}
+}

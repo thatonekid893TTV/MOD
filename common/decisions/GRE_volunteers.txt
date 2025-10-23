@@ -1,0 +1,945 @@
+GRE_volunteer_force = {
+	GRE_support_sovv = {
+	
+		icon = generic_nationalism
+		
+		fire_only_once = no
+
+		fixed_random_seed = no
+		
+		days_remove = 7
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		visible = {
+		has_completed_focus = GRE_the_soviet_help
+			
+		}
+
+		
+
+		targets = { SOV }
+		targets_dynamic = no
+
+		
+		cost = 10
+		available = {
+			
+			has_equipment = {
+				convoy > 2
+			}
+			
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			SOV = {
+				
+				has_war_with = FIN
+			}
+			
+		}
+
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -3
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = -250
+			}			
+		}
+
+		remove_effect = {
+			
+				
+					army_experience = 10
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 3
+					}
+					SOV = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 250
+				producer = GRE
+			}	
+					
+					}
+				
+				
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	GRE_support_chillim = {
+	
+		icon = generic_nationalism
+		
+		fire_only_once = no
+
+		fixed_random_seed = no
+		
+		days_remove = 7
+
+		allowed = {
+			original_tag = GRE
+		}
+cost = 10
+		visible = {
+			has_completed_focus = GRE_the_chinese_help
+			
+		}
+
+		
+
+		targets = { CHI }
+		targets_dynamic = no
+
+		
+		available = {
+			
+			has_equipment = {
+				convoy > 14
+			}
+			
+			has_equipment = {
+				infantry_equipment > 349
+			}
+			CHI = {
+				
+				has_war_with = JAP
+			}
+			
+		}
+
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -15
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = -350
+			}			
+		}
+
+		remove_effect = {
+			
+				
+					army_experience = 10
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 15
+					}
+					CHI = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 50
+				producer = GRE
+			}	
+					
+					}
+					PRC = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 50
+				producer = GRE
+			}	
+					
+					}
+					GXC = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 50
+				producer = GRE
+			}	
+					
+					}					
+					YUN = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 50
+				producer = GRE
+			}	
+					
+					}	
+					SHX = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 50
+				producer = GRE
+			}	
+					
+					}	
+					XSM = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 50
+				producer = GRE
+			}	
+					
+					}		
+					SIK = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 50
+				producer = GRE
+			}	
+					
+					}					
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	GRE_support_jappppppppppp = {
+	
+		icon = generic_nationalism
+		
+		fire_only_once = no
+
+		fixed_random_seed = no
+		
+		days_remove = 7
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		visible = {
+			has_completed_focus = GRE_the_japanese_help
+			
+		}
+
+		cost = 10
+
+		targets = { JAP }
+		targets_dynamic = no
+
+		
+		
+		available = {
+			
+			has_equipment = {
+				convoy > 2
+			}
+			
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			CHI = {
+				
+				has_war_with = JAP
+			}
+			
+		}
+
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -3
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = -250
+			}			
+		}
+
+		remove_effect = {
+			
+				
+					army_experience = 10
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 3
+					}
+					JAP = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 250
+				producer = GRE
+			}	
+					
+					}
+									
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	GRE_support_POL = {
+	
+		icon = generic_nationalism
+		
+		fire_only_once = no
+
+		fixed_random_seed = no
+		
+		days_remove = 7
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		visible = {
+			has_completed_focus = GRE_the_allied_help
+			
+		}
+cost = 10
+		
+
+		targets = { ENG }
+		targets_dynamic = no
+
+		
+		available = {
+			
+			has_equipment = {
+				convoy > 2
+			}
+			
+			has_equipment = {
+				infantry_equipment > 299
+			}
+			GER = {
+			 OR = {
+				has_war_with = ENG
+				has_war_with = POL
+				has_war_with = FRA
+				has_war_with = LUX
+				has_war_with = HOL
+				has_war_with = BEL
+			}
+			}
+			
+		}
+
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -3
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = -300
+			}			
+		}
+
+		remove_effect = {
+			
+				
+					army_experience = 10
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 3
+					}
+					POL = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 100
+				producer = GRE
+			}	
+					
+					}
+					FRA = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 100
+				producer = GRE
+			}	
+					
+					}
+					ENG = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 100
+				producer = GRE
+			}	
+					
+					}					
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}			
+	GRE_support_gerrrrrrrr = {
+	
+		icon = generic_nationalism
+		
+		fire_only_once = no
+
+		fixed_random_seed = no
+		
+		days_remove = 7
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		visible = {
+			has_completed_focus = GRE_the_axis_help
+			
+		}
+
+		cost = 10
+
+		targets = { GER }
+		targets_dynamic = no
+
+	
+		
+		available = {
+			
+			has_equipment = {
+				convoy > 2
+			}
+			
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			GER = {
+			 OR = {
+				has_war_with = ENG
+				has_war_with = POL
+				has_war_with = FRA
+				has_war_with = LUX
+				has_war_with = HOL
+				has_war_with = BEL
+			}
+			}
+			
+		}
+
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -3
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = -250
+			}			
+		}
+
+		remove_effect = {
+			
+				
+					army_experience = 10
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 3
+					}
+					GER = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 250
+				producer = GRE
+			}	
+					
+					}
+									
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}		
+	GRE_support_finnn = {
+	
+		icon = generic_nationalism
+		
+		fire_only_once = no
+
+		fixed_random_seed = no
+		
+		days_remove = 7
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		visible = {
+			has_completed_focus = GRE_the_finished_help
+			
+		}
+
+		cost = 10
+
+		targets = { FIN }
+		targets_dynamic = no
+
+		
+		
+		available = {
+			
+			has_equipment = {
+				convoy > 2
+			}
+			
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			SOV = {
+				
+				has_war_with = FIN
+			}
+			
+		}
+
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -3
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = -250
+			}			
+		}
+
+		remove_effect = {
+			
+				
+					army_experience = 10
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 3
+					}
+					FIN = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 250
+				producer = GRE
+			}	
+					
+					}
+				
+				
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	GRE_support_itaaa = {
+	
+		icon = generic_nationalism
+		
+		fire_only_once = no
+
+		fixed_random_seed = no
+		
+		days_remove = 7
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		visible = {
+		
+			has_completed_focus = GRE_the_italia_help
+		}
+
+		cost = 10
+
+		targets = { ITA }
+		targets_dynamic = no
+
+		
+		
+		available = {
+			
+			has_equipment = {
+				convoy > 2
+			}
+			
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			ITA = {
+				
+				has_war_with = ETH
+			}
+				ETH = { has_capitulated = NO }
+		}
+
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -3
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = -250
+			}			
+		}
+
+		remove_effect = {
+			
+				
+					army_experience = 10
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 3
+					}
+					ITA = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 250
+				producer = GRE
+			}	
+					
+					}
+				
+				
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	GRE_support_etheeee = {
+	
+		icon = generic_nationalism
+		
+		fire_only_once = no
+
+		fixed_random_seed = no
+		
+		days_remove = 7
+
+		allowed = {
+			original_tag = GRE
+
+		}
+
+		visible = {
+			has_completed_focus = GRE_the_ethiopia_help
+			
+		}
+cost = 10
+		
+
+		targets = { ETH }
+		targets_dynamic = no
+
+		
+		available = {
+			
+			has_equipment = {
+				convoy > 2
+			}
+			
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			ETH = {
+				
+				has_war_with = ITA
+			}
+		ETH = { has_capitulated = NO }
+			
+		}
+
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -3
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = -250
+			}			
+		}
+
+		remove_effect = {
+			
+				
+					army_experience = 10
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 3
+					}
+					ETH = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 250
+				producer = GRE
+			}	
+					
+					}
+				
+				
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	GRE_support_spain_commie_demo = {
+	
+		icon = generic_nationalism
+		
+		fire_only_once = no
+
+		fixed_random_seed = no
+		
+		days_remove = 7
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		visible = {
+			has_completed_focus = GRE_the_spanish_commie_help
+			
+		}
+cost = 10
+		
+
+		targets = { SPR SPD }
+		targets_dynamic = yes
+
+		target_trigger = {
+			FROM = {
+				original_tag = SPR
+				OR = {
+					has_government = communism
+					has_government = democratic
+					tag = SPC
+				}
+				
+				has_civil_war = yes
+			}
+		}
+		
+		available = {
+			
+			has_equipment = {
+				convoy > 2
+			}
+			
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			
+			any_other_country = {
+				original_tag = SPR
+				has_civil_war = yes
+			}
+			
+			hidden_trigger = {
+				NOT = { has_global_flag = scw_over }
+			}
+		}
+
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -3
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = -250
+			}			
+		}
+
+		remove_effect = {
+			
+				
+					army_experience = 10
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 3
+					}
+					FROM = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 250
+				producer = GRE
+			}	
+					
+					}
+				
+				
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+
+
+	GRE_support_spain_fasc = {
+	
+		icon = generic_nationalism
+		
+		fire_only_once = no
+
+		fixed_random_seed = no
+		
+		days_remove = 7
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		visible = {
+			has_completed_focus = GRE_the_spanish_fasc_help
+			
+		}
+
+		cost = 10
+
+		targets = { SPR }
+		targets_dynamic = yes
+
+		target_trigger = {
+			FROM = {
+				original_tag = SPR
+				OR = {
+					has_government = fascism
+					has_government = neutrality
+				}
+				NOT = { tag = SPC }
+				has_civil_war = yes
+			}
+		}
+		
+		available = {
+			
+			has_equipment = {
+				convoy > 2
+			}
+			
+			has_equipment = {
+				infantry_equipment > 249
+			}
+			
+			any_other_country = {
+				original_tag = SPR
+				has_civil_war = yes
+			}
+			
+			hidden_trigger = {
+				NOT = { has_global_flag = scw_over }
+			}
+		}
+
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -3
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = -250
+				
+			}			
+		}
+
+		remove_effect = {
+			
+				
+					army_experience = 10
+					add_equipment_to_stockpile = {
+						type = convoy_1
+						amount = 3
+					}
+					FROM = {
+					
+					add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 250
+				producer = GRE
+			}	
+					
+					}
+				
+				
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+
+}

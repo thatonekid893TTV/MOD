@@ -1,0 +1,1933 @@
+﻿###########################
+# Tuvan Events ############
+###########################
+
+add_namespace = tanna_tuva
+
+country_event = {
+	id = tanna_tuva.1
+	title = " Siberian People United At Last! "
+	desc = tanna_tuva.1.d
+	picture = GFX_report_event_generic_military_parade
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " We shall not be oppressed anymore! "
+		ai_chance = { factor = 90 }
+	}
+}
+country_event = {
+	id = tanna_tuva.2
+	title = " Declaration of Accension of Tanna Tuva into the Soviet Union "
+	desc = tanna_tuva.2.desc 
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " They can join us. "
+		ai_chance = { factor = 80 }
+		annex_country = {
+			target = TAN
+			transfer_troops = yes
+		}
+	}
+		option = {
+		name = " Instead of intergration, what about autonomy? "
+		ai_chance = { factor = 15 }
+		puppet = {
+			target = TAN
+			end_wars = yes
+		}
+	}
+		option = {
+		name = " What a useless peice of land. "
+		ai_chance = { factor = 5 }
+	}	
+}
+country_event = {
+	id = tanna_tuva.3
+	title = " Tannu Tuva as an Autonomous Oblast Proposal "
+	desc = tanna_tuva.3.desc 
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Sure! "
+		ai_chance = { factor = 55 }
+		puppet = {
+			target = TAN
+			end_wars = yes
+		}
+	}
+		option = {
+		name = " How comedic. "
+		ai_chance = { factor = 45 }
+	}
+}
+country_event = {
+	id = tanna_tuva.4
+	title = " State Supervised Religion "
+	desc = tanna_tuva.4.desc 
+	picture = GFX_report_event_SOV_atomic_program_caught
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " For the good of the country. "
+		ai_chance = { factor = 100 }
+	}
+}
+country_event = {
+	id = tanna_tuva.8
+	title = " Inner-Mongolia Question "
+	desc = tanna_tuva.7.desc
+	icture = GFX_report_event_asian_politicians
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Give them Inner-Mongolia. "
+		ai_chance = { factor = 90 }
+		621 = { transfer_state_to = TAN }
+		611 = { transfer_state_to = TAN }
+		612 = { transfer_state_to = TAN }
+	}
+	option = {
+		name = " Who do they think they are? "
+		ai_chance = { factor = 10 }
+	}
+}
+country_event = {
+	id = tanna_tuva.9
+	title = " Contact with Old Believers "
+	desc = tanna_tuva.9.desc 	
+	picture = GFX_report_event_radar_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " How long have they been here? "
+		ai_chance = { factor = 100 }
+		329 = {
+			add_manpower = 12
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.10
+	title = " Old Believers Settlements "
+	desc = tanna_tuva.10.desc 	
+	picture = GFX_report_event_bose_meeting
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " There are many of them. "
+		ai_chance = { factor = 100 }
+		329 = {
+			add_manpower = 2593
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.11
+	title = " Old Believers Camps "
+	desc = tanna_tuva.11.desc 	
+	picture = GFX_report_event_bose
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Unexpected... "
+		ai_chance = { factor = 100 }
+		329 = {
+			add_manpower = 47
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.12
+	title = " Old Believer Ambassodors "
+	desc = tanna_tuva.12.desc 	
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " An enemy of my enemy is my friend. "
+		ai_chance = { factor = 50 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.121
+			}
+		}
+	}
+	option = {
+		name = " What a lame cause. "
+		ai_chance = { factor = 50 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.122
+			}
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.121
+	title = " Germany Send Advisors "
+	desc = tanna_tuva.121.desc 	
+	picture = GFX_report_event_aid_pact
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Cheers for our German friends! "
+		ai_chance = { factor = 50 }
+		add_ideas = TAN_German_advisors
+	}
+}
+country_event = {
+	id = tanna_tuva.122
+	title = " Germany Ignores Us "
+	desc = tanna_tuva.122.desc 	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " What a shame. "
+		ai_chance = { factor = 50 }
+	}
+}
+country_event = {
+	id = tanna_tuva.13
+	title = " Old Believer Ambassodors "
+	desc = tanna_tuva.13.desc 	
+	picture = GFX_report_event_soviet_japanese_pact
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " We do not intervene in Russian problems. "
+		ai_chance = { factor = 50 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.131
+			}
+		}
+	}
+	option = {
+		name = " We need to rile their men up! "
+		ai_chance = { factor = 50 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.132
+			}
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.131
+	title = " Japan Ignores Us "
+	desc = tanna_tuva.131.desc 	
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Not surprising. "
+		ai_chance = { factor = 70 }
+	}
+}
+country_event = {
+	id = tanna_tuva.132
+	title = " Japan Supports Us "
+	desc = tanna_tuva.132.desc 	
+	picture = GFX_report_event_japan_europe_pact
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " They did what? Surprising. "
+		ai_chance = { factor = 30 }
+		TAN = {
+			add_timed_idea = {
+				idea = TAN_URAH_idea
+				days = 300
+			}
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.14
+	title = " Send Word Abroad "
+	desc = tanna_tuva.14.desc 	
+	picture = GFX_report_event_radar_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Send a few letters overseas. "
+		add_political_power = -2
+		ai_chance = { factor = 34 }
+		329 = {
+			add_manpower = 143
+		}
+		add_ideas = Sending_Our_Word_Abroad_idea
+	}
+	option = {
+		name = " Fund a small recruitment campaign. "
+		ai_chance = { factor = 33 }
+		add_political_power = -20
+		add_ideas = Sending_Our_Word_Abroad_idea
+		ROM = {
+			country_event = {
+				id = tanna_tuva.141
+			}
+		}
+		BUL = {
+			country_event = {
+				id = tanna_tuva.141
+			}
+		}
+		POL = {
+			country_event = {
+				id = tanna_tuva.141
+			}
+		}
+		GER = {
+			country_event = {
+				id = tanna_tuva.141
+			}
+		}
+		BRA = {
+			country_event = {
+				id = tanna_tuva.141
+			}
+		}
+		ARG = {
+			country_event = {
+				id = tanna_tuva.141
+			}
+		}
+		CAN = {
+			country_event = {
+				id = tanna_tuva.141
+			}
+		}
+		USA = {
+			country_event = {
+				id = tanna_tuva.141
+			}
+		}
+	}
+	option = {
+		name = " Fund a massive recruitment campaign! "
+		ai_chance = { factor = 33 }
+		add_political_power = -50
+		add_ideas = Sending_Our_Word_Abroad_idea
+		ROM = {
+			country_event = {
+				id = tanna_tuva.142
+			}
+		}
+		BUL = {
+			country_event = {
+				id = tanna_tuva.142
+			}
+		}
+		POL = {
+			country_event = {
+				id = tanna_tuva.142
+			}
+		}
+		GER = {
+			country_event = {
+				id = tanna_tuva.142
+			}
+		}
+		BRA = {
+			country_event = {
+				id = tanna_tuva.142
+			}
+		}
+		ARG = {
+			country_event = {
+				id = tanna_tuva.142
+			}
+		}
+		CAN = {
+			country_event = {
+				id = tanna_tuva.142
+			}
+		}
+		USA = {
+			country_event = {
+				id = tanna_tuva.142
+			}
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.141
+	title = " The Old Believer Cause "
+	desc = tanna_tuva.141.desc 	
+	picture = GFX_report_event_spr_republican_old_volunteers
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " We must restrict this. "
+		ai_chance = { factor = 34 }
+		329 = {
+			add_manpower = 2
+		}
+	}
+	option = {
+		name = " Allow a few to go. "
+		ai_chance = { factor = 33 }
+		329 = {
+			add_manpower = 16
+		}
+	}
+	option = {
+		name = " Let them all go! "
+		ai_chance = { factor = 33 }
+		329 = {
+			add_manpower = 143
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.142
+	title = "The Old Believer Cause"
+	desc = tanna_tuva.142.desc 	
+	picture = GFX_report_event_spr_army_of_africa
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " We must restrict this. "
+		ai_chance = { factor = 34 }
+		329 = {
+			add_manpower = 13
+		}
+	}
+	option = {
+		name = " Allow a few to go. "
+		ai_chance = { factor = 33 }
+		329 = {
+			add_manpower = 137
+		}
+	}
+	option = {
+		name = " Let them all go! "
+		ai_chance = { factor = 33 }
+		329 = {
+			add_manpower = 648
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.143
+	title = " Volunteers have arrived! "
+	desc = tanna_tuva.143.desc 	
+	picture = GFX_report_event_british_inspect_troops
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " We have a chance. "
+		ai_chance = { factor = 30 }
+	}
+}
+country_event = {
+	id = tanna_tuva.144
+	title = " Volunteers flood in! "
+	desc = tanna_tuva.144.desc 	
+	picture = GFX_report_event_albanian_partisans
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " So many people... We will win! "
+		ai_chance = { factor = 30 }
+	}
+}
+country_event = {
+	id = tanna_tuva.15
+	title = " Sending Word into Russia "
+	desc = tanna_tuva.15.desc 	
+	picture = GFX_report_event_soviet_purge_speech
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " They must still be there... "
+		add_political_power = 15
+		add_war_support = 0.1
+		ai_chance = { factor = 30 }
+	}
+	hidden_effect = {
+		add_manpower = 1500
+	}
+	option = {
+		name = " They are probably all dead. "
+		ai_chance = { factor = 30 }
+		add_political_power = 15
+		add_war_support = 0.075
+	}
+	hidden_effect = {
+		add_manpower = 12
+	}
+}
+country_event = {
+	id = tanna_tuva.16
+	title = " Soviet Sympathizers "
+	desc = tanna_tuva.16.desc 	
+	picture = GFX_report_event_soviet_purge_officers_02
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " We are not alone in this! "
+		ai_chance = { factor = 30 }
+		SOV = {
+			add_ideas = TAN_Old_Believer_Sympathizers
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.17
+	title = " White Russian Exiles Contacted "
+	desc = tanna_tuva.17.desc 	
+	picture = GFX_report_event_soviet_purge_politicians
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Together! "
+		ai_chance = { factor = 30 }
+		TAN = {
+			add_ideas = TAN_White_Russian_Experts
+			add_ideas = TAN_White_Russian_Exiles
+			329 = {
+				add_manpower = 6281
+			}
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.18
+	title = " Old Believers Request Permission to Go "
+	desc = tanna_tuva.18.desc 	
+	picture = GFX_report_event_generic_army
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " We must stop them! "
+		ai_chance = { factor = 30 }
+		TAN = {
+			add_manpower = 132
+		}
+	}
+	option = {
+		name = " We must respect their beliefs. "
+		ai_chance = { factor = 30 }
+		TAN = {
+			add_manpower = 1027
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.19
+	title = " Who Should We Ask? "
+	desc = tanna_tuva.19.desc 	
+	picture = GFX_report_event_generic_sign_treaty3
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Only the West can protect us! "
+		add_political_power = -5
+		ai_chance = { factor = 70 }
+		USA = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		ENG = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		FRA = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		CAN = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		POL = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+	}
+	option = {
+		name = " Maybe we can get the Russians and Japanese to? "
+		add_political_power = -15
+		ai_chance = { factor = 10 }
+		SOV = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		JAP = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+	}
+	option = {
+		name = " South America? "
+		add_political_power = -10
+		ai_chance = { factor = 10 }
+		BRA = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		ARG = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+	}
+	option = {
+		name = " Why not ask everyone? "
+		ai_chance = { factor = 10 }
+		add_political_power = -50
+		BRA = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		ARG = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		SOV = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		JAP = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		USA = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		ENG = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		FRA = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		CAN = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		POL = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		FIN = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		DEN = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		CHI = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		ROM = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+		LUX = {
+			country_event = {
+				id = tannu_tuva.191
+			}
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.191
+	title = " Old Believers State Requests Garentees "
+	desc = tanna_tuva.191.desc 	
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " We must protect them! "
+		ai_chance = { factor = 20 }
+		diplomatic_relation = {
+    		country = TAN
+    		relation = guarantee
+    		active = yes
+		}	
+		add_stability = -0.01
+	}
+	option = {
+		name = " They are not worth our time. "
+		ai_chance = { factor = 80 }
+	}
+}
+country_event = {
+	id = tanna_tuva.20
+	title = " The Chairmans Speech "
+	desc = tanna_tuva.20.desc 	
+	picture = GFX_report_event_german_politician_speech
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " For a brighter Tannu Tuva! "
+		ai_chance = { factor = 20 }
+		add_ideas = TAN_Trauma_From_Collectivization
+	}
+}
+country_event = {
+	id = tanna_tuva.21
+	title = " A Letter From The Developers "
+	desc = tanna_tuva.21.desc 	
+	picture = GFX_report_event_japanese_officers
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Manuia! (Good luck!) "
+		ai_chance = { factor = 20 }
+	}
+}
+country_event = {
+	id = tanna_tuva.22
+	title = " Opposition Leaders Intercepted "
+	desc = tanna_tuva.22.desc 	
+	picture = GFX_report_event_china_infiltration
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Those traitors must pay! "
+		ai_chance = { factor = 20 }
+	}
+}
+country_event = {
+	id = tanna_tuva.23
+	title = " Framing Dazhy "
+	desc = tanna_tuva.23.desc 	
+	picture = GFX_report_event_hitler_china
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " He worked with the Japanese! "
+		ai_chance = { factor = 80 }
+		add_stability = 0.04
+		add_political_power = 10
+		add_war_support = 0.08
+	}
+	option = {
+		name = " He threatned the stability nation! "
+		ai_chance = { factor = 19 }
+		add_stability = 0.07
+		add_political_power = 5
+		add_war_support = 0.035
+	}
+	option = {
+		name = " Accuse of nothing. "
+		ai_chance = { factor = 1 }
+	}
+}
+country_event = {
+	id = tanna_tuva.24
+	title = "The Fate of The Opposition"
+	desc = tanna_tuva.24.desc
+	picture = GFX_report_event_soviet_purge_officers_02
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Send them to the firing squad! "
+		ai_chance = { factor = 70 }
+		add_stability = -0.01
+		add_political_power = -5
+		add_war_support = 0.035
+	}
+	option = {
+		name = " Imprison them forever! "
+		ai_chance = { factor = 29 }
+		add_stability = 0.05
+		add_political_power = -5
+		add_war_support = -0.035
+	}
+	option = {
+		name = " Exile them. "
+		ai_chance = { factor = 1 }
+		ai_chance = { factor = 29 }
+		add_stability = 0.07
+		add_political_power = -10
+		add_war_support = -0.015
+	}
+}
+country_event = {
+	id = tanna_tuva.25
+	title = " Informing The Public "
+	desc = tanna_tuva.25.desc 	
+	picture = GFX_report_event_tur_political_rally
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " What a shame. "
+		ai_chance = { factor = 80 }
+		remove_ideas = Weak_Government
+		add_ideas = Inefficient_Government
+		add_stability = 0.05
+	}
+}
+country_event = {
+	id = tanna_tuva.26
+	title = " Tokas Tannu Tuva "
+	desc = tanna_tuva.26.desc 	
+	picture = GFX_report_event_chinese_officers
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Bless comrade Toka! "
+		ai_chance = { factor = 80 }
+		add_stability = 0.05
+		add_war_support = 0.01
+	}
+}
+country_event = {
+	id = tanna_tuva.27
+	title = "Tuvan Five Year Plan"
+	desc = tanna_tuva.27.desc 	
+	picture = GFX_report_event_generic_factory
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " To communist glory! "
+		custom_effect_tooltip = " We have have to ability to make decisions regarding our industry and economy. "
+	}
+}
+country_event = {
+	id = tanna_tuva.28
+	title = " Opposition Seizes The Capital! "
+	desc = tanna_tuva.28.desc 	
+	picture = GFX_report_event_china_politicians_captured
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Death to Toka and the Stalinists minions!"
+		custom_effect_tooltip = " The current governmet will be removed and replaced by a provisional government. "
+		remove_ideas = TAN_The_Opposition
+		add_ideas = TAN_Disagreements_Between_The_Groups
+		promote_character = {
+			character = TAN_Provisional_Government
+			ideology = marxism
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.29
+	title = " Dazhy Seizes Power "
+	desc = tanna_tuva.29.desc 	
+	picture = GFX_report_event_generic_ruins
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Integrate the nationalists into the new government.  "
+		custom_effect_tooltip = " The nationalists will be able to propose a certain plan for Tannu Tuva. It may be something great... "
+		remove_ideas = TAN_Disagreements_Between_The_Groups
+		hidden_effect = {
+			add_ideas = hidden_nationalists_intergrated
+		}
+	}
+	option = {
+		name = " Remove the nationalists into the new government.  "
+		custom_effect_tooltip = " With the nationalists removed, we will be able fully commit to Dazhy's Vision! "
+		remove_ideas = TAN_Disagreements_Between_The_Groups
+	}
+}
+country_event = {
+	id = tanna_tuva.30
+	title = "Nationalists Gain Control"
+	desc = tanna_tuva.30.desc 	
+	picture = GFX_report_event_generic_ruins
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " To Tuvan greatness??? I guess??? "
+	}
+}
+country_event = {
+	id = tanna_tuva.31
+	title = " Hunting the Old Believers "
+	desc = tanna_tuva.31.desc 	
+	picture = GFX_report_event_generic_ruins
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " Let the hunt begin! "
+		custom_effect_tooltip = " We now have decisions to locate and hunt Old Believer settlements within the nation. \n Eventually, we will be able to remove these people from our country. "
+	}
+}
+country_event = {
+	id = tanna_tuva.32
+	title = " Religious Coup in Tannu Tuva "
+	desc = tanna_tuva.32.desc 	
+	picture = GFX_report_event_chinese_soldiers_mountain
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " For all Old Believers and God. "
+	}
+}
+country_event = {
+	id = tanna_tuva.33
+	title = " Second Attempt at Collectivization "
+	desc = tanna_tuva.33.desc 	
+	picture = GFX_report_event_stalin_propaganda
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " We must convince the people. "
+		custom_effect_tooltip = " The people will start trusting us once they see the benefits. "
+		add_ideas = TAN_Collectivization_Distrust
+		remove_ideas = TAN_Trauma_From_Collectivization
+	}
+}
+country_event = {
+	id = tanna_tuva.34
+	title = " Access to Tuvan Uranium "
+	desc = tanna_tuva.34.desc 	
+	picture = GFX_report_event_military_planning
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " We would be happy to! "
+		custom_effect_tooltip = " We will be able to use Tuvan uranium to fuel our nuclear program! "
+		ai_chance = { factor = 99 }
+		add_ideas = Tuvan_Uranium_Deposits
+	}
+	option = {
+		name = " It is of no use to us. "
+		ai_chance = { factor = 1 }
+	}
+}
+country_event = {
+	id = tanna_tuva.35
+	title = " Communism and Tuvan Culture "
+	desc = tanna_tuva.35.desc 	
+	picture = GFX_report_event_stalin_propaganda
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = " They may not know, but this is the right decision. "
+		ai_chance = { factor = 100 }
+		add_ideas = Controlling_Tuvan_Culture_idea
+	}
+}
+country_event = {
+	id = tanna_tuva.36
+	title = " Sending Students Abroad "
+	desc = tanna_tuva.36.desc 	
+	picture = GFX_report_event_american_hunger_march
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Send them to Russia!"
+		custom_effect_tooltip = "From here we could make ammends with Moscow."
+		ai_chance = { factor = 60 }
+		add_ideas = Sending_Students_To_Russia
+	}
+	option = {
+		name = "Send them to the America!"
+		custom_effect_tooltip = "From here we could get closer to the west."
+		ai_chance = { factor = 40 }
+		add_ideas = Sending_Students_To_America
+	}
+}
+country_event = {
+	id = tanna_tuva.37
+	title = " Making Ammends with Moscow "
+	desc = tanna_tuva.38.desc 	
+	picture = GFX_report_event_soviet_japanese_pact
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Send a large apology for our wrong doings."
+		custom_effect_tooltip = "We might be invited into the Comitern!"
+		ai_chance = { factor = 100 }
+		SOV = {
+			country_event = {
+				id = tanna_tuva.39
+			}
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.38
+	title = " Making Ammends with Moscow "
+	desc = tanna_tuva.38.desc 	
+	picture = GFX_report_event_generic_ruins
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Send a large apology for our wrong doings."
+		custom_effect_tooltip = "We might be invited into the Comitern!"
+		ai_chance = { factor = 100 }
+		add_political_power = -100
+		SOV = {
+			country_event = {
+				id = tanna_tuva.39
+			}
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.39
+	title = "Tannu Tuva Apologies"
+	desc = tanna_tuva.39.desc 	
+	picture = GFX_report_event_molotov_ribbentrop_stalin_pact
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "They have come to their senses!"
+		ai_chance = { factor = 90 }
+		SOV = { add_to_faction = TAN }
+	}
+	option = {
+		name = "Reject their apology."
+		ai_chance = { factor = 10 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.40
+			}
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.40
+	title = "The Soviet Union Rejects our Apology"
+	desc = tanna_tuva.40.desc 	
+	picture = GFX_report_event_stalin_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "What a shame."
+		ai_chance = { factor = 90 }
+	}
+}
+country_event = {
+	id = tanna_tuva.41
+	title = "The Success of Collectivization!"
+	desc = tanna_tuva.41.desc 	
+	picture = GFX_report_event_stalin_propaganda
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Glory to the party!"
+		ai_chance = { factor = 50 }
+		remove_ideas = TAN_Collectivization_Distrust
+		remove_ideas = TAN_Trauma_From_Collectivization
+	}
+	option = {
+		name = "Glory to great comrade Toka!"
+		ai_chance = { factor = 50 }
+		remove_ideas = TAN_Collectivization_Distrust
+		remove_ideas = TAN_Trauma_From_Collectivization
+	}
+}
+country_event = {
+	id = tanna_tuva.42
+	title = "The Fate of the Stalinists"
+	desc = tanna_tuva.42.desc 	
+	picture = GFX_report_event_soviet_purge_officers_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Kill them."
+		custom_effect_tooltip = "Advisors that were stalinists will no longer be avaible."
+		ai_chance = { factor = 50 }
+	}
+	option = {
+		name = "Exil them."
+		ai_chance = { factor = 50 }
+		custom_effect_tooltip = "Advisors that are exiled will be sent to other countries."
+	}
+}
+country_event = {
+	id = tanna_tuva.43
+	title = "Tannu Tuva seeks Western Investments"
+	desc = tanna_tuva.43.desc 	
+	picture = GFX_report_event_hitler_china
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Send investments."
+		custom_effect_tooltip = "Investing may allign Tannu Tuva towards us. It is after all, in a strategic location against Russia."
+		add_political_power = -10
+		add_stability = -0.0001
+		ai_chance = { factor = 60 }
+		TAN = {
+			county_event = {
+				id = tanna_tuva.44
+				TAN = {
+					add_offsite_building = { type = arms_factory level = 1 }
+				}
+			}
+		}
+	}
+	option = {
+		name = "Nah."
+		ai_chance = { factor = 40 }
+		custom_effect_tooltip = "No investments for them."
+		add_stability = 0.01
+	}
+}
+country_event = {
+	id = tanna_tuva.44
+	title = "Investments Come In"
+	desc = tanna_tuva.44.desc 	
+	picture = GFX_report_event_degaulle_churchill
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Wonderfu!"
+		ai_chance = { factor = 100 }
+	}
+}
+country_event = {
+	id = tanna_tuva.45
+	title = "Tuvan Advice"
+	desc = tanna_tuva.45.desc 	
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "What a wise decisions!"
+		ai_chance = { factor = 50 }
+		SOV = {
+			puppet = MON
+		}
+	}
+	option = {
+		name = "Who do they think they are?"
+		ai_chance = { factor = 50 }
+	}
+}
+country_event = {
+	id = tanna_tuva.46
+	title = "Tannu Tuva Wishes to Join the Co-Prosperity Sphere"
+	desc = tanna_tuva.46.desc 	
+	picture = GFX_report_event_japanese_parade
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Invite them."
+		ai_chance = { factor = 80 }
+		JAP = { add_to_faction = TAN }
+	}
+	option = {
+		name = "They will just be a drag."
+		ai_chance = { factor = 20 }
+	}	
+}
+country_event = {
+	id = tanna_tuva.47
+	title = "Tannu Tuva Wishes to Join the Axis"
+	desc = tanna_tuva.47.desc 	
+	picture = GFX_report_event_molotov_ribbentrop_stalin_pact
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Invite them."
+		ai_chance = { factor = 80 }
+		GER = { add_to_faction = TAN }
+	}
+	option = {
+		name = "They will just be a drag."
+		ai_chance = { factor = 20 }
+	}	
+}
+country_event = {
+	id = tanna_tuva.48
+	title = "Tannu Tuva Wishes to Join the Allies"
+	desc = tanna_tuva.48.desc 	
+	picture = GFX_report_event_degaulle_churchill
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Invite them."
+		ai_chance = { factor = 80 }
+		ENG = { add_to_faction = TAN }
+	}
+	option = {
+		name = "They will just be a drag."
+		ai_chance = { factor = 20 }
+	}	
+}
+country_event = {
+	id = tanna_tuva.49
+	title = "Reichkomosariat Siberia Idea"
+	desc = tanna_tuva.49.desc 	
+	picture = GFX_report_event_czech_soldiers_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Give them the territory."
+		ai_chance = { factor = 80 }
+		TAN = {
+			transfer_state = 824
+			transfer_state = 577
+			transfer_state = 403
+			transfer_state = 571
+			transfer_state = 578
+			transfer_state = 570
+			transfer_state = 40
+			transfer_state = 516
+			transfer_state = 576
+			transfer_state = 568
+			transfer_state = 569
+			transfer_state = 654
+			transfer_state = 567
+			transfer_state = 575
+			transfer_state = 878
+			transfer_state = 566
+			transfer_state = 564
+			transfer_state = 565
+			transfer_state = 876
+			transfer_state = 563
+			transfer_state = 574
+			transfer_state = 877
+			transfer_state = 329
+		}
+
+		#Remeber to do this
+	}
+	option = {
+		name = "No."
+		ai_chance = { factor = 20 }
+	}	
+}
+country_event = {
+	id = tanna_tuva.50
+	title = "Ukraine SSR Sends Thanks"
+	desc = tanna_tuva.50.desc 	
+	picture = GFX_report_event_soviet_german_soldier_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "We are always help out our fellow comrades!"
+		ai_chance = { factor = 80 }
+		#Remeber to do this
+	}
+	option = {
+		name = "No."
+		ai_chance = { factor = 20 }
+	}	
+}
+country_event = {
+	id = tanna_tuva.51
+	title = "Ural Question"
+	desc = tanna_tuva.51.desc 	
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Give it to them."
+		ai_chance = {
+			factor = 20
+			modifier = {
+				threat > 20
+				factor = 1.3
+			}
+			modifier = {
+				threat > 40
+				factor = 1.3
+			}
+			modifier = {
+				threat > 60
+				factor = 1.3
+			}
+			modifier = {
+				has_non_aggression_pact_with = TAN
+				factor = 15
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 20
+			}
+			modifier = {
+				GER = {
+					OR = {
+						focus_progress = { focus = GER_ussr_war_goal progress > 0}
+						focus_progress = { focus = GER_around_maginot progress > 0}
+					}
+				}
+				factor = 20 #ohshitohshitohshit
+			}
+			modifier = {
+				has_opinion = {
+					target = TAN
+					value > 65
+				}
+				factor = 20
+			}
+		#Remeber to do this
+		}
+		TAN = {
+			transfer_state = 573
+			transfer_state = 572
+			transfer_state = 582
+			transfer_state = 580
+			transfer_state = 581
+			transfer_state = 579
+			transfer_state = 653
+		}
+	}
+	option = {
+		name = "Decline the offer."
+		ai_chance = { factor = 20 }
+	}
+	option = {
+		name = "They demand too much."
+		ai_chance = { factor = 1 }
+		declare_war_on = {
+			target = TAN
+			type = annex_everything
+		}
+	}		
+}
+country_event = {
+	id = tanna_tuva.52
+	title = "Siberia Question"
+	desc = tanna_tuva.52.desc 	
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Give it to them."
+		ai_chance = {
+			factor = 20
+			modifier = {
+				threat > 20
+				factor = 1.3
+			}
+			modifier = {
+				threat > 40
+				factor = 1.3
+			}
+			modifier = {
+				threat > 60
+				factor = 1.3
+			}
+			modifier = {
+				has_non_aggression_pact_with = TAN
+				factor = 15
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 20
+			}
+			modifier = {
+				GER = {
+					OR = {
+						focus_progress = { focus = GER_ussr_war_goal progress > 0}
+						focus_progress = { focus = GER_around_maginot progress > 0}
+					}
+				}
+				factor = 20 #ohshitohshitohshit
+			}
+			modifier = {
+				has_opinion = {
+					target = TAN
+					value > 65
+				}
+				factor = 20
+			}
+		#Remeber to do this
+		}
+		TAN = {
+			transfer_state = 824
+			transfer_state = 577
+			transfer_state = 403
+			transfer_state = 571
+			transfer_state = 578
+			transfer_state = 570
+			transfer_state = 40
+			transfer_state = 516
+			transfer_state = 576
+			transfer_state = 568
+			transfer_state = 569
+			transfer_state = 654
+			transfer_state = 567
+			transfer_state = 575
+			transfer_state = 878
+			transfer_state = 566
+			transfer_state = 564
+			transfer_state = 565
+			transfer_state = 876
+			transfer_state = 563
+			transfer_state = 574
+			transfer_state = 877
+			transfer_state = 329
+		}
+	}
+	option = {
+		name = "Decline the offer."
+		ai_chance = { factor = 20 }
+	}
+	option = {
+		name = "They demand too much."
+		ai_chance = { factor = 1 }
+		declare_war_on = {
+			target = TAN
+			type = annex_everything
+		}
+	}		
+}
+country_event = {
+	id = tanna_tuva.53
+	title = "Far East Question"
+	desc = tanna_tuva.53.desc 	
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Give it to them."
+		ai_chance = {
+			factor = 20
+			modifier = {
+				threat > 20
+				factor = 1.3
+			}
+			modifier = {
+				threat > 40
+				factor = 1.3
+			}
+			modifier = {
+				threat > 60
+				factor = 1.3
+			}
+			modifier = {
+				has_non_aggression_pact_with = TAN
+				factor = 15
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 20
+			}
+			modifier = {
+				GER = {
+					OR = {
+						focus_progress = { focus = GER_ussr_war_goal progress > 0}
+						focus_progress = { focus = GER_around_maginot progress > 0}
+					}
+				}
+				factor = 20 #ohshitohshitohshit
+			}
+			modifier = {
+				has_opinion = {
+					target = TAN
+					value > 65
+				}
+				factor = 20
+			}
+		#Remeber to do this
+		}
+		TAN = {
+			transfer_state = 561
+			transfer_state = 657
+			transfer_state = 560
+			transfer_state = 409
+			transfer_state = 655
+			transfer_state = 562
+			transfer_state = 642
+			transfer_state = 874
+			transfer_state = 822
+			transfer_state = 637
+			transfer_state = 875
+			transfer_state = 644
+		}
+	}
+	option = {
+		name = "Decline the offer."
+		ai_chance = { factor = 20 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.58
+			}
+		}
+	}
+	option = {
+		name = "They demand too much."
+		ai_chance = { factor = 1 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.59
+			}
+		}
+		declare_war_on = {
+			target = TAN
+			type = annex_everything
+		}
+	}	
+}
+country_event = {
+	id = tanna_tuva.54
+	title = "Far East Question"
+	desc = tanna_tuva.54.desc 	
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Give it to them."
+		ai_chance = {
+			factor = 20
+			modifier = {
+				threat > 20
+				factor = 1.3
+			}
+			modifier = {
+				threat > 40
+				factor = 1.3
+			}
+			modifier = {
+				threat > 60
+				factor = 1.3
+			}
+			modifier = {
+				has_non_aggression_pact_with = TAN
+				factor = 15
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 20
+			}
+			modifier = {
+				GER = {
+					OR = {
+						focus_progress = { focus = GER_ussr_war_goal progress > 0}
+						focus_progress = { focus = GER_around_maginot progress > 0}
+					}
+				}
+				factor = 20 #ohshitohshitohshit
+			}
+			modifier = {
+				has_opinion = {
+					target = TAN
+					value > 65
+				}
+				factor = 20
+			}
+			TAN = {
+
+			}
+		#Remeber to do this
+		}
+	}
+	option = {
+		name = "Decline the offer."
+		ai_chance = { factor = 20 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.58
+			}
+		}
+	}
+	option = {
+		name = "They demand too much."
+		TAN = {
+			country_event = {
+				id = tanna_tuva.59
+			}
+		}
+		ai_chance = { factor = 1 }
+		declare_war_on = {
+			target = TAN
+			type = annex_everything
+		}
+	}
+}
+country_event = {
+	id = tanna_tuva.54
+	title = "Vladivostock Question"
+	desc = tanna_tuva.54.desc 	
+	picture = GFX_report_event_stalin_propaganda
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Give it to them."
+		ai_chance = {
+			factor = 20
+			modifier = {
+				threat > 20
+				factor = 1.3
+			}
+			modifier = {
+				threat > 40
+				factor = 1.3
+			}
+			modifier = {
+				threat > 60
+				factor = 1.3
+			}
+			modifier = {
+				has_non_aggression_pact_with = TAN
+				factor = 15
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 20
+			}
+			modifier = {
+				GER = {
+					OR = {
+						focus_progress = { focus = GER_ussr_war_goal progress > 0}
+						focus_progress = { focus = GER_around_maginot progress > 0}
+					}
+				}
+				factor = 20 #ohshitohshitohshit
+			}
+			modifier = {
+				has_opinion = {
+					target = TAN
+					value > 65
+				}
+				factor = 20
+			}
+			TAN = {
+				transfer_state = 409
+			}
+		#Remeber to do this
+		}
+	}
+	option = {
+		name = "Decline the offer."
+		ai_chance = { factor = 20 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.58
+			}
+		}
+	}
+	option = {
+		name = "They demand too much."
+		ai_chance = { factor = 1 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.58
+			}
+		}
+		declare_war_on = {
+			target = TAN
+			type = annex_everything
+		}
+	}
+country_event = {
+	id = tanna_tuva.55
+	title = "Central Asia Question"
+	desc = tanna_tuva.55.desc 	
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Give it to them."
+		ai_chance = {
+			factor = 20
+			modifier = {
+				threat > 20
+				factor = 1.3
+			}
+			modifier = {
+				threat > 40
+				factor = 1.3
+			}
+			modifier = {
+				threat > 60
+				factor = 1.3
+			}
+			modifier = {
+				has_non_aggression_pact_with = TAN
+				factor = 15
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 20
+			}
+			modifier = {
+				GER = {
+					OR = {
+						focus_progress = { focus = GER_ussr_war_goal progress > 0}
+						focus_progress = { focus = GER_around_maginot progress > 0}
+					}
+				}
+				factor = 20 #ohshitohshitohshit
+			}
+			modifier = {
+				has_opinion = {
+					target = TAN
+					value > 65
+				}
+				factor = 20
+			}
+			TAN = {
+				transfer_state = 588
+				transfer_state = 882
+				transfer_state = 589
+				transfer_state = 881
+				transfer_state = 590
+				transfer_state = 583
+				transfer_state = 402
+				transfer_state = 406
+				transfer_state = 587
+				transfer_state = 823
+				transfer_state = 831
+				transfer_state = 832
+				transfer_state = 585
+				transfer_state = 404
+				transfer_state = 405
+				transfer_state = 830
+				transfer_state = 742
+				transfer_state = 732
+				transfer_state = 586
+				transfer_state = 584
+				transfer_state = 654
+			}
+		#Remeber to do this
+		}
+	}
+	option = {
+		name = "Decline the offer."
+		ai_chance = { factor = 20 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.58
+			}
+		}
+	}
+	option = {
+		name = "They demand too much."
+		ai_chance = { factor = 1 }
+		TAN = {
+			country_event = {
+				id = tanna_tuva.59
+			}
+		}
+		declare_war_on = {
+			target = TAN
+			type = annex_everything
+		}
+	}	
+	country_event = {
+		id = tanna_tuva.56
+		title = "Das-Dug Mountain Dispute"
+		desc = tanna_tuva.56.desc 	
+		picture = GFX_report_event_chinese_soldiers_01
+		
+		is_triggered_only = yes
+		
+		option = {
+			name = "Side with Tannu Tuva"
+			ai_chance = { factor = 80 }
+			TAN = {
+				country_event = {
+					id = tanna_tuva.561
+				}
+			}
+			TAN = {
+				add_political_power = 100
+			}
+		}
+		option = {
+			name = "Side with Mongolia"
+			TAN = {
+				country_event = {
+					id = tanna_tuva.562
+				}
+			}
+			MON = {
+				add_political_power = 100
+			}
+		}	
+	}
+	country_event = {
+		id = tanna_tuva.561
+		title = "Soviet Union Sides with Us"
+		desc = tanna_tuva.561.desc 	
+		picture = GFX_report_event_stalin_01
+		
+		is_triggered_only = yes
+		
+		option = {
+			name = "Hooray!"
+			ai_chance = { factor = 100 }
+			add_ideas = TAN_Salt_Mining
+		}
+	}
+	country_event = {
+		id = tanna_tuva.562
+		title = "Soviet Union Sides with Mongolia"
+		desc = tanna_tuva.562.desc 	
+		picture = GFX_report_event_stalin_01
+		
+		is_triggered_only = yes
+		
+		option = {
+			name = "We can't do anything about it."
+			ai_chance = { factor = 10 }
+		}
+		option = {
+			name = "Start illegally mining salt."
+			add_ideas = Illegal_Salt_Mining
+			ai_chance = { factor = 90 }
+		}	
+	}
+	country_event = {
+		id = tanna_tuva.57
+		title = "The Great Purge"
+		desc = tanna_tuva.57.desc 	
+		picture = GFX_report_event_soviet_purge_politicians
+		
+		is_triggered_only = yes
+		
+		option = {
+			name = "We must get rid of these traitors."
+			add_ideas = TAN_Advisors_Purged
+			TAN_Polat_Oyun = {
+				SOV_purge_character_effect = yes
+			}
+			TAN_Adyg_ulush_Khemchikool = {
+				SOV_purge_character_effect = yes
+			}
+			TAN_Okhkar_Khokonochxh = {
+				SOV_purge_character_effect = yes
+			}
+			TAN_Mongush_Kenin_Lopsan = {
+				SOV_purge_character_effect = yes				
+			}
+			TAN_Aldynool_Sevek = {
+				SOV_purge_character_effect = yes					
+			}
+			TAN_Pavel_Antonov = {
+				SOV_purge_character_effect = yes	
+			}
+			TAN_Ilya_Morozov = {
+				SOV_purge_character_effect = yes
+			}
+			TAN_Amgalan_Bayarjarga = {
+				SOV_purge_character_effect = yes
+			}
+			ai_chance = { factor = 10 }
+		}
+		option = {
+			name = "How can they be traitors?"
+			add_stability = -0.25
+		}
+	}
+	country_event = {
+		id = tanna_tuva.58
+		title = "Soviet Rejects Idea"
+		desc = tanna_tuva.58.desc 	
+		picture = GFX_report_event_stalin_01
+		
+		is_triggered_only = yes
+		
+		option = {
+			name = "Disapointing."
+		}
+	}
+	country_event = {
+		id = tanna_tuva.59
+		title = "Soviets are Insulted"
+		desc = tanna_tuva.59.desc 	
+		picture = GFX_report_event_stalin_01
+		
+		is_triggered_only = yes
+		
+		option = {
+			name = "You've got to be kidding me."
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,173 @@
+on_actions = {
+	on_war_relation_added = {
+		effect = {
+			if = {
+				limit = {
+					has_civil_war = yes
+					civilwar_target = FROM
+				}
+				ROOT = {
+					set_variable = {
+						state_counter = 0
+					}
+					set_variable = {
+						quarter_total_states = FROM.num_of_controlled_states
+					}
+					divide_variable = {
+						quarter_total_states = 2
+					}
+					every_core_state = {
+						if = {
+							limit = {
+								check_variable = {
+									ROOT.state_counter < ROOT.quarter_total_states
+								}
+							}
+							add_to_variable = {
+								ROOT.state_counter = 1
+							}
+							transfer_state_to = FROM
+						}
+					}
+				}
+				FROM = {
+					set_variable = {
+						state_counter = 0
+					}
+					set_variable = {
+						quarter_total_states = num_of_controlled_states
+					}
+					divide_variable = {
+						quarter_total_states = 2
+					}
+					every_controlled_state = {
+						if = {
+							limit = {
+								check_variable = {
+									FROM.state_counter < FROM.quarter_total_states
+								}
+							}
+							FROM = {
+								add_stability = 0.9
+							}
+							every_possible_country = {
+								if = {
+									limit = {
+										OR = {
+											tag = FROM
+											tag = ROOT
+										}
+									}
+									add_war_support = 0.9
+								}
+								else = {
+									PREV = {
+										## For every controlled state
+										if = {
+											limit = {
+												is_core_of = PREV
+											}
+											PREV = {
+												if = {
+													limit = {
+														exists = no
+													}
+													random_list = {
+														10 = {
+															set_politics = {
+																ruling_party = democratic
+															}
+															add_named_threat = {
+																threat = -5
+																name = advanced_civil_wars_democractic.1.n
+															}
+														}
+														10 = {
+															set_politics = {
+																ruling_party = fascism
+															}
+															add_named_threat = {
+																threat = 0.5
+																name = advanced_civil_wars_fascist.1.n
+															}
+														}
+														10 = {
+															set_politics = {
+																ruling_party = communism
+															}
+															add_named_threat = {
+																threat = -1
+																name = advanced_civil_wars_communist.1.n
+															}
+														}
+														10 = {
+															set_politics = {
+																ruling_party = neutrality
+															}
+															add_named_threat = {
+																threat = -2.5
+																name = advanced_civil_wars_neutrality.1.n
+															}
+														}
+													}
+												}
+											}
+											## If its a core of a country, transfer the state to it
+											transfer_state_to = PREV
+											add_to_variable = {
+												FROM.state_counter = 1
+											}
+											if = {
+												limit = {
+													is_owned_by = PREV
+												}
+												PREV = {
+													declare_war_on = {
+														target = FROM
+														type = annex_everything
+													}
+													declare_war_on = {
+														target = ROOT
+														type = annex_everything
+													}
+													#add_civil_war_target = FROM
+													division_template = {
+														name = "Worker Militia"
+														template_counter = 0
+														regiments = {
+															cavalry = {
+																x = 0
+																y = 1
+															}
+															cavalry = {
+																x = 1
+																y = 0
+															}
+														}
+														support = {
+															recon = {
+																x = 0
+																y = 2
+															}
+														}
+													}
+													PREV = {
+														create_unit = {
+															division = "name = \"Militia\" division_template = \"Worker Militia\" start_experience_factor = 0.1"
+															owner = PREV
+															count = 10
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

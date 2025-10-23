@@ -1,0 +1,4906 @@
+USA_congress = {
+	USA_small_lobby_effort = {
+		icon = generic_political_discourse
+		available = {
+			OR = {
+				check_variable = { senators_support < senators_total }
+				check_variable = { representatives_support < representatives_total }
+			}
+			not = {
+				has_decision = USA_medium_lobby_effort
+			}
+			OR = {
+				political_power_daily > 0.3
+				has_political_power > 10
+			}
+		}
+		cost = 0
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				congress_medium_support_trigger = yes
+				factor = 0.5
+			}
+			modifier = {
+				congress_low_support_trigger = yes
+				factor = 0.5
+			}
+			modifier = {
+				congress_high_support_trigger = yes
+				factor = 0
+			}
+		}
+		modifier = {
+			political_power_gain = -0.3
+		}
+		days_remove = 30
+		remove_effect = {
+			USA_congress_small_support = yes
+		}
+	}
+	USA_medium_lobby_effort = {
+		icon = generic_political_discourse
+		available = {
+			OR = {
+				check_variable = { senators_support < senators_total }
+				check_variable = { representatives_support < representatives_total }
+			}
+			not = {
+				has_decision = USA_small_lobby_effort
+			}
+			OR = {
+				political_power_daily > 0.75
+				has_political_power > 35
+			}
+		}
+		cost = 0
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				congress_medium_support_trigger = yes
+				factor = 0.5
+			}
+			modifier = {
+				congress_low_support_trigger = yes
+				factor = 0.5
+			}
+			modifier = {
+				congress_high_support_trigger = yes
+				factor = 0
+			}
+		}
+		days_remove = 45
+		modifier = {
+			political_power_gain = -0.75
+		}
+		remove_effect = {
+			USA_congress_medium_support = yes
+		}
+	}
+	USA_special_measures = {
+		icon = ger_mefo_bills
+		available = {
+			OR = {
+				check_variable = { senators_support < senators_total }
+				check_variable = { representatives_support < representatives_total }
+			}
+		}
+		cost = 50
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				congress_low_support_trigger = yes
+				factor = 0
+			}
+		}
+		days_re_enable = 90
+		complete_effect = {
+			USA_congress_small_support = yes
+		}
+	}
+	USA_use_huac = {
+		icon = oppression
+		available = {
+			has_idea = USA_joseph_mccarthy
+			OR = {
+				check_variable = { senators_support < senators_total }
+				check_variable = { representatives_support < representatives_total }
+			}
+		}
+		visible = {
+			has_completed_focus = USA_empower_the_huac
+		}
+		cost = 10
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				congress_low_support_trigger = yes
+				factor = 0
+			}
+		}
+		days_re_enable = 90
+		complete_effect = {
+			USA_congress_small_support = yes
+			add_stability = -0.05
+		}
+	}
+	USA_beat_up_opposition = {
+		icon = oppression
+		available = {
+			has_government = democratic
+		}
+		visible = { has_completed_focus = USA_ally_with_the_silver_shirts }
+		cost = 10
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				congress_low_support_trigger = yes
+				factor = 0
+			}
+		}
+		days_re_enable = 90
+		complete_effect = {
+			add_stability = -0.1
+			USA_congress_small_support = yes
+			add_popularity = { ideology = fascism popularity = 0.02 }
+		}
+	}
+	USA_pay_farm_subsidies = {
+		icon = ger_mefo_bills
+		available = {
+			has_government = democratic
+			OR = {
+				check_variable = { senators_support < senators_total }
+				check_variable = { representatives_support < representatives_total }
+			}
+		}
+		visible = { has_completed_focus = USA_agricultural_adjustment_act }
+		cost = 0
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				congress_low_support_trigger = yes
+				factor = 0
+			}
+		}
+		days_remove = 90
+		modifier = { consumer_goods_factor = 0.05 }
+		remove_effect = {
+			USA_congress_small_support = yes
+		}
+	}
+	USA_give_tax_break = {
+		icon = ger_mefo_bills
+		available = {
+			has_government = democratic
+			OR = {
+				check_variable = { senators_support < senators_total }
+				check_variable = { representatives_support < representatives_total }
+			}
+		}
+		visible = { has_completed_focus = USA_income_tax_reform }
+		cost = 0
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				congress_low_support_trigger = yes
+				factor = 0
+			}
+		}
+		days_remove = 90
+		modifier = { consumer_goods_factor = 0.05 }
+		remove_effect = {
+			USA_congress_small_support = yes
+		}
+	}
+	USA_amend_the_budget = {
+		icon = ger_mefo_bills
+		available = {
+			congress_medium_support_trigger = yes
+		}
+		visible = {has_government = democratic }
+		cost = 25
+		days_remove = 90
+		days_re_enable = 275
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				congress_low_support_trigger = yes
+				factor = 0
+			}
+		}
+		modifier = { consumer_goods_factor = -0.10 }
+		remove_effect = {
+			USA_congress_medium_opposition = yes
+		}
+	}
+	USA_research_grants = {
+		icon = ger_mefo_bills
+		available = {
+			congress_medium_support_trigger = yes
+		}
+		visible = {has_government = democratic }
+		cost = 25
+		days_remove = 90
+		days_re_enable = 275
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				congress_low_support_trigger = yes
+				factor = 0
+			}
+		}
+		modifier = { research_speed_factor = 0.08 }
+		remove_effect = {
+			USA_congress_medium_opposition = yes
+		}
+	}
+	USA_invest_in_state_factory = {
+		icon = generic_construction
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = USA_congress_invest_in_state_factory_tt
+				any_owned_state = {
+					has_state_flag = USA_congress_build_factory
+					check_variable = { factory_goal = industrial_complex_level }
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = {
+				has_state_flag = USA_congress_build_factory
+			}
+		}
+
+		days_mission_timeout = 360
+		is_good = no
+		activation = {
+			any_owned_state = {
+				has_state_flag = USA_congress_build_factory
+			}
+		}
+		timeout_effect = {
+			random_owned_state = {
+				limit = {
+					has_state_flag = USA_congress_build_factory
+				}
+				clr_state_flag = USA_congress_build_factory
+				clear_variable = factory_goal
+			}
+			
+			USA_congress_small_opposition = yes 
+			clr_country_flag = USA_congress_investment
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					has_state_flag = USA_congress_build_factory
+				}
+				clr_state_flag = USA_congress_build_factory
+				clear_variable = factory_goal
+			}
+			ROOT = {
+				USA_congress_medium_support = yes 
+				clr_country_flag = USA_congress_investment
+			}
+			
+		}
+	}
+	USA_invest_in_state_arms_factory = {
+		icon = generic_construction
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = USA_congress_invest_in_state_arms_factory_tt
+				any_owned_state = {
+					has_state_flag = USA_congress_build_arms_factory
+					check_variable = { arms_factory_goal = arms_factory_level }
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = {
+				has_state_flag = USA_congress_build_arms_factory
+			}
+		}
+
+
+		days_mission_timeout = 360
+		is_good = no
+		activation = {
+			any_owned_state = {
+				has_state_flag = USA_congress_build_arms_factory
+			}
+		}
+		timeout_effect = {
+			random_owned_state = {
+				limit = {
+					has_state_flag = USA_congress_build_arms_factory
+				}
+				clr_state_flag = USA_congress_build_arms_factory
+				clear_variable = arms_factory_goal
+			}
+			
+			USA_congress_small_opposition = yes 
+			clr_country_flag = USA_congress_investment
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					has_state_flag = USA_congress_build_arms_factory
+				}
+				clr_state_flag = USA_congress_build_arms_factory
+				clear_variable = arms_factory_goal
+			}
+			ROOT = {
+				USA_congress_medium_support = yes 
+				clr_country_flag = USA_congress_investment
+			}
+			
+		}
+	}
+	USA_invest_in_state_dockyard = {
+		icon = generic_construction
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = USA_congress_invest_in_dockyard_tooltip
+				any_owned_state = {
+					has_state_flag = USA_congress_build_dockyard
+					check_variable = { dockyard_goal = building_level@dockyard }
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = {
+				has_state_flag = USA_congress_build_dockyard
+			}
+		}
+
+		days_mission_timeout = 360
+		is_good = no
+		activation = {
+			any_owned_state = {
+				has_state_flag = USA_congress_build_dockyard
+			}
+		}
+		timeout_effect = {
+			random_owned_state = {
+				limit = {
+					has_state_flag = USA_congress_build_dockyard
+				}
+				clr_state_flag = USA_congress_build_dockyard
+				clear_variable = dockyard_goal
+			}
+			USA_congress_small_opposition = yes 
+			clr_country_flag = USA_congress_investment
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					has_state_flag = USA_congress_build_dockyard
+				}
+				clr_state_flag = USA_congress_build_dockyard
+				clear_variable = dockyard_goal
+			}
+			ROOT = {
+				USA_congress_medium_support = yes 
+				clr_country_flag = USA_congress_investment
+			}
+		}
+	}
+	USA_invest_in_state_infrastructure = {
+		icon = generic_construction
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = USA_congress_invest_in_state_infrastructure_tt
+				any_owned_state = {
+					has_state_flag = USA_congress_build_infrastructure
+					check_variable = { infrastructure_goal = infrastructure_level }
+				}
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				has_state_flag = USA_congress_build_infrastructure
+			}
+		}
+		days_mission_timeout = 360
+		is_good = no
+		activation = {
+			any_owned_state = {
+				has_state_flag = USA_congress_build_infrastructure
+			}
+		}
+		timeout_effect = {
+			random_owned_state = {
+				limit = {
+					has_state_flag = USA_congress_build_infrastructure
+				}
+				clr_state_flag = USA_congress_build_infrastructure
+				clear_variable = infrastructure_goal
+			}
+			
+			USA_congress_small_opposition = yes 
+			clr_country_flag = USA_congress_investment
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					has_state_flag = USA_congress_build_infrastructure
+				}
+				clr_state_flag = USA_congress_build_infrastructure
+				clear_variable = infrastructure_goal
+			}
+			ROOT = {
+				USA_congress_medium_support = yes 
+				clr_country_flag = USA_congress_investment
+			}
+			
+		}
+	}
+	USA_readmit_state = {
+		icon = infiltrate_state
+		available = {	
+			political_power_daily > 0.1
+		}
+		visible = {
+			any_owned_state = {
+				is_core_of = CSA
+				not = { is_core_of = ROOT }
+				is_claimed_by = ROOT
+			}
+			has_completed_focus = USA_reintegration
+		}
+		ai_will_do = {
+			factor = 1	
+		}
+		days_remove = 120
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		complete_effect = {
+			random_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = CSA
+					not = { is_core_of = ROOT }
+					is_claimed_by = ROOT
+				}
+				set_state_flag = USA_state_admit
+				custom_effect_tooltip = USA_readmit_state_tt
+			}
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			random_owned_state = {
+				limit = { has_state_flag = USA_state_admit }
+				ROOT = {
+					add_state_core = PREV
+				}
+				clr_state_flag = USA_state_admit
+			}			
+		}
+	}
+	USA_reshuffle_congress = {
+		available = {
+
+		}
+		visible = {
+			has_completed_focus = USA_union_representation_act
+		}
+		days_re_enable = 180
+		cost = 50
+		complete_effect = {
+			add_stability = -0.05
+			USA_return_majority = yes
+		}
+	}
+}
+USA_expand_statehood = {
+	USA_expand_california = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 378
+				state = 484
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			484 = {
+				NOT = { is_core_of = ROOT }
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			484 = {
+				is_fully_controlled_by = USA
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 10
+		modifier = {
+			political_power_gain = -0.05
+		}
+		remove_effect = {
+			add_state_core = 484
+		}
+	}
+	USA_statehood_for_alaska = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+				state = 463
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			463 = {
+				not = { is_core_of = ROOT }
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			463 = {
+				is_fully_controlled_by = USA
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 463
+			add_state_core = 650
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_hawaii = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 629
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			629 = {
+				not = { is_core_of = ROOT }
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			629 = {
+				is_fully_controlled_by = USA
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 629
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_puerto_rico = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 686
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			686 = {
+				not = { is_core_of = ROOT }
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			686 = {
+				is_fully_controlled_by = USA
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 686
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_nfl = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 331
+				state = 332
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			OR = {
+				331 = {
+					not = { is_core_of = ROOT }
+				}
+				332 = {
+					not = { is_core_of = ROOT }
+				}
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			OR = {
+				331 = {
+					is_fully_controlled_by = USA
+				}
+				332 = {
+					is_fully_controlled_by = USA
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 331
+			add_state_core = 332
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_maritimes = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 464
+				state = 465
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			OR = {
+				464 = {
+					not = { is_core_of = ROOT }
+				}
+				465 = {
+					not = { is_core_of = ROOT }
+				}
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			OR = {
+				464 = {
+					is_fully_controlled_by = USA
+				}
+				465 = {
+					is_fully_controlled_by = USA
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 464
+			add_state_core = 465
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_quebec = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 468
+				state = 462
+				state = 863
+				state = 860
+				state = 861
+				state = 466
+				state = 862
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			OR = {
+				862 = {
+					not = { is_core_of = ROOT }
+				}
+				468 = {
+					not = { is_core_of = ROOT }
+				}
+				862 = {
+					not = { is_core_of = ROOT }
+				}
+				860 = {
+					not = { is_core_of = ROOT }
+				}
+				861 = {
+					not = { is_core_of = ROOT }
+				}
+				466 = {
+					not = { is_core_of = ROOT }
+				}
+				863 = {
+					not = { is_core_of = ROOT }
+				}
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			OR = {
+				862 = {
+					is_fully_controlled_by = USA
+				}
+				468 = {
+					is_fully_controlled_by = USA
+				}
+				862 = {
+					is_fully_controlled_by = USA
+				}
+				860 = {
+					is_fully_controlled_by = USA
+				}
+				861 = {
+					is_fully_controlled_by = USA
+				}
+				466 = {
+					is_fully_controlled_by = USA
+				}
+				863 = {
+					is_fully_controlled_by = USA
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 862
+			add_state_core = 468
+			add_state_core = 862
+			add_state_core = 860
+			add_state_core = 861
+			add_state_core = 466
+			add_state_core = 863
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_ontario = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 276
+				state = 682
+				state = 866
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			OR = {
+				276 = {
+					not = { is_core_of = ROOT }
+				}
+				682 = {
+					not = { is_core_of = ROOT }
+				}
+				866 = {
+					not = { is_core_of = ROOT }
+				}
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			OR = {
+				276 = {
+					is_fully_controlled_by = USA
+				}
+				682 = {
+					is_fully_controlled_by = USA
+				}
+				866 = {
+					is_fully_controlled_by = USA
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 276
+			add_state_core = 682
+			add_state_core = 866
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_central_canada = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 467
+				state = 469
+				state = 865
+				state = 867
+				state = 683
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			OR = {
+				467 = {
+					not = { is_core_of = ROOT }
+				}
+				469 = {
+					not = { is_core_of = ROOT }
+				}
+				865 = {
+					not = { is_core_of = ROOT }
+				}
+				867 = {
+					not = { is_core_of = ROOT }
+				}
+				683 = {
+					not = { is_core_of = ROOT }
+				}
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			OR = {
+				467 = {
+					is_fully_controlled_by = USA
+				}
+				469 = {
+					is_fully_controlled_by = USA
+				}
+				865 = {
+					is_fully_controlled_by = USA
+				}
+				867 = {
+					is_fully_controlled_by = USA
+				}
+				683 = {
+					is_fully_controlled_by = USA
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 467
+			add_state_core = 469
+			add_state_core = 865
+			add_state_core = 867
+			add_state_core = 683
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_western_canada = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 473
+				state = 471
+				state = 864
+				state = 472
+				state = 740
+				state = 739
+				state = 470
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			OR = {
+				473 = {
+					not = { is_core_of = ROOT }
+				}
+				471 = {
+					not = { is_core_of = ROOT }
+				}
+				864 = {
+					not = { is_core_of = ROOT }
+				}
+				472 = {
+					not = { is_core_of = ROOT }
+				}
+				740 = {
+					not = { is_core_of = ROOT }
+				}
+				739 = {
+					not = { is_core_of = ROOT }
+				}
+				470 = {
+					not = { is_core_of = ROOT }
+				}
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			OR = {
+				473 = {
+					is_fully_controlled_by = USA
+				}
+				471 = {
+					is_fully_controlled_by = USA
+				}
+				864 = {
+					is_fully_controlled_by = USA
+				}
+				472 = {
+					is_fully_controlled_by = USA
+				}
+				740 = {
+					is_fully_controlled_by = USA
+				}
+				739 = {
+					is_fully_controlled_by = USA
+				}
+				470 = {
+					is_fully_controlled_by = USA
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 473
+			add_state_core = 471
+			add_state_core = 864
+			add_state_core = 472
+			add_state_core = 740
+			add_state_core = 739
+			add_state_core = 470
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_sonora = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 483
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			483 = {
+				NOT = { is_core_of = ROOT }
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			483 = {
+				is_fully_controlled_by = USA
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 483
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_chihuahua = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 482
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			482 = {
+				NOT = { is_core_of = ROOT }
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			482 = {
+				is_fully_controlled_by = USA
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 482
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_yucatan = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 474
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			474 = {
+				NOT = { is_core_of = ROOT }
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			474 = {
+				is_fully_controlled_by = USA
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 474
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_cuba = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 315
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			315 = {
+				NOT = { is_core_of = ROOT }
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			315 = {
+				is_fully_controlled_by = USA
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 315
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+	USA_statehood_for_hispanola = {
+		icon = infiltrate_state
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 318
+				state = 319
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			OR = {
+				318 = {
+					not = { is_core_of = ROOT }
+				}
+				319 = {
+					not = { is_core_of = ROOT }
+				}
+			}
+			political_power_daily > 0.1
+		}
+		visible = {
+			OR = {
+				318 = {
+					is_fully_controlled_by = USA
+				}
+				319 = {
+					is_fully_controlled_by = USA
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			USA_congress_add_state = yes
+			add_state_core = 318
+			add_state_core = 319
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = USA_macarthur_regime
+							has_completed_focus = USA_falling_apart
+						}
+					}
+				}
+				USA_calc_stars = yes
+			}
+		}
+	}
+}
+USA_golden_circle = {
+	USA_raise_support = {
+		icon = generic_speech
+		available = {
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 35
+		cost = 15
+		modifier = {
+			political_power_gain = -0.25
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = USA_golden_circle_support_var
+				value = 5
+				tooltip = golden_circle_support_up
+			}
+		}
+	}
+	USA_integrate_hispanola = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 318
+				state = 319
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = gc_support_10
+				check_variable = {
+					var = USA_golden_circle_support_var
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+			DOM = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+			HAI = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = USA_golden_circle_support_var
+				value = -10
+				tooltip = gc_support_removal
+			}
+			add_stability = -0.01
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = DOM
+						is_core_of = HAI
+					}
+				}
+				add_core_of = USA
+			}
+		}
+	}
+	USA_integrate_mexico = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 484
+				state = 483
+				state = 482
+				state = 480
+				state = 481
+				state = 479
+				state = 478
+				state = 277
+				state = 477
+				state = 485
+				state = 476
+				state = 475
+				state = 474
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = gc_support_15
+				check_variable = {
+					var = USA_golden_circle_support_var
+					value = 15
+					compare = greater_than_or_equals
+				}
+			}
+			MEX = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = USA_golden_circle_support_var
+				value = -15
+				tooltip = gc_support_removal
+			}
+			add_stability = -0.01
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = MEX
+				}
+				add_core_of = USA
+			}
+		}
+	}
+	USA_integrate_central_america = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 313
+				state = 311
+				state = 312
+				state = 314
+				state = 317
+				state = 316
+				state = 304
+				state = 685
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = gc_support_15
+				check_variable = {
+					var = USA_golden_circle_support_var
+					value = 15
+					compare = greater_than_or_equals
+				}
+			}
+			GUA = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+			HON = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+			ELS = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+			NIC = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+			COS = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+			PAN = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = USA_golden_circle_support_var
+				value = -15
+				tooltip = gc_support_removal
+			}
+			add_stability = -0.01
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = BLZ
+						is_core_of = GUA
+						is_core_of = HON
+						is_core_of = ELS
+						is_core_of = NIC
+						is_core_of = COS
+						is_core_of = PAN
+					}
+				}
+				add_core_of = USA
+			}
+		}
+	}
+	USA_integrate_bri_west_antilles = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 690
+				state = 693
+				state = 689
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = gc_support_5
+				check_variable = {
+					var = USA_golden_circle_support_var
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			BAH = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+			JAM = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = USA_golden_circle_support_var
+				value = -5
+				tooltip = gc_support_removal
+			}
+			add_stability = -0.01
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = BAH
+						is_core_of = JAM
+					}
+				}
+				add_core_of = USA
+			}
+		}
+	}
+	USA_integrate_cuba = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 315
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = gc_support_10
+				check_variable = {
+					var = USA_golden_circle_support_var
+					value = 10
+					compare = greater_than_or_equals
+				}
+			}
+			CUB = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = USA_golden_circle_support_var
+				value = -10
+				tooltip = gc_support_removal
+			}
+			add_stability = -0.01
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = CUB
+				}
+				add_core_of = USA
+			}
+		}
+	}
+	USA_integrate_pr = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 686
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = gc_support_5
+				check_variable = {
+					var = USA_golden_circle_support_var
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			PUE = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = USA_golden_circle_support_var
+				value = -5
+				tooltip = gc_support_removal
+			}
+			add_stability = -0.01
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = PUE
+				}
+				add_core_of = USA
+			}
+		}
+	}
+	USA_integrate_east_antilles = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 308
+				state = 694
+				state = 692
+				state = 691
+				state = 695
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = gc_support_5
+				check_variable = {
+					var = USA_golden_circle_support_var
+					value = 5
+					compare = greater_than_or_equals
+				}
+			}
+			BAS = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+			GDL = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+			TRI = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+			CRC = {
+				all_core_state = {
+					is_controlled_by = USA
+				}
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = USA_golden_circle_support_var
+				value = -5
+				tooltip = gc_support_removal
+			}
+			add_stability = -0.01
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = BAS
+						is_core_of = GDL
+						is_core_of = TRI
+						is_core_of = CRC
+					}
+				}
+				add_core_of = USA
+			}
+		}
+	}
+	USA_integrate_upper_colombia = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 307
+				state = 493
+				state = 489
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = gc_support_15
+				check_variable = {
+					var = USA_golden_circle_support_var
+					value = 15
+					compare = greater_than_or_equals
+				}
+			}
+			controls_state = 307
+			controls_state = 493
+			controls_state = 489
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+				var = USA_golden_circle_support_var
+				value = -15
+				tooltip = gc_support_removal
+			}
+			add_stability = -0.01
+		}
+		remove_effect = {
+			add_state_core = 307
+			add_state_core = 493
+			add_state_core = 489
+		}
+	}
+}
+USA_corporate_takeover = {
+	USA_coca_cola_takeover = {
+		icon = hol_attract_foreign_investors
+		available = {
+			
+		}
+		visible = {
+			has_idea = coca_cola_inf_2
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 100
+		cost = 50
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			create_country_leader = {
+				name = "Robert W. Woodruff"
+				picture = GFX_Portrait_USA_robert_w_woodruff
+				expire = "1965.1.1"
+				ideology = corporatist_dictatorship
+				traits = { CAN_liberal_corporatist financial_expert }
+			}
+			add_stability = -.15
+			set_capital = { state = 365 }
+			set_cosmetic_tag = USA_coca_cola
+			set_party_name = {
+				ideology = neutrality
+		 	    long_name = USA_coca_cola_party_long
+				name = USA_coca_cola_party
+			}
+			set_victory_points = {
+				province = 12384
+				value = 40
+			}
+			set_victory_points = {
+				province = 3957
+				value = 25
+			}
+		}
+	}
+	USA_disney_takeover = {
+		icon = hol_attract_foreign_investors
+		available = {
+			
+		}
+		visible = {
+			has_idea = disney_inf_2
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 100
+		cost = 50
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			create_country_leader = {
+				name = "Walt Disney"
+				picture = GFX_Portrait_USA_walt_disney
+				expire = "1965.1.1"
+				ideology = corporatist_dictatorship
+				traits = { popular_figurehead CAN_liberal_corporatist }
+			}
+			add_stability = -.15
+			set_capital = { state = 378 }
+			set_cosmetic_tag = USA_disney
+			set_party_name = {
+				ideology = neutrality
+		 	    long_name = USA_disney_party_long
+				name = USA_disney_party
+			}
+			set_victory_points = {
+				province = 9814
+				value = 40
+			}
+			set_victory_points = {
+				province = 3957
+				value = 25
+			}
+		}
+	}
+	USA_ford_takeover = {
+		icon = hol_attract_foreign_investors
+		available = {
+			
+		}
+		visible = {
+			has_idea = ford_inf_2
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 100
+		cost = 50
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			create_country_leader = {
+				name = "Henry Ford"
+				picture = GFX_Portrait_USA_henry_ford
+				expire = "1965.1.1"
+				ideology = corporatist_dictatorship
+				traits = { financial_expert SWI_corporatist }
+			}
+			add_stability = -.15
+			set_capital = { state = 393 }
+			set_cosmetic_tag = USA_ford
+			set_party_name = {
+				ideology = neutrality
+		 	    long_name = USA_ford_party_long
+				name = USA_ford_party
+			}
+			set_victory_points = {
+				province = 6710
+				value = 40
+			}
+			set_victory_points = {
+				province = 3957
+				value = 25
+			}
+		}
+	}
+}
+USA_expanding_land_of_tomorrow = {
+	USA_park_planning = {
+		icon = generic_operation
+		available = {
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 28
+		cost = 0
+		modifier = {
+			political_power_gain = -0.25
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			USA_improve_tourism = yes
+			every_state = {
+				limit = {
+					has_state_flag = future_disney_park
+					is_controlled_by = USA
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			every_state = {
+				limit = {
+					has_state_flag = future_disney_park
+					NOT = {is_controlled_by = USA}
+				}
+				add_claim_by = USA
+			}
+			set_country_flag = USA_the_parks_have_been_planned
+		}
+	}
+	USA_new_park_california = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 378
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			378 = {
+				is_controlled_by = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = we_have_planned_the_parks
+				has_country_flag = USA_the_parks_have_been_planned
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 210
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+			378 = {
+				add_manpower = 100000
+			}
+		}
+		remove_effect = {
+			USA_improve_tourism = yes
+			378 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_province_name = { id = 9814 name = "Disneyland" }
+			add_to_variable = {
+    			var = theme_parks_built
+    			value = 1
+			}
+		}
+	}
+	USA_new_park_florida = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 366
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			366 = {
+				is_controlled_by = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = we_have_planned_the_parks
+				has_country_flag = USA_the_parks_have_been_planned
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 210
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+			366 = {
+				add_manpower = 100000
+			}
+		}
+		remove_effect = {
+			USA_improve_tourism = yes
+			366 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_victory_points = {
+				province = 866
+				value = 10
+			}
+			hidden_effect = {set_province_name = { id = 866 name = "Disney World" }}
+			custom_effect_tooltip = florida_name_fix
+			add_to_variable = {
+    			var = theme_parks_built
+    			value = 1
+			}
+		}
+	}
+	USA_new_park_paris = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 16
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			16 = {
+				is_controlled_by = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = we_have_planned_the_parks
+				has_country_flag = USA_the_parks_have_been_planned
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 210
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+			16 = {
+				add_manpower = 100000
+			}
+		}
+		remove_effect = {
+			USA_improve_tourism = yes
+			16 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+				add_core_of = ROOT
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_province_name = { id = 11506 name = "Disneyland Paris" }
+			add_to_variable = {
+    			var = theme_parks_built
+    			value = 1
+			}
+		}
+	}
+	USA_new_park_tokyo = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 282
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			282 = {
+				is_controlled_by = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = we_have_planned_the_parks
+				has_country_flag = USA_the_parks_have_been_planned
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 210
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+			282 = {
+				add_manpower = 100000
+			}
+		}
+		remove_effect = {
+			USA_improve_tourism = yes
+			282 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+				add_core_of = ROOT
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_province_name = { id = 1182 name = "Disneyland Tokyo" }
+			add_to_variable = {
+    			var = theme_parks_built
+    			value = 1
+			}
+		}
+	}
+	USA_new_park_hong_kong = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 326
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			326 = {
+				is_controlled_by = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = we_have_planned_the_parks
+				has_country_flag = USA_the_parks_have_been_planned
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 210
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+			326 = {
+				add_manpower = 100000
+			}
+		}
+		remove_effect = {
+			USA_improve_tourism = yes
+			326 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+				add_core_of = ROOT
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_victory_points = {
+				province = 10062
+				value = 15
+			}
+			set_province_name = { id = 10062 name = "Disneyland Hong Kong" }
+			add_to_variable = {
+    			var = theme_parks_built
+    			value = 1
+			}
+		}
+	}
+	USA_new_park_shanghai = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 613
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			613 = {
+				is_controlled_by = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = we_have_planned_the_parks
+				has_country_flag = USA_the_parks_have_been_planned
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 210
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+			613 = {
+				add_manpower = 100000
+			}
+		}
+		remove_effect = {
+			USA_improve_tourism = yes
+			613 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+				add_core_of = ROOT
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_victory_points = {
+				province = 7014
+				value = 25
+			}
+			set_province_name = { id = 7014 name = "Disneyland Shanghai" }
+			add_to_variable = {
+    			var = theme_parks_built
+    			value = 1
+			}
+		}
+	}
+	USA_new_park_singapore = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 336
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			336 = {
+				is_controlled_by = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = we_have_planned_the_parks
+				has_country_flag = USA_the_parks_have_been_planned
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 210
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+			336 = {
+				add_manpower = 100000
+			}
+		}
+		remove_effect = {
+			USA_improve_tourism = yes
+			336 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+				add_core_of = ROOT
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_victory_points = {
+				province = 12299
+				value = 20
+			}
+			set_province_name = { id = 12299 name = "Disneyland Singapore" }
+			add_to_variable = {
+    			var = theme_parks_built
+    			value = 1
+			}
+		}
+	}
+	USA_new_park_australia = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 517
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			517 = {
+				is_controlled_by = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = we_have_planned_the_parks
+				has_country_flag = USA_the_parks_have_been_planned
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 210
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+			517 = {
+				add_manpower = 100000
+			}
+		}
+		remove_effect = {
+			USA_improve_tourism = yes
+			517 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+				add_core_of = ROOT
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_victory_points = {
+				province = 7798
+				value = 25
+			}
+			set_province_name = { id = 7798 name = "Disneyland Oceania" }
+			add_to_variable = {
+    			var = theme_parks_built
+    			value = 1
+			}
+		}
+	}
+	USA_new_park_naples = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 117
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			117 = {
+				is_controlled_by = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = we_have_planned_the_parks
+				has_country_flag = USA_the_parks_have_been_planned
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 210
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+			117 = {
+				add_manpower = 100000
+			}
+		}
+		remove_effect = {
+			USA_improve_tourism = yes
+			117 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+				add_core_of = ROOT
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_victory_points = {
+				province = 819
+				value = 25
+			}
+			set_province_name = { id = 819 name = "Disneyland Naples" }
+			add_to_variable = {
+    			var = theme_parks_built
+    			value = 1
+			}
+		}
+	}
+	USA_new_park_rio = {
+		icon = generic_nationalism
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 500
+    		}
+			highlight_color_before_active = 4
+		}
+		available = {
+			500 = {
+				is_controlled_by = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = we_have_planned_the_parks
+				has_country_flag = USA_the_parks_have_been_planned
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 210
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+		}
+		complete_effect = {
+			500 = {
+				add_manpower = 100000
+			}
+		}
+		remove_effect = {
+			USA_improve_tourism = yes
+			500 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+				add_core_of = ROOT
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_victory_points = {
+				province = 10980
+				value = 20
+			}
+			set_province_name = { id = 10980 name = "Disneyland Rio" }
+			add_to_variable = {
+    			var = theme_parks_built
+    			value = 1
+			}
+		}
+	}
+}
+USA_prog_convention = {
+	USA_president_inagurated_prog = {
+		icon = SWI_no_elected_president	
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		days_mission_timeout = 28
+		activation = {
+			has_country_flag = president_selected_prog
+		}
+		is_good = yes
+		timeout_effect = {
+			if = {
+				limit = {
+					has_country_flag = william_borah_president_elect
+				}
+				add_stability = 0.05
+			}
+			if = {
+				limit = {
+					has_country_flag = al_smith_president_elect
+				}
+				add_stability = 0.05
+				create_country_leader = {
+					name = "Al Smith"
+					picture = GFX_Portrait_USA_Al_Smith
+					expire = "1965.1.1"
+					ideology = progressivism
+					traits = { progressive }
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = george_norris_president_elect
+				}
+				add_stability = 0.05
+				create_country_leader = {
+					name = "George Norris"
+					picture = GFX_Portrait_USA_George_Norris
+					expire = "1965.1.1"
+					ideology = progressivism
+					traits = { progressive }
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = henry_wallace_president_elect
+				}
+				add_stability = 0.05
+				create_country_leader = {
+					name = "Henry A. Wallace"
+					picture = GFX_Portrait_USA_Henry_A_Wallace
+					expire = "1965.1.1"
+					ideology = progressivism
+					traits = { progressive }
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = earl_browder_president_elect
+				}
+				set_politics = {
+    				ruling_party = communism
+   			 		elections_allowed = no
+				}
+				hidden_effect = {
+					add_country_leader_trait = veteran_communist
+					add_country_leader_trait = communist_theorist
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = norman_thomas_president_elect
+				}
+				set_politics = {
+    				ruling_party = communism
+   			 		elections_allowed = yes
+				}
+			}
+			hidden_effect = {country_event = usarework.40}
+			set_country_flag = prog_soc_president_inagurated
+			custom_effect_tooltip = "The President will be inagurated."
+		}
+		complete_effect = {
+			
+		}
+	}
+}
+USA_party_management = {
+	USA_rally_republicans = {
+		icon = generic_speech
+		available = {
+			custom_trigger_tooltip = {
+    			tooltip = republicans_less_than_98		
+    			check_variable = {
+    				var = USA_republican_party_popularity_var
+    				value = 98
+    				compare = less_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+    			tooltip = democrats_more_than_2		
+    			check_variable = {
+    				var = USA_democratic_party_popularity_var
+    				value = 2
+    				compare = greater_than_or_equals
+				}
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 42
+		cost = 10
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+    			var = USA_republican_party_popularity_var
+    			value = 2
+    			tooltip = republicans_popularity_change_2
+			}
+			add_to_variable = {
+    			var = USA_democratic_party_popularity_var
+    			value = -2
+    			tooltip = democrats_popularity_change_-2
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							has_active_mission = USA_emergency_democrat_campaign
+						}
+						check_variable = {
+							var = USA_democratic_party_popularity_var
+							value = 55
+							compare = less_than_or_equals
+						}
+					}
+					activate_mission = USA_emergency_democrat_campaign
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_republican_campaign_trail = {
+		icon = hol_draw_up_staff_plans
+		available = {
+			custom_trigger_tooltip = {
+    			tooltip = republicans_less_than_95		
+    			check_variable = {
+    				var = USA_republican_party_popularity_var
+    				value = 95
+    				compare = less_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+    			tooltip = democrats_more_than_5		
+    			check_variable = {
+    				var = USA_democratic_party_popularity_var
+    				value = 5
+    				compare = greater_than_or_equals
+				}
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 84
+		cost = 25
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+    			var = USA_republican_party_popularity_var
+    			value = 5
+    			tooltip = republicans_popularity_change_5
+			}
+			add_to_variable = {
+    			var = USA_democratic_party_popularity_var
+    			value = -5
+    			tooltip = democrats_popularity_change_-5
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							has_active_mission = USA_emergency_democrat_campaign
+						}
+						check_variable = {
+							var = USA_democratic_party_popularity_var
+							value = 55
+							compare = less_than_or_equals
+						}
+					}
+					activate_mission = USA_emergency_democrat_campaign
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_rally_democrats = {
+		icon = generic_speech
+		available = {
+			custom_trigger_tooltip = {
+    			tooltip = democrats_less_than_98		
+    			check_variable = {
+    				var = USA_democratic_party_popularity_var
+    				value = 98
+    				compare = less_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+    			tooltip = republicans_more_than_2		
+    			check_variable = {
+    				var = USA_republican_party_popularity_var
+    				value = 2
+    				compare = greater_than_or_equals
+				}
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 42
+		cost = 10
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+    			var = USA_democratic_party_popularity_var
+    			value = 2
+    			tooltip = democrats_popularity_change_2
+			}
+			add_to_variable = {
+    			var = USA_republican_party_popularity_var
+    			value = -2
+    			tooltip = republicans_popularity_change_-2
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							has_active_mission = USA_emergency_republican_campaign
+						}
+						check_variable = {
+							var = USA_republican_party_popularity_var
+							value = 55
+							compare = less_than_or_equals
+						}
+					}
+					activate_mission = USA_emergency_republican_campaign
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_democratic_campaign_trail = {
+		icon = hol_draw_up_staff_plans
+		available = {
+			custom_trigger_tooltip = {
+    			tooltip = democrats_less_than_95		
+    			check_variable = {
+    				var = USA_democratic_party_popularity_var
+    				value = 95
+    				compare = less_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+    			tooltip = republicans_more_than_5		
+    			check_variable = {
+    				var = USA_republican_party_popularity_var
+    				value = 5
+    				compare = greater_than_or_equals
+				}
+			}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 84
+		cost = 25
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+    			var = USA_democratic_party_popularity_var
+    			value = 5
+    			tooltip = democrats_popularity_change_5
+			}
+			add_to_variable = {
+    			var = USA_republican_party_popularity_var
+    			value = -5
+    			tooltip = republicans_popularity_change_-5
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							has_active_mission = USA_emergency_republican_campaign
+						}
+						check_variable = {
+							var = USA_republican_party_popularity_var
+							value = 55
+							compare = less_than_or_equals
+						}
+					}
+					activate_mission = USA_emergency_republican_campaign
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_populist_propoganda = {
+		icon = generic_civil_support
+		available = {
+			custom_trigger_tooltip = {
+    			tooltip = third_parties_less_than_90	
+    			check_variable = {
+    				var = USA_third_party_popularity_var
+    				value = 90
+    				compare = less_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+    			tooltip = democrats_more_than_5		
+    			check_variable = {
+    				var = USA_democratic_party_popularity_var
+    				value = 5
+    				compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+    			tooltip = republicans_more_than_5		
+    			check_variable = {
+    				var = USA_republican_party_popularity_var
+    				value = 5
+    				compare = greater_than_or_equals
+				}
+			}
+			date < 1936.11.8
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 70
+		cost = 25
+		modifier = {
+		}
+		complete_effect = {
+			add_to_variable = {
+    			var = USA_third_party_popularity_var
+    			value = 10
+    			tooltip = third_parties_popularity_change_10
+			}
+			add_to_variable = {
+    			var = USA_democratic_party_popularity_var
+    			value = -5
+    			tooltip = democrats_popularity_change_-5
+			}
+			add_to_variable = {
+    			var = USA_republican_party_popularity_var
+    			value = -5
+    			tooltip = republicans_popularity_change_-5
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							has_active_mission = USA_emergency_democrat_campaign
+						}
+						check_variable = {
+							var = USA_democratic_party_popularity_var
+							value = 55
+							compare = less_than_or_equals
+						}
+					}
+					activate_mission = USA_emergency_democrat_campaign
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							has_active_mission = USA_emergency_republican_campaign
+						}
+						check_variable = {
+							var = USA_republican_party_popularity_var
+							value = 55
+							compare = less_than_or_equals
+						}
+					}
+					activate_mission = USA_emergency_republican_campaign
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_emergency_republican_campaign = {
+		icon = eng_propaganda_campaigns
+		available = {
+			custom_trigger_tooltip = {
+    			tooltip = republicans_less_than_55		
+    			check_variable = {
+    				var = USA_republican_party_popularity_var
+    				value = 55
+    				compare = greater_than_or_equals
+				}
+			}
+			NOT = {
+				has_completed_focus = USA_gridlock
+			}
+		}
+		cancel_trigger = {
+			has_completed_focus = USA_gridlock
+		}
+		days_mission_timeout = 35
+		fire_only_once = no
+		fixed_random_seed = no
+		activation = {
+			NOT = {
+				has_completed_focus = USA_gridlock
+			}
+		}
+		is_good = no
+		timeout_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = USA_republican_party_popularity_var
+						value = 55
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = USA_republican_party_popularity_var
+						value = 40
+						compare = greater_than_or_equals
+					}
+				}
+				add_to_variable = {
+					var = USA_republican_party_popularity_var
+					value = 0.5
+					tooltip = republicans_popularity_change_0.5
+				}
+				add_to_variable = {
+					var = USA_democratic_party_popularity_var
+					value = -0.5
+					tooltip = democrats_popularity_change_-0.5
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = USA_republican_party_popularity_var
+						value = 40
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = USA_republican_party_popularity_var
+						value = 30
+						compare = greater_than_or_equals
+					}
+				}
+				add_to_variable = {
+					var = USA_republican_party_popularity_var
+					value = 1
+					tooltip = republicans_popularity_change_1
+				}
+				add_to_variable = {
+					var = USA_democratic_party_popularity_var
+					value = -1
+					tooltip = democrats_popularity_change_-1
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = USA_republican_party_popularity_var
+						value = 30
+						compare = less_than_or_equals
+					}
+				}
+				add_to_variable = {
+					var = USA_republican_party_popularity_var
+					value = 2
+					tooltip = republicans_popularity_change_2
+				}
+				add_to_variable = {
+					var = USA_democratic_party_popularity_var
+					value = -2
+					tooltip = democrats_popularity_change_-2
+				}
+			}
+			hidden_effect = {
+				IF = {
+					limit = {
+						NOT = {
+							has_completed_focus = USA_gridlock
+						}
+					}
+					activate_mission = USA_emergency_republican_campaign
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							has_active_mission = USA_emergency_democrat_campaign
+							has_completed_focus = USA_gridlock
+						}
+						check_variable = {
+							var = USA_democratic_party_popularity_var
+							value = 55
+							compare = less_than_or_equals
+						}
+					}
+					activate_mission = USA_emergency_democrat_campaign
+				}
+			}
+		}
+		complete_effect = {
+			
+		}
+	}
+	USA_emergency_democrat_campaign = {
+		icon = eng_propaganda_campaigns
+		available = {
+			custom_trigger_tooltip = {
+    			tooltip = democrats_less_than_55		
+    			check_variable = {
+    				var = USA_democratic_party_popularity_var
+    				value = 55
+    				compare = greater_than_or_equals
+				}
+			}
+			NOT = {
+				has_completed_focus = USA_gridlock
+			}
+		}
+		days_mission_timeout = 35
+		fire_only_once = no
+		fixed_random_seed = no
+		cancel_trigger = {
+			has_completed_focus = USA_gridlock
+		}
+		activation = {
+			NOT = {
+				has_completed_focus = USA_gridlock
+			}
+		}
+		is_good = no
+		timeout_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = USA_democratic_party_popularity_var
+						value = 55
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = USA_democratic_party_popularity_var
+						value = 40
+						compare = greater_than_or_equals
+					}
+				}
+				add_to_variable = {
+					var = USA_democratic_party_popularity_var
+					value = 0.5
+					tooltip = democrats_popularity_change_0.5
+				}
+				add_to_variable = {
+					var = USA_republican_party_popularity_var
+					value = -0.5
+					tooltip = republicans_popularity_change_-0.5
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = USA_democratic_party_popularity_var
+						value = 40
+						compare = less_than_or_equals
+					}
+					check_variable = {
+						var = USA_democratic_party_popularity_var
+						value = 30
+						compare = greater_than_or_equals
+					}
+				}
+				add_to_variable = {
+					var = USA_democratic_party_popularity_var
+					value = 1
+					tooltip = democrats_popularity_change_1
+				}
+				add_to_variable = {
+					var = USA_republican_party_popularity_var
+					value = -1
+					tooltip = republicans_popularity_change_-1
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = USA_democratic_party_popularity_var
+						value = 30
+						compare = less_than_or_equals
+					}
+				}
+				add_to_variable = {
+					var = USA_democratic_party_popularity_var
+					value = 2
+					tooltip = democrats_popularity_change_2
+				}
+				add_to_variable = {
+					var = USA_republican_party_popularity_var
+					value = -2
+					tooltip = republicans_popularity_change_-2
+				}
+			}
+			hidden_effect = {
+				IF = {
+					limit = {
+						NOT = {
+							has_completed_focus = USA_gridlock
+						}
+					}
+					activate_mission = USA_emergency_democrat_campaign
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = {
+							has_active_mission = USA_emergency_republican_campaign
+							has_completed_focus = USA_gridlock
+						}
+						check_variable = {
+							var = USA_republican_party_popularity_var
+							value = 55
+							compare = less_than_or_equals
+						}
+					}
+					activate_mission = USA_emergency_republican_campaign
+				}
+			}
+		}
+		complete_effect = {
+			
+		}
+	}
+}
+USA_sons_of_liberty_decisions_government = {
+	USA_police_crackdown = {
+		icon = generic_police_action
+		available = {
+			
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 35
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.05
+			political_power_gain = -0.1
+			stability_weekly = 0.002
+		}
+		complete_effect = {
+			add_stability = -0.01
+		}
+		remove_effect = {
+			add_stability = 0.01
+			add_to_variable = {
+				var = libertarians_strength
+				value = -1
+				tooltip = sol_lose_strength
+			}
+		}
+	}
+	USA_appease_normal_citizens = {
+		icon = generic_welfare
+		available = {
+			
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 35
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.2
+			stability_weekly = 0.005
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_stability = 0.01
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.025
+			}
+			add_to_variable = {
+				var = libertarians_popularity
+				value = -1
+				tooltip = sol_lose_pop
+			}
+		}
+	}
+	USA_hunt_down_rebels = {
+		icon = generic_military
+		available = {
+			
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 35
+		cost = 25
+		modifier = {
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+			add_manpower = -25000
+		}
+		remove_effect = {
+			add_stability = 0.025
+			add_to_variable = {
+				var = libertarians_strength
+				value = -1
+				tooltip = sol_lose_strength
+			}
+		}
+	}
+	USA_discredit_the_leaders = {
+		icon = generic_speech
+		available = {
+			
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 35
+		cost = 25
+		modifier = {
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			add_political_power = 10
+			add_to_variable = {
+				var = libertarians_popularity
+				value = -1
+				tooltip = sol_lose_pop
+			}
+		}
+	}
+	USA_crush_them = {
+		icon = generic_assassination
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = sol_got_nothin
+				check_variable = {
+					var = libertarians_popularity
+					value = 0
+					compare = less_than_or_equals
+				}
+				check_variable = {
+					var = libertarians_strength
+					value = 0
+					compare = less_than_or_equals
+				}
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 0
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			set_country_flag = the_libertarians_have_been_crushed
+			custom_effect_tooltip = crushing_the_libertarians
+			hidden_effect = {
+				remove_mission = USA_the_rebels_expand_influence
+				every_state = {
+					limit = {
+						is_demilitarized_zone = yes
+						is_controlled_by = USA
+						is_owned_by = USA
+					}
+					set_demilitarized_zone = no
+				}
+			}
+		}
+		remove_effect = {
+		}
+	}
+	USA_the_rebels_expand_influence = {
+		icon = BOL_reintegrate_acre_state
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = the_libertarians_havent_been_crushed
+				always = no
+			}
+		}
+		cancel_trigger = {
+		}
+		days_mission_timeout = 14
+		fire_only_once = no
+		fixed_random_seed = no
+		activation = {
+			has_country_flag = sided_with_monarchists
+			NOT = {
+				has_country_flag = the_libertarians_have_been_crushed
+			}
+		}
+		is_good = no
+		timeout_effect = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.01
+			}
+			random_owned_controlled_state = {
+				limit = {
+					any_neighbor_state = {
+						is_demilitarized_zone = yes
+					}
+					is_capital = no
+				}
+				set_demilitarized_zone = yes
+			}
+			activate_mission = USA_the_rebels_expand_influence
+		}
+		complete_effect = {
+		}
+	}
+}
+USA_sons_of_liberty_decisions_rebels = {
+	
+	USA_expand_rebellion_to_state = {
+		icon = BOL_reintegrate_acre_state
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				is_core_of = USA
+				is_controlled_by = USA
+				is_in_home_area = yes
+				is_demilitarized_zone = no
+				any_neighbor_state = {
+					is_demilitarized_zone = yes
+				}
+			}
+		}
+		cancel_trigger = {
+			has_government = democratic
+		}
+		available = {
+			
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 14
+		cost = 15
+		modifier = {
+			political_power_gain = -0.05
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			FROM = {
+				set_demilitarized_zone = yes
+				IF = {
+					limit = {
+						is_capital = yes
+					}
+					USA = {
+						country_event = usarework.62
+					}
+				}
+				FROM = { 
+					set_temp_variable = { USA.state_population = state_population_k }
+				}
+				divide_temp_variable = {
+					var = state_population
+					value = USA.max_manpower_k
+				}
+				USA = {
+					add_popularity = {
+						ideology = democratic
+						popularity = state_population
+					}
+					add_to_variable = {
+						var = num_of_states_fallen_to_libertarians
+						value = 1
+					}
+				}
+			}
+		}
+	}
+	USA_kick_out_the_monarchy = {
+		icon = generic_political_rally
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = USA_15_states_controlled
+				check_variable = {
+					var = num_of_states_fallen_to_libertarians
+					value = 15
+					compare = greater_than_or_equals
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = USA_capital_controlled
+				has_country_flag = USA_the_capital_has_fallen_to_libertarians
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 50
+		modifier = {
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			country_event = usarework.65
+		}
+	}
+}
+USA_path_guides_cat = {
+	
+	USA_path_guides = {
+		icon = FIN_stop_motti_tactics
+		available = {
+			
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 0
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			country_event = usarework.63
+		}
+		remove_effect = {
+			
+		}
+	}
+}
+USA_exile_the_monarchy = {
+	USA_send_monarch_to_country = {
+		icon = generic_monarchy
+		available = {
+			
+		}
+		target_trigger = {
+			FROM = {
+				has_government = neutrality
+				is_subject = no
+			}
+		}
+		visible = {
+			has_country_flag = we_can_exile_the_monarch
+			NOT = {
+				any_country = {
+					has_country_flag = USA_has_sent_monarch_to_this_country
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 0
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			FROM = {
+				set_country_flag = USA_has_sent_monarch_to_this_country
+				add_ideas = USA_exiled_american_royal_family
+			}
+			hidden_effect = {
+				country_event = {
+					id = usarework.68
+					days = 3
+				}
+			}
+		}
+		remove_effect = {
+			
+		}
+	}
+}
+USA_retake_the_homeland = {
+	USA_integrate_america = {
+		icon = generic_form_nation
+		available = {
+			controls_state = 361
+			USA = {
+				OR = {
+					exists = no
+					has_capitulated = yes
+				}
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 0
+		cost = 50
+		modifier = {
+		}
+		complete_effect = {
+			every_state = {
+				limit = {
+					is_core_of = USA
+				}
+				add_core_of = ROOT
+			}
+			transfer_state = 361
+			set_cosmetic_tag = USA_kingdom_of_america
+			add_stability = .1
+			set_capital = { state = 361 }
+			remove_ideas = USA_exiled_american_royal_family
+		}
+		remove_effect = {
+		}
+	}
+}
+USA_test_cosmetics = {
+	USA_test_on_this_country = {
+		icon = generic_monarchy
+		available = {
+			
+		}
+		target_trigger = {
+			FROM = {
+				has_government = USA
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 0
+		cost = 0
+		modifier = {
+		}
+		complete_effect = {
+			FROM = {
+				set_cosmetic_tag = libertarian_puppet
+			}
+		}
+		remove_effect = {
+			
+		}
+	}
+}
+USA_the_revolution_spreads = {
+	USA_set_up_free_state = {
+		icon = SWI_swiss_democratic_tradition_campaign
+		available = {
+			
+		}
+		target_trigger = {
+			FROM = {
+				has_government = democratic
+				is_subject_of = USA
+			}
+		}
+		visible = {
+			FROM = {
+				NOT = {
+					has_country_leader = {
+						name = "Provisional Free Council"
+						ruling_only = yes
+					}
+				}
+			}
+			has_completed_focus = USA_prop_up_free_states
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 14
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			FROM = {
+				hidden_effect = {
+					set_cosmetic_tag = libertarian_puppet
+					set_politics = {
+    					ruling_party = democratic
+   				 		elections_allowed = no
+					}
+				}
+				create_country_leader = {
+					name = "Provisional Free Council"
+					picture = GFX_Portrait_USA_sons_of_liberty
+					expire = "1965.1.1"
+					ideology = libertarian
+					traits = { libertarian }
+				}
+				set_party_name = {
+    				ideology = neutrality
+   					long_name = USA_coalition_for_liberty
+			    	name = USA_coalition_for_liberty
+				}
+			}
+		}
+	}
+	USA_integrate_free_states = {
+		icon = generic_nationalism
+		available = {
+			
+		}
+		target_trigger = {
+			FROM = {
+				has_government = democratic
+				is_subject_of = USA
+			}
+		}
+		visible = {
+			FROM = {
+				has_country_leader = {
+					name = "Provisional Free Council"
+					ruling_only = yes
+				}
+			}
+			has_completed_focus = USA_united_free_states
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 70
+		cost = 100
+		modifier = {
+			political_power_gain = -0.15
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = FROM
+				}
+				add_core_of = ROOT
+			}
+			ROOT = {
+				annex_country = {
+					target = FROM
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+	USA_integrate_state = {
+		icon = BOL_reintegrate_acre_state
+		available = {
+			
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_coastal = yes
+					any_neighbor_state = {
+						is_core_of = USA
+					}
+				}
+				NOT = {
+					is_core_of = USA
+				}
+				is_controlled_by = USA
+			}
+		}
+		visible = {
+			has_completed_focus = USA_united_free_states
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 70
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			FROM = {
+				add_core_of = USA
+			}
+		}
+	}
+}
+USA_reintegrate_former_lands = {
+	USA_reintegrate_states = {
+		icon = infiltrate_state
+		available = {
+			FROM = {
+				is_controlled_by = USA
+			}
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				OR = {
+					has_state_flag = USA_former_claimed_land
+					is_core_of = HAW
+					is_core_of = PUE
+				}
+				NOT = {
+					is_core_of = USA
+				}
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 35
+		cost = 25
+		modifier = {
+			political_power_gain = -0.05
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			FROM = {
+				add_core_of = USA
+			}
+		}
+	}
+}
+USA_establish_military_governments = {
+	USA_set_up_mil_gov = {
+		icon = generic_protection
+		available = {
+		}
+		target_trigger = {
+			FROM = {
+				is_subject_of = USA
+				NOT = {
+					has_country_leader = {
+						name = "United States Military"
+						ruling_only = yes
+					}
+				}
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 35
+		cost = 25
+		modifier = {
+			political_power_gain = -0.05
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			USA = {
+				set_autonomy = {
+					target = FROM
+					autonomy_state = autonomy_integrated_puppet
+				}
+			}
+			FROM = {
+				set_politics = { ruling_party = neutrality elections_allowed = no }
+				create_country_leader = {
+					name = "United States Military"
+					picture = GFX_portrait_USA_military_gov
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = { military_modernizer }
+				}
+				set_party_name = {
+    				ideology = neutrality
+   					long_name = USA_military_party_long
+			    	name = USA_military_party
+				}
+				hidden_effect = {
+					set_cosmetic_tag = american_military_puppet
+				}
+			}
+		}
+	}
+}
+USA_disney_propoganda_films = {
+	USA_der_fuehrers_face = {
+		icon = GFX_decision_usa_mickey_mouse
+		available = {
+			has_war_with = GER
+			GER = {
+				has_government = fascism
+			}
+			custom_trigger_tooltip = {
+				tooltip = not_making_propoganda
+				NOT = {
+					has_country_flag = is_currently_making_propoganda
+				}
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.1
+		}
+		complete_effect = {
+			set_country_flag = is_currently_making_propoganda
+		}
+		remove_effect = {
+			add_war_support = 0.05
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.05
+			}
+			clr_country_flag  = is_currently_making_propoganda
+		}
+	}
+	USA_donald_gets_drafted = {
+		icon = GFX_decision_usa_mickey_mouse
+		available = {
+			NOT = {
+				has_idea = disarmed_nation
+				has_idea = volunteer_only
+			}
+			has_war = yes
+			custom_trigger_tooltip = {
+				tooltip = not_making_propoganda
+				NOT = {
+					has_country_flag = is_currently_making_propoganda
+				}
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.1
+		}
+		complete_effect = {
+			set_country_flag = is_currently_making_propoganda
+		}
+		remove_effect = {
+			add_war_support = 0.025
+			add_manpower = 10000
+			clr_country_flag  = is_currently_making_propoganda
+		}
+	}
+	USA_donalds_decision = {
+		icon = GFX_decision_usa_mickey_mouse
+		available = {
+			NOT = {
+				has_idea = war_economy
+				has_idea = tot_economic_mobilisation
+			}
+			has_war = yes
+			NOT = {
+				has_idea = usa_civilians_invest_in_war_bonds
+			}
+			custom_trigger_tooltip = {
+				tooltip = not_making_propoganda
+				NOT = {
+					has_country_flag = is_currently_making_propoganda
+				}
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.1
+		}
+		complete_effect = {
+			set_country_flag = is_currently_making_propoganda
+		}
+		remove_effect = {
+			add_timed_idea = {
+				idea = usa_civilians_invest_in_war_bonds
+				days = 90
+			}
+			clr_country_flag  = is_currently_making_propoganda
+		}
+	}
+	USA_commando_duck = {
+		icon = GFX_decision_usa_mickey_mouse
+		available = {
+			has_war_with = JAP
+			custom_trigger_tooltip = {
+				tooltip = not_making_propoganda
+				NOT = {
+					has_country_flag = is_currently_making_propoganda
+				}
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.1
+		}
+		complete_effect = {
+			set_country_flag = is_currently_making_propoganda
+		}
+		remove_effect = {
+			add_war_support = 0.05
+			clr_country_flag  = is_currently_making_propoganda
+		}
+	}
+	USA_spirit_of_43 = {
+		icon = GFX_decision_usa_mickey_mouse
+		available = {
+			has_war = yes
+			date > 1943.1.1
+			date < 1944.1.1
+			NOT = {
+				has_idea = usa_civilians_invest_in_war_bonds
+			}
+			custom_trigger_tooltip = {
+				tooltip = not_making_propoganda
+				NOT = {
+					has_country_flag = is_currently_making_propoganda
+				}
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 35
+		cost = 25
+		modifier = {
+			political_power_gain = -0.1
+			consumer_goods_factor = 0.1
+		}
+		complete_effect = {
+			set_country_flag = is_currently_making_propoganda
+		}
+		remove_effect = {
+			add_timed_idea = {
+				idea = usa_civilians_invest_in_war_bonds
+				days = 90
+			}
+			clr_country_flag  = is_currently_making_propoganda
+		}
+	}
+}
+USA_ttf = {
+	USA_buy_dr_pepper = {
+		icon = hol_attract_foreign_investors
+		available = {
+			375 = {
+				is_controlled_by = ROOT
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 375
+    		}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 50
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			375 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			add_to_variable = {
+				var = number_of_domestic_soda_companies_purchased
+				value = 1
+			}
+			IF = {
+				limit = {
+					check_variable = {
+    					number_of_domestic_soda_companies_purchased = 4
+					}
+				}
+				add_ideas = USA_hegemon_of_soda
+			}
+		}
+	}
+	USA_buy_rc_cola = {
+		icon = hol_attract_foreign_investors
+		available = {
+			365 = {
+				is_controlled_by = ROOT
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 365
+    		}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 50
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			365 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			add_to_variable = {
+				var = number_of_domestic_soda_companies_purchased
+				value = 1
+			}
+			IF = {
+				limit = {
+					check_variable = {
+    					number_of_domestic_soda_companies_purchased = 4
+					}
+				}
+				add_ideas = USA_hegemon_of_soda
+			}
+		}
+	}
+	USA_buy_pepsi_cola = {
+		icon = hol_attract_foreign_investors
+		available = {
+			363 = {
+				is_controlled_by = ROOT
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 363
+    		}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 50
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			363 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			add_to_variable = {
+				var = number_of_domestic_soda_companies_purchased
+				value = 1
+			}
+			IF = {
+				limit = {
+					check_variable = {
+    					number_of_domestic_soda_companies_purchased = 4
+					}
+				}
+				add_ideas = USA_hegemon_of_soda
+			}
+		}
+	}
+	USA_buy_barqs = {
+		icon = hol_attract_foreign_investors
+		available = {
+			371 = {
+				is_controlled_by = ROOT
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 371
+    		}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 50
+		cost = 25
+		modifier = {
+			consumer_goods_factor = 0.15
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			371 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			add_to_variable = {
+				var = number_of_domestic_soda_companies_purchased
+				value = 1
+			}
+			IF = {
+				limit = {
+					check_variable = {
+    					number_of_domestic_soda_companies_purchased = 4
+					}
+				}
+				add_ideas = USA_hegemon_of_soda
+			}
+		}
+	}
+}
+USA_cola_abroad = {
+	USA_buy_canada_dry = {
+		icon = hol_attract_foreign_investors
+		available = {
+			276 = {
+				OR = {
+					is_owned_and_controlled_by = ROOT
+					owner = {
+						is_subject_of = ROOT
+					}
+				}
+			}
+			CAN = {
+				OR = {
+					exists = no
+					is_subject_of = ROOT
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 276
+    		}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 100
+		cost = 120
+		modifier = {
+			consumer_goods_factor = 0.15
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			276 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			every_state = {
+				limit = {
+					is_core_of = CAN
+				}
+				add_core_of = USA
+			}
+			IF = {
+				limit = {
+					CAN {
+						exists = yes
+					}
+				}
+				every_state = {
+					limit = {
+						is_owned_by = CAN
+					}
+					transfer_state_to = USA
+				}
+			}
+		}
+	}
+	USA_reabsorb_fanta = {
+		icon = generic_operation
+		available = {
+			64 = {
+				OR = {
+					is_owned_and_controlled_by = ROOT
+					owner = {
+						is_subject_of = ROOT
+					}
+				}
+			}
+			GER = {
+				OR = {
+					exists = no
+					is_subject_of = ROOT
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 64
+    		}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 200
+		cost = 300
+		modifier = {
+			consumer_goods_factor = 0.15
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			64 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			every_state = {
+				limit = {
+					is_core_of = GER
+				}
+				add_core_of = USA
+			}
+			IF = {
+				limit = {
+					GER {
+						exists = yes
+					}
+				}
+				every_state = {
+					limit = {
+						is_owned_by = GER
+					}
+					transfer_state_to = USA
+				}
+			}
+		}
+	}
+	USA_buy_schweppes = {
+		icon = hol_attract_foreign_investors
+		available = {
+			126 = {
+				OR = {
+					is_owned_and_controlled_by = ROOT
+					owner = {
+						is_subject_of = ROOT
+					}
+				}
+			}
+			ENG = {
+				OR = {
+					exists = no
+					is_subject_of = ROOT
+				}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+        		state = 126
+    		}
+		}
+		visible = {
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = yes
+		days_remove = 200
+		cost = 300
+		modifier = {
+			consumer_goods_factor = 0.15
+			political_power_gain = -0.2
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			126 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			every_state = {
+				limit = {
+					is_core_of = ENG
+				}
+				add_core_of = USA
+			}
+			IF = {
+				limit = {
+					ENG {
+						exists = yes
+					}
+				}
+				every_state = {
+					limit = {
+						is_owned_by = ENG
+					}
+					transfer_state_to = USA
+				}
+			}
+		}
+	}
+}
+USA_new_fordlandias = {
+	USA_develop_fordlandia_in_state = {
+		icon = infiltrate_state
+		available = {
+			FROM = {
+				is_controlled_by = USA
+			}
+		}
+		state_target = yes
+		target_trigger = {
+			FROM = {
+				rubber > 0
+				is_controlled_by = ROOT
+				NOT = {
+					is_core_of = USA
+				}
+			}
+		}
+		visible = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		fire_only_once = no
+		days_remove = 70
+		cost = 50
+		modifier = {
+			political_power_gain = -0.15
+			consumer_goods_factor = 0.1
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			FROM = {
+				add_core_of = USA
+			}
+			add_resource = {
+				type = rubber
+				amount = 20
+			    state = FROM
+			}
+		}
+	}
+}

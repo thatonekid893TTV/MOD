@@ -1,0 +1,2881 @@
+GRE_the_collapse = {
+	GRE_surrender = {
+
+		allowed = { tag = GRE }
+
+		icon = generic_scorched_earth
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+ priority = 1     
+		days_mission_timeout = 180
+		is_good = no
+		fire_only_once = yes
+
+		cancel_trigger = {
+              if = {
+		            limit = { has_completed_focus = GRE_seleucus }	
+                     PER = { exists = no } }	
+              if = {
+		            limit = { has_completed_focus = GRE_ptolemy }	
+                     EGY = { exists = no } }	
+              if = {
+		            limit = { has_completed_focus = GRE_lysimachus }	
+                     BUL = { exists = no } }	
+              if = {
+		            limit = { has_completed_focus = GRE_cassander }	
+                     ALB = { exists = no } }	
+              if = {
+		            limit = { has_completed_focus = GRE_antigonus }	
+                     TUR = { exists = no } }		
+			}
+		
+		activation = {
+			has_idea = GRE_to_arms
+		}
+
+		visible = {
+			has_idea = GRE_to_arms
+		}
+		
+		cancel_effect = {
+		
+		}
+
+		timeout_effect = {
+			add_ideas = GRE_alexander_failed
+              if = {
+		            limit = { has_completed_focus = GRE_seleucus }	
+                   PER = {
+					white_peace = GRE
+				}} 	
+              if = {
+		            limit = { has_completed_focus = GRE_ptolemy }	
+                  EGY = {
+					white_peace = GRE
+				} }	
+              if = {
+		            limit = { has_completed_focus = GRE_lysimachus }	
+                                     BUL = {
+					white_peace = GRE
+				} }	
+              if = {
+		            limit = { has_completed_focus = GRE_cassander }	
+                                      ALB = {
+					white_peace = GRE
+				} }	
+              if = {
+		            limit = { has_completed_focus = GRE_antigonus }	
+                                     TUR = {
+					white_peace = GRE
+				} }				
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	GRE_zgive_speeches = {
+
+		icon = eng_propaganda_campaigns
+
+		available = {
+			 has_active_mission = GRE_surrender
+		}
+     visible = {
+	 has_active_mission = GRE_surrender
+	 }
+		cost = 30
+		fire_only_once = no
+		days_remove = 30
+		ai_will_do = {
+			factor = 2
+		}
+		modifier = {
+			political_power_gain = 0.2
+			army_attack_factor = 0.2
+		}
+		complete_effect = {
+			add_days_mission_timeout  = {
+					mission = GRE_surrender
+					days = 90
+				}
+		}
+	}
+	GRE_hire_volcano = {
+
+		icon = gre_faction_management
+
+		available = {
+			 has_active_mission = GRE_surrender
+		}
+    visible = {
+	 has_active_mission = GRE_surrender
+	 }
+cost = 50
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		complete_effect = {
+		create_corps_commander = {
+			name = "Hephaestionas"
+			portrait_path = "GFX_portrait_mac_alexander_argead"
+			traits = { panzer_leader panzer_expert desert_fox swamp_fox jungle_rat ranger urban_assault_specialist winter_expert winter_specialist cavalry_leader cavalry_expert trait_mountaineer skilled_staffer adaptable hill_fighter infantry_leader infantry_expert }
+			skill = 9
+			attack_skill = 10
+			defense_skill = 10
+			planning_skill = 10
+			logistics_skill = 10
+		}
+ hidden_effect = {
+				division_template = {
+					name = "Somatophylakes"
+					priority = 2
+					division_names_group = GRE_INF_01
+					regiments = {
+						cavalry = { x = 0 y = 0 }
+						cavalry = { x = 0 y = 1 }
+						cavalry = { x = 0 y = 2 }
+			
+	    	   		 	cavalry = { x = 1 y = 0 }
+						cavalry = { x = 1 y = 1 }
+						cavalry = { x = 1 y = 2 }
+			
+	    	   		 	cavalry = { x = 2 y = 0 }
+						cavalry = { x = 2 y = 1 }
+						cavalry = { x = 2 y = 2 }
+						
+						artillery_brigade = { x = 0 y = 3 }
+						artillery_brigade = { x = 1 y = 3 }
+						artillery_brigade = { x = 2 y = 3 }						
+					}
+				}			
+			}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}				
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					create_unit = {
+						division = "name = \"1. Somatophylakes\" division_template = \"Somatophylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+					
+				}				
+				}		
+		}
+		
+	GRE_sureender = {
+
+		icon = eng_trade_unions_support
+
+		available = {
+			 has_active_mission = GRE_surrender
+		}
+    visible = {
+	 has_active_mission = GRE_surrender
+	 }
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		complete_effect = {
+		custom_effect_tooltip = GRE_we_peace
+		hidden_effect = {
+			add_days_mission_timeout  = {
+					mission = GRE_surrender
+					days = -9999
+				}	}	
+				           add_timed_idea = {
+				idea = GRE_coward
+				days = 180
+			}
+		}
+	}		
+	GRE_philip_in_charge = {
+
+		icon = eng_ally_imperialist_coup
+
+		available = {
+
+			 has_idea = GRE_coward 
+		}
+    visible = {
+	 or = {
+			 has_active_mission = GRE_surrender
+			 has_idea = GRE_coward }
+	 }
+
+		fire_only_once = yes
+		days_remove = 1
+		ai_will_do = {
+			factor = 2
+		}
+
+		complete_effect = {
+
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Philip II"
+			desc = "POLITICS_alexander_II_DESC"
+			picture = "GFX_portrait_philipiimac"
+			expire = "1965.1.1"
+			ideology = oligarchism
+			female = yes
+			traits = {
+			   empire_builder hergemon scared_philip polemarch mastermind_code_cracker ethnarch
+			}
+		}		
+		}
+	}
+	GRE_new_macedonia = {
+
+		icon = gre_paying_ifc_debt
+cost = 75
+		available = {
+
+			 has_idea = GRE_alexander_failed 
+              if = {
+		            limit = { has_completed_focus = GRE_seleucus }	
+                     PER = { exists = no } }	
+              if = {
+		            limit = { has_completed_focus = GRE_ptolemy }	
+                     EGY = { exists = no } }	
+              if = {
+		            limit = { has_completed_focus = GRE_lysimachus }	
+                     BUL = { exists = no } }	
+              if = {
+		            limit = { has_completed_focus = GRE_cassander }	
+                     ALB = { exists = no } }	
+              if = {
+		            limit = { has_completed_focus = GRE_antigonus }	
+                     TUR = { exists = no } }			 
+		}
+    visible = {
+	 or = {
+			 has_active_mission = GRE_surrender
+			 has_idea = GRE_alexander_failed }
+	 }
+
+		fire_only_once = yes
+		days_remove = 1
+		ai_will_do = {
+			factor = 2
+		}
+
+		complete_effect = {
+		remove_ideas = GRE_alexander_failed
+		}
+	}	
+
+}
+
+
+GRE_gl = {
+
+GRE_annex_americas = {
+
+		
+		icon = {
+			key = GFX_decision_GRE_claim_state_1
+			trigger = {
+				has_completed_focus = GRE_integrate_americas
+			NOT = {	has_state_flag = GRE_1conquer }
+			NOT = {	has_state_flag = GRE_2conquer }
+			NOT = {	has_state_flag = GRE_3conquer }
+			NOT = {	has_state_flag = GRE_4conquer }
+			}
+		}
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		available = {
+			
+		}
+
+		state_target = yes
+
+		on_map_mode = map_only
+
+		#targets = {  }
+
+		target_array = controlled_states
+
+		target_trigger = {
+			has_completed_focus = GRE_integrate_americas
+			FROM = {
+				NOT = {
+					is_core_of = GRE
+				}
+				OR = {
+					is_on_continent = south_america 
+				is_on_continent = north_america 
+					}
+					NOT = {	has_state_flag = GRE_1conquer }
+			NOT = {	has_state_flag = GRE_2conquer }
+			NOT = {	has_state_flag = GRE_3conquer }
+			NOT = {	has_state_flag = GRE_4conquer }					
+				}
+				
+					
+					
+				
+				
+			}
+		
+
+		cost = 20
+
+		fire_only_once = yes
+
+		days_remove = 15
+
+		modifier = {
+			weekly_manpower = -200
+		}
+
+		visible = {
+			tag = GRE
+			has_completed_focus = GRE_integrate_americas
+			always = yes
+		}
+
+		complete_effect = {
+
+		}
+
+		remove_effect = {
+           
+
+			  
+			FROM = {
+				add_compliance = 10
+				add_resistance = -10
+				set_state_flag = GRE_1conquer 
+				}
+			   
+
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+			
+			}
+		
+		}
+	}
+GRE_annex_americas2 = {
+
+		
+		icon = {
+			key = GFX_decision_GRE_claim_state_2
+			trigger = {
+				has_completed_focus = GRE_integrate_americas
+			has_state_flag = GRE_1conquer 
+			NOT = {	has_state_flag = GRE_2conquer }
+			NOT = {	has_state_flag = GRE_3conquer }
+			NOT = {	has_state_flag = GRE_4conquer }
+			}
+		}
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		available = {
+			
+		}
+
+		state_target = yes
+
+		on_map_mode = map_only
+
+		#targets = {  }
+
+		target_array = controlled_states
+
+		target_trigger = {
+			has_completed_focus = GRE_integrate_americas
+			FROM = {
+				NOT = {
+					is_core_of = GRE
+				}
+				OR = {
+					is_on_continent = south_america 
+				is_on_continent = north_america 
+					}
+					has_state_flag = GRE_1conquer 
+			NOT = {	has_state_flag = GRE_2conquer }
+			NOT = {	has_state_flag = GRE_3conquer }
+			NOT = {	has_state_flag = GRE_4conquer }					
+				}
+				
+					
+					
+				
+				
+			}
+		
+
+		cost = 20
+
+		fire_only_once = yes
+
+		days_remove = 15
+
+		modifier = {
+			weekly_manpower = -200
+		}
+
+		visible = {
+			tag = GRE
+			has_completed_focus = GRE_integrate_americas
+			always = yes
+		}
+
+		complete_effect = {
+
+		}
+
+		remove_effect = {
+           
+
+			  
+			FROM = {
+				add_compliance = 20
+				add_resistance = -20
+				set_state_flag = GRE_2conquer 
+				}
+			   
+
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+			
+			}
+		
+		}
+	}
+GRE_annex_americas3 = {
+
+		
+		icon = {
+			key = GFX_decision_GRE_claim_state_3
+			trigger = {
+				has_completed_focus = GRE_integrate_americas
+			has_state_flag = GRE_1conquer 
+				has_state_flag = GRE_2conquer 
+			NOT = {	has_state_flag = GRE_3conquer }
+			NOT = {	has_state_flag = GRE_4conquer }
+			}
+		}
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		available = {
+			
+		}
+
+		state_target = yes
+
+		on_map_mode = map_only
+
+		#targets = {  }
+
+		target_array = controlled_states
+
+		target_trigger = {
+			has_completed_focus = GRE_integrate_americas
+			FROM = {
+				NOT = {
+					is_core_of = GRE
+				}
+				OR = {
+					is_on_continent = south_america 
+				is_on_continent = north_america 
+					}
+					has_state_flag = GRE_1conquer 
+				has_state_flag = GRE_2conquer 
+			NOT = {	has_state_flag = GRE_3conquer }
+			NOT = {	has_state_flag = GRE_4conquer }					
+				}
+				
+					
+					
+				
+				
+			}
+		
+
+		cost = 20
+
+		fire_only_once = yes
+
+		days_remove = 15
+
+		modifier = {
+			weekly_manpower = -200
+		}
+
+		visible = {
+			tag = GRE
+			has_completed_focus = GRE_integrate_americas
+			always = yes
+		}
+
+		complete_effect = {
+
+		}
+
+		remove_effect = {
+           
+
+			  
+			FROM = {
+				add_compliance = 30
+				add_resistance = -30
+				set_state_flag = GRE_3conquer 
+				}
+			   
+
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+			
+			}
+		
+		}
+	}
+GRE_annex_americas4 = {
+
+		
+		icon = {
+			key = GFX_decision_GRE_claim_state_4
+			trigger = {
+				has_completed_focus = GRE_integrate_americas
+			has_state_flag = GRE_1conquer 
+				has_state_flag = GRE_2conquer 
+			has_state_flag = GRE_3conquer 
+			NOT = {	has_state_flag = GRE_4conquer }
+			}
+		}
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		available = {
+			
+		}
+
+		state_target = yes
+
+		on_map_mode = map_only
+
+		#targets = {  }
+
+		target_array = controlled_states
+
+		target_trigger = {
+			has_completed_focus = GRE_integrate_americas
+			FROM = {
+				NOT = {
+					is_core_of = GRE
+				}
+				OR = {
+					is_on_continent = south_america 
+				is_on_continent = north_america 
+					}
+					has_state_flag = GRE_1conquer 
+				has_state_flag = GRE_2conquer 
+			has_state_flag = GRE_3conquer 
+			NOT = {	has_state_flag = GRE_4conquer }					
+				}
+				
+					
+					
+				
+				
+			}
+		
+
+		cost = 20
+
+		fire_only_once = yes
+
+		days_remove = 15
+
+		modifier = {
+			weekly_manpower = -200
+		}
+
+		visible = {
+			tag = GRE
+			has_completed_focus = GRE_integrate_americas
+			always = yes
+		}
+
+		complete_effect = {
+
+		}
+
+		remove_effect = {
+           
+
+			  
+			FROM = {
+				add_core_of = GRE
+				set_state_flag = GRE_4conquer 
+				}
+			   
+
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+			
+			}
+		
+		}
+	}
+}
+
+
+
+GRE_colonial_policy = {
+
+GRE_eng = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+		target_trigger = {
+			FROM = {
+				tag = ENG
+			}
+		}
+
+		fire_only_once = no
+
+		days_remove = 60
+		
+		cost = 100
+
+		visible = {		
+			has_completed_focus = war_with_ger
+		}
+
+
+		remove_effect = {
+			ENG = { country_event = { id = colonies.1 days = 1 } }				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_ita = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+		target_trigger = {
+			FROM = {
+				tag = ITA
+			}
+		}
+
+		fire_only_once = no
+
+		days_remove = 60
+		
+		cost = 100
+
+		visible = {		
+			has_completed_focus = war_with_ger
+		}
+
+
+		remove_effect = {
+			ITA = { country_event = { id = colonies.1 days = 1 } }				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_eth = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+		target_trigger = {
+			FROM = {
+				tag = ETH
+			}
+		}
+
+		fire_only_once = no
+
+		days_remove = 60
+		
+		cost = 100
+
+		visible = {		
+			has_completed_focus = war_with_ger
+		}
+
+
+		remove_effect = {
+			ETH = { country_event = { id = colonies.1 days = 1 } }				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_lib = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+		target_trigger = {
+			FROM = {
+				tag = LIB
+			}
+		}
+
+		fire_only_once = no
+
+		days_remove = 60
+		
+		cost = 100
+
+		visible = {		
+			has_completed_focus = war_with_ger
+		}
+
+
+		remove_effect = {
+			LIB = { country_event = { id = colonies.1 days = 1 } }				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_fra = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+		target_trigger = {
+			FROM = {
+				tag = FRA
+			}
+		}
+
+		fire_only_once = no
+
+		days_remove = 60
+		
+		cost = 100
+
+		visible = {		
+			has_completed_focus = war_with_ger
+		}
+
+
+		remove_effect = {
+			FRA = { country_event = { id = colonies.1 days = 1 } }				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_por = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+		target_trigger = {
+			FROM = {
+				tag = POR
+			}
+		}
+
+		fire_only_once = no
+
+		days_remove = 60
+		
+		cost = 100
+
+		visible = {		
+			has_completed_focus = war_with_ger
+		}
+
+
+		remove_effect = {
+			POR = { country_event = { id = colonies.1 days = 1 } }				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_spr = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+		target_trigger = {
+			FROM = {
+				tag = SPR
+			}
+		}
+
+		fire_only_once = no
+
+		days_remove = 60
+		
+		cost = 100
+
+		visible = {		
+			has_completed_focus = war_with_ger
+		}
+
+
+		remove_effect = {
+			SPR = { country_event = { id = colonies.1 days = 1 } }				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_bel = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+		target_trigger = {
+			FROM = {
+				tag = BEL
+			}
+		}
+
+		fire_only_once = no
+
+		days_remove = 60
+		
+		cost = 100
+
+		visible = {		
+			has_completed_focus = war_with_ger
+		}
+
+
+		remove_effect = {
+			BEL = { country_event = { id = colonies.1 days = 1 } }				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_tigray = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_gre
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = TIG
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+GRE_qemant = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_gre
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = QEM
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_benish = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_gre
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = BEG
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_gambela = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_gre
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = GBA
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_sidamo = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_gre
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = SID
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_oromo = {
+		
+		icon = eng_propaganda_campaigns
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_gre
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = ORO
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_harral = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_gre
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = HAR
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_aussa = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_gre
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = AFA
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_somalia = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_gre
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = SOM
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_eritra = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_gre
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = ERI
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_libya = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_gre
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = LBA
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_egypt = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_tur
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = EGY
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_sudan = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_tur
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = SUD
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_uganda = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_tur
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = UGA
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+	
+GRE_kenya = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_tur
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = KEN
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_tanzania = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_tur
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = TZN
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_zambia = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_bul
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = ZAM
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_angola = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_bul
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = ANG
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_mozambig = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_bul
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = MZB
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}		
+		
+GRE_guinea_bisu = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_bul
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = GNB
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}		
+GRE_malawi = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_bul
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = MLW
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_zimba = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_bul
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = ZIM
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_botsana = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_tur
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = BOT
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_niggeria = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_tur
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = NGA
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_ghana = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_tur
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = GHA
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_sierra = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_tur
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = SIE
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_gambia = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_tur
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = GAM
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+
+GRE_algeria = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = ALG
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_tunisia = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = TUN
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_morro = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = MOR
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_maurita= {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = MRT
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_senegal= {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = SEN
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_mali= {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = MLI
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_guinea= {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = GNA
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}		
+GRE_ivory = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = IVO
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}		
+GRE_volta = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = VOL
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}		
+GRE_nigger = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = NGR
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_toga = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = TOG
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_benin = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = DAH
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_chad = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = CHA
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_car = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = CAR
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_camerroon = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = CMR
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_gabon = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = GAB
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_drc = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = RCG
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_madagascar = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_hun
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = MAD
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_liberia = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_ita
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = LIB
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_liberia = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_ita
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = LIB
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+GRE_equatorial = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {			 
+			has_completed_focus = claims_on_ita
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = EQG
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+	
+GRE_Sahrawi_Republic = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {
+			 	
+			has_completed_focus = claims_on_ita
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = WES
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_congo = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {
+			 		
+			has_completed_focus = claims_on_ita
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = COG
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_rwand = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {
+			 		
+			has_completed_focus = claims_on_ita
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = RWA
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}	
+GRE_burundi = {
+		
+		icon = eng_propaganda_campaigns
+
+
+		allowed = { 
+
+		}
+
+
+
+		fire_only_once = yes
+
+		days_remove = 10
+		
+		cost = 25
+
+		visible = {
+			has_completed_focus = claims_on_ita
+			 
+		}
+
+
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_core_of = BRD
+				}
+				add_claim_by = ROOT
+			}				
+        }
+		ai_will_do = {
+			factor = 0
+		}
+	}		
+}

@@ -1,0 +1,351 @@
+MON_improve_disjointed_party_effect = {
+	if = {
+		limit = { has_idea = MON_disjointed_party }
+		swap_ideas = {
+			remove_idea = MON_disjointed_party
+			add_idea = MON_disjointed_party_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = MON_disjointed_party_4 }
+		swap_ideas = {
+			remove_idea = MON_disjointed_party_4
+			add_idea = MON_disjointed_party_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = MON_disjointed_party_3 }
+		swap_ideas = {
+			remove_idea = MON_disjointed_party_3
+			add_idea = MON_disjointed_party_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = MON_disjointed_party_2 }
+		swap_ideas = {
+			remove_idea = MON_disjointed_party_2
+			add_idea = MON_disjointed_party_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = MON_disjointed_party_1 }
+		remove_ideas = MON_disjointed_party_1
+	}
+}
+
+MON_remove_disjointed_party_effect = {
+	if = {
+		limit = { has_idea = MON_disjointed_party }
+		remove_ideas = MON_disjointed_party
+	}
+	else_if = {
+		limit = { has_idea = MON_disjointed_party_4 }
+		remove_ideas = MON_disjointed_party_4
+	}
+	else_if = {
+		limit = { has_idea = MON_disjointed_party_3 }
+		remove_ideas = MON_disjointed_party_3
+	}
+	else_if = {
+		limit = { has_idea = MON_disjointed_party_2 }
+		remove_ideas = MON_disjointed_party_2
+	}
+	else_if = {
+		limit = { has_idea = MON_disjointed_party_1 }
+		remove_ideas = MON_disjointed_party_1
+	}
+}
+
+MON_improve_pastoral_society_effect = {
+	if = {
+		limit = { has_idea = MON_pastoral_society }
+		swap_ideas = {
+			remove_idea = MON_pastoral_society 
+			add_idea = MON_pastoral_society_2 
+		}
+	}
+	else_if = {
+		limit = { has_idea = MON_pastoral_society_2 }
+		swap_ideas = {
+			remove_idea = MON_pastoral_society_2 
+			add_idea = MON_pastoral_society_3 
+		}
+	}
+	else_if = {
+		limit = { has_idea = MON_pastoral_society_3 }
+		swap_ideas = {
+			remove_idea = MON_pastoral_society_3 
+			add_idea = MON_pastoral_society_4
+		}
+	}
+}
+
+MON_spawn_militia_effect = {
+
+	division_template = {
+		name = "Tsagdaagiin Khoroo"
+		is_locked = yes
+		priority = 0
+		template_counter = 3
+		#override_model = <entity>
+		regiments = {
+			militia_cavalry = { x = 0 y = 0 }
+		}
+	}
+	set_country_flag = MON_has_created_militia
+	capital_scope = {
+		create_unit = {
+			division = "name = \"Tsagdaagiin Khoroo\" division_template = \"Tsagdaagiin Khoroo\" start_experience_factor = 0"
+			owner = PREV
+		}
+		create_unit = {
+			division = "name = \"Tsagdaagiin Khoroo\" division_template = \"Tsagdaagiin Khoroo\" start_experience_factor = 0"
+			owner = PREV
+		}
+		create_unit = {
+			division = "name = \"Tsagdaagiin Khoroo\" division_template = \"Tsagdaagiin Khoroo\" start_experience_factor = 0"
+			owner = PREV
+		}
+	}
+
+}
+
+
+MON_purge_character_effect = {
+
+	if = {
+		limit = {
+			not = { has_completed_focus = MON_assassinate_demid }
+		}
+		random_character = {
+			limit = {
+				or = {
+					has_character_flag = MON_purge_target_flag
+					is_unit_leader = yes
+				}
+				not = { has_character_flag = MON_protected }
+			}
+			if = {
+				limit = { 
+					is_unit_leader = yes 
+				}
+				ROOT = { 
+					set_variable = { MON_general_purge_target = PREV } 
+				}
+				unit_leader_event = { 
+					id = mongolian_great_purge.3
+				}
+			}
+			else_if = {
+				limit = {
+					is_character_slot = political_advisor
+				}
+				ROOT = { 
+					set_variable = { MON_pol_purge_target = PREV }
+					country_event = { 
+						id = mongolian_great_purge.4
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					not = {
+						is_character_slot = political_advisor
+					}
+				}
+				ROOT = { 
+					set_variable = { MON_mil_purge_target = PREV } 
+					country_event = { 
+						id = mongolian_great_purge.5
+					}
+				}
+			}
+		}
+	}
+	else = {
+		random_character = {
+			limit = {
+				has_character_flag = MON_purge_target_flag
+				is_unit_leader = no
+				not = { has_character_flag = MON_protected }
+			}
+			if = {
+				limit = {
+					is_character_slot = political_advisor
+				}
+				ROOT = { 
+					set_variable = { MON_pol_purge_target = PREV }
+					country_event = { 
+						id = mongolian_great_purge.4
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					not = {
+						is_character_slot = political_advisor
+					}
+				}
+				ROOT = { 
+					set_variable = { MON_mil_purge_target = PREV } 
+					country_event = { 
+						id = mongolian_great_purge.5
+					}
+				}
+			}
+		}
+	}
+
+	random_character = {
+		limit = {
+			has_character_flag = MON_secondary_purge_target_flag
+		}
+		set_character_flag = MON_purge_target_flag
+		clr_character_flag = MON_secondary_purge_target_flag
+	}
+}
+
+
+
+#####
+##### PROPAGANDA SYSTEM #####
+#####
+MON_achievement_propaganda_counter_effect = {
+	if = {
+		limit = {
+			check_variable = { var = propaganda_counter value = 1 compare = less_than }
+		}
+		set_variable = { var = propaganda_counter value = 1 } #setup variable
+	}
+	else = {
+		add_to_variable = {
+			propaganda_counter = 1
+		}
+	}
+}
+MON_pick_propaganda_campaign_slot_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { MON_poster_left_icon_frame = MON_propaganda_empty_slot_index }
+			}
+			set_variable = { MON_poster_left_icon_frame = MON_new_propaganda_campaign }
+			#Ageing posters
+			set_variable = { MON_propaganda_left_poster_to_age = MON_poster_left_icon_frame } #This is used to prevent the system to break if a propaganda campaign is cancelled
+			hidden_effect = {
+				country_event = { id = mongolia_propaganda_events.101 days = MON_default_propaganda_campaign_old_days }
+				#set_country_flag = { flag = SOV_propaganda_left_days_remaining_flag days = SOV_default_propaganda_campaign_duration } #Surprise! This doesnät work with vars :D  Maybe in the future
+				if = { #Debug -> Faster time
+					limit = {
+						has_country_flag = MON_debug_fast_propaganda_campaigns_flag
+					}
+					set_country_flag = { flag = MON_propaganda_left_days_remaining_flag days = 5 }
+				}
+				else = { #Regular time
+					set_country_flag = { flag = MON_propaganda_left_days_remaining_flag days = 180 } #Need code support to use a var here
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { MON_poster_center_icon_frame = MON_propaganda_empty_slot_index }
+			}
+			set_variable = { MON_poster_center_icon_frame = MON_new_propaganda_campaign }
+			#Ageing posters
+			set_variable = { MON_propaganda_center_poster_to_age = MON_poster_center_icon_frame } #This is used to prevent the system to break if a propaganda campaign is cancelled
+			hidden_effect = {
+				country_event = { id = mongolia_propaganda_events.102 days = MON_default_propaganda_campaign_old_days }
+				#set_country_flag = { flag = SOV_propaganda_center_days_remaining_flag days = SOV_default_propaganda_campaign_duration } #Surprise! This doesnät work with vars :D  Maybe in the future
+				if = { #Debug -> Faster time
+					limit = {
+						has_country_flag = MON_debug_fast_propaganda_campaigns_flag
+					}
+					set_country_flag = { flag = MON_propaganda_center_days_remaining_flag days = 5 }
+				}
+				else = { #Regular time
+					set_country_flag = { flag = MON_propaganda_center_days_remaining_flag days = 180 } #Need code support to use a var here
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				check_variable = { MON_poster_right_icon_frame = MON_propaganda_empty_slot_index }
+			}
+			set_variable = { MON_poster_right_icon_frame = MON_new_propaganda_campaign }
+			#Ageing posters
+			set_variable = { MON_propaganda_right_poster_to_age = MON_poster_right_icon_frame } #This is used to prevent the system to break if a propaganda campaign is cancelled
+			hidden_effect = {
+				country_event = { id = mongolia_propaganda_events.103 days = MON_default_propaganda_campaign_old_days }
+				#set_country_flag = { flag = SOV_propaganda_right_days_remaining_flag days = SOV_default_propaganda_campaign_duration } #Surprise! This doesnät work with vars :D  Maybe in the future
+				if = { #Debug -> Faster time
+					limit = {
+						has_country_flag = MON_debug_fast_propaganda_campaigns_flag
+					}
+					set_country_flag = { flag = MON_propaganda_right_days_remaining_flag days = 5 }
+				}
+				else = { #Regular time
+					set_country_flag = { flag = MON_propaganda_right_days_remaining_flag days = 180 } #Need code support to use a var here
+				}
+			}
+		}
+		set_variable = { MON_new_propaganda_campaign = 0 } # Reset var
+		add_to_variable = { MON_propaganda_campaigns_taken = 1 } #Update propaganda campaigns counter
+	}
+}
+
+MON_reset_propaganda_campaign_slot_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { MON_poster_left_icon_frame = MON_propaganda_campaign_to_remove }
+			}
+			set_variable = { MON_poster_left_icon_frame = MON_propaganda_empty_slot_index }
+			#Clear aged posters
+			clear_variable = MON_propaganda_left_poster_to_age
+			clr_country_flag = MON_propaganda_left_slot_is_old_flag
+		}
+		else_if = {
+			limit = {
+				check_variable = { MON_poster_center_icon_frame = MON_propaganda_campaign_to_remove }
+			}
+			set_variable = { MON_poster_center_icon_frame = MON_propaganda_empty_slot_index }
+			#Clear aged posters
+			clear_variable = MON_propaganda_center_poster_to_age
+			clr_country_flag = MON_propaganda_center_slot_is_old_flag
+		}
+		else_if = { #This could be turned into an else, but leaving it like this to hopefully make it easier to see
+			limit = {
+				check_variable = { MON_poster_right_icon_frame = MON_propaganda_campaign_to_remove }
+			}
+			set_variable = { MON_poster_right_icon_frame = MON_propaganda_empty_slot_index }
+			#Clear aged posters
+			clear_variable = MON_propaganda_right_poster_to_age
+			clr_country_flag = MON_propaganda_right_slot_is_old_flag
+		}
+		set_variable = { MON_propaganda_campaign_to_remove = 0 } # Reset var
+	}
+}
+
+MON_unlock_propaganda_campaign_slot_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { MON_poster_left_icon_frame = MON_propaganda_locked_slot_index }
+			}
+			set_variable = { MON_poster_left_icon_frame = MON_propaganda_empty_slot_index }
+		}
+		else_if = {
+			limit = {
+				check_variable = { MON_poster_center_icon_frame = MON_propaganda_locked_slot_index }
+			}
+			set_variable = { MON_poster_center_icon_frame = MON_propaganda_empty_slot_index }
+		}
+		else = {
+			set_variable = { MON_poster_right_icon_frame = MON_propaganda_empty_slot_index }
+		}
+	}
+}
+
+MON_increase_propaganda_campaign_cost_effect = {
+	multiply_variable = { MON_propaganda_cost = MON_propaganda_cost_increase } #Using generic var MON_propaganda_cost so that we only need to change this operation to tweak all propagandas' cost escalation
+}

@@ -1,0 +1,315 @@
+add_namespace = germany
+
+country_event = {
+	id = germany.337
+	title = germany.337.t
+	desc = germany.337.d
+	picture = GFX_report_event_DEN_german_tanks
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name =germany.337.a
+		add_war_support = -0.05
+		add_timed_idea = { idea = GER_phoney_war days = 200 }
+	}
+}
+
+country_event = {
+	id = germany.333
+	title = germany.333.t
+	desc = germany.333.d
+	picture = GFX_report_event_generic_panzer_attack
+
+	fire_only_once = yes
+
+	trigger = {
+		has_war_with = BEL
+		has_war_with = FRA
+		date > 1939.12.12
+		has_completed_focus = GER_around_maginot
+		is_historical_focus_on = yes
+		is_ai = yes
+		OR = {
+			has_game_rule = {
+				rule = BLITZKRIEG
+				option = FMLEASY
+			}
+			has_game_rule = {
+				rule = BLITZKRIEG
+				option = FMLMEDIUM
+			}
+			has_game_rule = {
+				rule = BLITZKRIEG
+				option = FMLBLITZ
+			}
+		}
+
+  	 }
+
+	option = {
+		name = germany.333.a
+		if = {
+			limit = {
+				has_game_rule = {
+					rule = BLITZKRIEG
+					option = FMLEASY
+				}
+			}
+			add_timed_idea = { idea = GER_fall_gelb_medium days = 70 }
+		}
+		if = {
+			limit = {
+				has_game_rule = {
+					rule = BLITZKRIEG
+					option = FMLMEDIUM
+				}
+			}
+			add_timed_idea = { idea = GER_fall_gelb_hard days = 70 }
+		}
+
+		else_if = {
+			limit = {
+				has_game_rule = {
+					rule = BLITZKRIEG
+					option = FMLBLITZ
+				}
+			}
+			add_timed_idea = { idea = GER_fall_gelb_blitz days = 100 }
+		}
+		else = {
+			add_timed_idea = { idea = GER_fall_gelb_easy days = 70 }
+		}
+	}
+}
+
+#i wish i could make the rhineland crisis historical without overriding german files!!! why do the communists rise up in rebellion that's stupid
+
+# country_event = {
+# 	id = germany.60
+# 	title = germany.60.t
+# 	desc = germany.60.d
+# 	picture = GFX_report_event_german_troops
+
+# 	is_triggered_only = yes
+
+# 	option = { # This means war!
+# 		name = germany.60.a
+# 		ai_chance = {
+# 			factor = 1
+# 			modifier = {
+# 				factor = 20
+# 				strength_ratio = {
+# 					tag = GER
+# 					ratio > 0.7
+# 				}
+# 				NOT = { has_idea = FRA_disjointed_government }
+# 			}
+
+# 			modifier = {
+# 				factor = 0
+# 				is_historical_focus_on = yes
+# 			}
+# 		}
+# 		add_political_power = -100
+# 		add_stability = -0.1
+# 		if = {
+# 			limit = {
+# 				ENG = {
+# 					is_puppet = no
+# 					NOT = { has_war_with = FRA }
+# 				}
+# 			}
+# 			ENG = {
+# 				country_event = germany.61
+# 				custom_effect_tooltip = needs_approval
+# 				effect_tooltip = { add_to_faction = FRA }
+# 			}
+# 		}
+# 	}
+
+# 	option = { # Diplomatic response
+# 		name = germany.60.b
+# 		ai_chance = {
+# 			factor = 99
+# 			modifier = {
+# 				has_global_flag = GER_has_started_war
+# 				factor = 0
+# 			}
+# 		}
+# 		ENG = { country_event = germany.62 }
+# 		add_opinion_modifier = { target = GER modifier = protest_action }
+# 	}
+# }
+
+# country_event = {
+# 	id = germany.63
+# 	title = germany.63.t
+# 	desc = germany.63.d
+# 	picture = GFX_report_event_chamberlain_announce
+
+# 	is_triggered_only = yes
+
+# 	option = { # Push Ahead
+# 		name = germany.63.a
+# 		ai_chance = {
+# 			factor = 60
+# 			modifier = {
+# 				factor = 3
+# 				strength_ratio = {
+# 					tag = GER
+# 					ratio > 1.0
+# 				}
+# 				NOT = { has_idea = FRA_disjointed_government }
+# 			}
+# 			modifier = {
+# 				factor = 0
+# 				has_idea = FRA_disjointed_government
+# 			}
+# 		}
+# 		GER = { country_event = germany.66 }
+# 	}
+# 	option = { # Back Down
+# 		name = germany.63.b
+# 		ai_chance = { factor = 40 }
+# 		ENG = { country_event = germany.67 }
+# 		add_opinion_modifier = { target = GER modifier = protest_action }
+# 	}
+# }
+
+# # France (Britain Gives Support)
+# country_event = {
+# 	id = germany.64
+# 	title = germany.64.t
+# 	desc = germany.64.d
+# 	picture = GFX_report_event_british_inspect_troops
+
+# 	is_triggered_only = yes
+
+# 	option = {
+# 		name = germany.64.a
+# 		GER = { country_event = germany.65 }
+# 	}
+# }
+
+# country_event = {
+# 	id = germany.65
+# 	title = germany.65.t
+# 	desc = germany.65.d
+# 	picture = GFX_report_event_british_artillery
+
+# 	is_triggered_only = yes
+
+# 	option = {
+# 		ai_chance = {
+# 			factor = 1
+# 			modifier = {
+# 				factor = 0
+# 				strength_ratio = {
+# 					tag = FRA
+# 					ratio < 1
+# 				}
+# 				strength_ratio = {
+# 					tag = ENG
+# 					ratio < 1
+# 				}
+# 			}
+# 		}
+# 		name = germany.65.a
+# 		FRA = {
+# 			declare_war_on = {
+# 				target = GER
+# 				type = take_state_focus
+# 				generator = { 42 51 }
+# 			}
+# 			country_event = germany.92
+# 		}
+# 		hidden_effect = {
+# 			news_event = { hours = 6 id = news.26 }
+# 		}
+# 	}
+# 	option = {
+# 		name = germany.65.b
+# 		ai_chance = {
+# 			factor = 1
+# 			modifier = {
+# 				factor = 0
+# 				strength_ratio = {
+# 					tag = FRA
+# 					ratio > 1
+# 				}
+# 				strength_ratio = {
+# 					tag = ENG
+# 					ratio > 1
+# 				}
+# 			}
+# 		}
+# 		hidden_effect = {
+# 			news_event = { hours = 6 id = news.151 }
+# 		}
+# 		set_country_flag = GER_rhineland_backed_down
+# 		42 = { set_demilitarized_zone = yes }
+# 		51 = { set_demilitarized_zone = yes }
+# 		add_timed_idea = {
+# 			idea = rhineland_challenge_met
+# 			days = 183
+# 		}
+# 	}
+# }
+
+# country_event = {
+# 	id = germany.66
+# 	title = germany.66.t
+# 	desc = germany.66.d
+# 	picture = GFX_report_event_degaulle_inspect_troops
+
+# 	is_triggered_only = yes
+
+# 	option = {
+# 		name = germany.65.a
+# 		add_war_support = 0.1 #original German clay
+# 		ENG = {
+# 			country_event = germany.68
+# 			if = {
+# 				limit = {
+# 					ENG = {
+# 						is_in_faction_with = FRA
+# 						is_faction_leader = yes
+# 					}
+# 				}
+# 				remove_from_faction = FRA
+# 			}
+# 		}
+# 		FRA = {
+# 			declare_war_on = {
+# 				target = GER
+# 				type = take_state_focus
+# 				generator = { 42 51 }
+# 			}
+# 			country_event = germany.92
+# 		}
+# 		hidden_effect = {
+# 			news_event = { hours = 6 id = news.27 }
+# 		}
+# 	}
+
+# 	option = {
+# 		name = germany.65.b
+# 		hidden_effect = {
+# 			news_event = { hours = 6 id = news.152 }
+# 		}
+# 		set_country_flag = GER_rhineland_backed_down
+# 		add_war_support = -0.2 #That was scary for a moment there!
+# 		42 = { set_demilitarized_zone = yes }
+# 		51 = { set_demilitarized_zone = yes }
+# 		add_timed_idea = {
+# 			idea = rhineland_challenge_met
+# 			days = 183
+# 		}
+# 	}
+# }

@@ -1,0 +1,491 @@
+#Category only allowed for CHI
+CHI_army_support = {
+
+
+	CHI_educate_the_soliders = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+
+
+		}
+
+		cost = 25
+
+		fire_only_once = no
+
+		days_remove = 90
+
+		modifier = {
+			democratic_drift = 0.01
+		}
+		activation = {
+
+		}
+
+		visible = {
+
+		}
+		complete_effect = {
+			army_experience = 5
+		}
+		timeout_effect = {
+
+		}
+	}
+
+	CHI_educate_the_officers = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+
+
+		}
+
+		cost = 50
+
+		days_remove = 90
+
+		fire_only_once = no
+
+		modifier = {
+			democratic_drift = 0.03
+		}
+
+		activation = {
+
+		}
+
+		visible = {
+
+		}
+		complete_effect = {
+			army_experience = 10
+		}
+		timeout_effect = {
+
+		}
+	}
+
+
+
+	CHI_war_support = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+
+
+		}
+
+		cost = 75
+
+		days_remove = 90
+
+		fire_only_once = no
+
+		activation = {
+
+		}
+
+		visible = {
+
+		}
+		complete_effect = {
+			add_war_support = 0.05
+		}
+		timeout_effect = {
+
+		}
+	}
+
+
+
+
+	CHI_army_training_new = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+
+
+		}
+
+		cost = 100
+
+		days_remove = 90
+
+		fire_only_once = no
+
+		activation = {
+
+		}
+
+		visible = {
+
+		}
+		complete_effect = {
+			army_experience = 50
+		}
+		timeout_effect = {
+
+		}
+	}
+
+
+	CHI_integrate_local_militia_into_army = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+
+
+		}
+
+		cost = 150
+
+		days_remove = 90
+
+		fire_only_once = no
+
+		activation = {
+
+		}
+
+		visible = {
+
+		}
+		complete_effect = {
+		if = {
+		limit = {
+					not = { has_template = "Militia Division" }
+				}
+				division_template = {
+					name = "Militia Division"
+					priority = 0
+					division_names_group = CHI_INF_01
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+					}
+				}
+		}
+
+		random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Militia Division\" division_template = \"Militia Division\" start_experience_factor = 0.1"
+				owner = CHI
+			}
+			}
+
+			random_owned_controlled_state = {
+			create_unit = {
+				division = "name = \"Militia Division\" division_template = \"Militia Division\" start_experience_factor = 0.1"
+				owner = CHI
+			}
+			}
+		}
+		timeout_effect = {
+
+		}
+	}
+}
+
+
+#Category only allowed for CHI
+CHI_pressure_the_warlords = {
+	CHI_pressure_yan_xishan = {
+
+		icon = generic_prepare_civil_war
+
+	 	available = {
+	 		SHX = {
+				exists = yes
+	 			NOT = {has_war_with = ROOT}
+	 			is_subject = no
+				NOT = {original_tag = ROOT}
+	 			}
+	 	}
+
+		cost = 150
+
+		fire_only_once = yes
+
+		complete_effect = {
+		SHX = {country_event = wtt_china.1009}
+		}
+
+	}
+
+
+	CHI_pressure_ma_bufang = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			XSM = {
+				exists = yes
+				NOT = {has_war_with = ROOT}
+				is_subject = no
+				NOT = {original_tag = ROOT}
+				}
+		}
+
+		cost = 150
+
+		fire_only_once = yes
+
+		complete_effect = {
+		XSM = {country_event = wtt_china.1009}
+		}
+
+	}
+
+
+	CHI_pressure_long_yun = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			YUN = {
+				exists = yes
+				NOT = {has_war_with = ROOT}
+				is_subject = no
+				NOT = {original_tag = ROOT}
+				}
+		}
+
+		cost = 150
+
+		fire_only_once = yes
+
+		complete_effect = {
+		YUN = {country_event = wtt_china.1009}
+		}
+
+	}
+
+
+	CHI_pressure_li_zongren = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			GXC = {
+				exists = yes
+				NOT = {has_war_with = ROOT}
+				is_subject = no
+				NOT = {original_tag = ROOT}
+				}
+		}
+
+		cost = 150
+
+		fire_only_once = yes
+
+		complete_effect = {
+		GXC = {country_event = wtt_china.1009}
+		}
+
+	}
+
+
+	CHI_pressure_sheng_shicai = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			SIK = {
+				exists = yes
+				NOT = {has_war_with = ROOT}
+				is_subject = no
+				NOT = {original_tag = ROOT}
+				}
+		}
+
+		cost = 150
+
+		fire_only_once = yes
+
+		complete_effect = {
+			SIK = {country_event = wtt_china.1009}
+		}
+	}
+}
+
+
+CHI_balance_of_power_category = {
+	add_ccp_pop = {
+		icon = eng_propaganda_campaigns
+
+		available = {
+			communism < 0.8
+		}
+
+		cost = 60
+
+		fire_only_once = no
+
+		days_remove = 35
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = CHI_power_balance
+				value = -0.05
+				tooltip_side = CHI_communist_side	
+			}
+		}
+	}
+
+	add_kmt_pop = {
+		icon = eng_propaganda_campaigns
+
+		cost = 60
+
+		fire_only_once = no
+
+		days_remove = 35
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = CHI_power_balance
+				value = 0.05
+				tooltip_side = CHI_democracy_side	
+			}
+		}
+	}
+
+	annex_prc = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			PRC = {
+				is_subject_of = CHI
+			}
+			power_balance_value = {
+				id = CHI_power_balance
+				value > 0.7
+			}
+		}
+
+		cost = 200
+
+		fire_only_once = yes
+
+		days_remove = 90
+
+		complete_effect = {
+			CHI = {
+				annex_country =  {
+					target = PRC
+					transfer_troops = no
+				}
+			}
+		}
+	}
+
+
+	change_to_prc = {
+
+		icon = generic_civil_support
+
+		available = {
+			PRC = {
+				OR = {
+					is_subject_of = CHI
+					exists = no
+				}
+			}
+			power_balance_value = {
+				id = CHI_power_balance
+				value < -0.65
+			}
+		}
+
+		cost = 150
+
+		fire_only_once = yes
+
+		days_remove = 90
+
+		complete_effect = {
+			CHI = {
+				if = {
+					limit = {
+						PRC = {
+						is_subject_of = CHI
+						}
+					}
+					annex_country =  {
+						target = PRC
+						transfer_troops = yes
+					}
+				}
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = no
+				}
+			}
+		}
+	}
+
+	purge_nationalist_generals = {
+
+		icon = generic_arrest
+
+		available = {
+			has_idea = CHI_kmt_generals
+			power_balance_value = {
+				id = CHI_power_balance
+				value < -0.95
+			}
+		}
+
+		cost = 200
+
+		fire_only_once = yes
+
+		days_remove = 90
+
+		complete_effect = {
+			remove_ideas = CHI_kmt_generals
+			retire_character = CHI_chiang_kaishek
+			retire_character = CHI_dai_li
+			retire_character = CHI_soong_mei_ling
+			retire_character = CHI_chiang_ching_kuo
+			retire_character = CHI_zhang_xueliang
+		}
+	}
+
+	declare_prc = {
+
+		icon = generic_civil_support
+
+		available = {
+			power_balance_value = {
+				id = CHI_power_balance
+				value < -0.99
+			}
+			NOT = {
+				has_idea = CHI_kmt_generals
+			}
+		}
+
+		cost = 60
+
+		fire_only_once = yes
+
+		days_remove = 90
+
+		complete_effect = {
+			set_cosmetic_tag = CCP
+		}
+	}
+}

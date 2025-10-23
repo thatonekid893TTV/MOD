@@ -1,0 +1,121 @@
+GRE_historical_plan = {
+	name = "Greece Historical Plan"
+	desc = "Greece will pursue neutrality while developing the ideas of Metaxism"
+
+	allowed = {
+		original_tag = GRE
+	}
+	enable = {
+		OR = {
+			AND = {
+				is_historical_focus_on = yes
+				has_game_rule = {
+					rule = GRE_ai_behavior
+					option = DEFAULT
+				}	
+			}
+			has_country_flag = GRE_AI_NEUTRALITY_HISTORICAL
+			has_game_rule = {
+				rule = GRE_ai_behavior
+				option = HISTORICAL
+			}
+		}
+	}
+	abort = {
+		OR = {
+			has_war_with = ENG
+			is_in_faction_with = ITA
+			is_in_faction_with = GER
+			has_government = communism
+			has_government = democratic
+			has_government = fascism
+		}
+	}
+
+	ai_national_focuses = {
+		GRE_elections_big #March 10 1936
+		GRE_get_rid_of_king #May 20 1936
+		GRE_it_is_tim_to_choose #July 30 1936
+		GRE_a_new_king #October 10 1936
+		GRE_hellenic_armed_forces #February 30 1937
+		GRE_the_hellenic_army #May 10 1937
+		GRE_reevaluating_the_drachma #July 20 1937
+		GRE_start_the_metaxas_project #September 30 1937
+		GRE_utilize_our_strengths #December 10 1937
+		GRE_open_foreign_subsidized_factories #February 20 1938
+		GRE_paying_back_our_debts_in_bulk #April 30 1938
+		GRE_focus_on_defence #July 10 1938
+		GRE_connecting_our_prefectures #September 20 1938
+		GRE_father_of_greeks #November 30 1938
+		GRE_an_orthodox_state #February 10 1938
+		GRE_press_censor #April 20 1939
+		GRE_increase_our_mining_operations #June 30 1939
+		GRE_greek_autarky #September 10 1939
+		GRE_crack_down_on_foreign_monopolies #November 20 1939
+		GRE_cooperate_with_foreign_monopolies #January 30 1940
+		GRE_rejuvenating_athens #April 10 1940
+		GRE_the_backbone_of_our_army #June 20 1940
+		GRE_a_legacy_of_war #August 30 1940
+		GRE_embracing_modern_warfare #November 10 1940
+		GRE_making_use_of_our_islands #January 20 1941
+		GRE_plan_west #March 10 1943
+		GRE_hydroelectric_energy_plan
+		GRE_the_spirit_of_1821
+		GRE_sabotage_polish_industry #May 20 1943
+		GRE_new_weapons_old_tricks #March 30 1941
+		GRE_clear_the_slums #June 10 1941
+		GRE_hygienic_housing
+		GRE_autarky
+		GRE_better_deal
+		GRE_mobilise_our_economy #August 20 1941
+		GRE_hellenic_armoured_corp #October 30 1941
+		GRE_a_land_of_mountains #January 10 1942
+		GRE_the_hellenic_navy
+        		#March 20 1942
+		GRE_a_modern_navy #May 30 1942
+		GRE_disrupting_the_great_powers #August 10 1942
+		GRE_a_long_and_proud_tradition #October 20 1942
+		GRE_establish_a_spy_network #December 30 1942
+		GRE_reviving_the_spartan_warrior_spirit #March 10 1943
+		GRE_hidden_dictators #May 20 1943
+		GRE_the_hellenic_air_force #July 30 1943
+		GRE_protecting_our_skies #October 10 1943
+		GRE_four_year_plan #March 10 1943
+		GRE_boost_the_national_spirit #May 20 1943
+		GRE_bolster_the_schachtplan #July 30 1943
+		GRE_defending_our_seas #October 10 1943
+		GRE_open_up_the_country #March 10 1943
+		GRE_italian_investments #May 20 1943
+		GRE_allied_investments #July 30 1943
+		GRE_soviet_onion #October 10 1943
+		GRE_fund_the_hellenic_air_force_academy #March 10 1943
+		GRE_the_double_headed_aquila #May 20 1943
+		GRE_modern_cataphracts #July 30 1943
+		GRE_thema_nautikon #October 10 1943
+		GRE_metaxas_stays
+		GRE_hel_fortified_area #July 30 1943
+		GRE_expand_poznan_forts #October 10 1943
+		GRE_sudeten_mountaineers #March 10 1943
+		GRE_the_prusya_army #May 20 1943
+		GRE_complete_plan_west #July 30 1943
+		continuous_reduce_training_time #October 10 1943
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+		GRE_alexandros_papagos = 10
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}

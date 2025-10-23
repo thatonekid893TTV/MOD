@@ -1,0 +1,1790 @@
+
+
+
+GRE_navy_restored = {
+	GRE_recommission_the_american_battleships = {
+		
+		icon = generic_naval
+
+		allowed = { 
+
+		}
+
+		available = {
+			has_completed_focus = GRE_the_hellenic_navy
+		}
+
+		cost = 0
+
+		fire_only_once = yes
+
+		visible = {
+           original_tag = GRE		
+           has_completed_focus = GRE_unleash		   
+		}
+
+
+
+		complete_effect = {
+			if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.8
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.75
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+					create_equipment_variant = {
+						name = "Mississippi Class"
+						type = ship_hull_heavy_1
+						name_group = GRE_BB_HISTORICAL
+						allow_without_tech = yes
+						parent_version = 0
+						modules = { 
+							fixed_ship_battery_slot = ship_heavy_battery_1
+							fixed_ship_anti_air_slot = ship_anti_air_1 
+							fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+							fixed_ship_radar_slot = empty
+							fixed_ship_engine_slot = heavy_ship_engine_1 
+							fixed_ship_secondaries_slot = ship_secondaries_1
+							fixed_ship_armor_slot = ship_armor_bb_1
+							front_1_custom_slot = ship_anti_air_1
+							front_2_custom_slot = empty 
+							mid_1_custom_slot = ship_secondaries_1 
+							mid_2_custom_slot = empty
+							mid_3_custom_slot = empty 
+							rear_1_custom_slot = empty
+							rear_2_custom_slot = empty 
+						} 
+					}	
+				}
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_heavy_1
+						creator = "GRE" 
+						version_name = "Mississippi Class"
+					}
+					name = "Dragatsis" 
+					requested_factories = 1
+					progress = 0.8
+					amount = 1
+				}
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_heavy_1
+						creator = "GRE" 
+						version_name = "Mississippi Class"
+					}
+					name = "Kolokotronis" 
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+			modifier = {
+				num_of_naval_factories > 12
+				factor = 10
+			}
+		}
+	}
+	GRE_build_the_salamis = {
+		
+		icon = generic_naval
+
+		allowed = { 
+	
+		}
+
+		available = {
+			has_completed_focus = GRE_the_hellenic_navy
+		}
+
+		cost = 0
+
+		fire_only_once = yes
+
+		visible = {
+           original_tag = GRE
+		     has_completed_focus = GRE_unleash		   
+		}
+
+
+		complete_effect = {
+			if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+					create_equipment_variant = {
+						name = "Salamis Class"
+						type = ship_hull_heavy_1
+						name_group = GRE_BB_HISTORICAL
+						parent_version = 0
+						allow_without_tech = yes
+						modules = { 
+							fixed_ship_battery_slot = ship_heavy_battery_2
+							fixed_ship_anti_air_slot = ship_anti_air_1 
+							fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+							fixed_ship_radar_slot = empty
+							fixed_ship_engine_slot = heavy_ship_engine_2 
+							fixed_ship_secondaries_slot = ship_secondaries_2
+							fixed_ship_armor_slot = ship_armor_bb_2 
+							front_1_custom_slot = ship_anti_air_1
+							front_2_custom_slot = empty 
+							mid_1_custom_slot = ship_secondaries_2
+							mid_2_custom_slot = empty
+							mid_3_custom_slot = empty 
+							rear_1_custom_slot = ship_heavy_battery_2 
+							rear_2_custom_slot = empty 
+						} 
+					}	
+				}
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_heavy_1
+						creator = "GRE" 
+						version_name = "Salamis Class"
+					}
+					name = "Salamis" 
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+			modifier = {
+				num_of_naval_factories > 8
+				factor = 10
+			}
+		}
+	}
+GRE_purchase_S138_class = {
+		icon = generic_naval
+		allowed = {
+			tag = GRE
+		}
+		target_trigger = {
+			FROM = {
+				tag = GER
+			}
+		}
+		cancel_trigger = {
+			has_war_with = GER
+			
+		}
+		available = {
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > 4
+				}
+			}
+			any_owned_state = {
+				is_coastal = yes
+			}
+			NOT = {
+				has_war_with = FROM
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			GER = {
+				exists = yes
+			}
+			   has_completed_focus = GRE_unleash		   
+			
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = has_active_purchase_contract
+				days = 2
+				value = 1
+			}
+		}
+		remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+					create_equipment_variant = {
+			name = "S138 Class"
+			type = ship_hull_light_1
+			name_group = GER_DD_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_fire_control_system_slot = empty
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = empty
+				rear_1_custom_slot = empty
+			}
+		}	
+				}
+				create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "S138 Class"
+				creator = GER
+				name = "SMS G89"
+			}
+			}
+			
+		}
+		ai_will_do = {
+			factor = 100
+		    }
+	    }
+		GRE_purchase_S138_class_2 = {
+			name = "GRE_purchase_S138_class"
+			icon = generic_naval
+			allowed = {
+				tag = GRE
+			}
+			target_trigger = {
+				FROM = {
+					tag = GER
+				}
+			}
+			cancel_trigger = {
+				has_war_with = GER
+				
+			}
+			available = {
+				GER = {
+					has_opinion = {
+						target = ROOT
+						value > 4
+					}
+				}
+				any_owned_state = {
+					is_coastal = yes
+				}
+				NOT = {
+					has_war_with = FROM
+				}
+			}
+			cost = 100
+			fire_only_once = yes
+			days_remove = 60
+			visible = {
+				GER = {
+					exists = yes
+				}
+				   has_completed_focus = GRE_unleash		   
+				
+			}
+			complete_effect = {
+				set_country_flag = {
+					flag = has_active_purchase_contract
+					days = 2
+					value = 1
+				}
+			}
+			remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+					create_equipment_variant = {
+			name = "S138 Class"
+			type = ship_hull_light_1
+			name_group = GER_DD_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_fire_control_system_slot = empty
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = empty
+				rear_1_custom_slot = empty
+			}
+		}
+				}
+				create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "S138 Class"
+				creator = GER
+				name = "SMS G92"
+			}
+			}
+			
+		}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		GRE_purchase_bussard_class = {
+			icon = generic_naval
+			allowed = {
+				tag = GRE
+			}
+			target_trigger = {
+				FROM = {
+					tag = GER
+				}
+			}
+			cancel_trigger = {
+				has_war_with = GER
+				
+			}
+			available = {
+				GER = {
+					has_opinion = {
+						target = ROOT
+						value > 4
+					}
+				}
+				any_owned_state = {
+					is_coastal = yes
+				}
+				NOT = {
+					has_war_with = FROM
+				}
+			}
+			cost = 100
+			fire_only_once = yes
+			days_remove = 60
+			visible = {
+				GER = {
+					exists = yes
+				}
+				   has_completed_focus = GRE_unleash		   
+				
+			}
+			complete_effect = {
+				set_country_flag = {
+					flag = has_active_purchase_contract
+					days = 2
+					value = 1
+				}
+			}
+			
+			remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+					create_equipment_variant = {
+						name = "Bussard Class"
+						type = ship_hull_cruiser_1
+						name_group = GRE_BB_HISTORICAL
+						parent_version = 0
+						allow_without_tech = yes
+						modules = { 
+							fixed_ship_battery_slot = ship_medium_battery_2
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = cruiser_ship_engine_1
+				fixed_ship_secondaries_slot = ship_secondaries_1
+				fixed_ship_armor_slot = ship_armor_cruiser_1
+				mid_1_custom_slot = empty
+				mid_2_custom_slot = empty
+				rear_1_custom_slot = ship_medium_battery_1
+						} 
+					}	
+				}
+				create_ship = {
+				type = ship_hull_cruiser_1
+				equipment_variant = "Bussard Class"
+				creator = GER
+				name = "SMS Nafplion"
+			}
+			}
+			
+		}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		GRE_purchase_S90_class = {
+			icon = generic_naval
+			allowed = {
+				tag = GRE
+			}
+			target_trigger = {
+				FROM = {
+					tag = GER
+				}
+			}
+			cancel_trigger = {
+				has_war_with = GER
+				
+			}
+			available = {
+				GER = {
+					has_opinion = {
+						target = ROOT
+						value > 4
+					}
+				}
+				any_owned_state = {
+					is_coastal = yes
+				}
+				NOT = {
+					has_war_with = FROM
+				}
+			}
+			cost = 100
+			fire_only_once = yes
+			days_remove = 60
+			visible = {
+				GER = {
+					exists = yes
+				}
+				   has_completed_focus = GRE_unleash		   
+				
+			}
+			complete_effect = {
+				set_country_flag = {
+					flag = has_active_purchase_contract
+					days = 2
+					value = 1
+				}
+			}
+			
+			remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+					create_equipment_variant = {
+			name = "S90 Class"
+			type = ship_hull_light_1
+			name_group = GER_DD_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_fire_control_system_slot = empty
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = empty
+				rear_1_custom_slot = empty
+			}
+		}
+				}
+				create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "S90 Class"
+				creator = GER
+				name = "SMS Corfu"
+			}
+			}
+			
+		}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		GRE_purchase_S90_class_2 = {
+			name = "GRE_purchase_S90_class"
+			icon = generic_naval
+			allowed = {
+				tag = GRE
+			}
+			target_trigger = {
+				FROM = {
+					tag = GER
+				}
+			}
+			cancel_trigger = {
+				has_war_with = GER
+				
+			}
+			available = {
+				GER = {
+					has_opinion = {
+						target = ROOT
+						value > 4
+					}
+				}
+				any_owned_state = {
+					is_coastal = yes
+				}
+				NOT = {
+					has_war_with = FROM
+				}
+			}
+			cost = 100
+			fire_only_once = yes
+			days_remove = 60
+			visible = {
+				GER = {
+					exists = yes
+				}
+				  has_completed_focus = GRE_unleash		    
+				
+			}
+			complete_effect = {
+				set_country_flag = {
+					flag = has_active_purchase_contract
+					days = 2
+					value = 1
+				}
+			}
+			
+			remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+					create_equipment_variant = {
+			name = "S90 Class"
+			type = ship_hull_light_1
+			name_group = GER_DD_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_fire_control_system_slot = empty
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = empty
+				rear_1_custom_slot = empty
+			}
+		}
+				}
+				create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "S90 Class"
+				creator = GER
+				name = "SMS Ithaki"
+			}
+			}
+			
+		}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		GRE_purchase_S90_class_3 = {
+			name = "GRE_purchase_S90_class"
+			icon = generic_naval
+			allowed = {
+				tag = GRE
+			}
+			target_trigger = {
+				FROM = {
+					tag = GER
+				}
+			}
+			cancel_trigger = {
+				has_war_with = GER
+				
+			}
+			available = {
+				GER = {
+					has_opinion = {
+						target = ROOT
+						value > 4
+					}
+				}
+				any_owned_state = {
+					is_coastal = yes
+				}
+				NOT = {
+					has_war_with = FROM
+				}
+			}
+			cost = 100
+			fire_only_once = yes
+			days_remove = 60
+			visible = {
+				GER = {
+					exists = yes
+				}
+				  has_completed_focus = GRE_unleash		    
+				
+			}
+			complete_effect = {
+				set_country_flag = {
+					flag = has_active_purchase_contract
+					days = 2
+					value = 1
+				}
+			}
+			
+			remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+					create_equipment_variant = {
+			name = "S90 Class"
+			type = ship_hull_light_1
+			name_group = GER_DD_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_fire_control_system_slot = empty
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = empty
+				rear_1_custom_slot = empty
+			}
+		}
+				}
+				create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "S90 Class"
+				creator = GER
+				name = "SMS Patras"
+			}
+			}
+			
+		}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		GRE_purchase_S90_class_4 = {
+			name = "GRE_purchase_S90_class"
+			icon = generic_naval
+			allowed = {
+				tag = GRE
+			}
+			target_trigger = {
+				FROM = {
+					tag = GER
+				}
+			}
+			cancel_trigger = {
+				has_war_with = GER
+				
+			}
+			available = {
+				GER = {
+					has_opinion = {
+						target = ROOT
+						value > 4
+					}
+				}
+				any_owned_state = {
+					is_coastal = yes
+				}
+				NOT = {
+					has_war_with = FROM
+				}
+			}
+			cost = 100
+			fire_only_once = yes
+			days_remove = 60
+			visible = {
+				GER = {
+					exists = yes
+				}
+				  has_completed_focus = GRE_unleash		    
+				
+			}
+			complete_effect = {
+				set_country_flag = {
+					flag = has_active_purchase_contract
+					days = 2
+					value = 1
+				}
+			}
+				remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+					create_equipment_variant = {
+			name = "S90 Class"
+			type = ship_hull_light_1
+			name_group = GER_DD_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_fire_control_system_slot = empty
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = empty
+				rear_1_custom_slot = empty
+			}
+		}
+				}
+				create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "S90 Class"
+				creator = GER
+				name = "SMS Athina"
+			}
+			}
+			
+		}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		GRE_purchase_S90_class_5 = {
+			name = "GRE_purchase_S90_class"
+			icon = generic_naval
+			allowed = {
+				tag = GRE
+			}
+			target_trigger = {
+				FROM = {
+					tag = GER
+				}
+			}
+			cancel_trigger = {
+				has_war_with = GER
+				
+			}
+			available = {
+				GER = {
+					has_opinion = {
+						target = ROOT
+						value > 4
+					}
+				}
+				any_owned_state = {
+					is_coastal = yes
+				}
+				NOT = {
+					has_war_with = FROM
+				}
+			}
+			cost = 100
+			fire_only_once = yes
+			days_remove = 60
+			visible = {
+				GER = {
+					exists = yes
+				}
+			  has_completed_focus = GRE_unleash		   	 
+				
+			}
+			complete_effect = {
+				set_country_flag = {
+					flag = has_active_purchase_contract
+					days = 2
+					value = 1
+				}
+			}
+				remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+					create_equipment_variant = {
+			name = "S90 Class"
+			type = ship_hull_light_1
+			name_group = GER_DD_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_fire_control_system_slot = empty
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = empty
+				rear_1_custom_slot = empty
+			}
+		}
+				}
+				create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "S90 Class"
+				creator = GER
+				name = "SMS Chalcis"
+			}
+			}
+			
+		}
+			ai_will_do = {
+				factor = 100
+			}
+		}
+		GRE_purchase_S90_class_6 = {
+			name = "GRE_purchase_S90_class"
+			icon = generic_naval
+			allowed = {
+				tag = GRE
+			}
+			target_trigger = {
+				FROM = {
+					tag = GER
+				}
+			}
+			cancel_trigger = {
+				has_war_with = GER
+				
+			}
+			available = {
+				GER = {
+					has_opinion = {
+						target = ROOT
+						value > 4
+					}
+				}
+				any_owned_state = {
+					is_coastal = yes
+				}
+				NOT = {
+					has_war_with = FROM
+				}
+			}
+			cost = 100
+			fire_only_once = yes
+			days_remove = 60
+			visible = {
+				GER = {
+					exists = yes
+				}
+				  has_completed_focus = GRE_unleash		    
+				
+			}
+			complete_effect = {
+				set_country_flag = {
+					flag = has_active_purchase_contract
+					days = 2
+					value = 1
+				}
+			}
+				remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+					create_equipment_variant = {
+			name = "S90 Class"
+			type = ship_hull_light_1
+			name_group = GER_DD_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = empty
+				fixed_ship_fire_control_system_slot = empty
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = empty
+				rear_1_custom_slot = empty
+			}
+		}
+				}
+				create_ship = {
+				type = ship_hull_light_1
+				equipment_variant = "S90 Class"
+				creator = GER
+				name = "SMS Volos"
+			}
+			}
+			
+		}
+			ai_will_do = {
+				factor = 100
+		}
+	}
+	GRE_purchase_lemnos = {
+		icon = generic_naval
+		allowed = {
+			tag = GRE
+		}
+		target_trigger = {
+			FROM = {
+				tag = USA
+			}
+		}
+		cancel_trigger = {
+			has_war_with = USA
+			
+		}
+		available = {
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 4
+				}
+			}
+			any_owned_state = {
+				is_coastal = yes
+			}
+			NOT = {
+				has_war_with = FROM
+			}
+			 
+			
+		}
+		cost = 100
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			USA = {
+				exists = yes
+			}
+			  has_completed_focus = GRE_unleash		    
+			
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = has_active_purchase_contract
+				days = 2
+				value = 1
+			}
+		}
+		remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+				create_equipment_variant = {
+		name = "Iowa Class"
+		type = ship_hull_pre_dreadnought
+		name_group = USA_BB_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_2
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+				}
+				create_ship = {
+				type = ship_hull_pre_dreadnought
+				equipment_variant = "Iowa Class"
+				creator = USA
+				name = "Lemnos"
+			}
+			}
+			
+		}
+		ai_will_do = {
+			factor = 100
+	    }
+    }
+	GRE_purchase_kilkis = {
+		icon = generic_naval
+		allowed = {
+			tag = GRE
+		}
+		target_trigger = {
+			FROM = {
+				tag = USA
+			}
+		}
+		cancel_trigger = {
+			has_war_with = USA
+			
+		}
+		available = {
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 4
+				}
+			}
+			any_owned_state = {
+				is_coastal = yes
+			}
+			NOT = {
+				has_war_with = FROM
+			}
+			 
+			
+		}
+		cost = 100
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			USA = {
+				exists = yes
+			}
+			   has_completed_focus = GRE_unleash		   
+			
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = has_active_purchase_contract
+				days = 2
+				value = 1
+			}
+		}
+		remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+				create_equipment_variant = {
+		name = "Iowa Class"
+		type = ship_hull_pre_dreadnought
+		name_group = USA_BB_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_2
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+				}
+				create_ship = {
+				type = ship_hull_pre_dreadnought
+				equipment_variant = "Iowa Class"
+				creator = USA
+				name = "Kilkis"
+			}
+			}
+			
+		}
+		ai_will_do = {
+			factor = 100
+	    }
+    }
+	GRE_purchase_elli = {
+		icon = generic_naval
+		allowed = {
+			tag = GRE
+		}
+		target_trigger = {
+			FROM = {
+				tag = USA
+			}
+		}
+		cancel_trigger = {
+			has_war_with = USA
+			
+		}
+		available = {
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 4
+				}
+			}
+			any_owned_state = {
+				is_coastal = yes
+			}
+			NOT = {
+				has_war_with = FROM
+			}
+			 
+			
+			
+		}
+		cost = 100
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			USA = {
+				exists = yes
+			}
+			   has_completed_focus = GRE_unleash		   
+			
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = has_active_purchase_contract
+				days = 2
+				value = 1
+			}
+		}
+		remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+				create_equipment_variant = {
+		name = "Boston Class"
+		type = ship_hull_cruiser_1
+		name_group = USA_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_2
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = ship_light_medium_battery_2
+		}
+		obsolete = yes
+	}
+				}
+				create_ship = {
+				type = ship_hull_cruiser_1
+				equipment_variant = "Boston Class"
+				creator = USA
+				name = "Ellie"
+			}
+			}
+			
+		}
+		ai_will_do = {
+			factor = 100
+	    }
+    }
+	GRE_purchase_smith_class = {
+		icon = generic_naval
+		allowed = {
+			tag = GRE
+		}
+		target_trigger = {
+			FROM = {
+				tag = USA
+			}
+		}
+		cancel_trigger = {
+			has_war_with = USA
+			
+		}
+		available = {
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 4
+				}
+			}
+			any_owned_state = {
+				is_coastal = yes
+			}
+			NOT = {
+				has_war_with = FROM
+			}
+			 
+			
+			
+		}
+		cost = 100
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			USA = {
+				exists = yes
+			}
+			 
+			  has_completed_focus = GRE_unleash		   
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = has_active_purchase_contract
+				days = 2
+				value = 1
+			}
+		}
+		remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+				create_equipment_variant = {
+		name = "Smith Class"
+		type = ship_hull_light_2
+		name_group = USA_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+				}
+				create_ship = {
+				type = ship_hull_light_2
+				equipment_variant = "Smith Class"
+				creator = USA
+				name = "Thasos"
+			}
+			}
+			
+		}
+		ai_will_do = {
+			factor = 100
+	    }
+    }
+	GRE_purchase_smith_class_2 = {
+		name = "GRE_purchase_smith_class"
+		icon = generic_naval
+		allowed = {
+			tag = GRE
+		}
+		target_trigger = {
+			FROM = {
+				tag = USA
+			}
+		}
+		cancel_trigger = {
+			has_war_with = USA
+			
+		}
+		available = {
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 4
+				}
+			}
+			any_owned_state = {
+				is_coastal = yes
+			}
+			NOT = {
+				has_war_with = FROM
+			}
+			 
+			
+			
+		}
+		cost = 100
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			USA = {
+				exists = yes
+			}
+			  has_completed_focus = GRE_unleash		    
+			
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = has_active_purchase_contract
+				days = 2
+				value = 1
+			}
+		}
+		remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+				create_equipment_variant = {
+		name = "Smith Class"
+		type = ship_hull_light_2
+		name_group = USA_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+				}
+				create_ship = {
+				type = ship_hull_light_2
+				equipment_variant = "Smith Class"
+				creator = USA
+				name = "Imbros"
+			}
+			}
+			
+		}
+		ai_will_do = {
+			factor = 100
+	    }
+    }
+	GRE_purchase_smith_class_3 = {
+		name = "GRE_purchase_smith_class"
+		icon = generic_naval
+		allowed = {
+			tag = GRE
+		}
+		target_trigger = {
+			FROM = {
+				tag = USA
+			}
+		}
+		cancel_trigger = {
+			has_war_with = USA
+			
+		}
+		available = {
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > 4
+				}
+			}
+			any_owned_state = {
+				is_coastal = yes
+			}
+			NOT = {
+				has_war_with = FROM
+			}
+			 
+			
+			
+		}
+		cost = 100
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			USA = {
+				exists = yes
+			}
+			  has_completed_focus = GRE_unleash		    
+			
+		}
+		complete_effect = {
+			set_country_flag = {
+				flag = has_active_purchase_contract
+				days = 2
+				value = 1
+			}
+		}
+		remove_effect = {
+		if = { 
+				limit = { 
+					NOT = { has_dlc = "Man the Guns" }
+				}
+				add_equipment_production = {
+					equipment = {
+						type = battleship_1
+					}
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+			}
+			else_if = {
+				limit = { 
+					has_dlc = "Man the Guns"
+				}
+				hidden_effect = { 
+				create_equipment_variant = {
+		name = "Smith Class"
+		type = ship_hull_light_2
+		name_group = USA_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+				}
+				create_ship = {
+				type = ship_hull_light_2
+				equipment_variant = "Smith Class"
+				creator = USA
+				name = "Tenedos"
+			}
+			}
+			
+		}
+		ai_will_do = {
+			factor = 100
+	    }
+    }
+
+   GRE_trust_eng = {
+		icon = generic_naval
+
+		available = {
+		
+				
+			
+
+		}
+		visible = {
+		
+			has_completed_focus = GRE_our_old_navy		
+		}
+ target_trigger = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		days_remove = 365
+
+		cost = 100
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+       complete_effect = {
+			add_timed_idea = { 
+			idea = GRE_trusted_our_ships_to_eng
+			days = 365
+			}
+			ENG	 = { 
+add_timed_idea = { 
+			idea = GRE_trusted_us_eng
+			days = 365
+			}			}
+		}
+		remove_effect = {
+		custom_effect_tooltip = GRE_ships_eng_tt
+		hidden_effect = {
+				load_oob = "UMC_ATNR_GRE"				
+				}
+		}   
+   }
+
+   GRE_trust_ger = {
+		icon = generic_naval
+
+		available = {
+		
+				
+			
+
+		}
+		visible = {
+			has_completed_focus = GRE_our_old_navy
+				
+		}
+		days_remove = 730
+target_trigger = {
+			FROM = {
+				tag = GER
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			add_timed_idea = { 
+			idea = GRE_trusted_our_ships_to_ger
+			days = 730
+			}
+			GER	 = { 
+add_timed_idea = { 
+			idea = GRE_trusted_us_ger
+			days = 730
+			}			}
+			
+		}
+		remove_effect = {
+				custom_effect_tooltip = GRE_ships_ger_tt
+		hidden_effect = {
+				load_oob = "UMC_ATNR_GRE2"				
+				}
+     
+		
+						
+		}   
+   }
+
+   GRE_trust_gre = {
+		icon = generic_naval
+
+		available = {
+		
+				
+			
+
+		}
+
+		visible = {
+		has_completed_focus = GRE_our_old_navy
+				
+		}
+		days_remove = 730
+
+		cost = 100
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+       complete_effect = {
+			add_timed_idea = { 
+			idea = GRE_trusted_our_ships_to_gre
+			days = 730
+			}
+		}
+		remove_effect = {
+		custom_effect_tooltip = GRE_ships_gre_tt
+		hidden_effect = {
+				load_oob = "UMC_ATNR_GRE3"	
+add_equipment_to_stockpile = {
+				type = convoy
+				amount = 400
+				producer = GRE
+			}
+			add_ideas = GRE_economic_boost	
+				}
+		}   
+   }
+}

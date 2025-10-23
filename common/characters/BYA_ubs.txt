@@ -1,0 +1,36 @@
+characters={
+
+	BYA_agvan_dorzhiev = {
+		name = BYA_agvan_dorzhiev
+		portraits = {
+			civilian = {
+				small = "GFX_BYA_Agvan_Dorzhiev_small" 
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BYA_agvan_dorzhiev
+			allowed  = {
+				OR = {
+					original_tag = BYA
+					original_tag = MON
+				}
+			}
+			available = {
+				if = {
+					limit = { tag = BYA } 
+					 NOT = { MON = { has_completed_focus = MON_buryat_refugees } }
+				}
+				
+				if = {
+					limit = { tag = MON }
+					has_completed_focus = MON_buryat_refugees 
+				}
+			}
+			traits  = {
+				head_of_intelligence
+			}
+		}
+	}
+
+}

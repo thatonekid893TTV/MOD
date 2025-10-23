@@ -1,0 +1,2440 @@
+focus_tree = {
+	id = korea_focus
+	
+	country = {
+		factor = 0
+		modifier = {
+			add = 20
+			tag = KOR
+		}
+	}
+	
+	default = no
+
+	initial_show_position = {
+		focus = industrial_effort
+	}
+	
+	continuous_focus_position = { x = 25 y = 1400 }	
+	
+	shared_focus = Open_Foreign_Office
+	
+# Political Tree
+
+	focus = {
+		id = KOR_Internal_Politics
+		icon = GFX_goal_generic_neutrality_focus
+
+		x = 10
+		y = 0
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	# Democracy
+	
+	focus = {
+		id = KOR_New_Korean_Republic
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = KOR_Internal_Politics }
+		relative_position_id = KOR_Internal_Politics
+		mutually_exclusive = { focus = KOR_New_Korean_Empire focus = KOR_Korean_Democratic_Peoples_Republic }
+
+		x = -7
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Korean_Democracy
+		}
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 100
+				JAP = { has_government = democratic }
+			}
+		}
+	}
+	
+	focus = {
+		id = KOR_Democratic_Approach_the_Allies
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = KOR_New_Korean_Republic }
+		relative_position_id = KOR_New_Korean_Republic
+		mutually_exclusive = { focus = KOR_Democratic_Our_Own_Way focus = KOR_Democratic_Approach_Japan }
+
+		x = 2
+		y = 1
+		
+		cost = 5
+
+		available = {
+			ENG = { has_government = democratic }
+		}
+		
+		completion_reward = {
+			if = {
+				limit = {
+					ENG = {
+						is_faction_leader = yes
+						has_government = democratic
+					}
+				}
+				ENG = { country_event = generic.2 }
+			}
+			else_if = {
+				limit = {
+					ENG = {
+						is_in_faction = yes
+						is_faction_leader = no
+						has_government = democratic
+					}
+				}
+				random_country = {
+					limit = {
+						is_in_faction_with = ENG
+						is_faction_leader = yes
+					}
+					country_event = generic.2
+				}
+			}
+			else = {
+				set_rule = { can_create_factions = yes }
+				create_faction = JAP_the_old_alliance
+				ENG = { country_event = generic.5 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Democratic_Our_Own_Way
+		icon = GFX_goal_generic_defence
+		prerequisite = { focus = KOR_New_Korean_Republic }
+		relative_position_id = KOR_New_Korean_Republic
+		mutually_exclusive = { focus = KOR_Democratic_Approach_the_Allies focus = KOR_Democratic_Approach_Japan }
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Democratic_Approach_Japan
+		icon = GFX_focus_chi_collaboration_with_the_japanese
+		prerequisite = { focus = KOR_New_Korean_Republic }
+		relative_position_id = KOR_New_Korean_Republic
+		mutually_exclusive = { focus = KOR_Democratic_Approach_the_Allies focus = KOR_Democratic_Our_Own_Way }
+		
+		x = -2
+		y = 1
+		
+		cost = 5
+
+		available = {
+			JAP = { has_government = democratic }
+		}
+		
+		completion_reward = {
+			if = {
+				limit = {
+					JAP = {
+						is_faction_leader = yes
+						has_government = democratic
+					}
+				}
+				JAP = { country_event = generic.2 }
+			}
+			else_if = {
+				limit = {
+					JAP = {
+						is_in_faction = yes
+						is_faction_leader = no
+						has_government = democratic
+					}
+				}
+				random_country = {
+					limit = {
+						is_in_faction_with = ENG
+						is_faction_leader = yes
+					}
+					country_event = generic.2
+				}
+			}
+			else = {
+				set_rule = { can_create_factions = yes }
+				create_faction = "West Pacific Treaty Organization"
+				JAP = { country_event = generic.5 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+			
+			modifier = {
+				factor = 100
+				JAP = { has_government = democratic }
+			}
+		}
+	}
+	
+	focus = {
+		id = KOR_Dem_Invite_Zaibatsus
+		icon = GFX_focus_jap_zaibatsu
+		prerequisite = { focus = KOR_Democratic_Approach_Japan }
+		relative_position_id = KOR_Democratic_Approach_Japan
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = JAP_zaibatsus_empowered
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_One_People_Principle
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = KOR_Dem_Invite_Zaibatsus focus = KOR_Democratic_Approach_the_Allies focus = KOR_Democratic_Our_Own_Way}
+		relative_position_id = KOR_Democratic_Our_Own_Way
+		
+		x = -1
+		y = 2
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_One_People_Principle
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Korean_Volunteers
+		icon = GFX_focus_generic_manpower
+		prerequisite = { focus = KOR_One_People_Principle }
+		relative_position_id = KOR_One_People_Principle
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Korean_Volunteers
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Economic_Reform
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = KOR_Dem_Invite_Zaibatsus focus = KOR_Democratic_Approach_the_Allies focus = KOR_Democratic_Our_Own_Way}
+		relative_position_id = KOR_Democratic_Our_Own_Way
+		
+		x = 1
+		y = 2
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Economic_Reform
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Nationwide_Rail
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = KOR_Economic_Reform }
+		relative_position_id = KOR_Economic_Reform
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Nationwide_Rail
+			
+			527 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			525 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Korean_Universities
+		icon = GFX_focus_research2
+		prerequisite = { focus = KOR_Economic_Reform }
+		relative_position_id = KOR_Economic_Reform
+		
+		x = 1
+		y = 2
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_research_slot = 1
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	# Non-Aligned
+	
+	focus = {
+		id = KOR_New_Korean_Empire
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = KOR_Internal_Politics }
+		relative_position_id = KOR_Internal_Politics
+		mutually_exclusive = { focus = KOR_New_Korean_Republic focus = KOR_Korean_Democratic_Peoples_Republic }
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_popularity = { ideology = fascism popularity = 0.1 }
+			add_popularity = { ideology = neutrality popularity = 0.1 }
+			
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 0
+			
+			modifier = {
+				factor = 100
+				OR = { JAP = { has_government = fascism } JAP = { has_government = neutrality } }
+			}
+		}
+	}
+	
+	focus = {
+		id = KOR_Nationalism
+		icon = GFX_goal_support_fascism
+		prerequisite = { focus = KOR_New_Korean_Empire }
+		relative_position_id = KOR_New_Korean_Empire
+		mutually_exclusive = { focus = KOR_Monarchism }
+		
+		x = 1
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Nationalism
+		}
+		
+		ai_will_do = {
+			factor = 5
+			
+			modifier = {
+				factor = 100
+				JAP = { has_government = fascism }
+			}
+		}
+	}
+	
+	focus = {
+		id = KOR_Connections_to_the_Past
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = KOR_New_Korean_Empire }
+		relative_position_id = KOR_New_Korean_Empire
+		mutually_exclusive = { focus = KOR_Nationalism }
+		
+		x = -1
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_stability = 0.2
+			add_ideas = KOR_Connections_to_the_Past
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Military_Siezes_Control
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = KOR_Nationalism }
+		relative_position_id = KOR_Nationalism
+		mutually_exclusive = { focus = KOR_Return_Of_The_Monarchy }
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			fascism > 0.30
+		}
+
+		bypass = {
+			has_government = fascism
+		}
+		
+		completion_reward = {
+			start_civil_war = {
+					ruling_party = fascism
+					ideology = democratic
+					size = 0.25
+				}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Return_Of_The_Monarchy
+		icon = GFX_focus_rom_royal_dictatorship
+		prerequisite = { focus = KOR_Connections_to_the_Past }
+		relative_position_id = KOR_Connections_to_the_Past
+		mutually_exclusive = { focus = KOR_Monarchism }
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			set_politics = { ruling_party = neutrality elections_allowed = no }
+			add_popularity = { ideology = neutrality popularity = 0.9 }
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Approach_Japan
+		icon = GFX_focus_chi_collaboration_with_the_japanese
+		prerequisite = { focus = KOR_Return_Of_The_Monarchy focus = KOR_Military_Siezes_Control }
+		relative_position_id = KOR_New_Korean_Empire
+		mutually_exclusive = { focus = KOR_Approach_Allies focus = KOR_Our_Own_Way }
+		
+		x = -3
+		y = 3
+		
+		cost = 5
+
+		available = {
+			OR = { JAP = { has_government = neutrality } JAP = { has_government = fascism } }
+		}
+		
+		completion_reward = {
+			if = {
+				limit = {
+					JAP = {
+						is_faction_leader = yes
+					}
+				}
+				JAP = { country_event = generic.2 }
+			}
+			else_if = {
+				limit = {
+					JAP = {
+						is_in_faction = yes
+						is_faction_leader = no
+					}
+				}
+				random_country = {
+					limit = {
+						is_in_faction_with = ENG
+						is_faction_leader = yes
+					}
+					country_event = generic.2
+				}
+			}
+			else = {
+				set_rule = { can_create_factions = yes }
+				create_faction = "Seoul-Tokyo Pact"
+				JAP = { country_event = generic.5 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+			
+			modifier = {
+				factor = 100
+				OR = { JAP = { has_government = fascism } JAP = { has_government = neutrality } }
+			}
+		}
+	}
+	
+	focus = {
+		id = KOR_Invite_Zaibatsus
+		icon = GFX_focus_jap_zaibatsu
+		prerequisite = { focus = KOR_Approach_Japan }
+		relative_position_id = KOR_Approach_Japan
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = JAP_zaibatsus
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Approach_Allies
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = KOR_Return_Of_The_Monarchy }
+		relative_position_id = KOR_Return_Of_The_Monarchy
+		mutually_exclusive = { focus = KOR_Approach_Japan focus = KOR_Our_Own_Way }
+
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			NOT = { ENG = { has_government = communism } }
+		}
+		
+		completion_reward = {
+			if = {
+				limit = {
+					ENG = {
+						is_faction_leader = yes
+						has_government = democratic
+					}
+				}
+				ENG = { country_event = generic.2 }
+			}
+			else_if = {
+				limit = {
+					ENG = {
+						is_in_faction = yes
+						is_faction_leader = no
+						has_government = democratic
+					}
+				}
+				random_country = {
+					limit = {
+						is_in_faction_with = ENG
+						is_faction_leader = yes
+					}
+					country_event = generic.2
+				}
+			}
+			else = {
+				set_rule = { can_create_factions = yes }
+				create_faction = "Allies"
+				ENG = { country_event = generic.5 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Our_Own_Way
+		icon = GFX_goal_generic_defence
+		prerequisite = { focus = KOR_Military_Siezes_Control focus = KOR_Return_Of_The_Monarchy }
+		relative_position_id = KOR_New_Korean_Empire
+		mutually_exclusive = { focus = KOR_Approach_Allies focus = KOR_Approach_Japan }
+		
+		x = 1
+		y = 3
+		
+		cost = 5
+
+		available = {
+
+		}
+		
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Gwangmu_Reform
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = KOR_Invite_Zaibatsus focus = KOR_Approach_Allies focus = KOR_Our_Own_Way }
+		relative_position_id = KOR_Approach_Allies
+		
+		x = 0
+		y = 2
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Gwangmu_Reform
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Study_Industry_Abroad
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = KOR_Gwangmu_Reform }
+		relative_position_id = KOR_Gwangmu_Reform
+		
+		x = 1
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = JAP_increase_industrial_investments
+				bonus = 1.0
+				uses = 2
+				category = industry
+			}
+			
+			add_ideas = KOR_Study_Industry_Abroad
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Land_Reform
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = KOR_Study_Industry_Abroad }
+		relative_position_id = KOR_Study_Industry_Abroad
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Land_Reform
+			
+			every_owned_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Establish_Royal_Cabinet
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = KOR_Gwangmu_Reform }
+		relative_position_id = KOR_Gwangmu_Reform
+		
+		x = -1
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Establish_Royal_Cabinet
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	# Communism
+	
+	focus = {
+		id = KOR_Korean_Democratic_Peoples_Republic
+		icon = GFX_focus_generic_join_comintern
+		prerequisite = { focus = KOR_Internal_Politics }
+		relative_position_id = KOR_Internal_Politics
+		mutually_exclusive = { focus = KOR_New_Korean_Republic focus = KOR_New_Korean_Empire }
+		
+		x = 6
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Korean_Communism
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Communist_Revolution
+		icon = GFX_focus_SWE_refuge_for_revolutionaries
+		prerequisite = { focus = KOR_Korean_Democratic_Peoples_Republic }
+		relative_position_id = KOR_Korean_Democratic_Peoples_Republic
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+		
+		available = { communism > 0.3 }
+
+		bypass = {
+			has_government = communism
+		}
+		
+		completion_reward = {
+			start_civil_war = {
+					ruling_party = communism
+					ideology = democratic
+					size = 0.25
+				}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Approach_Comintern
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		prerequisite = { focus = KOR_Communist_Revolution }
+		relative_position_id = KOR_Communist_Revolution
+		mutually_exclusive = { focus = KOR_Communist_Our_Own_Way focus = KOR_Communist_Approach_Japan }
+
+		x = 2
+		y = 1
+		
+		cost = 5
+
+		available = {
+			SOV = { has_government = Communism }
+		}
+		
+		completion_reward = {
+			if = {
+				limit = {
+					SOV = {
+						is_faction_leader = yes
+						has_government = communism
+					}
+				}
+				SOV = { country_event = generic.2 }
+			}
+			else_if = {
+				limit = {
+					SOV = {
+						is_in_faction = yes
+						is_faction_leader = no
+						has_government = communism
+					}
+				}
+				random_country = {
+					limit = {
+						is_in_faction_with = SOV
+						is_faction_leader = yes
+					}
+					country_event = generic.2
+				}
+			}
+			else = {
+				set_rule = { can_create_factions = yes }
+				create_faction = "Seoul-Moscow Bloc"
+				SOV = { country_event = generic.5 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Communist_Our_Own_Way
+		icon = GFX_goal_generic_defence
+		prerequisite = { focus = KOR_Communist_Revolution }
+		relative_position_id = KOR_Communist_Revolution
+		mutually_exclusive = { focus = KOR_Approach_Comintern focus = KOR_Communist_Approach_Japan }
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+		
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Communist_Approach_Japan
+		icon = GFX_focus_chi_collaboration_with_the_japanese
+		prerequisite = { focus = KOR_Communist_Revolution }
+		relative_position_id = KOR_Communist_Revolution
+		mutually_exclusive = { focus = KOR_Approach_Comintern focus = KOR_Communist_Our_Own_Way }
+		
+		x = -2
+		y = 1
+		
+		cost = 5
+
+		available = {
+			JAP = { has_government = Communism }
+		}
+		
+		completion_reward = {
+			if = {
+				limit = {
+					JAP = {
+						is_faction_leader = yes
+						has_government = communism
+					}
+				}
+				JAP = { country_event = generic.2 }
+			}
+			else_if = {
+				limit = {
+					JAP = {
+						is_in_faction = yes
+						is_faction_leader = no
+						has_government = communism
+					}
+				}
+				random_country = {
+					limit = {
+						is_in_faction_with = SOV
+						is_faction_leader = yes
+					}
+					country_event = generic.2
+				}
+			}
+			else = {
+				set_rule = { can_create_factions = yes }
+				create_faction = "Seoul-Tokyo Bloc"
+				JAP = { country_event = generic.5 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+			
+			modifier = {
+				factor = 100
+				JAP = { has_government = communism }
+			}
+		}
+	}
+	
+	focus = {
+		id = KOR_Com_Invite_Zaibatsus
+		icon = GFX_focus_jap_zaibatsu
+		prerequisite = { focus = KOR_Communist_Approach_Japan }
+		relative_position_id = KOR_Communist_Approach_Japan
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = JAP_nationalize_the_zaibatsus
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Kim_Il_Sungs_Return
+		icon = GFX_goal_support_communism
+		prerequisite = { focus = KOR_Com_Invite_Zaibatsus focus = KOR_Communist_Our_Own_Way focus = KOR_Approach_Comintern}
+		relative_position_id = KOR_Communist_Our_Own_Way
+		
+		x = 0
+		y = 2
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			country_event = KOR.1
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Juche
+		icon = GFX_focus_SOV_builder_of_the_red_army
+		prerequisite = { focus = KOR_Kim_Il_Sungs_Return }
+		relative_position_id = KOR_Kim_Il_Sungs_Return
+		
+		x = -1
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Juche
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Press_Censorship
+		icon = GFX_focus_por_workers_of_iberia
+		prerequisite = { focus = KOR_Kim_Il_Sungs_Return }
+		relative_position_id = KOR_Kim_Il_Sungs_Return
+		
+		x = -3
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Press_Censorship
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Kims_Cult_Of_Personality
+		icon = GFX_focus_SOV_the_path_of_marxism_leninism
+		prerequisite = { focus = KOR_Press_Censorship }
+		prerequisite = { focus = KOR_Juche }
+		relative_position_id = KOR_Juche
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			swap_ruler_traits = { remove = staunch_stalinist add = supreme_leader }
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Five_Year_Plan
+		icon = GFX_focus_generic_soviet_politics
+		prerequisite = { focus = KOR_Kim_Il_Sungs_Return }
+		relative_position_id = KOR_Kim_Il_Sungs_Return
+		
+		x = 1
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Five_Year_Plan
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Welfare_State
+		icon = GFX_focus_generic_communist_industry
+		prerequisite = { focus = KOR_Five_Year_Plan }
+		relative_position_id = KOR_Five_Year_Plan
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Welfare_State
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Nationalize_Industry
+		icon = GFX_goal_generic_soviet_construction
+		prerequisite = { focus = KOR_Five_Year_Plan }
+		relative_position_id = KOR_Five_Year_Plan
+		
+		x = 2
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Nationalize_Industry
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Agricultural_Collectivization
+		icon = GFX_focus_prc_agrarian_socialism
+		prerequisite = { focus = KOR_Five_Year_Plan }
+		relative_position_id = KOR_Five_Year_Plan
+		
+		x = 4
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Agricultural_Collectivization
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	
+# Military Reform
+	
+	focus = {
+		id = KOR_New_Korean_Military_Academies
+		icon = GFX_focus_generic_military_academy
+		
+		relative_position_id = KOR_Industrial_Expansion
+
+		x = 0
+		y = 5
+		
+		offset = {
+			x = -4
+			y = -2
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = KOR_Military_Factionalism
+			}
+		}
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			army_experience = 25
+			
+			add_ideas = KOR_New_Korean_Military_Academies
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+## Air
+
+	focus = {
+		id = KOR_Royal_Korean_Airforce
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = KOR_New_Korean_Military_Academies }
+		
+		relative_position_id = KOR_New_Korean_Military_Academies
+
+		x = 6
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+		
+			air_experience = 25
+		
+			527 = {			
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}		
+
+			525 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
+			}	
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Airbase_Expansion
+		icon = GFX_goal_generic_build_airforce
+		prerequisite = { focus = KOR_Royal_Korean_Airforce }
+		
+		relative_position_id = KOR_Royal_Korean_Airforce
+
+		x = 2
+		y = 1
+		
+		cost = 4
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			527 = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Air_Innovation
+		icon = GFX_goal_generic_build_airforce
+		prerequisite = { focus = KOR_Royal_Korean_Airforce }
+		
+		relative_position_id = KOR_Royal_Korean_Airforce
+
+		x = -2
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 4
+				category = air_equipment
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Naval_Focus
+		icon = GFX_goal_generic_air_naval_bomber
+		prerequisite = { focus = KOR_Airbase_Expansion }
+		prerequisite = { focus = KOR_Air_Innovation }
+		mutually_exclusive = { focus = KOR_CAS_Focus focus = KOR_Fighter_Focus } 
+		relative_position_id = KOR_Royal_Korean_Airforce
+
+		x = -2
+		y = 2
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			## Air Doctrine Cost reduction 50%
+			
+			525 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}		
+
+			527 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			add_ideas = KOR_Naval_Focus
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_CAS_Focus
+		icon = GFX_focus_generic_cas_aircraft
+		prerequisite = { focus = KOR_Airbase_Expansion }
+		prerequisite = { focus = KOR_Air_Innovation }		
+		mutually_exclusive = { focus = KOR_Naval_Focus focus = KOR_Fighter_Focus } 
+		relative_position_id = KOR_Royal_Korean_Airforce
+
+		x = 0
+		y = 2
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			## Air Doctrine Cost reduction 50%
+			
+			525 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}		
+
+			527 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			add_ideas = KOR_CAS_Focus
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Fighter_Focus
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = KOR_Airbase_Expansion }
+		prerequisite = { focus = KOR_Air_Innovation }
+		mutually_exclusive = { focus = KOR_CAS_Focus focus = KOR_Naval_Focus } 
+		relative_position_id = KOR_Royal_Korean_Airforce
+
+		x = 2
+		y = 2
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			## Air Doctrine Cost reduction 50%
+			
+			525 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}		
+
+			527 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			add_ideas = KOR_Fighter_Focus
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	focus = {
+		id = KOR_Modern_Korean_Airforce
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = KOR_Naval_Focus focus = KOR_CAS_Focus focus = KOR_Fighter_Focus}
+		
+		relative_position_id = KOR_CAS_Focus
+
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+		
+			air_experience = 50
+		
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.75
+				uses = 2
+				category = air_doctrine
+			}	
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+## Navy
+
+	focus = {
+		id = KOR_Royal_Korean_Navy
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = KOR_New_Korean_Military_Academies }
+		
+		relative_position_id = KOR_New_Korean_Military_Academies
+
+		x = -5
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			527 = {			
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}		
+
+			525 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = naval_doctrine
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Expand_Dockyards
+		icon = GFX_goal_generic_build_navy
+		prerequisite = { focus = KOR_Royal_Korean_Navy }
+		
+		relative_position_id = KOR_Royal_Korean_Navy
+
+		x = -1
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			
+			527 = {			
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}		
+
+			525 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Royal_Korean_Marine_Corps
+		icon = GFX_goal_generic_amphibious_assault
+		prerequisite = { focus = KOR_Royal_Korean_Navy }
+		
+		relative_position_id = KOR_Royal_Korean_Navy
+
+		x = 1
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Royal_Korean_Marine_Corps
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	focus = {
+		id = KOR_Escort_Focus
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = KOR_Expand_Dockyards }
+		
+		relative_position_id = KOR_Expand_Dockyards
+
+		x = -1
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Escort_Focus
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Interdiction_Focus
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { focus = KOR_Expand_Dockyards }
+		
+		relative_position_id = KOR_Expand_Dockyards
+
+		x = 1
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Interdiction_Focus
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Modern_Korean_Navy
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = KOR_Escort_Focus focus = KOR_Interdiction_Focus}
+		
+		relative_position_id = KOR_Escort_Focus
+
+		x = 1
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.75
+				uses = 2
+				category = naval_doctrine
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+## Army
+
+	focus = {
+		id = KOR_Royal_Korean_Army
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = KOR_New_Korean_Military_Academies }
+		relative_position_id = KOR_New_Korean_Military_Academies
+
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			army_experience = 25
+			
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}		
+		
+			525 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}		
+
+			527 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Artillery_Modernization
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = KOR_Royal_Korean_Army }
+		relative_position_id = KOR_Royal_Korean_Army
+
+		x = -2
+		y = 1
+		
+		cost = 4
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 2
+				category = artillery
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Artillery_Production
+		icon = GFX_goal_generic_production2
+		prerequisite = { focus = KOR_Artillery_Modernization }
+		mutually_exclusive = { focus = KOR_Armor_Production focus = KOR_Arms_Production }
+		relative_position_id = KOR_Artillery_Modernization
+
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Artillery_Production
+			
+			527 = {			
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}		
+
+			525 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Arms_Modernization
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = KOR_Royal_Korean_Army }
+		relative_position_id = KOR_Royal_Korean_Army
+
+		x = 0
+		y = 1
+		
+		cost = 4
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 2
+				category = infantry_tech
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Arms_Production
+		icon = GFX_focus_generic_reorient_production
+		prerequisite = { focus = KOR_Arms_Modernization }
+		mutually_exclusive = { focus = KOR_Armor_Production focus = KOR_Artillery_Production }
+		relative_position_id = KOR_Arms_Modernization
+
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Arms_Production
+			
+			527 = {			
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}		
+
+			525 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Armor_Modernization
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = KOR_Royal_Korean_Army }
+		relative_position_id = KOR_Royal_Korean_Army
+
+		x = 2
+		y = 1
+		
+		cost = 4
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 2
+				category = armor
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Armor_Production
+		icon = GFX_focus_generic_tank_production
+		prerequisite = { focus = KOR_Armor_Modernization }
+		mutually_exclusive = { focus = KOR_Arms_Production focus = KOR_Artillery_Production }
+		relative_position_id = KOR_Armor_Modernization
+
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_ideas = KOR_Armor_Production
+			
+			527 = {			
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}		
+
+			525 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+	focus = {
+		id = KOR_Modern_Korean_Military
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = KOR_Arms_Production focus = KOR_Artillery_Production focus = KOR_Armor_Production}
+		relative_position_id = KOR_Arms_Production
+
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.75
+				uses = 2
+				category = land_doctrine
+			}		
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	# Industrial
+	
+	focus = {
+		id = KOR_Industrial_Expansion
+		icon = GFX_goal_generic_construct_civilian
+		relative_position_id = KOR_Internal_Politics
+		
+		x = 20
+		y = 0
+		
+		offset = {
+			x = -8
+			y = 0
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = KOR_Military_Factionalism
+			}
+		}
+		
+		cost = 3
+
+		available = {
+			
+		}
+		
+		completion_reward = {
+			every_owned_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Increase_Resource_Production
+		icon = GFX_focus_generic_steel
+		prerequisite = { focus = KOR_Industrial_Expansion }
+		
+		relative_position_id = KOR_Industrial_Expansion
+
+		x = 0
+		y = 1
+		
+		cost = 10
+
+		available = {
+			has_full_control_of_state = 527
+		}
+		
+		completion_reward = {
+			527 = {
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+			} 
+			
+			527 = {
+				add_resource = {
+					type = tungsten
+					amount = 20
+				}
+			} 
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Increase_Resource_Production_II
+		icon = GFX_focus_generic_tungsten
+		prerequisite = { focus = KOR_Increase_Resource_Production }
+		
+		relative_position_id = KOR_Increase_Resource_Production
+
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			has_full_control_of_state = 527
+		}
+		
+		completion_reward = {
+			527 = {
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			} 
+			
+			527 = {
+				add_resource = {
+					type = tungsten
+					amount = 16
+				}
+			} 
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Expand_Northern_Infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = KOR_Industrial_Expansion }
+		
+		relative_position_id = KOR_Industrial_Expansion
+
+		x = 2
+		y = 1
+		
+		cost = 5
+
+		available = {
+			has_full_control_of_state = 527
+		}
+		
+		completion_reward = {
+			527 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}			
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Expand_Northern_Industry
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = KOR_Expand_Northern_Infrastructure }
+		
+		relative_position_id = KOR_Expand_Northern_Infrastructure
+
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			has_full_control_of_state = 527
+		}
+		
+		completion_reward = {
+			527 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}		
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Expand_Northern_Industry_II
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = KOR_Expand_Northern_Industry }
+		
+		relative_position_id = KOR_Expand_Northern_Industry
+
+		x = 0
+		y = 1
+		
+		cost = 10
+
+		available = {
+			has_full_control_of_state = 527
+		}
+		
+		completion_reward = {
+			527 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}		
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Expand_Northern_Industry_III
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = KOR_Expand_Northern_Industry_II }
+		
+		relative_position_id = KOR_Expand_Northern_Industry_II
+
+		x = 0
+		y = 1
+		
+		cost = 10
+
+		available = {
+			has_full_control_of_state = 527
+		}
+		
+		completion_reward = {
+			527 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}		
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Expand_Southern_Infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = KOR_Industrial_Expansion }
+		
+		relative_position_id = KOR_Industrial_Expansion
+
+		x = -2
+		y = 1
+		
+		cost = 5
+
+		available = {
+			has_full_control_of_state = 525
+		}
+		
+		completion_reward = {
+			525 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}				
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Expand_Southern_Industry
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = KOR_Expand_Southern_Infrastructure }
+		
+		relative_position_id = KOR_Expand_Southern_Infrastructure
+
+		x = 0
+		y = 1
+		
+		cost = 5
+
+		available = {
+			has_full_control_of_state = 525
+		}
+		
+		completion_reward = {
+			525 = {			
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}		
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Expand_Southern_Industry_II
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = KOR_Expand_Southern_Industry }
+		
+		relative_position_id = KOR_Expand_Southern_Industry
+
+		x = 0
+		y = 1
+		
+		cost = 10
+
+		available = {
+			has_full_control_of_state = 525
+		}
+		
+		completion_reward = {
+			525 = {			
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}		
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Expand_Southern_Industry_III
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = KOR_Expand_Southern_Industry_II }
+		
+		relative_position_id = KOR_Expand_Southern_Industry_II
+
+		x = 0
+		y = 1
+		
+		cost = 10
+
+		available = {
+			has_full_control_of_state = 525
+		}
+		
+		completion_reward = {
+			525 = {			
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}		
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Open_Southern_Steel_works
+		icon = GFX_focus_generic_steel
+		prerequisite = { focus = KOR_Expand_Northern_Industry }
+		prerequisite = { focus = KOR_Expand_Southern_Industry }
+		
+		relative_position_id = KOR_Industrial_Expansion
+
+		x = 0
+		y = 3
+		
+		cost = 10
+
+		available = {
+			has_full_control_of_state = 525
+		}
+		
+		completion_reward = {
+			525 = {
+				add_resource = {
+					type = steel
+					amount = 16
+				}
+			} 
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	focus = {
+		id = KOR_Open_Southern_Steel_works_II
+		icon = GFX_focus_generic_steel
+		prerequisite = { focus = KOR_Open_Southern_Steel_works }
+		
+		relative_position_id = KOR_Open_Southern_Steel_works
+
+		x = 0
+		y = 1
+		
+		cost = 10
+
+		available = {
+			has_full_control_of_state = 525
+		}
+		
+		completion_reward = {
+			525 = {
+				add_resource = {
+					type = steel
+					amount = 8
+				}
+			} 
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+}

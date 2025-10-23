@@ -1,0 +1,121 @@
+FRA_economy_dynamic_modifier = { #NATIONAL SPIRIT
+	enable = { always = yes }
+
+	icon = GFX_idea_generic_local_self_management
+	# remove_trigger = {
+	# 	OR = {
+	# 		check_variable = {
+	# 			FPM_eco_consumer_goods_factor = 0
+	# 		}
+	# 		check_variable = {
+	# 			FPM_eco_consumer_goods_factor < 0
+	# 		}
+	# 	}
+	# }
+	#INITIAL
+	consumer_goods_factor = FPM_eco_consumer_goods_factor #0.2
+	industrial_capacity_factory = FPM_eco_industrial_capacity_factory #-0.2
+	industrial_capacity_dockyard = FPM_eco_industrial_capacity_dockyard #-0.2
+}
+
+FRA_commie_strikes_modifier = { #NATIONAL SPIRIT
+	enable = { always = yes }
+
+	icon = GFX_idea_FRA_factory_strikes
+
+	industrial_capacity_factory = FPM_strike_industrial_capacity_factory #-0.25
+	industrial_capacity_dockyard = FPM_strike_industrial_capacity_dockyard #-0.25
+}
+
+FRA_fourth_republic_constitution_modifier = { #NATIONAL SPIRIT
+	enable = { always = yes }
+
+	icon = GFX_idea_generic_constitutional_guarantees
+
+	political_power_cost = 4_republic_political_power_cost
+	stability_factor = 4_republic_stability_factor
+	war_support_factor = 4_republic_war_support_factor
+	surrender_limit = 4_republic_surrender_limit
+	political_power_factor = 4_republic_political_power_factor
+	political_advisor_cost_factor = 4_republic_political_advisor_cost_factor
+	economy_cost_factor = 4_republic_economy_cost_factor
+	trade_laws_cost_factor = 4_republic_economy_trade_laws_factor
+	mobilization_laws_cost_factor = 4_republic_economy_mobilization_laws_factor
+	party_popularity_stability_factor = 4_republic_democracy_drift
+	political_power_gain = 4_republic_political_power_gain
+
+}
+
+
+FRA_alpine_trade_modifier = { #STATE MODIFIER
+	enable = { always = yes }
+
+	icon = GFX_modifiers_increased_metal_production
+
+	local_factories = 0.25
+	local_resources_factor = 0.25	
+}
+
+FRA_operation_pike = { #STATE MODIFIER
+	enable = { always = yes }
+
+	icon = GFX_modifiers_sabotaged_resource
+
+	temporary_state_resource_oil = -50
+}
+
+FRA_military_offensive = { #STATE MODIFIER
+	enable = { always = yes }
+
+	icon = GFX_modifiers_generic_military_plans
+
+	breakthrough_factor = 0.1
+	army_attack_factor = 0.1
+}
+
+FRA_local_strikes = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_SOV_factory_worker_militias
+
+	local_factories = -0.25
+	local_resources_factor = -0.25
+}
+
+FRA_last_defense = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_generic_defense
+
+	dig_in_speed_factor = 0.20
+	pocket_penalty = -0.20
+	army_org_regain = 0.10
+}
+
+FRA_defend_paris = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_generic_military_plans
+
+	army_core_defence_factor = 0.05
+	local_org_regain = 0.1
+}
+
+FRA_open_city = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_demilitarize_zone
+
+	army_core_defence_factor = -0.25
+	local_org_regain = -0.25
+}
+
+FRA_economic_devastation = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_ETH_state_development
+
+	local_factories = -0.75
+	local_resources_factor = -0.75
+}
+

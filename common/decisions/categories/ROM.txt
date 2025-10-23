@@ -1,0 +1,223 @@
+ROM_agrarian_reform = {
+	priority = 5
+	icon = generic_political_actions
+	picture = GFX_decision_cat_picture_gas_attack
+	
+
+	visible = {
+		has_country_flag = ROM_flag_agrarian_reform
+	}
+	
+	allowed = {
+
+	}
+		
+}
+
+ROM_ussr_invasion = {
+	priority = 5
+	icon = generic_propaganda
+	picture = GFX_decision_ROM_icon_bulgarian_showdown
+	
+
+	visible = {
+		OR = {
+			has_completed_focus = ROM_legionary_axis_prepare_for_the_ultimate_sacrifice
+			has_completed_focus = ROM_antonescu_prepare_for_the_ultimate_sacrifice
+		}
+	}
+	
+	allowed = {
+		
+	}	
+	
+}
+
+ROM_expand_influence_in_balkans = {
+	priority = 5
+	icon = generic_political_actions
+	picture = GFX_decision_cat_picture_gas_attack
+	
+
+	visible = {
+		has_completed_focus = ROM_spread_of_communist_ideas
+	}
+	
+	allowed = {
+		has_completed_focus = ROM_spread_of_communist_ideas
+	}
+}
+
+ROM_expand_cultural_legacy = {
+	priority = 5
+	icon = generic_political_actions
+	picture = GFX_decision_cat_picture_ROM_cultural_legacy_bg
+	visible = {
+		has_completed_focus = ROM_blood_of_Decebal
+	}
+	
+	allowed = {
+		
+	}
+}
+
+ROM_dacia_expansion_core = {
+	priority = 4
+	icon = generic_political_actions
+	visible = {
+		has_completed_focus = ROM_focus_on_our_natural_enemy
+	}
+	
+	allowed = {
+		
+	}
+}
+
+ROM_army_reorganisation = {
+	priority = 4
+	icon = generic_political_actions
+	visible = {
+		has_completed_focus = ROM_military_restructuring
+	}
+	
+	allowed = {
+		
+	}
+}
+
+ROM_balkan_federation_cores = {
+	priority = 4
+	icon = generic_research
+	picture = GFX_decision_ROM_icon_decision_balkan_federation
+	visible = {
+		has_completed_focus = ROM_kings_plans
+	}
+	
+	allowed = {
+		
+	}
+}
+
+ROM_bulgarian_showdown = {
+	priority = 4
+	icon = generic_research
+	picture = GFX_decision_ROM_icon_bulgarian_showdown
+	visible = {
+		has_country_flag = ROM_bulgarian_showdown_flag
+	}
+	
+	allowed = {
+		TAG = ROM
+
+	}
+}
+
+ROM_let_the_game_begin_new = {
+	priority = 5
+	icon = generic_research
+	picture = GFX_decision_ROM_let_the_game_begin_new
+	visible = {
+		has_completed_focus = ROM_the_tragedy_of_a_lost_blood
+	}
+	
+	allowed = {
+		TAG = ROM
+	}
+}
+
+ROM_internal_power_struggle = {
+	priority = 5
+	icon = generic_political_actions
+	picture = GFX_decision_ROM_icon_decision_internal_power_struggle
+	visible = {
+		has_completed_focus = ROM_the_balkan_federation	
+	}
+
+	allowed = {
+		
+	}
+}
+
+ROM_final_solution = {
+	priority = 5
+	icon = GFX_decision_category_border_conflicts
+	picture = GFX_decision_ROM_icon_decision_ROM_let_the_game_begin_new
+	visible = {
+		has_completed_focus = ROM_antonescu_deport_the_gypsies_into_the_working_camps	
+	}
+
+	allowed = {
+		
+	}
+}
+
+ROM_balance_of_power_category = {
+	icon = GFX_decision_category_power_struggle
+	
+	allowed = {
+		original_tag = ROM
+	}
+	
+	priority = 90
+	
+	visible = {
+		
+	}
+}
+
+ROM_secure_the_rights_of_the_true_heir_category = {
+	icon = GFX_decision_category_generic_monarchism
+	
+	allowed = {
+		original_tag = ROM
+	}
+	
+	visible = {
+
+		NOT = {
+			has_country_flag = ROM_rome_decision_is_done
+		}
+	}
+
+	priority = 90
+	
+	visible = {
+		
+	}
+}
+
+
+ROM_imperial_court_byzantine = {
+	icon = GFX_decision_category_generic_monarchism
+	picture = GFX_decision_ROM_imperial_court_byzantine
+	allowed = {
+		original_tag = ROM
+		has_completed_focus = ROM_imperial_court_of_bucharest
+	}
+	
+	priority = 90
+	
+	visible = {
+		
+	}
+}
+
+
+
+ROM_integrate_conquered_lands_byzantium = {
+	icon = GFX_decision_category_generic_monarchism
+	picture = GFX_decision_ROM_imperial_court_byzantine
+	allowed = {
+		original_tag = ROM
+	}
+
+	visible = {
+		has_completed_focus = ROM_integrate_the_conquered_countries
+	}
+	
+	priority = 90
+	
+	visible = {
+		
+	}
+}

@@ -1,0 +1,120 @@
+MON_historical_plan = {
+	name = "Mongolia Historical Plan"
+	desc = ""
+
+	allowed = {
+		original_tag = MON
+	}
+	enable = {
+		OR = {
+			AND = {
+				is_historical_focus_on = yes 
+				has_game_rule = {
+					rule = MON_ai_behavior
+					option = DEFAULT
+				}
+			}
+			has_country_flag = MON_AI_RANDOM_HISTORICAL
+			has_game_rule = {
+				rule = MON_ai_behavior
+				option = HISTORICAL
+			}
+		}	
+	}
+	abort = {
+		SOV = {
+			or = {
+				has_completed_focus = SOV_the_right_opposition
+				has_completed_focus = SOV_the_left_opposition
+				has_completed_focus = SOV_beaten_but_not_defeated
+			}
+		}
+	}
+
+	ai_national_focuses = {
+
+		# Do this when possible
+		MON_naval_experiments #70
+		
+		#1936
+		MON_strife_within_the_party # 35
+		MON_exile_genden #35
+		MON_treaty_with_the_ussr #35
+		MON_manchurian_conference #35
+		MON_soviet_military_investment #35
+		MON_internal_affairs_committee #70
+		MON_invite_soviet_production_experts #35
+		MON_state_publishing_company #35
+		MON_army_allegiance #35
+
+		#1937
+		MON_raise_military_spending #70
+		MON_arm_the_nation #70
+		MON_purge_the_traitors #70
+		MON_assassinate_demid #35
+		MON_order_366 #70
+		MON_deal_with_the_lamas #70
+
+		#1938
+		MON_rural_education #70
+		MON_support_the_global_struggle #70
+		MON_utilise_our_strengths #70
+		MON_mongolian_army_air_corps #70
+		#MON_born_in_the_saddle #70
+
+		#1939
+		#MON_modernising_the_cavalry #70
+		MON_remove_amar #70
+		MON_end_the_purges #70
+		MON_pursue_independence #70
+		MON_sukhbaatar_general_military_higher_school #70
+		
+		#1940
+		MON_tenth_party_congress #70
+		MON_revise_the_constitution #70
+		MON_modernising_the_cavalry #70
+		MON_armoured_car_focus #35
+		MON_study_fighter_design #35
+		MON_expand_pilot_training_initiatives £70
+
+		#1941
+		MON_nationalist_sentiment #70
+		MON_reclaim_inner_mongolia #35
+		MON_long_range_aircraft #35
+		MON_domestic_aviation_industry #70
+		MON_revolutionary_mongolia_column #70
+		MON_arat_squadron #70
+
+		#1942
+		MON_research_cooperation #70
+		MON_expand_the_youth_league #70
+		MON_political_commissars #70
+		MON_the_flowering_future #35
+
+		#1943
+
+		#1944
+	}
+
+	focus_factors = {
+		
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}

@@ -1,0 +1,309 @@
+generic_infantry_role = {
+	role = infantry 
+	upgrade_prio = {
+		base = 1000
+	}
+		
+
+	#####################################################
+	#	18W
+	#####################################################
+
+	### defense
+	
+	GENERIC_INFANTRY_TEMPLATE_18_CHEAP = {
+		enable = { num_of_military_factories < 31 }
+		
+
+		can_upgrade_in_field = { always = yes }
+
+		# TEMPLATE
+		
+		reinforce_prio = 1
+
+		target_template = {
+
+			regiments = {
+				infantry = 9
+			}
+
+			support = {
+				engineer = 1
+				artillery = 1
+				recon = 1
+				anti_tank = 1
+			}
+		}
+		
+		replace_with = Mobile_Warfare_Inf
+		replace_with = Superior_Firepower_Inf
+		replace_with = Trench_Warfare_Inf
+		replace_with = Mass_Assault_Inf_1
+		replace_with = GENERIC_INFANTRY_TEMPLATE_18_CHEAP_2
+
+	}
+	
+	GENERIC_INFANTRY_TEMPLATE_18_CHEAP_2 = {
+		enable = { 
+			num_of_military_factories > 30 
+			
+			NOT = {
+				OR = {
+					has_tech = mobile_warfare
+					has_tech = superior_firepower
+					has_tech = trench_warfare
+					has_tech = mass_assault
+				}
+			}
+		
+		}
+		
+
+		can_upgrade_in_field = { always = yes }
+
+		# TEMPLATE
+		
+		reinforce_prio = 1
+
+		target_template = {
+
+			regiments = {
+				infantry = 10
+				artillery_brigade = 1
+			}
+
+			support = {
+				engineer = 1
+				artillery = 1
+				recon = 1
+				anti_tank = 1
+				anti_air = 1
+			}
+		}
+		
+		
+		
+		
+		replace_with = Mobile_Warfare_Inf_2
+		replace_with = Superior_Firepower_Inf
+		replace_with = Trench_Warfare_Inf
+		replace_with = Mass_Assault_Inf_2
+
+	}
+	
+
+	#####################################################
+	#				Blitz Inf							#
+	#####################################################
+
+	
+	
+	Mobile_Warfare_Inf_2 = {
+		enable = { 
+			
+				
+				has_tech = mobile_warfare
+				
+		}
+
+		upgrade_prio = { factor = 3 }
+
+		can_upgrade_in_field = { always = yes }
+
+		# TEMPLATE
+		
+		reinforce_prio = 1
+
+		target_template = {
+			
+
+			regiments = {
+				infantry = 10
+				artillery_brigade = 1
+				anti_tank_brigade = 1
+			}
+
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_air = 1
+				
+			}
+		}
+
+	}
+	
+	
+	
+	############################################
+	######Superior Firepower Inf################
+	############################################
+	
+	Superior_Firepower_Inf = {
+		enable = { 
+			
+				
+				has_tech = superior_firepower
+				
+		}
+
+		upgrade_prio = { factor = 3 }
+
+		can_upgrade_in_field = { always = yes }
+
+		# TEMPLATE
+		
+		reinforce_prio = 1
+
+		target_template = {
+			
+
+			regiments = {
+				infantry = 10
+				artillery_brigade = 1
+			}
+
+			support = {
+				engineer = 1
+				artillery = 1
+				rocket_artillery = 1
+				anti_tank = 1
+				recon = 1
+				anti_air = 1
+				
+			}
+		}
+
+	}
+	
+	
+	
+	
+	###############################################################
+	############FRENCHIES IN THE FUCKING TRENCHIES#################
+	###############################################################
+	
+	
+	Trench_Warfare_Inf = {
+		enable = { 
+			
+				
+				has_tech = trench_warfare
+				
+		}
+
+		upgrade_prio = { factor = 3 }
+
+		can_upgrade_in_field = { always = yes }
+
+		# TEMPLATE
+		
+		reinforce_prio = 1
+
+		target_template = {
+			
+
+			regiments = {
+				infantry = 10
+				artillery_brigade = 1
+				anti_tank_brigade = 1
+			}
+
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_air = 1
+				
+			}
+		}
+
+	}
+	
+	
+	
+	########################################################################
+	############ UNITED TOGETHER IN FREINDSHIP AND LABOR  ##################
+	########################################################################
+	
+	
+	
+	
+	Mass_Assault_Inf_2 = {
+		enable = { 
+			
+				
+				has_tech = mass_assault
+				
+				
+			
+		}
+
+		upgrade_prio = { factor = 3 }
+
+		can_upgrade_in_field = { always = yes }
+
+		# TEMPLATE
+		
+		reinforce_prio = 1
+
+		target_template = {
+			
+
+			regiments = {
+				infantry = 12
+				anti_tank_brigade = 1
+			}
+			#MOREMENTHENTHEYHAVEFUCKINGBULLETS
+			#IFONEMANDROPSARIFLEYOUPICKUPARIFLEANDSHOOT
+
+			support = {
+				engineer = 1
+				artillery = 1
+				anti_air = 1
+				
+				
+			}
+		}
+
+	}
+	
+	
+	
+	
+	VolkSturm = {
+		enable = { 
+			
+				
+				has_idea = Endsieg
+			
+		}
+
+		upgrade_prio = { factor = 3 }
+
+		can_upgrade_in_field = { always = yes }
+
+		# TEMPLATE
+		
+		reinforce_prio = 1
+
+		target_template = {
+			
+
+			regiments = {
+				infantry = 10
+				
+			}
+			#Hanz?... Are we the baddies?
+
+			support = {
+				engineer = 1
+				artillery = 1
+				recon = 1
+				anti_air = 1
+				
+			}
+		}
+
+	}
+	
+}

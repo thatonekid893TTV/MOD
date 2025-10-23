@@ -1,0 +1,110 @@
+state_category_up = {
+
+	if = {
+		limit = {
+			has_state_category = megalopolis
+			not = {
+				has_country_flag = DECMOD_can_build_ecumenopolis
+			}
+		}
+		add_extra_state_shared_building_slots = 2
+	}
+
+	if = {
+		limit = {
+			has_state_category = megalopolis
+			has_country_flag = DECMOD_can_build_ecumenopolis
+		}
+		set_state_category = ecumenopolis
+	}
+
+	if = {
+		limit = {
+			has_state_category = metropolis
+		}
+		set_state_category = megalopolis
+	}
+
+	if = {
+		limit = {
+			has_state_category = large_city
+		}
+		set_state_category = metropolis
+	}
+
+	if = {
+		limit = {
+			has_state_category = city
+		}
+		set_state_category = large_city
+	}
+
+	if = {
+		limit = {
+			has_state_category = large_town
+		}
+		set_state_category = city
+	}
+
+	if = {
+		limit = {
+			has_state_category = town
+		}
+		set_state_category = large_town
+	}
+
+	if = {
+		limit = {
+			has_state_category = rural
+		}
+		set_state_category = town
+	}
+
+	if = {
+		limit = {
+			has_state_category = pastoral
+		}
+		set_state_category = rural
+	}
+
+	####
+	
+	if = {
+		limit = {
+			has_state_category = enclave
+		}
+		set_state_category = pastoral
+	}
+	
+	if = {
+		limit = {
+			has_state_category = wasteland
+		}
+		set_state_category = pastoral
+	}
+	
+	####
+
+	if = {
+		limit = {
+			has_state_category = small_island
+		}
+		add_extra_state_shared_building_slots = 1
+	}
+
+	if = {
+		limit = {
+			has_state_category = tiny_island
+		}
+		add_extra_state_shared_building_slots = 1
+	}
+	
+	####
+
+	if = {
+		limit = {
+			has_state_category = garden_city
+		}
+		add_extra_state_shared_building_slots = 1
+	}
+}

@@ -1,0 +1,204 @@
+﻿capital = 671 #Hanoi
+set_cosmetic_tag = ICN
+
+set_party_name = {
+	ideology = neutrality
+	long_name = VIN_neutrality_party_colony_long
+	name = VIN_neutrality_party_colony
+}
+
+set_party_name = {
+	ideology = democratic
+	long_name = VIN_democratic_party_colony_long
+	name = VIN_democratic_party_colony
+}
+
+oob = "VIN_1936"
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "VIN_1936_naval_mtg"
+		set_war_support = 0.1
+	else = {
+		set_naval_oob = "VIN_1936_naval_legacy"
+		set_war_support = 0.15
+	}
+}
+
+set_research_slots = 3
+
+set_convoys = 100
+
+# Starting tech
+# clone of France
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1
+	tech_recon = 1
+	tech_mountaineers = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	trench_warfare = 1
+	fleet_in_being = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		naval_bomber1 = 1
+		cv_early_fighter = 1
+		cv_naval_bomber1 = 1
+		early_bomber = 1
+		tactical_bomber1 = 1
+		CAS1 = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		improved_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		early_carrier = 1
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		early_ship_hull_carrier = 1
+		mtg_transport = 1
+		basic_battery = 1
+		basic_torpedo = 1
+	}
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1933.2.16"
+	election_frequency = 36
+	elections_allowed = no
+}
+set_popularities = {
+	democratic = 4
+	fascism = 1
+	communism = 15
+	neutrality = 80
+}
+
+add_ideas = {
+	VIN_pearl
+	FRA_developpement
+	VIN_china2
+	MOR_Desert
+}
+
+add_timed_idea = {
+		idea = VIN_yen_bai
+		days = 250
+	}
+
+
+recruit_character = ICN_germain_mennerat
+recruit_character = ICN_regis_berenger
+recruit_character = ICN_jean_decoux
+
+PRC = {  
+add_state_core = 322
+add_state_core = 757
+add_state_core = 758
+}
+CHI = {
+add_state_core = 322
+add_state_core = 757
+add_state_core = 758
+}
+ETH = { 
+add_state_core = 550
+add_state_core = 268
+}
+IRQ = { add_state_core = 656 }
+
+#NOTICE# please watch out for spelling, im using Vietnamese names as they spell them, game might not support these characters!
+
+create_country_leader = {
+	name = "Phan Bôi Châu" 
+	desc = ""
+	picture = GFX_portrait_Phan_Boi_Chau
+	expire = "1953.3.1"
+	ideology = fascism_ideology 
+}
+
+create_country_leader = {
+	name = "Ho Chí Minh" 
+	desc = ""
+	picture = GFX_portrait_ho_chi_minh
+	expire = "1953.3.1"
+	ideology = marxism
+	traits = {
+	}
+}
+
+create_country_leader = {
+	name = "Ngô Đình Diêm"
+	desc = ""
+	picture = GFX_portrait_Ngo_Đinh_Diem
+	expire = "1953.3.1"
+	ideology = conservatism
+}
+
+create_country_leader = {
+	name = "René Robin"
+	desc = ""
+	picture = GFX_portrait_VIN_rene_robin
+	expire = "1953.3.1"
+	ideology = moderatism
+	traits = {
+		stout_defender	
+	}
+}
+
+
+

@@ -1,0 +1,165 @@
+on_actions = {
+	on_weekly = {
+		effect = {
+			every_state = {
+				limit = {
+					CONTROLLER = {
+						check_variable = { THIS.num_owned_states < 1 }
+					}
+				}
+				CONTROLLER = {
+					delete_unit = {
+						disband = yes
+					}
+				}
+				set_state_controller_to = OWNER
+			}
+		}
+	}
+	
+	# ROOT : Winner, FROM, loser
+	on_peaceconference_ended = {
+		# To avoid "strange" impassable states owned by ROOT or FROM
+		effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = ROOT
+						tag = FROM
+					}
+					check_variable = {
+						num_owned_states > 1
+					}
+					any_owned_state = {
+						impassable = yes
+						all_neighbor_state = {
+							OR = {
+								impassable = yes
+								NOT = {
+									is_owned_by = PREV.PREV
+								}
+							}
+						}
+					}
+				}
+				every_owned_state = {
+					limit = {
+						impassable = yes
+						all_neighbor_state = {
+							OR = {
+								impassable = yes
+								NOT = {
+									is_owned_by = PREV.PREV
+								}
+							}
+						}
+					}
+					set_temp_variable = {
+						old_owner = OWNER
+					}
+					if = {
+						limit = {
+							any_neighbor_state = {
+								impassable = no
+								is_core_of = OWNER
+								NOT = {
+									is_owned_by = var:old_owner
+								}
+							}
+						}
+						random_neighbor_state = {
+							limit = {
+								impassable = no
+								is_core_of = OWNER
+								NOT = {
+									is_owned_by = var:old_owner
+								}
+							}
+							set_temp_variable = {
+								new_owner = OWNER
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							any_neighbor_state = {
+								impassable = no
+								NOT = {
+									is_owned_by = var:old_owner
+								}
+							}
+						}
+						random_neighbor_state = {
+							limit = {
+								impassable = no
+								NOT = {
+									is_owned_by = var:old_owner
+								}
+							}
+							set_temp_variable = {
+								new_owner = OWNER
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							any_neighbor_state = {
+								impassable = yes
+								is_core_of = OWNER
+								NOT = {
+									is_owned_by = var:old_owner
+								}
+							}
+						}
+						random_neighbor_state = {
+							limit = {
+								impassable = yes
+								is_core_of = OWNER
+								NOT = {
+									is_owned_by = var:old_owner
+								}
+							}
+							set_temp_variable = {
+								new_owner = OWNER
+							}
+						}
+					}
+					else_if = {
+						limit = {
+							any_neighbor_state = {
+								NOT = {
+									is_owned_by = var:old_owner
+								}
+							}
+						}
+						random_neighbor_state = {
+							limit = {
+								NOT = {
+									is_owned_by = var:old_owner
+								}
+							}
+							set_temp_variable = {
+								new_owner = OWNER
+							}
+						}
+					}
+					else = {
+						set_temp_variable = {
+							new_owner = var:old_owner
+						}
+					}
+					if = {
+						limit = {
+							is_fully_controlled_by = var:old_owner
+						}
+						transfer_state_to = var:new_owner
+					}
+					else = {
+						set_state_owner_to = var:new_owner
+					}
+					log = "Useful Events - Change ownership of [THIS.GetName] from [?old_owner.GetName] to [?new_owner.GetName]."
+				}
+			}
+		}
+	}
+}

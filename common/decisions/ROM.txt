@@ -1,0 +1,3063 @@
+ROM_integrate_conquered_lands_byzantium = {
+	ROM_integrate_yug_byzantium = {
+		priority = 100
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus	= ROM_reconquer_the_western_balkans
+			OR = {
+				YUG = { is_subject_of = ROM }
+				YUG = {
+					all_core_state = {
+						is_fully_controlled_by = ROM
+					}
+				}
+			}
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+
+		}
+
+		remove_effect = {
+			ROM = {
+				every_state = {
+					limit = {
+						is_core_of = YUG
+					}
+					add_core_of = ROM
+				}
+			}
+			hidden_effect = {
+				annex_country = {
+					target = YUG
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+	ROM_integrate_alb_byzantium = {
+		priority = 100
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus	= ROM_reconquer_the_western_balkans
+			OR = {
+				ALB = { is_subject_of = ROM }
+				ALB = {
+					all_core_state = {
+						is_fully_controlled_by = ROM
+					}
+				}
+			}
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+
+		}
+
+		remove_effect = {
+			ROM = {
+				every_state = {
+					limit = {
+						is_core_of = ALB
+					}
+					add_core_of = ROM
+				}
+			}
+			hidden_effect = {
+				annex_country = {
+					target = ALB
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+	ROM_integrate_bul_byzantium = {
+		priority = 100
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus	= ROM_reconquer_the_southern_balkans
+			OR = {
+				BUL = { is_subject_of = ROM }
+				BUL = {
+					all_core_state = {
+						is_fully_controlled_by = ROM
+					}
+				}
+			}
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+
+		}
+
+		remove_effect = {
+			ROM = {
+				every_state = {
+					limit = {
+						is_core_of = BUL
+					}
+					add_core_of = ROM
+				}
+			}
+			hidden_effect = {
+				annex_country = {
+					target = BUL
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+	ROM_integrate_gre_byzantium = {
+		priority = 100
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus	= ROM_reconquer_the_southern_balkans
+			OR = {
+				GRE = { is_subject_of = ROM }
+				GRE = {
+					all_core_state = {
+						is_fully_controlled_by = ROM
+					}
+				}
+			}
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+
+		}
+
+		remove_effect = {
+			ROM = {
+				every_state = {
+					limit = {
+						is_core_of = GRE
+					}
+					add_core_of = ROM
+				}
+			}
+			hidden_effect = {
+				annex_country = {
+					target = GRE
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+	ROM_integrate_tur_byzantium = {
+		priority = 100
+
+		icon = GFX_decision_hol_draw_up_staff_plans
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus	= ROM_reconquer_the_southern_balkans
+			OR = {
+				TUR = { is_subject_of = ROM }
+				TUR = {
+					all_core_state = {
+						is_fully_controlled_by = ROM
+					}
+				}
+			}
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+
+		}
+
+		remove_effect = {
+			ROM = {
+				every_state = {
+					limit = {
+						is_core_of = TUR
+					}
+					add_core_of = ROM
+				}
+			}
+			hidden_effect = {
+				annex_country = {
+					target = GRE
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+}
+
+
+ROM_imperial_court_byzantine = {
+	ROM_recruit_the_pretorian_guards = {
+		priority = 100
+
+		icon = GFX_decision_generic_independence
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus = ROM_prepare_the_pretorian_guard 
+		}
+
+		visible = {
+
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+			add_ideas = ROM_recruit_the_pretorian_guards
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_recruit_the_pretorian_guards
+		}
+	}
+	ROM_imperial_decrees_of_governance = {
+		priority = 100
+
+		icon = GFX_decision_generic_independence
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus = ROM_imperial_decrees_of_governance
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+			add_ideas = ROM_imperial_decrees_of_governance
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_imperial_decrees_of_governance
+		}
+	}
+	ROM_council_of_imperial_governors = {
+		priority = 100
+
+		icon = GFX_decision_generic_independence
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus = ROM_council_of_imperial_governors
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+			add_ideas = ROM_imperial_decrees_of_governance
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_imperial_decrees_of_governance
+		}
+	}
+	ROM_leader_of_the_orthodox_world = {
+		priority = 100
+
+		icon = GFX_decision_generic_independence
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus = ROM_leader_of_the_orthodox_world
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+			add_ideas = ROM_leader_of_the_orthodox_world
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_leader_of_the_orthodox_world
+		}
+	}
+	ROM_orthodox_patriarchate_in_bucharest = {
+		priority = 100
+
+		icon = GFX_decision_generic_independence
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus = ROM_orthodox_patriarchate_in_bucharest
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+			add_ideas = ROM_orthodox_patriarchate_in_bucharest
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_orthodox_patriarchate_in_bucharest
+		}
+	}
+	ROM_romanian_caesaropapism = {
+		priority = 100
+
+		icon = GFX_decision_generic_independence
+
+		cost = 50
+
+		fire_only_once = yes
+
+		available = {
+			has_completed_focus = ROM_romanian_caesaropapism
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+			add_ideas = ROM_romanian_caesaropapism
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_romanian_caesaropapism
+		}
+	}
+}
+
+
+ROM_secure_the_rights_of_the_true_heir_category = {
+	ROM_secure_the_roman_claim = {
+		priority = 100
+		
+		icon = GFX_decision_border_war
+
+		ai_will_do = {
+			
+		}
+
+		activation = {
+			has_completed_focus = ROM_the_double_headed_eagle_is_reborn
+			has_country_flag = ROM_the_double_headed_eagle_is_reborn_flag
+			NOT = {
+				has_country_flag = ROM_rome_decision_is_done
+			}
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_secure_the_roman_claim_tt     
+                check_variable = {
+                    var = ROM_roman_support_percent
+                    value = 65
+                    compare = greater_than_or_equals
+                }
+			}
+		}
+
+		is_good = no
+		
+		fire_only_once = yes
+
+		days_mission_timeout = 365
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					check_variable = {
+						var = ROM_roman_support_percent
+						value = 65
+						compare = greater_than_or_equals
+					}
+				}
+				
+			}
+			complete_national_focus = ROM_crowning_the_new_emperor
+			set_country_flag = ROM_rome_decision_is_done
+			hidden_effect = {
+				create_country_leader = {
+					name = "Caesar Nicolae"
+					desc = ""
+					picture = "gfx/leaders/ROM/ROM_leader_portrait_emperor_nicolae.png"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = {
+						LOR_roman_empire_claim
+					}   
+				}
+			}
+		}
+
+		timeout_effect = {
+			country_event = LOR.96
+		}
+
+	}
+	ROM_adopt_the_true_identity = {
+		priority = 100
+
+		icon = GFX_decision_generic_nationalism
+
+		cost = 150
+
+		fire_only_once = yes
+
+		visible = {
+			has_completed_focus = ROM_addopt_nicolae_true_identity
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+			custom_effect_tooltip = ROM_roman_clain_power_third_tt
+		}
+
+		remove_effect = {
+			set_temp_variable = { amount = 25 }
+            ROM_roman_support = yes
+		}
+	}
+	ROM_claim_the_one_true_faith = {
+		priority = 100
+
+		icon = GFX_decision_generic_independence
+
+		cost = 50
+
+		fire_only_once = no
+
+		visible = {
+			has_completed_focus = ROM_united_by_one_church
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+			custom_effect_tooltip = ROM_roman_clain_power_forth_tt
+		}
+
+		remove_effect = {
+			set_temp_variable = { amount = 5 }
+			ROM_roman_support = yes
+		}
+	}
+	ROM_prepare_the_coronation_ceremony = {
+		priority = 100
+
+		icon = GFX_decision_eng_ally_imperialist_coup
+
+		cost = 150
+
+		fire_only_once = yes
+
+		visible = {
+			has_completed_focus = ROM_prepare_the_coronation
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+			custom_effect_tooltip = ROM_roman_clain_power_third_tt
+		}
+
+		remove_effect = {
+			set_temp_variable = { amount = 25 }
+			ROM_roman_support = yes
+		}
+	}
+	ROM_invite_the_attendants = {
+		priority = 100
+
+		icon = GFX_decision_ger_mefo_bills
+
+		cost = 50
+
+		#fire_only_once = no
+
+		visible = {
+			has_completed_focus = ROM_invite_the_attendents
+		}
+
+		days_remove = 30
+		complete_effect = {
+			custom_effect_tooltip = ROM_roman_clain_power_first_tt
+		}
+
+		remove_effect = {
+		
+		    set_temp_variable = { amount = 10 }
+            ROM_roman_support = yes
+		}
+	}
+	ROM_secure_the_rights_of_the_true_heir = {
+		priority = 100
+
+		icon = GFX_decision_eng_ally_imperialist_coup
+
+		cost = 50
+
+		fire_only_once = no
+
+		visible = {
+			has_completed_focus = ROM_secure_the_rights_of_the_true_heir
+		}
+
+		days_remove = 30
+
+		complete_effect = {
+			custom_effect_tooltip = ROM_roman_clain_power_two_tt
+		}
+
+		remove_effect = {
+			set_temp_variable = { amount = 15 }
+			ROM_roman_support = yes
+		}
+	}
+}
+
+
+
+ROM_balance_of_power_category = {
+	ROM_left_side_decision_1 = {
+		priority = 80
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		available = {
+		}
+		cost = 30
+
+
+		days_remove = 30
+
+		fire_only_once = no
+
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			add_power_balance_value = {
+				id = ROM_power_balance
+				value = -0.05
+			}
+		}
+	}
+	ROM_left_side_decision_2 = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		available = {
+		}
+		cost = 50
+
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+
+		complete_effect = {
+		
+		}
+
+		remove_effect = {
+			add_power_balance_value = {
+				id = ROM_power_balance
+				value = -0.15
+			}
+		}
+	}
+	ROM_left_side_decision_3 = {
+		priority = 60
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		available = {
+		}
+		cost = 50
+
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+
+		complete_effect = {
+		
+		}
+
+		remove_effect = {
+			add_power_balance_value = {
+				id = ROM_power_balance
+				value = -0.15
+			}
+		}
+	}
+	ROM_right_side_decision_1 = {
+		priority = 50
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		available = {
+		}
+		cost = 30
+
+
+		days_remove = 30
+
+		fire_only_once = no
+
+
+		complete_effect = {
+		
+		}
+
+		remove_effect = {
+			add_power_balance_value = {
+				id = ROM_power_balance
+				value = 0.05
+			}
+		}
+	}
+	ROM_right_side_decision_2 = {
+		priority = 40
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		available = {
+		}
+		cost = 50
+
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+
+		complete_effect = {
+		
+		}
+
+		remove_effect = {
+			add_power_balance_value = {
+				id = ROM_power_balance
+				value = 0.15
+			}
+		}
+	}
+	ROM_right_side_decision_3 = {
+		priority = 30
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		available = {
+		}
+		cost = 50
+
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+
+		complete_effect = {
+		
+		}
+
+		remove_effect = {
+		add_power_balance_value = {
+				id = ROM_power_balance
+				value = 0.15
+			}
+		}
+	}
+}
+
+
+ROM_let_the_game_begin_new = {
+	ROM_integrate_austria_into_the_tsardom = {
+		priority = 100
+
+		icon = x
+
+		cost = 50
+
+		fire_only_once = yes
+
+		days_remove = 150
+
+		available = {
+			has_completed_focus	= ROM_austrian_place_in_the_tsardom
+			OR = {
+				AUS = { is_subject_of = ROM }
+				AUS = {
+					all_core_state = {
+						is_fully_controlled_by = ROM
+					}
+				}
+			}
+		}
+
+		remove_effect = {
+			annex_country = {
+				target = AUS
+				transfer_troops = yes
+			}
+			ROM = {
+				every_state = {
+					limit = {
+						is_core_of = AUS
+					}
+					add_core_of = ROM
+				}
+			}
+		}
+	}
+	ROM_integrate_hungarians_into_the_tsardom = {
+		priority = 100
+
+		icon = x
+
+		cost = 50
+
+		fire_only_once = yes
+
+		days_remove = 150
+
+		available = {
+			has_completed_focus	= ROM_hungarian_place_in_the_tsardom
+			OR = {
+				HUN = { is_subject_of = ROM }
+				HUN = {
+					all_core_state = {
+						is_fully_controlled_by = ROM
+					}
+				}
+			}
+		}
+
+		remove_effect = {
+			annex_country = {
+				target = HUN
+				transfer_troops = yes
+			}
+			ROM = {
+				every_state = {
+					limit = {
+						is_core_of = HUN
+					}
+					add_core_of = ROM
+				}
+			}
+		}
+	}
+	ROM_integrate_yugoslavia_into_the_tsardom = {
+		priority = 100
+
+		icon = x
+
+		cost = 50
+
+		fire_only_once = yes
+
+		#days_remove = 150
+
+		available = {
+			has_completed_focus	= ROM_yugoslav_place_in_the_tsardom
+			OR = {
+				YUG = { is_subject_of = ROM }
+				YUG = {
+					all_core_state = {
+						is_fully_controlled_by = ROM
+					}
+				}
+			}
+		}
+
+		remove_effect = {
+			annex_country = {
+				target = YUG
+				transfer_troops = yes
+			}
+			ROM = {
+				every_state = {
+					limit = {
+						is_core_of = YUG
+					}
+					add_core_of = ROM
+				}
+			}
+		}
+	}
+	ROM_integrate_ottomans_into_the_tsardom = {
+		priority = 100
+
+		icon = x
+
+		cost = 50
+
+		fire_only_once = yes
+
+		days_remove = 150
+
+		available = {
+			has_completed_focus	= ROM_ottoman_impailing_tragedy
+			OR = {
+				TUR = { is_subject_of = ROM }
+				TUR = {
+					all_core_state = {
+						is_fully_controlled_by = ROM
+					}
+				}
+			}
+		}
+
+		remove_effect = {
+			annex_country = {
+				target = TUR
+				transfer_troops = yes
+			}
+			ROM = {
+				every_state = {
+					limit = {
+						is_core_of = TUR
+					}
+					add_core_of = ROM
+				}
+			}
+		}
+	}
+	ROM_integrate_greece_into_the_tsardom = {
+		priority = 100
+
+		icon = x
+
+		cost = 50
+
+		fire_only_once = yes
+
+		days_remove = 150
+
+		available = {
+			has_completed_focus	= ROM_yugoslav_place_in_the_tsardom
+			OR = {
+				GRE = { is_subject_of = ROM }
+				GRE = {
+					all_core_state = {
+						is_fully_controlled_by = ROM
+					}
+				}
+			}
+		}
+
+		remove_effect = {
+			annex_country = {
+				target = GRE
+				transfer_troops = yes
+			}
+			ROM = {
+				every_state = {
+					limit = {
+						is_core_of = GRE
+					}
+					add_core_of = ROM
+				}
+			}
+		}
+	}
+}
+
+ROM_balkan_federation_cores = {
+	ROM_integrate_yug = {
+		priority = 100
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		days_remove = 120
+
+		fire_only_once = yes
+
+		available = {
+			has_army_manpower = {
+			    size > 500000
+			}
+			has_completed_focus = ROM_propose_the_idea_to_yugoslavia
+			core_compliance = {
+				occupied_country_tag = YUG
+				value > 50
+			}
+		}
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+
+			YUG = {
+				every_core_state = {
+					add_core_of = ROM
+				}
+			}
+		}
+	}
+	ROM_integrate_bul = {
+		priority = 100
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		days_remove = 120
+
+		fire_only_once = yes
+
+		available = {
+			has_army_manpower = {
+			    size > 350000
+			}
+			has_completed_focus = ROM_propose_the_idea_to_bulgaria
+			core_compliance = {
+				occupied_country_tag = BUL
+				value > 50
+			}
+		}
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+
+			BUL = {
+				every_core_state = {
+					add_core_of = ROM
+				}
+			}
+		}
+	}
+	ROM_integrate_gre = {
+		priority = 100
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		days_remove = 120
+
+		fire_only_once = yes
+
+		available = {
+			has_army_manpower = {
+			    size > 650000
+			}
+			has_completed_focus = ROM_propose_the_idea_to_greece
+			core_compliance = {
+				occupied_country_tag = GRE
+				value > 50
+			}
+		}
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+
+			GRE = {
+				every_core_state = {
+					add_core_of = ROM
+				}
+			}
+		}
+	}
+	ROM_integrate_alb = {
+		priority = 100
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		days_remove = 120
+
+		fire_only_once = yes
+
+		available = {
+			has_army_manpower = {
+			    size > 250000
+			}
+			has_completed_focus = ROM_propose_the_idea_to_albania
+			core_compliance = {
+				occupied_country_tag = ALB
+				value > 50
+			}
+		}
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+
+			ALB = {
+				every_core_state = {
+					add_core_of = ROM
+				}
+			}
+		}
+	}
+}
+ROM_agrarian_reform = {
+	ROM_give_the_lands_to_the_veternas = {
+		priority = 100
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+		available = {
+			has_completed_focus = ROM_solve_the_pesant_peverity
+		}
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = agrarian_reform_1
+				add_idea = agrarian_reform_2
+			}
+		}
+
+		timeout_effect = {
+			
+		}
+	}
+	ROM_land_reforms_in_transylvania = {
+		priority = 90
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+		
+		cost = 50
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+		available = {
+			has_completed_focus = ROM_the_question_of_reforms_in_transylvania
+			NOT = {
+				has_idea = agrarian_reform_1
+			}
+		}
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = agrarian_reform_2
+				add_idea = agrarian_reform_3
+			}
+		}
+
+		timeout_effect = {
+			
+		}
+	}
+	ROM_land_reforms_in_bassarabia = {
+		priority = 80
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+		available = {
+			has_completed_focus = ROM_the_question_of_reforms_in_bassarabia
+			NOT = {
+				has_idea = agrarian_reform_2
+			}
+		}
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = agrarian_reform_3
+				add_idea = agrarian_reform_4
+			}
+		}
+
+		timeout_effect = {
+			
+		}
+	}
+	ROM_the_reform_in_muntenia_and_moldova_and_oltenia = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+		available = {
+			has_completed_focus = ROM_agrarian_reforms
+			NOT = {
+				has_idea = agrarian_reform_3
+			}
+		}
+
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = agrarian_reform_4
+				add_idea = agrarian_reform
+			}
+		}
+
+		timeout_effect = {
+			
+		}
+	}
+}
+
+ROM_ussr_invasion = {
+	ROM_soviet_attack = {
+		priority = 70
+
+		icon = GFX_decision_generic_ignite_civil_war
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		days_remove = 150
+
+		fire_only_once = yes
+
+		available = {
+			GER = {
+				has_war_with = SOV
+			}
+			ROM = {
+				has_war_with = SOV
+			}
+			is_in_faction_with = GER
+		}
+
+
+		allowed = {
+			
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = ROM_legionary_axis_incorporate_trasnistria
+				has_completed_focus	= ROM_antonescu_incorporate_transnistria
+			}
+		}
+
+		targeted_modifier = {
+			tag = SOV
+			attack_bonus_against = 0.1
+			defense_bonus_against = 0.1
+		}
+
+		timeout_effect = {
+		}
+	}
+	ROM_long_march_to_stalingrad = {
+		priority = 70
+
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		days_remove = 150
+
+		fire_only_once = yes
+
+		available = {
+			GER = {
+				has_war_with = SOV
+			}
+			ROM = {
+				has_war_with = SOV
+				is_in_faction_with = GER
+				has_decision = ROM_soviet_attack
+				has_completed_focus	= ROM_legionary_axis_the_march_to_the_stalingrad
+			}
+		}
+
+
+		allowed = {
+			
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = ROM_antonescu_battle_for_stalingrad
+				has_completed_focus	= ROM_legionary_axis_the_march_to_the_stalingrad
+			}
+		}
+
+		targeted_modifier = {
+			tag = SOV
+			
+		}
+
+		timeout_effect = {
+		}
+	}
+	ROM_incorporate_transnistria = {
+		priority = 70
+
+		icon = generic_industry
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		days_remove = 150
+
+		fire_only_once = yes
+
+		available = {
+			GER = {
+				has_war_with = SOV
+			}
+			ROM = {
+				has_war_with = SOV
+				is_in_faction_with = GER
+				controls_state = 192
+				controls_state = 834
+				controls_state = 198
+			}
+		}
+
+
+		allowed = {
+			
+		}
+
+		visible = {
+			OR = {
+				has_completed_focus = ROM_legionary_axis_incorporate_trasnistria 
+				has_completed_focus	= ROM_antonescu_incorporate_transnistria
+			}
+		}
+
+		complete_effect = {
+			add_state_core = 192
+			add_state_core = 834
+			add_state_core = 198
+		}
+	}
+}
+
+ROM_expand_influence_in_balkans = {
+	socialist_ideas_in_bulgaria = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+	
+		}
+
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect  = {
+		BUL = {
+			add_timed_idea = {
+				idea = socialist_influence
+				days = 350
+				}
+			}
+		}
+	}
+	bulgaria_puppet = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+		BUL = {
+			communism > 0.5
+			}
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect  = {
+			puppet = {
+				target = BUL
+				end_wars = yes
+			}
+		}
+	}
+	socialist_ideas_in_hungary = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+	
+		}
+
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect  = {
+		HUN = {
+			add_timed_idea = {
+				idea = socialist_influence
+				days = 350
+				}
+			}
+		}
+	}
+	hungarian_puppet = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+		HUN = {
+			communism > 0.5
+			}
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect  = {
+			puppet = {
+				target = HUN
+				end_wars = yes
+			}
+		}
+	}
+	socialist_ideas_in_yugoslavia = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+	
+		}
+
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect  = {
+		YUG = {
+			add_timed_idea = {
+				idea = socialist_influence
+				days = 350
+				}
+			}
+		}
+	}
+	yug_puppet = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+		YUG = {
+			communism > 0.5
+			}
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect  = {
+			puppet = {
+				target = YUG
+				end_wars = yes
+			}
+		}
+	}
+	socialist_ideas_in_greece = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+	
+		}
+
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect  = {
+		GRE = {
+			add_timed_idea = {
+				idea = socialist_influence
+				days = 350
+				}
+			}
+		}
+	}
+	greece_puppet = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+		GRE = {
+			communism > 0.5
+			}
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect  = {
+			puppet = {
+				target = GRE
+				end_wars = yes
+			}
+		}
+	}
+	socialist_ideas_in_albania = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+	
+		}
+
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect  = {
+		ALB = {
+			add_timed_idea = {
+				idea = socialist_influence
+				days = 350
+				}
+			}
+		}
+	}
+	albanian_puppet = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+		ALB = {
+			communism > 0.5
+			}
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect  = {
+			puppet = {
+				target = ALB
+				end_wars = yes
+			}
+		}
+	}
+}
+ROM_expand_cultural_legacy = {
+	ROM_promote_the_historical_culture_1 = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = no
+
+		available = {
+		
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+		days_remove = 70
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+			add_ideas = ROM_cultural_legacy_1
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_cultural_legacy_1
+		}
+	}
+	ROM_promote_the_historical_culture_2 = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = no
+
+		available = {
+		
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 70
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+			add_ideas = ROM_cultural_legacy_2
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_cultural_legacy_2
+		}
+	}
+	ROM_promote_the_historical_culture_3 = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = no
+
+		available = {
+		
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 70
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+			add_ideas = ROM_cultural_legacy_3
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_cultural_legacy_3
+		}
+	}
+	ROM_promote_the_historical_culture_4 = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = no
+
+		available = {
+		
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 70
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+			add_ideas = ROM_cultural_legacy_4
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_cultural_legacy_4
+		}
+	}
+	ROM_promote_the_historical_culture_5 = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = no
+
+		available = {
+		
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 70
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+			add_ideas = ROM_cultural_legacy_5
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_cultural_legacy_5
+		}
+	}
+	ROM_promote_the_historical_culture_6 = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = no
+
+		available = {
+		
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 70
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+			add_ideas = ROM_cultural_legacy_6
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_cultural_legacy_6
+		}
+	}
+}
+ROM_dacia_expansion_core = {
+	ROM_core_hungary = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+			ROM = {
+				owns_state = 155
+				owns_state = 43
+				owns_state = 154
+			}
+		}
+
+		allowed = {
+
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 60
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+		
+		}
+
+		remove_effect = {
+			ROM = {
+				add_state_core = 155
+				add_state_core = 43
+				add_state_core = 154
+			}
+		}
+	}
+	ROM_core_ruthenia = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+			IF = {
+				ROM = {
+					owns_state = 73
+				}
+			}
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 60
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			ROM = {
+				add_state_core = 73
+			}
+		}
+	}
+	ROM_core_yugoslavia = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+			ROM = {
+				owns_state = 104  
+				owns_state = 103
+				owns_state = 804
+				owns_state = 802
+				owns_state = 853
+				owns_state = 106
+				owns_state = 105
+				owns_state = 108
+				owns_state = 109
+				owns_state = 102
+				owns_state = 107
+				owns_state = 803
+				owns_state = 45
+				owns_state = 764
+			}
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 60
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+	
+		}
+
+		remove_effect = {
+			ROM = {
+				add_state_core = 104  
+				add_state_core = 103
+				add_state_core = 804
+				add_state_core = 802
+				add_state_core = 853
+				add_state_core = 106
+				add_state_core = 105
+				add_state_core = 108
+				add_state_core = 109
+				add_state_core = 102
+				add_state_core = 107
+				add_state_core = 803
+				add_state_core = 45
+				add_state_core = 764
+			}
+		}
+	}
+	ROM_core_austria = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+			ROM = {
+				owns_state = 4  
+				owns_state = 152
+				owns_state = 153	
+				owns_state = 848		
+			}
+		}
+
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 60
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+			ROM = {
+				add_state_core = 4
+				add_state_core = 152
+				add_state_core = 153
+				add_state_core = 848
+			}
+		}
+
+		remove_effect = {
+			ROM = {
+				add_state_core = 4
+				add_state_core = 152
+				add_state_core = 153
+				add_state_core = 848
+			}
+		}
+	}
+	ROM_core_slovakia = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		
+
+		fire_only_once = yes
+
+		available = {
+			ROM = {
+				owns_state = 71  
+				owns_state = 70
+				owns_state = 664
+			}
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 60
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			ROM = {
+				add_state_core = 71  
+				add_state_core = 70
+				add_state_core = 664
+			}
+		}
+	}
+}
+
+ROM_army_reorganisation = {
+	ROM_army_restructuration = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		custom_cost_trigger = {
+    		has_army_experience > 50
+		}
+		custom_cost_text = army_ep_tt_new  
+
+		
+
+		fire_only_once = yes
+
+		available = {
+			
+		}
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 60
+
+		fire_only_once = yes
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+
+		}
+
+		remove_effect = {
+			army_experience = -50
+			swap_ideas = {
+				remove_idea = week_army
+				add_idea = mediocre_army
+			}
+		}
+	}
+	ROM_army_restructuration_2 = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		custom_cost_trigger = {
+    		has_army_experience > 50
+		}
+		custom_cost_text = army_ep_tt_new  
+
+		fire_only_once = yes
+
+		available = {
+			NOT = {
+				has_idea = week_army
+			}
+		}
+
+
+		allowed = {
+
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 60
+
+		fire_only_once = yes
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			army_experience = -50
+			swap_ideas = {
+				remove_idea = mediocre_army
+				add_idea = untrained_army
+			}
+		}
+	}
+	ROM_army_restructuration_3 = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		custom_cost_trigger = {
+    		has_army_experience > 50
+		}
+		custom_cost_text = army_ep_tt_new  
+
+		fire_only_once = yes
+
+		available = {
+			NOT = {
+				has_idea = week_army
+				has_idea = mediocre_army
+			}
+		}
+
+
+		allowed = {
+			
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 60
+
+		fire_only_once = yes
+
+		targeted_modifier = {
+			
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			army_experience = -50
+			remove_ideas = untrained_army
+		}
+	}
+}
+
+ROM_internal_power_struggle = {
+	ROM_keep_the_people_at_bay = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			if = {
+				OR = {
+					YUG = {
+						all_controlled_state = {
+							is_fully_controlled_by = ROM
+						}
+					}
+					BUL = {
+						all_controlled_state = {
+							is_fully_controlled_by = ROM
+						}
+					}
+					ALB = {
+						all_controlled_state = {
+							is_fully_controlled_by = ROM
+						}
+					}
+					GRE = {
+						all_controlled_state = {
+							is_fully_controlled_by = ROM
+						}
+					}
+				}
+			}
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+		days_remove = 70
+
+		complete_effect = {
+			add_ideas = ROM_power_of_unity_in_the_balkans
+		}
+
+		remove_effect = {
+			remove_ideas = ROM_power_of_unity_in_the_balkans
+		}
+	}
+}
+
+ROM_final_solution = {
+	ROM_deport_gipsies_into_the_labour_camps = {
+		priority = 70
+
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus = ROM_antonescu_deport_the_gypsies_into_the_working_camps
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 150
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = ROM_final_solution
+				add_idea = ROM_final_solution_2
+			}
+		}
+	}
+	ROM_deport_hungarians_into_the_labour_camps = {
+		priority = 70
+
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus	= ROM_antonescu_deport_the_hungarians
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+		days_remove = 150
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = ROM_final_solution_2
+				add_idea = ROM_final_solution_3
+			}
+		}
+	}
+	ROM_deport_jews_into_the_labour_camps = {
+		priority = 70
+
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		available = {
+			has_completed_focus = ROM_antonescu_the_jews_are_enemy_of_the_state
+		}
+
+
+		allowed = {
+		
+		}
+
+		visible = {
+			
+		}
+		days_remove = 150
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = ROM_final_solution_3
+				add_idea = ROM_final_solution_4
+			}
+		}
+	}
+}
+
+ROM_bulgarian_showdown = {
+	ROM_first_moves_in_bulgaria = {
+
+		activation = {
+			has_completed_focus = ROM_vlaho_bulgarian_tsardom
+			has_country_flag = ROM_bulgarian_showdown_flag
+			#has_opinion = { target = BUL value > 70 }
+		}
+
+		complete_effect = {
+  			if = {
+	            limit = {
+	                check_variable = {
+	                    var = ROM_coup_support_bul
+	                    value = 75
+	                    compare = greater_than_or_equals
+	                }
+	            }
+        	}
+		}
+
+		timeout_effect = {
+				#to_do_the_event
+			BUL = {
+				declare_war_on = {
+	                target = ROM
+	                type = annex_everything
+            	}
+			}
+			add_opinion_modifier = {
+			    target = BUL
+			    modifier = rom_failed_coup_in_bulgaria
+			}
+			country_event = {
+				id = LOR.59
+				days = 3
+			}
+		} 
+		available = {
+			custom_trigger_tooltip = {
+                tooltip = ROM_end_decision_if_support_is_greater_then_70 
+                check_variable = {
+                    var = ROM_coup_support_bul
+                    value = 75
+                    compare = greater_than_or_equals
+                }
+            }
+		}
+
+		is_good = yes
+
+		days_mission_timeout = 365
+
+		fire_only_once = yes
+
+	    selectable_mission = no
+	}
+	ROM_prepare_the_agents = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		fire_only_once = yes
+
+		available = {
+			has_completed_focus = ROM_move_the_agents_in_key_places
+			has_country_flag = ROM_bulgarian_showdown_flag
+			
+		}
+
+		cost = 50
+
+		allowed = {
+
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+
+
+		remove_effect = {
+	    custom_effect_tooltip = ROM_coup_agents_tt
+	        add_to_variable = {
+		        var = ROM_coup_support_bul
+		        value = 10
+	        }
+		}
+
+	}
+	ROM_sway_the_bul_generals = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+
+		cost = 50
+
+		available = {
+			has_country_flag = ROM_bulgarian_showdown_flag
+			has_completed_focus	= ROM_prepare_the_coup_in_sofia
+		}
+
+		allowed = {
+
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+		complete_effect = {
+		
+		}
+
+		remove_effect = {
+			random_list = {
+				50 = {
+					country_event = LOR.52
+				}
+				50 = {
+					country_event = LOR.53
+				}
+			}
+		}
+	}
+	ROM_bribe_the_bulgarian_government_officials = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		available = {
+			has_country_flag = ROM_bulgarian_showdown_flag
+		}
+
+		cost = 50
+
+		allowed = {
+
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 30
+
+		fire_only_once = no
+
+
+		remove_effect = {
+	    custom_effect_tooltip = ROM_coup_agents_tt
+	        add_to_variable = {
+		        var = ROM_coup_support_bul
+		        value = 20
+	        }
+		}
+
+	
+	}
+	ROM_meet_with_the_people = {
+		priority = 80
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		available = {
+		}
+		cost = 90
+
+		visible = {
+			has_completed_focus = ROM_royal_visits_in_the_sofia
+			has_country_flag = ROM_bulgarian_showdown_flag
+		}
+
+		days_remove = 30
+
+		fire_only_once = no
+
+
+		complete_effect = {
+		
+		}
+
+		remove_effect = {
+		custom_effect_tooltip = ROM_meet_with_the_people_tt
+	        add_to_variable = {
+		        var = ROM_coup_support_bul
+		        value = 15
+	        }
+		}
+	}
+	ROM_send_more_funds_into_bul = {
+		priority = 70
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+
+		available = {
+			has_country_flag = ROM_bulgarian_showdown_flag
+		}
+
+		cost = 30
+
+		allowed = {
+
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+	
+
+		complete_effect = {
+		
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = ROM_more_funds_into_bul_tt
+	        add_to_variable = {
+		        var = ROM_coup_support_bul
+		        value = 5
+	        }
+		}
+	}
+	ROM_launch_the_coup = {
+		priority = 100
+
+		icon = x
+
+		ai_will_do = {
+			
+		}
+
+		fire_only_once = yes
+
+
+		available = {
+	        custom_trigger_tooltip = {
+	        	tooltip = ROM_coup_support_bul_tt
+	        	check_variable = {
+	                var = ROM_coup_support_bul
+	                value = 75
+	                compare = greater_than_or_equals
+        		}
+	        }
+	        #has_completed_focus = ROM_let_the_game_begin
+	        has_government = neutrality
+	        has_country_flag = ROM_bulgarian_showdown_flag
+	        
+		}
+
+		cost = 150
+
+		allowed = {
+
+		}
+
+		visible = {
+			
+		}
+
+		days_remove = 30
+
+		fire_only_once = yes
+
+
+		complete_effect = {
+			#to_do_the_event
+
+		}
+
+		remove_effect = {
+		if = {
+			limit = {
+				has_dlc = "No Step Back"
+				has_dlc = "Together for Victory"
+			}
+			set_autonomy = {
+			    target = BUL
+			    autonomy_state = autonomy_personal_union
+			    end_wars = yes
+			    end_civil_wars = no
+			}
+		}
+		else = {
+			puppet = {
+				target = BUL
+				end_wars = no
+			}
+		}
+		BUL = {
+			start_civil_war = {
+			    ruling_party = neutrality
+			    ideology = neutrality
+			    size = 0.8
+			    capital = 282
+			    states = {
+			        48 801 
+			    }
+			}
+		}
+	}
+}

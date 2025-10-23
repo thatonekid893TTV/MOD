@@ -1,0 +1,7949 @@
+
+focus_tree = {
+	id = albanian_focus_tree
+	continuous_focus_position = { x = 150 y = 3000 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 99
+			tag = ALB
+		}
+	}
+
+##################
+### HISTORICAL ###
+##################
+
+	#Royal Dictatorship
+	focus = {
+		id = gram_focus_alb_royal_dictatorship
+		icon = GFX_focus_generic_military_dictatorship
+		x = 3
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL 
+		}
+		ai_will_do = { 
+			factor = 100 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		completion_reward = {
+
+			add_political_power = 50
+			custom_effect_tooltip = empty_divide_tt
+			add_ideas = gram_idea_alb_censorship_of_the_press
+
+		}
+	}
+
+	#Crush the Workers Protests
+	focus = {
+		id = gram_focus_alb_crush_the_workers_protests
+		icon = GFX_focus_spr_masters_of_our_own_fate
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_royal_dictatorship  
+		}
+		ai_will_do = { 
+			factor = 100 
+		}
+		available = {
+		    has_government = neutrality
+		    is_subject = no
+		}
+
+		completion_reward = {
+
+			custom_effect_tooltip = workers_strikes_tt
+			custom_effect_tooltip = empty_divide_tt
+			add_stability = -0.15
+
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_workers_strike
+					add_idea = gram_idea_alb_remains_of_strike
+				}			
+			}
+
+		}
+	}
+
+	#Expand our Tobacco Industry
+	focus = {
+		id = gram_focus_alb_expand_our_tobacco_industry
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 4
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL 
+			FOCUS_FILTER_INDUSTRY
+		}
+		available = {
+			owns_state = 934
+			owns_state = 44
+			has_government = neutrality
+			is_subject = no
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_royal_dictatorship  
+		}
+		ai_will_do = { 
+			factor = 100 
+		}
+		completion_reward = {
+
+			934 = {
+			    add_extra_state_shared_building_slots = 2
+			    add_building_construction = {
+			        type = industrial_complex
+			        level = 2
+			        instant_build = yes
+			    }
+			}       
+			custom_effect_tooltip = empty_divide_tt
+			44 = {
+			    add_extra_state_shared_building_slots = 2
+			    add_building_construction = {
+			        type = industrial_complex
+			        level = 2
+			        instant_build = yes
+			    }
+			}
+
+		}
+	}
+
+	#Stabilize the Nation
+	focus = {
+		id = gram_focus_alb_stabilize_the_nation
+		icon = GFX_goal_tripartite_pact
+		x = 2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL 
+			FOCUS_FILTER_STABILITY
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_crush_the_workers_protests  
+		}
+		ai_will_do = { 
+			factor = 100
+		}
+		completion_reward = {
+
+			add_stability = 0.1
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 50	
+
+		}
+	}
+
+	#Arming the Nation
+	focus = {
+		id = gram_focus_alb_arming_the_nation
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL 
+			FOCUS_FILTER_INDUSTRY
+		}
+		available = {
+			owns_state = 934
+			owns_state = 44
+			has_government = neutrality
+			is_subject = no
+		}
+
+		prerequisite = { 
+			focus = gram_focus_alb_expand_our_tobacco_industry  
+		}
+		ai_will_do = { 
+			factor = 100 
+		}
+		completion_reward = {
+
+			934 = {
+			    add_extra_state_shared_building_slots = 2
+			    add_building_construction = {
+			        type = arms_factory
+			        level = 2
+			        instant_build = yes
+			    }
+			}
+			custom_effect_tooltip = empty_divide_tt
+			44 = {
+			    add_extra_state_shared_building_slots = 2
+			    add_building_construction = {
+			        type = arms_factory
+			        level = 2
+			        instant_build = yes
+			    }
+			}
+
+		}			
+	}
+	
+	#Make a deal with Workers
+	focus = {
+		id = gram_focus_alb_make_a_deal_with_workers
+		icon = GFX_focus_generic_national_security
+		x = 3
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_stabilize_the_nation 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_arming_the_nation 
+		}
+		ai_will_do = { 
+			factor = 100 
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = remains_of_strikes_tt
+			custom_effect_tooltip = empty_divide_tt
+			add_stability = -0.05
+			custom_effect_tooltip = empty_divide_tt
+			add_war_support = -0.1
+
+			hidden_effect = {
+				remove_ideas = gram_idea_alb_remains_of_strike
+			}
+
+		}
+	}
+
+	#Renounce the Treaty of Tirana
+	focus = {
+		id = gram_focus_alb_renounce_the_treaty_of_tirana
+		icon = GFX_focus_renounce_the_treaty_of_trianon
+		x = 1
+		y = 4
+		cost = 20
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+			custom_trigger_tooltip = {
+				tooltip = you_need_to_have_tot_1_or_2_tt
+				OR = {
+					has_idea = gram_idea_alb_treaty_of_tirana_1
+					has_idea = gram_idea_alb_treaty_of_tirana_2
+				}
+			}
+		}
+		cancel_if_invalid = no
+		cancel = {			
+			custom_trigger_tooltip = {
+				tooltip = will_be_abandoned_tot_tt
+				OR = {
+					has_idea = gram_idea_alb_treaty_of_tirana_3
+					has_idea = gram_idea_alb_treaty_of_tirana_4
+					has_idea = gram_idea_alb_treaty_of_tirana_5
+					has_idea = gram_idea_alb_treaty_of_tirana_6
+					has_idea = gram_idea_alb_treaty_of_tirana_7
+					has_idea = gram_idea_alb_treaty_of_tirana_8
+					has_idea = gram_idea_alb_treaty_of_tirana_9
+					has_idea = gram_idea_alb_treaty_of_tirana_10
+				}
+			}
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_stabilize_the_nation
+			focus = gram_focus_alb_arming_the_nation
+		}
+		ai_will_do = { 
+			factor = 60
+		}
+		completion_reward = {
+			hidden_effect = { #There is no need to check for all of this but hey why not
+				remove_ideas = gram_idea_alb_treaty_of_tirana_1
+				remove_ideas = gram_idea_alb_treaty_of_tirana_2
+				remove_ideas = gram_idea_alb_treaty_of_tirana_3
+				remove_ideas = gram_idea_alb_treaty_of_tirana_4
+				remove_ideas = gram_idea_alb_treaty_of_tirana_5
+				remove_ideas = gram_idea_alb_treaty_of_tirana_6
+				remove_ideas = gram_idea_alb_treaty_of_tirana_7
+				remove_ideas = gram_idea_alb_treaty_of_tirana_8
+				remove_ideas = gram_idea_alb_treaty_of_tirana_9
+				remove_ideas = gram_idea_alb_treaty_of_tirana_10
+	
+				clr_country_flag = gram_flag_alb_italian_investment
+				clr_country_flag = gram_flag_alb_allow_ticking_for_investments			
+			}
+			custom_effect_tooltip = focus_will_remove_tot_tt
+			custom_effect_tooltip = empty_divide_tt
+			ITA = {
+				add_opinion_modifier = {
+					target = ALB
+					modifier = large_decrease
+				}
+			}
+		}
+	}
+
+	#Glory to Zog
+	focus = {
+		id = gram_focus_alb_glory_to_zog
+		icon = GFX_focus_rom_royal_dictatorship
+		x = 1
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL
+			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_POLITICAL_CHARACTER
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_make_a_deal_with_workers  
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_dark_day_for_our_nation 
+		}
+		ai_will_do = { 
+			factor = 50
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		completion_reward = {
+
+			add_stability = 0.1
+			#If Albania has King Zog, he will get a new trait
+			if = {
+				limit = { 
+					has_country_leader = {
+						character = gram_character_ALB_king_zog
+						ruling_only = yes
+					}	
+				}
+				custom_effect_tooltip = empty_divide_tt
+				add_country_leader_trait = constitutional_monarch_minor
+			}
+
+			#If Albania is ruled by someone else
+			if = {
+				limit = {
+					 NOT = {
+						has_country_leader = {
+							character = gram_character_ALB_king_zog
+							ruling_only = yes
+						}	
+					}
+				}
+				custom_effect_tooltip = empty_divide_tt
+				custom_effect_tooltip = needs_zog_as_ruler_tt
+			}
+
+		}
+	}
+
+	#Increased Conscription
+	focus = {
+		id = gram_focus_alb_increased_conscription
+		icon = GFX_focus_generic_full_social_mobilization
+		x = 0
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL
+			FOCUS_FILTER_ARMY_XP
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_glory_to_zog 
+		}
+		ai_will_do = { 
+			factor = 90 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+			has_idea = limited_conscription
+		}
+		completion_reward = {
+
+			add_ideas = extensive_conscription
+			custom_effect_tooltip = empty_divide_tt
+			army_experience = 50
+
+		}
+	}
+
+	#Italo-Albanian Treaty of friendship
+	focus = {
+		id = gram_focus_alb_italo_albanian_treaty_of_friendship
+		icon = GFX_focus_BRA_reach_out_to_military_dem
+		x = 2
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_glory_to_zog 
+		}
+		ai_will_do = { 
+			factor = 90 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+			has_idea = partial_economic_mobilisation
+			ITA = { 
+				has_opinion = { 
+					target = ROOT 
+					value > 49 
+				} 
+			}
+			custom_trigger_tooltip = {
+				tooltip = still_has_treaty_of_tirana_tt
+				OR = {
+					has_idea = gram_idea_alb_treaty_of_tirana_1
+					has_idea = gram_idea_alb_treaty_of_tirana_2					
+					has_idea = gram_idea_alb_treaty_of_tirana_3
+					has_idea = gram_idea_alb_treaty_of_tirana_4
+					has_idea = gram_idea_alb_treaty_of_tirana_5
+					has_idea = gram_idea_alb_treaty_of_tirana_6
+					has_idea = gram_idea_alb_treaty_of_tirana_7
+					has_idea = gram_idea_alb_treaty_of_tirana_8
+					has_idea = gram_idea_alb_treaty_of_tirana_9
+					has_idea = gram_idea_alb_treaty_of_tirana_10
+				}
+			}
+		}
+		completion_reward = {
+
+     	    add_ideas = war_economy
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 100
+			custom_effect_tooltip = empty_divide_tt
+
+			ITA = { 
+				add_opinion_modifier = {
+			   		target = ALB
+			    	modifier = large_increase
+				}
+		    }
+
+		}
+	}
+
+	#True Economic Tiger of Balkans
+	focus = {
+		id = gram_focus_alb_true_economic_tiger_of_balkans
+		icon = GFX_focus_generic_tank_production
+		x = 1
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL 
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_increased_conscription 
+			focus = gram_focus_alb_italo_albanian_treaty_of_friendship 
+		}
+		ai_will_do = {
+			factor = 85 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+            num_of_civilian_factories > 10
+		}
+		completion_reward = {
+
+        	add_stability = 0.2
+			custom_effect_tooltip = empty_divide_tt
+			add_war_support = 0.2
+
+		}
+	}
+
+	#Royal Marriage
+	focus = {
+		id = gram_focus_alb_royal_marriage
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		x = 1
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_true_economic_tiger_of_balkans 
+		}
+		ai_will_do = { 
+			factor = 85 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+			date > 1938.1.1
+		}
+		completion_reward = {
+
+				custom_effect_tooltip = you_will_unlock_wargoal_tree_tt
+
+       		news_event = { id = gram_event_alb_albanian_royal_marriage.1 }
+
+		}
+	}
+
+	#Educational Reform
+	focus = {
+		id = gram_focus_alb_educational_reform
+		icon = GFX_focus_generic_university_1
+		x = 2
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL 
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_royal_marriage 
+		}
+		ai_will_do = { 
+			factor = 85 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		completion_reward = {
+        	add_research_slot = 1
+		}
+	}
+
+	#Fortress Albania
+	focus = {
+		id = gram_focus_alb_fortress_albania
+		icon = GFX_focus_BEL_national_redoubt_at_antwerp
+		x = 0
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_HISTORICAL 
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_royal_marriage 
+		}
+		ai_will_do = { 
+			factor = 85 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+			owns_state = 934
+			owns_state = 44
+			owns_state = 805
+		}
+		completion_reward = {
+
+			934 = {
+				add_building_construction = { type = bunker province = 9780 level = 3 instant_build = yes }
+				add_building_construction = { type = bunker province = 3896 level = 3 instant_build = yes }
+				add_building_construction = { type = bunker province = 11762 level = 3 instant_build = yes }
+			}
+			custom_effect_tooltip = empty_divide_tt
+			44 = {
+				add_building_construction = { type = bunker province = 13255 level = 3 instant_build = yes }
+				add_building_construction = { type = bunker province = 9914 level = 3 instant_build = yes }
+				add_building_construction = { type = bunker province = 9875 level = 3 instant_build = yes }
+				add_building_construction = { type = bunker province = 3884 level = 3 instant_build = yes }
+				add_building_construction = { type = bunker province = 6900 level = 3 instant_build = yes }
+				add_building_construction = { type = bunker province = 3448 level = 3 instant_build = yes }
+				add_building_construction = { type = bunker province = 11767 level = 3 instant_build = yes }
+				add_building_construction = { type = coastal_bunker province = 11767 level = 4 instant_build = yes }
+				add_building_construction = { type = coastal_bunker province = 13255 level = 4 instant_build = yes }
+			}
+			custom_effect_tooltip = empty_divide_tt
+			805 = {
+				add_building_construction = { type = bunker province = 13235 level = 3 instant_build = yes }
+				add_building_construction = { type = bunker province = 13234 level = 3 instant_build = yes }
+				add_building_construction = { type = bunker province = 914 level = 3 instant_build = yes }
+			}
+
+	    }
+    }
+
+####################################
+### OTHER MORE INTERESTING TREES ###
+####################################
+
+    #Dark day for our Nation
+	focus = {
+		id = gram_focus_alb_dark_day_for_our_nation
+		icon = GFX_focus_generic_conspiracy
+		x = 5
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_make_a_deal_with_workers  
+		}
+		mutually_exclusive = {
+			focus = gram_focus_alb_glory_to_zog 
+		}
+		ai_will_do = { 
+			factor = 50
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = other_paths_tt
+
+			hidden_effect = {
+				country_event = { 
+					id = gram_event_alb_king_zog_survived_the_assasination_attempt.1 hours = 36 
+				}
+			}
+
+		}
+	}
+
+#######################
+### INDUSTRIAL TREE ###
+#######################
+
+	#Industrial Expansion
+	focus = {
+		id = gram_focus_alb_industrial_expansion
+		icon = GFX_goal_generic_construct_civilian
+		x = 10
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		ai_will_do = { 
+			factor = 95 
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = industry
+			    bonus = 0.75
+			    uses = 2
+			    category = industry
+			}
+			custom_effect_tooltip = empty_divide_tt
+			add_ideas = gram_idea_alb_rapid_industrialization	
+
+		}
+	}
+
+	#Lower the Need for Imports
+	focus = {
+		id = gram_focus_alb_lower_the_need_for_imports
+		icon = GFX_goal_generic_trade
+		x = 8
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_industrial_expansion  
+		}
+		ai_will_do = { 
+			factor = 95 
+		}
+		available = {
+			has_idea = gram_idea_alb_heavy_food_imports
+		}
+		completion_reward = {
+
+        	swap_ideas = {
+				remove_idea = gram_idea_alb_heavy_food_imports
+				add_idea = gram_idea_alb_medium_food_imports
+			}
+
+		}
+	}
+
+	#Lower the Imports Even More
+	focus = {
+		id = gram_focus_alb_lower_the_imports_even_more
+		icon = GFX_goal_generic_trade
+		x = 8
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_lower_the_need_for_imports  
+		}
+		ai_will_do = { 
+			factor = 80 
+		}
+		available = {
+			num_of_civilian_factories > 10
+			has_idea = gram_idea_alb_medium_food_imports
+		}
+		completion_reward = {
+
+        	swap_ideas = {
+				remove_idea = gram_idea_alb_medium_food_imports
+				add_idea = gram_idea_alb_low_food_imports
+			}
+
+		}
+	}
+
+	#Remove the Need for Imports
+	focus = {
+		id = gram_focus_alb_remove_the_need_for_imports
+		icon = GFX_goal_generic_positive_trade_relations
+		x = 8
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_lower_the_imports_even_more  
+		}
+		ai_will_do = { 
+			factor = 75 
+		}
+		available = {
+			num_of_civilian_factories > 15	
+		}
+		completion_reward = {
+
+			remove_ideas = gram_idea_alb_low_food_imports		
+			custom_effect_tooltip = empty_divide_tt
+			add_stability = 0.1
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 75	
+
+		}
+	}
+
+	#Industrial Legacy
+	focus = {
+		id = gram_focus_alb_industrial_legacy
+		icon = GFX_focus_generic_industry_1
+		x = 10
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		available = {
+			owns_state = 805
+			owns_state = 44
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_industrial_expansion  
+		}
+		ai_will_do = { 
+			factor = 95  
+		}
+		completion_reward = {
+
+			805 = {
+		        add_extra_state_shared_building_slots = 2
+		        add_building_construction = {
+		            type = industrial_complex
+		            level = 2
+		            instant_build = yes
+		        }
+				add_building_construction = {
+		            type = infrastructure
+		            level = 1
+		            instant_build = yes
+		        }
+				set_state_category = rural
+		    }        
+		   custom_effect_tooltip = empty_divide_tt
+		    44 = {
+		        add_extra_state_shared_building_slots = 2
+		        add_building_construction = {
+		            type = industrial_complex
+		            level = 2
+		            instant_build = yes
+		        }
+				add_building_construction = {
+		            type = infrastructure
+		            level = 1
+		            instant_build = yes
+		        }
+		    }
+
+		}
+	}
+	
+
+	#Industrial Expansionism
+	focus = {
+		id = gram_focus_alb_industrial_expansionism
+		icon = GFX_focus_generic_industry_2
+		x = 10
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		available = {
+			owns_state = 934
+			owns_state = 805
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_industrial_legacy  
+		}
+		ai_will_do = { 
+			factor = 95 
+		}
+		completion_reward = {
+
+			934 = {
+			    add_extra_state_shared_building_slots = 2
+			    add_building_construction = {
+			        type = industrial_complex
+			        level = 2
+			        instant_build = yes
+			    }
+				add_building_construction = {
+			        type = infrastructure
+			        level = 2
+			        instant_build = yes
+			    }
+				set_state_category = town
+			}		        
+			custom_effect_tooltip = empty_divide_tt
+			805 = {
+			    add_extra_state_shared_building_slots = 2
+			    add_building_construction = {
+			        type = arms_factory
+			        level = 2
+			        instant_build = yes
+			    }
+				add_building_construction = {
+			        type = infrastructure
+			        level = 2
+			        instant_build = yes
+			    }
+				set_state_category = town
+			}
+
+		}	
+	}
+
+	#Literacy Program
+	focus = {
+		id = gram_focus_alb_literacy_program
+		icon = GFX_focus_research
+		x = 14
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_industrial_expansion  
+		}
+		ai_will_do = { 
+			factor = 90 
+		}
+		completion_reward = {
+
+			add_research_slot = 1	
+
+		}
+	}
+
+	#Opening of Agricultural University of Tirana
+	focus = {
+		id = gram_focus_alb_opening_of_agricultural_university_of_tirana
+		icon = GFX_focus_research2
+		x = 14
+		y = 3
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_literacy_program  
+		}
+		ai_will_do = { 
+			factor = 75 
+		}
+		available = { 
+			num_of_civilian_factories > 10 
+		}
+		completion_reward = {
+
+			add_research_slot = 1	
+
+		}
+	}
+
+	#State Investment
+	focus = {
+		id = gram_focus_alb_state_investment
+		icon = GFX_focus_generic_combined_arms
+		x = 10
+		y = 4
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_INDUSTRY 
+		}
+		available = {
+			owns_state = 934
+			owns_state = 805
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_industrial_expansionism  
+		}
+		ai_will_do = { 
+			factor = 95 
+		}
+		completion_reward = {
+
+			934 = {
+			    add_extra_state_shared_building_slots = 4
+			    add_building_construction = {
+			        type = industrial_complex
+			        level = 3
+			        instant_build = yes
+			    }
+				set_state_category = large_town
+			}
+			custom_effect_tooltip = empty_divide_tt
+			44 = {
+			    add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+			        type = arms_factory
+			        level = 3
+			        instant_build = yes
+			    }
+				set_state_category = city
+			}
+
+		}
+	}
+
+	#Nationalization of Our Oil
+	focus = {
+		id = gram_focus_alb_nationalization_of_our_oil
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		x = 12
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRY
+		}
+		available = {
+			owns_state = 44
+		}
+		bypass = { 
+			custom_trigger_tooltip = {
+				tooltip = ita_doesnt_have_rights_44_oil_tt
+				NOT = { 
+					ITA = { 
+						has_resources_rights = { 
+							state = 44 
+							resources = { oil } 
+						} 
+					} 
+				}
+			}
+		}
+		prerequisite = {
+			focus = gram_focus_alb_industrial_legacy  
+		}
+		ai_will_do = { 
+			factor = 0 
+		}
+		completion_reward = {
+
+			if = {
+				limit = {
+					NOT = { has_dlc = "No Step Back" }
+				}
+				custom_effect_tooltip = missing_no_step_back_tt
+			}
+
+			#If Italy has resource rights on oil on state 44, remove their resource rights
+			if = { 
+				limit = { 
+					ITA = { 
+						has_resources_rights = { 
+							state = 44 
+							resources = { oil } 
+						} 
+					} 
+				}
+				custom_effect_tooltip = remove_italian_resource_rights_tt
+				hidden_effect = {
+					ITA = { 
+						remove_resource_rights = 44
+						add_opinion_modifier = {
+							target = ALB
+							modifier = large_decrease
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+	#Expansion of Oil Fields
+	focus = {
+		id = gram_focus_alb_expansion_of_oil_fields
+		icon = GFX_focus_generic_resource_extraction
+		x = 12
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		available = {
+			owns_state = 44
+			custom_trigger_tooltip = {
+				tooltip = has_resource_rights_44_oil_tt
+				has_resources_rights = { 
+					state = 44 
+					resources = { oil } 
+				}
+			}		
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_nationalization_of_our_oil  
+		}
+		completion_reward = {
+
+			add_resource = {
+			    type = oil
+			    amount = 8
+			    state = 44
+			}
+
+		}
+	}
+
+	#Steel Cities
+	focus = {
+		id = gram_focus_alb_steel_cities
+		icon = GFX_focus_generic_steel
+		x = 14
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		available = {
+			owns_state = 44
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_nationalization_of_our_oil  
+		}
+		completion_reward = {
+
+			add_resource = {
+			    type = steel
+			    amount = 9
+			    state = 44
+			}
+
+		}
+	}
+
+	#Invite Foreign Investors
+	focus = {
+		id = gram_focus_alb_invite_foreign_investors
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 10
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_state_investment  
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = foreign_investors_tip_tt
+			custom_effect_tooltip = empty_divide_tt
+
+			#If country has Workers Unions or Planned Economy give the player some pp
+			if = {
+				limit = { 
+					OR = { 
+						has_idea = gram_idea_alb_workers_unions 
+						has_idea = gram_idea_alb_planned_economy 
+					} 
+				}
+				add_political_power = 100
+			}
+
+			#If country doesnt have Workers Unions or Planned Economy give it a Foreign Investors
+			if = { 
+				limit = { 
+					NOT = { 
+						has_idea = gram_idea_alb_workers_unions
+						has_idea = gram_idea_alb_planned_economy
+					}
+				}
+				add_ideas = gram_idea_alb_foreign_investors
+				custom_effect_tooltip = empty_divide_tt
+				add_political_power = 100
+			}
+
+	    }
+	}
+
+###############################
+### AIR / ARMY / NAVY TREES ###
+###############################
+
+	#Modernization of Military Doctrine
+	focus = {
+		id = gram_focus_alb_modernization_of_military_doctrine
+		icon = GFX_focus_generic_combined_arms
+		x = 24
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_AIR_XP
+			FOCUS_FILTER_ARMY_XP
+			FOCUS_FILTER_NAVY_XP
+		}
+		completion_reward = {
+
+			army_experience = 50
+			custom_effect_tooltip = empty_divide_tt
+			air_experience = 50
+			custom_effect_tooltip = empty_divide_tt
+			navy_experience = 50
+
+	    }
+	}
+
+	#The Albanian Army
+	focus = {
+		id = gram_focus_alb_the_albanian_army
+		icon = GFX_goal_generic_axis_build_infantry
+		x = 24
+		y = 2
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+			FOCUS_FILTER_ARMY_XP
+		}
+		prerequisite = {
+			focus = gram_focus_alb_modernization_of_military_doctrine 
+		}		
+		completion_reward = {
+
+			army_experience = 25
+			custom_effect_tooltip = empty_divide_tt
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+
+		}
+	}
+
+	#Equipment Effort
+	focus = {
+		id = gram_focus_alb_equipment_effort
+		icon = GFX_goal_generic_small_arms
+		x = 26
+		y = 3
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_the_albanian_army 
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+
+		}
+	}
+
+	#Motorization Effort
+	focus = {
+		id = gram_focus_alb_motorization_effort
+		icon = GFX_goal_generic_army_motorized
+		x = 22
+		y = 3
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+		}
+		bypass = { 
+			has_tech = motorised_infantry 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_the_albanian_army 
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 1.0
+				technology = motorised_infantry
+			}
+
+		}
+	}
+
+	#Doctrine Effort
+	focus = {
+		id = gram_focus_alb_doctrine_effort
+		icon = GFX_goal_generic_army_doctrines
+		x = 24
+		y = 3
+		cost = 10
+		search_filters = {  
+			FOCUS_FILTER_RESEARCH 
+			FOCUS_FILTER_ARMY_XP
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_the_albanian_army 
+		}
+		completion_reward = {
+
+			army_experience = 25
+			custom_effect_tooltip = empty_divide_tt
+
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+
+		}
+	}
+
+	#Equipment Effort 2
+	focus = {
+		id = gram_focus_alb_equipment_effort_2
+		icon = GFX_goal_generic_army_artillery
+		x = 26
+		y = 4
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_equipment_effort 
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 1500
+			}
+
+		}
+	}
+
+	#Mechanization Effort
+	focus = {
+		id = gram_focus_alb_mechanization_effort
+		icon = GFX_goal_generic_build_tank
+		x = 22
+		y = 4
+		cost = 10
+		search_filters = {  
+			FOCUS_FILTER_RESEARCH 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_motorization_effort 
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = motorized_bonus
+				ahead_reduction = 2
+				uses = 1
+				category = motorized_equipment
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+			add_equipment_to_stockpile = { 
+				type = motorized_equipment
+				amount = 100
+			}
+
+		}
+	}
+
+	#Doctrine Effort 2
+	focus = {
+		id = gram_focus_alb_doctrine_effort_2
+		icon = GFX_goal_generic_army_doctrines
+		x = 24
+		y = 4
+		cost = 10
+		search_filters = {  
+			FOCUS_FILTER_RESEARCH 
+			FOCUS_FILTER_ARMY_XP
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_doctrine_effort 
+		}
+		completion_reward = {
+
+			army_experience = 25
+			custom_effect_tooltip = empty_divide_tt
+
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+
+		}
+	}
+
+	#Armor Effort
+	focus = {
+		id = gram_focus_alb_armor_effort
+		icon = GFX_goal_generic_army_tanks
+		x = 23
+		y = 5
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_mechanization_effort 
+			focus = gram_focus_alb_doctrine_effort_2 
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = armor_bonus
+				bonus = 1.0
+				uses = 2
+				category = armor
+			}
+
+		}
+	}
+
+	#Special Forces
+	focus = {
+		id = gram_focus_alb_special_forces
+		icon = GFX_goal_generic_special_forces
+		x = 25
+		y = 5
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_equipment_effort_2 
+			focus = gram_focus_alb_doctrine_effort_2 
+		}
+		completion_reward = {
+
+			add_ideas = special_forces
+			custom_effect_tooltip = empty_divide_tt
+
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 1.0
+				uses = 1
+				technology = paratroopers
+				technology = paratroopers2
+				technology = marines
+				technology = marines2
+				technology = tech_mountaineers
+				technology = tech_mountaineers2
+			}
+
+		}
+	}
+
+	#The Albanian Airforce
+	focus = {
+		id = gram_focus_alb_the_albanian_airforce
+		icon = GFX_goal_generic_build_airforce
+		x = 19
+		y = 2
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+			FOCUS_FILTER_AIR_XP
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_modernization_of_military_doctrine 
+		}
+		complete_tooltip = {
+
+			air_experience = 25
+			if = { 
+				limit = { 
+					has_country_flag = aviation_effort_AB 
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+
+		}
+		completion_reward = {
+
+			air_experience = 25
+			custom_effect_tooltip = empty_divide_tt
+			if = {
+				limit = {
+					capital_scope = {
+						NOT = {
+							free_building_slots = {
+								building = air_base
+								size > 1
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					custom_effect_tooltip = empty_divide_tt
+					ROOT = { set_country_flag = aviation_effort_AB }
+				}
+			}
+
+			if = {
+				limit = {
+					capital_scope = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					custom_effect_tooltip = empty_divide_tt
+					ROOT = { set_country_flag = aviation_effort_AB }
+				}
+			}
+
+			add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+
+		}
+	}
+
+	#Fighter Focus
+	focus = {
+		id = gram_focus_alb_fighter_focus
+		icon = GFX_goal_generic_air_fighter
+		x = 18
+		y = 3
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_the_albanian_airforce 
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 1.0
+				uses = 2
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+
+		}
+	}
+
+	#Bomber Focus
+	focus = {
+		id = gram_focus_alb_bomber_focus
+		icon = GFX_goal_generic_air_bomber
+		x = 20
+		y = 3
+		cost = 10
+		search_filters = {  
+			FOCUS_FILTER_RESEARCH 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_the_albanian_airforce 
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = bomber_bonus
+				bonus = 1.0
+				uses = 2
+				category = cat_strategic_bomber
+				category = tactical_bomber
+			}
+
+		}
+	}
+
+	#Aviation Effort 
+	focus = {
+		id = gram_focus_alb_aviation_effort
+		icon = GFX_goal_generic_air_doctrine
+		x = 19
+		y = 4
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+			FOCUS_FILTER_AIR_XP
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_fighter_focus 
+			focus = gram_focus_alb_bomber_focus 
+		}
+		complete_tooltip = {
+
+			air_experience = 25
+			if = { 
+				limit = { 
+					has_country_flag = aviation_effort_2_AB 
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			add_doctrine_cost_reduction = {
+				name =  air_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
+			}
+
+		}
+		completion_reward = {
+
+			air_experience = 25
+			custom_effect_tooltip = empty_divide_tt
+
+			if = {
+				limit = {
+					capital_scope = {
+						OR = {
+							NOT = { is_controlled_by = ROOT }
+							NOT = {
+								free_building_slots = {
+									building = air_base
+									size > 1
+								}
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					custom_effect_tooltip = empty_divide_tt
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+
+			if = {
+				limit = {
+					capital_scope = {
+						is_controlled_by = ROOT
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					custom_effect_tooltip = empty_divide_tt			
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+
+			add_doctrine_cost_reduction = {
+				name =  air_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
+			}
+
+		}
+	}
+
+	#CAS Effort
+	focus = {
+		id = gram_focus_alb_CAS_effort
+		icon = GFX_goal_generic_CAS
+		x = 18
+		y = 5
+		cost = 10
+		search_filters = {  
+			FOCUS_FILTER_RESEARCH 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_fighter_focus 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_aviation_effort 
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = CAS_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = cas_bomber
+			}
+
+		}
+	}
+
+	#NAV Effort
+	focus = {
+		id = gram_focus_alb_NAV_effort
+		icon = GFX_goal_generic_air_naval_bomber
+		x = 20
+		y = 5
+		cost = 10
+		search_filters = {  
+			FOCUS_FILTER_RESEARCH 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_bomber_focus 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_aviation_effort 
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = nav_bomber_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = naval_bomber
+			}
+
+		}
+	}
+
+	#The Albanian Navy
+	focus = {
+		id = gram_focus_alb_the_albanian_navy
+		icon = GFX_goal_generic_build_navy
+		x = 29
+		y = 2
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_RESEARCH
+			FOCUS_FILTER_NAVY_XP
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_modernization_of_military_doctrine 
+		}
+		available = {
+			any_state = {
+				is_coastal = yes
+				is_controlled_by = ROOT
+			}
+		}
+		complete_tooltip = {
+
+			navy_experience = 25
+			add_extra_state_shared_building_slots = 3
+
+			add_building_construction = {
+				type = dockyard
+				level = 3
+				instant_build = yes
+			}
+
+		}
+		completion_reward = {
+
+			navy_experience = 25
+			custom_effect_tooltip = empty_divide_tt
+
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							dockyard > 0
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+					any_owned_state = {
+						is_coastal = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_coastal = yes
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				custom_effect_tooltip = empty_divide_tt
+				set_country_flag = naval_effort_built
+			}
+
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					any_owned_state = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						dockyard > 0
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				custom_effect_tooltip = empty_divide_tt
+				set_country_flag = naval_effort_built
+			}
+
+			if = {
+				limit = {
+					NOT = { has_country_flag = naval_effort_built }
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = dockyard
+								size > 2
+								include_locked = yes
+							}
+						}
+					}
+				}
+				random_state = {
+					limit = {
+						controller = { tag = ROOT }
+						free_building_slots = {
+							building = dockyard
+							size > 2
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = dockyard
+						level = 3
+						instant_build = yes
+					}
+				}
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 50
+			}
+
+		}
+	}
+
+	#Flexible Navy
+	focus = {
+		id = gram_focus_alb_flexible_navy
+		icon = GFX_goal_generic_build_navy
+		x = 28
+		y = 3
+		cost = 10
+		search_filters = {  
+			FOCUS_FILTER_RESEARCH 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_large_navy 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_the_albanian_navy 
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+							is_coastal = no
+					dockyard < 1
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+
+			add_doctrine_cost_reduction = {
+				name = sub_op_bonus
+				cost_reduction = 0.5
+				uses = 2
+				technology = convoy_interdiction_ti
+				technology = unrestricted_submarine_warfare
+				technology = wolfpacks
+				technology = advanced_submarine_warfare
+				technology = combined_operations_raiding
+			}
+
+		}
+	}
+
+	#Large Navy
+	focus = {
+		id = gram_focus_alb_large_navy
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		x = 30
+		y = 3
+		cost = 10
+		search_filters = {   
+			FOCUS_FILTER_RESEARCH 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_flexible_navy
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_the_albanian_navy 
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+		completion_reward = {
+
+			add_doctrine_cost_reduction = {
+				name = fleet_in_being_bonus
+				cost_reduction = 0.25
+				uses = 2
+				category = fleet_in_being_tree
+			}
+
+		}
+	}
+
+	#Submarine Effort
+	focus = {
+		id = gram_focus_alb_submarine_effort
+		icon = GFX_goal_generic_navy_submarine
+		x = 28
+		y = 4
+		cost = 10
+		search_filters = {  
+			FOCUS_FILTER_RESEARCH 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_flexible_navy 
+			focus = gram_focus_alb_large_navy 
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = ss_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = ss_tech
+			}
+
+		}
+	}
+
+	#Cruiser Effort
+	focus = {
+		id = gram_focus_alb_cruiser_effort
+		icon = GFX_goal_generic_navy_cruiser
+		x = 30
+		y = 4
+		cost = 10
+		search_filters = {  
+			FOCUS_FILTER_RESEARCH 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_large_navy 
+			focus = gram_focus_alb_flexible_navy 
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+		completion_reward = {
+
+			add_tech_bonus = {
+				name = cr_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = cl_tech
+				category = ca_tech
+			}
+
+		}
+	}
+
+	#Destroyer Effort
+	focus = {
+		id = gram_focus_alb_destroyer_effort
+		icon = GFX_goal_generic_wolf_pack
+		x = 28
+		y = 5
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+			FOCUS_FILTER_NAVY_XP
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_submarine_effort 
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+		completion_reward = {
+
+			navy_experience = 50
+			custom_effect_tooltip = empty_divide_tt
+
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = dd_tech
+			}
+
+		}
+	}
+
+	#Capital Ship Effort	
+	focus = {
+		id = gram_focus_alb_capital_ships_effort
+		icon = GFX_goal_generic_navy_battleship
+		x = 30
+		y = 5
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+			FOCUS_FILTER_NAVY_XP
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_cruiser_effort 
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+		
+		completion_reward = {
+
+			navy_experience = 50
+			custom_effect_tooltip = empty_divide_tt
+
+			add_tech_bonus = {
+				name = capital_ships_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = bc_tech
+				category = bb_tech
+				category = cv_tech
+			}
+
+		}
+	}
+
+	#Project Eagle
+	focus = {
+		id = gram_focus_alb_project_eagle
+		icon = GFX_focus_GER_wunderwaffe_inner_circle
+		x = 24
+		y = 6
+		cost = 10
+		search_filters = { 
+			FOCUS_FILTER_RESEARCH 
+		}
+		available = {
+			date > 1942.1.1
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_CAS_effort 
+			focus = gram_focus_alb_NAV_effort
+			focus = gram_focus_alb_armor_effort
+			focus = gram_focus_alb_special_forces
+			focus = gram_focus_alb_destroyer_effort
+			focus = gram_focus_alb_capital_ships_effort
+		}
+		ai_will_do = {
+			base = 1
+		}	
+		completion_reward = {
+
+			if = { #If you dont have the tech. get the tech. bonus and a breakthrough progress
+				limit = {
+					NOT = {
+						has_tech = atomic_research
+					}
+				}
+				add_tech_bonus = {
+					name = nuclear
+					bonus = 3.0
+					uses = 1
+					category = nuclear
+				}
+				custom_effect_tooltip = empty_divide_tt
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 0.5
+				}
+			}
+
+			if = { #If you have the tech. get only the breakthrough progress
+				limit = { 
+					has_tech = atomic_research 
+				}
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 1
+				}
+			}	
+
+			if = { #If you dont have a nuclear facility, get one for free
+				limit = { 
+					NOT = { 
+						has_facility_specialization = specialization_nuclear 
+					} 
+				}
+				if = { #Very dum way of checking if the state can get a facility built, but hey if it works ¯\_(ツ)_/¯
+					limit = { 
+						44 = { 
+							can_construct_building = nuclear_facility
+						} 
+					}
+					custom_effect_tooltip = empty_divide_tt
+					custom_effect_tooltip = construct_nuclear_44_tt
+					hidden_effect = {
+						44 = { 
+							construct_building_in_random_province = { nuclear_facility = 1 } 
+						}				
+					}
+				}
+				else_if = { #Checker 2
+					limit = { 
+						934 = { 
+							can_construct_building = nuclear_facility
+						} 
+					}
+					custom_effect_tooltip = empty_divide_tt
+					custom_effect_tooltip = construct_nuclear_934_tt
+					hidden_effect = {
+						934 = { 
+							construct_building_in_random_province = { nuclear_facility = 1 } 
+						}				
+					}	
+				}
+				else_if = { #Checker 3
+					limit = { 
+						805 = { 
+							can_construct_building = nuclear_facility
+						} 
+					}
+					custom_effect_tooltip = empty_divide_tt
+					custom_effect_tooltip = construct_nuclear_805_tt
+					hidden_effect = {
+						805 = { 
+							construct_building_in_random_province = { nuclear_facility = 1 } 
+						}				
+					}
+				}
+				else_if = { #Checker 4 - If there isn't any free land
+					limit = { 
+						44 = { NOT = { can_construct_building = nuclear_facility } }
+						934 = { NOT = { can_construct_building = nuclear_facility } }
+						805 = { NOT = { can_construct_building = nuclear_facility } }
+					}
+					custom_effect_tooltip = empty_divide_tt
+					custom_effect_tooltip = no_space_for_nuclear_tt
+				}
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+
+			#Free nuclear scientist - Made it a women just for fun (tbh. i dont give a shit)
+			generate_scientist_character = {
+				skills = {
+					specialization_nuclear = 2
+				}
+				gender = female
+				traits = {
+					scientist_trait_nuclear_specialist
+				}
+			}
+
+		}
+	}
+
+##########################
+### MULTI TREE FOCUSES ###
+##########################
+
+	#Freedom of Religion - Part of Byzantine and Balkan UBSR tree
+	focus = {
+		id = gram_focus_alb_freedom_of_religion
+		icon = GFX_focus_generic_self_management
+		x = 12
+		y = 22
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_no_empire_like_byzantine_empire 
+			focus = gram_focus_alb_realize_the_dream  
+		}
+		completion_reward = {
+
+			add_ideas = gram_idea_alb_freedom_of_religion
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 50
+
+	    }
+	}
+
+	#Lower Class Education - End part off three Hoxha trees
+	focus = {
+		id = gram_focus_alb_lower_class_education
+		icon = GFX_focus_NOR_moscows_education_centers
+		x = 24
+		y = 23
+		cost = 5
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_united_adriatic 
+			focus = gram_focus_alb_defender_of_peasantry
+			focus = gram_focus_alb_soviet_arms_shipments
+		}
+		completion_reward = {
+
+			add_research_slot = 1
+
+	    }
+	}
+
+	#New Step Forward - End part off three Hoxha trees
+	focus = {
+		id = gram_focus_alb_new_step_forward
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		x = 24
+		y = 25
+		cost = 5
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_lower_class_education 
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = you_will_unlock_wargoal_tree_tt
+			custom_effect_tooltip = empty_divide_tt
+			add_war_support = 0.1
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 100
+
+	    }
+	}
+
+#############################
+### BYZANTINE EMPIRE TREE ###
+#############################
+
+#This whole tree was fully reworked twice allready, i hope i wont be doing it a third time (-_-)
+
+	#Glorious Walks Once Again
+	focus = {
+		id = gram_focus_alb_glorious_walks_once_again
+		icon = GFX_focus_generic_military_dictatorship
+		x = 7
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_new_era_for_the_republic 
+		}
+	    available = { 
+			custom_trigger_tooltip = {
+				tooltip = zog_is_back_tt
+				has_country_flag = gram_flag_alb_zog_is_back
+			}
+			has_government = neutrality
+			is_subject = no
+		}
+		completion_reward = {
+
+			add_stability = 0.1
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 100
+
+		}
+	}
+
+	#Rebuilding the Lost Empire
+	focus = {
+		id = gram_focus_alb_rebuilding_the_lost_empire
+		icon = GFX_focus_generic_military_mission
+		x = 7
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_POLITICAL_CHARACTER
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_glorious_walks_once_again 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		completion_reward = {
+
+			#If Albania has King Zog, he will get a new trait
+			if = {
+				limit = { 
+					has_country_leader = {
+						character = gram_character_ALB_king_zog
+						ruling_only = yes
+					}	
+				}
+				add_country_leader_trait = gram_trait_lead_by_gods
+			}
+
+			#If Albania is ruled by someone else
+			if = {
+				limit = { 
+					NOT = {
+						has_country_leader = {
+							character = gram_character_ALB_king_zog
+							ruling_only = yes
+						}	
+					}
+				}
+				custom_effect_tooltip = needs_zog_as_ruler_tt
+			}
+
+		}
+	}
+
+	#Attack the Greece
+	focus = {
+		id = gram_focus_alb_attack_the_greece
+		icon = GFX_focus_generic_attack_greece
+		x = 6
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_WAR_SUPPORT
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_rebuilding_the_lost_empire 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_unite_with_greece 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		completion_reward = {
+
+			add_war_support = 0.15
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 100
+			custom_effect_tooltip = empty_divide_tt
+
+			#If Greece does exist, create a wargoal against them 
+			if = { 
+				limit = { 
+					GRE = { 
+						exists = yes 
+					} 
+				}
+				create_wargoal = {
+					target = GRE
+					type = annex_everything
+					expire = 0
+				}
+			}
+
+			#If Greece doesnt exist, create a wargoal against occupiers
+			if = {
+				limit = { GRE = { exists = no } }
+				custom_effect_tooltip = gre_doesnt_exist
+				custom_effect_tooltip = empty_divide_tt
+				every_country = {
+					limit = { 
+						OR = {
+							owns_state = 185
+							owns_state = 47
+							owns_state = 186
+							owns_state = 731
+							owns_state = 184
+						}		
+						NOT = { 
+							tag = ALB 
+						}
+					}
+					ROOT = { 
+						create_wargoal = {
+							type = annex_everything		
+							target = PREV
+							expire = 0
+						}			
+					}
+				}
+			}
+
+	    }
+	}
+
+	#Unite with Greece
+	focus = {
+		id = gram_focus_alb_unite_with_greece
+		icon = GFX_focus_generic_befriend_greece
+		x = 8
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_rebuilding_the_lost_empire 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_attack_the_greece 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+			GRE = { 
+				exists = yes
+			}
+		}
+		completion_reward = {
+
+        	GRE = { 
+				country_event = { 
+					id = gram_event_alb_unite_with_albania.1 
+					hours = 36 
+				} 
+			}
+
+	    }
+	}
+
+	#Complete Moblilisation
+	focus = {
+		id = gram_focus_alb_complete_mobilisation
+		icon = GFX_focus_SOV_the_glory_of_the_red_army_alternative
+		x = 9
+		y = 11
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_attack_the_greece 
+			focus = gram_focus_alb_unite_with_greece 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+			has_idea = limited_conscription
+			has_idea = partial_economic_mobilisation
+		}
+		completion_reward = {
+
+    	    add_ideas = extensive_conscription
+			custom_effect_tooltip = empty_divide_tt
+			add_ideas = war_economy
+
+	    }
+	}
+	
+	#Rebirth of New Byzantine Empire
+	focus = {
+		id = gram_focus_alb_rebirth_of_new_byzantine_empire
+		icon = GFX_focus_GRE_reviving_the_double_headed_eagle
+		x = 7
+		y = 12
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_unite_with_greece 
+			focus = gram_focus_alb_attack_the_greece 
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+			owns_state = 185
+			owns_state = 47
+			owns_state = 186
+			owns_state = 731
+			owns_state = 184
+			owns_state = 182
+        	owns_state = 187
+    		GRE = { 
+				exists = no 
+			}
+			has_government = neutrality
+			is_subject = no
+		}
+		completion_reward = {
+
+    	    set_cosmetic_tag = GRAM_ALB_BYZANTIUM
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = gain_cores_on_gre_tt
+
+			###1A### USE ALL THIS FOR PREPARATIONS FOR INVASION
+			if = { 
+				limit = { 
+					has_idea = gram_idea_alb_preparations_for_invasion_idea 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				remove_ideas = gram_idea_alb_preparations_for_invasion_idea
+			}
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = remove_preparations_for_invasion_tt
+			set_country_flag = gram_flag_alb_no_more_war_preparations
+			###1B### 
+
+			hidden_effect = {
+				#Greek Cores
+				185 = { add_core_of = ROOT }
+				47 = { add_core_of = ROOT }
+				731 = { add_core_of = ROOT }
+				184 = { add_core_of = ROOT }
+				186 = { add_core_of = ROOT }
+				187 = { add_core_of = ROOT }
+				182 = { add_core_of = ROOT }
+				164 = { add_core_of = ROOT }
+
+				news_event = { 
+					id = gram_event_alb_restoration_of_byzantine_empire.1 
+				}
+			}
+	    }
+	}
+
+	#Bribe British and French Goverment
+	focus = {
+		id = gram_focus_alb_bribe_british_and_french_goverment
+		icon = GFX_focus_chi_british_cooperation
+		x = 6
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_rebirth_of_new_byzantine_empire 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		bypass = {
+			ENG = { 
+				exists = no 
+			}
+			FRA = { 
+				exists = no 
+			}
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = guarantee_rush_tt
+			custom_effect_tooltip = empty_divide_tt
+
+			if = { #Event to UK
+				limit = { 
+					ENG = { 
+						is_subject = no 
+						exists = yes 
+					} 
+				}
+				ENG = { 
+					country_event = { 
+						id = gram_event_alb_byzantine_empire_requests_a_guarantee.1 
+						hours = 36
+					}
+				}
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #Event to France
+				limit = { 
+					FRA = { 
+						is_subject = no 
+						exists = yes 
+					} 
+				}
+				FRA = { 
+					country_event = { 
+						id = gram_event_alb_byzantine_empire_requests_a_guarantee.1 
+						hours = 36 
+					}
+				}
+			}
+	    }
+	}
+
+	#Compromoise with Romania and Czechoslovakia
+	focus = {
+		id = gram_focus_alb_compromise_with_romania_and_czechoslovakia
+		icon = GFX_focus_invite_romania
+		x = 4
+		y = 13
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_rebirth_of_new_byzantine_empire 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+			OR = {
+				CZE = { 
+					exists = yes 
+				}
+				ROM = { 
+					exists = yes 
+				}
+			}
+		}
+		completion_reward = {
+
+			#If both Romania and Czechoslovakia exists, show this tooltip and gurantee
+			if = {
+				limit = { 
+					CZE = { 
+						exists = yes 
+					} 
+					ROM = { 
+						exists = yes 
+					} 
+				}
+				custom_effect_tooltip = compromise_cze_rom_tt
+				hidden_effect = {
+					ROM = { 
+						give_guarantee = ALB 
+					}
+					CZE = {
+						give_guarantee = ALB 
+					}
+					ALB = { 
+						give_guarantee = ROM
+					}
+					ALB = { 
+						give_guarantee = CZE 
+					}			
+				}			
+			}
+
+			#If only Romania exists, show this tooltip and gurantee
+			else_if = {
+				limit = { 
+					CZE = { 
+						exists = no 
+					} 
+					ROM = { 
+						exists = yes 
+					} 
+				}	
+				custom_effect_tooltip = compromise_rom_tt
+				hidden_effect = {
+					ROM = { 
+						give_guarantee = ALB 
+					}
+					ALB = { 
+						give_guarantee = ROM 
+					}	
+				}			
+			}
+
+			#If only Czechoslovakia exists, show this tooltip and gurantee
+			else_if = {
+				limit = { 
+					CZE = { 
+						exists = yes 
+					} 
+					ROM = { 
+						exists = no 
+					} 
+				}	
+				custom_effect_tooltip = compromise_cze_tt
+				hidden_effect = {
+					CZE = { 
+						give_guarantee = ALB 
+					}
+					ALB = { 
+						give_guarantee = CZE 
+					}			
+				}			
+			}
+
+			#If both Czechoslovakia and Romania don't exist, show this tooltip
+			else_if = {
+				limit = { 
+					CZE = { 
+						exists = no 
+					} 
+					ROM = { 
+						exists = no 
+					} 
+				}			
+				custom_effect_tooltip = compromise_no_one_tt
+			}
+
+		}
+	}
+
+	#Bribe German Goverment
+	focus = {
+		id = gram_focus_alb_bribe_german_goverment
+		icon = GFX_focus_chi_mission_to_germany
+		x = 8
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_rebirth_of_new_byzantine_empire 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		bypass = {
+			GER = { 
+				exists = no 
+			}
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = guarantee_rush_tt
+
+			if = { #Event for Germany
+				limit = { 
+					GER = { 
+						is_subject = no 
+						exists = yes 
+					} 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				GER = { 
+					country_event = { 
+						id = gram_event_alb_byzantine_empire_requests_a_guarantee.1 
+						hours = 36 
+					} 
+				}
+
+			}
+	    }
+	}
+
+	#Attack the Slavic Territorys
+	focus = {
+		id = gram_focus_alb_attack_the_slavic_territorys
+		icon = GFX_focus_generic_attack_bulgaria
+		x = 6
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_bribe_british_and_french_goverment 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		bypass = { 
+			YUG = { 
+				exists = no 
+			} 
+			BUL = { 
+				exists = no 
+			} 
+		}
+		completion_reward = {
+
+			if = { #Annex Wargoal Yugoslavia
+				limit = { 
+					YUG = { 
+						exists = yes 
+					} 
+				}
+				create_wargoal = {
+					target = YUG
+					type = annex_everything
+				}
+			}
+
+			if = { #Annex Wargoal Bulgaria
+				limit = { 
+					BUL = { 
+						exists = yes 
+					} 
+				}
+				create_wargoal = {
+					target = BUL
+					type = annex_everything
+				}
+			}
+
+		}
+	}
+
+	#Attack the Turks
+	focus = {
+		id = gram_focus_alb_attack_the_turks
+		icon = GFX_focus_generic_attack_turkey
+		x = 8
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+        prerequisite = { 
+			focus = gram_focus_alb_bribe_german_goverment 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		bypass = { 
+			TUR = { 
+				exists = no 
+			} 
+		}
+		completion_reward = {
+
+			if = { #Annex Wargoal Turkey
+				limit = { TUR = { exists = yes } }
+				create_wargoal = {
+					target = TUR
+					type = annex_everything
+				}
+			}
+
+		}
+	}
+
+	#True Defenders of Slavic People
+	focus = {
+		id = gram_focus_alb_true_defenders_of_slavic_people
+		icon = GFX_focus_generic_workers
+		x = 6
+		y = 15
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL 
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_attack_the_slavic_territorys 
+		}
+        available =  { 
+			YUG = { 
+				exists = no 
+			} 
+			BUL = { 
+				exists = no 
+			}
+			has_government = neutrality
+			is_subject = no
+		}
+
+		completion_reward = {
+
+			custom_effect_tooltip = gain_cores_on_yug_tt
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = gain_cores_on_bul_tt
+
+       		hidden_effect = {
+				#Yugoslavia Cores
+       			736 = { add_core_of = ROOT }
+				852 = { add_core_of = ROOT }
+				102 = { add_core_of = ROOT }
+				853 = { add_core_of = ROOT }
+				109 = { add_core_of = ROOT }
+				103 = { add_core_of = ROOT }
+				163 = { add_core_of = ROOT }
+				104 = { add_core_of = ROOT }
+				804 = { add_core_of = ROOT }
+				105 = { add_core_of = ROOT }
+				45 = { add_core_of = ROOT }
+				764 = { add_core_of = ROOT }
+				107 = { add_core_of = ROOT }
+				108 = { add_core_of = ROOT }
+				802 = { add_core_of = ROOT }
+				803 = { add_core_of = ROOT }
+				970 = { add_core_of = ROOT }
+				106 = { add_core_of = ROOT }
+		
+				#Bulgaria Cores
+				48 = { add_core_of = ROOT }
+				801 = { add_core_of = ROOT }
+				211 = { add_core_of = ROOT }
+				212 = { add_core_of = ROOT }
+				77 = { add_core_of = ROOT }
+				971 = { add_core_of = ROOT }
+		    }
+
+		}
+	}
+
+	#Reintegrate the Homeland of Turks
+	focus = {
+		id = gram_focus_alb_reintegrate_the_homeland_of_turks
+		icon = GFX_focus_TUR_misak_i_milli
+		x = 8
+		y = 15
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_attack_the_turks 
+		}
+		available = { 
+			TUR = { 
+				exists = no 
+			}
+			has_government = neutrality
+			is_subject = no
+		}
+
+		completion_reward = {
+
+        	custom_effect_tooltip = gain_cores_on_tur_tt
+
+			hidden_effect = {
+				#Turkey Cores
+				341 = { add_core_of = ROOT }
+				797 = { add_core_of = ROOT }	
+				340 = { add_core_of = ROOT }
+				339 = { add_core_of = ROOT }
+				342 = { add_core_of = ROOT }
+				343 = { add_core_of = ROOT }
+				347 = { add_core_of = ROOT }
+				49 = { add_core_of = ROOT }
+				346 = { add_core_of = ROOT }
+				345 = { add_core_of = ROOT }
+				348 = { add_core_of = ROOT }
+				344 = { add_core_of = ROOT }
+				350 = { add_core_of = ROOT }
+				352 = { add_core_of = ROOT }
+				353 = { add_core_of = ROOT }
+				800 = { add_core_of = ROOT }
+				349 = { add_core_of = ROOT }
+				798 = { add_core_of = ROOT }
+				356 = { add_core_of = ROOT }
+				355 = { add_core_of = ROOT }
+				354 = { add_core_of = ROOT }
+			}
+
+		}
+	}
+
+	#No Empire like Byzantine Empire
+	focus = {
+		id = gram_focus_alb_no_empire_like_byzantine_empire
+		icon = GFX_focus_GRE_reviving_the_double_headed_eagle
+		x = 7
+		y = 17
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_true_defenders_of_slavic_people 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_reintegrate_the_homeland_of_turks 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+			owns_state = 797
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_POLITICAL_CHARACTER
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = new_emperor_of_the_empire_tt
+			custom_effect_tooltip = empty_divide_tt
+			unlock_decision_category_tooltip = gram_decision_alb_reclamation_of_empire
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = you_will_unlock_wargoal_tree_tt
+			custom_effect_tooltip = empty_divide_tt
+
+			if = { #If you dont own state, get this text that expalins it all
+				limit = { 
+					NOT = { 
+						owns_state = 797 
+					} 
+				}
+				custom_effect_tooltip = gain_control_over_state_797_tt
+			}
+
+			else_if = { #If owns state - Set as Capital and rename it from Instabul to Constantinople
+				limit = { 
+					owns_state = 797 
+				}
+				custom_effect_tooltip = has_control_over_state_797_tt
+				hidden_effect = {
+					797 = { 
+						set_state_name = "Constantinople"
+					}
+					set_province_name = { id = 9833 name = "Constantinople"}
+					set_capital = {
+						state = 797
+					}
+				}
+			}
+
+			hidden_effect = {
+				promote_character = "gram_character_ALB_emperor_zog"
+				set_country_flag = gram_flag_alb_reclamation_of_empire_byzantine
+			}
+
+	    }
+	}
+
+	#Our Place in the World
+	focus = {
+		id = gram_focus_alb_our_place_in_the_world
+		icon = GFX_focus_generic_spread_fascism
+		x = 7
+		y = 18
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_no_empire_like_byzantine_empire 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+        	set_rule = { can_create_factions = yes }
+			custom_effect_tooltip = empty_divide_tt
+			create_faction = "Dii Imperii"
+	    }
+	}
+
+	#Empire of Philosophy
+	focus = {
+		id = gram_focus_alb_empire_of_philosophy
+		icon = GFX_focus_generic_industrialists
+		x = 5
+		y = 20
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_our_place_in_the_world 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		completion_reward = {
+
+    	    add_research_slot = 1
+
+	    }
+	}
+
+	#Invite Greek Army Officers
+	focus = {
+		id = gram_focus_alb_invite_greek_army_officers
+		icon = GFX_focus_generic_military_mission
+		x = 10
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = {
+			focus = gram_focus_alb_rebirth_of_new_byzantine_empire 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+			custom_trigger_tooltip = {
+				tooltip = gre_is_under_our_control_tt
+				GRE = { 
+					exists = no 
+				}
+				ROOT = { 
+					owns_state =  185
+					owns_state = 47
+					owns_state = 186
+					owns_state = 731
+					owns_state = 184
+				}
+			}
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = recruiting_of_the_new_generals_byzantine_tt
+
+			hidden_effect = {
+				GRE = { 
+					every_unit_leader = {
+						set_nationality = ALB
+					} 
+				}
+			}
+
+		}
+	}
+
+	#Faction Expansion
+	focus = {
+		id = gram_focus_alb_faction_expansion
+		icon = GFX_focus_generic_little_entente
+		x = 9
+		y = 20
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_our_place_in_the_world 
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			unlock_decision_category_tooltip = gram_decision_alb_faction_expansion
+
+			hidden_effect = {
+				set_country_flag = gram_flag_alb_faction_expansion_byzantine
+			}
+
+	    }
+	}
+
+#################################################
+### COMMUNIST / DEMOCRATIC TREE - SPLIT FOCUS ###
+#################################################
+
+	#New era for the Republic
+	focus = {
+		id = gram_focus_alb_new_era_for_the_republic
+		icon = GFX_focus_rom_abdicate
+		x = 24
+		y = 8
+		cost = 10
+		ai_will_do = {
+			factor = 20
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_glorious_walks_once_again 
+		}     
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = zog_fully_deposed_tt
+				has_country_flag = gram_flag_alb_new_era_has_begun
+			}
+			is_subject = no
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+      		add_political_power = 150
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = allowed_recruiting_tt
+			hidden_effect = {
+				set_country_flag = gram_flag_alb_allow_advisor_recruiting
+			}
+
+	    }
+	}
+
+	###################
+	### DEMOCRATIC ####
+	###################
+
+	focus = {
+		id = ALB_restore_elections
+		icon = GFX_focus_CHL_1938_chilean_presidential_election
+		cost = 7
+		mutually_exclusive = {
+			focus = gram_focus_alb_peoples_revolution
+		}
+		relative_position_id = gram_focus_alb_new_era_for_the_republic
+		x = 6
+		y = 1
+		available = {
+			is_subject = no
+			democratic > 0.30
+		}
+		prerequisite = {
+			focus = gram_focus_alb_new_era_for_the_republic
+		}
+		completion_reward = {
+			country_event = {
+				id = democratic_alb.1
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.15
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+				elections_allowed = 48
+			}
+
+			hidden_effect = {
+				ITA = { 
+				diplomatic_relation = { 
+					country = ALB 
+					relation = guarantee 
+					active = no 
+				} 
+			}
+			}
+		 }
+	}
+
+	focus = {
+		id = ALB_secure_the_administration_dem
+		icon = GFX_focus_AFG_parliamentary_democracy
+		cost = 5
+		x = -2
+		y = 1
+		relative_position_id = ALB_democratic_victory
+		prerequisite = {
+			focus = ALB_democratic_victory
+		}
+		completion_reward = {
+			add_stability = 0.15
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+		 }
+	}
+
+		focus = {
+		id = ALB_secure_the_people_dem
+		icon = GFX_focus_GER_the_peoples_victory
+		cost = 5
+		x = 0
+		y = 1
+		relative_position_id = ALB_democratic_victory
+		prerequisite = {
+			focus = ALB_democratic_victory
+		}
+		completion_reward = {
+			add_stability = 0.15
+			add_war_support = 0.05
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.15
+			}
+		 }
+	}
+
+	focus = {
+		id = ALB_secure_the_military_administration_dem
+		icon = GFX_SOV_the_glory_of_the_red_army_alt_ccp_2d_sov_compatibility
+		cost = 5
+		x = 2
+		y = 1
+		relative_position_id = ALB_democratic_victory
+		prerequisite = {
+			focus = ALB_democratic_victory
+		}
+		completion_reward = {
+			add_war_support = 0.15
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+		 }
+	}
+
+	focus = {
+		id = ALB_our_new_era_dem
+		icon = GFX_focus_ITA_liberate_gramsci
+		cost = 10
+		relative_position_id = ALB_democratic_victory
+		x = 0
+		y = 2
+		prerequisite = {
+			focus = ALB_secure_the_administration_dem
+		}
+		prerequisite = {
+			focus = ALB_secure_the_people_dem
+		}
+		prerequisite = {
+			focus = ALB_secure_the_military_administration_dem
+		}
+		completion_reward = {
+			add_stability = 0.15
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.15
+			}
+			hidden_effect = {
+				set_country_flag = gram_flag_alb_monarchy_can_come_back
+	    	}
+		 }
+	}
+
+	focus = {
+		id = ALB_diplomatic_action
+		icon = GFX_goal_generic_alliance
+		cost = 7
+		x = 0
+		y = 1
+		relative_position_id = ALB_our_new_era_dem
+		prerequisite = {
+			focus = ALB_our_new_era_dem
+		}
+		completion_reward = {
+			country_event = {
+				id = democratic_alb.3
+			}
+		 }
+	}
+
+	focus = {
+		id = ALB_the_west
+		relative_position_id = ALB_our_new_era_dem
+		icon = GFX_focus_hol_the_fourth_ally
+		cost = 7
+		x = -2
+		y = 2
+		available = {
+			always = no
+		}
+		prerequisite = {
+			focus = ALB_diplomatic_action
+		}
+		completion_reward = {
+				ENG = {
+					country_event = { id = generic.2 }
+				}
+				custom_effect_tooltip = ENG_completed_by_event_tt
+		 }
+	}
+
+		focus = {
+		id = ALB_ourselves
+		relative_position_id = ALB_our_new_era_dem
+		icon = GFX_goal_generic_major_alliance
+		cost = 7
+		x = 2
+		y = 2
+		available = {
+			always = no
+		}
+		prerequisite = {
+			focus = ALB_diplomatic_action
+		}
+		completion_reward = {
+				custom_effect_tooltip = ENG_completed_by_event_tt
+				create_faction = "Balkan Democratic League"
+		 }
+	}
+
+
+	focus = {
+		id = ALB_exile_hoxha
+		icon = GFX_focus_generic_government_in_exile
+		cost = 7
+		x = 2
+		prerequisite = {
+			focus = ALB_our_new_era_dem
+		}
+		available = {
+			NOT = {
+				has_government = communism
+			}
+		}
+		relative_position_id = ALB_our_new_era_dem
+		y = 1
+		completion_reward = { 
+			add_stability = 0.15
+			add_war_support = 0.15
+			retire_character = gram_character_ALB_enver_hoxha
+
+			hidden_effect = {
+				recruit_character = USA_earl_browder
+			}
+		}
+	}
+
+	focus = {
+		id = ALB_constitutional_zog
+		icon = GFX_focus_ITA_albanian_fascist_militia
+		cost = 7
+		x = -2
+		y = 1
+		prerequisite = {
+			focus = ALB_our_new_era_dem
+		}
+		relative_position_id = ALB_our_new_era_dem
+		completion_reward = {
+			add_ideas = gram_idea_alb_king_zog
+		 }
+	}
+
+	#COMMUNIST VICTORY
+
+	focus = {
+		id = ALB_communist_victory
+		prerequisite = {
+			focus = ALB_restore_elections
+		}
+		icon = GFX_goal_support_communism
+		available = {
+			always = no
+		}
+		cost = 10
+		x = 22
+		y = 10
+		completion_reward = {
+
+			add_ideas = internationalism
+
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.25
+			}
+
+			custom_effect_tooltip = ENG_completed_by_event_tt
+		 }
+	}
+
+	focus = {
+		id = ALB_communist_coup
+		icon = GFX_focus_generic_spur_communist_revolutions
+		cost = 10
+		prerequisite = {
+			focus = ALB_communist_victory
+		}
+		available = {
+			communism > 0.30
+		}
+		x = 24
+		y = 11
+		completion_reward = {
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+			remove_ideas = internationalism
+			hidden_effect = {
+				start_civil_war = {
+					ideology = ROOT
+					size = 0.35
+				}
+
+				country_event = {
+					id = democratic_alb.2
+				}
+			}
+		 }
+	}
+	
+	#DEMOCRATIC VICTORY
+
+		focus = {
+		id = ALB_democratic_victory
+		prerequisite = {
+			focus = ALB_restore_elections
+		}
+		relative_position_id = ALB_restore_elections
+		icon = GFX_goal_support_democracy
+		available = {
+			always = no
+		}
+		cost = 10
+		x = 0
+		y = 1
+		completion_reward = {
+
+			add_political_power = 100
+
+			custom_effect_tooltip = ENG_completed_by_event_tt
+		 }
+	}
+
+
+############################################
+### COMMUNIST TREE - UBSR AND HOXHA TREE ###
+############################################
+
+	#People's Revolution
+	focus = {
+		id = gram_focus_alb_peoples_revolution
+		icon = GFX_focus_generic_soviet_politics
+		x = 18
+		y = 9
+		cost = 10
+		ai_will_do = {
+			factor = 2
+		}
+		mutually_exclusive = {
+			focus = ALB_restore_elections
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_new_era_for_the_republic 
+		} 
+		available = {
+			is_subject = no
+			communism > 0.3
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+      		set_politics = { 
+				ruling_party = communism 
+				elections_allowed = no 
+			}
+			custom_effect_tooltip = empty_divide_tt
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.4
+			}
+			custom_effect_tooltip = empty_divide_tt
+			ITA = { 
+				diplomatic_relation = { 
+					country = ALB 
+					relation = guarantee 
+					active = no 
+				} 
+			}
+
+			hidden_effect = {
+				set_country_flag = gram_flag_alb_monarchy_can_come_back
+	    	}
+		}
+	}
+
+	#Rule of Hoxha
+	focus = {
+		id = gram_focus_alb_rule_of_hoxha
+		icon = GFX_focus_prc_agrarian_socialism
+		x = 20
+		y = 10
+		ai_will_do = {
+			factor = 2
+		}
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_peoples_revolution 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_rule_of_the_people 
+		}     
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
+		}
+		completion_reward = {
+
+			add_stability = 0.1
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 150
+
+	    }
+	}
+
+	#Rule of the People
+	focus = {
+		id = gram_focus_alb_rule_of_the_people
+		icon = GFX_focus_YUG_pan_slavic_congress
+		x = 16
+		y = 10
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_peoples_revolution 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_rule_of_hoxha 
+		}     
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_POLITICAL_CHARACTER
+		}
+		completion_reward = {
+
+        	promote_character = "gram_character_ALB_peoples_revolutionary_council" 
+			custom_effect_tooltip = empty_divide_tt
+
+			set_party_name = {
+				ideology = communism
+				long_name = peoples_council_long_name
+				name = peoples_council_short_name
+			}
+
+	    }	
+	}
+
+	#Our King no More
+	focus = {
+		id = gram_focus_alb_our_king_no_more
+		icon = GFX_focus_rom_handle_king
+		x = 18
+		y = 11
+		ai_will_do = {
+			factor = 2
+		}
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_rule_of_the_people 
+			focus = gram_focus_alb_rule_of_hoxha 
+						focus = ALB_communist_victory
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+       		ALB = { 
+				country_event = { 
+					id = gram_event_alb_our_king_no_more.1 
+				} 
+			}
+
+	    }	
+	}
+
+	#Loyalty to the Party
+	focus = {
+		id = gram_focus_alb_loyalty_to_the_party
+		icon = GFX_focus_ICE_embrace_the_workers_revolution
+		x = 18
+		y = 12
+		ai_will_do = {
+			factor = 2
+		}
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_our_king_no_more 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
+		}
+		completion_reward = {
+
+			add_popularity = { 
+				ideology = communism 
+				popularity = 0.25 
+			}
+			custom_effect_tooltip = empty_divide_tt
+			add_stability = 0.1
+
+		}
+ 	}
+
+	#Support Worker's Unions
+	focus = {
+		id = gram_focus_alb_support_workers_unions
+		icon = GFX_focus_generic_communist_industry
+		x = 14
+		y = 11
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_rule_of_the_people 
+						focus = ALB_communist_victory
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRY
+		}
+		completion_reward = {
+
+			44 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	        }
+			custom_effect_tooltip = empty_divide_tt
+	  		934 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+    		}
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = foreign_investors_replace_with_unions_tt
+			custom_effect_tooltip = empty_divide_tt
+
+			#If you alredy have Foreign Investors, replace the idea with Workers Unions
+			if = {
+				limit = { 
+					has_idea = gram_idea_alb_foreign_investors 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_foreign_investors
+					add_idea = gram_idea_alb_workers_unions
+				}
+			}
+
+			#If you dont have Foreign Investors, add Workers Unions
+			if = {
+				limit = { 
+					NOT = { 
+						has_idea = gram_idea_alb_foreign_investors 
+					} 
+				}
+				add_ideas = gram_idea_alb_workers_unions
+			}
+	    }
+	}
+
+	#New Economic Policy
+	focus = {
+		id = gram_focus_alb_new_economic_policy
+		icon = GFX_goal_generic_forceful_treaty
+		x = 22
+		y = 11
+		ai_will_do = {
+			factor = 2
+		}
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_rule_of_hoxha 
+						focus = ALB_communist_victory
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRY
+		}
+		completion_reward = {
+
+			44 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+	        }
+			custom_effect_tooltip = empty_divide_tt
+	  		934 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+    		}
+
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = foreign_investors_replace_with_planned_eco_tt
+			custom_effect_tooltip = empty_divide_tt
+
+			#If you alredy have Foreign Investors, replace the idea with Planned Economy
+			if = {
+				limit = { 
+					has_idea = gram_idea_alb_foreign_investors 
+				}
+				swap_ideas = {
+					remove_idea = gram_idea_alb_foreign_investors
+					add_idea = gram_idea_alb_planned_economy
+				}
+			}
+
+			#If you dont have Foreign Investors, add Planned Economy
+			if = {
+				limit = { 
+					NOT = { 
+						has_idea = gram_idea_alb_foreign_investors
+					} 
+				}
+				add_ideas = gram_idea_alb_planned_economy
+			}
+	    }
+	}
+
+	#State run Agriculture Sector
+	focus = {
+		id = gram_focus_alb_state_run_agriculture_sector
+		icon = GFX_focus_generic_farmland
+		x = 22
+		y = 12
+		ai_will_do = {
+			factor = 2
+		}
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_new_economic_policy 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		completion_reward = {
+
+        	add_stability = 0.1
+			custom_effect_tooltip = empty_divide_tt
+			add_war_support = 0.1
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 150
+
+	    }
+	}
+
+	#Organisation of Labour Through Labour Unions
+	focus = {
+		id = gram_focus_alb_organisation_of_labour_through_labour_unions
+		icon = GFX_focus_ARG_women_in_industry
+		x = 14
+		y = 12
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_support_workers_unions 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		completion_reward = {
+
+			add_stability = 0.15
+			custom_effect_tooltip = empty_divide_tt
+			add_war_support = 0.05
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 50     
+
+	    }
+	}
+
+	#Closer Ties with the Balkan Nations
+	focus = {
+		id = gram_focus_alb_closer_ties_with_balkan_nations
+		icon = GFX_focus_generic_balkan_diplomacy
+		x = 16
+		y = 12
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_support_workers_unions 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			if = { #Opinion for Yugoslavia
+				limit = { 
+					YUG = { 
+						exists = yes 
+					} 
+				}
+				YUG = { 
+					add_opinion_modifier = {
+						target = ALB
+						modifier = large_increase
+					}
+				}
+				ALB = { 
+					add_opinion_modifier = {
+						target = YUG
+						modifier = large_increase
+					}
+				}
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #Opinion for Bulgaria
+				limit = { 
+					BUL = { 
+						exists = yes 
+					} 
+				}
+				BUL = { 
+					add_opinion_modifier = {
+						target = ALB
+						modifier = large_increase
+					}
+				}
+				ALB = { 
+					add_opinion_modifier = {
+						target = BUL
+						modifier = large_increase
+					}
+				}
+				custom_effect_tooltip = empty_divide_tt
+			}
+		
+			if = { #Opinion for Greece
+				limit = { 
+					GRE = { 
+						exists = yes 
+					} 
+				}
+				GRE = { 
+					add_opinion_modifier = {
+						target = ALB
+						modifier = large_increase
+					} 
+				}
+				ALB = { 
+					add_opinion_modifier = {
+						target = GRE
+						modifier = large_increase
+					}	
+				}
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			if = { #Opinion for Romania
+				limit = { 
+					ROM = { 
+						exists = yes 
+					} 
+				}
+				ROM = { 
+					add_opinion_modifier = {
+						target = ALB
+						modifier = large_increase
+					}
+				}
+	
+				ALB = { 
+					add_opinion_modifier = {
+						target = ROM
+						modifier = large_increase
+					}
+				}
+			}
+
+		}
+	}
+
+	#Closer Ties With USSR
+	focus = {
+		id = gram_focus_alb_closer_ties_with_ussr
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		x = 20
+		y = 12
+		ai_will_do = {
+			factor = 2
+		}
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_new_economic_policy 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		bypass = {
+			SOV = { 
+				exists = no 
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+		
+			if = { #Opinion for Soviets
+				limit = { 
+					SOV = { 
+						exists = yes 
+					} 
+				}
+				SOV = { 
+					add_opinion_modifier = {
+						target = ALB
+						modifier = huge_increase
+					}
+				}
+				ALB = { 
+					add_opinion_modifier = {
+						target = SOV
+						modifier = huge_increase
+					}
+				}  
+			}
+
+	    }
+	}
+
+	#Spread Revolutionary Flame
+	focus = {
+		id = gram_focus_alb_spread_revolutionary_flame
+		icon = GFX_focus_spr_torchbearers_of_tomorrow
+		x = 16
+		y = 13
+		cost = 5
+		mutually_exclusive = { 
+			focus = gram_focus_alb_albanian_path_to_communism 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_organisation_of_labour_through_labour_unions 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_closer_ties_with_balkan_nations 
+		}  
+		prerequisite = { 
+			focus = gram_focus_alb_loyalty_to_the_party 
+		}      
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+       		set_rule = { can_create_factions = yes }
+			custom_effect_tooltip = empty_divide_tt
+			create_faction = "Balkan Federation Project"
+
+	    }
+	}
+
+	#Albanian Path to Communism
+	focus = {
+		id = gram_focus_alb_albanian_path_to_communism
+		icon = GFX_goal_support_communism 
+		x = 20
+		y = 13
+		cost = 5
+		mutually_exclusive = { 
+			focus = gram_focus_alb_spread_revolutionary_flame 
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_state_run_agriculture_sector 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_closer_ties_with_ussr 
+		}  
+		prerequisite = { 
+			focus = gram_focus_alb_loyalty_to_the_party 
+		}     
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		completion_reward = {
+
+			add_war_support = 0.05
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 100
+
+	    }
+	}
+
+	#Secret Police
+	focus = {
+		id = gram_focus_alb_secret_police
+		icon = GFX_focus_generic_secret_service_agency
+		x = 23
+		y = 16
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_last_revolution
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			add_ideas = gram_idea_alb_sigurimi
+			custom_effect_tooltip = empty_divide_tt
+			if = { #If you dont have the inteligence agency create one, and gain one free upgrade
+				limit = { 
+					has_intelligence_agency = no 
+				}
+				custom_effect_tooltip = has_spy_agency_tt
+				custom_effect_tooltip = empty_divide_tt
+				create_intelligence_agency = yes
+				custom_effect_tooltip = empty_divide_tt
+				gain_random_agency_upgrade = yes
+			}
+
+			else_if = { #If you alredy have the inteligence agency, you get two free upgrades
+				limit = { 
+					has_intelligence_agency = yes 
+				}
+				custom_effect_tooltip = gain_two_for_one_tt
+				hidden_effect = {
+					gain_random_agency_upgrade = yes
+					gain_random_agency_upgrade = yes
+				}
+			}
+	    }
+	}
+
+	#Two Year Plan
+	focus = {
+		id = gram_focus_alb_two_year_plan
+		icon = GFX_goal_generic_soviet_construction
+		x = 25
+		y = 16
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_last_revolution 
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRY
+		}
+		completion_reward = {
+
+			unlock_decision_category_tooltip = gram_decision_alb_2_year_plan
+
+			hidden_effect = {
+				set_country_flag = gram_flag_alb_two_year_plan_hoxha
+			}
+
+	    }
+	}
+
+	#Last Revolution
+	focus = {
+		id = gram_focus_alb_last_revolution
+		icon = GFX_focus_SWE_refuge_for_revolutionaries
+		x = 24
+		y = 15
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_albanian_path_to_communism 
+			focus = ALB_the_west
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
+		}
+		completion_reward = {
+
+			hidden_effect = {
+				set_politics = {
+					ruling_party = communism
+				}
+			}
+
+			add_popularity = {
+				ideology = communism
+				popularity = 0.25
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+			add_stability = 0.1
+
+	    }
+	}
+
+	#Balkan Workers League
+	focus = {
+		id = gram_focus_alb_balkan_workers_league
+		icon = GFX_focus_generic_workers_and_farmers_rise
+		x = 32
+		y = 17
+		cost = 10
+		ai_will_do = {
+			factor = 2
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_last_revolution
+			focus = ALB_ourselves 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_red_albania 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_adriatic_shall_be_ours 
+		}
+		bypass = {
+			has_completed_focus = ALB_ourselves
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			hidden_effect = {
+				BUL = {
+					add_timed_idea = {
+			    idea = internationalism
+			    days = 1095
+			}
+
+			country_event = {
+				id = generic.1
+			}
+
+				}
+				YUG = {
+				add_timed_idea = {
+			    idea = internationalism
+			    days = 1095
+			}
+			country_event = {
+				id = generic.1
+			}
+				}
+				GRE = {
+					add_timed_idea = {
+			    idea = internationalism
+			    days = 1095
+			}
+			country_event = {
+				id = generic.1
+			}
+				}
+			}
+
+			create_faction = "Balkan Workers League"
+
+	    }
+	}
+
+	focus = {
+		id = gram_focus_alb_invite_bulgaria
+		icon = GFX_focus_generic_befriend_bulgaria
+		cost = 7
+		x = -2
+		y = 1
+		prerequisite = {
+			focus = gram_focus_alb_balkan_workers_league
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		bypass = {
+			BUL = {
+				is_in_faction = yes
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		relative_position_id = gram_focus_alb_balkan_workers_league
+		completion_reward = {
+			BUL = {
+				country_event = {
+					id = generic.5
+				}
+			}
+		 }
+	}
+
+	focus = {
+		id = gram_focus_alb_invite_greece
+		icon = GFX_focus_generic_befriend_greece
+		relative_position_id = gram_focus_alb_balkan_workers_league
+		cost = 7
+		x = 0
+		y = 1
+		ai_will_do = {
+			factor = 2
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+			focus = gram_focus_alb_balkan_workers_league
+		}
+		completion_reward = {
+			hidden_effect = {
+				TUR = {
+				add_timed_idea = {
+			    idea = internationalism
+			    days = 1095
+				}
+				country_event = {
+				id = generic.1
+			}
+			}
+		}
+			GRE = {
+				country_event = {
+					id = generic.5
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = gram_focus_alb_invite_yug
+		prerequisite = {
+			focus = gram_focus_alb_balkan_workers_league
+		}
+		ai_will_do = {
+			factor = 2
+		}
+			bypass = {
+			YUG = {
+				is_in_faction = yes
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		icon = GFX_focus_invite_yugoslavia
+		cost = 7
+		relative_position_id = gram_focus_alb_balkan_workers_league
+		x = 2
+		y = 1
+		completion_reward = {
+			YUG = {
+				country_event = {
+					id = generic.5
+				}
+			}
+		 }
+	}
+
+	focus = {
+		id = gram_focus_alb_north_balkan
+		relative_position_id = gram_focus_alb_invite_greece
+		icon = GFX_focus_BUL_free_balkan_states
+		cost = 10
+		prerequisite = {
+			focus = gram_focus_alb_invite_yug
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		prerequisite = {
+			focus = gram_focus_alb_invite_bulgaria
+		}
+		prerequisite = {
+			focus = gram_focus_alb_invite_greece
+		}
+		x = 0
+		y = 1
+		completion_reward = {
+			hidden_effect = {
+
+				TUR = {
+					country_event = {
+						id = generic.5
+					}
+				}
+
+				HUN = {
+				add_timed_idea = {
+			    idea = internationalism
+			    days = 1095
+				}
+			}
+			ROM = {
+				add_timed_idea = {
+			    idea = internationalism
+			    days = 1095
+				}
+			}
+			AUS = {
+				add_timed_idea = {
+			    idea = internationalism
+			    days = 1095
+				}
+			}
+			CZE = {
+				add_timed_idea = {
+			    idea = internationalism
+			    days = 1095
+				}
+			}
+		}
+	}
+	}
+
+	focus = {
+		id = gram_focus_alb_invite_the_balkan
+		icon = GFX_focus_generic_balkan_diplomacy
+		cost = 15
+		available = {
+			has_government = communism
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+			focus = gram_focus_alb_north_balkan
+		}
+		relative_position_id = gram_focus_alb_north_balkan
+		x = 0
+		y = 1
+		completion_reward = {
+			HUN = {
+				country_event = {
+					id = generic.5
+				}
+			}
+			CZE = {
+				country_event = {
+					id = generic.5
+				}
+			}
+			ROM = {
+				country_event = {
+					id = generic.5
+				}
+			}
+			AUS = {
+				country_event = {
+					id = generic.5
+				}
+			}
+		 }
+	}
+
+	focus = {
+		id = gram_focus_alb_end_fascism
+		relative_position_id = gram_focus_alb_north_balkan
+		icon = GFX_focus_generic_communism_anti_fascism
+		cost = 10
+		x = 0
+		prerequisite = {
+			focus = gram_focus_alb_invite_the_balkan
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		ai_will_do = {
+			factor = 2
+		}
+		y = 2
+		completion_reward = {
+		
+			every_other_country = {
+				limit = {
+					#capital_scope = { is_on_continent = europe } #Intentionally made so that it grants wargoal against any commie in the world (not just Europe)
+					has_government = fascism
+					NOT = { 
+						ROOT = {
+							has_wargoal_against = PREV
+						}
+					}
+				}
+				hidden_effect = { #Tooltip is bad so better to just hide it and show the countries via the every_other_country scope
+					ROOT = {
+						create_wargoal = {
+							type = puppet_wargoal_focus
+							target = PREV
+						}
+					}
+				}
+			}
+
+			#This is important stuff (Someone leaving faction) so show it when appropriate
+			if = {
+				limit = {
+					any_allied_country = {
+						has_government = fascism
+					}
+				}
+				if = {
+					limit = {
+						is_faction_leader = yes
+					}
+					every_other_country = {
+						limit = {
+							is_in_faction_with = ROOT
+							has_government = fascism
+						}
+						ROOT = { remove_from_faction = PREV }
+					}
+				}
+				else = {
+					ROOT = { leave_faction = yes }
+				}
+			}
+
+			#Not so important so just hide it, it should be logic that any diplo relations are terminated
+			hidden_effect = {
+				every_other_country = {
+					limit = {
+						OR = {
+							is_guaranteed_by = ROOT
+							has_non_aggression_pact_with = ROOT
+						}
+						has_government = fascism
+					}
+					
+					if = {
+						limit = {
+							ROOT = {
+								has_guaranteed = PREV
+							}
+						}
+						ROOT = {
+							diplomatic_relation = {
+								country = PREV
+								relation = guarantee
+								active = no
+							}
+						}
+					}
+
+					if = {
+						limit = {
+							has_non_aggression_pact_with = ROOT
+						}
+						ROOT = {
+							diplomatic_relation = {
+								country = PREV
+								relation = non_aggression_pact
+								active = no
+							}
+						}
+					}
+				}
+			}
+
+		 }
+		}
+
+	#Adriatic Shall be Ours
+	focus = {
+		id = gram_focus_alb_adriatic_shall_be_ours
+		icon = GFX_focus_generic_adriatic_sea_focus
+		x = 28
+		y = 17
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_last_revolution 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_red_albania 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_balkan_workers_league 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+
+			ROOT = { add_state_claim = 105 }
+			ROOT = { add_state_claim = 103 }
+			ROOT = { add_state_claim = 163 }
+			ROOT = { add_state_claim = 804 }
+			ROOT = { add_state_claim = 104 }
+			ROOT = { add_state_claim = 109 }
+			ROOT = { add_state_claim = 853 }
+			ROOT = { add_state_claim = 102 }
+			ROOT = { add_state_claim = 852 }
+			ROOT = { add_state_claim = 736 }
+
+	    }
+	}
+
+	#Destroy Yugoslavia From Inside
+	focus = {
+		id = gram_focus_alb_destroy_yugoslavia_from_inside
+		icon = GFX_focus_NOR_empower_sivorg
+		x = 28
+		y = 18
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_adriatic_shall_be_ours 
+		}
+		bypass = {
+			SLV = { exists = yes is_puppet = no }
+			CRO = { exists = yes is_puppet = no }
+			BOS = { exists = yes is_puppet = no }
+			MNT = { exists = yes is_puppet = no }
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			mark_focus_tree_layout_dirty = yes #Only needed for the next focus, not really nessecary but why the hell not
+			unlock_decision_category_tooltip = gram_decision_alb_crumbling_nation
+			custom_effect_tooltip = empty_divide_tt
+			set_country_flag = gram_flag_alb_crumbling_nation_hoxha
+
+			effect_tooltip = {
+
+				if = { #Slovenian Puppet
+					limit = { 
+						YUG = {
+							OR = { 
+								owns_state = 102 
+								owns_state = 853 
+								owns_state = 736 
+							} 
+						} 
+					}
+					YUG = { 
+						release_puppet = SLV 
+					}
+					SLV = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					custom_effect_tooltip = empty_divide_tt
+				}
+
+				if = { #Croatian Puppet
+					limit = { 
+						YUG = { 
+							OR = { 
+								owns_state = 109 
+								owns_state = 103 
+								owns_state = 852 
+								owns_state = 163 
+							} 
+						} 
+					}
+					YUG = { 
+						release_puppet = CRO 
+					}
+					CRO = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					custom_effect_tooltip = empty_divide_tt
+				}
+
+				if = { #Bosnian Puppet 
+					limit = { 
+						YUG = { 
+							OR = { 
+								owns_state = 104 
+								owns_state = 804 
+							} 
+						} 
+					}
+					YUG = { 
+						release_puppet = BOS 
+					}
+					BOS = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					custom_effect_tooltip = empty_divide_tt
+				}
+
+				if = { #Montenegro Puppet
+					limit = { 
+						YUG = { 
+							owns_state = 105 
+						} 
+					}
+					YUG = { 
+						release_puppet = MNT 
+					}
+					MNT = { 
+						add_autonomy_score = { 
+							value = 150
+						} 
+					}
+				}
+
+				else_if = { #Slovenia
+					limit = { 
+						SLV = { 
+							is_puppet_of = YUG 
+						} 
+					}
+					SLV = {
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					custom_effect_tooltip = empty_divide_tt
+				}
+
+				else_if = { #Croatia
+					limit = { 
+						CRO = { 
+							is_puppet_of = YUG 
+						} 
+					}
+					CRO = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					custom_effect_tooltip = empty_divide_tt
+				}
+
+				else_if = { #Bosnia
+					limit = { 
+						BOS = { 
+							is_puppet_of = YUG 
+						} 
+					}
+					BOS = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					custom_effect_tooltip = empty_divide_tt
+				}
+
+				else_if = { #Montenegro
+					limit = { 
+						MNT = { 
+							is_puppet_of = YUG 
+						} 
+					}
+					MNT = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+				}
+
+			}
+		
+			hidden_effect = {
+
+				if = { #Slovenian Puppet
+					limit = { 
+						YUG = { 
+							OR = { 
+								owns_state = 102 
+								owns_state = 853 
+								owns_state = 736 
+							} 
+						} 
+					}
+					YUG = { 
+						release_puppet = SLV 
+					}
+					SLV = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					SLV = { 
+						add_ideas = gram_idea_alb_member_of_yugoslavian_federation 
+					}
+					YUG = { 
+						transfer_units_fraction = {
+							target = SLV 
+							army_ratio = 0.1
+							air_ratio = 0
+							navy_ratio = 0
+							stockpile_ratio = 0.1
+						} 
+					}
+					SLV = { 
+						add_equipment_to_stockpile = {
+							type = infantry_equipment_0
+							amount = 1500
+						} 
+					}
+				}
+
+				if = { #Croatian Puppet
+					limit = {
+						YUG = { 
+							OR = { 
+								owns_state = 109 
+								owns_state = 103 
+								owns_state = 852 
+								owns_state = 163 
+							} 
+						} 
+					}
+					YUG = { 
+						release_puppet = CRO 
+					}
+					CRO = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					CRO = { 
+						add_ideas = gram_idea_alb_member_of_yugoslavian_federation 
+					}
+					YUG = { 
+						transfer_units_fraction = {
+							target = CRO
+							army_ratio = 0.2
+							air_ratio = 0.4
+							navy_ratio = 0
+							stockpile_ratio = 0.1
+						} 
+					}
+					CRO = { 
+						add_equipment_to_stockpile = {
+							type = infantry_equipment_0
+							amount = 2500
+						} 
+					}
+
+					if = { #If Croatia owns a coast the Yugoslavia transfers its navy to them
+						limit = { 
+							CRO = { 
+								any_owned_state = { 
+									is_coastal = yes 
+								} 
+							} 
+						}
+						YUG = { 
+							transfer_navy = { 
+								target = CRO 
+							} 
+						}
+						YUG = {
+							set_country_flag = gram_flag_alb_transfered_navy_to_croatia 
+						}
+					}
+				}
+
+				if = { #Bosnian Puppet 
+					limit = { 
+						YUG = { 
+							OR = { 
+								owns_state = 104 
+								owns_state = 804 
+							} 
+						} 
+					}
+					YUG = { 
+						release_puppet = BOS 
+					}
+					BOS = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					BOS = { 
+						add_ideas = gram_idea_alb_member_of_yugoslavian_federation 
+					}
+					YUG = { 
+						transfer_units_fraction = {
+							target = BOS
+							army_ratio = 0.2
+							air_ratio = 0.2
+							navy_ratio = 0
+							stockpile_ratio = 0.1
+						} 
+					}
+					BOS = { 
+						add_equipment_to_stockpile = {
+							type = infantry_equipment_0
+							amount = 2000
+						} 
+					}
+				}
+
+				if = { #Montenegro Puppet
+					limit = { 
+						YUG = { 
+							owns_state = 105 
+						} 
+					}
+					YUG = { 
+						release_puppet = MNT 
+					}
+					MNT = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					MNT = { 
+						add_ideas = gram_idea_alb_member_of_yugoslavian_federation 
+					}
+					YUG = { 
+						transfer_units_fraction = {
+							target = MNT
+							army_ratio = 0.1
+							air_ratio = 0
+							navy_ratio = 0
+							stockpile_ratio = 0.1
+						} 
+					}
+					MNT = { 
+						add_equipment_to_stockpile = {
+							type = infantry_equipment_0
+							amount = 1000
+						} 
+					}
+
+					if = { #If Croatia doesnt own a coast the Yugoslavia transfers its navy to Montenegro insted
+						limit = { 
+							YUG = { 
+								NOT = { 
+									has_country_flag = gram_flag_alb_transfered_navy_to_croatia 
+								} 
+							} 
+							MNT = { 
+								any_owned_state = { 
+									is_coastal = yes
+								} 
+							} 
+						}
+						YUG = { 
+							transfer_navy = { 
+								target = MNT 
+							} 
+						}
+					}
+				}
+
+				#If Yugoslavia alredy has the said nations as puppets
+				else_if = { #Slovenia
+					limit = { 
+						SLV = { 
+							is_puppet_of = YUG 
+						} 
+					}
+					SLV = { 
+						add_autonomy_score = { 
+							value = 150 
+						}
+					}
+					SLV = { 
+						add_ideas = gram_idea_alb_member_of_yugoslavian_federation 
+					}
+					YUG = { 
+						transfer_units_fraction = {
+							target = SLV 
+							army_ratio = 0.1
+							air_ratio = 0
+							navy_ratio = 0
+							stockpile_ratio = 0.1
+						} 
+					}
+					SLV = { 
+						add_equipment_to_stockpile = {
+							type = infantry_equipment_0
+							amount = 1500
+						} 
+					}
+				}
+
+				else_if = { #Croatia
+					limit = { 
+						CRO = { 
+							is_puppet_of = YUG 
+						} 
+					}
+					CRO = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					CRO = { 
+						add_ideas = gram_idea_alb_member_of_yugoslavian_federation 
+					}
+					YUG = { 
+						transfer_units_fraction = {
+							target = CRO
+							army_ratio = 0.2
+							air_ratio = 0.4
+							navy_ratio = 0
+							stockpile_ratio = 0.1
+						} 
+					}
+					CRO = { 
+						add_equipment_to_stockpile = {
+							type = infantry_equipment_0
+							amount = 2500
+						} 
+					}
+
+					if = { #If Croatia owns a coast the Yugoslavia transfers its navy to them
+						limit = { 
+							CRO = { 
+								any_owned_state = { 
+									is_coastal = yes 
+								} 
+							} 
+						}
+						YUG = { 
+							transfer_navy = { 
+								target = CRO 
+							} 
+						}
+						YUG = { 
+							set_country_flag = gram_flag_alb_transfered_navy_to_croatia_2 
+						}
+					}
+				}
+
+				else_if = { #Bosnia
+					limit = { 
+						BOS = { 
+							is_puppet_of = YUG 
+						} 
+					}
+					BOS = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					BOS = { 
+						add_ideas = gram_idea_alb_member_of_yugoslavian_federation 
+					}
+					YUG = { 
+						transfer_units_fraction = {
+							target = BOS
+							army_ratio = 0.2
+							air_ratio = 0.2
+							navy_ratio = 0
+							stockpile_ratio = 0.1
+						} 
+					}
+					BOS = { 
+						add_equipment_to_stockpile = {
+							type = infantry_equipment_0
+							amount = 2000
+						} 
+					}
+				}
+
+				else_if = { #Montenegro
+					limit = { 
+						MNT = { 
+							is_puppet_of = YUG 
+						} 
+					}
+					MNT = { 
+						add_autonomy_score = { 
+							value = 150 
+						} 
+					}
+					MNT = { 
+						add_ideas = gram_idea_alb_member_of_yugoslavian_federation 
+					}
+					YUG = { 
+						transfer_units_fraction = {
+							target = MNT
+							army_ratio = 0.1
+							air_ratio = 0
+							navy_ratio = 0
+							stockpile_ratio = 0.1
+						} 
+					}
+					MNT = { 
+						add_equipment_to_stockpile = {
+							type = infantry_equipment_0
+							amount = 1000
+						} 
+					}
+
+					if = { #If Croatia doesnt own a coast the Yugoslavia transfers its navy to Montenegro insted
+						limit = { 
+							YUG = { 
+								NOT = { 
+									has_country_flag = gram_flag_alb_transfered_navy_to_croatia_2 
+								} 
+							} 
+							MNT = { 
+								any_owned_state = { 
+									is_coastal = yes 
+								} 
+							} 
+						}
+						YUG = { 
+							transfer_navy = { 
+								target = MNT 
+							} 
+						}
+					}
+				}
+
+				if = { #Creates a Faction for Yugoslav Countries and Changes the name of Yugoslavia to Serbia
+					limit = { 
+						OR = {
+							SLV = { 
+								is_puppet_of = YUG 
+							}
+							CRO = { 
+								is_puppet_of = YUG 
+							}
+							BOS = { 
+								is_puppet_of = YUG 
+							}
+							MNT = { 
+								is_puppet_of = YUG 
+							}	
+						}
+						YUG = { 
+							is_in_faction = no 
+						}
+						YUG = { 
+							is_puppet = no 
+						}
+					}
+
+					if = { #Neutrality faction name
+						limit = { 
+							YUG = { 
+								has_government = neutrality 
+							} 
+						}
+						YUG = { 
+							create_faction = "Kingdom of Yugoslavia"
+						}	
+					}
+
+					if = { #Communism faction name
+						limit = { 
+							YUG = { 
+								has_government = communism 
+							} 
+						}
+						YUG = { 
+							create_faction = "SFR of Yugoslavia" 
+						}	
+					}
+
+					if = { #Democratic faction name
+						limit = { 
+							YUG = { 
+								has_government = democratic 
+							} 
+						}
+						YUG = { 
+							create_faction = "Yugoslavian Confederation" 
+						}	
+					}
+
+					if = { #Fascism faction name
+						limit = { 
+							YUG = { 
+								has_government = fascism 
+							} 
+						}
+						YUG = { 
+							create_faction = "Yugoslavian Radical State" 
+						}	
+					}
+
+					YUG = { set_cosmetic_tag = SER }
+					YUG = { add_ideas = gram_idea_alb_leader_of_yugoslavian_federation }
+				}
+
+				#If Yugoslavia doesnt exist
+				if = {
+					limit = { 
+						YUG = { 
+							OR = { 
+								exists = no 
+								has_capitulated = yes 
+							} 
+						} 
+					}
+					every_other_country = {
+						limit = { 
+							NOT = { 
+								tag = ALB
+							}
+							OR = {
+								owns_state = 102
+								owns_state = 853
+								owns_state = 109
+								owns_state = 103
+								owns_state = 104
+								owns_state = 804
+								owns_state = 105
+							} 
+						}
+						ROOT = { 
+							create_wargoal = { 
+								type = take_state 
+								target = PREV 
+							} 
+						}	
+					}	
+				}
+			}
+
+		}
+	}
+
+	#Anti-Serbia League
+	focus = {
+		id = gram_focus_alb_anti_serbia_league
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		x = 28
+		y = 19
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_destroy_yugoslavia_from_inside 
+		}
+		allow_branch = { 
+			YUG = { 
+				exists = yes 
+			} 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = league_focus_tt
+			custom_effect_tooltip = empty_divide_tt
+			set_rule = { 
+				can_create_factions = yes
+			}
+			custom_effect_tooltip = empty_divide_tt
+			create_faction = "Anti-Serbia League"
+
+			if = { #If Slovenia is free and exists, add to faction
+				limit = { 
+					SLV = { 
+						is_subject = no 
+						exists = yes 
+						has_capitulated = no 
+					} 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				SLV = { 
+					country_event = { 
+						id = gram_event_alb_invitation_into_faction.1 
+						hours = 12 
+					} 
+				}
+			}
+
+			if = { #If Croatia is free and exists, add to faction
+				limit = { 
+					CRO = { 
+						is_subject = no 
+						exists = yes 
+						has_capitulated = no 
+					} 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				CRO = { 
+					country_event = { 
+						id = gram_event_alb_invitation_into_faction.1 
+						hours = 12 
+					} 
+				}
+			}
+
+			if = { #If Bosnia is free and exists, add to faction
+				limit = { 
+					BOS = { 
+						is_subject = no 
+						exists = yes 
+						has_capitulated = no 
+					} 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				BOS = { 
+					country_event = { 
+						id = gram_event_alb_invitation_into_faction.1 
+						hours = 12 
+					} 
+				}
+			}
+
+			if = { #If Montenegro is free and exists, add to faction
+				limit = { 
+					MNT = { 
+						is_subject = no 
+						exists = yes 
+						has_capitulated = no 
+					} 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				MNT = { 
+					country_event = { 
+						id = gram_event_alb_invitation_into_faction.1 
+						hours = 12 
+					} 
+				}
+			}
+
+	    }
+	}   
+	
+	#Balkan Defense League
+	focus = {
+		id = gram_focus_alb_balkan_defense_league_alt
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		x = 28
+		y = 19
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_destroy_yugoslavia_from_inside 
+		}
+		allow_branch = { 
+			YUG = { 
+				exists = no 
+			} 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = league_focus_tt
+			custom_effect_tooltip = empty_divide_tt
+			set_rule = {
+				can_create_factions = yes 
+			}
+			custom_effect_tooltip = empty_divide_tt
+			create_faction = "Balkan Defense League"
+
+			if = { #If Slovenia is free and exists, add to faction
+				limit = { 
+					SLV = { 
+						is_subject = no 
+						exists = yes 
+						has_capitulated = no 
+					} 
+				}
+				SLV = { 
+					country_event = { 
+						id = gram_event_alb_invitation_into_faction.1 
+						hours = 12 
+					} 
+				}
+			}
+
+			if = { #If Croatia is free and exists, add to faction
+				limit = { 
+					CRO = { 
+						is_subject = no 
+						exists = yes 
+						has_capitulated = no 
+					} 
+				}
+				CRO = { 
+					country_event = { 
+						id = gram_event_alb_invitation_into_faction.1 
+						hours = 12 
+					} 
+				}
+			}
+
+			if = { #If Bosnia is free and exists, add to faction
+				limit = { 
+					BOS = { 
+						is_subject = no 
+						exists = yes 
+						has_capitulated = no 
+					} 
+				}
+				BOS = { 
+					country_event = { 
+						id = gram_event_alb_invitation_into_faction.1 
+						hours = 12 
+					} 
+				}
+			}
+
+			if = { #If Montenegro is free and exists, add to faction
+				limit = { 
+					MNT = { 
+						is_subject = no 
+						exists = yes 
+						has_capitulated = no 
+					} 
+				}
+				MNT = { 
+					country_event = { 
+						id = gram_event_alb_invitation_into_faction.1 
+						hours = 12 
+					} 
+				}
+			}
+
+	    }
+	}
+
+	#Destroy What is Left
+	focus = {
+		id = gram_focus_alb_destroy_what_is_left
+		icon = GFX_goal_generic_major_war
+		x = 28
+		y = 20
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_anti_serbia_league 
+			focus = gram_focus_alb_balkan_defense_league_alt 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		bypass = {
+			YUG = { 
+				exists = no 
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+
+			create_wargoal = {
+				target = YUG
+				type = puppet_wargoal_focus
+			}
+		
+	    }
+	}
+
+	#Great Commander
+	focus = {
+		id = gram_focus_alb_great_commander
+		icon = GFX_focus_GER_the_peoples_victory
+		x = 29
+		y = 21
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_destroy_what_is_left 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_POLITICAL_CHARACTER
+		}
+		completion_reward = {
+
+			#If Albania has Enver Hoxha, he will get a new trait
+			if = {
+				limit = { 
+					has_country_leader = {
+						character = gram_character_ALB_enver_hoxha
+						ruling_only = yes
+					}	
+				}
+				add_country_leader_trait = stalin_great_commander
+			}
+
+			#If Albania is ruled by someone else
+			if = {
+				limit = { 
+					NOT = {
+						has_country_leader = {
+							character = gram_character_ALB_enver_hoxha
+							ruling_only = yes
+						}	
+					}
+				}
+				custom_effect_tooltip = needs_hoxha_as_ruler_tt
+			}
+
+	    }
+	}
+
+	#Revolutionary Guns
+	focus = {
+		id = gram_focus_alb_revolutionary_guns
+		icon = GFX_focus_generic_spur_communist_revolutions
+		x = 27
+		y = 21
+		cost = 10
+		prerequisite = {
+			focus = gram_focus_alb_destroy_what_is_left 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = free_guns_tt
+			custom_effect_tooltip = empty_divide_tt
+
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_3
+				amount = 2500
+			}
+
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_2
+				amount = 2500
+			}
+
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 5000
+			}
+			
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 5000
+			}			
+
+	    }
+	}
+
+	#United Adriatic
+	focus = {
+		id = gram_focus_alb_united_adriatic
+		icon = GFX_focus_SWE_the_lion_of_the_north
+		x = 28
+		y = 22
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_destroy_what_is_left 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+			FOCUS_FILTER_STABILITY
+		}
+		completion_reward = {
+		
+			set_cosmetic_tag = GRAM_ALB_ADRIATIC
+			custom_effect_tooltip = empty_divide_tt
+
+			if = {
+				limit = { 
+					ALB = { 
+						is_faction_leader = yes 
+					} 
+				}
+				set_faction_name = "Greater Balkan Defense Pact"
+			}
+
+			custom_effect_tooltip = adriatic_union_tt
+
+			###1A### USE ALL THIS FOR PREPARATIONS FOR INVASION
+			if = { 
+				limit = { 
+					has_idea = gram_idea_alb_preparations_for_invasion_idea 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				remove_ideas = gram_idea_alb_preparations_for_invasion_idea
+			}
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = remove_preparations_for_invasion_tt
+			set_country_flag = gram_flag_alb_no_more_war_preparations
+			###1B### 
+
+			custom_effect_tooltip = empty_divide_tt
+			add_stability = 0.15
+			custom_effect_tooltip = empty_divide_tt
+			add_political_power = 150
+
+			hidden_effect = {
+
+				#Annexing part of the focus
+
+				if = { #Slovenia
+					limit = { 
+						SLV = { 
+							exists = yes 
+							is_in_faction_with = ROOT 
+						} 
+					}
+					ROOT = { 
+						annex_country = { 
+							target = SLV 
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Croatia
+					limit = { 
+						CRO = { 
+							exists = yes 
+							is_in_faction_with = ROOT 
+						} 
+					}
+					ROOT = { 
+						annex_country = { 
+							target = CRO 
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Bosnia
+					limit = { 
+						BOS = { 
+							exists = yes 
+							is_in_faction_with = ROOT 
+						} 
+					}
+					ROOT = { 
+						annex_country = { 
+							target = BOS 
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Montenegro
+					limit = { 
+						MNT = { 
+							exists = yes 
+							is_in_faction_with = ROOT 
+						} 
+					}
+					ROOT = { 
+						annex_country = { 
+							target = MNT 
+							transfer_troops = yes 
+						} 
+					}
+				}		
+
+				#Cores
+
+				#Slovenia
+				102 = { add_core_of = ROOT }
+				853 = { add_core_of = ROOT }
+				736 = { add_core_of = ROOT }
+
+				#Croatia
+				109 = { add_core_of = ROOT }
+				103 = { add_core_of = ROOT }
+				852 = { add_core_of = ROOT }
+				163 = { add_core_of = ROOT }
+
+				#Bosnia
+				104 = { add_core_of = ROOT }
+				804 = { add_core_of = ROOT }
+
+				#Montenegro
+				105 = { add_core_of = ROOT }
+
+			}
+	    }
+	}
+
+	#Access to Mediterian
+	focus = {
+		id = gram_focus_alb_access_to_mediterian
+		icon = GFX_focus_generic_attack_greece
+		x = 27
+		y = 23
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_united_adriatic 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+
+			if = { #Wargoal on Greece
+				limit = { 
+					GRE = { 
+						exists = yes 
+					} 
+				}
+				create_wargoal = { 
+					target = GRE 
+					type = annex_everything 
+				}
+			}
+
+			if = { #Wargoal if Greece doesnt exist
+				limit = { 
+					GRE = { 
+						exists = no 
+					} 
+				}
+				every_country = {
+					limit = {
+						OR = { 
+							owns_state = 185
+							owns_state = 47
+							owns_state = 186
+							owns_state = 731
+							owns_state = 184
+							owns_state = 187
+							owns_state = 182
+							owns_state = 164
+						}
+					}
+					ROOT = { 
+						create_wargoal = {
+							type = annex_everything		
+							target = PREV
+						}			
+					}		
+				}
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = gain_cores_on_gre_tt
+
+			hidden_effect = {
+				185 = { add_core_of = ROOT }
+				47 = { add_core_of = ROOT }
+				186 = { add_core_of = ROOT }
+				731 = { add_core_of = ROOT }
+				184 = { add_core_of = ROOT }
+				187 = { add_core_of = ROOT }
+				182 = { add_core_of = ROOT }
+				164 = { add_core_of = ROOT }			
+			}
+
+	    }
+	}
+
+	#Inclusion of Kosovo and Macedonia
+	focus = {
+		id = gram_focus_alb_inclusion_of_kosovo_and_macedonia
+		icon = GFX_focus_generic_annex_country
+		x = 29
+		y = 23
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_united_adriatic 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+		
+			custom_effect_tooltip = gain_cores_on_kos_and_mac_tt
+
+			hidden_effect = {
+				802 = { add_core_of = ROOT }
+				970 = { add_core_of = ROOT }
+				106 = { add_core_of = ROOT }
+			}
+	    }
+	}
+
+	#Liberate Territories Under Italian Rule
+	focus = {
+		id = gram_focus_alb_liberate_territories_under_italian_rule
+		icon = GFX_focus_attack_italy
+		x = 28
+		y = 24
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_access_to_mediterian 
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_inclusion_of_kosovo_and_macedonia 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+		
+			if = { #Wargoal on Italy
+				limit = { 
+					ITA = {
+						exists = yes 
+					} 
+				}
+				create_wargoal = { 
+					target = ITA 
+					type = annex_everything 
+				}
+			}
+
+			if = { #Wargoal if Italy doesnt exist
+				limit = { 
+					ITA = { 
+						exists = no 
+					} 
+				}
+				every_country = {
+					limit = {
+						OR = { 
+							owns_state = 163
+							owns_state = 852
+							owns_state = 736
+							owns_state = 160
+							owns_state = 39
+							owns_state = 850
+							owns_state = 159
+							owns_state = 161
+							owns_state = 162
+							owns_state = 157
+							owns_state = 2
+							owns_state = 849
+							owns_state = 117
+							owns_state = 156
+						}
+					}
+					ROOT = { 
+						create_wargoal = {
+							type = annex_everything		
+							target = PREV
+						}			
+					}		
+				}	
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = gain_cores_on_ita
+
+			hidden_effect = {
+				163 = { add_core_of = ROOT }
+				852 = { add_core_of = ROOT }
+				736 = { add_core_of = ROOT }
+				160 = { add_core_of = ROOT }
+				39 = { add_core_of = ROOT }
+				850 = { add_core_of = ROOT }
+				159 = { add_core_of = ROOT }
+				161 = { add_core_of = ROOT }
+				162 = { add_core_of = ROOT }
+				157 = { add_core_of = ROOT }
+				2 = { add_core_of = ROOT }
+				849 = { add_core_of = ROOT }
+				118 = { add_core_of = ROOT }
+				156 = { add_core_of = ROOT }
+			}
+	    }
+	}
+
+	#Red Albania
+	focus = {
+		id = gram_focus_alb_red_albania
+		icon = GFX_focus_generic_join_comintern
+		x = 24
+		y = 17
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_last_revolution 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_balkan_workers_league 
+		}
+		mutually_exclusive = { 
+			focus = gram_focus_alb_adriatic_shall_be_ours 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_POLITICAL_CHARACTER
+		}
+		completion_reward = {
+
+			#If Albania has Enver Hoxha, he will get a new trait
+			if = {
+				limit = { 
+					has_country_leader = {
+						character = gram_character_ALB_enver_hoxha
+						ruling_only = yes
+					}	
+				}
+				add_country_leader_trait = devoted_communist	
+			}
+
+			#If Albania is ruled by someone else
+			if = {
+				limit = { 
+					NOT = {
+						has_country_leader = {
+							character = gram_character_ALB_enver_hoxha
+							ruling_only = yes
+						}	
+					}
+				}
+				custom_effect_tooltip = needs_hoxha_as_ruler_tt
+			}
+
+	    }
+	}
+
+	#Seek Membership in Comintern
+	focus = {
+		id = gram_focus_alb_membership_in_comintern
+		icon = GFX_focus_SWE_the_beast_stirs
+		x = 24
+		y = 18
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_red_albania 
+		}
+		bypass = { 
+			is_in_faction_with = SOV 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+			is_in_faction = no
+			ANY_comintern_joinable = yes 
+			if = {
+				limit = {
+					SOV = { has_government = communism }
+				}
+				NOT = {
+					any_other_country = {
+						is_in_faction_with = SOV
+						has_war_with = ALB
+					}
+				}
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			if = {
+				limit = {
+					SOV = {
+						exists = yes
+						has_government = communism
+						is_faction_leader = yes
+					}
+				}
+				SOV = { 
+					country_event = generic.2 
+				}
+			}
+
+			else = {
+				get_best_alliance_match_communism_effect = yes
+				var:best_leader = {
+					country_event = generic.2
+				}
+			}
+
+	    }
+	}
+
+
+	#Deal with Mussolini
+	focus = {
+		id = gram_focus_alb_deal_with_mussolini
+		icon = GFX_focus_ger_assassinate_mussolini
+		x = 18
+		y = 14
+		cost = 10
+		ai_will_do = {
+			factor = 2
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_albanian_path_to_communism 
+			focus = gram_focus_alb_spread_revolutionary_flame 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+			ITA = { 
+				NOT = { 
+					is_subject_of = ALB 
+				} 
+			}
+			custom_trigger_tooltip = {
+				tooltip = ita_current_ruling_party_tt
+				OR = {
+					ITA = { 
+						has_government = fascism 
+					}
+					ITA = { 
+						has_government = neutrality 
+					}
+				}
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = deal_with_mussolini_tt
+
+			hidden_effect = {
+				set_country_flag = gram_flag_alb_planning_of_italian_uprising
+			}
+		
+	    }
+	}
+
+	#Start of the Balkan Project
+	focus = {
+		id = gram_focus_alb_start_of_balkan_project
+		icon = GFX_focus_BUL_free_balkan_states
+		x = 15
+		y = 15
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_spread_revolutionary_flame 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		completion_reward = {
+
+			add_political_power = 150
+			custom_effect_tooltip = empty_divide_tt
+			add_war_support = 0.05
+		
+	    }
+	}
+
+	#To Yugoslavia
+	focus = {
+		id = gram_focus_alb_to_yugoslavia
+		icon = GFX_focus_invite_yugoslavia
+		x = 13
+		y = 16
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_start_of_balkan_project 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		bypass = {
+			OR = {
+				YUG = { 
+					exists = no 
+				}
+				YUG = { 
+					has_capitulated = yes 
+				}
+				YUG = { 
+					is_subject = yes 
+				}
+				YUG = { 
+					has_war_with = ROOT 
+				}
+				YUG = { 
+					is_subject_of = ROOT 
+				}
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			unlock_decision_category_tooltip = gram_decision_alb_balkan_project_yugoslavia
+
+			hidden_effect = {
+			set_country_flag = gram_flag_alb_balkan_project_yugoslavia
+			}
+
+	    }
+	}
+
+	#To Greece
+	focus = {
+		id = gram_focus_alb_to_greece
+		icon = GFX_focus_generic_befriend_greece
+		x = 17
+		y = 16
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_start_of_balkan_project
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		bypass = {
+			OR = {
+				GRE = { 
+					exists = no 
+				}
+				GRE = { 
+					has_capitulated = yes 
+				}
+				GRE = { 
+					is_subject = yes 
+				}
+				GRE = { 
+					has_war_with = ROOT 
+				}
+				GRE = { 
+					is_subject_of = ROOT
+				}
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			unlock_decision_category_tooltip = gram_decision_alb_balkan_project_greece
+
+			hidden_effect = {
+			set_country_flag = gram_flag_alb_balkan_project_greece
+			}
+
+	    }
+	}
+
+	#To Romania
+	focus = {
+		id = gram_focus_alb_to_romania
+		icon = GFX_focus_invite_romania
+		x = 13
+		y = 17
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_to_yugoslavia 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		bypass = {
+			OR = {
+				ROM = { 
+					exists = no 
+				}
+				ROM = { 
+					has_capitulated = yes 
+				}
+				ROM = { 
+					is_subject = yes 
+				}
+				ROM = { 
+					has_war_with = ROOT 
+				}
+				ROM = { 
+					is_subject_of = ROOT 
+				}
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			unlock_decision_category_tooltip = gram_decision_alb_balkan_project_romania
+
+			hidden_effect = {
+			set_country_flag = gram_flag_alb_balkan_project_romania
+			}
+
+	    }
+	}
+
+	#To Bulgaria
+	focus = {
+		id = gram_focus_alb_to_bulgaria
+		icon = GFX_focus_generic_befriend_bulgaria
+		x = 17
+		y = 17
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_to_greece 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		bypass = {
+			OR = {
+				BUL = { 
+					exists = no 
+				}
+				BUL = { 
+					has_capitulated = yes 
+				}
+				BUL = {
+					is_subject = yes 
+				}
+				BUL = { 
+					has_war_with = ROOT 
+				}
+				BUL = { 
+					is_subject_of = ROOT 
+				}
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			unlock_decision_category_tooltip = gram_decision_alb_balkan_project_bulgaria
+
+			hidden_effect = {
+			set_country_flag = gram_flag_alb_balkan_project_bulgaria
+			}
+
+	    }
+	}
+
+	#Balkan Trade Cooperation
+	focus = {
+		id = gram_focus_alb_balkan_trade_cooperation
+		icon = GFX_goal_generic_positive_trade_relations
+		x = 15
+		y = 16
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_start_of_balkan_project 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+			OR = { 
+				is_ally_with = YUG
+				is_ally_with = GRE
+				is_ally_with = BUL
+				is_ally_with = ROM
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			add_ideas = gram_idea_alb_balkan_trade_cooperation
+			custom_effect_tooltip = empty_divide_tt
+
+			every_other_country = {
+				limit = {
+					is_ally_with = ROOT
+					BUL_is_balkan_nation = yes
+				}
+				add_ideas = gram_idea_alb_balkan_trade_cooperation
+			}
+
+	    }
+	}
+
+	#Balkan Armed Forces
+	focus = {
+		id = gram_focus_alb_balkan_armed_forces
+		icon = GFX_focus_SWE_varnplikt
+		x = 15
+		y = 17
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_balkan_trade_cooperation 
+		}    
+		available = {
+			is_subject = no
+			has_government = communism
+			OR = { 
+				is_ally_with = YUG
+				is_ally_with = GRE
+				is_ally_with = BUL
+				is_ally_with = ROM
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+
+			add_ideas = gram_idea_alb_coordinated_balkan_armed_forces
+			custom_effect_tooltip = empty_divide_tt
+
+			every_other_country = {
+				limit = {
+					is_ally_with = ROOT
+					BUL_is_balkan_nation = yes
+				}
+				add_ideas = gram_idea_alb_coordinated_balkan_armed_forces
+			}
+
+	    }
+	}
+
+	#Realize the Dream
+	focus = {
+		id = gram_focus_alb_realize_the_dream
+		icon = GFX_focus_POL_complete_april_constitution
+		x = 15
+		y = 19
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_to_romania 
+		}    
+		prerequisite = { 
+			focus = gram_focus_alb_balkan_armed_forces 
+		}  
+		prerequisite = { 
+			focus = gram_focus_alb_to_bulgaria
+		}  
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+
+			set_cosmetic_tag = GRAM_ALB_BALKAN
+			custom_effect_tooltip = empty_divide_tt
+
+			if = {
+				limit = { 
+					ALB = { 
+						is_faction_leader = yes 
+					} 
+				}
+				set_faction_name = "Greater Balkan Pact"
+				custom_effect_tooltip = empty_divide_tt
+			}
+
+			custom_effect_tooltip = balkan_union_tt
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = you_will_unlock_wargoal_tree_tt
+			custom_effect_tooltip = empty_divide_tt
+
+			###1A### USE ALL THIS FOR PREPARATIONS FOR INVASION
+			if = { 
+				limit = { 
+					has_idea = gram_idea_alb_preparations_for_invasion_idea 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				remove_ideas = gram_idea_alb_preparations_for_invasion_idea
+			}
+			custom_effect_tooltip = remove_preparations_for_invasion_tt
+			set_country_flag = gram_flag_alb_no_more_war_preparations
+			###1B### 
+
+			hidden_effect = {
+
+				news_event = { id = gram_event_alb_formation_of_ubsr.1 }
+
+				#This is one long ass focus, and i know that there is a easier way to do this but idk, i
+				#alredy have a headache from just copy pasteing all of this 
+		
+				#New capital decision country flag
+				set_country_flag = gram_flag_alb_new_capital_balkan
+
+				#Annexing part of the focus
+
+				if = { #Yugoslavia
+					limit = { 
+						YUG = {
+							is_subject_of = ROOT 
+						} 
+					}
+					ALB = { 
+						annex_country = { 
+							target = YUG	
+							transfer_troops = yes 
+						} 
+					}
+				}
+		
+				if = { #Romania
+					limit = { 
+						ROM = { 
+							is_subject_of = ROOT
+						} 
+					}
+					ALB = { 
+						annex_country = { 
+							target = ROM	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Greece
+					limit = { 
+						GRE = { 
+							is_subject_of = ROOT 
+						} 
+					}
+					ALB = { 
+						annex_country = { 
+							target = GRE	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Bulgaria
+					limit = { 
+						BUL = { 
+							is_subject_of = ROOT 
+						} 
+					}
+					ALB = { 
+						annex_country = { 
+							target = BUL	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				#Other Yugoslav nations 
+
+				if = { #Slovenia
+					limit = { 
+						SLV = { 
+							is_subject_of = ROOT 
+						} 
+					}
+					ALB = { 
+						annex_country = { 
+							target = SLV	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Croatia
+					limit = { 
+						CRO = { 
+							is_subject_of = ROOT 
+						} 
+					}
+					ALB = { 
+						annex_country = { 
+							target = CRO	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Bosnia
+					limit = { 
+						BOS = { 
+							is_subject_of = ROOT 
+						} 
+					}
+					ALB = { 
+						annex_country = { 
+							target = BOS	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Herzegovina
+					limit = { 
+						HRZ = { 
+							is_subject_of = ROOT 
+						} 
+					}
+					ALB = { 
+						annex_country = { 
+							target = HRZ	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Montenegro
+					limit = { 
+						MNT = { 
+							is_subject_of = ROOT 
+						} 
+					}
+					ALB = {
+						annex_country = { 
+							target = MNT	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Macedonia
+					limit = { 
+						MAC = { 
+							is_subject_of = ROOT 
+						} 
+					}
+					ALB = {
+						annex_country = { 
+							target = MAC	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Kosovo
+					limit = { 
+						KOS = { 
+							is_subject_of = ROOT
+						} 
+					}
+					ALB = { 
+						annex_country = { 
+							target = KOS	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Transylvania
+					limit = { 
+						TRA = { 
+							is_subject_of = ROOT 
+						} 
+					}
+					ALB = { 
+						annex_country = { 
+							target = TRA	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				if = { #Serbia
+					limit = { 
+						SER = { 
+							is_subject_of = ROOT 
+						} 
+					}
+					ALB = { 
+						annex_country = { 
+							target = SER	
+							transfer_troops = yes 
+						} 
+					}
+				}
+
+				#If country isnt a Puppet of Albania, the player will get a wargoal against it
+
+				if = { #Yugoslavia
+					limit = { 
+						YUG = { 
+							exists = yes
+							NOT = { 
+								is_subject_of = ROOT 
+							} 
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = YUG 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				if = { #Romania
+					limit = { 
+						ROM = {
+							exists = yes 
+							NOT = { 
+								is_subject_of = ROOT
+							} 
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = ROM 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				if = { #Greece
+					limit = { 
+						GRE = {
+							exists = yes
+							NOT = { 
+								is_subject_of = ROOT 
+							}
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = GRE 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				if = { #Bulgaria
+					limit = { 
+						BUL = {
+							exists = yes
+							NOT = { 
+								is_subject_of = ROOT 
+							} 
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = BUL 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				#Other Yugoslav nations 
+
+				if = { #Slovenia
+					limit = { 
+						SLV = {
+							exists = yes
+							NOT = { 
+								is_subject_of = ROOT 
+							} 
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = SLV 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				if = { #Croatia
+					limit = { 
+						CRO = {
+							exists = yes
+							NOT = { 
+								is_subject_of = ROOT 
+							} 
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = CRO 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				if = { #Bosnia
+					limit = { 
+						BOS = {
+							exists = yes
+								NOT = { 
+									is_subject_of = ROOT 
+								} 
+							} 
+						}
+					ALB = { 
+						create_wargoal = { 
+							target = BOS 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				if = { #Herzegovina
+					limit = { 
+						HRZ = {
+							exists = yes
+							NOT = { 
+								is_subject_of = ROOT 
+							} 
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = HRZ 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				if = { #Montenegro
+					limit = { 
+						MNT = {
+							exists = yes
+							NOT = { 
+								is_subject_of = ROOT 
+							} 
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = MNT 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				if = { #Macedonia
+					limit = { 
+						MAC = {
+							exists = yes
+							NOT = { 
+								is_subject_of = ROOT 
+							} 
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = MAC 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				if = { #Kosovo
+					limit = { 
+						KOS = {
+							exists = yes
+							NOT = { 
+								is_subject_of = ROOT
+							} 
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = KOS 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				if = { #Transylvania
+					limit = { 
+						TRA = {
+							exists = yes
+							NOT = { 
+								is_subject_of = ROOT 
+							} 
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = TRA 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				if = { #Serbia
+					limit = { 
+						SER = {
+							exists = yes
+							NOT = { 
+								is_subject_of = ROOT 
+							} 
+						} 
+					}
+					ALB = { 
+						create_wargoal = { 
+							target = SER 
+							type = annex_everything 
+							expire = 0 
+						} 
+					}
+				}
+
+				#Cores of those countries
+				#Yugoslav cores
+       			 736 = { add_core_of = ROOT }
+				852 = { add_core_of = ROOT }
+				102 = { add_core_of = ROOT }
+				853 = { add_core_of = ROOT }
+				109 = { add_core_of = ROOT }
+				103 = { add_core_of = ROOT }
+				163 = { add_core_of = ROOT }
+				104 = { add_core_of = ROOT }
+				804 = { add_core_of = ROOT }
+				105 = { add_core_of = ROOT }
+				45 = { add_core_of = ROOT }
+				764 = { add_core_of = ROOT }
+				107 = { add_core_of = ROOT }
+				108 = { add_core_of = ROOT }
+				802 = { add_core_of = ROOT }
+				803 = { add_core_of = ROOT }
+				970 = { add_core_of = ROOT }
+				106 = { add_core_of = ROOT }
+
+				#Bulgarian cores
+				48 = { add_core_of = ROOT }
+				801 = { add_core_of = ROOT }
+				211 = { add_core_of = ROOT }
+				212 = { add_core_of = ROOT }
+
+				#Romanian cores
+				77 = { add_core_of = ROOT }
+				971 = { add_core_of = ROOT }
+				46 = { add_core_of = ROOT }
+				81 = { add_core_of = ROOT }
+				82 = { add_core_of = ROOT }
+				766 = { add_core_of = ROOT }
+				78 = { add_core_of = ROOT }
+				79 = { add_core_of = ROOT }
+				76 = { add_core_of = ROOT }
+				84 = { add_core_of = ROOT }
+				83 = { add_core_of = ROOT }
+				80 = { add_core_of = ROOT }
+
+				#Greek cores
+				185 = { add_core_of = ROOT }
+				47 = { add_core_of = ROOT }
+				731 = { add_core_of = ROOT }
+				184 = { add_core_of = ROOT }
+				186 = { add_core_of = ROOT }
+				187 = { add_core_of = ROOT }
+				182 = { add_core_of = ROOT }
+				164 = { add_core_of = ROOT }
+
+			}
+	    }
+	}
+
+	#Pan-Balkan Research Initiative
+	focus = {
+		id = gram_focus_alb_pan_balkan_research_initiative
+		icon = GFX_focus_generic_university_3
+		x = 14
+		y = 21
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_realize_the_dream 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		completion_reward = {
+
+			add_research_slot = 1
+
+	    }
+	}
+
+
+	#Balkan Rural Area Investment 
+	focus = {
+		id = gram_focus_alb_balkan_rural_area_investment
+		icon = GFX_focus_mex_privatisation
+		x = 16
+		y = 21
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_realize_the_dream 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_INDUSTRY
+		}
+		completion_reward = {
+
+			unlock_decision_category_tooltip = gram_decision_alb_investment_into_rural_areas
+
+			hidden_effect = {
+			set_country_flag = gram_flag_alb_rural_area_investment_balkan
+			}
+
+	    }
+	}
+
+	#Balkan Expansion Plans
+	focus = {
+		id = gram_focus_alb_balkan_expansion_plans
+		icon = GFX_focus_ger_great_red_menace
+		x = 18
+		y = 22
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_realize_the_dream 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+
+			unlock_decision_category_tooltip = gram_decision_alb_expansion_plans
+
+			hidden_effect = {
+			set_country_flag = gram_flag_alb_expansion_plans_balkan
+			}
+
+	    }
+	}
+
+	#Cult of Personality 
+	focus = {
+		id = gram_focus_alb_cult_of_personality
+		icon = GFX_focus_eng_liberate_the_home_of_marx
+		x = 23
+		y = 19
+		cost = 10
+		
+		prerequisite = { 
+			focus = gram_focus_alb_membership_in_comintern 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+			unlock_decision_category_tooltip = gram_decision_alb_cult_of_personality
+
+			hidden_effect = {
+			set_country_flag = gram_flag_alb_cult_of_personality_hoxha
+			}
+
+	    }
+	}
+
+	#Industrial Investment
+	focus = {
+		id = gram_focus_alb_industrial_investment
+		icon = GFX_focus_generic_communist_industry
+		x = 24
+		y = 20
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_membership_in_comintern 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		completion_reward = {
+
+			934 = {
+			    add_extra_state_shared_building_slots = 3
+			    add_building_construction = {
+			        type = industrial_complex
+			        level = 3
+			        instant_build = yes
+			    }
+			} 
+			custom_effect_tooltip = empty_divide_tt
+			805 = {
+			    add_extra_state_shared_building_slots = 2
+			    add_building_construction = {
+			        type = arms_factory
+			        level = 2
+			        instant_build = yes
+			    }
+			}
+
+	    }
+	}
+
+	#Defender of Peasantry
+	focus = {
+		id = gram_focus_alb_defender_of_peasantry
+		icon = GFX_focus_ITA_peasants_rise
+		x = 25
+		y = 21
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_industrial_investment 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_POLITICAL_CHARACTER
+		}
+		completion_reward = {
+
+			#If Albania has Enver Hoxha, he will get a new trait
+			if = {
+				limit = { 
+					has_country_leader = {
+						character = gram_character_ALB_enver_hoxha
+						ruling_only = yes
+					}	
+				}
+
+				add_country_leader_trait = gram_trait_defender_of_the_peasantry
+			
+			}
+
+			#If Albania is ruled by someone else
+			if = {
+				limit = { 
+					NOT = {
+						has_country_leader = {
+							character = gram_character_ALB_enver_hoxha
+							ruling_only = yes
+						}	
+					}
+				}
+
+				custom_effect_tooltip = needs_hoxha_as_ruler_tt
+
+			}
+		}
+	}
+
+	#Soviet Arms Shipments
+	focus = {
+		id = gram_focus_alb_soviet_arms_shipments
+		icon = GFX_focus_GER_support_the_proletarian_uprising
+		x = 23
+		y = 21
+		cost = 10
+		
+		prerequisite = { 
+			focus = gram_focus_alb_industrial_investment 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+			SOV = { 
+				exists = yes 
+			}
+			ROOT = { 
+				is_in_faction_with = SOV 
+			}
+			SOV = { 
+				has_same_ideology = yes 
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 7500
+				producer = SOV
+			}	
+
+			custom_effect_tooltip = empty_divide_tt
+
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 750
+				producer = SOV
+			}	
+
+			custom_effect_tooltip = empty_divide_tt
+
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 500
+				producer = SOV
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 250
+				producer = SOV
+			}
+
+		}
+	}
+
+	#One Union Solution
+	focus = {
+		id = gram_focus_alb_one_union_solution
+		icon = GFX_focus_NOR_a_new_norway_Trotsky_communism
+		x = 22
+		y = 22
+		cost = 10
+		
+		allow_branch = {
+			has_country_flag = gram_flag_alb_one_union_solution
+		}
+
+		prerequisite = { 
+			focus = gram_focus_alb_industrial_investment 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+
+			OR = {
+				AND = {
+					is_in_faction_with = SOV
+					SOV = { 
+						surrender_progress > 0.75
+					}
+					ROOT = {
+						has_war_together_with = SOV 
+					}
+					SOV = { 
+						has_same_ideology = yes 
+					}
+				}
+
+				AND = {
+					owns_state = 219
+					owns_state = 195
+					owns_state = 217
+					owns_state = 408				
+				}
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = one_union_solution_tt
+			custom_effect_tooltip = empty_divide_tt
+			set_cosmetic_tag = GRAM_ALB_SOVIET
+			custom_effect_tooltip = empty_divide_tt
+
+			if = {
+				limit = { 
+					SOV = {
+						has_country_leader = {
+							character = SOV_iosif_stalin
+							ruling_only = yes
+						}	
+					} 
+				}
+				add_ideas = gram_idea_alb_stalin
+				custom_effect_tooltip = empty_divide_tt
+				hidden_effect = {
+					SOV = { 
+						retire_character = SOV_iosif_stalin
+					}
+				}
+			}
+
+			set_party_name = {
+				ideology = communism
+				long_name = workers_party_of_ssr_long_name
+				name = workers_party_of_ssr_short_name
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+
+			every_other_country = {
+
+				limit = {
+					tag = SOV
+				}
+
+				every_owned_state = {
+					limit = {
+						is_core_of = SOV
+					}
+					add_core_of = ALB
+					custom_effect_tooltip = empty_divide_tt
+				}
+
+				ALB = {
+					annex_country = {
+						target = SOV
+						transfer_troops = yes
+					}
+					custom_effect_tooltip = empty_divide_tt
+				}
+
+				SOV = {
+					every_unit_leader = {
+						set_nationality = ALB
+					}
+				}
+			}
+
+			if = { #Democratic Faction name
+				limit = { 
+					ALB = { 
+						has_government = democratic 
+						is_faction_leader = yes
+					} 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				set_faction_name = "European Defense Alliance"
+			}
+
+			if = { #Communist Faction name
+				limit = { 
+					ALB = { 
+						has_government = communism 
+						is_faction_leader = yes
+					} 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				set_faction_name = "Soviet Bloc"
+			}
+
+			if = { #Fascist Faction name
+				limit = { 
+					ALB = { 
+						has_government = fascism 
+						is_faction_leader = yes
+					} 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				set_faction_name = "Union of Brootherhood"
+			}
+
+			if = { #Non-Aligned Faction name
+				limit = { 
+					ALB = { 
+						has_government = neutrality
+						is_faction_leader = yes
+					} 
+				}
+				custom_effect_tooltip = empty_divide_tt	
+				set_faction_name = "European Defense Alliance"
+			}
+			
+			###1A### USE ALL THIS FOR PREPARATIONS FOR INVASION
+			if = { 
+				limit = { 
+					has_idea = gram_idea_alb_preparations_for_invasion_idea 
+				}
+				custom_effect_tooltip = empty_divide_tt
+				remove_ideas = gram_idea_alb_preparations_for_invasion_idea
+			}
+				custom_effect_tooltip = empty_divide_tt
+				custom_effect_tooltip = remove_preparations_for_invasion_tt
+				set_country_flag = gram_flag_alb_no_more_war_preparations
+			###1B### 	
+
+		}	
+	}
+
+	#This whole part of the tree was coded in like 2 days, i could have done it faster if i wasnt as lazy
+	#but hey slow and stedy wins the race, until the dam hoi4 devs update something, and i have to fix it
+	#once more. Oh and btw, this was writen on 4 of Feburary, 2025. And i started making this mod around 
+	#August, 2024, so yea 6 months of learning and making shit up, really adds up. Oh and if you are
+	#wonderring why i wrote this here, idk felt like it at the momment.
+	#
+	#Update it is 16 of Feburary, 2025. I didn't code anything in the past 2 weeks in here, i was working on
+	#another mod, called "Player VS The World" maby you saw it on the Workshop at one moment, idk i wanted just
+	#a small break from working on this so i can, do something else.
+	#
+	#Update it is 24 of Feburary, 2025, i didn't code shit since the last time. :)
+	#
+	#Update it is 16 of April, 2025, i fucking did nothing
+
+	#Research Collaboration
+	focus = {
+		id = gram_focus_alb_research_collaboration
+		icon = GFX_focus_generic_socialist_science
+		x = 25
+		y = 19
+		cost = 5
+		prerequisite = { 
+			focus = gram_focus_alb_membership_in_comintern 
+		}
+		available = {
+			is_subject = no
+			has_government = communism
+			is_in_faction_with = SOV
+			SOV = { 
+				has_government = communism 
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		completion_reward = {
+
+			add_to_tech_sharing_group = ALB_SOV_research_group
+			custom_effect_tooltip = empty_divide_tt
+			SOV = { 
+				add_to_tech_sharing_group = ALB_SOV_research_group
+			}
+
+	    }
+	}
+
+####################
+### WARGOAL TREE ###
+####################
+
+	#Rising sun of the Balkans
+	focus = {
+		id = gram_focus_alb_rising_sun_of_the_balkans
+		icon = GFX_focus_TUR_the_sun_language_theory
+		x = 36
+		y = 1
+		cost = 10
+		available = {
+			OR = {
+				has_completed_focus = gram_focus_alb_no_empire_like_byzantine_empire
+				has_completed_focus = gram_focus_alb_realize_the_dream	
+				has_completed_focus = gram_focus_alb_new_step_forward
+				has_completed_focus = gram_focus_alb_royal_marriage
+			}	
+			is_subject = no
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		completion_reward = {
+
+			add_political_power = 150
+			custom_effect_tooltip = empty_divide_tt
+			add_stability = 0.1
+			custom_effect_tooltip = empty_divide_tt
+			add_war_support = 0.1
+
+		}	    
+	}
+
+	#Anti-Fascist Campaign
+	focus = {
+		id = gram_focus_alb_anti_fascist_campaign
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		x = 34
+		y = 3
+		cost = 10
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = { focus = gram_focus_alb_rising_sun_of_the_balkans }
+		available = { 
+		is_subject = no 
+			OR = {
+				has_government = communism
+				has_government = democratic
+				has_government = neutrality
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = gain_wargoal_on_fascism_tt
+			custom_effect_tooltip = empty_divide_tt
+			every_country = {
+				limit = { 
+					capital_scope = { 
+						is_on_continent = europe 
+					} 
+					is_major = yes 
+					has_government = fascism 
+				}
+				ROOT = { 
+					create_wargoal = {
+						type = annex_everything		
+						target = PREV
+					}			
+				}
+			}
+
+		}	    
+	}
+
+	#Anti-Communist Campaign
+	focus = {
+		id = gram_focus_alb_anti_communist_campaign
+		icon = GFX_goal_generic_war_with_comintern
+		x = 36
+		y = 3
+		cost = 10
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = { focus = gram_focus_alb_rising_sun_of_the_balkans }
+		available = {
+			is_subject = no
+			OR = { 
+				has_government = fascism
+				has_government = democratic
+				has_government = neutrality
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+			
+			custom_effect_tooltip = gain_wargoal_on_communism_tt
+			custom_effect_tooltip = empty_divide_tt
+
+			every_country = {
+				limit = { 
+					capital_scope = { 
+						is_on_continent = europe 
+					} 
+					is_major = yes 
+					has_government = communism 
+				}
+				ROOT = { 
+					create_wargoal = {
+						type = annex_everything		
+						target = PREV
+					}
+				}
+			}
+		}
+	}
+
+	#Anti-Capitalist March
+	focus = {
+		id = gram_focus_alb_anti_capitalist_march
+		icon = GFX_focus_generic_strike_at_democracy3
+		x = 38
+		y = 3
+		cost = 10
+		ai_will_do = {
+			factor = 100
+		}
+		prerequisite = { 
+			focus = gram_focus_alb_rising_sun_of_the_balkans 
+		}
+		available = {
+			is_subject = no
+			OR = { 
+				has_government = communism
+				has_government = fascism
+				has_government = neutrality
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = gain_wargoal_on_democratic_tt
+			custom_effect_tooltip = empty_divide_tt
+			every_country = {
+				limit = { 
+					capital_scope = { 
+						is_on_continent = europe 
+					} 
+					is_major = yes 
+					has_government = democratic 
+				}
+				ROOT = { 
+					create_wargoal = {
+						type = annex_everything		
+						target = PREV
+					}			
+				}
+			}
+
+		}	    
+	}
+
+	#World Shall Burn
+	focus = {
+		id = gram_focus_alb_world_shall_burn
+		icon = GFX_focus_generic_annex_country_2
+		x = 36
+		y = 5
+		cost = 20
+		prerequisite = { 
+			focus = gram_focus_alb_anti_fascist_campaign 
+			focus = gram_focus_alb_anti_communist_campaign 
+			focus = gram_focus_alb_anti_capitalist_march  
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		available = {
+			is_subject = no
+			if = {
+				limit = { 
+					has_government = fascism 
+				}
+				has_completed_focus = gram_focus_alb_anti_communist_campaign 
+				has_completed_focus = gram_focus_alb_anti_capitalist_march
+			}
+			if = {
+				limit = { 
+					has_government = communism 
+				}
+				has_completed_focus = gram_focus_alb_anti_fascist_campaign
+				has_completed_focus = gram_focus_alb_anti_capitalist_march
+			}
+			if = {
+				limit = { 
+					has_government = democratic 
+				}
+				has_completed_focus = gram_focus_alb_anti_fascist_campaign
+				has_completed_focus = gram_focus_alb_anti_communist_campaign
+			}
+			if = {
+				limit = { 
+					has_government = neutrality 
+				}
+				has_completed_focus = gram_focus_alb_anti_fascist_campaign
+				has_completed_focus = gram_focus_alb_anti_communist_campaign
+				has_completed_focus = gram_focus_alb_anti_capitalist_march
+			}
+		}
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+
+			custom_effect_tooltip = gain_wargoal_on_every_major_tt
+			custom_effect_tooltip = empty_divide_tt
+			every_country = {
+				ROOT = { 
+					create_wargoal = {
+						type = annex_everything		
+						target = PREV
+					}			
+				}
+			}
+
+			every_state = {
+				add_core_of = ALB
+			}
+
+		}	    
+	}
+
+#################################
+### SECRET MONARCH FOCUS TREE ###
+#################################
+
+	#Finally a true Prince
+	focus = {
+		id = gram_focus_alb_finally_a_true_prince
+		icon = GFX_focus_eng_god_save_the_king
+		x = 6
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		allow_branch = {
+			has_country_flag = gram_flag_alb_wilhelm_took_control
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		completion_reward = {
+
+			add_political_power = 200
+			custom_effect_tooltip = empty_divide_tt
+			add_stability = 0.1
+			custom_effect_tooltip = empty_divide_tt
+			add_war_support = 0.15
+		
+		}
+
+	}
+	
+	#Take back the House of Wied
+	focus = {
+		id = gram_focus_alb_take_back_the_house_of_wied
+		icon = GFX_focus_spa_save_the_alcazar
+		x = 6
+		y = 2
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_finally_a_true_prince 
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+		}
+		completion_reward = {
+		
+			every_country = {
+				limit = { 
+					OR = {
+						owns_state = 51
+						owns_state = 42
+					}
+				}
+				ROOT = { 
+					create_wargoal = {
+						type = annex_everything		
+						target = PREV
+					}			
+				}
+			}
+
+		}
+	}
+
+	#Wied is Ours
+	focus = {
+		id = gram_focus_alb_wied_is_ours
+		icon = GFX_focus_SWE_the_lion_of_the_north
+		x = 6
+		y = 3
+		cost = 10
+		prerequisite = { 
+			focus = gram_focus_alb_take_back_the_house_of_wied 
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_ANNEXATION
+			FOCUS_FILTER_POLITICAL_CHARACTER
+		}
+		available = {
+			has_government = neutrality
+			is_subject = no
+			owns_state = 51
+			owns_state = 42
+		}
+		completion_reward = {
+		
+			51 = { add_core_of = ROOT }
+			42 = { add_core_of = ROOT }
+
+			custom_effect_tooltip = empty_divide_tt
+			custom_effect_tooltip = wied_comes_to_exists_tt
+
+			#If Albania has Wilhelm, he will get a new trait
+			if = {
+				limit = { 
+					has_country_leader = {
+						character = gram_character_ALB_wilhelm_friedrich
+						ruling_only = yes
+					}	
+				}
+				custom_effect_tooltip = empty_divide_tt
+				add_country_leader_trait = gram_trait_prince_of_wied	
+			}
+
+			#If Albania is ruled by someone else
+			if = {
+				limit = { 
+					NOT = {
+						has_country_leader = {
+							character = gram_character_ALB_wilhelm_friedrich
+							ruling_only = yes
+						}	
+					}
+				}
+				custom_effect_tooltip = empty_divide_tt
+				custom_effect_tooltip = needs_wilhelm_as_ruler_tt
+			}
+
+			custom_effect_tooltip = empty_divide_tt
+
+			if = { #This is so you can keep the cool old name
+				limit = { 
+					NOT = { 
+						has_cosmetic_tag = GRAM_ALB_SOVIET 
+					} 
+				}
+
+				drop_cosmetic_tag = yes
+				set_cosmetic_tag = GRAM_ALB_PRINCIPALITY_WIED
+
+				set_party_name = { #So it doesnt sound weird if you do get the soviet tag
+					ideology = neutrality
+					long_name = house_of_wied_neuwied_heinrich_long_name
+					name = house_of_wied_neuwied_heinrich_short_name
+				}
+			}
+
+			hidden_effect = {
+
+				add_victory_points = {
+					province = 529
+					value = 5
+				}
+
+				set_province_name = {
+					id = 529
+					name = "Wied"
+				}		
+
+			}
+		}
+	}
+} 

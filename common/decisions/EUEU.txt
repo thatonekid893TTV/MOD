@@ -1,0 +1,36 @@
+form_european_union_category = {
+
+GRE_uniting_europe = {
+
+		#targets_dynamic = yes
+		
+		cost = 30
+		
+	    target_trigger = {
+	    	FROM = {is_puppet_of = GRE
+			capital_scope = { is_on_continent = europe }}
+	    }
+
+	    ai_will_do = {
+	    	base = 10
+
+	    	
+	    }
+		visible = { has_completed_focus = GRE_centralise }
+	    complete_effect = {
+	    	annex_country = { target = FROM transfer_troops = yes }
+			every_state = {
+					limit = {
+					
+						is_core_of = FROM
+					}
+					add_core_of = GRE
+				}
+	    } 
+	
+	}
+
+
+
+	
+	}

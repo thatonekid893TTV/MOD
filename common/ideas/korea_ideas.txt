@@ -1,0 +1,487 @@
+ideas = {
+	country = {
+		KOR_New_Korean_Military_Academies = {
+			picture = generic_army_war_college
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				army_leader_cost_factor = -0.25
+				army_leader_start_level = 2
+				experience_gain_factor = 0.1
+				command_power_gain_mult = 0.4
+			}
+		}
+		
+		KOR_Royal_Korean_Marine_Corps = {
+			picture = marines
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				special_forces_training_time_factor = -0.25
+				marines_special_forces_contribution_factor = -0.25
+				special_forces_no_supply_grace = 120
+				special_forces_cap_flat = 4
+			}
+		}
+		
+		KOR_Interdiction_Focus = {
+			picture = generic_army_war_college
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				submarine = {
+					build_cost_ic = -0.2 instant = yes
+				}
+			}
+		}
+		
+		KOR_Escort_Focus = {
+			picture = generic_army_war_college
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				destroyer = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				light_cruiser = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+		
+		KOR_Artillery_Production = {
+			picture = generic_artillery_regiments
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				artillery_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				
+				anti_air_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				
+				anti_tank_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+		
+		KOR_Arms_Production = {
+			picture = generic_artillery_regiments
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				
+				support_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+		
+		KOR_Armor_Production = {
+			picture = generic_artillery_regiments
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				medium_tank_chassis = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				
+				motorized_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				
+				mechanized_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+		
+		KOR_CAS_Focus = {
+			picture = generic_artillery_regiments
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				cas = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+		
+		KOR_Fighter_Focus = {
+			picture = generic_artillery_regiments
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				fighter = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+		
+		KOR_Naval_Focus = {
+			picture = generic_artillery_regiments
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				naval_bomber = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+		}
+	
+	
+		KOR_Korean_Democracy = {
+			picture = generic_democratic_drift_bonus
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				democratic_drift = 0.05
+			}
+		}
+		
+		KOR_One_People_Principle = {
+			picture = SPR_collectivized_society
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				conscription = 0.015
+			}
+		}
+		
+		KOR_Korean_Volunteers = {
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+			
+			modifier = {
+				send_volunteer_divisions_required = -1
+				send_volunteer_size = 8
+				send_volunteers_tension = -1.0
+			}
+		}
+		
+		KOR_Economic_Reform = {
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			picture = generic_economic_increase
+			
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				consumer_goods_factor = -0.1
+			}
+		}
+		
+		KOR_Nationwide_Rail = {
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			picture = generic_build_infrastructure
+			
+			modifier = {
+				production_speed_rail_way_factor = 0.5
+			}
+		}
+		
+		KOR_Connections_to_the_Past = {
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			picture = ast_volunteer_defence_corps
+			
+			modifier = {
+				conscription = 0.005
+				neutrality_drift = 0.1
+			}
+		}
+		
+		KOR_Nationalism = {
+			available = {
+				tag = KOR
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+			
+			modifier = {
+				conscription = 0.01
+				fascism_drift = 0.05
+			}
+		}
+		
+		KOR_Gwangmu_Reform = {
+			available = {
+				tag = KOR
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			picture = generic_political_support
+			
+			modifier = {
+				conscription_factor = 0.33
+				consumer_goods_factor = -0.1
+			}
+		}
+		
+		KOR_Establish_Royal_Cabinet = {
+			available = {
+				tag = KOR
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			picture = generic_political_support
+			
+			modifier = {
+				political_advisor_cost_factor = -0.25
+				trade_laws_cost_factor = -0.25
+				mobilization_laws_cost_factor = -0.25
+				economy_cost_factor = -0.25
+				high_command_cost_factor = -0.25
+				air_chief_cost_factor = -0.25
+				army_chief_cost_factor = -0.25
+				navy_chief_cost_factor = -0.25
+			}
+		}
+		
+		KOR_Land_Reform = {
+			available = {
+				tag = KOR
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			picture = man_five_year_plan_industry
+			
+			modifier = {
+				production_speed_buildings_factor = 0.05
+			}
+		}
+		
+		KOR_Study_Industry_Abroad = {
+			available = {
+				tag = KOR
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			picture = jap_supremacy_of_technology
+			
+			modifier = {
+				research_speed_factor = 0.05
+			}
+		}
+		
+		KOR_Korean_Communism = {
+			picture = generic_communism_drift_bonus
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				communism_drift = 0.05
+			}
+		}
+		
+		KOR_Juche = {
+			picture = jap_the_unthinkable_option
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				party_popularity_stability_factor = 0.3
+				trade_laws_cost_factor = -0.25
+				mobilization_laws_cost_factor = -0.25
+				economy_cost_factor = -0.25
+				consumer_goods_factor = -0.05
+			}
+		}
+		
+		KOR_Press_Censorship = {
+			picture = generic_democracy_banned
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				communism_drift = 0.05
+				political_power_factor = 0.1
+				drift_defence_factor = 0.5
+			}
+		}
+		
+		KOR_Five_Year_Plan = {
+			picture = generic_economic_increase
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+				consumer_goods_factor = 0.025
+			}
+		}
+		
+		KOR_Welfare_State = {
+			picture = generic_production_bonus
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = -0.1
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = 0.025
+			}
+		}
+		
+		KOR_Nationalize_Industry = {
+			picture = generic_central_management
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.1
+				consumer_goods_factor = 0.025
+			}
+		}
+		
+		KOR_Agricultural_Collectivization = {
+			picture = generic_agrarian_reform
+			
+			available = {
+				tag = KOR
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				global_building_slots_factor = 0.15
+				consumer_goods_factor = 0.025
+			}
+		}
+	}
+}

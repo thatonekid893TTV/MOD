@@ -1,0 +1,697 @@
+debug_decisions = {
+	
+	debug_quarior_create_dynamic_country = {
+		fire_only_once = no
+		
+		complete_effect = {
+			country_event = useful-events-quarior-create_dynamic_country.1
+		}
+	}
+	
+	debug_quarior_annex_dynamic_country = {
+		fire_only_once = no
+		
+		complete_effect = {
+			set_temp_variable = {
+				from_v = ROOT
+			}
+			every_other_country = {
+				limit = {
+					original_tag = ROOT
+				}
+				set_temp_variable = {
+					this_country = THIS
+				}
+				var:this_country = {
+					every_character = {
+						set_nationality = var:from_v
+					}
+					transfer_navy = {
+						target = ROOT
+					}
+					send_equipment_fraction = {
+						value = 1
+						target = var:from_v
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject_of = var:this_country
+					}
+					var:from_v = {
+						puppet = PREV
+					}
+				}
+				var:from_v = {
+					annex_country = {
+						target = PREV
+						transfer_troops = yes
+					}
+				}
+				var:this_country = {
+					every_core_state = {
+						add_core_of = var:from_v
+					}
+					every_state = {
+						limit = {
+							is_claimed_by = var:this_country
+						}
+						add_claim_by = var:from_v
+					}
+				}
+			}
+		}
+		
+		visible = {
+			any_other_country = {
+				original_tag = ROOT
+				exists = yes
+			}
+		}
+	}
+	
+	debug_show_quarior_coup = {
+		priority = 100
+		
+		fire_only_once = no
+		
+		visible = {
+			NOT = { has_global_flag = show_debug_decisions_quarior_coup }
+		}
+		complete_effect = {
+			set_global_flag = show_debug_decisions_quarior_coup
+		}
+	}
+	
+	debug_hide_quarior_coup = {
+		priority = -1
+		
+		fire_only_once = no
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_coup
+		}
+		complete_effect = {
+			clr_global_flag = show_debug_decisions_quarior_coup
+		}
+	}
+	
+	test_quarior_coup = {
+		icon = generic_prepare_civil_war
+		
+		fire_only_once = yes
+		
+		fixed_random_seed = no
+		
+		cost = 0
+		
+		target_trigger = {
+			FROM = {
+				NOT = {
+					is_ally_with = ROOT
+				}
+				NOT = {
+					has_government = ROOT
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = FROM.capital
+			}
+		}
+		
+		available = {
+			is_subject = no
+		}
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_coup
+		}
+		
+		on_map_mode = map_only
+		
+		complete_effect = {
+			FROM = {
+				country_event = {
+					id = useful-events-quarior-coup.1
+					days = 1
+				}
+			}
+		}
+	}
+	
+	debug_show_quarior_anschluss = {
+		priority = 100
+		
+		fire_only_once = no
+		
+		visible = {
+			NOT = { has_global_flag = show_debug_decisions_quarior_anschluss }
+		}
+		complete_effect = {
+			set_global_flag = show_debug_decisions_quarior_anschluss
+		}
+	}
+	
+	debug_hide_quarior_anschluss = {
+		priority = -1
+		
+		fire_only_once = no
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_anschluss
+		}
+		complete_effect = {
+			clr_global_flag = show_debug_decisions_quarior_anschluss
+		}
+	}
+	
+	test_quarior_anschluss = {
+		icon = generic_political_discourse
+		
+		fire_only_once = yes
+		
+		fixed_random_seed = no
+		
+		cost = 0
+		
+		target_trigger = {
+			FROM = {
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = FROM.capital
+			}
+		}
+		
+		available = {
+			is_subject = no
+		}
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_anschluss
+		}
+		
+		on_map_mode = map_only
+		
+		complete_effect = {
+			FROM = {
+				country_event = {
+					id = useful-events-quarior-anschluss.1
+					days = 1
+				}
+			}
+		}
+	}
+	
+	debug_show_quarior_demand_territory = {
+		priority = 100
+		
+		fire_only_once = no
+		
+		visible = {
+			NOT = { has_global_flag = show_debug_decisions_quarior_demand_territory }
+		}
+		complete_effect = {
+			set_global_flag = show_debug_decisions_quarior_demand_territory
+		}
+	}
+	
+	debug_hide_quarior_demand_territory = {
+		priority = -1
+		
+		fire_only_once = no
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_demand_territory
+		}
+		complete_effect = {
+			clr_global_flag = show_debug_decisions_quarior_demand_territory
+		}
+	}
+	
+	test_quarior_demand_territory = {
+		icon = eng_trade_unions_demand
+		
+		fire_only_once = yes
+		
+		fixed_random_seed = no
+		
+		cost = 0
+		
+		target_trigger = {
+			FROM = {
+				any_owned_state = {
+					OR = {
+						is_core_of = ROOT
+						is_claimed_by = ROOT
+					}
+				}
+			}
+		}
+		
+		available = {
+			is_subject = no
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = FROM.capital
+			}
+		}
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_demand_territory
+		}
+		
+		on_map_mode = map_only
+		
+		complete_effect = {
+			FROM = {
+				country_event = {
+					id = useful-events-quarior-demand-territory.1
+					days = 1
+				}
+			}
+		}
+	}
+	
+	debug_show_quarior_install_missiles = {
+		priority = 100
+		
+		fire_only_once = no
+		
+		visible = {
+			NOT = { has_global_flag = show_debug_decisions_quarior_install_missiles }
+		}
+		complete_effect = {
+			set_global_flag = show_debug_decisions_quarior_install_missiles
+		}
+	}
+	
+	debug_hide_quarior_install_missiles = {
+		priority = -1
+		
+		fire_only_once = no
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_install_missiles
+		}
+		complete_effect = {
+			clr_global_flag = show_debug_decisions_quarior_install_missiles
+		}
+	}
+	
+	test_quarior_install_missiles = {
+		icon = eng_trade_unions_demand
+		
+		fire_only_once = yes
+		
+		fixed_random_seed = no
+		
+		cost = 0
+		
+		target_trigger = {
+			FROM = {
+				NOT = {
+					has_war_with = ROOT
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = FROM.capital
+			}
+		}
+		
+		available = {
+			is_subject = no
+		}
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_install_missiles
+		}
+		
+		on_map_mode = map_only
+		
+		complete_effect = {
+			FROM = {
+				country_event = {
+					id = useful-events-quarior-install_missiles.1
+					days = 1
+				}
+			}
+		}
+	}
+	
+	debug_show_quarior_merge_faction = {
+		priority = 100
+		
+		fire_only_once = no
+		
+		visible = {
+			NOT = { has_global_flag = show_debug_decisions_quarior_merge_faction }
+		}
+		complete_effect = {
+			set_global_flag = show_debug_decisions_quarior_merge_faction
+		}
+	}
+	
+	debug_hide_quarior_merge_faction = {
+		priority = -1
+		
+		fire_only_once = no
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_merge_faction
+		}
+		complete_effect = {
+			clr_global_flag = show_debug_decisions_quarior_merge_faction
+		}
+	}
+	
+	test_quarior_merge_faction = {
+		icon = generic_political_discourse
+		
+		fire_only_once = yes
+		
+		fixed_random_seed = no
+		
+		cost = 0
+		
+		target_trigger = {
+			FROM = {
+				NOT = {
+					has_war_with = ROOT
+				}
+				is_faction_leader = yes
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = FROM.capital
+			}
+		}
+		
+		available = {
+			is_subject = no
+			is_faction_leader = yes
+		}
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_merge_faction
+		}
+		
+		on_map_mode = map_only
+		
+		complete_effect = {
+			FROM = {
+				country_event = {
+					id = useful-events-quarior-merge_faction.1
+					days = 1
+				}
+			}
+		}
+	}
+	
+	debug_show_quarior_occupation_ultimatum = {
+		priority = 100
+		
+		fire_only_once = no
+		
+		visible = {
+			NOT = { has_global_flag = show_debug_decisions_quarior_occupation_ultimatum }
+		}
+		complete_effect = {
+			set_global_flag = show_debug_decisions_quarior_occupation_ultimatum
+		}
+	}
+	
+	debug_hide_quarior_occupation_ultimatum = {
+		priority = -1
+		
+		fire_only_once = no
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_occupation_ultimatum
+		}
+		complete_effect = {
+			clr_global_flag = show_debug_decisions_quarior_occupation_ultimatum
+		}
+	}
+	
+	test_quarior_occupation_ultimatum = {
+		icon = eng_trade_unions_demand
+		
+		fire_only_once = yes
+		
+		fixed_random_seed = no
+		
+		cost = 0
+		
+		target_trigger = {
+			FROM = {
+				any_owned_state = {
+					any_neighbor_state = {
+						OR = {
+							is_owned_by = ROOT
+							is_claimed_by = ROOT
+						}
+					}
+				}
+				NOT = {
+					is_ally_with = ROOT
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = FROM.capital
+			}
+		}
+		
+		available = {
+			is_subject = no
+		}
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_occupation_ultimatum
+		}
+		
+		on_map_mode = map_only
+		
+		complete_effect = {
+			FROM = {
+				country_event = {
+					id = useful-events-quarior-occupation_ultimatum.1
+					days = 1
+				}
+			}
+		}
+	}
+
+	debug_show_quarior_submission = {
+		priority = 100
+		
+		fire_only_once = no
+		
+		visible = {
+			NOT = { has_global_flag = show_debug_decisions_quarior_submission }
+		}
+		complete_effect = {
+			set_global_flag = show_debug_decisions_quarior_submission
+		}
+	}
+	
+	debug_hide_quarior_submission = {
+		priority = -1
+		
+		fire_only_once = no
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_submission
+		}
+		complete_effect = {
+			clr_global_flag = show_debug_decisions_quarior_submission
+		}
+	}
+	
+	test_quarior_submission = {
+		icon = eng_trade_unions_demand
+		
+		fire_only_once = yes
+		
+		fixed_random_seed = no
+		
+		cost = 0
+		
+		target_trigger = {
+			FROM = {
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = FROM.capital
+			}
+		}
+		
+		available = {
+			is_subject = no
+		}
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_submission
+		}
+		
+		on_map_mode = map_only
+		
+		complete_effect = {
+			FROM = {
+				country_event = {
+					id = useful-events-quarior-submission.1
+					days = 1
+				}
+			}
+		}
+	}
+	
+	debug_show_quarior_referundum_anschluss = {
+		priority = 100
+		
+		fire_only_once = no
+		
+		visible = {
+			NOT = { has_global_flag = show_debug_decisions_quarior_referundum_anschluss }
+		}
+		complete_effect = {
+			set_global_flag = show_debug_decisions_quarior_referundum_anschluss
+		}
+	}
+	
+	debug_hide_quarior_referundum_anschluss = {
+		priority = -1
+		
+		fire_only_once = no
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_referundum_anschluss
+		}
+		complete_effect = {
+			clr_global_flag = show_debug_decisions_quarior_referundum_anschluss
+		}
+	}
+	
+	test_quarior_referundum_anschluss = {
+		icon = generic_political_discourse
+		
+		fire_only_once = yes
+		
+		fixed_random_seed = no
+		
+		cost = 0
+		
+		target_trigger = {
+			FROM = {
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = FROM.capital
+			}
+		}
+		
+		available = {
+			is_subject = no
+		}
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_referundum_anschluss
+		}
+		
+		on_map_mode = map_only
+		
+		complete_effect = {
+			FROM = {
+				country_event = {
+					id = useful-events-quarior-referundum_anschluss.1
+					days = 1
+				}
+			}
+		}
+	}
+
+	debug_show_quarior_annexion_ultimatum = {
+		priority = 100
+		
+		fire_only_once = no
+		
+		visible = {
+			NOT = { has_global_flag = show_debug_decisions_quarior_annexion_ultimatum }
+		}
+		complete_effect = {
+			set_global_flag = show_debug_decisions_quarior_annexion_ultimatum
+		}
+	}
+	
+	debug_hide_quarior_annexion_ultimatum = {
+		priority = -1
+		
+		fire_only_once = no
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_annexion_ultimatum
+		}
+		complete_effect = {
+			clr_global_flag = show_debug_decisions_quarior_annexion_ultimatum
+		}
+	}
+	
+	test_quarior_annexion_ultimatum = {
+		icon = eng_trade_unions_demand
+		
+		fire_only_once = yes
+		
+		fixed_random_seed = no
+		
+		cost = 0
+		
+		target_trigger = {
+			FROM = {
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = FROM.capital
+			}
+		}
+		
+		available = {
+			is_subject = no
+		}
+		
+		visible = {
+			has_global_flag = show_debug_decisions_quarior_annexion_ultimatum
+		}
+		
+		on_map_mode = map_only
+		
+		complete_effect = {
+			FROM = {
+				country_event = {
+					id = useful-events-quarior-annexion_ultimatum.1
+					days = 1
+				}
+			}
+		}
+	}
+}

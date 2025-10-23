@@ -1,0 +1,4030 @@
+add_namespace = usarework
+
+
+country_event = {
+	id = usarework.1
+	title = democrat_nomination.t
+	desc = democrat_nomination.desc
+	picture = GFX_report_event_usa_democrat_1936
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.3
+				days = 1460
+			}
+		}
+	}
+	trigger = {
+		has_government = democratic
+		NOT = {
+			has_country_flag = future_presidents_wtf
+		}
+	}
+	
+	option = {
+		name = "FDR wins in a landslide!"
+		set_country_flag = fdr_nomination
+		custom_effect_tooltip = candidate_ideology_progressive
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "John Nance Garner is a better replacement..."
+		set_country_flag = garner_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Al Smith, the dark horse!"
+		set_country_flag = smith_nomination
+		custom_effect_tooltip = candidate_ideology_progressive
+		custom_effect_tooltip = nomination_warning
+	}
+}
+
+country_event = {
+	id = usarework.2
+	title = republican_nomination.t
+	desc = republican_nomination.desc
+	picture = GFX_report_event_usa_republican_1936
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.4
+				days = 1460
+			}
+		}
+	}
+	trigger = {
+		has_government = democratic
+		NOT = {
+			has_country_flag = future_presidents_wtf
+		}
+	}
+	
+	option = {
+		name = "Alf Landon wins!"
+		set_country_flag = landon_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "William Borah has the vote!"
+		set_country_flag = borah_nomination
+		custom_effect_tooltip = candidate_ideology_progressive
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Herbert Hoover, we need experience!"
+		set_country_flag = hoover_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+}
+
+country_event = {
+	id = usarework.3
+	title = democrat_nomination.t
+	desc = democrat_nomination.desc
+	picture = GFX_report_event_usa_democrat_1940
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.5
+				days = 1460
+			}
+		}
+	}
+	trigger = {
+		has_government = democratic
+		NOT = {
+			has_country_flag = election_gridlock
+		}
+	}
+	
+	option = {
+		name = "FDR for a third term!"
+		trigger = {
+			has_country_leader = {
+				character = USA_franklin_delano_roosevelt
+				ruling_only = yes
+			}
+		}
+		custom_effect_tooltip = candidate_ideology_progressive
+		set_country_flag = fdr_nomination
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "John Nance Garner for president!"
+		set_country_flag = garner_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Al Smith, two terms!"
+		trigger = {
+			has_country_leader = {
+				character = "Al Smith"
+				ruling_only = yes
+			}
+		}
+		custom_effect_tooltip = candidate_ideology_progressive
+		set_country_flag = smith_nomination
+		custom_effect_tooltip = nomination_warning
+	}
+}
+
+country_event = {
+	id = usarework.4
+	title = republican_nomination.t
+	desc = republican_nomination.desc
+	picture = GFX_report_event_usa_republican_1940
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.6
+				days = 1460
+			}
+		}
+	}
+	trigger = {
+		has_government = democratic
+		NOT = {
+			has_country_flag = election_gridlock
+		}
+	}
+	
+	option = {
+		name = "Alf Landon! Two terms!"
+		trigger = {
+			has_country_leader = {
+				character = "Alf Landon"
+				ruling_only = yes
+			}
+		}
+		set_country_flag = landon_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Thomas E. Dewey! For America!"
+		set_country_flag = dewey_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Robert Taft! Mr. Conservative!"
+		set_country_flag = taft_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Wendell Willkie! Save the world!"
+		set_country_flag = willkie_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+}
+
+country_event = {
+	id = usarework.5
+	title = democrat_nomination.t
+	desc = democrat_nomination.desc
+	picture = GFX_report_event_usa_democrat_1944
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.7
+				days = 1460
+			}
+		}
+	}
+	trigger = {
+		has_government = democratic
+	}
+	
+	option = {
+		name = "FDR for a fourth term?"
+		trigger = {
+			has_country_leader = {
+				character = USA_franklin_delano_roosevelt
+				ruling_only = yes
+			}
+		}
+		set_country_flag = fdr_nomination
+		custom_effect_tooltip = candidate_ideology_progressive
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "John Nance Garner! One more term!"
+		trigger = {
+			has_country_leader = {
+				character = "John Nance Garner"
+				ruling_only = yes
+			}
+		}
+		set_country_flag = garner_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Harry F. Byrd! Stop this liberal nonsense!"
+		set_country_flag = byrd_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Henry A. Wallace! A REAL progressive!"
+		set_country_flag = wallace_nomination
+		custom_effect_tooltip = candidate_ideology_progressive
+		custom_effect_tooltip = nomination_warning
+	}
+}
+
+country_event = {
+	id = usarework.6
+	title = republican_nomination.t
+	desc = republican_nomination.desc
+	picture = GFX_report_event_usa_republican_1944
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.8
+				days = 1460
+			}
+		}
+	}
+	trigger = {
+		has_government = democratic
+	}
+	option = {
+		name = "Douglas MacArthur, the Pacific war hero!"
+		set_country_flag = macarthur_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Thomas E. Dewey! For America!"
+		set_country_flag = dewey_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Robert Taft! Mr. Conservative!"
+		trigger = {
+			has_country_leader = {
+				character = "Robert Taft"
+				ruling_only = yes
+			}
+		}
+		set_country_flag = taft_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Earl Warren! True Equality!"
+		set_country_flag = warren_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "John W. Bricker! A true conservative!"
+		set_country_flag = bricker_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+}
+
+country_event = {
+	id = usarework.7
+	title = democrat_nomination.t
+	desc = democrat_nomination.desc
+	picture = GFX_report_event_usa_democrat_1948
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.9
+				days = 1460
+			}
+		}
+	}
+	trigger = {
+		has_government = democratic
+	}
+	
+	option = {
+		name = "Harry Truman, a liberal America!"
+		set_country_flag = truman_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Harry F. Byrd! 2 terms!"
+		trigger = {
+			has_country_leader = {
+				character = "Harry F. Byrd"
+				ruling_only = yes
+			}
+		}
+		set_country_flag = byrd_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Henry A. Wallace! A REAL progressive!"
+		set_country_flag = wallace_nomination
+		custom_effect_tooltip = candidate_ideology_progressive
+		custom_effect_tooltip = nomination_warning
+	}
+}
+
+country_event = {
+	id = usarework.8
+	title = republican_nomination.t
+	desc = republican_nomination.desc
+	picture = GFX_report_event_usa_republican_1948
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.10
+				days = 1460
+			}
+		}
+	}
+	trigger = {
+		has_government = democratic
+	}
+	option = {
+		name = "John W. Bricker! A true conservative!"
+		set_country_flag = bricker_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+		trigger = {
+			has_country_leader = {
+				character = "John W. Bricker"
+				ruling_only = yes
+			}
+		}
+	}
+	option = {
+		name = "Douglas MacArthur, the Pacific war hero!"
+		set_country_flag = macarthur_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Thomas E. Dewey! For America!"
+		set_country_flag = dewey_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Harold Stassen, for Progressive Republicans!"
+		set_country_flag = stassen_nomination
+		custom_effect_tooltip = candidate_ideology_progressive
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Robert Taft! Mr. Conservative!"
+		set_country_flag = taft_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Earl Warren! True Equality!"
+		set_country_flag = warren_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+}
+
+country_event = {
+	id = usarework.9
+	title = democrat_nomination.t
+	desc = democrat_nomination.desc
+	picture = GFX_report_event_usa_democrat_1952
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		has_government = democratic
+	}
+	
+	option = {
+		name = "Adlai Stephenson II, grandson of the VP!"
+		set_country_flag = stephenson_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Estes Kefauver, the proud liberal!"
+		set_country_flag = kefauver_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+}
+
+country_event = {
+	id = usarework.10
+	title = republican_nomination.t
+	desc = republican_nomination.desc
+	picture = GFX_report_event_usa_republican_1952
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		has_government = democratic
+	}
+	option = {
+		name = "Thomas E. Dewey! For America!"
+		set_country_flag = dewey_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+		trigger = {
+			has_country_leader = {
+				character = "Thomas E. Dewey"
+				ruling_only = yes
+			}
+		}
+	}
+	option = {
+		name = "Dwight D. Eisenhower, the European war hero!"
+		set_country_flag = eisenhower_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Robert Taft! Mr. Conservative!"
+		set_country_flag = taft_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Douglas MacArthur, the Pacific war hero!"
+		set_country_flag = macarthur_nomination
+		custom_effect_tooltip = candidate_ideology_conservative
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Harold Stassen, for Progressive Republicans!"
+		set_country_flag = stassen_nomination
+		custom_effect_tooltip = candidate_ideology_progressive
+		custom_effect_tooltip = nomination_warning
+	}
+	option = {
+		name = "Earl Warren! True Equality!"
+		set_country_flag = warren_nomination
+		custom_effect_tooltip = candidate_ideology_liberal
+		custom_effect_tooltip = nomination_warning
+	}
+}
+
+country_event = {
+	id = usarework.11
+	title = usarework_election.t
+	desc = usarework_election.desc
+	picture = GFX_report_event_usa_voting_booth
+	is_triggered_only = yes
+	fire_only_once = no
+	immediate = {
+		if = {
+			limit = {
+				AND = {
+					date > 1936.1.1
+					date < 1940.1.1
+				}
+			}
+			set_country_flag = 1936_election_occured
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				AND = {
+					date > 1940.1.1
+					date < 1944.1.1
+				}
+			}
+			set_country_flag = 1940_election_occured
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				AND = {
+					date > 1944.1.1
+					date < 1948.1.1
+				}
+			}
+			set_country_flag = 1944_election_occured
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				AND = {
+					date > 1948.1.1
+					date < 1952.1.1
+				}
+			}
+			set_country_flag = 1948_election_occured
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				AND = {
+					date > 1952.1.1
+					date < 1956.1.1
+				}
+			}
+			set_country_flag = 1952_election_occured
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			USA_election_senate = yes
+			USA_election_house = yes
+			country_event = { id = usa.35 days = 1 }
+			if = {
+				limit = {
+					OR = {
+						has_completed_focus = USA_voter_registration_act
+						has_completed_focus = USA_union_representation_act
+					}
+				}
+				country_event = { id = usa.32 days = 730 } # midterms
+			}
+			else = {
+				country_event = { id = usa.35 days = 730 } # midterms
+			}
+		}
+	}
+	trigger = {
+		has_government = democratic
+		tag = USA
+		NOT = {
+			has_country_flag = gridlocked_election
+		}
+	}
+	option = {
+		name = usarework_election.a
+		trigger = {
+			check_variable = {
+				var = USA_democratic_party_popularity_var
+				value = 40
+	    		compare = greater_than_or_equals
+			}
+		}
+		custom_effect_tooltip = stability_pp_moddifier_dependent
+		if = {
+			limit = {
+				NOT = {
+					has_country_leader_with_trait = democrat
+				}
+			}
+			set_party_name = {
+   				ideology = democratic
+ 			    long_name = USA_democratic_party
+    			name = USA_democratic_party
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = fdr_nomination
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = garner_nomination
+				NOT = {
+					has_country_leader = {
+						character = "John Nance Garner"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "John Nance Garner"
+				picture = GFX_Portrait_USA_John_Nance_Garner
+				expire = "1965.1.1"
+				ideology = conservative_democrat
+				traits = { democrat conservative }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = smith_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Al Smith"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Al Smith"
+				picture = GFX_Portrait_USA_Al_Smith
+				expire = "1965.1.1"
+				ideology = progressive_democrat
+				traits = { democrat progressive }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = byrd_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Harry F. Byrd"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Harry F. Byrd"
+				picture = GFX_Portrait_USA_harry_f_byrd
+				expire = "1965.1.1"
+				ideology = conservative_democrat
+				traits = { democrat conservative }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = truman_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Harry S. Truman"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Harry S. Truman"
+				picture = GFX_portrait_Harry_S_Truman
+				expire = "1965.1.1"
+				ideology = democrat
+				traits = { democrat liberal }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = stephenson_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Adlai Stephenson II"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Adlai Stephenson II"
+				picture = GFX_Portrait_USA_adlai_stephenson
+				expire = "1965.1.1"
+				ideology = democrat
+				traits = { democrat liberal }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = kefauver_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Estes Kefauver"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Estes Kefauver"
+				picture = GFX_Portrait_USA_estes_kefauver
+				expire = "1965.1.1"
+				ideology = democrat
+				traits = { democrat liberal }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = wallace_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Henry A. Wallace"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Henry A. Wallace"
+				picture = GFX_Portrait_USA_Henry_A_Wallace
+				expire = "1965.1.1"
+				ideology = progressive_democrat
+				traits = { democrat progressive }
+			}
+		}
+		
+		clr_country_flag = landon_nomination
+		clr_country_flag = macarthur_nomination
+		clr_country_flag = eisenhower_nomination
+		clr_country_flag = warren_nomination
+		clr_country_flag = stassen_nomination
+		clr_country_flag = hoover_nomination
+		clr_country_flag = bricker_nomination
+		clr_country_flag = taft_nomination
+		clr_country_flag = dewey_nomination
+		clr_country_flag = willkie_nomination
+		clr_country_flag = borah_nomination
+		clr_country_flag = fdr_nomination
+		clr_country_flag = garner_nomination
+		clr_country_flag = smith_nomination
+		clr_country_flag = byrd_nomination
+		clr_country_flag = truman_nomination
+		clr_country_flag = stephenson_nomination
+		clr_country_flag = kefauver_nomination
+		clr_country_flag = wallace_nomination
+		add_to_temp_variable = {
+			temp = USA_democratic_party_popularity_var
+		}
+		add_to_temp_variable = {
+			temp = -50
+		}
+		multiply_temp_variable = {
+			temp = 4
+		}
+		add_political_power = temp
+		divide_temp_variable = { temp = 4000 }
+		add_stability = temp
+	}
+	option = {
+		name = usarework_election.b
+		trigger = {
+			check_variable = {
+    			var = USA_republican_party_popularity_var
+    			value = 40
+    			compare = greater_than_or_equals
+			}
+		}
+		custom_effect_tooltip = stability_pp_moddifier_dependent
+		if = {
+			limit = {
+				NOT = {
+					has_country_leader_with_trait = republican
+				}
+			}
+			set_party_name = {
+   				ideology = democratic
+ 			    long_name = USA_republican_party
+    			name = USA_republican_party
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = landon_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Alf Landon"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Alf Landon"
+				picture = GFX_portrait_Alf_Landon
+				expire = "1965.1.1"
+				ideology = republican
+				traits = { republican liberal }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = borah_nomination
+				NOT = {
+					has_country_leader = {
+						character = "William Borah"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "William Borah"
+				picture = GFX_Portrait_USA_william_borah
+				expire = "1965.1.1"
+				ideology = liberal_republican
+				traits = { republican progressive }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = hoover_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Herbert Hoover"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Herbert Hoover"
+				picture = GFX_Portrait_USA_Herbert_Hoover
+				expire = "1965.1.1"
+				ideology = conservative_republican
+				traits = { republican conservative }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = dewey_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Thomas E. Dewey"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Thomas E. Dewey"
+				picture = GFX_portrait_Thomas_E_Dewey
+				expire = "1965.1.1"
+				ideology = republican
+				traits = { republican liberal }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = willkie_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Wendell Willkie"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Wendell Willkie"
+				picture = GFX_portrait_Wendell_Wilkie
+				expire = "1965.1.1"
+				ideology = republican
+				traits = { republican liberal }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = taft_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Robert A. Taft"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Robert Taft"
+				picture = GFX_Portrait_USA_robert_taft
+				expire = "1965.1.1"
+				ideology = conservative_republican
+				traits = { republican conservative }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = macarthur_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Douglas MacArthur"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Douglas MacArthur"
+				picture = GFX_portrait_Douglas_MacArthur
+				expire = "1965.1.1"
+				ideology = conservative_republican
+				traits = { republican conservative }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = warren_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Earl Warren"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Earl Warren"
+				picture = GFX_Portrait_USA_earl_warren
+				expire = "1965.1.1"
+				ideology = republican
+				traits = { republican liberal }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = bricker_nomination
+				NOT = {
+					has_country_leader = {
+						character = "John W. Bricker"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "John W. Bricker"
+				picture = GFX_Portrait_USA_john_w_bricker
+				expire = "1965.1.1"
+				ideology = conservative_republican
+				traits = { republican conservative }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = stassen_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Harold Stassen"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Harold Stassen"
+				picture = GFX_Portrait_USA_harold_stassen
+				expire = "1965.1.1"
+				ideology = liberal_republican
+				traits = { republican progressive }
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = eisenhower_nomination
+				NOT = {
+					has_country_leader = {
+						character = "Dwight D. Eisenhower"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+				name = "Dwight D. Eisenhower"
+				picture = GFX_portrait_USA_dwight_d_eisenhower
+				expire = "1965.1.1"
+				ideology = republican
+				traits = { republican liberal }
+			}
+		}
+		clr_country_flag = landon_nomination
+		clr_country_flag = macarthur_nomination
+		clr_country_flag = eisenhower_nomination
+		clr_country_flag = warren_nomination
+		clr_country_flag = stassen_nomination
+		clr_country_flag = hoover_nomination
+		clr_country_flag = bricker_nomination
+		clr_country_flag = taft_nomination
+		clr_country_flag = dewey_nomination
+		clr_country_flag = willkie_nomination
+		clr_country_flag = borah_nomination
+		clr_country_flag = fdr_nomination
+		clr_country_flag = garner_nomination
+		clr_country_flag = smith_nomination
+		clr_country_flag = byrd_nomination
+		clr_country_flag = truman_nomination
+		clr_country_flag = stephenson_nomination
+		clr_country_flag = kefauver_nomination
+		clr_country_flag = wallace_nomination
+		add_to_temp_variable = {
+			temp = USA_republican_party_popularity_var
+		}
+		add_to_temp_variable = {
+			temp = -50
+		}
+		multiply_temp_variable = {
+			temp = 4
+		}
+		add_political_power = temp
+		divide_temp_variable = { temp = 4000 }
+		add_stability = temp
+	}
+	option = {
+		name = "A gridlock!"
+		trigger = {
+			check_variable = {
+    			var = USA_third_party_popularity_var
+    			value = 35
+    			compare = greater_than_or_equals
+			}
+		}
+		set_country_flag = gridlocked_election
+		add_stability = -0.15
+		add_political_power = -100
+		trigger = { date < 1940.1.1 }
+		country_event = {
+			id = usarework.16
+			days = 7
+		}
+		set_country_flag = election_gridlock
+		complete_national_focus = USA_gridlock
+		clr_country_flag = landon_nomination
+		clr_country_flag = macarthur_nomination
+		clr_country_flag = eisenhower_nomination
+		clr_country_flag = warren_nomination
+		clr_country_flag = stassen_nomination
+		clr_country_flag = hoover_nomination
+		clr_country_flag = bricker_nomination
+		clr_country_flag = taft_nomination
+		clr_country_flag = dewey_nomination
+		clr_country_flag = willkie_nomination
+		clr_country_flag = borah_nomination
+		clr_country_flag = fdr_nomination
+		clr_country_flag = garner_nomination
+		clr_country_flag = smith_nomination
+		clr_country_flag = byrd_nomination
+		clr_country_flag = truman_nomination
+		clr_country_flag = stephenson_nomination
+		clr_country_flag = kefauver_nomination
+		clr_country_flag = trump_nomination
+		clr_country_flag = reagan_nomination
+		clr_country_flag = nixon_nomination
+		clr_country_flag = jfk_nomination
+		clr_country_flag = obama_nomination
+		clr_country_flag = biden_nomination
+	}
+}
+country_event = {
+	id = usarework.12
+	title = intro_event.t
+	desc = intro_event.desc
+	picture = GFX_report_event_usa_macarthur_speech
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.2
+				days = 163
+			}
+			country_event = {
+				id = usarework.1
+				days = 178
+			}
+			add_ideas = coca_cola_inf
+			add_ideas = disney_inf
+			add_ideas = ford_inf
+		}
+	}
+	trigger = {
+		has_government = democratic
+	}
+	
+	option = {
+		name = "Thanks!"
+	}
+	option = {
+		name = "May I see the alternate history options?"
+		trigger = {
+			always = false
+		}
+		country_event = usarework.13
+	}
+}
+country_event = {
+	id = usarework.13
+	title = althist_options.t
+	desc = althist_options.desc
+	picture = GFX_report_event_generic_usa_treaty
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		has_government = democratic
+	}
+	
+	option = {
+		name = "Nevermind."
+		custom_effect_tooltip = "The game will go as usual."
+	}
+	option = {
+		name = "Future Presidents"
+		custom_effect_tooltip = "Presidential candidates will only be from after the WW2 timeframe, and will only be some of the more influential candidates from each party."
+		set_country_flag = future_presidents_wtf
+		hidden_effect = {
+			country_event = {
+				id = usarework.15
+				days = 163
+			}
+			country_event = {
+				id = usarework.14
+				days = 178
+			}
+		}
+	}
+	option = {
+		name = "Colonial Americas"
+		custom_effect_tooltip = "The Americas will return to familiar borders..."
+		release = GUM
+		release = HAW
+		USA = {
+			set_autonomy = {
+    			target = PHI
+    			autonomous_state = autonomy_free
+    			end_wars = yes
+    			end_civil_wars = no
+			}
+		}
+		SPR = {
+			annex_country = { target = MEX transfer_troops = no }
+			annex_country = { target = DOM transfer_troops = no }
+			annex_country = { target = GUA transfer_troops = no }
+			annex_country = { target = ELS transfer_troops = no }
+			annex_country = { target = HON transfer_troops = no }
+			annex_country = { target = NIC transfer_troops = no }
+			annex_country = { target = COS transfer_troops = no }
+			annex_country = { target = PAN transfer_troops = no }
+			annex_country = { target = COL transfer_troops = no }
+			annex_country = { target = VEN transfer_troops = no }
+			annex_country = { target = ECU transfer_troops = no }
+			annex_country = { target = PRU transfer_troops = no }
+			annex_country = { target = BOL transfer_troops = no }
+			annex_country = { target = CHL transfer_troops = no }
+			annex_country = { target = ARG transfer_troops = no }
+			annex_country = { target = URG transfer_troops = no }
+			annex_country = { target = PAR transfer_troops = no }
+			annex_country = { target = CUB transfer_troops = no }
+			transfer_state = 378
+			transfer_state = 377
+			transfer_state = 376
+			transfer_state = 379
+			transfer_state = 380
+			transfer_state = 375
+			transfer_state = 685
+			transfer_state = 686
+			transfer_state = 366
+			every_state = {
+				limit = {
+					NOT = {
+						is_core_of = SPR
+					}
+					is_controlled_by = SPR
+					OR = {
+						is_on_continent = north_america
+						is_on_continent = south_america
+					}
+				}
+				set_resistance = 0
+				set_compliance = 70
+			}
+		}
+		FRA = {
+			annex_country = { target = HAI transfer_troops = no }
+			transfer_state = 371
+			transfer_state = 372
+			transfer_state = 374
+			transfer_state = 373
+			transfer_state = 383
+			transfer_state = 384
+			transfer_state = 382
+			transfer_state = 381
+			transfer_state = 388
+			transfer_state = 389
+			transfer_state = 391
+			transfer_state = 392
+			transfer_state = 390
+			every_state = {
+				limit = {
+					NOT = {
+						is_core_of = FRA
+					}
+					is_controlled_by = FRA
+					OR = {
+						is_on_continent = north_america
+						is_on_continent = south_america
+					}
+				}
+				set_resistance = 0
+				set_compliance = 70
+			}
+		}
+		SOV = {
+			transfer_state = 463
+			transfer_state = 650
+			every_state = {
+				limit = {
+					NOT = {
+						is_core_of = SOV
+					}
+					is_controlled_by = SOV
+					OR = {
+						is_on_continent = north_america
+						is_on_continent = south_america
+					}
+				}
+				set_resistance = 0
+				set_compliance = 70
+			}
+		}
+		ENG = {
+			transfer_state = 385
+			transfer_state = 386
+			transfer_state = 387
+			every_state = {
+				limit = {
+					NOT = {
+						is_core_of = ENG
+					}
+					is_controlled_by = ENG
+					OR = {
+						is_on_continent = north_america
+						is_on_continent = south_america
+					}
+				}
+				set_resistance = 0
+				set_compliance = 70
+			}
+			puppet = USA
+			set_autonomy = {
+				target = USA
+				autonomous_state = autonomy_dominion
+				end_wars = no
+				end_civil_wars = no
+			}
+		}
+		POR = {
+			annex_country = { target = BRA transfer_troops = no }
+			every_state = {
+				limit = {
+					NOT = {
+						is_core_of = POR
+					}
+					is_controlled_by = POR
+					OR = {
+						is_on_continent = north_america
+						is_on_continent = south_america
+					}
+				}
+				set_resistance = 0
+				set_compliance = 70
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.14
+	title = future_democrat_nomination.t
+	desc = future_nomination.desc
+	picture = GFX_report_event_usa_democrat_future
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+		has_government = democratic
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.14
+				days = 1460
+			}
+		}
+	}
+	option = {
+		name = "O B A M N A"
+		custom_effect_tooltip = nomination_warning
+		set_country_flag = obama_nomination
+	}
+	option = {
+		name = "Joe Biden. Joe Biden!"
+		custom_effect_tooltip = nomination_warning
+		set_country_flag = biden_nomination
+	}
+	option = {
+		name = "JFK. Ask what you can do for your country!"
+		custom_effect_tooltip = nomination_warning
+		set_country_flag = jfk_nomination
+	}
+}
+country_event = {
+	id = usarework.15
+	title = future_republican_nomination.t
+	desc = future_nomination.desc
+	picture = GFX_report_event_usa_republican_future
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+		has_government = democratic
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.15
+				days = 1460
+			}
+		}
+	}
+	option = {
+		name = "Reagan! Let's Make America Great Again!"
+		custom_effect_tooltip = nomination_warning
+		set_country_flag = reagan_nomination
+	}
+	option = {
+		name = "TRUMP! MAGA!"
+		custom_effect_tooltip = nomination_warning
+		set_country_flag = trump_nomination
+	}
+	option = {
+		name = "Tricky Dick Nixon!"
+		custom_effect_tooltip = nomination_warning
+		set_country_flag = nixon_nomination
+	}
+}
+country_event = {
+	id = usarework.16
+	title = gridlocked_election.t
+	desc = gridlocked_election.desc
+	picture = GFX_report_event_generic_parliament
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "This is not going to go well."
+		add_stability = -0.1
+		add_popularity = {
+    		ideology = fascism
+   			popularity = 0.05
+		}
+		add_popularity = {
+    		ideology = communism
+   			popularity = 0.05
+		}
+		add_popularity = {
+    		ideology = neutrality
+   			popularity = 0.05
+		}
+		add_popularity = {
+    		ideology = democratic
+   			popularity = -0.1
+		}
+		country_event = {
+			id = usarework.17
+			days = 10
+		}
+		add_ideas = rioting
+	}
+}
+country_event = {
+	id = usarework.17
+	title = macarthur_coup_plan.t
+	desc = macarthur_coup_plan.desc
+	picture = GFX_report_event_usa_macarthur_plan
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "It is our only choice..."
+		add_stability = 0.05
+		add_political_power = -100
+		custom_effect_tooltip = accept_coup_warning
+		hidden_effect = {
+			country_event = {
+				id = usarework.18
+				days = 14
+			}
+		}
+	}
+	option = {
+		name = "That would be the downfall of our republic."
+		add_stability = -0.1
+		custom_effect_tooltip = reject_coup_warning
+		country_event = {
+			id = usarework.19
+			days = 14
+		}
+		hidden_effect = {
+			complete_national_focus = USA_falling_apart
+		}
+	}
+}
+country_event = {
+	id = usarework.18
+	title = macarthur_coup.t
+	desc = macarthur_coup.desc
+	picture = GFX_report_event_usa_macarthur_coup
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "There is no turning back now."
+		add_stability = -0.1
+		USA_douglas_macarthur = {
+			add_country_leader_role = {
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = { american_caesar dictator }
+				}
+				promote_leader = yes
+			}
+		}
+		set_politics = {
+    		ruling_party = neutrality
+    		elections_allowed = no
+		}
+		set_party_name = {
+    		ideology = neutrality
+   			long_name = USA_military_party_long
+		    name = USA_military_party
+		}
+		add_popularity = {
+    		ideology = neutrality
+    		popularity = 0.1
+		}
+		add_popularity = {
+    		ideology = democratic
+    		popularity = -0.05
+		}
+		set_cosmetic_tag = USA_CSA
+	}
+}
+country_event = {
+	id = usarework.19
+	title = pickside.t
+	desc = pickside.desc
+	picture = GFX_report_event_usa_macarthur_coup
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {country_event = {
+			id = usarework.20
+			days = 14
+		}}
+	}
+	option = {
+		name = "What the hell? This is a clear violation of the Constitution!"
+		set_country_flag = side_with_progressives
+		add_stability = -0.1
+		custom_effect_tooltip = pickaside_progs
+		complete_national_focus = USA_side_with_people
+	}
+	option = {
+		name = "These damned socialists are overreacting..."
+		set_country_flag = side_with_congress
+		add_stability = -0.1
+		custom_effect_tooltip = pickaside_cong
+		complete_national_focus = USA_side_with_nation
+	}
+}
+country_event = {
+	id = usarework.20
+	title = unionstrike.t
+	desc = unionstrike.desc
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {country_event = {
+			id = usarework.21
+			days = 14
+		}}
+	}
+	option = {
+		name = "You can't run a country without your economy!"
+		trigger = {
+			has_country_flag = side_with_progressives
+		}
+		add_stability = -.15
+		add_popularity = {
+    		ideology = democratic
+    		popularity = 0.1
+		}
+		add_popularity = {
+    		ideology = communism
+    		popularity = 0.1
+		}
+		add_popularity = {
+    		ideology = neutrality
+    		popularity = -0.1
+		}
+		add_timed_idea = {
+    		idea = strikes_1
+    		days = 28
+		}
+	}
+	option = {
+		name = "They will pay!"
+		trigger = {
+			has_country_flag = side_with_congress
+		}
+		add_stability = -.15
+		add_popularity = {
+    		ideology = democratic
+    		popularity = 0.1
+		}
+		add_popularity = {
+    		ideology = communism
+    		popularity = 0.1
+		}
+		add_popularity = {
+    		ideology = neutrality
+    		popularity = -0.1
+		}
+		add_timed_idea = {
+    		idea = strikes_1
+    		days = 28
+		}
+	}
+}
+country_event = {
+	id = usarework.21
+	title = congress_takeover.t
+	desc = congress_takeover.desc
+	picture = GFX_report_event_usa_macarthur_coup
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {country_event = {
+			id = usarework.22
+			days = 7
+		}
+		complete_national_focus = USA_congress_coup
+		}
+	}
+	option = {
+		name = "We must take down this illegitimate government!"
+		trigger = {
+			has_country_flag = side_with_progressives
+		}
+		set_party_name = {
+    		ideology = neutrality
+   			long_name = USA_congress_party_long
+		    name = USA_congress_party
+		}
+		create_country_leader = {
+			name = "John Nance Garner"
+			picture = GFX_Portrait_USA_John_Nance_Garner
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = { democrat conservative }
+		}
+		set_politics = {
+    		ruling_party = neutrality
+    		elections_allowed = no
+		}
+		add_stability = -.1
+		add_popularity = {
+    		ideology = democratic
+    		popularity = -0.15
+		}
+		add_popularity = {
+    		ideology = neutrality
+    		popularity = 0.15
+		}
+		add_popularity = {
+    		ideology = communism
+    		popularity = 0.05
+		}
+		set_cosmetic_tag = USA_congress
+	}
+	option = {
+		name = "Trust us, we're DEFINITELY not trying to consolodate power..."
+		trigger = {
+			has_country_flag = side_with_congress
+		}
+		set_party_name = {
+    		ideology = neutrality
+   			long_name = USA_congress_party_long
+		    name = USA_congress_party
+		}
+		create_country_leader = {
+			name = "John Nance Garner"
+			picture = GFX_Portrait_USA_John_Nance_Garner
+			expire = "1965.1.1"
+			ideology = oligarchism
+			traits = { democrat conservative }
+		}
+		set_politics = {
+    		ruling_party = neutrality
+    		elections_allowed = no
+		}
+		add_stability = -.1
+		add_popularity = {
+    		ideology = democratic
+    		popularity = -0.15
+		}
+		add_popularity = {
+    		ideology = neutrality
+    		popularity = 0.15
+		}
+		add_popularity = {
+    		ideology = communism
+    		popularity = 0.05
+		}
+		set_cosmetic_tag = USA_congress
+	}
+}
+country_event = {
+	id = usarework.22
+	title = colonies_break.t
+	desc = colonies_break.desc
+	picture = GFX_report_event_DEN_celebration
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {country_event = {
+			id = usarework.23
+			days = 7
+		}}
+	}
+	option = {
+		name = "We'll get back to those traitors later."
+		release = PUE
+		release = HAW
+		USA = {
+			set_autonomy = {
+    			target = PHI
+    			autonomous_state = autonomy_free
+    			end_wars = yes
+    			end_civil_wars = no
+			}
+		}
+		every_state = {
+			limit = {
+				is_core_of = GUM
+				is_owned_and_controlled_by = USA
+			}
+			transfer_state_to = JAP
+		}
+		ENG = {
+			transfer_state = 685
+		}
+		CAN = {
+			transfer_state = 463
+		}
+		SOV = {
+			transfer_state = 650
+		}
+		every_state = {
+			limit = {
+				is_core_of = PUE
+			}
+			add_claim_by = USA
+		}
+		every_state = {
+			limit = {
+				is_core_of = HAW
+			}
+			add_claim_by = USA
+		}
+		every_state = {
+			limit = {
+				is_core_of = PHI
+			}
+			add_claim_by = USA
+		}
+		every_state = {
+			limit = {
+				is_core_of = GUM
+				is_owned_by = JAP
+				NOT = {
+					OR = {
+						is_core_of = JAP
+						state = 648
+					}
+				}
+			}
+			add_claim_by = USA
+			set_state_flag = USA_former_claimed_land
+		}
+		add_state_claim = 685
+		add_state_claim = 463
+		add_state_claim = 650
+		685 = {
+			set_state_flag = USA_former_claimed_land
+		}
+		463 = {
+			set_state_flag = USA_former_claimed_land
+		}
+		650 = {
+			set_state_flag = USA_former_claimed_land
+		}
+	}
+}
+country_event = {
+	id = usarework.23
+	title = militias_mobilize.t
+	desc = militias_mobilize.desc
+	picture = GFX_report_event_fascist_militia
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {country_event = {
+			id = usarework.24
+			days = 7
+		}}
+	}
+	option = {
+		name = "Is a civil war on the horizon?"
+		add_stability = -.15
+		add_war_support = .1
+		add_popularity = {
+    		ideology = communism
+    		popularity = 0.15
+		}
+		add_popularity = {
+    		ideology = neutrality
+    		popularity = 0.15
+		}
+		add_manpower = -100000
+	}
+}
+country_event = {
+	id = usarework.24
+	title = 2uscw.t
+	desc = 2uscw.desc
+	picture = GFX_report_event_ger_civil_war
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			remove_ideas = great_depression
+			set_party_name = {
+    			ideology = democratic
+   				long_name = USA_progressive_party
+		    	name = USA_progressive_party
+			}
+			remove_ideas = rioting
+			remove_ideas = new_deal
+			complete_national_focus = USA_civil_war
+		}
+	}
+	option = {
+		name = "We will end those authoritarian tyrants!"
+		trigger = {
+			has_country_flag = side_with_progressives
+		}
+		add_ideas = war_economy
+		add_ideas = limited_conscription
+		create_country_leader = {
+			name = "William Borah"
+			picture = GFX_Portrait_USA_william_borah
+			expire = "1965.1.1"
+			ideology = progressivism
+			traits = { progressive }
+		}
+		set_popularities = {
+			democratic = 45
+			communism = 40
+			neutrality = 15
+			fascism = 0
+		}
+		start_civil_war = {
+			ruling_party = democratic
+			ideology = neutrality
+			keep_all_characters = yes
+			size = 0.4
+			capital = 361
+			states = { 379 387 380 377 381 388 382 376 389 390 384 383 374 375 373 372 371 369 368 370 367 365 366 364 363 362 316 361 816 }
+		}
+		hidden_effect = {load_oob = USA_civilwar_prog}
+		set_cosmetic_tag = USA_progressive_democratic
+		hidden_effect = {
+			random_other_country = {
+				limit = {
+					original_tag = USA
+					has_government = neutrality
+				}
+				set_stability = 0.8
+				set_war_support = 0.5
+				load_oob = "USA_civilwar_cong"
+				set_popularities = {
+					democratic = 18
+					communism = 2
+					neutrality = 75
+					fascism = 5
+				}
+				set_cosmetic_tag = USA_congress
+				create_country_leader = {
+					name = "John Nance Garner"
+					picture = GFX_Portrait_USA_John_Nance_Garner
+					expire = "1965.1.1"
+					ideology = oligarchism
+					traits = { democrat conservative }
+				}
+			}
+		}
+		set_capital = {state = 395}
+		news_event = usanews.1
+	}
+	option = {
+		name = "We will end those socialist insurgents!"
+		trigger = {
+			has_country_flag = side_with_congress
+		}
+		add_ideas = war_economy
+		add_ideas = limited_conscription
+		set_popularities = {
+			democratic = 18
+			communism = 2
+			neutrality = 75
+			fascism = 5
+		}
+		start_civil_war = {
+			ruling_party = neutrality
+			ideology = democratic
+			keep_all_characters = yes
+			size = 0.4
+			capital = 395
+			states = { 394 395 396 393 261 360 359 358 357 391 392 378 385 386 1019 1020 1021 1022 1023 }
+		}
+		hidden_effect = {load_oob = USA_civilwar_cong}
+		hidden_effect = {
+			random_other_country = {
+				limit = {
+					original_tag = USA
+					has_government = democratic
+				}
+				set_stability = 0.8
+				set_war_support = 0.5
+				load_oob = "USA_civilwar_prog"
+				set_popularities = {
+					democratic = 45
+					communism = 40
+					neutrality = 15
+					fascism = 0
+				}
+				set_cosmetic_tag = USA_progressive_democratic
+				create_country_leader = {
+					name = "William Borah"
+					picture = GFX_Portrait_USA_william_borah
+					expire = "1965.1.1"
+					ideology = progressivism
+					traits = { progressive }
+				}
+			}
+		}
+		news_event = usanews.1
+	}
+}
+news_event = {
+	id = usanews.1
+	title = 2uscw.t
+	desc = 2uscw.desc
+	picture = GFX_news_event_ger_civil_war
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "They didn't learn from the first time?"
+		trigger = {
+			NOT = {
+				original_tag = USA
+			}
+		}
+	}
+	option = {
+		name = "And we will win!"
+		trigger = {
+			original_tag = USA
+		}
+	}
+}
+news_event = {
+	id = usanews.2
+	title = 2uscwend.t
+	desc = 2uscwend.desc
+	picture = GFX_news_event_050
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Now they have to really reunify the country..."
+		trigger = {
+			NOT = {
+				original_tag = USA
+			}
+		}
+	}
+	option = {
+		name = "Now, we can fix our country!"
+		trigger = {
+			original_tag = USA
+		}
+	}
+}
+country_event = {
+	id = usarework.25
+	title = 2uscwend.t
+	desc = 2uscwend.desc
+	picture = GFX_report_event_usa_macarthur_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Now, we must mend the cracks that divided our nation."
+		add_ideas = post_cw_problems
+		add_ideas = civilian_economy
+		delete_unit_template_and_units = {
+    		division_template = "Progressive Regiment"
+    		disband = no #will refund equipment and manpower
+		}
+		delete_unit_template_and_units = {
+    		division_template = "Loyalist Regiment"
+    		disband = no #will refund equipment and manpower
+		}
+	}
+}
+country_event = {
+	id = usatest.1
+	title = usatest.t
+	desc = usatest.desc
+	picture = GFX_report_event_usa_macarthur_speech
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "test"
+	}
+}
+country_event = {
+	id = usarework.26
+	title = leader_question.t
+	desc = leader_question.desc
+	picture = GFX_report_event_SOV_litvinov_beck
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Garner is a 'president' capable enough."
+		add_stability = .1
+		add_popularity = {
+    		ideology = neutrality
+    		popularity = 0.1
+		}
+		add_political_power = 50
+		complete_national_focus = USA_stick_with_garner
+	}
+	option = {
+		name = "Perhaps we need a return to old ways?"
+		add_stability = -.1
+		add_popularity = {
+    		ideology = neutrality
+    		popularity = -0.15
+		}
+		add_political_power = 100
+		complete_national_focus = USA_old_ways
+	}
+}
+country_event = {
+	id = usarework.27
+	title = select_king.t
+	desc = select_king.desc
+	picture = GFX_report_event_SOV_litvinov_beck
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "We need a Brit."
+		trigger = {
+			ENG = {
+				NOT = {
+					has_completed_focus = ENG_the_kings_party
+				}
+			}
+		}
+		add_stability = -.1
+		add_popularity = {
+    		ideology = neutrality
+    		popularity = -0.15
+		}
+		custom_effect_tooltip = "Are we sure we want to reinstate the monarchs that oppressed us before?"
+		country_event = usarework.30
+	}
+	option = {
+		name = "We demand a German!"
+		trigger = {
+			GER = {
+				NOT = {
+					has_completed_focus = GER_oppose_hitler
+				}
+			}
+		}
+		add_stability = -.05
+		add_popularity = {
+    		ideology = neutrality
+    		popularity = -0.05
+		}
+		custom_effect_tooltip = "Getting warmer, but maybe we want more... domestic options."
+		country_event = usarework.29
+	}
+	option = {
+		name = "We need an American monarch!"
+		add_stability = 0.05
+		add_popularity = {
+    		ideology = neutrality
+    		popularity = 0.1
+		}
+		custom_effect_tooltip = "This will probably be the most popular choice with the people."
+		country_event = usarework.28
+	}
+}
+country_event = {
+	id = usarework.28
+	title = usa_king.t
+	desc = usa_king.desc
+	picture = GFX_report_event_carol_party
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "We need a descendant of Mr. Washington himself!"
+		set_country_flag = washingtons_selected
+	}
+	option = {
+		name = "The Kennedys are very politically experienced."
+		set_country_flag = kennedys_selected
+	}
+}
+country_event = {
+	id = usarework.29
+	title = de_king.t
+	desc = de_king.desc
+	picture = GFX_report_event_carol_party
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Wilhelm III is the obvious choice in this case."
+		set_country_flag = kaiser_selected
+	}
+	option = {
+		name = "Shouldn't we give princess Louise a try?"
+		set_country_flag = kaiserin_selected
+	}
+}
+country_event = {
+	id = usarework.30
+	title = uk_king.t
+	desc = uk_king.desc
+	picture = GFX_report_event_carol_party
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Obviously, Edward VIII."
+		set_country_flag = uk_king_selected
+	}
+	option = {
+		name = "But his wife is the American here..."
+		set_country_flag = uk_queen_selected
+	}
+}
+country_event = {
+	id = usarework.31
+	title = kingdom_of_america.t
+	desc = kingdom_of_america.desc
+	picture = GFX_report_event_por_return_of_the_monarchy
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Long live the United Kingdom of America!"
+		set_cosmetic_tag = USA_kingdom_of_america
+		if = {
+			limit = {
+				has_country_flag = washingtons_selected
+			}
+			create_country_leader = {
+				name = "Robert I"
+				picture = GFX_Portrait_USA_robert_b_lee
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					constitutional_monarch_minor
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = kennedys_selected
+			}
+			create_country_leader = {
+				name = "Joseph I"
+				picture = GFX_Portrait_USA_joseph_kennedy
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					constitutional_monarch_minor
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = uk_king_selected
+			}
+			create_country_leader = {
+				name = "Edward I"
+				picture = GFX_portrait_Edward_VIII
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					unpopular_monarch constitutional_monarch_minor
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = uk_queen_selected
+			}
+			create_country_leader = {
+				name = "Wallis I"
+				picture = GFX_portrait_eng_wallis_simpson
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					unpopular_monarch socialite_connections wallis_fancy_title constitutional_monarch_minor
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = kaiser_selected
+			}
+			create_country_leader = {
+				name = "William I"
+				picture = GFX_portrait_ger_wilhelm_iii
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					unpopular_monarch constitutional_monarch_minor
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = kaiserin_selected
+			}
+			create_country_leader = {
+				name = "Louise I"
+				picture = GFX_portrait_ger_victoria_louise
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					unpopular_monarch kaiserin_of_the_people constitutional_monarch_minor
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.32
+	title = democratic_opposition.t
+	desc = democratic_opposition.desc
+	picture = GFX_report_event_DEN_celebration
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "[USA.GetLeader] is not amused."
+		add_ideas = democratic_opposition_voicing_protests
+		set_party_name = {
+			ideology = democratic
+		    long_name = USA_democratic_republican_party_long
+			name = USA_democratic_republican_party
+		}
+		create_country_leader = {
+			name = "Earl Warren"
+			picture = GFX_Portrait_USA_earl_warren
+			expire = "1965.1.1"
+			ideology = republican
+			traits = { republican liberal }
+		}
+		add_stability = -0.05
+		add_popularity = {
+    		ideology = democratic
+    		popularity = 0.1
+		}
+	}
+}
+country_event = {
+	id = usatest.2
+	title = "debug cosmetics"
+	desc = "damn isn't this helpful isn't it"
+	picture = GFX_report_event_chinese_japanese_handshake
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "coke"
+		set_cosmetic_tag = USA_coca_cola
+	}
+	option = {
+		name = "disney"
+		set_cosmetic_tag = USA_disney
+	}
+	option = {
+		name = "ford"
+		set_cosmetic_tag = USA_ford
+	}
+}
+country_event = {
+	id = usarework.33
+	title = corrupt_deals.t
+	desc = corrupt_deals.desc
+	picture = GFX_report_event_bose_meeting
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Seems a liitle corrupt to me..."
+		add_stability = 0.025
+	}
+	option = {
+		name = "What are my options, gentlemen?"
+		add_stability = -0.05
+		country_event = {
+			id = usarework.34
+			days = 3
+		}
+	}
+}
+country_event = {
+	id = usarework.34
+	title = companies_meeting.t
+	desc = companies_meeting.desc
+	picture = GFX_report_event_bose_meeting
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Things do go better with Coke."
+		swap_ideas = {
+			remove_idea = coca_cola_inf
+			add_idea = coca_cola_inf_2
+		}
+	}
+	option = {
+		name = "We need not to stay in the present, but look to Tomorrowland!"
+		swap_ideas = {
+			remove_idea = disney_inf
+			add_idea = disney_inf_2
+		}
+	}
+	option = {
+		name = "We'll need a car company if we want to get places."
+		swap_ideas = {
+			remove_idea = ford_inf
+			add_idea = ford_inf_2
+		}
+	}
+}
+country_event = {
+	id = usarework.35
+	title = prog_convention_1.t
+	desc = prog_convention_1.desc
+	picture = GFX_report_event_usa_republican_1936
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = usarework.52
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = "We will never give in to Communists!"
+		add_popularity = {
+    		ideology = democratic
+    		popularity = 0.1
+		}
+		add_stability = 0.05
+		country_event = {
+			id = usarework.36
+			days = 3
+		}
+	}
+	option = {
+		name = "Perhaps we can cooperate?"
+		add_popularity = {
+    		ideology = democratic
+    		popularity = -0.1
+		}
+		add_stability = 0.1
+		set_party_name = {
+			ideology = democratic
+		    long_name = USA_progressive_party_l_long
+			name = USA_progressive_party_l
+		}
+		set_party_name = {
+			ideology = communism
+		    long_name = USA_progressive_party_s_long
+			name = USA_progressive_party_s
+		}
+		country_event = {
+			id = usarework.41
+			days = 5
+		}
+	}
+}
+country_event = {
+	id = usarework.36
+	title = prog_convention_2.t
+	desc = prog_convention_2.desc
+	picture = GFX_report_event_communists_cheer
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "The police rushed in, and arrested the conspirators."
+		add_popularity = {
+    		ideology = communism
+    		popularity = -0.1
+		}
+		add_stability = 0.05
+		country_event = {
+			id = usarework.39
+			days = 5
+		}
+	}
+	option = {
+		name = "The communists succeed!"
+		add_popularity = {
+    		ideology = democratic
+    		popularity = -0.1
+		}
+		add_popularity = {
+    		ideology = communism
+    		popularity = 0.15
+		}
+		add_stability = -0.15
+		country_event = {
+			id = usarework.37
+			days = 5
+		}
+	}
+}
+country_event = {
+	id = usarework.37
+	title = prog_convention_4.t
+	desc = prog_convention_4.desc
+	picture = GFX_report_event_ast_transfer_singapore
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "We wish him luck!"
+		custom_effect_tooltip = "Our president will be inagurated in one month."
+		add_political_power = 10
+		country_event = {
+			id = usarework.38
+			days = 2
+		}
+		set_country_flag = earl_browder_president_elect
+		set_country_flag = president_selected_prog
+	}
+}
+country_event = {
+	id = usarework.38
+	title = prog_convention_3.t
+	desc = prog_convention_3.desc
+	picture = GFX_report_event_usa_macarthur_coup
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "To be honest, never really cared."
+		add_political_power = -50
+	}
+}
+country_event = {
+	id = usarework.39
+	title = prog_convention_5.t
+	desc = prog_convention_5.desc
+	picture = GFX_report_event_usa_democrat_1944
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Borah has been a fine leader."
+		custom_effect_tooltip = "Our president will be officially inagurated in one month."
+		add_political_power = 10
+		set_country_flag = william_borah_president_elect
+		set_country_flag = president_selected_prog
+	}
+	option = {
+		name = "Let's give Al Smith a chance."
+		custom_effect_tooltip = "Our president will be inagurated in one month."
+		add_political_power = 10
+		set_country_flag = al_smith_president_elect
+		set_country_flag = president_selected_prog
+	}
+	option = {
+		name = "We should get Henry Wallace!"
+		custom_effect_tooltip = "Our president will be inagurated in one month."
+		add_political_power = 10
+		set_country_flag = henry_wallace_president_elect
+		set_country_flag = president_selected_prog
+	}
+	option = {
+		name = "George Norris deserves the position."
+		custom_effect_tooltip = "Our president will be inagurated in one month."
+		add_political_power = 10
+		set_country_flag = george_norris_president_elect
+		set_country_flag = president_selected_prog
+	}
+}
+country_event = {
+	id = usarework.40
+	title = prog_convention_6.t
+	desc = prog_convention_6.desc
+	picture = GFX_report_event_usa_democrat_1936
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "God save [USA.GetLeader]!"
+		add_stability = 0.05
+		add_political_power = 20
+		hidden_effect = {
+			IF = {
+				limit = {OR = {
+					has_government = democratic
+					has_country_leader = {
+						name = "Norman Thomas"
+						ruling_only = yes
+					}
+				}}
+				set_cosmetic_tag = USA_progressive_2
+			}
+			set_country_flag = our_president_has_been_inagurated_progressive_convention
+		}
+	}
+}
+country_event = {
+	id = usarework.41
+	title = prog_convention_7.t
+	desc = prog_convention_7.desc
+	picture = GFX_report_event_usa_democrat_1936
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "We don't want more divison."
+		custom_effect_tooltip = "Our president will be inagurated in one month."
+		add_political_power = -25
+		add_stability = 0.05
+		set_country_flag = norman_thomas_president_elect
+		set_country_flag = president_selected_prog
+		create_country_leader = {
+			name = "Norman Thomas"
+			picture = GFX_Portrait_USA_norman_thomas
+			expire = "1965.1.1"
+			ideology = democratic_socialism_ideology
+			traits = {
+				DEN_socialdemokrat popular_figurehead3
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.42
+	title = fate_corporate.t
+	desc = fate_corporate.desc
+	picture = GFX_report_event_generic_usa_treaty
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Actually, we still need them..."
+		trigger = {
+			NOT = {
+				has_completed_focus = USA_workers_unite
+			}
+		}
+		add_political_power = -50
+		add_stability = -0.05
+	}
+	option = {
+		name = "Subsidize them."
+		add_political_power = -25
+		add_stability = 0.025
+		add_ideas = subsidize_corporations
+	}
+	option = {
+		name = "Tell them to pack up and leave!"
+		trigger = {
+			NOT = {
+				has_completed_focus = USA_continue_prog_era
+			}
+		}
+		add_political_power = 200
+		remove_ideas = coca_cola_inf
+		remove_ideas = ford_inf
+		remove_ideas = disney_inf
+	}
+}
+country_event = {
+	id = usarework.43
+	title = "Do we ally the [USA.getname]?"
+	desc = "Should we abandon our commitments to join the USA faction?"
+	picture = GFX_report_event_generic_usa_treaty
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "no"
+		ai_will_do = {
+			base = 2
+		}
+		USA = {
+			country_event = {
+				id = usarework.44
+				days = 2
+			}
+		}
+	}
+	option = {
+		name = "sure"
+		leave_faction = yes
+		USA = {
+			add_to_faction = ROOT
+		}
+		ai_will_do = {
+			base = 9
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value > 50
+				}
+				factor = 1.5
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.44
+	title = "France Rejects!"
+	desc = "France has rejected the offer to join our faction."
+	picture = GFX_report_event_generic_usa_treaty
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Hell's bells."
+		add_political_power = -5
+	}
+}
+country_event = {
+	id = usarework.45
+	title = future_of_france.t
+	desc = future_of_france.desc
+	picture = GFX_report_event_canada_patriation
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Allow a civilian government, with a new leader."
+		add_political_power = 200
+		add_stability = .05
+		FRA = {
+			create_country_leader = {
+				name = "Paul Reynaud"
+				picture = GFX_portrait_FRA_paul_reynaud
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+					quartermaster_general
+				}
+			}
+			set_party_name = {
+				long_name = FRA_democratic_alliance
+				name = FRA_democratic_alliance
+				ideology = democratic
+			}
+			set_cosmetic_tag = FRA_fourth_republic
+		}
+		USA = {
+			set_autonomy = {
+    			target = FRA
+	    		autonomous_state = autonomy_dominion
+			    end_wars = no
+    			end_civil_wars = no
+			}
+		}
+	}
+	option = {
+		name = "Set up a military government with De Gaulle."
+		add_political_power = 100
+		FRA = {
+			create_country_leader = {
+				name = "Charles De Gaulle"
+				picture = GFX_portrait_FRA_charles_de_gaulle
+				expire = "1965.1.1"
+				ideology = conservatism
+				traits = {
+					JUNO_the_general_president
+				}
+			}
+			set_party_name = {
+				long_name = FRA_military_govt
+				name = FRA_military_govt
+				ideology = democratic
+			}
+			set_cosmetic_tag = FRA_fourth_republic
+		}
+		USA = {
+			set_autonomy = {
+    			target = FRA
+	    		autonomous_state = autonomy_puppet
+			    end_wars = no
+    			end_civil_wars = no
+			}
+		}
+	}
+	option = {
+		name = "The French cannot be trusted to form their own government."
+		add_stability = -.05
+		FRA = {
+			create_country_leader = {
+				name = "Courtney Hodges"
+				picture = GFX_portrait_USA_courtney_hodges
+				expire = "1965.1.1"
+				ideology = conservatism
+				traits = {
+				}
+			}
+			set_party_name = {
+				long_name = FRA_military_govt_foreign
+				name = FRA_military_govt_foreign
+				ideology = democratic
+			}
+			set_cosmetic_tag = FRA_US_occupation
+		}
+		USA = {
+			set_autonomy = {
+    			target = FRA
+	    		autonomous_state = autonomy_integrated_puppet
+			    end_wars = no
+    			end_civil_wars = no
+			}
+		}
+	}
+}
+
+country_event = {
+	id = usarework.46
+	title = liberia_colony.t
+	desc = liberia_colony.desc
+	picture = GFX_report_event_generic_usa_treaty
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "We must accept our fate."
+		ai_will_do = {
+			base = 8
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value > 50
+				}
+				factor = 1.5
+			}
+		}
+		USA = {
+			set_autonomy = {
+    			target = LIB
+	    		autonomous_state = autonomy_colony
+			    end_wars = no
+    			end_civil_wars = no
+			}
+			country_event = {
+				id = usarework.75
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = "Send the American delegation packing!"
+		ai_will_do = {
+			base = 2
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value < 50
+				}
+				factor = 1.5
+			}
+		}
+		USA = {
+			create_wargoal = {
+				type = annex_everything
+				target = LIB
+			}
+			add_state_claim = 298
+			country_event = {
+				id = usarework.74
+				days = 3
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.47
+	title = sons_of_liberty.t
+	desc = sons_of_liberty.desc
+	picture = GFX_report_event_german_troops
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "This could be a problem."
+		
+	}
+	option = {
+		name = "Down with these tyrants!"
+		
+	}
+}
+country_event = {
+	id = usarework.48
+	title = integrate_us.t
+	desc = integrate_us.desc
+	picture = GFX_report_event_generic_usa_treaty
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "A fruitful proposal!"
+		ai_will_do = {
+			base = 8
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value > 50
+				}
+				factor = 1.5
+			}
+		}
+		every_state = {
+			limit = {
+				is_core_of = ROOT
+			}
+			add_core_of = USA
+		}
+		USA = {
+			annex_country = {
+				target = ROOT
+				transfer_troops = yes
+			}
+			country_event = {
+				id = usarework.75
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = "That would compromise the interests of our people."
+		ai_will_do = {
+			base = 2
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value < 50
+				}
+				factor = 1.5
+			}
+		}
+		every_state = {
+			limit = {
+				is_core_of = ROOT
+			}
+			add_claim_by = USA
+		}
+		USA = {
+			create_wargoal = {
+				target = ROOT
+				type = annex_everything
+			}
+			country_event = {
+				id = usarework.74
+				days = 3
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.49
+	title = demand_claimed_lands.t
+	desc = demand_claimed_lands.desc
+	picture = GFX_report_event_usa_macarthur_speech
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "I suppose we were just "protecting" them..."
+		ai_will_do = {
+			base = 10
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value > 50
+				}
+				factor = 1.5
+			}
+		}
+		every_state = {
+			limit = {
+				has_state_flag = USA_former_claimed_land
+				is_controlled_by = ROOT
+			}
+			transfer_state_to = USA
+			USA = {
+				country_event = {
+					id = usarework.75
+					days = 3
+				}
+			}
+		}
+	}
+	option = {
+		name = "They are unfit to own these lands!"
+		ai_will_do = {
+			base = 2
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value < 50
+				}
+				factor = 1.5
+			}
+		}
+		USA = {
+			create_wargoal = {
+				target = ROOT
+				type = annex_everything
+			}
+			country_event = {
+				id = usarework.74
+				days = 3
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.50
+	title = regain_philippines.t
+	desc = regain_philippines.desc
+	picture = GFX_report_event_usa_macarthur_speech
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "We can't risk an unprotected Japanese attack!"
+		ai_will_do = {
+			base = 8
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value > 50
+				}
+				factor = 1.5
+			}
+		}
+		USA = {
+			set_autonomy = {
+    			target = PHI
+    			autonomous_state = autonomy_dominion
+    			end_wars = yes
+    			end_civil_wars = no
+			}
+			country_event = {
+				id = usarework.75
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = "But we'll just be their puppet!"
+		ai_will_do = {
+			base = 2
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value < 50
+				}
+				factor = 2
+			}
+		}
+		USA = {
+			create_wargoal = {
+				target = ROOT
+				type = puppet_wargoal_focus
+			}
+			country_event = {
+				id = usarework.74
+				days = 3
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.51
+	title = german_unity.t
+	desc = german_unity.desc
+	picture = GFX_report_event_usa_macarthur_speech
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Für Eins Land!"
+		ai_will_do = {
+			base = 8
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value > 50
+				}
+				factor = 1.5
+			}
+		}
+		USA = {
+			annex_country = { target = ROOT transfer_troops = no }
+			country_event = {
+				id = usarework.75
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = "Nein!"
+		ai_will_do = {
+			base = 2
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value < 50
+				}
+				factor = 2
+			}
+		}
+		USA = {
+			create_wargoal = {
+				target = ROOT
+				type = annex_everything
+			}
+			country_event = {
+				id = usarework.74
+				days = 3
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.52
+	title = corporations_problem.t
+	desc = corporations_problem.desc
+	picture = GFX_report_event_canada_patriation
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Is it really that difficult to decide?"
+		add_ideas = question_corporations_prog_problem
+	}
+}
+country_event = {
+	id = usarework.53
+	title = no_neutrality.t
+	desc = no_neutrality.desc
+	picture = GFX_report_event_chinese_soldiers_fighting
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Over there!"
+		IF = {
+			limit = {
+				has_idea = USA_neutrality_act
+			}
+			remove_ideas = USA_neutrality_act
+		}
+		else = {
+			remove_ideas = USA_neutrality_act_aat
+		}
+	}
+}
+country_event = {
+	id = usarework.54
+	title = germany_triumph.t
+	desc = germany_triumph.desc
+	picture = GFX_report_event_usa_macarthur_speech
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "War has ended!"
+		complete_national_focus = USA_triumph_over_germany
+	}
+}
+country_event = {
+	id = usarework.55
+	title = pearl_harbour.t
+	desc = pearl_harbour.desc
+	picture = GFX_report_event_FDR_speech
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "We must avenge the fallen!"
+		set_country_flag = pearl_harbor_attack
+		629 = {
+			damage_building = {
+				type = infrastructure
+				damage = 0.5
+			}
+			damage_building = {
+				type = naval_base
+				damage = 10
+			}
+		}
+		add_war_support = 0.05
+		add_stability = -0.025
+	}
+}
+country_event = {
+	id = usarework.56
+	title = japan_triumph.t
+	desc = japan_triumph.desc
+	picture = GFX_report_event_usa_macarthur_speech
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "War has ended!"
+		complete_national_focus = USA_triumph_over_japan
+	}
+}
+country_event = {
+	id = usarework.57
+	title = america_demands_leadership.t
+	desc = america_demands_leadership.desc
+	picture = GFX_report_event_usa_macarthur_speech
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "I suppose they should..."
+		ai_will_do = {
+			base = 10
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value > 50
+				}
+				factor = 1.5
+			}
+		}
+		USA = {
+			set_faction_leader = yes
+			country_event = {
+				id = usarework.64
+				days = 2
+			}
+		}
+	}
+	option = {
+		name = "What? No!"
+		ai_will_do = {
+			base = 1
+			modifier = {
+				has_opinion = {
+    				target = USA
+    				value < 50
+				}
+				factor = 2
+			}
+		}
+		USA = {
+			country_event = {
+				id = usarework.58
+				days = 2
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.58
+	title = america_demands_leadership_2.t
+	desc = america_demands_leadership_2.desc
+	picture = GFX_report_event_usa_macarthur_speech
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "A shame..."
+		add_political_power = -25
+	}
+}
+country_event = {
+	id = usarework.59
+	title = sons_of_liberty.t
+	desc = sons_of_liberty.desc
+	picture = GFX_report_event_german_troops
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "No need to worry about them now."
+		hidden_effect = {
+			country_event = {
+				id = usarework.60
+				days = 21
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.60
+	title = sons_of_liberty_2.t
+	desc = sons_of_liberty_2.desc
+	picture = GFX_report_event_generic_dancing
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Maybe we should start to keep an eye on them."
+		set_party_name = { ideology = democratic long_name = USA_sons_of_liberty_party_long name = USA_sons_of_liberty_party }
+		hidden_effect = {
+			country_event = {
+				id = usarework.61
+				days = 21
+			}
+		}
+	}
+}
+country_event = {
+	id = usarework.61
+	title = sons_of_liberty_3.t
+	desc = sons_of_liberty_3.desc
+	picture = GFX_report_event_generic_dancing
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "We need to take action, now!"
+		1019 = {
+			set_demilitarized_zone = yes
+		}
+		set_variable = {
+    		var = num_of_states_fallen_to_libertarians
+    		value = 1
+		}
+		add_political_power = 100
+		set_country_flag = sided_with_monarchists
+		set_variable = {
+			var = libertarians_popularity
+			value = 5
+		}
+		set_variable = {
+			var = libertarians_strength
+			value = 5
+		}
+		unlock_decision_category_tooltip = USA_sons_of_liberty_decisions_government
+	}
+	option = {
+		name = "Time to start the rebellion!"
+		1019 = {
+			set_demilitarized_zone = yes
+		}
+		set_variable = {
+    		var = num_of_states_fallen_to_libertarians
+    		value = 1
+		}
+		add_political_power = 100
+		set_country_flag = sided_with_libertarians
+		unlock_decision_category_tooltip = USA_sons_of_liberty_decisions_rebels
+	}
+}
+country_event = {
+	id = usarework.62
+	title = sons_of_liberty_4.t
+	desc = sons_of_liberty_4.desc
+	picture = GFX_report_event_german_troops
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "A great victory!"
+		add_stability = -0.05
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.1
+		}
+		set_country_flag = USA_the_capital_has_fallen_to_libertarians
+	}
+}
+country_event = {
+	id = usarework.63
+	title = pathguides.t
+	desc = pathguides.desc
+	picture = GFX_report_event_usa_macarthur_coup
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Thanks!"
+	}
+	option = {
+		name = "Next page, please."
+		country_event = usarework.76
+	}
+}
+country_event = {
+	id = usarework.64
+	title = america_demands_leadership_3.t
+	desc = america_demands_leadership_3.desc
+	picture = GFX_report_event_bul_boris_with_hitler
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Excellent."
+	}
+}
+country_event = {
+	id = usarework.65
+	title = rioters_overthrow_monarchy.t
+	desc = rioters_overthrow_monarchy.desc
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Freedom, Liberty, or Death!"
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		add_stability = -0.1
+		create_country_leader = {
+			name = "Sons of Liberty"
+			picture = GFX_Portrait_USA_sons_of_liberty
+			expire = "1965.1.1"
+			ideology = libertarian
+			traits = { divided_interests libertarian }
+		}
+		set_politics = { ruling_party = democratic elections_allowed = no }
+		set_cosmetic_tag = USA_libertarian
+		every_state = {
+			limit = {
+				is_owned_and_controlled_by = USA
+				is_demilitarized_zone = yes
+			}
+			set_demilitarized_zone = no
+		}
+		set_capital = {state = 357}
+		set_victory_points = {
+			province = 6732
+			value = 40
+		}
+		set_victory_points = {
+			province = 3957
+			value = 25
+		}
+		set_country_flag = libertarian_takeover
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+country_event = {
+	id = usarework.66
+	title = monarchist_problem.t
+	desc = monarchist_problem.desc
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Whatever we do, we can't let them come back!"
+		add_ideas = royals_problem
+	}
+}
+country_event = {
+	id = usarework.67
+	title = monarchist_solution.t
+	desc = monarchist_solution.desc
+	picture = GFX_report_event_carol_meeting
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Let them rot in jail."
+		add_stability = 0.05
+		add_political_power = -50
+	}
+	option = {
+		name = "Exile them."
+		add_political_power = 100
+		set_country_flag = we_can_exile_the_monarch
+		unlock_decision_category_tooltip = USA_exile_the_monarchy
+	}
+}
+country_event = {
+	id = usarework.68
+	title = monarchist_loyalists_flee.t
+	desc = monarchist_loyalists_flee.desc
+	picture = GFX_report_event_ast_planning
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Whatever."
+		add_manpower = -100000
+		every_country = {
+			limit = {
+				has_country_flag = USA_has_sent_monarch_to_this_country
+			}
+			add_manpower = 100000
+			country_event = {
+				id = usarework.69
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = "Wait, I want to come too!"
+		add_manpower = -100000
+		random_other_country = {
+			limit = {
+				has_country_flag = USA_has_sent_monarch_to_this_country
+			}
+			add_manpower = 100000
+			country_event = {
+				id = usarework.69
+				days = 3
+			}
+			change_tag_from = USA
+		}
+	}
+}
+country_event = {
+	id = usarework.69
+	title = monarchist_loyalists_flee_2.t
+	desc = monarchist_loyalists_flee_2.desc
+	picture = GFX_report_event_BEL_paul_van_zeeland
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Perfect."
+		if = {
+			limit = {
+				USA = {
+					has_country_flag = washingtons_selected
+				}
+			}
+			create_country_leader = {
+				name = "Robert I"
+				picture = GFX_Portrait_USA_robert_b_lee
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					
+				}
+			}
+		}
+		if = {
+			limit = {
+				USA = {
+					has_country_flag = kennedys_selected
+				}
+			}
+			create_country_leader = {
+				name = "Joseph I"
+				picture = GFX_Portrait_USA_joseph_kennedy
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					
+				}
+			}
+		}
+		if = {
+			limit = {
+				USA = {
+					has_country_flag = uk_king_selected
+				}
+			}
+			create_country_leader = {
+				name = "Edward I"
+				picture = GFX_portrait_Edward_VIII
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					
+				}
+			}
+		}
+		if = {
+			limit = {
+				USA = {
+					has_country_flag = uk_queen_selected
+				}
+			}
+			create_country_leader = {
+				name = "Wallis I"
+				picture = GFX_portrait_eng_wallis_simpson
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					socialite_connections wallis_fancy_title
+				}
+			}
+		}
+		if = {
+			limit = {
+				USA = {
+					has_country_flag = kaiser_selected
+				}
+			}
+			create_country_leader = {
+				name = "William I"
+				picture = GFX_portrait_ger_wilhelm_iii
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					constitutional_monarch_minor
+				}
+			}
+		}
+		if = {
+			limit = {
+				USA = {
+					has_country_flag = kaiserin_selected
+				}
+			}
+			create_country_leader = {
+				name = "Louise I"
+				picture = GFX_portrait_ger_victoria_louise
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					kaiserin_of_the_people
+				}
+			}
+		}
+		set_party_name = {
+    		ideology = neutrality
+   			long_name = USA_monarchist_party_long
+		    name = USA_monarchist_party
+		}
+		set_cosmetic_tag = USA_kingdom_of_america_in_exile
+		every_state = {
+			limit = {
+				is_core_of = USA
+			}
+			add_claim_by = ROOT
+		}
+	}
+}
+country_event = {
+	id = usarework.70
+	title = deal_with_the_old_parties.t
+	desc = deal_with_the_old_parties.desc
+	picture = GFX_report_event_gre_megali_conference_signing
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Denounce them. Those autocrats deserve no friends!"
+		set_party_name = {
+			ideology = neutrality
+		    long_name = USA_federalist_party
+			name = USA_federalist_party
+		}
+		create_country_leader = {
+			name = "Harry S. Truman"
+			picture = GFX_portrait_Harry_S_Truman
+			expire = "1965.1.1"
+			ideology = centrism
+			traits = { liberal }
+		}
+		add_stability = 0.05
+		add_popularity = {
+    		ideology = neutrality
+   			popularity = 0.1
+		}
+		add_popularity = {
+    		ideology = democratic
+   			popularity = -0.05
+		}
+		add_political_power = 50
+	}
+	option = {
+		name = "We should recruit some of their fiscally conservative members..."
+		set_party_name = {
+			ideology = neutrality
+		    long_name = USA_federalist_party
+			name = USA_federalist_party
+		}
+		create_country_leader = {
+			name = "John Nance Garner"
+			picture = GFX_Portrait_USA_John_Nance_Garner
+			expire = "1965.1.1"
+			ideology = centrism
+			traits = { conservative }
+		}
+		add_stability = 0.05
+		add_popularity = {
+    		ideology = neutrality
+   			popularity = -0.05
+		}
+		add_popularity = {
+    		ideology = democratic
+   			popularity = 0.05
+		}
+		add_political_power = -50
+		custom_effect_tooltip = rise_of_certain_members
+		set_country_flag = republican_democrats_join_libertarians
+	}
+}
+country_event = {
+	id = usarework.71
+	title = future_of_the_sons.t
+	desc = future_of_the_sons.desc
+	picture = GFX_report_event_gre_megali_conference_signing
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "We need too keep the current system. It will do fine."
+		remove_country_leader_trait = divided_interests
+		country_event = {
+			id = usarework.73
+			days = 4
+		}
+	}
+	option = {
+		name = "Maybe we do need a singular leader..."
+		country_event = {
+			id = usarework.72
+			days = 3
+		}
+	}
+}
+country_event = {
+	id = usarework.72
+	title = future_of_the_sons_2.t
+	desc = future_of_the_sons_2.desc
+	picture = GFX_report_event_romania_poland_visit
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Fred Trump may be an outsider, but he is a great businessman."
+		trigger = {
+			has_country_flag = republican_democrats_join_libertarians
+		}
+		create_country_leader = {
+			name = "Fred Trump"
+			picture = GFX_Portrait_USA_fred_trump
+			expire = "1965.1.1"
+			ideology = libertarian
+			traits = { libertarian }
+		}
+	}
+	option = {
+		name = "Ayn Rand is the obvious choice."
+		create_country_leader = {
+			name = "Ayn Rand"
+			picture = GFX_Portrait_USA_Ayn_Rand
+			expire = "1965.1.1"
+			ideology = libertarian
+			traits = { libertarian }
+		}
+	}
+	option = {
+		name = "Rising officer Barry Goldwater would be a great leader!"
+		create_country_leader = {
+			name = "Barry Goldwater"
+			picture = GFX_Portrait_USA_Barry_Goldwater
+			expire = "1965.1.1"
+			ideology = libertarian
+			traits = { libertarian }
+		}
+	}
+}
+country_event = {
+	id = usarework.73
+	title = future_of_the_sons_3.t
+	desc = future_of_the_sons_3.desc
+	picture = GFX_report_event_romania_poland_visit
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "FOR TRUE FREEDOM! LONG LIVE THE REVOLUTION!"
+		add_stability = -0.25
+		create_country_leader = {
+			name = "Councils of Freedom"
+			picture = GFX_Portrait_USA_sons_of_liberty
+			expire = "1965.1.1"
+			ideology = anarcho_capitalism
+			traits = { anarcho_capitalist }
+		}
+	}
+	option = {
+		name = "How would we enforce the NAP?"
+		add_stability = 0.025
+	}
+}
+country_event = {
+	id = usarework.74
+	title = generic_denial.t
+	desc = generic_denial.desc
+	picture = GFX_report_event_imperial_conference
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "A mistake that won't be made again."
+	}
+}
+country_event = {
+	id = usarework.75
+	title = generic_accept.t
+	desc = generic_accept.desc
+	picture = GFX_report_event_imperial_conference
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Well done diplomacy."
+	}
+}
+country_event = {
+	id = usarework.76
+	title = pathguides2.t
+	desc = pathguides2.desc
+	picture = GFX_report_event_usa_macarthur_coup
+	is_triggered_only = yes
+	fire_only_once = no
+	trigger = {
+	}
+	immediate = {
+	}
+	option = {
+		name = "Thanks!"
+	}
+}
+country_event = {
+	id = usarework.77
+	title = usarework.77.t
+	desc = usarework.77.desc
+	picture = GFX_report_event_generic_rally2
+	is_triggered_only = yes
+	trigger = {
+		
+	}
+	fire_only_once = yes
+	option = {
+		name = "Pelley shall lead us well."
+	}
+	option = {
+		name = "Maybe we need an architect?"
+		trigger = {
+			all_country = {
+				NOT = {
+					has_country_leader = {
+						name = "Adolf Hitler"
+						ruling_only = yes
+					}
+				}
+			}
+		}
+		create_country_leader = {
+			name = "Adam Hilt"
+			desc = "POLITICS_DOUGLAS_MACARTHUR_DESC"
+			picture = GFX_portrait_USA_mr_hilt
+			expire = "1965.1.1"
+			ideology = nazism
+			traits = {
+				great_architect
+			}
+		}
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = {
+		name = "Charles Lindbergh has been an early advocate for our movement."
+
+		add_country_leader_role  = {
+			character = USA_charles_lindbergh
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = fascism_ideology
+				traits = {
+					famous_aviator
+				}
+			}
+			promote_leader = yes
+		}
+	}
+}
+country_event = {
+	id = usarework.78
+	title = rigged_elections.t
+	desc = rigged_elections.desc
+	picture = GFX_report_event_election_vote
+
+	trigger = {
+		
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = "Rising star Strom Thurmond wins the madate of the people."
+		create_country_leader = {
+			name = "Strom Thurmond"
+			picture = GFX_Portrait_USA_strom_thurmond
+			expire = "1965.1.1"
+			ideology = moderatism
+			traits = {
+				anti_communist figurehead_president
+			}
+		}
+		set_party_name = { ideology = neutrality long_name = USA_democratic_party name = USA_democratic_party }
+	}
+	option = {
+		name = "Harry Bird wins the most votes."
+		create_country_leader = {
+			name = "Harry F. Byrd"
+			picture = GFX_Portrait_USA_harry_f_byrd
+			expire = "1965.1.1"
+			ideology = moderatism
+			traits = {
+				ARG_conservative_traditionalist
+			}
+		}
+		set_party_name = { ideology = neutrality long_name = USA_democratic_party name = USA_democratic_party }
+	}
+	option = {
+		name = "Douglas MacArthur, despite the odds, manages a victory!"
+		create_country_leader = {
+			name = "Douglas MacArthur"
+			picture = GFX_Portrait_USA_Douglas_MacArthur
+			expire = "1965.1.1"
+			ideology = moderatism
+			traits = {
+				american_caesar
+			}
+		}
+		set_party_name = { ideology = neutrality long_name = USA_national_party name = USA_national_party }
+	}
+}
+country_event = {
+	id = usarework.79
+	title = return_of_elections.t
+	desc = return_of_elections.desc
+	picture = GFX_report_event_election_vote
+
+	trigger = {
+		
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = "The National Party shall prevail!"
+		create_country_leader = {
+			name = "Thomas E. Dewey"
+			picture = GFX_portrait_Thomas_E_Dewey
+			expire = "1965.1.1"
+			ideology = liberalism
+			traits = {
+				HUN_popular_liberal 
+			}
+		}
+		custom_effect_tooltip = candidate_ideology_liberal
+		set_party_name = { ideology = democratic long_name = USA_national_party name = USA_national_party }
+	}
+	option = {
+		name = "The Grand Old Party wins!"
+		create_country_leader = {
+			name = "Robert A. Taft"
+			picture = GFX_Portrait_USA_robert_taft
+			expire = "1965.1.1"
+			ideology = conservatism
+			traits = {
+				conservative_grandee anti_communist
+			}
+		}
+		custom_effect_tooltip = candidate_ideology_conservative
+		set_party_name = { ideology = democratic long_name = USA_gop_long name = USA_gop }
+	}
+	option = {
+		name = "The people have their trust in the current government."
+		add_political_power = -10
+	}
+}

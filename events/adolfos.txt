@@ -1,0 +1,1670 @@
+add_namespace = alexander
+add_namespace = adolfos
+add_namespace = colonies
+add_namespace = macedonia
+
+country_event = {   ####CRISIS
+	id = colonies.66
+	title = colonies.66.t
+	desc = colonies.66.d
+	
+	picture = GFX_report_event_gre_cabinet_meeting
+	is_triggered_only = yes	
+	
+#	trigger = {
+#		date > 1940.10.28
+#
+#	}
+	immediate = {
+		
+			YUG = { country_event = { id = colonies.70 days = 1 }	}
+			ROM = { country_event = { id = colonies.70 days = 1 }	}
+			TUR = { country_event = { id = colonies.70 days = 1 }	}
+			BUL = { country_event = { id = colonies.71 days = 1 }	}
+			HUN = { country_event = { id = colonies.71 days = 1 }	}
+		
+	}	
+	mean_time_to_happen = {
+		hours = 3
+	}
+
+	
+	option = {    #SURRENDER
+		name = colonies.66.a
+		ITA = {	puppet = GRE }
+		ai_chance = {
+			factor = 0
+		}			
+	}
+	option = {     #WAR
+		ai_chance = {
+			factor = 100
+		}		
+		name = colonies.66.b
+				GRE = { country_event = { id = colonies.69 hours = 2 }	}
+	}	
+	option = {     #NAGOTIATE
+		ai_chance = {
+			factor = 0
+		}		
+		name = colonies.66.c
+		ITA = { country_event = { id = colonies.67 hours = 2 }	}
+	}	
+}
+
+country_event = {   #ITALIAN EVENT
+	id = colonies.67
+	title = colonies.67.t
+	desc = colonies.67.d
+	
+	picture = GFX_report_event_ITA_grand_council
+	
+	is_triggered_only = yes
+
+	
+	option = {     #SEND DEMANDS
+		name = colonies.67.a
+				ai_chance = {
+			factor = 1000
+		}	
+		GRE = { country_event = { id = colonies.68 hours = 1 }	}
+	}
+	option = {   # DENY
+		name = colonies.67.b
+				ai_chance = {
+			factor = 0
+		}	
+		GRE = { country_event = { id = colonies.69 hours = 1 }	}
+	}	
+	
+}
+country_event = {
+	id = colonies.68       #GREEK EVENT
+	title = colonies.68.t
+	desc = colonies.68.d
+	
+	picture = GFX_report_event_gre_city_devastated
+	
+	is_triggered_only = yes
+
+	
+	option = { #GIVE TERRITORY
+		name = colonies.68.a
+				ai_chance = {
+			factor = 0
+		}	
+		ITA = { transfer_state = 185 }	
+		ITA = { transfer_state = 182 }		
+		ITA = { transfer_state = 164 }	
+					ITA = {
+				diplomatic_relation = {
+					country = GRE
+					relation = non_aggression_pact
+					active = yes
+				}
+					}			
+	}
+	option = {  #DENY
+			ai_chance = {
+			factor = 1000
+		}	
+		name = colonies.68.b
+		GRE = { country_event = { id = colonies.69 hours = 1 }	}
+	}	
+	
+}
+
+country_event = { #WAR
+	id = colonies.69
+	title = colonies.69.t
+	desc = colonies.69.d
+	
+	picture = GFX_report_event_gre_city_siege
+	
+	is_triggered_only = yes
+
+	
+	option = { #WAR
+		name = colonies.69.a	
+		ITA = { create_wargoal = { type = annex_everything target = GRE } }	
+	}
+	
+	
+}
+
+country_event = { #HONOR THE PACT
+	id = colonies.70
+	title = colonies.70.t
+	desc = colonies.70.d
+	
+	picture = GFX_report_event_gre_balkan_pact
+	
+	is_triggered_only = yes
+
+	
+	option = { #Accept
+			ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 10000
+				OR = {
+					has_original_tag = YUG
+				}
+			}
+		}	
+		name = colonies.70.a	
+			ROOT = {
+				diplomatic_relation = {
+					country = GRE
+					relation = guarantee
+					active = yes
+			   }
+		 }
+	}
+	option = { #Accept kinda
+			ai_chance = {
+			factor = 80
+			modifier = {
+				factor = 10000
+				OR = {
+					has_original_tag = TUR
+					has_original_tag = ROM
+				}
+			}
+		}	
+		name = colonies.70.c	
+		GRE = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 10000
+				producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 2500
+				producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 5000
+				producer = ROOT
+			}
+			add_manpower = 50000
+		}
+			
+	}	
+	option = { #Deny
+	name = colonies.70.b
+			ai_chance = {
+			factor = 0
+		}	
+		
+	}	
+	
+}
+
+country_event = { #OPPOSE THE PACT
+	id = colonies.71
+	title = colonies.71.t
+	desc = colonies.71.d
+	
+	picture = GFX_report_event_bul_troops_dobrudja
+	
+	is_triggered_only = yes
+
+	
+	option = { #Accept
+			ai_chance = {
+			factor = 10000
+		}	
+		name = colonies.71.a	
+			  GER = { add_to_faction = ROOT }
+	}
+	option = { #Deny
+	name = colonies.71.b	
+			ai_chance = {
+			factor = 0
+		}	
+		
+	}	
+	
+}
+country_event = {
+	id = colonies.1
+	title = colonies.1.t
+	desc = colonies.1.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			factor = 75
+		}	
+		name = colonies.1.a
+
+			every_state = {
+				limit = {
+					is_claimed_by = GRE
+					is_on_continent = africa 
+					is_controlled_by = ROOT
+				}
+				transfer_state_to = GRE
+			}
+		
+	}
+	option = {
+		name = colonies.1.b
+		ai_chance = {
+			factor = 25
+		}
+		
+			GRE = {
+create_wargoal = {
+			type = annex_everything
+			target = ROOT
+		}					
+			}
+			
+     }
+}
+
+
+
+country_event = {
+	id = adolfos.1
+	title = adolfos.1.t
+	desc = adolfos.1.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			factor = 0
+		}	
+		name = adolfos.1.a
+
+			GRE = {
+				add_state_claim = 106
+				add_state_claim = 803
+				create_wargoal = {
+					type = take_state_focus
+					target = YUG
+					generator = { 69 74 }
+				}
+			}
+		
+	}
+	option = {
+		name = adolfos.1.b
+		ai_chance = {
+			factor = 100
+		}
+		
+			GRE = {
+				transfer_state = 106
+				transfer_state = 803
+			}
+			106 = { add_core_of = GRE }
+			803 = { add_core_of = GRE }
+		
+		GRE = { add_named_threat = { threat = 2 name = GRE_demanded_macedonia } }
+     }
+}
+
+country_event = {
+	id = adolfos.2
+	title = adolfos.2.t
+	desc = adolfos.2.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			factor = 5
+		}	
+		name = adolfos.2.a
+
+			ITA = {
+			transfer_state = 103
+						103 = { add_core_of = ITA }
+			}
+		
+	}
+}
+
+
+country_event = {
+	id = adolfos.3
+	title = adolfos.3.t
+	desc = adolfos.3.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			factor = 100
+			
+		}	
+		name = adolfos.3.a
+
+			GER = {
+			transfer_state = 102
+			102 = { add_core_of = GER }
+			transfer_state = 853
+			853 = { add_core_of = GER }			
+			}	
+			ITA = {
+			transfer_state = 105
+			105 = { add_core_of = ITA }		
+			transfer_state = 804
+			804 = { add_core_of = ITA }	
+			}	
+			GRE = {
+			transfer_state = 107	
+			transfer_state = 108
+			transfer_state = 802
+			}				
+         GRE = {puppet = CRO }	
+		 hidden_effect = {
+		 					CRO = {
+		    transfer_state = 109
+		    transfer_state = 104
+			transfer_state = 45
+			transfer_state = 764
+		   }
+		   109 = { add_core_of = CRO }	
+		   104 = { add_core_of = CRO }	
+		   45 = { add_core_of = CRO }	
+		   764 = { add_core_of = CRO }	
+		 }
+		
+	}
+	option = {
+		ai_chance = {
+			factor = 0
+			
+		}	
+		name = adolfos.3.b
+   GRE = {
+		create_wargoal = {
+			type = annex_everything
+			target = YUG
+		}			
+		}
+	}	
+}
+
+country_event = {
+	id = adolfos.4
+	title = adolfos.4.t
+	desc = adolfos.4.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		name = adolfos.4.a
+		ai_chance = { factor = 100 }
+	GRE = {	add_named_threat = { threat = 5 name = GRE_second_sofia_award_GRE_south }}
+			GRE = {
+			transfer_state = 46	
+			transfer_state = 77
+			transfer_state = 81
+			}	
+			HUN = {
+			transfer_state = 84	
+			transfer_state = 83
+			transfer_state = 76
+			}	
+			CRO = {
+			transfer_state = 82
+			}			
+			hidden_effect = {
+		   46 = { add_core_of = GRE }	
+		   77 = { add_core_of = GRE }	
+		   81 = { add_core_of = GRE }	
+		   84 = { add_core_of = HUN }	
+		   83 = { add_core_of = HUN }	
+		   76 = { add_core_of = HUN }
+		   82 = { add_core_of = CRO }		   }		
+	}
+	option = {
+
+		name = adolfos.4.b
+		ai_chance = {
+			factor = 0
+
+		}
+		GRE = {add_named_threat = { threat = 3 name = GRE_second_sofia_award_GRE_small }}
+			GRE = {
+			transfer_state = 77	
+			}	
+			HUN = {
+			transfer_state = 76
+			}	
+			CRO = {
+			transfer_state = 82
+			}			
+			hidden_effect = {
+		   77 = { add_core_of = GRE }			
+		   76 = { add_core_of = HUN }
+		   82 = { add_core_of = CRO }		   }
+	}
+	option = { 
+		name = adolfos.4.c
+		ai_chance = {
+			factor = 0}
+   GRE = {
+		create_wargoal = {
+			type = annex_everything
+			target = ROM
+		}			
+		}
+		
+		
+	}
+}
+
+country_event = {
+	id = adolfos.5
+	title = adolfos.5.t
+	desc = adolfos.5.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		name = adolfos.5.a
+		ai_chance = {
+			factor = 80
+			modifier = {
+				factor = 3
+				strength_ratio = {
+					tag = GRE
+					ratio > 0.7
+				}
+			}
+			modifier = {
+				factor = 10
+				any_other_country = {
+					is_major = yes
+					is_in_faction_with = ENG
+				}
+			}
+		}
+   GRE = {
+              type = take_state_focus
+						target = ENG
+						expire = 0
+						generator = { 454 455 453}			
+		}
+		   454 = { add_core_of = GRE }			
+		   455 = { add_core_of = GRE }
+		   453 = { add_core_of = GRE }			
+	}
+	option = {
+	name = adolfos.5.b
+			ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+			GRE = {
+			transfer_state = 453
+			transfer_state = 454	
+			transfer_state = 455
+			}	
+					
+			hidden_effect = {
+		   454 = { add_core_of = GRE }			
+		   455 = { add_core_of = GRE }
+		   453 = { add_core_of = GRE }		   }
+	}
+	
+}
+
+country_event = {
+	id = adolfos.6
+	title = adolfos.6.t
+	desc = adolfos.6.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		name = adolfos.6.a
+		ai_chance = { factor = 100 }
+ 				every_state = {
+					limit = { OR = {
+						is_core_of = KUR
+						is_claimed_by = KUR
+						}
+						is_controlled_by = ROOT
+					}
+					add_core_of = GRE
+					transfer_state_to = GRE
+				} 				
+	}
+	option = {
+	name = adolfos.6.b
+			ai_chance = { factor = 0 }
+   
+		declare_war_on = {
+					target = GRE
+					type = annex_everything
+				}			
+					
+	}
+	
+}
+
+country_event = {
+	id = adolfos.7
+	title = adolfos.7.t
+	desc = adolfos.7.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		name = adolfos.7.a
+		ai_chance = { factor = 100 }
+			GER = {
+			transfer_state = 413
+			transfer_state = 412	
+			}	
+			AFG = {
+			transfer_state = 416
+			transfer_state = 414
+			transfer_state = 410
+			}						
+			hidden_effect = {
+		   412 = { add_core_of = GER }			
+		   413 = { add_core_of = GER }
+		   416 = { add_core_of = AFG }
+ 414 = { add_core_of = AFG }	
+ 410 = { add_core_of = AFG }	
+               AFG = {		
+			   add_popularity = {
+					    ideology = fascism
+					    popularity = 1
+					}
+					set_politics = { ruling_party = fascism elections_allowed = no }
+					}
+GER = {
+add_to_faction = AFG
+}					
+					} 				
+	}
+	option = {
+	name = adolfos.7.b
+			ai_chance = { factor = 0 }
+   GRE = {
+		create_wargoal = {
+			type = annex_everything
+			target = PER
+		}			
+		}
+   AFG = {
+		create_wargoal = {
+			type = annex_everything
+			target = PER
+		}			
+		}
+
+	
+} }
+
+country_event = {
+	id = adolfos.8
+	title = adolfos.8.t
+	desc = adolfos.8.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		name = adolfos.8.a
+		ai_chance = { factor = 100 }
+			GRE = {
+				annex_country = {
+					target = PER
+				}
+			}			
+	}
+	option = {
+	name = adolfos.8.b
+			ai_chance = { factor = 0 }
+   GRE = {
+		create_wargoal = {
+			type = annex_everything
+			target = PER
+		}			
+		}
+  
+	}
+	
+}
+
+country_event = {
+	id = adolfos.9
+	title = adolfos.9.t
+	desc = adolfos.9.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		name = adolfos.9.a
+		ai_chance = { factor = 100 }
+			GRE = {
+				annex_country = {
+					target = IRQ
+				}
+			}	
+ 675 = { add_core_of = GRE }				
+	}
+	option = {
+	name = adolfos.9.b
+			ai_chance = { factor = 0 }
+   GRE = {
+		create_wargoal = {
+			type = annex_everything
+			target = IRQ
+		}			
+		}
+  
+	}
+	
+}
+
+country_event = {
+	id = adolfos.10
+	title = adolfos.10.t
+	desc = adolfos.10.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		name = adolfos.10.a
+		ai_chance = { factor = 100 }
+			GRE = {
+			transfer_state = 854
+			transfer_state = 855
+			transfer_state = 679
+			transfer_state = 856			
+			}	
+		   854 = { add_core_of = GRE }			
+		   855 = { add_core_of = GRE }
+		   679 = { add_core_of = GRE }
+ 856 = { add_core_of = GRE }	
+ 
+	}
+	option = {
+	name = adolfos.10.b
+			ai_chance = { factor = 0 }
+   GRE = {
+		create_wargoal = {
+			type = annex_everything
+			target = SAU
+		}			
+		}
+  
+	}
+	
+}
+
+country_event = {
+	id = adolfos.11
+	title = adolfos.11.t
+	desc = adolfos.11.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		name = adolfos.11.a
+		ai_chance = { factor = 100 }
+			GRE = {
+				annex_country = {
+					target = OMA
+				}
+				
+				transfer_state = 656
+				
+			}		
+ 656 = { add_core_of = GRE }	 
+	}
+	option = {
+	name = adolfos.11.b
+			ai_chance = { factor = 0 }
+
+    GRE = {
+		create_wargoal = {
+			type = annex_everything
+			target = OMA
+		}			
+		} 
+		 294 = { add_core_of = GRE }	
+	}
+	
+}
+
+country_event = {
+	id = adolfos.12
+	title = adolfos.12.t
+	desc = adolfos.12.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		name = adolfos.12.a
+		ai_chance = { factor = 100 }
+			GRE = {
+				annex_country = {
+					target = YEM
+				}
+				transfer_state = 659
+				
+			}	
+	 659 = { add_core_of = GRE }		
+	}
+	option = {
+	name = adolfos.12.b
+			ai_chance = { factor = 0 }
+   GRE = {
+		create_wargoal = {
+			type = annex_everything
+			target = YEM
+		}			
+		}
+ 293 = { add_core_of = GRE }	
+	}
+	
+}
+country_event = {
+	id = adolfos.13
+	title = adolfos.13.t
+	desc = adolfos.13.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		name = adolfos.13.a
+		ai_chance = { factor = 100 }
+			ITA = {
+				annex_country = {
+					target = SAU
+				}
+			
+				
+			}	
+		
+	}
+	option = {
+	name = adolfos.13.b
+			ai_chance = { factor = 0 }
+   ITA = {
+		create_wargoal = {
+			type = annex_everything
+			target = SAU
+		}			
+		}
+
+	}
+	
+}
+
+country_event = {
+	id = adolfos.14
+	title = adolfos.14.t
+	desc = adolfos.14.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+
+	option = {
+		name = adolfos.14.a
+		ai_chance = { factor = 100 }
+			GRE = {
+				annex_country = {
+					target = GER
+				}
+			
+				
+			}	
+            853 = { add_core_of = GRE }
+			102 = { add_core_of = GRE }
+			153 = { add_core_of = GRE }
+		    848 = { add_core_of = GRE }
+			152 = { add_core_of = GRE }
+			4 = { add_core_of = GRE }
+		    69 = { add_core_of = GRE }
+			74 = { add_core_of = GRE }
+			72 = { add_core_of = GRE }		
+			
+           50 = { add_core_of = GRE }
+			52 = { add_core_of = GRE }
+			53 = { add_core_of = GRE }
+		    42 = { add_core_of = GRE }
+			54 = { add_core_of = GRE }
+			55 = { add_core_of = GRE }
+		    51 = { add_core_of = GRE }
+			65 = { add_core_of = GRE }
+			66 = { add_core_of = GRE }	
+           67 = { add_core_of = GRE }
+			57 = { add_core_of = GRE }
+			56 = { add_core_of = GRE }
+		    60 = { add_core_of = GRE }
+			59 = { add_core_of = GRE }
+			58 = { add_core_of = GRE }
+		    64 = { add_core_of = GRE }
+			68 = { add_core_of = GRE }
+			62 = { add_core_of = GRE }		
+
+           63 = { add_core_of = GRE }
+			61 = { add_core_of = GRE }
+			5 = { add_core_of = GRE }
+		    763 = { add_core_of = GRE }
+			807 = { add_core_of = GRE }
+			85 = { add_core_of = GRE }
+		    86 = { add_core_of = GRE }
+			762 = { add_core_of = GRE }
+			28 = { add_core_of = GRE }	
+           8 = { add_core_of = GRE }
+			814 = { add_core_of = GRE }
+			188 = { add_core_of = GRE }
+		    97 = { add_core_of = GRE }
+			98 = { add_core_of = GRE }
+			10 = { add_core_of = GRE }
+		    87 = { add_core_of = GRE }
+			90 = { add_core_of = GRE }
+			39 = { add_core_of = GRE }				
+			850 = { add_core_of = GRE }	
+			
+            110 = { add_core_of = GRE }
+			142 = { add_core_of = GRE }
+			143 = { add_core_of = GRE }
+		    144 = { add_core_of = GRE }
+			7 = { add_core_of = GRE }
+			35 = { add_core_of = GRE }
+		    36 = { add_core_of = GRE }
+			6 = { add_core_of = GRE }
+			29 = { add_core_of = GRE }		
+			
+           34 = { add_core_of = GRE }
+			 97 = { add_core_of = GRE }
+			 94 = { add_core_of = GRE }
+			 95 = { add_core_of = GRE }
+			 96= { add_core_of = GRE }
+			 194= { add_core_of = GRE }
+			 204= { add_core_of = GRE }
+			 206= { add_core_of = GRE }
+			 207= { add_core_of = GRE }
+			 241= { add_core_of = GRE }
+			 11= { add_core_of = GRE }
+			 784= { add_core_of = GRE }
+			 189= { add_core_of = GRE }
+			 12= { add_core_of = GRE }
+			 190= { add_core_of = GRE }
+			 13= { add_core_of = GRE }
+			 191= { add_core_of = GRE }
+			 814= { add_core_of = GRE }
+			 815= { add_core_of = GRE }
+			 809= { add_core_of = GRE }
+			 808= { add_core_of = GRE }
+			 810= { add_core_of = GRE }
+			 813= { add_core_of = GRE }
+			 812= { add_core_of = GRE }
+			 811= { add_core_of = GRE }
+					11 = { add_core_of = GRE }
+					97 = { add_core_of = GRE }
+					189 = { add_core_of = GRE }
+					12 = { add_core_of = GRE }
+					190 = { add_core_of = GRE }
+					13 = { add_core_of = GRE }
+					191 = { add_core_of = GRE }
+					814 = { add_core_of = GRE }
+					815 = { add_core_of = GRE }
+					809 = { add_core_of = GRE }
+					808 = { add_core_of = GRE }
+					810 = { add_core_of = GRE }
+					813 = { add_core_of = GRE }
+					812 = { add_core_of = GRE }
+					811 = { add_core_of = GRE }
+					784 = { add_core_of = GRE }	
+
+				 93= { add_core_of = GRE }
+				 91= { add_core_of = GRE }
+				 89= { add_core_of = GRE }
+				 199= { add_core_of = GRE }
+				 201= { add_core_of = GRE }
+				 198= { add_core_of = GRE }
+				 202= { add_core_of = GRE }
+				 193= { add_core_of = GRE }
+				 192= { add_core_of = GRE }
+				 203= { add_core_of = GRE }
+				 197= { add_core_of = GRE }
+				 225= { add_core_of = GRE }
+				 259= { add_core_of = GRE }
+				 226= { add_core_of = GRE }
+				 196= { add_core_of = GRE }
+				 200= { add_core_of = GRE }
+				 221= { add_core_of = GRE }
+				 228= { add_core_of = GRE }
+				 227= { add_core_of = GRE }
+				 834= { add_core_of = GRE }				 
+	}
+	option = {
+	name = adolfos.14.b
+			ai_chance = { factor = 0 }
+   GRE = {
+		create_wargoal = {
+			type = annex_everything
+			target = GER
+		}			
+		}
+            853 = { add_core_of = GRE }
+			102 = { add_core_of = GRE }
+			153 = { add_core_of = GRE }
+		    848 = { add_core_of = GRE }
+			152 = { add_core_of = GRE }
+			4 = { add_core_of = GRE }
+		    69 = { add_core_of = GRE }
+			74 = { add_core_of = GRE }
+			72 = { add_core_of = GRE }		
+			
+           50 = { add_core_of = GRE }
+			52 = { add_core_of = GRE }
+			53 = { add_core_of = GRE }
+		    42 = { add_core_of = GRE }
+			54 = { add_core_of = GRE }
+			55 = { add_core_of = GRE }
+		    51 = { add_core_of = GRE }
+			65 = { add_core_of = GRE }
+			66 = { add_core_of = GRE }	
+           67 = { add_core_of = GRE }
+			57 = { add_core_of = GRE }
+			56 = { add_core_of = GRE }
+		    60 = { add_core_of = GRE }
+			59 = { add_core_of = GRE }
+			58 = { add_core_of = GRE }
+		    64 = { add_core_of = GRE }
+			68 = { add_core_of = GRE }
+			62 = { add_core_of = GRE }		
+				 834= { add_core_of = GRE }		
+           63 = { add_core_of = GRE }
+			61 = { add_core_of = GRE }
+			5 = { add_core_of = GRE }
+		    763 = { add_core_of = GRE }
+			807 = { add_core_of = GRE }
+			85 = { add_core_of = GRE }
+		    86 = { add_core_of = GRE }
+			762 = { add_core_of = GRE }
+			28 = { add_core_of = GRE }	
+           8 = { add_core_of = GRE }
+			814 = { add_core_of = GRE }
+			188 = { add_core_of = GRE }
+		    97 = { add_core_of = GRE }
+			98 = { add_core_of = GRE }
+			10 = { add_core_of = GRE }
+		    87 = { add_core_of = GRE }
+			90 = { add_core_of = GRE }
+			39 = { add_core_of = GRE }				
+			850 = { add_core_of = GRE }	
+			
+            110 = { add_core_of = GRE }
+			142 = { add_core_of = GRE }
+			143 = { add_core_of = GRE }
+		    144 = { add_core_of = GRE }
+			7 = { add_core_of = GRE }
+			35 = { add_core_of = GRE }
+		    36 = { add_core_of = GRE }
+			6 = { add_core_of = GRE }
+			29 = { add_core_of = GRE }		
+			
+           34 = { add_core_of = GRE }
+			 97 = { add_core_of = GRE }
+			 94 = { add_core_of = GRE }
+			 95 = { add_core_of = GRE }
+			 96= { add_core_of = GRE }
+			 194= { add_core_of = GRE }
+			 204= { add_core_of = GRE }
+			 206= { add_core_of = GRE }
+			 207= { add_core_of = GRE }
+			 241= { add_core_of = GRE }
+			 11= { add_core_of = GRE }
+			 784= { add_core_of = GRE }
+			 189= { add_core_of = GRE }
+			 12= { add_core_of = GRE }
+			 190= { add_core_of = GRE }
+			 13= { add_core_of = GRE }
+			 191= { add_core_of = GRE }
+			 814= { add_core_of = GRE }
+			 815= { add_core_of = GRE }
+			 809= { add_core_of = GRE }
+			 808= { add_core_of = GRE }
+			 810= { add_core_of = GRE }
+			 813= { add_core_of = GRE }
+			 812= { add_core_of = GRE }
+			 811= { add_core_of = GRE }
+					11 = { add_core_of = GRE }
+					97 = { add_core_of = GRE }
+					189 = { add_core_of = GRE }
+					12 = { add_core_of = GRE }
+					190 = { add_core_of = GRE }
+					13 = { add_core_of = GRE }
+					191 = { add_core_of = GRE }
+					814 = { add_core_of = GRE }
+					815 = { add_core_of = GRE }
+					809 = { add_core_of = GRE }
+					808 = { add_core_of = GRE }
+					810 = { add_core_of = GRE }
+					813 = { add_core_of = GRE }
+					812 = { add_core_of = GRE }
+					811 = { add_core_of = GRE }
+					784 = { add_core_of = GRE }	
+
+				 93= { add_core_of = GRE }
+				 91= { add_core_of = GRE }
+				 89= { add_core_of = GRE }
+				 199= { add_core_of = GRE }
+				 201= { add_core_of = GRE }
+				 198= { add_core_of = GRE }
+				 202= { add_core_of = GRE }
+				 193= { add_core_of = GRE }
+				 192= { add_core_of = GRE }
+				 203= { add_core_of = GRE }
+				 197= { add_core_of = GRE }
+				 225= { add_core_of = GRE }
+				 259= { add_core_of = GRE }
+				 226= { add_core_of = GRE }
+				 196= { add_core_of = GRE }
+				 200= { add_core_of = GRE }
+				 221= { add_core_of = GRE }
+				 228= { add_core_of = GRE }
+				 227= { add_core_of = GRE }
+	}
+	
+}
+
+country_event = {
+	id = alexander.1
+	title = alexander.1.t
+	desc = alexander.1.d
+	picture = GFX_report_event_gre_parade
+
+	is_triggered_only = yes
+
+	#option = {
+	#	ai_chance = {
+	#		factor = 0
+	#	}	
+	#	name = alexander.1.a
+	#	add_ideas = GRE_elisabeth	
+	#	add_political_power = -30
+	#	
+	#}
+	option = {
+		name = alexander.1.b
+		ai_chance = {
+			factor = 100
+		}
+		create_corps_commander = {
+			name = "Victoria Louise Of Prussia"
+			portrait_path = "GFX_portrait_ger_victoria_louise"
+			traits = { cavalry_leader cavalry_expert cavalry_officer trait_mountaineer skilled_staffer adaptable hill_fighter expert_delegator}
+			skill = 6
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 5
+			logistics_skill = 4
+		}			
+			add_political_power = -30
+     }	
+     
+	option = {
+		name = alexander.1.c
+		ai_chance = {
+			factor = 100
+		}
+	add_ideas = GRE_turkish_girl
+			add_political_power = -30
+     }	
+	option = {
+		name = alexander.1.e
+		ai_chance = {
+			factor = 100
+		}
+	
+			#add_ideas = GRE_elisabeth	
+		create_corps_commander = {
+			name = "Victoria Louise Of Prussia"
+			portrait_path = "GFX_portrait_ger_victoria_louise"
+			traits = { cavalry_leader cavalry_expert cavalry_officer trait_mountaineer skilled_staffer adaptable hill_fighter expert_delegator}
+			skill = 6
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 5
+			logistics_skill = 4
+		}
+
+	add_ideas = GRE_turkish_girl	
+	add_political_power = -125
+     }	 
+}
+
+
+country_event = {
+	id = alexander.2
+	title = alexander.2.t
+	desc = alexander.2.d
+	picture = GFX_report_event_gre_parade
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			factor = 0
+		}	
+		name = alexander.2.a
+
+		add_ideas = GRE_romanov	
+		add_country_leader_trait = the_last_romanov_definitely
+		add_political_power = -30
+	}
+	option = {
+		name = alexander.2.b
+		ai_chance = {
+			factor = 100
+		}
+		create_corps_commander = {
+			name = "Berlanti Abdelhamid"
+			portrait_path = "GFX_portrait_EGY_Berlanti_Abdelhamid"
+			traits = { panzer_leader panzer_expert desert_fox winter_expert winter_specialist }
+			skill = 6
+			attack_skill = 7
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 4
+		}			add_political_power = -30
+			
+     }	
+     
+	option = {
+		name = alexander.2.c
+		ai_chance = {
+			factor = 100
+		}
+	create_navy_leader = {
+			name = "Archduchess Adelheid Von Habsburg of Austria"
+			portrait_path = "GFX_portrait_AUH_Adelheid_von_Habsburg"
+			traits = { spotter destroyer_leader media_personality bold caustic_personality fleet_protector blockade_runner spotter seawolf }
+			skill = 6
+			attack_skill= 6
+			defense_skill= 7
+			maneuvering_skill= 6
+			coordination_skill= 5
+		}	add_political_power = -30
+			
+     }	
+	option = {
+		name = alexander.2.e
+		ai_chance = {
+			factor = 100
+		}
+	
+			add_ideas = GRE_romanov
+			add_country_leader_trait = the_last_romanov_definitely
+		create_corps_commander = {
+			name = "Berlanti Abdelhamid"
+			portrait_path = "GFX_portrait_EGY_Berlanti_Abdelhamid"
+			traits = { panzer_leader panzer_expert desert_fox winter_expert winter_specialist }
+			skill = 6
+			attack_skill = 7
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 4
+		}			
+
+	create_navy_leader = {
+			name = "Archduchess Adelheid Von Habsburg of Austria"
+			portrait_path = "GFX_portrait_AUH_Adelheid_von_Habsburg"
+			traits = { spotter destroyer_leader media_personality bold caustic_personality fleet_protector blockade_runner spotter seawolf }
+			skill = 6
+			attack_skill = 6
+			defense_skill = 7
+			maneuvering_skill = 6
+			coordination_skill = 5
+		}	add_political_power = -125
+     }	 
+}
+
+
+
+
+country_event = {
+	id = alexander.3
+	title = alexander.3.t
+	desc = alexander.3.d
+	picture = GFX_report_event_gre_parade
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			factor = 0
+		}	
+		name = alexander.3.a
+
+		add_ideas = GRE_theodora_girl
+		add_political_power = -30
+	}
+	option = {
+		name = alexander.3.b
+		ai_chance = {
+			factor = 100
+		}
+add_ideas = GRE_shadia					
+			add_political_power = -30
+     }	
+     
+	option = {
+		name = alexander.3.c
+		ai_chance = {
+			factor = 100
+		}
+add_ideas = GRE_wilhelmina
+add_political_power = -30
+			
+     }	
+	option = {
+		name = alexander.3.e
+		ai_chance = {
+			factor = 100
+		}
+	add_ideas = GRE_theodora_girl
+				add_ideas = GRE_shadia
+	
+		add_ideas = GRE_wilhelmina
+		add_political_power = -125
+     }	 
+}
+
+
+
+
+country_event = { #Alexander The Great spoted peeing in a bush, by a Alexandrian traveller
+	id = macedonia.1
+	title = macedonia.1.t
+	desc = macedonia.1.d 
+	picture = "GFX_report_event_gre_athens"
+	is_triggered_only = yes
+	option = {
+		name = macedonia.1.a
+		
+	}
+}
+country_event = { #Rumours have been confirmed, as Alexander was seen returning to his grave.
+	id = macedonia.2
+	title = macedonia.2.t
+	desc = macedonia.2.d 
+	picture = "GFX_report_event_gre_athens"
+	is_triggered_only = yes
+	option = {
+		name = macedonia.2.a
+		
+
+	}
+	
+	
+}
+country_event = {
+	id = macedonia.3
+	title = macedonia.3.t
+	desc = macedonia.3.d
+	is_triggered_only = yes
+	option = {
+		name = macedonia.3.a
+		hidden_effect = {
+		country_event = { id = macedonia.4 days = 7 }	
+			
+	}
+		
+}}
+country_event = {
+	id = macedonia.4
+	title = macedonia.4.t
+	desc = macedonia.4.d
+	is_triggered_only = yes
+	picture = "GFX_report_event_german_reichstag_bombed"
+	option = {
+		name = macedonia.4.a
+           add_timed_idea = {
+				idea = GRE_revenge_for_roxana
+				days = 365
+			}
+			custom_effect_tooltip = macedonia_imagine_being_traitor
+		hidden_effect = {
+		country_event = { id = macedonia.5 days = 75 }	
+			
+	}			
+	}
+		
+}
+country_event = {
+	id = macedonia.5
+	title = macedonia.5.t
+	desc = macedonia.5.d
+	is_triggered_only = yes
+	picture = "GFX_report_event_ger_civil_war"
+	option = {
+		name = macedonia.5.a
+		add_ideas = GRE_to_arms
+		if = {
+		limit = { has_completed_focus = GRE_seleucus }
+ 		hidden_effect = {
+						  every_state = {
+				limit = { OR = {
+					is_controlled_by = EGY 
+					is_controlled_by = BUL
+					is_controlled_by = TUR
+					is_controlled_by = PER
+					is_controlled_by = ALB
+					is_core_of = GRE}
+				}
+				add_core_of = PER
+			}
+		        PER = { 
+		transfer_state = 266
+		transfer_state = 418 
+		transfer_state = 411 
+		transfer_state = 412 
+		transfer_state = 413 	
+
+		transfer_state = 416 		
+		          add_popularity = {
+    		          ideology = neutrality
+    		          popularity = 1
+		          }
+				  set_politics = {
+					  ruling_party = neutrality
+					  elections_allowed = no
+				  }
+				  	add_ideas = GRE_medjay
+				  kill_country_leader = yes
+
+		create_country_leader = {
+			name = "Seleucos"
+			desc = "POLITICS_alexander_II_DESC"
+			picture = "GFX_portrait_slc_seleucus_nicator"
+			expire = "1965.1.1"
+			ideology = oligarchism
+			female = yes
+			traits = {
+			   empire_builder polemarch 
+			}
+		}	
+		set_cosmetic_tag = SLC_MAC
+				declare_war_on = {
+							target = GRE
+							type = annex_everything
+						}
+	load_oob = "SELEUCOS"
+			   }
+			
+		}	}		
+			if = {
+		limit = { has_completed_focus = GRE_ptolemy }
+ 		hidden_effect = {
+					  every_state = {
+				limit = { OR = {
+					is_controlled_by = EGY 
+					is_controlled_by = BUL
+					is_controlled_by = TUR
+					is_controlled_by = PER
+					is_controlled_by = ALB
+					is_core_of = GRE}
+				}
+				add_core_of = PER
+			}
+		        EGY = { 
+				
+transfer_state = 457 
+	transfer_state = 907 
+		transfer_state = 446 
+		transfer_state = 447 
+		transfer_state = 453
+
+		transfer_state = 553 
+		transfer_state = 455 
+		transfer_state = 554		
+		
+		transfer_state = 454		
+		          add_popularity = {
+    		          ideology = neutrality
+    		          popularity = 1
+		          }
+				  set_politics = {
+					  ruling_party = neutrality
+					  elections_allowed = no
+				  }
+				  	add_ideas = GRE_immortal
+				  kill_country_leader = yes
+		create_country_leader = {
+			name = "Ptolemey"
+			desc = "POLITICS_alexander_II_DESC"
+			picture = "GFX_portrait_ptl_ptolomey_soter"
+			expire = "1965.1.1"
+			ideology = oligarchism
+			female = yes
+			traits = {
+			   empire_builder polemarch 
+			}
+		}	
+		
+	load_oob = "PTOLEMEI"
+
+		set_cosmetic_tag = PTL_MAC
+				declare_war_on = {
+							target = GRE
+							type = annex_everything
+						}
+			   }
+			
+		}	}
+if = {
+		limit = { has_completed_focus = GRE_lysimachus }		
+ 		hidden_effect = {
+					  every_state = {
+				limit = { OR = {
+					is_controlled_by = EGY 
+					is_controlled_by = BUL
+					is_controlled_by = TUR
+					is_controlled_by = PER
+					is_controlled_by = ALB
+					is_core_of = GRE}
+				}
+				add_core_of = BUL
+			}
+		        BUL = { 
+		transfer_state = 211 
+		transfer_state = 801
+		transfer_state = 212 
+		transfer_state = 48
+		transfer_state = 106 	
+
+		transfer_state = 44
+		transfer_state = 805 
+		transfer_state = 802 	
+		
+		transfer_state = 803 
+		transfer_state = 105		
+		          add_popularity = {
+    		          ideology = neutrality
+    		          popularity = 1
+		          }
+				  set_politics = {
+					  ruling_party = neutrality
+					  elections_allowed = no
+				  }
+				  	add_ideas = GRE_companion
+				  kill_country_leader = yes
+
+		create_country_leader = {
+			name = "Lysimachos"
+			desc = "POLITICS_alexander_II_DESC"
+			picture = "GFX_portrait_lys_lysimachus_agathocles"
+			expire = "1965.1.1"
+			ideology = oligarchism
+			female = yes
+			traits = {
+			   empire_builder polemarch 
+			}
+		}	
+		set_cosmetic_tag = LYS_MAC
+				declare_war_on = {
+							target = GRE
+							type = annex_everything
+						}
+	load_oob = "LYSIMACHOS"
+			   }
+			
+		}		}
+if = {
+		limit = { has_completed_focus = GRE_cassander }	
+ 		hidden_effect = {
+					  every_state = {
+				limit = { OR = {
+					is_controlled_by = EGY 
+					is_controlled_by = BUL
+					is_controlled_by = TUR
+					is_controlled_by = PER
+					is_controlled_by = ALB
+					is_core_of = GRE}
+				}
+				add_core_of = ALB
+			}
+		        ALB = { 
+		transfer_state = 47 
+		transfer_state = 185 
+		transfer_state = 186 
+		transfer_state = 182
+		transfer_state = 187
+
+		transfer_state = 342
+		transfer_state = 339 
+		transfer_state = 345	
+		          add_popularity = {
+    		          ideology = neutrality
+    		          popularity = 1
+		          }
+				  set_politics = {
+					  ruling_party = neutrality
+					  elections_allowed = no
+				  }
+				  	add_ideas = GRE_cataphract
+				  kill_country_leader = yes
+		create_country_leader = {
+			name = "Kassandros"
+			desc = "POLITICS_alexander_II_DESC"
+			picture = "GFX_portrait_css_kassandros_antipatrou"
+			expire = "1965.1.1"
+			ideology = oligarchism
+			female = yes
+			traits = {
+			   empire_builder polemarch 
+			}
+		}	
+		load_oob = "KASSANDROS"
+		set_cosmetic_tag = KAS_MAC
+				declare_war_on = {
+							target = GRE
+							type = annex_everything
+						}
+
+			   }
+			
+		}  }
+if = {
+		limit = { has_completed_focus = GRE_antigonus }			
+		hidden_effect = {
+					  every_state = {
+				limit = { OR = {
+					is_controlled_by = EGY 
+					is_controlled_by = BUL
+					is_controlled_by = TUR
+					is_controlled_by = PER
+					is_controlled_by = ALB
+					is_core_of = GRE}
+				}
+				add_core_of = TUR
+			}
+		        TUR = { 
+				
+				  transfer_state = 49 
+		          transfer_state = 356
+		          transfer_state = 355 
+		          transfer_state = 346 
+		          transfer_state = 354
+		          add_popularity = {
+    		          ideology = neutrality
+    		          popularity = 1
+		          }
+				  set_politics = {
+					  ruling_party = neutrality
+					  elections_allowed = no
+				  }
+				  	add_ideas = GRE_argonaut
+				  kill_country_leader = yes
+				  					declare_war_on = {
+							target = GRE
+							type = annex_everything
+						}
+		create_country_leader = {
+			name = "Antigonos"
+			desc = "POLITICS_alexander_II_DESC"
+			picture = "GFX_portrait_ant_antigonus_monophthalmus"
+			expire = "1965.1.1"
+			ideology = oligarchism
+			female = yes
+			traits = {
+			   empire_builder polemarch 
+			}
+		}	
+
+		set_cosmetic_tag = ANT_MAC
+					load_oob = "ANTIGONOS"
+			   }
+			}
+		}
+	}
+		
+}
+country_event = {
+	id = macedonia.8
+	title = macedonia.8.t
+	desc = macedonia.8.d
+	is_triggered_only = yes
+	picture = "GFX_report_event_gre_george_ii_victorious"
+	option = {
+		name = macedonia.8.a
+		complete_national_focus = MAC_alexander_himself
+	}
+	option = {
+		name = macedonia.8.b
+		complete_national_focus = GRE_conquest
+
+	}	
+}
+
+

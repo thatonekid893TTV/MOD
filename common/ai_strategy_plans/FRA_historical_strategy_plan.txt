@@ -1,0 +1,218 @@
+FRA_historical_plan = {
+	name = "France historical plan"
+	desc = "Historical behavior for France"
+
+	allowed = {
+		original_tag = FRA
+	}
+	enable = {
+		OR = {
+			AND = {
+				is_historical_focus_on = yes
+				has_game_rule = {
+					rule = FRA_ai_behavior
+					option = DEFAULT
+				}	
+			}
+			has_game_rule = {
+				rule = FRA_ai_behavior
+				option = DEMOCRATIC_HISTORICAL
+			}
+			has_country_flag = FRA_AI_DEMOCRATIC_HISTORICAL
+		}
+	}
+	abort = {
+		OR = {
+			GER = { has_completed_focus = GER_oppose_hitler }
+			AND = {
+				ENG = { has_completed_focus = ENG_a_change_in_course }
+				NOT = { GER = { has_completed_focus = GER_oppose_hitler } }
+			}
+			is_subject = yes
+		}
+		has_game_rule = {
+			rule = FRA_ai_behavior
+			option = DEFAULT
+		}
+	}
+
+	ai_national_focuses = {
+		#IF FRANCE CONTINUE THE FIGHT WITHOUT GOING FREE FRANCE
+		FRA_the_fight_continue
+		FRA_colonial_factories
+		FRA_colonial_dockyard
+		FRA_lets_go_alger
+		
+		#Provisional FRANCE FOCUSES
+		FRA_liberation
+		FRA_french_liberation_army
+		FRA_epuration_legale
+		FRA_return_pow #do asap 
+		FRA_lend_lease
+		FRA_lessons_of_1940
+		FRA_division_blindee
+		FRA_oath_of_kufra
+
+		#FREE FRANCE FOCUSES
+		FRA_continue_the_fight2 #DO THIS ASAP
+
+		FRA_appeal_to_the_french_nation  #early years/Weak
+		FRA_london_provisional_gov
+		FRA_appeal_to_overseas_territories
+		FRA_continue_the_fight
+		FRA_intervention_in_west_africa
+		FRA_british_equipement
+		FRA_the_free_french_navy
+		FRA_the_maquis
+		FRA_radio_londre
+		FRA_underground_newspaper 
+		FRA_passive_resistance
+		FRA_hidden_weapons
+		FRA_colonial_recruitment
+		FRA_refus_absurde #when enough legitimacy #Real resistance begin
+		FRA_cooperation_with_the_royalists
+		FRA_reach_out_to_trade_unions
+		FRA_establish_a_gaullist_resistance
+		FRA_cooperation_with_the_communists
+		FRA_the_regiment_normandie
+		FRA_united_resistance_movements
+		FRA_path_to_liberation #rebuild a strong army
+		FRA_bir_hakeim
+		FRA_connections_to_industrialists
+	
+		FRA_the_civil_and_military_organization
+		FRA_form_the_national_committee #when enough legitimacy
+
+		FRA_national_council_of_the_resistance  #do when you can now
+		FRA_french_forces_of_the_interior #do ASAP if early DDAY
+		FRA_FAFL
+		FRA_usa_equipement
+		FRA_2DB
+		FRA_CEF1
+		FRA_kieffer
+		FRA_army_of_liberation1
+		FRA_form_the_provisional_government_of_the_republic 
+		FRA_send_moulin
+		
+		FRA_drop_weapons#liberation!/ pretty strong france
+		FRA_train_resistance
+		FRA_resistance_capital
+		FRA_break_german_lines
+		FRA_improvised_weapons
+		FRA_national_uprising
+
+		#times are INACCURATE RIGHT NOW, yeah maybe we do the new industry tree and after we see to make it accurate
+		#1936 FRANCE FOCUSES
+		FRA_they_shall_not_pass2 #DO THIS ASAP
+		FRA_begin_rearmament #DO THIS ASAP
+		FRA_conseil_national_economique #March 11, 1936
+		FRA_invest_in_the_metropole #May 20, 1936
+		#Popular Front Starts Here
+		FRA_reform_the_labour_laws  #June 24, 1936 
+		FRA_ban_the_leagues #July 29, 1936
+		FRA_devalue_the_franc #October 7, 1936
+		FRA_nationalize_key_industry #December 16, 1936
+
+		#1937
+		#FRA_secure_andorre #January 1st, 1937
+		FRA_tank_s35#new
+		FRA_reorganize_the_aviation_industry #March 12, 1937
+		FRA_form_the_state_arsenals #May 21, 1937
+		#Chautemps Starts Around Here
+		FRA_metropolitan_france  #June 25, 1937
+		FRA_hydroelectricity
+		FRA_industrial_expansion #October 8, 1937
+		FRA_extra_research_slot #December 17, 1937
+		FRA_invest_in_the_colonies
+		
+		#1938
+		#Blum is Back
+		FRA_propaganda_minister
+		FRA_extra_research_slot_2
+		FRA_plan_v #April 1, 1938
+		#Daladier
+		FRA_review_foreign_policy #May 25, 1938
+		FRA_buy_time #August 3, 1938
+		FRA_go_with_britain #October 12, 1938
+		FRA_request_emergency_powers #December 21, 1938
+		FRA_fighter_focus # New
+	 
+		#1939
+		FRA_defensive_focus #January 25, 1939
+		FRA_promote_the_free_market #new
+		FRA_dirigisme_alt #new
+		FRA_end_capital_flight#new
+		FRA_groupes_francs #June 14, 1939
+		FRA_revive_the_franco_polish_alliance #July 19, 1939
+		FRA_defense_passive #August 23, 1939
+		FRA_anglo_french_war_council #September 27, 1939
+		FRA_dyle_plan
+
+		#1940
+		FRA_call_the_ALVF #November 1, 1939
+		FRA_division_cuirassee #May 29, 1940
+		FRA_fighter_designs # New
+		FRA_bomber_focus
+		FRA_war_industry # New
+		FRA_polish_fighters
+		FRA_chasseurs_alpins
+		FRA_secure_norway
+		FRA_mobilize_colonies #absolutely needed or france will run out of manpower (the focus passive defense tell the ai to produce more divisions so its likely ai will have problem with manpower in a war)
+		FRA_gendarmerie #should do before like irl but not that important
+		FRA_cas_focus
+		FRA_arms_purchases_in_the_us
+		FRA_foreign_legion
+		FRA_firepower_kills
+		FRA_wargames
+		FRA_implore_patriotism #February 14, 1940
+		FRA_strengthen_government_support #August 7, 1940
+		FRA_infantry_focus
+		FRA_expedition_to_salonika #September 11, 1940
+		FRA_romanian_oil # October 16, 1940
+		 
+		#1941
+		FRA_national_unity_government #February 18, 1942
+		FRA_army_reform #June 3, 1942
+		FRA_artillery_focus #June 18, 1941
+		FRA_heavy_armor_focus #November 5, 1941
+		FRA_defensive_strategems #December 10, 1941
+
+		#Further stuff
+		FRA_extend_the_maginot_line
+		FRA_methodical_battle
+		FRA_naval_rearmament
+		FRA_fighter_focus
+		FRA_anti_air_focus
+		FRA_fighter_designs
+		FRA_bomber_designs
+		FRA_air_focus
+		FRA_modernize_the_air_army
+		FRA_bomber_focus
+		FRA_heavy_bomber_focus
+		FRA_fortification_focus
+		FRA_develop_colonial_dockyards
+		FRA_air_dominance
+		FRA_flying_artillery
+		FRA_colonial_air_bases
+		
+	}
+	focus_factors = {
+		FRA_the_blum_viollette_proposal = 0
+	}
+	research = {
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}

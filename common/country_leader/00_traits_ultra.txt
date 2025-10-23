@@ -1,0 +1,298 @@
+
+leader_traits = {
+married_to_greece = {
+		random = no
+		
+		mobilization_speed = 0.1
+	}
+gre_appeaser = {
+		random = no
+		sprite = 10
+		consumer_goods_factor = 0.05
+		political_power_cost = 0.1
+		weekly_stability = -0.001
+		drift_defence_factor = -0.1
+		power_balance_weekly = 0.0025
+	}	
+gre_autocrat = {
+		random = no
+		
+		neutrality_acceptance = 20
+		neutrality_drift = 0.1
+		command_power_gain_mult = 0.15
+	}	
+gre_army_experiebnced = {
+		random = no
+		
+		land_night_attack = 0.25
+		air_night_penalty = -0.25
+		naval_night_attack = 0.25
+	}		
+	Warlord = {
+		random = no
+		compliance_gain = 0.2
+		conscription = 0.05		
+	}
+	caesar = {
+		
+		random = no
+
+		drift_defence_factor = 0.5
+		political_power_factor = 0.3
+
+		stability_factor = 0.4
+neutrality_drift = 0.5
+		conscription = 0.03
+		compliance_gain = 0.15
+	
+	}
+	king_of_kings_5 = {
+		
+		random = no
+
+		drift_defence_factor = 0.1
+		political_power_factor = 0.1
+		mobilization_speed = 0.05
+		stability_factor = 0.1 
+ 
+		puppet_cost_factor = -0.1
+		max_command_power_mult = 0.1
+		guarantee_tension = -0.2
+
+		conscription_factor = 0.3
+		compliance_gain = 0.15
+		enemy_justify_war_goal_time = 0.25
+	}
+	scared_philip = {
+		
+		random = no
+
+		
+		political_power_factor = 0.15
+		mobilization_speed = -0.1
+		justify_war_goal_time = -0.25
+		stability_factor = 0.1 
+		conscription = 0.005
+		compliance_gain = 0.05
+        war_support_factor = -0.5
+		research_speed_factor = 0.05
+		army_attack_factor = -0.35
+		production_speed_bunker_factor = 0.75
+		army_defence_factor = 0.1
+		neutrality_drift = 0.1
+	}	
+	macstalin_father_of_nations = {
+		random = no
+		compliance_gain = 0.1
+		justify_war_goal_when_in_major_war_time = -0.8
+		conscription = 0.03
+		stability_factor = 0.1
+		war_support_factor = 0.05
+		political_power_factor = 0.05
+		opinion_gain_monthly_factor = 0.05
+		subjects_autonomy_gain = 0.1		
+	}
+	nordic_king = { 
+		random = no
+		conscription_factor = 0.25
+		war_support_factor = 0.05
+		mobilization_speed = 0.3
+		foreign_subversive_activites = -0.5
+		stability_weekly = 0.005
+		justify_war_goal_time = -0.5
+	}
+	lord_of_asia = {
+		
+		random = no
+
+		drift_defence_factor = 0.5
+		political_power_factor = 0.3
+		stability_factor = 0.1
+        compliance_growth = 0.3	
+        compliance_gain = 0.1		
+	}	
+	ant_athenian_anti_spartan = {
+		
+		random = no
+		annex_cost_factor = -0.5
+		max_command_power = 20
+		stability_factor = -0.1
+		army_morale_factor = 0.15
+	}	
+	hergemon = {
+		
+		random = no
+mobilization_speed = 0.7
+		annex_cost_factor = -0.5
+		max_command_power = 100
+		conscription = 0.02
+	}
+	pharao_of_egypt = {
+		
+		random = no
+          heat_attrition_factor = -0.8
+				research_speed_factor = 0.1
+				industrial_capacity_factory = 0.2
+				production_speed_buildings_factor = 0.15
+				consumer_goods_factor = -0.1
+				
+	}
+	shahanshah = {
+		
+		random = no
+          				non_core_manpower = 0.35
+						training_time_factor = -0.2
+						minimum_training_level = -0.1
+						required_garrison_factor = -0.3
+				monthly_population = 0.3
+				
+	}		
+	patriarch = {
+		random = no
+		political_power_factor = 0.25
+		stability_factor = 0.1
+		targeted_modifier = {
+			tag = USA
+			attack_bonus_against = 0.2
+			defense_bonus_against = 0.1
+		}
+		drift_defence_factor = 0.1
+        compliance_growth = 0.05		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	royal_puppet = {
+		random = no
+		stability_factor = -0.1
+	}
+	small_tank_producer_mass_1 = {
+		random = no
+		equipment_bonus = {
+			light_tank_chassis = {
+				build_cost_ic = -0.1
+			}
+			light_tank_artillery_chassis = {
+				build_cost_ic = -0.1
+			}
+			light_tank_destroyer_chassis = {
+				build_cost_ic = -0.1
+			}
+			light_tank_aa_chassis = {
+				build_cost_ic = -0.1
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	trade_specialization = {
+		random = no
+		equipment_bonus = {
+			convoy = {
+				instant = yes
+				build_cost_ic = -0.1
+				maximum_speed = 0.25
+			}
+		}
+	}	
+	nav_cas_producer_mass_2 = {
+		random = no
+		equipment_bonus = {
+			small_plane_cas_airframe = {
+				build_cost_ic = -0.15
+			}
+			small_plane_naval_bomber_airframe = {
+				build_cost_ic = -0.15
+			}
+			cv_small_plane_cas_airframe = {
+				build_cost_ic = -0.15
+			}
+			cv_small_plane_naval_bomber_airframe = {
+				build_cost_ic = -0.15
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}	
+	cruiser_producer_mass_1 = {
+		random = no
+		equipment_bonus = {
+			ship_hull_cruiser = {
+				build_cost_ic = -0.15
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	motorised_equipment_producer_offense_2 = {
+		random = no
+		equipment_bonus = {
+			motorized_equipment = {
+				hardness = 0.15
+				maximum_speed = 0.15
+				instant = yes
+			}
+			motorized_rocket_equipment = {
+				breakthrough = 0.15
+				hard_attack = 0.15
+			}
+			mechanized_equipment = {
+				hardness = 0.15
+				maximum_speed = 0.15
+			}
+			amphibious_mechanized_equipment = {
+				hardness = 0.15
+				maximum_speed = 0.15
+			}
+			armored_car_equipment = {
+				hardness = 0.15
+				maximum_speed = 0.15
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	motorised_equipment_producer_mass_2 = {
+		random = no
+		equipment_bonus = {
+			motorized_equipment = {
+				build_cost_ic = -0.3
+				instant = yes
+			}
+			motorized_rocket_equipment = {
+				build_cost_ic = -0.3
+			}
+			mechanized_equipment = {
+				build_cost_ic = -0.3
+			}
+			amphibious_mechanized_equipment = {
+				build_cost_ic = -0.3
+			}
+			armored_car_equipment = {
+				build_cost_ic = -0.3
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}	
+	alexander = {
+		random = no
+		neutrality_drift = 0.5
+		high_command_cost_factor = -0.5
+		air_chief_cost_factor = -0.5
+		army_chief_cost_factor = -0.5
+		navy_chief_cost_factor = -0.5
+		compliance_gain = 0.2
+		compliance_growth = 0.15
+	}	
+}

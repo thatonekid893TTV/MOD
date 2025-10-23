@@ -1,0 +1,45 @@
+ideas = {
+	air_force_spirit = {
+		conflicting_branches_spirit = {
+			ledger = air
+			available = { original_tag = GRE }
+			visible = { original_tag = GRE }
+			modifier = {
+				air_weather_penalty = -0.15
+			    air_ace_generation_chance_factor = 0.5
+				air_wing_xp_loss_when_killed_factor = -0.3
+				naval_detection = 0.2
+				naval_accidents_chance = -0.3
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
+			}
+		}
+	}
+
+	air_force_command_spirit = {
+		aviation_enthusiasts_spirit = {
+			ledger = air
+			available = { original_tag = GRE }
+			visible = { original_tag = GRE 
+			modifier = {
+				ground_attack_factor = 0.2
+				air_escort_efficiency = 0.2
+				air_bombing_targetting = 0.3
+				air_cas_present_factor = 0.15
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
+			}
+		}
+		
+	}
+}

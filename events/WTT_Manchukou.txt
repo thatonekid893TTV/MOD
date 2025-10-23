@@ -1,0 +1,1985 @@
+﻿add_namespace = wtt_manchukou
+
+# Manchukou demands warlord be puppeted
+country_event = {
+	id = wtt_manchukou.1
+	title = wtt_manchukou.1.t
+	desc = wtt_manchukou.1.desc
+	picture = GFX_report_event_manchukuo_army_2
+
+	is_triggered_only = yes
+	
+	#Accept puppet
+	option = {
+		name = wtt_manchukou.1.a
+		ai_chance = { 
+			base = 10 
+			modifier = {
+				has_global_flag = CHI_xian_refused
+				factor = 0
+			}
+		}
+		FROM = {
+			puppet = ROOT
+			country_event = { id = wtt_manchukou.2 }
+		}
+	}
+
+	#Never
+	option = {
+		name = wtt_manchukou.1.b
+		ai_chance = { 
+			base = 10 
+		}
+		FROM = {
+			country_event = { id = wtt_manchukou.3 }
+		}
+	}
+}
+
+# Answer from warlord wtt_manchukou.1 - Yes
+country_event = {
+	id = wtt_manchukou.2
+	title = wtt_manchukou.2.t
+	desc = wtt_manchukou.2.desc
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.2.a
+	}
+}
+
+
+# Answer from warlord wtt_manchukou.1 - No
+country_event = {
+	id = wtt_manchukou.3
+	title = wtt_manchukou.3.t
+	desc = wtt_manchukou.3.desc
+	picture = GFX_report_event_chinese_soldiers_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.3.a
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
+	}
+}
+
+#First five year plan
+country_event = {
+	id = wtt_manchukou.11
+	title = wtt_manchukou.11.t
+	desc = wtt_manchukou.11.desc
+	picture = GFX_report_event_generic_factory
+
+	is_triggered_only = yes
+	
+	#Air
+	option = {
+		name = wtt_manchukou.11.a
+		ai_chance = {
+			base = 3
+		}
+		#add_timed_idea = { days = 1825 idea = MAN_five_year_plan_air }
+		add_ideas = MAN_five_year_plan_air
+		unlock_decision_tooltip = MAN_plan_aircraft
+		clr_country_flag = MAN_plan_focus
+	}	
+	#Tank
+	option = {
+		name = wtt_manchukou.11.b
+		ai_chance = {
+			base = 3
+		}
+		#add_timed_idea = { days = 1825 idea = MAN_five_year_plan_tank }
+		add_ideas = MAN_five_year_plan_tank
+		unlock_decision_tooltip = MAN_plan_tank
+		clr_country_flag = MAN_plan_focus
+	}	
+	#Industry
+	option = {
+		name = wtt_manchukou.11.c
+		ai_chance = {
+			base = 10
+		}
+		#add_timed_idea = { days = 1825 idea = MAN_five_year_plan_industry }
+		add_ideas = MAN_five_year_plan_industry
+		unlock_decision_tooltip = MAN_plan_industry
+		clr_country_flag = MAN_plan_focus
+	}
+}
+
+###   ##  #  # ###  ### ###      ##  ##  ###   ##  ###  ##   ##  ### 
+#  # #  # ## # #  #  #   #      #   #  # #  # #  #  #  #  # #    #   
+###  #### # ## #  #  #   #       #  #### ###  #  #  #  #### # ## ##  
+#  # #  # #  # #  #  #   #        # #  # #  # #  #  #  #  # #  # #   
+###  #  # #  # ###  ###  #      ##  #  # ###   ##   #  #  #  ##  ### 
+
+add_namespace = wtt_manchukou_bandit_sabotage
+#Bandit sabotage - factory sabotaged
+country_event = {
+	id = wtt_manchukou_bandit_sabotage.21
+	title = wtt_manchukou_bandit_sabotage.21.t
+	desc = wtt_manchukou_bandit_sabotage.21.desc
+	picture = GFX_report_event_generic_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou_bandit_sabotage.21.a #okay
+		random_owned_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+				arms_factory > 0
+			}
+			damage_building = {
+				type = arms_factory
+				damage = 0.6
+			}
+		}
+	}
+}
+
+#Bandit sabotage - civilian factory sabotaged
+country_event = {
+	id = wtt_manchukou_bandit_sabotage.22
+	title = wtt_manchukou_bandit_sabotage.22.t
+	desc = wtt_manchukou_bandit_sabotage.21.desc
+	picture = GFX_report_event_generic_ruins
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou_bandit_sabotage.21.a #okay
+		random_owned_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+				industrial_complex > 0
+			}
+			damage_building = {
+				type = industrial_complex
+				damage = 0.6
+			}
+		}
+	}
+}
+
+#Bandit sabotage - bridge blown
+country_event = {
+	id = wtt_manchukou_bandit_sabotage.23
+	title = wtt_manchukou_bandit_sabotage.23.t
+	desc = wtt_manchukou_bandit_sabotage.23.desc
+	picture = GFX_report_event_generic_train
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou_bandit_sabotage.21.a #okay
+		random_owned_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+				infrastructure > 0
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+		}
+	}
+}
+
+add_namespace = man_foreign_support
+
+#manchu wants support to get independent
+#from china
+country_event = {
+	id = man_foreign_support.1
+	title = man_foreign_support.1.t
+	desc = man_foreign_support.1.desc
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+	
+	#Accept support
+	option = {
+		name = man_foreign_support.support
+		ai_chance = {
+			base = 5
+			modifier = {
+				has_war_with = MAN
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 3
+			}
+			modifier = {
+				is_in_faction_with = JAP
+				factor = 0
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = MAN
+					value > 75
+				}
+			}
+		}
+		
+		set_country_flag = MAN_foreign_support
+
+		CHI = {
+			#diplomatic_relation = {
+			#	country = MAN
+			#	relation = guarantee
+			#	active = yes
+			#}
+			add_ai_strategy = {
+				type = protect
+				id = "MAN"
+				value = 50
+			}
+		}
+		MAN = {
+			country_event = { id = man_foreign_support.4 days = 2 }
+		}
+	}
+
+	#Demand
+	option = {
+		name = man_foreign_support.1.demand
+		ai_chance = { 
+			base = 5
+			modifier = {
+				has_war_with = MAN
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 3
+			}
+			modifier = {
+				is_in_faction_with = JAP
+				factor = 0
+			}
+		}
+		FROM = {
+			country_event = { id = man_foreign_support.5 days = 2 }
+		}
+	}
+	
+	#Never
+	option = {
+		name = man_foreign_support.reject
+		ai_chance = { 
+			base = 5
+		}
+		FROM = {
+			country_event = { id = man_foreign_support.10 }
+		}
+	}
+}
+
+#from soviet
+country_event = {
+	id = man_foreign_support.2
+	title = man_foreign_support.2.t
+	desc = man_foreign_support.2.desc
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+	
+	#Accept support
+	option = {
+		name = man_foreign_support.support
+		ai_chance = {
+			base = 2
+			modifier = {
+				has_war_with = MAN
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 3
+			}
+			modifier = {
+				is_in_faction_with = JAP
+				factor = 0
+			}
+			modifier = {
+				JAP = {
+					has_completed_focus = JAP_support_the_kodoha_faction
+				}
+				factor = 2
+			}
+			modifier = {
+				MAN = {
+					has_completed_focus = CHI_closer_ties_with_germany
+				}
+				factor = 0
+			}
+			modifier = {
+				MAN = {
+					has_completed_focus = CHI_mission_to_the_soviet_union
+				}
+				factor = 2
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = MAN
+					value > 75
+				}
+			}
+		}
+
+		set_country_flag = MAN_foreign_support
+
+		SOV = {
+			#diplomatic_relation = {
+			#	country = MAN
+			#	relation = guarantee
+			#	active = yes
+			#}
+			add_ai_strategy = {
+				type = protect
+				id = "MAN"
+				value = 50
+			}
+		}
+		MAN = {
+			country_event = { id = man_foreign_support.6 days = 2 }
+		}
+	}
+
+	#Demand
+	option = {
+		name = man_foreign_support.2.demand
+		ai_chance = {
+			base = 5
+			modifier = {
+				has_war_with = MAN
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 3
+			}
+			modifier = {
+				is_in_faction_with = JAP
+				factor = 0
+			}
+			modifier = {
+				MAN = {
+					has_completed_focus = CHI_mission_to_the_soviet_union
+				}
+				factor = 1.5
+			}
+		}
+		
+		FROM = {
+			country_event = { id = man_foreign_support.7 days = 2 }
+		}
+	}
+	
+	#Never
+	option = {
+		name = man_foreign_support.reject
+		ai_chance = {
+			base = 5
+			modifier = {
+				JAP = {
+					has_completed_focus = JAP_support_the_kodoha_faction
+				}
+				factor = 0
+			}
+			modifier = {
+				MAN = {
+					has_completed_focus = CHI_closer_ties_with_germany
+				}
+				factor = 2
+			}
+		}
+		FROM = {
+			country_event = { id = man_foreign_support.10 }
+		}
+	}
+}
+
+#from usa
+country_event = {
+	id = man_foreign_support.3
+	title = man_foreign_support.3.t
+	desc = man_foreign_support.3.desc
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+	
+	#Accept support
+	option = {
+		name = man_foreign_support.support
+		ai_chance = {
+			base = 0
+			modifier = {
+				MAN = {
+					has_completed_focus = CHI_mission_to_the_us
+				}
+				add = 1
+			}
+		}
+		
+		set_country_flag = MAN_foreign_support
+
+		USA = {
+			#diplomatic_relation = {
+			#	country = MAN
+			#	relation = guarantee
+			#	active = yes
+			#}
+			add_ai_strategy = {
+				type = protect
+				id = "MAN"
+				value = 50
+			}
+		}
+		MAN = {
+			country_event = { id = man_foreign_support.8 days = 2 }
+		}
+	}
+
+	#Demand
+	option = {
+		name = man_foreign_support.3.demand
+		ai_chance = {
+			base = 2
+			modifier = {
+				has_war_with = MAN
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 3
+			}
+			modifier = {
+				is_in_faction_with = JAP
+				factor = 0
+			}
+			modifier = {
+				has_war_support < 0.1
+				factor = 0
+			}
+			modifier = {
+				has_war_support > 0.15
+				factor = 1.5
+			}
+			modifier = {
+				has_war_support > 0.25
+				factor = 2
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = MAN
+					value > 75
+				}
+			}
+			modifier = {
+				MAN = {
+					has_completed_focus = CHI_mission_to_the_us
+				}
+				factor = 2
+			}
+			modifier = {
+				has_completed_focus = USA_extend_the_chinese_exclusion_acts
+				factor = 0
+			}
+		}
+		FROM = {
+			country_event = { id = man_foreign_support.9 days = 2 }
+		}
+	}
+	
+	#Never
+	option = {
+		name = man_foreign_support.reject
+		ai_chance = { 
+			base = 5
+		}
+		FROM = {
+			country_event = { id = man_foreign_support.10 }
+		}
+	}
+}
+
+# Answer from China - yes
+country_event = {
+	id = man_foreign_support.4
+	title = man_foreign_support.4.t
+	desc = man_foreign_support.4.desc
+	picture = GFX_report_event_china_chiang_kai_shek
+
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance { base = 1 }
+		
+		name = man_foreign_support.yes
+		MAN_foreign_support_level_up = yes
+		set_country_flag = man_chinese_support
+	}
+}
+
+#Answer from China - demand
+country_event = {
+	id = man_foreign_support.5
+	title = man_foreign_support.5.t
+	desc = man_foreign_support.5.desc
+	picture = GFX_report_event_china_chiang_kai_shek
+
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance { base = 5 }
+		
+		name = man_foreign_support.5.a
+		MAN_foreign_support_level_up = yes
+		set_country_flag = man_chinese_demand
+		
+		CHI = {
+			#diplomatic_relation = {
+			#	country = MAN
+			#	relation = guarantee
+			#	active = yes
+			#}
+			add_ai_strategy = {
+				type = protect
+				id = "MAN"
+				value = 50
+			}
+			set_country_flag = MAN_foreign_support
+		}
+		MAN = {
+			diplomatic_relation = {
+				country = CHI
+				relation = non_aggression_pact
+			}
+		}
+	}
+	
+	option = {
+		ai_chance { base = 1 }
+		
+		name = man_foreign_support.refuse
+	}
+}
+
+# Answer from Soviet - yes
+country_event = {
+	id = man_foreign_support.6
+	title = man_foreign_support.6.t
+	desc = man_foreign_support.6.desc
+	picture = GFX_report_event_soviet_japanese_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = man_foreign_support.yes
+		MAN_foreign_support_level_up = yes
+		set_country_flag = man_soviet_support
+	}
+}
+
+# Answer from Soviet - demand
+country_event = {
+	id = man_foreign_support.7
+	title = man_foreign_support.7.t
+	desc = man_foreign_support.7.desc
+	picture = GFX_report_event_soviet_japanese_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance { base = 4 }
+		
+		name = man_foreign_support.7.a
+		MAN_foreign_support_level_up = yes
+		set_country_flag = man_soviet_demand
+		
+		SOV = {
+			#diplomatic_relation = {
+			#	country = MAN
+			#	relation = guarantee
+			#	active = yes
+			#}
+			add_ai_strategy = {
+				type = protect
+				id = "MAN"
+				value = 50
+			}
+			set_country_flag = MAN_foreign_support
+		}
+		give_military_access = SOV
+		add_ideas = MAN_soviet_demand
+		#761 = {
+		#	add_resource = {
+		#		type = oil
+		#		amount = 3
+		#	}
+		#}
+		#effect_tooltip = {
+		#	give_resource_rights = { receiver = SOV state = 761 }
+		#}
+	}
+	
+	option = {
+		ai_chance { base = 3 }
+		name = man_foreign_support.refuse
+	}
+}
+
+# Answer from USA - yes
+country_event = {
+	id = man_foreign_support.8
+	title = man_foreign_support.8.t
+	desc = man_foreign_support.8.desc
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+	
+	option = {
+		name = man_foreign_support.yes
+		MAN_foreign_support_level_up = yes
+		set_country_flag = man_usa_support
+	}
+}
+
+# Answer from USA - demand
+country_event = {
+	id = man_foreign_support.9
+	title = man_foreign_support.9.t
+	desc = man_foreign_support.9.desc
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance { base = 5 }
+		name = man_foreign_support.9.a
+		MAN_foreign_support_level_up = yes
+		set_country_flag = man_usa_demand
+		USA = {
+			#diplomatic_relation = {
+			#	country = MAN
+			#	relation = guarantee
+			#	active = yes
+			#}
+			add_ai_strategy = {
+				type = protect
+				id = "MAN"
+				value = 50
+			}
+			set_country_flag = MAN_foreign_support
+		}
+	}
+	
+	option = {
+		ai_chance { base = 1 }
+		name = man_foreign_support.refuse
+	}
+}
+
+# Answer from major power - No
+country_event = {
+	id = man_foreign_support.10
+	title = man_foreign_support.10.t
+	desc = man_foreign_support.10.desc
+	picture = GFX_report_event_chinese_soldiers_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = man_foreign_support.no
+	}
+}
+
+# USA demand Democracy
+country_event = {
+	id = man_foreign_support.11
+	title = man_foreign_support.11.t
+	desc = man_foreign_support.11.desc
+	picture = GFX_report_event_usa_election_generic
+
+	trigger = {
+		tag = MAN
+		has_country_flag = man_usa_demand
+		is_subject = no
+	}
+	
+	mean_time_to_happen = { days = 30 }
+	
+	#is_triggered_only = yes
+	
+	immediate = { clr_country_flag = man_usa_demand }
+	
+	option = {
+		ai_chance { base = 15 }
+		name = man_foreign_support.11.a
+		
+		add_timed_idea = { idea = democratic_influence days = 730 }
+		
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.2
+		}
+	}
+	
+	option = {
+		ai_chance { base = 1 }
+		name = man_foreign_support.reject
+		add_political_power = -100
+	}
+}
+
+# China demands support in Civil war
+country_event = {
+	id = man_foreign_support.12
+	title = man_foreign_support.12.t
+	desc = man_foreign_support.12.desc
+	picture = GFX_report_event_china_chiang_kai_shek
+
+	trigger = {
+		tag = MAN
+		has_country_flag = man_chi_demand
+		is_subject = no
+		CHI = {
+			has_war_with = PRC
+		}
+	}
+	
+	mean_time_to_happen = { days = 30 }
+	
+	#is_triggered_only = yes
+	
+	immediate = { clr_country_flag = man_chi_demand }
+	
+	option = {
+		ai_chance { base = 15 }
+		name = man_foreign_support.12.a
+		
+		MAN = {
+			add_to_war = {
+				targeted_alliance = CHI
+				enemy = PRC
+				hostility_reason = asked_to_join
+			}
+		}
+	}
+	
+	option = {
+		ai_chance { base = 1 }
+		name = man_foreign_support.reject
+		add_political_power = -100
+	}
+}
+
+# Soviets demands Influence
+country_event = {
+	id = man_foreign_support.13
+	title = man_foreign_support.13.t
+	desc = man_foreign_support.13.desc
+	picture = GFX_report_event_soviet_japanese_pact
+
+	trigger = {
+		tag = MAN
+		has_country_flag = man_soviet_demand
+		is_subject = no
+	}
+	
+	mean_time_to_happen = { days = 30 }
+	
+	#is_triggered_only = yes
+	
+	#immediate = { clr_country_flag = man_soviet_demand }
+	
+	option = {
+		ai_chance { base = 15 }
+		name = man_foreign_support.13.a
+		
+		complete_national_focus = MAN_hand_over_north_railway
+		
+		#add_ideas = MAN_soviet_railway_1
+
+	}
+
+}
+
+#manchukuo declare it's Independence
+country_event = {
+	id = wtt_manchukou.101
+	title = wtt_manchukou.101.t
+	desc = wtt_manchukou.101.desc
+	picture = GFX_report_event_chinese_army_training
+
+	is_triggered_only = yes
+	
+	#Accept Independence
+	option = {
+		name = wtt_manchukou.101.a
+		ai_chance = {
+			base = 3
+			modifier = {
+				MAN = {
+					NOT = {
+						OR = {
+							has_idea = MAN_foreign_support1
+							has_idea = MAN_foreign_support2
+							has_idea = MAN_foreign_support3
+						}
+					}
+				}
+				factor = 0
+			}
+			modifier = {
+				MAN = {
+					has_idea = MAN_foreign_support1
+				}
+				factor = 3
+			}
+			modifier = {
+				MAN = {
+					has_idea = MAN_foreign_support2
+				}
+				factor = 6
+			}
+			modifier = {
+				MAN = {
+					has_idea = MAN_foreign_support3
+				}
+				factor = 9
+			}
+		}
+		JAP = {
+			set_autonomy = {
+				target = MAN autonomy_state = autonomy_free
+			}
+		}
+		MAN = {
+			if = {
+				limit = {
+					is_in_faction_with = JAP
+				}
+				leave_faction = yes
+			}
+		}
+		hidden_effect = {
+			every_country = {
+				limit = {
+					has_war_with = MAN
+				}
+				white_peace = MAN
+			}
+			MAN = {
+				if = {
+					limit = {
+						has_idea = MAN_foreign_support1
+					}
+					remove_ideas = MAN_foreign_support1
+				}
+				if = {
+					limit = {
+						has_idea = MAN_foreign_support2
+					}
+					remove_ideas = MAN_foreign_support2
+				}
+				if = {
+					limit = {
+						has_idea = MAN_foreign_support3
+					}
+					remove_ideas = MAN_foreign_support3
+				}
+			}
+		}
+	}
+
+	#Never
+	option = {
+		name = wtt_manchukou.101.b
+		ai_chance = { 
+			base = 10
+		}
+		JAP = {
+			set_autonomy = {
+				target = MAN autonomy_state = autonomy_free
+			}
+		}
+		MAN = {
+			if = {
+				limit = {
+					is_in_faction_with = JAP
+				}
+				leave_faction = yes
+			}
+		}
+		JAP = {
+			declare_war_on = {
+				target = MAN
+				type = puppet_wargoal_focus
+			}
+		}
+		hidden_effect = {
+			every_country = {
+				limit = {
+					has_war_with = MAN
+					NOT = {
+						tag = JAP
+					}
+				}
+				white_peace = MAN
+			}
+			every_country = {
+				limit = {
+					has_country_flag = MAN_foreign_support
+				}
+				THIS = {
+					add_to_war = {
+						targeted_alliance = MAN
+						enemy = JAP
+						hostility_reason = asked_to_join
+					}
+					#clr_country_flag = MAN_foreign_support
+				}
+			}
+			if = {
+				limit = {
+					MAN = {
+						has_idea = MAN_foreign_support1
+					}
+				}
+				MAN = {
+					swap_ideas = {
+						remove_idea = MAN_foreign_support1
+						add_idea = MAN_anti_japanese_war1
+					}
+				}
+			}
+			if = {
+				limit = {
+					MAN = {
+						has_idea = MAN_foreign_support2
+					}
+				}
+				MAN = {
+					swap_ideas = {
+						remove_idea = MAN_foreign_support2
+						add_idea = MAN_anti_japanese_war2
+					}
+				}
+			}
+			if = {
+				limit = {
+					MAN = {
+						has_idea = MAN_foreign_support3
+					}
+				}
+				MAN = {
+					swap_ideas = {
+						remove_idea = MAN_foreign_support3
+						add_idea = MAN_anti_japanese_war3
+					}
+				}
+			}
+		}
+	}
+}
+
+#Protect the Amur
+country_event = {
+	id = wtt_manchukou.110
+	title = wtt_manchukou.110.t
+	desc = wtt_manchukou.110.desc
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = wtt_manchukou.110.a
+		ai_chance = {
+			base = 5
+			modifier = {
+				SOV = {
+					has_war = no
+				}
+				factor = 0
+			}
+			modifier = {
+				SOV = {
+					has_war_with = GER
+				}
+				factor = 2
+			}
+			modifier = {
+				SOV = {
+					surrender_progress > 0.4
+				}
+				factor = 3
+			}
+			
+		}
+		MAN = {
+			transfer_state = 408
+			transfer_state = 409
+			give_military_access = SOV
+			country_event = { id = wtt_manchukou.112 days = 2 }
+		}
+		set_global_flag = bases_for_land_man
+	}
+
+	#Never
+	option = {
+		name = wtt_manchukou.110.b
+		ai_chance = { 
+			base = 5
+		}
+		MAN = {
+			country_event = { id = wtt_manchukou.113 days = 2 }
+		}
+	}
+}
+
+#Return the protected far east
+country_event = {
+	id = wtt_manchukou.111
+	title = wtt_manchukou.111.t
+	desc = wtt_manchukou.111.desc
+	picture = GFX_report_event_soviet_tanks
+
+	trigger = {
+		tag = MAN
+		has_global_flag = had_yalta_conference
+		has_global_flag = bases_for_land_man
+	}
+	
+	immediate = { clr_global_flag = bases_for_land_man }
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = wtt_manchukou.111.a
+		ai_chance = {
+			base = 5
+		}
+		SOV = {
+			transfer_state = 408
+			transfer_state = 409
+		}
+	}
+
+	#Never
+	option = {
+		name = wtt_manchukou.111.b
+		ai_chance = { 
+			base = 5
+		}
+		MAN = {
+			declare_war_on = {
+				target = SOV
+				type = puppet_wargoal_focus
+			}
+		}
+		set_country_flag = man_betrayed_soviet
+		clear_variable = man_soviet_favor
+	}
+}
+
+country_event = {
+	id = wtt_manchukou.112
+	title = wtt_manchukou.112.t
+	desc = wtt_manchukou.112.desc
+	picture = GFX_report_event_soviet_japanese_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.112.a
+	}
+}
+
+country_event = {
+	id = wtt_manchukou.113
+	title = wtt_manchukou.113.t
+	desc = wtt_manchukou.113.desc
+	picture = GFX_report_event_soviet_army_greeted
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.113.a
+	}
+}
+
+#Demands on Japan
+country_event = {
+	id = wtt_manchukou.120
+	title = wtt_manchukou.120.t
+	desc = wtt_manchukou.120.desc
+	picture = GFX_report_event_japanese_chinese_surrender
+
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = wtt_manchukou.120.a
+		ai_chance = {
+			base = 4
+		}
+		MAN = {
+			transfer_state = 609
+			country_event = { id = wtt_manchukou.122 days = 2 }
+		}
+		release = KOR
+		set_autonomy = {
+			target = MEN autonomy_state = autonomy_free
+		}
+		hidden_effect = {
+			set_truce = {
+				target = MAN
+				days = 300
+			}
+		}
+	}
+
+	#Never
+	option = {
+		name = wtt_manchukou.120.b
+		ai_chance = {
+			base = 5
+		}
+		MAN = {
+			add_state_claim = 609 #East-Hebei
+			country_event = { id = wtt_manchukou.123 days = 2 }
+		}
+	}
+}
+
+country_event = {
+	id = wtt_manchukou.122
+	title = wtt_manchukou.122.t
+	desc = wtt_manchukou.122.desc
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.122.a
+	}
+}
+
+country_event = {
+	id = wtt_manchukou.123
+	title = wtt_manchukou.123.t
+	desc = wtt_manchukou.123.desc
+	picture = GFX_report_event_japanese_reply
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.113.a
+	}
+}
+
+
+#Invite Japanese Investors
+country_event = {
+	id = wtt_manchukou.130
+	title = wtt_manchukou.130.t
+	desc = wtt_manchukou.130.desc
+	picture = GFX_report_event_generic_factory
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.130.a
+		
+		random_owned_controlled_state = {
+			prioritize = { 328 }
+			limit = {
+				is_fully_controlled_by = ROOT
+				free_building_slots = {
+					building = industrial_complex
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			set_state_flag = MAN_invite_japanese_investors_IC
+		}
+		set_country_flag = aikawas_plan_flag
+		custom_effect_tooltip = aikawa_plan_tt
+	}
+	
+	option = {
+		name = wtt_manchukou.130.b
+		
+		random_owned_controlled_state = {
+			prioritize = { 328 }
+			limit = {
+				is_fully_controlled_by = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			set_state_flag = MAN_invite_japanese_investors_IC
+		}
+		set_country_flag = hoshinos_plan_flag
+		custom_effect_tooltip = hoshino_plan_tt
+	}
+}
+
+#country_event = {
+#	id = wtt_manchukou.190
+#	title = wtt_manchukou.190.t
+#	desc = wtt_manchukou.190.desc
+#	picture = GFX_report_event_japanese_reply
+#
+#	is_triggered_only = yes
+#	
+#	immediate = {
+#	}
+#	
+#	option = {
+#		name = wtt_manchukou.190.a
+#		
+#		hidden_effect = {
+#			set_victory_points = { province = 10612 value = 1 }
+#			set_province_name = { id = 10612 name = "Manzhouli" }
+#			set_victory_points = { province = 13150 value = 2 }
+#			set_province_name = { id = 13150 name = "Hailar" }
+#		}
+#		
+#		start_civil_war = {
+#			ideology = neutrality
+#			size = 0.4
+#			capital = 761
+#			states = { 714 761 717 610 }
+#			keep_unit_leaders_trigger = {
+#				has_trait = JAP_kwantung_aligned
+#			}
+#		}
+#	}
+#}
+
+# Panasianism - get Independent by stay loyal without kwantung
+country_event = {
+	id = wtt_manchukou.140
+	title = wtt_manchukou.140.t
+	desc = wtt_manchukou.140.desc
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	trigger = {
+		tag = MAN
+		is_subject_of = JAP
+		compare_autonomy_state > autonomy_wtt_imperial_protectorate
+		has_completed_focus = MAN_obedience
+		has_completed_focus = MAN_purge_the_general_affairs_council
+		has_idea = MAN_low_legitimacy_1
+	}
+	
+	mean_time_to_happen = { days = 30 }
+	
+	#is_triggered_only = yes
+	
+	#immediate = {  }
+	
+	option = {
+		ai_chance { base = 15 }
+		name = wtt_manchukou.140.a
+		
+		unlock_national_focus = MAN_the_two_emperors
+	}
+
+}
+
+#Socialist Coup
+country_event = {
+	id = wtt_manchukou.150
+	title = wtt_manchukou.150.t
+	desc = wtt_manchukou.150.desc
+	picture = GFX_report_event_pla_in_beijing
+
+	trigger = {
+		tag = MAN
+		check_variable = { man_soviet_influence = 0.17 compare = greater_than }
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+		modifier = {
+			factor = 0.02
+			check_variable = { man_soviet_influence = 0.20 compare = equals }
+		}
+
+		modifier = {
+			factor = 0.6
+			communism > 0.3
+		}
+		
+		modifier = {
+			factor = 0.2
+			communism > 0.5
+		}
+	}
+	
+	fire_only_once = yes
+	
+	#is_triggered_only = yes
+	
+	#immediate = {  }
+	
+	option = {
+		ai_chance { base = 15 }
+		name = wtt_manchukou.150.a
+		hidden_effect = {
+			if = {
+				limit = { MEN = { is_subject_of = ROOT } }
+				annex_country = { target = MEN transfer_troops = yes }
+			}
+			if = {
+				limit = { KOR = { is_subject_of = ROOT } }
+				annex_country = { target = KOR transfer_troops = yes }
+			}
+		}
+		if = {
+			limit = {
+				SOV = { has_completed_focus = SOV_the_right_opposition }
+			}
+			SOV = {
+				diplomatic_relation = {
+					country = MAN
+					relation = guarantee
+					active = yes
+				}
+			}
+		}
+		else = {
+			SOV = {
+				puppet = MAN
+			}
+		}
+		set_politics = { ruling_party = communism elections_allowed = no }
+		if = {
+			limit = {
+				SOV = { has_completed_focus = SOV_the_right_opposition }
+			}
+			set_country_flag = man_gov_overthrown_by_right
+		}
+		else_if = {
+			limit = {
+				SOV = { has_completed_focus = SOV_the_left_opposition }
+				}
+			set_country_flag = man_gov_overthrown_by_left
+		}
+		else = {
+			set_country_flag = man_gov_overthrown_by_centre
+		}
+		remove_dynamic_modifier = { modifier = MAN_soviet_railway }
+		clear_variable = man_soviet_influence
+		complete_national_focus = MAN_socialist_victory
+	}
+
+}
+
+#First Baili Conference
+country_event = {
+	id = wtt_manchukou.151
+	title = wtt_manchukou.151.t
+	desc = wtt_manchukou.151.desc
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance { base = 30 }
+		name = wtt_manchukou.151.a
+		
+		SOV = {
+			country_event = { id = wtt_manchukou.152 days = 2 }
+		}
+	}
+}
+
+#Rehabilitate Zhao Shangzhi
+country_event = {
+	id = wtt_manchukou.152
+	title = wtt_manchukou.152.t
+	desc = wtt_manchukou.152.desc
+	picture = GFX_report_event_SOV_demands
+
+	is_triggered_only = yes
+	
+	#Leave it be
+	option = {
+		ai_chance { base = 60 }
+		name = wtt_manchukou.152.a
+	}
+	
+	#Rehabilitate him
+	option = {
+		ai_chance { base = 15 }
+		name = wtt_manchukou.152.b
+		
+		MAN = {
+			country_event = { id = wtt_manchukou.153 days = 2 }
+		}
+	}
+	
+	#Send the Delegate
+	option = {
+		ai_chance { base = 15 }
+		name = wtt_manchukou.152.c
+		
+		trigger = {
+			PRC = {
+				OR = {
+					has_completed_focus = PRC_agrarian_socialism
+					has_completed_focus = PRC_social_democracy
+				}
+			}
+			NOT = { has_completed_focus = SOV_the_right_opposition }
+			NOT = { has_completed_focus = SOV_the_left_opposition }
+		}
+		
+		MAN = {
+			#need to add Peng Shuzhi!
+			country_event = { id = wtt_manchukou.154 days = 2 }
+		}
+	}
+	
+	#send trotzkist instead
+	option = {
+		ai_chance { base = 15 }
+		name = wtt_manchukou.152.d
+		
+		trigger = {
+			has_completed_focus = SOV_the_left_opposition
+		}
+		
+		MAN = {
+			country_event = { id = wtt_manchukou.164 days = 2 }
+		}
+	}
+}
+
+#Zhao Shangzhi is rehabilitated
+country_event = {
+	id = wtt_manchukou.153
+	title = wtt_manchukou.153.t
+	desc = wtt_manchukou.153.desc
+	picture = GFX_report_event_china_infiltration
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.153.a
+		
+		set_country_flag = man_zhao_rehab_fl
+	}
+}
+
+#Soviets send Wang Ming
+country_event = {
+	id = wtt_manchukou.154
+	title = wtt_manchukou.154.t
+	desc = wtt_manchukou.154.desc
+	picture = GFX_report_event_soviet_japanese_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.154.a
+		
+		set_country_flag = man_soviet_delegate
+		#SOV_grigory_semyonov = { set_nationality = SOV }
+	}
+}
+
+#Second Baili Conference
+country_event = {
+	id = wtt_manchukou.155
+	title = wtt_manchukou.155.t
+	desc = wtt_manchukou.155.desc
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance { base = 30 }
+		name = wtt_manchukou.155.a
+		
+		trigger = {
+			NOT = { has_completed_focus = MAN_manchurian_socialism }
+		}
+		
+		add_political_power = 50
+	}
+	
+	option = {
+		ai_chance { base = 40 }
+		name = wtt_manchukou.155.b
+		
+		promote_character = {
+			character = "MAN_zhou_baozhong"
+		}
+	}
+	
+	option = {
+		ai_chance {
+			base = 5
+		}
+		
+		trigger = {
+			has_country_flag = man_zhao_rehab_fl
+		}
+		
+		name = wtt_manchukou.155.c
+		
+		promote_character = {
+			character = "MAN_zhao_shangzhi"
+		}
+	}
+	
+	option = {
+		ai_chance {
+			base = 10
+		}
+		
+		trigger = {
+			has_country_flag = man_soviet_delegate
+		}
+		
+		name = wtt_manchukou.155.d
+		
+		if = {
+			limit = { has_country_flag = man_gov_overthrown_by_centre }
+		
+			create_country_leader = {
+				name = "Wang Ming"
+				desc = "POLITICS_WANG_MING_DESC"
+				picture = "GFX_portrait_prc_wang_ming"
+				expire = "1965.1.1"
+				ideology = stalinism
+				traits = {
+					soviet_thaw
+				}
+			}
+			clr_country_flag = man_soviet_delegate
+			set_country_flag = man_wang_ming_in_charge
+		}
+	}
+}
+
+#Dongbei Base
+country_event = {
+	id = wtt_manchukou.156
+	title = wtt_manchukou.156.t
+	desc = wtt_manchukou.156.desc
+	picture = GFX_report_event_SOV_demands
+
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance { base = 40 }
+		name = wtt_manchukou.156.a
+		
+		MAN = {
+			country_event = { id = wtt_manchukou.157 days = 2 }
+		}
+	}
+	
+	option = {
+		ai_chance { base = 15 }
+		name = wtt_manchukou.156.b
+		
+		MAN = {
+			country_event = { id = wtt_manchukou.158 days = 2 }
+		}
+	}
+	
+	option = {
+		ai_chance {
+			base = 5
+			modifier = {
+				SOV = { has_completed_focus = SOV_the_centre }
+				factor = 0
+			}
+		}
+		name = wtt_manchukou.156.c
+		
+		MAN = {
+			country_event = { id = wtt_manchukou.159 days = 2 }
+		}
+	}
+}
+
+#Manchuria joins CCP
+country_event = {
+	id = wtt_manchukou.157
+	title = wtt_manchukou.157.t
+	desc = wtt_manchukou.157.desc
+	picture = GFX_report_event_china_infiltration
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.157.a
+		
+		set_country_flag = man_soviet_support_ccp
+	}
+}
+
+#Manchu Soviet Republic
+country_event = {
+	id = wtt_manchukou.158
+	title = wtt_manchukou.158.t
+	desc = wtt_manchukou.158.desc
+	picture = GFX_report_event_soviet_japanese_pact
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.158.a
+		
+		set_country_flag = man_soviet_republic
+	}
+}
+
+#Soviet grant fully independence
+country_event = {
+	id = wtt_manchukou.159
+	title = wtt_manchukou.159.t
+	desc = wtt_manchukou.159.desc
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.159.a
+		
+		set_country_flag = man_soviet_independence
+		
+		SOV = {
+			set_autonomy = {
+				target = MAN autonomy_state = autonomy_free
+			}
+		}
+		
+		if = {
+			limit = { has_idea = MAN_soviet_railway_1 }
+			remove_ideas = MAN_soviet_railway_1
+		}
+		if = {
+			limit = { has_country_flag = MAN_soviet_railway_2_fl }
+			clr_country_flag = MAN_soviet_railway_2_fl
+		}
+		if = {
+			limit = { has_country_flag = MAN_soviet_railway_3_fl }
+			clr_country_flag = MAN_soviet_railway_3_fl
+		}
+	}
+}
+
+#Soviets pressure Manchurian government
+country_event = {
+	id = wtt_manchukou.160
+	title = wtt_manchukou.160.t
+	desc = wtt_manchukou.160.desc
+	picture = GFX_report_event_SOV_demands
+
+	is_triggered_only = yes
+	
+	#Compromise
+	option = {
+		name = wtt_manchukou.160.a
+		
+		add_popularity = {
+			ideology = communism
+			popularity = 0.07
+		}
+		
+		add_political_power = -10
+	}
+	
+	#We have to accept this
+	option = {
+		name = wtt_manchukou.160.b
+		
+		MAN_soviet_influence_increase = yes
+	}
+	
+	#Politely rejecting
+	option = {
+		name = wtt_manchukou.160.c
+		
+		trigger = {
+			check_variable = { man_soviet_favor = 4 compare = greater_than }
+		}
+		
+		add_to_variable  = { man_soviet_favor = -5 }
+		custom_effect_tooltip = man_soviet_favor_m5
+	}
+}
+
+#Soviet industrial aid
+country_event = {
+	id = wtt_manchukou.161
+	title = wtt_manchukou.161.t
+	desc = wtt_manchukou.161.desc
+	picture = GFX_report_event_generic_train
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.161.a
+		
+		MAN_soviet_influence_increase = yes
+		
+		if = {
+			limit = { has_idea = MAN_soviet_railway_2 }
+			swap_ideas = {
+				remove_idea = MAN_soviet_railway_2
+				add_idea = MAN_soviet_railway_3
+			}
+			clr_country_flag = MAN_soviet_railway_2_fl
+			set_country_flag = MAN_soviet_railway_3_fl
+		}
+		
+		if = {
+			limit = { has_idea = MAN_soviet_railway_1 }
+			swap_ideas = {
+				remove_idea = MAN_soviet_railway_1
+				add_idea = MAN_soviet_railway_2
+			}
+			set_country_flag = MAN_soviet_railway_2_fl
+		}
+	}
+}
+
+#Soviet factories are built
+country_event = {
+	id = wtt_manchukou.162
+	title = wtt_manchukou.162.t
+	desc = wtt_manchukou.162.desc
+	picture = GFX_report_event_generic_factory
+
+	is_triggered_only = yes
+	
+	immediate = {
+		random_owned_controlled_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+				free_building_slots = {
+					building = arms_factory
+					size > 1
+					include_locked = no
+				}
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+			#add_extra_state_shared_building_slots = 1
+		}
+		hidden_effect = {
+			if = {
+				limit = { has_idea = MAN_soviet_railway_3 }
+				SOV = {
+					remove_targeted_decision = { target = MAN decision = SOV_manchu_industrial_aid }
+				}
+			}
+		}
+	}
+	
+	#For the Peoples
+	option = {
+		name = wtt_manchukou.162.a
+		
+		add_stability = 0.01
+	}
+	
+	#For the Workers
+	option = {
+		name = wtt_manchukou.162.b
+		
+		add_popularity = {
+			ideology = communism
+			popularity = 0.02
+		}
+	}
+}
+
+#Rejoin with CCP
+country_event = {
+	id = wtt_manchukou.163
+	title = wtt_manchukou.163.t
+	desc = wtt_manchukou.163.desc
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+	
+	#We'll join our Comrades in the final struggle
+	option = {
+		name = wtt_manchukou.163.a
+		
+		trigger = {
+			country_exists = PRC
+			NOT = { has_completed_focus = MAN_bastion_of_trotzkism }
+		}
+		
+		swap_ideas = {
+			remove_idea = MAN_peoples_revolutionary_commitee
+			add_idea = MAN_peoples_revolutionary_commitee_maoism
+		}
+		
+		PRC = {
+			puppet = MAN
+		}
+	}
+	
+	#We are the only true legimit government of the China and the True Party Comitee
+	option = {
+		name = wtt_manchukou.163.b
+		
+		#inconviniert but working, will resolved better in future patches
+		trigger = {
+			AND = {
+				country_exists = PRC
+				PRC = {
+					OR = {
+						has_completed_focus = PRC_agrarian_socialism
+						has_completed_focus = PRC_social_democracy
+						MAN = { MAN_zhao_shangzhi = { is_country_leader = yes } }
+						MAN = { has_completed_focus = MAN_bastion_of_trotzkism }
+					}
+				}
+				#NOT = { MAN_yang_jingyu = { is_country_leader = yes } }
+				OR = {
+					MAN_zhao_shangzhi = { is_country_leader = yes }
+					has_country_flag = man_wang_ming_in_charge
+					has_completed_focus = MAN_bastion_of_trotzkism
+				}
+			}
+		}
+		
+		set_cosmetic_tag = MAN_qing
+		
+		every_state = {
+			limit = { is_core_of = PRC }
+			add_core_of = ROOT
+		}
+	}
+	
+	#We'll retake the fire of Revolution
+	option = {
+		name = wtt_manchukou.163.c
+		
+		trigger = {
+			NOT = { country_exists = PRC }
+		}
+		
+		if = {
+			limit = {
+				NOT = { has_completed_focus = MAN_bastion_of_trotzkism }
+			}
+			swap_ideas = {
+				remove_idea = MAN_peoples_revolutionary_commitee
+				add_idea = MAN_peoples_revolutionary_commitee_maoism
+			}
+		}
+		
+		set_cosmetic_tag = MAN_qing
+		
+		every_state = {
+			limit = { is_core_of = PRC }
+			add_core_of = ROOT
+		}
+	}
+}
+
+#Soviets send Peng Shuzhi
+country_event = {
+	id = wtt_manchukou.164
+	title = wtt_manchukou.164.t
+	desc = wtt_manchukou.164.desc
+	picture = GFX_report_event_SOV_demands
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wtt_manchukou.154.a
+		
+		set_country_flag = man_trotzkist_delegate
+	}
+}
+
+#Umezu Yoshijiro will become the leader of the Kwantung Army
+#country_event = {
+#	id = wtt_manchukou.200
+#	title = wtt_manchukou.200.t
+#	desc = wtt_manchukou.200.desc
+#	picture = GFX_report_event_japanese_reply
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_manchukou.200.a
+#		
+#		swap_ideas = {
+#			remove_idea = MAN_kwantung_leader_ueda
+#			add_idea = MAN_kwantung_leader_umezu
+#		}
+#	}
+#}
+
+#Otozo Yamada will become the leader of the Kwantung Army
+#country_event = {
+#	id = wtt_manchukou.201
+#	title = wtt_manchukou.201.t
+#	desc = wtt_manchukou.201.desc
+#	picture = GFX_report_event_japanese_reply
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_manchukou.201.a
+#		
+#		swap_ideas = {
+#			remove_idea = MAN_kwantung_leader_umezu
+#			add_idea = MAN_kwantung_leader_yamada
+#		}
+#	}
+#}

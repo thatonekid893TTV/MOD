@@ -1,0 +1,61 @@
+﻿illegally_annex_puppet = {
+     illegally_annex_the_bosphorus_protectorate= { 
+        priority = 2
+        icon =  generic_operation
+        ai_will_do = { base = 100 }
+        allowed = { original_tag = GRE }
+        available = { has_completed_focus = GRE_neutralize_the_turkish_menace }
+        visible = {
+		has_completed_focus = GRE_neutralize_the_turkish_menace
+        }
+        days_remove = 50
+
+        cost = 300
+
+
+        remove_effect = {
+		  annex_country = { target = SOB transfer_troops = yes }
+		  add_threat = 3
+            }
+        }
+
+     illegally_annex_the_sue_protectorate= { 
+        priority = 2
+        icon =  generic_operation
+        ai_will_do = { base = 100 }
+        allowed = { original_tag = GRE }
+        available = { has_completed_focus = GRE_secure_acccess_to_the_red_sea }
+        visible = {
+		has_completed_focus = GRE_secure_acccess_to_the_red_sea
+        }
+        days_remove = 50
+
+        cost = 300
+
+
+        remove_effect = {
+		  annex_country = { target = SUE transfer_troops = yes }
+		  add_threat = 5
+            }
+        }
+	
+     illegally_annex_the_gib_protectorate= { 
+        priority = 2
+        icon =  generic_operation
+        ai_will_do = { base = 100 }
+        allowed = { original_tag = GRE }
+        available = { has_completed_focus = GRE_the_occupation_deal }
+        visible = {
+		has_completed_focus = GRE_the_occupation_deal
+        }
+        days_remove = 50
+
+        cost = 300
+
+
+        remove_effect = {
+		  annex_country = { target = GIB transfer_troops = yes }
+		  add_threat = 2
+            }
+        }
+    }

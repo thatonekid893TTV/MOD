@@ -1,0 +1,288 @@
+GRE_balance_of_power_category = {
+	GRE_very_low_increase_effect = {
+
+		icon = decision_generic_decision
+		priority = 90
+		allowed = {
+			original_tag = GRE
+		}
+
+
+		cost = 5
+
+		days_re_enable = 100
+
+		complete_effect = {
+			GRE_bop_very_low_increase_effect = yes
+		}
+
+		
+	}
+	
+	GRE_low_increase_effect = {
+		priority = 90
+		icon = GFX_decision_generic_factory
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		cost = 50
+
+		days_re_enable = 150
+
+		complete_effect = {
+			GRE_bop_low_increase_effect = yes
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+
+		
+	}
+	
+	
+	GRE_high_increase_effect = {
+		priority = 90
+		icon = GFX_decision_GRE_military_buildup
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		cost = 50
+
+		days_re_enable = 200
+
+		complete_effect = {
+			GRE_bop_low_increase_effect = yes
+			add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 100
+		}
+			add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = 50
+		}
+            add_command_power = 10
+	    }
+		
+	}
+	
+	GRE_medium_increase_effect = {
+		priority = 90
+		icon = GFX_decision_generic_assassination
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		cost = 25
+
+		days_re_enable = 120
+
+		complete_effect = {
+			GRE_bop_very_low_increase_effect = yes
+			add_war_support = 0.03
+			add_doctrine_cost_reduction = {
+				name = GRE_the_hellenic_army
+				cost_reduction = 0.05
+				uses = 1
+				category = land_doctrine
+			}			
+		}
+		
+	}	
+	GRE_very_low_decrease_effect = {
+		priority = 90
+		icon = GFX_decision_border_war
+
+		allowed = {
+			original_tag = GRE
+		}
+		custom_cost_trigger = {
+			has_army_experience > 14
+		}
+		custom_cost_text = decision_cost_ArmXP_15
+
+		days_re_enable = 200
+
+		complete_effect = {
+			GRE_bop_very_low_increase_effect = yes
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				create_unit = {
+					division = "name = \"1. Synoriofylakes\" division_template = \"Synoriofylakes\" start_experience_factor = 1.0" 
+					owner = GRE
+				}
+				
+			}
+			custom_effect_tooltip = ITA_redshirts_div_cap_2_tt					
+ 			hidden_effect = {
+				army_experience = -15
+				add_to_variable = { GRE_militias_cap = 2 }
+				set_division_template_cap = {  division_template = "Synoriofylakes" division_cap = GRE_militias_cap }				
+			}           			
+		}
+		
+	}	
+	GRE_absurdly_high_increase_effect = {
+		priority = 90
+		icon = GFX_decision_gre_faction_management
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		cost = 15
+
+		days_re_enable = 150
+
+		complete_effect = {
+			GRE_bop_low_increase_effect = yes
+			add_stability = 0.1	
+            random_list = {
+			    20 = {
+			add_timed_idea = {
+				idea = GRE_attacked_commies
+				days = 45
+			}	
+				}
+			    20 = {
+			add_timed_idea = {
+				idea = GRE_attacked_democrats
+				days = 45
+			}	
+				}
+			    20 = {
+			add_timed_idea = {
+				idea = GRE_attacked_fascists
+				days = 45
+			}					
+				}
+				20 = {
+			add_timed_idea = {
+				idea = GRE_attacked_monarchs
+				days = 45
+			}					
+				}
+				20 = {
+			add_timed_idea = {
+				idea = GRE_attacked_metaxists
+				days = 45
+			}					
+				}
+			}			
+		}
+		
+	}		
+	GRE_low_decrease_effect = {
+		priority = 90
+		icon = GFX_decision_generic_construction
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		cost = 20
+
+		days_re_enable = 70
+
+		complete_effect = {
+			GRE_bop_very_low_increase_effect = yes
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+			}			
+		}
+		
+	}
+	GRE_medium_decrease_effect = {
+		priority = 90
+		icon = GFX_decision_gre_paying_ifc_debt
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		cost = 30
+
+		days_re_enable = 120
+
+		complete_effect = {
+			GRE_bop_low_increase_effect = yes
+			random_list = {
+			50 = {
+			add_offsite_building = { type = industrial_complex level = 1 }	}
+			50 = {
+			add_offsite_building = { type = dockyard level = 1 }	}}
+		}
+		
+	}	
+	GRE_high_decrease_effect = {
+		priority = 90
+		icon = GFX_decision_SWI_expand_covert_operations
+
+		allowed = {
+			original_tag = GRE
+		}
+        available = { has_intelligence_agency = yes }
+		visible = { has_dlc = "La Resistance" }
+		cost = 20
+
+		days_re_enable = 75
+
+		complete_effect = {
+			GRE_bop_low_increase_effect = yes
+			gain_random_agency_upgrade = yes	
+		}
+		
+	}	
+	
+	GRE_absurdly_high_decrease_effect = {
+		priority = 90
+		icon = GFX_decision_generic_military
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		custom_cost_trigger = {
+			command_power > 19
+			has_political_power > 49
+			has_army_experience > 14
+		}
+		custom_cost_text = decision_cost_CP_50_pp_50_ArmXP_15
+		
+		days_re_enable = 120
+
+		complete_effect = {
+			add_manpower = 4500
+            GRE_bop_medium_increase_effect = yes
+			hidden_effect = {
+				add_command_power = -20
+				add_political_power = -50
+				army_experience = -15
+			}
+		}
+}
+	GRE_propagandaaaaa_effect_effect = {
+		priority = 1
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		allowed = {
+			original_tag = GRE
+		}
+
+		cost = 125
+		
+		fire_only_once = yes
+
+		complete_effect = {
+            GRE_bop_medium_increase_effect = yes
+			x_GRE_unlock_propaganda_campaign_slot_effect = yes
+			custom_effect_tooltip = GRE_unlocks_propaganmda_tt
+		}
+		
+	}
+}

@@ -1,0 +1,923 @@
+MAN_soviet_favor_actions = {
+	MAN_send_weapons_soviet = {
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			original_tag = MAN
+		}
+
+		available = {
+			has_equipment = { infantry_equipment > 999 }
+			SOV = { has_war = yes }
+		}
+		
+		target_trigger = {
+			FROM = { tag = SOV }
+		}
+
+		days_re_enable = 45
+
+		visible = {
+			has_completed_focus = MAN_hand_over_north_railway
+			original_tag = MAN
+		}
+
+		cost = 5
+		
+		fire_only_once = no
+
+		complete_effect = {
+			send_equipment = {
+				target = SOV
+				equipment = infantry_equipment
+				amount = 1000
+				old_prioritised = yes
+			}
+			add_to_variable  = { man_soviet_favor = 4 }
+			custom_effect_tooltip = man_soviet_favor_p4
+		}
+
+		remove_effect = {
+		}
+	}
+	
+	#MAN_hand_over_north_railway = {
+	#	icon = generic_oppression
+	#
+	#	ai_will_do = {
+	#		base = 100
+	#	}
+	#
+	#	allowed = {
+	#		original_tag = MAN
+	#	}
+	#
+	#	available = {
+	#	}
+	#
+	#	days_remove = 90
+	#
+	#	visible = {
+	#		has_completed_focus = MAN_hand_over_north_railway
+	#		original_tag = MAN
+	#		NOT = {
+	#			has_idea = MAN_soviet_railway_1
+	#		}
+	#	}
+	#
+	#	cost = 50
+	#	
+	#	fire_only_once = no
+	#
+	#	complete_effect = {
+	#		add_to_variable  = { man_soviet_favor = 15 }
+	#		custom_effect_tooltip = man_soviet_favor_p15
+	#		add_ideas = MAN_soviet_railway_1
+	#		if = {
+	#			limit = {
+	#				has_idea = MAN_soviet_demand
+	#			}
+	#			remove_ideas = MAN_soviet_demand
+	#		}
+	#		unlock_decision_tooltip = MAN_protect_the_amur
+	#	}
+	#
+	#	remove_effect = {
+	#	}
+	#}
+	
+	MAN_request_army_training = {
+		icon = generic_army_support
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			original_tag = MAN
+		}
+
+		available = {
+			check_variable = { man_soviet_favor = 4 compare = greater_than }
+			has_war = no
+		}
+
+		days_remove = 55
+		
+		days_re_enable = 35
+
+		visible = {
+			has_completed_focus = MAN_hand_over_north_railway
+			original_tag = MAN
+		}
+
+		cost = 15
+		
+		fire_only_once = no
+
+		modifier = {
+			experience_gain_army = 0.1
+		}
+
+		complete_effect = {
+			add_to_variable  = { man_soviet_favor = -5 }
+			custom_effect_tooltip = man_soviet_favor_m5
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					MAN = {
+						NOT = {
+							has_country_flag = MAN_trained_well_flag
+						}
+					}
+				}
+				MAN = {
+					set_country_flag = {
+						flag = MAN_trained_well_flag
+						value = 1
+					}
+				}
+				add_tech_bonus = {
+					name = MAN_request_army_training
+					bonus = 0.5
+					uses = 1
+					category = land_doctrine
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_country_flag =  { 
+							flag = MAN_trained_well_flag
+							value = 3
+						}
+					}
+					add_command_power = 20
+				}
+				else = {
+					MAN = {
+						modify_country_flag = {
+							flag = MAN_trained_well_flag
+							value = 1
+						}
+					}
+					add_tech_bonus = {
+						name = MAN_request_army_training
+						bonus = 0.5
+						uses = 1
+						category = land_doctrine
+					}
+				}
+			}
+		}
+	}
+	
+	MAN_request_industrial_support = {
+		icon = ger_military_buildup
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			original_tag = MAN
+		}
+
+		available = {
+			check_variable = { man_soviet_favor = 14 compare = greater_than }
+		}
+
+		days_remove = 255
+
+		visible = {
+			has_completed_focus = MAN_hand_over_north_railway
+			original_tag = MAN
+			any_owned_state = { #there must at least two free building slots to build one factory
+				free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = no
+					}
+			}
+		}
+
+		cost = 50
+		
+		fire_only_once = yes
+		
+		modifier = {
+			civilian_factory_use = 1
+		}
+
+		complete_effect = {
+			add_to_variable  = { man_soviet_favor = -15 }
+			custom_effect_tooltip = man_soviet_favor_m15
+		}
+
+		remove_effect = {
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = no
+					}
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				#add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+	
+	#MAN_protect_the_amur = {
+	#	icon = generic_operation
+	#
+	#	ai_will_do = {
+	#		base = 100
+	#	}
+	#
+	#	allowed = {
+	#		original_tag = MAN
+	#	}
+	#
+	#	available = {
+	#		check_variable = { man_soviet_favor = 49 compare = greater_than }
+	#	}
+	#
+	#	days_remove = 55
+	#
+	#	visible = {
+	#		has_completed_focus = MAN_hand_over_north_railway
+	#		original_tag = MAN
+	#		has_idea = MAN_soviet_railway_1
+	#	}
+	#
+	#	cost = 75
+	#	
+	#	fire_only_once = yes
+	#
+	#	complete_effect = {
+	#		add_to_variable  = { man_soviet_favor = -50 }
+	#	}
+	#
+	#	remove_effect = {
+	#		SOV = {
+	#			country_event = { id = wtt_manchukou.110 }
+	#		}
+	#	}
+	#}
+	
+	MAN_redirect_production = {
+		icon = GFX_decision_generic_merge_plant_materiel
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			original_tag = MAN
+		}
+
+		available = {
+		}
+		
+		target_trigger = {
+			FROM = { tag = SOV }
+		}
+
+		days_remove = 90
+		
+		days_re_enable = 35
+
+		visible = {
+			has_completed_focus = MAN_hand_over_north_railway
+			original_tag = MAN
+		}
+
+		cost = 50
+		
+		fire_only_once = no
+		
+		modifier = {
+			industrial_capacity_factory = -0.1
+			production_factory_max_efficiency_factor = -0.05
+			civilian_factory_use = 1
+		}
+
+		complete_effect = {
+
+		}
+
+		remove_effect = {
+			add_to_variable  = { man_soviet_favor = 4 }
+			custom_effect_tooltip = man_soviet_favor_p4
+		}
+	}
+	
+	MAN_appoint_socialist = {
+		icon = GFX_decision_SOV_place_hq
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			original_tag = MAN
+		}
+
+		available = {
+		}
+
+		days_remove = 5
+		
+		days_re_enable = 35
+
+		visible = {
+			has_completed_focus = MAN_hand_over_north_railway
+			original_tag = MAN
+			NOT = { has_completed_focus = MAN_socialist_victory }
+		}
+
+		cost = 40
+		
+		fire_only_once = no
+
+		complete_effect = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.07
+			}
+		}
+
+		remove_effect = {
+			add_to_variable  = { man_soviet_favor = 2 }
+			custom_effect_tooltip = man_soviet_favor_p2
+		}
+	}
+	
+	MAN_turn_over_exiles = {
+		icon = GFX_decision_generic_police_action
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			original_tag = MAN
+		}
+
+		available = {
+			command_power > 39
+		}
+		
+		target_trigger = {
+			FROM = { tag = SOV }
+		}
+
+		days_remove = 40
+		
+		days_re_enable = 5
+
+		visible = {
+			has_completed_focus = MAN_hand_over_north_railway
+			original_tag = MAN
+			NOT = { has_completed_focus = MAN_socialist_victory }
+		}
+
+		cost = 0
+		
+		custom_cost_trigger = {
+			command_power > 39
+		}
+		
+		custom_cost_text = MAN_40_cp_cost
+		
+		fire_only_once = no
+		
+		modifier = {
+			political_power_factor = -0.15
+		}
+
+		complete_effect = {
+			add_command_power = -40
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.04
+			}
+			add_to_variable  = { man_soviet_favor = 2 }
+			custom_effect_tooltip = man_soviet_favor_p2
+		}
+
+		remove_effect = {
+			MAN_soviet_influence_decrease = yes
+			SOV = {
+				add_political_power = 15
+			}
+		}
+	}
+	
+	MAN_distract_nkvd = {
+		icon = GFX_decision_generic_assassination
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		allowed = {
+			original_tag = MAN
+		}
+
+		available = {
+			command_power > 34
+			check_variable = { man_soviet_favor = 7 compare = greater_than }
+			has_country_flag = man_nkvd_infiltration
+		}
+
+		days_remove = 60
+
+		visible = {
+			has_completed_focus = MAN_hand_over_north_railway
+			original_tag = MAN
+			NOT = { has_completed_focus = MAN_socialist_victory }
+		}
+
+		cost = 0
+		
+		custom_cost_trigger = {
+			command_power > 34
+		}
+		
+		custom_cost_text = MAN_35_cp_cost
+		
+		fire_only_once = no
+
+		complete_effect = {
+			add_command_power = -35
+			add_stability = -0.02
+			add_to_variable  = { man_soviet_favor = -8 }
+			custom_effect_tooltip = man_soviet_favor_m8
+		}
+
+		remove_effect = {
+			MAN_soviet_influence_decrease = yes
+			clr_country_flag = man_nkvd_infiltration
+		}
+	}
+	
+	MAN_arrest_dongbei_partisans = {
+		icon = GFX_decision_generic_arrest
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			original_tag = MAN
+		}
+
+		available = {
+			command_power > 34
+			has_equipment = { infantry_equipment > 124 }
+		}
+
+		days_remove = 40
+		
+		days_re_enable = 5
+
+		visible = {
+			has_completed_focus = MAN_hand_over_north_railway
+			original_tag = MAN
+			NOT = { has_completed_focus = MAN_socialist_victory }
+		}
+
+		cost = 0
+		
+		custom_cost_trigger = {
+			command_power > 34
+		}
+		
+		custom_cost_text = MAN_35_cp_cost
+		
+		fire_only_once = no
+		
+		modifier = {
+			communism_drift = -0.01
+			stability_weekly = -0.01
+		}
+
+		complete_effect = {
+			add_command_power = -35
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -125
+			}
+		}
+
+		remove_effect = {
+			MAN_soviet_influence_decrease = yes
+		}
+	}
+	
+	MAN_ongoing_nkvd_operation = {
+		icon = GFX_decision_generic_police_action
+
+		priority = 49
+
+		allowed = {
+			tag = MAN
+		}
+		
+		available = {# Will Fail
+			NOT = { has_country_flag = man_nkvd_infiltration }
+		}
+	
+		activation = {
+			hidden_trigger = { always = yes }
+		}
+	
+		visible = {
+			has_country_flag = man_nkvd_infiltration
+			#NOT = { has_completed_focus = MAN_socialist_victory }
+		}
+
+		cancel_if_not_visible = yes
+			
+		fire_only_once = yes
+	
+		selectable_mission = no
+		
+		is_good = no
+		
+		fixed_random_seed = no
+	
+		days_mission_timeout = 90
+		
+		days_remove = 0
+		
+		modifier = {
+
+		}
+		
+		timeout_effect = {
+			activate_mission = MAN_ongoing_nkvd_operation
+			random_list = {
+				25 = {
+					add_popularity = {
+						ideology = fascism
+						popularity = -0.05
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+				}
+				
+				20 = {
+					add_popularity = {
+						ideology = communism
+						popularity = 0.03
+					}
+					add_popularity = {
+						ideology = neutrality
+						popularity = -0.03
+					}
+				}
+				
+				20 = {
+					add_popularity = {
+						ideology = communism
+						popularity = 0.03
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = -0.03
+					}
+				}
+				
+				10 = {
+					MAN_soviet_influence_increase = yes
+					add_stability = -0.03
+				}
+			}
+		}
+
+		complete_effect = { #Mission Failed
+			
+		}
+		
+		remove_effect = { #Mission Aftermath
+		}
+	}
+	
+}
+
+SOV_manchu_influence = {
+	
+	SOV_pressure_manchu_gov = {
+		icon = GFX_decision_eng_trade_unions_demand
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			tag = SOV
+			always = no
+		}
+
+		available = {
+			
+		}
+
+		days_remove = 30
+		
+		days_re_enable = 15
+
+		cost = 20
+		
+		fire_only_once = no
+		
+		#fixed_random_seed = no
+
+		complete_effect = {
+			SOV_manchu_influence = yes
+		}
+
+		remove_effect = {
+			MAN = {
+				country_event = { id = wtt_manchukou.160 }
+			}
+		}
+	}
+	
+	SOV_spread_propaganda_in_manchuria = {
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			tag = SOV
+			always = no
+		}
+
+		available = {
+			
+		}
+
+		days_remove = 30
+		
+		days_re_enable = 15
+
+		cost = 25
+		
+		fire_only_once = no
+		
+		fixed_random_seed = no
+
+		complete_effect = {
+			SOV_manchu_influence_slightly = yes
+		}
+
+		remove_effect = {
+			random_list = {
+				60 = {
+					MAN = {
+						add_popularity = {
+							ideology = communism
+							popularity = 0.1
+						}
+					}
+				}
+				40 = {
+					MAN = {
+						add_popularity = {
+							ideology = communism
+							popularity = 0.05
+						}
+					}
+				}
+				20 = {
+					SOV_manchu_influence = yes
+				}
+			}
+		}
+	}
+	
+	SOV_manchu_industrial_aid = {
+		icon = GFX_decision_generic_factory
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			tag = SOV
+			always = no
+		}
+
+		available = {
+
+		}
+		visible = {
+			MAN = {
+				NOT = { has_country_flag = MAN_soviet_railway_3_fl }
+				NOT = { has_country_flag = man_soviet_independence }
+			}
+		}
+
+		days_remove = 140
+		
+		days_re_enable = 35
+
+		cost = 50
+		
+		fire_only_once = no
+		
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		complete_effect = {
+			MAN = {
+				country_event = { id = wtt_manchukou.161 days = 3 }
+			}
+		}
+
+		remove_effect = {
+			SOV_manchu_influence = yes
+			MAN = {
+				country_event = { id = wtt_manchukou.162 days = 1 }
+			}
+		}
+	}
+	
+	SOV_manchu_nkvd_infiltration = {
+		icon = GFX_decision_generic_assassination
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			tag = SOV
+			always = no
+		}
+
+		available = {
+			command_power > 39
+			MAN = {
+				NOT = { has_country_flag = man_nkvd_infiltration }
+			}
+		}
+		
+		custom_cost_trigger = {
+			command_power > 39
+		}
+		
+		custom_cost_text = MAN_40_cp_cost
+
+		days_remove = 50
+
+		cost = 0
+		
+		fire_only_once = no
+
+		complete_effect = {
+			add_command_power = -40
+			MAN = {
+				activate_mission = MAN_ongoing_nkvd_operation
+				set_country_flag = man_nkvd_infiltration
+			}
+		}
+
+		remove_effect = {
+			SOV_manchu_influence_slightly = yes
+		}
+	}
+	
+	SOV_return_zhao_shangzhi = {
+		icon = GFX_decision_infiltrate_state
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			tag = SOV
+			always = no
+		}
+
+		available = {
+
+		}
+
+		days_remove = 30
+
+		cost = 25
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			SOV_manchu_influence = yes
+		}
+
+		remove_effect = {
+			#SOV_manchu_influence = yes
+		}
+	}
+	
+	SOV_support_dongbei_partisans = {
+		icon = GFX_decision_generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 100
+		}
+
+		allowed = {
+			tag = SOV
+		}
+
+		available = {
+			command_power > 39
+			has_equipment = { infantry_equipment > 299 }
+		}
+		
+		custom_cost_trigger = {
+			command_power > 39
+		}
+		
+		custom_cost_text = MAN_40_cp_cost
+		
+		target_trigger = {
+			FROM = { tag = MAN }
+		}
+		
+		visible = {
+			MAN = {
+				has_completed_focus = MAN_hand_over_north_railway
+				NOT = {
+					has_country_flag =  { 
+						flag = MAN_dongbei_support
+						value = 4
+					}
+				}
+			}
+		}
+
+		days_remove = 60
+		
+		days_re_enable = 120
+
+		cost = 0
+		
+		fire_only_once = no
+
+		complete_effect = {
+			add_command_power = -40
+		}
+
+		remove_effect = {
+			SOV_manchu_influence = yes
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -300
+			}
+			if = {
+				limit = {
+					MAN = {
+						NOT = {
+							has_country_flag = MAN_dongbei_support
+						}
+					}
+				}
+				MAN = {
+					set_country_flag = {
+						flag = MAN_dongbei_support
+						value = 1
+					}
+				}
+			}
+			else = {
+				MAN = {
+					modify_country_flag = {
+						flag = MAN_dongbei_support
+						value = 1
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,348 @@
+add_namespace = useful-events-quarior-anschluss
+#[FROM.GetNameDefCap] demand annexion
+country_event = {
+	id = useful-events-quarior-anschluss.1
+	title = useful-events-quarior-anschluss.1.t
+	desc = useful-events-quarior-anschluss.1.d
+	picture = GFX_report_event_german_speech
+	is_triggered_only = yes
+	timeout_days = 10
+	option = {
+		name = useful-events-quarior-anschluss.1.a
+		trigger = {
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = -25
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.25
+				}
+			}
+			modifier = {
+				factor = 2
+				tag = ROOT
+				has_opinion = {
+					target = FROM
+					value > 75
+				}
+			}
+			modifier = {
+				factor = 2
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 10
+				is_subject_of = FROM
+			}
+			modifier = {
+				# Don't accept if war with FROM
+				factor = 0
+				has_war_with = FROM
+			}
+		}
+		set_temp_variable = {
+			from_v = FROM
+		}
+		effect_tooltip = {
+			custom_effect_tooltip = GAME_OVER_TT
+			ROOT = {
+				every_character = {
+					set_nationality = var:from_v
+				}
+				transfer_navy = {
+					target = FROM
+				}
+				send_equipment_fraction = {
+					value = 1
+					target = var:from_v
+				}
+			}
+			every_country = {
+				limit = {
+					is_subject_of = ROOT
+				}
+				var:from_v = {
+					puppet = PREV
+				}
+			}
+			set_temp_variable = {
+				this_country = ROOT
+			}
+			every_core_state = {
+				add_core_of = var:from_v
+			}
+			every_state = {
+				limit = {
+					is_claimed_by = var:this_country
+				}
+				add_claim_by = var:from_v
+			}
+			var:from_v = {
+				annex_country = {
+					target = ROOT
+					transfer_troops = yes
+				}
+			}
+		}
+		hidden_effect = {
+			news_event = {
+				id = useful-events-quarior-anschluss.2
+				hours = 6
+				random_hours = 4
+			}
+		}
+	}
+	option = {
+		name = useful-events-quarior-anschluss.1.b
+		trigger = {
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.2
+				}
+			}
+			modifier = {
+				add = 20
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+			modifier = {
+				factor = 0.1
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 0.5
+				tag = ROOT
+				has_opinion = {
+					target = FROM
+					value > 25
+				}
+			}
+			modifier = {
+				factor = 2
+				is_in_faction = yes
+				NOT = {
+					is_in_faction_with = FROM
+				}
+			}
+			modifier = {
+				factor = 2
+				is_in_faction = yes
+				NOT = {
+					is_in_faction_with = FROM
+				}
+				any_allied_country = {
+					is_major = yes
+					has_capitulated = no
+				}
+			}
+			modifier = {
+				any_other_country = {
+					has_guaranteed = ROOT
+				}
+				factor = 5				#i've got friends
+			}
+			modifier = {
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ROOT
+				}
+				factor = 5				#i've got big friends
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = POL_annexation_refused
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = ROOT
+					expire = 730
+				}
+			}
+			every_core_state = {
+				add_claim_by = FROM
+			}
+		}
+		hidden_effect = {
+			news_event = {
+				id = useful-events-quarior-anschluss.3
+				hours = 6
+				random_hours = 4
+			}
+		}
+	}
+}
+
+#[FROM.GetNameDefCap] merge with [FROM.FROM.GetNameDef]
+news_event = {
+	id = useful-events-quarior-anschluss.2
+	title = useful-events-quarior-anschluss.2.t
+	desc = useful-events-quarior-anschluss.2.d
+	picture = GFX_news_event_german_speech
+	is_triggered_only = yes
+	timeout_days = 10
+	major = yes
+	option = {
+		name = useful-events-quarior-anschluss.2.a
+		trigger = {
+			tag = FROM.FROM
+		}
+		ai_chance = {
+			base = 100
+		}
+		set_temp_variable = {
+			from_v = FROM.FROM
+		}
+		FROM = {
+			every_character = {
+				set_nationality = var:from_v
+			}
+			transfer_navy = {
+				target = FROM
+			}
+			send_equipment_fraction = {
+				value = 1
+				target = var:from_v
+			}
+		}
+		every_country = {
+			limit = {
+				is_subject_of = FROM
+			}
+			var:from_v = {
+				puppet = PREV
+			}
+		}
+		FROM = {
+			set_temp_variable = {
+				this_country = THIS
+			}
+			every_core_state = {
+				add_core_of = var:from_v
+			}
+			every_state = {
+				limit = {
+					is_claimed_by = var:this_country
+				}
+				add_claim_by = var:from_v
+			}
+		}
+		annex_country = {
+			target = FROM
+			transfer_troops = yes
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-anschluss.2.b
+		trigger = {
+			NOT = {
+				tag = FROM.FROM
+			}
+			NOT = {
+				tag = FROM
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-anschluss.2.c
+		trigger = {
+			tag = FROM
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+}
+
+#[FROM.GetNameDefCap] against the fusion with [FROM.FROM.GetNameDef]
+news_event = {
+	id = useful-events-quarior-anschluss.3
+	title = useful-events-quarior-anschluss.3.t
+	desc = useful-events-quarior-anschluss.3.d
+	picture = GFX_news_event_ast_army
+	is_triggered_only = yes
+	timeout_days = 10
+	major = yes
+	option = {
+		name = useful-events-quarior-anschluss.3.a
+		trigger = {
+			tag = FROM.FROM
+		}
+		ai_chance = {
+			base = 100
+		}
+		set_temp_variable = {
+			from_v = FROM.FROM
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = POL_annexation_refused
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+			expire = 730
+		}
+		FROM = {
+			every_core_state = {
+				add_claim_by = var:from_v
+			}
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-anschluss.3.b
+		trigger = {
+			NOT = {
+				tag = FROM.FROM
+			}
+			NOT = {
+				tag = FROM
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-anschluss.3.c
+		trigger = {
+			tag = FROM
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+}

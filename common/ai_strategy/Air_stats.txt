@@ -1,0 +1,104 @@
+########### AIR STRATS ####################
+
+
+### Battlefield Support ####
+
+BattlefieldsupportAI = {
+
+enable = {
+	
+	has_tech = formation_flying
+	
+	arms_factory > 50
+}
+
+abort_when_not_enabled = yes
+
+
+
+	ai_strategy = {type = unit_ratio                id = cas                 value = 60}
+	
+	ai_strategy = {type = unit_ratio                id = fighter             value = 60}
+	
+	
+	
+	ai_strategy = {
+    type = air_factory_balance
+    value = 20
+}
+
+
+}
+
+
+OperationalInteg = {
+
+
+	enable = {
+	
+	has_tech = force_rotation
+	
+	arms_factory > 50
+}
+
+abort_when_not_enabled = yes
+
+
+	ai_strategy = {type = unit_ratio                id = cas                 value = 70}
+	
+	ai_strategy = {type = unit_ratio                id = fighter             value = 70}
+	
+	
+	
+	
+	ai_strategy = {
+    type = air_factory_balance
+    value = 30
+}
+
+
+
+}
+
+
+
+BOMBOMBOMBOMBOMBOMBOMBOMBOMB = {
+
+
+	enable = {
+	
+	has_tech = air_superiority
+	
+	arms_factory > 50
+}
+
+abort_when_not_enabled = yes
+
+
+		ai_strategy = {type = unit_ratio                id = cas                 value = 80}
+	
+		ai_strategy = {type = unit_ratio                id = fighter             value = 80}
+	
+	
+	
+	ai_strategy = {
+    type = air_factory_balance
+    value = 40
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

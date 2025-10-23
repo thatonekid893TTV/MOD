@@ -1,0 +1,57 @@
+technology_sharing_group = {
+
+	id = SAU_SOV_tech_sharing_group
+	name = SAU_SOV_tech_sharing_group_name
+	desc = SAU_SOV_tech_sharing_group_desc
+	picture = GFX_technology_sharing_default
+	research_sharing_per_country_bonus = 0.1
+
+	available = { 
+		OR = {
+			AND = {
+				original_tag = SAU
+				has_government = communism
+				NOT = {
+					has_war_with = SOV
+				}
+			}
+			AND = {
+				original_tag = SOV
+				has_government = communism
+				NOT = {
+					has_war_with = AFG
+				}
+			}
+		}
+	}
+}
+
+
+technology_sharing_group = {
+
+	id = SAU_ENG_tech_sharing_group
+	name = SAU_ENG_tech_sharing_group_name
+	desc = SAU_ENG_tech_sharing_group_desc
+	picture = GFX_technology_sharing_default
+	research_sharing_per_country_bonus = 0.15
+
+	available = {
+		has_government = democratic	
+		NOT = { has_war_with = ENG }
+	}
+}
+
+
+
+technology_sharing_group = {
+
+	id = SAU_Islamic_tech_sharing
+	name = SAU_Islamic_tech_sharing_name
+	desc = SAU_Islamic_tech_sharing_desc
+	picture = GFX_technology_sharing_default
+	research_sharing_per_country_bonus = 0.1
+
+	available = {
+		# has_idea = 
+	}
+}

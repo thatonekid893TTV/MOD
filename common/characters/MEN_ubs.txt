@@ -1,0 +1,224 @@
+characters={
+
+### Li Shouxin
+	MEN_li_shouxin = {
+		name = MEN_li_shouxin
+		portraits = {
+			army = { 
+				large = "GFX_MEN_Li_Shouxin"
+				small = "GFX_MEN_Li_Shouxin_small"
+			}
+		}
+		corps_commander = {
+			traits = { trait_cautious cavalry_leader }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = 0
+		}
+	}
+
+### Ulanhu
+	MEN_ulanhu = {
+		name = MEN_ulanhu
+		portraits = {
+			civilian = { 
+				large = "GFX_MEN_Ulanhu"
+				small = "GFX_MEN_Ulanhu_small"
+			}
+			army = { 
+				large = "GFX_MEN_Ulanhu"
+				small = "GFX_MEN_Ulanhu_small"
+			}
+		}
+		country_leader = {
+			ideology = marxism
+			traits = { revolutionary_general }
+			expire = "1965.1.1.1"
+			id = -1
+		}
+		corps_commander = {
+			traits = { cavalry_officer trait_mountaineer }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 3
+			legacy_id = 0
+			visible = { has_government = communism }
+		}
+	}
+
+### Altanochir
+	MEN_altanochir = {
+		advisor = {
+			slot = high_command
+			cost = 100
+			idea_token = MEN_altanochir
+			allowed  = {
+				OR = {
+					original_tag = MEN
+					original_tag = MON
+				}
+			}
+			available = {
+				if = {
+					limit = { tag = MEN } 
+					 NOT = { MON = { has_completed_focus = MON_mengjiang_officials } }
+				}
+				
+				if = {
+					limit = { tag = MON }
+					has_completed_focus = MON_mengjiang_officials 
+				}
+			}
+			traits  = {
+				army_concealment_2
+			}
+		}
+		name = MEN_altanochir
+		portraits={
+			army = {
+				small="GFX_MEN_Altanochir_small"
+			}
+		}
+	}
+
+### Jin Yongchang
+	MEN_jin_yongchang = {
+		advisor = {
+			slot = political_advisor
+			idea_token = MEN_jin_yongchang
+			allowed  = {
+				OR = {
+					original_tag = MEN
+					original_tag = MON
+				}
+			}
+			available = {
+				if = {
+					limit = { tag = MEN } 
+					 NOT = { MON = { has_completed_focus = MON_mengjiang_officials } }
+				}
+				
+				if = {
+					limit = { tag = MON }
+					has_completed_focus = MON_mengjiang_officials 
+				}
+			}
+			traits  = {
+				propaganda_expert
+			}
+		}
+		name = MEN_jin_yongchang
+		portraits={
+			civilian = {
+				small="GFX_MEN_Jin_Yongchang_small"
+			}
+		}
+	}
+
+### Jodbajab
+	MEN_jodbajab = {
+		advisor = {
+			slot = political_advisor
+			idea_token = MEN_jodbajab
+			allowed  = {
+				OR = {
+					original_tag = MEN
+					original_tag = MON
+				}
+			}
+			available = {
+				if = {
+					limit = { tag = MEN } 
+					 NOT = { MON = { has_completed_focus = MON_mengjiang_officials } }
+				}
+				
+				if = {
+					limit = { tag = MON }
+					has_completed_focus = MON_mengjiang_officials 
+				}
+			}
+			traits  = {
+				appeaser
+			}
+		}
+		name = MEN_jodbajab
+		portraits={
+			civilian = {
+				small="GFX_MEN_Jodbajab_small"
+			}
+		}
+	}
+
+### Wu Heling
+	MEN_wu_heling = {
+		advisor = {
+			slot = political_advisor
+			idea_token = MEN_wu_heling
+			allowed  = {
+				OR = {
+					original_tag = MEN
+					original_tag = MON
+				}
+			}
+			available = {
+				if = {
+					limit = { tag = MEN } 
+					 NOT = { MON = { has_completed_focus = MON_mengjiang_officials } }
+				}
+				
+				if = {
+					limit = { tag = MON }
+					has_completed_focus = MON_mengjiang_officials 
+				}
+			}
+			traits  = {
+				silent_workhorse
+			}
+		}
+		name = MEN_wu_heling
+		portraits={
+			civilian = {
+				small="GFX_MEN_Wu_Heling_small"
+			}
+		}
+	}
+
+### Yangsanjab
+	MEN_yangsanjab = {
+		advisor = {
+			slot = political_advisor
+			idea_token = MEN_yangsanjab 
+			allowed  = {
+				OR = {
+					original_tag = MEN
+					original_tag = MON
+				}
+			}
+			available = {
+				if = {
+					limit = { tag = MEN } 
+					 NOT = { MON = { has_completed_focus = MON_mengjiang_officials } }
+				}
+				
+				if = {
+					limit = { tag = MON }
+					has_completed_focus = MON_mengjiang_officials 
+				}
+			}
+			traits  = {
+				resistance_leader
+			}
+		}
+		name = MEN_yangsanjab 
+		portraits={
+			civilian = {
+				small="GFX_MEN_Yangsanjab_small"
+			}
+		}
+	}
+}

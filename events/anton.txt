@@ -1,0 +1,542 @@
+add_namespace = fra
+
+country_event = { 
+    id = fra.1 #germany, prepare case anthon
+    title = fra.1.t
+    desc = fra.1.d
+    picture = GFX_report_event_bul_ff_troops_panzer
+
+   fire_only_once = yes
+
+   trigger = {
+		original_tag = GER
+		ENG = {
+   			 has_war_with = VIC
+		}
+		USA = {
+   			 has_war_with = VIC
+		}
+		VIC = {
+			exists = yes
+			NOT = { has_war_with = GER }
+		}
+   	 }
+
+    mean_time_to_happen = {
+        days = 2
+    }
+
+    option = { #keep vichy alive, risky...
+		name = fra.1.b
+		VIC = { country_event = fra.3 }
+		custom_effect_tooltip = FRA_anton_tooltip
+	}
+    option = { #annex it !
+        name = fra.1.a
+	VIC = { country_event = fra.4 }
+	ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 90
+				VIC = { is_ai = no }
+			}
+		}
+	}
+}
+
+country_event = { #allies, prepare opération Torch
+	id = fra.2
+	title = fra.2.t
+	desc = fra.2.d
+	picture = GFX_report_event_france_parade
+
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = ENG
+		ENG = {
+ 		  NOT = {
+   			 has_war_with = VIC
+ 			 }
+		}
+		USA = {
+ 		  NOT = {
+   			 has_war_with = VIC
+ 			 }
+		}
+		has_war_with = GER
+		USA = { is_ally_with = ENG }
+		FRA = { is_ally_with = ENG }
+		date > 1942.11.11
+		VIC = {
+			exists = yes
+			NOT = { has_war_with = GER }
+		}
+   	 }
+
+	mean_time_to_happen = {
+	}
+	
+	option = {
+		name = fra.2.a
+		ai_chance = { factor = 100 }
+		add_war_support = 0.05
+		GER = { 
+ 			country_event = {
+     			id = fra.1
+ 				days = 5
+ 			}
+ 		}
+		declare_war_on = {
+			target = VIC
+			type = puppet_wargoal_focus
+		}
+	}
+	option = {
+		name = fra.2.b
+		USA = { country_event = fra.2 }
+		add_war_support = -0.05
+	}
+}
+
+country_event = { #north africa switch sides
+	id = fra.5
+	title = fra.5.t
+	desc = fra.5.d
+	picture = GFX_report_event_french_tanks
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+	}
+	
+	option = {
+		name = fra.5.a
+		news_event = { id = newsfml.121 days = 2 random_days = 4 }
+		add_stability = -0.15
+		ai_chance = { factor = 100 }
+		FRA = { set_state_controller = 459 }
+		FRA = { set_state_controller = 513 }
+		FRA = { set_state_controller = 786 }
+		FRA = { set_state_controller = 557 }
+		FRA = { set_state_controller = 272 }
+		FRA = { set_state_controller = 780 }
+		FRA = { set_state_controller = 779 }
+		FRA = { set_state_controller = 777 }
+		FRA = { set_state_controller = 776 }
+		FRA = { set_state_controller = 781 }
+		FRA = { set_state_controller = 778 }
+		FRA = { set_state_controller = 899 }
+		FRA = { set_state_controller = 898 }
+		FRA = { set_state_controller = 556 }
+		FRA = { set_state_controller = 782 }
+		FRA = { set_state_controller = 515 }
+		FRA = { set_state_controller = 775 }
+		FRA = { set_state_controller = 774 }
+		FRA = { set_state_controller = 773 }
+		FRA = { set_state_controller = 660 }
+		FRA = { set_state_controller = 772 }
+		FRA = { set_state_controller = 539 }
+		FRA = { set_state_controller = 543 }
+		FRA = { set_state_controller = 708 }
+		if = {
+				limit = {
+					OR = {
+						has_dlc = "Together for Victory"
+						has_dlc = "Man the Guns"
+					}
+				}
+				set_autonomy = {
+					target = MOR
+						autonomous_state = autonomy_colony
+						freedom_level = 0.30
+				}
+				set_autonomy = {
+					target = LEB
+						autonomous_state = autonomy_colony
+						freedom_level = 0.5
+				}
+				set_autonomy = {
+					target = SYR
+						autonomous_state = autonomy_colony
+						freedom_level = 0.5
+				}
+				set_autonomy = {
+					target = TUN
+						autonomous_state = autonomy_colony
+						freedom_level = 0.20
+				}
+				set_autonomy = {
+						target = VIN
+						autonomous_state = autonomy_colony
+						freedom_level = 0.10
+					}
+			}
+			else = {
+				puppet = VIN
+				puppet = TUN
+				puppet = MOR
+				puppet = LEB
+				puppet = SYR
+			}
+			MOR = {
+				set_politics = {
+					ruling_party = neutrality
+				}
+				set_popularities = {
+					democratic = 5
+					fascism = 0
+					communism = 0
+					neutrality = 95
+				}
+				if = {
+					limit = {
+						PREV = {
+							is_ai = yes
+						}
+					}
+					country_event = {
+						id = histindochina.4
+					}
+				}
+			}
+			LEB = {
+				set_politics = {
+					ruling_party = democratic
+				}
+				set_popularities = {
+					democratic = 95
+					fascism = 0
+					communism = 0
+					neutrality = 5
+				}
+				if = {
+					limit = {
+						PREV = {
+							is_ai = yes
+						}
+					}
+				}
+			}
+			SYR = {
+				set_politics = {
+					ruling_party = democratic
+				}
+				set_popularities = {
+					democratic = 95
+					fascism = 0
+					communism = 0
+					neutrality = 5
+				}
+				if = {
+					limit = {
+						PREV = {
+							is_ai = yes
+						}
+					}
+				}
+			}
+			TUN = {
+				set_politics = {
+					ruling_party = neutrality
+				}
+				set_popularities = {
+					democratic = 4
+					fascism = 0
+					communism = 0
+					neutrality = 96
+				}
+				if = {
+					limit = {
+						PREV = {
+							is_ai = yes
+						}
+					}
+					country_event = {
+						id = histindochina.4
+					}
+				}
+			}
+			add_ideas = { VIC_africa_army }
+			add_manpower = 100000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 10000
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 4000
+			}
+	}
+	option = {
+		name = fra.5.b
+	}
+}
+
+
+country_event = { #germany keep us alive, what shoud we do vichy
+	id = fra.3
+	title = fra.3.t
+	desc = fra.3.d
+	picture = GFX_report_event_FRA_petain
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = fra.3.a
+		remove_ideas = VIC_no_factions #lets go axis...
+		GER = { add_to_faction = VIC }
+		add_to_war = { 
+ 				targeted_alliance = GER
+ 				enemy = ENG
+ 				hostility_reason = asked_to_join
+ 			}
+	}
+	option = {
+		name = fra.3.b #go allies !
+		remove_ideas = VIC_no_factions
+		white_peace = ENG
+		every_other_country = {
+				limit = {
+					has_war_with = VIC
+				}
+				white_peace = VIC
+			}
+		VIC = { leave_faction = yes }
+		ENG = { add_to_faction = VIC }
+ 		if = {
+ 			limit = { 
+ 				ENG = { has_war_with = GER }
+ 			}
+ 			add_to_war = { 
+ 				targeted_alliance = ENG
+ 				enemy = GER 
+ 				hostility_reason = asked_to_join
+ 			}
+		}
+	}
+}
+
+country_event = { #vichy, what we should do with case anthon
+    id = fra.4
+    title = fra.4.t
+    desc = fra.4.d
+    picture = GFX_report_event_FRA_army_lineup
+
+   fire_only_once = yes
+
+   is_triggered_only = yes
+
+    mean_time_to_happen = {
+        days = 2
+    }
+
+   option = { #resist case anton, go in the allies !
+		name = fra.4.b #go allies !
+		remove_ideas = VIC_no_factions
+		white_peace = ENG
+		every_other_country = {
+				limit = {
+					has_war_with = VIC
+				}
+				white_peace = VIC
+			}
+		VIC = { leave_faction = yes }
+		ENG = { add_to_faction = VIC }
+ 		if = {
+ 			limit = { 
+ 				ENG = { has_war_with = GER }
+ 			}
+ 			add_to_war = { 
+ 				targeted_alliance = ENG
+ 				enemy = GER 
+ 				hostility_reason = asked_to_join
+ 			}
+		}
+	}
+    option = {
+        name = fra.4.a #dont resist
+	custom_effect_tooltip = GAME_OVER_TT
+	ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+	GER = {
+					annex_country = { target = VIC transfer_troops = no }
+				}
+	if = {
+				limit = {
+					OR = {
+						has_dlc = "Together for Victory"
+						has_dlc = "Man the Guns"
+					}
+				}
+				set_autonomy = {
+					target = MOR
+						autonomous_state = autonomy_colony
+						freedom_level = 0.30
+				}
+				set_autonomy = {
+					target = LEB
+						autonomous_state = autonomy_colony
+						freedom_level = 0.5
+				}
+				set_autonomy = {
+					target = SYR
+						autonomous_state = autonomy_colony
+						freedom_level = 0.5
+				}
+				set_autonomy = {
+					target = TUN
+						autonomous_state = autonomy_colony
+						freedom_level = 0.20
+				}
+				set_autonomy = {
+						target = VIN
+						autonomous_state = autonomy_colony
+						freedom_level = 0.10
+					}
+			}
+			else = {
+				puppet = VIN
+				puppet = TUN
+				puppet = MOR
+				puppet = LEB
+				puppet = SYR
+			}
+			MOR = {
+				set_politics = {
+					ruling_party = neutrality
+				}
+				set_popularities = {
+					democratic = 5
+					fascism = 0
+					communism = 0
+					neutrality = 95
+				}
+				if = {
+					limit = {
+						PREV = {
+							is_ai = yes
+						}
+					}
+					country_event = {
+						id = histindochina.4
+					}
+				}
+			}
+			LEB = {
+				set_politics = {
+					ruling_party = democratic
+				}
+				set_popularities = {
+					democratic = 95
+					fascism = 0
+					communism = 0
+					neutrality = 5
+				}
+				if = {
+					limit = {
+						PREV = {
+							is_ai = yes
+						}
+					}
+				}
+			}
+			SYR = {
+				set_politics = {
+					ruling_party = democratic
+				}
+				set_popularities = {
+					democratic = 95
+					fascism = 0
+					communism = 0
+					neutrality = 5
+				}
+				if = {
+					limit = {
+						PREV = {
+							is_ai = yes
+						}
+					}
+				}
+			}
+			TUN = {
+				set_politics = {
+					ruling_party = neutrality
+				}
+				set_popularities = {
+					democratic = 4
+					fascism = 0
+					communism = 0
+					neutrality = 96
+				}
+				if = {
+					limit = {
+						PREV = {
+							is_ai = yes
+						}
+					}
+					country_event = {
+						id = histindochina.4
+					}
+				}
+			}
+	GER = { news_event = { id = newsfml.114 days = 14 } }
+	FRA = { 
+ 			country_event = {
+     			id = fra.5
+ 				days = 1
+ 			}
+ 		}
+	if = {
+				limit = {
+					ITA = { is_ally_with = GER }
+					}
+				ITA = { set_state_controller = 32 }
+				ITA = { set_state_controller = 735 }
+				ITA = { set_state_controller = 851 }
+				ITA = { set_state_controller = 21 }
+			}
+			else = {
+				GER = { set_state_controller = 32 }
+				GER = { set_state_controller = 735 }
+				GER = { set_state_controller = 851 }
+				GER = { set_state_controller = 21 }
+			}
+		if = {
+			limit = {
+				JAP = {
+   					has_government = fascism
+					 NOT = {
+   						 has_war_with = GER
+ 					     }
+					}
+				}
+				JAP = {
+					annex_country = { target = VIN transfer_troops = no }
+				}
+			}
+			else = {
+				GER = {
+   					annex_country = { target = VIN transfer_troops = no }
+						}
+			}
+	}
+}
+
+

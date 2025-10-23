@@ -1,0 +1,312 @@
+capital = 330
+
+oob = "MON_1936"
+
+
+
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	#create_equipment_variant = {
+	#	name = "R-1" 
+	#	type = small_plane_cas_airframe_0
+	#	allow_without_tech = yes
+	#	modules = {
+	#		fixed_main_weapon_slot = bomb_locks
+	#		fixed_auxiliary_weapon_slot_1 = light_mg_2x
+	#		engine_type_slot = engine_1_1x
+	#		#special_type_slot_1 = empty
+	#	}
+	#	obsolete = no
+	#	icon = "GFX_MON_R_1"
+	#	model = MON_plane_r_1_entity
+	#}
+}		
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+	#	set_air_oob = "MON_1936_air_bba"
+	else = {
+	#	set_air_oob = "MON_1936_air_legacy"
+	}
+}
+
+add_ideas = {
+	limited_conscription
+	MON_pastoral_society
+	MON_disjointed_party
+	MON_high_monastic_population
+	MON_manchurian_border_skirmishes
+	MON_spirit_of_the_khans_initial
+}
+
+#LEGACY OF THE KHANS
+set_variable = { MON_legacy_of_the_khans_cavalry_attack_factor = 0.15 }
+set_variable = { MON_legacy_of_the_khans_cavalry_defence_factor = 0.15 }
+set_variable = { MON_legacy_of_the_khans_cavalry_speed_factor = 0.15 }
+set_variable = { MON_legacy_of_the_khans_cp_max_mult = 0 }
+set_variable = { MON_legacy_of_the_khans_supply_consumption_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_out_of_supply_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_winter_attrition_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_heat_attrition_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_terrain_penalty_reduction = 0 }
+set_variable = { MON_legacy_of_the_khans_motorized_attack_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_motorized_defence_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_mechanized_attack_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_mechanized_defence_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_armor_speed_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_research_speed_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_army_org_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_training_time_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_experience_gain_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_ace_gen_chance_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_grant_medal_cost_factor = 0 }
+set_variable = { MON_legacy_of_the_khans_conscription = 0 }
+
+#add_dynamic_modifier = { modifier = MON_legacy_of_the_khans_dynamic_modifier }
+
+#FIVE YEAR PLAN
+set_variable = { MON_five_year_plan_infra = 0.25 }
+set_variable = { MON_five_year_plan_consumer = 0.2 }
+
+##################
+### CHARACTERS ###
+##################
+
+### Starting leaders
+recruit_character = MON_peljidiin_genden
+recruit_character = MON_sambadondogiin_tserendorj
+
+### Starting advisers
+recruit_character = MON_anandyn_amar
+recruit_character = MON_dansranbilegiin_dogsom
+	MON_dansranbilegiin_dogsom = { set_character_flag = MON_secondary_purge_target_flag }
+recruit_character = MON_darijavyn_losol
+	MON_darijavyn_losol = { set_character_flag = MON_secondary_purge_target_flag }
+recruit_character = MON_sukhbaataryn_yanjmaa
+	MON_sukhbaataryn_yanjmaa = { set_character_flag = MON_secondary_purge_target_flag }
+recruit_character = MON_gonchigiin_bumtsend 
+	MON_gonchigiin_bumtsend = { set_character_flag = MON_purge_target_flag }
+recruit_character = MON_dorjjavyn_luvsansharav
+recruit_character = MON_bat_ochiryn_eldev_ochir
+	MON_bat_ochiryn_eldev_ochir = { set_character_flag = MON_purge_target_flag }
+recruit_character = MON_banzarjavyn_baasanjav
+	MON_banzarjavyn_baasanjav = { set_character_flag = MON_purge_target_flag }
+
+### Starting generals
+recruit_character = MON_khorloogiin_choibalsan
+	MON_khorloogiin_choibalsan = { set_character_flag = MON_protected }
+recruit_character = MON_gelegdorjiin_demid
+	MON_gelegdorjiin_demid = { set_character_flag = MON_protected }
+recruit_character = MON_gonchingiin_sambuu
+recruit_character = MON_gombojavyn_damba
+recruit_character = MON_jigdengiin_malj
+recruit_character = MON_gotovyn_damba
+recruit_character = MON_tomoriin_dashzeveg
+
+### Military advisers
+recruit_character = MON_ochiryn_dashchirav 
+	MON_ochiryn_dashchirav = { set_character_flag = MON_purge_target_flag }
+recruit_character = MON_dorjiin_gonchig 
+	MON_dorjiin_gonchig = { set_character_flag = MON_purge_target_flag }
+recruit_character = MON_hamza_zaisanov 
+	MON_hamza_zaisanov = { set_character_flag = MON_secondary_purge_target_flag }
+recruit_character = MON_lkhamkhuugiin_darzav
+	MON_lkhamkhuugiin_darzav = { set_character_flag = MON_purge_target_flag }
+recruit_character = MON_olziiburengiin_puntsag
+	MON_olziiburengiin_puntsag = { set_character_flag = MON_purge_target_flag }
+recruit_character = MON_jantsankhorloo
+	MON_jantsankhorloo = { set_character_flag = MON_purge_target_flag }
+recruit_character = MON_choimbolyn_shagdarsuren 
+	MON_choimbolyn_shagdarsuren = { set_character_flag = MON_purge_target_flag }
+recruit_character = MON_gelenkhuu
+
+### Historical path advisers & generals
+recruit_character = MON_jamsrangiin_sambuu 
+	MON_jamsrangiin_sambuu = { set_character_flag = MON_secondary_purge_target_flag }
+recruit_character = MON_yumjaagiin_tsedenbal
+recruit_character = MON_dashiin_damba
+	MON_dashiin_damba = { set_character_flag = MON_secondary_purge_target_flag }
+recruit_character = MON_chimeddorjiin_surenjav
+	MON_chimeddorjiin_surenjav = { set_character_flag = MON_secondary_purge_target_flag }
+recruit_character = MON_bazaryn_shirendev
+	MON_bazaryn_shirendev = { set_character_flag = MON_secondary_purge_target_flag }
+recruit_character = MON_tsendiin_damdinsuren
+	MON_tsendiin_damdinsuren = { set_character_flag = MON_secondary_purge_target_flag }
+recruit_character = MON_tserenjavyn_luvsandonoi 
+recruit_character = MON_jamyangiin_lkhagvasuren
+recruit_character = MON_shagdaryn_gongor
+recruit_character = MON_bat_ochiryn_shagdarjav
+	MON_bat_ochiryn_shagdarjav = { set_character_flag = MON_secondary_purge_target_flag }
+
+### Alt Communist path advisers & generals
+# Rehabilitate Lkhumbe
+recruit_character = MON_olziitiin_badrakh 
+recruit_character = MON_zolbingiin_shijee
+# Looking Outward
+recruit_character = MON_owen_lattimore
+# Freedom of Religion
+recruit_character = MON_antoine_mostaert
+# Elevated by the Many
+recruit_character = MON_navaandorjiin_jadambaa # Democratic reformer 
+recruit_character = MON_andrey_simukov
+
+### Nationalist path leaders
+recruit_character = MON_officer_council
+recruit_character = MON_navaanneren
+recruit_character = MON_erenjav
+
+### Nationalist path advisers & generals
+recruit_character = MON_tsorjiin_luvsanchoinzin
+recruit_character = MON_chagdarjavyn_lkhamsuren
+recruit_character = MON_namjildendeviin_puntsagtseren
+recruit_character = MON_namsraijavyn_tsogbadrakh
+# Bogd Khan's Legacy
+recruit_character = MON_genepil
+# Tibetan Lamas
+recruit_character = MON_tsedengiin_luvsankhaimchig
+# The Mad Baron
+recruit_character = MON_ferdynand_ossendowski
+recruit_character = MON_kamil_gizycki
+recruit_character = MON_mikhail_tornovsky
+# Invite Foreign Advisers
+recruit_character = MON_pyotr_polovtsov
+recruit_character = MON_gustaf_john_ramstedt
+recruit_character = MON_wilfried_strik_strikfeldt
+
+
+### PROPAGANDA ###
+set_variable = { MON_new_propaganda_campaign = 0 } #Used to pick a poster slot
+set_variable = { MON_propaganda_campaign_to_remove = 0 } #Used to reset a poster slot
+set_variable = { MON_propaganda_locked_slot_index = 1 } #### === INSERT LOCKED SLOT INDEX IN STRIPE HERE === ####
+set_variable = { MON_propaganda_empty_slot_index = 2 } #### === INSERT EMPTY SLOT INDEX IN STRIPE HERE === ####
+set_variable = { MON_poster_left_icon_frame = MON_propaganda_locked_slot_index } #Set up the appropriate empty slot GFX
+set_variable = { MON_poster_center_icon_frame = MON_propaganda_locked_slot_index } #Set up the appropriate locked slot GFX
+set_variable = { MON_poster_right_icon_frame = MON_propaganda_locked_slot_index } #Set up the appropriate locked slot GFX
+
+set_variable = { MON_default_propaganda_campaign_duration = 180 } #Duration days for propaganda campaigns
+set_variable = { MON_default_propaganda_campaign_cooldown = 90 } #Days of cooldown after a Propaganda Campaign has been finished.
+set_variable = { MON_default_propaganda_campaign_old_days = 150 } #A propaganda poster will age (change GFX) after this amount of days have passed since the campaign was activated
+set_variable = { MON_propaganda_cost = 15 } #Used not only to set the rest of propaganda campaign costs here, but also used to increase each campaign cost after being activated
+set_variable = { MON_propaganda_cost_increase = 2 } #This will multiply the regular propaganda_cost each time a propaganda campaign is activated, so that it's cost is increased
+set_variable = { MON_propaganda_state_of_industry_cost = MON_propaganda_cost } # ID = 3
+set_variable = { MON_propaganda_state_industrial_plans_cost = MON_propaganda_cost } # ID = 4
+set_variable = { MON_propaganda_work_of_a_faithful_master_cost = MON_propaganda_cost } # ID = 5
+set_variable = { MON_propaganda_improvement_in_coal_production_cost = MON_propaganda_cost } # ID = 6
+set_variable = { MON_propaganda_learn_to_read_cost = MON_propaganda_cost } # ID = 7
+set_variable = { MON_propaganda_improvement_of_schools_cost = MON_propaganda_cost } # ID = 8
+set_variable = { MON_propaganda_improve_socialist_economy_cost = MON_propaganda_cost } # ID = 9
+set_variable = { MON_propaganda_beloved_leader_choibalsan_cost = MON_propaganda_cost } # ID = 10
+set_variable = { MON_propaganda_get_a_lot_of_hay_cost = MON_propaganda_cost } # ID = 11
+set_variable = { MON_propaganda_raise_hand_for_independence_cost = MON_propaganda_cost } # ID = 12
+set_variable = { MON_propaganda_enemy_could_not_penetrate_cost = MON_propaganda_cost } # ID = 13
+set_variable = { MON_propaganda_wrath_of_the_people_cost = MON_propaganda_cost } # ID = 14
+set_variable = { MON_propaganda_be_a_hero_cost = MON_propaganda_cost } # ID = 15
+set_variable = { MON_propaganda_raise_the_flag_of_victory_cost = MON_propaganda_cost } # ID = 16
+set_variable = { MON_propaganda_throw_the_grenade_far_cost = MON_propaganda_cost } # ID = 17
+set_variable = { MON_propaganda_take_care_of_the_soldiers_cost = MON_propaganda_cost } # ID = 18
+set_variable = { MON_propaganda_severe_winter_weather_cost = MON_propaganda_cost } # ID = 19
+set_variable = { MON_propaganda_shook_hands_cost = MON_propaganda_cost } # ID = 20
+set_variable = { MON_propaganda_study_military_science_cost = MON_propaganda_cost } # ID = 21
+set_variable = { MON_propaganda_tank_convoy_cost = MON_propaganda_cost } # ID = 22
+set_variable = { MON_propaganda_two_heroes_united_cost = MON_propaganda_cost } # ID = 23
+set_variable = { MON_propaganda_khalkha_heroes_are_coming_cost = MON_propaganda_cost } # ID = 24
+set_variable = { MON_propaganda_destroy_german_fascism_cost = MON_propaganda_cost } # ID = 25
+set_variable = { MON_propaganda_wings_of_friendship_cost = MON_propaganda_cost } # ID = 26
+
+set_variable = { MON_propaganda_campaigns_taken = 0 } #Used as a requirement for certain focuses
+set_variable = { MON_recruit_militia_cost = 20 }
+
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = construction_effort_2
+	complete_national_focus = production_effort_2
+	complete_national_focus = infrastructure_effort
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	oob = "MON_1939"
+	set_technology = {
+		support_weapons = 1
+		gw_artillery = 1
+		
+		#doctrines
+		air_superiority = 1
+		
+		mass_assault = 1
+		pocket_defence = 1
+		defence_in_depth = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		radio_detection = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		concentrated_industry = 1
+		concentrated_industry2 = 1
+	}
+}
+
+SOV = {
+	set_autonomy = {
+		target = MON
+		autonomous_state = autonomy_dominion
+		freedom_level = 0.5
+	}
+}
+
+set_politics = {
+	ruling_party = communism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	communism = 30
+	neutrality = 60
+	fascism = 9
+	democratic = 1
+}
+set_party_name = {
+	ideology = communism
+	long_name = MON_MPRP_long
+	name = MON_MPRP
+}
+set_province_name = { 
+	id = 12557
+	name = "Bayan Tümen"
+}
+
+1939.1.1 = {
+	add_ideas = {
+		limited_conscription
+	}
+
+	recruit_character = MON_khorloogiin_choibalsan
+	promote_character = MON_khorloogiin_choibalsan
+	retire_character = MON_anandyn_amar
+	}
+}

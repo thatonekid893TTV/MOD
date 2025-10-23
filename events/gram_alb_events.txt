@@ -1,0 +1,2050 @@
+add_namespace = gram_event_alb_albanian_royal_marriage
+
+#Albanian Royal Marriage
+news_event = {
+	id = gram_event_alb_albanian_royal_marriage.1
+	title = gram_event_alb_albanian_royal_marriage.1.t
+	desc = gram_event_alb_albanian_royal_marriage.1.d
+
+	picture = GFX_gram_event_alb_albanian_royale_marriage
+	is_triggered_only = yes
+	timeout_days = 15
+	major = yes
+    option = {
+		name = gram_event_alb_albanian_royal_marriage.1.a
+		trigger = { 
+			NOT = { 
+				tag = ALB 
+			} 
+		}
+		ai_chance = { 
+			base = 1 
+		}
+	}
+	option = {
+		name = gram_event_alb_albanian_royal_marriage.1.b
+		trigger = { 
+			tag = ALB 
+		}
+		ai_chance = { 
+			base = 1 
+		}
+	}
+}
+
+add_namespace = gram_event_alb_breakup_of_yugoslavia
+
+#Breakup of Yugoslavia
+news_event = {
+	id = gram_event_alb_breakup_of_yugoslavia.1
+	title = gram_event_alb_breakup_of_yugoslavia.1.t
+	desc = gram_event_alb_breakup_of_yugoslavia.1.d
+
+	picture = GFX_gram_event_alb_breakup_of_yugoslavia
+	is_triggered_only = yes
+	timeout_days = 15
+	major = yes
+	option = {
+		name = gram_event_alb_breakup_of_yugoslavia.1.a
+		trigger = { 
+			tag = ALB 
+		}
+		ai_chance = { 
+			base = 1 
+		}
+	}
+	option = {
+		name = gram_event_alb_breakup_of_yugoslavia.1.b
+		trigger = {
+			NOT = { 
+				tag = ALB 
+			} 
+		}
+		ai_chance = { 
+			base = 1 
+		}
+	}
+}
+
+add_namespace = gram_event_alb_byzantine_empire_requests_a_guarantee
+
+#Byzantine Empire requests a guarantee
+country_event = {
+	id = gram_event_alb_byzantine_empire_requests_a_guarantee.1
+	title = gram_event_alb_byzantine_empire_requests_a_guarantee.1.t
+	desc = gram_event_alb_byzantine_empire_requests_a_guarantee.1.d
+
+	picture = GFX_gram_event_alb_byzantine_empire_requests_a_guarantee
+	is_triggered_only = yes
+	timeout_days = 15
+	option = {
+		name = gram_event_alb_byzantine_empire_requests_a_guarantee.1.a
+
+		ai_chance = { 
+			base = 100 
+		}
+		
+		add_political_power = 100
+		custom_effect_tooltip = empty_divide_tt
+
+		ROOT = { 
+			give_guarantee = ALB 
+		}
+
+		hidden_effect = { 
+			ALB = { 
+				country_event = gram_event_alb_byzantine_guarantee_agrees.1 
+			} 
+		}
+
+	}
+	option = {
+		name = gram_event_alb_byzantine_empire_requests_a_guarantee.1.b
+
+		ai_chance = { 
+			base = 0
+		}
+
+		hidden_effect = { 
+			ALB = { 
+				country_event = gram_event_alb_byzantine_guarantee_declines.1 
+			} 
+		}
+	}
+}
+
+add_namespace = gram_event_alb_byzantine_guarantee_agrees
+
+#Byzantine guarantee - Country has agreed
+country_event = {
+	id = gram_event_alb_byzantine_guarantee_agrees.1
+	title = gram_event_alb_byzantine_guarantee_agrees.1.t
+	desc = gram_event_alb_byzantine_guarantee_agrees.1.d
+
+	picture = GFX_gram_event_alb_byzantine_guarantee_agrees
+	is_triggered_only = yes
+	timeout_days = 15
+
+	option = {
+		name = gram_event_alb_byzantine_guarantee_agrees.1.a
+		ai_chance = { 
+			base = 1 
+		}
+        add_political_power = -100
+
+	}
+}
+
+add_namespace = gram_event_alb_byzantine_guarantee_declines
+
+#Byzantine guarantee - Country has declined
+country_event = {
+	id = gram_event_alb_byzantine_guarantee_declines.1
+	title = gram_event_alb_byzantine_guarantee_declines.1.t
+	desc = gram_event_alb_byzantine_guarantee_declines.1.d
+
+	picture = GFX_gram_event_alb_byzantine_guarantee_declines
+	is_triggered_only = yes
+	timeout_days = 15
+
+	option = {
+		name = gram_event_alb_byzantine_guarantee_declines.1.a
+		ai_chance = { 
+			base = 1 
+		}
+	}
+}
+
+add_namespace = gram_event_alb_death_of_king_zog
+
+#King Zog is Dead
+country_event = {
+	id = gram_event_alb_death_of_king_zog.1
+	title = gram_event_alb_death_of_king_zog.1.t
+	desc = gram_event_alb_death_of_king_zog.1.d
+
+	picture = GFX_gram_event_alb_death_of_king_zog
+	is_triggered_only = yes
+	timeout_days = 15
+
+	option = {
+		name = gram_event_alb_death_of_king_zog.1.a
+		ai_chance = { 
+			base = 1 
+		}
+        add_stability = -0.05
+		hidden_effect = { 
+			set_country_flag = gram_flag_alb_zog_is_dead 
+		}
+	}
+}
+
+add_namespace = gram_event_alb_denied_balkan_partner
+
+#Country has declined Balkan Project membership
+country_event = {
+	id = gram_event_alb_denied_balkan_partner.1
+	title = gram_event_alb_denied_balkan_partner.1.t
+	desc = gram_event_alb_denied_balkan_partner.1.d
+
+	picture = GFX_gram_event_alb_denied_balkan_partner
+	is_triggered_only = yes
+	timeout_days = 15
+	option = {
+		name = gram_event_alb_denied_balkan_partner.1.a
+		ai_chance = { 
+			base = 1 
+		}
+		add_stability = -0.1
+	}
+	option = {
+		name = gram_event_alb_denied_balkan_partner.1.b
+		ai_chance = { 
+			base = 1 
+		}
+
+		create_wargoal = {
+			target = FROM
+			type = annex_everything
+		}
+
+	}
+}
+
+add_namespace = gram_event_alb_denied_closer_unity
+
+#Country has declined plan of Closer Unity
+country_event = {
+	id = gram_event_alb_denied_closer_unity.1
+	title = gram_event_alb_denied_closer_unity.1.t
+	desc = gram_event_alb_denied_closer_unity.1.d
+
+	picture = GFX_gram_event_alb_denied_closer_unity
+	is_triggered_only = yes
+	timeout_days = 15
+	option = {
+		name = gram_event_alb_denied_closer_unity.1.a
+		ai_chance = { 
+			base = 1 
+		}
+		add_stability = -0.15
+		custom_effect_tooltip = empty_divide_tt
+		add_war_support = -0.1
+		
+	}
+	option = {
+		name = gram_event_alb_denied_closer_unity.1.b
+		ai_chance = { 
+			base = 1 
+		}
+		FROM = { 
+			leave_faction = yes 
+		}
+		custom_effect_tooltip = empty_divide_tt
+		ROOT = { 
+			declare_war_on = { 
+				target = FROM 
+				type = annex_everything 
+			} 
+		}
+		
+	}
+}
+
+add_namespace = gram_event_alb_end_of_italian_civil_war
+
+#End of Italian Civil War
+news_event = {
+	id = gram_event_alb_end_of_italian_civil_war.1
+	title = gram_event_alb_end_of_italian_civil_war.1.t
+	desc = gram_event_alb_end_of_italian_civil_war.1.d
+
+	picture = GFX_gram_event_alb_end_of_italian_civil_war
+	is_triggered_only = yes
+	timeout_days = 15
+	major = yes
+
+	option = { #Italy lost land to ENG, FRA and ETH
+		name = gram_event_alb_end_of_italian_civil_war.1.b
+		trigger = { 
+			tag = ALB 
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_eng
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_fra
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_eth
+		} 
+
+		ai_chance = { 
+			base = 1 
+		}
+	}
+
+	option = { #Italy lost land to ETH
+		name = gram_event_alb_end_of_italian_civil_war.1.c
+		trigger = { 
+			tag = ALB 
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_eng }
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_fra }
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_eth
+		}
+
+		ai_chance = { 
+			base = 1 
+		}
+	}
+
+	option = { #Italy lost land to ENG
+		name = gram_event_alb_end_of_italian_civil_war.1.e
+		trigger = { 
+			tag = ALB 
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_eng
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_fra }
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_eth }
+		}
+
+		ai_chance = { 
+			base = 1 
+		}
+	}
+
+	option = { #Italy lost land to FRA
+		name = gram_event_alb_end_of_italian_civil_war.1.f
+		trigger = { 
+			tag = ALB 
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_eng }
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_fra
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_eth }
+		}
+
+		ai_chance = { 
+			base = 1 
+		}
+	}
+
+	option = { #Italy lost land to ENG, ETH
+		name = gram_event_alb_end_of_italian_civil_war.1.g
+		trigger = { 
+			tag = ALB 
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_eng
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_fra }
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_eth
+		}
+
+		ai_chance = { 
+			base = 1 
+		}
+	}
+
+	option = { #Italy lost land to ENG, FRA
+		name = gram_event_alb_end_of_italian_civil_war.1.h
+		trigger = { 
+			tag = ALB 
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_eng
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_fra 
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_eth }
+		}
+
+		ai_chance = { 
+			base = 1 
+		}
+	}
+
+	option = { #Italy lost land to FRA, ETH
+		name = gram_event_alb_end_of_italian_civil_war.1.i
+		trigger = { 
+		tag = ALB 
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_eng }
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_fra 
+			has_global_flag = gram_flag_alb_italy_was_at_war_with_eth
+		}
+
+		ai_chance = { 
+			base = 1 
+		}
+	}
+
+	option = { #Italy didnt lose anything
+		name = gram_event_alb_end_of_italian_civil_war.1.j
+		trigger = { 
+		tag = ALB 
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_eng }
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_fra }
+			NOT = { has_global_flag = gram_flag_alb_italy_was_at_war_with_eth }
+		}
+		ai_chance = { 
+			base = 1 
+		}
+	}
+
+	option = { #Shown to every other nation
+		name = gram_event_alb_end_of_italian_civil_war.1.a
+		trigger = { 
+			NOT = { 
+				tag = ALB 
+				tag = ITA 
+			} 
+		}
+		ai_chance = { 
+			base = 1 
+		}
+	}
+
+	option = { #Shown to Italy
+		name = gram_event_alb_end_of_italian_civil_war.1.k
+		trigger = { 
+			tag = ITA 
+		}
+		ai_chance = { 
+			base = 1 
+		}
+		hidden_effect = {
+
+			if = { #ENG
+				limit = { 
+					has_global_flag = gram_flag_alb_italy_was_at_war_with_eng 
+				}
+				clr_global_flag = gram_flag_alb_italy_was_at_war_with_eng
+			}
+
+			if = { #FRA
+				limit = { 
+					has_global_flag = gram_flag_alb_italy_was_at_war_with_fra 
+				}
+				clr_global_flag = gram_flag_alb_italy_was_at_war_with_fra
+			}
+
+			if = { #ETH
+				limit = { 
+					has_global_flag = gram_flag_alb_italy_was_at_war_with_eth 
+				}
+				clr_global_flag = gram_flag_alb_italy_was_at_war_with_eth
+			}
+		
+		}
+	}
+}
+
+add_namespace = gram_event_alb_formation_of_ubsr
+
+#Formation of UBSR
+news_event = {
+	id = gram_event_alb_formation_of_ubsr.1
+	title = gram_event_alb_formation_of_ubsr.1.t
+	desc = gram_event_alb_formation_of_ubsr.1.d
+
+	picture = GFX_gram_event_alb_formation_of_ubsr
+	is_triggered_only = yes
+	timeout_days = 15
+	major = yes
+	option = {
+		name = gram_event_alb_formation_of_ubsr.1.a
+		ai_chance = { 
+			base = 1 
+		}
+		
+	}
+}
+
+add_namespace = gram_event_alb_greece_declines_unification_proposal
+
+#Greece Declines Unification Proposal
+country_event = {
+	id = gram_event_alb_greece_declines_unification_proposal.1
+	title = gram_event_alb_greece_declines_unification_proposal.1.t
+	desc = gram_event_alb_greece_declines_unification_proposal.1.d
+
+	picture = GFX_gram_event_alb_greece_declines_unification_proposal
+	fire_only_once = yes
+	is_triggered_only = yes
+	timeout_days = 15
+
+	option = {
+		name = gram_event_alb_greece_declines_unification_proposal.1.a
+		ai_chance = { 
+			base  = 1 
+		}
+
+        create_wargoal = {
+			target = GRE
+			type = take_state_focus
+		}
+	}
+}
+
+add_namespace = gram_event_alb_invitation_into_dii_imperi
+
+#Invitation Into Dii Imperi
+country_event = {
+	id = gram_event_alb_invitation_into_dii_imperi.1
+	title = gram_event_alb_invitation_into_dii_imperi.1.t
+	desc = gram_event_alb_invitation_into_dii_imperi.1.d
+
+	picture = GFX_gram_event_alb_invitation_into_dii_imperi
+	is_triggered_only = yes
+	timeout_days = 15
+	option = {
+		name = gram_event_alb_invitation_into_dii_imperi.1.a
+		ai_chance = { 
+			base = 100 
+		}
+		FROM = { 
+			add_to_faction = ROOT 
+		}
+	}
+	option = {
+		name = gram_event_alb_invitation_into_dii_imperi.1.b
+		ai_chance = { 
+			base = 0 
+		}
+		add_opinion_modifier = {
+			target = ALB
+			modifier = large_decrease
+		}
+	}
+}
+
+add_namespace = gram_event_alb_invitation_into_faction
+
+#Albania invites us into faction
+country_event = {
+	id = gram_event_alb_invitation_into_faction.1
+	title = gram_event_alb_invitation_into_faction.1.t
+	desc = gram_event_alb_invitation_into_faction.1.d
+
+	picture = GFX_gram_event_alb_invitation_into_faction
+	is_triggered_only = yes
+	timeout_days = 15
+
+	option = {
+		name = gram_event_alb_invitation_into_faction.1.a
+		ai_chance = { 
+			base = 100 
+		}
+		ALB = { 
+			add_to_faction = ROOT 
+		}
+
+	}
+	option = {
+		name = gram_event_alb_invitation_into_faction.1.b
+		ai_chance = { 
+			base = 0 
+		}
+		add_opinion_modifier = {
+			target = ALB
+			modifier = large_decrease
+		}
+	}
+}
+
+add_namespace = gram_event_alb_italy_breaks_into_civil_war
+
+#Italy breaks into Civil War
+news_event = {
+	id = gram_event_alb_italy_breaks_into_civil_war.1
+	title = gram_event_alb_italy_breaks_into_civil_war.1.t
+	desc = gram_event_alb_italy_breaks_into_civil_war.1.d
+
+	picture = GFX_gram_event_alb_italy_breaks_into_civil_war
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = gram_event_alb_italy_breaks_into_civil_war.1.a
+		ai_chance = { 
+			base = 1 
+		}
+		trigger = { 
+			NOT = { 
+				tag = ALB 
+			} 
+		}
+	}
+	
+	option = {
+		name = gram_event_alb_italy_breaks_into_civil_war.1.b
+		ai_chance = { 
+			base = 1 
+		}
+		trigger = { 
+			tag = ALB 
+		} 
+	}
+}
+
+add_namespace = gram_event_alb_king_zog_survived_the_assasination_attempt
+
+#King Zog Survived The Assasination Attempt
+country_event = {
+	id = gram_event_alb_king_zog_survived_the_assasination_attempt.1
+	title = gram_event_alb_king_zog_survived_the_assasination_attempt.1.t
+	desc = gram_event_alb_king_zog_survived_the_assasination_attempt.1.d
+
+	picture = GFX_gram_event_alb_king_zog_survived_the_assasination_attempt
+	fire_only_once = yes
+	is_triggered_only = yes
+	timeout_days = 15
+
+	#Little too long even for my taste but, hey if it works, i wont complain (o_o)
+
+	option = {
+		name = gram_event_alb_king_zog_survived_the_assasination_attempt.1.a
+
+		ai_chance = {
+			base = 0
+		}
+
+		add_stability = -0.25
+		custom_effect_tooltip = empty_divide_tt
+		promote_character = "gram_character_ALB_regency_council"
+		custom_effect_tooltip = empty_divide_tt
+		remove_ideas = gram_idea_alb_censorship_of_the_press
+		custom_effect_tooltip = empty_divide_tt
+		add_ideas = gram_idea_alb_king_zog
+		custom_effect_tooltip = empty_divide_tt
+        custom_effect_tooltip = king_will_be_back_tt
+		custom_effect_tooltip = empty_divide_tt
+
+		set_party_name = {
+			ideology = neutrality
+			long_name = regency_council_long_name
+			name = regency_council_short_name
+		}
+
+		hidden_effect = { 
+			country_event = { 
+				id = gram_event_alb_our_king_is_back.1 
+				days = 120 
+			} 
+		}
+	}
+
+    option = {
+	    name = gram_event_alb_king_zog_survived_the_assasination_attempt.1.b
+
+		ai_chance = {
+			base = 50
+		}
+
+		add_stability = -0.10
+		custom_effect_tooltip = empty_divide_tt
+		promote_character = "gram_character_ALB_regency_council"
+		custom_effect_tooltip = empty_divide_tt
+		remove_ideas = gram_idea_alb_censorship_of_the_press
+		custom_effect_tooltip = empty_divide_tt
+		add_ideas = gram_idea_alb_king_zog
+		custom_effect_tooltip = empty_divide_tt
+        custom_effect_tooltip = council_will_take_over_tt 
+		custom_effect_tooltip = empty_divide_tt
+
+		set_party_name = {
+			ideology = neutrality
+			long_name = regency_council_long_name
+			name = regency_council_short_name
+		}
+
+		hidden_effect = { 
+			set_country_flag = gram_flag_alb_new_era_has_begun 
+		}
+	}	
+}
+
+add_namespace = gram_event_alb_new_capital_balkan
+
+#New Capital of Our Federation
+country_event = {
+	id = gram_event_alb_new_capital_balkan.1
+	title = gram_event_alb_new_capital_balkan.1.t
+	desc = gram_event_alb_new_capital_balkan.1.d
+
+	picture = GFX_gram_event_alb_new_balkan_capital
+	is_triggered_only = yes
+	timeout_days = 15
+	option = {
+		name = gram_event_alb_new_capital_balkan.1.a
+		ai_chance = { 
+			base = 1 
+		}
+		set_capital = { 
+			state = 107 
+		}
+		hidden_effect = { 
+			clr_country_flag = gram_flag_alb_new_capital_balkan 
+		}
+	}
+	option = {
+		name = gram_event_alb_new_capital_balkan.1.b
+		ai_chance = { 
+			base = 1 
+		}
+		set_capital = { 
+			state = 48 
+		}
+		hidden_effect = { 
+			clr_country_flag = gram_flag_alb_new_capital_balkan 
+		}
+
+	}
+	option = {
+		name = gram_event_alb_new_capital_balkan.1.c
+		ai_chance = { 
+			base = 1 
+		}
+		set_capital = { 
+			state = 46
+		}
+		hidden_effect = { 
+			clr_country_flag = gram_flag_alb_new_capital_balkan 
+		}
+	}
+	option = {
+		name = gram_event_alb_new_capital_balkan.1.e
+		ai_chance = { base = 1 }
+		ALB = { 
+			country_event = gram_event_alb_new_capital_balkan_2.1 
+		}
+	}
+}
+
+add_namespace = gram_event_alb_new_capital_balkan_2
+
+#Other Possible Options
+country_event = {
+	id = gram_event_alb_new_capital_balkan_2.1
+	title = gram_event_alb_new_capital_balkan_2.1.t
+	desc = gram_event_alb_new_capital_balkan_2.1.d
+
+	picture = GFX_gram_event_alb_new_balkan_capital
+	is_triggered_only = yes
+	timeout_days = 15
+	option = {
+		name = gram_event_alb_new_capital_balkan_2.1.a
+		ai_chance = { 
+			base = 1 
+		}
+		set_capital = { 
+			state = 47 
+		}
+		hidden_effect = { 
+			clr_country_flag = gram_flag_alb_new_capital_balkan 
+		}
+	}
+	option = {
+		name = gram_event_alb_new_capital_balkan_2.1.b
+		ai_chance = { 
+			base = 1 
+		}
+		hidden_effect = { 
+			clr_country_flag = gram_flag_alb_new_capital_balkan 
+		}
+	}
+	option = {
+		name = gram_event_alb_new_capital_balkan_2.1.c
+		ai_chance = { 
+			base = 1 
+		}
+	}
+}
+
+add_namespace = gram_event_alb_opportunity_to_become_a_partner_in_balkan_project
+
+#Opportunity to become member of Balkan Project
+country_event = {
+	id = gram_event_alb_opportunity_to_become_a_partner_in_balkan_project.1
+	title = gram_event_alb_opportunity_to_become_a_partner_in_balkan_project.1.t
+	desc = gram_event_alb_opportunity_to_become_a_partner_in_balkan_project.1.d
+
+	picture = GFX_gram_event_alb_opportunity_to_become_a_partner_in_balkan_project
+	is_triggered_only = yes
+	option = {
+		name = gram_event_alb_opportunity_to_become_a_partner_in_balkan_project.1.a
+		ai_chance = { 
+			base = 100 
+		}
+		ALB = { 
+			add_to_faction = ROOT 
+		}
+	}
+	option = {
+		name = gram_event_alb_opportunity_to_become_a_partner_in_balkan_project.1.b
+		ai_chance = { 
+			base = 0 
+		}
+
+		ALB = { 
+			country_event = { 
+				id = gram_event_alb_denied_balkan_partner.1 
+				hours = 12 
+			} 
+		}
+	}
+}
+
+add_namespace = gram_event_alb_our_king_is_back
+
+#Our King Is Back
+country_event = {
+	id = gram_event_alb_our_king_is_back.1
+	title = gram_event_alb_our_king_is_back.1.t
+	desc = gram_event_alb_our_king_is_back.1.d
+
+	picture = GFX_gram_event_alb_our_king_is_back
+	fire_only_once = yes
+	is_triggered_only = yes
+	timeout_days = 15
+
+	option = {
+		name = gram_event_alb_our_king_is_back.1.a
+
+		ai_chance = {
+			base = 100
+		}
+
+		promote_character = "gram_character_ALB_king_zog"
+		custom_effect_tooltip = empty_divide_tt
+		remove_ideas = gram_idea_alb_king_zog
+		custom_effect_tooltip = empty_divide_tt
+
+		set_party_name = {
+			ideology = neutrality
+			long_name = house_of_zogu_long_name
+			name = house_of_zogu_short_name
+		}
+
+        hidden_effect = { 
+			set_country_flag = gram_flag_alb_zog_is_back 
+		}
+    }
+}
+
+add_namespace = gram_event_alb_our_king_no_more
+
+#Our King no more
+country_event = {
+	id = gram_event_alb_our_king_no_more.1
+	title = gram_event_alb_our_king_no_more.1.t
+	desc = gram_event_alb_our_king_no_more.1.d
+
+	picture = GFX_gram_event_alb_our_king_no_more
+	is_triggered_only = yes
+	timeout_days = 15
+
+	option = { #Option 1, Kill the Zog
+		name = gram_event_alb_our_king_no_more.1.a
+
+		ai_chance = { 
+			base = 80
+		}		
+
+        add_stability = -0.1
+		custom_effect_tooltip = empty_divide_tt
+		add_political_power = 100		
+		custom_effect_tooltip = empty_divide_tt
+		remove_ideas = gram_idea_alb_king_zog
+
+		hidden_effect = { 
+			ALB = { 
+				country_event = { 
+					id = gram_event_alb_death_of_king_zog.1 
+					hours = 18 
+				} 
+			} 
+		}
+	}
+
+	option = { #Option 2, Allow him to stay
+		name = gram_event_alb_our_king_no_more.1.b
+
+		ai_chance = { 
+			base = 20
+		}
+		add_stability = -0.05
+		custom_effect_tooltip = empty_divide_tt
+		add_political_power = 50
+		custom_effect_tooltip = empty_divide_tt
+        remove_ideas = gram_idea_alb_king_zog
+
+		hidden_effect = {
+			ALB = { 
+				country_event = { 
+					id = gram_event_alb_zog_awakens.1 
+					months = 24 
+				} 
+			} 			
+		}
+	}
+}
+
+add_namespace = gram_event_alb_picking_the_new_successor
+
+#Picking the New Successor
+country_event = {
+	id = gram_event_alb_picking_the_new_successor.1
+	title = gram_event_alb_picking_the_new_successor.1.t
+	desc = gram_event_alb_picking_the_new_successor.1.d
+
+	picture = GFX_gram_event_alb_picking_the_new_successor
+	timeout_days = 15
+	is_triggered_only = yes
+
+	option = { #Option 1, Zog comes back, if he does awake (aka. player picked a second option in "Our King No More")
+		name = gram_event_alb_picking_the_new_successor.1.a
+
+		trigger = { 
+			NOT = { 
+				has_country_flag = gram_flag_alb_zog_is_dead 
+			}
+			has_country_flag = gram_flag_alb_zog_is_awake
+		}
+		ai_chance = { 
+			base = 25
+		}
+		custom_effect_tooltip = zog_rules_once_more_tt
+
+		hidden_effect = {
+		
+			set_party_name = {
+				ideology = neutrality
+				long_name = house_of_zogu_long_name
+				name = house_of_zogu_short_name
+			}
+
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.4
+			}
+
+			promote_character = "gram_character_ALB_king_zog"
+
+			if = {
+				limit = { 
+					has_country_leader = {
+					character = gram_character_ALB_king_zog
+					ruling_only = yes
+					}	
+				}
+				add_country_leader_trait = gram_trait_king_of_albania
+			}
+		}
+	}
+
+	option = {
+		name = gram_event_alb_picking_the_new_successor.1.b
+		ai_chance = { 
+			base = 75 
+		}
+		
+		custom_effect_tooltip = wilhelm_will_come_out_of_exile_tt
+		custom_effect_tooltip = empty_divide_tt
+		custom_effect_tooltip = you_will_unlock_new_secret_focuses_tt
+		custom_effect_tooltip = empty_divide_tt
+
+		hidden_effect = {
+
+			set_party_name = {
+				ideology = neutrality
+				long_name = house_of_heinrich_long_name
+				name = house_of_heinrich_short_name
+			}
+
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.4
+			}
+
+			promote_character = "gram_character_ALB_wilhelm_friedrich"
+			set_country_flag = gram_flag_alb_wilhelm_took_control
+			mark_focus_tree_layout_dirty = yes
+
+			if = { #It really doesn't make sence for there to be an idea of Zog while my dude Wilhelm is a leader
+				limit = { 
+					has_idea = gram_idea_alb_king_zog 
+				}
+				remove_ideas = gram_idea_alb_king_zog
+			}
+
+		}
+
+		if = { #I want for you too keep the soviet name, it is cool dude
+			limit = { 
+				NOT = { 
+					has_cosmetic_tag = GRAM_ALB_SOVIET 
+				} 
+			}
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = GRAM_ALB_PRINCIPALITY
+		}
+	}
+}
+
+add_namespace = gram_event_alb_proposal_of_closer_unity
+
+#Proposal of Closer Unity
+country_event = {
+	id = gram_event_alb_proposal_of_closer_unity.1
+	title = gram_event_alb_proposal_of_closer_unity.1.t
+	desc = gram_event_alb_proposal_of_closer_unity.1.d
+
+	picture = GFX_gram_event_alb_proposal_of_closer_unity
+	is_triggered_only = yes
+	option = {
+		name = gram_event_alb_proposal_of_closer_unity.1.a
+		ai_chance = { 
+			base = 100 
+		}
+
+		if = { #Yugoslavia
+			limit = { 
+				tag = YUG 
+			}
+			ALB = { 
+				puppet = YUG 
+			}
+		}
+
+		if = { #Greece
+			limit = { 
+				tag = GRE 
+			}
+			ALB = { 
+				puppet = GRE 
+			}
+		}
+
+		if = { #Bulgaria
+			limit = { 
+				tag = BUL 
+			}
+			ALB = { 
+				puppet = BUL 
+			}
+		}
+
+		if = { #Romania
+			limit = { 
+				tag = ROM 
+			}
+			ALB = { 
+				puppet = ROM 
+			}
+		}
+
+		#If Yugo has done the balkanization focuses those nations become Albanian puppets as well
+		if = { #Slovenia
+			limit = { 
+				tag = YUG 
+				SLV = { 
+					is_ally_with = YUG 
+				} 
+			}
+			ALB = { 
+				puppet = SLV 
+			}
+		}
+
+		if = { #Croatia
+			limit = { 
+				tag = YUG 
+				CRO = { 
+					is_ally_with = YUG 
+				} 
+			}
+			ALB = { 
+				puppet = CRO 
+			}
+		}
+
+		if = { #Bosnia
+			limit = { 
+				tag = YUG 
+				BOS = { 
+					is_ally_with = YUG 
+				} 
+			}
+			ALB = { 
+				puppet = BOS 
+			}
+		}
+
+		if = { #Herzegovina
+			limit = { 
+				tag = YUG 
+				HRZ = { 
+					is_ally_with = YUG 
+				} 
+			}
+			ALB = { 
+				puppet = HRZ 
+			}
+		}
+
+		if = { #Montenegro
+			limit = { 
+				tag = YUG 
+				MNT = { 
+					is_ally_with = YUG 
+				} 
+			}
+			ALB = { 
+				puppet = MNT 
+			}
+		}
+
+		if = { #Kosovo
+			limit = { 
+				tag = YUG 
+				KOS = { 
+					is_ally_with = YUG 
+				} 
+			}
+			ALB = { 
+				puppet = KOS 
+			}
+		}
+
+		if = { #Macedonia (Fuck you Greece for forcing another country to change it's name)
+			limit = { 
+				tag = YUG 
+				MAC = { 
+					is_ally_with = YUG 
+				} 
+			}
+			ALB = { 
+				puppet = MAC 
+			}
+		}
+
+		#If Yugo has done the Devolved Croatia focus this will make Croatia owner of Dalmatia
+		#Dalmatia doesnt have it's own tag so this is the reason why it is like this
+		if = {
+			limit = { 
+				tag = YUG 
+				has_completed_focus = YUG_devolved_croatia 
+			}
+			CRO = { 
+				transfer_state = 103 
+			}
+		}
+
+		#If Yugo has done the Autonomous Transylvania focus, Serbia will become owner of Vojvodina and West Banat
+		#Like Dalmatia situation, Vojvodina as well doesnt have it's own tag but if Serbia becomes owner of only Vojvodina it would look
+		#kinda weird so this is a work-around
+		if = {
+			limit = { 
+				tag = YUG 
+				has_completed_focus = YUG_autonomous_transylvania 
+			}
+			YUG = { 
+				transfer_state = 764 
+				transfer_state = 45 
+			}
+			YUG = { 
+				add_state_core = 764 
+				add_state_core = 45 
+			}
+		}
+	}
+	option = {
+		name = gram_event_alb_proposal_of_closer_unity.1.b
+		ALB = { 
+			country_event = { 
+				id = gram_event_alb_denied_closer_unity.1 
+				hours = 12 
+			} 
+		}
+		ai_chance = {
+			base = 0 
+		}
+	}
+}
+
+add_namespace = gram_event_alb_push_for_independence
+
+#Push for Independence
+country_event = {
+	id = gram_event_alb_push_for_independence.1
+	title = gram_event_alb_push_for_independence.1.t
+	desc = gram_event_alb_push_for_independence.1.d
+
+	picture = GFX_gram_event_alb_push_for_independence
+	is_triggered_only = yes
+	timeout_days = 15
+	option = {
+		name = gram_event_alb_push_for_independence.1.a
+		ai_chance = { 
+			base = 1 
+		}
+
+		news_event = { 
+			id = gram_event_alb_breakup_of_yugoslavia.1 
+		}
+
+		#Slovenia exists and is puppet of Yugoslavia - Set free
+		if = {
+			limit = { 
+				SLV = { 
+					exists = yes 
+					is_subject_of = YUG 
+				} 
+			}
+			YUG = { 
+				set_autonomy = { 
+					target = SLV 
+					autonomy_state = autonomy_free 
+				} 
+			}
+			SLV = { 
+				leave_faction = yes 
+			}
+			custom_effect_tooltip = empty_divide_tt
+		}
+	
+		#Croatia exists and is puppet of Yugoslavia - Set free
+		if = {
+			limit = { 
+				CRO = { 
+					exists = yes 
+					is_subject_of = YUG 
+				} 
+			}
+			YUG = { 
+				set_autonomy = { 
+					target = CRO 
+					autonomy_state = autonomy_free 
+				} 
+			}
+			CRO = { 
+				leave_faction = yes 
+			}
+			custom_effect_tooltip = empty_divide_tt
+		}
+	
+		#Bosnia exists and is puppet of Yugoslavia - Set free
+		if = {
+			limit = { 
+				BOS = { 
+					exists = yes 
+					is_subject_of = YUG 
+				} 
+			}
+			YUG = { 
+				set_autonomy = { 
+					target = BOS 
+					autonomy_state = autonomy_free 
+				} 
+			}
+			BOS = { 
+				leave_faction = yes 
+			}
+			custom_effect_tooltip = empty_divide_tt
+		}
+	
+		#Montenegro exists and is puppet of Yugoslavia - Set free
+		if = {
+			limit = { 
+				MNT = { 
+					exists = yes 
+					is_subject_of = YUG 
+				} 
+			}
+			YUG = { 
+				set_autonomy = { 
+					target = MNT 
+					autonomy_state = autonomy_free 
+				} 
+			}
+			MNT = { 
+				leave_faction = yes 
+			}
+		}
+	}
+	option = {
+		name = gram_event_alb_push_for_independence.1.b
+		ai_chance = { 
+			base = 0 
+		}
+
+		#Slovenia exists and is puppet of Yugoslavia - Set free
+		if = {
+			limit = { 
+				SLV = { 
+					exists = yes 
+					is_subject_of = YUG 
+				} 
+			}
+			YUG = { 
+				set_autonomy = { 
+					target = SLV 
+					autonomy_state = autonomy_free 
+				} 
+			}
+			SLV = { 
+				leave_faction = yes 
+			}
+			custom_effect_tooltip = empty_divide_tt
+		}
+
+		#Croatia exists and is puppet of Yugoslavia - Set free
+		if = {
+			limit = { 
+				CRO = { 
+					exists = yes 
+					is_subject_of = YUG 
+				} 
+			}
+			YUG = { 
+				set_autonomy = { 
+					target = CRO 
+					autonomy_state = autonomy_free 
+				} 
+			}
+			CRO = { 
+				leave_faction = yes 
+			}
+			custom_effect_tooltip = empty_divide_tt
+		}
+	
+		#Bosnia exists and is puppet of Yugoslavia - Set free
+		if = {
+			limit = { 
+				BOS = { 
+					exists = yes 
+					is_subject_of = YUG 
+				} 
+			}
+			YUG = { 
+				set_autonomy = { 
+					target = BOS 
+					autonomy_state = autonomy_free
+				} 
+			}
+			BOS = { 
+				leave_faction = yes 
+			}
+			custom_effect_tooltip = empty_divide_tt
+		}
+	
+		#Montenegro exists and is puppet of Yugoslavia - Set free
+		if = {
+			limit = { 
+				MNT = { 
+					exists = yes 
+					is_subject_of = YUG 
+				} 
+			}
+			YUG = { 
+				set_autonomy = { 
+					target = MNT 
+					autonomy_state = autonomy_free 
+				} 
+			}
+			MNT = { 
+				leave_faction = yes 
+			}
+			custom_effect_tooltip = empty_divide_tt
+		}
+		
+		#Declarations of War
+		if = { #Slovenia
+			limit = { 
+				SLV = { 
+					exists = yes 
+					is_subject = no 
+				} 
+			}
+			YUG = { 
+				declare_war_on = { 
+					target = SLV 
+					type = annex_everything 
+				} 
+			}
+			custom_effect_tooltip = empty_divide_tt
+		}
+
+		if = { #Croatia
+			limit = { 
+				CRO = { 
+					exists = yes 
+					is_subject = no 
+				} 
+			}
+			YUG = { 
+				declare_war_on = { 
+					target = CRO 
+					type = annex_everything 
+				} 
+			}
+			custom_effect_tooltip = empty_divide_tt
+		}
+
+		if = { #Bosnia
+			limit = { 
+				BOS = {
+					exists = yes 
+					is_subject = no 
+				} 
+			}
+			YUG = { 
+				declare_war_on = { 
+					target = BOS 
+					type = annex_everything 
+				} 
+			}
+			custom_effect_tooltip = empty_divide_tt
+		}
+
+		if = { #Montenegro
+			limit = { 
+				MNT = { 
+					exists = yes 
+					is_subject = no 
+				} 
+			}
+			YUG = { 
+				declare_war_on = { 
+					target = MNT 
+					type = annex_everything 
+				} 
+			}
+		}
+		hidden_effect = {
+			ALB = { 
+				country_event = { 
+					id = gram_event_alb_yugoslavian_war_of_independence.1 
+					hours = 6 
+				} 
+			}
+		}
+	}
+}
+
+add_namespace = gram_event_alb_restoration_of_byzantine_empire
+
+#Restoration of Byzantine Empire
+news_event = {
+	id = gram_event_alb_restoration_of_byzantine_empire.1
+	title = gram_event_alb_restoration_of_byzantine_empire.1.t
+	desc = gram_event_alb_restoration_of_byzantine_empire.1.d
+
+	picture = GFX_gram_event_alb_restoration_of_byzantine_empire
+	is_triggered_only = yes
+	timeout_days = 15
+	major = yes
+	option = {
+		name = gram_event_alb_restoration_of_byzantine_empire.1.a
+		ai_chance = { 
+			base = 1 
+		}
+	}
+}
+
+add_namespace = gram_event_alb_unite_with_albania
+
+#Unite with Albania
+country_event = {
+	id = gram_event_alb_unite_with_albania.1
+	title = gram_event_alb_unite_with_albania.1.t
+	desc = gram_event_alb_unite_with_albania.1.d
+
+	picture = GFX_gram_event_alb_unite_with_albania
+	fire_only_once = yes
+	is_triggered_only = yes
+	timeout_days = 15
+	option = {
+		name = gram_event_alb_unite_with_albania.1.a
+		ai_chance = { base = 100 }
+
+		ALB = {
+			annex_country = { 
+				target = GRE 
+				transfer_troops = yes 
+			} 
+		}
+
+		custom_effect_tooltip = empty_divide_tt
+       	custom_effect_tooltip = the_game_will_end_for_you_tt
+
+		hidden_effect = {
+			ALB = { 
+				country_event = { 
+					id = gram_event_alb_united_and_glorious.1 
+				}
+			}
+		}
+
+	}
+		
+	option = {
+		name = gram_event_alb_unite_with_albania.1.b
+		ai_chance = { 
+			base = 0 
+		}
+			
+		hidden_effect = {
+			ALB = { 
+				country_event = { 
+					id = gram_event_alb_greece_declines_unification_proposal.1 
+				}
+			}
+		}
+
+	}
+}
+
+add_namespace = gram_event_alb_united_and_glorious
+
+#United and Glorious
+country_event = {
+	id = gram_event_alb_united_and_glorious.1
+	title = gram_event_alb_united_and_glorious.1.t
+	desc = gram_event_alb_united_and_glorious.1.d
+
+	picture = GFX_gram_event_alb_united_and_glorious
+	fire_only_once = yes
+	is_triggered_only = yes
+	timeout_days = 15
+	option = {
+		name = gram_event_alb_united_and_glorious.1.a
+		ai_chance = { 
+			base = 1 
+		}
+
+		add_political_power = 100
+		add_stability = 0.1
+
+	}
+}
+
+add_namespace = gram_event_alb_yugoslavian_war_of_independence
+
+#Yugoslavian War of Independence
+country_event = {
+	id = gram_event_alb_yugoslavian_war_of_independence.1
+	title = gram_event_alb_yugoslavian_war_of_independence.1.t
+	desc = gram_event_alb_yugoslavian_war_of_independence.1.d
+
+	picture = GFX_gram_event_alb_yugoslavian_war_of_independence
+	is_triggered_only = yes
+	timeout_days = 15
+	option = {
+		name = gram_event_alb_yugoslavian_war_of_independence.1.a
+		ai_chance = { 
+			base = 1 
+		}
+
+		if = { #More likely to happend
+			limit = { 
+				YUG = { 
+					exists = yes 
+				} 
+			}
+			complete_national_focus = gram_focus_alb_anti_serbia_league
+			custom_effect_tooltip = empty_divide_tt
+		}
+
+		if = { #Not nessecary but hey why not
+			limit = { 
+				YUG = { 
+					exists = no 
+				} 
+			}
+			complete_national_focus = gram_focus_alb_balkan_defense_league_alt
+			custom_effect_tooltip = empty_divide_tt
+		}
+
+		ALB = { 
+			declare_war_on = { 
+				target = YUG 
+				type = puppet_wargoal_focus 
+			} 
+		}
+		
+	}
+	option = {
+		name = gram_event_alb_yugoslavian_war_of_independence.1.b
+		ai_chance = { 
+			base = 1 
+		}
+
+	}
+}
+
+add_namespace = gram_event_alb_zog_awakens
+
+#King Zog awekens from coma
+country_event = {
+	id = gram_event_alb_zog_awakens.1
+	title = gram_event_alb_zog_awakens.1.t
+	desc = gram_event_alb_zog_awakens.1.d
+
+	picture = GFX_gram_event_alb_king_zog_awakens
+	fire_only_once = yes
+	is_triggered_only = yes
+	timeout_days = 15
+	option = {
+		name = gram_event_alb_zog_awakens.1.a
+		ai_chance = { 
+			base = 1 
+		}
+		
+		hidden_effect = {
+			set_country_flag = gram_flag_alb_zog_is_awake
+		}
+		
+	}
+}
+
+add_namespace = gram_event_alb_one_union_solution
+
+#One Union Solution
+country_event = {
+	id = gram_event_alb_one_union_solution.1
+	title = gram_event_alb_one_union_solution.1.t
+	desc = gram_event_alb_one_union_solution.1.d
+
+	fire_only_once = yes
+	mean_time_to_happen = { 
+		days = 2 
+	}
+
+	picture = GFX_gram_event_alb_one_union_solution
+
+	trigger = {
+		tag = ALB
+		ALB = { 
+			is_in_faction_with = SOV 
+		}
+		SOV = { 
+			surrender_progress > 0.5 
+		}
+		ALB = { 
+			has_completed_focus = gram_focus_alb_red_albania 
+		}
+	}
+
+	option = {
+		name = gram_event_alb_one_union_solution.1.a
+
+		ai_chance = {
+			base = 1
+		}
+
+		custom_effect_tooltip = you_will_unlock_new_secret_focuses_tt
+
+		hidden_effect = {
+			set_country_flag = gram_flag_alb_one_union_solution
+			mark_focus_tree_layout_dirty = yes
+		}
+
+	}
+}
+
+add_namespace = gram_event_alb_italian_industrial_investment
+
+#Italian Industrial Investment
+country_event = {
+	id = gram_event_alb_italian_industrial_investment.1
+	title = gram_event_alb_italian_industrial_investment.1.t
+	desc = gram_event_alb_italian_industrial_investment.1.d
+
+	picture = GFX_gram_event_alb_italian_industrial_investment
+	is_triggered_only = yes
+	timeout_days = 15
+
+	option = {
+		name = gram_event_alb_italian_industrial_investment.1.a
+
+		ai_chance = { 
+			base = 1 
+		}
+		
+		random_core_state = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+
+		if = { #From idea 9 to 10
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_9
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_9
+					add_idea = gram_idea_alb_treaty_of_tirana_10
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 8 to 9
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_8
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_8
+					add_idea = gram_idea_alb_treaty_of_tirana_9
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 7 to 8
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_7
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_7
+					add_idea = gram_idea_alb_treaty_of_tirana_8
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}		
+
+		if = { #From idea 6 to 7
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_6
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_6
+					add_idea = gram_idea_alb_treaty_of_tirana_7
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 5 to 6			
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_5
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_5
+					add_idea = gram_idea_alb_treaty_of_tirana_6
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 4 to 5
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_4
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_4
+					add_idea = gram_idea_alb_treaty_of_tirana_5
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 3 to 4
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_3
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_3
+					add_idea = gram_idea_alb_treaty_of_tirana_4
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 2 to 3
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_2
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_2
+					add_idea = gram_idea_alb_treaty_of_tirana_3
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}		
+
+		if = { #From idea 1 to 2
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_1
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_1
+					add_idea = gram_idea_alb_treaty_of_tirana_2
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}		
+		
+	}
+
+	option = {
+		name = gram_event_alb_italian_industrial_investment.1.b
+		ai_chance = { 
+			base = 0
+		}
+		
+		add_political_power = 50
+
+	}
+
+}
+
+add_namespace = gram_event_alb_joint_military_exercise
+
+#Joint Military Exercise
+country_event = {
+	id = gram_event_alb_joint_military_exercise.1
+	title = gram_event_alb_joint_military_exercise.1.t
+	desc = gram_event_alb_joint_military_exercise.1.d
+
+	picture = GFX_gram_event_alb_joint_military_exercise
+	is_triggered_only = yes
+	timeout_days = 15
+
+	option = {
+		name = gram_event_alb_joint_military_exercise.1.a
+		ai_chance = { 
+			base = 1 
+		}
+		
+		army_experience = 40
+		air_experience = 40
+		navy_experience = 40
+
+		if = { #From idea 9 to 10
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_9
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_9
+					add_idea = gram_idea_alb_treaty_of_tirana_10
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 8 to 9
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_8
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_8
+					add_idea = gram_idea_alb_treaty_of_tirana_9
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 7 to 8
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_7
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_7
+					add_idea = gram_idea_alb_treaty_of_tirana_8
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}		
+
+		if = { #From idea 6 to 7
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_6
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_6
+					add_idea = gram_idea_alb_treaty_of_tirana_7
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 5 to 6			
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_5
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_5
+					add_idea = gram_idea_alb_treaty_of_tirana_6
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 4 to 5
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_4
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_4
+					add_idea = gram_idea_alb_treaty_of_tirana_5
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 3 to 4
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_3
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_3
+					add_idea = gram_idea_alb_treaty_of_tirana_4
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}
+
+		if = { #From idea 2 to 3
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_2
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_2
+					add_idea = gram_idea_alb_treaty_of_tirana_3
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}		
+
+		if = { #From idea 1 to 2
+			limit = {
+				has_idea = gram_idea_alb_treaty_of_tirana_1
+			}
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = gram_idea_alb_treaty_of_tirana_1
+					add_idea = gram_idea_alb_treaty_of_tirana_2
+				}
+			}
+			custom_effect_tooltip = 2_traty_of_tirana_level_goes_up_1_tt
+		}		
+		
+	}
+
+	option = {
+		name = gram_event_alb_joint_military_exercise.1.b
+		ai_chance = { 
+			base = 0
+		}
+		
+		add_political_power = 50
+
+	}
+
+}
+
+add_namespace = gram_event_alb_goverment_takeover
+
+#Goverment Takeover
+country_event = {
+	id = gram_event_alb_goverment_takeover.1
+	title = gram_event_alb_goverment_takeover.1.t
+	desc = gram_event_alb_goverment_takeover.1.d
+
+	picture = GFX_gram_event_alb_goverment_takeover
+	fire_only_once = yes
+	is_triggered_only = yes
+	timeout_days = 15
+
+	option = {
+		name = gram_event_alb_goverment_takeover.1.a
+		ai_chance = { 
+			base = 25
+		}
+
+		ITA = { puppet = ALB }
+
+	}
+
+	option = {
+		name = gram_event_alb_goverment_takeover.1.b
+		ai_chance = { 
+			base = 75
+		}
+
+		ITA = { 
+			declare_war_on = {
+				target = ALB
+				type = puppet_wargoal_focus
+			} 
+		}
+
+	}
+}
+
+	add_namespace = democratic_alb
+
+	country_event = {
+		id = democratic_alb.1
+		title = "The First Election"
+		desc = "Now that democracy has been restored, we must hold our elections for true democracy. The only quesetion is, who will win?"
+		picture = GFX_report_event_ITA_democratic_parlament
+
+		is_triggered_only = yes
+		fire_only_once = yes
+
+		option = {
+			name = "The Communists"
+			complete_national_focus = ALB_communist_victory
+		}
+
+		option = {
+			name = "The Democrats"
+			complete_national_focus = ALB_democratic_victory
+		}
+	}
+
+	country_event = {
+		id = democratic_alb.2
+		title = "Question of Leadership"
+		desc = "Now that communism has arosen, we must ask, what will our leadership be?"
+		picture = GFX_report_event_USA_charlie_brown
+
+		is_triggered_only = yes
+		fire_only_once = yes
+
+		option = {
+			name = "HOXHA!"
+			add_stability = 0.15
+		}
+		option = {
+			name = "THE PEOPLE!"
+			retire_character = gram_character_ALB_enver_hoxha
+		}
+	}
+
+	country_event = {
+		id = democratic_alb.3
+		title = "Diplomatic Stance?"
+		desc = "Our diplomatic stance must now be asked, what will we do?"
+		picture = GFX_report_event_gre_cabinet_meeting
+
+		is_triggered_only = yes
+		fire_only_once = yes
+
+		option = {
+			name = "The Allies"
+			complete_national_focus = ALB_the_west
+		}
+		option = {
+			name = "Our own alliance"
+			complete_national_focus = ALB_ourselves
+		}
+	}	

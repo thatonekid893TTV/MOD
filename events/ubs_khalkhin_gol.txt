@@ -1,0 +1,195 @@
+
+###   ##  ###  ###  ### ###       ##   ##  #  # ### #   ###  ##  ###  ## 
+#  # #  # #  # #  # #   #  #     #  # #  # ## # #   #    #  #  #  #  #   
+###  #  # ###  #  # ##  ###      #    #  # # ## ##  #    #  #     #   #  
+#  # #  # #  # #  # #   #  #     #  # #  # #  # #   #    #  #  #  #    # 
+###   ##  #  # ###  ### #  #      ##   ##  #  # #   ### ###  ##   #  ##  
+
+add_namespace = mon_border_conflict
+
+#initial border incident against Japan/Manchuria
+country_event = {
+	id = mon_border_conflict.1
+	title = mon_border_conflict.1.t
+	desc = mon_border_conflict.1.desc
+	picture = GFX_report_event_SOV_mongolia_cavalry
+
+	is_triggered_only = yes
+
+	option = {
+		name = mon_border_conflict.1.a
+	}
+}
+#Mongolia wins
+country_event = {
+	id = mon_border_conflict.2
+	title = mon_border_conflict.2.t
+	desc = mon_border_conflict.2.desc
+	picture = GFX_report_event_SOV_mongolia_fortify_border
+
+	is_triggered_only = yes
+
+	option = {
+		name = mon_border_conflict.2.a
+		trigger = {
+			original_tag = MON
+		}
+		add_doctrine_cost_reduction = {
+			name = mon_border_conflict_won
+			cost_reduction = 0.5
+			uses = 1
+			category = land_doctrine
+		}
+		add_tech_bonus = {
+			name = mon_border_conflict_won
+			category = armor
+			bonus = 1.0
+		}
+	}
+	option = {
+		name = mon_border_conflict.2.b
+		trigger = {
+			original_tag = MAN
+		}
+		army_experience = 20
+	}
+}
+#Manchuria wins
+country_event = {
+	id = mon_border_conflict.3
+	title = mon_border_conflict.3.t
+	desc = mon_border_conflict.3.desc
+	picture = GFX_report_event_japanese_transport_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = mon_border_conflict.3.a
+		trigger = {
+			original_tag = MON
+		}
+		army_experience = 15
+	}
+	option = {
+		name = mon_border_conflict.3.b
+		trigger = {
+			original_tag = MAN
+		}
+		add_doctrine_cost_reduction = {
+			name = mon_border_conflict_won
+			cost_reduction = 0.5
+			uses = 1
+			category = land_doctrine
+		}
+	}
+}
+
+#stalemate
+country_event = { 
+	id = mon_border_conflict.4
+	title = mon_border_conflict.4.t
+	desc = mon_border_conflict.4.desc
+	picture = GFX_report_event_soviet_soldiers_tank
+
+	is_triggered_only = yes
+
+	option = {
+		name = mon_border_conflict.4.a
+		trigger = {
+			original_tag = MON
+		}
+		army_experience = 50
+	}
+	option = {
+		name = mon_border_conflict.3.b
+		trigger = {
+			original_tag = MAN
+		}
+		army_experience = 50
+	}
+}
+
+#Mongolia escalates
+country_event = {
+	id = mon_border_conflict.5
+	title = mon_border_conflict.5.t
+	desc = mon_border_conflict.5.desc
+	picture = GFX_report_event_soviet_tanks
+	is_triggered_only = yes
+
+	option = {
+		name = mon_border_conflict.5.a
+		
+	}
+	
+}
+
+#Manchuria escalates
+country_event = {
+	id = mon_border_conflict.6
+	title = mon_border_conflict.6.t
+	desc = mon_border_conflict.6.desc
+	picture = GFX_report_event_japanese_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = mon_border_conflict.6.a
+		
+	}
+	
+}
+
+#Soviet assistance
+country_event = {
+	id = mon_border_conflict.7
+	title = mon_border_conflict.7.t
+	desc = mon_border_conflict.7.desc
+	picture = GFX_report_event_soviet_tanks
+
+	is_triggered_only = yes
+
+	option = {
+		name = mon_border_conflict.7.a	
+		if = { 
+			limit = { has_idea = MON_soviet_military_aid_1 }
+			effect_tooltip = { add_ideas = MON_soviet_military_aid_1 }
+		}
+		else_if = {
+			limit = { has_idea = MON_soviet_military_aid_2 }
+			effect_tooltip = { 
+				swap_ideas = { 
+					remove_idea = MON_soviet_military_aid_1 
+					add_idea = MON_soviet_military_aid_2
+				}
+			}
+		}
+	}
+}
+
+#Japanese assistance
+country_event = {
+	id = mon_border_conflict.8
+	title = mon_border_conflict.8.t
+	desc = mon_border_conflict.8.desc
+	picture = GFX_report_event_japanese_transport_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = mon_border_conflict.7.a	
+		if = { 
+			limit = { has_idea = MON_japanese_military_aid_1 }
+			effect_tooltip = { add_ideas = MON_japanese_military_aid_1 }
+		}
+		else_if = {
+			limit = { has_idea = MON_japanese_military_aid_2 }
+			effect_tooltip = { 
+				swap_ideas = { 
+					remove_idea = MON_japanese_military_aid_1 
+					add_idea = MON_japanese_military_aid_2
+				}
+			}
+		}
+	}
+}

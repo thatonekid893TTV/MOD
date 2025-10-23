@@ -1,0 +1,21 @@
+# Scripted cost modifiers for peace actions.
+# See documentation.info file for more detailed scripting information.
+
+peace_action_modifiers = {
+
+    GRE_spiritual_mobilization = {
+        category = events_or_focuses
+        peace_action_type = { take_states }
+        enable = {
+            FROM.FROM = {
+                original_tag = GRE
+                has_completed_focus = GRE_sabotage_polish_industry
+            }
+          
+        }
+        cost_multiplier = 2
+    }
+	
+	
+
+}

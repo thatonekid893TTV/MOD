@@ -1,0 +1,566 @@
+add_namespace = useful-events-quarior-referundum_anschluss
+
+#[FROM.GetNameDefCap] demand referendum for unification
+country_event = {
+	id = useful-events-quarior-referundum_anschluss.1
+	title = useful-events-quarior-referundum_anschluss.1.title
+	desc = useful-events-quarior-referundum_anschluss.1.desc
+	picture = GFX_report_event_election_vote
+	is_triggered_only = yes
+	timeout_days = 10
+	option = {
+		name = useful-events-quarior-referundum_anschluss.1.a
+		trigger = {
+		}
+		ai_chance = {
+			base = 30
+		}
+		random_list = {
+			1 = {
+				modifier = {
+					set_temp_variable = {
+						pop_ideology = ROOT.party_popularity@FROM
+					}
+					add = pop_ideology
+				}
+				modifier = {
+					factor = 2
+					has_capitulated = yes
+					NOT = {
+						has_war_with = FROM
+					}
+				}
+				news_event = {
+					id = useful-events-quarior-referundum_anschluss.2
+					hours = 6
+					random_hours = 4
+				}
+			}
+			1 = {
+				modifier = {
+					set_temp_variable = {
+						no_pop_ideology = ROOT.party_popularity@FROM
+					}
+					add_to_temp_variable = {
+						var = no_pop_ideology
+						value = -1
+					}
+					multiply_temp_variable = {
+						var = no_pop_ideology
+						value = -1
+					}
+					add = no_pop_ideology
+				}
+				news_event = {
+					id = useful-events-quarior-referundum_anschluss.3
+					hours = 6
+					random_hours = 4
+				}
+			}
+		}
+	}
+	option = {
+		name = useful-events-quarior-referundum_anschluss.1.b
+		trigger = {
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 2
+				FROM = {
+					has_same_ideology = yes
+				}
+			}
+			modifier = {
+				add = -25
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.25
+				}
+			}
+			modifier = {
+				factor = 2
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 10
+				is_subject_of = FROM
+			}
+			modifier = {
+				# Don't accept if war with FROM
+				factor = 0
+				has_war_with = FROM
+			}
+		}
+		random_list = {
+			5 = {
+				modifier = {
+					set_temp_variable = {
+						pop_ideology = ROOT.party_popularity@FROM
+					}
+					add = pop_ideology
+				}
+				modifier = {
+					factor = 2
+					has_capitulated = yes
+					NOT = {
+						has_war_with = FROM
+					}
+				}
+				news_event = {
+					id = useful-events-quarior-referundum_anschluss.2
+					hours = 6
+					random_hours = 4
+				}
+			}
+			1 = {
+				modifier = {
+					set_temp_variable = {
+						no_pop_ideology = ROOT.party_popularity@FROM
+					}
+					add_to_temp_variable = {
+						var = no_pop_ideology
+						value = -1
+					}
+					multiply_temp_variable = {
+						var = no_pop_ideology
+						value = -1
+					}
+					add = no_pop_ideology
+				}
+				news_event = {
+					id = useful-events-quarior-referundum_anschluss.3
+					hours = 6
+					random_hours = 4
+				}
+			}
+		}
+	}
+	option = {
+		name = useful-events-quarior-referundum_anschluss.1.c
+		trigger = {
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 2
+				FROM = {
+					is_enemy_ideology = yes
+				}
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.2
+				}
+			}
+			modifier = {
+				add = 20
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+			modifier = {
+				factor = 0.1
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 2
+				is_in_faction = yes
+				NOT = {
+					is_in_faction_with = FROM
+				}
+			}
+			modifier = {
+				any_other_country = {
+					has_guaranteed = ROOT
+				}
+				factor = 5				#i've got friends
+			}
+			modifier = {
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ROOT
+				}
+				factor = 5				#i've got big friends
+			}
+		}
+		random_list = {
+			1 = {
+				modifier = {
+					set_temp_variable = {
+						pop_ideology = ROOT.party_popularity@FROM
+					}
+					add = pop_ideology
+				}
+				modifier = {
+					factor = 2
+					has_capitulated = yes
+					NOT = {
+						has_war_with = FROM
+					}
+				}
+				news_event = {
+					id = useful-events-quarior-referundum_anschluss.2
+					hours = 6
+					random_hours = 4
+				}
+			}
+			5 = {
+				modifier = {
+					set_temp_variable = {
+						no_pop_ideology = ROOT.party_popularity@FROM
+					}
+					add_to_temp_variable = {
+						var = no_pop_ideology
+						value = -1
+					}
+					multiply_temp_variable = {
+						var = no_pop_ideology
+						value = -1
+					}
+					add = no_pop_ideology
+				}
+				news_event = {
+					id = useful-events-quarior-referundum_anschluss.3
+					hours = 6
+					random_hours = 4
+				}
+			}
+		}
+	}
+	option = {
+		name = useful-events-quarior-referundum_anschluss.1.d
+		trigger = {
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 3
+				FROM = {
+					is_enemy_ideology = yes
+				}
+			}
+			modifier = {
+				factor = 0.1
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 2
+				has_war_with = FROM
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = rejected_demands
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = useful-events-quarior-referundum_anschluss.4
+				hours = 6
+				random_hours = 4
+			}
+		}
+	}
+}
+
+#[FROM.GetNameDefCap] merge with [FROM.FROM.GetNameDef]
+news_event = {
+	id = useful-events-quarior-referundum_anschluss.2
+	title = useful-events-quarior-referundum_anschluss.2.t
+	desc = useful-events-quarior-referundum_anschluss.2.d
+	picture = GFX_news_event_election_vote
+	is_triggered_only = yes
+	timeout_days = 10
+	major = yes
+	option = {
+		name = useful-events-quarior-referundum_anschluss.2.a
+		trigger = {
+			tag = FROM.FROM
+		}
+		ai_chance = {
+			base = 100
+		}
+		set_temp_variable = {
+			from_v = FROM.FROM
+		}
+		FROM = {
+			every_character = {
+				set_nationality = var:from_v
+			}
+			transfer_navy = {
+				target = FROM
+			}
+			send_equipment_fraction = {
+				value = 1
+				target = var:from_v
+			}
+		}
+		every_country = {
+			limit = {
+				is_subject_of = FROM
+			}
+			var:from_v = {
+				puppet = PREV
+			}
+		}
+		FROM = {
+			set_temp_variable = {
+				this_country = THIS
+			}
+			every_core_state = {
+				add_core_of = var:from_v
+			}
+			every_state = {
+				limit = {
+					is_claimed_by = var:this_country
+				}
+				add_claim_by = var:from_v
+			}
+		}
+		annex_country = {
+			target = FROM
+			transfer_troops = yes
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-referundum_anschluss.2.b
+		trigger = {
+			NOT = {
+				tag = FROM.FROM
+			}
+			NOT = {
+				tag = FROM
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-referundum_anschluss.2.c
+		trigger = {
+			tag = FROM
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+}
+
+#[FROM.GetNameDefCap] against the fusion with [FROM.FROM.GetNameDef]
+news_event = {
+	id = useful-events-quarior-referundum_anschluss.3
+	title = useful-events-quarior-referundum_anschluss.3.t
+	desc = useful-events-quarior-referundum_anschluss.3.d
+	picture = GFX_news_event_election_vote
+	is_triggered_only = yes
+	timeout_days = 10
+	major = yes
+	option = {
+		name = useful-events-quarior-referundum_anschluss.3.a
+		trigger = {
+			tag = FROM.FROM
+		}
+		ai_chance = {
+			base = 1
+			
+			modifier = {
+				factor = 2
+				FROM = {
+					is_enemy_ideology = yes
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.75
+				}
+			}
+			modifier = {
+				factor = 0.5
+				tag = ROOT
+				has_opinion = {
+					target = FROM
+					value > 25
+				}
+			}
+			modifier = {
+				factor = 10
+				FROM = {
+					any_enemy_country = {
+						OR = {
+							is_ally_with = ROOT
+							tag = ROOT.OVERLORD
+						}
+					}
+				}
+			}
+		}
+		set_temp_variable = {
+			from_v = FROM.FROM
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_demands
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+			expire = 730
+		}
+		FROM = {
+			every_core_state = {
+				add_claim_by = var:from_v
+			}
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-referundum_anschluss.3.b
+		trigger = {
+			NOT = {
+				tag = FROM.FROM
+			}
+			NOT = {
+				tag = FROM
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-referundum_anschluss.3.c
+		trigger = {
+			tag = FROM
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-referundum_anschluss.3.e
+		trigger = {
+			tag = FROM.FROM
+		}
+		ai_chance = {
+			base = 1
+			
+			modifier = {
+				factor = 2
+				FROM = {
+					has_same_ideology = yes
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.2
+				}
+			}
+			modifier = {
+				factor = 10
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 0
+				has_war_with = FROM
+			}
+		}
+	}
+}
+
+#FROM refuses
+country_event = {
+	id = useful-events-quarior-referundum_anschluss.4
+	title = useful-events-quarior-referundum_anschluss.4.t
+	desc = useful-events-quarior-referundum_anschluss.4.desc
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	
+	option = {
+		#TO WAR
+		name = useful-events-quarior-referundum_anschluss.4.a
+		ai_chance = {
+			base = 30
+			modifier = {
+				FROM = {
+					is_enemy_ideology = yes
+				}
+				factor = 3
+			}
+			modifier = {
+				FROM = { is_in_faction = no }
+				factor = 3
+			}
+			modifier = {
+				strength_ratio = { tag = FROM ratio > 1 }
+				factor = 2
+			}
+		}
+		set_temp_variable = {
+			from_v = FROM.FROM
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_demands
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+			expire = 730
+		}
+		FROM = {
+			every_core_state = {
+				add_claim_by = var:from_v
+			}
+		}
+		hidden_effect = {
+		}
+		
+	}
+	option = {
+		#Let it go
+		name = useful-events-quarior-referundum_anschluss.4.b
+		ai_chance = {
+			base = 70
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_demands
+		}
+		set_temp_variable = {
+			from_v = FROM.FROM
+		}
+		hidden_effect = {
+		}
+	}
+}

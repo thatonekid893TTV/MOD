@@ -1,0 +1,3423 @@
+###########################
+# Danish Events
+###########################
+
+add_namespace = denmark
+
+
+# norway asked about union
+country_event = {
+	id = denmark.1
+	title = denmark.1.t
+	desc = denmark.1.d
+	picture = GFX_news_event_generic_rally_3
+	
+	is_triggered_only = yes
+	
+	option = { # Accept
+		name = denmark.1.a
+		ai_chance = {
+			base = 80
+			modifier = {
+				add = 10
+				DEN = {
+					has_guaranteed = NOR
+				}
+			}
+			modifier = {
+				add = 50
+				GER = { has_army_size = { size > 39 } }
+			}
+			modifier = {
+				add = 50
+				DEN = { has_army_size = { size > 19 } }
+			}
+		}
+		DEN = {
+			country_event = { hours = 12 id = denmark.2 }
+		}
+	}
+	option = { # Refuse
+		name = denmark.1.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				add = 40
+				GER = { has_army_size = { size < 40 } }
+			}	
+		}
+		DEN = {
+			country_event = { hours = 4 id = denmark.3 }
+		}
+	}
+}
+# norway says yes to annex
+country_event = {
+	id = denmark.2
+	title = denmark.2.t
+	desc = denmark.2.d
+	picture = GFX_news_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # yes to annex
+		name = denmark.2.a
+		ai_chance = {
+			base = 100
+		}
+
+		add_state_claim = 110
+		add_state_claim = 142
+		add_state_claim = 143
+		add_state_claim = 144
+		add_state_claim = 920
+		add_state_claim = 921
+		add_state_claim = 922
+		add_state_claim = 923
+		add_state_claim = 924
+		add_state_claim = 925
+		
+		hidden_effect = {
+			NOR= {
+				every_unit_leader = {
+					set_nationality = DEN
+				}
+				custom_effect_tooltip = GAME_OVER_TT
+			}
+		}
+		annex_country = { target = NOR transfer_troops = yes }
+		add_political_power = 60
+		add_war_support = 0.1
+		add_stability = 0.05
+	}
+}
+# norway says no to annex
+country_event = {
+	id = denmark.3
+	title = denmark.3.t
+	desc = denmark.3.d
+	picture = GFX_news_event_gathering_protest
+	
+	is_triggered_only = yes
+	
+	option = { # war then
+		name = denmark.3.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = -49
+			}	
+		}
+
+		add_political_power = 100
+		add_war_support = 0.25
+
+		add_state_claim = 110
+		add_state_claim = 142
+		add_state_claim = 143
+		add_state_claim = 144
+		add_state_claim = 920
+		add_state_claim = 921
+		add_state_claim = 922
+		add_state_claim = 923
+		add_state_claim = 924
+		add_state_claim = 925
+
+		create_wargoal = {
+			type = take_state_focus
+			target = NOR
+			generator = { 110 142 143 144 }
+		}
+	}
+	option = { # nevermind
+		name = denmark.3.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 50
+			}	
+		}
+
+		add_political_power = -70
+		add_war_support = -0.3
+		add_stability = -0.1
+	}
+}
+# return of the kingdom
+country_event = {
+	id = denmark.4
+	title = denmark.4.t
+	desc = denmark.4.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # long live the king
+		name = denmark.4.a
+		ai_chance = {
+			base = 100
+		}
+
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.2
+		}
+		#add_ideas = Volunteer_only
+		remove_ideas = DEN_constitutional_monarch
+		
+		DEN = {
+			country_event = { days = 7 id = denmark.9 }
+		}
+	}
+}
+# Royal speech
+country_event = {
+	id = denmark.5
+	title = denmark.5.t
+	desc = denmark.5.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # long live the king
+		name = denmark.4.a
+		ai_chance = {
+			base = 100
+		}
+
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.1
+		}
+		hidden_effect = {
+			DEN = {
+				country_event = { days = 50 id = denmark.30 }
+			}
+		}
+	}
+}
+# Soviet support
+country_event = {
+	id = denmark.6
+	title = denmark.6.t
+	desc = denmark.6.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	fires_only_once = yes
+	
+	option = { # Yes
+		name = denmark.6.a
+		ai_chance = {
+			base = 90
+		}
+		DEN = {
+			country_event = { hours = 6 id = denmark.8 }
+		}
+	}
+	option = { # No
+		name = denmark.6.b
+		ai_chance = {
+			base = 10
+		}
+		DEN = {
+			country_event = { hours = 6 id = denmark.7 }
+		}
+	}		
+}
+# Soviet no
+country_event = {
+	id = denmark.7
+	title = denmark.7.t
+	desc = denmark.7.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { # Ok
+		name = denmark.7.a
+		ai_chance = {
+			base = 1
+		}
+		add_opinion_modifier = { target = SOV modifier = medium_decrease }
+	}		
+}
+# Soviet yes
+country_event = {
+	id = denmark.8
+	title = denmark.8.t
+	desc = denmark.8.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { # Thanks
+		name = denmark.8.a
+		ai_chance = {
+			base = 1
+		}
+		DEN = {
+			if = {
+				limit = {
+					SOV = { has_tech = improved_infantry_weapons   }
+				}
+				add_equipment_to_stockpile = { type = infantry_equipment_2 amount = 6000 producer = SOV }
+			} else = {
+				add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = SOV }
+			}
+			if = {
+				limit = {
+					SOV = { has_tech = artillery1 }
+				}
+				add_equipment_to_stockpile = { type = artillery_equipment_2 amount = 450 producer = SOV }
+			} else = {
+				add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 450 producer = SOV }
+			}
+		}
+		SOV = {
+			give_guarantee = DEN
+		}
+	}		
+}
+# Royal field marshal
+country_event = {
+	id = denmark.9
+	title = denmark.9.t
+	desc = denmark.9.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	fires_only_once = yes
+	
+	option = { # Yes
+		name = denmark.9.a
+		ai_chance = {
+			base = 90
+		}
+
+		DEN_prince_harald_christian_frederik = {
+			add_field_marshal_role = {
+				traits = { offensive_doctrine inspirational_leader media_personality }
+				skill = 4
+				attack_skill = 3
+				defense_skill = 3
+				planning_skill = 3
+				logistics_skill = 2 
+			}
+		}
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.1
+		}
+		DEN = {
+			country_event = { days = 7 id = denmark.26}
+		}
+	}	
+	option = { # No
+		name = denmark.9.b
+		ai_chance = {
+			base = 10
+		}
+		add_war_support = -0.15
+	}		
+}
+# Germany asked for Southern Schleswig
+country_event = {
+	id = denmark.10
+	title = denmark.10.t
+	desc = denmark.10.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	fires_only_once = yes
+	
+	option = { # Yes
+		name = denmark.10.a
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = 60
+				DEN = { has_army_size = { size > 59 } }
+			}
+			modifier = {
+				add = 80
+				DEN = { has_army_size = { size > 79 } }
+			}
+			modifier = {
+				add = 100
+				DEN = { has_army_size = { size > 99 } }
+			}
+			modifier = {
+				add = 50
+				#DEN = { num_of_factories > 49 } 
+			}
+		}
+		DEN = {
+			country_event = { hours = 24 id = denmark.11 }
+		}
+	}
+	option = { # No
+		name = denmark.10.b
+		ai_chance = {
+			base = 70
+
+		}
+		DEN = {
+			country_event = { hours = 3 id = denmark.12 }
+		}
+	}
+}
+# Germany hands over southern Schleswig
+country_event = {
+	id = denmark.11
+	title = denmark.11.t
+	desc = denmark.11.d
+	picture = GFX_news_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # thanks
+		name = denmark.11.a
+		ai_chance = {
+			base = 100
+		}
+		transfer_state = 909
+		add_state_core = 909
+		add_political_power = 100
+		#add_war_support = 0.10
+		add_stability = 0.05
+	}
+}
+# Germany refuses to hand over southern Schleswig
+country_event = {
+	id = denmark.12
+	title = denmark.12.t
+	desc = denmark.12.d
+	picture = GFX_news_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # war then
+		name = denmark.12.a
+		ai_chance = {
+			base = 20	
+		}
+
+		add_political_power = 100
+		add_war_support = 0.25
+
+		add_state_core = 909
+		create_wargoal = {
+			type = take_state_focus
+			target = GER
+			generator = { 909 }
+		}
+	}
+	option = { # nevermind
+		name = denmark.12.b
+		ai_chance = {
+			base = 80	
+		}
+
+		add_political_power = -50
+		add_war_support = -0.2
+		add_stability = -0.1
+	}
+}
+# Sweden asked for territory
+country_event = {
+	id = denmark.13
+	title = denmark.13.t
+	desc = denmark.13.d
+	picture = report_event_generic_sign_treaty
+	
+	is_triggered_only = yes
+	#fires_only_once = yes
+	
+	option = { # Yes
+		name = denmark.13.a
+		ai_chance = {
+			base = 70
+			modifier = {
+				add = 30
+				DEN = { has_army_size = { size > 19 } }
+			}
+			modifier = {
+				add = 50
+				DEN = { controls_state = 110 }
+			}
+			modifier = {
+				add = 100
+				GER = { has_army_size = { size > 39 } }
+			}
+			modifier = {
+				add = 50
+				#DEN = { num_of_factories > 49 } 
+			}
+		}
+		DEN = {
+			country_event = { hours = 24 id = denmark.14 }
+		}
+	}
+	option = { # No
+		name = denmark.13.b
+		ai_chance = {
+			base = 30
+		}
+		DEN = {
+			country_event = { hours = 3 id = denmark.15 }
+		}
+	}
+}
+# Sweden hands over Scania
+country_event = {
+	id = denmark.14
+	title = denmark.14.t
+	desc = denmark.14.d
+	picture = GFX_news_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # thanks
+		name = denmark.14.a
+		ai_chance = {
+			base = 100
+		}
+		transfer_state = 138
+		add_state_core = 138
+		transfer_state = 124
+		add_state_core = 124
+		if = {
+			limit = {
+				owns_state = 110
+			}
+			transfer_state = 915
+			add_state_core = 915
+		}
+		add_political_power = 25
+	}
+}
+# Sweden refuses to hand over territory
+country_event = {
+	id = denmark.15
+	title = denmark.15.t
+	desc = denmark.15.d
+	picture = GFX_news_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # war then
+		name = denmark.15.a
+		ai_chance = {
+			base = 50	
+		}
+
+		add_political_power = 50
+		add_war_support = 0.1
+
+		add_state_core = 124
+		add_state_core = 138
+		create_wargoal = {
+			type = take_state_focus
+			target = SWE
+			generator = {
+				124 138
+			}
+		}
+	}
+	option = { # nevermind
+		name = denmark.15.b
+		ai_chance = {
+			base = 50	
+		}
+
+		add_political_power = -50
+		add_war_support = -0.25
+	}
+}
+# The lost land
+country_event = {
+	id = denmark.16
+	title = denmark.16.t
+	desc = denmark.16.d
+	picture = GFX_news_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # ok
+		name = denmark.16.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = 80
+		add_war_support = 0.1
+		add_stability = 0.1
+	}
+}
+#Samarbejdspolitikken (player pick side)
+country_event = {
+	id = denmark.17
+	title = denmark.17.t
+	desc = denmark.17.d
+	picture = GFX_news_event_generic_read_write
+	
+	trigger = {
+		has_defensive_war_with = GER
+		surrender_progress > 0
+		has_country_leader = {
+			name = "Thorvald Stauning"
+    		ruling_only = yes
+    	}
+    	has_government = democratic
+	}
+
+	fire_only_once = yes
+	
+	option = { # Become puppet DEN
+		name = denmark.17.a
+		trigger = { is_ai = no }
+		hidden_effect = {
+			set_country_flag = become_german_puppet_denmark
+			save_global_event_target_as = puppet_denmark
+		}
+		custom_effect_tooltip = DEN_become_german_puppet_denmark_tt
+		GER = { country_event = denmark.44 }
+	}
+	option = { # Become free DEN
+		name = denmark.17.b
+		ai_chance = {
+			factor = 99
+			modifier = {
+				factor = 100
+				is_historical_focus_on = yes
+			}
+		}
+		hidden_effect = {
+			save_global_event_target_as = free_denmark
+		}
+		custom_effect_tooltip = DEN_become_free_denmark_tt
+		GER = { country_event = denmark.44 }
+	}
+	option = { # Continue fighting
+		name = denmark.17.c
+		ai_chance = {
+			factor = 1
+		}
+		trigger = {
+			has_war_support > 0.5
+		}
+		add_political_power = -100
+		add_stability = -0.4
+		add_war_support = 0.2
+	}
+}
+#1939 Election
+country_event = {
+	id = denmark.18
+	title = denmark.18.t
+	desc = denmark.18.d
+	picture = GFX_news_event_generic_read_write
+
+	trigger = {
+		has_country_leader = {
+			name = "Thorvald Stauning"
+    		ruling_only = yes
+    	}
+		tag = DEN
+		date > 1939.3.15
+		has_government = democratic
+		has_elections = yes
+	}
+
+	#is_triggered_only = yes
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { # Social Democrats
+		name = denmark.18.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 1000
+				is_historical_focus_on = yes
+			}
+		}
+		add_political_power = 25
+		hidden_effect = {
+			set_country_flag = Social_democratic_path
+			set_politics = {
+				ruling_party = democratic
+				last_election = "1939.4.3"
+				election_frequency = 48
+				elections_allowed = yes
+			}
+			if = {
+				limit = {
+					fascism < 0.05
+				}
+				add_popularity = {
+				    ideology = fascism
+				    popularity = 0.02
+				}
+			}
+		}
+	}
+	option = { # Conservatives
+		name = denmark.18.b
+		ai_chance = {
+			base = 50
+		}
+		retire_country_leader = yes
+		set_country_leader_ideology = conservatism
+		set_party_name = { ideology = democratic long_name = DEN_democratic_party_Conservative_long name = DEN_democratic_party_Conservative }
+		DEN_john_christmas_moeller = {
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					ideology = conservatism
+					expire = "1965.1.1.1"
+					traits = { little_churchill conservative_nationalist_lar technocrat }
+				}
+			}
+		}
+		912={
+			set_demilitarized_zone = no
+		}
+		hidden_effect = {
+			set_country_flag = conservative_path
+			set_politics = {
+				ruling_party = democratic
+				last_election = "1939.4.3"
+				election_frequency = 48
+				elections_allowed = yes
+			}
+			if = {
+				limit = {
+					fascism < 0.05
+				}
+				add_popularity = {
+				    ideology = fascism
+				    popularity = 0.02
+				}
+			}
+		}
+	}
+}
+#Thorvald Stauning dies
+country_event = {
+	id = denmark.19
+	title = denmark.19.t
+	desc = denmark.19.d
+	picture = GFX_news_event_generic_read_write
+	
+	fire_only_once = yes
+
+	trigger = {
+		has_country_leader = {
+			name = "Thorvald Stauning"
+    		ruling_only = yes
+    	}
+		original_tag = DEN
+		date > 1942.5.1
+		#has_government = democratic
+		#has_elections = yes
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { # sad
+		name = denmark.19.a
+		ai_chance = {
+			base = 100
+		}
+		kill_country_leader = yes
+		if = {
+			limit = {
+				has_government = democratic
+			}
+			DEN_vilhelm_buhl = {
+				add_country_leader_role = {
+					promote_leader = yes
+					country_leader = {
+						ideology = socialism
+						expire = "1965.1.1.1"
+						traits = {  }
+					}
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_government = fascism
+			}
+			DEN_vilhelm_buhl = {
+				add_country_leader_role = {
+					promote_leader = yes
+					country_leader = {
+						ideology = nazism
+						expire = "1965.1.1.1"
+						traits = {  }
+					}
+				}
+			}
+			hidden_effect = {
+				DEN_vilhelm_buhl = {
+					add_country_leader_role = {
+						#promote_leader = yes
+						country_leader = {
+							ideology = socialism
+							expire = "1965.1.1.1"
+							traits = {  }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+# British Support
+country_event = {
+	id = denmark.20
+	title = denmark.20.t
+	desc = denmark.20.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { # No
+		name = denmark.20.a
+		ai_chance = {
+			base = 20
+		}
+		DEN = {
+			country_event = { hours = 6 id = denmark.21}
+		}
+	}
+	option = { # Moral support
+		name = denmark.20.b
+		ai_chance = {
+			base = 60
+		}
+		DEN = {
+			country_event = { hours = 6 id = denmark.22}
+		}
+	}
+	option = { # Limited support
+		name = denmark.20.c
+		ai_chance = {
+			base = 13
+		}
+		DEN = {
+			country_event = { hours = 6 id = denmark.23}
+		}
+	}
+	option = { # Full support
+		name = denmark.20.d
+		ai_chance = {
+			base = 7
+			modifier = {
+				add = 500
+				is_in_faction_with = ENG
+			}
+		}
+		DEN = {
+			country_event = { hours = 6 id = denmark.24}
+		}
+	}		
+}
+# British no
+country_event = {
+	id = denmark.21
+	title = denmark.21.t
+	desc = denmark.21.d
+	picture = news_event_eng_churchill_sign_treaty
+	
+	is_triggered_only = yes
+	
+	option = { # ok
+		name = denmark.21.a
+		ai_chance = {
+			base = 1
+		}
+		add_opinion_modifier = { target = ENG modifier = small_decrease }
+		ENG = {
+			add_opinion_modifier = { target = DEN modifier = small_increase }
+		}
+	}		
+}
+# British moral
+country_event = {
+	id = denmark.22
+	title = denmark.22.t
+	desc = denmark.22.d
+	picture = news_event_eng_churchill_sign_treaty
+	
+	is_triggered_only = yes
+	
+	option = { # ok
+		name = denmark.22.a
+		ai_chance = {
+			base = 1
+		}
+		add_opinion_modifier = { target = ENG modifier = small_increase }
+		ENG = {
+			add_opinion_modifier = { target = DEN modifier = medium_increase }
+		}
+	}		
+}
+# British partial
+country_event = {
+	id = denmark.23
+	title = denmark.23.t
+	desc = denmark.23.d
+	picture = news_event_eng_churchill_sign_treaty
+	
+	is_triggered_only = yes
+	
+	option = { # ok
+		name = denmark.23.a
+		ai_chance = {
+			base = 1
+		}
+		add_opinion_modifier = { target = ENG modifier = medium_increase }
+		ENG = {
+			add_opinion_modifier = { target = DEN modifier = medium_increase }
+		}
+		DEN = {
+			if = {
+				limit = {
+					ENG = { has_tech = improved_infantry_weapons   }
+				}
+				add_equipment_to_stockpile = { type = infantry_equipment_2 amount = 1500 producer = ENG }
+			} else = {
+				add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 1500 producer = ENG }
+			}
+			if = {
+				limit = {
+					ENG = { has_tech = artillery1 }
+				}
+				add_equipment_to_stockpile = { type = artillery_equipment_2 amount = 100 producer = ENG }
+			} else = {
+				add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 100 producer = ENG }
+			}
+		}
+	}		
+}
+# British Full support
+country_event = {
+	id = denmark.24
+	title = denmark.24.t
+	desc = denmark.24.d
+	picture = news_event_eng_churchill_sign_treaty
+	
+	is_triggered_only = yes
+	
+	option = { # ok
+		name = denmark.24.a
+		ai_chance = {
+			base = 1
+		}
+		add_opinion_modifier = { target = ENG modifier = large_increase }
+		
+		ENG = {
+			add_to_faction = DEN
+		}
+		DEN = {
+			if = {
+				limit = {
+					ENG = { has_tech = improved_infantry_weapons   }
+				}
+				add_equipment_to_stockpile = { type = infantry_equipment_2 amount = 1500 producer = ENG }
+			} else = {
+				add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 1500 producer = ENG }
+			}
+			if = {
+				limit = {
+					ENG = { has_tech = artillery1 }
+				}
+				add_equipment_to_stockpile = { type = artillery_equipment_2 amount = 100 producer = ENG }
+			} else = {
+				add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 100 producer = ENG }
+			}
+		}
+
+	}	
+}
+# Danish military purge
+country_event = {
+	id = denmark.25
+	title = denmark.25.t
+	desc = denmark.25.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { # nonsense
+		name = denmark.25.a
+		ai_chance = {
+			base = 10
+		}
+		add_political_power = -50
+		add_stability = -0.1
+	}
+	option = { # Purge Johan Daniel Von Stemann
+		name = denmark.25.b
+		ai_chance = {
+			base = 10
+		}
+		remove_unit_leader = 2644
+		add_political_power = -25
+		add_stability = -0.05
+		hidden_effect = { set_country_flag = purged_johan }
+	}
+	option = { # Purge both
+		name = denmark.25.c
+		ai_chance = {
+			base = 80
+		}
+		remove_unit_leader = 2644
+		remove_unit_leader = 2645
+		add_political_power = 20
+		add_stability = 0.05
+		add_war_support = 0.1
+		hidden_effect = {
+			set_country_flag = purged_johan
+			set_country_flag = purged_paul
+		}
+	}	
+}
+# Royal Admirals
+country_event = {
+	id = denmark.26
+	title = denmark.26.t
+	desc = denmark.26.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	fires_only_once = yes
+	
+	option = { # Yes
+		name = denmark.26.a
+		ai_chance = {
+			base = 90
+		}
+		DEN_crown_prince_frederik_carl_valdemar = {
+			add_naval_commander_role = {
+				traits = { navy_media_personality ironside air_controller }
+				skill = 4
+				attack_skill = 3
+				defense_skill = 3
+				maneuvering_skill = 3
+				coordination_skill = 5
+			}
+		}
+		DEN_hereditary_prince_knud_christian_frederik_michael = {
+			add_naval_commander_role = {
+				traits = { navy_media_personality ironside ground_pounder arctic_water_expert }
+				skill = 3
+				attack_skill = 3
+				defense_skill = 3
+				maneuvering_skill = 4
+				coordination_skill = 3
+			}
+		}
+		add_war_support = 0.05
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.1
+		}
+	}	
+	option = { # No
+		name = denmark.26.b
+		ai_chance = {
+			base = 10
+		}
+		add_war_support = -0.15
+	}		
+}
+# King vs democracy
+country_event = {
+	id = denmark.27
+	title = denmark.27.t
+	desc = denmark.27.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # king
+		name = denmark.27.a
+		ai_chance = {
+			base = 0
+		}
+		swap_ideas = { 
+  			remove_idea =  DEN_old_days
+  			add_idea = DEN_old_days_neutrality
+		}
+
+		hidden_effect = {
+			DEN = {
+				country_event = { days = 50 id = denmark.5 }
+			}
+		}
+	}
+	option = { # democracy
+		name = denmark.27.b
+		ai_chance = {
+			base = 100
+		}
+		swap_ideas = { 
+  			remove_idea =  DEN_old_days
+  			add_idea = DEN_old_days_democratic
+		}
+	}
+}
+# Scania reintegration
+country_event = {	
+	id = denmark.28
+	title = denmark.28.t
+	desc = denmark.28.d
+	picture = GFX_news_event_generic_rally_3
+	
+	trigger = {
+		original_tag = DEN
+		owns_state = 138
+	}
+
+	#is_triggered_only = yes
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { # Yes
+		name = denmark.28.a
+		ai_chance = {
+			base = 100
+		}
+		138 = {
+			set_state_name = "Skåne"
+		}
+		set_province_name = {id = 9279 name = "Malmø"}
+	}
+}
+# Danish ideals
+country_event = {
+	id = denmark.29
+	title = denmark.29.t
+	desc = denmark.29.d
+	picture = GFX_news_event_generic_rally_3
+	
+	is_triggered_only = yes
+	
+	option = { # Yes
+		name = denmark.29.a
+		ai_chance = {
+			base = 100
+		}
+		#add_state_core = 110
+		#add_state_core = 142
+		#add_state_core = 143
+		#add_state_core = 144
+		add_timed_idea = { idea = DEN_norwegian_reintegration days = 100 }
+		custom_effect_tooltip = DEN_norwegian_reintegration_tt
+	}
+}
+# Royalists gather
+country_event = {
+	id = denmark.30
+	title = denmark.30.t
+	desc = denmark.30.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # long live the king
+		name = denmark.30.a
+		ai_chance = {
+			base = 100
+		}
+
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.1
+		}
+	}
+}
+# Fascists takeover
+country_event = {
+	id = denmark.32
+	title = denmark.32.t
+	desc = denmark.32.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # congrats
+		name = denmark.32.a
+
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.1
+		}
+		remove_ideas =  DEN_new_path
+		add_ideas = DEN_Fascism
+		remove_ideas = DEN_constitutional_monarch
+		hidden_effect = {
+			country_event = { days = 15 id = denmark.51 }
+		}
+	}
+}
+# Communist Civil War
+country_event = {
+	id = denmark.33
+	title = denmark.33.t
+	desc = denmark.33.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # fight
+		name = denmark.33.a
+
+		remove_ideas =  DEN_new_path
+
+		hidden_effect ={
+			set_capital = 99
+			release = ICE
+			ICE = { add_ideas = neutrality_idea }
+			news_event = { id = news.331 days = 1 }
+		}
+		
+		start_civil_war = {
+			ruling_party = communism
+			ideology = democratic
+			size = 0.5
+			capital = 37
+			states = { 37 912 337 100 101 }
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.3
+		}
+		remove_ideas = DEN_constitutional_monarch
+		add_stability = -0.3
+		add_war_support = 0.2
+		division_template = {
+			name = "Communist Militia"
+			#is_locked = yes
+			#template_counter = 6
+			division_names_group = DEN_INF_01
+			regiments = {
+				infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+			}
+		}
+		99 = {
+			create_unit = {
+				division = "name = \"1. Parti Milits\" division_template = \"Communist Militia\" start_experience_factor = 0.1"
+				owner = DEN
+				allow_spawning_on_enemy_provs = yes
+			}
+			create_unit = {
+				division = "name = \"2. Parti Milits\" division_template = \"Communist Militia\" start_experience_factor = 0.1"
+				owner = DEN
+				allow_spawning_on_enemy_provs = yes
+			}
+		}
+		911 = {
+			create_unit = {
+				division = "name = \"3. Parti Milits\" division_template = \"Communist Militia\" start_experience_factor = 0.1"
+				owner = DEN
+				allow_spawning_on_enemy_provs = yes
+			}
+		}
+		910 = {
+			create_unit = {
+				division = "name = \"4. Parti Milits\" division_template = \"Communist Militia\" start_experience_factor = 0.1"
+				owner = DEN
+				allow_spawning_on_enemy_provs = yes
+			}
+		}
+
+		hidden_effect = {
+			random_other_country = {
+				limit = {
+					original_tag = DEN
+					has_government = democratic
+				}
+				save_event_target_as = communist_denmark_civil_war
+				every_unit_leader = {
+					set_nationality = DEN
+				}
+			}
+			DEN = {
+				every_unit_leader = {
+					limit = {
+						OR = {
+							has_id = 2640
+							has_id = 2641
+							has_id = 2643
+							has_id = 2646
+							has_id = 2651
+
+							has_id = 2647
+							has_id = 2649
+						}
+					}
+					set_nationality = event_target:communist_denmark_civil_war
+				}
+			}
+		}
+	}
+}
+# GER asked for cooperation and support
+country_event = {
+	id = denmark.34
+	title = denmark.34.t
+	desc = denmark.34.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # yes
+		name = denmark.34.a
+		ai_chance = {
+			base = 100
+		}
+		DEN = {
+			country_event = { days = 1 id = denmark.35 }
+		}
+		add_doctrine_cost_reduction = {
+			name = naval_doc_bonus
+			cost_reduction = 0.5
+			uses = 2
+			category = naval_doctrine
+		}
+		set_country_flag = GER_DEN_interests_alligned
+	}
+	option = { # no way
+		name = denmark.34.b
+		ai_chance = {
+			base = 0
+		}
+		add_political_power = -10
+		DEN = {
+			country_event = { days = 1 id = denmark.36 }
+		}
+	}
+}
+# GER millitary support, german YES
+country_event = {
+	id = denmark.35
+	title = denmark.35.t
+	desc = denmark.35.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # yes
+		name = denmark.35.a
+		ai_chance = {
+			base = 100
+		}
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.5
+			uses = 2
+			category = land_doctrine
+		}
+		add_tech_bonus = {
+			name = armor_bonus
+			bonus = 1.0
+			uses = 2
+			category = armor
+		}
+	}
+}
+# GER millitary support, german NO
+country_event = {
+	id = denmark.36
+	title = denmark.36.t
+	desc = denmark.36.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # sad
+		name = denmark.36.a
+		ai_chance = {
+			base = 100
+		}
+		#
+	}
+}
+#1938 assasenation Failed
+country_event = {
+	id = denmark.37
+	title = denmark.37.t
+	desc = denmark.37.d
+	picture = GFX_news_event_generic_read_write
+
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { # How Foolish
+		name = denmark.37.a
+		ai_chance = {
+			base = 90
+		}
+		add_political_power = 25
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.03
+		}
+	}
+	option = { # The Movement Grows
+		name = denmark.37.b
+		ai_chance = {
+			base = 10
+		}
+		add_political_power = -25
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.03
+		}
+	}
+}
+# GER Kiel Conference
+country_event = {
+	id = denmark.38
+	title = denmark.38.t
+	desc = denmark.38.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # yes
+		name = denmark.38.a
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = 500
+				DEN = { is_ai = no }
+			}
+			modifier = {
+				add = 1000
+				GER = { is_puppet_of = DEN }
+			}
+		}
+		DEN = {
+			country_event = { days = 7 id = denmark.39 }
+		}
+	}
+	option = { # yes, for puppet
+		name = denmark.38.b
+		ai_chance = {
+			base = 65
+
+		}
+		DEN = {
+			country_event = { days = 7 id = denmark.40 }
+		}
+	}
+	option = { # Nope, not possible
+		name = denmark.38.c
+		ai_chance = {
+			base = 25
+			modifier = {
+				add = 240
+				DEN = {
+					NOT = {
+						is_in_faction_with = GER
+					}
+				}
+			}
+		}
+		DEN = {
+			country_event = { days = 7 id = denmark.41 }
+		}
+	}
+}
+# DEN Kiel Conference, german yes
+country_event = {
+	id = denmark.39
+	title = denmark.39.t
+	desc = denmark.39.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # ok
+		name = denmark.39.a
+		ai_chance = {
+			base = 100
+		}
+		transfer_state = 909
+		add_state_core = 909
+	}
+}
+# DEN Kiel Conference, german wants puppet
+country_event = {
+	id = denmark.40
+	title = denmark.40.t
+	desc = denmark.40.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # sure
+		name = denmark.40.a
+		ai_chance = {
+			base = 90
+		}
+		transfer_state = 909
+		add_state_core = 909
+		GER = {
+			set_autonomy = {
+    			target = DEN
+    			autonomy_state = autonomy_reichsprotectorate
+			}
+		}
+	}
+	option = { # Independence
+		name = denmark.40.b
+		ai_chance = {
+			base = 10
+		}
+		add_political_power = -50
+	}
+}
+# DEN Kiel Conference, german refusal
+country_event = {
+	id = denmark.41
+	title = denmark.41.t
+	desc = denmark.41.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # sad moment
+		name = denmark.41.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = -20
+	}
+}
+# Johan Daniel Von Stemann Defects
+country_event = {
+	id = denmark.42
+	title = denmark.42.t
+	desc = denmark.42.d
+	#picture = GFX_news_event_journalists_speech
+	
+	fire_only_once = yes
+
+	trigger = {
+		has_government = communism
+		has_war_with = GER
+		NOT = { has_country_flag = purged_johan }
+		tag = DEN
+	}
+
+	mean_time_to_happen = {
+		days = 15
+	}
+	
+	option = { # traitor
+		name = denmark.42.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = -20
+		remove_unit_leader = 2644
+		add_timed_idea = { idea = DEN_leaked_documents days = 90 }
+		hidden_effect = {
+			set_country_flag = purged_johan
+			if = {
+				limit = {
+					NOT = { has_country_flag = purged_paul }
+				}
+				country_event = { days = 20 id = denmark.43 }
+			}
+		}
+	}
+}
+#Paul Louis Ramm is shot
+country_event = {
+	id = denmark.43
+	title = denmark.43.t
+	desc = denmark.43.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # pew pew
+		name = denmark.43.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = 20
+		remove_unit_leader = 2645
+		hidden_effect = { set_country_flag = purged_paul }
+	}
+}
+#Samarbejdspolitikken (GER)
+country_event = {
+	id = denmark.44
+	title = denmark.44.t
+	desc = denmark.44.d
+	picture = GFX_news_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # Cooperation
+		name = denmark.44.a
+		ai_chance = {
+			base = 99
+		}
+		#Initiate civil war and release ICE
+		DEN = {
+			white_peace = GER
+			remove_ideas = DEN_Disarmed_neutrality
+			hidden_effect ={
+				set_capital = 337
+				#release = ICE
+				#ICE = { add_ideas = neutrality_idea }
+				#news_event = { id = news.331 days = 1 }
+				start_civil_war = {
+					ruling_party = democratic
+					ideology = fascism
+					size = 1
+					capital = 37
+					states = { 37 99 912 911 910 }
+				}
+			}
+			add_stability = -0.5
+			add_war_support = 0.2
+		}
+		#Behind the scenes
+		hidden_effect = {
+			#create var for target
+			random_other_country = {
+				limit = {
+					original_tag = DEN
+					has_government = fascism
+				}
+				save_event_target_as = coop_denmark_civil_war
+				every_unit_leader = {
+					set_nationality = DEN
+				}
+			}
+			#Sort commanders loyalty
+			DEN = {
+				every_unit_leader = {
+					limit = {
+						OR = {
+							#army
+							has_id = 2640
+							has_id = 2643
+							has_id = 2644
+							has_id = 2645
+							has_id = 2650
+							has_id = 2652
+							has_id = 2654
+
+							#navy
+							has_id = 2648
+							has_id = 2655
+							has_id = 2658
+						}
+					}
+					set_nationality = event_target:coop_denmark_civil_war
+				}
+			}
+			#set free denmark government
+			DEN = {
+				set_cosmetic_tag = DEN_FREE
+				set_country_leader_ideology = conservatism
+				set_party_name = { ideology = democratic long_name = DEN_democratic_party_Conservative_long name = DEN_democratic_party_Conservative }
+				create_country_leader = {
+					name = "John Christmas Møller"
+					desc = POLITICS_FRITS_CLAUSEN_DESC
+					picture = Portrait_DEN_John_Christmas_Møller.jpg
+					expire = "1965.1.1"
+					ideology = conservatism
+					traits = {
+						little_churchill
+						conservative_nationalist_lar
+					}
+				}
+				load_focus_tree = free_denmark_focus
+			}
+			#set coop denmark government
+			event_target:coop_denmark_civil_war = {
+				set_cosmetic_tag = DEN_COOP
+				create_country_leader = {
+					name = "Thorvald Stauning"
+					desc = "POLITICS_THORVALD_STAUNING_DESC"
+					picture = "Portrait_Denmark_Thorvald_Stauning.dds"
+					expire = "1965.1.1"
+					ideology = nazism
+					traits = {
+
+					}
+				}
+				remove_ideas = DEN_Patriotism
+				remove_ideas = DEN_old_days_democratic
+				add_ideas = DEN_samarbejdspolitikken
+				set_party_name = { ideology = fascism long_name = DEN_fascism_party_samarbejdspolitikken_long name = DEN_fascism_party_samarbejdspolitikken }
+				remove_idea = DEN_old_days_democratic
+				hidden_effect = {
+					country_event = { hours = 1 id = wtt_denmark.1}
+					add_popularity = {
+						ideology = fascism
+						popularity = 1.0
+					}
+				}
+				GER = {
+					set_autonomy = {
+		    			target = event_target:coop_denmark_civil_war
+		    			autonomy_state = autonomy_reichsprotectorate
+					}
+				}
+				load_focus_tree = coop_denmark_focus
+			}
+			# DEN Player Switches to puppet denmark
+			event_target:coop_denmark_civil_war = {
+				if = {
+					limit = { DEN = { has_country_flag = become_german_puppet_denmark } }
+					change_tag_from = DEN
+				}
+			}
+		}
+	}
+	option = { # Occupation
+		name = denmark.44.b
+		ai_chance = {
+			base = 1
+		}
+		GER = {
+			if = {
+				limit = { 37 = { owner = { original_tag = DEN } } }
+				set_state_controller = 37
+			}
+			if = {
+				limit = { 99 = { owner = { original_tag = DEN } } }
+				set_state_controller = 99
+			}
+			if = {
+				limit = { 912 = { owner = { original_tag = DEN } } }
+				set_state_controller = 912
+			}
+			if = {
+				limit = { 911 = { owner = { original_tag = DEN } } }
+				set_state_controller = 911
+			}
+			if = {
+				limit = { 910 = { owner = { original_tag = DEN } } }
+				set_state_controller = 910
+			}
+		}
+		DEN = {
+			add_stability = -0.3
+			add_war_support = 0.5
+		}
+	}
+}
+# Germany asked about Goulash
+country_event = {
+	id = denmark.45
+	title = denmark.45.t
+	desc = denmark.45.d
+	#picture = GFX_news_event_generic_rally_3
+	
+	is_triggered_only = yes
+	
+	option = { # Accept
+		name = denmark.45.a
+		ai_chance = {
+			base = 95
+		}
+		DEN = {
+			country_event = { hours = 12 id = denmark.46 }
+		}
+		add_ideas = DEN_goulash_barons_idea_GER
+	}
+	option = { # Refuse
+		name = denmark.45.b
+		ai_chance = {
+			base = 5
+		}
+		DEN = {
+			country_event = { hours = 4 id = denmark.47 }
+		}
+	}
+}
+# Germany says yes to Goulash
+country_event = {
+	id = denmark.46
+	title = denmark.46.t
+	desc = denmark.46.d
+	#picture = GFX_news_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # yes to annex
+		name = denmark.46.a
+		ai_chance = {
+			base = 100
+		}
+		add_ideas = DEN_goulash_barons_idea
+	}
+}
+# Germany says no to Goulash
+country_event = {
+	id = denmark.47
+	title = denmark.47.t
+	desc = denmark.47.d
+	#picture = GFX_news_event_gathering_protest
+	
+	is_triggered_only = yes
+	
+	option = { # war then
+		name = denmark.47.a
+		ai_chance = {
+			base = 100
+		}
+		#
+	}
+}
+# Communist Capital
+country_event = {
+	id = denmark.48
+	title = denmark.48.t
+	desc = denmark.48.d
+	#picture = GFX_news_event_gathering_protest
+	
+	is_triggered_only = yes
+	
+	option = { # Fredericia
+		name = denmark.48.a
+		ai_chance = {
+			base = 80
+		}
+		set_victory_points = {
+			province = 3277
+			value = 15
+		}
+		set_capital = { state = 99 }
+		add_political_power = 20
+	}
+	option = { # Copenhagen
+		name = denmark.48.b
+		ai_chance = {
+			base = 20
+		}
+		add_political_power = -20
+	}
+}
+# 1938 Assasination succeded
+country_event = {
+	id = denmark.49
+	title = denmark.49.t
+	desc = denmark.49.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Way of Politics
+		name = denmark.49.a
+		add_stability = -0.15
+		add_political_power = -25
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.05
+		}
+		hidden_effect = { set_country_flag = karl_kristian_steincke_dead set_country_flag = erik_westergaard_dead }
+	}
+}
+# 1938 Assasination Trigger (HIDDEN)
+country_event = {
+	id = denmark.50
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		has_country_leader = {
+			name = "Thorvald Stauning"
+    		ruling_only = yes
+    	}
+		tag = DEN
+		date > 1938.4.1 #1938.4.13
+		has_government = democratic
+		has_elections = yes
+		NOT = { has_country_flag = karl_kristian_steincke_dead }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		random_list = {
+			50 = {
+				modifier = {
+					factor = 100
+					is_historical_focus_on = yes
+				}
+				DEN = { country_event = { id = denmark.37 } }
+			}
+			50 = { DEN = { country_event = { id = denmark.49 } } }
+		}
+	}
+
+	option = { # A
+		name = denmark.50.a
+	}
+}
+# (Fascist) fate of the politicians
+country_event = {
+	id = denmark.51
+	title = denmark.51.t
+	desc = denmark.51.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Death
+		name = denmark.51.a
+		kill_ideology_leader = democratic
+		DEN_vilhelm_buhl = {
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					ideology = socialism
+					expire = "1965.1.1.1"
+					traits = {  }
+				}
+			}
+		}
+		country_event = { days = 10 id = denmark.52 } #Riots
+		hidden_effect = {
+			country_event = { days = 30 id = denmark.58 } #Royals
+			country_event = { days = 40 id = denmark.65 } #democrat support trigger
+			country_event = { days = 50 id = denmark.56 } #Generals
+		}
+	}
+
+	option = { # Prison
+		name = denmark.51.b
+		custom_effect_tooltip = "Thorvald Stauning will remain in prison"
+		hidden_effect = {
+			retire_ideology_leader = democratic
+			DEN_vilhelm_buhl = {
+				add_country_leader_role = {
+					promote_leader = yes
+					country_leader = {
+						ideology = socialism
+						expire = "1965.1.1.1"
+						traits = {  }
+					}
+				}
+			}
+			set_country_flag = stauning_kept_in_prison
+			country_event = { days = 30 id = denmark.58 } #Royals
+			country_event = { days = 40 id = denmark.53 } #Democrat Strike
+			country_event = { days = 50 id = denmark.56 } #Generals
+			
+		}
+	}
+}
+# (Fascist) Riots
+country_event = {
+	id = denmark.52
+	title = denmark.52.t
+	desc = denmark.52.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Damit
+		name = denmark.52.a
+		random_owned_controlled_state = {
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.5
+			}
+			damage_building = {
+			    type = industrial_complex
+			    damage = 0.25
+			}
+		}
+	}
+}
+# (Fascist) Democrats Strike
+country_event = {
+	id = denmark.53
+	title = denmark.53.t
+	desc = denmark.53.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Police
+		name = denmark.53.a
+		hidden_effect = {
+			country_event = { days = 140 id = denmark.54 }
+		}
+		random_owned_controlled_state = {
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.5
+			}
+		}
+		add_stability = -0.05
+	}
+	option = { # Peace
+		name = denmark.53.b
+		hidden_effect = {
+			country_event = { days = 210 id = denmark.54 }
+		}
+		add_political_power = -25
+	}
+}
+# (Fascist) Christiansborg Burns
+country_event = {
+	id = denmark.54
+	title = denmark.54.t
+	desc = denmark.54.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Blame
+		name = denmark.54.a
+		hidden_effect = {
+			country_event = { days = 70 id = denmark.55 }
+		}
+		random_owned_controlled_state = {
+			limit = {
+				is_capital = yes
+			}
+			damage_building = {
+			    type = industrial_complex
+			    damage = 1
+			}
+			add_stability = -0.1
+		}
+	}
+	option = { # Electrical Fault
+		name = denmark.54.b
+		add_political_power = -35
+		hidden_effect = {
+			country_event = { days = 140 id = denmark.55 }
+		}
+	}
+}
+# (Fascist) Democrats start Civil War
+country_event = {
+	id = denmark.55
+	title = denmark.55.t
+	desc = denmark.55.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Civil War
+		name = denmark.55.a
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_flag = erik_with_secured_loyalty
+				}
+				country_event = { days = 10 id = denmark.57 }
+			}
+			if = {
+				limit = {
+					has_country_flag = royals_hung
+				}
+				country_event = { days = 20 id = denmark.59 }
+			}
+			if = {
+				limit = {
+					has_country_flag = royals_in_house_arrest
+				}
+				country_event = { days = 50 id = denmark.60 }
+			}
+		}
+		start_civil_war = {
+			ruling_party = fascism
+			ideology = democratic
+			size = 0.3
+			capital = 99
+			states = { 99 910 912}
+		}
+		random_other_country = {
+			limit = {
+				original_tag = DEN
+				has_government = democratic
+			}
+			every_unit_leader = {
+				set_nationality = DEN
+			}
+		}
+	}
+}
+# (Fascist) Fate Of The General
+country_event = {
+	id = denmark.56
+	title = denmark.56.t
+	desc = denmark.56.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Execution
+		name = denmark.56.a
+		every_unit_leader = {
+			limit = {
+				has_id = 2641
+			}
+			remove_unit_leader = yes
+		}
+	}
+	option = { # Secure Loyalty
+		name = denmark.56.b
+		set_country_flag = erik_with_secured_loyalty
+		every_unit_leader = {
+			limit = {
+				has_id = 2641
+			}
+			add_timed_unit_leader_trait = {
+			    trait = wounded
+			    days = 140
+			}
+			add_unit_leader_trait = trait_cautious
+			remove_unit_leader_trait = politically_connected
+		}
+	}
+}
+# (Fascist) Erik With defects
+country_event = {
+	id = denmark.57
+	title = denmark.57.t
+	desc = denmark.57.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # That Traitor
+		name = denmark.57.a
+		random_other_country = {
+			limit = {
+				original_tag = DEN
+				has_government = democratic
+			}
+			save_event_target_as = democratic_rebels
+		}
+		every_unit_leader = {
+			limit = {
+				has_id = 2641
+			}
+			remove_unit_leader_trait = trait_cautious
+			set_nationality = event_target:democratic_rebels
+		}
+	}
+}
+# (Fascist) Fate Of The Royal Family
+country_event = {
+	id = denmark.58
+	title = denmark.58.t
+	desc = denmark.58.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Hang Them
+		name = denmark.58.a
+		country_event = { days = 10 id = denmark.52 } #Riots
+		add_war_support = 0.15
+		add_stability = -0.08
+		set_country_flag = royals_hung
+	}
+	option = { # House Arrest
+		name = denmark.58.b
+		add_political_power = 75
+		hidden_effect = {
+			set_country_flag = royals_in_house_arrest
+		}
+	}
+}
+# (Fascist) Members Of The Royal Guard Desert
+country_event = {
+	id = denmark.59
+	title = denmark.59.t
+	desc = denmark.59.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Traitors!
+		name = denmark.59.a
+		random_other_country = {
+			limit = {
+				original_tag = DEN
+				has_government = democratic
+			}
+			division_template = {
+				name = "Livgarden"
+				is_locked = yes
+				division_names_group = DEN_INF_01
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+			}
+			99 = {
+				create_unit = {
+					division = "name = \"Livgarden\" division_template = \"Livgarden\" start_experience_factor = 1.0"
+					owner = PREV
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+}
+# (Fascist) Royals Calls Call For Peace
+country_event = {
+	id = denmark.60
+	title = denmark.60.t
+	desc = denmark.60.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # A
+		name = denmark.60.a
+		random_other_country = {
+			limit = {
+				original_tag = DEN
+				has_government = democratic
+			}
+			add_war_support = -0.2
+			add_stability = -0.3
+		}
+	}
+}
+# JAP/ITA ADVISORS asked
+country_event = {
+	id = denmark.61
+	title = denmark.61.t
+	desc = denmark.61.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # yes
+		name = denmark.61.a
+		ai_chance = {
+			base = 90
+			modifier = {
+				factor = 100
+				is_in_faction_with = DEN
+			}
+		}
+		army_experience = 20
+		navy_experience = 20
+
+		DEN = {
+			country_event = { days = 1 id = denmark.62 }
+		}
+	}
+	option = { # no way
+		name = denmark.61.b
+		ai_chance = {
+			base = 10
+		}
+		add_political_power = -10
+		DEN = {
+			country_event = { days = 1 id = denmark.63 }
+		}
+	}
+}
+# JAP/ITA ADVISORS YES
+country_event = {
+	id = denmark.62
+	title = denmark.62.t
+	desc = denmark.62.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # yes
+		name = denmark.62.a
+		ai_chance = {
+			base = 100
+		}
+		if = {
+			limit = {
+				FROM = {
+					tag = ITA
+				}
+			}
+			add_ideas = DEN_ITA_Advisors
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 0.75
+				uses = 2
+				category = mountaineers_tech
+			}
+			army_experience = 30
+		}
+		if = {
+			limit = {
+				FROM = {
+					tag = JAP
+				}
+			}
+			add_ideas = DEN_JAP_Advisors
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 0.75
+				uses = 2
+				category = cat_torpedoes
+				category = dd_tech
+			}
+			navy_experience = 30
+		}
+	}
+}
+# JAP/ITA ADVISORS NO
+country_event = {
+	id = denmark.63
+	title = denmark.63.t
+	desc = denmark.63.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # sad
+		name = denmark.63.a
+		ai_chance = {
+			base = 100
+		}
+		#
+	}
+}
+# GER northern Schleswig
+country_event = {
+	id = denmark.64
+	title = denmark.64.t
+	desc = denmark.64.d
+	#picture = GFX_news_event_journalists_speech
+	
+	trigger = {
+		original_tag  = GER
+		912 = {
+			controller = {
+				OR = {
+					is_subject_of = GER
+					tag = GER
+				}
+			}
+		}
+	}
+
+	fire_only_once = yes
+	
+	option = { # yes
+		name = denmark.64.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 1000
+				has_government = non_aligned
+			}
+		}
+		any_country = {
+			if = {
+				limit = {
+					has_core_state = 912
+					original_tag = DEN
+				}
+				add_opinion_modifier = { target = GER modifier = medium_decrease }
+			}
+		}
+		912 = {
+			add_core_of = GER
+			set_state_name = "Nordschleswig"
+		}
+		transfer_state = 912
+		set_province_name = {id = 11251 name = "Hadersleben"}
+		set_province_name = {id = 13258 name = "Sonderburg"}
+		add_political_power = 10
+		add_war_support = 0.03
+		add_stability = -0.02
+	}
+	option = { # no way
+		name = denmark.64.b
+		ai_chance = {
+			base = 99
+		}
+		add_political_power = -20
+		add_war_support = -0.03
+		add_stability = -0.02
+	}
+}
+
+# Democrat Support trigger (Hidden)
+country_event = {
+	id = denmark.65
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				democratic > 0.4
+			}
+			country_event = { days = 1 id = denmark.53 } #Democrat Strike
+		}
+	}
+
+	option = { # A
+		name = denmark.65.a
+	}
+}
+
+# Global Fighter Trials (initial Trial)
+country_event = {
+	id = denmark.66
+	title = denmark.66.t
+	desc = denmark.66.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Fighters
+		name = denmark.66.a
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 1000
+				original_Tag = HOL
+				is_historical_focus_on = yes
+			}
+		}
+		trigger = {
+			has_equipment = { small_plane_airframe > 10 }
+		}
+		effect_tooltip = {
+			send_equipment = {
+				target = DEN
+				type = small_plane_airframe
+				amount = 10
+			}
+		}
+		FROM = { country_event = denmark.67 }
+		add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }		
+	}
+	#option = { # Heavy Fighters
+	#	name = denmark.66.b
+	#	ai_chance = {
+	#		base = 40
+	#	}
+	#	trigger = {
+	#		OR = {
+	#			has_tech = heavy_fighter_equipment_1
+	#			has_tech = heavy_fighter_equipment_2
+	#			has_tech = heavy_fighter_equipment_3
+	#		}
+	#	}
+	#	FROM = { country_event = denmark.68 }
+	#	add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }
+	#}
+	option = { # Nothing
+		name = denmark.66.c
+		ai_chance = {
+			base = 60
+		}
+		FROM = { country_event = denmark.69 }
+	}
+}
+# Global Fighter Trials (Fighters)
+country_event = {
+	id = denmark.67
+	title = denmark.67.t
+	desc = denmark.67.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # thanks
+		name = denmark.67.a
+		ai_chance = {
+			base = 1
+		}
+		FROM = {
+			send_equipment = {
+				target = DEN
+				type = small_plane_airframe
+				amount = 10
+			}
+		}
+
+		
+		add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }
+	}
+}
+# Global Fighter Trials (Heavy Fighters)
+country_event = {
+	id = denmark.68
+	title = denmark.68.t
+	desc = denmark.68.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # thanks
+		name = denmark.68.a
+		ai_chance = {
+			base = 1
+		}
+		if = {
+			limit = { 
+				FROM = { 
+					has_tech = heavy_fighter_equipment_1
+					NOT = { has_tech = heavy_fighter_equipment_2 }
+				} 
+			}
+			add_equipment_to_stockpile = { type = fighter_equipment_0 amount = 10 producer = FROM } 
+		}
+		else_if = {
+			limit = { 
+				FROM = { 
+					has_tech = heavy_fighter_equipment_2 
+					NOT = { has_tech = heavy_fighter_equipment_3 }
+				} 
+			}
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 10 producer = FROM } 
+		}
+		else_if = {
+			limit = { 
+				FROM = { 
+					has_tech = heavy_fighter_equipment_3 
+				} 
+			}
+			add_equipment_to_stockpile = { type = fighter_equipment_3 amount = 10 producer = FROM } 
+		}
+		add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }
+	}
+}
+# Global Fighter Trials (Nothing)
+country_event = {
+	id = denmark.69
+	title = denmark.69.t
+	desc = denmark.69.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # sad
+		name = denmark.69.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+# International Bomber Competition (initial Trial)
+country_event = {
+	id = denmark.70
+	title = denmark.70.t
+	desc = denmark.70.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # CAS
+		name = denmark.70.a
+		ai_chance = {
+			base = 20
+		}
+		trigger = {
+			has_equipment = { small_plane_cas_airframe > 10 }
+		}
+		effect_tooltip = {
+			send_equipment = {
+				target = DEN
+				type = small_plane_cas_airframe
+				amount = 10
+			}
+		}
+		FROM = { country_event = denmark.71 }
+		add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }		
+	}
+	option = { # NAV
+		name = denmark.70.b
+		ai_chance = {
+			base = 20
+		}
+		trigger = {
+			has_equipment = { small_plane_naval_bomber_airframe > 10 }
+		}
+		effect_tooltip = {
+			send_equipment = {
+				target = DEN
+				type = small_plane_naval_bomber_airframe
+				amount = 10
+			}
+		}
+		FROM = { country_event = denmark.72 }
+		add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }
+	}
+	option = { # TAC
+		name = denmark.70.c
+		ai_chance = {
+			base = 20
+		}
+		trigger = {
+			has_equipment = { medium_plane_airframe > 10 }
+		}
+		effect_tooltip = {
+			send_equipment = {
+				target = DEN
+				type = medium_plane_airframe
+				amount = 10
+			}
+		}
+		FROM = { country_event = denmark.73 }
+		add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }		
+	}
+	option = { # STRAT
+		name = denmark.70.d
+		ai_chance = {
+			base = 20
+		}
+		trigger = {
+			has_equipment = { large_plane_airframe > 10 }
+		}
+		effect_tooltip = {
+			send_equipment = {
+				target = DEN
+				type = large_plane_airframe
+				amount = 10
+			}
+		}
+		FROM = { country_event = denmark.74 }
+		add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }
+	}
+	option = { # Nothing
+		name = denmark.70.e
+		ai_chance = {
+			base = 20
+		}
+		FROM = { country_event = denmark.75 }
+	}
+}
+# International Bomber Competition (CAS)
+country_event = {
+	id = denmark.71
+	title = denmark.71.t
+	desc = denmark.71.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # thanks
+		name = denmark.71.a
+		ai_chance = {
+			base = 1
+		}
+		FROM = {
+			send_equipment = {
+				target = DEN
+				type = small_plane_cas_airframe
+				amount = 10
+			}
+		}
+		add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }
+	}
+}
+# International Bomber Competition (NAV)
+country_event = {
+	id = denmark.72
+	title = denmark.72.t
+	desc = denmark.72.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # thanks
+		name = denmark.72.a
+		ai_chance = {
+			base = 1
+		}
+		FROM = {
+			send_equipment = {
+				target = DEN
+				type = small_plane_naval_bomber_airframe
+				amount = 10
+			}
+		}
+		add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }
+	}
+}
+# International Bomber Competition (TAC)
+country_event = {
+	id = denmark.73
+	title = denmark.73.t
+	desc = denmark.73.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # thanks
+		name = denmark.73.a
+		ai_chance = {
+			base = 1
+		}
+		FROM = {
+			send_equipment = {
+				target = DEN
+				type = medium_plane_airframe
+				amount = 10
+			}
+		}
+		add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }
+	}
+}
+# International Bomber Competition (STRAT)
+country_event = {
+	id = denmark.74
+	title = denmark.74.t
+	desc = denmark.74.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # thanks
+		name = denmark.74.a
+		ai_chance = {
+			base = 1
+		}
+		FROM = {
+			send_equipment = {
+				target = DEN
+				type = large_plane_airframe
+				amount = 10
+			}
+		}
+		add_opinion_modifier = { target = FROM modifier = YUG_sold_planes }
+	}
+}
+# International Bomber Competition (Nothing)
+country_event = {
+	id = denmark.75
+	title = denmark.75.t
+	desc = denmark.75.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # sad
+		name = denmark.75.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+# Talks Of Peace
+country_event = {
+	id = denmark.76
+	title = denmark.76.t
+	desc = denmark.76.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # yes
+		name = denmark.76.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				add = 1000
+				FROM = { is_ai = no }
+			}
+		}
+		give_guarantee = FROM
+		add_ai_strategy = {
+			type = befriend
+			id = FROM
+			value = 100
+		}
+		add_ai_strategy = {
+			type = protect
+			id = FROM
+			value = 100
+		}
+		FROM = {
+			country_event = { days = 1 id = denmark.77 }
+		}
+	}
+	option = { # no way
+		name = denmark.76.b
+		ai_chance = {
+			base = 9
+		}
+		FROM = {
+			country_event = { days = 1 id = denmark.78 }
+		}
+	}
+}
+#Talks Of Peace GER wants Access
+country_event = {
+	id = denmark.77
+	title = denmark.77.t
+	desc = denmark.77.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Such is the price of freedom
+		name = denmark.77.a
+		ai_chance = {
+			base = 10
+		}
+		add_stability = -0.20
+		diplomatic_relation = {
+		    country = FROM
+		    relation = non_aggression_pact
+		    active = yes
+		}
+		FROM = {
+			#diplomatic_relation = {
+			#    country = PREV
+			#    relation = docking_rights
+			#    active = yes
+			#}
+		}
+		give_military_access = FROM
+	}
+	option = { # prepare
+		name = denmark.77.b
+		ai_chance = {
+			base = 90
+		}
+		add_political_power = 20
+		add_war_support = 0.1
+		add_stability = 0.1
+		FROM = {
+			diplomatic_relation = {
+			    country = PREV
+			    relation = guarantee
+			    active = no
+			}
+		}
+	}
+}
+#Talks Of Peace GER keeeps quiet
+country_event = {
+	id = denmark.78
+	title = denmark.78.t
+	desc = denmark.78.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # sad
+		name = denmark.78.a
+		ai_chance = {
+			base = 100
+		}
+		#
+	}
+}
+# Vilhelm Gørtz returns
+country_event = {
+	id = denmark.79
+	title = denmark.79.t
+	desc = denmark.79.d
+	picture = report_event_generic_sign_treaty1
+
+	trigger = {
+		original_tag = DEN
+		date < 1939.6.6 #Death
+		NOT = { DEN_vilhelm_goertz = { is_army_leader = yes } }
+		OR = {
+			AND = {
+				has_civil_war = no
+				has_defensive_war = yes
+			}
+			AND = {
+				has_civil_war = yes
+				has_government = democratic
+			}
+		}
+	}
+
+	fires_only_once = yes
+	
+	option = { # Yes
+		name = denmark.79.a
+		ai_chance = {
+			base = 1
+		}
+		DEN_vilhelm_goertz = {
+			add_field_marshal_role = {
+				traits = { old_guard infantry_leader inflexible_strategist unyielding_defender skilled_staffer expert_delegator }
+				skill = 5
+				attack_skill = 2
+				defense_skill = 5
+				planning_skill = 4
+				logistics_skill = 4 
+			}
+		}
+		add_war_support = 0.1
+	}	
+	option = { # No
+		name = denmark.79.b
+		ai_chance = {
+			base = 99
+		}
+		#add_war_support = -0.05
+	}		
+}
+# Vilhelm Gørtz dies
+country_event = {
+	id = denmark.80
+	title = denmark.80.t
+	desc = denmark.80.d
+	picture = report_event_generic_sign_treaty1
+	
+	trigger = {
+		original_tag = DEN
+		date > 1939.6.6 #Death
+		DEN_vilhelm_goertz = { is_army_leader = yes }
+	}
+
+	fires_only_once = yes
+	
+	option = { # RIP
+		name = denmark.80.a
+		ai_chance = {
+			base = 100
+		}
+		DEN_vilhelm_goertz = {
+			remove_unit_leader = yes
+		}
+	}			
+}
+# War Of Movement (initial Ask)
+country_event = {
+	id = denmark.81
+	title = denmark.81.t
+	desc = denmark.81.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { #Mech
+		name = denmark.81.a
+		ai_chance = {
+			base = 15
+		}
+		trigger = {
+			has_equipment = { mechanized_equipment > 10 }
+		}
+		effect_tooltip = {
+			send_equipment = {
+				target = DEN
+				type = mechanized_equipment
+				amount = 10
+			}
+		}
+		army_experience = 15
+		FROM = { country_event = denmark.82 }
+	}
+	option = { #Tanks
+		name = denmark.81.b
+		ai_chance = {
+			base = 15
+			modifier = {
+				factor = 1000
+				original_Tag = SWE
+				is_historical_focus_on = yes
+			}
+		}
+		trigger = {
+			has_equipment = { light_tank_chassis > 10 }
+		}
+		effect_tooltip = {
+			send_equipment = {
+				target = DEN
+				type = light_tank_chassis
+				amount = 10
+			}
+		}
+		army_experience = 30
+		FROM = { country_event = denmark.83 }
+	}
+	option = { #Both
+		name = denmark.81.c
+		ai_chance = {
+			base = 10
+		}
+		trigger = {
+			has_equipment = { mechanized_equipment > 10 }
+			has_equipment = { light_tank_chassis > 10 }
+		}
+		effect_tooltip = {
+			send_equipment = {
+				target = DEN
+				type = mechanized_equipment
+				amount = 10
+			}
+			send_equipment = {
+				target = DEN
+				type = light_tank_chassis
+				amount = 10
+			}
+		}
+		army_experience = 40
+		FROM = { country_event = denmark.84 }
+	}
+	option = { #No
+		name = denmark.81.d
+		ai_chance = {
+			base = 60
+		}
+		FROM = { country_event = denmark.85 }
+	}			
+}
+# War Of Movement (Mech)
+country_event = {
+	id = denmark.82
+	title = denmark.82.t
+	desc = denmark.82.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { #Thanks
+		name = denmark.82.a
+		ai_chance = {
+			base = 100
+		}
+		FROM = {
+			send_equipment = {
+				target = DEN
+				type = mechanized_equipment
+				amount = 10
+			}
+		}
+	}	
+}
+# War Of Movement (Tanks)
+country_event = {
+	id = denmark.83
+	title = denmark.83.t
+	desc = denmark.83.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { #Thanks
+		name = denmark.83.a
+		ai_chance = {
+			base = 100
+		}
+		FROM = {
+			send_equipment = {
+				target = DEN
+				type = light_tank_chassis
+				amount = 10
+			}
+		}
+	}	
+}
+# War Of Movement (Both)
+country_event = {
+	id = denmark.84
+	title = denmark.84.t
+	desc = denmark.84.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { #Thanks
+		name = denmark.84.a
+		ai_chance = {
+			base = 100
+		}
+		FROM = {
+			send_equipment = {
+				target = DEN
+				type = mechanized_equipment
+				amount = 10
+			}
+			send_equipment = {
+				target = DEN
+				type = light_tank_chassis
+				amount = 10
+			}
+		}
+	}	
+}
+# War Of Movement (No)
+country_event = {
+	id = denmark.85
+	title = denmark.85.t
+	desc = denmark.85.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { #sad erik with noises
+		name = denmark.85.a
+		ai_chance = {
+			base = 100
+		}
+	}	
+}
+# Destiny Of Iceland (Initial)
+country_event = {
+	id = denmark.86
+	title = denmark.86.t
+	desc = denmark.86.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { #yes
+		name = denmark.86.a
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 100
+				fighting_army_strength_ratio = {
+				    tag = FROM
+				    ratio < 0.5
+				}
+			}
+		}
+		FROM = { country_event = denmark.87 }
+	}
+	option = { #puppet
+		name = denmark.86.b
+		ai_chance = {
+			base = 50
+		}
+		FROM = { country_event = denmark.88 }
+	}
+	option = { #fight
+		name = denmark.86.c
+		ai_chance = {
+			base = 25
+			modifier = {
+				factor = 100
+				has_war_support > 0.49
+			}
+		}
+		FROM = {
+			end_puppet = ICE
+			country_event = denmark.89
+		}
+	}	
+}
+# Destiny Of Iceland (Yes, annex)
+country_event = {
+	id = denmark.87
+	title = denmark.87.t
+	desc = denmark.87.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { #yes
+		name = denmark.87.a
+		ai_chance = {
+			base = 100
+		}
+		annex_country = {
+		    target = ICE
+		    transfer_troops = yes
+		}
+		add_state_core = 100
+	}	
+}
+# Destiny Of Iceland (puppet)
+country_event = {
+	id = denmark.88
+	title = denmark.88.t
+	desc = denmark.88.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { #puppet
+		name = denmark.88.a
+		ai_chance = {
+			base = 50
+		}
+		add_state_claim = 100
+	}
+	option = { #fight
+		name = denmark.88.b
+		ai_chance = {
+			base = 50
+		}
+		add_state_core = 100
+		end_puppet = ICE
+		ICE = { leave_faction = yes }
+		declare_war_on = {
+			target = ICE
+			type = annex_everything
+		}
+	}	
+}
+# Destiny Of Iceland (fight)
+country_event = {
+	id = denmark.89
+	title = denmark.89.t
+	desc = denmark.89.d
+	picture = report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { #fight
+		name = denmark.89.a
+		ai_chance = {
+			base = 50
+		}
+		add_state_core = 100
+		ICE = { leave_faction = yes }
+		declare_war_on = {
+			target = ICE
+			type = annex_everything
+		}
+	}
+	add_state_core = 100
+	option = { #later
+		name = denmark.89.b
+		ai_chance = {
+			base = 50
+		}
+		add_state_core = 100
+		ICE = { leave_faction = yes }
+		create_wargoal = {
+		    type = take_state_focus
+		    target = ICE
+		    generator = { 100 }
+		}
+	}	
+}
+# GER starts weserübung
+country_event = {
+	id = denmark.90
+	title = denmark.90.t
+	desc = denmark.90.d
+	picture = GFX_news_event_journalists_speech
+	
+	trigger = {
+		original_tag = GER
+		has_country_flag = GER_DEN_interests_alligned
+		OR = {
+			has_completed_focus = GER_weserubung
+			focus_progress = {
+			    focus = GER_weserubung
+			    progress > 0.0
+			}
+		}
+	}
+
+	fires_only_once = yes
+	
+	option = { # back down
+		name = denmark.90.a
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 99
+				DEN = { is_ai = no }
+			}
+		}
+		unlock_national_focus = GER_weserubung
+		remove_wargoal = {
+		    type = all
+		    target = NOR
+		}
+		#every_state = {
+		#	limit = {
+		#		is_core_of = GER
+		#		OR = {
+		#			is_core_of = NOR
+		#			is_claimed_by = NOR
+		#			is_owned_by = NOR
+		#			is_core_of = DEN
+		#			is_claimed_by = DEN
+		#			is_owned_by = DEN
+		#		}
+		#	}
+		#	GER = { remove_state_core = PREV }
+		#}
+		#every_state = {
+		#	limit = {
+		#		is_claimed_by = GER
+		#		OR = {
+		#			is_core_of = NOR
+		#			is_claimed_by = NOR
+		#			is_owned_by = NOR
+		#			is_core_of = DEN
+		#			is_claimed_by = DEN
+		#			is_owned_by = DEN
+		#		}
+		#	}
+		#	GER = { remove_state_claim = PREV }
+		#}
+	}
+	option = { # Germany first
+		name = denmark.90.b
+		ai_chance = {
+			base = 1
+		}
+		add_political_power = -50
+		DEN = {
+			country_event = { days = 1 id = denmark.91 }
+		}
+	}
+}
+# GER ignores treaty
+country_event = {
+	id = denmark.91
+	title = denmark.91.t
+	desc = denmark.91.d
+	picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # how could they!
+		name = denmark.91.a
+		ai_chance = {
+			base = 100
+		}
+		add_opinion_modifier = {
+		    target = FROM
+		    modifier = faction_traitor
+		}
+		#leave_faction = yes
+		create_wargoal = {
+		    type = puppet_wargoal_focus
+		    target = FROM
+		}
+		add_war_support = 0.1
+	}
+	option = { # They are too strong
+		name = denmark.91.b
+		ai_chance = {
+			base = 0
+		}
+		add_political_power = -50
+		add_war_support = -0.1
+		add_stability = -0.2
+	}
+}
+# Spanish Civil War heroes
+country_event = {
+	id = denmark.92
+	title = denmark.92.t
+	desc = denmark.92.d
+	picture = report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+	
+	option = { # Yes
+		name = denmark.92.a
+		ai_chance = {
+			base = 1
+		}
+		DEN_villy_fuglsang = {
+			add_corps_commander_role = {
+				traits = { JAP_communist_sympathizer war_hero }
+				skill = 1
+				attack_skill = 1
+				defense_skill = 1
+				planning_skill = 1
+				logistics_skill = 1 
+			}
+		}
+		add_war_support = 0.05
+	}	
+	option = { # No
+		name = denmark.92.b
+		ai_chance = {
+			base = 99
+		}
+		#add_war_support = -0.05
+	}		
+}
+#Oddesund Bridge construction Finished
+country_event = {
+	id = denmark.93
+	title = denmark.93.t
+	desc = denmark.93.d
+	picture = GFX_news_event_generic_read_write
+	
+	fire_only_once = yes
+
+	trigger = {
+		controls_state = 99
+		date > 1938.5.14 #15 may 1938
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = { # good
+		name = denmark.93.a
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = oddesund_incomplete_tt
+		set_global_flag = ODDESUND_DONE
+		99 = {
+			limit = {
+				ROOT = { has_full_control_of_state = PREV } 
+				free_building_slots = {
+					building = industrial_complex
+					size > 1
+					include_locked = yes
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+		}
+	}
+}

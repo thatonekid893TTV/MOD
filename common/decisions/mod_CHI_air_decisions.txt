@@ -1,0 +1,1289 @@
+CHI_fighter_order = {
+
+	CHI_add_fighter1_FROM = {
+		icon = generic_air
+		available = {
+			num_of_civilian_factories_available_for_projects > 2
+			FROM = {
+				exists = yes
+				has_capitulated = no
+				NOT = {
+					has_war_with = ROOT
+				}
+				OR = {
+					has_government = ROOT
+					has_opinion = { target = ROOT value > 19 }
+					is_in_faction_with = ROOT
+					ROOT = {
+						is_subject_of = FROM
+					}
+				}
+			}
+		}
+		visible = {
+			FROM = { has_tech = fighter1 }
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					tag = GER
+					tag = ITA
+					tag = SOV
+					tag = FRA
+					tag = ENG
+					tag = USA
+					tag = JAP
+				}
+			}
+		}
+		cost = 100
+		ai_will_do = {
+			factor = 0
+		}
+
+		fire_only_once = no
+		days_remove = 90
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		remove_effect = {
+
+			if = {
+				limit = {
+					OR = {
+						FROM = { has_opinion = { target = ROOT value > 79 } }
+						is_in_faction_with = ROOT
+						ROOT = {
+							is_subject_of = FROM
+						}
+					}
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 150
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 150
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 150
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 150
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 150
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 150
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 150
+						producer = JAP
+					}
+				}
+				
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 69 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 125
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 125
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 125
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 125
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 125
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 125
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 125
+						producer = JAP
+					}
+				}
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 59 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 100
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 100
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 100
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 100
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 100
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 100
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 100
+						producer = JAP
+					}
+				}
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 49 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 75
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 75
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 75
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 75
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 75
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 75
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 75
+						producer = JAP
+					}
+				}
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 39 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 50
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 50
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 50
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 50
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 50
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 50
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 50
+						producer = JAP
+					}
+				}
+			}
+
+			else = {
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 25
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 25
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 25
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 25
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 25
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 25
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_1
+						amount = 25
+						producer = JAP
+					}
+				}
+			}
+			
+		}
+	}
+
+	CHI_add_fighter2_FROM = {
+		icon = generic_air
+		available = {
+			num_of_civilian_factories_available_for_projects > 3
+			FROM = {
+				exists = yes
+				has_capitulated = no
+				NOT = {
+					has_war_with = ROOT
+				}
+				OR = {
+					has_government = ROOT
+					has_opinion = { target = ROOT value > 29 }
+					is_in_faction_with = ROOT
+					ROOT = {
+						is_subject_of = FROM
+					}
+				}
+			}
+		}
+		visible = {
+			FROM = { has_tech = fighter2 }
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					tag = GER
+					tag = ITA
+					tag = SOV
+					tag = FRA
+					tag = ENG
+					tag = USA
+					tag = JAP
+				}
+			}
+		}
+		cost = 125
+		ai_will_do = {
+			factor = 0
+		}
+
+		fire_only_once = no
+		days_remove = 90
+
+		modifier = {
+			civilian_factory_use = 4
+		}
+
+		remove_effect = {
+
+			if = {
+				limit = {
+					OR = {
+						FROM = { has_opinion = { target = ROOT value > 79 } }
+						is_in_faction_with = ROOT
+						ROOT = {
+							is_subject_of = FROM
+						}
+					}
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 150
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 150
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 150
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 150
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 150
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 150
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 150
+						producer = JAP
+					}
+				}
+				
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 69 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 125
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 125
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 125
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 125
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 125
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 125
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 125
+						producer = JAP
+					}
+				}
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 59 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 100
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 100
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 100
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 100
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 100
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 100
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 100
+						producer = JAP
+					}
+				}
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 49 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 75
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 75
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 75
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 75
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 75
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 75
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 75
+						producer = JAP
+					}
+				}
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 39 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 50
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 50
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 50
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 50
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 50
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 50
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 50
+						producer = JAP
+					}
+				}
+			}
+
+			else = {
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 25
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 25
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 25
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 25
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 25
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 25
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_2
+						amount = 25
+						producer = JAP
+					}
+				}
+			}
+			
+		}
+	}
+
+	CHI_add_fighter3_FROM = {
+		icon = generic_air
+		available = {
+			num_of_civilian_factories_available_for_projects > 4
+			FROM = {
+				exists = yes
+				has_capitulated = no
+				NOT = {
+					has_war_with = ROOT
+				}
+				OR = {
+					has_government = ROOT
+					has_opinion = { target = ROOT value > 39 }
+					is_in_faction_with = ROOT
+					ROOT = {
+						is_subject_of = FROM
+					}
+				}
+			}
+		}
+		visible = {
+			FROM = { has_tech = fighter3 }
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					tag = GER
+					tag = ITA
+					tag = SOV
+					tag = FRA
+					tag = ENG
+					tag = USA
+					tag = JAP
+				}
+			}
+		}
+		cost = 150
+		ai_will_do = {
+			factor = 0
+		}
+
+		fire_only_once = no
+		days_remove = 90
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		remove_effect = {
+
+			if = {
+				limit = {
+					OR = {
+						FROM = { has_opinion = { target = ROOT value > 79 } }
+						is_in_faction_with = ROOT
+						ROOT = {
+							is_subject_of = FROM
+						}
+					}
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 150
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 150
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 150
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 150
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 150
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 150
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 150
+						producer = JAP
+					}
+				}
+				
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 69 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 125
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 125
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 125
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 125
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 125
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 125
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 125
+						producer = JAP
+					}
+				}
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 59 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 100
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 100
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 100
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 100
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 100
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 100
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 100
+						producer = JAP
+					}
+				}
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 49 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 75
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 75
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 75
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 75
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 75
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 75
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 75
+						producer = JAP
+					}
+				}
+			}
+
+			else_if = {
+				limit = {
+					FROM = { has_opinion = { target = ROOT value > 39 } }
+				}
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 50
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 50
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 50
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 50
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 50
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 50
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 50
+						producer = JAP
+					}
+				}
+			}
+
+			else = {
+				if = {
+					limit = { FROM = { tag = GER} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 25
+						producer = GER
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ITA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 25
+						producer = ITA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = SOV} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 25
+						producer = SOV
+					}
+				}
+				if = {
+					limit = { FROM = { tag = FRA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 25
+						producer = FRA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = ENG} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 25
+						producer = ENG
+					}
+				}
+				if = {
+					limit = { FROM = { tag = USA} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 25
+						producer = USA
+					}
+				}
+				if = {
+					limit = { FROM = { tag = JAP} }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_3
+						amount = 25
+						producer = JAP
+					}
+				}
+			}
+			
+		}
+	}
+}

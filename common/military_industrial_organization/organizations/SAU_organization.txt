@@ -1,0 +1,942 @@
+############################################################################################
+####################################      沙特            ##################################
+############################################################################################
+#####坦克######## 
+
+SAU_junshichanye_tanke = {
+	name = SAU_junshichanye_tanke
+	include = generic_tank_organization
+	icon = GFX_idea_generic_SAU_junshichanye_tanke
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_junshi_zhuangjia_liliang
+		}
+	}
+	visible = {
+		owner = {
+		}
+	}
+}
+
+########飞机########
+SAU_Saudi_Arabian_Airlines = {
+	name = SAU_Saudi_Arabian_Airlines
+	include = generic_light_aircraft_organization
+	icon = GFX_idea_generic_SAU_Saudi_Arabian_Airlines
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_kongjun_guojia_hangkong_gongsi
+		}
+	}
+	visible = {
+		owner = {
+		}
+	}
+}
+
+#####舰船######## 
+SAU_International_Maritime_Industries = {
+	name = SAU_International_Maritime_Industries
+	include = generic_escort_ship_organization
+	icon = GFX_idea_generic_SAU_junshichanye_jichuan
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_haijun_kuojian_xiuli_matou
+		}
+	}
+	visible = {
+		owner = {
+		}
+	}
+}
+
+#####军需品######## 
+
+SAU_junshi_chanye_ju = {
+	name = SAU_junshi_chanye_ju
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_generic_SAU_junshi_chanye_ju
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_junshi_junshi_chanye_ju
+		}
+	}
+	visible = {
+		owner = {
+		}
+	}
+}
+
+SAU_junshichanye_motuo = {
+	name = SAU_junshichanye_motuo
+	include = generic_motorized_mechanized_organization
+	icon = GFX_idea_generic_SAU_junshichanye_motuo
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_junshi_touzi_qiche_chanye
+		}
+	}
+	visible = {
+		owner = {
+		}
+	}
+}
+
+SAU_Abdul_Latif_Jameel = {
+	name = SAU_Abdul_Latif_Jameel
+	include = generic_armored_car_organization
+	icon = GFX_idea_generic_SAU_Abdul_Latif_Jameel
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_junshi_zizhu_jundui_jixiehua
+		}
+	}
+	visible = {
+		owner = {
+		}
+	}
+}
+
+
+############################################################################################
+####################################      外国            ##################################
+############################################################################################
+#####坦克######## 
+SAU_GER_tanke_1 = {
+	name = henschel
+	include = generic_infantry_tank_organization
+	icon = GFX_idea_henschel
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_deguo_zhanzheng_jiqi
+				has_completed_focus = Saudi_Arabia_laxide_deguo_tanke_xiangmu
+			}
+		}
+	}
+}
+
+SAU_SOV_tanke_1 = {
+	name = SOV_mytishchy_machine_building_plant
+	include = generic_tank_refurbishment_plant_organization
+	icon = GFX_idea_SOV_mytishchy_machine_building_plant
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_jungong_hezuo
+				has_completed_focus = Saudi_Arabia_weile_gongtong_de_liyi
+			}
+		}
+	}
+}
+
+SAU_USA_tanke_1 = {
+	name = tank_destroyer_board
+	include = generic_mobile_tank_organization
+	icon = GFX_idea_usa_tank_destroyer_board
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_meiguo_lujun_xunlian
+				has_completed_focus = Saudi_Arabia_guoshi_fangwen_xifang
+			}
+		}
+	}
+	initial_trait = {
+		name = ROM_mio_trait_mobile_tank_destroyers
+		limit_to_equipment_type = {
+			mio_cat_eq_all_tank_destroyers
+		}
+		equipment_bonus = {
+			reliability = 0.05
+			hard_attack = 0.05
+			ap_attack = 0.05
+		}
+	}
+	override_trait = {
+		token = generic_mio_enlarged_breech
+		limit_to_equipment_type = {
+			mio_cat_eq_all_tank_destroyers
+		}
+		equipment_bonus = {
+			hard_attack = 0.05
+			ap_attack = 0.1
+		}
+		special_trait_background = yes
+	}
+}
+
+SAU_ENG_tanke_1 = {
+	name = vickers_armstrong_eng
+	include = generic_medium_tank_organization
+	icon = GFX_idea_vickers_armstrong_eng
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_yu_yingguo_guanxi
+				has_completed_focus = Saudi_Arabia_guoshi_fangwen_xifang
+			}
+		}
+	}
+	initial_trait = {
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
+		equipment_bonus = {
+			maximum_speed = 0.1
+			reliability = 0.05
+			armor_value = -0.1
+		}
+	}
+	add_trait = {
+		token = ENG_mio_trait_expanded_turret_capacity
+		name = ENG_mio_trait_expanded_turret_capacity
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_engine
+		special_trait_background = yes
+		position = {
+			x = 1
+			y = 1
+		}
+		relative_position_id = generic_mio_trait_all_round_cupola
+		any_parent = {
+			generic_mio_trait_all_round_cupola
+		}
+		limit_to_equipment_type = {
+			mio_cat_eq_all_medium_tank
+		}
+		equipment_bonus = {
+			reliability = 0.05
+			armor_value = 0.05
+			breakthrough = 0.05
+		}
+	}
+	add_trait = {
+		token = ENG_mio_trait_expanded_production_facilities
+		name = ENG_mio_trait_expanded_production_facilities
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_technology
+		special_trait_background = yes
+		position = {
+			x = 2
+			y = 1
+		}
+		relative_position_id = generic_mio_trait_simplified_turret_design
+		all_parents = {
+			generic_mio_trait_simplified_turret_design
+			generic_mio_trait_armor_steel_working
+		}
+		production_bonus = {
+			production_efficiency_cap_factor = 0.1
+			production_efficiency_gain_factor = 0.1
+		}
+	}
+}
+
+SAU_ITA_tanke_1 = {
+	name = fiat
+	include = generic_mobile_tank_organization
+	icon = GFX_idea_fiat
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_haximu_waibao_shengchan
+		}
+	}
+}
+
+#####舰船######## 
+SAU_GER_chuan_1 = {
+	name = GER_hdw_organization
+	include = generic_submarine_organization
+	icon = GFX_idea_GER_hdw 
+	allowed = {
+		original_tag = SAU
+	}
+	
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_laxide_deguo_qianting_xiangmu
+				has_completed_focus = Saudi_Arabia_deguo_qianting_fazhan_jihua
+			}
+		}
+	}
+	add_trait = {  
+		token = GER_mio_trait_saddle_tanks
+		name = GER_mio_trait_saddle_tanks
+		icon = GFX_generic_mio_department_icon_ship_submarine_quality
+		special_trait_background = yes
+
+		position = { x=9 y=0 }  
+
+		equipment_bonus = {
+			naval_range = 0.07
+			build_cost_ic = 0.02	
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	add_trait = {  
+		token = GER_mio_trait_excellent_diving_performance
+		name = GER_mio_trait_excellent_diving_performance
+		icon = GFX_generic_mio_department_icon_ship_submarine_survivability
+		special_trait_background = yes
+
+		relative_position_id = GER_mio_trait_saddle_tanks
+
+		all_parents = { GER_mio_trait_saddle_tanks }
+
+		position = { x=0 y=1 } 
+
+		equipment_bonus = {
+			sub_visibility = -0.05	
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+	}
+	
+}
+
+SAU_ITA_chuan_1 = {
+	name = crda
+	include = generic_battle_line_ship_organization
+	icon = GFX_idea_crda
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_haximu_waibao_shengchan
+		}
+	}
+}
+
+SAU_ENG_chuan_1 = {
+	name = harland_wolff
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_harland_wolff
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_yaoqing_waiguo_touzizhe
+				has_completed_focus = Saudi_Arabia_yu_yingguo_yingxiang
+			}
+		}
+	}
+	override_trait = {
+		token = generic_mio_trait_underway_replenishment_equipment
+		position = {
+			x = 1
+			y = 0
+		}
+		relative_position_id = generic_mio_trait_transom_stern
+	}
+	add_trait = {
+		token = ENG_mio_trait_flared_bow
+		name = ENG_mio_trait_flared_bow
+		icon = GFX_generic_mio_department_icon_ship_general_quality
+		special_trait_background = yes
+		position = {
+			x = 1
+			y = 0
+		}
+		relative_position_id = generic_mio_trait_underway_replenishment_equipment
+		any_parent = {
+			generic_mio_trait_splinter_protection
+		}
+		equipment_bonus = {
+			naval_weather_penalty_factor = -0.1
+		}
+	}
+	add_trait = {
+		token = generic_mio_trait_semi_armor_piercing_shells
+		name = generic_mio_trait_semi_armor_piercing_shells
+		icon = GFX_generic_mio_trait_icon_lg_attack
+		special_trait_background = yes
+		any_parent = {
+			generic_mio_trait_secondary_fire_director_control
+		}
+		position = {
+			x = 0
+			y = 1
+		}
+		relative_position_id = generic_mio_trait_secondary_fire_director_control
+		equipment_bonus = {
+			lg_attack = 0.05
+			lg_armor_piercing = 0.05
+		}
+	}
+}
+
+SAU_SOV_chuan_1 = {
+	name = SOV_black_sea_shipyard
+	include = generic_black_sea_fleet_organization
+	icon = GFX_idea_SOV_black_sea_shipyard
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+		owner = {
+		}
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_weile_gongtong_de_liyi
+				has_completed_focus = Saudi_Arabia_SOV_junshi_yanxi
+			}
+		}
+	}
+	tree_header_text = {
+		text = mio_header_systems
+		x = 1
+	}
+	tree_header_text = {
+		text = mio_header_weapons
+		x = 4
+	}
+	tree_header_text = {
+		text = mio_header_production
+		x = 7
+	}
+	override_trait = {
+		token = generic_mio_advanced_periscope
+		position = {
+			x = 1
+			y = 1
+		}
+		relative_position_id = generic_mio_trait_anti_air_defense
+	}
+	override_trait = {
+		token = generic_mio_trait_state_sponsored_growth
+		position = {
+			x = 3
+			y = 0
+		}
+		relative_position_id = generic_mio_trait_anti_air_defense
+	}
+}
+
+SAU_USA_chuan_1 = {
+	name = newport_news_shipbuilding
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_newport_news_shipbuilding
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_yaoqing_waiguo_touzizhe
+				has_completed_focus = Saudi_Arabia_meiguo_haijun_jiaoliu
+			}
+		}
+	}
+	initial_trait = {
+		name = USA_mio_trait_carrier_specialists
+		limit_to_equipment_type = {
+			carrier
+		}
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+	}
+	add_trait = {
+		token = USA_mio_trait_north_carolina_shipbuilding_company
+		name = USA_mio_trait_north_carolina_shipbuilding_company
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_production
+		special_trait_background = yes
+		limit_to_equipment_type = {
+			screen_ship
+		}
+		all_parents = {
+		}
+		position = {
+			x = 3
+			y = 0
+		}
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+	}
+}
+
+#####飞机######## 
+SAU_GER_feiji_1 = {
+	name = junkers
+	include = generic_cas_aircraft_organization
+	icon = GFX_idea_junkers
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_deguo_feixingqi_fazhan_jihua
+				has_completed_focus = Saudi_Arabia_laxide_deguo_junguantuan
+			}
+		}
+	}
+	add_trait = {
+		token = GER_mio_trait_psychological_warfare
+		name = GER_mio_trait_psychological_warfare
+		icon = GFX_generic_mio_trait_icon_fuel_consumption
+		special_trait_background = yes
+		position = {
+			x = 2
+			y = 0
+		}
+		relative_position_id = generic_mio_trait_reinforced_wings
+		equipment_bonus = {
+			fuel_consumption = -0.05
+		}
+	}
+	add_trait = {
+		token = GER_mio_trait_90_degree_dives
+		name = GER_mio_trait_90_degree_dives
+		icon = GFX_generic_mio_department_icon_plane_cas_quality
+		special_trait_background = yes
+		position = {
+			x = 0
+			y = 1
+		}
+		relative_position_id = generic_mio_trait_automatic_pull_out
+		all_parents = {
+			generic_mio_trait_automatic_pull_out
+		}
+		equipment_bonus = {
+			air_ground_attack = 0.05
+		}
+	}
+}
+
+SAU_ITA_feiji_1 = {
+	name = ITA_fiat_aviazione
+	include = generic_range_focused_aircraft_organization
+	icon = GFX_idea_ITA_fiat_aviazione
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+	}
+	visible = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_haximu_waibao_shengchan
+		}
+	}
+	initial_trait = {
+		equipment_bonus = {
+			naval_strike_attack = -0.1
+			maximum_speed = 0.1
+		}
+	}
+	override_trait = {
+		token = generic_mio_trait_extra_cargo_doors
+		position = {
+			x = 8
+			y = 0
+		}
+	}
+	add_trait = {
+		token = ITA_mio_trait_high_altitude_fighter_development
+		name = ITA_mio_trait_high_altitude_fighter_development
+		icon = GFX_generic_mio_trait_icon_air_agility
+		special_trait_background = yes
+		position = {
+			x = 0
+			y = 1
+		}
+		relative_position_id = generic_mio_trait_low_drag_wings
+		any_parent = {
+			generic_mio_trait_low_drag_wings
+		}
+		limit_to_equipment_type = {
+			mio_cat_eq_all_small_plane
+		}
+		equipment_bonus = {
+			air_agility = 0.05
+			air_attack = 0.03
+		}
+	}
+}
+
+SAU_ENG_feiji_1 = {
+	name = supermarine
+	include = generic_high_agility_fighter_aircraft_organization
+	icon = GFX_idea_supermarine
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_yaoqing_waiguo_touzizhe
+				has_completed_focus = Saudi_Arabia_yu_yingguo_kongjun
+			}
+		}
+	}
+	equipment_type = {
+		mio_cat_eq_all_small_plane
+		maritime_patrol_plane
+	}
+	research_categories = {
+		mio_cat_all_light_fighter_and_modules
+	}
+	override_trait = {
+		token = generic_mio_trait_fuel_injection_engines
+		position = {
+			x = 0
+			y = 2
+		}
+		relative_position_id = generic_mio_trait_bigger_engines
+	}
+	override_trait = {
+		token = generic_mio_trait_high_octane_fuels
+		position = {
+			x = 1
+			y = 1
+		}
+		relative_position_id = generic_mio_trait_bigger_engines
+	}
+	override_trait = {
+		token = generic_mio_trait_subsidiary_suppliers
+		position = {
+			x = 0
+			y = 2
+		}
+		relative_position_id = generic_mio_trait_fuel_injection_engines
+	}
+	add_trait = {
+		token = ENG_mio_trait_seaplane_origins
+		name = ENG_mio_trait_seaplane_origins
+		icon = GFX_generic_mio_trait_icon_detection
+		special_trait_background = yes
+		position = {
+			x = 2
+			y = 0
+		}
+		relative_position_id = generic_mio_trait_minimum_weapon_requirements
+		#any_parent = { generic_mio_trait_super_heavy_shells generic_mio_trait_semi_armor_piercing_shells generic_mio_trait_high_velocity_guns }
+		limit_to_equipment_type = {
+			mio_cat_eq_all_small_plane
+			maritime_patrol_plane
+		}
+		equipment_bonus = {
+			sub_detection = 0.05
+			surface_detection = 0.05
+			naval_strike_targetting = 0.1
+		}
+	}
+	add_trait = {
+		token = ENG_mio_trait_elliptical_wings
+		name = ENG_mio_trait_elliptical_wings
+		icon = GFX_generic_mio_trait_icon_defense
+		special_trait_background = yes
+		position = {
+			x = 0
+			y = 1
+		}
+		relative_position_id = generic_mio_trait_cantilever_wing_structure
+		any_parent = {
+			generic_mio_trait_cantilever_wing_structure
+		}
+		equipment_bonus = {
+			air_defence = 0.1
+		}
+	}
+	add_trait = {
+		token = ENG_mio_trait_supercharger
+		name = ENG_mio_trait_supercharger
+		icon = GFX_generic_mio_trait_icon_defense
+		special_trait_background = yes
+		position = {
+			x = 1
+			y = 1
+		}
+		relative_position_id = generic_mio_trait_fuel_injection_engines
+		all_parents = {
+			generic_mio_trait_fuel_injection_engines
+			generic_mio_trait_high_octane_fuels
+		}
+		equipment_bonus = {
+			air_defence = 0.1
+		}
+	}
+}
+
+SAU_SOV_feiji_1 = {
+	name = ilyushin_design_bureau
+	include = generic_medium_aircraft_organization
+	icon = GFX_idea_ilyushin_design_bureau
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_weile_gongtong_de_liyi
+				has_completed_focus = Saudi_Arabia_SOV_junshi_yanxi
+			}
+		}
+	}
+}
+
+SAU_USA_feiji_1 = {
+	name = grumman
+	include = generic_naval_aircraft_organization
+	icon = GFX_idea_grumman
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_yaoqing_waiguo_touzizhe
+				has_completed_focus = Saudi_Arabia_minzhu_wuqi
+			}
+		}
+	}
+	add_trait = {
+		token = USA_mio_trait_smooth_finish
+		name = USA_mio_trait_smooth_finish
+		icon = GFX_generic_mio_trait_icon_air_agility
+		special_trait_background = yes
+		
+		position = { x=2 y=1 }  
+		relative_position_id = generic_mio_trait_reinforced_fuselage
+		
+		any_parent = { generic_mio_trait_reinforced_fuselage }
+		limit_to_equipment_type = { mio_cat_eq_all_cv_aircraft small_plane_naval_bomber_airframe }
+			
+		equipment_bonus = {
+			air_agility = 0.05
+			maximum_speed = 0.05
+		}
+	}
+	
+	override_trait = {
+		token = generic_mio_advanced_materials
+		position = { x=-1 y=1 }
+	}
+	
+	add_trait = {
+		token = USA_mio_trait_jet_fighter_design
+		name = USA_mio_trait_jet_fighter_design
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+		special_trait_background = yes
+
+		available = {
+			FROM = {
+				is_special_project_completed = sp:sp_air_jet_engine
+			}
+		}
+		position = { x=1 y=1 }  
+		relative_position_id = generic_mio_water_injection
+		
+		any_parent = { generic_mio_water_injection }
+		limit_to_equipment_type = { mio_cat_eq_all_cv_aircraft }
+			
+		equipment_bonus = {
+			maximum_speed = 0.1
+		}
+	}
+}
+
+#####军需品######## 
+SAU_ITA_junxupin_1 = {
+	name = breda
+	include = generic_artillery_organization
+	icon = GFX_idea_breda
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+	}
+	visible = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_haximu_suoqu_yidali_zhuangbei
+		}
+	}
+} 
+SAU_ITA_junxupin_2 = {
+	name = ITA_brescia_arsenal
+	include = generic_support_equipment_organization
+	icon = GFX_idea_ITA_brescia_arsenal
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+	}
+	visible = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_haximu_suoqu_yidali_zhuangbei
+		}
+	}
+}
+
+SAU_GER_junxupin_1 = {
+	name = rheinmetall
+	include = generic_artillery_organization
+	icon = GFX_idea_rheinmetall
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_fulici_geluoba_tiaoyue
+				has_completed_focus = Saudi_Arabia_laxide_deguo_junguantuan
+			}
+		}
+	}
+}
+
+SAU_GER_junxupin_2 = {
+	name = GER_carl_walther
+	include = generic_support_equipment_organization
+	icon = GFX_idea_GER_carl_walther
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+	}
+	visible = {
+		owner = {
+			OR = {
+				has_completed_focus = Saudi_Arabia_fulici_geluoba_tiaoyue
+				has_completed_focus = Saudi_Arabia_laxide_deguo_junguantuan
+			}
+		}
+	}
+}
+
+############################################################################################
+####################################      奥斯曼            ##################################
+############################################################################################
+#####坦克######## 
+
+SAU_TUR_aosiman_1 = {
+	name = koc_ticaret_as_armor
+	include = generic_infantry_tank_organization
+	icon = GFX_idea_tur_koc_ticaret_as
+	allowed = {
+		original_tag = SAU
+	}
+	available = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_laxide_shengsuofeiya_de_qiongding
+			TUR = {
+				all_core_state = {
+					is_fully_controlled_by = SAU
+				}
+			}
+		}
+	}
+	visible = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_laxide_shengsuofeiya_de_qiongding
+		}
+	}
+}
+#####舰船######## 
+SAU_TUR_aosiman_2 = {
+	name = golcuk_nsy
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_tur_golcuk_naval_base
+	allowed = {	
+		original_tag = SAU
+	}
+	available = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_laxide_shengsuofeiya_de_qiongding
+			TUR = {
+				all_core_state = {
+					is_fully_controlled_by = SAU
+				}
+			}
+		}
+	}
+	visible = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_laxide_shengsuofeiya_de_qiongding
+		}
+	}
+}
+#####飞机######## 
+SAU_TUR_aosiman_3 = {
+	name = nud
+	include = generic_cas_aircraft_organization
+	icon = GFX_idea_tur_nud
+	allowed = {	
+		original_tag = SAU
+	}
+	available = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_laxide_shengsuofeiya_de_qiongding
+			TUR = {
+				all_core_state = {
+					is_fully_controlled_by = SAU
+				}
+			}
+		}
+	}
+	visible = {
+		owner = {
+			has_completed_focus = Saudi_Arabia_laxide_shengsuofeiya_de_qiongding
+		}
+	}
+}
+#####军需品######## 

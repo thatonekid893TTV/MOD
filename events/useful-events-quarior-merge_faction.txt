@@ -1,0 +1,236 @@
+add_namespace = useful-events-quarior-merge_faction
+#first event - join the faction?
+country_event = {
+	id = useful-events-quarior-merge_faction.1
+	title = useful-events-quarior-merge_faction.1.t
+	desc = useful-events-quarior-merge_faction.1.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	option = {
+		#accept
+		name = useful-events-quarior-merge_faction.1.a
+		trigger = {
+			NOT = {
+				has_war_with = FROM
+			}
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0.25
+				has_war = yes
+				any_enemy_country = {
+					OR = {
+						tag = FROM
+						is_in_faction_with = FROM
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_allied_country = {
+					has_war = yes
+					any_enemy_country = {
+						OR = {
+							tag = FROM
+							is_in_faction_with = FROM
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.75
+				any_other_country = {
+					OR = {
+						tag = FROM
+						is_in_faction_with = FROM
+					}
+					OR = {
+						ROOT = {
+							has_wargoal_against = PREV
+						}
+						PREV = {
+							has_wargoal_against = ROOT
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					has_same_ideology = yes
+				}
+			}
+			modifier = {
+				factor = 0.5
+				FROM = {
+					is_enemy_ideology = yes
+				}
+			}
+		}
+		FROM = {
+			country_event = useful-events-quarior-merge_faction.2
+		}
+	}
+	option = {
+		#refuse
+		name = useful-events-quarior-merge_faction.1.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 4
+				has_war = yes
+				any_enemy_country = {
+					OR = {
+						tag = FROM
+						is_in_faction_with = FROM
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				any_allied_country = {
+					has_war = yes
+					any_enemy_country = {
+						OR = {
+							tag = FROM
+							is_in_faction_with = FROM
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				any_other_country = {
+					OR = {
+						tag = FROM
+						is_in_faction_with = FROM
+					}
+					OR = {
+						ROOT = {
+							has_wargoal_against = PREV
+						}
+					}
+					PREV = {
+						has_wargoal_against = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				FROM = {
+					has_same_ideology = yes
+				}
+			}
+			modifier = {
+				factor = 1.25
+				FROM = {
+					is_enemy_ideology = yes
+				}
+			}
+		}
+		FROM = {
+			country_event = useful-events-quarior-merge_faction.3
+		}
+	}
+}
+
+
+#second event - Faction leader joins FROM.FROM faction, move them and all their subjects, fire event to independent nations in their faction
+country_event = {
+	id = useful-events-quarior-merge_faction.2
+	title = useful-events-quarior-merge_faction.2.t
+	desc = useful-events-quarior-merge_faction.2.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	option = {
+		#accept
+		name = useful-events-quarior-merge_faction.2.a
+		ai_chance = {
+			factor = 100
+		}
+		every_other_country = {
+			limit = {
+				is_in_faction_with = FROM
+				NOT = {
+					tag = FROM
+				}				#countries are in a faction with themselves
+				is_subject = no
+			}
+			country_event = useful-events-quarior-merge_faction.4
+		}
+		add_to_faction = FROM
+	}
+}
+
+#second event - country refuses
+country_event = {
+	id = useful-events-quarior-merge_faction.3
+	title = useful-events-quarior-merge_faction.3.t
+	desc = useful-events-quarior-merge_faction.3.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	option = {
+		#accept
+		name = useful-events-quarior-merge_faction.3.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+# event for independent countries in FROM faction - join FROM.FROM ?
+country_event = {
+	id = useful-events-quarior-merge_faction.4
+	title = useful-events-quarior-merge_faction.1.t
+	desc = useful-events-quarior-merge_faction.1.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	option = {
+		#accept
+		name = useful-events-quarior-merge_faction.1.a
+		ai_chance = {
+			factor = 100
+			modifier = {
+				# Don't accept if war with FROM
+				factor = 0
+				has_war_with = FROM
+			}
+		}
+		FROM = {
+			country_event = useful-events-quarior-merge_faction.5
+		}
+	}
+	option = {
+		#refuse
+		name = useful-events-quarior-merge_faction.1.b
+		ai_chance = {
+			factor = 0
+			modifier = {
+				# If war with FROM
+				add = 1
+				has_war_with = FROM
+			}
+		}
+		FROM = {
+			country_event = useful-events-quarior-merge_faction.3
+		}
+	}
+}
+
+# event for FROM.FROM - FROM sovereign nation wants to join
+country_event = {
+	id = useful-events-quarior-merge_faction.5
+	title = useful-events-quarior-merge_faction.2.t
+	desc = useful-events-quarior-merge_faction.2.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	option = {
+		#accept
+		name = useful-events-quarior-merge_faction.2.a
+		ai_chance = {
+			factor = 100
+		}
+		add_to_faction = FROM
+	}
+}

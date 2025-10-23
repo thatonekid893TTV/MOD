@@ -1,0 +1,346 @@
+EverythingIsFine = {
+
+	enable = {
+		threat < 0.10
+		
+			NOT = {
+				has_war = yes
+			}
+		
+		}
+
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = -20
+	}
+	
+	ai_strategy = {
+			type = dockyard_to_military_factory_ratio
+			value = -20
+}
+	
+	ai_strategy = {
+		type = building_target	
+		id = industrial_complex
+		value = 30
+	}
+
+
+	ai_strategy = {
+		type = building_target
+		id = fuel_silo
+		value = -9999
+	}
+
+
+	ai_strategy = {
+		type = equipment_market_spend_factories
+		value = -200
+	}
+	
+	abort_when_not_enabled = yes
+
+}
+
+
+NothingEverHappensMILGREED = {
+
+	enable = {
+		has_idea = MilitaryGreedd
+		threat > 0.10
+		threat < 0.20
+		
+			NOT = {
+				has_war = yes
+			}
+	
+	}
+	
+	ai_strategy = {
+			type = dockyard_to_military_factory_ratio
+			value = -10
+}
+	
+		ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 10
+	}
+		
+	
+		ai_strategy = {
+			type = dockyard_to_military_factory_ratio
+			value = -20
+}
+	
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 35
+	}
+	
+	
+
+
+	ai_strategy = {
+		type = building_target
+		id = fuel_silo
+		value = -9999
+	}
+
+
+	ai_strategy = {
+		type = equipment_market_spend_factories
+		value = -9999  
+	}
+	
+	abort_when_not_enabled = yes
+
+
+
+
+}
+
+
+NothingEverHappensCIVGREED = {
+
+	enable = {
+		has_idea = CivGreedd
+		threat > 0.10
+		threat < 0.25
+		
+			NOT = {
+				has_war = yes
+			}
+	
+	}
+	
+	ai_strategy = {
+			type = dockyard_to_military_factory_ratio
+			value = -10
+}
+	
+	
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 5
+	}
+	
+		
+	
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 40
+	}
+	
+	
+
+
+	ai_strategy = {
+		type = building_target
+		id = fuel_silo
+		value = -9999
+	}
+
+
+	ai_strategy = {
+		type = equipment_market_spend_factories
+		value = -9999  
+	}
+	
+	abort_when_not_enabled = yes
+
+
+
+
+}
+
+
+MilGreedersStarttoBuild = {
+
+	enable = {
+		threat > 0.20
+		has_idea = MilitaryGreedd
+		
+		
+			NOT = {
+				AND = {
+				has_war = yes
+				enemies_strength_ratio > 0.3
+					}
+			}
+	
+	}
+	
+	
+	
+	
+		
+	
+	ai_strategy = {
+			type = dockyard_to_military_factory_ratio
+			value = -25
+}
+	
+	
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 20
+	}
+
+	ai_strategy = {
+		type = building_target
+		id = fuel_silo
+		value = -9999
+	}
+
+
+	ai_strategy = {
+		type = equipment_market_spend_factories
+		value = -9999  
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 30
+	}
+
+
+}
+
+CivGreedersStarttoBuild = {
+
+	enable = {
+		threat > 0.25
+		has_idea = CivGreedd
+		
+		
+			NOT = {
+				AND = {
+				has_war = yes
+				enemies_strength_ratio > 0.3
+					}
+			}
+	
+	}
+	
+	
+	
+	
+		
+	
+	ai_strategy = {
+			type = dockyard_to_military_factory_ratio
+			value = -25
+}
+	
+
+	
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 10
+	}
+
+
+	ai_strategy = {
+		type = building_target
+		id = fuel_silo
+		value = -9999
+	}
+
+
+	ai_strategy = {
+		type = equipment_market_spend_factories
+		value = -9999  
+	}
+	
+	abort_when_not_enabled = yes
+
+
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 40
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+WARISHERE ={
+
+	enable = {
+	
+		OR = {
+			AND = {
+		has_war = yes
+		enemies_strength_ratio > 0.3
+		}
+		threat > 0.98
+		
+	}
+	}
+	
+	
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 135
+	}
+	
+	
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 70
+	}
+	
+	ai_strategy = {
+			type = dockyard_to_military_factory_ratio
+			value = -30
+}
+
+	ai_strategy = {
+		type = building_target
+		id = fuel_silo
+		value = -9999
+	}
+
+	abort_when_not_enabled = yes
+
+}
+
+

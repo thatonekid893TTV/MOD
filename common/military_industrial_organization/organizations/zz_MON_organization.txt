@@ -1,0 +1,279 @@
+
+
+# MON_tank_organization = {
+# 	include = generic_tank_organization 
+# 	icon = GFX_idea_mon_tank
+# 	allowed = { 
+# 		original_tag = MON
+# 	}
+# 	available = {
+# 		
+# 	}
+# }
+# 
+# MON_escort_ship_organization = {
+# 	include = generic_escort_ship_organization 
+# 	icon = GFX_idea_mon_far_eastern
+# 	allowed = { 
+# 		original_tag = MON
+# 	}
+# 	available = {
+# 		
+# 	}
+# }
+# 
+# MON_general_aircraft_organization = {
+# 	include = generic_general_aircraft_organization
+# 	icon = GFX_idea_mon_miat
+# 	allowed = { 
+# 		original_tag = MON
+# 	}
+# 	available = {
+# 		
+# 	}
+# }
+# 
+# MON_artillery_organization = {
+# 	include = generic_artillery_organization
+# 	icon = GFX_idea_mon_artillery
+# 	allowed = { 
+# 		original_tag = MON
+# 	}
+# 	available = {
+# 		
+# 	}
+# }
+# 
+# MON_infantry_equipment_organization = {
+# 	include = generic_infantry_equipment_organization 
+# 	icon = GFX_idea_mon_infantry
+# 	allowed = { 
+# 		original_tag = MON
+# 	}
+# 	available = {
+# 		
+# 	}
+# }
+# 
+# MON_motorized_mechanized_organization = {
+# 	include = generic_motorized_mechanized_organization 
+# 	icon = GFX_idea_mon_motor
+# 	allowed = { 
+# 		original_tag = MON
+# 	}
+# 	available = {
+# 		
+# 	}
+# }
+
+MON_armored_car_organization = {
+	include = generic_armored_car_organization
+	icon = GFX_idea_generic_tank_manufacturer_2
+	
+	allowed = {	
+		original_tag = MON 
+	}
+}
+
+MON_morozov_design_bureau_organization = {
+	include = generic_mobile_tank_organization
+	icon = GFX_idea_morozov_design_bureau
+	
+	allowed = {	
+		original_tag = MON
+	}
+
+	visible = {
+		FROM = { is_ally_with = SOV }
+	}
+
+	available = {
+		FROM = { is_ally_with = SOV }
+		FROM = { has_completed_focus = MON_invite_soviet_production_experts }
+	}
+
+	add_trait = { 
+		token = MON_mio_trait_merge_plant_no_174
+		name = SOV_merge_tank_plant
+		icon = GFX_generic_mio_trait_icon_maximum_speed
+		special_trait_background = yes
+		position = { x=9 y=2 }
+		available = {
+			SOV = {
+				mio:SOV_morozov_design_bureau_organization = {
+					is_mio_trait_completed = SOV_mio_trait_merge_plant_no_174
+				}
+			}
+		}
+		equipment_bonus = {
+			maximum_speed = 0.05
+		}
+	}
+
+	add_trait = { 
+		token = MON_mio_trait_merge_plant_no_112
+		name = SOV_merge_tank_plant_2
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		special_trait_background = yes
+		position = { x=9 y=3 }
+		available = {
+			SOV = {
+				mio:SOV_morozov_design_bureau_organization = {
+					is_mio_trait_completed = SOV_mio_trait_merge_plant_no_112
+				}
+			}
+		}
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+	}
+
+	add_trait = { 
+		token = MON_mio_trait_merge_ural_heavy_machine_building_plant
+		name = SOV_merge_tank_plant_3
+		icon = GFX_generic_mio_trait_icon_soft_attack
+		special_trait_background = yes
+		position = { x=9 y=4 }
+		available = {
+			SOV = {
+				mio:SOV_morozov_design_bureau_organization = {
+					is_mio_trait_completed = SOV_mio_trait_merge_ural_heavy_machine_building_plant
+				}
+			}
+		}
+		equipment_bonus = {
+			soft_attack = 0.05
+		}
+	}
+}
+
+MON_mig_design_bureau_organization = {
+	include = generic_light_aircraft_organization
+	icon = GFX_idea_mig_design_bureau
+	
+	allowed = {	
+		original_tag = MON
+	}
+	
+	visible = {
+		FROM = { is_ally_with = SOV }
+	}
+
+	available = {
+		FROM = { is_ally_with = SOV }
+		FROM = { has_completed_focus = MON_invite_soviet_production_experts }
+	}
+
+	add_trait = { 
+		token = MON_mio_trait_merge_plant_no_28
+		name = SOV_merge_aircraft_plant_1
+		icon = GFX_generic_mio_trait_icon_build_cost_ic
+		special_trait_background = yes
+		position = { x=9 y=2 }
+		available = {
+			SOV = {
+				mio:SOV_mig_design_bureau_organization = {
+					is_mio_trait_completed = SOV_mio_trait_merge_plant_no_28
+				}
+			}
+		}
+		production_bonus = {
+			production_cost_factor = -0.05
+		}
+	}
+
+	add_trait = { 
+		token = MON_mio_trait_merge_plant_no_150
+		name = SOV_merge_aircraft_plant_2
+		#icon = GFX_generic_mio_department_icon_facilities
+		icon = GFX_generic_mio_trait_icon_air_agility
+		special_trait_background = yes
+		position = { x=9 y=3 }
+		available = {
+			SOV = {
+				mio:SOV_mig_design_bureau_organization = {
+					is_mio_trait_completed = SOV_mio_trait_merge_plant_no_150
+				}
+			}
+		}
+		equipment_bonus = {
+			air_agility = 0.05
+		}
+	}
+
+	add_trait = { 
+		token = MON_mio_trait_merge_vef_plant
+		name = SOV_merge_aircraft_plant_3
+		icon = GFX_generic_mio_trait_icon_detection
+		special_trait_background = yes
+		position = { x=9 y=4 }
+		available = {
+			SOV = {
+				mio:SOV_mig_design_bureau_organization = {
+					is_mio_trait_completed = SOV_mio_trait_merge_vef_plant
+				}
+			}
+		}
+		equipment_bonus = {
+			air_defence = 0.1
+			surface_detection = 0.15
+			sub_detection = 0.15
+		}
+	}
+}
+
+
+MON_sino_german_technical_mission_organization = {
+	include = generic_heavy_tank_organization
+	icon = GFX_idea_porsche
+	allowed = {
+		tag = MON
+	}
+	visible = {
+		FROM = { has_completed_focus = MON_throw_off_the_yoke }
+	}
+	available = {
+		FROM = { has_completed_focus = MON_invite_foreign_advisers }
+		NOT = {
+			From = { has_war_with = GER }
+		}
+	}
+}
+
+MON_maizuru_naval_arsenal_organization = {
+	include = generic_escort_ship_organization
+	icon = GFX_idea_maizuru_naval_arsenal
+	
+	allowed = {	 
+		tag = MON 
+	}
+	
+	visible = {
+		FROM = { has_completed_focus = MON_japanese_naval_designs }
+	}
+	
+	available = {
+		# When in a Foreign MIO, countries need to be at peace with original country
+		FROM = { NOT = { has_war_with = JAP } }
+	}
+}
+
+MON_mitsubishi_organization = {
+	include = generic_high_agility_fighter_aircraft_organization
+	icon = GFX_idea_mitsubishi
+	
+	allowed = {	 
+		tag = MON 
+	}
+	
+	visible = {
+		FROM = { has_completed_focus = MON_purchase_japanese_aircraft }
+	}
+	
+	available = {
+		# When in a Foreign MIO, countries need to be at peace with original country
+		FROM = { NOT = { has_war_with = JAP } }
+	}
+} 
+
+

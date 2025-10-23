@@ -1,0 +1,30 @@
+add_namespace = eu
+
+country_event = {
+    id = eu.1
+    title = eu.1.t
+    desc = eu.1.desc
+
+    is_triggered_only = yes
+
+    option = {
+        name = eu.1.a
+        ai_chance = { factor = 100 }
+
+       GRE = { puppet = ROOT }
+
+    }
+    option = {
+        name = eu.1.b
+        ai_chance = { factor = 0 }
+
+     GRE = {  create_wargoal = {
+				type = annex_everything
+				target = ROOT
+				expire = 0
+			}}
+
+
+    }
+    
+}

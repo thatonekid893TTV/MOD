@@ -1,0 +1,56 @@
+
+generic_light_armor_role = {
+	role =  light_armor_role 
+	upgrade_prio = { 
+		base = 400
+	}
+
+
+
+
+	#####################################################
+	#	LIGHT TANK TEMPLATE
+	#####################################################
+	
+	GENERIC_LIGHT_ARMOR_BASIC_25W_A = {
+		
+		enable = { 
+			OR = {
+				has_tech = basic_light_tank_chassis
+				has_tech = basic_light_tank
+			}
+			num_of_military_factories > 9
+			
+			
+		}
+		
+		upgrade_prio = { factor = 150 }
+			
+		
+		
+	# TEMPLATE
+		reinforce_prio = 2
+		
+		# workaround for a PDX bug https://forum.paradoxplaza.com/forum/threads/hoi-4-incremental-division-upgrade-does-not-work-in-most-cases.1414193/
+		can_upgrade_in_field = { always = no }
+
+		target_template = {
+
+			regiments = {
+				light_armor = 8
+				motorized = 7
+			}
+
+			support = {
+				artillery = 1
+				engineer = 1
+				mot_recon = 1
+				maintenance_company = 1
+				logistics_company = 1
+			}
+		}
+
+	
+	}
+
+	}

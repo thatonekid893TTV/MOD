@@ -1,0 +1,287 @@
+############################################################################################################
+#	Divisional AI mod - Tank Production AI Boost
+############################################################################################################
+
+
+small_armor_army_offset = { # Factory Size
+    enable = { arms_factory > 30 }
+    abort_when_not_enabled = yes
+	
+	ai_strategy = {
+        type = role_ratio
+        id = armor_role
+		value = 15
+    }
+	
+	
+	
+}
+
+medium_armor_army_offset = { # Factory Size
+    enable = { arms_factory > 45 }
+    abort_when_not_enabled = yes
+	
+	ai_strategy = {
+        type = role_ratio
+        id = armor_role
+		value = 30
+    }
+	
+	
+
+}
+
+large_armor_army_offset = { # Factory Size
+    enable = { arms_factory > 70 }
+    abort_when_not_enabled = yes
+	
+    ai_strategy = {
+        type = role_ratio
+        id = armor_role
+        value = 40
+    }
+	
+	
+	
+}
+
+
+
+
+#BUILDFUCKINGMECHS = {
+#	
+#	enable = {
+#		has_tech = mechanised_infantry
+#		
+#		arms_factory > 59
+#	
+#	}
+#	
+#	abort_when_not_enabled = yes
+#	
+#		ai_strategy = {
+#			type = equipment_variant_production_factor
+#			id = mechanized_equipment
+#			value = 40
+#		}
+#
+#}
+
+
+LightTankEffort = {
+
+	enable = {
+	
+	
+	
+		arms_factory > 30
+		
+		NOT = {has_tech = basic_medium_tank_chassis}
+		
+	
+	
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+       type = role_ratio
+        id = light_armor_role
+        value = 30
+    }
+
+}
+
+ 
+
+large_armor_production_offset = { # Army Size
+    enable = {
+		num_divisions > 56
+		has_army_size = { size > 56 type = infantry }
+	}
+	abort_when_not_enabled = yes
+	
+	
+	ai_strategy = {
+		type = role_ratio
+		id = armor_role
+		value = 30
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor
+		value = 30
+	}
+	
+	
+	
+	ai_strategy = {
+			type = build_army
+			id = armor_role
+			value = 20
+			}
+	
+	
+	
+	
+	
+	
+}
+
+large_armor_production_offset_TDs = { # Army Size
+    enable = {
+		num_divisions > 56
+		has_army_size = { size > 56 type = infantry }
+		has_tech = mobile_warfare
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor anti_tank
+		value = 45
+	}
+	
+	
+	
+}
+
+
+large_armor_production_offset_SPGs = { # Army Size
+    enable = {
+		num_divisions > 56
+		has_army_size = { size > 56 type = infantry }
+		has_tech = superior_firepower
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor artillery
+		value = 45
+	}
+	
+	
+	
+}
+
+massive_armor_production_offset = { # Army Size
+	enable = {
+		num_divisions > 112
+		has_army_size = { size > 112 type = infantry }
+	}
+	abort_when_not_enabled = yes
+	
+	
+	ai_strategy = {
+		type = role_ratio
+		id = armor_role
+		value = 80
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor
+		value = 80
+	}
+	
+	
+	
+	
+	
+}
+
+
+massive_armor_production_offset_TDs = { # Army Size
+	enable = {
+		num_divisions > 112
+		has_army_size = { size > 112 type = infantry }
+		has_tech = mobile_warfare
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor anti_tank
+		value = 45
+	}
+}
+
+
+massive_armor_production_offset_SPGs = { # Army Size
+	enable = {
+		num_divisions > 112
+		has_army_size = { size > 112 type = infantry }
+		has_tech = superior_firepower
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor artillery
+		value = 45
+	}
+}
+
+gigantic_armor_production_offset = { # Army Size
+	enable = {
+		num_divisions > 168
+		has_army_size = { size > 168 type = infantry }
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = role_ratio
+		id = armor_role
+		value = 50
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor
+		value = 50
+	}
+	
+	
+	
+	
+	
+	
+	}
+	
+	
+	
+	gigantic_armor_production_offset_TD = { # Army Size
+	enable = {
+		num_divisions > 168
+		has_army_size = { size > 168 type = infantry }
+		has_tech = mobile_warfare
+	}
+	abort_when_not_enabled = yes
+	
+	
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor anti_tank
+		value = 45
+	}
+	
+	
+}
+
+
+gigantic_armor_production_offset_SPGs = { # Army Size
+	enable = {
+		num_divisions > 168
+		has_army_size = { size > 168 type = infantry }
+		has_tech = superior_firepower
+	}
+	abort_when_not_enabled = yes
+	
+	
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor artillery
+		value = 45
+	}
+	
+	
+}

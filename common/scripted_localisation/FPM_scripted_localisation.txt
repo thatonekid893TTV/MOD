@@ -1,0 +1,63 @@
+
+defined_text = {
+	name = GetInflation
+	text = {
+		trigger = { has_country_flag = FRA_inflation_1 }
+		localization_key = FPM_low_inflation
+	}
+	text = {
+		trigger = { has_country_flag = FRA_inflation_2 }
+		localization_key = FPM_moderate_inflation
+	}
+	text = {
+		trigger = { has_country_flag = FRA_inflation_3 }
+		localization_key = FPM_high_inflation
+	}
+	text = {
+		trigger = { has_country_flag = FRA_inflation_4 }
+		localization_key = FPM_hyper_inflation
+	}
+	text = {
+		trigger = { has_country_flag = FRA_inflation_5 }
+		localization_key = FPM_critical_inflation
+	}
+	text = {
+		trigger = {
+			NOT = {
+				OR = {
+					has_country_flag = FRA_inflation_1
+					has_country_flag = FRA_inflation_2
+					has_country_flag = FRA_inflation_3
+					has_country_flag = FRA_inflation_4
+					has_country_flag = FRA_inflation_5
+				}
+			}
+		}
+		localization_key = FPM_no_inflation
+	}
+}
+
+defined_text = {
+	name = GetMarshalPlan
+	text = {
+		trigger = { is_in_faction_with = USA }
+		localization_key = FPMMarshalPlan
+	}
+	text = {
+		trigger = { NOT = { is_in_faction_with = USA } }
+		localization_key = FPMNoMarshalPlan
+	}
+}
+
+defined_text = {
+	name = GetMarshalPlanDesc
+	text = {
+		trigger = { is_in_faction_with = USA }
+		localization_key = FPMMarshalPlanDesc
+	}
+	text = {
+		trigger = { NOT = { is_in_faction_with = USA } }
+		localization_key = FPMNoMarshalPlanDesc
+	}
+}
+

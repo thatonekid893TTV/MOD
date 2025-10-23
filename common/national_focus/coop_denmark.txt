@@ -1,0 +1,441 @@
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+
+focus_tree = {
+	id = coop_denmark_focus
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 1
+			original_tag = DEN
+		}
+	}
+	default = no
+
+focus = {
+		id = DEN_COOP_secure_governemt
+		icon = GFX_goal_generic_demand_territory
+		x = 10
+		y = 0
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 50
+			add_country_leader_trait = emergency_powers
+			add_stability = 0.15
+		}
+	}
+
+
+
+focus = {
+		id = DEN_COOP_a_man_on_the_inside
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = DEN_COOP_secure_governemt }
+		mutually_exclusive = { focus = DEN_COOP_neutral_path }
+		mutually_exclusive = { focus = DEN_COOP_push_for_nazi_government }
+		x = -6
+		y = 1
+		relative_position_id = DEN_COOP_secure_governemt
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+focus = {
+		id = DEN_COOP_send_intel_to_london
+		icon = GFX_focus_chi_british_cooperation
+		prerequisite = { focus = DEN_COOP_a_man_on_the_inside }
+		x = 0
+		y = 1
+		relative_position_id = DEN_COOP_a_man_on_the_inside
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+focus = {
+		id = DEN_COOP_steal_weapons_from_germany
+		icon = GFX_goal_generic_axis_build_infantry
+		prerequisite = { focus = DEN_COOP_send_intel_to_london }
+		x = 0
+		y = 1
+		relative_position_id = DEN_COOP_send_intel_to_london
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+focus = {
+		id = DEN_COOP_assasinate_officers
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = DEN_COOP_steal_weapons_from_germany }
+		x = 0
+		y = 1
+		relative_position_id = DEN_COOP_steal_weapons_from_germany
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+focus = {
+		id = DEN_COOP_neutral_path
+		icon = GFX_goal_generic_neutrality_focus
+		prerequisite = { focus = DEN_COOP_secure_governemt }
+		mutually_exclusive = { focus = DEN_COOP_a_man_on_the_inside }
+		mutually_exclusive = { focus = DEN_COOP_push_for_nazi_government }
+		x = 0
+		y = 1
+		relative_position_id = DEN_COOP_secure_governemt
+		cost = 10
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+
+
+focus = {
+		id = DEN_COOP_clamp_down_on_resistance
+		icon = GFX_goal_continuous_restrict_freedom
+		prerequisite = { focus = DEN_COOP_neutral_path }
+		x = -2
+		y = 1
+		relative_position_id = DEN_COOP_neutral_path
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+focus = {
+		id = DEN_COOP_look_the_other_way
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		prerequisite = { focus = DEN_COOP_clamp_down_on_resistance }
+		x = 0
+		y = 1
+		relative_position_id = DEN_COOP_clamp_down_on_resistance
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+
+
+focus = {
+		id = DEN_COOP_send_divisions_east
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = DEN_COOP_neutral_path }
+		available = {
+			any_enemy_country = {
+				is_major = yes
+				has_government = communism
+			}
+		}
+		x = 2
+		y = 2
+		relative_position_id = DEN_COOP_neutral_path
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = { FRA_anti_bolshevist_volunteers }
+			DEN_christian_frederik_von_schalburg = {
+				add_corps_commander_role = {
+					traits = { inspirational_leader }
+					skill = 1
+					attack_skill = 1
+					defense_skill = 1
+					planning_skill = 1
+					logistics_skill = 2 
+				}
+			}
+			DEN_erling_hallas = {
+				add_corps_commander_role = {
+					traits = { politically_connected }
+					skill = 1
+					attack_skill = 3
+					defense_skill = 1
+					planning_skill = 1
+					logistics_skill = 1
+				}
+			}
+		}
+	}
+
+
+focus = {
+		id = DEN_COOP_guest_workers_to_GER
+		icon = GFX_goal_generic_construction2
+		prerequisite = { focus = DEN_COOP_neutral_path }
+		x = 0
+		y = 1
+		relative_position_id = DEN_COOP_neutral_path
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+focus = {
+		id = DEN_COOP_introduce_rationing
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = DEN_COOP_guest_workers_to_GER }
+		x = 0
+		y = 1
+		relative_position_id = DEN_COOP_guest_workers_to_GER
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+focus = {
+		id = DEN_assist_small_companies
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = DEN_COOP_introduce_rationing }
+		x = 0
+		y = 1
+		relative_position_id = DEN_COOP_introduce_rationing
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+focus = {
+		id = DEN_COOP_push_for_nazi_government
+		icon = GFX_focus_generic_strike_at_democracy1
+		prerequisite = { focus = DEN_COOP_secure_governemt }
+		mutually_exclusive = { focus = DEN_COOP_a_man_on_the_inside }
+		mutually_exclusive = { focus = DEN_COOP_neutral_path }
+		available = { has_idea_with_trait = fascist_demagogue }
+		x = 6
+		y = 1
+		relative_position_id = DEN_COOP_secure_governemt
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+focus = {
+		id = DEN_COOP_reposes_mills
+		icon = GFX_focus_generic_strike_at_democracy1
+		prerequisite = { focus = DEN_COOP_push_for_nazi_government }
+		x = 0
+		y = 1
+		relative_position_id = DEN_COOP_push_for_nazi_government
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = { FRA_rebuild_the_military }
+			#DECISIONS SLOWLY ALLOWING MORE MILLS TO BE KEPT, ABOVE IDEA AS FINAL REWARD
+		}
+	}
+focus = {
+		id = DEN_GER_millitary_cooperation
+		icon = GFX_goal_generic_scientific_exchange
+		prerequisite = { focus = DEN_COOP_reposes_mills }
+		available = {
+			is_in_faction_with = GER
+		}
+		x = -1
+		y = 1
+		relative_position_id = DEN_COOP_reposes_mills
+		cost = 10
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			GER = {
+				country_event = { id = denmark.34 days = 1 }
+				custom_effect_tooltip = needs_approval
+			}
+			# Actual reward effects added in event if germans approve
+			effect_tooltip = {
+				# Balance research bonus to 2 techs in armor, also in event
+				add_tech_bonus = {
+					name = armor_bonus
+					bonus = 1.0
+					uses = 2
+					category = armor
+				}
+			}
+		}
+	}
+focus = {
+		id = DEN_COOP_reorganize_the_army
+		icon = GFX_focus_generic_strike_at_democracy1
+		prerequisite = { focus = DEN_COOP_reposes_mills }
+		available = {
+			NOT = {has_country_flag = danish_army_seized_by_germany }
+		}
+		x = 1
+		y = 1
+		relative_position_id = DEN_COOP_reposes_mills
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			army_experience = 20
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 1.0
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
+focus = {
+		id = DEN_COOP_ask_for_independence
+		icon = GFX_focus_generic_strike_at_democracy1
+		prerequisite = { focus = DEN_GER_millitary_cooperation }
+		prerequisite = { focus = DEN_COOP_reorganize_the_army }
+		x = -1
+		y = 1
+		relative_position_id = DEN_COOP_reorganize_the_army
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}
+
+
+
+focus = {
+		id = DEN_issue_nationwide_blackout
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = DEN_COOP_neutral_path focus = DEN_COOP_push_for_nazi_government }
+		x = 3
+		y = 1
+		relative_position_id = DEN_COOP_neutral_path
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			#
+		}
+	}

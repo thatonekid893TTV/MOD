@@ -1,0 +1,1675 @@
+﻿focus_tree = {
+	id = provisional_france_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 0
+			tag = FRA
+		}
+	}
+	
+	default = no
+	continuous_focus_position = { x = 100 y = 1000 }
+
+	focus = {
+		id = FRA_liberation
+		icon = GFX_focus_liberation2
+		x = 18
+		y = 0
+		offset = {
+			x = 0
+			y = 0
+		}
+		prerequisite = {}
+		mutually_exclusive = { }
+		
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = yes
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_HISTORICAL }
+		completion_reward = {
+			set_cosmetic_tag = FRA_FPM_provisoire_democratic
+			add_war_support = 0.05
+			add_political_power = 120
+			set_capital = { state = 16 }
+			every_core_state = {
+				add_resistance_target = {
+					amount = 50
+					occupied = FRA
+					occupier = GER
+					days = 120
+					tooltip = FRA_liberation
+				}
+			}	
+		}
+	}
+
+	focus = {
+		id = FRA_return_pow
+		icon = GFX_focus_FRA_increase_years_of_service
+		x = -7
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_liberation
+		prerequisite = {
+			focus = FRA_liberation
+		}
+		mutually_exclusive = {
+
+		}
+
+		
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_war = no
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_manpower = 800000
+			add_stability = 0.05
+		}
+	}
+
+	# focus = {
+	# 	id = FRA_reconstruction
+	# 	icon = GFX_focus_generic_low_cost_housing
+	# 	x = -8
+	# 	y = 1
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	relative_position_id = FRA_liberation
+	# 	prerequisite = {
+	# 		focus = FRA_liberation
+	# 	}
+	# 	mutually_exclusive = {
+
+	# 	}
+
+		
+	# 	cost = 5
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+	# 	}
+		
+	# 	bypass = {
+	# 	}
+
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	completion_reward = {
+
+	# 	}
+	# }
+
+	# focus = {
+	# 	id = FRA_kickstart_economy
+	# 	icon = GFX_focus_SWI_issue_war_bonds
+	# 	x = 0
+	# 	y = 1
+	# 	offset = {
+	# 		x = 0
+	# 		y = 0
+	# 	}
+	# 	relative_position_id = FRA_reconstruction
+	# 	prerequisite = {
+	# 		focus = FRA_reconstruction
+	# 	}
+	# 	mutually_exclusive = {
+
+	# 	}
+
+		
+	# 	cost = 5
+	# 	ai_will_do = {
+	# 		factor = 1
+	# 	}
+	# 	available = {
+	# 	}
+		
+	# 	bypass = {
+	# 	}
+
+	# 	cancel_if_invalid = yes
+	# 	continue_if_invalid = no
+	# 	available_if_capitulated = no
+	# 	completion_reward = {
+	# 		add_building_construction = {
+	# 				type = arms_factory
+	# 				level = 3
+	# 				instant_build = yes
+	# 			}
+	# 		add_building_construction = {
+	# 				type = industrial_complex
+	# 				level = 5					
+	# 				instant_build = yes
+	# 			}
+	# 	}
+	# }
+
+
+	focus = {
+		id = FRA_french_liberation_army
+		icon = GFX_focus_army_reform
+		x = -5
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_liberation
+		prerequisite = {
+			focus = FRA_liberation
+		}
+		mutually_exclusive = {
+
+		}
+
+		
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_timed_idea = { idea = FRA_french_liberation_army days = 365 }
+			army_experience = 25
+		}
+	}
+
+	focus = {
+		id = FRA_lend_lease
+		icon = GFX_focus_generic_combined_arms
+		x = -1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_french_liberation_army
+		prerequisite = {
+			focus = FRA_french_liberation_army
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+			NOT = {
+				is_in_faction_with = USA
+			}
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			USA = {
+				send_equipment = {
+					type = infantry_equipment
+					amount = 5000
+					target = FRA
+				}
+				send_equipment = {
+					type = support_equipment
+					amount = 500
+					target = FRA
+				}
+				send_equipment = {
+					type = artillery_equipment_2
+					amount = 500
+					target = FRA
+				}
+				send_equipment = {
+					type = motorized_equipment_1
+					amount = 1000
+					target = FRA
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_lessons_of_1940
+		icon = GFX_goal_generic_army_doctrines
+		dynamic = yes
+		x = 1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_french_liberation_army
+		prerequisite = {
+			focus = FRA_french_liberation_army
+		}
+		mutually_exclusive = {
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			army_experience = 100
+			add_doctrine_cost_reduction = {
+				name = FRA_lessons_of_1940
+				category = land_doctrine
+				uses = 2
+				cost_reduction = 0.5
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_division_blindee
+		icon = GFX_focus_generic_armour_french
+		x = -1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_lessons_of_1940
+		prerequisite = {
+			focus = FRA_lessons_of_1940
+		}
+		prerequisite = {
+			focus = FRA_lend_lease
+		}
+		mutually_exclusive = {
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			division_template = {
+				name = "Division Blindée" 	
+				division_names_group = FRA_ARM_03
+
+				regiments = {
+					medium_armor = { x = 0 y = 0 }		
+					medium_armor = { x = 0 y = 1 }		
+					medium_armor = { x = 0 y = 2 }
+					medium_armor = { x = 1 y = 0 }		
+					medium_armor = { x = 1 y = 1 }		
+					medium_armor = { x = 1 y = 2 }
+					mechanized = { x = 2 y = 0 }		
+					mechanized = { x = 2 y = 1 }		
+					mechanized = { x = 2 y = 2 }
+					mechanized = { x = 3 y = 0 }		
+					mechanized = { x = 3 y = 1 }		
+					mechanized = { x = 3 y = 2 }
+					mot_artillery_brigade = { x = 4 y = 0 }
+				}
+				support = {
+					light_tank_recon = { x = 0 y = 0 }      		
+					anti_air = { x = 0 y = 1 }
+					anti_tank = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					field_hospital = { x = 0 y = 4 }
+				}
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 16 }
+				create_unit = {
+					division = "name = \"2e Division Blindée\" division_template = \"Division Blindée\" start_experience_factor = 0.75" 
+					owner = FRA
+				}
+				create_unit = {
+					division = "name = \"1re Division Blindée\" division_template = \"Division Blindée\" start_experience_factor = 0.5" 
+					owner = FRA
+				}
+				create_unit = {
+					division = "name = \"5e Division Blindée\" division_template = \"Division Blindée\" start_experience_factor = 0.5" 
+					owner = FRA
+				}
+			}
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+				}
+				create_equipment_variant = {
+					name = "ARL 44" 
+					type = heavy_tank_chassis_3
+					parent_version = 0
+					modules = {
+						main_armament_slot = tank_heavy_cannon_3
+						turret_type_slot = tank_heavy_three_man_tank_turret
+						suspension_type_slot = tank_bogie_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = tank_radio_2
+						special_type_slot_2 = additional_machine_guns
+						special_type_slot_3 = sloped_armor
+					}
+					upgrades = {
+						tank_nsb_engine_upgrade = 12
+						tank_nsb_armor_upgrade = 20
+					}
+					icon = "GFX_FRA_heavy_CCA_camo"
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = heavy_tank_equipment_3
+					amount = 500
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_oath_of_kufra
+		icon = GFX_focus_FRA_groupes_francs
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_division_blindee
+		prerequisite = {
+			focus = FRA_division_blindee
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		cost = 5	
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_war_with = GER
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_ideas = FRA_oath_of_kufra
+		}
+	}
+
+	focus = {
+		id = FRA_constituent_assembly
+		icon = GFX_focus_generic_improve_the_administration
+		x = 5
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_liberation
+		prerequisite = {
+			focus = FRA_liberation
+		}
+		mutually_exclusive = {
+
+		}
+
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_war = no
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_political_power = 150
+			remove_ideas = FRA_national_council_of_the_resistance
+			set_variable = {
+				var = 4_republic_stability_factor
+				value = 0
+			}
+			set_variable = {
+				var = 4_republic_war_support_factor
+				value = 0
+			}
+			set_variable = {
+				var = 4_republic_surrender_limit
+				value = 0
+			}
+			set_variable = {
+				var = 4_republic_political_power_factor
+				value = 0
+			}
+			set_variable = {
+				var = 4_republic_political_advisor_cost_factor
+				value = 0
+			}
+			set_variable = {
+				var = 4_republic_economy_cost_factor
+				value = 0
+			}
+			set_variable = {
+				var = 4_republic_economy_trade_laws_factor
+				value = 0
+			}
+			set_variable = {
+				var = 4_republic_economy_mobilization_laws_factor
+				value = 0
+			}
+			set_variable = {
+				var = 4_republic_democracy_drift
+				value = 0
+			}
+			set_variable = {
+				var = 4_republic_political_power_gain
+				value = 0
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_gaullism
+		icon = GFX_focus_FRA_degaulle
+		x = -2
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_constituent_assembly
+		prerequisite = {
+			focus = FRA_constituent_assembly
+		}
+		mutually_exclusive = {
+			focus = FRA_tripartisme
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_country_leader_trait = FPM_savior_of_france
+			set_party_name = {
+				ideology = democratic
+				long_name = FRA_rpf_long
+				name = FRA_rpf
+			}
+			
+		}
+	}
+	focus = {
+		id = FRA_sideline_the_assembly
+		icon = GFX_goal_generic_forceful_treaty
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_gaullism
+		prerequisite = {
+			focus = FRA_gaullism
+		}
+		mutually_exclusive = {
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			custom_effect_tooltip = FRA_sideline_assembly_mod
+			set_variable = {
+				var = 4_republic_stability_factor
+				value = 0.1
+			}
+		}
+	}
+	focus = {
+		id = FRA_align_the_opposition
+		icon = GFX_goal_support_democracy
+		x = -1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_sideline_the_assembly
+		prerequisite = {
+			focus = FRA_sideline_the_assembly
+		}
+		mutually_exclusive = {
+		}
+
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			set_temp_variable = { FRA_communism = party_popularity@communism }
+			multiply_temp_variable = { FRA_communism = 0.5 }
+			add_popularity = { ideology = democratic popularity = FRA_communism }
+			multiply_temp_variable = { FRA_communism = -1 }
+			add_popularity = { ideology = communism popularity = FRA_communism }
+		}
+	}
+	focus = {
+		id = FRA_a_deal_with_bidault
+		icon = GFX_focus_generic_diplomatic_treaty
+		x = 1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_sideline_the_assembly
+		prerequisite = {
+			focus = FRA_sideline_the_assembly
+		}
+		mutually_exclusive = {
+		}
+
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = FRA_presidential_democracy
+		icon = GFX_focus_FRA_national_bloc
+		x = 1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_align_the_opposition
+		prerequisite = {
+			focus = FRA_align_the_opposition
+		}
+		prerequisite = {
+			focus = FRA_a_deal_with_bidault
+		}
+		mutually_exclusive = {
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			custom_effect_tooltip = FRA_presidential_democracy_mod
+			mark_focus_tree_layout_dirty = yes
+			set_variable = {
+				var = 4_republic_war_support_factor
+				value = 0.1
+			}
+			set_variable = {
+				var = 4_republic_surrender_limit
+				value = 0.15
+			}
+		}
+	}
+	focus = {
+		id = FRA_tripartisme
+		icon = GFX_goal_generic_national_unity
+		x = 3
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_constituent_assembly
+		prerequisite = {
+			focus = FRA_constituent_assembly
+		}
+		mutually_exclusive = {
+			focus = FRA_gaullism
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_stability = 0.05
+			country_event = fpmprovgov.1
+		}
+	}
+	focus = {
+		id = FRA_christian_democracy
+		icon = GFX_focus_mex_restore_the_army_of_christ
+		x = -2
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_tripartisme
+		prerequisite = {
+			focus = FRA_tripartisme
+		}
+		mutually_exclusive = {
+			focus = FRA_workers_internationale
+			focus = FRA_parti_des_75000
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_country_leader_role = {
+				character = FRA_georges_bidault
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = liberalism
+					traits = {
+						FPM_christian_democrat
+					}
+				}
+				promote_leader = yes
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = FPM_mrp_long
+				name = FPM_mrp
+			}
+		}
+	}
+	focus = {
+		id = FRA_reestablish_the_senate
+		icon = GFX_goal_generic_major_alliance
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_christian_democracy
+		prerequisite = {
+			focus = FRA_christian_democracy
+			focus = FRA_workers_internationale
+		}
+		mutually_exclusive = {
+			focus = FRA_council_of_the_republic
+			focus = FRA_unicameralism
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			custom_effect_tooltip = FRA_reestablish_senate_mod
+			set_variable = {
+				var = 4_republic_political_power_factor
+				value = 0.2
+			}
+		}
+	}
+	focus = {
+		id = FRA_a_second_third_republic
+		icon = GFX_focus_FRA_imperial_plebiscite
+		x = 1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_reestablish_the_senate
+		prerequisite = {
+			focus = FRA_reestablish_the_senate
+			focus = FRA_council_of_the_republic
+		}
+		mutually_exclusive = {
+			focus = FRA_republic_of_the_assembly
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			custom_effect_tooltip = FRA_second_third_mod
+			set_variable = {
+				var = 4_republic_democracy_drift
+				value = 0.15
+			}
+		}
+	}
+	focus = {
+		id = FRA_workers_internationale 
+		icon = GFX_focus_FRA_pop_front
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_tripartisme
+		prerequisite = {
+			focus = FRA_tripartisme
+		}
+		mutually_exclusive = {
+			focus = FRA_christian_democracy
+			focus = FRA_parti_des_75000
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_country_leader_trait = FPM_resistance_member
+			
+		}
+	}
+	focus = {
+		id = FRA_council_of_the_republic
+		icon = GFX_focus_generic_self_management
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_workers_internationale
+		prerequisite = {
+			focus = FRA_christian_democracy
+			focus = FRA_workers_internationale
+			focus = FRA_parti_des_75000
+		}
+		mutually_exclusive = {
+			focus = FRA_reestablish_the_senate
+			focus = FRA_unicameralism
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			custom_effect_tooltip = FRA_council_of_republic_mod
+			mark_focus_tree_layout_dirty = yes
+			set_variable = {
+				var = 4_republic_political_power_factor
+				value = 0.1
+			}
+			set_variable = {
+				var = 4_republic_political_advisor_cost_factor
+				value = -0.25
+			}
+			set_variable = {
+				var = 4_republic_economy_cost_factor
+				value = -0.25
+			}
+			set_variable = {
+				var = 4_republic_economy_trade_laws_factor
+				value = -0.25
+			}
+			set_variable = {
+					var = 4_republic_economy_mobilization_laws_factor
+					value = -0.25
+			}
+		}
+	}
+	focus = {
+		id = FRA_parti_des_75000 
+		icon = GFX_focus_focus_fra_maquis
+		x = 2
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_tripartisme
+		prerequisite = {
+			focus = FRA_tripartisme
+		}
+		mutually_exclusive = {
+			focus = FRA_christian_democracy
+			focus = FRA_workers_internationale
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_country_leader_role = {
+				character = FRA_maurice_thorez
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = socialism
+					traits = {
+						son_of_the_people
+					}
+				}
+				promote_leader = yes
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = FRA_communism_party_long
+				name = FRA_communism_party
+			}
+		}
+	}
+	focus = {
+		id = FRA_unicameralism
+		icon = GFX_focus_generic_soviet_politics
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_parti_des_75000
+		prerequisite = {
+			focus = FRA_workers_internationale
+			focus = FRA_parti_des_75000
+		}
+		mutually_exclusive = {
+			focus = FRA_reestablish_the_senate
+			focus = FRA_council_of_the_republic
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			custom_effect_tooltip = FRA_unicameralism_mod
+			set_variable = {
+				var = 4_republic_political_advisor_cost_factor
+				value = -0.5
+			}
+			set_variable = {
+				var = 4_republic_economy_cost_factor
+				value = -0.5
+			}
+			set_variable = {
+				var = 4_republic_economy_trade_laws_factor
+				value = -0.5
+			}
+			set_variable = {
+					var = 4_republic_economy_mobilization_laws_factor
+					value = -0.5
+			}
+		}
+	}
+	focus = {
+		id = FRA_republic_of_the_assembly
+		icon = GFX_focus_strikes_waves
+		x = -1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_unicameralism
+		prerequisite = {
+			focus = FRA_unicameralism
+			focus = FRA_council_of_the_republic
+		}
+		mutually_exclusive = {
+			focus = FRA_a_second_third_republic
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			custom_effect_tooltip = FRA_rep_of_assembly_mod
+			set_variable = {
+				var = 4_republic_political_power_gain
+				value = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_the_fourth_republic
+		icon = GFX_focus_fra_french_union
+		x = 2
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_presidential_democracy
+		prerequisite = {
+			focus = FRA_presidential_democracy
+			focus = FRA_a_second_third_republic
+			focus = FRA_republic_of_the_assembly
+		}
+		mutually_exclusive = {
+		}
+
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = FRA_sideline_the_assembly
+						has_completed_focus = FRA_reestablish_the_senate
+						has_completed_focus = FRA_council_of_the_republic
+						has_completed_focus = FRA_unicameralism
+					}
+				}
+				custom_effect_tooltip = 4_republic_tt
+			}
+			else = {
+				add_dynamic_modifier = {
+					modifier = FRA_fourth_republic_constitution_modifier
+				}
+			}
+			set_cosmetic_tag = FRA_FOURTH_REPUBLIC
+			if = {
+				limit = {
+					has_completed_focus = FRA_parti_des_75000
+				}
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = yes
+					election_frequency = 48
+				}
+			}
+
+			
+			else = {
+				add_country_leader_role = {
+					character = FRA_paul_ramadier
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = socialism
+					}
+					promote_leader = yes
+				}
+				set_party_name = {
+				ideology = democratic
+				long_name = FPM_sfio_long
+				name = FPM_sfio
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FRA_the_marshall_plan
+		icon = {
+			trigger = {
+				is_in_faction_with = USA
+			}
+			value = GFX_focus_generic_american_investments
+		}
+		icon = {
+			value = GFX_goal_generic_construction2
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		dynamic = yes
+		x = -1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_liberation
+		prerequisite = {
+			focus = FRA_liberation
+		}
+		mutually_exclusive = {
+
+		}
+
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_war = no
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_stability = 0.05
+			unlock_decision_category_tooltip = FPM_rebuilding_france
+			set_variable = { FPM_econ_recovery_cost = 50 }
+		}
+	}
+	focus = {
+		id = FRA_social_security
+		icon = GFX_focus_generic_concessions
+		x = 1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_the_marshall_plan
+		prerequisite = {
+			focus = FRA_the_marshall_plan
+		}
+		mutually_exclusive = {
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			set_variable = { FPM_econ_recovery_cost = 25 }
+			custom_effect_tooltip = FPM_social_security
+		}
+	}
+	focus = {
+		id = FRA_renewed_dirigisme
+		icon = GFX_focus_FRA_dirigism
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		relative_position_id = FRA_social_security
+		prerequisite = {
+			focus = FRA_social_security
+		}
+		mutually_exclusive = {
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_timed_idea = {
+				idea = FRA_reconstruction2
+				days = 730
+			}
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+				}
+				prioritize = {
+					16 15 29 785 18
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_core_of = ROOT
+				}
+				prioritize = {
+					16 15 29 785 18
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_european_integration
+		icon = GFX_focus_generic_the_giant_wakes
+		x = -1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_the_marshall_plan
+		prerequisite = {
+			focus = FRA_the_marshall_plan
+		}
+		mutually_exclusive = {
+		}
+
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_completed_focus = FRA_the_fourth_republic
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					capital_scope = {
+						is_on_continent = europe
+					}
+					OR = {
+						is_in_faction_with = FRA
+						is_subject_of = FRA
+					}
+					original_tag = BEL
+					original_tag = LUX
+					original_tag = HOL
+					original_tag = GER
+					original_tag = WGR
+					original_tag = ITA
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = FRA_european_integration
+				}
+			}
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = FRA_coal_and_steel
+		icon = GFX_focus_generic_steel
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_european_integration
+		prerequisite = {
+			focus = FRA_european_integration
+		}
+		mutually_exclusive = {
+		}
+
+		
+		cost = 10
+		ai_will_do = {
+			factor = 1	
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					capital_scope = {
+						is_on_continent = europe
+					}
+					OR = {
+						is_in_faction_with = FRA
+						is_subject_of = FRA
+					}
+					original_tag = BEL
+					original_tag = LUX
+					original_tag = HOL
+					original_tag = GER
+					original_tag = WGR
+					original_tag = ITA
+				}
+				add_ideas = FRA_coal_and_steel
+			}
+			add_ideas = FRA_coal_and_steel
+		}
+	}
+	focus = {
+		id = FRA_the_european_union
+		icon = GFX_focus_generic_the_council_of_europe
+		x = 0
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_coal_and_steel
+		prerequisite = {
+			focus = FRA_coal_and_steel
+		}
+		mutually_exclusive = {
+		}
+
+		
+		cost = 20
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			IF = {
+				limit = {
+					is_faction_leader = yes
+				}
+				set_faction_name = BEL_european_union
+			}
+
+			ELSE_IF = {
+				limit = {
+					is_in_faction = yes
+					is_faction_leader = no
+				}
+
+				leave_faction = yes
+
+				custom_effect_tooltip = generic_skip_one_line_tt
+
+				create_faction = BEL_european_union
+			}
+
+			ELSE = {
+				create_faction = BEL_european_union
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = BEL_the_council_of_europe_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = BEL_european_community_tt
+			custom_effect_tooltip = generic_skip_one_line_tt
+			set_cosmetic_tag = european_union_leader
+
+			hidden_effect = {
+				IF = { 
+					limit = {
+						NOT = {
+							has_global_flag = HUN_otto_von_habsburg_has_joined_hungary_flag
+							has_global_flag = AUS_otto_von_habsburg_has_joined_austria_flag
+						}
+					}
+
+					country_event = {
+						id = ww_BEL_event_diplomatic.29
+						hours = 24
+					}
+					
+					news_event = { id = mtg_news.54 days = 1 }
+				}
+			}
+		}
+	}
+	focus = {
+		id = FRA_epuration_legale 
+		icon = GFX_focus_AUS_lawmaking_leniency
+		x = 1
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_liberation
+		prerequisite = {
+			focus = FRA_liberation
+		}
+		mutually_exclusive = {
+		}
+
+		
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = FRA_epuration_sauvage
+				add_idea = FRA_epuration_legale
+			}
+		}
+	}
+	focus = {
+		id = FRA_womens_suffrage
+		icon = GFX_focus_FRA_vote_for_women
+		x = 3
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_liberation
+		prerequisite = {
+			focus = FRA_liberation
+		}
+		mutually_exclusive = {
+		}
+
+		
+		cost = 2
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.15
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = FRA_ecole_nationale_dadministration
+		icon = GFX_focus_generic_treaty
+		x = -3
+		y = 1
+		offset = {
+			x = 0
+			y = 0
+		}
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		relative_position_id = FRA_liberation
+		prerequisite = {
+			focus = FRA_liberation
+		}
+		mutually_exclusive = {
+		}
+
+		
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			add_ideas = FRA_ecole_nationale_dadministration
+		}
+	}
+
+}

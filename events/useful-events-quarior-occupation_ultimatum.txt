@@ -1,0 +1,333 @@
+add_namespace = useful-events-quarior-occupation_ultimatum
+#[FROM.GetNameDefCap] send a ultimatum
+country_event = {
+	id = useful-events-quarior-occupation_ultimatum.1
+	title = useful-events-quarior-occupation_ultimatum.1.t
+	desc = useful-events-quarior-occupation_ultimatum.1.d
+	picture = GFX_report_event_soviet_tank_parade
+	is_triggered_only = yes
+	timeout_days = 10
+	immediate = {
+		hidden_effect = {
+			while_loop_effect = {
+				limit = { 
+					any_owned_state = {
+						NOT = {
+							is_claimed_by = FROM
+						}
+						any_neighbor_state = {
+							OR = {
+								is_owned_by = FROM
+								is_claimed_by = FROM
+							}
+						}
+					}
+				}
+				every_owned_state = {
+					limit = { 
+						NOT = {
+							is_claimed_by = FROM
+						}
+						any_neighbor_state = {
+							OR = {
+								is_owned_by = FROM
+								is_claimed_by = FROM
+							}
+						}
+					}
+					add_claim_by = FROM
+					add_claim_by = ROOT
+				}
+			}
+		}
+	}
+	option = {
+		name = useful-events-quarior-occupation_ultimatum.1.a
+		trigger = {
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				# Don't accept if in a faction that can protect them
+				factor = 0
+				NOT = {
+					is_in_faction_with = FROM
+				}
+				OR = {
+					any_other_country = {
+						is_major = yes
+						is_in_faction_with = ROOT
+					}
+					FROM = {
+						surrender_progress > 0.5
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ROOT
+				}
+			}
+			modifier = {
+				# Don't accept if war with FROM
+				factor = 0
+				has_war_with = FROM
+			}
+		}
+		set_temp_variable = {
+			from_v = FROM
+		}
+		effect_tooltip = {
+			var:from_v = {
+				if = {
+					limit = {
+						has_government = ROOT
+						ROOT = {
+							all_owned_state = {
+								is_claimed_by = var:from_v
+							}
+						}
+					}
+					puppet = ROOT
+				}
+				else = {
+					if = {
+						limit = {
+							ROOT = {
+								all_owned_state = {
+									is_claimed_by = var:from_v
+								}
+							}
+						}
+						custom_effect_tooltip = GAME_OVER_TT
+					}
+					ROOT = {
+						every_owned_state = {
+							limit = {
+								is_claimed_by = var:from_v
+							}
+							if = {
+								limit = {
+									is_fully_controlled_by = ROOT
+								}
+								transfer_state_to = var:from_v
+							}
+							else = {
+								set_state_owner_to = var:from_v
+							}
+						}
+					}
+				}
+			}
+		}
+		hidden_effect = {
+			news_event = {
+				id = useful-events-quarior-occupation_ultimatum.2
+				days = 1
+			}
+		}
+	}
+	option = {
+		name = useful-events-quarior-occupation_ultimatum.1.b
+		trigger = {
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				add = 1
+				OR = {
+					any_other_country = {
+						is_major = yes
+						is_in_faction_with = ROOT
+						NOT = {
+							is_in_faction_with = FROM
+						}
+					}
+				}
+			}
+			modifier = {
+				add = 5
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ROOT
+				}
+			}
+			modifier = {
+				factor = 2
+				is_in_faction = yes
+				NOT = {
+					is_in_faction_with = FROM
+				}
+				any_allied_country = {
+					is_major = yes
+					has_capitulated = no
+				}
+			}
+		}
+		effect_tooltip = {
+			FROM = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = rejected_demands
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = ROOT
+					expire = 0
+				}
+			}
+		}
+		hidden_effect = {
+			news_event = {
+				id = useful-events-quarior-occupation_ultimatum.3
+				days = 1
+			}
+		}
+	}
+}
+
+#[FROM.GetNameDefCap] occupy by [FROM.FROM.GetNameDef]
+news_event = {
+	id = useful-events-quarior-occupation_ultimatum.2
+	title = useful-events-quarior-occupation_ultimatum.2.t
+	desc = useful-events-quarior-occupation_ultimatum.2.d
+	picture = GFX_news_event_japanese_army_parade
+	is_triggered_only = yes
+	timeout_days = 10
+	major = yes
+	option = {
+		name = useful-events-quarior-occupation_ultimatum.2.a
+		trigger = {
+			tag = FROM.FROM
+		}
+		ai_chance = {
+			base = 100
+		}
+		set_temp_variable = {
+			from_v = FROM.FROM
+		}
+		set_temp_variable = {
+			previous_country = FROM
+		}
+		var:from_v = {
+			if = {
+				limit = {
+					has_government = FROM
+					FROM = {
+						all_owned_state = {
+							is_claimed_by = var:from_v
+						}
+					}
+				}
+				puppet = FROM
+			}
+			else = {
+				var:previous_country = {
+					every_owned_state = {
+						limit = {
+							is_claimed_by = var:from_v
+						}
+						if = {
+							limit = {
+								is_fully_controlled_by = var:previous_country
+							}
+							transfer_state_to = var:from_v
+						}
+						else = {
+							set_state_owner_to = var:from_v
+						}
+					}
+				}
+			}
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-occupation_ultimatum.2.b
+		trigger = {
+			NOT = {
+				tag = FROM.FROM
+			}
+			NOT = {
+				tag = FROM
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-occupation_ultimatum.2.c
+		trigger = {
+			tag = FROM
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+}
+
+#[FROM.GetNameDefCap] against the occupation of [FROM.FROM.GetNameDef]
+news_event = {
+	id = useful-events-quarior-occupation_ultimatum.3
+	title = useful-events-quarior-occupation_ultimatum.3.t
+	desc = useful-events-quarior-occupation_ultimatum.3.d
+	picture = GFX_news_event_tank_factory
+	is_triggered_only = yes
+	timeout_days = 10
+	major = yes
+	option = {
+		name = useful-events-quarior-occupation_ultimatum.3.a
+		trigger = {
+			tag = FROM.FROM
+		}
+		ai_chance = {
+			base = 70
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = rejected_demands
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+			expire = 0
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-occupation_ultimatum.3.b
+		trigger = {
+			NOT = {
+				tag = FROM.FROM
+			}
+			NOT = {
+				tag = FROM
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+	option = {
+		name = useful-events-quarior-occupation_ultimatum.3.c
+		trigger = {
+			tag = FROM
+		}
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+		}
+	}
+}

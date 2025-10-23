@@ -1,0 +1,247 @@
+
+#NOTE
+#Only the decision categorys need to use gram_decision, the decisions themselvs dont need to use that extension
+#Use - gram_decision_(COUNTRY TAG)_(DECISION CATEGORY NAME)
+#Example - gram_decision_eng_imperial_family
+
+#Italian Investment
+gram_decision_alb_italian_investment = {
+	icon = GFX_gram_decision_category_icon_alb_italian_investment
+	picture = GFX_gram_decision_picture_alb_italian_investment
+
+	visible = {
+		has_country_flag = gram_flag_alb_italian_investment
+		OR = {
+			has_idea = gram_idea_alb_treaty_of_tirana_1
+			has_idea = gram_idea_alb_treaty_of_tirana_2
+			has_idea = gram_idea_alb_treaty_of_tirana_3
+			has_idea = gram_idea_alb_treaty_of_tirana_4
+			has_idea = gram_idea_alb_treaty_of_tirana_5
+			has_idea = gram_idea_alb_treaty_of_tirana_6
+			has_idea = gram_idea_alb_treaty_of_tirana_7
+			has_idea = gram_idea_alb_treaty_of_tirana_8
+			has_idea = gram_idea_alb_treaty_of_tirana_9
+			has_idea = gram_idea_alb_treaty_of_tirana_10	
+		}
+	}
+}
+
+#2 Year Plan
+gram_decision_alb_2_year_plan = {
+	icon = GFX_gram_decision_category_icon_alb_2_year_plan
+	picture = GFX_gram_decision_picture_alb_2_year_plan
+
+	visible = {
+		has_country_flag = gram_flag_alb_two_year_plan_hoxha
+		has_government = communism
+		tag = ALB
+	}
+}
+
+#Back in Control
+gram_decision_alb_back_in_control = {
+	icon = GFX_gram_decision_category_icon_alb_back_in_control
+	picture = GFX_gram_decision_picture_alb_back_in_control
+
+	visible = {
+		has_country_flag = gram_flag_alb_new_italian_republic 
+		tag = ITA
+	}
+}
+
+#Balkan Project
+
+#Bulgaria
+gram_decision_alb_balkan_project_bulgaria = {
+	icon = GFX_gram_decision_category_icon_alb_balkan_project
+	picture = GFX_gram_decision_picture_alb_balkan_project_bulgaria
+
+	visible = {
+		has_country_flag = gram_flag_alb_balkan_project_bulgaria
+		NOT = { 
+			BUL = { 
+				is_puppet_of = ALB 
+			} 
+		}
+		BUL = { 
+			exists = yes 
+		}
+		tag = ALB
+	}
+}
+
+#Greece
+gram_decision_alb_balkan_project_greece = {
+	icon = GFX_gram_decision_category_icon_alb_balkan_project
+	picture = GFX_gram_decision_picture_alb_balkan_project_greece
+
+	visible = {
+		has_country_flag = gram_flag_alb_balkan_project_greece
+		NOT = { 
+			GRE = { 
+				is_puppet_of = ALB 
+			} 
+		}
+		GRE = { 
+			exists = yes 
+		}
+		tag = ALB
+	}
+}
+
+#Romania
+gram_decision_alb_balkan_project_romania = {
+	icon = GFX_gram_decision_category_icon_alb_balkan_project
+	picture = GFX_gram_decision_picture_alb_balkan_project_romania
+
+	visible = {
+		has_country_flag = gram_flag_alb_balkan_project_romania
+		NOT = { 
+			ROM = { 
+				is_puppet_of = ALB 
+			} 
+		}
+		ROM = { 
+			exists = yes 
+		}
+		tag = ALB
+	}
+}
+
+#Yugoslavia
+gram_decision_alb_balkan_project_yugoslavia = {
+	icon = GFX_gram_decision_category_icon_alb_balkan_project
+	picture = GFX_gram_decision_picture_alb_balkan_project_yugoslavia
+
+	visible = {
+		has_country_flag = gram_flag_alb_balkan_project_yugoslavia
+		NOT = { 
+			YUG = { 
+				is_puppet_of = ALB 
+			} 
+		}
+		YUG = { 
+			exists = yes 
+		}
+		tag = ALB
+	}
+}
+
+#Crumbling Nation
+gram_decision_alb_crumbling_nation = {
+	icon = GFX_gram_decision_category_icon_alb_crumbling_nation
+	picture = GFX_gram_decision_picture_alb_crumbling_nation
+
+	visible = {
+		has_country_flag = gram_flag_alb_crumbling_nation_hoxha
+		tag = ALB
+	}
+}
+
+#Cult of Personality 
+gram_decision_alb_cult_of_personality = {
+	icon = GFX_gram_decision_category_icon_alb_cult_of_personality
+	picture = GFX_gram_decision_picture_alb_cult_of_personality
+
+	visible = {
+		has_country_flag = gram_flag_alb_cult_of_personality_hoxha
+		has_country_leader = { 
+			character = gram_character_ALB_enver_hoxha 
+			ruling_only = yes 
+		}
+		tag = ALB
+	}
+}
+
+#Deal With Mussolini
+gram_decision_alb_deal_with_mussolini = {
+	icon = GFX_gram_decision_category_icon_alb_deal_with_mussolini
+	picture = GFX_gram_decision_picture_alb_deal_with_mussolini
+
+	visible = {
+		has_country_flag = gram_flag_alb_planning_of_italian_uprising
+		tag = ALB
+	}
+}
+
+#Expansion Plans
+gram_decision_alb_expansion_plans = {
+	icon = GFX_gram_decision_category_icon_alb_expansion_plans
+	picture = GFX_gram_decision_picture_alb_expansion_plans
+
+	visible = {
+		has_country_flag = gram_flag_alb_expansion_plans_balkan
+		tag = ALB
+	}
+}
+
+#Faction Expansion
+gram_decision_alb_faction_expansion = {
+	icon = GFX_gram_decision_category_icon_alb_faction_expansion
+
+	visible = {
+		has_country_flag = gram_flag_alb_faction_expansion_byzantine
+		tag = ALB
+	}
+}
+
+#Investment into Rural Areas
+gram_decision_alb_investment_into_rural_areas = {
+	icon = GFX_gram_decision_category_icon_alb_investment_into_rural_areas
+	picture = GFX_gram_decision_picture_alb_investment_into_rural_areas
+
+	visible = {
+		has_country_flag = gram_flag_alb_rural_area_investment_balkan
+		tag = ALB
+	}
+}
+
+#Monarchy is Back
+gram_decision_alb_monarchy_is_back = {
+	icon = GFX_gram_decision_category_icon_alb_monarchy_is_back
+
+	visible = {
+		has_country_flag = gram_flag_alb_monarchy_can_come_back
+		has_government = neutrality
+		tag = ALB
+	}
+}
+
+#Preparations for Invasion
+gram_decision_alb_preparations_for_invasion = {
+	icon = GFX_gram_decision_category_icon_alb_preparations_for_invasion
+
+	visible = {
+		has_country_flag = gram_flag_alb_preparations_for_invasion
+		NOT = { 
+			has_country_flag = gram_flag_alb_no_more_war_preparations 
+		}
+		tag = ALB
+	}
+}
+
+#Reclamation of Empire
+gram_decision_alb_reclamation_of_empire = {
+	icon = GFX_gram_decision_category_icon_alb_reclamation_of_empire
+
+  	visible = {
+		has_country_flag = gram_flag_alb_reclamation_of_empire_byzantine
+		tag = ALB
+	}
+} 
+
+#The New Capital
+gram_decision_alb_the_new_capital = {
+	icon = GFX_gram_decision_category_icon_alb_the_new_capital
+	picture = GFX_gram_decision_picture_alb_the_new_capital
+	
+	visible = {
+		has_country_flag = gram_flag_alb_new_capital_balkan
+		owns_state = 107
+		owns_state = 46
+		owns_state = 48
+		owns_state = 47
+		owns_state = 44
+		tag = ALB
+	}
+}

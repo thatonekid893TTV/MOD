@@ -1,0 +1,284 @@
+SAU_gaijin_wuzhuang_liliang = {
+	icon = GFX_decision_category_ger_military_buildup
+	picture = GFX_decision_cat_picture_ITA_reggianes_exports
+	priority = 100
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+	}
+}
+
+SAU_wunian_jihua_decisions = {
+	icon = GFX_decision_category_SOV_merge_designers
+	picture = GFX_decision_cat_picture_ITA_colonial_management
+	priority = 101
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+	}
+}
+
+SAU_mai_shiyou_gei_guojia = {
+	icon = GFX_decision_category_SWI_absolute_neutrality
+	picture = GFX_decision_cat_generic_mefo_bills
+	visible_when_empty = yes
+	priority = 119
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		is_in_faction = no
+		has_completed_focus = Saudi_Arabia_gongye_congzhanzheng_huoli
+	}
+	custom_icon = {
+		tag = GER		#371500
+		value = SAU_country_to_appease_1_opinion_loc
+		desc = SAU_absolute_neutrality_breakdown
+		visible = {
+			NOT = {
+				or = {
+					SAU = {
+						has_government = communism
+					}
+					is_in_faction_with = SOV
+					is_in_faction_with = ENG
+					AND = {
+						GER = {
+							has_government = communism
+						}
+						SOV = {
+							has_government = communism
+						}
+					}
+				}
+			}
+		}
+	}
+	custom_icon = {
+		tag = ENG		#321800
+		value = SAU_country_to_appease_2_opinion_loc
+		desc = SAU_absolute_neutrality_breakdown
+		visible = {
+			NOT = {
+				or = {
+					SAU = {
+						has_government = communism
+					}
+					ENG = {
+						has_war_with = SAU
+					}
+				}
+			}
+		}
+	}
+	custom_icon = {
+		tag = SOV		#559900
+		value = SAU_country_to_appease_3_opinion_loc
+		desc = SAU_absolute_neutrality_breakdown
+		visible = {
+			NOT = {
+				or = {
+					SAU = {
+						has_government = communism
+					}
+					SOV = {
+						has_war_with = SAU
+					}
+				}
+			}
+		}
+	}
+}
+
+SAU_goumai_shiyou = {
+	icon = GFX_decision_category_SOV_merge_designers
+	priority = 111
+	allowed = {
+		OR = {
+			original_tag = GER
+			original_tag = ITA
+			original_tag = JAP
+			original_tag = ENG
+			original_tag = FRA
+			original_tag = USA
+			original_tag = SOV
+		}
+	}
+	visible = {
+		has_country_flag = FROM_zhunbei_goumai_shiyou_flag
+	}
+}
+
+DEBUG_ceshi = {
+	icon = GFX_decision_category_SOV_merge_designers
+	priority = 111
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		is_ai = no
+		is_debug = yes
+	}
+}
+
+zongjiaoshili_panluan = {
+	icon = GFX_decision_category_SOV_merge_designers
+	priority = 111
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+	}
+}
+
+SAU_spreading_the_red_flame_cat = {
+	icon = GFX_decision_category_NOR_fascist_deploy_prep
+	picture = GFX_decision_SAU_kangmi_heping_geming
+	priority = 111
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		has_completed_focus = Saudi_Arabia_shandong_zhongdong_geming
+	}
+}
+
+SAU_chengli_alabo_renmigongheguo = {
+	icon = GFX_decision_category_NOR_fascist_deploy_prep
+	picture = GFX_decision_SAU_kangmi_heping_geming
+	priority = 111
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		has_completed_focus = Saudi_Arabia_jiefang_alabo
+	}
+}
+
+SAU_xiang_mengjun_tigong_qingbao = {
+	icon = GFX_decision_category_SWI_absolute_neutrality
+	priority = 111
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		has_completed_focus = Saudi_Arabia_zhichi_mengjun_jiandie_huodong
+	}
+}
+
+SAU_cisha_yiben_shate = {
+	icon = GFX_decision_spr_political_assassination
+	picture = GFX_decision_SAU_cisha_yiben_shate
+	priority = 111
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		OR = {
+			has_completed_focus = Saudi_Arabia_lianluo_yihewan_jiubu
+			has_completed_focus = Saudi_Arabia_anzhong_mimou_faxisixian
+		}
+	}
+}
+
+SAU_alabodiguo_jingong_celue = {
+	icon = GFX_decision_category_ETH_disband_chitet
+	picture = GFX_decision_cat_generic_arabia
+	priority = 111
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		has_completed_focus = Saudi_Arabia_diguo_kuozhang_zhuyi
+	}
+}
+
+SAU_dusaiwaer_yishi_qiuai_jice = {
+	icon = GFX_decision_cat_dusaiwaer_xuancheng_aosiman
+	picture = GFX_decision_cat_generic_ottoman_empire
+	priority = 999
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		has_completed_focus = Saudi_Arabia_laxide_xuancheng_aosiman		#
+	}
+}
+
+SAU_form_roman_empire_category = {
+	icon = generic_formable_nations
+	picture = GFX_decision_cat_generic_roman_empire
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		has_completed_focus = Saudi_Arabia_laxide_zhenzheng_de_luoma_diguo		#
+	}
+}
+
+SAU_haximu_alabo_zhiyuanjun = {
+	icon = GFX_decision_category_ger_reichskommissariats
+	priority = 20
+	picture = GFX_decision_cat_picture_NOR_preparedness
+	visible_when_empty = no
+	allowed = {
+		original_tag = SAU
+		OR = {
+			has_government = fascism
+			has_government = neutrality
+		}
+	}
+	visible = {
+		has_completed_focus = Saudi_Arabia_haximu_ziyou_alabo_juntuan
+	}
+}
+
+SAU_yihewan_lueduo = {
+	icon = GFX_decision_category_ETH_disband_chitet
+	picture = GFX_decision_SAU_yihewan_lueduo_datubiao
+	priority = 111
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		has_completed_focus = Saudi_Arabia_yisilanguo_kuoda_xijila
+	}
+}
+
+SAU_yihewan_jihade = {
+	icon = GFX_decision_faction_tur_traditionalist
+	picture = GFX_decision_cat_picture_ARG_international_loan_decisions
+	priority = 111
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		has_completed_focus = Saudi_Arabia_yisilanguo_jihade_shengzhan
+	}
+}
+
+SAU_duoshenjiao_ouxiangchongbai = {
+	icon = GFX_decision_cat_SAU_duoshenjiao_1
+	picture = GFX_decision_SAU_duoshenjiao_1
+	priority = 111
+	allowed = {
+		original_tag = SAU
+	}
+	visible = {
+		has_completed_focus = Saudi_Arabia_duoshejiao_ouxiangzhi
+	}
+}
+
+SAU_the_seeds_of_revolution = {
+	icon = spr_the_seeds_of_revolution
+	allowed = {
+	}
+	visible = {
+		or = {
+			has_completed_focus = Saudi_Arabia_duoshenjiao_geming_de_zhongzi
+			has_completed_focus = Saudi_Arabia_duoshenjiao_quanqiu_fangyu_weiyuanhui
+		}
+	}
+}

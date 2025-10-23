@@ -1,0 +1,274 @@
+FPM_phoney_war_scan = { #don't go to war with scandinavia early
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_war_with = FRA
+		FRA = { has_capitulated = no }	
+	}
+	abort = {
+		date > 1940.4.9
+	}
+
+	ai_strategy = {
+		type = declare_war
+		id = "DEN"
+		value = -50000
+	}
+	ai_strategy = {
+		type = declare_war
+		id = "NOR"
+		value = -50000
+	}
+	ai_strategy = {
+		type = diplo_action_desire
+		target = declare_war
+		id = "DEN"
+		value = -50000
+	}
+	ai_strategy = {
+		type = diplo_action_desire
+		target = declare_war
+		id = "NOR"
+		value = -50000
+	}
+}
+
+FPM_phoney_war = { #don't go to war with benelux early
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_war_with = FRA
+		FRA = { has_capitulated = no }
+		is_historical_focus_on = yes
+	}
+	abort = {
+		date > 1940.5.10
+	}
+
+	ai_strategy = {
+		type = declare_war
+		id = "HOL"
+		value = -50000
+	}
+
+	ai_strategy = {
+		type = declare_war
+		id = "BEL"
+		value = -50000
+	}
+
+	ai_strategy = {
+		type = declare_war
+		id = "LUX"
+		value = -50000
+	}
+
+	ai_strategy = {
+		type = diplo_action_desire
+		target = declare_war
+		id = "HOL"
+		value = -50000
+	}
+	ai_strategy = {
+		type = diplo_action_desire
+		target = declare_war
+		id = "BEL"
+		value = -50000
+	}
+	ai_strategy = {
+		type = diplo_action_desire
+		target = declare_war
+		id = "LUX"
+		value = -50000
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "HOL"			
+		value = -200
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "BEL"			
+		value = -200
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "LUX"			
+		value = -200
+	}
+}
+
+FPM_phoney_war_ita = { #don't ally germans until they invade france
+	allowed = {
+		original_tag = ITA
+		original_tag = ROM
+		original_tag = HUN
+		original_tag = BUL
+	}
+	enable = {
+		has_government = fascism
+		GER = {
+			has_war_with = FRA
+		}
+		FRA = { has_capitulated = no }
+		is_historical_focus_on = yes
+	}
+	abort = {
+		FRA = {
+			surrender_progress > 0.5
+		}
+	}
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = "ITA"
+		target = join_allies
+		value = -9999
+	}
+	ai_strategy = {
+		type = alliance
+		id = "GER"
+		value = -9999
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = "GER"
+		value = 1000
+		target_country = FRA
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = "SLO"
+		value = 1000
+		target_country = FRA
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = "AOI"
+		value = 1000
+		target_country = FRA
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = "ROM"
+		value = 1000
+		target_country = FRA
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = "HUN"
+		value = 1000
+		target_country = FRA
+	}
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = "ROM"
+		value = -1000
+		target = join_allies
+	}
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = "HUN"
+		value = -1000
+		target = join_allies
+	}
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = "SLO"
+		value = -1000
+		target = join_allies
+	}
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = "GER"
+		value = -1000
+		target = join_allies
+	}
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = "GER"
+		value = -1000
+		target = call_allies
+	}
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = "SLO"
+		value = -1000
+		target = call_allies
+	}
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = "ROM"
+		value = -1000
+		target = call_allies
+	}
+	ai_strategy = {
+		type = diplo_action_acceptance
+		id = "HUN"
+		value = -1000
+		target = call_allies
+	}
+}
+
+FPM_phoney_war_ger = { #don't ally italians until you invade france
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_government = fascism
+		GER = {
+			has_war_with = FRA
+		}
+		FRA = { has_capitulated = no }
+		is_historical_focus_on = yes
+	}
+	abort = {
+		FRA = {
+			surrender_progress > 0.5
+		}
+	}
+	ai_strategy = {
+		type = alliance
+		id = "ITA"
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = ITA
+		value = 1000
+		target_country = FRA
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = ITA
+		value = 1000
+		target_country = FRA
+	}
+}
+
+FPM_phoney_war_fra = { #don't attack germany during phoney war GAMELIN
+	allowed = {
+		original_tag = FRA
+	}
+	enable = {
+		GER = {
+			has_completed_focus = GER_danzig_or_war
+		}
+		is_historical_focus_on = yes
+	}
+	abort = {
+		date > 1941.1.1
+	}
+	ai_strategy = {
+		type = front_control
+		area = mainland_europe
+		ratio = 0.1
+		priority = 1
+		ordertype = front
+		execution_type = careful
+		execute_order = no
+		manual_attack = no
+	}
+}

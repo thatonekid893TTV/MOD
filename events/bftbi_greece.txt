@@ -1,0 +1,496 @@
+#Petition to the allies-Greece asks to join
+country_event = {
+	id = greece.900
+	title = greece.900.t
+	desc = greece.900.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Accept
+	option = {
+		name = greece.900.a
+		ai_chance = {
+			factor = 100
+				}
+			give_guarantee = GRE
+			FROM = {
+			country_event = { id = greece.901 }
+			}
+		}
+	#Decline
+	option = {
+		name = greece.900.b
+		FROM = {
+		country_event = { id = greece.902 }
+		}
+	}
+}
+#Petition to the allies-Greece Accepted
+country_event = {
+	id = greece.901
+	title = greece.901.t
+	desc = greece.901.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Accept
+	option = {
+		name = greece.901.a
+		ai_chance = {
+			factor = 100
+				}
+			}
+		}
+
+#Petition to the allies-Greece Declined
+country_event = {
+	id = greece.902
+	title = greece.902.t
+	desc = greece.902.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Accept
+	option = {
+		name = greece.902.a
+		ai_chance = {
+			factor = 100
+				}
+				complete_national_focus = GRE_Greek_Defense_Union
+			}
+		}
+
+#Request British Armenia-Greece Requests
+country_event = {
+	id = greece.903
+	title = greece.903.t
+	desc = greece.903.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Accept
+	option = {
+		name = greece.903.a
+		ai_chance = {
+			factor = 100
+				modifier = {
+				GRE = {
+				is_in_faction_with = ENG
+				}
+				factor = 100
+					}
+				modifier = {
+				GRE = {
+				is_guaranteed_by = ENG
+				}
+				factor = 1.100
+					}
+				}
+			GRE = {
+			country_event = { id = greece.904 }
+			}
+		}
+	#Decline
+	option = {
+		name = greece.903.b
+		ai_chance = {
+			factor = 0
+				
+				}
+		GRE = {
+			country_event = { id = greece.905 }
+			}
+	}
+}
+
+#Request British Armenia-Britain Accepts, Greece Decides Armenia's Fate
+country_event = {
+	id = greece.904
+	title = greece.904.t
+	desc = greece.904.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Puppet Armenia
+	option = {
+		name = greece.904.a
+		ai_chance = {
+			factor = 100
+				}
+			puppet = ARM
+		}
+	#Annex Armenia
+	option = {
+		name = greece.904.b
+		ai_chance = {
+			factor = 0
+			}
+		annex_country = { target = ARM }
+	}
+}
+
+#Request British Armenia-Britain Declines
+country_event = {
+	id = greece.905
+	title = greece.905.t
+	desc = greece.905.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Accept
+	option = {
+		name = greece.905.a
+		ai_chance = {
+			factor = 100
+				}
+			}
+		}
+#Invite to Hellenic Defense Union
+country_event = {
+	id = greece.906
+	title = greece.906.t
+	desc = greece.906.desc
+	picture = GFX_report_event_gre_megali_conference_signing
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Accept Invite
+	option = {
+		name = greece.906.a
+		ai_chance = {
+			factor = 75 
+			modifier = {
+				ROOT = {
+				has_opinion = {
+					target = GRE
+					value < 25
+					}
+				}
+				factor = 1.25
+				}
+			}
+			FROM = {
+			add_to_faction = ROOT
+			country_event = { id = greece.907 }
+			}
+		}
+	#Deny Invite
+	option = {
+		name = greece.906.b
+		ai_chance = {
+			factor = 25
+			modifier = {
+			}
+		}
+		FROM = {
+		country_event = { id = greece.908 }
+		}
+	}
+}
+
+#Invite to Hellenic Defense Union-Joined Faction
+country_event = {
+	id = greece.907
+	title = greece.907.t
+	desc = greece.907.desc
+	picture = GFX_report_event_gre_megali_conference_signing
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Not Awesome
+	option = {
+		name = greece.907.a
+		
+	}
+}
+
+#Invite to Hellenic Defense Union-Rejected Faction
+country_event = {
+	id = greece.908
+	title = greece.908.t
+	desc = greece.908.desc
+	picture = GFX_report_event_gre_megali_conference_signing
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Not Awesome
+	option = {
+		name = greece.908.a
+		
+	}
+}
+#Pacify Bulgaria
+country_event = {
+	id = greece.909
+	title = greece.909.t
+	desc = greece.909.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Accept Pacification
+	option = {
+		name = greece.909.a
+		ai_chance = {
+			factor = 80 
+			modifier = {
+				strength_ratio = {
+					tag = GRE
+					ratio > 1
+						}
+					}
+				factor = 0.5
+				}
+			GRE = {
+			puppet = BUL
+			country_event = { id = greece.910 }
+			}
+		}
+	#Deny Pacification
+	option = {
+		name = greece.909.b
+		ai_chance = {
+			factor = 20
+			modifier = {
+			}
+		}
+		GRE = {
+			country_event = { id = greece.911 }
+		}
+	}
+}
+
+#Pacify Bulgaria-Bulgaria Accepts
+country_event = {
+	id = greece.910
+	title = greece.910.t
+	desc = greece.910.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Awesome
+	option = {
+		name = greece.910.a
+		
+	}
+}
+
+#Pacify Bulgaria-Bulgaria Reluctant
+country_event = {
+	id = greece.911
+	title = greece.911.t
+	desc = greece.911.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#War Goal
+	option = {
+		name = greece.911.a
+		ai_chance = {
+			factor = 60 
+				}
+			create_wargoal = {
+				target = BUL
+				type = puppet_wargoal_focus
+			}
+		}
+	#Accept
+	option = {
+		name = greece.911.b
+		ai_chance = {
+			factor = 40
+		}
+	}
+}
+#Liberate Albania-Italy-Demand Liberation
+country_event = {
+	id = greece.912
+	title = greece.912.t
+	desc = greece.912.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Accept
+	option = {
+		name = greece.912.a
+		ai_chance = {
+			factor = 20
+			modifier = {
+				strength_ratio = {
+					tag = GRE
+					ratio > 1
+						}
+				factor = 1.2
+					}
+			modifier = {
+				GRE = {
+				is_in_faction = yes
+				}
+				factor = 2
+					}
+			modifier = {
+				GRE = {
+				is_in_faction_with = ENG
+				}
+				factor = 3
+					}
+				}
+
+			if = {
+				limit = {
+				GRE = {
+					is_in_faction_with = ENG
+					}
+				ENG = {
+					is_faction_leader = yes
+					}
+				}
+				ITA = {
+				release = ALB
+				}
+				ENG = {
+				add_to_faction = ALB
+				}
+			}
+
+			if = {
+				limit = {
+				GRE = {
+					is_faction_leader = yes
+					}
+				}
+				ITA = {
+				release = ALB
+				}
+				GRE = {
+				add_to_faction = ALB
+				}
+			}
+		}
+			
+	#Decline
+	option = {
+		name = greece.912.b
+		ai_chance = {
+			factor = 80
+		}
+		GRE = {
+		country_event = { id = greece.914 }
+		}
+	}
+}
+
+#Liberate Albania-Italy Accepts
+country_event = {
+	id = greece.913
+	title = greece.913.t
+	desc = greece.913.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Awesome
+	option = {
+		name = greece.913.a
+		
+	}
+}
+
+#Liberate Albania-Italy Declines
+country_event = {
+	id = greece.914
+	title = greece.914.t
+	desc = greece.914.desc
+	picture = GFX_
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+	
+	#Unawesome
+	option = {
+		name = greece.914.a
+		create_wargoal = {
+			type = take_state_focus
+			target = ITA
+			generator = { 44 }
+			}
+		}
+	}
+	
+state_event = { #Event for Polish sabotage
+	id = greece.654
+	title = greece.654.t
+	desc = greece.654.d
+	picture = GFX_report_event_generic_battle
+
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			random_state = {
+				limit = {
+					NOT = { has_state_flag = already_sabotaged_flag }
+					has_state_flag = poland_state_withdrawn
+				}
+				clr_state_flag = poland_state_withdrawn
+				save_event_target_as = poland_state_withdrawn
+			}
+			event_target:poland_state_withdrawn = {
+				damage_building = { type = industrial_complex damage = 3.5 }
+				damage_building = { type = arms_factory damage = 6.5 }
+				damage_building = { type = infrastructure damage = 7.5 }
+				set_state_flag = already_sabotaged_flag
+			}
+		}
+	}
+	
+	# Hey! That's a Russian tactic, you bastards!
+	option = {
+		name = greece.654.a
+		effect_tooltip = {
+			event_target:poland_state_withdrawn = {
+				damage_building = { type = industrial_complex damage = 3.5 }
+				damage_building = { type = arms_factory damage = 6.5 }
+				damage_building = { type = infrastructure damage = 7.5 }
+			}
+		}
+	}
+}

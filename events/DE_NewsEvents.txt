@@ -1,0 +1,92 @@
+﻿###########################
+# News Events
+###########################
+
+add_namespace = DE_news
+
+# Planes Lands In Denmark
+news_event = {
+	id = DE_news.1
+	title = DE_news.1.t
+	desc = DE_news.1.d
+	picture = GFX_DE_crash_nymindegab
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = DE_news.1.a
+		trigger = {
+			NOT = {
+				TAG = DEN
+				TAG = GER
+			}
+		}
+	}
+	option = {
+		name = DE_news.1.b
+		trigger = { TAG = DEN }
+		add_equipment_to_stockpile = {
+		    type = tac_bomber_equipment_1
+		    amount = 2
+		    producer = GER
+		}
+		add_tech_bonus = {
+			name = bomber_bonus
+			bonus = 0.25
+			uses = 1
+			category = tactical_bomber
+		}
+	}
+	option = {
+		name = DE_news.1.c
+		trigger = { TAG = GER }
+		add_manpower = -16
+	}
+}
+
+# Bombing of Esbjerg
+news_event = {
+	id = DE_news.2
+	title = DE_news.2.t
+	desc = DE_news.2.d
+	picture = GFX_DE_bombing_of_esbjerg
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = DE_news.2.a
+		trigger = {
+			NOT = {
+				TAG = DEN
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = DE_news.2.b
+		trigger = { TAG = DEN }
+		99 = {
+			damage_building = {
+			    type = industrial_complex
+			    damage = 0.6
+			}
+			damage_building = {
+			    type = infrastructure
+			    damage = 0.2
+			}
+			add_manpower = -5
+		}
+		add_opinion_modifier = {
+		    target = ENG
+		    modifier = protest_action
+		}
+	}
+	option = {
+		name = DE_news.2.c
+		trigger = { TAG = ENG }
+	}
+}

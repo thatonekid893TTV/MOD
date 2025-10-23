@@ -1,0 +1,6488 @@
+ideas = {	
+ 
+	country = {
+	GRE_3_years = {
+			picture =  generic_reserve_divisions
+			allowed = {
+				always = no
+			}
+
+			
+
+			removal_cost = -1
+
+			
+			
+			modifier = {
+				
+				conscription_factor = 0.15
+				army_attack_factor = 0.05
+				army_org_factor = 0.05
+			}
+		}
+			GRE_militarized_society = {
+			picture =  generic_reserve_divisions
+			allowed = {
+				always = no
+			}
+
+			available = {
+				OR = {
+					has_idea = all_adults_serve
+					has_idea = scraping_the_barrel
+				}
+			}
+
+			removal_cost = -1
+
+			
+			
+			modifier = {
+				training_time_factor = -0.25
+				industrial_capacity_factory = 0.25
+				industrial_capacity_dockyard = 0.25
+				production_speed_buildings_factor = 0.25
+				mobilization_speed = 0.5
+				mobilization_laws_cost_factor = -0.5
+				conscription_factor = -0.20
+				custom_modifier_tooltip = GRE_militarized_society_requirement_tt
+			}
+		}
+	GRE_world_under_eu = {
+        	picture = tur_etatism
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+					
+				terrain_penalty_reduction = 0.15
+				political_power_factor = 0.15
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				consumer_goods_factor = -0.1
+				
+       		}	
+	}	
+	GRE_healthcare = {
+
+picture = generic_goods_red_bonus
+removal_cost = -1
+
+            modifier = {
+			
+            CONSUMER_GOODS_FACTOR = 0.3
+            }
+			}
+	GRE_eu_council = {
+
+picture = generic_democratic_drift_bonus
+removal_cost = -1
+
+            modifier = {
+			POLITICAL_POWER_GAIN = 0.1
+			stability_factor = 0.05
+			DRIFT_DEFENCE_FACTOR = 0.15
+            }
+			}
+	GRE_eu_neutral = {
+				
+			allowed = {
+				original_tag = GRE
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = neutrality_idea
+				
+			removal_cost = -1
+				
+			modifier = {
+
+				justify_war_goal_time = 0.5
+				production_speed_arms_factory_factor = -0.15
+				political_power_gain = 0.3
+			}
+		}
+		GRE_war_eu = {
+				
+			allowed = {
+				original_tag = GRE
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = ETH_peacekeeping_forces
+				
+			removal_cost = -1
+				
+			modifier = {
+justify_war_goal_time = -0.15
+				production_speed_arms_factory_factor = 0.05
+				political_power_gain = -0.3
+			}
+		}
+GRE_chaos_of_currencies = {
+				
+			allowed = {
+				original_tag = GRE
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = NOR_printing_money
+				
+			removal_cost = -1
+				
+			modifier = {
+
+				consumer_goods_factor = 0.35
+				political_power_factor = -0.15
+			}
+		}
+GRE_euro = {
+				
+			allowed = {
+				original_tag = GRE
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = NOR_printing_money
+				
+			removal_cost = -1
+				
+			modifier = {
+
+				consumer_goods_factor = -0.1
+				political_power_factor = 0.25
+			}
+		}
+	GRE_spirit_of_eternal_freedom = { 
+			removal_cost = -1
+
+			picture = GRE_Memory_Revolution
+
+			modifier = {
+				RESISTANCE_TARGET_ON_OUR_OCCUPIED_STATES = 0.5
+				COMPLIANCE_GROWTH_ON_OUR_OCCUPIED_STATES = -0.5
+				army_morale_factor = 0.05
+				army_org_regain = 0.05
+			}
+			
+		}
+	GRE_the_new_sick_man_of_europe = { 
+			removal_cost = -1
+
+			picture = ITA_shadow_of_mussolini
+
+			modifier = {
+				training_time_factor = 0.40
+				army_attack_factor = -0.4
+				army_defence_factor = -0.4
+				experience_gain_army_factor = -0.40
+				experience_gain_army_unit_factor = -0.40
+				army_org_factor = -0.40
+				army_morale_factor = -0.40
+				naval_coordination = -0.15
+				naval_speed_factor = -0.05
+				naval_critical_score_chance_factor = -0.3
+				naval_accidents_chance = 0.5
+				naval_damage_factor = -0.1
+			}
+			
+		}
+	GRE_100_production = { 
+			removal_cost = -1
+
+			picture = generic_license_production
+
+			modifier = {
+				consumer_goods_factor = 0.5
+				industrial_capacity_factory = 1.20
+			}
+			
+		}
+	GRE_securing_back_our_lands = { 
+			removal_cost = -1
+
+			picture = day_no
+
+			modifier = {
+				army_core_attack_factor = 0.2
+				army_core_defence_factor = 0.25
+				supply_combat_penalties_on_core_factor = -0.2
+				resistance_damage_to_garrison_on_our_occupied_states = 0.5
+			}
+			
+		}
+	GRE_the_no_day = { 
+			removal_cost = -1
+
+			picture = day_no
+
+			modifier = {
+				mobilization_speed = 0.75
+				mobilization_laws_cost_factor = -0.5
+				army_defence_against_major_factor = 0.15
+				army_attack_against_major_factor = 0.05
+				training_time_factor = -0.05
+				supply_consumption_factor = 0.1
+				winter_attrition_factor = 0.3
+				weekly_casualties_war_support = -0.005
+			}
+			
+		}
+		GRE_the_epirus_counter_offensive = { 
+			removal_cost = -1
+
+			picture = day_no
+
+			modifier = {
+				
+				army_attack_against_major_factor = 0.1
+				training_time_factor = -0.05
+				supply_consumption_factor = 0.2
+				winter_attrition_factor = 0.15
+			}
+			
+		}
+		GRE_escpaing_to_cairo_and_crete = { 
+			removal_cost = -1
+
+			picture = day_no
+
+			modifier = {
+				
+				army_defence_against_major_factor = 0.1
+				army_speed_factor = 0.25
+				naval_accidents_chance = -0.25
+				army_morale_factor = -0.05
+			}
+			
+		}
+	GRE_the_party_of_king = { 
+			removal_cost = -1
+
+			picture = gre_the_kings_party
+
+			modifier = {
+				political_power_cost = 0.25
+				army_attack_factor = 0.05
+				conscription_factor = 0.1
+				production_speed_dockyard_factor = 0.2
+				consumer_goods_factor = -0.05
+				neutrality_acceptance = 50
+				democratic_acceptance = 50
+				communism_acceptance = 50
+				fascism_acceptance = 50
+			}
+			
+		}
+	GRE_communistm_must_end = { 
+			removal_cost = -1
+
+			picture = NOR_anti_communist_sentiment
+
+			modifier = {
+				communism_drift = -0.15
+				stability_factor = -0.05
+			}
+			targeted_modifier = {
+				tag = SOV
+				attack_bonus_against = 0.05
+				breakthrough_bonus_against = 0.05
+			}
+		}
+	GRE_trade_With_ger = { 
+			removal_cost = -1
+
+			picture = generic_free_trade
+
+			modifier = {
+				consumer_goods_factor = 0.15
+			}
+			targeted_modifier = {
+				tag = GER
+				trade_cost_for_target_factor = -0.1
+				extra_trade_to_target_factor = 0.2
+			}
+		}
+	GRE_communism_uni = { 
+			removal_cost = -1
+
+			picture = ITA_il_sol_dell_avvenire_ns
+
+			modifier = {
+				war_support_factor = 0.05
+				political_power_gain = 0.1
+				weekly_manpower = 100
+				army_attack_speed_factor = 0.05
+			}
+		}
+	GRE_socialism_in_one_nation = { 
+			removal_cost = -1
+
+			picture = socialist_science_focus
+
+			modifier = {
+				industry_repair_factor = 0.1
+				political_power_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.1
+				research_speed_factor = 0.02
+			}
+		}
+	GRE_politiburo = {
+			picture = POL_ideology_drift_defence
+			
+			
+			modifier = {
+				communism_drift = 0.05
+				drift_defence_factor = 0.15
+				party_popularity_stability_factor = 0.15
+				
+				consumer_goods_factor = -0.05
+
+				political_power_cost = 0.1
+			}
+
+
+			removal_cost = -1
+		}
+
+	
+	GRE_hellenic_trade_unions = {
+			
+			
+			picture = FIN_finnish_federation_of_trade_unions_heavy
+			
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.05
+				political_power_cost = 0.05
+				production_speed_buildings_factor = 0.1
+			}
+			
+		}
+	GRE_strait_crossing = {
+			
+			
+			picture = tur_balkan_central_bank_wealthy_greece
+			
+			
+			removal_cost = -1
+			
+			modifier = {
+				invasion_preparation = -0.1
+               naval_invasion_penalty = -0.05
+			}
+			
+		}
+GRE_balkan_investment = {
+			
+			
+			picture = tur_balkan_central_bank_wealthy_greece
+			
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.25
+				min_export = 0.5
+
+			}
+			
+		}
+	GRE_balkan_seas = {
+		
+        	picture = hol_naval_heritage
+
+        	removal_cost = -1
+
+        	modifier = {
+              
+				naval_invasion_penalty = -0.1
+				naval_invasion_capacity = 10
+				amphibious_invasion = 0.1
+				invasion_preparation = -0.05
+       		}
+  		}	
+		
+GRE_scavenging_tactics_idea = {
+
+			picture = ETH_scavenging_tactics
+			
+			name = ETH_scavenging_tactics_idea
+			removal_cost = -1
+			
+			modifier = {
+				equipment_capture_factor = 0.5
+			}
+		}	
+GRE_we_are_spqr = {
+			
+
+			picture = air_support_focus
+
+			
+			removal_cost = -1
+
+			modifier = {
+                political_power_factor = 0.1
+				army_morale_factor = 0.05
+				army_speed_factor = 0.05
+				consumer_goods_factor = -0.05
+				pocket_penalty = -0.1
+				stability_factor 0.05
+				drift_defence_factor = 0.1
+				war_support_factor = 0.05
+				production_speed_buildings_factor = 0.05
+			}
+		}
+GRE_support_alli = {
+			
+
+			picture = eng_guided_by_britain
+
+			
+			removal_cost = -1
+
+			modifier = {
+                send_volunteer_size = 2
+				air_volunteer_cap = 6
+				naval_damage_factor = 0.05
+				naval_defense_factor = 0.05
+			}
+		}	
+GRE_support_hit = {
+			
+
+			picture = hol_caved_to_the_germans
+
+			
+			removal_cost = -1
+
+			modifier = {
+                send_volunteer_size = 2
+				air_volunteer_cap = 5
+				army_armor_attack_factor = 0.05
+				army_defence_factor = 0.07
+			}
+		}	
+GRE_support_men = {
+			
+
+			picture = man_militarism
+
+			
+			removal_cost = -1
+
+			modifier = {
+                send_volunteer_size = 2
+				air_volunteer_cap = 3
+				naval_invasion_capacity = 5
+				conscription_factor = 0.05
+			}
+		}		
+GRE_support_chiii = {
+			
+
+			picture = chi_chinese_support
+
+			
+			removal_cost = -1
+
+			modifier = {
+                send_volunteer_size = 2
+				air_volunteer_cap = 3
+				conscription_factor = 0.08
+				dig_in_speed_factor = 0.05
+			}
+		}	
+GRE_support_jappp = {
+			
+
+			picture = jap_militarism_showa
+
+			
+			removal_cost = -1
+
+			modifier = {
+                 send_volunteer_size = 2
+				air_volunteer_cap = 3
+				naval_invasion_capacity = 15
+				naval_invasion_penalty = -0.1
+				
+			}
+		}		
+GRE_support_siiiiii = {
+			
+
+			picture = SOV_war_heroes
+
+			
+			removal_cost = -1
+
+			modifier = {
+                send_volunteer_size = 2
+				air_volunteer_cap = 3
+				conscription_factor = 0.02
+				army_morale_factor = 0.05
+				
+			}
+		}		
+GRE_support_fim = {
+			
+
+			picture = SWE_with_finland_for_sweden_swe
+
+			
+			removal_cost = -1
+
+			modifier = {
+                send_volunteer_size = 2
+				winter_attrition_factor = -0.1
+				supply_combat_penalties_on_core_factor = -0.1
+				initiative_factor = 0.03
+				custom_modifier_tooltip = FIN_sami_pathfinders_recon_bonus_tt
+				
+			}
+		}	
+GRE_support_ita = {
+			
+
+			picture = ITA_camicie_nere
+
+			
+			removal_cost = -1
+
+			modifier = {
+                send_volunteer_size = 2
+				
+				
+				supply_consumption_factor = -0.1
+				send_volunteers_tension = -1
+				send_volunteer_divisions_required = -1
+				
+			}
+		}		
+GRE_support_eth = {
+			
+
+			picture = ETH_chitet_law
+
+			
+			removal_cost = -1
+
+			modifier = {
+                send_volunteer_size = 2
+				
+				heat_attrition_factor = -0.1
+				send_volunteers_tension = -1
+				send_volunteer_divisions_required = -1
+				
+			}
+		}
+GRE_support_sp1 = {
+			
+
+			picture = SPR_the_maximum_concession
+
+			
+			removal_cost = -1
+
+			modifier = {
+                send_volunteer_size = 2
+				air_volunteer_cap = 3
+				terrain_penalty_reduction = 0.1
+				army_attack_factor = 0.05
+				
+			}
+		}
+GRE_support_sp2 = {
+			
+
+			picture = SPA_crusade_against_democracy
+
+			
+			removal_cost = -1
+
+			modifier = {
+                send_volunteer_size = 2
+				air_volunteer_cap = 3
+				terrain_penalty_reduction = 0.2
+				army_defence_factor = 0.05
+				
+			}
+		}		
+		GRE_operative = {
+
+			picture = FIN_maan_turva
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				drift_defence_factor = 0.1
+				war_support_factor = 0.02
+				
+				operative_slot = 1
+				agency_upgrade_time = -0.1
+				intelligence_agency_defense = 0.05
+			}
+		}
+		GRE_operative_2 = {
+
+			picture = FIN_maan_turva
+			name = GRE_operative
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				drift_defence_factor = 0.15
+				war_support_factor = 0.05
+				
+				operative_slot = 2
+				agency_upgrade_time = -0.12
+				intelligence_agency_defense = 0.1
+			}
+		}
+		GRE_operative_2_no_lar = {
+
+			picture = FIN_maan_turva
+			name = GRE_operative
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				drift_defence_factor = 0.2
+				war_support_factor = 0.08
+				resistance_target = -0.1
+				subversive_activites_upkeep = -0.1
+				foreign_subversive_activites = -0.2
+			}
+		}
+		GRE_skoda_works = {
+
+			name = CZE_skoda_works
+picture = CZE_skoda_works
+			removal_cost = -1
+ research_bonus = {
+				armor = 0.1
+				naval_equipment = 0.1
+				artillery = 0.1
+				industry = 0.1
+			}
+			modifier = {
+				industrial_capacity_factory = 0.05
+			}
+		}
+		GRE_operative_no_lar = {
+			name = GRE_operative
+
+			picture = FIN_maan_turva
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				drift_defence_factor = 0.1
+				war_support_factor = 0.05
+
+				subversive_activites_upkeep = -0.05
+				foreign_subversive_activites = -0.1
+			}
+		}	
+	GRE_trusted_us_ger = {
+		     picture = generic_naval_manufacturer_1
+			 removal_cost = -1
+			 
+			 modifier = {
+			    political_power_gain = 0.5
+				consumer_goods_factor = -0.2
+			 }
+		
+		
+		}
+	 GRE_trusted_our_ships_to_ger = {
+		     picture = generic_naval_manufacturer_1
+			 removal_cost = -1
+			 
+			 modifier = {
+			    political_power_cost = 0.5
+				consumer_goods_factor = 0.2
+			 }
+		
+		
+		}
+	GRE_trusted_us_eng = {
+		     picture = generic_naval_manufacturer_1
+			 removal_cost = -1
+			 
+			 modifier = {
+			    political_power_gain = 1
+				consumer_goods_factor = -0.4
+			 }
+		
+		
+		}
+	 GRE_trusted_our_ships_to_eng = {
+		     picture = generic_naval_manufacturer_1
+			 removal_cost = -1
+			 
+			 modifier = {
+			    political_power_cost = 1
+				consumer_goods_factor = 0.4
+			 }
+		
+		
+		}
+		GRE_trusted_our_ships_to_gre = {
+		     picture = generic_naval_manufacturer_1
+			 removal_cost = -1
+			 
+			 modifier = {
+			    political_power_cost = 1
+				consumer_goods_factor = 0.4
+			 }
+		
+		
+		}
+		GRE_economic_boost = {
+		     picture = NORDIC_navy_democratic
+			 removal_cost = -1
+			 
+			 modifier = {
+			    political_power_factor = 0.05
+				production_speed_dockyard_factor = 0.2
+				industrial_capacity_dockyard = 0.1
+			 }
+		
+		
+		}
+	    GRE_spirit_of_idk_crushing_enemies = {
+		     picture = generic_intel_bonus
+			 removal_cost = -1
+			 
+			 modifier = {
+			    army_org_factor = 0.05
+				army_org_regain = 0.1
+				army_speed_factor = 0.1
+				army_armor_speed_factor = 0.05
+				army_fuel_consumption_factor = -0.05
+				dig_in_speed_factor = 0.1
+				max_dig_in_factor = 0.05
+				army_morale_factor = 0.05
+			 }
+		
+		
+		}	
+	    GRE_eagles_can_walk = {
+		     picture = ast_abandon_the_westminster_system_fascism
+			 removal_cost = -1
+			 
+			 modifier = {
+			    army_attack_factor = 0.05
+				army_armor_attack_factor = 0.082
+				ground_attack_factor = 0.1
+				air_bombing_targetting = 0.1
+				air_attack_factor = 0.05
+				naval_damage_factor = 0.05
+				naval_hit_chance = 0.08
+				naval_heavy_gun_hit_chance_factor = 0.1
+				production_speed_arms_factory_factor = 0.05
+			 }
+		
+		
+		}
+		GRE_spirit_of_defence = {
+			
+
+			picture = SWI_spirit_of_helvetia_defensive_peace
+
+			
+			removal_cost = -1
+
+			modifier = {
+				army_core_defence_factor = 0.1
+				army_defence_factor = 0.05
+				production_speed_coastal_bunker_factor = 0.1
+				production_speed_bunker_factor = 0.1
+			}
+		}
+		GRE_spirit_of_defence2 = {
+			
+
+			picture = SWI_spirit_of_helvetia_defensive_war
+
+			
+			removal_cost = -1
+
+			modifier = {
+				army_core_defence_factor = 0.1
+				army_defence_factor = 0.1
+				production_speed_coastal_bunker_factor = 0.2
+				production_speed_bunker_factor = 0.2
+				army_defence_against_major_factor = 0.05
+				army_defence_against_minor_factor 0.1
+			}
+		}		
+		GRE_spirit_of_offence = {
+			
+
+			picture = SWI_spirit_of_helvetia_aggressive_peace
+
+			
+			removal_cost = -1
+
+			modifier = {
+				army_core_attack_factor = 0.05
+				army_attack_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+				production_speed_dockyard_factor = 0.1
+			}
+		}	
+		GRE_spirit_of_offence2 = {
+			
+
+			picture = SWI_spirit_of_helvetia_aggressive_war
+
+			
+			removal_cost = -1
+
+			modifier = {
+				army_core_attack_factor = 0.1
+				army_attack_factor = 0.05
+				production_speed_arms_factory_factor = 0.1
+				production_speed_dockyard_factor = 0.1
+				army_attack_against_major_factor = 0.05
+				army_attack_against_minor_factor = 0.05
+			}
+		}
+		GRE_spirit_of_peace = {
+			
+
+			picture = SWI_spirit_of_helvetia_passive_peace
+
+			
+			removal_cost = -1
+
+			modifier = {
+				army_morale_factor = 0.05
+				army_org_factor = 0.02
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_infrastructure_factor = 0.1
+			}
+		}	
+		GRE_spirit_of_peace2 = {
+			
+
+			picture = SWI_spirit_of_helvetia_passive_war
+
+			
+			removal_cost = -1
+
+			modifier = {
+				army_morale_factor = 0.1
+				army_org_factor = 0.05
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_infrastructure_factor = 0.15
+				army_breakthrough_against_major_factor = 0.08
+				army_breakthrough_against_minor_factor = 0.1
+			}
+		}	
+GRE_justiceath = {
+			
+
+			picture = Athenian_Justice
+
+			
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.15
+				war_support_factor = 0.05
+				political_power_gain = 0.15
+				drift_defence_factor = 0.2
+			}
+		}
+GRE_alexander_khan_new = {
+			
+
+			picture = MAC_diadochi_rivalry
+
+			
+			removal_cost = -1
+
+			modifier = {
+				weekly_manpower = 5000
+				training_time_army_factor = -0.5
+				ai_desired_divisions_factor = 1.5
+				army_attack_factor = 0.25
+			}
+			equipment_bonus = {
+			infantry_equipment = {
+				
+					build_cost_ic = -0.5 instant = yes
+										
+				}}
+		}		
+		GRE_paranoid = {
+			
+
+			picture = generic_fascism_rising
+
+			
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.15
+				war_support_factor = 0.05
+				political_power_gain = -0.15
+				drift_defence_factor = -0.2
+			}
+		}	
+		GRE_paradise = {
+			
+
+			picture = SWE_neither_death_nor_dishonor
+
+			
+			removal_cost = -1
+
+			modifier = {
+				research_speed_factor = 0.05
+				army_attack_against_major_factor = 0.05
+				army_breakthrough_against_major_factor = 0.05
+				army_speed_factor = 0.08
+				production_speed_arms_factory_factor = 0.1
+			}
+		}
+		GRE_dom = {
+			
+
+			picture = SWE_land_air_warfare
+
+			
+			removal_cost = -1
+
+			modifier = {
+				army_leader_start_attack_level = 2
+				army_leader_start_defense_level = 2
+				army_attack_speed_factor = 0.05
+				army_attack_factor = 0.05
+				army_defence_factor = 0.08
+			}
+		}
+		GRE_senc = {
+			
+
+			picture = ITA_vittorio_emanuele_of_everything
+
+			
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.05
+				political_advisor_cost_factor = -0.1
+				political_power_gain = 0.05
+				war_support_factor = 0.1
+				opinion_gain_monthly_factor = 0.2
+				
+			}
+		}
+		GRE_creators_of_civ = {
+			
+
+			picture = gre_venerate_the_ancient_hellenes
+
+			
+			removal_cost = -1
+equipment_bonus = {
+				infantry_equipment = {
+				
+					build_cost_ic = -0.025 instant = yes
+										
+				}
+				artillery_equipment = {
+												
+					build_cost_ic = -0.05 instant = yes
+				}
+				support_equipment = {
+		
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+			modifier = {
+				research_speed_factor = 0.05
+				nuclear_production_factor = 0.05
+				
+			}
+		}
+		GRE_golddddddd = {
+			
+
+			picture = spr_seize_the_gold_reserves
+
+			
+			removal_cost = -1
+
+			modifier = {
+                production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_dockyard_factor = 0.1
+				monthly_population = 0.1
+			}
+		}
+		GRE_african_corps = {
+			
+
+			picture = ETH_chitet
+
+			
+			removal_cost = -1
+
+			modifier = {
+               
+				conscription_factor = 0.05
+				weekly_manpower = 1000
+				
+			}
+		}
+		GRE_bankman = {
+			
+
+			picture = tur_balkan_central_bank_wealthy_greece
+
+			
+			removal_cost = -1
+
+			modifier = {
+                consumer_goods_factor = -0.05
+				production_factory_max_efficiency_factor = 0.1
+				production_factory_start_efficiency_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.05
+				production_lack_of_resource_penalty_factor = -0.15
+				
+			}
+		}
+		GRE_undedad = {
+			
+
+			picture = chi_army_corruption3
+
+			
+			removal_cost = -1
+
+			modifier = {
+               army_morale_factor = 0.05
+			   army_org_factor = 0.05
+			   army_org_regain = 0.05
+			   army_attack_factor = 0.03
+			   army_defence_factor = 0.08
+			   army_speed_factor = 0.1
+			   army_fuel_consumption_factor = -0.1
+			   
+				
+			}
+		}	
+		GRE_art_of_war5 = {
+			
+
+			picture = generic_artillery_regiments
+
+			
+			removal_cost = -1
+
+			modifier = {
+               army_attack_against_major_factor = 0.08
+			   army_defence_against_major_factor = 0.08
+			   army_breakthrough_against_major_factor = 0.08
+			   army_attack_against_minor_factor = 0.12
+			   army_defence_against_minor_factor = 0.12
+			   army_breakthrough_against_minor_factor = 0.12
+			   
+				
+			}
+		}
+		GRE_there_romeeeeeeee = {
+			
+
+			picture = ITA_new_roman_empire_ns
+
+			
+			removal_cost = -1
+
+			modifier = {
+               compliance_gain = 0.05
+			   compliance_growth = 0.1
+			   resistance_damage_to_garrison = -0.15
+			   required_garrison_factor = -0.05
+			   resistance_decay = 0.1
+			   non_core_manpower = 0.05
+			   resistance_target = -0.1
+			   
+				
+			}
+		}		
+	GRE_eaglebyz = {
+			allowed = {
+				always = no
+			}
+
+			
+
+			removal_cost = -1
+
+			picture = SOV_third_five_year_plan_civilian
+
+			modifier = {
+                production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
+				production_speed_industrial_complex_factor = 0.05
+				political_power_gain = 0.05
+				research_speed_factor = 0.02
+				monthly_population = 0.1
+				economy_cost_factor = -0.1
+				trade_laws_cost_factor = -0.21
+			}
+		}	
+	GRE_eaglerom = {
+			allowed = {
+				always = no
+			}
+
+			
+
+			removal_cost = -1
+
+			picture = SOV_third_five_year_plan_military
+
+			modifier = {
+                production_speed_arms_factory_factor = 0.1
+				training_time_factor = -0.05
+				production_factory_max_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_start_efficiency_factor = 0.05
+				mobilization_speed = 0.1
+				mobilization_laws_cost_factor = -0.05
+                conscription = 0.005
+			}
+		}			
+	GRE_frencbad = {
+			allowed = {
+				always = no
+			}
+
+			
+
+			removal_cost = -1
+
+			picture = eng_the_kings_party
+
+			modifier = {
+				
+				drift_defence_factor = 0.5
+				master_ideology_drift = 0.1
+				extra_trade_to_overlord_factor = 0.2
+				cic_to_overlord_factor = 0.2
+				mic_to_overlord_factor = 0.2
+			}
+		}	
+	GRE_commonweatheng = {
+			allowed = {
+				always = no
+			}
+
+			
+
+			removal_cost = -1
+
+			picture = eng_the_kings_party
+
+			modifier = {
+				
+				drift_defence_factor = 0.5
+				master_ideology_drift = 0.1
+				extra_trade_to_overlord_factor = 0.2
+				cic_to_overlord_factor = 0.2
+				mic_to_overlord_factor = 0.2
+			}
+		}	
+	GRE_plncm = {
+			allowed = {
+				always = no
+			}
+
+			name = GRE_plncm
+
+			removal_cost = -1
+
+			picture = POL_april_constitution
+
+			modifier = {
+				
+				drift_defence_factor = 0.5
+				master_ideology_drift = 0.1
+				extra_trade_to_overlord_factor = 0.3
+				cic_to_overlord_factor = 0.15
+				mic_to_overlord_factor = 0.15
+			}
+		}
+	GRE_plncm2 = {
+			allowed = {
+				always = no
+			}
+
+			name = GRE_plncm
+
+			removal_cost = -1
+
+			picture = POL_april_constitution
+
+			modifier = {
+				
+				drift_defence_factor = 0.5
+				master_ideology_drift = 0.1
+				extra_trade_to_overlord_factor = 0.3
+				cic_to_overlord_factor = 0.3
+				mic_to_overlord_factor = 0.3
+			}
+		}	
+	GRE_revive_the_kaiserreich = {
+			allowed = {
+				always = no
+			}
+
+			name = GER_revive_the_kaiserreich
+
+			removal_cost = -1
+
+			picture = ger_revive_the_kaiserreich
+
+			modifier = {
+				
+				drift_defence_factor = 0.5
+				master_ideology_drift = 0.1
+				extra_trade_to_overlord_factor = 0.2
+				cic_to_overlord_factor = 0.1
+				mic_to_overlord_factor = 0.15
+			}
+		}
+	GRE_austrian_hungarian = {
+			allowed = {
+				always = no
+			}
+            name = HUN_habsburg_restored
+			
+
+			removal_cost = -1
+
+			picture = HUN_hungarian_monarchy_habsburg
+
+			modifier = {
+				drift_defence_factor = 0.5
+				master_ideology_drift = 0.1
+				extra_trade_to_overlord_factor = 0.15
+				cic_to_overlord_factor = 0.15
+				mic_to_overlord_factor = 0.15
+			}
+		}
+GRE_russianrome = {
+			
+
+			picture = SOV_crowning_jewel_of_russia
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				consumer_goods_factor = -0.05
+				cic_to_overlord_factor = 0.1
+				mic_to_overlord_factor = 0.1
+				extra_trade_to_overlord_factor = 0.15
+				master_ideology_drift = 0.2
+				
+			}
+		}
+GRE_iberians = {
+			
+
+			picture = iSOV_crowning_jewel_of_russia
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				
+				cic_to_overlord_factor = 0.2
+				mic_to_overlord_factor = 0.2
+				extra_trade_to_overlord_factor = 0.2
+				master_ideology_drift = 0.1
+				
+			}
+		}	
+GRE_crush_stalin_ns22 = {
+			picture = SOV_factionalism_modifier
+
+			allowed = {
+			
+			}
+
+			removal_cost = -1 
+
+			targeted_modifier = {
+				tag = SOV 
+				attack_bonus_against = 0.05
+				breakthrough_bonus_against = 0.1
+				defense_bonus_against = 0.15
+			}
+
+			
+		}		
+GRE_crush_stalin_ns = {
+			name = NOR_crush_stalin
+			picture = SOV_factionalism_modifier
+
+			allowed = {
+			
+			}
+
+			removal_cost = -1 
+
+			targeted_modifier = {
+				tag = SOV 
+				attack_bonus_against = 0.1
+				breakthrough_bonus_against = 0.1
+			}
+
+			modifier ={
+				weekly_manpower = 200
+			
+				war_stability_factor = 0.1
+				war_support_factor = 0.05
+			}
+		}
+
+		GRE_crush_hitler_ns = {
+			picture = SPR_anti_fascist_crusade
+            name = NOR_crush_hitler_ns
+			allowed = {
+	
+			}
+
+			removal_cost = -1 
+
+			targeted_modifier = {
+				tag = GER 
+				attack_bonus_against = 0.1
+				breakthrough_bonus_against = 0.1
+			}
+
+			modifier ={
+				weekly_manpower = 300
+				
+				war_stability_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+GRE_italia_irredenta_achieved = { 
+	
+			picture = ITA_italia_irredenta_achieved
+	
+			removal_cost = -1	
+	
+			name = ITA_italia_irredenta_achieved
+			
+			modifier = {
+				army_org_factor = 0.05
+				compliance_gain = 0.1
+				war_support_factor = 0.05
+				stability_factor = 0.05
+				political_power_gain = 0.1
+			}
+		}
+GRE_stockpiling_fuel = {
+			removal_cost = -1
+
+			picture = generic_stockpile_fuel
+				
+		name = ITA_stockpiling_fuel	
+			modifier = {
+				army_fuel_consumption_factor = -0.3
+				air_fuel_consumption_factor = -0.3
+				navy_fuel_consumption_factor = -0.3
+				production_speed_fuel_silo_factor = 0.5
+			}
+		}
+GRE_africa_orientale_italiana_idea = { 
+	
+			picture = ITA_aoi
+	
+			removal_cost = -1	
+	
+			name = AOI_africa_orientale_italiana_idea
+			
+			modifier = {
+				resistance_damage_to_garrison = -0.05
+				non_core_manpower = 0.1
+				industry_repair_factor = 0.2
+				consumer_goods_factor = -0.05
+				weekly_manpower = 100
+				naval_invasion_capacity = 10
+				naval_invasion_penalty = -0.1
+			}
+		}
+		GRE_roman_horse_spirit = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = hol_expand_the_colonial_army
+			modifier = {
+				army_speed_factor = 0.2
+				cavalry_attack_factor = 0.1
+			    cavalry_defence_factor = 0.1
+				army_armor_speed_factor = 0.05
+			}
+		}
+GRE_prince_regent_idea = {
+			picture = ETH_imru_prince_regent
+			name = ETH_prince_regent_idea
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = 0.1
+		army_armor_defence_factor = 0.05
+		army_defence_factor = 0.1
+		
+			}
+		}		
+GRE_women_fm = {
+
+picture = generic_women_in_the_army
+removal_cost = -1
+
+            modifier = {
+           monthly_population = 0.2
+		   conscription_factor = 0.1
+		   non_core_manpower = 0.1
+		   required_garrison_factor = -0.1
+		   research_speed_factor = 0.03
+            }
+
+}				
+GRE_mussolini_shadow = {
+
+picture = ITA_shadow_of_mussolini
+removal_cost = -1
+
+            modifier = {
+           war_support_factor = 0.05
+		   political_power_gain = 0.1
+		   production_speed_arms_factory_factor = 0.1
+		   army_breakthrough_against_major_factor = 0.05
+		   army_breakthrough_against_minor_factor = 0.05
+            }
+
+}	
+GRE_grandi = {
+
+picture = generic_flexible_foreign_policy2
+removal_cost = -1
+
+            modifier = {
+		opinion_gain_monthly_factor = 0.1
+		improve_relations_maintain_cost_factor = -0.1
+		justify_war_goal_time = -0.2
+		foreign_subversive_activites = -0.1
+		political_power_factor = 0.05
+		conscription_factor = 0.05
+            }
+
+}	
+GRE_balbo = {
+
+picture = generic_air_research
+removal_cost = -1
+
+            modifier = {
+	political_power_factor = 0.05
+		air_doctrine_cost_factor = -0.1
+		land_doctrine_cost_factor = -0.05
+		coordination_bonus = 0.02
+		command_power_gain = 0.1	
+research_speed_factor = 0.03
+            }
+
+}
+	GRE_italian_navy = {
+
+
+ 			removal_cost = -1
+
+ 			picture = ITA_regia_marina_3
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                 naval_accidents_chance = -0.1
+				 naval_coordination  = 0.1
+				 naval_detection = 0.1
+				 positioning = 0.05
+				 repair_speed_factor = 0.2
+				 naval_damage_factor = 0.05
+				 naval_defense_factor = 0.1
+				 naval_equipment_research = 0.08
+                 navy_org_factor = 0.05
+ 			}
+ 		}
+		GRE_italian_air = { 
+
+
+ 			removal_cost = -1
+
+ 			picture = ITA_regia_aeronautica_3
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                 air_accidents_factor = -0.2
+				 air_attack_factor = 0.1
+				 air_defence_factor = 0.15
+				 air_mission_efficiency = 0.05
+				 air_weather_penalty = -0.1
+				 air_ace_generation_chance_factor = 0.5
+				 air_night_penalty = -0.15
+				 air_detection = 0.05
+ 			}
+ 		}
+ 		GRE_italian_army = {
+ 			removal_cost = -1
+
+ 			picture = ITA_regio_esercito_3
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+ 				max_dig_in_factor = 0.03
+				army_speed_factor = 0.05
+				army_org_factor = 0.02
+				org_loss_when_moving = -0.05
+				army_attack_against_major_factor = 0.05
+				army_defence_against_major_factor = 0.05
+				army_breakthrough_against_major_factor = 0.05
+				army_attack_against_minor_factor = 0.1
+				army_defence_against_minor_factor = 0.1
+				army_breakthrough_against_minor_factor = 0.1
+ 			}
+ 		}
+GRE_hot_train = {
+ 			removal_cost = -1
+
+ 			picture = tur_tuz_golu_training_facility
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+ 				heat_attrition_factor = -0.1
+			    acclimatization_hot_climate_gain_factor = 0.1
+ 			}
+ 		}
+ 		GRE_cold_train = {
+ 			removal_cost = -1
+
+ 			picture = tur_sub_zero_survival_training
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+			    winter_attrition_factor = -0.1
+ 				acclimatization_cold_climate_gain_factor = 0.1
+ 			}
+ 		}	
+		GRE_butter = {
+ 			removal_cost = -1
+
+ 			picture = SWE_hodgepodge_of_equipment
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			equipment_bonus = {
+				infantry_equipment = {
+				
+					build_cost_ic = -0.1 instant = yes
+										
+				}
+				artillery_equipment = {
+													
+					build_cost_ic = -0.05 instant = yes
+				}
+				support_equipment = {
+					build_cost_ic = -0.15 instant = yes
+				}
+			}
+ 		}
+		GRE_bmb = {
+ 			removal_cost = -1
+
+ 			picture = generic_degauss_ship_hulls
+
+ 			allowed = {
+ 				always = no
+ 			}
+            modifier = {
+			production_speed_rocket_site_factor = 0.5
+			}
+ 			equipment_bonus = {
+				guided_missile_equipment = {
+				air_bombing = 0.5
+				air_range = 0.3
+		        maximum_speed = 0.15
+		        air_agility = 0.25
+				air_defence = 0.5
+				naval_strike_attack = 0.5
+				naval_strike_targetting = 0.75
+				reliability = 0.1
+					 instant = yes
+										
+				}
+				
+			}
+ 		}
+		GRE_flying_women = {
+ 			removal_cost = -1
+
+ 			picture = gre_aviation
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+			air_weather_penalty = -0.1
+			air_ace_generation_chance_factor = 0.5
+			air_mission_xp_gain_factor = 0.1
+			air_training_xp_gain_factor = 0.1
+			}
+ 		}
+		GRE_gasssss = {
+ 			removal_cost = -1
+
+ 			picture = gassing
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+			
+			air_bombing_targetting = 0.15
+			air_cas_present_factor = 0.20
+			
+			}
+ 		}
+		GRE_napalmm = {
+ 			removal_cost = -1
+
+ 			picture = napalm
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+			ground_attack_factor = 0.25
+			air_strategic_bomber_bombing_factor = 0.2
+			}
+ 		}
+
+		GRE_spirit_of_saint_bernard_idea = {
+			picture = SWE_neither_death_nor_dishonor
+			removal_cost = -1
+			modifier = {
+				custom_modifier_tooltip = GRE_spirit_of_saint_bernard_idea_tooltip
+			}
+		}
+		
+GRE_aerial_artillery = {
+		
+			picture = strategic_bombing_focus
+		
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			equipment_bonus = {
+				small_plane_cas_airframe = { 
+					air_ground_attack = 0.1
+					instant = yes
+				}
+				cv_small_plane_cas_airframe = { 
+					air_ground_attack = 0.2
+					instant = yes
+				}
+				medium_plane_airframe = {
+					air_ground_attack = 0.1
+					instant = yes
+				}
+			}
+		}
+				
+		GRE_local_development = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_air_bonus
+
+			equipment_bonus = {
+				small_plane_airframe = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				cv_small_plane_airframe = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				small_plane_cas_airframe = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				cv_small_plane_cas_airframe = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				small_plane_naval_bomber_airframe = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				cv_small_plane_naval_bomber_airframe = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+				medium_plane_airframe = {
+					build_cost_ic = -0.2
+					instant = yes
+				}
+				medium_plane_fighter_airframe = {
+					build_cost_ic = -0.2
+					instant = yes
+				}
+				medium_plane_scout_plane_airframe = {
+					build_cost_ic = -0.2
+					instant = yes
+				}
+				large_plane_airframe = {
+					build_cost_ic = -0.25
+					instant = yes
+				}
+				large_plane_maritime_patrol_plane_airframe = {
+					build_cost_ic = -0.25
+					instant = yes
+				}
+			}
+		}		
+		GRE_ship_deal = {
+ 			removal_cost = -1
+
+ 			picture = royal_hellenic_naval_shipyard
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+			industrial_capacity_dockyard = 0.5
+			}
+ 		}	
+		GRE_seae = {
+ 			removal_cost = -1
+
+ 			picture = SOV_shipyard_staff_purged
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+			shore_bombardment_bonus = 0.2
+			naval_invasion_penalty = -0.1
+			naval_invasion_prep_speed = 0.3
+			}
+ 		}		
+GRE_underground_resistance_cells_ns = {
+			picture = chi_war_of_resistance3
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				resistance_decay_on_our_occupied_states = -0.3
+				resistance_target_on_our_occupied_states = 0.2
+				resistance_damage_to_garrison_on_our_occupied_states = 0.5
+				target_sabotage_cost = -0.2
+				target_sabotage_factor = 0.15
+			}
+		}
+
+		GRE_underground_resistance_cells_ns_no_lar = {
+		name = GRE_underground_resistance_cells_ns
+			picture = chi_war_of_resistance3
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				resistance_decay_on_our_occupied_states = -0.25
+				resistance_target_on_our_occupied_states = 0.15
+				resistance_damage_to_garrison_on_our_occupied_states = 0.2
+				boost_resistance_factor = 0.3
+			}
+		}	
+		GRE_dessert = {
+ 			removal_cost = -1
+
+ 			picture = ETH_the_heroes_of_adwa_upgraded
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+ 				heat_attrition_factor = -0.2
+			    acclimatization_hot_climate_gain_factor = 0.2
+ 			}
+ 		}		
+ 		GRE_winter = {
+ 			removal_cost = -1
+
+ 			picture = FIN_sami_pathfinders
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+			    winter_attrition_factor = -0.2
+ 				acclimatization_cold_climate_gain_factor = 0.2
+ 			}
+ 		}		
+ 		GRE_arab_army = {
+ 			removal_cost = -1
+
+ 			picture = ITA_hardened_irregular_bands
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+ 				heat_attrition_factor = -0.1
+				supply_consumption_factor = -0.1
+				supply_combat_penalties_on_core_factor = -0.15
+				supply_node_range = 0.1
+ 			}
+ 		}			
+ 		GRE_ally_egypt = { 
+ 			removal_cost = -1
+
+ 			picture = ETH_army_3
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                conscription_factor = 0.1
+			    non_core_manpower = 0.05
+				drift_defence_factor = 0.1
+				army_org_factor = 0.05
+				army_speed_factor 0.05
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				surrender_limit = 0.05
+				offensive_war_stability_factor = 0.1
+ 			}
+ 		}	
+ 		GRE_viking = { 
+ 			removal_cost = -1
+
+ 			picture = ICE_the_viking_spirit
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                justify_war_goal_time = -0.1
+				war_support_factor = 0.1
+				stability_factor = 0.1
+				conscription = 0.01
+				conscription_factor = 0.05
+				research_speed_factor = 0.03
+				political_power_gain = 0.1
+				army_attack_factor = 0.05
+				army_attack_speed_factor = 0.1
+				army_org_factor = 0.05
+				industrial_capacity_dockyard = 0.1
+				experience_gain_navy = 0.03
+				naval_detection = 0.05
+				naval_morale_factor = 0.1
+ 			}
+ 		}	
+	GRE_nordic_what = {
+		
+
+		picture = NORDIC_kalmar_league
+
+		
+		
+		modifier = {
+			command_power_gain = 0.1
+			max_command_power = 100 
+			weekly_manpower = 200
+			conscription_factor = 0.05
+			experience_gain_army = 0.02
+		}
+	}		
+GRE_our_debt_to_the_brits = {
+
+picture = hol_caved_to_the_british
+removal_cost = -1
+
+            modifier = {
+           STABILITY_FACTOR = -0.1
+		   POLITICAL_POWER_GAIN = 0.05
+		   CONSUMER_GOODS_FACTOR = 0.05
+            }
+
+}
+
+GRE_medeteranian_superpower = {
+
+picture = royal_hellenic_naval_shipyard
+removal_cost = -1
+		   
+modifier = {
+				navy_chief_cost_factor = -0.2
+				naval_equipment_research = 0.1
+                navy_org_factor = 0.05
+                repair_speed_factor = 0.4
+                naval_damage_factor = 0.1
+                naval_defense_factor = 0.1
+                naval_accidents_chance = -0.2
+                naval_invasion_prep_speed = 0.15
+                naval_invasion_capacity = 5
+                invasion_preparation = -0.1
+                naval_doctrine_cost_factor = -0.2
+}
+equipment_bonus = {
+                screen_ship = {
+                    naval_speed = 0.1 naval_range = 0.3
+                }
+                carrier = {
+                    naval_speed = 0.1 naval_range = 0.2
+                }
+                capital_ship = {
+                    naval_speed = 0.1 naval_range = 0.15
+                }
+                submarine = {
+                    naval_speed = 0.2 naval_range = 0.1
+                }
+            }
+}
+GRE_trade_centre = {
+
+picture = can_wartime_prices_and_trade_board
+removal_cost = -1
+
+            modifier = {
+			POLITICAL_POWER_GAIN = 0.1
+			PRODUCTION_FACTORY_MAX_EFFICIENCY_FACTOR = 0.05
+			RODUCTION_FACTORY_START_EFFICIENCY_FACTOR = 0.1
+			PRODUCTION_FACTORY_EFFICIENCY_GAIN_FACTOR = 0.1
+            PRODUCTION_SPEED_BUILDINGS_FACTOR = 0.08
+			economy_cost_factor = -0.1
+		    MIN_EXPORT_FACTOR = 0.5
+		    CONSUMER_GOODS_FACTOR = -0.05
+			}
+			equipment_bonus = {
+                convoy = {
+                    build_cost_ic = -0.15 instant = yes
+                }
+            }
+
+
+}
+
+GRE_newly_freed_economy = {
+
+picture = tur_balkan_central_bank
+removal_cost = -1
+
+            modifier = {
+			POLITICAL_POWER_GAIN = -0.05
+			STABILITY_FACTOR = -0.15
+			PRODUCTION_SPEED_BUILDINGS_FACTOR = -0.1
+			MIN_EXPORT_FACTOR = -0.2
+            CONSUMER_GOODS_FACTOR = 0.1
+            }
+			}
+			
+GRE_newly_freed_economy_2 = {
+
+picture = tur_balkan_central_bank_wealthy_greece
+removal_cost = -1
+
+            modifier = {
+			POLITICAL_POWER_GAIN = 0.1
+			STABILITY_FACTOR = 0.1
+			PRODUCTION_SPEED_BUILDINGS_FACTOR = 0.05
+            CONSUMER_GOODS_FACTOR = -0.05
+            }
+			}
+	
+GRE_guided_democracy = {
+
+picture = generic_democratic_drift_bonus
+removal_cost = -1
+
+            modifier = {
+			POLITICAL_POWER_GAIN = 0.1
+			DRIFT_DEFENCE_FACTOR = 0.1
+			political_advisor_cost_factor = -0.1
+			RESISTANCE_GROWTH = -0.05
+			RESISTANCE_DAMAGE_TO_GARRISONS = -0.1
+			STABILITY_FACTOR = -0.05
+            CONSUMER_GOODS_FACTOR = 0.12
+            }
+			}
+
+GRE_guided_democracy_2 = {
+
+picture = generic_democratic_drift_bonus
+removal_cost = -1
+
+           modifier = { 
+		   STABILITY_POPULARITY_FACTOR = 0.1
+            POLITICAL_POWER_GAIN = 0.15
+			DRIFT_DEFENCE_FACTOR = 0.2
+			political_advisor_cost_factor = -0.15
+			RESISTANCE_GROWTH = -0.1
+			RESISTANCE_DAMAGE_TO_GARRISONS = -0.15
+			COMPLIANCE_GROWTH = 0.05
+            CONSUMER_GOODS_FACTOR = -0.05
+            }
+			}
+
+
+GRE_onasis_the_great = {
+
+picture = NORDIC_navy_democratic
+removal_cost = -1
+
+           modifier = { 
+		   STABILITY_FACTOR = 0.05
+		   war_support_modifier = 0.05
+		   POLITICAL_POWER_GAIN = 0.08
+		   PRODUCTION_SPEED_BUILDINGS_FACTOR = 0.05
+		   industrial_capacity_dockyard = 0.2
+		   }
+		   equipment_bonus = {
+                convoy = {
+                    build_cost_ic = -0.2 instant = yes
+                }
+            }
+}
+
+GRE_enforced_patriarchy = {
+
+picture = generic_manpower_bonus
+removal_cost = -1
+
+            modifier = {
+			STABILITY_FACTOR = 0.05
+			CONSCRIPTION_FACTOR = -0.1
+			INDUSTRIAL_CAPACITY_FACTOR = 0.05
+			PRODUCTION_FACTORY_MAX_EFFICIENCY = 0.05
+			PRODUCTION_SPEED_BUILDINGS_FACTOR = -0.1
+			ARMY_CORE_ATTACK_FACTOR = 0.05
+			ARMY_CORE_DEFENCE_FACTOR = 0.1
+            }
+			}
+
+GRE_limited_woman_rights = {
+
+picture = generic_army_war_college
+removal_cost = -1
+
+            modifier = {
+			POLITICAL_POWER_GAIN = 0.05
+			STABILITY_FACTOR = 0.05
+			CONSCRIPTION_FACTOR = 0.1
+			INDUSTRIAL_CAPACITY_FACTOR = -0.05
+			PRODUCTION_SPEED_BUILDINGS_FACTOR = 0.08
+            }
+			}
+
+GRE_complete_gender_equality = {
+
+picture = generic_victors_of_ww1
+removal_cost = -1
+
+            modifier = {
+			POLITICAL_POWER_GAIN = 0.1
+			STABILITY_FACTOR = 0.1
+			CONSCRIPTION_FACTOR = 0.1
+			INDUSTRIAL_CAPACITY_FACTOR = -0.1
+			PRODUCTION_SPEED_BUILDINGS_FACTOR = 0.05
+			FEMALE_OPERATIVE_CHANCE = 1
+            }
+			}
+GRE_matriarchy = {
+
+picture = generic_victors_of_ww1
+removal_cost = -1
+
+            modifier = {
+			POLITICAL_POWER_GAIN = 0.05
+			STABILITY_FACTOR = -0.1
+			CONSCRIPTION_FACTOR = 0.15
+			INDUSTRIAL_CAPACITY_FACTOR = -0.15
+			PRODUCTION_SPEED_BUILDINGS_FACTOR = 0.1
+			FEMALE_OPERATIVE_CHANCE = 3
+			monthly_population = 0.1
+			research_speed_factor = 0.02
+            }
+			}
+GRE_heavy_fines = {
+
+picture = NOR_printing_money
+removal_cost = -1
+
+            modifier = {
+			CONSUMER_GOODS_FACTOR = 0.3
+            }
+			}
+
+####RIGGED ELECTIONS
+
+GRE_questioning_public = {
+
+picture = prc_low_popular_support3
+removal_cost = -1
+
+           modifier = { 
+		   STABILITY_FACTOR = -0.5
+			POLITICAL_POWER_GAIN = -0.2
+            }
+
+}
+
+GRE_appeased_public = {
+
+picture = ITA_battaglie_per_la_nascite
+removal_cost = -1
+
+           modifier = { 
+		   STABILITY_POPULARITY_FACTOR = 0.1
+			CONSUMER_GOODS_FACTOR = -0.03
+			ARMY_CORE_ATTACK_FACTOR = 0.05
+			ARMY_CORE_DEFENCE_FACTOR = 0.08
+            }
+
+}
+
+GRE_propaganda_investments = {
+
+picture = EST_democratic_opposition
+removal_cost = -1
+
+           modifier = { 
+		   STABILITY_POPULARITY_FACTOR = 0.08
+		   war_support_modifier = 0.05
+		   DRIFT_DEFENCE_FACTOR = 0.2
+		   POLITICAL_POWER_GAIN = -0.15
+		   CONSUMER_GOODS_FACTOR = 0.05
+            }
+
+}
+
+GRE_leaked_documets_disaster = {
+
+picture = gre_schachtplan
+removal_cost = -1
+
+           modifier = { 
+		   STABILITY_FACTOR = -0.3
+		   POLITICAL_POWER_GAIN = -0.2
+		   
+            }
+
+}	
+    	GRE_sss = {
+           
+        	picture = NOR_broken_gun_ns
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+                conscription_factor = 0.05
+                war_support_factor 0.05
+                defensive_war_stability_factor = 0.1
+				improve_relations_maintain_cost_factor = -0.5
+				weekly_casualties_war_support = 0.01
+				weekly_bombing_war_support = 0.01			
+       		}
+  		}
+    	GRE_drachma_1 = {
+            name = GRE_drachma_1
+        	picture = GRE_drachma_id
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+                industrial_capacity_factory = 0.02
+        		global_building_slots_factor = 0.05
+				consumer_goods_factor = -0.02
+                production_speed_buildings_factor = 0.02		
+       		}
+  		}
+    	GRE_drachma_2 = {
+            name = GRE_drachma_1
+        	picture = GRE_drachma_id
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+                industrial_capacity_factory = 0.05
+        		global_building_slots_factor = 0.05
+				consumer_goods_factor = -0.04
+                production_speed_buildings_factor = 0.05
+                political_power_gain = 0.05			
+       		}
+  		}	
+		GRE_drachma_3 = {
+            name = GRE_drachma_1
+        	picture = GRE_drachma_id
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+                industrial_capacity_factory = 0.08
+        		global_building_slots_factor = 0.08
+				consumer_goods_factor = -0.08
+                production_speed_buildings_factor = 0.08
+                political_power_gain = 0.08			
+       		}
+  		}
+		GRE_get_rails = {
+
+			
+			picture = generic_train_tracks
+  			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				production_speed_rail_way_factor = 0.5
+				production_speed_supply_node_factor = 1.5
+				}
+		}
+		GRE_coffee_exports_idea = {
+
+			picture = ETH_coffee_exports
+			name = ETH_coffee_exports_idea
+  			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.05
+				repair_speed_factor = 0.1
+				refit_speed = 0.1
+				army_speed_factor=0.05
+				naval_speed_factor = 0.1
+				air_maximum_speed_factor = 0.1
+			}
+		}
+		GRE_toman_the_thermonuclear_bomb = {
+
+			picture = generic_railroads
+  			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			equipment_bonus = {
+				train_equipment = {
+				reliability = 0.1
+					build_cost_ic = -0.3 instant = yes
+										
+				}
+				
+			}	
+		}
+		GRE_farmsssss = {
+
+			picture = LIT_invested_in_farms
+  			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				supply_consumption_factor = -0.05
+				supply_node_range = 0.1
+				production_speed_infrastructure_factor = 0.1
+				consumer_goods_factor = 0.1
+				}
+		}
+		GRE_radio_usage = {
+
+			picture = usa_magic
+  			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				drift_defence_factor = 0.1
+				war_support_factor = 0.05
+				stability_factor = 0.05
+				coordination_bonus = 0.1
+				army_org_factor = 0.1
+				}
+		}
+		GRE_epirus_mines = {
+
+			picture = ast_all_in
+  			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+				modifier = {
+				production_speed_nuclear_reactor_factor = 0.1
+				nuclear_production_factor = 0.1
+			}
+			research_bonus = {
+				nuclear = 0.05
+			}
+				
+		}
+    GRE_snipers = {
+			picture = chi_army_corruption2
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_core_defence_factor = 0.05
+				army_attack_against_major_factor = 0.05
+				truck_attrition_factor = -0.05
+				army_attack_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+    GRE_anatoliannn = {
+			picture = gre_martyrs_of_the_anatolian_catastrophe
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				weekly_manpower = 100
+				experience_gain_army_factor = 0.25
+				extra_paratrooper_supply_grace = 120
+				land_doctrine_cost_factor = -0.05
+			}
+		}
+				
+		GRE_blueprint_stealing_id = {
+
+			picture = Blueprints
+  			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+				modifier = {
+				consumer_goods_factor = 0.15
+				research_speed_factor = 0.05
+				
+			}
+			
+				
+		}
+		GRE_foreign_monopolies_nationalized = {
+
+			picture = generic_improved_industries
+  			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				production_lack_of_resource_penalty_factor = -0.1
+				industry_repair_factor = 0.15
+				license_purchase_cost = -0.2
+				line_change_production_efficiency_factor = 0.1
+				}
+		}		
+		GRE_balanced_approach = {
+
+			picture = generic_improved_industries
+  			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				production_speed_arms_factory_factor=0.05
+				industrial_capacity_factory=0.05		
+production_factory_efficiency_gain_factor=0.05
+production_factory_max_efficiency_factor=0.05
+production_speed_buildings_factor=0.03				}
+		}
+		GRE_police = {
+
+			removal_cost = -1
+			
+			picture = generic_secret_police
+			allowed_civil_war = {
+
+			}
+			
+			modifier = {				
+				resistance_damage_to_garrison = -0.2
+				foreign_subversive_activites = -0.1
+				non_core_manpower = 0.1
+				compliance_growth = 0.05
+				resistance_decay = 0.1
+				required_garrison_factor = -0.15
+			}
+		}
+
+
+		GRE_formation_flying_idea = {
+			picture = generic_air_payment
+
+			removal_cost = -1
+
+			allowed = {
+		
+			}
+			allowed_civil_war = { always = yes }
+			modifier = {
+				air_detection = 0.1
+				air_intercept_efficiency = 0.1
+				air_defence_factor = 0.08
+		
+			}
+		}		
+GRE_marauder_bombers_idea = {
+			picture = SWE_marauder_bombers
+
+			removal_cost = -1
+
+			allowed_civil_war = { always = yes }
+			modifier = {
+				air_bombing_targetting = 0.1
+				air_night_penalty = -0.15
+			
+				air_attack_factor = 0.05
+			}
+		}	
+GRE_dessert_logistics = {
+			
+			removal_cost = -1
+			picture = generic_supply_line 
+
+			allowed = {
+ 				always = no
+ 			}
+
+ 			allowed_civil_war = {
+				always = yes
+			}
+
+ 			modifier = {
+				attrition = -0.1
+				heat_attrition_factor = -0.1
+				out_of_supply_factor = -0.1
+				supply_node_range = 0.15
+				
+			}
+		}		
+GRE_improved_logistics = {
+			
+			removal_cost = -1
+			picture = generic_supply_line 
+
+			allowed = {
+ 				always = no
+ 			}
+
+ 			allowed_civil_war = {
+				always = yes
+			}
+
+ 			modifier = {
+				attrition = -0.1
+				supply_factor = 0.05
+				supply_combat_penalties_on_core_factor = -0.2
+				out_of_supply_factor = -0.15
+				
+			}
+		}
+GRE_improved_logistics2ger = {
+			
+			removal_cost = -1
+			picture = SOV_the_road_of_life
+
+			allowed = {
+ 				always = no
+ 			}
+
+ 			allowed_civil_war = {
+				always = yes
+			}
+
+ 			modifier = {
+				truck_attrition_factor = -0.2
+				supply_node_range = 0.5
+				production_speed_supply_node_factor = 0.25
+				production_speed_rail_way_factor = 0.1
+			}
+		}		GRE_improved_logistics2 = {
+			
+			removal_cost = -1
+			picture = SOV_the_road_of_life
+
+			allowed = {
+ 				always = no
+ 			}
+
+ 			allowed_civil_war = {
+				always = yes
+			}
+
+ 			modifier = {
+				truck_attrition_factor = -0.1
+				supply_node_range = 0.1
+				production_speed_supply_node_factor = 0.1
+				production_speed_rail_way_factor = 0.2
+			}
+		}
+GRE_improved_logistics2 = {
+			
+			removal_cost = -1
+			picture = SOV_the_road_of_life
+
+			allowed = {
+ 				always = no
+ 			}
+
+ 			allowed_civil_war = {
+				always = yes
+			}
+
+ 			modifier = {
+				truck_attrition_factor = -0.1
+				supply_node_range = 0.1
+				production_speed_supply_node_factor = 0.1
+				production_speed_rail_way_factor = 0.2
+			}
+		}		
+		GRE_decisive_battle_tactics = {
+			name = SWE_decisive_battle_tactics
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+
+			picture = SWE_all_cards_on_deck
+
+			modifier = {
+				critical_receive_chance = -0.2
+				ships_at_battle_start = 0.2
+				naval_light_gun_hit_chance_factor = 0.2
+				naval_heavy_gun_hit_chance_factor = 0.1
+				naval_retreat_speed = -0.1
+				naval_retreat_chance_after_initial_combat = -0.2
+			}
+		}
+		GRE_patriotic_peoples_movement_ns = {
+			name = FIN_patriotic_peoples_movement_ns_1
+
+			picture = FIN_finnish_march_of_conquest
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+	
+				political_advisor_cost_factor = -0.1
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+				training_time_army_factor = -0.07
+				army_morale_factor = 0.05
+				army_org_regain = 0.05
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
+			}
+		}		
+		GRE_menwork = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = gre_agricultural_communes
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.1
+			}
+		}
+		GRE_womendont = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = gre_agricultural_communes2
+			modifier = {
+				conscription_factor = -0.2
+				monthly_population = 0.1
+				stability_factor = 0.05
+				political_power_factor = 0.1
+				
+			}
+		}
+		GRE_tobacco_exports = {
+			picture = bul_tobacco_exports
+
+			allowed = {
+				always = no
+			}
+
+			
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.05
+				industrial_capacity_factory = 0.1
+			}
+		}
+		GRE_kids = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = gre_venerate_the_ancient_hellenes
+			modifier = {
+				research_speed_factor = 0.05
+				political_power_gain = 0.1
+				stability_factor = 0.05
+			}
+		}
+		GRE_fanily = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = ITA_battaglie_per_la_nascite
+			modifier = {
+				monthly_population = 0.1
+				conscription = 0.005
+				conscription_factor = 0.1
+				
+			}
+		}
+		GRE_redcross = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = por_camisas_azuis
+			modifier = {
+			    industrial_capacity_factory = 0.05
+				army_morale_factor = 0.1
+				enemy_army_bonus_air_superiority_factor = -0.15
+				industry_repair_factor = 0.2
+			}
+		}
+		GRE_fanily2 = {
+            name = GRE_fanily
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = ITA_battaglie_per_la_nascite
+			modifier = {
+				monthly_population = 0.2
+				conscription = 0.01
+				conscription_factor = 0.15
+				compliance_growth = 0.1
+			}
+		}
+		GRE_infiltration = {
+           
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = prc_the_long_march2
+			modifier = {
+				army_speed_factor = 0.1
+				army_armor_speed_factor = 0.05
+				pocket_penalty = -0.1
+			}
+		}		
+		GRE_home = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = rom_balkan_dominance
+			modifier = {
+				army_core_attack_factor = 0.08
+				army_core_defence_factor = 0.1
+				
+			}
+		}
+
+		GRE_volunteers_from_the_empire = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = generic_deal_with_the_devil2
+			modifier = {
+				weekly_manpower = 1500
+				conscription_factor = 0.1
+				
+			}
+		}
+		GRE_payedwarriors_from_the_empire = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = generic_deal_with_the_devil
+			modifier = {
+				conscription = 0.02
+				consumer_goods_factor = 0.1
+			}
+		}
+		GRE_sisu = {
+			name = sisu
+			allowed = {
+				always = no
+			}
+
+			
+
+			removal_cost = -1
+			
+			modifier = {
+				army_morale_factor = 0.1
+				attrition = -0.1
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.1
+			}
+		}
+
+		GRE_winter_war_ns = {
+			picture = tur_sub_zero_survival_training
+			allowed = {
+				always = no
+			}
+
+			name = winter_war_ns
+
+			removal_cost = -1
+			
+			modifier = {
+				mobilization_speed = 0.1
+				winter_attrition_factor = -0.1
+				army_breakthrough_against_major_factor = 0.05
+			}
+		}	
+		GRE_accepted = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = rom_balkan_dominance
+			modifier = {
+				drift_defence_factor = 0.1
+				stability_factor = 0.05
+				conscription_factor = 0.05
+				
+			}
+		}			
+		GRE_traditional = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = SOV_new_old_church
+			modifier = {
+				political_power_gain = 0.15
+				research_speed_factor = -0.1
+				stability_factor = 0.1
+			}
+		}
+		GRE_traditional2 = {
+            name = GRE_traditional
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = SOV_crowning_jewel_of_russia
+			modifier = {
+				political_power_gain = 0.2
+				research_speed_factor = -0.12
+				stability_factor = 0.15
+				compliance_gain = 0.1
+				}
+		}
+		GRE_arab_christs = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = SOV_church_and_mosque
+			modifier = {
+				conscription = 0.005
+				research_speed_factor = -0.04
+				stability_factor = -0.1
+				compliance_gain = 0.15
+				}
+		}
+		GRE_atomic_research = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = SOV_atomic_bomb_project
+			modifier = {
+				research_speed_factor = 0.05
+				nuclear_production_factor = 0.1
+			}
+		}
+		GRE_empire = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = SOV_new_old_church
+			modifier = {
+				army_attack_factor = 0.05
+				army_defence_factor = 0.1
+				army_artillery_attack_factor = 0.1
+				army_artillery_attack_factor = 0.1
+			}
+		}		
+		GRE_greatest_than_salad = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = ITA_new_roman_empire_ns
+			modifier = {
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				army_attack_against_major_factor = 0.05
+				army_defence_against_major_factor = 0.1
+				army_breakthrough_against_major_factor = 0.1
+				special_forces_cap = 0.2
+				
+			}
+		}
+		
+		GRE_greatest_than_shorty = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = FRA_la_deluge
+			modifier = {
+				supply_node_range = 0.1
+				supply_consumption_factor = -0.1
+				air_fuel_consumption_factor = -0.15
+				navy_fuel_consumption_factor = -0.15	
+				army_strength_factor = 0.05
+				army_artillery_attack_factor = 0.05
+				army_artillery_defence_factor = 0.1
+				army_speed_factor = 0.1
+
+			}
+		}
+		GRE_greatest_than_adlf = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = ger_revive_the_kaiserreich
+			modifier = {
+				army_armor_attack_factor = 0.1
+				army_armor_defence_factor = 0.1
+				army_armor_speed_factor = 0.05
+                training_time_factor = -0.05
+				industrial_capacity_factory = 0.1
+			}
+		}
+		GRE_elisabeth = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = elisabeth
+			modifier = {
+				
+				compliance_growth = 0.1
+				political_power_gain = 0.1
+				stability_factor = 0.05
+			}
+		}
+		GRE_turkish_girl = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = TUR_durrusehvar_sultan
+			modifier = {
+				army_org_factor = 0.05
+				weekly_manpower = 100
+				conscription = 0.005
+				conscription_factor = 0.1
+			}
+		}
+		GRE_wilhelmina = {
+
+			picture = HOL_wilhelmina_ns
+			
+						removal_cost = -1
+			
+			traits = { kaiserin_of_the_people }
+		}
+		GRE_shadia = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = r56_idea_EGY_shadia
+			modifier = {
+				supply_node_range = 0.1
+				supply_consumption_factor = -0.05
+				air_fuel_consumption_factor = -0.05
+				navy_fuel_consumption_factor = -0.05
+				army_fuel_consumption_factor = -0.05
+				research_speed_factor = 0.02
+			}
+		}		
+		GRE_theodora_girl = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = theodora_of_byzantium
+			modifier = {
+				army_strength_factor = 0.05
+				heat_attrition_factor = -0.1
+				winter_attrition_factor = -0.1
+				compliance_gain = 0.05
+				conscription = 0.01
+			}
+		}
+		GRE_romanov = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = SOV_anastasia_nikolaevna
+			modifier = {
+				cavalry_attack_factor = 0.1
+				cavalry_defence_factor = 0.1
+				army_artillery_attack_factor = 0.05
+				army_artillery_defence_factor = 0.05
+				industrial_capacity_factory = 0.1
+			}
+		}		
+		GRE_Bucephalus_spirit = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = hol_expand_the_colonial_army
+			modifier = {
+				army_speed_factor = 0.15
+				cavalry_attack_factor = 0.1
+			    cavalry_defence_factor = 0.1
+				
+			}
+		}
+		GRE_athenian_trade = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = MAC_macedonian_trade
+			modifier = {
+				consumer_goods_factor = -0.05
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+                production_lack_of_resource_penalty_factor = -0.1
+                production_speed_buildings_factor = 0.1				
+			}
+		}	
+		GRE_spartan_army = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = MAC_macedonian_legions
+			modifier = {
+				army_attack_factor = 0.1
+                army_defence_factor = 0.1
+  				army_attack_against_major_factor = 0.1
+				army_defence_against_major_factor = 0.1
+				army_breakthrough_against_major_factor = 0.05
+				max_dig_in_factor = 0.1
+				org_loss_when_moving = -0.05
+			}
+		}	
+		GRE_macedonian_factories = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = MAC_macedonian_economy
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.1	
+				production_factory_max_efficiency_factor = 0.1
+				production_oil_factor = 0.2
+				production_speed_industrial_complex_factor = 0.1
+			}
+		}
+		GRE_prussia_of_the_balkans_04 = {
+
+			picture = bul_prussia_of_the_balkans
+
+			allowed = {
+				original_tag = BUL
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+
+			modifier = {
+				conscription_factor = 0.05
+				non_core_manpower = 0.04
+				experience_gain_navy_factor = 0.15
+				experience_gain_army_factor = 0.15
+				army_leader_start_attack_level = 2
+				army_leader_start_defense_level	= 2
+				navy_leader_start_attack_level = 2
+				navy_leader_start_defense_level = 2
+				army_morale_factor = 0.1
+				max_command_power = 100
+				justify_war_goal_time = -0.5
+				army_org_factor = 0.10
+			}
+		}
+		GRE_theban_band = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = MAC_baktria_spirit
+			modifier = {
+				conscription_factor = 0.2
+				conscription = 0.01
+				max_dig_in_factor = 0.1
+				dig_in_speed_factor = 0.1
+				army_speed_factor = 0.25
+				army_attack_against_major_factor = 0.1
+				army_defence_against_major_factor = 0.1
+				army_breakthrough_against_major_factor = 0.1
+				army_armor_attack_factor = 0.1
+				army_armor_defence_factor = 0.1
+				army_artillery_attack_factor = 0.1
+				army_artillery_defence_factor = 0.1
+				army_org_factor = 0.05
+				org_loss_when_moving = -0.1
+				army_morale_factor = 0.1
+				army_strength_factor = 0.05
+			}
+		}	
+		GRE_argonaut = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = MAC_argonaut
+			modifier = {
+				conscription_factor = 0.2
+				conscription = 0.01
+			}
+		}	
+		GRE_cataphract = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = MAC_cataphract
+			modifier = {
+				max_dig_in_factor = 0.1
+				dig_in_speed_factor = 0.1
+				army_speed_factor = 0.25
+			}
+		}
+		GRE_companion = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = MAC_companion
+			modifier = {
+				army_attack_against_major_factor = 0.1
+				army_defence_against_major_factor = 0.1
+				army_breakthrough_against_major_factor = 0.1
+			}
+		}
+		GRE_immortal = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = MAC_immortal
+			modifier = {
+				army_armor_attack_factor = 0.1
+				army_armor_defence_factor = 0.1
+				army_artillery_attack_factor = 0.1
+				army_artillery_defence_factor = 0.1
+			}
+		}
+		GRE_medjay = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = MAC_medjay
+			modifier = {
+				army_org_factor = 0.05
+				org_loss_when_moving = -0.1
+				army_morale_factor = 0.1
+				army_strength_factor = 0.05
+			}
+		}
+		GRE_revenge_for_roxana = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = gre_venerate_the_ancient_hellenes_alexander_the_great
+			modifier = {
+				army_attack_factor = -0.15
+				stability_factor = -0.3
+				political_power_cost = 0.2
+			}
+		}
+		GRE_alexander_failed = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = chi_war_of_resistance3
+			modifier = {
+				war_support_factor = -0.5
+				army_morale_factor = -0.3
+				army_speed_factor = -0.3
+				army_defence_factor = -0.2
+				army_attack_factor = -0.2
+				stability_factor = -0.2
+				political_power_gain = -0.5
+			}
+		}
+		GRE_coward = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = anti_soviet_pact
+			modifier = {
+				dig_in_speed_factor = -0.1
+				max_dig_in_factor = -0.2
+				air_attack_factor = -0.2
+				air_defence_factor = -0.3
+				army_attack_factor = -0.2
+				army_defence_factor = -0.2
+				
+			}
+		}			
+		GRE_to_arms = {
+
+			
+
+			picture = generic_victors_of_ww1
+
+			
+
+			modifier = {
+				surrender_limit = 0.2
+				max_surrender_limit_offset = 0.3
+			
+				minimum_training_level = -0.1
+
+			}
+		}		
+		GRE_we_will_not_collapse = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = MAC_diadochi_rivalry
+			modifier = {
+				consumer_goods_factor = -0.05
+				justify_war_goal_time = -0.2
+				compliance_gain = 0.1
+				
+				compliance_growth = 0.1
+				political_power_factor = 0.1
+			}
+		}			
+		GRE_invest_in_victory = {
+
+			allowed = {
+				always = no
+			}
+
+
+
+			removal_cost = -1
+
+			picture = hol_shell_shocked_spectator
+			modifier = {
+				consumer_goods_factor = -0.1
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+				stability_factor = 0.10
+				monthly_population = 0.2
+			}
+		}
+		GRE_iron_guard = {
+
+			removal_cost = -1
+			
+			picture = generic_secret_police
+			allowed_civil_war = {
+
+			}
+			
+			modifier = {				
+				resistance_damage_to_garrison = -0.2
+				foreign_subversive_activites = -0.2
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+				ARMY_ATTACK_AGAINST_MAJOR_FACTOR = 0.05
+				ARMY_DEFENCE_AGAINST_MAJOR_FACTOR = 0.1
+				ARMY_BREAKTHROUGH_AGAINST_MAJOR_FACTOR = 0.1
+			}
+		}
+		GRE_victoria = {
+            name = GRE_victoria
+			removal_cost = -1
+			
+			picture = AUS_victoria_luise
+			allowed_civil_war = {
+
+			}
+			
+			modifier = {				
+			    railway_gun_bombardment_factor = 0.4
+				shore_bombardment_bonus = 0.4 
+				special_forces_cap = 0.2
+				conscription = 0.01
+				conscription_factor = 0.1
+				grant_medal_cost_factor = -0.5
+				pocket_penalty = -0.2
+				naval_hit_chance = 0.25
+				air_wing_xp_loss_when_killed_factor = -0.2
+				ground_attack_factor = 0.1
+			}
+		}
+		GRE_victoria_bba = {
+            name = GRE_victoria
+			removal_cost = -1
+			
+			picture = AUS_victoria_luise
+			allowed_civil_war = {
+
+			}
+			
+			modifier = {				
+			   
+				shore_bombardment_bonus = 0.4
+				special_forces_cap = 0.2
+				conscription = 0.01
+				conscription_factor = 0.1
+				grant_medal_cost_factor = -0.5
+				pocket_penalty = -0.2
+				naval_hit_chance = 0.25
+				air_wing_xp_loss_when_killed_factor = -0.2
+				ground_attack_factor = 0.1
+			}
+		}
+		GRE_victoria_nsb = {
+            name = GRE_victoria
+			removal_cost = -1
+			
+			picture = AUS_victoria_luise
+			allowed_civil_war = {
+
+			}
+			
+			modifier = {				
+			    railway_gun_bombardment_factor = 0.4
+				shore_bombardment_bonus = 0.4
+				special_forces_cap = 0.2
+				conscription = 0.01
+				conscription_factor = 0.1
+				pocket_penalty = -0.2
+				naval_hit_chance = 0.25
+				air_wing_xp_loss_when_killed_factor = -0.2
+				ground_attack_factor = 0.1
+			}
+		}
+		GRE_victoria_none = {
+            name = GRE_victoria
+			removal_cost = -1
+			
+			picture = AUS_victoria_luise
+			allowed_civil_war = {
+
+			}
+			
+			modifier = {				
+			   
+				shore_bombardment_bonus = 0.4
+				special_forces_cap = 0.2
+				conscription = 0.01
+				conscription_factor = 0.1
+				pocket_penalty = -0.2
+				naval_hit_chance = 0.25
+				air_wing_xp_loss_when_killed_factor = -0.2
+				ground_attack_factor = 0.1
+			}
+		}
+		GRE_naval_dominance = {
+
+			removal_cost = -1
+			
+			picture = ITA_cantieri_navali_tosi
+			allowed_civil_war = {
+
+			}
+			
+			modifier = {				
+				navy_leader_start_attack_level = 1
+				navy_leader_start_defense_level = 1
+				experience_gain_navy_factor = 0.1
+				naval_invasion_penalty = -0.1
+				naval_invasion_capacity = 15
+				amphibious_invasion = 0.2
+				invasion_preparation = -0.15
+			}
+		}
+		GRE_espionage = {
+
+			
+
+			picture = generic_spy_political
+
+			
+
+			modifier = {	
+				compliance_growth = 0.1
+				resistance_decay = 0.2
+				offensive_war_stability_factor = 0.15
+				drift_defence_factor = 0.2			
+				puppet_cost_factor = -0.2
+				annex_cost_factor = -0.15				
+			}
+		}		
+		GRE_death_before_surrender = {
+
+			
+
+			picture = generic_victors_of_ww1
+
+			
+
+			modifier = {
+				surrender_limit = 05
+				max_surrender_limit_offset = 0.15
+				mobilization_speed = 0.2
+				minimum_training_level = -0.1
+				supply_node_range = 0.1
+				production_speed_supply_node_factor = 0.1
+				production_speed_rail_way_factor = 0.1
+			}
+		}		
+		GRE_bavaria_of_the_balkans = {
+			
+
+			picture = GRE_pacify
+
+			
+			removal_cost = -1
+
+			modifier = {
+				conscription_factor = 0.15
+				experience_gain_army_factor = 0.1
+				experience_gain_air_factor = 0.1
+				army_leader_start_attack_level = 2
+				army_leader_start_defense_level	= 3
+				army_morale_factor = 0.15
+				DIG_IN_SPEED = 3
+			
+				max_command_power = 150
+				justify_war_goal_time = -0.3
+				army_org_factor = 0.10
+			}
+		}
+		GRE_blood_on_our_hands = {
+			
+
+			picture = ITA_battaglie_per_la_nascite
+
+			
+			removal_cost = -1
+
+			modifier = {
+				land_doctrine_cost_factor = -0.15
+				air_doctrine_cost_factor = -0.15
+				naval_doctrine_cost_factor = -0.15
+				party_popularity_stability_factor = 0.1
+				heat_attrition_factor = -0.15
+				winter_attrition_factor = -0.15
+				
+			}
+		}	
+		GRE_look_into_the_future = {
+			
+
+			picture = LIT_invested_in_farms
+
+			
+			removal_cost = -1
+
+			modifier = {
+				research_speed_factor = 0.05
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+				production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.15
+				production_speed_buildings_factor = 0.1
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_arms_factory_factor = 0.1
+			}
+		}			
+GRE_EOKA_support = {
+
+            picture = generic_mountain_warfare
+
+            removal_cost = -1
+
+            modifier = {
+                WEEKLY_MANPOWER = 300
+				SURRENDER_LIMIT = 0.1
+				ARMY_DEFENCE_AGAINST_MAJOR_FACTOR = 0.05
+				ARMY_CORE_DEFENCE_FACTOR = 0.1
+            }
+        }
+		
+		GRE_EAM_ELAS_cooperation = {
+
+            picture = chi_war_of_resistance3
+
+            removal_cost = -1
+
+            modifier = {
+				ARMY_CORE_ATTACK_FACTOR = 0.05
+				ARMY_CORE_DEFENCE_FACTOR = 0.2
+				stability_factor = 0.15
+				war_support_factor = 0.1
+				industrial_capacity_factory = 0.05
+            }
+        }
+		
+		GRE_EDES_resistance = {
+
+            picture = tur_sub_zero_survival_training
+
+            removal_cost = -1
+
+            modifier = {
+                SURRENDER_LIMIT = 0.1
+				ARMY_ATTACK_AGAINST_MAJOR_FACTOR = 0.05
+				ARMY_DEFENCE_AGAINST_MAJOR_FACTOR = 0.1
+				ARMY_BREAKTHROUGH_AGAINST_MAJOR_FACTOR = 0.05
+				ARMY_CORE_ATTACK_FACTOR = 0.1
+				ARMY_CORE_DEFENCE_FACTOR = 0.05
+				RESISTANCE_TARGET_ON_OUR_OCCUPIED_STATES = 0.2
+				COMPLIANCE_GROWTH_ON_OUR_OCCUPIED_STATES = -0.4
+            }
+        }
+		
+		GRE_DSE_fighters = {
+
+            picture = generic_war_preparation
+
+            removal_cost = -1
+
+            modifier = {
+			    DIG_IN_SPEED = 2
+                ARMY_CORE_ATTACK_FACTOR = 0.08
+				ARMY_CORE_DEFENCE_FACTOR = 0.1
+				ARMY_ORG = 0.1
+				MAX_DIG_IN = 2
+				war_support_factor = 0.1
+				ARMY_BREAKTHROUGH_AGAINST_MAJOR_FACTOR = 0.05
+            }
+        }
+
+	GRE_friendly_mafia = {
+        	picture = citizen_militia_2
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				required_garrison_factor = -0.1
+				resistance_damage_to_garrison = -0.1
+			    political_power_factor = 0.1
+				weekly_manpower = 200
+				non_core_manpower = 0.1
+       		}	
+	}
+	GRE_spartan_spirit = {
+        	picture = GRE_leonidas_legacy
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				terrain_penalty_reduction = 0.1
+				political_power_factor = 0.1
+				army_attack_factor = 0.1
+				army_defence_factor = 0.15
+				conscription_factor = 0.1
+				weekly_manpower = 300
+       		}	
+	}	
+	GRE_eastern_block = {
+        	picture = ETH_conservative_high_command
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				conscription = 0.02
+				
+		        war_support_factor = 0.1
+				stability_factor = 0.1
+				political_power_factor = 0.1
+                nuclear_production_factor = 0.2
+       		}	
+			equipment_bonus = {
+				infantry_equipment = {
+				reliability = -0.1
+					build_cost_ic = -0.3 instant = yes
+										
+				}
+				artillery_equipment = {
+													reliability = -0.2
+					build_cost_ic = -0.2 instant = yes
+				}
+				support_equipment = {
+				reliability = -0.1
+					build_cost_ic = -0.1 instant = yes
+				}
+			}			
+	}
+	GRE_booming_tourism2 = {
+        	picture = generic_air_bonus
+            name = GRE_booming_tourism
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				stability_factor = 0.1	
+				political_power_factor	= 0.1
+				consumer_goods_factor = -0.5
+				monthly_population = 0.2
+				
+       		}	
+						
+	}	
+	GRE_attacked_commies = {
+        	picture = gre_political_instability_communism
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				communism_drift = -0.02
+				political_power_gain = 0.15
+				consumer_goods_factor = -0.05
+       		}	
+						
+	}	
+	GRE_attacked_democrats = {
+        	picture = gre_political_instability_republican
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				democratic_drift = -0.02
+				war_support_factor = 0.05
+				conscription_factor = 0.15
+       		}	
+						
+	}	
+	GRE_attacked_fascists = {
+        	picture = gre_political_instability_fascism
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				fascism_drift = -0.02
+				weekly_manpower = 1500
+				research_speed_factor = 0.075
+				
+       		}	
+						
+	}	
+	GRE_attacked_monarchs = {
+        	picture = gre_political_instability
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				neutrality_drift = -0.02
+				political_advisor_cost_factor = -0.5
+				production_factory_efficiency_gain_factor = 0.1
+       		}	
+						
+	}
+	GRE_attacked_metaxists = {
+        	picture = gre_political_instability_metaxism
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				neutrality_drift = -0.01
+				fascism_drift = -0.01
+				army_core_defence_factor = 0.1
+				stability_factor = 0.1
+       		}	
+						
+	}		
+	GRE_nato = {
+        	picture = usa_war_department
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				consumer_goods_factor = -0.1	
+		        war_support_factor = 0.1
+				stability_factor = 0.1
+				political_power_factor = 0.1
+                nuclear_production_factor = 0.1
+				research_speed_factor = 0.05
+       		}	
+						
+	}	
+	GRE_owners_of_world = {
+        	picture = combined_bomber_offensive
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				conscription = 0.01
+				required_garrison_factor = -0.1
+			    compliance_growth = 0.2				
+				terrain_penalty_reduction = 0.1
+				political_power_factor = 0.1
+				army_attack_factor = 0.1
+				army_defence_factor = 0.15
+       		}	
+	}	
+	GRE_last_superpower = {
+        	picture = tur_etatism
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				conscription = 0.02
+				required_garrison_factor = -0.2
+			    compliance_growth = 0.3				
+				terrain_penalty_reduction = 0.15
+				political_power_factor = 0.15
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				consumer_goods_factor = -0.1
+				
+       		}	
+	}	
+   	GRE_golden_dawn_idea_fascist = {
+            name = GRE_golden_dawn_idea
+        	picture = goldendawn
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				war_support_factor = 0.05
+				training_time_factor = -0.05
+				conscription_factor = 0.05
+				required_garrison_factor = -0.1
+				monthly_population = 0.05
+			    compliance_growth = 0.02				
+				research_speed_factor = -0.03
+				terrain_penalty_reduction = 0.1
+				consumer_goods_factor = 0.05				
+       		}
+  		}		
+	   	GRE_above_all_fascist = {
+
+        	picture = generic_armor
+            name = GRE_above_all
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				political_power_gain = 0.1
+				stability_factor = 0.05
+				war_support_factor = 0.1
+				weekly_manpower = 500
+				
+       		}
+  		}
+		GRE_old_friendship = {
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			picture = soviet_german_friendship
+			modifier = {
+				consumer_goods_factor = -0.1
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.15				
+			}
+		}		
+		GRE_cold_war_idea = {
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			picture = r56_idea_generic_cold_war
+			modifier = {
+				nuclear_production_factor = 0.1
+				research_speed_factor = 0.05
+				offensive_war_stability_factor = -0.2
+				justify_war_goal_time = 0.1
+				political_power_gain = 0.1
+				stability_factor = 0.1
+				war_support_factor = -0.2
+				production_speed_buildings_factor = 0.1
+			
+			}
+		}		
+   	GRE_greek_indentity = {
+           
+        	picture = GRE_thunderbolt_regency
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				stability_factor = 0.15
+				conscription = 0.01
+				surrender_limit = 0.1
+                army_org_factor = 0.05			
+       		}
+  		}			
+		GRE_king_of_kings = { 
+
+
+
+			picture = SOV_purged_junior_army_officers
+				
+			removal_cost = -1
+				
+			modifier = {
+				stability_factor = 0.1
+				political_power_gain = 0.1
+				research_speed_factor = 0.05
+				surrender_limit = 0.1
+                conscription_factor = 0.1
+			}
+		}		
+		GRE_cretan_revolt = { 
+
+
+
+			picture = generic_oppression
+				
+			removal_cost = -1
+				
+			modifier = {
+				stability_factor = -0.2
+				war_support_factor = -0.2
+				surrender_limit = -0.3
+			}
+		}	
+		GRE_like_the_beasts = { 
+
+
+
+			picture = tur_sectarian_woes
+				
+			removal_cost = -1
+			targeted_modifier = {
+				tag = TUR
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}				
+			modifier = {
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+
+			}
+		}
+		GRE_olive_trade = { 
+
+
+
+			picture = can_wartime_prices_and_trade_board
+				
+			removal_cost = -1
+						
+			modifier = {
+                production_speed_buildings_factor = 0.08
+                production_speed_industrial_complex_factor = 0.1
+                production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.05
+
+			}
+		}		
+		GRE_macedonian_revolt = { 
+
+
+
+			picture = generic_volunteer_expedition_bonus
+				
+			removal_cost = -1
+				
+			modifier = {
+				political_advisor_cost_factor = 0.3
+				trade_laws_cost_factor = 0.3
+				mobilization_laws_cost_factor = 0.3
+				economy_cost_factor = 0.3
+			}
+		}
+		GRE_ionian_revolt = {
+			
+			picture = generic_morale_bonus
+
+			allowed = {
+			
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				production_factory_efficiency_gain_factor = -0.15
+				production_factory_max_efficiency_factor = -0.1
+			}
+		}
+		GRE_dodecanese_revolt = {
+			
+			allowed = {
+				always = no
+			}
+
+           picture = ENG_the_war_to_end_all_wars
+			removal_cost = -1
+						
+			modifier = {
+				conscription_factor = -0.2
+				weekly_manpower = -50
+			}
+		}		
+		GRE_legacy_of_ataturk_fulfilled = { 
+
+
+            name = TUR_legacy_of_ataturk_fulfilled
+			picture = tur_legacy_of_ataturk
+				
+			removal_cost = -1
+				
+			modifier = {
+				stability_factor = 0.1
+				political_power_gain = 0.1
+								research_speed_factor = 0.05
+			}
+		}	
+		GRE_crush_sovit_economy_idea = { 
+
+
+       
+			picture = SPR_subvert_soviet_control
+				
+			removal_cost = -1
+				
+			modifier = {
+				global_building_slots = 1
+                industry_repair_factor = 0.1
+				local_resources_factor = 0.15
+				production_lack_of_resource_penalty_factor = -0.2
+				license_purchase_cost = -0.1
+				line_change_production_efficiency_factor = 0.2				
+			}
+		}
+		GRE_anarchism_knows_no_borders = { 
+
+             
+       
+			picture = SPR_torchbearers_of_tomorrow
+				
+			removal_cost = -1
+				
+			modifier = {
+				war_support_factor = 0.1
+				justify_war_goal_time = -0.5
+			   compliance_growth = 0.5			
+			}
+		}		
+		GRE_space_man = { 
+
+
+       
+			picture = FRA_national_mobilization_focus
+				
+			removal_cost = -1
+				
+			modifier = {
+				stability_factor = 0.1
+                war_support_factor = 0.1
+				research_speed_factor = 0.08              				
+			}
+            research_bonus = {
+               jet_technology = 0.15
+               rocketry = 0.15
+	           nuclear = 0.15
+            }
+		}		
+		GRE_crush_american_economy_idea = { 
+
+
+       
+			picture = generic_acquire_tanks
+				
+			removal_cost = -1
+				
+			modifier = {
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
+				production_speed_buildings_factor = 0.1
+                production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.2						
+			}
+		}			
+		GRE_womenchukou = {
+			picture = man_low_legitimacy5
+
+
+
+		
+			removal_cost = -1
+
+			on_remove = {
+				set_country_flag = BUL_toppling_giants_ns_expired_flag
+			}
+			
+			modifier = {
+				production_speed_buildings_factor = 0.15	
+                production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.1
+			}
+		}	
+		GRE_trade_leaders = {
+			picture = man_low_legitimacy5
+
+		
+			removal_cost = -1
+
+			on_remove = {
+				set_country_flag = BUL_toppling_giants_ns_expired_flag
+			}
+			
+			modifier = {
+				industrial_capacity_factory = 0.2
+				industrial_capacity_dockyard = 0.1
+				production_speed_buildings_factor = 0.15
+				research_speed_factor = 0.1
+			}
+		}			
+		GRE_toppling_giants = {
+			name = BUL_toppling_giants
+			picture = chi_wargaming_division
+
+			removal_cost = -1
+
+
+			
+			modifier = {
+				surrender_limit = 0.2
+				weekly_manpower = 500
+				war_support_factor = 0.1
+				army_attack_against_major_factor = 0.1
+			}
+		}
+		GRE_marx_free = {
+			
+			picture = FIN_german_threat
+
+			allowed = {
+			}
+
+			allowed_civil_war = {
+			}
+		
+			removal_cost = -1
+			
+			modifier = {
+				war_support_factor = 0.1
+				mobilization_speed = 0.05
+				
+			}
+
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			}
+		}
+GRE_universal_basic_income_idea = {
+			allowed = {
+				
+			}
+
+			
+			modifier = {
+				consumer_goods_factor = 0.15
+				research_speed_factor = 0.05
+				stability_factor = 0.05
+				resistance_target = -0.1
+				resistance_growth = -0.15
+				compliance_growth = 0.08
+
+			}
+
+			picture = generic_goods_red_bonus
+
+			removal_cost = -1
+		}
+		
+		GRE_spirit_of_revolution = {
+			
+			picture = fourth_international
+
+			allowed = {
+			}
+
+			allowed_civil_war = {
+			}
+		
+			removal_cost = -1
+			
+			modifier = {
+				communism_drift = 0.25
+				stability_factor = -0.3
+				drift_defence_factor = -0.8
+				war_support_factor = -0.2
+				resistance_damage_to_garrison = 0.3
+			}
+
+			targeted_modifier = {
+				tag = GRE
+				attack_bonus_against = -0.15
+				defense_bonus_against = -0.2
+			}
+		}		
+GRE_funding_the_revolution = {
+			
+			picture = fourth_international
+
+			allowed = {
+			}
+
+			allowed_civil_war = {
+			}
+		
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.6
+				
+			}
+
+			
+		}	
+GRE_divorse_sov = {
+			
+			picture = SPR_subvert_soviet_control
+
+			allowed = {
+			}
+
+			allowed_civil_war = {
+			}
+		
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.1
+				drift_defence_factor = 0.15
+				political_power_cost = 0.1
+			}
+
+			targeted_modifier = {
+				tag = SOV
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.1
+			}
+		}		
+		GRE_total_war_02 = {
+			name = BUL_total_war
+			
+			picture = can_wartime_prices_and_trade_board
+
+			allowed = {
+			}
+
+			allowed_civil_war = {
+			}
+		
+			removal_cost = -1
+			
+			modifier = {
+				conscription_factor = 0.05
+				mobilization_laws_cost_factor = -0.3
+				economy_cost_factor = -0.3
+			}
+
+			targeted_modifier = {
+				tag = SOV
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.1
+			}
+		}		
+   	GRE_golden_dawn_idea = {
+
+        	picture = goldendawn
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				war_support_factor = 0.1
+				training_time_factor = -0.05
+				army_infantry_attack_factor = 0.1
+				conscription_factor = 0.1
+				stability_factor = -0.3
+       		}
+  		}		
+   	GRE_second_hellenic_civilisation_idea = {
+            name = GRE_second_ever_omg
+        	picture = GRE_second_civil
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				required_garrison_factor = -0.1
+				monthly_population = 0.2		
+       		}
+  		}	
+   	GRE_second_hellenic_civilisation_idea2 = {
+            name = GRE_second_ever_omg
+        	picture = GRE_second_civil
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				required_garrison_factor = -0.1
+				monthly_population = 0.2
+				production_speed_buildings_factor = 0.1	
+                production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.05
+				agency_upgrade_time = -0.1				
+				
+       		}
+  		}	
+   	GRE_second_hellenic_civilisation_idea3 = {
+            name = GRE_second_ever_omg
+        	picture = GRE_second_civil
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				required_garrison_factor = -0.1
+				monthly_population = 0.2
+				production_speed_buildings_factor = 0.1
+                production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.1
+				army_org_factor = 0.2
+				army_speed_factor = 0.1
+				training_time_factor = -0.05
+				conscription_factor = 0.15
+				agency_upgrade_time = -0.1			
+       		}
+  		}	
+   	GRE_second_hellenic_civilisation_idea4 = {
+            name = GRE_second_ever_omg
+        	picture = GRE_second_civil
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				required_garrison_factor = -0.1
+				monthly_population = 0.2
+				production_speed_buildings_factor = 0.1
+                production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.1		
+				army_org_factor = 0.2
+				army_speed_factor = 0.1
+				training_time_factor = -0.05
+				conscription_factor = 0.15
+				agency_upgrade_time = -0.1				
+		        subjects_autonomy_gain = 0.5		
+                legitimacy_daily = 0.5
+				acclimatization_cold_climate_gain_factor = 0.1
+				acclimatization_hot_climate_gain_factor = 0.1
+       		}
+  		} 		
+   	GRE_first_hellenic_civilisation_idea = {
+            name = GRE_first_ever_omg
+        	picture = GRE_national_rebirth
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				army_infantry_attack_factor = 0.1
+                army_infantry_defence_factor = 0.1
+       		}
+  		}	
+   	GRE_first_hellenic_civilisation_idea2 = {
+            name = GRE_first_ever_omg
+        	picture = GRE_national_rebirth
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				army_infantry_attack_factor = 0.1
+                army_infantry_defence_factor = 0.1
+			   stability_factor = 0.05
+			   war_support_factor = 0.1
+			   compliance_growth = 0.1				
+				
+       		}
+  		}	
+   	GRE_first_hellenic_civilisation_idea3 = {
+            name = GRE_first_ever_omg
+        	picture = GRE_national_rebirth
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				army_infantry_attack_factor = 0.1
+                army_infantry_defence_factor = 0.1
+			   stability_factor = 0.05
+			   war_support_factor = 0.1
+			   compliance_growth = 0.1				
+				research_speed_factor = 0.05
+				political_power_gain = 0.1
+       		}
+  		}		
+   	GRE_first_hellenic_civilisation_idea4 = {
+            name = GRE_first_ever_omg
+        	picture = GRE_national_rebirth
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				army_infantry_attack_factor = 0.1
+                army_infantry_defence_factor = 0.1
+			   stability_factor = 0.05
+			   war_support_factor = 0.1
+			   compliance_growth = 0.1				
+				research_speed_factor = 0.05
+				political_power_gain = 0.1
+                army_attack_against_major_factor = 0.05
+				army_defence_against_major_factor = 0.1
+				army_breakthrough_against_major_factor = 0.15
+       		}
+  		}		
+  	GRE_third_hellenic_civilisation_idea = {
+            name = GRE_third_ever_omg
+        	picture = GRE_Megali_third
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				terrain_penalty_reduction = 0.2
+                weekly_manpower = 500		
+       		}
+  		}	
+   	GRE_third_hellenic_civilisation_idea2 = {
+            name = GRE_third_ever_omg
+        	picture = GRE_Megali_third
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				terrain_penalty_reduction = 0.2
+                weekly_manpower = 750
+				political_advisor_cost_factor = -0.1				
+				consumer_goods_factor = -0.05
+       		}
+  		}	
+   	GRE_third_hellenic_civilisation_idea3 = {
+            name = GRE_third_ever_omg
+        	picture = GRE_Megali_third
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				terrain_penalty_reduction = 0.2
+                weekly_manpower = 1000	
+				political_advisor_cost_factor = -0.1
+				non_core_manpower = 0.1			
+				puppet_cost_factor = -0.1
+				annex_cost_factor = -0.1
+				consumer_goods_factor = -0.05				
+       		}
+  		}
+   	GRE_third_hellenic_civilisation_idea4 = {
+            name = GRE_third_ever_omg
+        	picture = GRE_Megali_third
+
+        	allowed = {
+        	    always = no
+        	}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.4 instant = yes
+					}
+				artillery_equipment = {
+					build_cost_ic = -0.25 instant = yes
+				}
+			}
+        	modifier = {
+				terrain_penalty_reduction = 0.2
+                weekly_manpower = 1500	
+				political_advisor_cost_factor = -0.15
+				non_core_manpower = 0.15			
+				puppet_cost_factor = -0.15
+				annex_cost_factor = -0.15	
+				consumer_goods_factor = -0.1
+		         nuclear_production_factor = 0.3
+				 }
+  		}		
+   	GRE_league_of_emperors = {
+
+        	picture = bra_monarchist_uprising
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				political_power_gain = 0.3
+				stability_factor = 0.1
+				war_support_factor = 0.1
+                consumer_goods_factor = -0.1
+       		}
+  		}	
+   	GRE_above_all = {
+
+        	picture = generic_armor
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				political_power_gain = 0.1
+				stability_factor = 0.1
+				army_attack_factor = 0.05
+				army_defence_factor = 0.1
+				war_support_factor = 0.1
+				weekly_manpower = 1000
+				
+       		}
+  		}
+	  GRE_constantinople_wall = {
+        	picture = byz_theos_walls
+
+        	allowed = {
+        	    always = no
+        	}	
+        	modifier = {
+				production_speed_bunker_factor = 2
+				production_speed_coastal_bunker_factor = 2		
+       		}
+  		}			
+	  GRE_uk_puppet = {
+        	picture = eng_the_sun_never_sets
+
+        	allowed = {
+        	    always = no
+        	}	
+        	modifier = {
+				political_advisor_cost_factor = -0.1
+				trade_laws_cost_factor = -0.1
+				economy_cost_factor = -0.1		
+				production_speed_dockyard_factor = 0.1
+				production_speed_naval_base_factor = 0.2
+				industrial_capacity_dockyard = 0.1				
+       		}
+  		}				
+		GRE_trade_fleet = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = escort_effort_focus
+
+			equipment_bonus = {
+				convoy = {
+					build_cost_ic = -0.25 instant = yes
+				}
+			}
+        }			
+	GRE_lighthouse = {
+
+
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			equipment_bonus = {
+				screen_ship = {
+					naval_speed = 0.1 naval_range = 0.25
+				}
+				carrier = {
+					naval_speed = 0.1 naval_range = 0.25
+				}
+				capital_ship = {
+					naval_speed = 0.1 naval_range = 0.25
+				}
+				submarine = {
+					naval_speed = 0.1 naval_range = 0.25
+				}
+			}
+
+			picture = eng_chiefs_of_staff_committee
+			
+			removal_cost = -1	
+
+		}		
+    GRE_italy_puppet = {
+        	picture = ITA_italia_irredenta_achieved
+
+        	allowed = {
+        	    always = no
+        	}	
+        	modifier = {
+				navy_org_factor = 0.05
+				non_core_manpower = 0.05
+				compliance_growth = 0.05
+				resistance_decay = 0.01
+				offensive_war_stability_factor = 0.1
+				drift_defence_factor = 0.05				
+				puppet_cost_factor = -0.15
+				annex_cost_factor = -0.1
+       		}
+  		}	
+		GRE_papal_support_strengthened = {
+			name = ITA_papal_support
+
+			picture = ITA_papal_state_ns
+
+			removal_cost = -1
+				
+			allowed = {
+				original_tag = ITA
+			}
+
+			allowed_civil_war = {
+				has_completed_focus = ITA_strengthen_the_papacy
+			}
+
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.08
+				operative_slot = 1
+				intel_network_gain_factor = 0.1
+				compliance_growth = 0.05
+			}
+		}
+
+		GRE_papal_support_strengthened_no_lar = {
+			name = ITA_papal_support
+
+			picture = ITA_papal_state_ns
+
+			removal_cost = -1
+				
+			allowed = {
+				original_tag = ITA
+			}
+
+			allowed_civil_war = {
+				has_completed_focus = ITA_strengthen_the_papacy
+			}
+
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.08
+				justify_war_goal_time = 0.1
+				opinion_gain_monthly_factor = 0.15
+				compliance_growth = 0.05
+			}
+		}
+GRE_legacyromes = {
+			removal_cost = -1
+
+			picture = GRE_second_civil
+				
+			
+
+			
+
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.05
+				conscription_factor = 0.1
+				army_defence_factor = 0.1
+				research_speed_factor = 0.05
+				command_power_gain = 0.1
+				political_power_factor = 0.1
+				non_core_manpower = 0.1
+				annex_cost_factor = -0.2
+				production_speed_infrastructure_factor = 0.3
+			}
+		}		
+GRE_legacyrom = {
+			removal_cost = -1
+
+			picture = ITA_new_roman_empire_ns
+				
+			
+
+			
+
+			modifier = {
+				political_power_factor = 0.15
+				stability_factor = 0.05
+				required_garrison_factor = -0.1
+				compliance_growth = 0.1
+				industrial_capacity_factory = 0.1
+				offence = 0.05
+				offensive_war_stability_factor = 0.2
+				weekly_manpower = 250
+				consumer_goods_factor = -0.05
+				guarantee_cost = -0.2
+				guarantee_tension = -0.2
+				puppet_cost_factor = -0.2
+			}
+		}		
+   	GRE_soviets_puppet = {
+
+        	picture = SOV_transformation_of_nature
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				conscription = 0.015
+				weekly_manpower = 300
+				stability_factor = -0.15		
+                war_support_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.05				
+       		}
+  		}
+   	GRE_germans_puppet = {
+
+        	picture = hol_caved_to_the_germans
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+                production_speed_arms_factory_factor = 0.1 
+                consumer_goods_factor = -0.05
+                political_power_gain = 0.08				
+       		}
+  		}		
+    	GRE_navy = {
+
+        	picture = generic_sea_focused_navy
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				production_speed_dockyard_factor = 0.1
+				production_speed_naval_base_factor = 0.15
+				industrial_capacity_dockyard = 0.2
+				min_export = 0.25
+       		}
+  		}
+    	GRE_focus_on_army = {
+
+        	picture = generic_license_production
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+                production_speed_arms_factory_factor = 0.05
+				
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
+       		}
+  		}
+    	GRE_great_patriotic_army = {
+
+        	picture = generic_army_problems
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				army_org_factor = -0.15
+				conscription = 0.01
+				army_morale_factor = 0.05
+				training_time_factor = -0.05
+       		}
+  		}
+    	GRE_great_profesional_army = {
+
+        	picture = generic_manpower_bonus
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				conscription_factor = -0.25
+				training_time_factor = 0.05
+       		}
+  		}			
+    	GRE_focus_on_industry = {
+
+        	picture = generic_license_production
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+                production_speed_industrial_complex_factor = 0.05
+                production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.05
+       		}
+  		}
+		
+    	GRE_greek_equipment = {
+
+        	picture = generic_war_preparation
+
+        	allowed = {
+        	    always = no
+        	}
+
+			equipment_bonus = {
+				infantry_equipment = {
+				reliability = -0.1
+					build_cost_ic = -0.1 instant = yes
+										
+				}
+				artillery_equipment = {
+													reliability = -0.05
+					build_cost_ic = -0.05 instant = yes
+				}
+				support_equipment = {
+				reliability = -0.05
+					build_cost_ic = -0.05 instant = yes
+				}
+			}
+  		}
+		GRE_the_battle_for_our_nations_survival = { 
+
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = FRA_scw_intervention_nationalists_focus
+				
+			removal_cost = -1
+				
+			modifier = {
+				war_support_factor = 0.1
+				army_org_factor = 0.05
+				army_speed_factor = 0.1
+				training_time_factor = -0.1
+				minimum_training_level = -0.2
+				army_core_defence_factor = 0.1
+				army_core_attack_factor = 0.1
+				conscription_factor = 0.3
+			}
+		}		
+		GRE_vol_for_monarch = {
+
+			picture = ITA_bandits_war
+				
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+
+			modifier = {
+				send_volunteer_size = 10
+				air_volunteer_cap = 7
+				terrain_penalty_reduction = 0.2
+				send_volunteers_tension = -1
+				send_volunteer_divisions_required = -1
+                weekly_manpower = 500					
+			}
+		}
+		GRE_volunteers = {
+
+			picture = generic_victors_of_ww1
+				
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+
+			modifier = {
+				send_volunteer_size = 5
+				air_volunteer_cap = 2
+				terrain_penalty_reduction = 0.15
+				send_volunteers_tension = -1
+				send_volunteer_divisions_required = -0.90
+			}
+		}	
+		GRE_junta_takeovers = {
+
+			picture = chi_war_of_resistance
+				
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+
+			modifier = {
+				political_power_gain = -0.2
+				production_speed_buildings_factor = -0.05
+				stability_factor = -0.15
+				industrial_capacity_factory = 0.05				
+			}
+		}
+		GRE_junta_takeovers2 = {
+
+			picture = chi_war_of_resistance
+				
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+
+			modifier = {
+				political_power_gain = -0.15
+				production_speed_buildings_factor = 0.05
+				stability_factor = -0.10
+				industrial_capacity_factory = 0.1				
+			}
+		}
+		GRE_junta_takeovers3 = {
+
+			picture = chi_war_of_resistance
+				
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+
+			modifier = {
+				political_power_gain = -0.08
+				production_speed_buildings_factor = 0.05
+				stability_factor = -0.05
+				industrial_capacity_factory = 0.1				
+			}
+		}	
+		GRE_junta_takeovers4 = {
+
+			picture = chi_war_of_resistance
+				
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				stability_factor = -0.02
+				industrial_capacity_factory = 0.1				
+			}
+		}	
+		GRE_banned_freedom = {
+
+			picture = generic_democracy_banned
+				
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+
+			modifier = {
+				research_speed_factor = -0.05
+				stability_factor = -0.1	
+
+ 				industrial_capacity_factory = 0.2					
+			}
+		}
+		GRE_suicides_on_rise = {
+
+			picture = generic_purge
+				
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+
+			modifier = {
+                weekly_manpower = -200	
+				monthly_population = -0.005				
+			}
+		}		
+		GRE_small_purchase = {
+			picture = generic_foreign_capital
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+                political_power_factor	= 0.1
+				consumer_goods_factor = 0.1
+
+			}
+		}
+		GRE_medium_purchase = {
+			picture = generic_foreign_capital
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+                political_power_factor	= 0.2
+				consumer_goods_factor = 0.15
+
+			}
+		}
+		GRE_big_purchase = {
+			picture = SPR_relocate_the_gold_reserves
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+                political_power_factor	= 0.3
+				consumer_goods_factor = 0.3
+
+			}
+		}
+		GRE_enormus_purchase = {
+			picture = SPR_relocate_the_gold_reserves
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+                political_power_factor	= 0.5
+				consumer_goods_factor = 0.6
+
+			}
+		}		
+	GRE_expand_intelligence_idea = {
+		allowed = {
+			original_tag = GRE
+			always = no
+		}
+
+		allowed_civil_war = {
+			always = yes
+		}
+
+		removal_cost = -1
+
+		picture = generic_spy_intel
+
+		modifier = {
+			operative_slot = 1
+		}
+	}	
+	GRE_expand_intelligence_idea_no_lar = {
+		allowed = {
+			original_tag = GRE
+			always = no
+		}
+
+		allowed_civil_war = {
+			always = yes
+		}
+name = GRE_expand_intelligence_idea
+		removal_cost = -1
+
+		picture = generic_spy_intel
+
+		modifier = {
+			resistance_damage_to_garrison_on_our_occupied_states = 0.2
+			resistance_target_on_our_occupied_states = 0.1
+			resistance_decay_on_our_occupied_states = -0.1
+			
+		}
+	}	
+	GRE_push_home_idea = {
+		allowed = {
+			original_tag = GRE
+			always = no
+		}
+
+		allowed_civil_war = {
+			always = yes
+		}
+
+		removal_cost = -1
+
+		picture = chi_army_corruption3
+
+		modifier = {
+			army_core_attack_factor = 0.15
+			army_core_defence_factor = 0.15
+		}
+	}
+		GRE_orthodox_idea = {
+			allowed = { always = no }
+			removal_cost = -1
+			allowed_civil_war = { always = yes }
+			picture = GRE_orthodox_defence
+			modifier = {
+				political_power_gain = 0.1
+				stability_factor = 0.15
+				monthly_population = 0.2
+			}
+		}
+		GRE_purple_phoenix_idea = {
+			allowed = { always = no }
+			removal_cost = -1
+			allowed_civil_war = { always = yes }
+			picture = GRE_purple_pheonix
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				compliance_gain = 0.03
+				required_garrison_factor = -0.15
+				monthly_population = 0.25
+				autonomy_manpower_share = 0.20
+				political_power_gain = 0.2
+			}
+		}
+		GRE_macedonian_conquest = {
+			allowed = { always = no }
+			removal_cost = -1
+			allowed_civil_war = { always = yes }
+			picture = ast_volunteer_defence_corps
+			modifier = {
+				war_support_factor = 0.2
+				army_defence_factor = 0.1
+				army_attack_factor = 0.1
+				political_power_gain = 0.2
+			}
+		}		
+		GRE_heavy_tank = {
+			allowed = { always = no }
+			removal_cost = -1
+			allowed_civil_war = { always = yes }
+			picture = war_economy
+equipment_bonus = {
+    modern_tank_chassis = {
+        instant = yes
+        build_cost_ic = -0.5
+		reliability = 1.5
+		maximum_speed = 1.2
+    }
+   
+}			
+		}
+GRE_spartan_discipline = {
+			allowed = { always = no }
+			removal_cost = -1
+			allowed_civil_war = { always = yes }
+			picture = Spartan_Discipline
+			modifier = {
+				army_morale_factor = 0.05
+				experience_gain_army_factor = 0.15
+				army_attack_factor = 0.1
+				land_reinforce_rate = 0.15
+				army_org_factor = 0.1
+				army_defence_factor = 0.15
+				land_doctrine_cost_factor = -0.2
+				industrial_capacity_factory = 0.10				
+				conscription = 0.015
+				consumer_goods_factor = -0.08
+				weekly_manpower = 300 
+				training_time_factor = -0.05
+				max_dig_in_factor = 0.1
+				required_garrison_factor = -0.1
+			}
+		}		
+		GRE_komnenian_army_idea = {
+			allowed = { always = no }
+			removal_cost = -1
+			allowed_civil_war = { always = yes }
+			picture = GRE_komnenian_army
+			modifier = {
+				industrial_capacity_factory = 0.10				
+				conscription = 0.015
+				consumer_goods_factor = -0.08
+				weekly_manpower = 500 
+				training_time_factor = -0.05
+				max_dig_in_factor = 0.1
+				required_garrison_factor = -0.1
+			}
+		}
+		GRE_neo_varangian_idea = {
+			allowed = { always = no }
+			removal_cost = -1
+			allowed_civil_war = { always = yes }
+			picture = GRE_varangian_guard
+			modifier = {
+				army_morale_factor = 0.05
+				experience_gain_army_factor = 0.15
+				army_attack_factor = 0.1
+				land_reinforce_rate = 0.15
+				army_org_factor = 0.1
+				army_defence_factor = 0.15
+				land_doctrine_cost_factor = -0.2
+			}
+		}
+GRE_athens2 = {
+			picture = jap_supremacy_of_will
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+                political_power_factor	= 0.25
+				research_speed_factor = 0.05
+				stability_factor = 0.1
+				consumer_goods_factor = -0.1
+
+			}
+		}
+		GRE_athens = {
+			picture = jap_supremacy_of_will
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+                political_power_factor	= 0.5
+				research_speed_factor = 0.10
+
+			}
+		}	
+		GRE_sparta = {
+			picture = SWI_spirit_of_helvetia_defensive_war
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_defence_factor = 0.30
+				army_attack_factor = 0.30
+			}
+		}	
+		GRE_sparta2 = {
+			picture = SWI_spirit_of_helvetia_defensive_war
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_defence_factor = 0.15
+				army_attack_factor = 0.15
+				army_breakthrough_against_major_factor = 0.5
+				army_attack_against_major_factor = 0.1
+			}
+		}
+		great_depressiongr = {
+			picture = greeconomiccrisis
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_cost = 0.65
+				consumer_goods_factor = 0.65
+				stability_factor = -0.25
+				local_resources_factor = -0.2
+			}
+		}
+		great_depressiongr_2 = {
+			picture = greeconomiccrisis
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_cost = 0.55
+				consumer_goods_factor = 0.60
+				stability_factor = -0.2
+				local_resources_factor = -0.15
+			}
+		}
+		great_depressiongr_3 = {
+			picture = greeconomiccrisis
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_cost = 0.45
+				consumer_goods_factor = 0.50
+				stability_factor = -0.1
+				local_resources_factor = -0.15
+			}
+		}
+		great_depressiongr_4 = {
+			picture = greeconomiccrisis
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_cost = 0.35
+				consumer_goods_factor = 0.4
+				stability_factor = -0.05
+				local_resources_factor = -0.05
+			}
+		}
+		great_depressiongr_5 = {
+			picture = greeconomiccrisis
+			name = great_depressiongr_4
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_cost = 0.2
+				consumer_goods_factor = 0.25
+				stability_factor = -0.05
+			}
+		}
+		great_depressiongr_6 = {
+			picture = greeconomiccrisis
+			name = great_depressiongr_4
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_cost = 0.1
+				consumer_goods_factor = 0.15
+				stability_factor = -0.05
+			}
+		}
+		great_depressiongr_7 = {
+			picture = greeconomiccrisis
+			name = great_depressiongr_4
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_cost = 0.05
+				consumer_goods_factor = 0.1
+				stability_factor = -0.05
+			}
+		}
+		great_recession = {
+			picture = SPA_recovering_from_the_civil_war
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+			    stability_factor = 0.05
+			    production_speed_buildings_factor = 0.05
+				consumer_goods_factor = 0.25
+				stability_weekly = 0.005
+				defensive_war_stability_factor = 0.05
+				offensive_war_stability_factor = 0.1
+			}
+		}
+		great_stagnation = {
+			picture = ARG_civilian_economy_boost
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+			    production_speed_buildings_factor = 0.1
+				consumer_goods_factor = 0.15
+				stability_weekly = 0.01
+				defensive_war_stability_factor = 0.1
+				offensive_war_stability_factor = 0.15
+			}
+		}
+    	GRE_metaxas_plan4 = {
+
+        	picture = generic_local_self_management
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				stability_factor = 0.10
+				production_speed_buildings_factor = 0.05
+        		global_building_slots_factor = 0.1
+				consumer_goods_factor = -0.05
+        	    political_power_factor = 0.15
+       		}
+  		}
+    	GRE_eastern_economy = {
+
+        	picture = SOV_stakhanovite_movement
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				stability_factor = -0.10
+                industrial_capacity_factory = 0.1
+        		global_building_slots_factor = 0.1
+				consumer_goods_factor = -0.05
+                production_speed_industrial_complex_factor = 0.1
+       		}
+  		}
+    	GRE_eastern_economy2 = {
+
+        	picture = SOV_stakhanovite_movement
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+			stability_factor = -0.15
+                industrial_capacity_factory = 0.25
+        		global_building_slots_factor = 0.2
+				consumer_goods_factor = -0.1
+                production_speed_industrial_complex_factor = 0.2
+                production_oil_factor = 0.1
+                production_speed_buildings_factor = 0.1			
+       		}
+  		}
+		GRE_macedonean_spirit_1 = {
+		
+        	picture = GRE_macedonia_ideas
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+			   stability_factor = 0.1
+			   war_support_factor = 0.1
+			   compliance_growth = 0.08
+				army_defence_factor = 0.08
+				army_attack_factor = 0.05
+				org_loss_when_moving = -0.05
+       		}
+  		}
+		GRE_macedonean_spirit_2 = {
+		
+        	picture = GRE_macedonia_ideas
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+			   stability_factor = 0.1
+			   war_support_factor = 0.1
+			   compliance_growth = 0.1
+				army_defence_factor = 0.1
+				army_attack_factor = 0.1
+				org_loss_when_moving = -0.1
+       		}
+  		}
+		GRE_macedonean_spirit_3 = {
+		
+        	picture = GRE_macedonia_ideas
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+			   stability_factor = 0.1
+			   war_support_factor = 0.1
+			   compliance_growth = 0.2
+			   army_defence_factor = 0.2
+		       army_attack_factor = 0.12
+			   org_loss_when_moving = -0.15
+       		}
+  		}		
+		
+		GRE_roman_army = {
+		
+        	picture = SWI_spirit_of_helvetia_aggressive_peace
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+                army_speed_factor = 0.05
+				army_attack_factor = 0.05
+				army_core_attack_factor = 0.1
+				army_defence_factor = 0.1
+				army_core_defence_factor = 0.15
+       		}
+  		}
+		GRE_roman_army2 = {
+		
+        	picture = SWI_spirit_of_helvetia_aggressive_war
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+                army_speed_factor = 0.1
+				army_attack_factor = 0.1
+				army_core_attack_factor = 0.1
+				army_defence_factor = 0.1
+                special_forces_cap = 0.03
+				army_core_defence_factor = 0.15
+				naval_invasion_penalty = -0.2
+				naval_invasion_capacity = 10
+				amphibious_invasion = 0.15
+				invasion_preparation = -0.15
+       		}
+  		}	
+        		
+    	GRE_capitalist_economy = {
+
+        	picture = POL_succesful_four_year_plan
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				consumer_goods_factor = -0.05
+                production_speed_arms_factory_factor = 0.15
+                production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.15
+       		}
+  		}
+    	GRE_a_small_boost_to_spies = {
+
+        	picture = generic_spy_political
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+	            decryption = 2
+				encryption = 2
+       		}
+  		}
+    	GRE_a_small_boost_to_spies_with_lar = {
+
+        	picture = generic_spy_political
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				operative_slot = 1
+       		}
+  		}
+    	GRE_capitalist_economy2 = {
+
+        	picture = POL_succesful_four_year_plan
+
+        	allowed = {
+        	    always = no
+        	}
+
+        	modifier = {
+				consumer_goods_factor = -0.1
+                production_speed_arms_factory_factor = 0.2
+                production_factory_efficiency_gain_factor = 0.15
+				production_factory_max_efficiency_factor = 0.25		
+       		}
+  		}		
+ 		GRE_re_fake_ns = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_army_dynamic_modifier
+            description = GRE_army_dynamic_modifier_desc
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_army
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+ 				max_dig_in_factor = 0.05
+				army_speed_factor = 0.1
+				army_org_factor = -0.1
+				org_loss_when_moving = 0.20
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				army_defence_factor = -0.2
+				army_attack_factor = -0.2
+ 			}
+ 		}		
+ 		GRE_re_fake_ns2 = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_army_dynamic_modifier
+            description = GRE_army_dynamic_modifier_desc
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_army
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+ 				max_dig_in_factor = 0.05
+				army_speed_factor = 0.1
+				army_org_factor = -0.05
+				org_loss_when_moving = 0.1
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				army_defence_factor = -0.1
+				army_attack_factor = -0.1
+ 			}
+ 		}
+ 		GRE_re_fake_ns3 = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_army_dynamic_modifier
+            description = GRE_army_dynamic_modifier_desc
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_army
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+ 				max_dig_in_factor = 0.1
+				army_speed_factor = 0.15
+				army_org_factor = 0.1
+				org_loss_when_moving = -0.03
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				army_defence_factor = 0.05
+				army_attack_factor = 0.05
+ 			}
+ 		}
+ 		GRE_re_fake_ns4 = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_army_dynamic_modifier
+            description = GRE_army_dynamic_modifier_desc
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_army
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+ 				max_dig_in_factor = 0.1
+				army_speed_factor = 0.2
+				army_org_factor = 0.15
+				org_loss_when_moving = -0.01
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+				army_defence_factor = 0.08
+				army_attack_factor = 0.08
+ 			}
+ 		}
+
+ 		GRE_iri_fake_ns = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_navy_dynamic_modifier
+
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_navy
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                 naval_accidents_chance = -0.3
+				 naval_coordination  = 0.25
+				 naval_detection = 0.1
+				 positioning = 0.2
+				 repair_speed_factor = -0.3
+				 naval_retreat_chance = -0.5
+ 			}
+ 		}	
+ 		GRE_iri_fake_ns2 = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_navy_dynamic_modifier
+
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_navy
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                 naval_accidents_chance = -0.4
+				 naval_coordination  = 0.3
+				 naval_detection = 0.15
+				 positioning = 0.25
+				 repair_speed_factor = -0.15
+				 naval_retreat_chance = -0.3
+				 naval_damage_factor = 0.1
+ 			}
+ 		}
+ 		GRE_iri_fake_ns3 = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_navy_dynamic_modifier
+
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_navy
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                 naval_accidents_chance = -0.4
+				 naval_coordination  = 0.3
+				 naval_detection = 0.15
+				 positioning = 0.25
+				 repair_speed_factor = 0.02
+				 naval_retreat_chance = -0.1
+				 naval_damage_factor = 0.15
+				 naval_defense_factor = 0.05
+ 			}
+ 		}
+ 		GRE_iri_fake_ns4 = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_navy_dynamic_modifier
+
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_navy
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                 naval_accidents_chance = -0.5
+				 naval_coordination  = 0.4
+				 naval_detection = 0.25
+				 positioning = 0.3
+				 repair_speed_factor = 0.2
+				 naval_damage_factor = 0.2
+				 naval_defense_factor = 0.15
+ 			}
+ 		}
+ 		GRE_ura_fake_ns = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_airforce_dynamic_modifier
+
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_airforce
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                 air_accidents_factor = 0.05
+				 air_attack_factor = -0.3
+				 air_defence_factor = 0.2
+				 air_mission_efficiency = -0.3
+				 air_weather_penalty = 0.2
+ 			}
+ 		}
+ 		GRE_ura_fake_ns2 = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_airforce_dynamic_modifier
+
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_airforce
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                 air_accidents_factor = -0.01
+				 air_attack_factor = -0.2
+				 air_defence_factor = 0.2
+				 air_mission_efficiency = -0.15
+				 air_weather_penalty = 0.1
+ 			}
+ 		}
+ 		GRE_ura_fake_ns3 = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_airforce_dynamic_modifier
+
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_airforce
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                 air_accidents_factor = -0.15
+				 air_attack_factor = -0.05
+				 air_defence_factor = 0.3
+				 air_mission_efficiency = 0.01
+				 air_weather_penalty = -0.05
+ 			}
+ 		}
+ 		GRE_ura_fake_ns4 = { #Only used for 1936 bookmark (dynamic modifiers don't show up there)
+ 			name = GRE_airforce_dynamic_modifier
+
+ 			removal_cost = -1
+
+ 			picture = GRE_state_of_the_airforce
+
+ 			allowed = {
+ 				always = no
+ 			}
+
+ 			modifier = {
+                 air_accidents_factor = -0.3
+				 air_attack_factor = 0.2
+				 air_defence_factor = 0.4
+				 air_mission_efficiency = 0.15
+				 air_weather_penalty = -0.2
+ 			}
+ 		}
+
+
+		medicine_imrpoved = {
+ 			allowed = {
+ 				always = no
+ 			}
+
+			picture = ENG_the_war_to_end_all_wars
+			modifier = {
+				political_power_gain = -0.1
+			}
+		}
+
+
+		EU_extensive_mountain_warfare = {
+ 			allowed = {
+ 				always = no
+ 			}
+
+			picture = european_union_member
+			modifier = {
+				army_infantry_defence_factor = 0.3
+				terrain_penalty_reduction = 0.20
+			}
+		}
+
+		POTEF_leopard_doctrine = {
+			picture = european_union_member
+ 			allowed = {
+ 				always = no
+ 			}
+			modifier = {
+				army_armor_attack_factor = 0.10
+				army_armor_speed_factor	= 0.20
+				army_armor_defence_factor = 0.20
+			}
+		}
+
+		POTEF_airborne_doctrine = {
+ 			allowed = {
+ 				always = no
+ 			}
+			picture = european_union_member
+			modifier = {
+				recon_factor = 0.15
+				river_crossing_factor = -0.1
+				paradrop_organization_factor = 0.2
+				extra_paratrooper_supply_grace = 0.2
+			}
+		}
+
+		EU_extensive_naval_doctrine = {
+	 			allowed = {
+ 				always = no
+ 			}
+		picture = european_union_member
+			modifier = {
+				experience_gain_navy = 0.1
+				experience_gain_navy_factor = 0.25
+				navy_org_factor = 0.15
+			}
+		}
+
+		EU_nato_legacy = {
+	 			allowed = {
+ 				always = no
+ 			}
+		picture = NATO_memberr
+			modifier = {
+				army_intel_factor = 0.1
+				navy_intel_factor = 0.1
+				airforce_intel_factor = 0.1
+			}
+		}
+
+		EU_extensive_nordic_doctrine = {
+	 			allowed = {
+ 				always = no
+ 			}
+		picture = european_union_member
+			modifier = {
+				winter_attrition_factor = -0.5
+				acclimatization_cold_climate_gain_factor = 0.25
+			}
+		}
+
+
+
+	EU_extensive_french_doctrine = {
+	 			allowed = {
+ 				always = no
+ 			}
+	picture = european_union_member
+		modifier = {
+			mechanized_attack_factor = 0.10
+			mechanized_defence_factor = 0.10
+			motorized_attack_factor = 0.15
+			motorized_defence_factor = 0.15
+		}
+	}
+
+		POTEF_extensive_marine_doctrine = {
+		 			allowed = {
+ 				always = no
+ 			}
+	picture = european_union_member
+			modifier = {
+				amphibious_invasion = 0.30
+				amphibious_invasion_defence	= 0.20
+				naval_invasion_penalty = -0.2
+			}
+		}
+
+		POTEF_extensive_amphibious_doctrine = {
+		 			allowed = {
+ 				always = no
+ 			}
+	picture = european_union_member
+			modifier = {
+				naval_invasion_prep_speed = 0.30
+				naval_invasion_capacity = 3
+				invasion_preparation = -0.2
+			}
+		}
+
+
+		POTEF_extensive_anti_air_doctrine = {
+			 			allowed = {
+ 				always = no
+ 			}
+picture = european_union_member
+			modifier = {
+				air_attack_factor = 0.20
+				cas_damage_reduction = 0.30
+			}
+		}
+
+		POTEF_extensive_artillery_doctrine = {
+		 			allowed = {
+ 				always = no
+ 			}
+	picture = european_union_member
+			modifier = {
+				army_artillery_attack_factor = 0.30
+				army_artillery_defence_factor	= 0.20
+			}
+		}
+		POTEF_partisan_doctrine = {
+			 			allowed = {
+ 				always = no
+ 			}
+picture = european_union_member
+			modifier = {
+				boost_resistance_factor = 0.15
+				root_out_resistance_effectiveness_factor = 0.15
+
+			}
+		}
+
+		POTEF_counter_insurgency_doctrine = {
+			picture = european_union_member
+
+			 			allowed = {
+ 				always = no
+ 			}
+modifier = {
+				boost_resistance_factor = 0.15
+				root_out_resistance_effectiveness_factor = 0.15
+				resistance_damage_to_garrison = -0.15
+				resistance_target = -0.30
+			}
+		}
+
+		POTEF_extensive_defense_doctrine = {
+			picture = european_union_member
+ 			allowed = {
+ 				always = no
+ 			}
+
+			modifier = {
+				max_dig_in_factor = 0.30
+				dig_in_speed_factor	= 0.30
+				defence = 0.20
+				production_speed_bunker_factor = 0.2
+			}
+		}
+		POTEF_extensive_special_forces_doctrine = {
+	 			allowed = {
+ 				always = no
+ 			}
+		picture = european_union_member
+			modifier = {
+				special_forces_attack_factor = 0.20
+				special_forces_defence_factor	= 0.20
+				special_forces_min = 6
+				special_forces_cap = 0.5
+			}
+		}
+
+	}
+}

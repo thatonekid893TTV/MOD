@@ -1,0 +1,140 @@
+on_actions = {
+
+	on_startup = {
+
+		effect = {
+
+			MON = {
+				remove_ideas = MON_spirit_of_the_khans_initial
+				add_dynamic_modifier = { modifier = MON_legacy_of_the_khans_dynamic_modifier }
+				if = {
+					limit = {
+						OR = {
+							AND = {
+								is_historical_focus_on = no
+								has_game_rule = {
+									rule = MON_ai_behavior
+									option = DEFAULT
+								}
+							}
+							has_game_rule = {
+								rule = MON_ai_behavior
+								option = RANDOM
+							}
+						}
+					}
+					random_list = {
+						40 = {
+							modifier = {
+								factor = 0.25
+								game_weight_can_add_communist = no
+							}
+							modifier = {
+								factor = 2
+								SOV = {
+									or = {
+										has_country_flag = SOV_AI_RANDOM_COMMUNIST_HISTORICAL
+										has_game_rule = {
+											rule = SOV_AI_BEHAVIOR
+											option = HISTORICAL
+										}
+									}
+								}
+							}
+							modifier = {
+								factor = 0.1
+								SOV = {
+									or = {
+										has_country_flag = SOV_AI_RANDOM_EXILES_TSARIST
+										has_game_rule = {
+											rule = SOV_AI_BEHAVIOR
+											option = EXILES_TSARIST
+										}
+										has_country_flag = SOV_AI_RANDOM_EXILES_FASCIST
+										has_game_rule = {
+											rule = SOV_AI_BEHAVIOR
+											option = EXILES_FASCIST
+										}
+									}
+								}
+							}
+							set_country_flag = MON_AI_RANDOM_HISTORICAL
+							set_add_communist_weight_small = yes
+						}
+						30 = {
+							modifier = {
+								factor = 0.25
+								game_weight_can_add_communist = no
+							}
+							set_country_flag = MON_AI_RANDOM_INDEPENDENT
+							set_add_communist_weight_small = yes
+						}
+						15 = {
+							modifier = {
+								factor = 0.25
+								game_weight_can_add_unaligned = no
+							}
+							set_country_flag = MON_AI_RANDOM_NEUTRALITY
+							set_add_unaligned_weight_small = yes
+						}
+						15 = {
+							modifier = {
+								factor = 0.25
+								game_weight_can_add_fascist = no
+							}
+							set_country_flag = MON_AI_RANDOM_FASCISM
+							set_add_fascist_weight_small = yes
+						}
+					}
+				}
+			}
+
+		}
+
+	}
+
+	on_civil_war_end = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = MON
+					has_country_flag = MON_has_created_militia 
+				}
+				clr_country_flag = MON_has_created_militia 
+				delete_unit_template_and_units = {
+					division_template = "Tsagdaagiin Khoroo"
+					disband = yes
+				}
+			}
+		}
+	}
+
+	on_monthly_MON = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = yes
+					has_active_mission = MON_nkvd_crackdown
+					not = { has_decision = MON_consolidate_government }
+					or = {
+						has_completed_focus = MON_purge_the_traitors
+						has_completed_focus = MON_rehabilitate_lkhumbe
+					}
+					or = {
+						has_stability < 0.3
+						and = {
+							has_stability < 0.45
+							has_country_leader = {
+    								character = MON_anandyn_amar
+    								ruling_only = yes
+							}
+						}
+					}
+				}
+				activate_decision = MON_consolidate_government
+			}
+		}
+	}
+							
+
+}

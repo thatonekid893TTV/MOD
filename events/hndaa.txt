@@ -1,0 +1,307 @@
+add_namespace = hunda
+add_namespace = axis_med
+country_event = {
+	id = hunda.1
+	title = hunda.1.t
+	desc = hunda.1.desc
+    picture = GFX_report_event_gre_trial
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+		
+	option = { #they must suffer
+		name = hunda.1.a
+		country_event = {
+				id = hunda.2
+				days = 2
+				random_days = 3
+			}							
+	}
+	option = { #let them be
+		ai_chance = {
+			factor = 100
+		}
+		name = hunda.1.b
+			  country_event = {
+				id = hunda.3
+				days = 30
+				random_days = 15
+			}			 
+	}
+}
+country_event = {
+	id = hunda.2
+	title = hunda.2.t
+	desc = hunda.2.desc
+    picture = GFX_report_event_gre_cabinet_meeting
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+		
+	option = { #their fate has been decided
+		name = hunda.2.a
+		set_politics = { 
+			   ruling_party = democratic
+			   elections_allowed = no
+		    }	
+        add_political_power = -30
+		 random_list = {
+			    95 = {
+			country_event = {
+				id = hunda.4
+				days = 2
+				random_days = 10
+			}	}
+			05 = { }
+			}
+	}
+	
+}
+country_event = {
+	id = hunda.3
+	title = hunda.3.t
+	desc = hunda.3.desc
+    picture = GFX_report_event_gre_george_ii_victorious
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+		
+	option = {
+		name = hunda.3.a
+		set_politics = { 
+			   ruling_party = democratic
+			   elections_allowed = no
+		    }							
+	}
+	
+}
+country_event = {
+	id = hunda.4
+	title = hunda.4.t
+	desc = hunda.4.desc
+    picture = GFX_report_event_gre_venizelos_death
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+		
+	option = {
+		name = hunda.4.a
+		add_political_power = 5
+		GRE_bop_low_increase_effect = yes						
+	}
+	
+}
+country_event = {
+	id = hunda.5
+	title = hunda.5.t
+	desc = hunda.5.desc
+    picture = GFX_report_event_soviet_army_greeted
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+		
+	option = {
+		name = hunda.5.a
+		add_political_power = 5					
+	}
+	option = {
+		name = hunda.5.b
+		retire_country_leader = yes
+		add_country_leader_role = {
+					character = GRE_alexandros_papagos
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							gre_autocrat gre_army_experiebnced
+						}
+					}
+					promote_leader = yes
+				}			
+	}
+	option = {
+		name = hunda.5.c
+		retire_country_leader = yes
+		add_country_leader_role = {
+					character = GRE_aris_velouchiotis
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							leftist_intellectual ARG_feminist_revolutionary
+						}
+					}
+					promote_leader = yes
+				}					
+	}
+	option = {
+		name = hunda.5.d
+		retire_country_leader = yes
+		add_country_leader_role = {
+					character = GRE_theodoros_pangalos
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							militant_minister political_manipulator
+						}
+					}
+					promote_leader = yes
+				}					
+	}
+	
+}
+country_event = {
+	id = axis_med.1
+	title = axis_med.3.t
+	desc = axis_med.3.desc
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = no
+
+	# Together, we can bring down the USA
+	option = {
+		name = axis_med.1.a 
+		ai_chance = {  
+			base = 100
+		} 
+
+		FROM = {
+			country_event = {
+				id = axis_med.2
+				days = 2
+				random_days = 3
+			}
+		}
+		
+	}  
+
+	# It is too risky!
+	option = {
+		name = CHL_political_events.38.b 
+		ai_chance = {
+			base = 0
+		} 
+
+		FROM = {
+			country_event = {
+				id = axis_med.3
+				days = 2
+				random_days = 5
+			}
+		}
+		
+	}     
+}
+
+# X country joins the Axis
+country_event = {
+	id = axis_med.2
+	title = CHL_political_events.39.t
+	desc = CHL_political_events.39.desc 
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = no
+
+	# We will defend our continent!
+	option = {
+		name = CHL_political_events.39.a 
+		ai_chance = {  
+			base = 100
+		} 
+
+		random_country = {
+			limit = {
+				original_tag = ITA
+				has_government = fascism
+				is_faction_leader = yes
+			}
+			add_to_faction = FROM
+		}
+		
+	}      
+}
+
+# X country decides not to join the Axis
+country_event = {
+	id = axis_med.3
+	title = CHL_political_events.40.t
+	desc = CHL_political_events.40.desc 
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = no
+
+	# Oh well...
+	option = {
+		name = CHL_political_events.40.a 
+		ai_chance = {  
+			base = 100
+		} 
+
+		add_political_power = 10
+		
+	}      
+}
+country_event = {
+	id = axis_med.4
+	title = axis_med.4.t
+	desc = axis_med.4.d
+	picture = GFX_report_event_generic_read_write
+
+
+	is_triggered_only = yes
+	
+	
+	option = { #Agree / Both different
+		name = axis_med.4.a
+		
+		ai_chance = {
+			base = 100
+			
+		
+		}
+		GER = { 
+			faction_leader = {
+				add_to_faction = TUR
+			}
+			GRE = {
+		    transfer_state = 341
+		    
+		   }	
+		   GRE = {
+		    transfer_state = 340
+		    
+		   }
+		   GRE = {
+		    transfer_state = 339
+		    
+		   }
+				341 = { add_core_of = GRE }		
+				340 = { add_core_of = GRE }		
+				339 = { add_core_of = GRE }		
+				
+230 = { add_core_of = TUR }		
+				231 = { add_core_of = TUR }		
+				229 = { add_core_of = TUR }		
+	826 = { add_core_of = TUR }						
+		}
+		
+	}
+	
+	option = { #Reject
+		name = axis_med.4.b
+		
+		ai_chance = {
+			factor = 0
+			
+
+		}
+		
+	}
+
+}

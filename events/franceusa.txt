@@ -1,0 +1,101 @@
+add_namespace = france
+
+country_event = {
+	id = france.778
+ 	title = franceusa.778.t
+	desc = franceusa.778.d
+ 	picture = GFX_report_event_generic_usa_treaty
+	
+	fire_only_once = yes
+
+ 	is_triggered_only = yes
+	
+ 	option = {
+ 		name = franceusa.778.a
+		add_political_power = -10
+ 		ai_chance = { factor = 100 }
+ 		USA = { 
+ 			country_event = {
+     			id = france.779
+ 				hours = 6
+ 			}
+ 		}
+ 	}
+
+ 	option = {
+ 		name = france.778.b
+		country_event = {id = france.780 } 
+ 	}	
+ }
+
+country_event = {
+	id = france.785 #bruh usa said no :(
+	title = france.785.t
+	desc = france.785.d
+	picture = GFX_report_event_FRA_r35
+
+	fire_only_once = yes
+	
+ 	is_triggered_only = yes
+	
+	option = {
+		name = france.785.a
+		add_political_power = -5
+		FRA = { country_event = france.783 } 
+	}
+}
+
+ country_event = {
+ 	id = france.779
+ 	title = france.779.t
+ 	desc = france.779.d
+ 	picture = GFX_report_event_generic_usa_treaty
+	
+ 	fire_only_once = yes
+	
+ 	is_triggered_only = yes
+
+	option = {  #no
+ 		name = france.779.b
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 30
+				is_historical_focus_on = no
+			}
+		}
+		FRA = { country_event = france.785 }
+	 }
+	
+ 	option = { #yes!
+ 		name = france.779.a
+ 		ai_chance = {
+			factor = 0
+			modifier = {
+				factor = 70
+				is_historical_focus_on = no
+			}
+		}
+		add_political_power = -50
+		FRA = {
+				country_event = { hours = 24 id = france.777 } #france continue the fight !
+				add_war_support = 0.25
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 10000
+					producer = USA
+				}
+ 		ENG = { add_to_faction = USA }
+ 		if = {
+ 			limit = { 
+ 				ENG = { has_war_with = GER }
+ 			}
+ 			add_to_war = { 
+ 				targeted_alliance = ENG
+ 				enemy = GER 
+ 				hostility_reason = asked_to_join
+ 			}
+ 		}
+	}
+     }
+}

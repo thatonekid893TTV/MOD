@@ -1,0 +1,628 @@
+# Allows you to create your own dynamic keys
+# to be called in localization.
+# defined_text -> this is it, we're defining the text
+# text -> a discrete entry that can be picked to display in loc.
+# trigger -> determines if a text entry will be picked or not.
+# (The triggers need to be valid for the scope the key is called in
+# (eg Root or From.From).)
+# localization_key -> points to the localization key
+# that'll be used if trigger passes
+
+
+###################################################################
+############# FOCUS AND LOC CHANGES BASED ON IDEOLOGY #############
+###################################################################
+
+defined_text = {
+	name = GetMONStateUniversityName
+	text = {
+		trigger = {
+			has_country_leader = {
+				ruling_only = yes
+				character = MON_khorloogiin_choibalsan
+			}
+		}
+		localization_key = MON_state_university_choibalsan
+	}
+	text = {
+		localization_key = MON_state_university_alt
+	}
+}
+
+### Propaganda
+
+defined_text = {
+	name = GetMONPropagandaCampaignEffects_Left
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 1 }
+		}
+		localization_key = MON_propaganda_campaign_locked_slot_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 2 }
+		}
+		localization_key = MON_propaganda_campaign_empty_slot_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 3 }
+		}
+		localization_key = MON_propaganda_state_of_industry 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 4 }
+		}
+		localization_key = MON_propaganda_state_industrial_plans 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 5 }
+		}
+		localization_key = MON_propaganda_work_of_a_faithful_master 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 6 }
+		}
+		localization_key = MON_propaganda_improvement_in_coal_production 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 7 }
+		}
+		localization_key = MON_propaganda_learn_to_read 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 8 }
+		}
+		localization_key = MON_propaganda_improvement_of_schools 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 9 }
+		}
+		localization_key = MON_propaganda_improve_socialist_economy 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 10 }
+		}
+		localization_key = MON_propaganda_beloved_leader_choibalsan 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 11 }
+		}
+		localization_key = MON_propaganda_get_a_lot_of_hay 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 12 }
+		}
+		localization_key = MON_propaganda_raise_hand_for_independence 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 13 }
+		}
+		localization_key = MON_propaganda_enemy_could_not_penetrate 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 14 }
+		}
+		localization_key = MON_propaganda_wrath_of_the_people
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 15 }
+		}
+		localization_key = MON_propaganda_be_a_hero 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 16 }
+		}
+		localization_key = MON_propaganda_raise_the_flag_of_victory 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 17 }
+		}
+		localization_key = MON_propaganda_throw_the_grenade_far 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 18 }
+		}
+		localization_key = MON_propaganda_take_care_of_the_soldiers 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 19 }
+		}
+		localization_key = MON_propaganda_severe_winter_weather 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 20 }
+		}
+		localization_key = MON_propaganda_shook_hands 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 21 }
+		}
+		localization_key = MON_propaganda_study_military_science 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 22 }
+		}
+		localization_key = MON_propaganda_tank_convoy 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 23 }
+		}
+		localization_key = MON_propaganda_two_heroes_united 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 24 }
+		}
+		localization_key = MON_propaganda_khalkha_heroes_are_coming 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 25 }
+		}
+		localization_key = MON_propaganda_destroy_german_fascism 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_left_icon_frame = 26 }
+		}
+		localization_key = MON_propaganda_wings_of_friendship 
+	}
+}
+
+defined_text = {
+	name = GetMONPropagandaCampaignEffects_Center
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 1 }
+		}
+		localization_key = MON_propaganda_campaign_locked_slot_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 2 }
+		}
+		localization_key = MON_propaganda_campaign_empty_slot_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 3 }
+		}
+		localization_key = MON_propaganda_state_of_industry 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 4 }
+		}
+		localization_key = MON_propaganda_state_industrial_plans 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 5 }
+		}
+		localization_key = MON_propaganda_work_of_a_faithful_master 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 6 }
+		}
+		localization_key = MON_propaganda_improvement_in_coal_production 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 7 }
+		}
+		localization_key = MON_propaganda_learn_to_read 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 8 }
+		}
+		localization_key = MON_propaganda_improvement_of_schools 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 9 }
+		}
+		localization_key = MON_propaganda_improve_socialist_economy 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 10 }
+		}
+		localization_key = MON_propaganda_beloved_leader_choibalsan 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 11 }
+		}
+		localization_key = MON_propaganda_get_a_lot_of_hay 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 12 }
+		}
+		localization_key = MON_propaganda_raise_hand_for_independence 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 13 }
+		}
+		localization_key = MON_propaganda_enemy_could_not_penetrate 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 14 }
+		}
+		localization_key = MON_propaganda_wrath_of_the_people
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 15 }
+		}
+		localization_key = MON_propaganda_be_a_hero 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 16 }
+		}
+		localization_key = MON_propaganda_raise_the_flag_of_victory 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 17 }
+		}
+		localization_key = MON_propaganda_throw_the_grenade_far 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 18 }
+		}
+		localization_key = MON_propaganda_take_care_of_the_soldiers 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 19 }
+		}
+		localization_key = MON_propaganda_severe_winter_weather 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 20 }
+		}
+		localization_key = MON_propaganda_shook_hands 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 21 }
+		}
+		localization_key = MON_propaganda_study_military_science 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 22 }
+		}
+		localization_key = MON_propaganda_tank_convoy 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 23 }
+		}
+		localization_key = MON_propaganda_two_heroes_united 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 24 }
+		}
+		localization_key = MON_propaganda_khalkha_heroes_are_coming 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 25 }
+		}
+		localization_key = MON_propaganda_destroy_german_fascism 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_center_icon_frame = 26 }
+		}
+		localization_key = MON_propaganda_wings_of_friendship 
+	}
+}
+
+defined_text = {
+	name = GetMONPropagandaCampaignEffects_Right
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 1 }
+		}
+		localization_key = MON_propaganda_campaign_locked_slot_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 2 }
+		}
+		localization_key = MON_propaganda_campaign_empty_slot_tt
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 3 }
+		}
+		localization_key = MON_propaganda_state_of_industry 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 4 }
+		}
+		localization_key = MON_propaganda_state_industrial_plans 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 5 }
+		}
+		localization_key = MON_propaganda_work_of_a_faithful_master 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 6 }
+		}
+		localization_key = MON_propaganda_improvement_in_coal_production 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 7 }
+		}
+		localization_key = MON_propaganda_learn_to_read 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 8 }
+		}
+		localization_key = MON_propaganda_improvement_of_schools 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 9 }
+		}
+		localization_key = MON_propaganda_improve_socialist_economy 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 10 }
+		}
+		localization_key = MON_propaganda_beloved_leader_choibalsan 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 11 }
+		}
+		localization_key = MON_propaganda_get_a_lot_of_hay 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 12 }
+		}
+		localization_key = MON_propaganda_raise_hand_for_independence 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 13 }
+		}
+		localization_key = MON_propaganda_enemy_could_not_penetrate 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 14 }
+		}
+		localization_key = MON_propaganda_wrath_of_the_people
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 15 }
+		}
+		localization_key = MON_propaganda_be_a_hero 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 16 }
+		}
+		localization_key = MON_propaganda_raise_the_flag_of_victory 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 17 }
+		}
+		localization_key = MON_propaganda_throw_the_grenade_far 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 18 }
+		}
+		localization_key = MON_propaganda_take_care_of_the_soldiers 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 19 }
+		}
+		localization_key = MON_propaganda_severe_winter_weather 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 20 }
+		}
+		localization_key = MON_propaganda_shook_hands 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 21 }
+		}
+		localization_key = MON_propaganda_study_military_science 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 22 }
+		}
+		localization_key = MON_propaganda_tank_convoy 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 23 }
+		}
+		localization_key = MON_propaganda_two_heroes_united 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 24 }
+		}
+		localization_key = MON_propaganda_khalkha_heroes_are_coming 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 25 }
+		}
+		localization_key = MON_propaganda_destroy_german_fascism 
+	}
+	text = {
+		trigger = {
+			check_variable = { MON_poster_right_icon_frame = 26 }
+		}
+		localization_key = MON_propaganda_wings_of_friendship 
+	}
+}
+
+defined_text = {
+	name = GetMONDaysRemainingLeft
+	text = {
+		trigger = {
+			OR = {
+				check_variable = { MON_poster_left_icon_frame = 1 }
+				check_variable = { MON_poster_left_icon_frame = 2 }
+			}
+		}
+		localization_key = MON_poster_no_text
+	}
+	text = {
+		localization_key = MON_poster_left_days_remaining_text
+	}
+}
+
+defined_text = {
+	name = GetMONDaysRemainingCenter
+	text = {
+		trigger = {
+			OR = {
+				check_variable = { MON_poster_center_icon_frame = 1 }
+				check_variable = { MON_poster_center_icon_frame = 2 }
+			}
+		}
+		localization_key = MON_poster_no_text
+	}
+	text = {
+		localization_key = MON_poster_center_days_remaining_text
+	}
+}
+
+defined_text = {
+	name = GetMONDaysRemainingRight
+	text = {
+		trigger = {
+			OR = {
+				check_variable = { MON_poster_right_icon_frame = 1 }
+				check_variable = { MON_poster_right_icon_frame = 2 }
+			}
+		}
+		localization_key = MON_poster_no_text
+	}
+	text = {
+		localization_key = MON_poster_right_days_remaining_text
+	}
+}
+
+defined_text = { #Used to change a propaganda campaign GFX, so that it looks aged.
+	name = GetMONPropagandaLeftSlotAge
+	text = {
+		trigger = {
+			has_country_flag = MON_propaganda_left_slot_is_old_flag
+		}
+		localization_key = GFX_MON_propaganda_strip_aged_1
+	}
+	text = {
+		localization_key = GFX_MON_propaganda_strip
+	}
+}
+
+defined_text = { #Used to change a propaganda campaign GFX, so that it looks aged.
+	name = GetMONPropagandaCenterSlotAge
+	text = {
+		trigger = {
+			has_country_flag = MON_propaganda_center_slot_is_old_flag
+		}
+		localization_key = GFX_MON_propaganda_strip_aged_2
+	}
+	text = {
+		localization_key = GFX_MON_propaganda_strip
+	}
+}
+
+defined_text = { #Used to change a propaganda campaign GFX, so that it looks aged.
+	name = GetMONPropagandaRightSlotAge
+	text = {
+		trigger = {
+			has_country_flag = MON_propaganda_right_slot_is_old_flag
+		}
+		localization_key = GFX_MON_propaganda_strip_aged_3
+	}
+	text = {
+		localization_key = GFX_MON_propaganda_strip
+	}
+}
+
+defined_text = { #Propaganda Tooltips
+	name = GetMONPropFocuses
+	text = {
+		trigger = {
+			OR = {
+				has_completed_focus = MON_improve_literacy_rates
+				has_completed_focus = MON_mongolian_socialism
+			}
+		}
+		localization_key = SOV_paranoia_tooltip_null
+	}
+	text = {
+		localization_key = MON_propaganda_campaign_locked_slot_focus_exclusive
+	}
+}
+
+defined_text = { #Propaganda Tooltips
+	name = GetMONFutureFocus
+	text = {
+		trigger = {
+			has_completed_focus = MON_the_flowering_future
+		}
+		localization_key = SOV_paranoia_tooltip_null
+	}
+	text = {
+		localization_key = MON_propaganda_campaign_locked_slot_focus_future
+	}
+}

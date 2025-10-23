@@ -1,0 +1,186 @@
+add_namespace = histindochina				
+
+country_event = { #Brevie
+    id = histindochina.1 
+    title = histindochina.1.t
+    desc = histindochina.1.d
+    fire_only_once = yes
+    picture = GFX_report_event_generic_sign_treaty1
+	
+    trigger = {
+        tag = VIN
+        date > 1936.10.01
+        has_idea = VIN_pearl
+        FRA = {
+            has_completed_focus = FRA_form_the_popular_front
+        }
+        has_start_date < 1936.01.02
+    }
+
+    mean_time_to_happen = {
+        days = 3
+    }
+
+    option = {
+        name = histindochina.1.a
+        add_political_power = -40
+	    set_party_name = {
+            ideology = neutrality
+            long_name = VIN_democratic_party_colony_long
+            name = VIN_democratic_party_colony
+        }
+	    retire_country_leader = yes
+        create_country_leader = {
+        	name = "Jules Brevié"
+        	picture = "GFX_portrait_VIN_jules_brevie"
+        	expire = "1965.1.1"
+        	ideology = moderatism
+        	traits = {
+				railroad_enthusiast
+            }
+        }
+    }
+}
+
+country_event = { #Catroux
+    id = histindochina.2
+    title = histindochina.2.t
+    desc = histindochina.2.d
+    fire_only_once = yes
+    picture = GFX_report_event_generic_sign_treaty1
+
+    trigger = {
+        tag = VIN
+        has_idea = VIN_pearl
+        OR = {
+            AND = {
+                threat > 0.2
+                date > 1939.10.20
+            }
+            threat > 0.5
+        }
+    }
+
+    mean_time_to_happen = {
+        days = 3
+    }
+
+    option = {
+        name = histindochina.2.a
+        add_political_power = -40
+	    set_party_name = {
+            ideology = neutrality
+            long_name = VIN_democratic_party_colony_long
+            name = VIN_democratic_party_colony
+        }
+	    retire_country_leader = yes
+        create_country_leader = {
+        	name = "Georges Catroux"
+        	picture = GFX_portrait_fra_georges_catroux
+        	expire = "1965.1.1"
+        	ideology = moderatism
+        	traits = {
+				tenacious_negotiator
+	         }
+        }
+    }
+}
+
+country_event = { #Decoux
+    id = histindochina.3
+    title = histindochina.3.t
+    desc = histindochina.3.d
+    fire_only_once = yes
+    picture = GFX_report_event_generic_sign_treaty1
+
+    trigger = {
+        tag = VIN
+        has_idea = VIN_pearl
+        VIN = {
+            is_subject_of = VIC
+        }
+    }
+
+    mean_time_to_happen = {
+        days = 3
+    }
+
+    option = {
+        name = histindochina.3.a
+        add_political_power = -40
+	    set_party_name = {
+            ideology = neutrality
+            long_name = VIN_democratic_party_colony_long
+            name = VIN_democratic_party_colony
+        }
+	    retire_country_leader = yes
+        create_country_leader = {
+        	name = "Jean Decoux"
+        	picture = GFX_portrait_jean_decoux2
+        	expire = "1965.1.1"
+        	ideology = moderatism
+        	traits = {
+				tenacious_negotiator
+	         }
+        }
+    }
+}
+
+country_event = { #set popularities if ai
+    id = histindochina.4
+    title = histindochina.4.t
+    desc = histindochina.4.d
+    picture = GFX_report_event_generic_sign_treaty1
+
+    is_triggered_only = yes
+
+    hidden = yes
+
+    option = {
+        name = histindochina.4.a
+        if = {
+            limit = {
+                TAG = MOR
+            }
+            set_popularities = {
+                democratic = 5
+                fascism = 0
+                communism = 0
+                neutrality = 95
+            }
+        }
+        if = {
+            limit = {
+                TAG = TUN
+            }
+            set_popularities = {
+                democratic = 4
+                fascism = 0
+                communism = 0
+                neutrality = 96
+            }
+        }
+        if = {
+            limit = {
+                TAG = SYR
+            }
+            set_popularities = {
+                democratic = 9
+                fascism = 1
+                communism = 0
+                neutrality = 90
+            }
+        }
+        if = {
+            limit = {
+                TAG = VIN
+            }
+            set_popularities = {
+                democratic = 4
+                fascism = 1
+                communism = 15
+                neutrality = 80
+            }
+        }
+    }
+}

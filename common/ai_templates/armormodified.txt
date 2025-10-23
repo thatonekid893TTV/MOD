@@ -1,0 +1,553 @@
+generic_armor_role = {
+	role =  armor_role 
+	upgrade_prio = { 
+		factor = 500
+	}
+	
+	
+	
+	
+	GENERIC_MEDIUM_ARMOR_BASIC_30W_B = {
+		enable = { 
+			NOT = {
+				OR = {
+				
+					has_tech = mobile_warfare
+					has_tech = superior_firepower
+					has_tech = trench_warfare
+					has_tech = mass_assault
+					
+				}
+				
+			}
+			OR = {
+				has_tech = basic_medium_tank
+			}
+			num_of_military_factories > 30
+		}
+		upgrade_prio = { factor = 5 }
+		
+		
+	# TEMPLATE
+		reinforce_prio = 2
+		
+		# workaround for a PDX bug https://forum.paradoxplaza.com/forum/threads/hoi-4-incremental-division-upgrade-does-not-work-in-most-cases.1414193/
+		can_upgrade_in_field = { always = no }
+
+		target_template = {
+			
+
+			regiments = {
+				medium_armor = 8
+				motorized = 7
+			}
+
+			support = {
+				engineer = 1
+				logistics_company = 1
+				signal_company = 1
+				maintenance_company = 1
+				self_propelled_super_heavy_artillery = 1
+				artillery = 1
+				anti_air = 1
+				medium_flame_tank = 1
+			}
+		}
+		
+		column_swap_factor = 1
+
+	}
+	
+	
+	
+	
+	#############################################################
+	######### BLITZKRIEG DOCTRINE ###############################
+	#############################################################
+	
+	Blitz_Armor = {
+		enable = { 
+				OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+					
+				}
+				
+				has_tech = mobile_warfare
+				num_of_military_factories > 30
+			}
+			
+			
+		
+		upgrade_prio = { factor = 5 }
+		
+	# TEMPLATE
+		
+		reinforce_prio = 2
+		
+		# workaround for a PDX bug https://forum.paradoxplaza.com/forum/threads/hoi-4-incremental-division-upgrade-does-not-work-in-most-cases.1414193/
+		can_upgrade_in_field = { always = no }
+
+		target_template = {
+			
+
+			regiments = {
+				medium_armor = 10
+				motorized = 8
+				
+				
+			}
+
+			support = {
+				assault_engineer = 1
+				light_tank_recon = 1
+				logistics_company = 1
+				signal_company = 1
+				maintenance_company = 1
+				self_propelled_super_heavy_artillery = 1
+				artillery = 1
+				anti_air = 1
+				medium_flame_tank = 1
+			}
+		}
+		
+		column_swap_factor = 1
+		replace_with = Blitz_Armor_2
+		
+	}
+	
+	
+	Blitz_Armor_2 = {
+		enable = { 
+				OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+					
+				}
+				
+				has_tech = mechanised_infantry
+				
+				has_tech = mobile_warfare
+				num_of_military_factories > 80
+			}
+			
+			
+		
+		upgrade_prio = { factor = 5 }
+		
+	# TEMPLATE
+		
+		reinforce_prio = 2
+		
+		# workaround for a PDX bug https://forum.paradoxplaza.com/forum/threads/hoi-4-incremental-division-upgrade-does-not-work-in-most-cases.1414193/
+		can_upgrade_in_field = { always = no }
+
+		target_template = {
+			
+
+			regiments = {
+				medium_armor = 10
+				mechanized = 8
+				
+				
+			}
+
+			support = {
+				assault_engineer = 1
+				light_tank_recon = 1
+				logistics_company = 1
+				signal_company = 1
+				maintenance_company = 1
+				self_propelled_super_heavy_artillery = 1
+				artillery = 1
+				anti_air = 1
+				medium_flame_tank = 1
+			}
+		}
+		
+		column_swap_factor = 1
+		
+	}
+	
+	
+	
+	#############################################################
+	######### SUPERIOR FIREPOWER ###############################
+	#############################################################
+	
+	Firepower_Armor = {
+		enable = { 
+				OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+					
+				}
+				
+				has_tech = superior_firepower
+				
+				num_of_military_factories > 30
+			}
+			
+			
+		
+		upgrade_prio = { factor = 5 }
+		
+	# TEMPLATE
+		
+		reinforce_prio = 2
+		
+		# workaround for a PDX bug https://forum.paradoxplaza.com/forum/threads/hoi-4-incremental-division-upgrade-does-not-work-in-most-cases.1414193/
+		can_upgrade_in_field = { always = no }
+
+		target_template = {
+			
+
+			regiments = {
+				medium_armor = 8
+				medium_sp_artillery_brigade = 1
+				motorized = 8
+			}
+
+			support = {
+				assault_engineer = 1
+				light_tank_recon = 1
+				logistics_company = 1
+				signal_company = 1
+				maintenance_company = 1
+				self_propelled_super_heavy_artillery = 1
+				artillery = 1
+				anti_air = 1
+				medium_flame_tank = 1
+			}
+		}
+		
+		column_swap_factor = 1
+		replace_with = Firepower_Armor_2
+		
+	}
+	
+	
+	Firepower_Armor_2 = {
+		enable = { 
+				OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+					
+				}
+				
+				has_tech = superior_firepower
+				
+				num_of_military_factories > 80
+				
+				has_tech = mechanised_infantry
+			}
+			
+			
+		
+		upgrade_prio = { factor = 5 }
+		
+	# TEMPLATE
+		
+		reinforce_prio = 2
+		
+		# workaround for a PDX bug https://forum.paradoxplaza.com/forum/threads/hoi-4-incremental-division-upgrade-does-not-work-in-most-cases.1414193/
+		can_upgrade_in_field = { always = no }
+
+		target_template = {
+			
+
+			regiments = {
+				medium_armor = 8
+				medium_sp_artillery_brigade = 1
+				mechanized = 8
+			}
+
+			support = {
+				assault_engineer = 1
+				light_tank_recon = 1
+				logistics_company = 1
+				signal_company = 1
+				maintenance_company = 1
+				self_propelled_super_heavy_artillery = 1
+				artillery = 1
+				anti_air = 1
+				medium_flame_tank = 1
+			}
+		}
+		
+		column_swap_factor = 1
+		
+	}
+	
+	
+	################################################################
+	################TRENCH TANKS####################################
+	################################################################
+	
+	
+	Trench_Armor = {
+		enable = { 
+				OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+					
+				}
+				
+				has_tech = trench_warfare
+				
+				num_of_military_factories > 30
+				
+			}
+			
+			
+		
+		upgrade_prio = { factor = 5 }
+		
+	# TEMPLATE
+		
+		reinforce_prio = 2
+		
+		# workaround for a PDX bug https://forum.paradoxplaza.com/forum/threads/hoi-4-incremental-division-upgrade-does-not-work-in-most-cases.1414193/
+		can_upgrade_in_field = { always = no }
+
+		target_template = {
+			
+
+			regiments = {
+				medium_armor = 9
+				motorized = 9
+			}
+
+			support = {
+				assault_engineer = 1
+				light_tank_recon = 1
+				logistics_company = 1
+				signal_company = 1
+				maintenance_company = 1
+				self_propelled_super_heavy_artillery = 1
+				artillery = 1
+				anti_air = 1
+				medium_flame_tank = 1
+			}
+			
+			
+		}
+		
+		replace_with = Trench_Armor_2
+		column_swap_factor = 1
+	}
+
+
+		Trench_Armor_2 = {
+		enable = { 
+				OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+					
+				}
+				
+				has_tech = trench_warfare
+				
+				num_of_military_factories > 80
+				
+				has_tech = mechanised_infantry
+				
+			}
+			
+			
+		
+		upgrade_prio = { factor = 5 }
+		
+	# TEMPLATE
+		
+		reinforce_prio = 2
+		
+		# workaround for a PDX bug https://forum.paradoxplaza.com/forum/threads/hoi-4-incremental-division-upgrade-does-not-work-in-most-cases.1414193/
+		can_upgrade_in_field = { always = no }
+
+		target_template = {
+			
+
+			regiments = {
+				medium_armor = 9
+				mechanized = 9
+			}
+
+			support = {
+				assault_engineer = 1
+				light_tank_recon = 1
+				logistics_company = 1
+				signal_company = 1
+				maintenance_company = 1
+				self_propelled_super_heavy_artillery = 1
+				artillery = 1
+				anti_air = 1
+				medium_flame_tank = 1
+			}
+		}
+		
+		
+		column_swap_factor = 1
+	}
+	
+	
+	################################################################
+	################T-34 SPAM ######################################
+	################################################################
+	
+	
+	Mass_Armor = {
+		enable = { 
+				OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+					
+				}
+				
+				has_tech = mass_assault
+				num_of_military_factories > 30
+			}
+			
+			
+			
+		
+		upgrade_prio = { factor = 5 }
+		
+	# TEMPLATE
+		
+		reinforce_prio = 2
+		
+		# workaround for a PDX bug https://forum.paradoxplaza.com/forum/threads/hoi-4-incremental-division-upgrade-does-not-work-in-most-cases.1414193/
+		can_upgrade_in_field = { always = no }
+
+		target_template = {
+			
+
+			regiments = {
+				medium_armor = 8
+				motorized = 10
+			}
+
+			support = {
+				assault_engineer = 1
+				light_tank_recon = 1
+				logistics_company = 1
+				signal_company = 1
+				maintenance_company = 1
+				self_propelled_super_heavy_artillery = 1
+				artillery = 1
+				anti_air = 1
+				medium_flame_tank = 1
+			}
+		}
+		
+		column_swap_factor = 1
+		replace_with = Mass_Armor_2
+		
+	}
+	
+	
+	Mass_Armor_2 = {
+		enable = { 
+				OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+					
+				}
+				
+				has_tech = mass_assault
+				num_of_military_factories > 80
+				has_tech = mechanised_infantry
+			}
+			
+			
+			
+		
+		upgrade_prio = { factor = 5 }
+		
+	# TEMPLATE
+		
+		reinforce_prio = 2
+		
+		# workaround for a PDX bug https://forum.paradoxplaza.com/forum/threads/hoi-4-incremental-division-upgrade-does-not-work-in-most-cases.1414193/
+		can_upgrade_in_field = { always = no }
+
+		target_template = {
+			
+
+			regiments = {
+				medium_armor = 8
+				mechanized = 10
+			}
+
+			support = {
+				assault_engineer = 1
+				light_tank_recon = 1
+				logistics_company = 1
+				signal_company = 1
+				maintenance_company = 1
+				self_propelled_super_heavy_artillery = 1
+				artillery = 1
+				anti_air = 1
+				medium_flame_tank = 1
+			}
+		}
+		
+		column_swap_factor = 1
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	#####################################################
+	#	MODERN TANK TEMPLATE 40W
+	#####################################################
+	
+	GENERIC_MODERN_ARMOR_BASIC_40W = {                     ### Way Better unit	
+		enable = { 
+			OR = {
+				has_tech = main_battle_tank_chassis  
+				has_tech = main_battle_tank 
+			}
+			has_tech = mechanised_infantry
+			num_of_military_factories > 80
+		}
+		upgrade_prio = { factor = 5 }
+
+	# TEMPLATE
+		
+		reinforce_prio = 2
+		
+		# workaround for a PDX bug https://forum.paradoxplaza.com/forum/threads/hoi-4-incremental-division-upgrade-does-not-work-in-most-cases.1414193/
+		can_upgrade_in_field = { always = no }
+
+		target_template = {
+			
+
+
+			regiments = {
+				modern_armor = 10
+				mechanized = 8
+			}
+
+			support = {
+				assault_engineer = 1
+				anti_air = 1
+				logistics_company = 1
+				signal_company = 1
+				maintenance_company = 1
+				artillery = 1
+				helicopter_brigade = 1
+				self_propelled_super_heavy_artillery = 1
+				medium_flame_tank = 1
+			}
+		}
+		
+		column_swap_factor = 1
+
+	}
+}

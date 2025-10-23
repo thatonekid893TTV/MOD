@@ -1,0 +1,29 @@
+###########################
+# COOP Danish Events
+###########################
+
+add_namespace = coop_denmark
+
+#
+country_event = {
+	id = coop_denmark.1
+	title = coop_denmark.1.t
+	desc = coop_denmark.1.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Yes please
+		name = coop_denmark.1.a
+		ai_chance = {
+			base = 95
+		}
+	}
+	option = { # we don't need foreign help
+		name = coop_denmark.1.b
+		ai_chance = {
+			base = 5
+		}
+		add_political_power = 20
+	}
+}

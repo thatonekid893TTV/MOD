@@ -1,0 +1,220 @@
+add_namespace = useful-events-quarior-coup
+
+country_event = {
+	id = useful-events-quarior-coup.1
+	title = useful-events-quarior-coup.1.t
+	desc = useful-events-quarior-coup.1.desc
+	picture = GFX_report_event_gre_city_devastated
+	timeout_days = 10
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			FROM = {
+				save_event_target_as = country_do_coup
+			}
+		}
+	}
+	option = {
+		name = useful-events-quarior-coup.1.a
+		
+		random_list = {
+			1 = {
+				# Success Coup
+				
+				modifier = {
+					factor = 2
+					AND = {
+						has_war_with = FROM
+						has_capitulated = yes
+					}
+				}
+				modifier = {
+					factor = 0.5
+					set_temp_variable = { ideology_v = FROM.GetRulingIdeology }
+					set_temp_variable = { ideology_pop_v = party_popularity@var:ideology_v }
+					check_variable = {
+						ideology_pop_v < 0.05
+					}
+				}
+				modifier = {
+					factor = 10
+					is_subject_of = FROM
+				}
+				modifier = {
+					factor = 0.5
+					has_stability > 0.6
+				}
+				
+				news_event = { id = useful-events-quarior-coup.2 days = 1 random_days = 1 }
+				effect_tooltip = {
+					set_temp_variable = { from_v = FROM }
+					set_politics = { ruling_party = var:from_v }
+					add_popularity = {
+						ideology = var:from_v
+						popularity = 0.1
+					}
+					var:from_v = { 
+						puppet = {
+							target = ROOT
+							end_civil_wars = no
+						}
+					}
+				}
+			}
+			1 = {	
+				# Fail Coup
+				modifier = {
+					factor = 0.5
+					set_temp_variable = { ideology_v = FROM.GetRulingIdeology }
+					set_temp_variable = { ideology_pop_v = party_popularity@var:ideology_v }
+					check_variable = {
+						ideology_pop_v > 0.25
+					}
+				}
+				
+				set_temp_variable = {
+					chance_civil_war_v = 1
+				}
+				
+				subtract_from_temp_variable = {
+					var = chance_civil_war_v
+					value = ROOT.stability
+				}
+				
+				multiply_temp_variable = {
+					var = chance_civil_war_v
+					value = 100
+				}
+				
+				random = {
+					chance = var:chance_civil_war_v
+					
+					start_civil_war = {
+						ideology = FROM
+						set_temp_variable = { this_v = THIS }
+						FROM = { 
+							puppet = {
+								target = var:this_v
+								end_civil_wars = no
+							}
+						}
+					}
+				}
+				
+				FROM = { country_event = { id = useful-events-quarior-coup.3 days = 1 random_days = 1 } }
+			}
+		}
+	}
+}
+
+# Success Coup
+news_event = {
+	id = useful-events-quarior-coup.2
+	title = useful-events-quarior-coup.2.t
+	desc = useful-events-quarior-coup.2.desc
+	picture = GFX_news_event_ETH_ethiopian_warriors
+	timeout_days = 10
+	
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = useful-events-quarior-coup.2.a
+		trigger = {
+			tag = FROM
+		}
+		set_temp_variable = { from_v = FROM.FROM }
+		set_politics = { ruling_party = var:from_v }
+		add_popularity = {
+			ideology = var:from_v
+			popularity = 0.1
+		}
+		var:from_v = { 
+			puppet = {
+				target = ROOT
+				end_civil_wars = no
+			} 
+		}
+	}
+	
+	option = {
+		name = useful-events-quarior-coup.2.b
+		trigger = {
+			set_temp_variable = {
+				from_v = event_target:country_do_coup
+			}
+			has_government = var:from_v
+			NOT = { tag = FROM }
+		}
+	}
+	option = {
+		name = useful-events-quarior-coup.2.c
+		trigger = {
+			set_temp_variable = {
+				from_v = event_target:country_do_coup
+			}
+			NOT = { has_government = var:from_v }
+			NOT = { tag = FROM }
+		}
+	}
+}
+
+
+# Coup Fail
+country_event = {
+	id = useful-events-quarior-coup.3
+	title = useful-events-quarior-coup.3.t
+	desc = useful-events-quarior-coup.3.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_generic_read_write
+	timeout_days = 10
+	
+	option = {
+		name = useful-events-quarior-coup.3.a
+		trigger = {
+			
+		}
+		ai_chance = {
+			base = 10
+			
+			modifier = {
+				factor = 0.5
+				any_other_country = {
+					OR = {
+						is_in_faction_with = FROM
+						has_guaranteed = FROM
+					}
+					is_major = yes
+					NOT = { has_war_with = FROM }
+				}
+			}
+			modifier = {
+				factor = 0.5
+				FROM = {
+					any_allied_country = {
+						is_major = yes
+					}
+				}
+			}
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+			expire = 730
+		}
+	}
+	
+	option = {
+		name = useful-events-quarior-coup.3.b
+		trigger = {
+		}
+		ai_chance = {
+			base = 5
+			
+			modifier = {
+				factor = 0
+				has_war_with = FROM
+			}
+		}
+	}
+}

@@ -1,0 +1,44 @@
+MON_has_not_chosen_path_trigger = {
+	custom_trigger_tooltip = {
+		tooltip = MON_has_not_chosen_path_trigger_tt
+		NOT = {
+			has_completed_focus = MON_purge_the_traitors
+			has_completed_focus = MON_third_mongolian_revolution
+			has_completed_focus = MON_throw_off_the_yoke
+		}
+	}
+}
+
+MON_has_disjointed_party_trigger = {
+	if = { 
+		limit = { has_idea = mon_disjointed_party_4 }
+		has_idea = mon_disjointed_party_4
+	}
+	else_if = { 
+		limit = { has_idea = mon_disjointed_party_3 }
+		has_idea = mon_disjointed_party_3
+	}
+	else_if = { 
+		limit = { has_idea = mon_disjointed_party_2 }
+		has_idea = mon_disjointed_party_2
+	}
+	else_if = { 
+		limit = { has_idea = mon_disjointed_party_1 }
+		has_idea = mon_disjointed_party_1
+	}
+	else = { 
+		has_idea = mon_disjointed_party
+	}
+}
+
+
+MON_propaganda_poster_slot_available = {
+	custom_trigger_tooltip = {
+		tooltip = SOV_propaganda_poster_slot_available_tt
+		OR = {
+			check_variable = { MON_poster_left_icon_frame = MON_propaganda_empty_slot_index }
+			check_variable = { MON_poster_center_icon_frame = MON_propaganda_empty_slot_index }
+			check_variable = { MON_poster_right_icon_frame = MON_propaganda_empty_slot_index }
+		}
+	}
+}

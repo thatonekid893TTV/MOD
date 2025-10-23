@@ -1,0 +1,330 @@
+GRE_recruit = {
+
+   GRE_recruit_border_guards = {
+		icon = generic_army_support
+
+		available = {
+		
+				has_idea = GRE_ioannis_metaxas
+
+			
+
+		}
+		visible = {
+			has_idea = GRE_ioannis_metaxas
+				
+		}
+		days_remove = 60
+
+		cost = 50
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					create_unit = {
+						division = "name = \"1. Synoriofylakes\" division_template = \"Synoriofylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+				
+				}	
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					create_unit = {
+						division = "name = \"1. Synoriofylakes\" division_template = \"Synoriofylakes\" start_experience_factor = 1.0" 
+						owner = GRE
+					}
+				
+				}					
+		}   
+   }
+    GRE_expand_border_guards = {
+		icon = generic_army_support
+
+		available = {
+		
+				has_idea = GRE_ioannis_metaxas
+
+			
+
+		}
+		visible = {
+			has_idea = GRE_ioannis_metaxas
+				
+		}
+		days_remove = 15
+
+		cost = 15
+		fire_only_once = no
+		ai_will_do = {
+			factor = 1
+		}
+		remove_effect = {	
+			custom_effect_tooltip = ITA_redshirts_div_cap_2_tt
+			hidden_effect = {
+				add_to_variable = { GRE_militias_cap = 2 }
+				set_division_template_cap = {  division_template = "Synoriofylakes" division_cap = GRE_militias_cap }
+			}			
+		}   
+   }  
+   
+}
+
+
+
+GRE_greko_italian_front = {
+
+ 
+     GRE_start_the_italian_civil_war = {
+
+		
+	
+		visible = {
+		}
+		cost = 30
+		available = {
+	
+		}
+		fire_only_once = yes
+	   days_remove = 60
+
+	    ai_will_do = {
+	    	base = 10
+
+	    	
+	    }
+		visible = { has_completed_focus = GRE_partisan_uprising }
+		modifier = {
+			civilian_factory_use = 25
+		}
+	    remove_effect = {
+		custom_effect_tooltip = GRE_start_the_italian_civil_war_tt
+	    	hidden_effect = { ITA = {
+				start_civil_war = {
+			ideology = fascism
+			ruling_party =  communism #Original tag
+			size = 0.4
+			states = { 158 161 162 157 2 163 115 }
+				capital = 2
+				}
+				 add_popularity = {
+				ideology = communism
+				popularity = 0.9
+			}	
+			} }
+			}
+	    } 
+   GRE_start_the_german_uprisings_war = {
+
+		
+	
+		visible = {
+		}
+		cost = 30
+		available = {
+	
+		}
+		fire_only_once = yes
+	   days_remove = 60
+
+	    ai_will_do = {
+	    	base = 10
+
+	    	
+	    }
+		visible = { has_completed_focus = GRE_german_revolts }
+		modifier = {
+			civilian_factory_use = 25
+		}
+	    remove_effect = {
+		every_country = {
+				limit = {
+					original_tag = GER
+				}
+				every_owned_state = {
+					limit = { is_core_of = KSH }
+					KSH = { transfer_state = PREV }
+				}
+			}
+			every_state = {
+				limit = { is_owned_by = KSH }
+				GER = { 
+					delete_unit = { 
+						state = PREV 
+						disband = no 
+					}
+				}
+			}
+			KSH  = {
+				division_template = {
+				    name = "Resistance Fighters"
+					is_locked = yes
+					priority = 1
+					template_counter = 3
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+						artillery_brigade = { x = 3 y = 0 }
+						artillery_brigade = { x = 3 y = 1 }
+						artillery_brigade = { x = 3 y = 2 }
+					}
+					is_locked = yes 
+				}
+				every_owned_state = {
+					limit = { is_core_of = KSH }
+					create_unit = { 
+						division = "name = \"Resistance Fighters\" division_template = \"Resistance Fighters\" start_experience_factor = 0.5 start_equipment_factor = 0.95" owner = KSH count = 5
+					}
+				}
+				random_owned_state = {
+					limit = { 
+						is_core_of = KSH
+						is_capital = yes
+					}
+					create_unit = { 
+						division = "name = \"Resistance Fighters\" division_template = \"Resistance Fighters\" start_experience_factor = 0.5 start_equipment_factor = 0.95" owner = KSH count = 7
+					}
+				}
+				KSH = {declare_war_on = {
+						target = GER
+						type = independence_wargoal
+					}}
+
+
+			}
+	    	every_country = {
+				limit = {
+					original_tag = GER
+				}
+				every_owned_state = {
+					limit = { is_core_of = SIL }
+					SIL = { transfer_state = PREV }
+				}
+			}
+			every_state = {
+				limit = { is_owned_by = SIL }
+				GER = { 
+					delete_unit = { 
+						state = PREV 
+						disband = no 
+					}
+				}
+			}
+			SIL  = {
+				division_template = {
+				    name = "Resistance Fighters"
+					is_locked = yes
+					priority = 1
+					template_counter = 3
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+						artillery_brigade = { x = 3 y = 0 }
+						artillery_brigade = { x = 3 y = 1 }
+						artillery_brigade = { x = 3 y = 2 }
+					}
+					is_locked = yes 
+				}
+				every_owned_state = {
+					limit = { is_core_of = SIL }
+					create_unit = { 
+						division = "name = \"Resistance Fighters\" division_template = \"Resistance Fighters\" start_experience_factor = 0.5 start_equipment_factor = 0.95" owner = SIL count = 5
+					}
+				}
+				random_owned_state = {
+					limit = { 
+						is_core_of = SIL
+						is_capital = yes
+					}
+					create_unit = { 
+						division = "name = \"Resistance Fighters\" division_template = \"Resistance Fighters\" start_experience_factor = 0.5 start_equipment_factor = 0.95" owner = SIL count = 7
+					}
+				}
+				SIL = {declare_war_on = {
+						target = GER
+						type = independence_wargoal
+					}}
+
+
+			}
+			}
+	    }  
+ 
+}
+
+
+GRE_group = { 
+
+
+GRE_eu_but_greek = {
+
+		on_map_mode = map_and_decisions_view
+		#targets_dynamic = yes
+		visible = {
+			has_completed_focus = GRE_hellenic_union_groups
+		}
+		cost = 30
+		available = {
+			has_completed_focus = GRE_hellenic_union_groups
+		}
+		days_re_enable = 50
+	    target_trigger = {
+	    	FROM = {
+			
+			 OR = {
+			    NOT = { has_country_flag = GRE_greek_eu }
+	    		is_major = yes
+				is_in_faction_with = GRE 
+				is_puppet_of = GRE
+				GRE = { is_puppet_of = FROM }
+				AND = {
+			       GRE = {
+						has_guaranteed = FROM
+						
+					}
+					
+					FROM = {
+						has_guaranteed = GRE
+						
+					}
+				}
+	    		 }
+				 NOT = { 
+	    			has_war_with = ROOT 
+	    			
+	    		}
+        	}
+	    }
+
+	    ai_will_do = {
+	    	base = 10
+
+	    	
+	    }
+	    complete_effect = {
+	    	FROM ={  add_to_tech_sharing_group = hellenic_union}
+			hidden_effect = {
+			FROM = { set_country_flag = GRE_greek_eu }
+			}
+	    } 
+	}
+
+
+
+}

@@ -1,0 +1,156 @@
+
+GRE_power_balance = {
+	initial_value = -0.78
+	left_side = GRE_default_left_side
+	right_side = GRE_default_right_side
+	decision_category = GRE_balance_of_power_category
+	range = {
+		id = GRE_mid_range
+		min = -0.05
+		max = 0.05
+		modifier = {
+		}
+	}
+	side = {
+		id = GRE_default_left_side
+		icon = GFX_bop_GRE_died1
+		range = {
+			id = GRE_left_side_range
+			min = -0.5
+			max = -0.05
+			modifier = {
+				stability_factor = -0.05
+			}
+		}
+		range = {
+			id = GRE_middle_left_side_range
+			min = -0.8
+			max = -0.5
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.05
+				conscription_factor = -0.05
+			}
+		}
+		range = {
+			id = GRE_far_left_side_range
+			min = -0.99
+			max = -0.8
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.15
+				conscription_factor = -0.1
+				compliance_growth = -0.1
+				resistance_growth = 0.2
+			}	
+		}
+		range = {
+			id = GRE_coup_left_side_range
+			min = -1
+			max = -0.99
+			modifier = {
+				stability_factor = -0.35
+				war_support_factor = -0.25
+				conscription_factor = -0.25
+				compliance_growth = -0.3
+				resistance_growth = 0.4
+				political_power_gain = -0.2
+			}
+
+			on_activate = {
+			set_power_balance_gfx = {
+				id = GRE_power_balance
+				side = GRE_default_left_side
+				gfx = GFX_bop_GRE_died2
+			}
+
+			}
+			on_deactivate = {
+			set_power_balance_gfx = {
+			     id = GRE_power_balance
+				side = GRE_default_left_side
+				gfx = GFX_bop_GRE_died1 }
+		    }			
+		}
+	}
+
+	side = {
+		id = GRE_default_right_side
+		icon = GFX_bop_GRE_healty1
+		range = {
+			id = GRE_right_side_range
+			min = 0.05
+			max = 0.5
+			modifier = {
+			    stability_factor = 0.02
+				political_power_gain = 0.02
+			}
+		}
+		range = {
+			id = GRE_middle_right_side_range
+			min = 0.5
+			max = 0.8
+			modifier = {
+			    stability_factor = 0.05
+				political_power_gain = 0.05
+				production_speed_buildings_factor = 0.03
+				war_support_factor = 0.03
+			}
+		}
+		range = {
+			id = GRE_far_right_side_range
+			min = 0.8
+			max = 0.99
+			modifier = {
+                
+			    stability_factor = 0.05
+				political_power_gain = 0.1
+				production_speed_buildings_factor = 0.075
+				war_support_factor = 0.05
+				consumer_goods_factor = -0.02
+			   		
+				experience_gain_army_factor = 0.05
+				experience_gain_navy_factor = 0.05
+				experience_gain_air_factor = 0.05
+			}
+		}
+		range = {
+			id = GRE_coup_right_side_range
+			min = 0.99
+			max = 1
+			modifier = {	
+			    stability_factor = 0.05
+				political_power_gain = 0.1
+				production_speed_buildings_factor = 0.1
+				war_support_factor = 0.05
+                consumer_goods_factor = -0.05
+				production_speed_arms_factory_factor = 0.05
+				production_speed_dockyard_factor = 0.05
+				production_speed_industrial_complex_factor = 0.05
+				experience_gain_army_factor = 0.15
+				experience_gain_navy_factor = 0.15
+				experience_gain_air_factor = 0.15
+				conscription_factor = 0.05
+				compliance_growth = 0.05
+				resistance_growth = -0.05
+			}
+			on_activate = {				
+			set_power_balance_gfx = {
+				id = GRE_power_balance
+				side = GRE_default_right_side
+				gfx = GFX_bop_GRE_healty2
+			}
+
+			}
+			on_deactivate = {
+	set_power_balance_gfx = {
+			     id = GRE_power_balance
+				side = GRE_default_right_side
+				gfx = GFX_bop_GRE_healty1
+		    } }
+
+		}
+	}
+	
+}
+

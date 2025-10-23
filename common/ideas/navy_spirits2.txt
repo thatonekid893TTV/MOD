@@ -1,0 +1,78 @@
+ideas = {
+	naval_academy_spirit = {
+		traditionalism_naval_academy_spirit = {
+			ledger = navy
+			available = { 
+				original_tag = GRE
+			}
+			visible = { 
+			    original_tag =  GRE
+			}
+			modifier = {
+				navy_leader_start_level = 3
+				navy_leader_start_defense_level = 3
+				navy_leader_start_attack_level = 3
+				
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
+			}
+		}
+		
+	}
+
+	navy_spirit = {
+		naval_wargames_spirit = {
+			ledger = navy
+			available = { 
+				original_tag = GRE
+			}
+			visible = { 
+			    original_tag =  GRE
+			}
+			modifier = {
+				naval_doctrine_cost_factor = -0.1
+				experience_gain_navy_factor = 0.25
+				experience_gain_navy = 0.4
+				naval_invasion_penalty = -0.25
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
+			}
+		}
+		
+	}
+
+	naval_command_spirit = {
+		damage_control_training_spirit = {
+			ledger = navy
+			available = { 
+				original_tag = GRE
+			}
+			visible = { 
+			    original_tag =  GRE
+			}
+			modifier ={
+				repair_speed_factor = 0.5
+				 naval_damage_factor = 0.1
+				 naval_defense_factor = 0.3
+			}
+			ai_will_do = {
+				factor = 1
+				modifier = {
+					factor = 0
+					NOT = { has_dlc = "No Step Back" }
+				}
+			}
+		}
+		
+	}
+}

@@ -1,0 +1,26 @@
+add_namespace = KOR
+	
+	country_event = {
+		id = KOR.1
+		title = KOR.1.t
+		desc = KOR.1.d
+		picture = GFX_report_event_communist_leader
+		
+		is_triggered_only = yes
+		
+		option = {
+			name = KOR.1.a
+			
+			add_political_power = 150
+			
+			create_country_leader = {
+				name = "Kim Il-Sung"
+				picture = GFX_portrait_Kim_Il_sung_2
+				expire = "1965.1.1"
+				ideology = stalinism
+				traits = {
+					staunch_stalinist
+				}
+			}
+		}
+	}

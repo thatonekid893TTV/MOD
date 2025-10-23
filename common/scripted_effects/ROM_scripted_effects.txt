@@ -1,0 +1,50 @@
+ROM_coup_support = {
+	add_to_variable = {
+   		var = ROM_coup_support_bul
+    	value = 0
+    }
+    clamp_variable = {
+        var = ROM_coup_support_bul
+        min = 0
+        max = 100
+    }
+}
+
+
+ROM_legionary_rebelion_support = {
+    add_to_variable = {
+        var = ROM_support_for_antonescu
+        value = 0
+    }
+    add_to_variable = {
+        var = ROM_support_for_the_iron_guard
+        value = 0
+    }
+    clamp_variable = {
+        var = ROM_support_for_the_iron_guard
+        min = 0
+        max = 100
+    }
+    clamp_variable = {
+        var = ROM_support_for_antonescu
+        min = 0
+        max = 100
+    }
+}
+
+ROM_roman_support_clamp = {
+    clamp_variable = {
+        var = ROM_roman_support_percent
+        min = 0
+        max = 100
+    }
+}
+
+ROM_roman_support = {
+    add_to_variable = {
+        var = ROM_roman_support_percent
+        value = amount
+    }
+    ROM_roman_support_clamp = yes
+}
+

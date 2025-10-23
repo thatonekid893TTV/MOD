@@ -1,0 +1,102 @@
+
+
+ICE_raid_in_progress = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_ICE_raided_state
+	
+	state_resources_factor = -0.5
+	state_production_speed_buildings_factor = -0.5
+	army_speed_factor_for_controller = -0.25
+	attrition_for_controller = 0.2
+	local_org_regain = -0.75
+}
+
+ICE_recently_raided = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_ICE_raided_state
+	
+	state_resources_factor = -0.1
+	state_production_speed_buildings_factor = -0.1
+	resistance_target = 0.2
+	no_compliance_gain = 1
+}
+
+ICE_great_capital = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_ICE_great_capital
+	
+	state_resources_factor = 0.25
+	local_supplies = 0.2
+	army_core_defence_factor = 0.25
+	army_speed_factor_for_controller = 0.25
+	state_production_speed_buildings_factor = 0.25
+}
+
+ICE_great_city = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_ICE_great_capital
+	
+	state_resources_factor = 0.1
+	local_supplies = 0.1
+	army_core_defence_factor = 0.1
+	army_speed_factor_for_controller = 0.1
+	state_production_speed_buildings_factor = 0.1
+}
+
+ICE_transforming_nature = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_ICE_transforming_the_nature
+	
+	state_production_speed_buildings_factor = 0.1
+	state_resources_factor = 0.1
+	army_speed_factor = 0.1
+	supply_factor = 0.1
+}
+
+
+########################
+
+ICE_longhouse_state = {
+	icon = GFX_modifiers_ICE_longhouse
+	enable = { owner = { has_completed_focus = ICE_viking_norway } }
+	
+	weekly_manpower = 50
+	experience_gain_army = 0.02
+	experience_gain_navy = 0.02
+	war_support_weekly = 0.001
+	#
+	army_core_defence_factor = 0.15
+}
+	
+ICE_longhouse_country = {
+	enable = { has_completed_focus = ICE_viking_norway }
+	
+	weekly_manpower = ICE_longhouse_variable_weekly_manpower
+	experience_gain_army = ICE_longhouse_variable_experience_gain_army
+	experience_gain_navy = ICE_longhouse_variable_experience_gain_army
+	war_support_weekly = ICE_longhouse_variable_war_support_factor
+}
+
+########################
+
+HEAVY_VOLCANIC_ACTIVITY_IN_STATE = {
+	enable = { always = yes }
+
+	icon = GFX_modifiers_ZZZ_volcano
+	
+	attacker_modifier = yes
+	#
+	state_production_speed_buildings_factor = -0.1
+	local_building_slots = -1
+	state_resources_factor = 0.1
+	#
+	army_speed_factor = -0.1
+	supply_factor = -0.1
+	army_attack_factor = -0.1
+	army_defence_factor = 0.1
+}

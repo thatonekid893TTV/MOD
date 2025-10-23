@@ -1,0 +1,131 @@
+
+
+MON_mongolian_great_purge = {
+
+	priority = 1000
+	
+	icon = SOV_paranoia
+
+	allowed = {
+		original_tag = MON
+	}
+
+	visible = {
+		#has_government = communism
+	}
+	
+	visible_when_empty = no
+
+}
+
+MON_propaganda_campaigns = {
+	priority = 100
+
+	icon = SOV_propaganda
+
+	scripted_gui = mon_propaganda_campaigns_ui
+
+	allowed = {
+		original_tag = MON
+	}
+
+	visible = {
+		OR = {
+			has_completed_focus = MON_state_publishing_company
+			has_country_flag = MON_debug_show_propaganda_system_flag #Debug
+		}
+	}
+}
+
+MON_complete_the_revolution_decisions = {
+
+	icon = generic_communist_revolution
+	priority = 20
+	picture = GFX_decision_cat_picture_soviet_civil_war #GFX_decision_cat_picture_NOR_preparedness
+	visible_when_empty = yes
+	allowed = {
+		OR = {
+			original_tag = MON
+		}
+	}
+
+	on_map_area = {
+    		target_array = MON.complete_rev_array
+    		name = MON_complete_the_revolution_decisions_map_category_name
+    		zoom = 500
+    		target_trigger = {
+        		FROM = {
+				OR = {
+					AND = {
+		        			is_owned_and_controlled_by = SOV
+						OR = {
+							has_state_flag = MON_resistance_target_flag
+							AND = {
+								has_state_flag = MON_resistance_flag
+								ROOT = { has_war_with = SOV }
+							}
+						}
+					}
+					AND = {
+						NOT = { is_owned_and_controlled_by = MEN }
+						NOT = { is_owned_and_controlled_by = MON }
+						OR = {
+							has_state_flag = MON_resistance_target_flag
+							AND = {
+								has_state_flag = MON_resistance_flag
+								ROOT = { has_war_with = SOV }
+							}
+						}
+						
+					}
+				}
+        		}
+    		}
+	}
+
+	visible = {
+		has_completed_focus = MON_complete_the_revolution
+		NOT = { 
+			has_truce_with = SOV 
+			is_ally_with = SOV
+		}
+	}
+}
+
+MON_complete_the_revolution_decisions_sov = {
+
+	icon = eng_move_to_secure_the_dominions
+	priority = 20
+	#picture = GFX_decision_cat_picture_NOR_preparedness
+	visible_when_empty = no	
+	allowed = {
+		OR = {
+			#original_tag = MON
+			original_tag = SOV
+		}
+	}
+
+	visible = {
+		
+	}
+}
+
+MON_greater_mongolia_decisions = {
+
+	priority = 10
+
+	icon = generic
+
+	picture = MON_greater_mongolia_decisions
+
+	allowed = {
+		original_tag = MON
+	}
+	
+	visible = {
+		has_completed_focus = MON_nationalist_sentiment
+	}
+
+	visible_when_empty = no
+
+}

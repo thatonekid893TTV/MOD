@@ -1,0 +1,647 @@
+JAP_instigate_far_east_revolution = { ### 1/25
+	icon = GFX_operations_coup_government
+	map_icon = GFX_operations_coup_government_map
+	name = JAP_instigate_far_east_revolution
+	desc = JAP_instigate_far_east_revolution_desc
+	days = 180
+
+	allowed = {
+		original_tag = JAP
+	}
+	available = { 
+		SOV = {
+			NOT = {
+				has_war_with = ROOT
+			}
+		}
+		
+		NOT = { country_exists = FER }
+	}
+	visible = {
+		has_completed_focus = JAP_Dismantle_The_USSR
+		FROM = {
+			tag = SOV
+		}
+	}
+	operatives = 2
+
+	# Integer [0-100] - Every operation has a hard requirement of network strength in the target country
+	network_strength = 75
+
+	requirements = { #SCOPE_COUNTRY
+	}
+	
+	equipment = {
+		infantry_equipment = 10000
+		support_equipment = 1000
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		
+	}
+	
+	operation_target = {
+		targets = { SOV }
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+	outcome_potential = {
+		SOV = { 
+			every_owned_state = {
+				limit = { is_core_of = FER }
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = FER
+				}
+				start_resistance = SOV
+			}
+		}
+	}
+	risk_chance = 0.2
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		every_state = {
+			limit = { 
+				is_core_of = FER
+			}
+			if = {
+				limit = {
+					has_resistance = no
+				}
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = FER
+				}
+				start_resistance = FER
+			}
+			add_resistance_target = { 
+				amount = 50
+				tooltip = intelligency_agency_resistance_boost_tt
+			}
+		}
+	}
+	
+	# This is where all the separate phases are defined
+	# Each phase for an operation may have a single actual phase assigned to it, which is determined here
+	phases = { #infiltration 
+		infiltration_submarine = { base = 33 } 
+		infiltration_paradrop = { 
+			base = 33 
+			modifier = {
+				ROOT = { has_equipment = { transport_plane_equipment < 1 } }
+				factor = 0.1
+			}
+		} 
+		infiltration_diplomatic = { base = 33 } 
+	}
+	phases = { 
+		lar_communist_uprising_organise_cells = { base = 33 }
+		lar_communist_uprising_infiltrate_civil_service = { base = 33 }
+		lar_communist_uprising_organize_strikes = { base = 33 }
+	}
+	phases = { 
+		lar_communist_uprising_train_workers_militia = { base = 25 }
+	}
+}
+
+JAP_instigate_ukraine = { ### 1/25
+	icon = GFX_operations_coup_government
+	map_icon = GFX_operations_coup_government_map
+	name = JAP_instigate_ukraine
+	desc = JAP_instigate_ukraine_desc
+	days = 180
+
+	allowed = {
+		original_tag = JAP
+	}
+	available = { 
+		SOV = {
+			NOT = {
+				has_war_with = ROOT
+			}
+		}
+		
+		NOT = { country_exists = UKR }
+	}
+	visible = {
+		has_completed_focus = JAP_Dismantle_The_USSR
+		FROM = {
+			tag = SOV
+		}
+	}
+	operatives = 2
+
+	# Integer [0-100] - Every operation has a hard requirement of network strength in the target country
+	network_strength = 75
+
+	requirements = { #SCOPE_COUNTRY
+	}
+	
+	equipment = {
+		infantry_equipment = 10000
+		support_equipment = 1000
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		
+	}
+	
+	operation_target = {
+		targets = { SOV }
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+	outcome_potential = {
+		SOV = { 
+			every_owned_state = {
+				limit = { is_core_of = UKR }
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = UKR
+				}
+				start_resistance = SOV
+			}
+		}
+	}
+	risk_chance = 0.2
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		every_state = {
+			limit = { 
+				is_core_of = UKR
+			}
+			if = {
+				limit = {
+					has_resistance = no
+				}
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = UKR
+				}
+				start_resistance = UKR
+			}
+			add_resistance_target = { 
+				amount = 50
+				tooltip = intelligency_agency_resistance_boost_tt
+			}
+		}
+	}
+	
+	# This is where all the separate phases are defined
+	# Each phase for an operation may have a single actual phase assigned to it, which is determined here
+	phases = { #infiltration 
+		infiltration_submarine = { base = 33 } 
+		infiltration_paradrop = { 
+			base = 33 
+			modifier = {
+				ROOT = { has_equipment = { transport_plane_equipment < 1 } }
+				factor = 0.1
+			}
+		} 
+		infiltration_diplomatic = { base = 33 } 
+	}
+	phases = { 
+		lar_communist_uprising_organise_cells = { base = 33 }
+		lar_communist_uprising_infiltrate_civil_service = { base = 33 }
+		lar_communist_uprising_organize_strikes = { base = 33 }
+	}
+	phases = { 
+		lar_communist_uprising_train_workers_militia = { base = 25 }
+	}
+}
+
+JAP_instigate_belarus = { ### 1/25
+	icon = GFX_operations_coup_government
+	map_icon = GFX_operations_coup_government_map
+	name = JAP_instigate_belarus
+	desc = JAP_instigate_belarus_desc
+	days = 180
+
+	allowed = {
+		original_tag = JAP
+	}
+	available = { 
+		SOV = {
+			NOT = {
+				has_war_with = ROOT
+			}
+		}
+		
+		NOT = { country_exists = BLR }
+	}
+	visible = {
+		has_completed_focus = JAP_Dismantle_The_USSR
+		FROM = {
+			tag = SOV
+		}
+	}
+	operatives = 2
+
+	# Integer [0-100] - Every operation has a hard requirement of network strength in the target country
+	network_strength = 75
+
+	requirements = { #SCOPE_COUNTRY
+	}
+	
+	equipment = {
+		infantry_equipment = 5000
+		support_equipment = 500
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		
+	}
+	
+	operation_target = {
+		targets = { SOV }
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+	outcome_potential = {
+		SOV = { 
+			every_owned_state = {
+				limit = { is_core_of = BLR }
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = BLR
+				}
+				start_resistance = BLR
+			}
+		}
+	}
+	risk_chance = 0.2
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		every_state = {
+			limit = { 
+				is_core_of = BLR
+			}
+			if = {
+				limit = {
+					has_resistance = no
+				}
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = BLR
+				}
+				start_resistance = BLR
+			}
+			add_resistance_target = { 
+				amount = 50
+				tooltip = intelligency_agency_resistance_boost_tt
+			}
+		}
+	}
+	
+	# This is where all the separate phases are defined
+	# Each phase for an operation may have a single actual phase assigned to it, which is determined here
+	phases = { #infiltration 
+		infiltration_submarine = { base = 33 } 
+		infiltration_paradrop = { 
+			base = 33 
+			modifier = {
+				ROOT = { has_equipment = { transport_plane_equipment < 1 } }
+				factor = 0.1
+			}
+		} 
+		infiltration_diplomatic = { base = 33 } 
+	}
+	phases = { 
+		lar_communist_uprising_organise_cells = { base = 33 }
+		lar_communist_uprising_infiltrate_civil_service = { base = 33 }
+		lar_communist_uprising_organize_strikes = { base = 33 }
+	}
+	phases = { 
+		lar_communist_uprising_train_workers_militia = { base = 25 }
+	}
+}
+
+JAP_instigate_turkmenistan = { ### 1/25
+	icon = GFX_operations_coup_government
+	map_icon = GFX_operations_coup_government_map
+	name = JAP_instigate_turkmenistan
+	desc = JAP_instigate_turkmenistan_desc
+	days = 180
+
+	allowed = {
+		original_tag = JAP
+	}
+	available = { 
+		SOV = {
+			NOT = {
+				has_war_with = ROOT
+			}
+		}
+		
+		NOT = { country_exists = TMS }
+	}
+	visible = {
+		has_completed_focus = JAP_Dismantle_The_USSR
+		FROM = {
+			tag = SOV
+		}
+	}
+	operatives = 2
+
+	# Integer [0-100] - Every operation has a hard requirement of network strength in the target country
+	network_strength = 75
+
+	requirements = { #SCOPE_COUNTRY
+	}
+	
+	equipment = {
+		infantry_equipment = 5000
+		support_equipment = 500
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		
+	}
+	
+	operation_target = {
+		targets = { SOV }
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+	outcome_potential = {
+		SOV = { 
+			every_owned_state = {
+				limit = { is_core_of = TMS }
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = TMS
+				}
+				start_resistance = TMS
+			}
+		}
+	}
+	risk_chance = 0.2
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		every_state = {
+			limit = { 
+				is_core_of = TMS
+			}
+			if = {
+				limit = {
+					has_resistance = no
+				}
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = TMS
+				}
+				start_resistance = TMS
+			}
+			add_resistance_target = { 
+				amount = 50
+				tooltip = intelligency_agency_resistance_boost_tt
+			}
+		}
+	}
+	
+	# This is where all the separate phases are defined
+	# Each phase for an operation may have a single actual phase assigned to it, which is determined here
+	phases = { #infiltration 
+		infiltration_submarine = { base = 33 } 
+		infiltration_paradrop = { 
+			base = 33 
+			modifier = {
+				ROOT = { has_equipment = { transport_plane_equipment < 1 } }
+				factor = 0.1
+			}
+		} 
+		infiltration_diplomatic = { base = 33 } 
+	}
+	phases = { 
+		lar_communist_uprising_organise_cells = { base = 33 }
+		lar_communist_uprising_infiltrate_civil_service = { base = 33 }
+		lar_communist_uprising_organize_strikes = { base = 33 }
+	}
+	phases = { 
+		lar_communist_uprising_train_workers_militia = { base = 25 }
+	}
+}
+
+JAP_instigate_uzbekistan = { ### 1/25
+	icon = GFX_operations_coup_government
+	map_icon = GFX_operations_coup_government_map
+	name = JAP_instigate_uzbekistan
+	desc = JAP_instigate_uzbekistan_desc
+	days = 180
+
+	allowed = {
+		original_tag = JAP
+	}
+	available = { 
+		SOV = {
+			NOT = {
+				has_war_with = ROOT
+			}
+		}
+		
+		NOT = { country_exists = UZB }
+	}
+	visible = {
+		has_completed_focus = JAP_Dismantle_The_USSR
+		FROM = {
+			tag = SOV
+		}
+	}
+	operatives = 2
+
+	# Integer [0-100] - Every operation has a hard requirement of network strength in the target country
+	network_strength = 75
+
+	requirements = { #SCOPE_COUNTRY
+	}
+	
+	equipment = {
+		infantry_equipment = 5000
+		support_equipment = 500
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		
+	}
+	
+	operation_target = {
+		targets = { SOV }
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+	outcome_potential = {
+		SOV = {
+			every_owned_state = {
+				limit = { is_core_of = UZB }
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = UZB
+				}
+				start_resistance = UZB
+			}
+		}	
+	}
+	risk_chance = 0.2
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		every_state = {
+			limit = { 
+				is_core_of = UZB
+			}
+			if = {
+				limit = {
+					has_resistance = no
+				}
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = UZB
+				}
+				start_resistance = UZB
+			}
+			add_resistance_target = { 
+				amount = 50
+				tooltip = intelligency_agency_resistance_boost_tt
+			}
+		}
+	}
+	
+	# This is where all the separate phases are defined
+	# Each phase for an operation may have a single actual phase assigned to it, which is determined here
+	phases = { #infiltration 
+		infiltration_submarine = { base = 33 } 
+		infiltration_paradrop = { 
+			base = 33 
+			modifier = {
+				ROOT = { has_equipment = { transport_plane_equipment < 1 } }
+				factor = 0.1
+			}
+		} 
+		infiltration_diplomatic = { base = 33 } 
+	}
+	phases = { 
+		lar_communist_uprising_organise_cells = { base = 33 }
+		lar_communist_uprising_infiltrate_civil_service = { base = 33 }
+		lar_communist_uprising_organize_strikes = { base = 33 }
+	}
+	phases = { 
+		lar_communist_uprising_train_workers_militia = { base = 25 }
+	}
+}
+
+JAP_instigate_kazakhstan = { ### 1/25
+	icon = GFX_operations_coup_government
+	map_icon = GFX_operations_coup_government_map
+	name = JAP_instigate_kazakhstan
+	desc = JAP_instigate_kazakhstan_desc
+	days = 180
+
+	allowed = {
+		original_tag = JAP
+	}
+	available = { 
+		SOV = {
+			NOT = {
+				has_war_with = ROOT
+			}
+		}
+		
+		NOT = { country_exists = KAZ }
+	}
+	visible = {
+		has_completed_focus = JAP_Dismantle_The_USSR
+		FROM = {
+			tag = SOV
+		}
+	}
+	operatives = 2
+
+	# Integer [0-100] - Every operation has a hard requirement of network strength in the target country
+	network_strength = 75
+
+	requirements = { #SCOPE_COUNTRY
+	}
+	
+	equipment = {
+		infantry_equipment = 5000
+		support_equipment = 500
+	}
+
+	on_start = {  # SCOPE_OPERATION
+		
+	}
+	
+	operation_target = {
+		targets = { SOV }
+	}
+
+	outcome_modifiers = { operation_outcome }
+	cost_modifiers = { operation_cost }
+	risk_modifiers = { operation_risk }
+	outcome_potential = {
+		SOV = {
+			every_owned_state = {
+				limit = { is_core_of = KAZ }
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = KAZ
+				}
+				start_resistance = KAZ
+			}
+		}
+	}
+	risk_chance = 0.2
+	# outcome is an effect that runs when the operation has completed
+	outcome_execute = { # SCOPE_OPERATION
+		every_state = {
+			limit = { 
+				is_core_of = KAZ
+			}
+			if = {
+				limit = {
+					has_resistance = no
+				}
+				force_enable_resistance = {
+					occupier = SOV
+					occupied = KAZ
+				}
+				start_resistance = KAZ
+			}
+			add_resistance_target = { 
+				amount = 50
+				tooltip = intelligency_agency_resistance_boost_tt
+			}
+		}
+	}
+	
+	# This is where all the separate phases are defined
+	# Each phase for an operation may have a single actual phase assigned to it, which is determined here
+	phases = { #infiltration 
+		infiltration_submarine = { base = 33 } 
+		infiltration_paradrop = { 
+			base = 33 
+			modifier = {
+				ROOT = { has_equipment = { transport_plane_equipment < 1 } }
+				factor = 0.1
+			}
+		} 
+		infiltration_diplomatic = { base = 33 } 
+	}
+	phases = { 
+		lar_communist_uprising_organise_cells = { base = 33 }
+		lar_communist_uprising_infiltrate_civil_service = { base = 33 }
+		lar_communist_uprising_organize_strikes = { base = 33 }
+	}
+	phases = { 
+		lar_communist_uprising_train_workers_militia = { base = 25 }
+	}
+}

@@ -1,0 +1,472 @@
+
+characters = {
+
+	WRU_nicolas = {
+		name = "Tsar Nicholas II"
+		portraits = {
+			civilian = {
+				large = "GFX_portrait_WRU_nikolai"
+			}
+
+		}
+		country_leader = {
+			ideology = despotism
+			traits = { the_last_romanov_definitely he_who_bears_the_throne POL_soldier_king great_war_hero }
+			expire = "1963.3.1.1"
+			id = -1
+		}		
+	}
+	
+	WRU_patriarch_sergy = {
+		name = SOV_patriarch_sergy
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_patriarch_sergy"
+			}
+		}
+		allowed_civil_war = {
+
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_patriarch_sergy
+			allowed = {
+				original_tag = WRU
+			}
+			available = {
+			}
+			traits = {
+				patriarch_of_moscow_and_all_russia 
+			}
+		}
+	}
+	
+	WRU_metropolitan_anastasy = {
+		name = SOV_metropolitan_anastasy
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_metropolitan_anastasy"
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_metropolitan_anastasy
+			allowed = {
+				original_tag = WRU
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = {
+				orthodox_rabblerouser
+			}
+		}		
+	}
+
+	WRU_metropolitan_nikolay = {
+		name = SOV_metropolitan_nikolay
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_metropolitan_nikolay"
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_metropolitan_nikolay
+			allowed = {
+				original_tag = WRU
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = {
+				theocratic_diplomat
+			}
+		}
+	}
+
+	WRU_metropolitan_aleksy = {
+		name = SOV_metropolitan_aleksy
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_metropolitan_aleksy"
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_metropolitan_aleksy
+			allowed = {
+				original_tag = WRU
+			}
+			available = {
+			}
+			visible = {
+			}
+			traits = {
+				driver_of_the_faithful
+			}
+		}		
+	}	
+	
+	
+
+	WRU_anastasy_vonsyatsky = {
+		name = SOV_anastasy_vonsyatsky
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_anastasy_vonsyatsky"
+			}
+		}
+
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_anastasy_vonsyatsky
+			allowed = {
+				original_tag = WRU
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits = {
+				the_foreign_connection
+			}
+		}		
+	}
+
+	WRU_grigory_semyonov = {
+		name = SOV_grigory_semyonov
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_grigory_semyonov"
+				large = "GFX_portrait_SOV_grigory_semyonov"
+			}
+		}
+
+		corps_commander = {
+			traits = { cavalry_officer cavalry_leader }
+			skill = 5
+			attack_skill = 4
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 3
+			legacy_id = 0
+			visible = {
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_grigory_semyonov
+			allowed = {
+					original_tag = WRU
+
+		
+			}
+			available = {
+			
+			}
+			visible = {
+				
+			}
+			traits = {
+				ataman_transbaikal_host
+			}
+		}		
+	}
+
+	WRU_nikolay_ustryalov = {
+		name = SOV_nikolay_ustryalov
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_nikolay_ustryalov"
+			}
+		}
+
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_nikolay_ustryalov
+			allowed = {
+				original_tag = WRU
+			}
+			available = {
+			}
+			traits = {
+				political_chameleon
+			}
+		}		
+	}
+
+	WRU_aleksandr_kazembek = {
+		name = SOV_aleksandr_kazembek
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_aleksandr_kazembek"
+			}
+		}
+
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SOV_aleksandr_kazembek
+			allowed = {
+				original_tag = WRU
+			}
+			visible = {
+
+			}
+			available = {
+			}
+			traits = {
+				mladorossi_theorist
+			}
+		}
+	}	
+	
+	WRU_aleksandr_prokofyev_seversky = {
+		name = SOV_aleksandr_prokofyev_seversky
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_aleksandr_prokofyev_seversky"
+			}
+		}
+
+		advisor = {
+			cost = 100
+			slot = theorist
+			idea_token = SOV_aleksandr_prokofyev_seversky
+			ledger = air
+			allowed = {
+				original_tag = WRU
+			}
+			available = {
+
+			}
+			traits = { victory_through_airpower }
+		}
+	}
+
+	#CHIEF OF AIRFORCE
+	WRU_vyacheslav_tkachyov = {
+		name = SOV_vyacheslav_tkachyov
+
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_vyacheslav_tkachyov"
+			}
+		}
+
+		advisor = {
+			cost = 100
+			slot = air_chief
+			idea_token = SOV_vyacheslav_tkachyov
+			allowed = {
+				original_tag = WRU
+			}
+			available = {
+
+			}
+			traits = { air_chief_reform_2 }
+		}
+	}
+
+	#CHIEF OF AIRFORCE
+	WRU_yan_nagursky = {
+		name = SOV_yan_nagursky
+
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_yan_nagursky"
+			}
+		}
+
+		
+		advisor = {
+			cost = 100
+			slot = air_chief
+			idea_token = SOV_yan_nagursky
+			allowed = {
+				original_tag = WRU
+			}
+			available = {
+			}
+			traits = { air_chief_all_weather_2 }
+		}
+	}
+
+	#MHC - Air
+	WRU_vasily_yanchenko = {
+		name = SOV_vasily_yanchenko
+
+		portraits = {
+			army = {
+				small = "GFX_idea_SOV_vasily_yanchenko"
+			}
+		}
+
+		advisor = {
+			cost = 100
+			slot = high_command
+			idea_token = SOV_vasily_yanchenko
+			ledger = air
+			allowed = {
+				original_tag = WRU
+			}
+			available = {
+			}
+			traits = { air_air_superiority_2 }
+		}
+	}	
+	WRU_anton_denikin = {
+		name = SOV_anton_denikin
+		portraits = {
+			army = {
+				large = "GFX_portrait_SOV_anton_denikin"
+				small = "GFX_idea_SOV_anton_denikin"
+			}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = anton_denikin
+			allowed = {
+				original_tag = WRU
+			}
+			available = {
+
+			}				
+			traits = {
+				army_chief_drill_1
+			}
+			cost = 50
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+		
+		field_marshal = {
+			traits = { old_guard inflexible_strategist }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+			}
+		}
+	}
+
+
+
+	WRU_pyotr_krasnov = {
+		name = SOV_pyotr_krasnov
+		portraits = {
+			army = {
+				large = "GFX_portrait_SOV_pyotr_krasnov"
+				small = "GFX_idea_SOV_pyotr_krasnov"
+			}
+		}
+		field_marshal = {
+			traits = { cavalry_leader }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+
+			}
+		}
+	}
+
+	WRU_konstantin_nechayev = {
+		name = SOV_konstantin_nechayev
+		portraits = {
+			army = {
+				large = "GFX_portrait_SOV_konstantin_nechayev"
+				small = "GFX_idea_SOV_konstantin_nechayev"
+			}
+		}
+		field_marshal = {
+			traits = { infantry_officer war_hero }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 3
+			visible = {
+			}
+		}
+	}
+
+	WRU_vladimir_kosmin = {
+		name = SOV_vladimir_kosmin
+		portraits = {
+			army = {
+				large = "GFX_portrait_SOV_vladimir_kosmin"
+				small = "GFX_idea_SOV_vladimir_kosmin"
+			}
+		}
+		field_marshal = {
+			traits = { winter_expert trait_mountaineer }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = {
+			}
+		}
+	}
+	WRU_vladimir_tributs = {
+		name = SOV_vladimir_tributs
+		portraits = {
+			army = {
+				small = "GFX_idea_vladimir_tributs"
+			}
+		}
+
+		advisor = {
+			cost = 150
+			slot = theorist
+			idea_token = vladimir_tributs
+			ledger = navy
+			allowed = {
+				original_tag = WRU
+			}
+			traits = {
+				grand_fleet_proponent
+			}
+		}
+	}	
+	WRU_ivan_yumashev = {
+		name = SOV_ivan_yumashev
+		portraits = {
+			army = {
+				small = "GFX_idea_ivan_yumashev"
+			}
+		}
+
+		advisor = {
+			slot = navy_chief
+			idea_token = ivan_yumashev
+			allowed = {
+				original_tag = WRU
+			}
+			traits = {
+				navy_chief_decisive_battle_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 0.200
+			}
+		}
+	}	
+}

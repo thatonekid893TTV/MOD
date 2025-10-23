@@ -1,0 +1,302 @@
+#Credit To Sheep Mod
+
+
+going_slow = {
+	
+	enable = {
+		has_equipment = { infantry_equipment < 500 }
+		has_civil_war = no
+		enemies_strength_ratio > 0.20
+	}
+	abort = {
+	
+		OR = {
+		has_equipment = { infantry_equipment > 5000 }
+		has_civil_war = yes
+		}
+	}
+	
+	ai_strategy = {
+		type = front_control
+
+		country_trigger = {
+			has_war_with = FROM
+		}
+
+		ratio > 0.0
+
+		priority = 400
+		ordertype = front
+		execution_type = careful
+	}
+	
+}
+
+
+
+this_state_is_empty = {
+	enable = {
+		always = yes
+	}
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = front_control
+
+		state_trigger = {
+			FROM = { has_war_with = FROM.FROM }
+			FROM = {
+				divisions_in_state = { state = ROOT size < 3 }
+			}
+		}
+
+		ratio = 0.8
+
+		priority = 5000
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+	}
+	
+}
+
+
+always_prioritize_our_core = {
+	enable = {
+		surrender_progress > 0.05
+	}
+	abort = {
+		OR = {
+			surrender_progress < 0.01
+			has_capitulated = yes
+		}
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = {
+			NOT = { is_core_of = FROM.FROM }
+		}
+		value = -3
+	}
+
+	
+}
+
+
+
+#Credit to Frontline AI
+
+will_you_concentrate_troops = {
+	enable = {
+		always = yes
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = force_concentration_factor
+		value = 5  # base + 5 = 20 %
+	}
+
+}
+
+
+
+
+
+
+
+there_is_no_place_for_coward_in_a_civil_war = {
+	enable = {
+		has_civil_war = yes
+		NOT = { original_tag = SPR }
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			has_war_with = ROOT
+			original_tag = ROOT
+		}
+
+		ratio = 0.3
+
+		priority = 1000
+		ordertype = front
+		execution_type = balanced
+		execute_order = yes
+	}
+}
+
+
+
+forced_check_omega_lul = {
+	enable = {
+		always = yes
+	}
+	abort = {
+		always = no
+	}
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = {
+			is_controlled_by = FROM.FROM
+			any_province_building_level = {
+				province = {
+					all_provinces = yes
+				}
+				building = supply_node
+				level > 0
+			}
+		}
+		value = 15
+	}
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = {
+			is_controlled_by = FROM
+			NOT = {
+				any_province_building_level = {
+					province = {
+						all_provinces = yes
+					}
+					building = supply_node
+					level > 0
+				}
+			}
+		}
+		value = -5
+	}
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = { 
+			OR = {
+				is_capital = yes
+				any_neighbor_state = { is_capital = yes }
+			}
+		}
+		value = 15
+	}
+	ai_strategy = {
+		type = front_unit_request
+		state_trigger = { 
+			is_capital = yes
+			owner = { tag = FROM.FROM }
+		}
+		value = 50
+	}
+	ai_strategy = {
+		type = invasion_unit_request
+		state_trigger = {
+			NOT = { has_state_flag = recent_naval_invasion_flag }
+			check_variable = { state_strategic_value < 3 }
+		}
+		value = -5
+	}
+	ai_strategy = {
+		type = invasion_unit_request
+		state_trigger = { 
+			NOT = { is_core_of = FROM.FROM }
+			NOT = { has_state_flag = recent_naval_invasion_flag }
+			check_variable = { state_strategic_value < 8 }
+		}
+		value = -3
+	}
+	ai_strategy = {
+		type = invasion_unit_request
+		state_trigger = { 
+			NOT = { is_core_of = FROM.FROM }
+			NOT = { has_state_flag = recent_naval_invasion_flag }
+		}
+		value = -3
+	}
+	ai_strategy = {
+		type = invasion_unit_request
+		state_trigger = { 
+			NOT = { is_core_of = FROM.FROM }
+			NOT = { has_state_flag = recent_naval_invasion_flag }
+			NOT = {
+				any_province_building_level = {
+					province = {
+						all_provinces = yes
+					}
+					building = supply_node
+					level > 0
+				}
+			}
+		}
+		value = -2
+	}
+}
+
+
+
+end_pocket = {
+	enable = {
+		always = yes
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = front_control
+		state_trigger = {
+			OR = {
+				AND = {
+					is_controlled_by = FROM.FROM
+					NOT = {
+						is_fully_controlled_by = FROM.FROM
+					}
+				}
+				controller = {
+					has_war_with = FROM.FROM
+				}
+			}
+			all_neighbor_state = {
+				controller = {
+					NOT = {
+						has_war_with = FROM.FROM
+					}
+				}
+			}
+		}
+		ratio = 0.0
+		priority = 110
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+		manual_attack = yes
+	}
+	
+	ai_strategy = {
+		type = front_unit_request
+	
+		state_trigger = {
+			OR = {
+				AND = {
+					is_controlled_by = FROM.FROM
+					NOT = {
+						is_fully_controlled_by = FROM.FROM
+					}
+				}
+				controller = {
+					has_war_with = FROM.FROM
+				}
+			}
+			all_neighbor_state = {
+				controller = {
+					NOT = {
+						has_war_with = FROM.FROM
+					}
+				}
+			}
+		}		
+		value = 40 
+	}	
+}
+

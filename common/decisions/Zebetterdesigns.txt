@@ -1,0 +1,3090 @@
+ZeBetterAI = {
+		
+		
+		UpgradeEconomicLaw = {
+		
+		icon = genertic_industry	
+		available = {
+				has_war_support > 0.26
+				
+		
+				NOT = {has_idea = partial_economic_mobilisation}	
+				NOT = {has_idea = war_economy}
+				NOT = {has_idea = tot_economic_mobilisation}
+				
+				
+		}
+		visible = {has_war_support > 0.26
+		
+		NOT = {has_idea = partial_economic_mobilisation}	
+				NOT = {has_idea = war_economy}
+				NOT = {has_idea = tot_economic_mobilisation}
+				}
+		
+			fire_only_once = yes
+			
+		complete_effect = {
+				add_ideas = partial_economic_mobilisation
+		}
+		ai_will_do = {
+            base = 1
+        }
+		
+		
+}
+
+
+
+		UpgradeEconomicLaw2 = {
+		fire_only_once = yes
+		icon = genertic_industry	
+		available = {
+					
+					NOT = {has_idea = war_economy}
+					NOT = {has_idea = tot_economic_mobilisation}
+		
+		
+					has_war_support > 0.52
+				OR = {
+					has_government = fascism
+					has_government = communism
+					custom_trigger_tooltip = { tooltip = or_clarification_tooltip always = no }
+					AND = {
+						has_war = yes
+						any_enemy_country = {
+							ic_ratio = {
+								tag = ROOT
+								ratio > 0.4
+							}
+						}
+					}
+				}
+			
+		}
+		
+		visible = {
+		
+		
+			NOT = {has_idea = war_economy}
+			NOT = {has_idea = tot_economic_mobilisation}
+					
+			has_war_support > 0.52
+				OR = {
+					has_government = fascism
+					has_government = communism
+					custom_trigger_tooltip = { tooltip = or_clarification_tooltip always = no }
+					AND = {
+						has_war = yes
+						any_enemy_country = {
+							ic_ratio = {
+								tag = ROOT
+								ratio > 0.4
+							}
+						}
+					}
+				}
+				
+				}
+		
+		
+			fire_only_once = yes
+			
+		complete_effect = {
+				add_ideas = war_economy
+		}
+
+
+			ai_will_do = {
+            base = 1
+        }
+		}
+		
+				
+		
+		
+		
+		
+		
+		
+		
+		
+		OutofmenVolunteerToLimited = {
+		fire_only_once = yes
+		icon = genertic_industry	
+		available = {
+					
+					has_idea = volunteer_only
+					
+					has_war_support > 0.1
+					
+					NOT = { has_idea = undisturbed_isolation }
+					
+					NOT = { has_idea = isolation }
+				
+					has_manpower < 1
+		
+		
+					
+				
+			
+		}
+		
+		visible = {
+		
+		
+					has_idea = volunteer_only
+					
+					has_war_support > 0.1
+					
+					NOT = { has_idea = undisturbed_isolation }
+					
+					NOT = { has_idea = isolation }
+				
+					has_manpower < 1
+				
+				}
+		
+		
+		
+		
+					complete_effect = {
+					
+							add_ideas = limited_conscription
+						}
+			}
+			
+			
+			
+		OutofmenLimitedToExenstive = {
+		fire_only_once = yes
+		icon = genertic_industry	
+		available = {
+					
+					#has_manpower_for_recruit_change_to = { value = 0.05 group = mobilization_laws }
+				OR = {
+					has_government = fascism
+					has_government = communism
+					SWE_rapid_mob_manpower_law_trigger = yes 
+					if = {
+						limit = {
+							original_tag = DEN
+							has_dlc = "Arms Against Tyranny"
+						}
+						has_country_leader = {
+							ruling_only = yes
+							character = DEN_christian_x
+						}
+					}
+					else = {
+						hidden_trigger = { always = no } #NEED TO HAVE AN ALWAYS AS AN END STATEMENT IF URE USING AN IF ELSE IN AN OR STATEMENT OTHERWISE THE EVALUATION BREAKS!!
+					}
+					AND = {
+						has_war = yes
+						enemies_strength_ratio > 0.5
+						#any_enemy_country = {
+						#	strength_ratio = {
+						#		tag = ROOT
+						#		ratio > 0.5
+						#	}
+						#}
+					}
+		
+		
+					
+				
+			
+		}
+			has_war_support > 0.2
+			has_manpower < 1
+			has_idea = limited_conscription
+		}
+		
+		visible = {
+				has_idea = limited_conscription
+					#has_manpower_for_recruit_change_to = { value = 0.05 group = mobilization_laws }
+				OR = {
+					has_government = fascism
+					has_government = communism
+					SWE_rapid_mob_manpower_law_trigger = yes 
+					if = {
+						limit = {
+							original_tag = DEN
+							has_dlc = "Arms Against Tyranny"
+						}
+						has_country_leader = {
+							ruling_only = yes
+							character = DEN_christian_x
+						}
+					}
+					else = {
+						hidden_trigger = { always = no } #NEED TO HAVE AN ALWAYS AS AN END STATEMENT IF URE USING AN IF ELSE IN AN OR STATEMENT OTHERWISE THE EVALUATION BREAKS!!
+					}
+					AND = {
+						has_war = yes
+						enemies_strength_ratio > 0.5
+						#any_enemy_country = {
+						#	strength_ratio = {
+						#		tag = ROOT
+						#		ratio > 0.5
+						#	}
+						#}
+					}
+		
+		
+					
+				
+			
+		}
+			has_war_support > 0.2
+			has_manpower < 1
+				}
+		
+		
+		
+		
+					complete_effect = {
+					
+							add_ideas = extensive_conscription
+						}
+			}
+			
+			
+			
+		
+		
+		
+		
+		CivGreedOrNotCivGreed ={
+        icon = genertic_industry
+        available = {
+				
+				
+		NOT = {
+		
+			has_government = fascism
+			has_government = communism
+			has_government = democratic
+		
+		
+		}
+		NOT = {
+			
+				has_idea = CivGreedd
+				has_idea = MilitaryGreedd
+			}
+		
+        }
+        visible = {
+            
+			NOT = {
+				OR = {
+				has_idea = CivGreedd
+				has_idea = MilitaryGreedd
+				}
+			}
+			
+        }
+        cost = 0
+		fire_only_once = yes
+        
+        complete_effect = {
+            random_list = {
+				50 = { add_ideas = CivGreedd}
+				50 = { add_ideas = MilitaryGreedd }
+}
+
+}
+
+       
+        ai_will_do = {
+            base = 1
+        }
+		
+		
+		
+			
+    }
+	
+	
+	CivGreedOrNotCivGreed_Fas ={
+        icon = genertic_industry
+        available = {
+				
+				has_government = fascism
+				
+				
+		NOT = {
+			
+				has_idea = CivGreedd
+				has_idea = MilitaryGreedd
+			}
+		
+        }
+        visible = {
+            NOT = {
+			
+				has_idea = CivGreedd
+				has_idea = MilitaryGreedd
+			}
+			
+			
+        }
+        cost = 0
+		fire_only_once = yes
+        
+        complete_effect = {
+            
+				
+				add_ideas = MilitaryGreedd
+}
+
+
+
+       
+        ai_will_do = {
+            base = 1
+        }
+		
+		
+		
+			
+    }
+	
+	
+	CivGreedOrNotCivGreed_CommieandDemocratic ={
+        icon = genertic_industry
+        available = {
+				OR = {
+				has_government = democratic
+				has_government = communism 
+				}
+			NOT = {
+			
+				has_idea = CivGreedd
+				has_idea = MilitaryGreedd
+			}
+		
+        }
+        visible = {
+            
+			NOT = {
+			
+				has_idea = CivGreedd
+				has_idea = MilitaryGreedd
+			}
+			
+        }
+        cost = 0
+		fire_only_once = yes
+        
+        complete_effect = {
+            
+				add_ideas = CivGreedd
+			}
+				
+
+
+
+
+       
+        ai_will_do = {
+            base = 1
+        }
+		
+		
+		
+			
+    }
+	
+	
+	
+	
+	
+	
+	
+		FocusOnAirProduction ={
+        icon = genertic_industry
+        available = {
+				
+				alliance_strength_ratio > 0.5
+				
+				surrender_progress < 0.2
+
+				num_of_military_factories > 100
+				
+				is_major = yes
+				
+				longest_war_length > 12
+				
+				OR = {
+					has_deployed_air_force_size = {
+						size < 1100
+						type = fighter
+						}
+					}
+				
+				OR = {
+					has_tech = fighter1
+					has_tech = basic_small_airframe
+				}
+			
+				
+				
+			
+			
+			
+				NOT = {
+					has_idea = FocusOnTank
+					has_idea = FocusOnAir
+				}
+        }
+        visible = {
+            
+        }
+        cost = 0
+		days_re_enable = 300
+        
+        complete_effect = {
+            add_timed_idea = {
+			idea = FocusOnAir
+			days = 300
+}
+
+       }
+        ai_will_do = {
+            base = 1
+        }
+		
+		
+		
+			
+    }
+	
+	
+	
+		FocusOnTankProduction ={
+        icon = genertic_industry
+        available = {
+			is_major = yes
+		
+		OR = {
+				
+				AND = {
+					OR = {
+					has_tech = trench_warfare
+					has_tech = mass_assault
+						}
+						OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+						}
+					num_of_military_factories > 40
+					has_manpower < 500000
+					
+						stockpile_ratio = {
+						archetype = infantry_equipment
+						ratio > 0.1
+		
+				}
+				
+			}
+			
+			
+				AND = {
+						OR = {
+					has_tech = mobile_warfare
+					has_tech = superior_firepower
+							}
+					num_of_military_factories > 40
+					has_manpower < 750000
+					
+						stockpile_ratio = {
+						archetype = infantry_equipment
+						ratio > 0.1
+		
+				}
+				
+			}
+			
+			
+			
+			
+			
+		}
+			
+			
+				NOT = {
+					has_idea = FocusOnTank
+					has_idea = FocusOnAir
+				}
+        }
+        visible = {
+            
+        }
+        cost = 0
+		days_re_enable = 200
+        
+        complete_effect = {
+            add_timed_idea = {
+			idea = FocusOnTank
+			days = 200
+}
+
+       }
+        ai_will_do = {
+            base = 1
+        }
+		
+		
+		
+			
+    
+	}
+	
+	
+	Enemy_At_The_Gates = {
+	icon = genertic_industry
+        available = {
+			
+			##### WE MUST HOLD OUR MOTHER RUSSIA NOW SO WE MAY DRIVE OUT THE GERMANS LATER #####
+		
+		
+					
+					
+			num_of_military_factories > 40
+			has_manpower > 1500000
+			enemies_strength_ratio > 1.4
+			
+			
+			surrender_progress > 0.18
+			
+					
+				stockpile_ratio = {
+				archetype = infantry_equipment
+				ratio < 0.1
+		
+				}
+			longest_war_length < 12
+			has_defensive_war = yes
+				
+			
+			
+			
+				
+			
+			
+			
+			
+			
+		
+			
+			
+				
+        }
+        visible = {
+            
+        }
+        cost = 0
+		days_re_enable = 400
+        
+        complete_effect = {
+            add_timed_idea = {
+			idea = FocusOnInf
+			days = 300
+}
+
+			remove_ideas = {
+				FocusOnTank
+				FocusOnAir
+			}
+
+       }
+        ai_will_do = {
+            base = 1
+        }
+	
+
+	}
+	
+	
+	AI_Posture_Endsieg = {
+	icon = genertic_industry
+        available = {
+			
+			#### We Must Hold, Till the last man ####
+		
+		
+					
+					
+			num_of_military_factories > 60
+			has_manpower > 1000000
+			enemies_strength_ratio > 1.6
+			surrender_progress > 0.4	
+			longest_war_length > 13
+			has_deployed_air_force_size = {
+						size < 1900
+						type = fighter
+						}
+				
+			
+			
+			
+				
+			
+			
+			
+			
+			
+		
+			
+			
+				
+        }
+        visible = {
+            
+        }
+        cost = 0
+		days_re_enable = 250
+        
+        complete_effect = {
+            add_timed_idea = {
+			idea = Endsieg
+			days = 250
+		}
+		remove_ideas = {
+				FocusOnTank
+				FocusOnAir
+			}
+			
+
+       }
+        ai_will_do = {
+            base = 1
+        }
+	
+
+	}
+	
+	AI_Posture_TheGreatCrusadee = {
+	icon = genertic_industry
+        available = {
+			
+			#### Victory is envivitable, we must push as much offensive power as possible to shorten the war ####
+		
+		
+					
+			is_major = yes		
+			num_of_military_factories > 145
+			has_manpower > 1000000
+			alliance_strength_ratio > 1.5
+			surrender_progress < 0.05
+			
+			has_deployed_air_force_size = {
+						size > 4000
+						type = fighter
+						}
+					
+				
+			longest_war_length > 16
+			
+				
+			
+			
+			
+				
+			
+			
+			
+			
+			
+		
+			
+			
+				
+        }
+        visible = {
+            
+        }
+        cost = 0
+		days_re_enable = 250
+        
+        complete_effect = {
+            add_timed_idea = {
+			idea = TheGreatCrusade
+			days = 250
+		}
+		remove_ideas = {
+				FocusOnTank
+				FocusOnAir
+			}
+			
+
+       }
+        ai_will_do = {
+            base = 1
+        }
+	
+
+	}
+	
+	
+	
+	
+	
+	
+	
+		
+		
+		
+		FighterBasic_1 ={
+        icon = genertic_industry
+        available = {
+            has_tech = basic_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        visible = {
+            has_tech = basic_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        cost = 0
+		fire_only_once = yes
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+						type = small_plane_airframe_1
+							modules = {
+								fixed_main_weapon_slot = aircraft_cannon_1_2x
+								fixed_auxiliary_weapon_slot_1 = light_mg_4x
+								engine_type_slot = engine_2_1x
+								special_type_slot_1 = fuel_tanks_small
+								special_type_slot_2 = self_sealing_fuel_tanks_small	
+								
+								
+        }
+		
+		
+		}
+		
+		
+		
+		
+			
+       }
+        ai_will_do = {
+            base = 1
+        }
+		
+		
+		
+			
+    }
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+		
+		
+		##PANZERS##
+		
+		
+		
+		Light_Tank_1 = {
+		
+		icon = genertic_industry
+        available = {
+            has_tech = basic_light_tank_chassis
+			has_dlc = "No Step Back"
+			
+			
+        }
+        visible = {
+            has_tech = basic_light_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        cost = 0
+        fire_only_once = yes
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = light_tank_chassis_1
+					modules = {
+						main_armament_slot = tank_small_cannon_2
+						turret_type_slot = tank_light_three_man_tank_turret
+						suspension_type_slot = tank_bogie_suspension
+						armor_type_slot = tank_riveted_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = secondary_turret_hmg
+						special_type_slot_2 = empty
+						special_type_slot_3 = empty
+						special_type_slot_4 = empty
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 4
+				tank_nsb_armor_upgrade = 4
+			}
+								
+								
+        }
+		
+
+		
+		}
+		
+		ai_will_do = {
+            base = 1
+        }
+		
+		}
+		
+		Interwar_Tank_1 ={
+        icon = genertic_industry
+        available = {
+            has_tech = gwtank_chassis
+			has_dlc = "No Step Back"
+			
+			
+        }
+        visible = {
+            has_tech = gwtank_chassis
+			has_dlc = "No Step Back"
+        }
+        cost = 0
+        fire_only_once = yes
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = medium_tank_chassis_0
+					modules = {
+						main_armament_slot = tank_small_cannon_2
+						turret_type_slot = tank_light_three_man_tank_turret
+						suspension_type_slot = tank_christie_suspension
+						armor_type_slot = tank_riveted_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = secondary_turret_hmg
+						special_type_slot_2 = secondary_turret_hmg
+						special_type_slot_3 = empty
+						special_type_slot_4 = empty
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 9
+				tank_nsb_armor_upgrade = 0
+			}
+								
+								
+        }
+		
+		}
+		
+		
+		ai_will_do = {
+            base = 1
+        }
+		}
+		
+		
+
+		
+		
+		##
+		
+		
+		
+		
+		
+		
+		
+		Flame_Tank ={
+        icon = genertic_industry
+        available = {
+            has_tech = basic_medium_tank_chassis
+			is_special_project_completed = sp:sp_land_flamethrower_tank
+			has_dlc = "No Step Back"
+			
+			
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+       days_re_enable = 200
+        
+        complete_effect = {
+            create_equipment_variant = {
+				type = medium_tank_flame_chassis_1
+				match_value = 1
+
+					modules = {
+						main_armament_slot = flamethrower
+						turret_type_slot = tank_light_one_man_tank_turret
+						suspension_type_slot = tank_christie_suspension
+						armor_type_slot = tank_riveted_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = expanded_fuel_tank
+						special_type_slot_2 = expanded_fuel_tank
+						special_type_slot_3 = expanded_fuel_tank
+						special_type_slot_4 = expanded_fuel_tank
+			}
+
+			upgrades = {
+				tank_nsb_engine_upgrade = 16
+				tank_nsb_armor_upgrade = 0
+			}
+		}
+		}
+		
+		
+		ai_will_do = {
+           base = 1
+       }
+		}
+		
+		
+		
+#		Basic_Tank_3 ={
+#      icon = genertic_industry
+#       available = {
+#           has_tech = basic_medium_tank_chassis
+#			has_tech = antitank3
+#			
+#			NOT = {has_tech = improved_medium_tank_chassis}
+#        }
+#        visible = {
+#            always = yes
+#        }
+#        cost = 0
+#        days_re_enable = 100
+#       
+#        complete_effect = {
+#            create_equipment_variant = {
+#						
+#				type = medium_tank_chassis_1
+#					modules = {
+#						main_armament_slot = tank_medium_cannon_2
+#						turret_type_slot = tank_medium_three_man_tank_turret
+#						suspension_type_slot = tank_christie_suspension
+#						armor_type_slot = tank_welded_armor
+#						engine_type_slot = tank_gasoline_engine
+#						special_type_slot_1 = secondary_turret_hmg
+#						special_type_slot_2 = secondary_turret_hmg
+#						special_type_slot_3 = wet_ammo_storage
+#						special_type_slot_4 = sloped_armor
+#			}
+#			
+#			upgrades = {
+#				tank_nsb_engine_upgrade = 14
+#			}
+#								
+#								
+#       }
+#		}
+#		
+#		
+#		ai_will_do = {
+#           base = 1
+#        }
+#		}
+#		
+#		
+
+		
+		
+		
+		
+		STUG_1 ={
+        icon = genertic_industry
+        available = {
+            has_tech = basic_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+        days_re_enable = 100
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = medium_tank_destroyer_chassis_1
+					modules = {
+						main_armament_slot = tank_heavy_cannon_2
+						turret_type_slot = tank_medium_fixed_superstructure_turret
+						suspension_type_slot = tank_christie_suspension
+						armor_type_slot = tank_riveted_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = secondary_turret_hmg
+						special_type_slot_2 = secondary_turret_hmg
+						special_type_slot_3 = easy_maintenance
+						special_type_slot_4 = empty
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 10
+				tank_nsb_armor_upgrade = 0
+			}
+			
+        }
+			
+			
+								
+								
+        }
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+        }
+		
+		STUG_2 ={
+        icon = genertic_industry
+        available = {
+            has_tech = improved_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+        days_re_enable = 100
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = medium_tank_destroyer_chassis_2
+					modules = {
+						main_armament_slot = tank_heavy_cannon_3
+						turret_type_slot = tank_medium_fixed_superstructure_turret
+						suspension_type_slot = tank_bogie_suspension
+						armor_type_slot = tank_riveted_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = secondary_turret_hmg
+						special_type_slot_2 = secondary_turret_hmg
+						special_type_slot_3 = easy_maintenance
+						special_type_slot_4 = empty
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 11
+				tank_nsb_armor_upgrade = 0
+			}
+			
+        }
+			
+			
+								
+								
+        }
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+        }
+		
+		STUG_3_EAW ={
+        icon = genertic_industry
+        available = {
+            has_tech = advanced_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+        days_re_enable = 100
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = medium_tank_destroyer_chassis_3
+					modules = {
+						main_armament_slot = tank_heavy_cannon_4
+						turret_type_slot = tank_medium_fixed_superstructure_turret
+						suspension_type_slot = tank_christie_suspension
+						armor_type_slot = tank_riveted_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = secondary_turret_hmg
+						special_type_slot_2 = secondary_turret_hmg
+						special_type_slot_3 = easy_maintenance
+						special_type_slot_4 = empty
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 12
+				tank_nsb_armor_upgrade = 0
+			}
+			
+        }
+			
+			
+								
+								
+        }
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+        }
+		
+		SP_TANK_1 ={
+        icon = genertic_industry
+        available = {
+            has_tech = basic_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+        days_re_enable = 100
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = medium_tank_artillery_chassis_1
+					modules = {
+						main_armament_slot = tank_medium_howitzer_2
+						turret_type_slot = tank_medium_fixed_superstructure_turret
+						suspension_type_slot = tank_christie_suspension
+						armor_type_slot = tank_riveted_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = secondary_turret_hmg
+						special_type_slot_2 = secondary_turret_hmg
+						special_type_slot_3 = easy_maintenance
+						special_type_slot_4 = empty
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 10
+				tank_nsb_armor_upgrade = 0
+			}
+			
+        }
+			
+			
+								
+								
+        }
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+        }
+		
+		
+		SP_TANK_2 ={
+        icon = genertic_industry
+        available = {
+            has_tech = advanced_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+        days_re_enable = 100
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = medium_tank_artillery_chassis_2
+					modules = {
+						main_armament_slot = tank_heavy_howitzer
+						turret_type_slot = tank_medium_fixed_superstructure_turret
+						suspension_type_slot = tank_christie_suspension
+						armor_type_slot = tank_riveted_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = secondary_turret_hmg
+						special_type_slot_2 = secondary_turret_hmg
+						special_type_slot_3 = easy_maintenance
+						special_type_slot_4 = empty
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 11
+				tank_nsb_armor_upgrade = 0
+			}
+			
+        }
+			
+			
+								
+								
+        }
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+        }
+		
+		
+		
+		
+		
+	
+		
+		
+		
+		###
+		
+		Heavy_Tank_1 ={
+        icon = genertic_industry
+        available = {
+            has_tech = improved_heavy_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+        days_re_enable = 100
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = heavy_tank_chassis_2
+					modules = {
+						main_armament_slot = tank_heavy_cannon_2
+						turret_type_slot = tank_heavy_three_man_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = secondary_turret_hmg
+						special_type_slot_2 = tank_radio_3
+						special_type_slot_3 = easy_maintenance
+						special_type_slot_4 = sloped_armor
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 20
+				tank_nsb_armor_upgrade = 16
+			}
+			
+        }
+		
+		}
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+		
+		}
+		
+		
+		
+		
+		Heavy_Tank_2 ={
+        icon = genertic_industry
+        available = {
+            has_tech = advanced_heavy_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+        days_re_enable = 100
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = heavy_tank_chassis_3
+					modules = {
+						main_armament_slot = tank_heavy_cannon_3
+						turret_type_slot = tank_heavy_three_man_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = secondary_turret_hmg
+						special_type_slot_2 = tank_radio_3
+						special_type_slot_3 = easy_maintenance
+						special_type_slot_4 = sloped_armor
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 20
+				tank_nsb_armor_upgrade = 20
+			}
+			
+        }
+		
+		}
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+		
+		}
+		
+		Heavy_Tank_2_EAW ={
+        icon = genertic_industry
+        available = {
+            has_tech = advanced_heavy_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+        days_re_enable = 100
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = heavy_tank_chassis_3
+					modules = {
+						main_armament_slot = tank_heavy_cannon_4
+						turret_type_slot = tank_heavy_three_man_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = secondary_turret_hmg
+						special_type_slot_2 = tank_radio_3
+						special_type_slot_3 = easy_maintenance
+						special_type_slot_4 = sloped_armor
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 20
+				tank_nsb_armor_upgrade = 20
+			}
+			
+        }
+		
+		}
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+		
+		}
+		
+		###
+		
+		Modern_Tank ={
+        icon = genertic_industry
+        available = {
+            has_tech = main_battle_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+        days_re_enable = 100
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = modern_tank_chassis_1
+					modules = {
+						main_armament_slot = tank_heavy_cannon_3
+						turret_type_slot = tank_modern_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = wet_ammo_storage
+						special_type_slot_2 = tank_radio_3
+						special_type_slot_3 = easy_maintenance
+						special_type_slot_4 = sloped_armor
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 20
+				tank_nsb_armor_upgrade = 20
+			}
+			
+        }
+		
+		}
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+		
+		}
+		
+		Modern_Tank_EAW ={
+        icon = genertic_industry
+        available = {
+            has_tech = main_battle_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+        days_re_enable = 100
+        
+        complete_effect = {
+            create_equipment_variant = {
+						
+				type = modern_tank_chassis_1
+					modules = {
+						main_armament_slot = tank_heavy_cannon_4
+						turret_type_slot = tank_modern_tank_turret
+						suspension_type_slot = tank_torsion_bar_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_gasoline_engine
+						special_type_slot_1 = wet_ammo_storage
+						special_type_slot_2 = tank_radio_3
+						special_type_slot_3 = easy_maintenance
+						special_type_slot_4 = sloped_armor
+			}
+			
+			upgrades = {
+				tank_nsb_engine_upgrade = 20
+				tank_nsb_armor_upgrade = 20
+			}
+			
+        }
+		
+		}
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+		
+		}
+		
+		###
+		
+		
+		
+		
+		
+		mechdesignworkaround ={
+        icon = genertic_industry
+        available = {
+            has_tech = mechanised_infantry
+        }
+        visible = {
+            has_tech = mechanised_infantry
+        }
+        cost = 0
+        fire_only_once = yes
+        
+        complete_effect = {
+            
+			add_ideas = mechdesignworkaround
+		
+		}
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+		
+		}
+		
+		ProductionFix ={
+        icon = genertic_industry
+        available = {
+            
+        }
+        visible = {
+            always = yes
+        }
+        cost = 0
+        fire_only_once = yes
+        
+        complete_effect = {
+            
+			add_ideas = ProductionFix
+		
+		}
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		#################################
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		##
+		StupidAIDoesntresearchfighters_1 ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = basic_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        visible = {
+            has_tech = basic_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        cost = 0
+        fire_only_once = yes
+		
+        
+        remove_effect = {
+            
+			
+			set_technology = {
+				aa_hmg = 1
+				aa_cannon_1 = 1
+				aa_lmg = 1
+				survivability_studies = 1
+				range_improvements = 1
+				engines_2 = 1
+			}
+			
+			
+			
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		##
+		
+		StupidAIDoesntresearchfighters_2 ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = improved_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        visible = {
+            has_tech = improved_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        cost = 0
+        fire_only_once = yes
+		
+        
+        remove_effect = {
+            
+			set_technology = {engines_3 = 1}
+			
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		StupidAIDoesntresearchfighters_22 ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = engines_3
+			has_dlc = "By Blood Alone"
+        }
+        visible = {
+            has_tech = engines_3
+			has_dlc = "By Blood Alone"
+        }
+        cost = 0
+        fire_only_once = yes
+		
+        
+        remove_effect = {
+            
+			set_technology = {improved_small_airframe = 1}
+			
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		
+		StupidAIDoesntresearchfighters_3 ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = advanced_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        visible = {
+            has_tech = advanced_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        cost = 0
+        fire_only_once = yes
+		
+        
+        remove_effect = {
+            
+			set_technology = { engines_4 = 1}
+			
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		
+		
+		StupidAIDoesntresearchtanks_1 ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = basic_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            has_tech = basic_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        cost = 0
+        fire_only_once = yes
+        
+        remove_effect = {
+            
+			set_technology = { antitank1 = 1}
+			
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		
+		StupidAIDoesntresearchtanks_2 ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = improved_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            has_tech = improved_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        cost = 0
+        fire_only_once = yes
+        
+        remove_effect = {
+            
+			set_technology = {antitank3 = 1}
+			set_technology = {antitank2 = 1}
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		
+		
+		StupidAIDoesntresearchtanks_3 ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = advanced_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            has_tech = advanced_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        cost = 0
+        fire_only_once = yes
+        
+        remove_effect = {
+            
+			set_technology = {antitank4 = 1}
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		
+		
+			
+			
+			
+		SwimmingTanks ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = improved_medium_tank_chassis
+			has_dlc = "No Step Back"
+			is_major = yes
+			num_of_military_factories > 100
+        }
+        visible = {
+            has_tech = improved_medium_tank_chassis
+			has_dlc = "No Step Back"
+			is_major = yes
+			num_of_military_factories > 100
+        }
+        cost = 0
+        fire_only_once = yes
+        
+        remove_effect = {
+            
+			set_technology = {amphibious_mechanized_infantry = 1}
+			set_technology = {amphibious_tank_chassis = 1}
+			set_technology = {amphibious_drive = 1 }
+			
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		
+		NODLCFORTHETHING = {
+		
+		
+		
+		icon = genertic_industry
+        available = {
+            has_tech = basic_medium_tank
+			
+			NOT = {
+				has_dlc = "No Step Back"
+				}
+        }
+        visible = {
+            has_tech = basic_medium_tank
+
+        }
+        cost = 0
+        fire_only_once = yes
+        
+        remove_effect = {
+            
+			set_technology = {
+				basic_medium_td = 1
+				basic_medium_art = 1
+				}
+			
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		
+		
+		
+		}
+		
+		##
+		
+		
+		
+		
+		
+		STUPIDAIDOESNTBUILDMECH = {
+		
+		
+			icon = genertic_industry
+			
+			visible = {
+				has_equipment = { mechanized_equipment < 1} 
+				
+				has_tech = mechanised_infantry
+			
+			}
+			available = {
+				
+				has_equipment = { mechanized_equipment < 1 } 
+				
+				has_tech = mechanised_infantry
+			
+			}
+			
+			
+		
+		cost = 0
+		days_re_enable = 20
+		
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+                type = mechanized_equipment_1
+                amount = 500
+            }
+		}
+		
+		
+			ai_will_do = {
+            base = 1
+		}
+		
+		
+		
+		
+		}
+		
+		
+		
+		STUPIDAIDOESNTBUILDTRUCKS = {
+		
+		
+			icon = genertic_industry
+			
+			visible = {
+				has_equipment = { motorized_equipment < 1} 
+				
+				has_tech = motorised_infantry
+			
+			}
+			available = {
+				
+				has_equipment = { motorized_equipment < 1 } 
+				
+				has_tech = motorised_infantry
+			
+			}
+			
+			
+		
+		cost = 0
+		days_re_enable = 20
+		
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+               type = motorized_equipment_1
+                amount = 300
+            }
+		}
+		
+		
+			ai_will_do = {
+            base = 1
+		}
+		
+		
+		
+		
+		}
+		
+		
+		
+		STUPIDAIDOESNTBUILD_ANTI_TANK_TEMP = {
+		
+		
+			icon = genertic_industry
+			
+			visible = {
+				has_equipment = { anti_tank_equipment < 1} 
+				
+				has_tech = interwar_antitank
+			
+			}
+				available = {
+				
+				has_equipment = { anti_tank_equipment < 1 } 
+				
+				has_tech = interwar_antitank
+			
+			}
+			
+			
+		
+		cost = 0
+		days_re_enable = 20
+		
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+                type = anti_tank_equipment
+                amount = 400
+            }
+		}
+		
+		
+			ai_will_do = {
+            base = 1
+		}
+		
+		
+		
+		
+		}
+		
+		
+#		STUPIDAIDOESNTBUILD_ANTI_AIR_TEMP = { 
+#		
+#		
+#			icon = genertic_industry
+#			
+#		visible = {
+#				#has_equipment = { anti_air_equipment < 1} 
+#				
+#				has_tech = interwar_antiair
+#			
+#			}
+#			available = {
+#				
+#				has_equipment = { anti_air_equipment < -100 } 
+#				
+#				has_tech = interwar_antiair
+#			
+#			}
+#			
+#			
+#		
+#		cost = 0
+#		days_re_enable = 20
+#		
+#		
+#		complete_effect = {
+#			add_equipment_to_stockpile = {
+#               type = anti_air_equipment
+ #               amount = 200
+  #          }
+#		}
+#		
+#		
+#			ai_will_do = {
+ #           base = 1
+	#	}
+	#	
+	#	
+	#	
+	#	
+	#	}
+		
+		
+		
+#		STUPIDAIDOESNTBUILD_Support_TEMP = {
+#		
+#		#Look I know its cheating but I can't be bothered to make them build this shit on their own rn. I'll fix it later.
+#			icon = genertic_industry
+#			
+#			visible = {
+#				#has_equipment = { support_equipment < 1 } 
+#				
+#				
+#			
+#			}
+#			available = {
+#				
+#				has_equipment = { support_equipment < 1 } 
+#				
+#				
+#			
+#			}
+#			
+#			
+#		
+#		cost = 0
+#		days_re_enable = 20
+#		
+#		
+#		complete_effect = {
+#			add_equipment_to_stockpile = {
+#				 type = support_equipment
+#               amount = 400
+#         }
+#		}
+#		
+#		
+#			ai_will_do = {
+#           base = 1
+#		}
+#		
+#		
+#		
+#		
+#		}
+		
+		
+		
+		
+		StupidAIDoesntresearchfighters_Orgininal ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = basic_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        visible = {
+            has_tech = basic_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        cost = 0
+        fire_only_once = yes
+		days_remove = 1500
+        
+        remove_effect = {
+            
+			set_technology = { improved_small_airframe = 1 }
+			
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		
+		StupidAIDoesntresearchfighters_Orgininal_2 ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = improved_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        visible = {
+            has_tech = improved_small_airframe
+			has_dlc = "By Blood Alone"
+        }
+        cost = 0
+        fire_only_once = yes
+		days_remove = 1100
+        
+        remove_effect = {
+            
+			set_technology = { advanced_small_airframe = 1 }
+			
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		
+		
+		
+		
+		
+		StupidAIDoesntresearchTANKS_Orgininal ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = gwtank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            has_tech = gwtank_chassis
+			has_dlc = "No Step Back"
+        }
+        cost = 0
+        fire_only_once = yes
+		days_remove = 700
+        
+        remove_effect = {
+            
+			set_technology = { basic_medium_tank_chassis = 1 }
+			
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		
+		
+		StupidAIDoesntresearchTANKS_Orgininal_Two ={
+		
+        icon = genertic_industry
+        available = {
+            has_tech = basic_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        visible = {
+            has_tech = basic_medium_tank_chassis
+			has_dlc = "No Step Back"
+        }
+        cost = 0
+        fire_only_once = yes
+		days_remove = 1000
+        
+        remove_effect = {
+            
+			set_technology = { improved_medium_tank_chassis = 1 }
+			
+			}
+			
+			
+			
+								
+								
+        
+		
+		ai_will_do = {
+            base = 1
+		}
+		}
+		
+		
+		
+		
+		#######################################################
+		############# TEMPLATES ###############################
+		#######################################################
+		
+		Blitz_Tank_Template = {
+		available = {
+			has_tech = mobile_warfare
+			num_of_military_factories > 30
+			
+			OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+			}
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "Tank Division Blitzkrieg"
+				priority = 2
+				role = armor_role
+				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					medium_armor = { x = 0 y = 1 }
+					medium_armor = { x = 0 y = 2 }
+					medium_armor = { x = 0 y = 3 }
+					medium_armor = { x = 1 y = 0 }
+					medium_armor = { x = 1 y = 1 }
+					medium_armor = { x = 1 y = 2 }
+					medium_armor = { x = 1 y = 3 }
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					motorized = { x = 2 y = 3 }
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+					motorized = { x = 3 y = 2 }
+					motorized = { x = 3 y = 3 }
+					medium_armor = { x = 4 y = 0 }
+					medium_armor = { x = 4 y = 1 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					logistics_company = { x = 0 y = 3 }
+				}
+			}
+		}
+	}
+	
+	
+	Blitz_Tank_Template_2 = {
+		available = {
+			has_tech = mobile_warfare
+			num_of_military_factories > 80
+			has_tech = mechanised_infantry
+			
+			OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+			}
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "Tank Division Blitzkrieg Mech"
+				priority = 2
+				role = armor_role
+				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					medium_armor = { x = 0 y = 1 }
+					medium_armor = { x = 0 y = 2 }
+					medium_armor = { x = 0 y = 3 }
+					medium_armor = { x = 1 y = 0 }
+					medium_armor = { x = 1 y = 1 }
+					medium_armor = { x = 1 y = 2 }
+					medium_armor = { x = 1 y = 3 }
+					mechanized = { x = 2 y = 0 }
+					mechanized = { x = 2 y = 1 }
+					mechanized = { x = 2 y = 2 }
+					mechanized = { x = 2 y = 3 }
+					mechanized = { x = 3 y = 0 }
+					mechanized = { x = 3 y = 1 }
+					mechanized = { x = 3 y = 2 }
+					mechanized = { x = 3 y = 3 }
+					medium_armor = { x = 4 y = 0 }
+					medium_armor = { x = 4 y = 1 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					logistics_company = { x = 0 y = 3 }
+				}
+			}
+		}
+	}
+	
+	
+	
+	Superior_Firepower_Tank_Template = {
+		available = {
+			has_tech = superior_firepower
+			num_of_military_factories > 30
+			
+			OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+			}
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "Tank Division Firepower"
+				priority = 2
+				role = armor_role
+				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					medium_armor = { x = 0 y = 1 }
+					medium_armor = { x = 0 y = 2 }
+					medium_armor = { x = 0 y = 3 }
+					medium_armor = { x = 1 y = 0 }
+					medium_armor = { x = 1 y = 1 }
+					medium_armor = { x = 1 y = 2 }
+					medium_armor = { x = 1 y = 3 }
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					motorized = { x = 2 y = 3 }
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+					motorized = { x = 3 y = 2 }
+					motorized = { x = 3 y = 3 }
+					medium_sp_artillery_brigade = { x = 4 y = 0 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					logistics_company = { x = 0 y = 3 }
+				}
+			}
+		}
+	}
+	
+	
+	Superior_Firepower_Tank_Template_2 = {
+		available = {
+			has_tech = superior_firepower
+			num_of_military_factories > 80
+			
+			OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+			}
+			
+			has_tech = mechanised_infantry
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "Tank Division Firepower Mech"
+				priority = 2
+				role = armor_role
+				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					medium_armor = { x = 0 y = 1 }
+					medium_armor = { x = 0 y = 2 }
+					medium_armor = { x = 0 y = 3 }
+					medium_armor = { x = 1 y = 0 }
+					medium_armor = { x = 1 y = 1 }
+					medium_armor = { x = 1 y = 2 }
+					medium_armor = { x = 1 y = 3 }
+					mechanized = { x = 2 y = 0 }
+					mechanized = { x = 2 y = 1 }
+					mechanized = { x = 2 y = 2 }
+					mechanized = { x = 2 y = 3 }
+					mechanized = { x = 3 y = 0 }
+					mechanized = { x = 3 y = 1 }
+					mechanized = { x = 3 y = 2 }
+					mechanized = { x = 3 y = 3 }
+					medium_sp_artillery_brigade = { x = 4 y = 0 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					logistics_company = { x = 0 y = 3 }
+				}
+			}
+		}
+	}
+	
+	
+	Trench_Tank_Template = {
+		available = {
+			has_tech = trench_warfare
+			num_of_military_factories > 30
+			
+			OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+			}
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "Tank Division Trench"
+				priority = 2
+				role = armor_role
+				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					medium_armor = { x = 0 y = 1 }
+					medium_armor = { x = 0 y = 2 }
+					medium_armor = { x = 0 y = 3 }
+					medium_armor = { x = 1 y = 0 }
+					medium_armor = { x = 1 y = 1 }
+					medium_armor = { x = 1 y = 2 }
+					medium_armor = { x = 1 y = 3 }
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					motorized = { x = 2 y = 3 }
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+					motorized = { x = 3 y = 2 }
+					motorized = { x = 3 y = 3 }
+					medium_armor = { x = 4 y = 0 }
+					medium_armor = { x = 4 y = 1 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					logistics_company = { x = 0 y = 3 }
+				}
+			}
+		}
+	}
+	
+	
+	Trench_Tank_Template_2 = {
+		available = {
+			has_tech = trench_warfare
+			num_of_military_factories > 80
+			has_tech = mechanised_infantry
+			
+			OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+			}
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "Tank Division Trench 2"
+				priority = 2
+				role = armor_role
+				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					medium_armor = { x = 0 y = 1 }
+					medium_armor = { x = 0 y = 2 }
+					medium_armor = { x = 0 y = 3 }
+					medium_armor = { x = 1 y = 0 }
+					medium_armor = { x = 1 y = 1 }
+					medium_armor = { x = 1 y = 2 }
+					medium_armor = { x = 1 y = 3 }
+					mechanized = { x = 2 y = 0 }
+					mechanized = { x = 2 y = 1 }
+					mechanized = { x = 2 y = 2 }
+					mechanized = { x = 2 y = 3 }
+					mechanized = { x = 3 y = 0 }
+					mechanized = { x = 3 y = 1 }
+					mechanized = { x = 3 y = 2 }
+					mechanized = { x = 3 y = 3 }
+					medium_armor = { x = 4 y = 0 }
+					medium_armor = { x = 4 y = 1 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					logistics_company = { x = 0 y = 3 }
+				}
+			}
+		}
+	}
+	
+	
+	
+	Mass_Tank_Template = {
+		available = {
+			has_tech = mass_assault
+			num_of_military_factories > 30
+			
+			OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+			}
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "Tank Division Mass"
+				priority = 2
+				role = armor_role
+				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					medium_armor = { x = 0 y = 1 }
+					medium_armor = { x = 0 y = 2 }
+					medium_armor = { x = 0 y = 3 }
+					medium_armor = { x = 1 y = 0 }
+					medium_armor = { x = 1 y = 1 }
+					medium_armor = { x = 1 y = 2 }
+					medium_armor = { x = 1 y = 3 }
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+					motorized = { x = 2 y = 2 }
+					motorized = { x = 2 y = 3 }
+					motorized = { x = 3 y = 0 }
+					motorized = { x = 3 y = 1 }
+					motorized = { x = 3 y = 2 }
+					motorized = { x = 3 y = 3 }
+					motorized = { x = 4 y = 0 }
+					motorized = { x = 4 y = 1 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					logistics_company = { x = 0 y = 3 }
+				}
+			}
+		}
+	}
+	
+	
+	
+	Mass_Tank_Template_2 = {
+		available = {
+			has_tech = mass_assault
+			num_of_military_factories > 80
+			has_tech = mechanised_infantry
+			
+			OR = {
+					has_tech = basic_medium_tank_chassis
+					has_tech = basic_medium_tank
+			}
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "Tank Division Mass Mech"
+				priority = 2
+				role = armor_role
+				regiments = {
+					medium_armor = { x = 0 y = 0 }
+					medium_armor = { x = 0 y = 1 }
+					medium_armor = { x = 0 y = 2 }
+					medium_armor = { x = 0 y = 3 }
+					medium_armor = { x = 1 y = 0 }
+					medium_armor = { x = 1 y = 1 }
+					medium_armor = { x = 1 y = 2 }
+					medium_armor = { x = 1 y = 3 }
+					mechanized = { x = 2 y = 0 }
+					mechanized = { x = 2 y = 1 }
+					mechanized = { x = 2 y = 2 }
+					mechanized = { x = 2 y = 3 }
+					mechanized = { x = 3 y = 0 }
+					mechanized = { x = 3 y = 1 }
+					mechanized = { x = 3 y = 2 }
+					mechanized = { x = 3 y = 3 }
+					mechanized = { x = 4 y = 0 }
+					mechanized = { x = 4 y = 1 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					logistics_company = { x = 0 y = 3 }
+				}
+			}
+		}
+	}
+	
+	###################################INFNATRYDIVSISONS#############################################
+	
+	INF_TEMPLATE_BLITZ = {
+		available = {
+			has_tech = mobile_warfare
+			num_of_military_factories > 35
+			has_tech = interwar_antitank
+			
+			
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "BlitzInfantry"
+				priority = 1
+				role = infantry
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 1 y = 3 }				
+					artillery_brigade = { x = 2 y = 0 }
+					anti_tank_brigade = { x = 2 y = 1 }
+					infantry = { x = 3 y = 0 }
+					infantry = { x = 3 y = 1 }
+					
+					
+					
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					
+				}
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	INF_TEMPLATE_Firepower = {
+		available = {
+			has_tech = superior_firepower
+			num_of_military_factories > 45
+			has_tech = interwar_antitank
+			
+			
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "FirepowerInfantry"
+				priority = 1
+				role = infantry
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 1 y = 3 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					artillery_brigade = { x = 3 y = 0 }
+					
+					
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					recon = { x = 0 y = 3 }
+					anti_tank = { x = 0 y = 4 }
+				}
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	INF_TEMPLATE_Trench = {
+		available = {
+			has_tech = trench_warfare
+			num_of_military_factories > 35
+			has_tech = interwar_antitank
+			
+			
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "TrenchInfantry"
+				priority = 1
+				role = infantry
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 1 y = 3 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					artillery_brigade = { x = 3 y = 0 }
+					anti_tank_brigade = { x = 3 y = 1 }
+					
+					
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					
+				}
+			}
+		}
+	}
+	
+	
+	
+	
+	INF_TEMPLATE_Mass = {
+		available = {
+			has_tech = mass_assault
+			num_of_military_factories > 30
+			has_tech = interwar_antitank
+			
+			
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "MassInfantry"
+				priority = 1
+				role = infantry
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 1 y = 3 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					anti_tank_brigade = { x = 3 y = 0 }
+					infantry = { x = 4 y = 0 }
+					infantry = { x = 4 y = 1 }
+					
+					
+					
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					
+				}
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	mountineerdivision = {
+		available = {
+			num_of_military_factories > 20
+			has_tech = tech_mountaineers
+			
+			
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "mountineers"
+				priority = 2
+				role = mountaineers
+				regiments = {
+					mountaineers = { x = 0 y = 0 }
+					mountaineers = { x = 0 y = 1 }
+					mountaineers = { x = 0 y = 2 }
+					mountaineers = { x = 0 y = 3 }
+					mountaineers = { x = 1 y = 0 }
+					mountaineers = { x = 1 y = 1 }
+					mountaineers = { x = 1 y = 2 }
+					artillery_brigade = { x = 2 y = 0 }
+					artillery_brigade = { x = 2 y = 1 }
+					artillery_brigade = { x = 2 y = 2 }
+					infantry = { x = 3 y = 0 }
+					infantry = { x = 3 y = 1 }
+					infantry = { x = 3 y = 2 }
+					
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					recon = { x = 0 y = 3}
+					anti_tank = { x = 0 y = 4}
+				}
+			}
+		}
+	}
+	
+	
+	marine = {
+		available = {
+			num_of_military_factories > 20
+			has_tech = marines
+			
+			
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "marine"
+				priority = 2
+				role = marines
+				regiments = {
+					marine = { x = 0 y = 0 }
+					marine = { x = 0 y = 1 }
+					marine = { x = 0 y = 2 }
+					marine = { x = 0 y = 3 }
+					marine = { x = 1 y = 0 }
+					marine = { x = 1 y = 1 }
+					marine = { x = 1 y = 2 }
+					marine = { x = 1 y = 3 }
+					marine = { x = 2 y = 0 }
+					marine = { x = 2 y = 1 }
+					marine = { x = 2 y = 2 }
+					marine = { x = 2 y = 3 }
+					artillery_brigade = { x = 3 y = 0 }
+					artillery_brigade = { x = 3 y = 1 }
+					
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					
+				}
+			}
+		}
+	}
+		
+		
+		
+		
+	Volksterm_Milita = {
+		available = {
+			has_idea = Endsieg
+			num_of_military_factories > 60
+			
+			
+			
+		}
+		
+		
+		ai_will_do = {
+			base = 1
+		}
+		cost = 0
+        fire_only_once = yes
+		
+		
+		complete_effect = {
+			division_template = {
+				name = "Last Ditch Infantry"
+				priority = 1
+				role = infantry
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 1 y = 3 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 2 y = 3 }
+					
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					anti_air = { x = 0 y = 2 }
+					anti_tank = { x = 0 y = 3 }
+					
+				}
+			}
+		}
+	}	
+		
+		
+		
+		
+		
+        
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+}

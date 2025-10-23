@@ -1,0 +1,70 @@
+###########################
+# Free Danish Events
+###########################
+
+add_namespace = free_denmark
+
+#Free free_denmark Greenlandic Cryolite - USA asked
+country_event = {
+	id = free_denmark.1
+	title = free_denmark.1.t
+	desc = free_denmark.1.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # Yes please
+		name = free_denmark.1.a
+		ai_chance = {
+			base = 95
+		}
+		add_ideas = DEN_greenlandic_cryolite
+		DEN = {
+			country_event = { days = 1 id = free_denmark.2 }
+		}
+	}
+	option = { # we don't need foreign help
+		name = free_denmark.1.b
+		ai_chance = {
+			base = 5
+		}
+		add_political_power = 20
+		DEN = {
+			country_event = { days = 1 id = free_denmark.3 }
+		}
+	}
+}
+#Free free_denmark Greenlandic Cryolite - USA says yes
+country_event = {
+	id = free_denmark.2
+	title = free_denmark.2.t
+	desc = free_denmark.2.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # pew pew
+		name = free_denmark.2.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = 20
+	}
+}
+#Free free_denmark Greenlandic Cryolite - USA says no
+country_event = {
+	id = free_denmark.3
+	title = free_denmark.3.t
+	desc = free_denmark.3.d
+	#picture = GFX_news_event_journalists_speech
+	
+	is_triggered_only = yes
+	
+	option = { # well just keep it then
+		name = free_denmark.3.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = -20
+	}
+}

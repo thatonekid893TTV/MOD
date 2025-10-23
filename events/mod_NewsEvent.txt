@@ -1,0 +1,177 @@
+add_namespace = news
+
+###########################
+# Mod News Events
+###########################
+
+#assassinate hirohito step one
+news_event = {
+	id = news.1001
+	title = news.1001.t
+	desc = news.1001.desc
+	picture = GFX_news_event_japanese_army_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = hirohito_injured
+	}
+	
+	# Chinese option
+	option = {
+		name = news.1001.a
+		trigger = {
+			OR {
+				tag = CHI
+				is_in_faction_with = CHI
+			}
+		}
+
+	}
+
+	# Japanese option
+	option = {
+		name = news.1001.b
+		trigger = {
+			OR {
+				tag = JAP
+				is_in_faction_with = JAP
+			}
+		}
+	}
+	
+	# Generic option
+	option = {
+		name = news.1001.c
+		trigger = {
+			NOT = {
+				OR {
+					tag = CHI
+					is_in_faction_with = CHI
+					tag = JAP
+					is_in_faction_with = JAP
+				}
+			}
+		}
+	}
+}
+
+
+#assassinate hirohito step two
+news_event = {
+	id = news.1002
+	title = news.1002.t
+	desc = news.1002.desc
+	picture = GFX_news_event_generic_funeral
+	#picture = GFX_report_event_asian_politicians
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = hirohito_died
+		}
+
+	# Generic option
+	option = {
+		name = news.1002.a
+		trigger = {
+			NOT = {
+				OR {
+					tag = JAP
+					is_in_faction_with = JAP
+				}
+			}
+		}
+
+	}
+
+	# Japanese option
+	option = {
+		name = news.1002.b
+		trigger = {
+			OR {
+				tag = JAP
+				is_in_faction_with = JAP
+			}
+		}
+	}
+}
+
+
+#assassinate hirohito failed
+news_event = {
+	id = news.1003
+	title = news.1003.t
+	desc = news.1003.desc
+	picture = GFX_news_event_japanese_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = hirohito_recovered
+		}
+
+	# Chinese option
+	option = {
+		name = news.1003.a
+		trigger = {
+			OR {
+				tag = CHI
+				is_in_faction_with = CHI
+			}
+		}
+	}
+
+	# Generic option
+	option = {
+		name = news.1003.b
+		trigger = {
+			NOT = {
+				OR {
+					tag = CHI
+					is_in_faction_with = CHI
+				}
+			}
+		}
+
+	}
+
+}
+
+
+# Hirohito Trigger (HIDDEN)
+news_event = {
+	id = news.1004
+	hidden = yes
+
+	fire_only_once = yes
+
+	trigger = {
+		NOT = { has_global_flag = hirohito_died}
+		country_exists = JAP
+		has_global_flag = {
+			flag = hirohito_injured
+			days > 90
+			}
+		}
+
+		mean_time_to_happen ={
+		days = 30
+		}
+
+
+
+	immediate = {
+		JAP = { news_event = { id = news.1003 } }
+		}
+
+	option = {
+		name = news.1004.a
+	}
+}

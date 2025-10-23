@@ -1,0 +1,952 @@
+#eo
+add_namespace = gerevent
+add_namespace = germany
+add_namespace = GER_coloni
+
+#The Germans Want Their Colonies
+country_event = {
+	id = GER_coloni.1
+	title = GER_coloni.1.t
+	desc = GER_coloni.1.d
+
+	#picture = GER_the_germans_want_their_colonies-543
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = GER_coloni.1.a
+		ai_chance = { factor = 10 }
+		add_political_power = 150
+		GER = { transfer_state = 687 
+		transfer_state = 541
+		transfer_state = 523
+		transfer_state = 546
+		transfer_state = 894
+		transfer_state = 895
+		transfer_state = 893
+		transfer_state = 769
+		transfer_state = 768
+		}
+	}
+	
+	option = {
+		name = GER_coloni.1.b
+		ai_chance = { factor = 1 }
+		add_stability = 0.05
+
+		}
+	}
+
+
+country_event = {
+	id = GER_coloni.2
+	title = GER_coloni.1.t
+	desc = GER_coloni.1.d
+
+	#picture = GER_the_germans_want_their_colonies-543
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = GER_coloni.1.a
+		ai_chance = { factor = 10 }
+		add_political_power = 150
+		GER = { transfer_state = 773
+transfer_state = 777
+
+		}
+	}
+	option = {
+		name = GER_coloni.1.b
+		ai_chance = { factor = 1 }
+		add_stability = 0.05
+
+	}
+}
+
+# annex demand no div
+country_event = {
+    id = germany.9942
+    title = germany.9942.t
+    desc = ""
+    picture = GFX_report_event_generic_diplomatic
+
+    is_triggered_only = yes
+
+    option = {
+        name = germany.9942.a 
+        ai_chance = { factor = 35 }
+            FROM = {
+                annex_country = {
+                    target = ROOT
+                    transfer_troops = no
+                }
+            }
+        }
+    option = {
+        name = germany.9942.b
+        ai_chance = { factor = 50 }
+            FROM = {
+				create_wargoal = {
+					type = annex_everything
+					target = ROOT
+				}
+        }
+	}
+}
+country_event = {
+    id = germany.99442
+    title = "Huns and Germans Demand Unification"
+    desc = ""
+    picture = GFX_report_event_generic_diplomatic
+
+    is_triggered_only = yes
+
+    option = {
+        name = germany.9942.a 
+        ai_chance = { factor = 40 }
+            HUN = {
+                annex_country = {
+                    target = AUS
+                    transfer_troops = yes
+                }
+            }
+        }
+    option = {
+        name = germany.9942.b
+        ai_chance = { factor = 60 }
+            HUN = {
+				create_wargoal = {
+					type = annex_everything
+					target = AUS
+				}
+        }
+	}
+}
+# annex demand yes div
+country_event = {
+    id = germany.9943
+    title = germany.9942.t
+    desc = ""
+    picture = GFX_report_event_generic_diplomatic
+
+    is_triggered_only = yes
+
+    option = {
+        name = germany.9942.a 
+        ai_chance = { factor = 35 }
+            FROM = {
+                annex_country = {
+                    target = ROOT
+                    transfer_troops = yes
+                }
+            }
+        }
+    option = {
+        name = germany.9942.b
+        ai_chance = { factor = 50 }
+            FROM = {
+				create_wargoal = {
+					type = annex_everything
+					target = ROOT
+				}
+        }
+	}
+	}
+
+
+##Event: Germany Offers You Alliance
+country_event = { 
+	id = germany.896
+	title = "German Reich Demands SS Nation"
+	desc = ""
+	picture = GFX_report_event_fascists_posing
+	is_triggered_only = yes
+	option = {
+		name = "Yes sure"
+	    ai_chance = { factor = 40 }
+		add_stability = -0.05
+		if = {
+			limit = {
+				original_tag = LUX
+			}
+			GER = { annex_country = { target = ROOT transfer_troops = no } }
+		}
+		else = {
+			GER = { 
+				if = {
+					limit = {
+						has_dlc = "No Step Back"
+					}
+					set_autonomy = {
+						target = ROOT
+						autonomy_state = autonomy_personal_union
+						freedom_level = 0.1
+					}
+				}
+				else_if = {
+					limit = {
+						has_dlc = "Together for Victory"
+					}
+					set_autonomy = {
+						target = ROOT
+						autonomy_state = autonomy_integrated_puppet
+						freedom_level = 0.1
+					}
+				}
+				else = {
+					puppet = ROOT
+				}
+			}
+		}
+		if = {
+			limit = {
+				original_tag = BEL
+			}
+			add_state_core = 29
+		}
+	}
+	option = {
+		name = "No"
+	    ai_chance = { factor = 55 }
+		add_stability = 0.05
+		add_war_support = 0.05
+        GER = {
+        	create_wargoal = {
+				type = annex_everything
+				target = ROOT
+			}
+		}
+	}
+}
+country_event = {
+	id = gerevent.1
+	title = gerevent.1.title
+	desc = gerevent.1.desc
+	picture = GFX_report_event_generic_sign_treaty3
+	is_triggered_only = yes
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = gerevent.1.a
+		ai_chance = { factor = 10}
+		GER = {
+add_to_faction= SPR  }
+	}
+	option = {
+		name = gerevent.1.b
+		ai_chance = { factor = 1}
+		add_political_power= -5
+	}
+}
+country_event = {  
+	id = germany.9989
+	title = "General elections"
+	desc = "Select Leader"
+	picture = GFX_report_event_german_inspect_troops
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Erwin Rommel"
+			GER_erwin_rommel = {
+				add_country_leader_role = {
+					promote_leader = yes
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							rearmer
+							#iron_cross
+						}
+					}
+				}
+			}
+		}
+	option = {
+		name = "Gerd Von Rundstedt"
+			GER_gerd_von_rundstedt = {
+				add_country_leader_role = {
+					promote_leader = yes
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							national_integralist
+							#iron_cross
+						}
+					}
+				}
+			}
+		}
+	option = {
+		name = "Erich Von Manstein"
+			GER_erich_von_manstein = {
+				add_country_leader_role = {
+					promote_leader = yes
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							indomitable_perseverance
+							#iron_cross
+						}
+					}
+				}
+			}
+	}
+	option = {
+		name = "August Von Mackensen"
+		create_country_leader = {
+			name = "August Von Mackensen"
+			picture = GFX_portrait_ger_august_von_mackensen
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = {
+			    retired_officer
+			    great_war_hero
+			}
+		}
+	}
+}
+country_event = {
+	id = germany.10069
+	title = "German-Austrian Iron Trade Deal"
+	picture = GFX_report_event_communists_cheer
+    desc = ""
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = {
+		ai_chance = {
+			factor = 120
+			modifier = {
+				factor = 1.5
+				has_opinion = { target = FROM value > 35 }
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = { target = FROM value > 50 }
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = { target = FROM value > 75 }
+			}
+		}
+		name = "This deal will help our nation immensely"
+			GER = {
+				country_event = germany.10070				
+			}
+			give_resource_rights = { 
+				receiver = GER 
+				state = 152
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}		
+		}
+
+	option = {
+		ai_chance = {
+			factor = 40
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = FROM
+					value > 65
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = FROM
+					value > 35
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_opinion = {
+					target = FROM
+					value > 5
+				}
+			}
+			modifier = {
+				factor = 2.0
+				has_opinion = {
+					target = FROM
+					value < 35
+				}
+			}
+			modifier = {
+				factor = 2.0
+				has_opinion = {
+					target = FROM
+					value < 65
+				}
+			}
+			modifier = {
+				factor = 0.1
+				has_war = yes
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+		name = "We must not give Germany that kind of influence on our nation"
+		GER = {
+			country_event = germany.10071
+		}
+	}
+}
+
+country_event = {
+	id = germany.10070
+	title = "Austria agrees to increase iron shipments"
+	picture = GFX_report_event_communists_cheer
+    desc = ""
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = {
+		name = "This will surely drag Austria to our Sphere"
+		add_tech_bonus = {
+			category = construction_tech
+			bonus = 0.25
+			uses = 1
+		}
+		effect_tooltip = {
+			AUS = {
+				give_resource_rights = { 
+					receiver = GER 
+					state = 152
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = germany.10071
+	title = "Austria refuses our generous trade deal"
+	picture = GFX_report_event_communists_cheer
+    desc = ""
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = {
+		name = "Those fools"
+		}
+	}
+
+country_event = {  
+	id = germany.9949
+	title = "Sale of alsas loren"
+	desc = "The Germans want to take back this land at any cost."
+	picture = GFX_report_event_soldiers_marching
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Sure"
+		ai_chance = {
+			factor = 75
+		}
+		GER = {
+			add_state_core = 28
+			if = {
+				limit = {
+					NOT = { owns_state = 28 }
+				}
+				transfer_state = 28
+			}
+			28 = { set_state_name = "Elsass-Lothringen" }
+			set_province_name = { id = 9503 name = "Strassburg" }
+			set_province_name = { id = 678 name = "Mulhausen" }
+			FRA = {
+				country_event = { id = wtt_germany.63 }
+			}
+		     10 ={
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+		  }	
+       }
+       FRA = {
+			25 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				}	   
+	   }	   
+	}
+	option = {
+		name = "Nope"
+		ai_chance = {
+			factor = 25
+		}
+       add_political_power = 100
+	   GER = {
+		   country_event = germany.9948
+	   }
+	}
+}
+country_event = {  
+	id = germany.9948
+	title = "France Refuse"
+	desc = ""
+	picture = GFX_report_event_soldiers_marching
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Darn"
+		ai_chance = {
+			factor = 75
+		}
+		GER = {
+			create_wargoal = {
+				type = annex_everything
+				target = FRA
+				expire = 0
+			}
+		}
+	}
+}
+
+country_event = {
+	id = germany.893
+	title = wtt_germany.18.t
+	picture = GFX_report_event_fascists_posing
+	desc = ""
+	is_triggered_only = yes
+	option = {
+		name = wtt_germany.18.b
+		add_political_power = 75
+		add_popularity = { ideology = fascism popularity = -0.05 }
+		set_country_flag = GER_imprisoned_fascist_leadership
+		delete_unit_template_and_units = { division_template = "Landsturmregiment" }
+		if = { 
+			limit = { is_faction_leader = yes } 
+			leave_faction = yes
+		}
+	}
+}
+country_event = {  
+	id = germany.9926
+	title = "Anglo-German Pact"
+	desc = "Germany wants to make a non-fight pact with us"
+	picture = GFX_report_event_generic_rally_3
+	is_triggered_only = yes
+	option = {
+		name = "Sure"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = -40
+			}
+		}
+		diplomatic_relation = {
+			country = FROM
+			relation = non_aggression_pact
+			active = yes
+		}
+		hidden_effect = {
+			set_global_flag = ENG_accepted_unholy_alliance_flag
+		}
+	}
+	
+	option = {
+		name = "No"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 25
+			}
+		}
+		FROM = { country_event = { id = germany.10013 days = 1 } }
+	}
+}
+country_event = {
+	id = germany.9925
+	title = "London Berlin Axis"
+	desc = "The Germans want to ally with us a new colonial imperial pact"
+	picture = GFX_report_event_molotov_ribbentrop_stalin_pact
+
+	is_triggered_only = yes
+
+	option = {
+		name = "For a Empire!"
+		ai_chance = { 
+			factor = 10 
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 10
+			}
+		}
+		dismantle_faction = yes
+		add_stability = -0.1
+		every_other_country = {
+			limit = {
+				OR = {
+					AND = {
+						NOT = { tag = GER }
+						has_government = fascism
+					}
+					has_government = democratic
+				}
+			}
+			add_opinion_modifier = { target = ENG modifier = unholy_alliance }
+		}
+		GER = {
+			if = {
+				limit = {
+					is_faction_leader = yes
+				}
+				dismantle_faction = yes
+			}
+			if = {
+				limit = {
+					is_in_faction  = yes
+				}
+				remove_from_faction = GER
+			}
+			add_stability = -0.2
+			create_faction = "Berlin-London Axis"  
+			set_rule = { can_create_factions = yes }
+			add_to_faction = ENG
+			add_named_threat = { threat = 10 name = germany.89.t }
+			every_other_country = {
+				limit = {
+					has_government = fascism
+				}
+				add_opinion_modifier = { target = GER modifier = unholy_alliance }
+			}
+			every_other_country = {
+				limit = {
+					has_government = democratic
+				}
+				add_opinion_modifier = { target = GER modifier = medium_increase }
+			}
+		}
+	}
+
+	option = {
+		name = "No"
+		ai_chance = { 
+			factor = 2 
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 5
+			}
+		}
+		GER = {
+			country_event = germany.10013
+			effect_tooltip = {
+				remove_ideas = england_german_friendship
+				create_wargoal = {
+					type = take_state_focus
+					target = ENG
+					generator = { 126 } 
+				}
+			}
+			set_country_flag = GER_berlin_london_refused_flag
+		}
+		remove_opinion_modifier = { target = GER modifier = huge_increase }
+		remove_ideas = england_german_friendship
+	}
+}
+
+country_event = {
+	id = gerevent.2
+	title = gerevent.1.title
+	desc = gerevent.1.desc
+	picture = GFX_report_event_generic_sign_treaty3
+	is_triggered_only = yes
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = gerevent.1.a
+		ai_chance = { factor = 10}
+		GER = {
+add_to_faction= POR  }
+	}
+	option = {
+		name = gerevent.1.b
+		ai_chance = { factor = 1}
+		add_political_power= 15
+	}
+}
+
+##Event: Germany Invites You
+country_event = {
+	id = gerevent.3
+	title = gerevent.2.title
+	desc = gerevent.2.desc
+	picture = GFX_report_event_partition_of_india
+	is_triggered_only = yes
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = gerevent.2.a
+		ai_chance = { factor = 20}
+		GER = {
+puppet= LAT  } LAT = {
+set_cosmetic_tag = OSTLAND
+ create_wargoal= { 
+type = annex_everything 
+target = EST
+}
+create_wargoal= { 
+type = annex_everything 
+target = LIT
+}
+ }
+
+	}
+	option = {
+		name = gerevent.2.b
+		ai_chance = { factor = 1}
+		GER = {
+create_wargoal= { 
+type = annex_everything 
+target = LAT
+}
+}
+	}
+}
+
+country_event = {
+	id = gerevent.4
+	title = gerevent.1.title
+	desc = gerevent.1.desc
+	picture = GFX_report_event_generic_sign_treaty3
+	is_triggered_only = yes
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = gerevent.1.a
+		ai_chance = { factor = 10}
+		GER = {
+add_to_faction= JAP  }
+	}
+	option = {
+		name = gerevent.1.b
+		ai_chance = { factor = 1}
+		add_political_power= 15
+	}
+}
+
+country_event = {
+	id = gerevent.5
+	title = gerevent.1.title
+	desc = gerevent.1.desc
+	picture = GFX_report_event_generic_sign_treaty3
+	is_triggered_only = yes
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = gerevent.1.a
+		ai_chance = { factor = 10}
+		GER = {
+add_to_faction= CHI  }
+	}
+	option = {
+		name = gerevent.1.b
+		ai_chance = { factor = 1}
+		add_political_power= 15
+	}
+}
+
+
+country_event = {
+	id = gerevent.6
+	title = gerevent.1.title
+	desc = gerevent.1.desc
+	picture = GFX_report_event_generic_sign_treaty3
+	is_triggered_only = yes
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = gerevent.1.a
+		ai_chance = { factor = 10}
+		GER = {
+add_to_faction= TUR  }
+TUR = {
+
+set_politics = {
+	ruling_party = neutrality
+    
+}
+
+ add_state_claim = 212
+add_state_claim = 211
+add_state_claim = 801
+add_state_claim = 48
+add_state_claim = 184
+add_state_claim = 731
+add_state_claim = 106
+add_state_claim = 47
+add_state_claim = 185
+add_state_claim = 186
+add_state_claim = 187
+add_state_claim = 183
+add_state_claim = 779
+add_state_claim = 677
+add_state_claim = 680
+add_state_claim = 554
+add_state_claim = 553
+add_state_claim = 676
+add_state_claim = 675
+add_state_claim = 291
+
+}
+	}
+	option = {
+		name = gerevent.1.b
+		ai_chance = { factor = 1}
+		add_political_power= 15
+	}
+}
+
+country_event = {
+	id = gerevent.7
+	title = gerevent.1.title
+	desc = gerevent.1.desc
+	picture = GFX_report_event_generic_sign_treaty3
+	is_triggered_only = yes
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = gerevent.1.a
+		ai_chance = { factor = 10}
+		GER = {
+add_to_faction= HUN  }
+HUN = { set_politics = {
+	ruling_party = neutrality
+    
+}
+
+add_state_claim = 4
+add_state_claim = 152
+add_state_claim = 153
+add_state_claim = 664
+add_state_claim = 70
+add_state_claim = 71
+add_state_claim = 73
+add_state_claim = 75
+add_state_claim = 74
+add_state_claim = 72
+add_state_claim = 9
+add_state_claim = 69	
+add_state_claim = 82	
+add_state_claim = 83
+add_state_claim = 76
+add_state_claim = 84
+add_state_claim = 764
+add_state_claim = 45
+add_state_claim = 109
+add_state_claim = 102
+add_state_claim = 103
+add_state_claim = 39
+
+
+}
+	}
+	option = {
+		name = gerevent.1.b
+		ai_chance = { factor = 1}
+		add_political_power= 15
+	}
+}
+
+country_event = {
+	id = gerevent.8
+	title = finevent.1.title
+	desc = gerevent.1.desc
+	picture = GFX_report_event_generic_sign_treaty3
+	is_triggered_only = yes
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = gerevent.1.a
+		ai_chance = { factor = 10}
+		GER = {
+add_to_faction= FIN  }
+	}
+	option = {
+		name = gerevent.1.b
+		ai_chance = { factor = 1}
+		add_political_power= -5
+	}
+}
+
+country_event = {
+	id = gerevent.9
+	title = finevent.1.title
+	desc = gerevent.1.desc
+	picture = GFX_report_event_generic_sign_treaty3
+	is_triggered_only = yes
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = gerevent.1.a
+		ai_chance = { factor = 10}
+		GER = {
+set_global_flag = germany_old_tree }
+	}
+} 

@@ -1,0 +1,161 @@
+JAP_balance_of_power_category = {
+	icon = generic_neutrality_focus
+	
+	allowed = {
+		original_tag = JAP
+	}
+	
+	priority = 90
+	
+	visible = {
+		
+	}
+}
+
+JAP_pacific_guardian = {
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		is_puppet = no
+		has_completed_focus = JAP_pacific_guardian
+	}
+}
+
+JAP_Territorial_Claims = {
+
+		allowed = {
+			original_tag = JAP
+		}
+		
+		visible = { has_war = yes }
+		
+		priority = 1000
+}
+
+JAP_Imperial_Protectorates = {
+
+	allowed = {
+		original_tag = JAP
+		
+		OR = {
+				JAP = { has_government = fascism }
+				JAP = { has_government = neutrality }
+			}
+	}
+}
+
+JAP_Imperial_Colonies = {
+
+	allowed = {
+		original_tag = JAP
+		
+		JAP = { has_government = democratic }
+	}
+}
+
+JAP_Chinese_Occupation = {
+
+	priority = 999
+
+	allowed = {
+		original_tag = JAP
+	}
+	
+	visible = {
+		has_completed_focus = JAP_Japan_Triumphant
+	}
+}
+
+JAP_intervene_in_china = {
+	allowed = {
+		original_tag = JAP
+	}
+}
+
+JAP_southern_expansion = {
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		is_puppet = no
+	}
+}
+
+JAP_colonial_independence = {
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		is_puppet = no
+		has_completed_focus = JAP_pacific_guardian
+	}
+}
+
+JAP_Ultimatum_To_Warlords = {
+
+	priority = 9999
+
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		has_completed_focus = JAP_Ultimatum_To_Warlords
+	}
+}
+
+JAP_communist_uprisings = {
+
+	priority = 9999
+
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		has_completed_focus = JAP_Spread_The_Revolution
+	}
+}
+
+JAP_invite_communist_republics = {
+
+	priority = 9999
+
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		has_completed_focus = JAP_Unite_The_Republics
+	}
+}
+
+JAP_centralize_communist_republics = {
+
+	priority = 9999
+
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		has_completed_focus = JAP_Socialism_In_One_Country
+	}
+}
+
+JAP_integrate_communist_republics = {
+
+	priority = 9999
+
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		has_completed_focus = JAP_Rise_Of_The_UASR
+	}
+}

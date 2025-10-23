@@ -1,0 +1,991 @@
+FML_defense_passive = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_industry_repair = 0.08
+		}
+		add_to_variable = {
+			FML_stability_war = 0.08
+		}
+		add_to_variable = {
+			FML_bombing_ws = 0.003
+		}
+		custom_effect_tooltip = FML_dp
+	}
+}
+
+FML_they_shall_not_pass = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_conscription_factor = 0.04
+		}
+		add_to_variable = {
+			FML_army_core_defense = 0.03
+		}
+		add_to_variable = {
+			FML_stability_war = 0.08
+		}
+		custom_effect_tooltip = FML_not_pass
+	}
+}
+
+
+FML_foreign_legion = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_cold_climate = 0.15
+		}
+		add_to_variable = {
+			FML_hot_climate = 0.15
+		}
+		add_to_variable = {
+			FML_special_forces_cap = 0.10
+		}
+		custom_effect_tooltip = FML_foreign_legion
+	}
+}
+
+
+FML_colonies = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_required_garnisons = -0.15
+		}
+		add_to_variable = {
+			FML_weekly_man = 500
+		}
+		add_to_variable = {
+			FML_conscription_factor = 0.03
+		}
+		custom_effect_tooltip = FML_colonies
+	}
+}
+
+
+FML_fortify_france = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_maginot = 0.15
+		}
+		add_to_variable = {
+			FML_max_dig_in = 7.5
+		}
+		add_to_variable = {
+			FML_fort_production_speed = 0.1
+		}
+		add_to_variable = {
+			FML_sea_fort_production_speed = 0.1
+		}
+		custom_effect_tooltip = FML_fortify
+	}
+}
+
+FML_army_reform = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_army_org = 0.15
+		}
+		add_to_variable = {
+			FML_doctrine_cost = -0.2
+		}
+		add_to_variable = {
+			FML_reinforce_rate = 0.01
+		}
+		custom_effect_tooltip = FML_army_reform
+	}
+}
+
+FML_boost_factories = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_factory = 0.05
+		}
+		custom_effect_tooltip = FML_boost_factories
+	}
+}
+
+FML_escaut_plan = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_reinforce_rate = 0.04
+		}
+		add_to_variable = {
+			FML_command_abilities = -0.15
+		}
+		add_to_variable = {
+			FML_max_planning = 0.15
+		}
+		add_to_variable = {
+			FML_max_dig_in = 5
+		}
+		custom_effect_tooltip = FML_escaut_plan
+	}
+}
+
+
+FML_dyle_plan = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_planning_speed = 0.15
+		}
+		add_to_variable = {
+			FML_recon = 0.1
+		}
+		add_to_variable = {
+			FML_dig_in_speed = 0.05
+		}
+		add_to_variable = {
+			FML_army_speed = 0.05
+		}
+		custom_effect_tooltip = FML_dyle
+	}
+}
+
+FML_weygand_doctrine = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_army_org = 0.05
+		}
+		add_to_variable = {
+			FML_planning_speed = 0.15
+		}
+		custom_effect_tooltip = FML_weygand
+	}
+}
+
+
+FML_blue_horizon = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_conscription = 0.003
+		}
+		add_to_variable = {
+			FML_doctrine_cost = -0.4
+		}
+		add_to_variable = {
+			FML_reinforce_rate = 0.01
+		}
+		custom_effect_tooltip = FML_blue_horizon
+	}
+}
+
+FML_motorized_army = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_truck_cost = -0.01
+		}
+		custom_effect_tooltip = FML_motorized_army
+	}
+}
+
+FML_study_panzers = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_armor_speed = 0.04
+		}
+		add_to_variable = {
+			FML_armor_defense = 0.04
+		}
+		add_to_variable = {
+			FML_medium_armor_design = -0.25
+		}
+		custom_effect_tooltip = FML_study_panzer
+	}
+}
+
+FML_coordinated_army = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_military_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FML_org_regain = 0.05
+		}
+		add_to_variable = {
+			FML_initiative = 0.10
+		}
+		add_to_variable = {
+			FML_coordination = 0.05
+		}
+		add_to_variable = {
+			FML_max_planning = 0.05
+		}
+		add_to_variable = {
+			FML_doctrine_cost = -0.05
+		}
+		custom_effect_tooltip = FML_coordinated_army
+	}
+}
+
+
+
+
+
+FPM_inflation_increase = {
+	custom_effect_tooltip = FPM_increase_inflation
+	hidden_effect = {
+		if = {
+			limit = { has_country_flag = FRA_inflation_4 }
+			set_country_flag = FRA_inflation_5
+			clr_country_flag = FRA_inflation_4
+		}
+		else_if = {
+			limit = { has_country_flag = FRA_inflation_3 }
+			set_country_flag = FRA_inflation_4
+			clr_country_flag = FRA_inflation_3
+		}
+		else_if = {
+			limit = { has_country_flag = FRA_inflation_2 }
+			set_country_flag = FRA_inflation_3
+			clr_country_flag = FRA_inflation_2
+		}	
+	
+		else_if = {
+			limit = { has_country_flag = FRA_inflation_1 }
+			set_country_flag = FRA_inflation_2
+			clr_country_flag = FRA_inflation_1
+		}
+	}
+}
+
+FPM_inflation_decrease = {
+	custom_effect_tooltip = FPM_decrease_inflation
+	hidden_effect = {
+		if = {
+			limit = { has_country_flag = FRA_inflation_2 }
+			set_country_flag = FRA_inflation_1
+			clr_country_flag = FRA_inflation_2
+		}
+		else_if = {
+			limit = { has_country_flag = FRA_inflation_3 }
+			set_country_flag = FRA_inflation_2
+			clr_country_flag = FRA_inflation_3
+		}
+		else_if = {
+			limit = { has_country_flag = FRA_inflation_4 }
+			set_country_flag = FRA_inflation_3
+			clr_country_flag = FRA_inflation_4
+		}
+	
+		else_if = {
+			limit = { has_country_flag = FRA_inflation_5 }
+			set_country_flag = FRA_inflation_4
+			clr_country_flag = FRA_inflation_5
+		}
+	}
+}
+
+FPM_econ_increase_1 = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FPM_eco_consumer_goods_factor = -0.02
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_factory = 0.01
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_dockyard = 0.01
+		}
+		custom_effect_tooltip = FPM_fe_p1
+		FRA_remove_bad_economy_effect = yes
+	}
+}
+
+FPM_econ_increase_2 = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FPM_eco_consumer_goods_factor = -0.04
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_factory = 0.02
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_dockyard = 0.02
+		}
+		custom_effect_tooltip = FPM_fe_p2
+		FRA_remove_bad_economy_effect = yes
+	}
+}
+
+FPM_econ_increase_3 = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FPM_eco_consumer_goods_factor = -0.06
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_factory = 0.03
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_dockyard = 0.03
+		}
+		custom_effect_tooltip = FPM_fe_p3
+		FRA_remove_bad_economy_effect = yes
+	}
+}
+
+FPM_econ_increase_4 = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FPM_eco_consumer_goods_factor = -0.08
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_factory = 0.04
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_dockyard = 0.04
+		}
+		custom_effect_tooltip = FPM_fe_p4
+		FRA_remove_bad_economy_effect = yes
+	}
+}
+
+FPM_econ_increase_5 = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FPM_eco_consumer_goods_factor = -0.1
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_factory = 0.05
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_dockyard = 0.05
+		}
+		custom_effect_tooltip = FPM_fe_p5
+		FRA_remove_bad_economy_effect = yes
+	}
+}
+
+FPM_econ_decrease_1 = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FPM_eco_consumer_goods_factor = 0.02
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_factory = -0.01
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_dockyard = -0.01
+		}
+		custom_effect_tooltip = FPM_fe_n1
+	}
+	if = {
+		limit = { 
+			check_variable = {
+					FPM_eco_consumer_goods_factor > 0.59
+			}
+		}
+		FPM_econ_max_cap = yes
+	}
+}
+
+FPM_econ_decrease_2 = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FPM_eco_consumer_goods_factor = 0.04
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_factory = -0.02
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_dockyard = -0.02
+		}
+		custom_effect_tooltip = FPM_fe_n2
+	}
+	if = {
+		limit = { 
+			check_variable = {
+					FPM_eco_consumer_goods_factor > 0.59
+			}
+		}
+		FPM_econ_max_cap = yes
+	}
+}
+
+FPM_econ_decrease_3 = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FPM_eco_consumer_goods_factor = 0.06
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_factory = -0.03
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_dockyard = -0.03
+		}
+		custom_effect_tooltip = FPM_fe_n3
+	}
+	if = {
+		limit = { 
+			check_variable = {
+					FPM_eco_consumer_goods_factor > 0.59
+			}
+		}
+		FPM_econ_max_cap = yes
+	}
+}
+
+FPM_econ_decrease_4 = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FPM_eco_consumer_goods_factor = 0.08
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_factory = -0.04
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_dockyard = -0.04
+		}
+		custom_effect_tooltip = FPM_fe_n4
+	}
+	if = {
+		limit = { 
+			check_variable = {
+					FPM_eco_consumer_goods_factor > 0.59
+			}
+		}
+		FPM_econ_max_cap = yes
+	}
+}
+
+FPM_econ_decrease_5 = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+		}
+		add_to_variable = {
+			FPM_eco_consumer_goods_factor = 0.1 
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_factory = -0.05
+		}
+		add_to_variable = {
+			FPM_eco_industrial_capacity_dockyard = -0.05
+		}
+		if = {
+			limit = { 
+				check_variable = {
+						FPM_eco_consumer_goods_factor > 0.59
+				}
+			}
+			FPM_econ_max_cap = yes
+		}
+		custom_effect_tooltip = FPM_fe_n5
+	}
+}
+
+FPM_econ_max_cap = {
+		set_variable = {
+			FPM_eco_consumer_goods_factor = 0.6
+		}
+		set_variable = {
+			FPM_eco_industrial_capacity_factory = -0.6
+		}
+		set_variable = {
+			FPM_eco_industrial_capacity_dockyard = -0.6
+		}
+}
+
+FPM_right_wing_riot_effect = {
+	if = {
+		limit = {
+			has_country_flag = FPM_political_violence
+		}
+		country_event = lar_france_political_violence.1
+	}
+}
+
+FPM_communism_riot_effect = {
+	if = {
+		limit = {
+			has_country_flag = FPM_political_violence
+		}
+		country_event = lar_france_political_violence.2
+	}
+}
+
+FPM_remove_coalition_effect = {
+	if = {
+		limit = {
+			has_idea = FPM_the_popular_front_1
+		}
+		remove_ideas = FPM_the_popular_front_1
+	}
+	else_if = {
+		limit = {
+			has_idea = FPM_the_popular_front_2
+		}
+		remove_ideas = FPM_the_popular_front_2
+	}
+	else_if = {
+		limit = {
+			has_idea = FPM_the_popular_front_3
+		}
+		remove_ideas = FPM_the_popular_front_3
+	}
+	else_if = {
+		limit = {
+			has_idea = FPM_the_popular_front_4
+		}
+		remove_ideas = FPM_the_popular_front_4
+	}
+	else_if = {
+		limit = {
+			has_idea = FPM_the_popular_front_5
+		}
+		remove_ideas = FPM_the_popular_front_5
+	}
+	else_if = {
+		limit = {
+			has_idea = FPM_national_unity_government_1
+		}
+		remove_ideas = FPM_national_unity_government_1
+	}
+	else_if = {
+		limit = {
+			has_idea = FPM_national_unity_government_2
+		}
+		remove_ideas = FPM_national_unity_government_2
+	}
+	else_if = {
+		limit = {
+			has_idea = FPM_the_national_bloc_1
+		}
+		remove_ideas = FPM_the_national_bloc_1
+	}
+	else_if = {
+		limit = {
+			has_idea = FPM_the_national_bloc_2
+		}
+		remove_ideas = FPM_the_national_bloc_2
+	}
+	else = {
+		add_political_power = 50
+	}
+}
+
+FPM_upgrade_manpower_law = {
+	if = {
+		limit = { has_idea = disarmed_nation }
+		add_ideas = volunteer_only
+	}
+	else_if = {
+		limit = { has_idea = volunteer_only }
+		add_ideas = limited_conscription
+	}
+	else_if = {
+		limit = { has_idea = limited_conscription }
+		add_ideas = extensive_conscription
+	}
+	else_if = {
+		limit = { has_idea = extensive_conscription }
+		add_ideas = service_by_requirement
+	}
+	else_if = {
+		limit = { has_idea = service_by_requirement }
+		add_ideas = all_adults_serve
+	}
+	else_if = {
+		limit = { has_idea = all_adults_serve }
+		add_ideas = scraping_the_barrel
+	}
+	else = {
+		add_political_power = 150
+	}
+}
+
+# FPM_remove_france_ideas = {
+# 	custom_effect_tooltip = FPM_remove_france_ideas_tt
+# 	hidden_effect = {
+# 		remove_ideas = FRA_full_employment
+# 		remove_ideas = FRA_worker_shortage
+# 		remove_ideas = FRA_political_violence
+# 		remove_ideas = FRA_devalue_the_franc
+# 		remove_ideas = FRA_global_investments
+# 		remove_ideas = FRA_dirigisme
+# 		remove_ideas = FRA_expanded_citizenship
+# 		remove_ideas = FRA_france_undividable
+# 		remove_ideas = FRA_agricultural_protectionism
+# 		remove_ideas = FRA_entrepeneurship
+# 		remove_ideas = FRA_market_dynamism
+# 		remove_ideas = FRA_firepower
+# 		remove_ideas = FRA_air_dominance
+# 		remove_ideas = FRA_flying_artillery
+# 		remove_ideas = FRA_victors_of_wwi
+# 		remove_ideas = FRA_disjointed_government
+# 		remove_ideas = FPM_disjointed_government
+# 		remove_ideas = FPM_union_sacree
+# 		remove_ideas = FRA_protected_by_the_maginot_line
+# 		remove_ideas = FRA_infantry_focus
+# 		remove_ideas = FRA_fortification_focus
+# 		remove_ideas = FRA_motorized_focus
+# 		remove_ideas = FRA_national_mobilization_focus
+# 		remove_ideas = FRA_strengthen_government_support_focus
+# 		remove_ideas = FRA_army_of_aggression_focus
+# 		remove_ideas = FRA_factory_strikes
+# 		remove_ideas = FRA_matignon_agreements
+# 		remove_ideas = FRA_communism_banned
+# 		remove_ideas = FRA_they_shall_not_pass
+# 		remove_ideas = FRA_de_gaulle
+# 		remove_ideas = FRA_colonies
+# 		remove_ideas = FRA_foreign
+# 		remove_ideas = FRA_D2
+# 		remove_ideas = FRA_lighttank
+# 		remove_ideas = FRA_defense
+# 		remove_ideas = FRA_Dyle
+# 		remove_ideas = FRA_groupes_franc_sent
+# 		remove_ideas = FRA_army_coordination
+# 		remove_ideas = FRA_modernize_the_air_army
+# 		remove_ideas = FPM_the_popular_front_1
+# 		remove_ideas = FPM_the_popular_front_2
+# 		remove_ideas = FPM_the_popular_front_3
+# 		remove_ideas = FPM_the_popular_front_4
+# 		remove_ideas = FPM_the_popular_front_5
+# 		remove_ideas = FPM_national_unity_government_1
+# 		remove_ideas = FPM_national_unity_government_2
+# 		remove_ideas = FPM_the_national_bloc_1
+# 		remove_ideas = FPM_the_national_bloc_2
+# 		remove_ideas = FPM_union_concessions
+# 		remove_ideas = FPM_legal_equality
+# 		remove_ideas = FPM_inflation_1
+# 		remove_ideas = FPM_inflation_2
+# 		remove_ideas = FPM_inflation_3
+# 		remove_ideas = FPM_inflation_4
+# 		remove_ideas = FPM_inflation_5
+# 		remove_ideas = FPM_devalue_the_franc
+# 		remove_ideas = FPM_business_cartels
+# 		remove_ideas = FPM_integrated_business_cartels
+# 		remove_ideas = FPM_anglo_french_war_council
+# 		remove_ideas = FPM_preemptive_strike_ger
+# 		remove_ideas = FPM_preemptive_strike_sov
+# 		remove_ideas = FPM_meager_protections
+# 		remove_ideas = FRA_the_young_school
+# 		remove_ideas = special_forces
+# 		remove_ideas = MTG_naval_treaty_adherent
+# 		remove_ideas = MTG_naval_treaty_adherent_reduced
+# 		remove_ideas = MTG_naval_treaty_cheating
+# 		remove_ideas = MTG_naval_treaty_cheating_reduced
+# 	}
+# }
+
+FML_improve_airforce = {
+	if = {
+		limit = { has_idea = FML_disorganized_air_force_1}
+		swap_ideas = {
+			add_idea = FML_disorganized_air_force_2
+			remove_idea = FML_disorganized_air_force_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = FML_disorganized_air_force_2 }
+		swap_ideas = {
+			add_idea = FML_disorganized_air_force_3
+			remove_idea = FML_disorganized_air_force_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = FML_disorganized_air_force_3 }
+		swap_ideas = {
+			add_idea = FML_disorganized_air_force_4
+			remove_idea = FML_disorganized_air_force_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = FML_disorganized_air_force_4 }
+		swap_ideas = {
+			add_idea = FML_disorganized_air_force_5
+			remove_idea = FML_disorganized_air_force_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = FML_disorganized_air_force_5 }
+		swap_ideas = {
+			add_idea = FML_disorganized_air_force_6
+			remove_idea = FML_disorganized_air_force_5
+		}
+	}
+	else = {
+		remove_ideas = FML_disorganized_air_force_6
+	}
+}
+
+FML_remove_bad_airforce = {
+	if = {
+		limit = { has_idea = FML_disorganized_air_force_1}
+		remove_ideas = FML_disorganized_air_force_1
+	}
+	else_if = {
+		limit = { has_idea = FML_disorganized_air_force_2 }
+		remove_ideas = FML_disorganized_air_force_2
+
+	}
+	else_if = {
+		limit = { has_idea = FML_disorganized_air_force_3 }
+		remove_ideas = FML_disorganized_air_force_3
+	}
+
+	else_if = {
+		limit = { has_idea = FML_disorganized_air_force_4 }
+		remove_ideas = FML_disorganized_air_force_4
+	}
+
+	else_if = {
+		limit = { has_idea = FML_disorganized_air_force_5 }
+		remove_ideas = FML_disorganized_air_force_5
+	}
+
+	else_if = {
+		limit = { has_idea = FML_disorganized_air_force_6 }
+		remove_ideas = FML_disorganized_air_force_6
+	}
+	add_ideas = FRA_modernize_the_air_army
+}
+
+FPM_add_orle_strength = {
+	add_to_variable = {
+		var = ORLE_strength
+		value = 5
+	}
+	custom_effect_tooltip = ORLE_strength_add_5
+}
+FPM_add_legi_strength = {
+	add_to_variable = {
+		var = legi_strength
+		value = 5
+	}
+	custom_effect_tooltip = LEGI_strength_add_5
+}
+FPM_add_bona_strength = {
+	add_to_variable = {
+		var = bona_strength
+		value = 5
+	}
+	custom_effect_tooltip = BONA_strength_add_5
+}
+
+FPM_congress_of_paris_italian_claims_setup_effect = {
+	add_state_claim = 452
+	add_state_claim = 447
+	add_state_claim = 446
+	add_state_claim = 907
+	add_state_claim = 457
+	add_state_claim = 456
+	add_state_claim = 551
+	add_state_claim = 883
+	add_state_claim = 887
+	add_state_claim = 886
+	add_state_claim = 885
+	add_state_claim = 884
+	add_state_claim = 549
+	add_state_claim = 269
+	add_state_claim = 903
+	add_state_claim = 905
+	add_state_claim = 904
+	add_state_claim = 547
+	add_state_claim = 548
+	add_state_claim = 546
+}
+
+FPM_congress_of_paris_portugese_claims_setup_effect = {
+	add_state_claim = 295
+	add_state_claim = 888
+	add_state_claim = 889
+	add_state_claim = 771
+	add_state_claim = 770
+	add_state_claim = 545
+	add_state_claim = 542
+	add_state_claim = 541
+	add_state_claim = 893
+	add_state_claim = 894
+	add_state_claim = 895
+	add_state_claim = 681
+	add_state_claim = 275
+	add_state_claim = 719
+	add_state_claim = 981
+}
+
+FRA_mobilize_railway_guns = {
+	custom_effect_tooltip = ITA_mobilize_railway_guns_tt
+	hidden_effect = {
+		create_railway_gun = {
+			equipment = railway_gun_equipment_1
+			name = "Ier groupe/371e RALVF"
+		}
+		create_railway_gun = {
+			equipment = railway_gun_equipment_1
+			name = "2ème groupe/371e RALVF"
+		}
+		create_railway_gun = {
+			equipment = railway_gun_equipment_1
+			name = "3ème groupe/371e RALVF"
+		}
+		create_railway_gun = {
+			equipment = railway_gun_equipment_1
+			name = "Ier groupe/372e RALVF"
+		}
+	}
+}
+
+FRA_revolution_in_europe = {
+	custom_effect_tooltip = FRA_revolution_europe_tt
+	every_country_with_original_tag = {
+   			 original_tag_to_check = ENG
+		create_wargoal = {
+    			type = puppet_wargoal_focus
+    			target = FRA
+		}
+		declare_war_on = {
+   			 target = FRA
+    			type = puppet_wargoal_focus
+		}
+	}
+}
+
+
+# FRA_stout_defender_add_effect = {
+# 	if = {
+# 		limit = {
+# 			NOT = {
+# 				OR = {
+# 					has_completed_focus = FRA_aggressive_focus
+# 					has_completed_focus = FRA_wargames
+# 					has_completed_focus = FRA_defensive_strategems
+# 				}
+# 			}
+# 		}
+# 		hidden_effect = {
+# 			add_country_leader_trait = stout_defender
+# 		}
+# 	}
+# }
+
+FRA_remove_bad_economy_effect = {
+	if = {
+		limit = {
+			has_dynamic_modifier = {
+				modifier = FRA_economy_dynamic_modifier
+			}
+			OR = {
+				check_variable = {
+					FPM_eco_consumer_goods_factor = 0
+				}
+				check_variable = {
+					FPM_eco_consumer_goods_factor < 0
+				}
+			}
+		}
+		country_event = francepm.23
+	}
+}
