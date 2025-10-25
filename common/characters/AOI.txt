@@ -1,0 +1,398 @@
+characters = {
+
+	# AMEDEO UMBERTO ISABELLA LUIGI FILIPPO MARIA GIUSEPPE GIOVANNI DI SAVOIA-AOSTA
+	AOI_prince_amedeo = { 
+		name = AOI_prince_amedeo
+		portraits = {
+			civilian = {
+				large = GFX_portrait_AOI_amedeo_di_savoia_aosta
+				small = GFX_portrait_AOI_amedeo_di_savoia_aosta_small
+			}
+		}
+
+		country_leader = {
+			ideology = despotism
+			traits = { duke_of_aosta viceroy_of_aoi }
+			expire = "1965.1.1.1"
+			id = -1
+
+		}
+
+		field_marshal = {
+			traits = { politically_connected inflexible_strategist }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = -1
+			visible = {
+			NOT = {has_global_flag = AOI_amedeo_surrenders}
+				OR = {
+					has_government = fascism
+					has_government = neutrality
+				}
+			}
+		}
+	}
+
+	# ENRICO CERULLI
+	AOI_enrico_cerulli = {
+		name = AOI_enrico_cerulli
+		portraits = {
+			army = {
+				small = GFX_portrait_AOI_enrico_cerulli_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AOI_enrico_cerulli
+			allowed  = { 
+				original_tag  = AOI
+			}
+			traits  = {
+				scholar_of_ethiopian_and_somali_studies
+			}
+			available = {
+				NOT = {
+					has_government = communism
+				}
+			}
+			ai_will_do = {
+				factor = 1.000
+			}			
+		}
+	}
+
+
+	# GUGLIELMO NASI
+	AOI_guglielmo_nasi = {
+		name = AOI_guglielmo_nasi
+		portraits = {
+			army = {
+				large = GFX_portrait_AOI_gugliemo_nasi
+				small = GFX_idea_AOI_guglielmo_nasi_small
+			}
+		}
+
+		corps_commander = {
+			traits = { brilliant_strategist irregulars_officer }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = -1
+
+			visible = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+	}
+
+	# RUGGERO SANTINI
+	AOI_ruggero_santini = {
+		name = AOI_ruggero_santini
+		portraits = {
+			army = {
+				large = GFX_Portrait_Italy_Generic_land_7
+				small = GFX_idea_ITA_generic_land_7
+			}
+		}
+
+		corps_commander = {
+			traits = { trait_mountaineer hill_fighter adaptable }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			legacy_id = -1
+
+			visible = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+	}
+
+	# VINCENZO DE FEO
+	AOI_vincenzo_de_feo = {
+		name = AOI_vincenzo_de_feo
+		portraits = {
+			army = {
+				large = GFX_portrait_de_feo
+				small = "GFX_idea_ITA_generic_navy_3"
+			}
+		}
+
+		navy_leader = {
+			traits = { spotter }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			maneuvering_skill = 1
+			coordination_skill = 1
+			legacy_id = -1
+		}
+	}
+	
+	AOI_abuna_abraham  = {
+		name = ETH_abuna_abraham
+
+		portraits = {
+			army = {
+				small = GFX_portrait_ETH_abuna_abraham_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 100
+			idea_token = AOI_abuna_abraham
+			allowed  = {
+				original_tag = AOI
+			}
+			available = {
+			has_completed_focus = AOI_replace_abuna
+			}
+			traits  = {
+				collaborationist_arch_bishop
+			}
+
+		}
+	}
+	AOI_seyoum_mengesha = {
+		name = ETH_seyoum_mengesha
+
+		portraits = {
+			army = {
+				large = GFX_portrait_ETH_seyoum_mengesha
+				small = GFX_portrait_ETH_seyoum_mengesha_small
+			}
+		}
+		corps_commander = {
+			visible = {
+			#has_character = ETH_seyoum_mengesha
+			has_country_flag = AOI_mengesha_on_our_side
+			}
+			traits = { old_guard }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 1
+			legacy_id = -1
+			}
+		advisor = {
+			visible = {
+			#has_character = ETH_seyoum_mengesha
+			has_country_flag = AOI_mengesha_on_our_side
+			}
+			slot = high_command
+			ledger = army
+			idea_token = AOI_seyoum_mengesha
+			allowed = {
+				original_tag = AOI
+			}
+			available = {
+			}
+			traits = {
+				army_regrouping_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+AOI_abba_jofir_advisor = {
+		name = ETH_abba_jofir
+		portraits = {
+			civilian = {
+				large = GFX_portrait_ETH_abba_jofir
+			}
+			army = {
+				small = GFX_portrait_ETH_abba_jofir_small
+			}
+		}
+			advisor = {
+				slot = political_advisor
+				idea_token = AOI_abba_jofir_advisor
+				allowed  = {
+					original_tag  = AOI
+				}
+				available = {
+				NOT = {has_government = communism} }
+				traits = {
+					inexperienced_sultan_2
+				}
+			visible = {
+			has_completed_focus = AOI_give_warlords_more_rights
+
+			OR = {
+			has_country_flag = AOI_tekle
+			has_country_flag = AOI_gugsa}
+			}
+
+		}
+	}
+AOI_haile_selassie_gugsa_advisor = {
+			name = ETH_haile_selassie_gugsa
+			portraits = {
+				civilian = {
+					large = GFX_portrait_ETH_haile_selassie_gugsa
+				}
+				army = {
+					large = GFX_portrait_ETH_haile_selassie_gugsa
+					small = GFX_portrait_ETH_haile_selassie_gugsa_small
+				}
+			}
+
+			advisor = {
+				slot = political_advisor
+				idea_token = AOI_haile_selassie_gugsa_advisor
+				allowed  = {
+					original_tag  = AOI
+				}
+				available = {
+				NOT = {has_government = communism} }
+				traits = {
+					crowned_adder_2
+				}
+				cost = 100
+			visible = {
+			has_completed_focus = AOI_give_warlords_more_rights
+			OR = {
+			has_country_flag = AOI_jofir
+			has_country_flag = AOI_tekle}
+			}
+
+		}
+
+	}
+AOI_tekle_haimanon_advisor = {
+		name = ETH_hailu_tekle_haymanot
+		portraits = {
+			civilian = {
+				large = GFX_portrait_ETH_hailu_tekle_haymanot
+			}
+			army = {
+				large = GFX_portrait_ETH_hailu_tekle_haymanot
+				small = GFX_portrait_ETH_hailu_tekle_hayamot_small
+			}
+		}
+			advisor = {
+				slot = political_advisor
+				idea_token = AOI_tekle_haimanon_advisor
+				allowed  = {
+					original_tag  = AOI
+				}
+				available = {
+				NOT = {has_government = communism} }
+				traits = {
+					tainted_ras_2
+				}
+				cost = 100
+			visible = {
+			has_completed_focus = AOI_give_warlords_more_rights
+
+			OR = {
+			has_country_flag = AOI_jofir
+			has_country_flag = AOI_gugsa}
+			}
+
+		}
+
+	}
+	
+AOI_alessandro_lessona = {
+		name = AOI_alessandro_lessona
+		portraits = {
+
+			army = {
+				small = GFX_idea_lessona
+			}
+		}
+			advisor = {
+				slot = political_advisor
+				idea_token = AOI_alessandro_lessona
+				allowed  = {
+					original_tag  = AOI
+				}
+				available = {
+				is_puppet = yes
+				OR = {
+				has_government = fascism
+				has_government = neutrality
+				}
+				NOT = {
+				has_idea = AOI_attilio_teruzzi
+				}
+				#any_other_country = {
+				#has_idea = AOI_alessandro_lessona
+				#NOT = {has_war_with = ROOT}
+				#}
+				}
+				
+				traits = {
+					minister_of_colonies_lessona
+				}
+				cost = 150
+
+		}
+
+	}
+AOI_attilio_teruzzi = {
+		name = AOI_attilio_teruzzi
+		portraits = {
+
+			army = {
+				small = GFX_idea_teruzzi
+			}
+		}
+			advisor = {
+				slot = political_advisor
+				idea_token = AOI_attilio_teruzzi
+				allowed  = {
+					original_tag  = AOI
+				}
+				available = {
+				is_puppet = yes
+				OR = {
+				has_government = fascism
+				has_government = neutrality
+				}
+				NOT = {
+				has_idea = AOI_alessandro_lessona
+				}
+				#any_other_country = {
+				#has_idea = AOI_attilio_teruzzi
+				#NOT = {has_war_with = ROOT}
+				#}
+				}
+				
+				traits = {
+					minister_of_colonies_teruzzi
+				}
+				cost = 150
+
+		}
+
+	}
+
+	AOI_balcho_safo = {
+		name = ETH_balcho_safo
+		allowed_civil_war = {	
+		}
+		portraits = {
+			army = {
+				large=GFX_portrait_ETH_balcha_safo
+				small=GFX_portrait_ETH_balcha_safo_small
+			}
+		}
+	}
+}
+

@@ -248,8 +248,9 @@ focus_tree = {
 	focus = {
 		id = gram_focus_alb_renounce_the_treaty_of_tirana
 		icon = GFX_focus_renounce_the_treaty_of_trianon
-		x = 1
-		y = 4
+		x = 4
+		y = 7
+
 		cost = 20
 		search_filters = {
 			FOCUS_FILTER_POLITICAL 
@@ -282,11 +283,13 @@ focus_tree = {
 			}
 		}
 		prerequisite = { 
-			focus = gram_focus_alb_stabilize_the_nation
-			focus = gram_focus_alb_arming_the_nation
+			focus = gram_focus_alb_make_a_deal_with_workers
+		}
+		mutually_exclusive = {
+			focus = gram_focus_alb_italo_albanian_treaty_of_friendship
 		}
 		ai_will_do = { 
-			factor = 60
+			factor = 10
 		}
 		completion_reward = {
 			hidden_effect = { #There is no need to check for all of this but hey why not
@@ -423,6 +426,9 @@ focus_tree = {
 		ai_will_do = { 
 			factor = 90 
 		}
+		mutually_exclusive = {
+			focus = gram_focus_alb_renounce_the_treaty_of_tirana
+		}
 		available = {
 			has_government = neutrality
 			is_subject = no
@@ -449,6 +455,7 @@ focus_tree = {
 				}
 			}
 		}
+
 		completion_reward = {
 
      	    add_ideas = war_economy
@@ -619,7 +626,7 @@ focus_tree = {
 	focus = {
 		id = gram_focus_alb_dark_day_for_our_nation
 		icon = GFX_focus_generic_conspiracy
-		x = 5
+		x = 6
 		y = 6
 		cost = 5
 		search_filters = {
@@ -2285,7 +2292,7 @@ focus_tree = {
 	focus = {
 		id = gram_focus_alb_freedom_of_religion
 		icon = GFX_focus_generic_self_management
-		x = 12
+		x = 11
 		y = 22
 		cost = 5
 		search_filters = {
@@ -3584,7 +3591,7 @@ focus_tree = {
 			hidden_effect = {
 				start_civil_war = {
 					ideology = ROOT
-					size = 0.35
+					size = 0.25
 				}
 
 				country_event = {
@@ -7118,7 +7125,7 @@ focus_tree = {
 	focus = {
 		id = gram_focus_alb_balkan_expansion_plans
 		icon = GFX_focus_ger_great_red_menace
-		x = 18
+		x = 19
 		y = 22
 		cost = 10
 		prerequisite = { 

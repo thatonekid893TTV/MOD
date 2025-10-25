@@ -2730,22 +2730,23 @@ form_roman_empire_category = {
 
 		allowed = {
 			OR = {
-				original_tag = ITA
-				original_tag = GRE
-				original_tag = ENG
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
 		available = {
-
-
 			is_subject = no
 			custom_trigger_tooltip = {
 				tooltip = form_country_albania_required_states_tt
 				# Albania
 				controls_state = 44
-				controls_state = 805
 				controls_state = 934
+				controls_state = 805
 			}
 			# Yugoslavia
 			custom_trigger_tooltip = {
@@ -2884,26 +2885,48 @@ form_roman_empire_category = {
 		}
 
 		visible = {
-			OR = { 
-				AND = {
-					OR = {
-						original_tag = ITA
-					}
+			OR = {
+			AND = {
+			original_tag = ITA
+			ITA = {
+				OR = {
+					has_completed_focus = ITA_mare_nostrum_bba
+					has_completed_focus = ITA_the_catholic_dominion
 				}
-				AND = {
-					original_tag = GRE
-					has_completed_focus = GRE_realise_federation_neo_roman_empire
-				}
+			}			
+			}
+			AND = {
+			original_tag = LBA
+			has_completed_focus = LBA_restoration_of_rome
+			}
 			}
 			NOT = { has_global_flag = form_roman_empire_flag }
-
 		}
 
 		complete_effect = {
+		
+		custom_effect_tooltip = ITA_no_more_bop_tt
+		
+			if = {
+			limit = {
+			AND = {
+			original_tag = ITA
+			NOT = {has_cosmetic_tag = ITA_massimo_kingdom}
+			}
+			}
 			set_cosmetic_tag = SPQR_UNIFIED
+			}
+			
+			if = {
+			limit = {
+			NOT = {has_cosmetic_tag = ITA_massimo_kingdom}
+			has_country_leader = { ruling_only = yes character = ITA_leone_massimo }
+			}
+			set_cosmetic_tag = ITA_massimo_kingdom
+			}
+			
 			custom_effect_tooltip = form_spqr_core_mare_nostrum_states_tt
  			hidden_effect = {
-		934 = { add_core_of = ROOT }
  				1 = { add_core_of = ROOT }
  				735 = { add_core_of = ROOT }
  				851 = { add_core_of = ROOT }
@@ -2958,29 +2981,25 @@ form_roman_empire_category = {
  				185 = { add_core_of = ROOT }
  				805 = { add_core_of = ROOT }
  				44 = { add_core_of = ROOT }
+ 				934 = { add_core_of = ROOT }
  				105 = { add_core_of = ROOT }
  				103 = { add_core_of = ROOT }
  				163 = { add_core_of = ROOT }
  				804 = { add_core_of = ROOT }
  				104 = { add_core_of = ROOT }
  				853 = { add_core_of = ROOT }
-
  			}
 			
 			
 			hidden_effect = {
-			set_capital = { state = 2 }
-			every_state = {
-				limit = {
-					is_core_of = ITA
-				}
-				add_core_of = ROOT
-			}
 				news_event = { id = wtt_news.64 hours = 6 }
 				set_global_flag = form_roman_empire_flag
 				if = {
 					limit = {
+						AND = {
+						tag = ITA
 						has_country_leader = { ruling_only = yes character = ITA_benito_mussolini }
+						}
 					}
 					ITA_benito_mussolini = {
 						set_character_name = {
@@ -3067,9 +3086,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -3100,9 +3123,9 @@ form_roman_empire_category = {
 		}
 
 		visible = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
 			}
 			NOT = { has_global_flag = reclaim_hispania_flag }
 			has_global_flag = form_roman_empire_flag
@@ -3197,9 +3220,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -3215,9 +3242,9 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
 			}
 			NOT = { has_global_flag = reclaim_dacia_flag }
 			has_global_flag = form_roman_empire_flag
@@ -3269,9 +3296,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -3280,6 +3311,8 @@ form_roman_empire_category = {
 			controls_state = 766 #Southern Bessarabia
 
 			controls_state = 46 #Muntenia
+
+			controls_state = 971 #Constanta
 
 			controls_state = 77 #Dobrudja
 
@@ -3294,6 +3327,8 @@ form_roman_empire_category = {
 			controls_state = 803 #Southern Serbia
 
 			controls_state = 106 #Macedonia
+
+			controls_state = 970 #Debar
  
 			controls_state = 802 #Kosovo
 
@@ -3305,9 +3340,9 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
 			}
 			NOT = { has_global_flag = reclaim_moesia_flag }
 			has_global_flag = form_roman_empire_flag
@@ -3320,6 +3355,9 @@ form_roman_empire_category = {
 
 			# Muntenia
 			46 = { add_core_of = ROOT }
+
+			# Constanta
+			971 = { add_core_of = ROOT }
 
 			# Dobrudja
 			77 = { add_core_of = ROOT }
@@ -3342,6 +3380,9 @@ form_roman_empire_category = {
 			# Macedonia
 			106 = { add_core_of = ROOT }
 
+			# Debar
+			970 = { add_core_of = ROOT }
+
 			# Kosovo
 			802 = { add_core_of = ROOT }
 
@@ -3350,9 +3391,6 @@ form_roman_empire_category = {
 
 			# Serbia
 			107 = { add_core_of = ROOT }
-
-
-
 			
 			add_stability = -0.05
 			 
@@ -3377,9 +3415,13 @@ form_roman_empire_category = {
 		cost = 75
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -3392,11 +3434,10 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
-			}
-			NOT = { has_global_flag = reclaim_aegyptus_flag }
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}			NOT = { has_global_flag = reclaim_aegyptus_flag }
 			has_global_flag = form_roman_empire_flag
 		}
 
@@ -3436,9 +3477,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -3450,15 +3495,16 @@ form_roman_empire_category = {
 			controls_state = 676 #Mosul
 			controls_state = 680 #Deir-az-Zur
 			controls_state = 350 #Diyarbakir
+			controls_state = 1010 #Al-Anbar
+			controls_state = 1011 #Al-Basrah
 
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
-			}
-			NOT = { has_global_flag = restore_mesopotamia_flag }
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}			NOT = { has_global_flag = restore_mesopotamia_flag }
 			has_global_flag = form_roman_empire_flag
 		}
 
@@ -3482,6 +3528,12 @@ form_roman_empire_category = {
 
 			# Diyarbakir
 			350 = { add_core_of = ROOT }
+
+			# Al Anbar
+			1010 = { add_core_of = ROOT }
+
+			# Al Basrah
+			1011 = { add_core_of = ROOT }
 			
 			
 			add_stability = -0.05
@@ -3507,9 +3559,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -3529,12 +3585,11 @@ form_roman_empire_category = {
 
 		}
 
-		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
-			}
-			NOT = { has_global_flag = reconquer_cappadocia_flag }
+		visible = {
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}			NOT = { has_global_flag = reconquer_cappadocia_flag }
 			has_global_flag = form_roman_empire_flag
 		}
 
@@ -3595,9 +3650,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -3612,11 +3671,10 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
-			}
-			NOT = { has_global_flag = integrate_armenia_flag }
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}			NOT = { has_global_flag = integrate_armenia_flag }
 			has_global_flag = form_roman_empire_flag
 		}
 
@@ -3659,9 +3717,13 @@ form_roman_empire_category = {
 		cost = 75
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -3676,11 +3738,10 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
-			}
-			NOT = { has_global_flag = integrate_petra_flag }
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}			NOT = { has_global_flag = integrate_petra_flag }
 			has_global_flag = form_roman_empire_flag
 		}
 
@@ -3723,9 +3784,13 @@ form_roman_empire_category = {
 		cost = 75
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -3739,11 +3804,10 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
-			}
-			NOT = { has_global_flag = integrate_mauretania_flag }
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}			NOT = { has_global_flag = integrate_mauretania_flag }
 			has_global_flag = form_roman_empire_flag
 		}
 
@@ -3786,15 +3850,21 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
 		available = {
 			
 			controls_state = 43 #Northern Hungary
+			controls_state = 973 #Bacs
+			controls_state = 974 #Southern Transdanubia
 			controls_state = 154 #Alföld
 			controls_state = 155 #Transdanubia
 			controls_state = 45 #Vojvodina
@@ -3804,11 +3874,10 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
-			}
-			NOT = { has_global_flag = integrate_pannonia_flag }
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}			NOT = { has_global_flag = integrate_pannonia_flag }
 			has_global_flag = form_roman_empire_flag
 		}
 
@@ -3821,8 +3890,14 @@ form_roman_empire_category = {
 			# Alföld
 			154 = { add_core_of = ROOT }
 
+			# Bacs
+			973 = { add_core_of = ROOT }
+
 			# Transdanubia
 			155 = { add_core_of = ROOT }
+
+			# South Transdanubia
+			974 = { add_core_of = ROOT }
 
 			# Vojvodina
 			45 = { add_core_of = ROOT }
@@ -3857,9 +3932,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -3869,6 +3948,8 @@ form_roman_empire_category = {
 			controls_state = 152 #Upper Austria
 			controls_state = 153 #Tyrol
 			controls_state = 848 #Vorarlberg
+			controls_state = 975 #Burgenland
+			controls_state = 976 #Steirmark Kärten
 			controls_state = 151 #Eastern Swiss Alps
 			controls_state = 846 #Ticino
 			controls_state = 847 #Western Swiss Alps
@@ -3878,11 +3959,10 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
-			}
-			NOT = { has_global_flag = integrate_alps_flag }
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}			NOT = { has_global_flag = integrate_alps_flag }
 			has_global_flag = form_roman_empire_flag
 		}
 
@@ -3900,6 +3980,12 @@ form_roman_empire_category = {
 			
 			# Vorarlberg
 			848 = { add_core_of = ROOT }
+
+			#Burgenland
+			975 = { add_core_of = ROOT }
+
+			#Steirmark Kärten
+			976 = { add_core_of = ROOT }
 
 			# Eastern Swiss Alps
 			151 = { add_core_of = ROOT }
@@ -3940,9 +4026,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -3970,11 +4060,10 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
-			}
-			NOT = { has_global_flag = integrate_gaul_flag }
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}			NOT = { has_global_flag = integrate_gaul_flag }
 			has_global_flag = form_roman_empire_flag
 		}
 
@@ -4059,9 +4148,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -4070,6 +4163,8 @@ form_roman_empire_category = {
 			controls_state = 35 #Brabant
 			controls_state = 6 #Vlaanderen
 			controls_state = 34 #Wallonia
+			controls_state = 977 #Antwerpen
+			controls_state = 980 #Ardennes
 			controls_state = 8 #Luxembourg
 			controls_state = 29 #Nord-Pas-De-Calais
 			
@@ -4077,11 +4172,10 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
-			}
-			NOT = { has_global_flag = integrate_belgica_flag }
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}			NOT = { has_global_flag = integrate_belgica_flag }
 			has_global_flag = form_roman_empire_flag
 		}
 
@@ -4096,6 +4190,12 @@ form_roman_empire_category = {
 
 			# Wallonia
 			34 = { add_core_of = ROOT }
+
+			# Antwerpen
+			977 = { add_core_of = ROOT }
+
+			# Ardennes
+			980 = { add_core_of = ROOT }
 
 			# Luxembourg
 			8 = { add_core_of = ROOT }
@@ -4127,9 +4227,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -4142,9 +4246,9 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
 			}
 			NOT = { has_global_flag = occupy_iberia_flag }
 			has_global_flag = form_roman_empire_flag
@@ -4186,9 +4290,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -4205,13 +4313,15 @@ form_roman_empire_category = {
 			controls_state = 132 #Lancashire
 			controls_state = 130 #Yorkshire
 			controls_state = 131 #Nothern England
+			controls_state = 931 #Cumbria
+			controls_state = 932 #Mann
 
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
 			}
 			NOT = { has_global_flag = return_to_britannia_flag }
 			has_global_flag = form_roman_empire_flag
@@ -4252,6 +4362,12 @@ form_roman_empire_category = {
 
 			# Nothern England
 			131 = { add_core_of = ROOT }
+
+			# Cumbria
+			931 = { add_core_of = ROOT } 
+
+			# Mann
+			932 = { add_core_of = ROOT }
 			
 			
 			add_stability = -0.05
@@ -4277,9 +4393,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -4293,9 +4413,9 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
 			}
 			NOT = { has_global_flag = conquer_hibernia_flag }
 			has_global_flag = form_roman_empire_flag
@@ -4340,9 +4460,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -4356,10 +4480,11 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
 			}
+			
 			NOT = { has_global_flag = conquer_caledonia_flag }
 			has_global_flag = form_roman_empire_flag
 		}
@@ -4403,9 +4528,13 @@ form_roman_empire_category = {
 		cost = 100
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -4420,16 +4549,18 @@ form_roman_empire_category = {
 			controls_state = 55 #Hessen
 			controls_state = 54 #Franken
 			controls_state = 50 #Wurtemberg
+			controls_state = 978 #Baden
 			controls_state = 52 #Oberbayern
 			controls_state = 53 #Niederbayern
 
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
 			}
+			
 			NOT = { has_global_flag = avenge_teutoberg_flag }
 			has_global_flag = form_roman_empire_flag
 		}
@@ -4463,6 +4594,9 @@ form_roman_empire_category = {
 
 			# Wurtemberg
 			50 = { add_core_of = ROOT }
+
+			# Baden
+			978 = { add_core_of = ROOT }
  
 			# Oberbayern
 			52 = { add_core_of = ROOT }
@@ -4494,9 +4628,13 @@ form_roman_empire_category = {
 		cost = 120
 
 		allowed = {
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "By Blood Alone"
 			}
 		}
 
@@ -4524,17 +4662,17 @@ form_roman_empire_category = {
 		}
 
 		visible = { 
-		    OR = {
-			   original_tag = ITA
-			   original_tag = GRE
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
 			}
+			
 			NOT = { has_global_flag = the_bosporan_kingdom_flag }
 			has_global_flag = form_roman_empire_flag
 		}
 
 		complete_effect = { 
  
-
 			# Odessa
 			192 = { add_core_of = CRI }
 
@@ -4558,6 +4696,10 @@ form_roman_empire_category = {
 
 			# Krasnodar
 			234 = { add_core_of = CRI }
+			
+			233 = { add_core_of = CRI }
+
+			834 = { add_core_of = CRI }
 				
 			CRI = {
 				transfer_state = 192
@@ -4569,6 +4711,8 @@ form_roman_empire_category = {
 				transfer_state = 227
 				transfer_state = 218
 				transfer_state = 234
+				transfer_state = 233
+				transfer_state = 834
 
 				set_cosmetic_tag = regnum_bospori
 			}
@@ -4576,7 +4720,7 @@ form_roman_empire_category = {
 			  
 			hidden_effect = { 
 				set_global_flag = the_bosporan_kingdom_flag
-                OR = {
+
 				IF = {
 					limit = {
 						ITA = {
@@ -4607,37 +4751,10 @@ form_roman_empire_category = {
 						}
 					}
 				}
-				IF = {
-					limit = {
-						GRE = {
-							has_government = fascism
-						}
-					}
-					CRI = {
-						set_politics = {
-							ruling_party = fascism
-						    elections_allowed = no
-						    last_election = "1935.12.17"
-						    election_frequency = 48
-						}
-					}
+
+				ROOT = {
+					puppet = CRI
 				}
-				IF = {
-					limit = {
-						GRE = {
-							has_government = neutrality
-						}
-					}
-					GRE = {
-						set_politics = {
-							ruling_party = neutrality
-						    elections_allowed = no
-						    last_election = "1935.12.17"
-						    election_frequency = 48
-						}
-					}
-				}
-			   }
 			}
 		}
 
@@ -4650,6 +4767,7 @@ form_roman_empire_category = {
 		}
 	}
 }
+
 form_persian_empire_category = {
 
 	form_persian_empire = {

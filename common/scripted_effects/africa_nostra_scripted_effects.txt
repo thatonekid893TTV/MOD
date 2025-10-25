@@ -1,0 +1,1219 @@
+#	Example:
+#
+#	example_effect = {
+#		add_political_power = 66
+#		add_popularity = {
+#			ideology = fascism
+#			popularity = 0.33
+#		}
+#	}
+#
+#
+#	In a script file:
+#
+#	effect = {
+#		example_effect = yes
+#	}
+#
+
+create_aoi_as_puppet = {
+
+set_global_flag = italian_east_africa_flag
+				
+				271 = {transfer_state_to = AOI}
+				550 = {transfer_state_to = AOI}
+				559 = {transfer_state_to = AOI}
+				844 = {transfer_state_to = AOI}
+				908 = {transfer_state_to = AOI}
+				
+				if = {
+				limit = {
+				838 = {
+				OWNER = {
+				OR = {tag = ROOT is_subject_of = ROOT}
+				}
+				}
+				}
+				838 = {transfer_state_to = AOI}
+				}
+				else = {
+				838 = {add_contested_owner = AOI}
+				838 = {set_state_controller_to = AOI}
+				}
+				
+				if = {
+				limit = {
+				835 = {
+				OWNER = {
+				OR = {tag = ROOT is_subject_of = ROOT}
+				}
+				}
+				}
+				835 = {transfer_state_to = AOI}
+				}
+				else = {
+				835 = {add_contested_owner = AOI}
+				835 = {set_state_controller_to = AOI}
+				}
+				
+				if = {
+				limit = {
+				836 = {
+				OWNER = {
+				OR = {tag = ROOT is_subject_of = ROOT}
+				}
+				}
+				}
+				836 = {transfer_state_to = AOI}
+				}
+				else = {
+				836 = {add_contested_owner = AOI}
+				836 = {set_state_controller_to = AOI}
+				}
+				
+				if = {
+				limit = {
+				837 = {
+				OWNER = {
+				OR = {tag = ROOT is_subject_of = ROOT}
+				}
+				}
+				}
+				837 = {transfer_state_to = AOI}
+				}
+				else = {
+				837 = {add_contested_owner = AOI}
+				837 = {set_state_controller_to = AOI}
+				}
+				
+				if = {
+				limit = {
+				839 = {
+				OWNER = {
+				OR = {tag = ROOT is_subject_of = ROOT}
+				}
+				}
+				}
+				839 = {transfer_state_to = AOI}
+				}
+				else = {
+				839 = {add_contested_owner = AOI}
+				839 = {set_state_controller_to = AOI}
+				}
+				
+				if = {
+				limit = {
+				840 = {
+				OWNER = {
+				OR = {tag = ROOT is_subject_of = ROOT}
+				}
+				}
+				}
+				840 = {transfer_state_to = AOI}
+				}
+				else = {
+				840 = {add_contested_owner = AOI}
+				840 = {set_state_controller_to = AOI}
+				}
+				
+				if = {
+				limit = {
+				841 = {
+				OWNER = {
+				OR = {tag = ROOT is_subject_of = ROOT}
+				}
+				}
+				}
+				841 = {transfer_state_to = AOI}
+				}
+				else = {
+				841 = {add_contested_owner = AOI}
+				841 = {set_state_controller_to = AOI}
+				}
+				
+				if = {
+				limit = {
+				842 = {
+				OWNER = {
+				OR = {tag = ROOT is_subject_of = ROOT}
+				}
+				}
+				}
+				842 = {transfer_state_to = AOI}
+				}
+				else = {
+				842 = {add_contested_owner = AOI}
+				842 = {set_state_controller_to = AOI}
+				}
+				
+				if = {
+				limit = {
+				843 = {
+				OWNER = {
+				OR = {tag = ROOT is_subject_of = ROOT}
+				}
+				}
+				}
+				843 = {transfer_state_to = AOI}
+				}
+				else = {
+				843 = {add_contested_owner = AOI}
+				843 = {set_state_controller_to = AOI}
+				}
+				
+
+				ROOT = {
+				set_autonomy = {
+				    target = AOI
+				    autonomy_state = autonomy_puppet
+				    end_wars = no
+				    end_civil_wars = no
+				}
+				}
+	
+				
+				ROOT = {end_puppet = ERI }
+				ROOT = {end_puppet = SOM }
+				
+				SOM = {retire_country_leader = yes}
+				ERI = {retire_country_leader = yes}
+				
+				SOM = {drop_cosmetic_tag = yes}
+				ERI = {drop_cosmetic_tag = yes}
+
+				AOI = {
+				#inherit_technology = ITA
+					add_manpower = 100000
+					add_ideas = {
+						AOI_africa_orientale_italiana_idea
+						AOI_ethiopian_slavery
+						AOI_illiteracy
+						AOI_undeveloped_country
+					}
+					add_offsite_building = { type = industrial_complex level = 4 }
+					add_offsite_building = { type = arms_factory level = 4 }
+					add_equipment_to_stockpile = {
+					    type = infantry_equipment
+					    amount = 5000
+					    producer = ITA
+					}
+					if = {
+						limit = {
+							has_dlc = "La Resistance"
+						}
+						create_intelligence_agency = yes
+					}
+			set_cosmetic_tag = AOI_Italian
+			}
+	every_state = { 
+	limit = {
+	is_core_of = ETH
+	}
+	add_dynamic_modifier = {modifier = AOI__ethiopian_partisans scope = AOI}
+	set_state_flag = AOI_partisans_here
+	}
+	
+	every_state = {
+	limit = {
+	OR = {
+	state = 550
+	state = 559
+	state = 844
+	is_initial_ethiopian_state = yes
+	}
+	}
+	add_claim_by = AOI
+	}
+		every_state = {
+				remove_dynamic_modifier = { modifier = ETH_state_development_dynamic_modifier}
+				}
+				every_state = {
+					limit = {is_core_of = ETH }
+					set_compliance = 25
+					set_resistance = 35
+				}
+				
+				844 = {set_compliance = 25}
+				844 = {set_resistance = 25}				
+				559 = {set_compliance = 25}
+				559 = {set_resistance = 25}
+				550 = {set_compliance = 25}
+				550 = {set_resistance = 20}
+			}
+
+make_albania_italian_puppet = {
+			ALB = {
+			
+			add_ideas = PROT_occupation_of_italy
+			
+				transfer_state = 44
+				transfer_state = 805
+				transfer_state = 934
+				
+				load_focus_tree = {tree = protectorate_focus keep_completed = yes}
+				#mark_focus_tree_layout_dirty = yes
+				
+				IF = {
+					limit = {
+						802 = {
+							is_controlled_by_ROOT_or_subject = yes
+						}
+					}
+					transfer_state = 802
+				}
+				IF = {
+					limit = {
+						970 = {
+							is_controlled_by_ROOT_or_subject = yes
+						}
+					}
+					transfer_state = 970
+				}
+				set_cosmetic_tag = ALB_italian
+			}
+			
+			
+			hidden_effect = {
+			
+			802 = {
+				add_core_of = ALB
+			}
+			970 = {
+				add_core_of = ALB
+			}
+			}
+			
+			IF = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				ITA = {
+					set_autonomy = {
+					    target = ALB
+					    autonomy_state = autonomy_reichsprotectorate
+					    end_wars = no
+					    end_civil_wars = no
+					}
+				}
+			}
+			IF = {
+				limit = {
+					NOT = {
+						has_dlc = "Together for Victory"
+					}
+				}
+				ITA = {
+					puppet = ALB
+				}
+			}
+			ALB = {
+				division_template = {
+				    name = "Milicia Fashiste Shqiptare"
+				    is_locked = yes
+				    division_names_group = ALB_INF_01
+				    regiments = {
+				        infantry = { x = 0 y = 0 }
+				        infantry = { x = 0 y = 1 }
+				        infantry = { x = 0 y = 2 }
+				        infantry = { x = 1 y = 0 }
+				        infantry = { x = 1 y = 1 }
+				    }
+				}
+			}
+			44 = {
+				create_unit = {
+				    division = "name = \"1. Milicia Fashiste Shqiptare\" division_template = \"Milicia Fashiste Shqiptare\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+				    owner = ALB
+				}
+				create_unit = {
+				    division = "name = \"2. Milicia Fashiste Shqiptare\" division_template = \"Milicia Fashiste Shqiptare\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+				    owner = ALB
+				}
+			}
+	}
+
+make_albania_german_puppet = {
+			ALB = {
+				transfer_state = 44
+				transfer_state = 805
+				transfer_state = 934
+				IF = {
+					limit = {
+						802 = {
+							is_controlled_by_ROOT_or_ally = yes
+						}
+					}
+					transfer_state = 802
+				}
+				IF = {
+					limit = {
+						970 = {
+							is_controlled_by_ROOT_or_ally = yes
+						}
+					}
+					transfer_state = 970
+				}
+				set_cosmetic_tag = ALL_reichskommisariat
+			}
+			
+			802 = {
+				add_core_of = ALB
+			}
+			970 = {
+				add_core_of = ALB
+			}
+			IF = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				GER = {
+					set_autonomy = {
+					    target = ALB
+					    autonomy_state = autonomy_reichsprotectorate
+					    end_wars = no
+					    end_civil_wars = no
+					}
+				}
+			}
+			IF = {
+				limit = {
+					NOT = {
+						has_dlc = "Together for Victory"
+					}
+				}
+				GER = {
+					puppet = ALB
+				}
+			}
+			ALB = {
+				division_template = {
+				    name = "Milicia Fashiste Shqiptare"
+				    is_locked = yes
+				    division_names_group = ALB_INF_01
+				    regiments = {
+				        infantry = { x = 0 y = 0 }
+				        infantry = { x = 0 y = 1 }
+				        infantry = { x = 0 y = 2 }
+				        infantry = { x = 1 y = 0 }
+				        infantry = { x = 1 y = 1 }
+				    }
+				}
+			}
+			44 = {
+				create_unit = {
+				    division = "name = \"1. Milicia Fashiste Shqiptare\" division_template = \"Milicia Fashiste Shqiptare\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+				    owner = ALB
+				}
+				create_unit = {
+				    division = "name = \"2. Milicia Fashiste Shqiptare\" division_template = \"Milicia Fashiste Shqiptare\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+				    owner = ALB
+				}
+			}
+	}
+	
+make_montenegro_italian_puppet = {
+			MNT = {
+			transfer_state = 105
+			
+			add_ideas = PROT_occupation_of_italy
+			
+			load_focus_tree = {tree = protectorate_focus keep_completed = yes}
+			#mark_focus_tree_layout_dirty = yes
+			set_cosmetic_tag = MNT_italian
+			}
+			IF = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				ITA = {
+					set_autonomy = {
+					    target = MNT
+					    autonomy_state = autonomy_reichskommissariat
+					    end_wars = no
+					    end_civil_wars = no
+					}
+				}
+			}
+			IF = {
+				limit = {
+					NOT = {
+						has_dlc = "Together for Victory"
+					}
+				}
+				ITA = {
+					puppet = MNT
+				}
+			}
+			MNT = {
+				division_template = {
+				    name = "Montenegrin Chetniks"
+				    is_locked = yes
+				    division_names_group = ITA_INF_01
+				    regiments = {
+				        mountaineers = { x = 0 y = 0 }
+				        mountaineers = { x = 0 y = 1 }
+				        mountaineers = { x = 0 y = 2 }
+				        mountaineers = { x = 1 y = 0 }
+				        mountaineers = { x = 1 y = 1 }
+				        mountaineers = { x = 1 y = 2 }
+				    }
+				}
+			}
+			105 = {
+				create_unit = {
+				    division = "name = \"First Montenegrin Chetnik Brigade\" division_template = \"Montenegrin Chetniks\" start_experience_factor = 0.5 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+				    owner = MNT
+				}
+
+				create_unit = {
+				    division = "name = \"Second Montenegrin Chetnik Brigade\" division_template = \"Montenegrin Chetniks\" start_experience_factor = 0.5 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+				    owner = MNT
+				}
+
+				create_unit = {
+				    division = "name = \"Third Montenegrin Chetnik Brigade\" division_template = \"Montenegrin Chetniks\" start_experience_factor = 0.5 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+				    owner = MNT
+				}
+			}
+
+			hidden_effect = {
+				set_country_flag = ITA_established_montenegro
+				MNT = {
+					country_event = {
+					    id = BBA_italy_interaction_events.7
+					    days = 0
+					}
+				}
+			}
+		}
+		
+make_montenegro_german_puppet = {
+			MNT = {
+			transfer_state = 105
+			set_cosmetic_tag = ALL_reichskommisariat
+			add_ideas = GER_local_controlled_reichskommissariat
+			}
+			IF = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				GER = {
+					set_autonomy = {
+					    target = MNT
+					    autonomy_state = autonomy_reichskommissariat
+					    end_wars = no
+					    end_civil_wars = no
+					}
+				}
+			}
+			IF = {
+				limit = {
+					NOT = {
+						has_dlc = "Together for Victory"
+					}
+				}
+				GER = {
+					puppet = MNT
+				}
+			}
+			MNT = {
+				division_template = {
+				    name = "Montenegrin Chetniks"
+				    is_locked = yes
+				    division_names_group = ITA_INF_01
+				    regiments = {
+				        mountaineers = { x = 0 y = 0 }
+				        mountaineers = { x = 0 y = 1 }
+				        mountaineers = { x = 0 y = 2 }
+				        mountaineers = { x = 1 y = 0 }
+				        mountaineers = { x = 1 y = 1 }
+				        mountaineers = { x = 1 y = 2 }
+				    }
+				}
+			}
+			105 = {
+				create_unit = {
+				    division = "name = \"First Montenegrin Chetnik Brigade\" division_template = \"Montenegrin Chetniks\" start_experience_factor = 0.5 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+				    owner = MNT
+				}
+
+				create_unit = {
+				    division = "name = \"Second Montenegrin Chetnik Brigade\" division_template = \"Montenegrin Chetniks\" start_experience_factor = 0.5 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+				    owner = MNT
+				}
+
+				create_unit = {
+				    division = "name = \"Third Montenegrin Chetnik Brigade\" division_template = \"Montenegrin Chetniks\" start_experience_factor = 0.5 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+				    owner = MNT
+				}
+			}
+		}
+		
+make_serbia_german_puppet = {
+
+		107 = {
+			transfer_state_to = SER
+			}
+			SER = {
+			set_cosmetic_tag = SER_salvation
+			add_ideas = GER_local_controlled_reichskommissariat
+			}
+
+			#custom_effect_tooltip = GER_reichskommissariat_bohemia_effect_tt
+
+			set_autonomy = {
+				target = SER 
+				autonomy_state = autonomy_reichskommissariat
+			}
+			
+			hidden_effect = {
+			SER = {
+			create_country_leader = {
+			name = YUG_milan_nedic
+			picture = GFX_portrait_YUG_nedic
+			promote_leader = yes
+			ideology = gen_nazism
+			traits = { SWI_fascist_recruiter }
+			expire = "1965.1.1.1"
+			id = -1
+			}
+		}
+				every_state = {
+					limit = {
+					OR = {
+					state = 108
+					state = 764
+					}
+						NOT = {
+							OR = {
+								is_owned_by = ROOT
+								any_country = {
+									is_subject_of = ROOT
+									owns_state = PREV
+								}
+							}
+						}
+					}
+					add_contested_owner = SER
+					set_state_controller_to = SER
+				}
+				
+				if = {
+				limit = {
+				every_state = {
+					limit = {
+					owner = {
+					OR = {
+					tag = ROOT
+					is_subject_of = ROOT
+					}
+					}
+					OR = {
+					state = 108
+					state = 764
+					}
+					}
+				}	
+				}
+				108 = {transfer_state_to = SER}
+				764 = {transfer_state_to = SER}
+				}
+				
+				SER = {
+					add_manpower = 50000
+					add_equipment_to_stockpile = { 
+						type = infantry_equipment
+						amount = 25000
+						producer = GER
+					}	
+					add_equipment_to_stockpile = { 
+						type = support_equipment
+						amount = 500
+						producer = GER
+					}	
+					inherit_technology = YUG
+					add_offsite_building = { type = arms_factory level = 2 }
+					load_oob = "RK_OOB"
+				}
+			}
+		}
+		
+make_croatia_italian_puppet = {
+
+		CRO = {
+		set_cosmetic_tag = CRO_italian
+
+		add_ideas = CRO_prince_aimone_idea
+		if = {
+		limit = {ROOT = {is_in_faction_with = GER}}
+		CRO = {add_ideas = ITA_italo_german_protectorate}
+		}
+		
+		every_state = {
+		limit = {
+		OR = {
+		state = 109
+		state = 104
+		state = 804
+		}
+		}
+		transfer_state_to = CRO
+		}
+		
+		load_focus_tree = { tree = protectorate_focus keep_completed = yes}
+		#mark_focus_tree_layout_dirty = yes
+		}
+			IF = {
+				limit = { has_dlc = "Together for Victory" }
+				ITA = {
+					set_autonomy = {
+					    target = CRO
+					    autonomy_state = autonomy_reichskommissariat
+					    end_wars = no
+					    end_civil_wars = no
+					}
+				}
+			}
+		}
+
+make_serbia_italian_puppet = {
+
+			107 = {
+			transfer_state_to = SER
+			}
+			108 = {
+			transfer_state_to = SER
+			}
+			764 = {
+			transfer_state_to = SER
+			}
+
+			#custom_effect_tooltip = GER_reichskommissariat_bohemia_effect_tt
+
+					set_autonomy = {
+					    target = SER
+					    autonomy_state = autonomy_reichskommissariat
+					    end_wars = no
+					    end_civil_wars = no
+					}
+			
+			SER = {
+			
+			load_focus_tree = { tree = protectorate_focus keep_completed = yes}
+			#mark_focus_tree_layout_dirty = yes
+			
+			set_cosmetic_tag = SER_italian
+			
+			add_ideas = PROT_occupation_of_italy
+			
+			create_country_leader = {
+			name = YUG_dimitrije_ljotic
+			picture = GFX_portrait_YUG_lotic
+			promote_leader = yes
+			ideology = fascism_ideology
+			traits = { fascist_corporatist }
+			expire = "1965.1.1.1"
+			id = -1
+			}
+		}
+	}
+		
+make_croatia_german_puppet = {
+
+		CRO = {
+		transfer_state = 1018
+		set_cosmetic_tag = ALL_reichskommisariat
+		add_ideas = GER_local_controlled_reichskommissariat
+		}
+			IF = {
+				limit = { has_dlc = "Together for Victory" }
+				GER = {
+					set_autonomy = {
+					    target = CRO
+					    autonomy_state = autonomy_reichsprotectorate
+					    end_wars = no
+					    end_civil_wars = no
+					}
+				}
+			}
+		}
+		
+kill_swiss_council = {
+		
+		set_can_be_fired_in_advisor_role = {
+		character = SWI_max_leo_keller
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_hans_oehler
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_albert_meyer
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_johannes_baumann
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_herman_obrecht
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_karl_kobelt
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_max_petitpierre
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_marcel_pilet_golaz
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_walter_stucki
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_eduard_von_steiger
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_friedrich_wahlen
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_rudolf_minger
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_rudolf_roessler
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_walter_allgower
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_carl_stucki
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_august_lindt
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_saly_mayer
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_philip_etter
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_enrico_celio
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_robert_eibel
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_ernst_nobs
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_robert_grimm
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_hans_oprecht
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_max_weber
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_adolf_brunner
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_jakob_schaffner
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_robert_tobler
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_rolf_henne
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_franz_riedweg
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_benno_schaeppi
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_adolf_furrer
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_hans_hausamann
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_clara_thalmann
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_lucien_tronchet
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_max_waibel
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_jakob_labhart
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_jakob_huber
+		value = yes
+		}		set_can_be_fired_in_advisor_role = {
+		character = SWI_roger_masson
+		value = yes
+		}
+				set_can_be_fired_in_advisor_role = {
+		character = SWI_giuseppe_motta
+		value = yes
+		}
+				set_can_be_fired_in_advisor_role = {
+		character = SWI_ernst_wetter
+		value = yes
+		}				set_can_be_fired_in_advisor_role = {
+		character = SWI_christian_gasser
+		value = yes
+		}
+
+SWI_update_councilors = yes
+
+}
+
+
+create_resistance_fighters = {
+		division_template = {
+						name = "Resistance fighters"
+						is_locked = no
+						force_allow_recruiting = yes
+						priority = 1
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
+							infantry = { x = 2 y = 2 }
+						}
+					}
+						capital_scope = {
+							create_unit = {
+								division = "division_template = \"Resistance fighters\" start_experience_factor = 0.7 start_equipment_factor = 1 start_manpower_factor = 1"
+								owner = PREV
+								count = 7
+							}
+						}
+}
+
+upgrade_italian_col_emp = {
+
+	add_to_variable = {ITA_colonial_empire_consumer = -0.01}
+
+	add_to_variable = {ITA_colonial_empire_construction = 0.005}
+
+	add_to_variable = {ITA_colonial_empire_factory = 0.005}
+
+	#if = {
+	#limit = {
+	#NOT = {
+	#check_variable = {ITA_colonial_empire_compliance = 0.1}
+	#}
+	#}
+	#add_to_variable = {ITA_colonial_empire_compliance = 0.01}
+	#}
+
+custom_effect_tooltip = ITA_colonial_empire_tt
+custom_effect_tooltip = generic_skip_one_line_tt
+}
+
+make_this_country_protectorate = {
+
+set_country_flag = italian_puppet_flag
+
+add_ideas = PROT_occupation_of_italy
+
+ROOT = {
+			set_autonomy = {
+			target = PREV
+		    autonomy_state = autonomy_reichsprotectorate
+			end_wars = no
+			end_civil_wars = no
+			}
+		}
+		
+if = {
+limit = {
+NOT = {
+OR = {
+original_tag = PBR
+original_tag = FCO
+original_tag = LBA
+original_tag = HEL
+original_tag = USI
+original_tag = ANA
+original_tag = PRR
+original_tag = ITB
+original_tag = ITC
+}
+}
+}
+load_focus_tree = { tree = protectorate_focus keep_completed = yes}
+#mark_focus_tree_layout_dirty = yes
+}
+
+if = {
+
+limit = {
+	NOT = {
+	OR = {
+	original_tag = HEL
+	capital_scope = {is_on_continent = africa}
+	}
+	}
+	ITA = {ITA_has_rejected_monarchy = no}
+	}
+	
+	set_party_name = {
+				ideology = fascism
+				long_name = LBA_fascism_party_long
+				name = LBA_fascism_party
+			}
+	}
+	
+	else_if = {
+	
+	limit = {
+	NOT = {
+	OR = {
+	original_tag = HEL
+	capital_scope = {is_on_continent = africa}
+	}
+	}
+	ITA = {ITA_has_rejected_monarchy = yes}
+	}
+	
+	set_party_name = {
+				ideology = fascism
+				long_name = ITA_rfp_short
+				name = ITA_rfp_long
+			}
+	}
+
+hidden_effect = {
+if = {
+limit = {
+OR = {
+tag = PRR
+tag = PBR
+tag = ANA
+tag = FCO
+tag = USI
+tag = ITB
+}
+}
+add_manpower = 50000
+}
+}
+
+
+hidden_effect = {
+
+add_manpower = 50000
+
+#if = {
+#limit = {
+#NOT = {
+#has_country_leader_with_trait = italian_administration
+#}
+#}
+#}
+#if = {
+#limit = {
+#NOT = {original_tag = ITC}
+#}
+#add_country_leader_trait = leader_of_protectorate
+#}
+
+					if = {
+						limit = {
+							has_dlc = "La Resistance"
+						}
+						create_intelligence_agency = yes
+					}
+					if = {
+						limit = {
+							capital_scope = {
+							is_on_continent = africa
+							}
+						}
+						add_ideas = ITA_ALB_italian_settlers
+					}
+
+#if = {
+#limit = {
+#has_government = fascism
+#NOT = {
+#OR = {
+#has_idea = war_economy
+#has_idea = tot_economic_mobilisation
+#}
+#}
+#}
+#add_ideas = corporatism_economy
+#}
+
+}
+
+}
+
+
+establish_it_adm = {
+
+if = {
+limit = {
+ITA = {
+ITA_is_rsi = yes
+}
+}
+
+create_country_leader = {
+	name = italian_administration
+	picture = GFX_portrait_admin_rsi
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+	italian_administration
+	}
+	}	
+}
+
+else_if = {
+limit = {
+ITA = {
+ITA_is_ruled_by_a_pope = no
+OR = {
+#ITA_government_is_somewhat_fascist = yes
+ITA_is_ruled_by_a_monarchy = yes
+ITA_is_kinda_fascist = yes
+}
+}
+}
+
+create_country_leader = {
+	name = italian_administration
+	picture = GFX_portrait_admin_mon
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+	italian_administration
+	}
+	}
+
+}
+
+#else_if = {
+#limit = {
+#ITA = {
+#ITA_is_rsi = no
+#has_rejected_monarchy = yes
+#}
+#}
+#
+#create_country_leader = {
+#	name = italian_administration
+#	picture = GFX_portrait_admin_rep
+#	expire = "1965.1.1"
+#	ideology = fascism_ideology
+#	traits = {
+#	italian_administration
+#	}
+#	}
+#
+#}
+
+else_if = {
+limit = {
+ITA = {
+ITA_is_ruled_by_a_pope = yes
+}
+}
+create_country_leader = {
+	name = italian_administration
+	picture = GFX_portrait_admin_vat
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+	italian_administration
+	}
+	}
+
+	}
+}
+
+make_this_country_protectorate_alt = {
+
+set_country_flag = italian_puppet_flag
+
+add_ideas = PROT_occupation_of_italy
+
+ROOT = {
+			set_autonomy = {
+			target = PREV
+		    autonomy_state = autonomy_reichsprotectorate
+			end_wars = no
+			end_civil_wars = no
+			}
+		}
+		
+if = {
+limit = {
+NOT = {
+OR = {
+original_tag = PBR
+original_tag = FCO
+original_tag = LBA
+original_tag = HEL
+original_tag = USI
+original_tag = ANA
+original_tag = PRR
+original_tag = ITB
+original_tag = ITC
+}
+}
+}
+load_focus_tree = { tree = protectorate_focus keep_completed = yes}
+#mark_focus_tree_layout_dirty = yes
+}
+
+
+hidden_effect = {
+
+add_manpower = 50000
+
+if = {
+limit = {
+OR = {
+tag = PRR
+tag = PBR
+tag = ANA
+tag = FCO
+tag = USI
+tag = ITB
+}
+}
+add_manpower = 50000
+}
+
+
+					if = {
+						limit = {
+							has_dlc = "La Resistance"
+						}
+						create_intelligence_agency = yes
+					}
+					if = {
+						limit = {
+							capital_scope = {
+							is_on_continent = africa
+							}
+						}
+						add_ideas = ITA_ALB_italian_settlers
+					}
+
+}
+
+}

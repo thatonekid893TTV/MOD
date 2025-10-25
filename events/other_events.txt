@@ -1,0 +1,1761 @@
+﻿
+add_namespace = SETTINGS_event
+add_namespace = ITA_monarchy_event
+add_namespace = GER_italy_cw_event
+add_namespace = GER_interaction_event
+add_namespace = ITA_vatican_san_marino_event
+add_namespace = ITA_albania_event
+add_namespace = ENG_collapse_event
+add_namespace = ITA_peace_negotiations
+
+country_event = {
+	id = SETTINGS_event.1
+	title = SETTINGS_event.1.t
+	desc = SETTINGS_event.1.d
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	option = {
+	name = SETTINGS_event.1.a
+	set_global_flag = flag_colored_puppets
+	}
+	
+	option = {
+	name = SETTINGS_event.1.b
+	#set_global_flag = flag_uncolored_puppets
+	}
+}
+country_event = {
+	id = SETTINGS_event.2
+	title = SETTINGS_show_paths
+	desc = SETTINGS_event.2.d
+	
+	is_triggered_only = yes
+	
+	option = {
+	name = AOI_event.101.a
+	}
+}
+country_event = {
+	id = ITA_monarchy_event.1
+	title = ITA_monarchy_event.1.t
+	desc = ITA_monarchy_event.1.d
+	picture = GFX_report_savoy
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	option = {
+	name = ITA_monarchy_event.1.a
+	ITA_promote_umberto_to_country_leader = yes
+	}
+	
+	option = {
+	name = ITA_monarchy_event.1.b
+	trigger = {
+	NOT = {country_exists = AOI}
+	}
+	}
+	option = {
+	name = ITA_monarchy_event.1.c
+	trigger = {
+	NOT = {has_country_flag = ITA_aimones_coronation}
+	}
+	}
+}
+
+country_event = {
+	id = GER_italy_cw_event.1
+	title = GER_italy_cw_event.1.t
+	desc = GER_italy_cw_event.1.d
+	picture = GFX_report_tiger_rome
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = GER_italy_cw_event.1.a
+	add_political_power = -25
+		ai_chance = {
+			base = 99
+		}
+	every_state = {
+	limit = {
+	OWNER = {
+	OR = {
+	tag = RSI
+	AND = {
+	has_government = fascism
+	OR = {
+	is_subject_of = ROOT
+	is_major = no
+	}
+	}
+	}
+	}
+	OR = {
+	state = 39
+	state = 736
+	state = 853
+	state = 852
+	state = 850
+	}
+	}
+	transfer_state_to = ROOT
+	set_state_flag = ozav_ozak_state_flag
+	add_dynamic_modifier = {
+	modifier = ozav_ozak_established_modifier scope = ROOT
+	}
+	}
+	}
+	
+	option = {
+	name = GER_italy_cw_event.1.b
+	add_political_power = 25
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+
+country_event = { #хорватия захватывает задар
+	id = GER_italy_cw_event.2
+	title = GER_italy_cw_event.2.t
+	desc = GER_italy_cw_event.2.d
+	picture = GFX_report_event_generic_italian_fascists
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = GER_italy_cw_event.2.a
+	if = {
+	limit = {
+	RSI = {is_subject = yes}
+	}
+	RSI = {
+	overlord = {
+	country_event = {id = GER_italy_cw_event.3 hours = 4}
+	}
+	}
+	}
+	else = {
+	RSI = {
+	country_event = {id = GER_italy_cw_event.3 hours = 4}
+	}
+	}
+	ai_chance = {
+	base = 1
+	}
+	}
+	
+	option = {
+	name = GER_italy_cw_event.2.b
+	add_political_power = 5
+	ai_chance = {
+	base = 0
+	}
+	}
+}
+
+country_event = { #хорватия захватывает задар, герма
+	id = GER_italy_cw_event.3
+	title = GER_italy_cw_event.3.t
+	desc = GER_italy_cw_event.3.d
+	picture = GFX_report_event_DEN_german_tanks
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = GER_italy_cw_event.3.a
+	FROM = {country_event = {id = GER_italy_cw_event.4 hours = 4}}
+	ai_chance = {
+	base = 1
+	}
+	}
+	option = {
+	name = GER_italy_cw_event.3.b
+	163 = {transfer_state_to = FROM}
+	ai_chance = {
+	base = 0
+	}
+	}
+}
+
+country_event = { #хорватия захватывает задар, хорватия
+	id = GER_italy_cw_event.4
+	title = GER_italy_cw_event.4.t
+	desc = GER_italy_cw_event.4.d
+	picture = GFX_report_event_bul_ff_troops_panzer
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = GER_italy_cw_event.4.a
+	set_rule = {can_create_factions = yes}
+	add_timed_idea = {idea = ALL_war_of_independence days = 180}
+	163 = {transfer_state_to = ROOT}
+	if = {
+	limit = {is_in_faction_with = FROM}
+	leave_faction = yes
+	}
+	ROOT = {remove_ideas = ITA_italo_german_protectorate}
+	FROM = {country_event = {id = LBA_event.11 hours = 4}}
+	ROOT = {
+		declare_war_on = {
+			target = FROM 
+			type = independence_wargoal 
+		}
+	}
+	ai_chance = {
+	base = 1
+	}
+	}
+	
+	option = {
+	name = GER_italy_cw_event.4.b
+	add_war_support = -0.05
+	ai_chance = {
+	base = 99
+	}
+	}
+}
+country_event = { #что делать с ватиканом, гражданка
+	id = ITA_vatican_san_marino_event.1
+	title = ITA_vatican_san_marino_event.1.t
+	desc = ITA_vatican_san_marino_event.1.d
+	picture = GFX_report_event_generic_italian_celebration
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_vatican_san_marino_event.1.a
+	
+	add_popularity = {ideology = democratic popularity = 0.025}
+	add_popularity = {ideology = neutrality popularity = 0.025}
+	
+	give_guarantee = PAP
+	
+	ai_chance = {
+	base = 5
+	modifier = {
+	factor = 30
+	has_government = democratic
+	}
+	}
+	}
+	option = {
+	name = ITA_vatican_san_marino_event.1.b
+	
+	add_war_support = 0.025
+	add_popularity = {ideology = communism popularity = 0.025}
+	
+	declare_war_on = {
+		target = PAP 
+		type = annex_everything 
+	}
+		
+	PAP = {add_timed_idea = {idea = ALL_war_of_independence days = 90}}
+		
+	every_country = {
+	limit = {
+	capital_scope = {
+	is_on_continent = europe
+	OR = {
+	has_government = neutrality
+	has_government = fascism
+	}
+	}
+	}
+	add_opinion_modifier = {target = PREV modifier = medium_decrease }
+	}
+	
+	ai_chance = {
+	base = 5
+	modifier = {
+	factor = 30
+	has_government = communism
+	}
+	}
+	}
+}
+country_event = { #что делать с сан марино, гражданка по фокусу
+	id = ITA_vatican_san_marino_event.2
+	title = ITA_vatican_san_marino_event.2.t
+	desc = ITA_vatican_san_marino_event.2.d
+	picture = GFX_report_event_soldiers_marching
+
+	trigger = {
+	tag = ITA
+	has_completed_focus = ITA_defy_the_duce
+	controls_state = 157
+	SMR = {exists = yes}
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_vatican_san_marino_event.1.a
+	
+	add_political_power = 15
+	
+	give_guarantee = SMR
+	
+	ai_chance = {
+	base = 5
+	modifier = {
+	factor = 25
+	has_government = democratic
+	}
+	}
+	}
+	option = {
+	name = ITA_vatican_san_marino_event.2.b
+	
+	add_popularity = {ideology = fascism popularity = -0.05}
+	
+	declare_war_on = {
+		target = SMR
+		type = annex_everything 
+	}
+		
+	SMR = {add_timed_idea = {idea = ALL_war_of_independence days = 90}}
+		
+	random_country = {
+	limit = {original_tag = ITA has_government = fascism}
+	set_autonomy = {
+	target = SMR
+	autonomous_state = autonomy_satellite
+	end_wars = no
+	}
+	}
+	
+	ai_chance = {
+	base = 5
+	modifier = {
+	factor = 25
+	has_government = communism
+	}
+	}
+	}
+}
+country_event = { #нейтралитет монако нарушен монако
+	id = ITA_vatican_san_marino_event.3
+	title = ITA_vatican_san_marino_event.3.t
+	desc = ITA_vatican_san_marino_event.3.d
+	picture = GFX_report_event_german_troops
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_vatican_san_marino_event.3.a
+	
+	set_country_flag = ITA_vatican_san_marino_event.3.t
+	
+	add_ideas = ITA_monaco_trade
+	add_ideas = fascist_influence
+	give_military_access = ITA
+	give_market_access = ITA
+	ITA = {
+	add_ideas = ITA_monaco_trade
+	give_guarantee = MNC
+	}
+	if = {
+	limit = {
+	GER = {is_in_faction_with = ITA}
+	}
+	give_military_access = GER	
+	give_market_access = GER
+	GER = {
+	add_ideas = ITA_monaco_trade
+	give_guarantee = MNC
+	}	
+	}
+	ITA = {country_event = {id = ITA_vatican_san_marino_event.4 hours = 4}}
+	
+	ai_chance = {
+	base = 1
+	}
+	}
+	
+	option = {
+	name = ITA_vatican_san_marino_event.3.b
+	add_popularity = {ideology = fascism popularity = -0.15}
+	ITA = {country_event = {id = ITA_vatican_san_marino_event.5 hours = 4}}
+	
+	ai_chance = {
+	base = 0
+	}
+	}
+}
+country_event = { #нейтралитет монако нарушен ответ италии, все круто
+	id = ITA_vatican_san_marino_event.4
+	title = ITA_vatican_san_marino_event.4.t
+	desc = ITA_vatican_san_marino_event.4.d
+	picture = GFX_report_event_gre_allied_diplomacy
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_vatican_san_marino_event.4.a
+	add_political_power = 25
+	effect_tooltip = {
+	add_ideas = ITA_monaco_trade
+	MNC = {
+	give_military_access = ITA
+	give_market_access = ITA
+	ITA = {give_guarantee = MNC}
+	if = {
+	limit = {
+	GER = {is_in_faction_with = ROOT}
+	}
+	give_military_access = GER	
+	give_market_access = GER
+	GER = {
+	add_ideas = ITA_monaco_trade
+	give_guarantee = MNC
+	}
+	}
+	}
+	}
+	}
+}
+
+country_event = { #нейтралитет монако нарушен ответ италии, все хуево
+	id = ITA_vatican_san_marino_event.5
+	title = ITA_vatican_san_marino_event.5.t
+	desc = ITA_vatican_san_marino_event.5.d
+	picture = GFX_report_event_degaulle_inspect_troops
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_vatican_san_marino_event.5.a
+	}
+	
+	option = {
+	name = ITA_vatican_san_marino_event.5.b
+	ROOT = {
+		declare_war_on = {
+			target = MNC 
+			type = annex_everything 
+		}
+	}
+	MNC = {add_timed_idea = {idea = ALL_war_of_independence days = 180}}
+	
+	ai_chance = {
+	base = 1
+	}
+	}
+}
+
+country_event = { #сделать из монако марионетку, для монако
+	id = ITA_vatican_san_marino_event.6
+	title = ITA_vatican_san_marino_event.6.t
+	desc = ITA_vatican_san_marino_event.6.d
+	picture = GFX_report_event_gre_political_march
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_vatican_san_marino_event.6.a
+	FROM = {country_event = {id = ITA_vatican_san_marino_event.7 hours = 4}}
+	
+	ai_chance = {
+	base = 1
+	}
+	}
+	
+	option = {
+	name = ITA_vatican_san_marino_event.3.b
+	FROM = {country_event = {id = ITA_vatican_san_marino_event.5 hours = 4}}
+	
+	ai_chance = {
+	base = 0
+	}
+	}
+}
+
+country_event = { #сделать из монако марионетку, для италии
+	id = ITA_vatican_san_marino_event.7
+	title = ITA_vatican_san_marino_event.7.t
+	desc = ITA_vatican_san_marino_event.7.d
+	picture = GFX_report_italian_troops
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_vatican_san_marino_event.7.a
+			ROOT = {
+				set_autonomy = {
+			    target = MNC
+				autonomy_state = autonomy_reichsprotectorate
+				end_wars = yes
+				end_civil_wars = yes
+			}
+		}
+		
+	ai_chance = {
+	base = 1
+	}
+	}
+}
+
+country_event = { #новый римский император
+	id = ITA_monarchy_event.3
+	title = ITA_monarchy_event.3.t
+	desc = ITA_monarchy_event.3.d
+	picture = GFX_report_event_por_return_of_the_monarchy
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_monarchy_event.3.a
+	mark_focus_tree_layout_dirty = yes
+	set_cosmetic_tag = ITA_massimo_kingdom
+		add_country_leader_role = {
+			character = ITA_leone_massimo
+			promote_leader = yes
+			country_leader = {
+			ideology = despotism
+			traits = { ancient_dynasty blessed_by_pope }
+			expire = "1974.1.1.1"
+			id = -1
+			}
+		}
+set_party_name = {
+    ideology = neutrality
+    long_name = ITA_massimo_dynasty_party_long
+    name = ITA_massimo_dynasty_party_long
+}
+	}
+}
+country_event = { #король зог бежит из страны
+	id = ITA_albania_event.1
+	title = ITA_albania_event.1.t
+	desc = ITA_albania_event.1.d
+	picture = GFX_report_event_albanian_king_zog
+
+	trigger = {
+	tag = ALB
+	has_global_flag = alb_rejected_ita_ultimatum_flag
+	ALB = {
+	has_country_leader = {character = ALB_king_zog ruling_only = yes }
+	surrender_progress > 0.15
+	}
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_albania_event.1.a
+	add_war_support = -0.05
+	retire_country_leader = yes
+		add_country_leader_role = {
+			character = ALB_kingdom_ruins
+			promote_leader = yes
+			country_leader = {
+			ideology = despotism
+			traits = { imperator_absentis }
+			expire = "1965.1.1.1"
+			id = -1
+			}
+		}
+	}
+}
+country_event = { #предложение об иберии
+	id = ITA_triumvirate_event.1
+	title = ITA_triumvirate_event.1.t
+	desc = ITA_triumvirate_event.1.d
+	picture = GFX_report_event_albanian_king_zog
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #да
+	name = ITA_triumvirate_event.1.a
+	
+	FROM = {country_event = {id = ITA_triumvirate_event.2 hours = 4}}
+	if = {
+	limit = {
+	ROOT = {original_tag = POR}
+	}
+	set_global_flag = portugal_iberia_agreed
+	}
+	if = {
+	limit = {
+	ROOT = {original_tag = POR}
+	}
+	set_global_flag = spain_iberia_agreed
+	}
+
+	ai_chance = {
+	base = 100
+	}
+	}
+	
+	option = { #нет
+	name = ITA_triumvirate_event.1.b
+	
+	FROM = {country_event = {id = ITA_triumvirate_event.3 hours = 4}}
+	}
+}
+country_event = { #да
+	id = ITA_triumvirate_event.2
+	title = ITA_triumvirate_event.2.t
+	desc = ITA_triumvirate_event.2.d
+	picture = GFX_report_event_albanian_king_zog
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #да
+	name = ITA_triumvirate_event.2.a
+	}
+}
+country_event = { #нет
+	id = ITA_triumvirate_event.3
+	title = ITA_triumvirate_event.3.t
+	desc = ITA_triumvirate_event.3.d
+	picture = GFX_report_event_albanian_king_zog
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #да
+	name = ITA_triumvirate_event.3.a
+	}
+}
+
+country_event = { #ЕДИНЫЙ ТРИУМВИРАТ ИВЕНТ ТУРЦИЯ ИБЕРИЯ
+	id = ITA_triumvirate_event.4
+	title = ITA_triumvirate_event.4.t
+	desc = ITA_triumvirate_event.4.d
+	picture = GFX_report_event_albanian_king_zog
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #да
+	name = ITA_triumvirate_event.1.a
+	ai_chance = {
+	base = 1000
+	}
+	set_country_flag = agreed_trium_flag
+	FROM = {country_event = {id = ITA_triumvirate_event.5 hours = 4}}
+	}
+	option = { #нет
+	name = ITA_triumvirate_event.1.b
+	add_political_power = 25
+	}
+}
+country_event = { #ЕДИНЫЙ ТРИУМВИРАТ ИВЕНТ ГООООООООЛ
+	id = ITA_triumvirate_event.5
+	title = ITA_triumvirate_event.5.t
+	desc = ITA_triumvirate_event.5.d
+	picture = GFX_report_event_albanian_king_zog
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #да
+	name = BBA_italy_interaction_events.2.a
+	}
+}
+country_event = { #герма типо хочет колонии, что делать италия
+	id = ITA_triumvirate_event.6
+	title = ITA_triumvirate_event.6.t
+	desc = ITA_triumvirate_event.6.d
+	picture = GFX_report_event_albanian_king_zog
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #по тихому
+	name = ITA_triumvirate_event.6.a
+	SPR = {country_event = {id = ITA_triumvirate_event.1 hours = 4}}
+	POR = {country_event = {id = ITA_triumvirate_event.1 hours = 4}}
+	}
+	option = { #пусть все знают
+	name = ITA_triumvirate_event.6.b
+	}
+}
+
+
+country_event = { #королевское молчание
+    id = ITA_monarchy_event.4
+    title = ITA_monarchy_event.4.t
+    desc = ITA_monarchy_event.4.d
+    picture = GFX_report_event_NOR_royal_family_exiled
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+    option = { #король пиздит
+        name = ITA_monarchy_event.4.a
+		add_popularity = {popularity = 0.025 ideology = neutrality}
+		retire_country_leader = yes
+		set_country_flag = ITA_strength_savoy_dynasty
+	}
+	
+    option = { #король молчит
+        name = ITA_monarchy_event.4.b
+		add_political_power = -50
+		
+		trigger = {always = no}
+		
+		hidden_effect = {country_event = {id = ITA_monarchy_event.5 days = 4}}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+country_event = { #италия захватывает все наши
+	id = ENG_collapse_event.1
+	title = ENG_collapse_event.1.t
+	desc = ENG_collapse_event.1.d
+	picture = GFX_report_event_british_inspect_troops
+	
+	trigger = {
+	tag = ENG
+	ITA = {has_war_with = ENG}
+	118 = {
+	is_owned_by = ENG
+	is_controlled_by = ITA
+	}
+	116 = {
+	is_owned_by = ENG
+	is_controlled_by = ITA
+	}
+	446 = {
+	is_owned_by = ENG
+	is_controlled_by = ITA
+	}
+	}
+	
+	fire_only_once = yes
+	
+	option = { ##предложить мир
+	name = ENG_collapse_event.1.a
+	
+	ai_chance = {
+	base = 0.8
+	}
+	
+	ITA = {country_event = {id = ITA_peace_negotiations.1 days = 1}}
+	}
+	
+	option = { ##не предложить мир
+	name = ENG_collapse_event.1.b
+	
+	unlock_decision_category_tooltip = ENG_italo_british_war_dec_cat
+	activate_mission = ENG_regain_lost_terr
+	
+	hidden_effect = {
+	set_global_flag = must_regain_terr_flag
+	}
+	}
+}
+
+country_event = { #британии - все
+	id = ENG_collapse_event.2
+	title = ENG_collapse_event.2.t
+	desc = ENG_collapse_event.2.d
+	picture = GFX_report_event_generic_rally2
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { ##
+	name = ENG_collapse_event.2.a
+	#promote_character = ENG_fallen_government
+	add_stability = -0.15
+	add_war_support = -0.15
+	
+	retire_country_leader = yes
+	
+	if = {
+	limit = {
+	has_government = democratic
+	}
+		create_country_leader = {
+			name = "Fallen Government"
+			desc = "POLITICS_FALLEN_GOVERNMENT_DESC"
+			picture = GFX_portrait_Fallen_Government
+			expire = "1965.1.1"
+			ideology = conservatism
+			traits = {
+				cabinet_crisis
+			}
+		}
+	}
+	else_if = {
+	limit = {
+	has_government = fascism
+	}
+		create_country_leader = {
+			name = "Fallen Government"
+			desc = "POLITICS_FALLEN_GOVERNMENT_DESC"
+			picture = GFX_portrait_Fallen_Government
+			expire = "1965.1.1"
+			ideology = fascism_ideology
+			traits = {
+				cabinet_crisis
+			}
+		}
+	}
+	else_if = {
+	limit = {
+	has_government = neutrality
+	}
+		create_country_leader = {
+			name = "Fallen Government"
+			desc = "POLITICS_FALLEN_GOVERNMENT_DESC"
+			picture = GFX_portrait_Fallen_Government
+			expire = "1965.1.1"
+			ideology = moderatism
+			traits = {
+				cabinet_crisis
+			}
+		}
+	}
+	else_if = {
+	limit = {
+	has_government = communism
+	}
+		create_country_leader = {
+			name = "Fallen Government"
+			desc = "POLITICS_FALLEN_GOVERNMENT_DESC"
+			picture = GFX_portrait_Fallen_Government
+			expire = "1965.1.1"
+			ideology = marxism
+			traits = {
+				cabinet_crisis
+			}
+		}
+	}
+	
+	
+	hidden_effect = {
+	country_event = {id = ENG_collapse_event.3 days = 2 random_days = 10}
+	country_event = {id = ENG_collapse_event.4 days = 2 random_days = 7}
+	}
+	}
+}
+
+country_event = { #шотландия и уэльс сепаратизм
+	id = ENG_collapse_event.3
+	title = ENG_collapse_event.3.t
+	desc = ENG_collapse_event.3.d
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	#immediate = {
+	#hidden_effect = {
+	#release_on_controlled = SCO
+	#release_on_controlled = WLS
+	#
+	#SCO = {
+	#create_resistance_fighters = yes
+	#}
+	#WLS = {
+	#create_resistance_fighters = yes
+	#}
+	#}
+	#}
+	
+	option = { ##
+	name = ENG_collapse_event.3.a
+	
+	add_political_power = -150
+	set_cosmetic_tag = ENG_england
+	
+	every_state = {
+	limit = {
+	OR = {
+	is_core_of = SCO
+	is_core_of = WLS
+	}
+	}
+	PREV = {add_dynamic_modifier = {modifier = LBA_supporting_separatism scope = ROOT days = 270}}
+	}
+	
+	hidden_effect = {
+	country_event = {id = ENG_collapse_event.6 days = 3 random_days = 6}
+	country_event = {id = ENG_collapse_event.5 days = 3 random_days = 3}
+	}
+	}
+}
+
+country_event = { #в колониях пиздец
+	id = ENG_collapse_event.4
+	title = ENG_collapse_event.4.t
+	desc = ENG_collapse_event.4.d
+	picture = GFX_report_event_dutch_soldiers_indonesia
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { ##
+	name = ENG_collapse_event.4.a
+	
+	add_stability = -0.05
+	
+	every_state = {
+	limit = {
+	NOT = {is_core_of = ROOT}
+	is_owned_and_controlled_by = ROOT
+	}
+	add_compliance = -25
+	add_resistance = 30
+	add_resistance_target = 20
+	}
+	
+	every_country = {
+	limit = {
+	any_state = {
+	NOT = {is_core_of = ROOT}
+	is_core_of = PREV
+	is_owned_by = ROOT
+	}
+	}
+	every_state = {
+	limit = {
+	is_core_of = PREV
+	is_owned_by = ROOT
+	}
+	transfer_state_to = PREV
+	}
+	}
+	}
+}
+
+
+country_event = { #северная ирландия
+	id = ENG_collapse_event.5
+	title = ENG_collapse_event.5.t
+	desc = ENG_collapse_event.5.d
+	picture = GFX_report_event_DEN_fascist_troops
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { ##
+	name = ENG_collapse_event.5.a
+	
+	if = {
+	limit = {
+	IRE = {exists = yes}
+	}
+	IRE = {transfer_state = 119}
+	}
+	else = {
+	release_on_controlled = NIR
+	}
+	}
+}
+
+country_event = { #шотландия и уэльс восстают
+	id = ENG_collapse_event.6
+	title = ENG_collapse_event.6.t
+	desc = ENG_collapse_event.6.d
+	picture = GFX_report_event_german_troops_paris
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	immediate = {
+	hidden_effect = {
+	release_on_controlled = SCO
+	release_on_controlled = WLS
+	
+	country_event = {id = ENG_collapse_event.7.a days = 3 random_days = 4}
+	
+	SCO = {
+	create_resistance_fighters = yes
+	}
+	WLS = {
+	create_resistance_fighters = yes
+	}
+	}
+	}
+	
+	option = { ##мир
+	name = ENG_collapse_event.6.a
+set_truce = {
+    target = SCO
+    days = 180
+}
+diplomatic_relation = {
+    country = SCO
+    relation = non_aggression_pact
+    active = yes
+}
+set_truce = {
+    target = WLS
+    days = 180
+}
+diplomatic_relation = {
+    country = WLS
+    relation = non_aggression_pact
+	active = yes
+}
+}
+	
+	option = { ##война
+	name = ITA_vatican_san_marino_event.5.b
+declare_war_on = {
+    target = SCO
+    type = annex_everything
+}
+declare_war_on = {
+    target = WLS
+    type = annex_everything
+}
+
+SCO = {add_timed_idea = {idea = ALL_war_of_independence days = 180}}
+WLS = {add_timed_idea = {idea = ALL_war_of_independence days = 180}}
+	}
+}
+
+country_event = { #гражданка или мир
+	id = ENG_collapse_event.7
+	title = ENG_collapse_event.7.t
+	desc = ENG_collapse_event.7.d
+	picture = GFX_report_event_ger_civil_war
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	immediate = {
+	hidden_effect = {
+	news_event = {id = ITA_news.6 days = 1}
+	remove_ideas = stiff_upper_lip
+	#dismantle_faction = yes
+	}
+	}
+	
+	option = { ##мир
+	name = ENG_collapse_event.7.a
+	
+	retire_country_leader = yes
+	
+	every_enemy_country = {
+	start_peace_conference = {
+    tag = ROOT
+    score_factor = 0.8
+	}	
+	}
+	}
+	
+	option = { ##война
+	name = ENG_collapse_event.7.b
+	
+	retire_country_leader = yes
+	
+	hidden_effect = {
+	retire_country_leader = yes
+	retire_country_leader = yes
+	retire_country_leader = yes
+	}
+	
+	if = {
+	limit = {
+	has_government = communism
+	}
+start_civil_war = {
+    # Original country's ideology changes to communism
+    ideology = neutrality
+    # Breakaway gets old ideology of ROOT
+    size = 0.4
+    keep_political_leader = no
+    keep_political_party_members = no
+	THIS = {set_cosmetic_tag = ENG_salvation_front}
+	}
+	}
+	
+	else = {
+start_civil_war = {
+    # Original country's ideology changes to communism
+    ideology = communism
+    # Breakaway gets old ideology of ROOT
+    size = 0.4
+    keep_political_leader = no
+    keep_political_party_members = no
+	THIS = {set_cosmetic_tag = ENG_salvation_front}
+	}
+	}
+}
+}
+
+
+country_event = { #страны захватывают свои корки которые под нами
+	id = ENG_collapse_event.8
+	title = ENG_collapse_event.8.t
+	desc = ENG_collapse_event.8.d
+	picture = GFX_report_event_SWE_summer_government
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { ##го
+	name = ENG_collapse_event.8.a
+	ENG = {
+	every_state = {
+	limit = {
+	is_owned_by = PREV
+	is_core_of = ROOT
+	}
+	transfer_state_to = ROOT
+	}
+	}
+	}
+}
+
+# Ивент 1 — Британия предлагает мир
+country_event = {
+    id = ITA_peace_negotiations.1
+    title = ITA_peace_negotiations.1.t
+    desc = ITA_peace_negotiations.1.d
+    picture = GFX_report_event_vienna_award_negotiations
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+    option = {
+        name = ITA_peace_negotiations.1.a
+        set_country_flag = britain_requests_peace
+            country_event = { id = ITA_peace_negotiations.3 days = 1 }
+			FROM = {country_event = {id = ITA_peace_negotiations.11 hours = 4}}
+			
+			if = {
+			limit = {
+			is_in_faction = yes
+			is_faction_leader = no
+			}
+			set_rule = {can_create_factions = yes}
+			leave_faction = yes
+			}
+			
+			ai_chance = {
+			base = 4
+			
+			modifier = {
+			add = 5
+			is_faction_leader = yes
+			}
+			}
+		}
+	
+    option = {
+        name = ITA_peace_negotiations.1.b
+        add_stability = -0.1
+        add_war_support = 0.1
+		FROM = {country_event = {id = ITA_peace_negotiations.10 hours = 4}}
+    }
+}
+
+# Ивент 3 — Флот
+country_event = {
+    id = ITA_peace_negotiations.3
+    title = ITA_peace_negotiations.3.t
+    desc = ITA_peace_negotiations.3.d
+    picture = GFX_report_event_ast_navy
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+    option = { #часть флота наша
+        name = LBA_event.2.a
+		
+		country_event = {id = ITA_peace_negotiations.5 days = 1}
+		
+		add_political_power = -25
+        ENG = {
+		add_war_support = -0.05
+		transfer_units_fraction = {
+		navy_ratio = 0.25
+		}
+        }
+    }
+}
+
+# Ивент 5 — Колонии
+country_event = {
+    id = ITA_peace_negotiations.5
+    title = ITA_peace_negotiations.5.t
+    desc = ITA_peace_negotiations.5.d
+    picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+    option = {
+        name = LBA_event.2.a
+		
+		hidden_effect = {country_event = {id = ITA_peace_negotiations.7 days = 1}}
+		
+		#add_political_power = 75
+		
+        transfer_state = 116 # Malta
+        transfer_state = 446 # Malta
+        transfer_state = 118 # Malta
+		
+		903 = {transfer_state_to = AOI}
+		547 = {transfer_state_to = AOI}
+		904 = {transfer_state_to = AOI}
+		905 = {transfer_state_to = AOI}
+		269 = {transfer_state_to = AOI}
+		548 = {transfer_state_to = AOI}
+		
+		if = {
+		limit = {HEL = {is_subject_of = ROOT}}
+		183 = {transfer_state_to = HEL}
+		}
+		else_if = {
+		limit = {GRE = {is_in_faction_with = ROOT}}
+		183 = {transfer_state_to = GRE}
+		}
+		else = {
+		
+		upgrade_italian_col_emp = yes
+		
+		183 = {transfer_state_to = CYP}
+		ITA = {puppet = CYP}
+		
+		CYP = {
+		
+		if = {
+		limit = {has_global_flag = flag_colored_puppets}
+		set_cosmetic_tag = italian_protectorate	
+		}
+		
+		make_this_country_protectorate = yes
+		}
+		
+		if = {
+		limit = {EGY = {exists = no}}
+				ITA = {
+					set_autonomy = {
+					    target = EGY
+					    autonomy_state = autonomy_reichsprotectorate
+					    end_wars = no
+					    end_civil_wars = no
+					}
+				}
+		EGY = {
+		set_cosmetic_tag = EGY_italian
+		
+create_country_leader = {
+	name = AOI_attilio_teruzzi
+	picture = GFX_portrait_teruzzi
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+	leader_of_protectorate
+	}
+	}
+}
+		
+			EGY = {add_ideas = ITA_ALB_italian_settlers}
+			ROOT = {transfer_state = 446}
+			EGY = {
+			transfer_state = 452
+			transfer_state = 457
+			transfer_state = 456
+			transfer_state = 907
+			transfer_state = 447
+			transfer_state = 452
+			transfer_state = 453
+			transfer_state = 552
+			load_focus_tree = { tree = protectorate_focus keep_completed = yes}
+			#mark_focus_tree_layout_dirty = yes
+			}
+    }
+	
+	if = {
+	limit = {PAL = {exists = no}}
+	
+				ITA = {
+					set_autonomy = {
+					    target = PAL
+					    autonomy_state = autonomy_reichsprotectorate
+					    end_wars = no
+					    end_civil_wars = no
+					}
+				}
+		PAL = {
+		create_country_leader = {
+			name = ITA_annibale_bergonzoli
+			desc = ""
+			picture = GFX_portrait_ITA_annibale_bergonzoli
+			ideology = fascism_ideology
+			traits = {leader_of_protectorate}
+			}
+		}
+		PAL = {
+		set_cosmetic_tag = PAL_italian_colony
+		add_country_leader_trait = leader_of_protectorate
+		}
+			PAL = {mark_focus_tree_layout_dirty = yes}
+			#PAL = {load_focus_tree = { tree = protectorate_focus keep_completed = yes}}
+			PAL = {add_ideas = ITA_ALB_italian_settlers}
+			PAL = {transfer_state = 454 }
+			PAL = {transfer_state = 455}
+		}
+	
+	if = {
+	limit = {
+	OR = {
+			551 = {is_owned_by = ENG}
+			883 = {is_owned_by = ENG}
+			886 = {is_owned_by = ENG}
+			549 = {is_owned_by = ENG}
+			885 = {is_owned_by = ENG}
+			884 = {is_owned_by = ENG}
+			887 = {is_owned_by = ENG}
+	}
+	}
+	every_state = {
+	limit = {
+	OWNER = {
+	OR = {tag = ENG is_subject_of = ENG}
+	}
+		OR = {
+			state =  551 
+			state =  883
+			state =  886
+			state =  549 
+			state =  885 
+			state =  884 
+			state =  767 
+			state =  887
+			}
+	}
+	transfer_state_to = EGY
+	}
+	}
+	
+	ENG = {
+	release_on_controlled = YEM
+	}
+	
+	if = {
+	limit = {OMA = {is_subject_of = ENG}}
+	ITA = {puppet = OMA}
+	OMA = {
+		if = {
+		limit = {has_global_flag = flag_colored_puppets}
+		set_cosmetic_tag = italian_protectorate	
+		}
+			#OMA = {mark_focus_tree_layout_dirty = yes}
+			OMA = {load_focus_tree = { tree = protectorate_focus keep_completed = yes}}
+			OMA = {add_ideas = ITA_ALB_italian_settlers}	
+	}
+	}
+	
+	if = {
+	limit = {
+	UAE = {NOT = {is_subject_of = ROOT}}
+	OR = {
+	
+	1014 = {
+	OWNER = {
+	OR = {tag = ROOT tag = ENG is_subject_of = ENG}
+	}
+	}
+	765 = {
+	OWNER = {
+	OR = {tag = ROOT tag = ENG is_subject_of = ENG}
+	}
+	}
+	658 = {
+	OWNER = {
+	OR = {tag = ROOT tag = ENG is_subject_of = ENG}
+	}
+	}
+	
+	}
+	}
+	
+	1014 = {transfer_state_to = UAE}
+	658 = {transfer_state_to = UAE}
+	765 = {transfer_state_to = UAE}
+	
+	ITA = {puppet = UAE}
+	
+		UAE = {
+		set_cosmetic_tag = gulf_italian
+		
+create_country_leader = {
+	name = ITA_alberto_da_zara
+	picture = GFX_portrait_ITA_alberto_da_zara
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+	leader_of_protectorate
+	}
+	}
+	
+	make_this_country_protectorate = yes
+}
+	
+	if = {
+	limit = {
+	KUW = {
+	OR = {
+	exists = no
+	is_subject_of = ENG
+	}
+	}
+	}
+	656 = {transfer_state_to = KUW}
+	ITA = {puppet = KUW}
+	
+		KUW = {
+			
+		if = {
+		limit = {has_global_flag = flag_colored_puppets}
+		set_cosmetic_tag = italian_protectorate	
+		}			
+			
+			#mark_focus_tree_layout_dirty = yes
+			load_focus_tree = { tree = protectorate_focus keep_completed = yes}
+			add_ideas = ITA_ALB_italian_settlers
+			}
+	
+	}
+		}
+	}
+}
+
+}
+
+# Ивент 6 — Ресурсы
+country_event = {
+    id = ITA_peace_negotiations.6
+    title = ITA_peace_negotiations.6.t
+    desc = ITA_peace_negotiations.6.d
+    picture = GFX_report_event_generic_stock_traders
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+    option = {
+        name = AOI_event.5.a
+		add_ideas = ITA_suez_channel_trade
+    }
+}
+
+# Ивент 7 — Финальный договор
+country_event = {
+    id = ITA_peace_negotiations.7
+    title = ITA_peace_negotiations.7.t
+    desc = ITA_peace_negotiations.7.d
+    picture = GFX_report_event_canada_treaty
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+    option = {
+        name = ITA_peace_negotiations.7.a
+        add_political_power = 100
+		ITA_bop_low_increase_effect = yes
+        ENG = {
+            add_popularity = {ideology = PREV popularity = -0.15}
+            add_war_support = -0.15
+        }
+        hidden_effect = {
+		country_event = {id = ITA_peace_negotiations.6 days = 2}
+		set_global_flag = eng_lost_war_ita
+        }
+    }
+}
+country_event = { #нихуя
+    id = ITA_peace_negotiations.10
+    title = ITA_peace_negotiations.10.t
+    desc = ITA_peace_negotiations.10.d
+    picture = GFX_report_event_canada_treaty
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+    option = {
+        name = ITA_peace_negotiations.10.a
+		set_global_flag = must_regain_terr_flag
+		add_war_support = 0.05
+		unlock_decision_category_tooltip = ENG_italo_british_war_dec_cat
+		activate_mission = ENG_regain_lost_terr
+	}
+}
+country_event = { #согласились
+    id = ITA_peace_negotiations.11
+    title = ITA_peace_negotiations.11.t
+    desc = ITA_peace_negotiations.11.d
+    picture = GFX_report_event_canada_treaty
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+    option = {
+        name = ITA_peace_negotiations.11.a
+		ENG = {white_peace = ITA}
+	}
+}
+
+country_event = { #витя молчит, власть берет в руки эдик (или ждет)
+    id = ITA_monarchy_event.5
+    title = ITA_monarchy_event.5.t
+    desc = ITA_monarchy_event.5.d
+    picture = GFX_report_event_canada_treaty
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+    option = { #го
+        name = ITA_monarchy_event.5.a
+		retire_country_leader = yes
+set_country_flag = ITA_strength_savoy_dynasty
+ITA_promote_umberto_to_country_leader = yes
+	}
+	
+    option = { #терпим
+        name = ITA_monarchy_event.5.b
+		add_stability = -0.05
+		hidden_effect = {country_event = {id = ITA_monarchy_event.6 days = 5}}
+	}
+}
+
+country_event = { #формируются остальные монархисты
+    id = ITA_monarchy_event.6
+    title = ITA_monarchy_event.6.t
+    desc = ITA_monarchy_event.6.d
+    picture = GFX_report_event_canada_treaty
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+    option = { #умберто все таки монарх
+        name = ITA_monarchy_event.6.a
+		retire_country_leader = yes
+set_country_flag = ITA_strength_savoy_dynasty
+ITA_promote_umberto_to_country_leader = yes
+	}
+	
+    option = { #пох
+        name = ITA_monarchy_event.6.b
+		add_political_power = -25
+		add_stability = -0.05
+		add_war_support = 0.05
+		clr_global_flag = umbert_killed_flag
+		mark_focus_tree_layout_dirty = yes
+		hidden_effect = {country_event = {id = ITA_monarchy_event.7 days = 6}}
+	}
+}
+country_event = { #умберто убит!
+    id = ITA_monarchy_event.7
+    title = ITA_monarchy_event.7.t
+    desc = ITA_monarchy_event.7.d
+    picture = GFX_report_event_canada_treaty
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+	immediate = {
+	hidden_effect = {
+	#retire_country_leader = yes
+	set_global_flag = umbert_killed_flag
+	mark_focus_tree_layout_dirty
+	retire_character = ITA_prince_umberto
+	retire_character = ITA_vittorio_emanuele_iii
+	}
+	}
+	
+    option = { #аоста
+        name = ITA_monarchy_event.7.a
+		add_stability = -0.15
+		retire_country_leader = yes
+		
+		complete_national_focus = ITA_broken_crown
+		complete_national_focus = ITA_duchy_of_aosta
+		
+		country_event = {id = ITA_monarchy_event.8 days = 1}
+	}
+	
+    option = { #неаполь
+        name = ITA_monarchy_event.7.b
+		add_stability = -0.15
+		retire_country_leader = yes
+		
+		complete_national_focus = ITA_broken_crown
+		complete_national_focus = ITA_neapolitan_house
+		
+		TTS = {
+		TTS_ferdinand_pius = {
+		set_nationality = ROOT
+		}
+		}
+			#	add_country_leader_role = {
+			#	character = TTS_ferdinand_pius
+			#	promote_leader = yes
+			#	country_leader = {
+			#	ideology = despotism
+			#	expire = "1965.1.1.1"
+			#	traits = {duke_of_castro}
+			#	}
+			#}
+			
+				create_country_leader = {
+				name = TTS_ferdinand_pius
+				picture = GFX_portrait_TTS_ferdinand_pius
+				promote_leader = yes
+				ideology = despotism
+				expire = "1965.1.1.1"
+				traits = {duke_of_castro}
+				}
+		}
+	
+	option = { #габсбурги
+        name = ITA_monarchy_event.7.c
+		add_stability = -0.15
+		retire_country_leader = yes
+		
+		complete_national_focus = ITA_broken_crown
+		
+		LBV = {
+		LBV_robert_von_habsburg = {
+		set_nationality = ROOT
+		}
+		}
+				add_country_leader_role = {
+				character = LBV_robert_von_habsburg
+				promote_leader = yes
+				country_leader = {
+				ideology = despotism
+				expire = "1965.1.1.1"
+				traits = {archduke_of_austria_este}
+				}
+			}
+			
+		effect_tooltip = {
+				create_country_leader = {
+				name = LBV_robert_von_habsburg
+				promote_leader = yes
+				ideology = despotism
+				expire = "1965.1.1.1"
+				traits = {archduke_of_austria_este}
+				}
+		}
+	}
+}
+
+country_event = { #амадей или аймоне
+    id = ITA_monarchy_event.8
+    title = ITA_monarchy_event.8.t
+    desc = ITA_monarchy_event.8.d
+    picture = GFX_report_event_canada_treaty
+
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	immediate = {
+	hidden_effect = {
+		AOI = {
+		AOI_prince_amedeo = {
+		set_nationality = ROOT
+		}
+		}
+	}
+	}
+	
+	
+    option = {
+        name = ITA_monarchy_event.8.a
+		
+			add_country_leader_role = {
+			character = AOI_prince_amedeo
+			promote_leader = yes
+			country_leader = {
+			ideology = despotism
+			traits = { duke_of_aosta iron_duke }
+			expire = "1965.1.1.1"
+			id = -1
+			}
+		}
+	}
+	
+    option = {
+        name = ITA_monarchy_event.8.b
+		
+			add_country_leader_role = {
+			character = ITA_prince_aimone
+			promote_leader = yes
+			country_leader = {
+			ideology = despotism
+			traits = { royal_legitimist iron_duke }
+			expire = "1965.1.1.1"
+			id = -1
+			}
+		}	
+	}
+}

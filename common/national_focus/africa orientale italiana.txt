@@ -1,0 +1,3180 @@
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+### search_filters = {FOCUS_FILTER_PROPAGANDA}
+### search_filters = {FOCUS_FILTER_ARMY_XP}
+### search_filters = {FOCUS_FILTER_NAVY_XP}
+### search_filters = {FOCUS_FILTER_AIR_XP}
+
+
+focus_tree = {
+	id = aoi_tree
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 50
+			original_tag = AOI
+		}
+	}
+	default = no
+
+	continuous_focus_position = { x = 10 y = 0 }  
+	initial_show_position = {
+		x = 10
+		y = 0
+	}
+	focus = {
+		id = AOI_new_governor_of_AOI
+		icon = GFX_goal_flag_aoi
+		#prerequisite = { focus = }
+		x = 20
+		y = 0
+		#relative_position_id =
+		cost = 1
+		dynamic = yes 
+			available = {
+			is_subject_of = ITA
+			#has_country_leader = {
+			#	character = AOI_prince_amedeo 
+			#	ruling_only = yes 
+			#}
+		}
+		ai_will_do = {
+			base = 100
+		}
+
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+		add_ideas = AOI_alessandro_lessona
+		ITA_create_rosa_dainelli_operative = yes
+		country_event = {
+		id = AOI_event.3
+		hours = 0}
+	}
+}
+
+	focus = {
+		id = AOI_establish_new_state
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = AOI_abolish_slavery }
+		x = 0
+		y = 1
+		relative_position_id = AOI_abolish_slavery
+		cost = 7
+		dynamic = yes
+			available = {
+			#has_country_leader = {
+			#	character = AOI_prince_amedeo 
+			#	ruling_only = yes 
+			#}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		select_effect = {
+		}
+		
+		completion_reward = {
+
+		add_political_power = 120
+		
+		add_ideas = AOI_forze_armate
+		
+			#custom_effect_tooltip = ITA_ministry_of_italian_africa_occupation_law_tt
+			#show_ideas_tooltip = ITA_fake_colonial_police_law		
+			#ROOT = {
+			#	set_occupation_law_where_available = colonial_police
+			#}
+				ETH_seyoum_mengesha = {
+					clr_character_flag = ETH_imprisoned_flag 
+				}
+				ETH_ayalew_birru = {
+					clr_character_flag = ETH_imprisoned_flag 
+				}
+				ETH_ras_kassa = {
+					clr_character_flag = ETH_imprisoned_flag 
+				}
+		}
+	}
+
+	
+focus = {
+		id = AOI_abolish_slavery
+		icon = GFX_focus_ETH_the_emperor_stays
+		prerequisite = { focus = AOI_new_governor_of_AOI}
+		x = 0
+		y = 1
+		relative_position_id = AOI_new_governor_of_AOI
+		cost = 7
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
+		
+		bypass = {
+		NOT = {has_idea = AOI_ethiopian_slavery}
+		}
+		
+		completion_reward = {
+		ROOT = { country_event = { id =  AOI_event.1 } }
+		}
+	}
+
+
+focus = {
+		id = AOI_increase_military_existence #увеличить присутствие военных
+		icon = GFX_focus_generic_military_dictatorship
+		prerequisite = { focus = AOI_establish_new_state}
+		x = -1
+		y = 1
+		relative_position_id = AOI_establish_new_state
+		mutually_exclusive = {focus = AOI_amedeo_sign}
+		cost = 2
+		available = {
+		OR = {
+		has_country_leader = { ruling_only = yes character = ITA_rodolfo_graziani }
+		has_country_leader = { ruling_only = yes character = ITA_pietro_badoglio }
+		}
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 2
+				date > 1937.1.1
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_ARMY_XP FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+			add_ideas = { AOI_strenghten_military }
+		}
+	}
+	
+focus = {
+		id = AOI_amedeo_sign #назначение принца амадея
+		icon = GFX_focus_generic_monarchy_1
+		prerequisite = { focus = AOI_establish_new_state}
+		x = 1
+		y = 1
+		relative_position_id = AOI_establish_new_state
+		mutually_exclusive = {focus = AOI_increase_military_existence}
+		cost = 2
+		available = {
+		has_character = AOI_prince_amedeo
+		NOT = {
+		has_global_flag = AOI_amedeo_surrenders
+		}
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 2
+				date > 1937.1.1
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
+
+		completion_reward = {
+		AOI = {
+			ITA_rodolfo_graziani = {
+				set_nationality = ITA
+				}
+			}
+
+			add_country_leader_role = {
+			character = AOI_prince_amedeo
+			promote_leader = yes
+			country_leader = {
+			ideology = fascism_ideology
+			traits = { duke_of_aosta iron_duke }
+			expire = "1965.1.1.1"
+			id = -1
+
+			}
+		}
+	}
+}
+focus = {
+		id = AOI_servizio
+		icon = GFX_focus_generic_national_security
+		prerequisite = { focus = AOI_amedeo_sign focus = AOI_increase_military_existence}
+		x = 1
+		y = 1
+		relative_position_id = AOI_increase_military_existence
+		cost = 3
+		available = {
+		#has_government = fascism
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+
+		completion_reward = {
+		add_ideas = { ITA_servizio_informazione_militare_ns }
+		}
+	}
+
+focus = { 
+		id = AOI_replace_abuna
+		icon = GFX_focus_ETH_replace_the_abuna
+		prerequisite = {focus = AOI_cooperate_with_locals}
+		x = -8
+		y = 2
+		relative_position_id = AOI_cooperate_with_locals
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+		add_political_power = 60
+		show_ideas_tooltip = AOI_abuna_abraham
+
+		}
+	}
+	
+focus = { 
+		id = AOI_capital_victory_parade
+		icon = GFX_focus_generic_fascist_troops
+		prerequisite = {focus = AOI_creation_of_army}
+		x = 2
+		y = 0
+		relative_position_id = AOI_replace_abuna
+		cost = 10
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		
+		search_filters = {}
+
+		completion_reward = {
+		add_stability = 0.10
+		add_war_support = 0.10
+		add_popularity = {
+		ideology = fascism
+		popularity = 0.1
+			}
+		}
+	}	
+	
+focus = { 
+		id = AOI_italian_langugage
+		icon = GFX_focus_generic_italy_propaganda
+		prerequisite = { focus = AOI_capital_victory_parade}
+		x = 0
+		y = 1
+		relative_position_id = AOI_capital_victory_parade
+		cost = 5
+		available = {
+		is_subject_of = ITA
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_stability = 0.05
+		add_political_power = 20
+		add_command_power = 30
+		add_autonomy_score = { 
+			value = 100
+			}		
+		}
+	}
+	
+	#кооперация с местными
+focus = {
+		id = AOI_cooperate_with_locals
+		icon = GFX_focus_ITA_topple_amhara_rulers
+		prerequisite = { focus = AOI_establish_new_state}
+		x = -3
+		y = 2
+		relative_position_id = AOI_establish_new_state
+		cost = 5
+		available = {
+		any_owned_state = {
+		NOT = {is_core_of = ROOT}
+		}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+
+		add_stability = 0.05
+			every_state = {
+				limit = {is_owned_by = ROOT }
+				add_compliance = 5
+				add_resistance = -5
+			}
+		add_autonomy_score = { 
+			value = 100
+			}	
+		}
+	}
+
+	#децентрализация
+focus = {
+		id = AOI_maskal_feast_of_amedeo
+		icon = GFX_focus_ETH_amedeos_feast_of_maskal
+		prerequisite = {focus = AOI_creation_of_identity}
+		mutually_exclusive = {focus = AOI_centralised_government}
+		x = -2
+		y = 1
+		relative_position_id = AOI_creation_of_identity
+		cost = 8
+		available = {
+		has_completed_focus = AOI_amedeo_sign
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_political_power = 10
+		add_stability = 0.05
+		add_popularity = {
+		ideology = fascism
+		popularity = 0.05}
+		
+			add_autonomy_score = { 
+				value = 300 
+				localization = ETH_amedeos_feast_of_maskal
+			}
+			custom_effect_tooltip = AOI_begin_feast_of_maskal_tt
+			hidden_effect = {country_event = {id = AOI_event.7 hours = 6} }
+
+		}
+	}
+
+focus = {
+		id = AOI_give_warlords_more_rights
+		icon = GFX_focus_ETH_reach_out_to_the_italians
+		prerequisite = { focus = AOI_maskal_feast_of_amedeo}
+		x = 0
+		y = 1
+		relative_position_id = AOI_maskal_feast_of_amedeo
+		cost = 5
+		available = {
+		}
+		
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_autonomy_score = { 
+				value = 100
+			}
+			custom_effect_tooltip = AOI_chosen_warlord_tt
+			hidden_effect = {
+			division_template = {
+						name = "Warlords division"
+						is_locked = no
+						force_allow_recruiting = yes
+						priority = 1
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							mountaineers = { x = 1 y = 0 }
+							mountaineers = { x = 1 y = 1 }
+							mountaineers = { x = 1 y = 2 }
+						}
+					}
+				ETH = {
+						ETH_abba_jofir = {
+				  			set_nationality = AOI
+				   		}	
+					}
+					ETH = {
+						ETH_haile_selassie_gugsa = {
+				  			set_nationality = AOI
+				   		}	
+					}
+				ETH = {
+						ETH_hailu_tekle_haymanot = {
+				  			set_nationality = AOI
+				   		}	
+					}
+					
+			IF = {
+			limit = {has_country_flag = AOI_jofir }
+						838 = {
+							create_unit = {
+								division = "division_template = \"Warlords division\" start_experience_factor = 0.3 start_equipment_factor = 1 start_manpower_factor = 1"
+								owner = ROOT
+								count = 3
+							}
+						}			
+			}
+			ELSE_IF = {
+			limit = {has_country_flag = AOI_tekle}
+						840 = {
+							create_unit = {
+								division = "division_template = \"Warlords division\" start_experience_factor = 0.3 start_equipment_factor = 1 start_manpower_factor = 1"
+								owner = ROOT
+								count = 3
+							}
+						}			
+			}
+			ELSE = {
+						843 = {
+							create_unit = {
+								division = "division_template = \"Warlords division\" start_experience_factor = 0.3 start_equipment_factor = 1 start_manpower_factor = 1"
+								owner = ROOT
+								count = 3
+							}
+						}						
+				}
+			}
+		}
+	}
+
+	#Централизация
+focus = { 
+		id = AOI_centralised_government
+		icon = GFX_focus_generic_diplomatic_treaty
+		prerequisite = {focus = AOI_creation_of_identity}
+		mutually_exclusive = {focus = AOI_maskal_feast_of_amedeo}
+		x = 2
+		y = 1
+		relative_position_id = AOI_creation_of_identity
+		cost = 10
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+
+		add_stability = 0.1
+		add_popularity = {
+		ideology = fascism
+		popularity = 0.05}
+		every_owned_state = {
+		limit = {
+		NOT = {is_core_of = ROOT}
+		}
+		add_resistance = -5
+		}
+			add_autonomy_score = { 
+				value = 500 
+			}
+		}
+	}
+focus = { 
+		id = AOI_crush_warlords
+		icon = GFX_focus_spr_crush_the_revolution
+		prerequisite = {focus = AOI_centralised_government}
+		x = 0
+		y = 1
+		relative_position_id = AOI_centralised_government
+		cost = 5
+		available = {
+		any_owned_state = {has_state_flag = AOI_partisans_here}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {		
+			add_autonomy_score = { 
+				value = 100 
+			}
+		custom_effect_tooltip = weaker_partisans_tt
+		custom_effect_tooltip = weaker_partisans_tt
+	hidden_effect = {
+		random_owned_controlled_state = {
+		limit = {
+		NOT = {has_state_flag = {flag = AOI_fighting_partisans_rn} }
+		has_dynamic_modifier ={modifier = AOI__ethiopian_partisans scope = AOI}
+		}
+		remove_dynamic_modifier = {modifier = AOI__ethiopian_partisans  scope = AOI}
+		add_dynamic_modifier = {modifier = AOI__ethiopian_partisans_1  scope = AOI}
+		}
+		random_owned_controlled_state = {
+		limit = {
+		NOT = {has_state_flag = {flag = AOI_fighting_partisans_rn} }
+		has_dynamic_modifier ={modifier =  AOI__ethiopian_partisans  scope = AOI}
+		}
+		remove_dynamic_modifier = {modifier = AOI__ethiopian_partisans  scope = AOI}
+		add_dynamic_modifier = {modifier = AOI__ethiopian_partisans_1  scope = AOI}
+			}
+		}
+	}
+}
+
+focus = { 
+		id = AOI_creation_of_identity
+		icon = GFX_focus_RSI_new_fascism
+		prerequisite = { focus = AOI_replace_abuna}
+		prerequisite = {focus = AOI_italian_langugage}
+		x = 0
+		y = 2
+		relative_position_id = AOI_replace_abuna
+		cost = 7
+		available = {
+		has_government = fascism
+		is_subject_of = ITA
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_autonomy_score = { 
+				value = 100
+				}
+		add_ideas = AOI_new_nation
+		custom_effect_tooltip = weaker_partisans_tt
+		custom_effect_tooltip = weaker_partisans_tt
+		hidden_effect = {
+		random_owned_controlled_state = {
+		limit = {
+		NOT = {has_state_flag = {flag = AOI_fighting_partisans_rn} }
+		has_dynamic_modifier ={modifier = AOI__ethiopian_partisans scope = AOI}
+		}
+		remove_dynamic_modifier = {modifier = AOI__ethiopian_partisans  scope = AOI}
+		add_dynamic_modifier = {modifier = AOI__ethiopian_partisans_1  scope = AOI}
+		}
+		random_owned_controlled_state = {
+		limit = {
+		NOT = {has_state_flag = {flag = AOI_fighting_partisans_rn} }
+		has_dynamic_modifier ={modifier =  AOI__ethiopian_partisans  scope = AOI}
+		}
+		remove_dynamic_modifier = {modifier = AOI__ethiopian_partisans  scope = AOI}
+		add_dynamic_modifier = {modifier = AOI__ethiopian_partisans_1  scope = AOI}
+			}
+		}
+	}
+}
+	
+focus = { 
+		id = AOI_assert_colonial_claims
+		icon = GFX_goal_east_africa_territories
+		prerequisite = { focus = AOI_centralised_government focus = AOI_maskal_feast_of_amedeo }
+		x = 0
+		y = 2
+		relative_position_id = AOI_creation_of_identity
+		cost = 2
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_autonomy_score = { 
+				value = 100
+			}
+		add_war_support = 0.05
+		every_state = {
+		limit = {is_owned_by = ROOT}
+		add_claim_by = ROOT}
+		269 = {add_claim_by = ROOT}
+		268 = {add_claim_by = ROOT}
+		903 = {add_claim_by = ROOT}
+		}
+	}
+	
+focus = {
+		id = AOI_horn_enclave #анклав рога африки, джибути, гарриса и сомалиленд
+		icon = GFX_focus_ETH_protector_of_the_somalis
+		prerequisite = { focus = AOI_assert_colonial_claims}
+		x = -1
+		y = 1
+		relative_position_id = AOI_assert_colonial_claims
+		cost = 5
+		available = {
+		has_completed_focus = AOI_integrate_lands
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		custom_effect_tooltip = AOI_integration_of_colonies_eu_tt
+		unlock_decision_tooltip = AOI_integration_land_other_lands
+		}
+	}
+
+
+focus = {
+		id = AOI_integrate_lands
+		icon = GFX_focus_SWE_revoke_militia_law
+		prerequisite = {focus = AOI_assert_colonial_claims}
+		x = 1
+		y = 1
+		relative_position_id = AOI_assert_colonial_claims
+		cost = 8
+		available = {
+		has_completed_focus = AOI_beginning_of_antipartisan_war
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		custom_effect_tooltip = allows_to_inegrate_lands_tt	
+		unlock_decision_category_tooltip = AOI_establish_full_order
+		}
+	}
+focus = { 
+		id = AOI_war_in_africa
+		icon = GFX_focus_ETH_african_wildfire
+		prerequisite = { focus = AOI_assert_colonial_claims}
+		x = 0
+		y = 2
+		relative_position_id = AOI_assert_colonial_claims
+		cost = 8
+		available = {
+		OR = {
+		threat > 0.25
+		has_war = yes
+		}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_war_support = 0.05
+		army_experience = 15
+		air_experience = 15
+		navy_experience = 15
+		add_timed_idea = {idea = AOI_african_war days = 180}
+
+		}
+	}
+focus = { 
+		id = AOI_push_to_egypt
+		icon = GFX_focus_attack_britain
+		prerequisite = { focus = AOI_war_in_africa}
+		mutually_exclusive = {focus = AOI_defence_of_homeland}
+		mutually_exclusive = {focus = AOI_attack_yemen}
+		x = -2
+		y = 1
+		relative_position_id = AOI_war_in_africa
+		cost = 5
+		available = {
+		OR = {
+		has_war_with = EGY
+		has_war_with = ENG
+		has_war_with = FRA
+		}
+			if = {
+				limit = { NOT = { has_government = fascism } }
+				compare_autonomy_state > autonomy_colony
+			}
+			if = {
+				limit = { has_government = fascism } 
+				compare_autonomy_state > autonomy_reichskommissariat
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			every_state = {
+			limit = {
+			is_core_of = SUD
+			}
+	add_dynamic_modifier = {modifier = AOI_pushing_into_state days = 100 scope = ROOT}
+			}
+			every_state = {
+			limit = {
+			is_core_of = EGY
+			}
+	add_dynamic_modifier = {modifier = AOI_pushing_into_state days = 100 scope = ITA}
+			}
+		}
+	}
+	
+focus = { 
+		id = AOI_exit_to_portugese_colonies
+		icon = GFX_focus_por_luso_tropicalism
+		prerequisite = { focus = AOI_push_to_egypt}
+		x = 0
+		y = 1
+		relative_position_id = AOI_push_to_egypt
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			every_state = {
+			limit = {
+			is_core_of = TZN
+			}
+add_dynamic_modifier = {modifier = AOI_pushing_into_state days = 100 scope = ROOT}
+add_dynamic_modifier = {modifier = AOI_pushing_into_state days = 100 scope = ITA}
+			}
+			every_state = {
+			limit = {
+			is_core_of = KEN
+			}
+add_dynamic_modifier = {modifier = AOI_pushing_into_state days = 100 scope = ROOT}
+add_dynamic_modifier = {modifier = AOI_pushing_into_state days = 100 scope = ITA}
+			}
+		}
+	}
+focus = { 
+		id = AOI_demand_mozambique
+		icon = GFX_focus_generic_attack_portugal
+		prerequisite = { focus = AOI_exit_to_portugese_colonies}
+		x = 0
+		y = 1
+		relative_position_id = AOI_exit_to_portugese_colonies
+		cost = 5
+		available = {
+		any_country = {
+		OR = {
+		tag = ROOT
+		is_in_faction_with = ROOT
+		}
+		OR = {
+		controls_state = 546
+		controls_state = 771
+		controls_state = 770
+		controls_state = 545
+		controls_state = 275
+		controls_state = 719
+		}
+		}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		POR = {country_event = {id = AOI_event.25 hours = 4}}
+		}
+	}
+	
+focus = { 
+		id = AOI_defence_of_homeland
+		icon = GFX_focus_generic_africa_defense
+		prerequisite = { focus = AOI_war_in_africa}
+		mutually_exclusive = {focus = AOI_push_to_egypt}
+		mutually_exclusive = {focus = AOI_attack_yemen}
+		x = 0
+		y = 1
+		relative_position_id = AOI_war_in_africa
+		cost = 5
+		available = {
+		has_war = yes
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 3
+				is_historical_focus_on = yes
+			}
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_war_support = 0.05
+		add_timed_idea = {idea = AOI_defending_homeland days = 365}
+		}
+	}	
+	
+focus = { 
+		id = AOI_embrace_partisans_tactic
+		icon = GFX_focus_ITA_banda_carita
+		prerequisite = { focus = AOI_defence_of_homeland}
+		x = 0
+		y = 1
+		relative_position_id = AOI_defence_of_homeland
+		cost = 10
+		available = {
+		surrender_progress > 0.10
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		ROOT = {
+			add_ideas = AOI_fight_as_partisans
+			}
+		}
+	}
+
+focus = { 
+		id = AOI_attack_yemen
+		icon = GFX_focus_ETH_the_one_true_heir_of_solomon
+		prerequisite = { focus = AOI_war_in_africa}
+		mutually_exclusive = {focus = AOI_defence_of_homeland}
+		mutually_exclusive = {focus = AOI_push_to_egypt}
+		x = 2
+		y = 1
+		relative_position_id = AOI_war_in_africa
+		cost = 7
+		available = {
+		has_war = yes
+			if = {
+				limit = { NOT = { has_government = fascism } }
+				compare_autonomy_state > autonomy_colony
+			}
+			if = {
+				limit = { has_government = fascism } 
+				compare_autonomy_state > autonomy_reichskommissariat
+			}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+				ROOT = {
+					create_wargoal = {
+						target = YEM
+						type = annex_everything
+					}
+				}
+		}
+	}
+focus = { 
+		id = AOI_attack_oman
+		icon = GFX_focus_ETH_an_arabic_base
+		prerequisite = { focus = AOI_attack_yemen}
+		x = 0
+		y = 1
+		relative_position_id = AOI_attack_yemen
+		cost = 7
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+				ROOT = {
+					create_wargoal = {
+						target = OMA
+						type = annex_everything
+					}
+				}
+		}
+	}		
+
+focus = { 
+		id = AOI_conquer_oil
+		icon = GFX_focus_generic_offshore_oil_rig
+		prerequisite = { focus = AOI_attack_oman}
+		x = 0
+		y = 1
+		relative_position_id = AOI_attack_oman
+		cost = 7
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+				ROOT = {
+					create_wargoal = {
+						target = SAU
+						type = annex_everything
+					}
+				}
+		}
+	}	
+focus = { 
+		id = AOI_faithful_colony
+		icon = GFX_focus_ITA_ministry_of_italian_africa
+		prerequisite = { focus = AOI_demand_mozambique focus = AOI_conquer_oil focus = AOI_defence_of_homeland}
+		mutually_exclusive = {focus = AOI_ask_for_independence}
+		x = 1
+		y = 4
+		relative_position_id = AOI_war_in_africa
+		cost = 10
+		available = {
+		is_puppet = yes
+		surrender_progress < 0.01
+		271 = {is_core_of = ROOT}
+		559 = {is_core_of = ROOT}
+		844 = {is_core_of = ROOT}
+		550 = {is_core_of = ROOT}
+		}
+		ai_will_do = {
+			base = 4
+			modifier = {
+				add = 5
+				is_historical_focus_on = yes
+			}
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_ideas = ITA_italian_hegemony_subjects
+		add_stability = 0.1
+		set_rule = {can_create_factions = yes}
+		set_rule = { can_force_government = yes }
+		set_rule = { can_puppet = yes }
+		set_rule = { can_declare_war_on_same_ideology = yes }
+		set_rule = {can_create_collaboration_government = yes}
+		set_rule = {can_send_volunteers	 = yes}
+		set_rule = {can_be_spymaster = yes}
+		set_rule = {can_decline_call_to_war = yes}
+		}
+	}
+	
+focus = { 
+		id = AOI_ask_for_independence
+		icon = GFX_focus_NOR_the_lone_wolf_norway
+		prerequisite = { focus = AOI_demand_mozambique focus = AOI_conquer_oil focus = AOI_defence_of_homeland}
+		mutually_exclusive = {focus = AOI_faithful_colony}
+		x = -1
+		y = 4
+		relative_position_id = AOI_war_in_africa
+		cost = 10
+		available = {
+		surrender_progress < 0.01
+		
+		271 = {is_core_of = ROOT}
+		559 = {is_core_of = ROOT}
+		844 = {is_core_of = ROOT}
+		550 = {is_core_of = ROOT}
+		837 = {is_core_of = ROOT}
+		836 = {is_core_of = ROOT}
+		835 = {is_core_of = ROOT}
+		838 = {is_core_of = ROOT}
+		839 = {is_core_of = ROOT}
+		840 = {is_core_of = ROOT}
+		841 = {is_core_of = ROOT}
+		842 = {is_core_of = ROOT}
+		843 = {is_core_of = ROOT}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		bypass = {is_subject = no}
+		
+		search_filters = {}
+
+		completion_reward = {
+		set_rule = {can_create_factions = yes}
+		#add_stability = -0.05
+		#add_political_power = -75
+		OVERLORD = {
+		country_event = {id = AOI_event.24 hours = 4}
+		}
+		drop_cosmetic_tag = yes
+		
+	#OVERLORD = {end_puppet = ROOT}
+	#swap_ideas = {
+	#remove_idea = AOI_africa_orientale_italiana_idea
+	#add_idea = AOI_africa_orientale_italiana_independent_idea
+	#}
+	}
+}
+	
+focus = { 
+		id = AOI_greater_purpose_achieved
+		icon = GFX_focus_ETH_compensation
+		prerequisite = { focus = AOI_faithful_colony focus = AOI_ask_for_independence}
+		mutually_exclusive = {focus = AOI_italo_african_union focus = AOI_east_africa_formation focus = AOI_unite_the_colonies}
+		x = 0
+		y = 2
+		relative_position_id = AOI_ask_for_independence
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 5
+				is_historical_focus_on = yes
+			}
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_country_leader_trait = capo_supremo
+		add_ideas = ITA_italia_irredenta_achieved
+		every_owned_state = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			every_owned_state = {
+			limit = {is_coastal = yes}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 1
+					instant_build = yes
+					province = {
+						all_provinces = yes
+					}
+				}
+			}
+		custom_effect_tooltip = generic_skip_one_line_tt
+		every_state = {
+		limit = {
+		is_core_of = ROOT
+		is_core_of = ETH
+		}
+		remove_core_of = ETH
+		}
+		}
+	}
+	
+focus = { 
+		id = AOI_unite_the_colonies
+		icon = GFX_focus_ITA_italian_libya
+		prerequisite = { focus = AOI_faithful_colony }
+		mutually_exclusive = {focus = AOI_italo_african_union focus = AOI_east_africa_formation focus = AOI_greater_purpose_achieved}
+		x = 2
+		y = 2
+		relative_position_id = AOI_ask_for_independence
+		cost = 8
+		available = {
+		
+		always = no
+		
+		LBA = {
+		NOT = {
+		has_completed_focus = LBA_host_italian_exiles
+		}
+		}
+		#ROOT = {
+		#is_subject_of = ITA
+		#has_civil_war = no	
+		#controls_state = 551
+		#}
+		#any_neighbor_country = {
+		#original_tag = LBA
+		#is_subject_of = ITA
+		#has_civil_war = no	
+		#controls_state = 907
+		#}
+		#any_country = {
+		#original_tag = ROOT
+		#is_subject_of = ITA
+		#has_civil_war = no
+		controls_state  = 271
+		#controls_state  = 883
+		#controls_state  = 886
+		#controls_state  = 884
+		#controls_state  = 549
+		#controls_state  = 887
+		#controls_state  = 885		
+		#}		
+		#any_country = {
+		#original_tag = LBA
+		#is_subject_of = ITA
+		#has_civil_war = no
+		#controls_state  = 448
+		#controls_state  = 452
+		#controls_state  = 447
+		#controls_state  = 907
+		#controls_state  = 456
+		#controls_state  = 457
+		#controls_state  = 551
+		#}		
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		OVERLORD = {country_event = AOI_event.31 hours = 12}
+		custom_effect_tooltip = AOI_effect_ai_tt
+		custom_effect_tooltip = if_they_accept_tt
+		effect_tooltip = {
+		if = {
+		AOI = {is_ai = yes}
+					LBA = {
+					set_cosmetic_tag = africa_italiana_lba
+					annex_country = {
+						target = AOI
+						transfer_troops = yes
+					}
+				every_state = {
+				limit = {is_core_of = AOI}
+				add_core_of = LBA
+				}
+				every_state = {
+				limit = {
+				OR = {
+		state = 452
+		state = 447
+		state = 907
+		state = 456
+		state = 457
+		state = 551
+		state = 883
+		state = 886
+		state = 884
+		state = 549
+		state = 887
+		state = 885
+		state = 446
+		state = 453
+		state = 767
+		state = 552
+				}
+				}
+				add_core_of = LBA
+				}
+				}
+			}
+		else = {
+					AOI = {
+					set_cosmetic_tag = africa_italiana_aoi
+					annex_country = {
+						target = LBA
+						transfer_troops = yes
+					}
+				every_state = {
+				limit = {is_core_of = LBA}
+				add_core_of = AOI
+				}
+				every_state = {
+				limit = {
+				OR = {
+		state = 452
+		state = 447
+		state = 907
+		state = 456
+		state = 457
+		state = 551
+		state = 883
+		state = 886
+		state = 884
+		state = 549
+		state = 887
+		state = 885
+		state = 446
+		state = 453
+		state = 767
+		state = 552
+				}
+				}
+				add_core_of = AOI
+				}				
+				}
+			}
+		}
+	}
+}
+
+focus = { 
+		id = AOI_end_democracy
+		icon = GFX_focus_generic_strike_at_democracy3
+		prerequisite = { focus = AOI_ask_for_independence focus = AOI_faithful_colony}
+		x = 3
+		y = 1
+		relative_position_id = AOI_ask_for_independence
+		cost = 10
+		available = {
+		NOT = {has_government = democratic}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		every_country = {
+		limit = {
+		OR = {
+		is_neighbor_of = ROOT
+		is_major = yes
+		}
+		NOT = {is_in_faction_with = ROOT}
+		has_government = democratic
+		}
+				ROOT = {
+					create_wargoal = {
+						target = PREV
+						type = topple_government
+					}
+				}
+			}
+		}
+	}
+focus = { 
+		id = AOI_fight_communists
+		icon = GFX_focus_GER_end_european_communism
+		prerequisite = { focus = AOI_ask_for_independence focus = AOI_faithful_colony}
+		x = -1
+		y = 1
+		relative_position_id = AOI_ask_for_independence
+		cost = 10
+		available = {
+		NOT = {has_government = communism}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		every_country = {
+		limit = {
+		OR = {
+		is_neighbor_of = ROOT
+		is_major = yes
+		}
+		NOT = {is_in_faction_with = ROOT}
+		has_government = communism
+		}
+				ROOT = {
+					create_wargoal = {
+						target = PREV
+						type = topple_government
+					}
+				}
+			}
+		}
+	}
+	
+focus = { 
+		id = AOI_italo_african_union
+		icon = GFX_focus_ITA_italian_hegemony
+		prerequisite = {focus = AOI_ask_for_independence}
+		mutually_exclusive = {focus = AOI_greater_purpose_achieved focus = AOI_east_africa_formation focus = AOI_unite_the_colonies}
+		x = -3
+		y = 2
+		relative_position_id = AOI_ask_for_independence
+		cost = 8
+		available = {
+		is_puppet = no
+		ITA = {
+		exists = yes
+		NOT = {has_war_with = ROOT}
+		}
+		NOT = {has_country_flag = AOI_union_was_refused}
+		}
+		ai_will_do = {
+			base = 3
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		unlock_decision_tooltip = AOI_new_capital
+		#news_event = {id = AOI_news.2}
+		ITA = { country_event = {id = AOI_event.12 hours = 4}}
+		}
+	}
+
+focus = { 
+		id = AOI_integrate_italy
+		icon = GFX_focus_generic_total_war
+		prerequisite = {focus = AOI_italo_african_union}
+		mutually_exclusive = {focus = AOI_italian_colonial_empire}
+		x = -1
+		y = 1
+		relative_position_id = AOI_italo_african_union
+		cost = 8
+		available = {
+		has_country_flag = AOI_union_was_refused
+		OR = {
+		NOT = {country_exists = ITA}
+		any_state = {
+		is_core_of = ITA
+		is_fully_controlled_by = ROOT
+		}
+		}
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_stability = -0.1
+		set_cosmetic_tag = italo_africa
+			every_state = {
+				limit = {
+				is_core_of = ITA
+				}
+				add_core_of = ROOT
+			}
+		every_state = {
+		limit = {
+		NOT = {is_core_of = ROOT}
+		OR = {
+		state = 1
+		state = 103
+		state = 853
+		state = 735
+		state = 44
+		state = 934
+		state = 805
+		state = 846
+		state = 116
+		state = 164
+		state = 182
+		state = 105
+		state = 163
+		state = 151
+		}
+		}
+		add_claim_by = ROOT
+		}
+	}
+}
+
+focus = { 
+		id = AOI_italian_colonial_empire
+		icon = GFX_focus_ITA_greater_italy
+		prerequisite = {focus = AOI_italo_african_union}
+		mutually_exclusive = {focus = AOI_integrate_italy}
+		x = 1
+		y = 1
+		relative_position_id = AOI_italo_african_union
+		cost = 8
+		available = {
+			NOT = {has_country_flag = AOI_union_was_refused}
+			any_state = {
+			is_core_of = ITA
+			is_owned_by = ROOT
+			}
+		OR = {
+		1 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+		103 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+		735 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+		116 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+		}
+		}
+		ai_will_do = {
+			base = 2
+		}
+		search_filters = {}
+
+		completion_reward = {
+		add_ideas = ITA_italian_hegemony_master_1
+		custom_effect_tooltip = generic_skip_one_line_tt
+		every_state = {
+		limit = {
+		OR = {
+		state = 1
+		state = 103
+		state = 853
+		state = 735
+		state = 44
+		state = 934
+		state = 805
+		state = 846
+		state = 116
+		state = 164
+		state = 182
+		state = 105
+		state = 163
+		state = 151
+		}
+		}
+		add_core_of = ROOT
+		}
+		
+		}
+	}
+	
+focus = { 
+		id = AOI_east_africa_formation
+		icon = GFX_focus_ETH_consolidate_east_africa
+		prerequisite = {focus = AOI_ask_for_independence}
+		mutually_exclusive = {focus = AOI_greater_purpose_achieved focus = AOI_italo_african_union focus = AOI_unite_the_colonies}
+		x = 5
+		y = 2
+		relative_position_id = AOI_ask_for_independence
+		cost = 8
+		available = {
+		is_subject = no
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_ideas = AOI_towards_african_unity
+		unlock_decision_category_tooltip = AOI_create_east_africa_cat
+		}
+	}
+focus = { 
+		id = AOI_brown_africa
+		icon = GFX_focus_GER_mittelafrika
+		prerequisite = {focus = AOI_east_africa_formation}
+		x = 0
+		y = 1
+		relative_position_id = AOI_east_africa_formation
+		cost = 12
+		available = {
+		has_government = fascism
+		has_country_flag = east_africa_formed
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		set_cosmetic_tag = ETH_African_Union
+		every_state = {
+		limit = {
+		is_on_continent = africa
+		NOT = {is_core_of = ROOT}
+		}
+		add_core_of = ROOT
+		}
+		}
+	}
+	
+focus = { 
+		id = AOI_novus_ordo
+		icon = GFX_focus_ITA_by_blood_alone
+		prerequisite = {focus = AOI_greater_purpose_achieved focus = AOI_brown_africa focus = AOI_unite_the_colonies focus = AOI_italian_colonial_empire focus = AOI_integrate_italy}
+		x = 1
+		y = 2
+		relative_position_id = AOI_greater_purpose_achieved
+		cost = 10
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_ideas =  AOI_novus_ordo_idea
+		custom_effect_tooltip = generic_skip_one_line_tt
+		IF = {
+		limit = {has_idea = ITA_italian_hegemony_master_2}
+		swap_ideas = {
+		remove_idea = ITA_italian_hegemony_master_2
+		add_idea = ITA_italian_hegemony_master_3
+		}
+		}
+		IF = {
+		limit = {has_idea = ITA_italian_hegemony_master_1}
+		swap_ideas = {
+		remove_idea = ITA_italian_hegemony_master_1
+		add_idea = ITA_italian_hegemony_master_2
+		}
+		}
+	}
+}
+
+focus = { 
+		id = AOI_invite_italian_settlers
+		icon = GFX_focus_ETH_invite_italian_settlers
+		prerequisite = { focus = AOI_establish_new_state}
+		x = 3
+		y = 2
+		relative_position_id = AOI_establish_new_state
+		cost = 8
+		available = {
+		is_subject_of = ITA
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+
+		add_ideas = AOI_italian_settlers_idea
+		country_event = {id = AOI_event.4 hours = 24}
+				random_owned_state = {
+					limit = {
+						OR = {
+							has_state_category = rural
+							has_state_category = pastoral
+						}
+						NOT = {
+							has_state_flag = ETH_has_italian_settlers
+						}
+					}
+					ETH_upgrade_state_category = yes
+					set_state_flag = ETH_has_italian_settlers
+				}
+				random_owned_state = {
+					limit = {
+						OR = {
+							has_state_category = rural
+							has_state_category = pastoral
+						}
+						NOT = {
+							has_state_flag = ETH_has_italian_settlers
+						}
+					}
+					ETH_upgrade_state_category = yes
+					set_state_flag = ETH_has_italian_settlers
+				}
+
+		}
+	}
+	
+focus = { 
+		id = AOI_lira_of_aoi
+		icon = GFX_goal_italy_nationalize_the_banks
+		prerequisite = { focus = AOI_invite_italian_settlers}
+		x = 3
+		y = 1
+		relative_position_id = AOI_invite_italian_settlers
+		cost = 5
+		available = {
+		is_subject_of = ITA
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_political_power = 15
+		country_event = {id = AOI_event.5}
+		}
+	}
+		
+
+	
+	
+	
+focus = { 
+		id = AOI_creation_of_army
+		icon = GFX_focus_chi_army_reform
+		prerequisite = { focus = AOI_invite_italian_settlers}
+		prerequisite = {focus = AOI_cooperate_with_locals}
+		x = -8
+		y = 1
+		relative_position_id = AOI_invite_italian_settlers
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		army_experience = 15	
+			division_template = {
+						name = "Colonial Militia"
+						is_locked = no
+						#force_allow_recruiting = yes
+						priority = 1
+						regiments = {
+					militia = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 1 y = 0 }
+					militia = { x = 1 y = 1 }
+					militia = { x = 1 y = 2 }
+					militia = { x = 0 y = 2 }
+						}
+				support = { 
+				engineer = { x = 0 y = 0 }
+				}
+			}
+		capital_scope = {
+					create_unit = {
+						division = "division_template = \"Colonial Militia\" start_experience_factor = 0.6 start_equipment_factor = 1 start_manpower_factor = 1"
+						owner = ROOT
+						count = 3
+					}
+				}
+		custom_effect_tooltip = generic_skip_one_line_tt
+		
+		#country_event = {id = AOI_event.15 hours = 4}
+		AOI_seyoum_mengesha = { unit_leader_event = AOI_event.15 }
+		}
+	}
+	
+focus = { 
+		id = AOI_trade_and_crouise_navy
+		icon = GFX_focus_generic_merchant_fleet
+		prerequisite = { focus = AOI_creation_of_army}
+		x = 9
+		y = 1
+		relative_position_id = AOI_creation_of_army
+		cost = 5
+		available = {
+		OR = {
+		has_idea = export_focus
+		has_idea = free_trade
+		}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		navy_experience = 15
+		add_ideas = AOI_tourism
+		#AOI_balcho_safo = {unit_leader_event = AOI_event.16}
+		}
+	}
+	
+focus = { 
+		id = AOI_dockyards_of_mogadishu
+		icon = GFX_focus_generic_develop_somaliland
+		prerequisite = { focus = AOI_trade_and_crouise_navy}
+		x = -1
+		y = 1
+		relative_position_id = AOI_trade_and_crouise_navy
+		cost = 10
+		available = {
+		559 = {
+		is_controlled_by = ROOT
+		}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		navy_experience = 15
+		559 = {
+		add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+			type = dockyard
+			level = 3
+			instant_build = yes
+			}
+		}
+	}
+}
+focus = { 
+		id = AOI_dockyards_of_asmara
+		icon = GFX_focus_generic_develop_eritrea
+		prerequisite = { focus = AOI_trade_and_crouise_navy}
+		x = 1
+		y = 1
+		relative_position_id = AOI_trade_and_crouise_navy
+		cost = 10
+		available = {
+		550 = {
+		is_controlled_by = ROOT
+		}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		navy_experience = 15
+		550 = {
+		add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+			type = dockyard
+			level = 3
+			instant_build = yes
+			}
+		}
+		}
+	}
+	
+focus = { 
+		id = AOI_buy_italian_ships
+		icon = GFX_focus_generic_africa_naval
+		prerequisite = { focus = AOI_dockyards_of_asmara focus = AOI_dockyards_of_mogadishu}
+		x = -1
+		y = 1
+		relative_position_id = AOI_dockyards_of_asmara
+		cost = 10
+		available = {
+		date > 1939.9.1
+		any_owned_state = {
+		is_coastal = yes
+		}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		custom_effect_tooltip = AOI_15_red_sea_ships_tt
+		
+	create_equipment_variant = {
+		name = "Curtatone Class"
+		type = ship_hull_light_1
+		name_group = ITA_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "81st/82nd Submarine Squadron submarines"
+		type = ship_hull_submarine_2
+		upgrades = {
+			ship_reliability_upgrade = 2
+			sub_engine_upgrade = 2
+			sub_stealth_upgrade = 2
+			sub_torpedo_upgrade = 2
+		}
+	}
+
+	
+	create_equipment_variant = {
+		name = "Navigatori Class"
+		type = ship_hull_light_1
+		name_group = ITA_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = ship_mine_layer_1
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+	}
+
+
+hidden_effect = {
+	create_ship = {
+	type = ship_hull_submarine_2
+	equipment_variant = "81st/82nd Submarine Squadron submarines"
+	creator = ROOT
+	name = "81st/82nd Submarine Squadron submarine" 
+	}	create_ship = {
+	type = ship_hull_submarine_2
+	equipment_variant = "81st/82nd Submarine Squadron submarines"
+	creator = ROOT
+	name = "81st/82nd Submarine Squadron submarines" 
+	}	create_ship = {
+	type = ship_hull_submarine_2
+	equipment_variant = "81st/82nd Submarine Squadron submarines"
+	creator = ROOT
+	name = "81st/82nd Submarine Squadron submarines" 
+	}	create_ship = {
+	type = ship_hull_submarine_2
+	equipment_variant = "81st/82nd Submarine Squadron submarines"
+	creator = ROOT
+	name = "81st/82nd Submarine Squadron submarines" 
+	}	create_ship = {
+	type = ship_hull_submarine_2
+	equipment_variant = "81st/82nd Submarine Squadron submarines"
+	creator = ROOT
+	name = "81st/82nd Submarine Squadron submarines" 
+	}	create_ship = {
+	type = ship_hull_submarine_2
+	equipment_variant = "81st/82nd Submarine Squadron submarines"
+	creator = ROOT
+	name = "81st/82nd Submarine Squadron submarines" 
+	}	create_ship = {
+	type = ship_hull_submarine_2
+	equipment_variant = "81st/82nd Submarine Squadron submarines"
+	creator = ROOT
+	name = "81st/82nd Submarine Squadron submarines" 
+	}	create_ship = {
+	type = ship_hull_submarine_2
+	equipment_variant = "81st/82nd Submarine Squadron submarines"
+	creator = ROOT
+	name = "81st/82nd Submarine Squadron submarines" 
+	}
+	
+	
+	create_ship = {
+	type = ship_hull_light_1
+	equipment_variant = "Curtatone Class"
+	creator = ROOT
+		name_group = ITA_DD_HISTORICAL
+	}	create_ship = {
+	type = ship_hull_light_1
+	equipment_variant = "Curtatone Class"
+	creator = ROOT
+		name_group = ITA_DD_HISTORICAL
+	}	create_ship = {
+	type = ship_hull_light_1
+	equipment_variant = "Curtatone Class"
+	creator = ROOT
+		name_group = ITA_DD_HISTORICAL
+	}	create_ship = {
+	type = ship_hull_light_1
+	equipment_variant = "Curtatone Class"
+	creator = ROOT
+		name_group = ITA_DD_HISTORICAL
+	}
+	create_ship = {
+	type = ship_hull_light_1
+	equipment_variant = "Curtatone Class"
+	creator = ROOT
+		name_group = ITA_DD_HISTORICAL
+		}	
+
+
+	create_ship = {
+	type = ship_hull_light_1
+	equipment_variant = "Navigatori Class"
+	creator = ROOT
+		name_group = ITA_DD_HISTORICAL
+	}	create_ship = {
+	type = ship_hull_light_1
+	equipment_variant = "Navigatori Class"
+	creator = ROOT
+		name_group = ITA_DD_HISTORICAL
+	}	create_ship = {
+	type = ship_hull_light_1
+	equipment_variant = "Navigatori Class"
+	creator = ROOT
+		name_group = ITA_DD_HISTORICAL
+			}
+		}
+	}
+}
+focus = { 
+		id = AOI_establish_air_force
+		icon = GFX_focus_BRA_italian_aircraft_development
+		prerequisite = { focus = AOI_creation_of_army}
+		x = 5
+		y = 1
+		relative_position_id = AOI_creation_of_army
+		cost = 10
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		air_experience = 15
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = air_equipment
+			}
+		add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+		}
+		random_owned_controlled_state = {
+		add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}	
+	
+focus = { 
+		id = AOI_request_plane_designs
+		icon = GFX_focus_generic_copy_plane_designs
+		prerequisite = { focus = AOI_establish_air_force}
+		x = -1
+		y = 1
+		relative_position_id = AOI_establish_air_force
+		cost = 10
+		available = {
+		}
+		ai_will_do = {
+			base = 2
+		}
+		
+		bypass = {NOT = {is_puppet = yes}}
+		
+		search_filters = {}
+
+		completion_reward = {
+		add_ideas = AOI_planes_from_metropoly
+	}
+}
+	
+focus = { 
+		id = AOI_prepare_airports
+		icon = GFX_focus_generic_air_partners
+		prerequisite = { focus = AOI_establish_air_force}
+		x = 1
+		y = 1
+		relative_position_id = AOI_establish_air_force
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+				271 = {
+					add_building_construction = {
+						type = air_base
+						level = 3
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					add_building_construction = {
+						type = air_base
+						level = 3
+						instant_build = yes
+					}
+				}
+		}
+	}
+	
+focus = { 
+		id = AOI_superaereo
+		icon = GFX_focus_ITA_fighter
+		prerequisite = { focus = AOI_request_plane_designs}
+		prerequisite = {focus = AOI_prepare_airports}
+		x = 1
+		y = 1
+		relative_position_id = AOI_request_plane_designs
+		cost = 10
+		available = {
+		has_war = yes
+		has_idea = AOI_planes_from_metropoly
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = AOI_planes_from_metropoly
+		add_idea = AOI_superaereo_idea 
+		}
+	}
+}
+	
+focus = { 
+		id = AOI_beginning_of_antipartisan_war
+		icon = GFX_focus_ita_win_eth
+		prerequisite = { focus = AOI_creation_of_army}
+		x = 0
+		y = 1
+		relative_position_id = AOI_creation_of_army
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_political_power = 50
+	#	custom_effect_tooltip = allows_to_fight_partisans_tt
+		unlock_decision_category_tooltip = AOI_anti_partisan_war
+		}
+	}
+	
+focus = { 
+		id = AOI_gen_staff
+		icon = GFX_focus_CONGO_congolese_generals
+		prerequisite = { focus = AOI_creation_of_army}
+		x = -2
+		y = 1
+		relative_position_id = AOI_creation_of_army
+		cost = 5
+		available = {
+		is_puppet = yes
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		random_unit_leader = {
+		gain_xp = 150
+		}	
+		random_unit_leader = {
+		gain_xp = 150
+		}
+		custom_effect_tooltip = generic_skip_one_line_tt
+		ITA = {country_event = {id = AOI_event.9 hours = 4}}
+		
+		custom_effect_tooltip = one_of_generals_tt
+		
+		custom_effect_tooltip = ITA_carlo_geloso
+		custom_effect_tooltip = ITA_alfredo_guzzoni
+		custom_effect_tooltip = ITA_alessandro_pirzio_biroli
+		}
+	}
+
+focus = { 
+		id = AOI_purchase_equipment
+		icon = GFX_focus_ETH_freedom_at_gunpoint
+		prerequisite = { focus = AOI_creation_of_army}
+		x = 2
+		y = 1
+		relative_position_id = AOI_creation_of_army
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_political_power = -20
+
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment_1
+				amount = 2500
+			    producer = ITA
+			}
+		add_equipment_to_stockpile = {
+		type = motorized_equipment_1
+		amount = 150
+		producer = ITA
+		}
+			add_equipment_to_stockpile = {
+			    type = support_equipment
+				amount = 120
+			    producer = ITA
+			}
+
+		}
+	}
+
+focus = { 
+		id = AOI_modernisation_of_army
+		icon = GFX_focus_ITA_army_primacy
+		prerequisite = {focus = AOI_gen_staff}
+		prerequisite = {focus = AOI_beginning_of_antipartisan_war}
+		prerequisite = {focus = AOI_purchase_equipment}
+		x = 2
+		y = 2
+		relative_position_id = AOI_gen_staff
+		cost = 7
+		available = {
+		date > 1938.1.1
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		custom_effect_tooltip = AOI_army_is_improved_tt
+		
+		show_ideas_tooltip = AOI_improved_army_ns
+		
+			add_to_variable = {AOI_army_planning_speed = 0.10}
+			add_to_variable = {AOI_army_promotion_cost = -0.10}
+			
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	
+focus = { 
+		id = AOI_camel_troups
+		icon = GFX_focus_generic_camel_corps
+		prerequisite = {focus = AOI_modernisation_of_army}
+		x = 0
+		y = 1
+		relative_position_id = AOI_modernisation_of_army
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			division_template = {
+				name = "Camelry Division"
+				is_locked = no
+				force_allow_recruiting = yes
+				regiments = {
+					camelry = { x = 0 y = 0 }
+					camelry = { x = 0 y = 1 }
+					camelry = { x = 1 y = 0 }
+					camelry = { x = 1 y = 1 }
+					camelry = { x = 1 y = 2 }
+				}
+				support = { 
+				recon = { x = 0 y = 0 }
+				engineer = {x = 0 y = 1 }
+				}
+			}
+			random_owned_controlled_state = {
+					limit = {
+						is_capital = yes 
+					}
+					create_unit = {
+						division = "name = \"Camelry Division\" division_template = \"Camelry Division\" start_experience_factor = 0.4 start_equipment_factor = 1 start_manpower_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Camelry Division\" division_template = \"Camelry Division\" start_experience_factor = 0.4 start_equipment_factor = 1 start_manpower_factor = 1"
+						owner = ROOT
+					}
+
+				}
+		}
+	}
+
+	
+focus = { 
+		id = AOI_junior_officers # молодые офицеры, новые генералы из местных + от фокусов от италии, главное чтобы с ними сотрудничали
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = AOI_modernisation_of_army}
+		x = 6
+		y = 1
+		relative_position_id = AOI_modernisation_of_army
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		army_experience = 10
+		add_command_power = 15
+		custom_effect_tooltip = AOI_army_is_improved_tt
+
+		show_ideas_tooltip = AOI_young_officers
+		add_to_variable = {AOI_army_xp_gain = 0.05}
+		add_to_variable = {army_leader_start_attack_lvl = 1}
+		add_to_variable = {AOI_army_leader_start_planning_lvl = 1}
+		add_to_variable = {AOI_army_AOI_army_promote_cost_factor = 0.1}
+
+		}
+	}
+
+focus = { 
+		id = AOI_ascari_troops
+		icon = GFX_focus_ITA_strengthen_ascari_corps
+		prerequisite = { focus = AOI_modernisation_of_army}
+		mutually_exclusive = {focus = AOI_troops_from_metropoly}
+		x = -2
+		y = 2
+		relative_position_id = AOI_modernisation_of_army
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			ITA = {
+				ITA_hamid_idris_awate = {
+	  			set_nationality = ROOT
+		   		}	
+			}
+				division_template = { 
+					name = "Divisione Ascari" 
+					division_names_group = ITA_COL_02
+					#is_locked = yes
+
+					regiments = { 
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 1 y = 0 }
+						infantry = {x = 1 y = 2}
+						infantry = {x = 1 y = 1}
+					}
+				support = { 
+				logistics_company = { x = 0 y = 0 }
+				armored_car_recon = {x = 0 y = 1}
+				}					
+
+					priority = 0 
+				}
+				random_owned_controlled_state = {
+					limit = {
+						is_capital = yes
+					}
+					create_unit = {
+						division = "division_template = \"Divisione Ascari\" start_experience_factor = 0.35 start_equipment_factor = 1 start_manpower_factor = 1"
+						owner = ROOT
+						count = 3
+					}
+			}
+		}
+	}
+focus = { 
+		id = AOI_dubat
+		icon = GFX_focus_ETH_expand_the_levy
+		prerequisite = { focus = AOI_ascari_troops}
+		x = 0
+		y = 1
+		relative_position_id = AOI_ascari_troops
+		cost = 8
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 1
+				is_historical_focus_on = yes
+			}
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		custom_effect_tooltip = AOI_army_is_improved_tt
+
+		show_ideas_tooltip = AOI_dubat_idea
+		add_to_variable = {AOI_army_modifier_army_sub_unit_irregular_infantry_attack_factor = 0.05}
+		add_to_variable = {AOI_army_modifier_army_sub_unit_irregular_infantry_defence_factor = 0.05}
+		add_to_variable = {AOI_army_modifier_army_sub_unit_irregular_infantry_speed_factor = 0.05}
+		
+		division_template = {
+				name = "Dubat"
+				is_locked = no
+				force_allow_recruiting = yes
+				regiments = {
+					irregular_infantry = { x = 0 y = 0 }
+					irregular_infantry = { x = 0 y = 1 }
+					irregular_infantry = { x = 1 y = 0 }
+					irregular_infantry = { x = 1 y = 1 }
+					irregular_infantry = { x = 1 y = 2 }
+					irregular_infantry = { x = 0 y = 2 }
+				}
+				support = { 
+				recon = { x = 0 y = 0 }
+				logistics_company = {x = 0 y = 1}
+				}
+			}
+			random_owned_controlled_state = {
+					limit = {
+						is_capital = yes
+					}
+					create_unit = {
+						division = "division_template = \"Dubat\" start_experience_factor = 0.35 start_equipment_factor = 1 start_manpower_factor = 1"
+						owner = ROOT
+						count = 3
+					}
+
+
+			}
+		}
+	}
+
+focus = { 
+		id = AOI_troops_from_metropoly
+		icon = GFX_focus_GER_expand_ss_security_duties
+		prerequisite = { focus = AOI_modernisation_of_army}
+		mutually_exclusive = {focus = AOI_ascari_troops}
+		x = 2
+		y = 2
+		relative_position_id = AOI_modernisation_of_army
+		cost = 8
+		available = {
+		is_subject_of = ITA
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			ITA = {
+				ITA_hamid_idris_awate = {
+	  			set_nationality = ROOT
+		   		}	
+			}
+		add_war_support = 0.05
+			division_template = { 
+				name = "Bersaglieri" 
+				division_names_group = ITA_INF_01 #TODO_Manu: Namelist: 1º,2º... Reggimento Bersaglieri
+				regiments = { 
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 0 y = 2 }
+				}
+				support = { 
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+					#anti_tank = { x = 0 y = 2 }
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Bersaglieri\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+			}
+		}
+	}
+focus = { 
+		id = AOI_bersaglieri
+		icon = GFX_focus_ITA_bersaglieri
+		prerequisite = { focus = AOI_troops_from_metropoly}
+		x = 0
+		y = 1
+		relative_position_id = AOI_troops_from_metropoly
+		cost = 8
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		custom_effect_tooltip = AOI_army_is_improved_tt
+
+		show_ideas_tooltip = AOI_bersaglieri_idea
+
+		add_to_variable = {AOI_army_org_regain = 0.05}
+		add_to_variable = {AOI_army_special_forces_attack_factor = 0.1}
+		add_to_variable = {AOI_army_special_forces_defence_factor = 0.1}
+		add_to_variable = {AOI_army_army_org = 5}
+		add_to_variable = {AOI_army_special_forces_cap = 0.1}
+		}
+	}
+	
+	
+focus = { 
+		id = AOI_comandante_diavolo
+		icon = GFX_focus_ITA_comandante_diavolo
+		prerequisite = { focus = AOI_dubat focus = AOI_bersaglieri}
+		x = 2
+		y = 1
+		relative_position_id = AOI_dubat
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			ITA = {
+				ITA_amedeo_guillet = {
+	  			set_nationality = AOI
+		   		}	
+			}
+		add_ideas = ITA_hardened_irregular_bands
+		}
+	}
+
+focus = { 
+		id = AOI_camouflage_experts
+		icon = GFX_SOV_experts_in_camouflage_ccp_2d_sov_compatibility
+		prerequisite = { focus = AOI_modernisation_of_army}
+		x = 4
+		y = 1
+		relative_position_id = AOI_modernisation_of_army
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		custom_effect_tooltip = AOI_army_is_improved_tt
+
+		show_ideas_tooltip = AOI_camouflage_experts_idea
+		add_to_variable = {AOI_army_cas_damage_reduction = 0.05}
+		add_to_variable = {AOI_army_dig_in_speed_factor = 0.05}
+		}
+	}
+	
+focus = { 
+		id = AOI_infantry_development
+		icon = GFX_focus_ITA_alpine_division
+		prerequisite = { focus = AOI_camouflage_experts focus = AOI_junior_officers}
+		prerequisite = {focus = AOI_steal_equipment}
+		mutually_exclusive = {focus = AOI_tanks_divs}
+		x = 2
+		y = 2
+		relative_position_id = AOI_camouflage_experts
+		cost = 10
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_tech_bonus = {
+			ahead_reduction = 1
+				bonus = 0.75
+				uses = 2
+				category = infantry_weapons
+			}
+		}
+	}
+
+focus = { 
+		id = AOI_tanks_divs
+		icon = GFX_focus_ITA_ferrea_mole_ferreo_cuore
+		prerequisite = { focus = AOI_camouflage_experts focus = AOI_junior_officers}
+		prerequisite = {focus = AOI_steal_equipment}
+		mutually_exclusive = {focus = AOI_infantry_development}
+		x = 0
+		y = 2
+		relative_position_id = AOI_camouflage_experts
+		cost = 10
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_tech_bonus = {
+			ahead_reduction = 1
+				bonus = 0.75
+				uses = 2
+				category = armor
+			}		
+		}
+	}
+	
+focus = { 
+		id = AOI_special_troops
+		icon = GFX_focus_SMB_special_forces_option_3
+		prerequisite = { focus = AOI_tanks_divs focus = AOI_infantry_development}
+		x = 1
+		y = 1
+		relative_position_id = AOI_tanks_divs
+		cost = 8
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_potential_special_forces_tree = yes
+			add_tech_bonus = {
+			ahead_reduction = 1
+				bonus = 0.75
+				uses = 2
+				category = para_tech
+				category = mountaineers_tech
+				category = marine_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = special_forces_doctrine
+			}			
+		}
+	}
+	
+focus = { 
+		id = AOI_steal_equipment #симулятор румынии
+		icon = GFX_focus_ETH_scavenging_tactics
+		prerequisite = { focus = AOI_camouflage_experts focus = AOI_junior_officers}
+		x = 1
+		y = 1
+		relative_position_id = AOI_camouflage_experts
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		custom_effect_tooltip = AOI_army_is_improved_tt
+		add_to_variable = {AOI_army_equipment_capture_factor = 0.1}
+		
+		show_ideas_tooltip = AOI_capturing_equipment
+		
+				random_unit_leader = {			
+					limit = {
+						NOT = {
+						is_navy_leader = yes
+							has_trait = scavenger
+						}
+					}
+					add_trait = {trait = scavenger}
+				}
+		}
+	}
+	
+focus = { 
+		id = AOI_war_logistics
+		icon = GFX_focus_generic_supply_line
+		prerequisite = { focus = AOI_ascari_troops focus = AOI_troops_from_metropoly}
+		x = 0
+		y = 3
+		relative_position_id = AOI_modernisation_of_army
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		custom_effect_tooltip = AOI_army_is_improved_tt
+
+		add_to_variable = {AOI_army_attrition = -0.1}
+		add_to_variable = {AOI_army_production_speed_rail_way_factor = 0.05}
+		
+		show_ideas_tooltip = AOI_military_logistics
+		}
+	}
+	
+	
+focus = { 
+		id = AOI_begin_industrialisation
+		icon = GFX_focus_ICE_state_corporatism
+		prerequisite = { focus = AOI_invite_italian_settlers}
+		x = 2
+		y = 0
+		relative_position_id = AOI_lira_of_aoi
+		cost = 8
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = industry
+		}
+			random_owned_controlled_state = {
+				limit = {
+				NOT = { state = 271 }
+				}
+				#prioritize = { 835 } # Hararghe
+				#ETH_upgrade_state_category = yes 
+				#ETH_upgrade_main_city = yes 
+				add_extra_state_shared_building_slots = 2 
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+	}
+}
+	
+focus = { 
+		id = AOI_agrarian_effort
+		icon = GFX_focus_generic_farmland
+		prerequisite = { focus = AOI_begin_industrialisation}
+		prerequisite ={ focus = AOI_lira_of_aoi}
+		x = -1
+		y = 1
+		relative_position_id = AOI_begin_industrialisation
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_ideas = AOI_agrarian_development
+		}
+	}
+
+focus = { 
+		id = AOI_mogadishu_asmara_rr
+		icon = GFX_focus_generic_railroad
+		prerequisite = { focus = AOI_begin_industrialisation}
+		x = 1
+		y = 1
+		relative_position_id = AOI_begin_industrialisation
+		cost = 8
+		available = {
+		550 = {is_fully_controlled_by = ROOT}
+		559 = {is_fully_controlled_by = ROOT}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = train_equipment
+				amount = 15
+			}
+			build_railway = {
+				level = 2
+				path = { 12766 13250 13238 2072 7944 5097 13239 5010 8036 10775 13248 4995 2063 12991 }
+			}
+		}
+	}
+
+	
+focus = { 
+		id = AOI_infrastructure_effort
+		icon = GFX_focus_generic_africa_infrastructure
+		prerequisite = { focus = AOI_mogadishu_asmara_rr}
+		prerequisite = {focus = AOI_agrarian_effort}
+		x = -1
+		y = 1
+		relative_position_id = AOI_mogadishu_asmara_rr
+		cost = 8
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		swap_ideas = { 
+		remove_idea = AOI_undeveloped_country
+		add_idea = AOI_undeveloped_country_1 
+		}
+		every_state = {
+		limit = {
+		is_owned_by = AOI
+		infrastructure < 4
+		}
+		add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+focus = { 
+		id = AOI_civs
+		icon = GFX_focus_generic_modernize_industry
+		prerequisite = { focus = AOI_infrastructure_effort}
+		x = -1
+		y = 1
+		relative_position_id = AOI_infrastructure_effort
+		cost = 8
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+random_owned_state = {
+add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+		}
+		random_owned_state = {
+add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+		}
+		}
+	}
+	
+focus = { 
+		id = AOI_mils
+		icon = GFX_focus_generic_military_industry
+		prerequisite = { focus = AOI_infrastructure_effort}
+		x = 1
+		y = 1
+		relative_position_id = AOI_infrastructure_effort
+		cost = 8
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		random_owned_state = {
+		add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		random_owned_state = {
+		add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+focus = { 
+		id = AOI_develop_military_infrastructure
+		icon = GFX_goal_generic_construct_military
+		prerequisite = {focus = AOI_mils}
+		x = 1
+		y = 3
+		relative_position_id = AOI_mogadishu_asmara_rr
+		cost = 5
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_timed_idea = {idea = AOI_military_infrastructure days = 180}
+		every_country = {
+		limit = {original_tag = ENG}
+		country_event = {id = AOI_event.6 hours = 0}
+		}
+			838 = {
+				add_building_construction = {
+					type = supply_node
+					province = 13244
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+focus = { 
+		id = AOI_fascist_schools
+		icon = GFX_focus_ARG_fascist_researchers
+		prerequisite = { focus = AOI_civs}
+		prerequisite = {focus = AOI_mils}
+		x = 1
+		y = 1
+		relative_position_id = AOI_civs
+		cost = 10
+		available = {
+		OR = {
+		has_government = fascism
+		has_government = neutrality
+		}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_research_slot = 1
+		swap_ideas = { 
+		remove_idea = AOI_illiteracy
+		add_idea = AOI_illiteracy_1 
+		}
+	}
+}
+	
+focus = { 
+		id = AOI_developing_resources
+		icon = GFX_focus_generic_mining_industry
+		prerequisite = { focus = AOI_fascist_schools}
+		x = 1
+		y = 1
+		relative_position_id = AOI_fascist_schools
+		cost = 8
+		available = {
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 1
+				category = excavation_tech
+			}
+		country_event = {id = AOI_event.17 hours = 4}
+		}
+	}
+focus = { 
+		id = AOI_urbanisation
+		icon = GFX_focus_generic_develop_ethiopia
+		prerequisite = { focus = AOI_fascist_schools}
+		x = -1
+		y = 1
+		relative_position_id = AOI_fascist_schools
+		cost = 8
+		available = {
+
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		IF = {
+		limit = {has_idea = AOI_undeveloped_country}
+		remove_ideas = {AOI_undeveloped_country}
+		}
+		ELSE = {
+		remove_ideas = AOI_undeveloped_country_1
+		}
+		every_owned_state = {
+		limit = { infrastructure < 3}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+		}
+
+		random_owned_controlled_state = {
+		add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+focus = { 
+		id = AOI_pearl_of_africa
+		icon = GFX_focus_generic_population_growth
+		prerequisite = { focus = AOI_urbanisation}
+		x = 1
+		y = 1
+		relative_position_id = AOI_urbanisation
+		cost = 5
+		available = {
+		has_completed_focus = AOI_creation_of_identity
+		has_completed_focus = AOI_trade_and_crouise_navy
+		OR = {
+		has_stability > 0.75
+		has_war = no
+		}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = AOI_new_nation
+		add_idea = AOI_pearl_of_africa_idea
+		}
+		}
+	}
+focus = { 
+		id = AOI_university_of_addis_ababa
+		icon = GFX_focus_NORDIC_com_capstone_research
+		prerequisite = { focus = AOI_urbanisation}
+		prerequisite = {focus = AOI_developing_resources}
+		mutually_exclusive = {focus = AOI_local_education}
+		x = -1
+		y = 2
+		relative_position_id = AOI_urbanisation
+		cost = 10
+		available = {
+		271 = {is_fully_controlled_by = ROOT}
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+	add_victory_points = { province = 5010 value = 5 }
+		add_research_slot = 1
+					271 = {
+						add_building_construction = {
+							type = land_facility
+							level = 1
+							instant_build = yes
+							province = 5010
+						}
+					}
+		remove_ideas = AOI_illiteracy_1
+		}
+	}
+focus = { 
+		id = AOI_local_education
+		icon = GFX_focus_generic_university_2
+		prerequisite = { focus = AOI_urbanisation}
+		prerequisite = {focus = AOI_developing_resources}
+		mutually_exclusive = {focus = AOI_university_of_addis_ababa}
+		x = 3
+		y = 2
+		relative_position_id = AOI_urbanisation
+		cost = 10
+		available = {
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_research_slot = 1
+		swap_ideas = {
+		remove_idea = AOI_illiteracy_1
+		add_idea = AOI_better_local_education
+		}
+	}
+}
+focus = { 
+		id = AOI_autarkic_economy
+		icon = GFX_focus_GER_autarky_ambitions
+		prerequisite = { focus = AOI_university_of_addis_ababa focus = AOI_local_education}
+		prerequisite = {focus = AOI_pearl_of_africa}
+		x = 2
+		y = 1
+		relative_position_id = AOI_university_of_addis_ababa
+		cost = 10
+		available = {
+		num_of_factories > 30
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+		add_ideas = AOI_self_sufficient_economy_idea
+		}
+	}
+focus = { 
+		id = AOI_atomic_research
+		icon = GFX_focus_generic_nuclear_development
+		prerequisite = {focus = AOI_autarkic_economy}
+		x = 0
+		y = 1
+		relative_position_id = AOI_autarkic_economy
+		cost = 10
+		available = {
+		has_tech = improved_computing_machine
+		}
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 1
+				category = nuclear
+			}
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 1
+				}
+		}
+	}
+}

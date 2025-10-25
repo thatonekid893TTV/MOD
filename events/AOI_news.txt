@@ -1,0 +1,675 @@
+﻿###########################
+# News Events
+###########################
+
+add_namespace = AOI_news
+add_namespace = FORMABLES_news
+add_namespace = LBA_news
+add_namespace = ITA_news
+
+
+news_event = {
+	id = AOI_news.1
+	title = AOI_news.1.t
+	desc = AOI_news.1.d
+	picture = GFX_news_duce_proclaims_empire
+	
+	major = yes
+	is_triggered_only = yes
+	#trigger = {ITA = {has_completed_focus = ITA_triumph_in_africa_bba}}
+	
+	option = {
+		name = AOI_news.1.a
+		trigger = {
+			NOT = {
+			has_government = fascism
+			}
+		}
+	}
+	option = {
+		name = AOI_news.1.b
+		trigger = { has_government = fascism }
+	}
+
+}
+news_event = { #создание итало африки
+	id = AOI_news.2
+	title = AOI_news.2.t
+	desc = AOI_news.2.d
+	picture = GFX_news_italoafrica
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = AOI_news.2.b
+	}
+
+}
+news_event = { #создание восточной африки
+	id = AOI_news.3
+	title = AOI_news.3.t
+	desc = AOI_news.3.d
+	picture = GFX_news_event_generic_african_unity
+	
+	major = yes
+	
+	fire_only_once = yes
+
+	trigger = {
+	AOI = {has_country_flag = east_africa_formed}
+	}	
+
+	option = {
+		name = AOI_news.2.b
+	}
+	
+}
+news_event = { #война в восточной африке
+	id = AOI_news.4
+	title = AOI_news.4.t
+	desc = AOI_news.4.d
+	picture = GFX_news_event_COG_force_publique_marching_to_war
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = east_afr_war
+	}
+	}
+
+	trigger = {
+	NOT = {has_global_flag = east_afr_war}
+	AOI = {is_subject_of = ITA}
+	AOI = {has_war_with_major = yes}
+	}
+	
+	option = {
+		name = AOI_news.4.b
+	}
+}
+
+news_event = {
+	id = AOI_news.5
+	title = AOI_news.5.t
+	desc = AOI_news.5.d
+	picture = GFX_news_event_kiev_ruins
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = aoi_capitulated
+	}
+	}
+	
+	trigger = {
+	NOT = {has_global_flag = aoi_capitulated}
+	AOI = {
+	has_war_with_major = yes
+	has_capitulated = yes
+	}
+	}
+	
+	option = {
+		name = AOI_news.5.a
+	}
+}
+
+news_event = {
+	id = AOI_news.6
+	title = AOI_news.6.t
+	desc = AOI_news.6.d
+	picture = GFX_news_event_soviet_soldiers_ruins
+	
+	major = yes
+	
+	#fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	#trigger = {
+	#NOT = {has_global_flag = gondar_massarce_flag}
+	#	841 = {
+	#	controller = {
+	#	OR = {
+	#	tag = ITA
+	#	is_subject_of = ITA
+	#	}
+	#	}
+	#	}
+	#	841 = { is_owned_by = ETH }
+	#	ITA = { has_war_with = ETH }
+	#}
+	#
+	#immediate = {
+	#hidden_effect = {
+	#set_global_flag = gondar_massarce_flag
+	#}
+	#}
+	
+	option = {
+		name = AOI_news.6.a
+	}
+}
+
+news_event = {
+	id = AOI_news.7
+	title = AOI_news.7.t
+	desc = AOI_news.7.d
+	picture = GFX_news_peace
+	
+	major = yes
+	
+	#fire_only_once = yes
+	
+	immediate = {
+	hidden_effect = {set_global_flag = kasibilie_peace_flag}
+	}
+	
+	trigger = {
+	has_global_flag = italian_cw_by_states_happened_flag
+	NOT = {has_global_flag = kasibilie_peace_flag}
+	}
+	
+	option = {
+		name = AOI_news.7.a
+	}
+}
+
+news_event = { #албания
+	id = FORMABLES_news.1
+	title = FORMABLES_news.1.t
+	desc = FORMABLES_news.1.d
+	picture = GFX_news_event_generic_parliament
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = FORMABLES_news.1.a
+	}
+}
+
+news_event = { #югославия
+	id = FORMABLES_news.2
+	title = FORMABLES_news.2.t
+	desc = FORMABLES_news.2.d
+	picture = GFX_news_event_generic_parliament
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = FORMABLES_news.2.a
+	}
+}
+news_event = { #северная африка
+	id = FORMABLES_news.3
+	title = FORMABLES_news.3.t
+	desc = FORMABLES_news.3.d
+	picture = GFX_news_peace
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = FORMABLES_news.3.a
+	}
+}
+
+news_event = { #ливия начинает войну
+	id = LBA_news.1
+	title = LBA_news.1.t
+	desc = LBA_news.1.d
+	picture = GFX_news_fascist_troops
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = LBA_news.1.a
+	}
+}
+news_event = { #фашистская империя
+	id = LBA_news.2
+	title = LBA_news.2.t
+	desc = LBA_news.2.d
+	picture = GFX_news_event_fascist_gathering
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = LBA_news.2.a
+		trigger = {
+		NOT = {tag = LBA}
+		}
+	}
+	option = {
+		name = LBA_news.2.b
+		trigger = {
+		tag = LBA
+		}
+	}
+}
+news_event = { #фашисты контролят рим
+	id = LBA_news.3
+	title = LBA_news.3.t
+	desc = LBA_news.3.d
+	picture = GFX_news_tiger_rome
+	
+	major = yes
+
+	trigger = {
+	NOT = {has_global_flag = lba_rome_control}
+	2 = {is_owned_by = ITA}
+	ITA = {has_war_with = LBA}
+	LBA = {has_country_flag = LBA_italian_exiles_path_flag}
+	2 = {is_controlled_by = LBA}
+	}
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = lba_rome_control
+	}
+	}
+	
+	option = {
+		name = LBA_news.3.a
+		trigger = {
+		OR = {
+		has_war_with = LBA
+		tag = ITA
+		}
+		}
+	}
+	option = {
+		name = LBA_news.3.b
+		trigger = {
+		NOT = {
+		OR = {
+		has_war_with = LBA
+		tag = ITA
+		}
+		}
+		}
+	}
+}
+
+
+
+news_event = { #мальта
+	id = ITA_news.1
+	title = ITA_news.1.t
+	desc = ITA_news.1.d
+	picture = GFX_news_malta
+	
+	major = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		116 = { is_controlled_by = ITA }
+		116 = { is_owned_by = ENG }
+		ITA = { has_war_with = ENG }
+		NOT = {has_global_flag = italians_get_malta_flag}
+	}
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = italians_get_malta_flag
+	}
+	}
+	
+	option = {
+		name = ITA_news.1.a
+		trigger = {
+		OR = {
+		tag = ITA
+		is_in_faction_with = ITA
+		is_subject_of = ITA
+		has_war_with = ENG
+		}
+		}
+	}
+	option = {
+		name = ITA_news.1.b
+		trigger = {
+		NOT = {
+		OR = {
+		tag = ITA
+		is_in_faction_with = ITA
+		is_subject_of = ITA
+		has_war_with = ENG
+		}
+		}
+		}		
+	}
+}
+news_event = { #мальта ливия
+	id = ITA_news.3
+	title = ITA_news.1.t_lba
+	desc = ITA_news.1.d
+	picture = GFX_news_malta
+	
+	major = yes
+	
+	#fire_only_once = yes
+	
+	trigger = {
+		LBA = {has_country_flag = LBA_italian_exiles_path_flag}
+		116 = { is_controlled_by = LBA }
+		116 = { is_owned_by = ENG }
+		LBA = { has_war_with = ENG }
+		NOT = {has_global_flag = libians_get_malta_flag}
+	}
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = libians_get_malta_flag
+	}
+	}
+	
+	option = {
+		name = ITA_news.1.a
+		trigger = {
+		OR = {
+		tag = LBA
+		is_in_faction_with = LBA
+		is_subject_of = LBA
+		has_war_with = ENG
+		}
+		}
+	}
+	option = {
+		name = ITA_news.1.b
+		trigger = {
+		NOT = {
+		OR = {
+		tag = LBA
+		is_in_faction_with = LBA
+		is_subject_of = LBA
+		has_war_with = ENG
+		}
+		}
+		}		
+	}
+}
+
+
+news_event = { #смерть дуче
+	id = ITA_news.2
+	title = ITA_news.2.t
+	desc = ITA_news.2.d
+	picture = GFX_news_event_ITA_mussolini_execution
+	
+	major = yes
+	
+	#fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	#trigger = {
+	#RSI = {
+	#has_global_flag = italian_cw_by_states_happened_flag
+	#surrender_progress > 0.95
+	#has_country_leader = {
+	#	character = ITA_benito_mussolini
+	#	ruling_only = yes
+	#	}
+	#}
+	#NOT = {has_global_flag = duce_killed_flag}
+	#}
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = duce_killed_flag
+	RSI = {
+	retire_character = ITA_benito_mussolini
+		
+				add_country_leader_role = {
+					character = ITA_republican_fascist_party
+					promote_leader = yes
+					country_leader = {
+						ideology = fascism_ideology
+						expire = 1965.1.1.1
+						traits =  {
+							fascist_party_trait
+						}
+					}
+				}
+	add_popularity = {popularity = -0.2 ideology = fascism}
+	add_stability = -0.1
+	add_war_support = -0.1
+	}
+	}
+	}
+	
+	option = {
+		name = ITA_news.2.a
+		trigger = {
+		OR = {
+		tag = RSI
+		is_in_faction_with = RSI
+		is_subject_of = RSI
+		has_government = fascism
+		}
+		}
+	}
+	option = {
+		name = ITA_news.2.b
+		trigger = {
+		NOT = {
+		OR = {
+		tag = RSI
+		is_in_faction_with = RSI
+		is_subject_of = RSI
+		has_government = fascism
+		}
+		}
+		}		
+	}
+}
+
+news_event = { #победа иср
+	id = ITA_news.5
+	title = ITA_news.4.t
+	desc = ITA_news.5.d
+	picture = GFX_news_rsi_troops
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ITA_news.5.a
+		trigger = {
+		OR = {
+		tag = RSI
+		is_in_faction_with = RSI
+		is_subject_of = RSI
+		has_government = fascism
+		}
+		}
+	}
+	option = {
+		name = ITA_news.5.b
+		trigger = {
+		NOT = {
+		OR = {
+		tag = RSI
+		is_in_faction_with = RSI
+		is_subject_of = RSI
+		has_government = fascism
+		}
+		}
+		}		
+	}
+}
+news_event = { #победа красных
+	id = ITA_news.4
+	title = ITA_news.4.t
+	desc = ITA_news.4.d
+	picture = GFX_news_cln_partisans
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ITA_news.4.a
+		trigger = {
+		OR = {
+		tag = RDS
+		is_in_faction_with = RDS
+		is_subject_of = RDS
+		NOT = {has_government = fascism}
+		}
+		}
+	}
+	option = {
+		name = ITA_news.4.b
+		trigger = {
+		OR = {
+		has_government = fascism
+		NOT = {
+		tag = RDS
+		is_in_faction_with = RDS
+		is_subject_of = RDS
+		}
+		}
+		}		
+	}
+}
+
+news_event = { #коллапс вб
+	id = ITA_news.6
+	title = ITA_news.6.t
+	desc = ITA_news.6.d
+	picture = GFX_news_eng_collapse
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+	#has_global_flag = collapse_of_eng_flag
+	#NOT = {has_global_flag = collapse_of_eng_flag_repeat}
+	}
+	
+	#immediate = {
+	#hidden_effect = {
+	#set_global_flag = collapse_of_eng_flag_repeat
+	#}
+	#}
+	
+	option = {
+		name = ITA_news.6.a
+		trigger = {
+		NOT = {
+		OR = {
+		tag = ENG
+		is_subject_of = ENG
+		is_in_faction_with = ENG
+		}
+		}
+		}
+	}
+	
+	option = {
+		name = ITA_news.6.b
+		trigger = {
+		OR = {
+		tag = ENG
+		is_subject_of = ENG
+		is_in_faction_with = ENG
+		}
+		}
+	}
+}
+news_event = { #провозглашение республики
+	id = ITA_news.7
+	title = ITA_news.7.t
+	desc = ITA_news.7.d
+	picture = GFX_news_rsi_troops
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ITA_news.7.a
+		trigger = {
+		tag = ITA
+		}
+	}
+	
+	option = {
+		name = ITA_news.7.b
+		trigger = {
+		OR = {
+		is_subject_of = ITA
+		is_in_faction_with = ITA
+		}
+		}
+	}	
+	option = {
+		name = ITA_news.7.c
+		trigger = {
+		NOT = {
+		OR = {
+		tag = ITA
+		is_subject_of = ITA
+		is_in_faction_with = ITA
+		}
+		}
+		}
+	}
+}
+news_event = { #рим город
+	id = ITA_news.8
+	title = ITA_other_event.4.t
+	desc = ITA_news.8.d
+	picture = GFX_news_italians_celeb
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = AOI_news.2.b
+		#trigger = {
+		#OR = {
+		#tag = ITA
+		#is_subject_of = ITA
+		#is_in_faction_with = ITA
+		#}
+		#}
+	}
+}

@@ -5,12 +5,12 @@
 		factor = 0
 		modifier = {
 			add = 10
-			tag = SWI
-			has_dlc = "By Blood Alone"
+			original_tag = SWI
+			#has_dlc = "By Blood Alone"
 		}
 	}
 	default = no
-	continuous_focus_position = { x = 100 y = 2000 }
+	continuous_focus_position = { x = 100 y = 2500 }
 	initial_show_position = {
 		x = 36
 		y = 0
@@ -72,8 +72,9 @@
 	focus = {
 		id = SWI_swiss_guiding_principles
 		icon = GFX_focus_SWI_swiss_guiding_principles
-		x = 12
+		x = 40
 		y = 0
+		relative_position_id = SWI_armed_neutrality
 		cost = 5
 	
 		ai_will_do = {
@@ -81,8 +82,15 @@
 		}
 	
 		available = {
-			
 		}
+		
+		offset = {
+			x = -15
+			y = 0
+			trigger = {
+				has_completed_focus = SWI_the_national_front
+			}
+		}		
 	
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER} 
 
@@ -232,15 +240,94 @@
 		}
 	
 	}
+	
+	focus = {
+		id = SWI_frankfurter_nash_slon
+		icon = GFX_focus_generic_communism_anti_fascism
+		x = -2
+		y = 2
+		relative_position_id = SWI_reaffirm_spiritual_defense
+		prerequisite = { focus = SWI_reaffirm_spiritual_defense }
+		mutually_exclusive = {focus = SWI_frankfurter_bad_guy focus = SWI_frankfurter_fair_trial}
+		cost = 5
+	
+		ai_will_do = {
+			factor = 10
+		}
+	
+		available = {
+		always = no
+		}
+	
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY  } 
+
+		completion_reward = {
+		add_popularity = {popularity = 0.025 ideology = communism}
+		}
+	
+	}
+	
+	focus = {
+		id = SWI_frankfurter_fair_trial
+		icon = GFX_goal_generic_neutrality_focus
+		x = 0
+		y = 2
+		relative_position_id = SWI_reaffirm_spiritual_defense
+		prerequisite = { focus = SWI_reaffirm_spiritual_defense }
+		mutually_exclusive = {focus = SWI_frankfurter_bad_guy focus = SWI_frankfurter_nash_slon}
+		cost = 5
+	
+		ai_will_do = {
+			factor = 10
+		}
+	
+		available = {
+		always = no
+		}
+	
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY  } 
+
+		completion_reward = {
+		add_popularity = {popularity = 0.025 ideology = neutrality}
+		}
+	
+	}
+	
+	focus = {
+		id = SWI_frankfurter_bad_guy
+		icon = GFX_focus_generic_strike_at_democracy1
+		x = 2
+		y = 2
+		relative_position_id = SWI_reaffirm_spiritual_defense
+		prerequisite = { focus = SWI_reaffirm_spiritual_defense }
+		mutually_exclusive = {focus = SWI_frankfurter_nash_slon focus = SWI_frankfurter_fair_trial}
+		cost = 5
+	
+		ai_will_do = {
+			factor = 10
+		}
+	
+		available = {
+		always = no
+		}
+	
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY  } 
+
+		completion_reward = {
+		add_popularity = {popularity = 0.025 ideology = fascism}
+		}
+	
+	}
 
 	focus = {
 		id = SWI_fortify_border_with_germany
 		icon = GFX_focus_SWI_fortify_border_with_germany
-		x = 0
+		x = -1
 		y = 1
 		relative_position_id = SWI_reaffirm_spiritual_defense
-		prerequisite = { focus = SWI_reaffirm_spiritual_defense }
-		cost = 10
+		prerequisite = {focus = SWI_reaffirm_spiritual_defense}
+		#prerequisite = { focus = SWI_frankfurter_bad_guy focus = SWI_frankfurter_fair_trial focus = SWI_frankfurter_nash_slon }
+		cost = 5
 	
 		ai_will_do = {
 			factor = 10
@@ -290,11 +377,11 @@
 	focus = {
 		id = SWI_fortify_border_with_italy
 		icon = GFX_focus_SWI_fortify_border_with_italy
-		x = -3
+		x = -4
 		y = 1
 		relative_position_id = SWI_reaffirm_spiritual_defense
-		prerequisite = { focus = SWI_reaffirm_spiritual_defense }
-		cost = 10
+		prerequisite = {focus = SWI_reaffirm_spiritual_defense}
+		cost = 5
 	
 		ai_will_do = {
 			factor = 10
@@ -344,11 +431,11 @@
 	focus = {
 		id = SWI_fortify_border_with_france
 		icon = GFX_focus_SWI_fortify_border_with_france
-		x = 3
+		x = 4
 		y = 1
 		relative_position_id = SWI_reaffirm_spiritual_defense
-		prerequisite = { focus = SWI_reaffirm_spiritual_defense }
-		cost = 10
+		prerequisite = {focus = SWI_reaffirm_spiritual_defense}
+		cost = 5
 	
 		ai_will_do = {
 			factor = 10
@@ -399,13 +486,14 @@
 		}
 	}
 
+
+
 	focus = {
 		id = SWI_armed_neutrality
 		icon = GFX_goal_generic_neutrality_focus
-		x = 0
-		y = 1
-		relative_position_id = SWI_fortify_border_with_germany
-		prerequisite = { focus = SWI_fortify_border_with_germany focus = SWI_fortify_border_with_italy focus = SWI_fortify_border_with_france }
+		x = 6
+		y = 0
+		prerequisite = {}
 		cost = 5
 	
 		ai_will_do = {
@@ -415,6 +503,11 @@
 		cancel_if_invalid = no
 		
 		available = {
+		OR = {
+		has_completed_focus = SWI_fortify_border_with_germany
+		has_completed_focus = SWI_fortify_border_with_italy
+		has_completed_focus = SWI_fortify_border_with_france 
+		}
 			OR = {
 				has_idea = SWI_citizen_militia_1
 				has_idea = SWI_citizen_militia_2
@@ -522,7 +615,6 @@
 		id = SWI_spab_counter_intelligence_agency
 		icon = GFX_goal_generic_intelligence_exchange
 		prerequisite = { focus = SWI_federal_police }
-		mutually_exclusive = { focus = SWI_panoramaheim_branch }
 		x = 1
 		y = 4
 		relative_position_id = SWI_federal_police
@@ -542,6 +634,7 @@
 				id = SWI_centralization_bop
 				range < SWI_centralization_bop_fully_cantons  
 			}
+		NOT = { has_completed_focus = SWI_panoramaheim_branch }
 		}
 		search_filters = {FOCUS_FILTER_POLITICAL}
 		bypass = {
@@ -789,10 +882,6 @@
 		}
 	
 		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}
 		}
 	
 		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_SWI_MILITARY_READINESS} 
@@ -824,10 +913,6 @@
 		}
 	
 		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}		
 		}
 	
 		search_filters = { FOCUS_FILTER_INDUSTRY } 
@@ -881,7 +966,7 @@
 						type = arms_factory 
 						level = 2 
 						instant_build = yes
-					} 
+					}
 				}
 			}
 			SWI_add_suspicious_prep_opinion = yes 
@@ -907,10 +992,6 @@
 		}
 	
 		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}
 			NOT = { has_country_flag = SWI_militias_turned_into_regulars }			
 		}
 	
@@ -947,11 +1028,7 @@
 			}
 		}
 	
-		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}		
+		available = {	
 		}
 	
 		search_filters = {  } 
@@ -990,11 +1067,7 @@
 			}
 		}
 	
-		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}		
+		available = {		
 		}
 	
 		search_filters = { FOCUS_FILTER_INDUSTRY } 
@@ -1030,11 +1103,7 @@
 			}
 		}
 	
-		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}		
+		available = {	
 		}
 	
 		search_filters = { FOCUS_FILTER_INDUSTRY } 
@@ -1069,11 +1138,7 @@
 		}
 	
 		available = {
-			has_tech = interwar_antiair	
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}
+			has_tech = interwar_antiair
 		}
 	
 		search_filters = { FOCUS_FILTER_RESEARCH } 
@@ -1134,11 +1199,7 @@
 			}
 		}
 	
-		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}			
+		available = {			
 		}
 	
 		search_filters = {  } 
@@ -1172,11 +1233,7 @@
 			}
 		}
 	
-		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}		
+		available = {		
 		}
 		
 		cancel_if_invalid = no
@@ -1212,10 +1269,6 @@
 		}
 
 		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}
 			NOT = { has_country_flag = SWI_militias_turned_into_regulars }
 		}
 		
@@ -1260,10 +1313,6 @@
 		}
 
 		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}
 		}
 		
 		bypass = {
@@ -1302,10 +1351,6 @@
 		}
 
 		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}
 		}
 		
 		bypass = {
@@ -1370,10 +1415,6 @@
 		}
 
 		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}
 			NOT = { has_country_flag = SWI_militias_turned_into_regulars }
 		}
 		
@@ -1414,10 +1455,6 @@
 		}
 
 		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}
 		}
 		
 		bypass = {
@@ -1456,10 +1493,6 @@
 		}
 
 		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}
 			any_other_country = {
 				SWI_is_country_to_balance = yes
 				has_war = yes 
@@ -1502,10 +1535,6 @@
 		}
 
 		available = {
-			power_balance_value = {
-				id = SWI_centralization_bop
-				value > 0
-			}
 		}
 		
 		bypass = {
@@ -1564,10 +1593,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range = SWI_centralization_bop_fully_cantons
-			}
 			NOT = {	has_country_flag = SWI_militias_turned_into_regulars }	
 		}
 		
@@ -1593,7 +1618,7 @@
 		id = SWI_veteran_sharpshooter_divisions
 		icon = GFX_focus_focus_fra_maquis
 		prerequisite = { focus = SWI_all_adults_training }
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = SWI_all_adults_training
 
@@ -1608,10 +1633,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range = SWI_centralization_bop_fully_cantons
-			}
 			has_tech = motorised_infantry
 		}
 		
@@ -1663,7 +1684,7 @@
 		id = SWI_anti_tank_divisions
 		icon = GFX_goal_generic_build_tank
 		prerequisite = { focus = SWI_veteran_sharpshooter_divisions }
-		x = -1
+		x = 0
 		y = 1
 		relative_position_id = SWI_veteran_sharpshooter_divisions
 
@@ -1678,10 +1699,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range = SWI_centralization_bop_fully_cantons
-			}
 			NOT = { has_country_flag = SWI_militias_turned_into_regulars }
 		}
 		
@@ -1730,7 +1747,7 @@
 		id = SWI_reduce_military_training_age
 		icon = GFX_focus_generic_military_academy
 		prerequisite = { focus = SWI_all_adults_training }
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = SWI_all_adults_training
 
@@ -1745,10 +1762,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range = SWI_centralization_bop_fully_cantons
-			}
 			NOT = { has_country_flag = SWI_militias_turned_into_regulars }
 		}
 		
@@ -1773,9 +1786,9 @@
 		icon = GFX_goal_generic_national_unity
 		prerequisite = { focus = SWI_veteran_sharpshooter_divisions }
 		prerequisite = { focus = SWI_reduce_military_training_age }
-		x = 1
-		y = 1
-		relative_position_id = SWI_veteran_sharpshooter_divisions
+		x = 0
+		y = 2
+		relative_position_id = SWI_all_adults_training
 
 		cost = 10
 
@@ -1788,10 +1801,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range = SWI_centralization_bop_fully_cantons
-			}
 			NOT = { has_country_flag = SWI_militias_turned_into_regulars }
 		}
 		
@@ -1820,7 +1829,7 @@
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = SWI_veteran_sharpshooter_divisions }
 		prerequisite = { focus = SWI_reduce_military_training_age }
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id = SWI_reduce_military_training_age
 
@@ -1835,10 +1844,10 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range = SWI_centralization_bop_fully_cantons
-			}
+		controls_state = 3
+		controls_state = 845
+		controls_state = 846
+		controls_state = 847
 		}
 		
 		bypass = {
@@ -1952,10 +1961,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range = SWI_centralization_bop_fully_cantons
-			}
 		}
 		
 		bypass = {
@@ -2015,10 +2020,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range = SWI_centralization_bop_fully_cantons
-			}
 		}
 		
 		bypass = {
@@ -2053,7 +2054,7 @@
 						type = arms_factory 
 						level = 2 
 						instant_build = yes
-					} 
+					}
 				}
 			}
 			151 = { #Eastern Swiss Alps (Gottard and Sargans)
@@ -2079,7 +2080,7 @@
 						type = arms_factory 
 						level = 2 
 						instant_build = yes
-					} 
+					}
 				}
 			}		
 			SWI_add_suspicious_prep_opinion = yes 		
@@ -2106,10 +2107,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range = SWI_centralization_bop_fully_cantons
-			}
 		}
 		
 		bypass = {
@@ -2134,11 +2131,11 @@
 		id = SWI_purchase_german_planes
 		icon = GFX_goal_generic_air_fighter
 		prerequisite = { focus = SWI_fortify_border_with_france }
-		x = 7
-		y = 1
+		x = 0
+		y = 2
 		relative_position_id = SWI_fortify_border_with_france
 
-		cost = 5
+		cost = 2
 
 		ai_will_do = {
 			factor = 1
@@ -2149,10 +2146,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_fully_cantons  
-			}
 			has_country_flag = SWI_viable_fascist_in_europe
 		}
 		
@@ -2234,7 +2227,7 @@
 		y = 1
 		relative_position_id = SWI_purchase_german_planes
 
-		cost = 5
+		cost = 2
 
 		ai_will_do = {
 			factor = 1
@@ -2245,10 +2238,7 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_fully_cantons  
-			}
+		NOT = {has_government = communism}
 		}
 		
 		bypass = {
@@ -2305,13 +2295,13 @@
 
 	focus = {
 		id = SWI_withdraw_from_the_league_of_nations
-		icon = GFX_focus_renounce_the_treaty_of_trianon
+		icon = GFX_focus_generic_league_of_nations
 		prerequisite = { focus = SWI_ban_the_communist_party }
 		x = 0
 		y = 1
 		relative_position_id = SWI_ban_the_communist_party
 
-		cost = 5
+		cost = 2
 
 		ai_will_do = {
 			factor = 1
@@ -2322,10 +2312,7 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_fully_cantons  
-			}
+		is_subject = no
 		}
 		
 		bypass = {
@@ -2372,7 +2359,7 @@
 		y = 1
 		relative_position_id = SWI_withdraw_from_the_league_of_nations
 
-		cost = 10
+		cost = 3
 
 		ai_will_do = {
 			factor = 1
@@ -2383,10 +2370,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons  
-			}
 		}
 		
 		bypass = {
@@ -2442,7 +2425,7 @@
 		y = 1
 		relative_position_id = SWI_limited_censorship_of_the_press
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -2453,10 +2436,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons  
-			}
 		}
 		
 		bypass = {
@@ -2509,10 +2488,10 @@
 		y = 1
 		relative_position_id = SWI_withdraw_from_the_league_of_nations
 
-		cost = 5
+		cost = 3
 
 		ai_will_do = {
-			factor = 1
+			factor = 2
 			modifier = {
 				factor = 0.1
 				SWI_any_democratic_to_balance_is_about_to_be_angry = yes
@@ -2520,10 +2499,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_fully_cantons  
-			}
 			GER = {
 				has_opinion = {
 					target = ROOT 
@@ -2574,10 +2549,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_fully_cantons  
-			}
 		}
 		
 		bypass = {
@@ -2623,9 +2594,9 @@
 	focus = {
 		id = SWI_ban_foreign_nazi_propaganda
 		icon = GFX_focus_POL_ban_nazi_party
-		x = -9
-		y = 1
-		relative_position_id = SWI_fortify_border_with_germany
+		x = 0
+		y = 2
+		relative_position_id = SWI_fortify_border_with_italy
 		prerequisite = { focus = SWI_fortify_border_with_germany focus = SWI_fortify_border_with_italy }
 		cost = 5
 	
@@ -2634,10 +2605,14 @@
 		}
 	
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range > SWI_centralization_bop_very_council
-			}			
+		OR = {
+		has_completed_focus = SWI_frankfurter_nash_slon
+		has_completed_focus = SWI_frankfurter_fair_trial
+		}
+		}
+		
+		allow_branch = {
+		NOT = {has_completed_focus = SWI_the_national_front}
 		}
 		
 		cancel_if_invalid = no
@@ -2646,6 +2621,7 @@
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER } 
 
 		completion_reward = {
+		mark_focus_tree_layout_dirty = yes
 			add_ideas = { SWI_banned_foreign_nazi_propaganda_idea }
 			if = {
 				limit = {
@@ -2701,8 +2677,15 @@
 			}
 		}
 		
+		#offset = {
+		#	x = -5
+		#	y = 0
+		#	trigger = {
+		#		has_completed_focus = SWI_reorganize_country
+		#	}
+		#}
+		
 		bypass = {
-
 		}
 
 		cancel_if_invalid = no
@@ -2744,7 +2727,763 @@
 				add_ideas = { SWI_buero_ha_idea_no_lar }
 			}
 		}
+	}
+	
+	focus = {
+		id = SWI_red_alps
+		icon = GFX_goal_support_communism
+		prerequisite = { focus = SWI_ban_foreign_nazi_propaganda }
+		x = -7
+		y = 0
+		relative_position_id = SWI_allied_gold
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+		
+		offset = {
+			x = 20
+			y = 0
+			trigger = {
+				has_completed_focus = SWI_reorganize_country
+			}
+		}
+
+		available = {
+		always = no
+		fascism < 0.1
+		has_completed_focus = SWI_frankfurter_nash_slon
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		custom_effect_tooltip = wip_tt
+		add_political_power = 50
+		add_popularity = {ideology = communism popularity = 0.1}
+		}
+	}
+	
+	focus = {
+		id = SWI_communist_propaganda
+		icon = GFX_focus_SWE_socialist_reforms
+		prerequisite = { focus = SWI_red_alps }
+		x = 0
+		y = 1
+		relative_position_id = SWI_red_alps
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+		
+		allow_branch = {
+		always = no
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		add_stability = -0.1
+		add_popularity = {ideology = communism popularity = 0.1}
+		}
+	}
+	
+	focus = {
+		id = SWI_communist_party_recognition
+		icon = GFX_focus_ger_great_red_menace
+		prerequisite = { focus = SWI_communist_propaganda }
+		x = -1
+		y = 1
+		relative_position_id = SWI_communist_propaganda
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		communism > 0.2
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		add_timed_idea = {idea = SWI_communist_party_recognition_idea days = 365}
+		every_country = {
+		limit = {
+		has_government = communism
+		NOT = {has_war_with = ROOT}
+		}
+		add_opinion_modifier = {modifier = medium_increase target = ROOT}
+		}
+		every_country = {
+		limit = {
+		has_government = communism
+		NOT = {has_war_with = ROOT}
+		}
+		ROOT = {add_opinion_modifier = {modifier = medium_increase target = PREV}}
+		}
+		}
 	}	
+	focus = {
+		id = SWI_finish_national_front
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		prerequisite = { focus = SWI_communist_propaganda }
+		x = 1
+		y = 1
+		relative_position_id = SWI_communist_propaganda
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		add_stability = -0.05
+		add_war_support = 0.05
+		add_popularity = {ideology = fascism popularity = -0.15}
+		remove_ideas = SWI_foreign_fascist_propaganda
+		}
+	}
+	
+	focus = {
+		id = SWI_comintern_gold
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		prerequisite = { focus = SWI_communist_party_recognition }
+		x = -1
+		y = 1
+		relative_position_id = SWI_communist_party_recognition
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		any_country = {
+		capital_scope = {is_on_continent = europe}
+		is_major = yes
+		has_government = communism
+		NOT = {has_war_with = ROOT}
+		}
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					is_major = yes
+					capital_scope = {is_on_continent = europe}
+					has_government = democratic
+				}
+				add_opinion_modifier = {
+					target = ROOT 
+					modifier = SWI_unfavourable_alignment
+				}
+			}
+		custom_effect_tooltip = generic_skip_one_line_tt
+		every_country = {
+		limit = {
+		capital_scope = {is_on_continent = europe}
+		is_major = yes
+		has_government = communism
+		NOT = {has_war_with = ROOT}
+		}
+		country_event = {id = BBA_switzerland_trade.8 days = 1}
+		}
+		custom_effect_tooltip = if_they_accept_tt
+		effect_tooltip = {
+		add_dynamic_modifier = {modifier = SWI_gold_trade_with_switzerland}
+		}
+		}
+	}
+	
+	focus = {
+		id = SWI_army_infiltration
+		icon = GFX_focus_prc_infiltration
+		prerequisite = { focus = SWI_finish_national_front }
+		prerequisite = { focus = SWI_communist_party_recognition }
+		x = 1
+		y = 1
+		relative_position_id = SWI_communist_party_recognition
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		army_experience = 25
+		add_command_power = 15
+		add_popularity = {ideology = communism popularity = 0.05}
+		hidden_effect = {
+		country_event = {id = political.5 days = 10 random_days = 30}
+		}
+		}
+	}
+	focus = {
+		id = SWI_reorganize_country
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = SWI_army_infiltration }
+		x = 0
+		y = 1
+		relative_position_id = SWI_army_infiltration
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		communism > 0.4
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		mark_focus_tree_layout_dirty = yes
+			SWI_remove_militia_recruitment_law = yes 
+			SWI_turn_militias_into_regulars = yes
+			country_lock_all_division_template = no
+		custom_effect_tooltip = can_fire_advisors_swi_tt
+		custom_effect_tooltip = generic_skip_one_line_tt
+		kill_swiss_council = yes
+		SWI_update_councilors = yes
+		}
+	}
+	
+	focus = {
+		id = SWI_unity_in_the_party
+		icon = GFX_focus_por_workers_of_iberia
+		prerequisite = { focus = SWI_reorganize_country }
+		x = -3
+		y = 1
+		relative_position_id = SWI_reorganize_country
+		mutually_exclusive = {focus = SWI_path_to_anarcho_syndicalism}
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		date < 1938.1.1
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			remove_power_balance = {
+				id = SWI_centralization_bop
+			}
+		add_popularity = {ideology = communism popularity = 0.05}
+		set_politics = {ruling_party = communism elections_allowed = no}
+			SWI_fritz_platten = {
+				add_country_leader_role = {
+					promote_leader = yes 
+					country_leader = {
+						ideology = leninism 
+						expire = "1965.1.1.1"
+						traits = {NOR_communist_agitator skillful_diplomat}
+						id = -1
+					}
+				}
+			}
+		remove_ideas = SWI_communist_party_recognition_idea
+		}
+	}
+	focus = {
+		id = SWI_path_to_anarcho_syndicalism
+		icon = GFX_focus_GER_liberate_exploited_colonial_workers
+		prerequisite = { focus = SWI_reorganize_country }
+		x = 3
+		y = 1
+		relative_position_id = SWI_reorganize_country
+		mutually_exclusive = {focus = SWI_unity_in_the_party}
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		fascism < 0.05
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			remove_power_balance = {
+				id = SWI_centralization_bop
+			}
+		add_popularity = {ideology = communism popularity = 0.05}
+		set_politics = {ruling_party = communism elections_allowed = yes}
+			SWI_clara_thalmann = {
+				add_country_leader_role = {
+					promote_leader = yes 
+					country_leader = {
+						ideology = anarchist_communism 
+						expire = "1965.1.1.1"
+						traits = {ARG_anarchosyndicalist}
+						id = -1
+					}
+				}
+			}
+		remove_ideas = SWI_communist_party_recognition_idea
+		}
+	}
+	
+	focus = {
+		id = SWI_hang_capitalists_by_their_rope
+		icon = GFX_focus_focus_fra_fascist_threat
+		prerequisite = { focus = SWI_path_to_anarcho_syndicalism }
+		x = 0
+		y = 3
+		relative_position_id = SWI_path_to_anarcho_syndicalism
+		
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		NOT = {has_government = fascism}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		}
+	}
+	
+	
+	
+	
+	
+	
+	focus = {
+		id = SWI_help_spanish_antifa
+		icon = GFX_focus_SOV_support_spanish_poum
+		prerequisite = { focus = SWI_unity_in_the_party focus = SWI_path_to_anarcho_syndicalism }
+		x = 3
+		y = 1
+		relative_position_id = SWI_unity_in_the_party
+		
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		has_character = SWI_clara_thalmann
+		has_global_flag = spanish_civil_war
+		
+		any_country = {
+		NOT = {has_war_with = ROOT}
+		OR = {
+		tag = SPC
+		AND = {
+		original_tag = SPR
+		has_government = communism
+		}
+		}
+		}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		add_political_power = 25
+		army_experience = 25
+		add_corps_commander_role = {
+		character = SWI_clara_thalmann
+		traits = {guerilla_fighter}
+		skill = 2
+		attack_skill = 1
+		defense_skill = 1
+		planning_skill = 3
+		logistics_skill = 2
+		}
+		add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1500
+				producer = ROOT
+			}		
+		SPC = {
+		army_experience = 25
+		add_manpower = 10000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1500
+				producer = ROOT
+			}		
+		}
+		
+	}
+}	
+	focus = {
+		id = SWI_nationalize_industry
+		icon = GFX_focus_generic_communist_industry
+		prerequisite = { focus = SWI_unity_in_the_party focus = SWI_path_to_anarcho_syndicalism }
+		x = 1
+		y = 1
+		relative_position_id = SWI_unity_in_the_party
+		
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SWI_nationalize_industry
+				bonus = 1
+				uses = 1
+				category = industry
+			}
+		random_owned_controlled_state = {
+		limit = {is_core_of = ROOT}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory 
+						level = 2 
+						instant_build = yes
+					}
+			}
+			
+		random_owned_controlled_state = {
+		limit = {is_core_of = ROOT}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex 
+						level = 2 
+						instant_build = yes
+					}
+			}
+		}
+	}
+	focus = {
+		id = SWI_socialist_education
+		icon = GFX_focus_generic_socialist_science
+		prerequisite = { focus = SWI_nationalize_industry }
+		x = 0
+		y = 1
+		relative_position_id = SWI_nationalize_industry
+		
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		add_popularity = {popularity = 0.05 ideology = communism}
+		add_research_slot = 1
+		}
+	}
+	focus = {
+		id = SWI_fight_with_fascism
+		icon = GFX_focus_focus_fra_fascist_threat
+		prerequisite = { focus = SWI_path_to_anarcho_syndicalism focus = SWI_unity_in_the_party }
+		x = -1
+		y = 1
+		relative_position_id = SWI_path_to_anarcho_syndicalism
+		
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		NOT = {has_government = fascism}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		add_war_support = 0.05
+		set_rule = {can_create_factions = yes}
+		add_ideas = ITA_anti_fascist_agents
+		}
+	}
+	focus = {
+		id = SWI_peoples_army
+		icon = GFX_focus_focus_fra_fascist_threat
+		prerequisite = { focus = SWI_fight_with_fascism }
+		x = 0
+		y = 1
+		relative_position_id = SWI_fight_with_fascism
+		
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		NOT = {has_government = fascism}
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = SWI_austrian_ultimatum
+		icon = GFX_focus_generic_attack_austria
+		prerequisite = { focus = SWI_unity_in_the_party }
+		x = 0
+		y = 3
+		relative_position_id = SWI_unity_in_the_party
+		
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		has_completed_focus = SWI_fight_with_fascism
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		unlock_decision_category_tooltip = SWI_nostra_alpine_state_dec_cat
+		every_country = {
+		limit = {original_tag = AUS}
+		country_event = BBA_swiss_expansion.9
+		}
+		}
+	}
+	focus = {
+		id = SWI_french_ultimatum
+		icon = GFX_focus_attack_france
+		prerequisite = { focus = SWI_austrian_ultimatum }
+		x = -2
+		y = 1
+		relative_position_id = SWI_austrian_ultimatum
+		
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		every_country = {
+		limit = {original_tag = FRA}
+		country_event = BBA_swiss_expansion.12
+		}
+		}
+	}
+	focus = {
+		id = SWI_yugoslavian_ultimatum
+		icon = GFX_focus_generic_attack_yugoslavia
+		prerequisite = { focus = SWI_austrian_ultimatum }
+		x = 0
+		y = 1
+		relative_position_id = SWI_austrian_ultimatum
+		
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = SWI_italian_ultimatum
+		icon = GFX_focus_attack_italy
+		prerequisite = { focus = SWI_austrian_ultimatum }
+		x = 2
+		y = 1
+		relative_position_id = SWI_austrian_ultimatum
+		
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		every_country = {
+		limit = {original_tag = ITA}
+		country_event = BBA_swiss_expansion.12
+		}
+		}
+	}
+	
+	
 ########################################################################################
 #############              CULTURAL DEFENSE BRANCH                      ################
 ########################################################################################
@@ -2788,10 +3527,10 @@
 	focus = {
 		id = SWI_spirit_of_saint_bernard
 		icon = GFX_focus_SWI_spirit_of_saint_bernard
-		prerequisite = { focus = SWI_pro_helvetia }
-		x = -5
+		prerequisite = { focus = SWI_all_adults_training }
+		x = 0
 		y = 1
-		relative_position_id = SWI_pro_helvetia
+		relative_position_id = SWI_all_adults_training
 
 		cost = 10
 
@@ -2964,6 +3703,15 @@
 
 		ai_will_do = {
 			factor = 1
+		}
+		
+		allow_branch = {
+		NOT = {
+		OR = {
+		has_completed_focus = SWI_reorganize_country
+		has_completed_focus = SWI_the_national_front
+		}
+		}
 		}
 
 		available = {
@@ -3296,8 +4044,16 @@
 			}
 		}
 		
+		allow_branch = {
+		NOT = {
+		OR = {
+		has_completed_focus = SWI_reorganize_country
+		has_completed_focus = SWI_the_national_front
+		}
+		}
+		}
+		
 		bypass = {
-
 		}
 
 		cancel_if_invalid = no
@@ -3337,7 +4093,16 @@
 				has_tech = iw_small_airframe
 				NOT = { has_war_with = ROOT }
 			}
-		}		
+		}
+		
+		allow_branch = {
+		NOT = {
+		OR = {
+		has_completed_focus = SWI_reorganize_country
+		has_completed_focus = SWI_the_national_front
+		}
+		}
+		}
 		
 		cancel_if_invalid = no
 		
@@ -3622,10 +4387,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range > SWI_centralization_bop_balanced
-			}	
 		}
 		
 		bypass = {
@@ -3666,10 +4427,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced
-			}	
 		}
 		
 		bypass = {
@@ -3711,10 +4468,6 @@
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced
-			}
 			any_other_country = {  
 				capital_scope = {
 					is_on_continent = europe
@@ -3760,10 +4513,6 @@
 
 		available = {
 			democratic > 0.70
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced
-			}
 		}
 		
 		bypass = {
@@ -3824,11 +4573,7 @@
 		}
 	
 		available = {
-			democratic > 0.70
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced
-			}			
+			democratic > 0.70			
 		}
 	
 		search_filters = {  } 
@@ -3885,10 +4630,6 @@
 
 		available = {
 			democratic > 0.70
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced
-			}
 			USA = {
 				exists = yes 
 				NOT = { has_government = fascism }
@@ -3954,10 +4695,6 @@
 
 		available = {
 			fascism < 0.30
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced
-			}
 		}
 		
 		bypass = {
@@ -3994,18 +4731,14 @@
 		x = 0
 		y = 2
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-			democratic > 0.70
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}			
+			democratic > 0.70		
 			FRA = {
 				exists = yes 
 				has_capitulated = no
@@ -4040,14 +4773,13 @@
 		x = -1
 		y = 1
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-			SWI_is_fully_centralized = yes 
 		}
 		
 		bypass = {
@@ -4088,7 +4820,6 @@
 		}
 
 		available = {
-			SWI_is_fully_centralized = yes 
 		}
 		
 		bypass = {
@@ -4154,11 +4885,7 @@
 		}
 
 		available = {
-			fascism < 0.30
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced
-			}			
+			fascism < 0.30			
 			any_other_country = {
 				has_government = democratic 
 				is_faction_leader = yes 
@@ -4253,18 +4980,13 @@
 		x = -7
 		y = 1
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-			democratic > 0.75		
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}			
 			has_government = democratic 
 			has_intelligence_agency = yes
 			any_other_country = {
@@ -4273,7 +4995,13 @@
 		}
 
 		allow_branch = {
-			SWI_bba_lar = yes
+			has_dlc = "La Resistance"
+			NOT = {
+			OR = {
+			has_completed_focus = SWI_the_national_front
+			has_completed_focus = SWI_reorganize_country
+			}
+		}
 		}
 		
 		bypass = {
@@ -4304,11 +5032,6 @@
 		}
 
 		available = {
-				democratic > 0.75
-				is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}			
 			has_government = democratic 
 			has_intelligence_agency = yes
 			any_other_country = {
@@ -4359,10 +5082,6 @@
 
 		available = {
 			democratic > 0.75
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}
 			has_government = democratic 
 			has_intelligence_agency = yes
 			any_other_country = {
@@ -4398,7 +5117,7 @@
 		x = 0
 		y = 2
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -4415,10 +5134,6 @@
 			}
 			is_in_faction = no 
 			has_war = no
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}
 			any_other_country = {
 				is_possible_secret_ally = yes 
 			}
@@ -4482,11 +5197,7 @@
 		}
 
 		available = {
-			democratic > 0.75
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}
+			democratic > 0.8
 		}
 		
 		bypass = {
@@ -4530,11 +5241,7 @@
 		}
 
 		available = {
-			democratic > 0.75
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}
+			democratic > 0.8
 		}
 		
 		bypass = {
@@ -4559,7 +5266,7 @@
 		x = -1
 		y = 1
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -4567,10 +5274,6 @@
 
 		available = {
 			democratic > 0.75
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}
 		}
 		
 		bypass = {
@@ -4607,10 +5310,6 @@
 
 		available = {
 			democratic > 0.70
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}
 		}
 		
 		bypass = {
@@ -4674,10 +5373,6 @@
 
 		available = {
 			democratic > 0.70
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}
 		}
 		
 		bypass = {
@@ -4759,10 +5454,6 @@
 
 		available = {
 			democratic > 0.70
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}
 		}
 		
 		bypass = {
@@ -4951,10 +5642,6 @@
 
 		available = {
 			democratic > 0.70
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced
-			}
 		}
 		
 		bypass = {
@@ -5098,7 +5785,7 @@
 		prerequisite = { focus = SWI_allied_gold }
 		relative_position_id = SWI_allied_gold
 		mutually_exclusive = { focus = SWI_closer_democratic_ties }
-		x = -4
+		x = -2
 		y = 1
 
 		cost = 5
@@ -5161,7 +5848,7 @@
 		icon = GFX_goal_demand_sudetenland
 		prerequisite = { focus = SWI_gotthard_union }
 		relative_position_id = SWI_gotthard_union
-		x = -5
+		x = -3
 		y = 1
 
 		cost = 5
@@ -5171,13 +5858,8 @@
 		}
 
 		available = {
-			democratic < 0.80
 			fascism < 0.20
 			AUS = {	exists = yes }
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced
-			}
 		}
 		
 		bypass = {
@@ -5254,12 +5936,7 @@
 		}
 
 		available = {
-			democratic < 0.75
 			fascism < 0.20
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
 			owns_state = 848
 		}
 		
@@ -5322,14 +5999,11 @@
 		}
 
 		available = {
-			democratic < 0.70
 			fascism < 0.15
 			AUS = {
 				exists = yes 
 				is_subject = no
 			}
-			SWI_is_fully_centralized = yes 
-
 		}
 		
 		bypass = {
@@ -5385,9 +6059,7 @@
 		}
 
 		available = {
-			democratic < 0.60
 			fascism < 0.15
-			SWI_is_fully_centralized = yes 
 		}
 		
 		bypass = {
@@ -5482,9 +6154,7 @@
 		}
 
 		available = {
-			democratic < 0.60
 			fascism < 0.15
-			SWI_is_fully_centralized = yes 
 		}
 		
 		bypass = {
@@ -5539,6 +6209,37 @@
 			custom_effect_tooltip = SWI_size_and_opinion_chance_tooltip 
 		}
 	}
+	
+	focus = {
+		id = SWI_nothing_interesting_here
+		icon = GFX_goal_generic_secret_weapon
+		prerequisite = { focus = SWI_request_austrian_occupation  focus = SWI_request_french_alps_occupation  focus = SWI_request_italian_alps_occupation }
+		relative_position_id = SWI_request_italian_alps_occupation
+		x = 0
+		y = 1
+
+		cost = 100000
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		always = no
+		}
+		
+		bypass = {
+
+		}
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		custom_effect_tooltip = wip_tt
+		}
+	}
 
 	focus = {
 		id = SWI_alpine_redoubt
@@ -5555,9 +6256,7 @@
 		}
 
 		available = {
-			democratic < 0.60
 			fascism < 0.15
-			SWI_is_fully_centralized = yes 
 		}
 		
 		bypass = {
@@ -5608,15 +6307,10 @@
 		}
 
 		available = {
-			democratic < 0.50
 			fascism < 0.10
 			any_controlled_state = {
 				is_alpine_state = yes 
 			}
-			OR = {
-				SWI_is_fully_centralized = yes 			
-				NOT = { has_power_balance = { id = SWI_centralization_bop } }
-			}	
 			var:SWI_confederation_president = {
 				SWI_councilor_is_neutrality_despotism = yes  
 			}
@@ -5631,6 +6325,7 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+			unlock_decision_category_tooltip = SWI_nostra_alpine_state_dec_cat
 			custom_effect_tooltip = SWI_neutrality_decisions_disabled_TT
 
 			if = {
@@ -5674,7 +6369,6 @@
 		}
 
 		available = {
-			democratic < 0.40
 			fascism < 0.10
 		}
 		
@@ -5718,7 +6412,6 @@
 		}
 
 		available = {
-			democratic < 0.40
 			fascism < 0.10
 		}
 		
@@ -5763,7 +6456,6 @@
 		}
 
 		available = {
-			democratic < 0.40
 			fascism < 0.10
 		}
 		
@@ -5813,13 +6505,7 @@
 		}
 
 		available = {
-			democratic < 0.70
-			fascism < 0.15		
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
-
+			fascism < 0.15
 		}
 		
 		bypass = {
@@ -5851,12 +6537,7 @@
 		}
 
 		available = {
-			democratic < 0.65
-			fascism < 0.10			
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
+			fascism < 0.10
 		}
 		
 		bypass = {
@@ -5890,9 +6571,7 @@
 		}
 
 		available = {
-			democratic < 0.65
 			fascism < 0.10	
-			SWI_is_fully_centralized = yes
 		}
 		
 		bypass = {
@@ -5931,7 +6610,6 @@
 		}
 
 		available = {
-			democratic < 0.60
 			fascism < 0.05	
 		}
 		
@@ -5970,7 +6648,7 @@
 		prerequisite = { focus = SWI_the_alpine_protectorate focus = SWI_president_for_life }
 		relative_position_id = SWI_president_for_life
 		x = 0
-		y = 1
+		y = 2
 
 		cost = 10
 
@@ -5979,8 +6657,7 @@
 		}
 
 		available = {
-			democratic > 0.50
-			fascism < 0.05	
+			democratic > 0.3	
 			has_war = yes 
 		}
 		
@@ -6004,6 +6681,9 @@
 					}
 				}
 			}
+			
+			add_popularity = {popularity = 0.1 ideology = neutrality}
+			
 			set_politics = {
 				ruling_party = neutrality 
 				elections_allowed = no 
@@ -6026,8 +6706,7 @@
 		}
 
 		available = {
-			democratic > 0.60
-			fascism < 0.05	
+			democratic > 0.45
 		}
 		
 		bypass = {
@@ -6051,8 +6730,8 @@
 			set_popularities = {
 				democratic = 90
 				fascism = 5
-				communism = 4 
-				neutrality = 1  
+				communism = 5
+				neutrality = 0
 			}
 			add_ideas = { 
 				SWI_old_switzerland_idea
@@ -6078,6 +6757,37 @@
 		}
 	}
 
+	focus = {
+		id = SWI_helvetism
+		icon = GFX_focus_generic_befriend_switzerland
+		prerequisite = { focus = SWI_return_to_the_old_switzerland focus = SWI_jump_into_action focus = SWI_the_alpine_confederation }
+		relative_position_id = SWI_return_to_the_old_switzerland
+		x = 3
+		y = 1
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		has_government = democratic
+		}
+		
+		bypass = {
+
+		}
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		add_ideas = SWI_helvetism_ns
+		}
+	}
+	
 	focus = {
 		id = SWI_switzerland_on_the_offense
 		icon = GFX_focus_SWI_neutrality_on_the_move
@@ -6134,19 +6844,14 @@
 		x = 2
 		y = 1
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-			democratic < 0.80
 			fascism < 0.20
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
 		}
 		
 		bypass = {
@@ -6158,6 +6863,7 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+		set_rule = {can_create_factions = yes}
 			create_faction = SWI_neutral_entente_faction
 			unlock_decision_tooltip =  SWI_invite_to_entente
 		}
@@ -6166,9 +6872,9 @@
 	focus = {
 		id = SWI_plains_warfare
 		icon = GFX_focus_generic_horse_studs
-		prerequisite = { focus = SWI_neutral_entente focus = SWI_switzerland_on_the_offense }
-		relative_position_id = SWI_neutral_entente
-		x = 1
+		prerequisite = { focus = SWI_armed_neutrality }
+		relative_position_id = SWI_armed_neutrality
+		x = 15
 		y = 1
 
 		cost = 5
@@ -6178,13 +6884,8 @@
 		}
 
 		available = {
-			democratic < 0.80
-			fascism < 0.20
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
 		}
+		
 		search_filters = {FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY}
 		bypass = {
 
@@ -6236,12 +6937,6 @@
 		}
 
 		available = {
-			democratic < 0.80
-			fascism < 0.20
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
 		}
 		
 		bypass = {
@@ -6294,12 +6989,6 @@
 		}
 
 		available = {
-			democratic < 0.80
-			fascism < 0.20
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
 		}
 		
 		bypass = {
@@ -6351,12 +7040,6 @@
 		}
 
 		available = {
-			democratic < 0.80
-			fascism < 0.20
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
 		}
 		
 		bypass = {
@@ -6378,12 +7061,14 @@
 	#############                   SWISS NAVY SUB-BRANCH                   ################
 	########################################################################################
 	
+	
+	
 	focus = {
 		id = SWI_a_swiss_navy
 		icon = GFX_goal_generic_navy_battleship
-		prerequisite = { focus = SWI_switzerland_on_the_offense focus = SWI_neutral_entente }
-		relative_position_id = SWI_switzerland_on_the_offense
-		x = -1
+		prerequisite = { focus = SWI_armed_neutrality }
+		relative_position_id = SWI_armed_neutrality
+		x = 11
 		y = 1
 
 		cost = 10
@@ -6393,8 +7078,6 @@
 		}
 
 		available = {
-			democratic < 0.80
-			fascism < 0.20
 			any_owned_state = {
 				is_coastal = yes
 			}
@@ -6436,8 +7119,6 @@
 		}
 
 		available = {
-			democratic < 0.80
-			fascism < 0.20
 			any_owned_state = {
 				is_coastal = yes
 			}
@@ -6472,8 +7153,6 @@
 		}
 
 		available = {
-			democratic < 0.80
-			fascism < 0.20
 			any_owned_state = {
 				is_coastal = yes
 			}
@@ -6512,10 +7191,8 @@
 		ai_will_do = {
 			factor = 1
 		}
-
+		
 		available = {
-			democratic < 0.80
-			fascism < 0.20
 			any_owned_state = {
 				is_coastal = yes
 			}
@@ -6557,8 +7234,6 @@
 		}
 
 		available = {
-			democratic < 0.80
-			fascism < 0.20
 			any_owned_state = {
 				is_coastal = yes
 			}
@@ -6599,8 +7274,6 @@
 		}
 
 		available = {
-			democratic < 0.80
-			fascism < 0.20
 			any_owned_state = {
 				is_coastal = yes
 			}
@@ -6661,8 +7334,6 @@
 		}
 
 		available = {
-			democratic < 0.80
-			fascism < 0.20
 			any_owned_state = {
 				is_coastal = yes
 			}
@@ -6722,8 +7393,6 @@
 		}
 
 		available = {
-			democratic < 0.80
-			fascism < 0.20
 			any_owned_state = {
 				is_coastal = yes
 			}
@@ -7102,10 +7771,14 @@
 
 		available = {
 			fascism > 0.05
+			has_completed_focus = SWI_frankfurter_bad_guy
 		}
 		
 		bypass = {
-
+		}
+		
+		allow_branch = {
+		NOT = {has_completed_focus = SWI_ban_foreign_nazi_propaganda}
 		}
 
 		cancel_if_invalid = no
@@ -7114,13 +7787,17 @@
 		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+		mark_focus_tree_layout_dirty = yes
+		add_political_power = 50
+		add_stability = -0.05
+		add_war_support = 0.05
+			add_popularity = {
+				ideology = fascism 
+				popularity = 0.1
+			}
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = SWI_robert_tobler
 			show_ideas_tooltip = SWI_rolf_henne
-			add_popularity = {
-				ideology = fascism 
-				popularity = 0.05
-			}
 		}
 	}	
 
@@ -7128,10 +7805,9 @@
 		id = SWI_panoramaheim_branch
 		icon = GFX_focus_SWI_embrace_panoramaheim
 		x = 0
-		y = 3
+		y = 1
 		relative_position_id = SWI_the_national_front
 		prerequisite = { focus = SWI_the_national_front }
-		mutually_exclusive = { focus = SWI_spab_counter_intelligence_agency }
 
 		cost = 5
 	
@@ -7145,6 +7821,7 @@
 	
 		available = {
 			fascism > 0.05
+			NOT = {has_completed_focus = SWI_spab_counter_intelligence_agency}
 			has_country_flag = SWI_viable_fascist_in_europe
 		}
 	
@@ -7196,6 +7873,17 @@
 				limit = {
 					has_dlc = "La Resistance"
 				}
+				
+				if = {
+				limit = {
+				has_intelligence_agency = no
+				}
+				create_intelligence_agency = yes
+				}
+				else = {
+				army_experience = 10
+				air_experience = 10
+				}
 
 				if = {
 					limit = {
@@ -7215,7 +7903,7 @@
 					traits = { operative_infiltrator  }
 					bypass_recruitment = no
 					available_to_spy_master = yes
-					nationalities = { ENG }
+					nationalities = { SWI ENG GER}
 				}
 
 			}
@@ -7236,7 +7924,7 @@
 
 			add_popularity = {
 				ideology = fascism 
-				popularity = 0.05 
+				popularity = 0.075
 			}
 		}
 	}
@@ -7244,11 +7932,11 @@
 	focus = {
 		id = SWI_closer_ties_with_germany
 		icon = GFX_focus_SWI_closer_ties_with_germany
-		x = 6
+		x = 7
 		y = 1
 		relative_position_id = SWI_infiltrate_federal_police
 		prerequisite = { focus = SWI_infiltrate_federal_police }
-		prerequisite = { focus = SWI_complete_siegfried_line }
+		prerequisite = { focus = SWI_the_petition_of_the_200 }
 
 		cost = 5
 	
@@ -7264,36 +7952,52 @@
 		}
 	
 		available = {
-			fascism > 0.4	
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced
-			}		
-			has_country_flag = SWI_viable_fascist_in_europe
+			fascism > 0.35
+		}
+		
+		allow_branch = {
+		NOT = {has_completed_focus = SWI_ban_foreign_nazi_propaganda}
 		}
 	
 		search_filters = {  } 
 
 		completion_reward = {
+			add_political_power = 150
 			var:SWI.SWI_biggest_fascist = {
 				add_opinion_modifier = {
 					modifier = SWI_close_ties
 					target = ROOT
 				}
 			}
-			add_political_power = 150
+			add_popularity = {
+				ideology = fascism 
+				popularity = 0.1
+			}
+			
+			custom_effect_tooltip = generic_skip_one_line_tt
+			unlock_decision_tooltip = {
+				decision = SWI_seize_democratic_gold
+			}
+			
+			custom_effect_tooltip = SWI_neutrality_decisions_disabled_TT
+
+			hidden_effect = {
+				set_country_flag = SWI_abandoned_neutrality_fascist
+			}
+			swap_ideas = {
+				remove_idea = SWI_swiss_neutrality
+				add_idea = SWI_democratic_unrest
+			}
+			hidden_effect = {
 			every_other_country = {
 				limit = {
 					SWI_is_country_to_balance = yes 
-					OR = {
-						has_government = democratic 
-						has_government = communism
-					}
 				}
 				add_opinion_modifier = {
-					target = ROOT 
-					modifier = SWI_close_ties_with_fascists
+					modifier = SWI_abandoned_neutrality 
+					target = ROOT
 				}
+			}
 			}
 		}
 	}
@@ -7304,10 +8008,10 @@ focus = {
 		icon = GFX_focus_hol_the_foundations_of_defense
 		prerequisite = { focus = SWI_purchase_german_planes }
 		relative_position_id = SWI_modernize_airforce
-		x = 4
+		x = 5
 		y = 0
 
-		cost = 5
+		cost = 2
 
 		ai_will_do = {
 			factor = 1
@@ -7315,10 +8019,6 @@ focus = {
 
 		available = {
 			fascism > 0.15
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}
 			has_country_flag = SWI_viable_fascist_in_europe
 		}
 		
@@ -7353,7 +8053,7 @@ focus = {
 		prerequisite = { focus = SWI_the_petition_of_the_200 }
 		relative_position_id = SWI_the_petition_of_the_200
 		x = 0
-		y = 2
+		y = 1
 
 		cost = 5
 
@@ -7442,10 +8142,6 @@ focus = {
 				has_government = fascism
 			}
 			fascism > 0.2
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_cantons
-			}
 			has_country_flag = SWI_viable_fascist_in_europe
 		}
 		
@@ -7519,7 +8215,7 @@ focus = {
 		prerequisite = { focus = SWI_military_exercises_with_germany}
 		relative_position_id = SWI_german_industrial_investments
 		x = -1
-		y = 2
+		y = 1
 
 		cost = 10
 
@@ -7533,10 +8229,6 @@ focus = {
 
 		available = {
 			fascism > 0.3
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced
-			}
 		}
 		
 		bypass = {
@@ -7587,10 +8279,6 @@ focus = {
 
 		ai_will_do = {
 			factor = 1
-			modifier = {
-				factor = 0.2 
-				SWI_any_democratic_to_balance_is_about_to_be_angry = yes 
-			} 
 		}
 
 		available = {
@@ -7632,10 +8320,10 @@ focus = {
 			navy_experience = 5 
 		}
 	}
-
-	focus = {
-		id = SWI_abandon_neutrality
-		icon = GFX_focus_SWI_abandon_neutrality
+	
+focus = {
+		id = SWI_national_front_march
+		icon = GFX_focus_SWE_revoke_militia_law
 		prerequisite = { focus = SWI_closer_ties_with_germany }
 		relative_position_id = SWI_closer_ties_with_germany
 		x = 0
@@ -7648,12 +8336,6 @@ focus = {
 		}
 
 		available = {
-			fascism > 0.5
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
-			has_country_flag = SWI_viable_fascist_in_europe
 		}
 		
 		bypass = {
@@ -7666,33 +8348,14 @@ focus = {
 		search_filters = {FOCUS_FILTER_POLITICAL}
 		
 		completion_reward = {
-			custom_effect_tooltip = SWI_neutrality_decisions_disabled_TT
-
-			hidden_effect = {
-				set_country_flag = SWI_abandoned_neutrality_fascist
-			}
-			swap_ideas = {
-				remove_idea = SWI_swiss_neutrality
-				add_idea = SWI_democratic_unrest
-			}
-			add_popularity = {
-				ideology = fascism 
-				popularity = 0.05
-			}
-			every_other_country = {
-				limit = {
-					SWI_is_country_to_balance = yes 
-				}
-				add_opinion_modifier = {
-					modifier = SWI_abandoned_neutrality 
-					target = ROOT
-				}
-			}
-			unlock_decision_tooltip = {
-				decision = SWI_seize_democratic_gold
-			}
+		country_event = SWI_nostra_event.1
+		custom_effect_tooltip = can_fire_advisors_swi_tt
+		hidden_effect = {
+		SWI_update_councilors = yes
+		kill_swiss_council = yes
 		}
-	}
+		}
+		}
 	
 	########################################################################################
 	#############                  TOBLER VS HENNE BRANCH                   ################
@@ -7701,11 +8364,11 @@ focus = {
 	focus = {
 		id = SWI_promote_tobler
 		icon = GFX_focus_SWI_recall_robert_tobler
-		prerequisite = { focus = SWI_abandon_neutrality }
-		relative_position_id = SWI_abandon_neutrality
+		prerequisite = { focus = SWI_national_front_march }
+		relative_position_id = SWI_national_front_march
 		mutually_exclusive = { focus = SWI_promote_henne }
 
-		x = -3
+		x = -4
 		y = 1
 
 		cost = 5
@@ -7719,11 +8382,8 @@ focus = {
 		}
 
 		available = {
+		always = no
 			fascism > 0.6
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
 			has_country_flag = SWI_viable_fascist_in_europe
 		}
 		
@@ -7736,6 +8396,7 @@ focus = {
 		available_if_capitulated = no
 
 		completion_reward = {
+		effect_tooltip = {
 			add_country_leader_role = {
 				character = SWI_robert_tobler
 				country_leader = {
@@ -7744,6 +8405,12 @@ focus = {
 				}
 				promote_leader = yes
 			}
+			
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+			
 			hidden_effect = { 
 				SWI_robert_tobler = { remove_country_leader_role = { ideology = fascism_ideology } }
 			}
@@ -7753,23 +8420,19 @@ focus = {
 			hidden_effect = {
 				SWI_robert_tobler = { SWI_make_character_confederation_president = yes } 
 			}
-			unlock_decision_tooltip = {
-				decision = SWI_appease_fascists
-				show_effect_tooltip = yes
-				show_modifiers = yes
-			}			
-			retire_character = SWI_rolf_henne
+			#retire_character = SWI_rolf_henne
 			SWI_make_helvetia_aggressive = yes
 		}
 	}
+}
 
 	focus = {
 		id = SWI_promote_henne
 		icon = GFX_focus_SWI_promote_henne
-		prerequisite = { focus = SWI_abandon_neutrality }
-		relative_position_id = SWI_abandon_neutrality
+		prerequisite = { focus = SWI_national_front_march }
+		relative_position_id = SWI_national_front_march
 		mutually_exclusive = { focus = SWI_promote_tobler }
-		x = 3
+		x = 4
 		y = 1
 
 		cost = 5
@@ -7783,11 +8446,8 @@ focus = {
 		}
 
 		available = {
+		always = no
 			fascism > 0.6
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
 			has_country_flag = SWI_viable_fascist_in_europe
 		}
 		
@@ -7800,6 +8460,7 @@ focus = {
 		available_if_capitulated = no
 
 		completion_reward = {
+		effect_tooltip = {
 			add_country_leader_role = {
 				character = SWI_rolf_henne
 				country_leader = {
@@ -7822,24 +8483,85 @@ focus = {
 				ruling_party = fascism
 				elections_allowed = no
 			}
-			retire_character = SWI_robert_tobler 
+			#retire_character = SWI_robert_tobler 
 			SWI_make_helvetia_aggressive = yes
+		}
+	}
+}
+	
+	focus = {
+		id = SWI_secret_service
+		icon = GFX_focus_generic_secret_service_agency
+		prerequisite = { focus = SWI_ban_democratic_party }
+		prerequisite = {focus = SWI_centralize_switzerland }
+		relative_position_id = SWI_promote_tobler
+		x = 2
+		y = 2
+
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		add_ideas = SWI_secret_service_idea
+		}
+	}
+	
+	focus = {
+		id = SWI_centralize_switzerland
+		icon = GFX_goal_swi_defence
+		prerequisite = { focus = SWI_promote_henne focus = SWI_promote_tobler }
+		relative_position_id = SWI_national_front_march
+		x = -1
+		y = 2
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			fascism > 0.45
+		}
+
+		
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		set_rule = {can_create_factions = yes}
+		set_rule = {can_send_volunteers = yes}
+		add_political_power = 75
+		add_stability = 0.1
+		add_popularity = {popularity = 0.1 ideology = fascism}
 			remove_power_balance = {
 				id = SWI_centralization_bop
 			}
-			unlock_decision_tooltip = {
-				decision = SWI_spouse_fascism
-				show_effect_tooltip = yes
-				show_modifiers = yes
+			hidden_effect = {
+				set_country_flag = SWI_elected_centralized_president
 			}
 		}
 	}
 	
 	focus = {
 		id = SWI_propagandize_swiss_military_tradition
-		icon = GFX_focus_generic_military_academy
-		prerequisite = { focus = SWI_promote_tobler }
-		relative_position_id = SWI_promote_tobler
+		icon = GFX_focus_SWI_continuous_build_up_military_readiness
+		prerequisite = { focus = SWI_promote_tobler focus = SWI_promote_henne }
+		relative_position_id = SWI_promote_henne
 		x = -1
 		y = 1
 
@@ -7850,11 +8572,7 @@ focus = {
 		}
 
 		available = {
-			fascism > 0.65
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
+		has_war_support > 0.5
 		}
 		
 		bypass = {
@@ -7879,7 +8597,7 @@ focus = {
 	focus = {
 		id = SWI_ban_democratic_party
 		icon = GFX_focus_generic_strike_at_democracy3
-		prerequisite = { focus = SWI_promote_tobler }
+		prerequisite = { focus = SWI_promote_tobler focus = SWI_promote_henne}
 		relative_position_id = SWI_promote_tobler
 		x = 1
 		y = 1
@@ -7891,11 +8609,7 @@ focus = {
 		}
 
 		available = {
-			fascism > 0.65
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_very_council
-			}
+			NOT = {has_government = democratic}
 		}
 		
 		bypass = {
@@ -7910,62 +8624,16 @@ focus = {
 			add_ideas = {
 				SWI_democratic_party_banned_idea
 			}
-		}
-	}
-
-	focus = {
-		id = SWI_centralize_switzerland
-		icon = GFX_focus_renounce_the_treaty_of_trianon
-		prerequisite = { focus = SWI_propagandize_swiss_military_tradition }
-		prerequisite = { focus = SWI_ban_democratic_party }
-		relative_position_id = SWI_propagandize_swiss_military_tradition
-		x = 1
-		y = 1
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			SWI_is_fully_centralized = yes 
-			fascism > 0.7
-		}
-		
-		bypass = {
-			has_government = fascism
-		}
-		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER}
-		cancel_if_invalid = no
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {
-			remove_power_balance = {
-				id = SWI_centralization_bop
-			}
-			set_politics = {
-				ruling_party = fascism
-				elections_allowed = no
-			}
-			unlock_decision_tooltip = {
-				decision = SWI_spouse_fascism
-				show_effect_tooltip = yes
-				show_modifiers = yes
-			}
-			hidden_effect = {
-				set_country_flag = SWI_elected_centralized_president
-			}
+			remove_ideas = { SWI_democratic_unrest }
 		}
 	}
 
 	focus = {
 		id = SWI_german_military_collaboration
-		icon = GFX_focus_generic_armored_air_support
+		icon = GFX_focus_BRA_acquire_german_tanks
 		prerequisite = { focus = SWI_promote_tobler focus = SWI_promote_henne }
-		relative_position_id = SWI_promote_tobler
-		x = 3
+		relative_position_id = SWI_promote_henne
+		x = -3
 		y = 1
 
 		cost = 5
@@ -7975,7 +8643,7 @@ focus = {
 		}
 
 		available = {
-			fascism > 0.65
+			fascism > 0.45
 		}
 		
 		bypass = {
@@ -8003,32 +8671,23 @@ focus = {
 		id = SWI_join_the_axis
 		icon = GFX_focus_chi_mission_to_germany
 		prerequisite = { focus = SWI_professionalize_militias }
-		prerequisite = { focus = SWI_centralize_switzerland }
-		relative_position_id = SWI_centralize_switzerland
-		x = 2
-		y = 1
+		relative_position_id = SWI_promote_henne
+		mutually_exclusive = {focus = SWI_on_our_own}
+		x = 0
+		y = 3
 
-		cost = 5
+		cost = 2
 
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-			OR = {
-				SWI_is_fully_centralized = yes
-				NOT = {
-					has_power_balance = {
-						id = SWI_centralization_bop
-					}
-				}
-			}
 			SWI_has_fascist_neighbor = yes  
 			var:SWI_biggest_fascist = {
 				is_in_faction = yes
 				is_faction_leader = yes
 			}
-			fascism > 0.75
 		}
 		
 		bypass = {
@@ -8043,32 +8702,33 @@ focus = {
 			var:SWI_biggest_fascist = {
 				country_event = { id = generic.2 hours = 4 }
 			}
-			remove_ideas = { SWI_democratic_unrest }
 		}
 	}
-
+	
 	focus = {
-		id = SWI_become_german_puppet  
-		icon = GFX_focus_CZE_german_puppet
-		prerequisite = { focus = SWI_promote_henne }
-		relative_position_id = SWI_promote_henne
-		x = 1
-		y = 1
+		id = SWI_on_our_own
+		icon = GFX_goal_swi_peace
+		prerequisite = { focus = SWI_professionalize_militias }
+		relative_position_id = SWI_promote_tobler
+		mutually_exclusive = {focus = SWI_join_the_axis}
+		x = 0
+		y = 3
 
-		cost = 5
+		cost = 2
 
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-			fascism > 0.7
-			has_war = no
-			has_country_flag = SWI_viable_fascist_in_europe
+		OR = {
+		is_faction_leader = yes
+		is_in_faction = no
+		}
 		}
 		
 		bypass = {
-
+			is_in_faction_with = var:SWI_biggest_fascist
 		}
 		search_filters = {FOCUS_FILTER_POLITICAL}
 		cancel_if_invalid = no
@@ -8076,22 +8736,23 @@ focus = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			hidden_effect = { SWI_find_biggest_fascist_neighbor = yes }
-			var:SWI_biggest_fascist = {
-				country_event = { id = BBA_switzerland_fascist.1 hours = 3 }
-				SWI = { set_variable = { SWI_fascist_overlord = PREV } }
-			}
-			remove_ideas = { SWI_democratic_unrest }
+		if = {
+		limit = {is_in_faction = no}
+		create_faction = SWI_swiss_league
+		}
+		else = {
+		add_political_power = 25
 		}
 	}
-
+}
+	
 	focus = {
-		id = SWI_professionalize_militias
-		icon = GFX_focus_chi_army_reform
-		prerequisite = { focus = SWI_become_german_puppet focus = SWI_german_military_collaboration }		
-		relative_position_id = SWI_become_german_puppet
-		x = -3
-		y = 1
+		id = SWI_scientific_cooperation
+		icon = GFX_goal_generic_scientific_exchange
+		prerequisite = { focus = SWI_on_our_own focus = SWI_join_the_axis }
+		relative_position_id = SWI_on_our_own
+		x = 2
+		y = 2
 
 		cost = 10
 
@@ -8100,16 +8761,559 @@ focus = {
 		}
 
 		available = {
-			OR = {
-				SWI_is_fully_centralized = yes 
-				NOT = {
-					has_power_balance = {
-						id = SWI_centralization_bop
+		num_faction_members > 1
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		add_research_slot = 1
+		#every_country = {
+		#limit = {
+		#OR = {
+		#tag = ROOT
+		#is_in_faction_with = ROOT
+		#}
+		#}
+		#add_to_tech_sharing_group = axis_research 
+		#}
+	}
+}
+	
+	focus = {
+		id = SWI_allign_hungary
+		icon = GFX_focus_generic_befriend_hungary
+		prerequisite = { focus = SWI_friend_austria focus = SWI_attack_austria }
+		relative_position_id = SWI_on_our_own
+		x = 0
+		y = 2
+
+		cost = 4
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		HUN = {
+		exists = yes
+		NOT = {has_war_with = ROOT}
+		}
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		HUN = {country_event = {id = generic.5 days = 1}}
+		}
+	}
+	
+	focus = {
+		id = SWI_attack_austria
+		icon = GFX_focus_generic_attack_austria
+		prerequisite = { focus = SWI_on_our_own }
+		relative_position_id = SWI_on_our_own
+		mutually_exclusive = {focus = SWI_friend_austria}
+		x = -1
+		y = 1
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		if = {
+		limit = {
+		has_dlc = "La Resistance"
+		}
+		add_collaboration = {target = AUS value = 0.25}
+		}
+		every_country = {
+		limit = {original_tag = AUS}
+		ROOT = {
+			create_wargoal = {
+			type = annex_everything
+			target = PREV
+			}
+			}
+		}
+	}
+}
+	
+	focus = {
+		id = SWI_friend_austria
+		icon = GFX_focus_generic_befriend_austria
+		prerequisite = { focus = SWI_on_our_own }
+		relative_position_id = SWI_on_our_own
+		mutually_exclusive = {focus = SWI_attack_austria}
+		x = 1
+		y = 1
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		every_country = {
+		limit = {original_tag = AUS}
+		country_event = BBA_swiss_expansion.9
+		}
+		}
+	}
+
+	focus = {
+		id = SWI_attack_italy
+		icon = GFX_focus_attack_italy
+		prerequisite = { focus = SWI_attack_austria focus = SWI_friend_austria }
+		relative_position_id = SWI_on_our_own
+		mutually_exclusive = {focus = SWI_friend_italy}
+		x = -1
+		y = 3
+
+		cost = 12
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		every_country = {
+		limit = {
+		original_tag = ITA
+		NOT = {has_war_with = ROOT}
+		}
+		country_event = BBA_swiss_expansion.12
+		}
+		}
+	}
+	
+	focus = {
+		id = SWI_friend_italy
+		icon = GFX_focus_befriend_italy
+		prerequisite = { focus = SWI_attack_austria focus = SWI_friend_austria }
+		relative_position_id = SWI_on_our_own
+		mutually_exclusive = {focus = SWI_attack_italy}
+		x = 1
+		y = 3
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		
+		every_country = {
+		limit = {
+		original_tag = ITA
+		NOT = {has_war_with = ROOT}
+		}
+		country_event = {id = SWI_nostra_event.2 days = 1}
+		}		
+		
+		custom_effect_tooltip = if_they_accept_tt
+		effect_tooltip = {
+		add_to_faction = ITA
+		39 = {transfer_state_to = ROOT}
+		850 = {transfer_state_to = ROOT}
+		}
+		}
+	}
+	
+	focus = {
+		id = SWI_attack_france
+		icon = GFX_focus_attack_france
+		prerequisite = { focus = SWI_attack_italy focus = SWI_friend_italy }
+		relative_position_id = SWI_on_our_own
+		mutually_exclusive = {focus = SWI_friend_france}
+		x = -1
+		y = 5
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		every_country = {
+		limit = {
+		original_tag = FRA
+		NOT = {has_war_with = ROOT}
+		}
+		country_event = BBA_swiss_expansion.12
+		}
+		}
+	}
+	
+	focus = {
+		id = SWI_friend_france
+		icon = GFX_focus_chi_reach_out_to_france
+		prerequisite = { focus = SWI_attack_italy focus = SWI_friend_italy }
+		relative_position_id = SWI_on_our_own
+		mutually_exclusive = {focus = SWI_attack_france}
+		x = 1
+		y = 5
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		every_country = {
+		limit = {original_tag = FRA}
+		country_event = {id = SWI_nostra_event.2 days = 1}
+		}
+		
+		custom_effect_tooltip = if_they_accept_tt
+		effect_tooltip = {
+		add_to_faction = FRA
+		735 = {transfer_state_to = ROOT}
+		}
+		
+		}
+	}
+	
+	focus = {
+		id = SWI_yug_ultimatum
+		icon = GFX_goal_reorg_yug_swi
+		prerequisite = { focus = SWI_attack_italy focus = SWI_friend_italy}
+		relative_position_id = SWI_on_our_own
+		x = 0
+		y = 4
+
+		cost = 6
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		YUG = {
+		exists = yes
+		NOT = {has_war_with = ROOT}
+		}
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		every_country = {
+		limit = {original_tag = YUG}
+		country_event = {id = SWI_nostra_event.5 days = 1}
+		}
+		}
+	}
+	
+	focus = {
+		id = SWI_allign_iberia
+		icon = GFX_focus_por_iberian_summit
+		prerequisite = { focus = SWI_attack_france focus = SWI_friend_france}
+		relative_position_id = SWI_on_our_own
+		x = -1
+		y = 6
+
+		cost = 7
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		every_country = {
+		limit = {
+		OR = {original_tag = SPR original_tag = POR}
+		NOT = {has_war_with = ROOT}
+		}
+		country_event = NSB_soviet_foreign_politics_events.200
+		}
+		}
+	}	
+	focus = {
+		id = SWI_attack_germany
+		icon = GFX_focus_attack_germany
+		prerequisite = { focus = SWI_attack_france focus = SWI_friend_france}
+		relative_position_id = SWI_on_our_own
+		x = 0
+		y = 7
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		will_lead_to_war_with = GER
+
+		completion_reward = {
+		if = {
+		limit = {
+		has_dlc = "La Resistance"
+		}
+		add_collaboration = {target = GER value = 0.2}
+		}
+		ROOT = {
+			create_wargoal = {
+			type = annex_everything
+			target = GER
+			}
+			}
+		}
+	}
+	focus = {
+		id = SWI_final_strike
+		icon = GFX_focus_attack_britain
+		prerequisite = { focus = SWI_attack_germany focus = SWI_better_late_then_never }
+		relative_position_id = SWI_on_our_own
+		x = 1
+		y = 8
+
+		cost = 8
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		
+				ROOT = {
+					create_wargoal = {
+						target = ENG
+						type = annex_everything
+					}
+				}
+			add_doctrine_cost_reduction = {
+				name = SWI_final_strike
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			add_doctrine_cost_reduction = {
+				name = SWI_final_strike
+				cost_reduction = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	focus = {
+		id = SWI_bolshevik_threat
+		icon = GFX_focus_ger_bulwark_against_bolshevism
+		prerequisite = { focus = SWI_final_strike focus = SWI_swiss_hegemony }
+		relative_position_id = SWI_on_our_own
+		x = 2
+		y = 9
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		is_subject = no
+		NOT = {has_government = communism}
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		every_country = {
+		limit = {
+		OR = {
+		is_neighbor_of = ROOT
+		is_major = yes
+		}
+		NOT = {is_in_faction_with = ROOT}
+		has_government = communism
+		}
+				ROOT = {
+					create_wargoal = {
+						target = PREV
+						type = annex_everything
 					}
 				}
 			}
+		}
+	}
+	focus = {
+		id = SWI_swiss_hegemony
+		icon = GFX_goal_swiss_hegemony
+		prerequisite = { focus = SWI_attack_germany focus = SWI_better_late_then_never }
+		relative_position_id = SWI_on_our_own
+		x = 3
+		y = 8
 
-			fascism > 0.65
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		is_subject = no
+		has_country_flag = formed_alpine_flag
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		add_ideas = SWI_swiss_hegemony_ns
+		}
+	}
+
+
+	focus = {
+		id = SWI_professionalize_militias
+		icon = GFX_focus_generic_fascist_troops
+		prerequisite = { focus = SWI_centralize_switzerland focus = SWI_german_military_collaboration }		
+		relative_position_id = SWI_promote_henne
+		x = -4
+		y = 2
+
+		cost = 2
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
 		}
 		
 		bypass = {
@@ -8130,12 +9334,12 @@ focus = {
 	focus = {
 		id = SWI_ask_for_vorarlberg
 		icon = GFX_goal_generic_occupy_states_ongoing_war
-		prerequisite = { focus = SWI_become_german_puppet }
-		relative_position_id = SWI_become_german_puppet
-		x = 1
+		prerequisite = { focus = SWI_join_the_axis }
+		relative_position_id = SWI_join_the_axis
+		x = 0
 		y = 1
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -8188,13 +9392,13 @@ focus = {
 
 	focus = {
 		id = SWI_request_austrian_occupation
-		icon = GFX_focus_generic_annex_country
+		icon = GFX_focus_GER_the_austrian_question
 		prerequisite = { focus = SWI_ask_for_vorarlberg }
 		relative_position_id = SWI_ask_for_vorarlberg
 		x = 2
 		y = 1
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -8259,13 +9463,13 @@ focus = {
 
 	focus = {
 		id = SWI_request_italian_alps_occupation
-		icon = GFX_goal_generic_more_territorial_claims  
+		icon = GFX_focus_ITA_greater_italy  
 		prerequisite = { focus = SWI_ask_for_vorarlberg }
 		relative_position_id = SWI_ask_for_vorarlberg
 		x = 0
 		y = 1
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -8329,13 +9533,13 @@ focus = {
 
 	focus = {
 		id = SWI_request_french_alps_occupation
-		icon = GFX_focus_generic_annex_country_2
+		icon = GFX_focus_generic_attack_vichy_france
 		prerequisite = { focus = SWI_ask_for_vorarlberg }
 		relative_position_id = SWI_ask_for_vorarlberg
 		x = -2
 		y = 1
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 1
@@ -8435,10 +9639,88 @@ focus = {
 	focus = {
 		id = SWI_the_alpine_supremacy
 		icon = GFX_goal_support_fascism
-		prerequisite = { focus = SWI_request_austrian_occupation focus = SWI_request_italian_alps_occupation focus = SWI_request_french_alps_occupation focus = SWI_join_the_axis }		
-		relative_position_id = SWI_join_the_axis
-		x = 2
-		y = 1
+		prerequisite = { focus = SWI_on_our_own focus = SWI_join_the_axis }		
+		relative_position_id = SWI_professionalize_militias
+		x = 0
+		y = 2
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_government = fascism 
+			any_controlled_state = {
+				is_alpine_state = yes
+			}
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			#SWI_turn_into_alpine = yes
+			unlock_decision_category_tooltip = SWI_nostra_alpine_state_dec_cat
+			every_state = {
+			limit = {
+			is_alpine_state = yes
+			NOT = {
+			OR = {
+			is_core_of = ROOT
+			is_claimed_by = ROOT
+			}
+			}
+			}
+			add_claim_by = ROOT
+			}
+		}
+	}
+	
+	focus = {
+		id = SWI_aggresive_wars
+		icon = GFX_focus_generic_total_war
+		prerequisite = { focus = SWI_the_alpine_supremacy }		
+		relative_position_id = SWI_the_alpine_supremacy
+		x = 0
+		y = 2
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		is_subject = no
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		add_ideas = SWI_aggresive_wars_ns
+		}
+	}
+	
+	focus = {
+		id = SWI_our_will
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = SWI_aggresive_wars }		
+		relative_position_id = SWI_aggresive_wars
+		x = 0
+		y = 2
 
 		cost = 10
 
@@ -8447,23 +9729,75 @@ focus = {
 		}
 
 		available = {
-			has_government = fascism 
-			any_owned_state = {
-				NOT = { is_core_of = ROOT } 
-				is_alpine_state = yes
-			}
+		is_subject = no
+		has_idea = SWI_spirit_of_helvetia_aggressive_war
+		has_completed_focus = SWI_secret_service
 		}
 		
 		bypass = {
-
 		}
+		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 		cancel_if_invalid = no
 		continue_if_invalid = no
 		available_if_capitulated = no
 
 		completion_reward = {
-			SWI_turn_into_alpine = yes
+		swap_ideas = {
+		add_idea = SWI_our_will_ns
+		remove_idea = SWI_aggresive_wars_ns
+		}
+		swap_ideas = {
+		add_idea = SWI_secret_service_idea_better
+		remove_idea = SWI_secret_service_idea
+		}
+		}
+	}
+	
+	focus = {
+		id = SWI_better_late_then_never
+		#icon = GFX_goal_swiss_hegemony
+		icon = GFX_focus_SWI_aktion_nationaler_widerstand
+		prerequisite = { focus = SWI_our_will }		
+		relative_position_id = SWI_our_will
+		x = 0
+		y = 2
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		is_subject = no
+		any_controlled_state = {is_coastal = yes}
+		}
+		
+		bypass = {
+		}
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		army_experience = 25
+		air_experience = 25
+		navy_experience = 25
+			add_tech_bonus = {
+				name = SWI_modernize_airforce
+				bonus = 1
+				uses = 3
+				category = naval_equipment
+			}
+			add_tech_bonus = {
+				name = SWI_modernize_airforce
+				bonus = 1
+				uses = 3
+				category = air_equipment
+			}
 		}
 	}
 
@@ -8474,10 +9808,9 @@ focus = {
 	focus = {
 		id = SWI_expand_weapons_industry
 		icon = GFX_goal_generic_construct_mil_factory
-		prerequisite = { focus = SWI_martial_law focus = SWI_abandon_neutrality }
-		relative_position_id = SWI_martial_law
-		x = 1
-		y = 1
+		relative_position_id = SWI_armed_neutrality
+		x = 0
+		y = 7
 
 		cost = 10
 
@@ -8486,10 +9819,11 @@ focus = {
 		}
 
 		available = {
-			is_power_balance_in_range = {
-				id = SWI_centralization_bop
-				range < SWI_centralization_bop_balanced  
-			}
+		3 = {is_fully_controlled_by = ROOT}
+		OR = {
+		has_completed_focus = SWI_national_front_march
+		has_completed_focus = SWI_martial_law
+		}
 		}
 		
 		bypass = {
@@ -8501,38 +9835,39 @@ focus = {
 		available_if_capitulated = no
 
 		completion_reward = {
+			add_research_slot = 1
 			3 = {
-				add_extra_state_shared_building_slots = 3	
+				add_extra_state_shared_building_slots = 2	
 				if = {
 					limit = { 
 						free_building_slots = {
 							building = arms_factory 
-							size > 2
+							size > 1
 							include_locked = yes 
 						}
 					}
 					add_building_construction = {
 						type = arms_factory 
-						level = 3 
+						level = 2 
 						instant_build = yes 
 					}
 				}
 
 			}
 			845 = {	
-				add_extra_state_shared_building_slots = 3
+				add_extra_state_shared_building_slots = 2
 				if = {
 					limit = {
 						free_building_slots = {
 							building = arms_factory 
-							size > 2
+							size > 1
 							include_locked = yes 
 						}
 					}
 				}
 				add_building_construction = {
 					type = arms_factory 
-					level = 3 
+					level = 2
 					instant_build = yes 
 				}
 			}

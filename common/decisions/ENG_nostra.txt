@@ -1,0 +1,46 @@
+
+ENG_italo_british_war_dec_cat = {
+
+ENG_regain_lost_terr = {
+
+    icon = GFX_decision_generic_military
+
+    activation = {
+	has_global_flag = must_regain_terr_flag
+	NOT = {
+	OR = {
+	has_global_flag = lost_terr_flag
+	has_global_flag = back_terr_flag
+	}
+	}
+    }
+	
+	priority = 100
+	
+    available = {
+	116 = {is_controlled_by_ROOT_or_ally = yes}
+	118 = {is_controlled_by_ROOT_or_ally = yes}
+	446 = {is_controlled_by_ROOT_or_ally = yes}
+    }
+	
+    cancel_trigger = {
+    }
+	
+    is_good = no
+	
+    days_mission_timeout = 270
+
+    complete_effect = {
+	add_stability = 0.05
+	add_war_support = 0.1
+	set_global_flag = back_terr_flag
+    }
+	
+    timeout_effect = {
+	add_popularity = {ideology = ROOT popularity = -0.2}
+	add_war_support = -0.15
+	#country_event = {id = ENG_collapse_event.2 days = 2}
+	set_global_flag = lost_terr_flag
+    }
+}
+}

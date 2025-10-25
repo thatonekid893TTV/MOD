@@ -1,0 +1,548 @@
+AOI_anti_partisan_war = {
+
+	AOI_destroy_partisans = {
+		icon = GFX_decision_generic_ignite_civil_war
+		target_trigger = {
+			FROM = {
+				has_state_flag = AOI_partisans_here
+				is_fully_controlled_by = ROOT
+			}
+		}
+		highlight_states = {
+		 	highlight_state_targets = {
+					state = FROM
+				}
+		}
+		target_root_trigger = { tag = AOI}
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes # Only once per State
+		available = {
+			divisions_in_state = {
+				state = FROM	
+				size > 1
+			}
+			has_completed_focus = AOI_beginning_of_antipartisan_war
+		}
+
+		visible = {
+			has_completed_focus = AOI_beginning_of_antipartisan_war
+		}
+
+		cancel_trigger = {
+			NOT = { FROM = { is_fully_controlled_by = ROOT } }
+		}
+
+		cancel_effect = {
+		}
+
+		days_remove = 45
+
+		cost = 25
+
+		modifier = {
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+		FROM = {
+		clr_state_flag = AOI_partisans_here
+			IF = {
+			limit = {has_dynamic_modifier = {modifier = AOI__ethiopian_partisans scope = AOI}}
+			remove_dynamic_modifier = {modifier = AOI__ethiopian_partisans scope = AOI}
+			}
+		ELSE = {
+		remove_dynamic_modifier = {modifier = AOI__ethiopian_partisans_1 scope = AOI}
+		}
+		}
+		IF = {
+		limit = {
+		FROM = {state = 838}
+		}
+		country_event = { id = AOI_event.16 hours = 4
+		}
+		ELSE_IF = {
+		limit = {
+		FROM = {state = 271}
+		}
+		country_event = {id = AOI_event.20 hours = 4}
+		}
+		
+		ai_will_do = {
+			base = 125
+				}
+			}
+		}
+	}
+}
+
+
+AOI_establish_full_order = {
+
+	AOI_integration_land = {
+		icon = GFX_decision_generic_colonial_administration
+		target_trigger = {
+			FROM = {
+				is_fully_controlled_by = ROOT
+				OR = {
+					state = 271
+					state = 908 
+					state = 835
+					state = 836
+					state = 837 
+					state = 838
+					state = 839
+					state = 840
+					state = 841
+					state = 842
+					state = 843
+					state = 559
+					state = 550
+					state = 844
+			}
+		}
+	}
+		highlight_states = {
+		 	highlight_state_targets = {
+					state = FROM
+				} 
+		}
+		target_root_trigger = { tag = AOI}
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes # Only once per State
+		available = {
+		FROM = {
+			NOT = {
+			has_state_flag = AOI_partisans_here
+			}
+		compliance > 85
+		}
+		}
+
+		visible = {
+		#FROM = {NOT = {has_state_flag = integrated_flag}}
+			OR = {
+			has_completed_focus = AOI_integrate_lands
+			has_completed_focus = PROT_integrate_lands_aoi
+			}
+		}
+
+		cancel_trigger = {
+			NOT = { FROM = { is_fully_controlled_by = ROOT } }
+		}
+
+		cancel_effect = {
+		}
+
+		days_remove = 45
+
+		cost = 30
+
+		modifier = {
+		political_power_gain = -0.2
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+		#FROM = {set_state_flag = integrated_flag}
+		FROM = {add_core_of = ROOT}
+		IF = {
+		limit = {
+		FROM = {is_claim_by = ROOT}
+		}
+		FROM = {remove_claim_by = ROOT}
+		}
+	}
+
+		ai_will_do = {
+			base = 125
+
+		}
+	}
+	AOI_integration_land_other_lands = {
+		icon = GFX_decision_generic_colonial_administration
+		target_trigger = {
+			FROM = {
+				is_fully_controlled_by = ROOT
+				OR = {
+				state = 269
+				state = 268
+				state = 903
+			}
+		}
+	}
+		highlight_states = {
+		 	highlight_state_targets = {
+					state = FROM
+				} 
+		}
+		target_root_trigger = { tag = AOI}
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		fire_only_once = yes # Only once per State
+		available = {
+		FROM = {
+		compliance > 85
+		}
+		}
+
+		visible = {
+			OR = {
+			AND = {
+			has_completed_focus = AOI_integrate_lands
+			has_completed_focus = AOI_horn_enclave
+			}
+			has_completed_focus = PROT_integrate_lands_aoi
+			}
+		}
+
+		cancel_trigger = {
+			NOT = { FROM = { is_fully_controlled_by = ROOT } }
+		}
+
+		cancel_effect = {
+		}
+
+		days_remove = 45
+
+		cost = 30
+
+		modifier = {
+		political_power_gain = -0.2
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+		FROM = {add_core_of = ROOT}
+		IF = {
+		limit = {
+		FROM = {is_claim_by = ROOT}
+		}
+		FROM = {remove_claim_by = ROOT}
+		}
+	}
+
+		ai_will_do = {
+			base = 125
+
+		}
+	}
+
+}
+AOI_create_east_africa_cat = {
+
+AOI_integrate_sudan = {
+		icon = GFX_decision_ITA_italian_east_africa
+		highlight_states = {
+		 	highlight_state_targets = {
+					state = 887
+					state = 885
+					state = 886
+					state = 883
+					state = 884
+					state = 549
+					state = 551
+					state = 767
+				} 
+		}
+		allowed = {original_tag = AOI}
+
+		on_map_mode = decision_view_only
+		fire_only_once = yes # Only once per State
+		available = {
+				887 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+				885 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+				886 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+				883 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+				884 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+				549 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+				551 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+				767 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+					}
+
+		visible = {
+			has_completed_focus = AOI_east_africa_formation
+		}
+
+		cancel_trigger = {
+		}
+
+		cancel_effect = {
+		}
+
+
+		modifier = {
+		}
+
+		complete_effect = {
+					551 = { add_core_of = ROOT }
+					887 = { add_core_of = ROOT }
+					885 = { add_core_of = ROOT }
+					886 = { add_core_of = ROOT }
+					883 = { add_core_of = ROOT }
+					884 = { add_core_of = ROOT }
+					549 = { add_core_of = ROOT }
+					767 = { add_core_of = ROOT }
+		}
+
+
+		ai_will_do = {
+			base = 125
+
+		}
+	}
+AOI_integrate_kenya = {
+		icon = GFX_decision_ITA_italian_east_africa
+		highlight_states = {
+		 	highlight_state_targets = {
+					state = 905
+					state = 903
+					state = 547
+					state = 904
+				} 
+		}
+		allowed = {original_tag = AOI}
+
+		on_map_mode = decision_view_only
+		fire_only_once = yes # Only once per State
+		available = {
+					905 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+					903 ={state_is_fully_controlled_by_ROOT_or_subject = yes}
+					547 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+					904 = {state_is_fully_controlled_by_ROOT_or_subject = yes} 	
+					}
+
+		visible = {
+			has_completed_focus = AOI_east_africa_formation
+		}
+
+		cancel_trigger = {
+		}
+
+		cancel_effect = {
+		}
+
+		modifier = {
+		}
+
+		complete_effect = {
+					903 = { add_core_of = ROOT }
+					905 = { add_core_of = ROOT }
+					547 = { add_core_of = ROOT }
+					709 = { add_core_of = ROOT }
+					904 = { add_core_of = ROOT }
+		}
+
+
+		ai_will_do = {
+			base = 125
+
+		}
+	}
+AOI_integrate_uganda = {
+		icon = GFX_decision_ITA_italian_east_africa
+		highlight_states = {
+		 	highlight_state_targets = {
+					state = 548
+				} 
+		}
+		allowed = {original_tag = AOI}
+
+		on_map_mode = decision_view_only
+		fire_only_once = yes # Only once per State
+		available = {
+					548 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+				}
+
+		visible = {
+			has_completed_focus = AOI_east_africa_formation
+		}
+
+		cancel_trigger = {
+		}
+
+		cancel_effect = {
+		}
+
+
+		modifier = {
+		}
+
+		complete_effect = {
+				548 = { add_core_of = ROOT }
+		}
+
+
+		ai_will_do = {
+			base = 125
+
+		}
+	}
+AOI_integrate_tanzania = {
+		icon = GFX_decision_ITA_italian_east_africa
+		highlight_states = {
+		 	highlight_state_targets = {
+					state = 546
+					state = 768
+					state = 769
+				} 
+		}
+		allowed = {original_tag = AOI}
+
+		on_map_mode = decision_view_only
+		fire_only_once = yes # Only once per State
+		available = {
+					546 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+					769 ={state_is_fully_controlled_by_ROOT_or_subject = yes}
+					768 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+					}
+
+		visible = {
+			has_completed_focus = AOI_east_africa_formation
+		}
+
+		cancel_trigger = {
+		}
+
+		cancel_effect = {
+		}
+
+
+		modifier = {
+		}
+
+		complete_effect = {
+				768 = { add_core_of = ROOT }
+				769 = { add_core_of = ROOT }
+				546 = { add_core_of = ROOT }
+				708 = { add_core_of = ROOT }
+		}
+
+
+		ai_will_do = {
+			base = 125
+
+		}
+	}
+AOI_integrate_zambezi = {
+		icon = GFX_decision_ITA_italian_east_africa
+		highlight_states = {
+		 	highlight_state_targets = {
+					state = 897
+					state = 771
+					state = 770
+				} 
+		}
+		allowed = {original_tag = AOI}
+
+		on_map_mode = decision_view_only
+		fire_only_once = yes # Only once per State
+		available = {
+					770 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+					771 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+					897 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+					}
+
+		visible = {
+			has_completed_focus = AOI_east_africa_formation
+		}
+
+		cancel_trigger = {
+		}
+
+		cancel_effect = {
+		}
+
+
+		modifier = {
+		}
+
+		complete_effect = {
+				897 = { add_core_of = ROOT }
+				771 = { add_core_of = ROOT }
+				770 = { add_core_of = ROOT }
+		}
+
+
+		ai_will_do = {
+			base = 125
+
+		}
+	}
+AOI_create_east_africa_decision = {
+		icon = GFX_decision_ITA_italian_east_africa
+
+		allowed = {original_tag = AOI}
+
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		available = {
+		}
+
+		visible = {
+			has_completed_focus = AOI_east_africa_formation
+			897 = {is_core_of = ROOT}
+			546 = {is_core_of = ROOT}
+			903 = {is_core_of = ROOT}
+			551 = {is_core_of = ROOT}
+		}
+
+		cancel_trigger = {
+		}
+
+		cancel_effect = {
+		}
+
+
+		modifier = {
+		}
+
+		complete_effect = {
+		set_country_flag = east_africa_formed
+		set_cosmetic_tag = east_africa_aoi
+		hidden_effect = {
+		news_event = {id = AOI_news.3}
+		}
+		}
+
+		ai_will_do = {
+			base = 125
+
+		}
+	}
+}
+AOI_capital_question = {
+	AOI_new_capital = {
+		icon = GFX_decision_generic_nationalism
+
+		allowed = {original_tag = AOI}
+
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		available = {
+		2 = {is_fully_controlled_by = ROOT}
+		}
+		
+		cost = 15
+		
+		visible = {
+			has_completed_focus = AOI_italo_african_union
+		}
+
+		complete_effect = {
+		country_event = {id = AOI_event.32}
+		}
+
+		ai_will_do = {
+			base = 125
+
+		}
+	}
+}

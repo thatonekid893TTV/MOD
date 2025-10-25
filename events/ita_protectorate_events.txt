@@ -1,0 +1,2014 @@
+
+add_namespace = ITA_protectorate_event
+
+country_event = {
+	id = ITA_protectorate_event.2
+	title = ITA_protectorate_event.2.t
+	desc = ITA_protectorate_event.2.d
+	picture = GFX_report_event_germany_victory
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	option = {
+	name = ITA_protectorate_event.2.a
+	
+	trigger = {
+	SWI = {is_subject_of = ROOT}
+	}
+	
+	every_state = {
+	limit = {
+	OR = {
+		state = 978
+		state = 50
+		state = 54
+		state = 53 	
+		state = 52
+	}
+	}
+	transfer_state_to = SWI
+	}
+	}
+	
+	option = {
+	name = ITA_protectorate_event.2.b
+
+	upgrade_italian_col_emp = yes
+		
+		BAY = {
+		make_this_country_protectorate = yes
+		
+		set_cosmetic_tag = BAY_italian
+	
+	create_country_leader = {
+	name = ITA_mario_vercellino
+	desc = ""
+	picture = GFX_portrait_ITA_mario_vercellino
+	ideology = fascism_ideology
+	traits = {leader_of_protectorate}
+	}
+	
+		}
+			every_state = {
+			limit = {
+			OR = {
+		state = 978
+		state = 50
+		state = 54
+		state = 53 	
+		state = 52
+			}
+			}
+			transfer_state_to = BAY
+			}
+	}
+}
+country_event = {
+	id = ITA_protectorate_event.3
+	title = ITA_protectorate_event.3.t
+	desc = ITA_protectorate_event.3.d
+	picture = GFX_report_event_ENG_middle_eastern_conflict
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	option = {
+	name = ITA_protectorate_event.3.a
+	trigger = {
+	PAL = {is_subject_of = ROOT}
+	}
+	every_state = {
+	limit = {
+	OR = {
+		state = 656
+		state = 1010
+		state = 291
+		state = 1011
+		state = 676
+		state = 675
+	}
+	}
+	transfer_state_to = PAL
+	}
+	}
+	
+	option = {
+	name = ITA_protectorate_event.3.b
+	trigger = {
+	SAU = {is_subject_of = ROOT}
+	}
+	every_state = {
+	limit = {
+	OR = {
+		state = 656
+		state = 1010
+		state = 291
+		state = 1011
+		state = 676
+		state = 675
+	}
+	}
+	transfer_state_to = SAU
+	}
+	}
+}
+country_event = {
+	id = ITA_protectorate_event.4
+	title = ITA_protectorate_event.4.t
+	desc = ITA_protectorate_event.4.d
+	picture = GFX_report_event_german_inspect_troops
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	option = {
+	name = ITA_protectorate_event.4.a #всю венгрии словакию
+	trigger = {
+	HUN	= {is_subject_of = ROOT}
+	SLO ={ NOT = {is_subject_of = ROOT} }
+	}
+	every_state = {
+	limit = {
+	OR = {
+		state = 70
+		state = 71
+		state = 73
+		state = 664
+	}
+	}
+	transfer_state_to = HUN
+	}
+	}
+	
+	option = {
+	name = ITA_protectorate_event.4.b #раздел между ними
+	trigger = {
+	HUN = {is_subject_of = ROOT}
+	}
+	
+	upgrade_italian_col_emp = yes
+	
+	every_state = {
+	limit = {
+	OR = {
+		state = 73
+		state = 664
+	}
+	}
+	transfer_state_to = HUN
+	}
+	every_state = {
+	limit = {
+	OR = {
+		state = 70
+		state = 71
+	}
+	}
+	transfer_state_to = SLO
+	}
+		SLO = {
+		
+		set_cosmetic_tag = SLO_italian
+		
+		make_this_country_protectorate = yes
+		
+		establish_it_adm = yes
+		
+		}
+	}
+	
+	option = {
+	name = ITA_protectorate_event.4.c #вся словакия отдельно
+	trigger = {
+	SLO = {exists = no}
+	}
+	
+	upgrade_italian_col_emp = yes
+	
+	every_state = {
+	limit = {
+	OR = {
+		state = 70
+		state = 71
+		state = 73
+		state = 664
+	}
+	}
+	transfer_state_to = SLO
+	}
+		SLO = {
+		
+		set_cosmetic_tag = SLO_italian
+		
+		make_this_country_protectorate = yes
+		
+		establish_it_adm = yes
+		}
+	}
+}
+country_event = {
+	id = ITA_protectorate_event.5
+	title = ITA_protectorate_event.5.t
+	desc = ITA_protectorate_event.5.d
+	picture = GFX_report_event_HUN_hungary_occupies_area
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	option = {
+	name = ITA_protectorate_event.4.a #всю венгрии трансильванию
+	trigger = {
+	HUN	= {is_subject_of = ROOT}
+	}
+	every_state = {
+	limit = {
+	OR = {
+		state = 83
+		state = 84
+		state = 76
+		state = 82
+	}
+	}
+	transfer_state_to = HUN
+	}
+	}
+	
+	option = {
+	name = ITA_protectorate_event.5.b #раздел между ними
+	trigger = {
+	HUN = {is_subject_of = ROOT}
+	ROM	= {is_subject_of = ROOT}
+	}
+	
+	76 = {transfer_state_to = HUN}
+	
+	every_state = {
+	limit = {
+	OR = {
+		state = 83
+		state = 84
+		state = 82
+	}
+	}
+	transfer_state_to = ROM
+	}
+	}
+	option = {
+	name = ITA_protectorate_event.5.c #вся трансильвания румынии
+	trigger = {
+	ROM = {is_subject_of = ROOT}
+	}
+	every_state = {
+	limit = {
+	OR = {
+		state = 83
+		state = 84
+		state = 76
+		state = 82
+	}
+	}
+	transfer_state_to = ROM
+	}
+	}
+	
+	option = {
+	name = ITA_protectorate_event.5.e #вся трансильвания отдельно
+	trigger = {
+	TRA = {NOT = {is_subject_of = ROOT}}
+	}
+	
+	upgrade_italian_col_emp = yes
+	
+	every_state = {
+	limit = {
+	OR = {
+		state = 83
+		state = 84
+		state = 76
+		state = 82
+	}
+	}
+	transfer_state_to = TRA
+	}
+		TRA = {
+		
+		set_cosmetic_tag = TRA_italian
+		
+		make_this_country_protectorate = yes
+		
+		establish_it_adm = yes
+		
+		}
+	}
+}
+country_event = {
+	id = ITA_protectorate_event.6
+	title = ITA_protectorate_event.6.t
+	desc = ITA_protectorate_event.6.d
+	picture = GFX_report_event_merchant_ship_01
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	option = {
+	name = ITA_protectorate_event.6.a
+	trigger = {
+	CAT = {is_subject_of = ROOT}
+	}
+	118 = {transfer_state_to = CAT}
+	}
+	
+	option = {
+	name = ITA_protectorate_event.6.b
+	118 = {transfer_state_to = ROOT}
+	}
+}
+country_event = {
+	id = ITA_protectorate_event.7
+	title = ITA_protectorate_event.7.t
+	desc = ITA_protectorate_event.7.d
+	picture = GFX_report_event_african_soldiers
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	option = {
+	name = ITA_protectorate_event.7.a
+	every_state = {
+	limit = {
+	OR = {
+	state = 783
+	state = 462
+	state = 461
+	state = 290
+	state = 459
+	state = 460
+	state = 513
+	state = 458
+	state = 665
+	state = 452
+	state = 447
+	state = 907
+	state = 446
+	state = 453
+	state = 456
+	state = 457
+	}
+	}
+	add_claim_by = LBA
+	}
+	set_global_flag = north_african_prot_flag
+	}
+	
+	option = {
+	name = ITA_protectorate_event.7.b
+	set_global_flag = divided_north_africa_prot_flag
+	}
+}
+country_event = {
+	id = ITA_protectorate_event.8
+	title = ITA_protectorate_event.8.t
+	desc = ITA_protectorate_event.8.d
+	picture = GFX_report_event_tanks_mexico_city
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_protectorate_event.8.a
+	trigger = {
+	PBR = {is_subject_of = ROOT}
+	}
+
+	every_state = {
+	limit = {
+	OR = {
+	state = 134
+	state = 113
+	state = 135
+	state = 119
+	state = 932
+	}
+	}
+	transfer_state_to = PBR
+	add_compliance = 10
+	}
+	}
+	
+	option = {
+	name = ITA_protectorate_event.8.b
+
+	upgrade_italian_col_emp = yes
+
+	if = {
+	limit = {PBR = {is_subject_of = ROOT}}
+	932 = {transfer_state_to = PBR}
+	}
+	
+	
+	every_state = {
+	limit = {
+	OR = {
+	state = 134
+	state = 113
+	state = 135
+	state = 119
+	}
+	}
+	transfer_state_to = IRE
+	}
+	IRE = {
+	make_this_country_protectorate = yes
+	
+	set_cosmetic_tag = IRE_italian
+	
+	establish_it_adm = yes
+	
+	}
+	}
+	
+	option = {
+	name = ITA_protectorate_event.8.c
+	trigger = {
+	
+	always = no
+	
+	136 = {is_controlled_by_ROOT_or_subject = yes}
+	133 = {is_controlled_by_ROOT_or_subject = yes}
+	121 = {is_controlled_by_ROOT_or_subject = yes}
+	120 = {is_controlled_by_ROOT_or_subject = yes}
+	122 = {is_controlled_by_ROOT_or_subject = yes}
+	14 = {is_controlled_by_ROOT_or_subject = yes}
+	}
+	
+	upgrade_italian_col_emp = yes
+	
+	if = {
+	limit = {PBR = {is_subject_of = ROOT}}
+	932 = {transfer_state_to = PBR}
+	}
+	
+	every_state = {
+	limit = {
+	OR = {
+	state = 134
+	state = 113
+	state = 135
+	state = 119
+	state = 136
+	state = 133
+	state = 121
+	state = 120
+	state = 933
+	state = 122
+	state = 14
+	}
+	}
+	transfer_state_to = IRE
+	}
+
+	IRE = {
+		if = {
+		limit = {has_global_flag = flag_colored_puppets}
+		set_cosmetic_tag = italian_protectorate	
+		}
+		make_this_country_protectorate = yes
+
+		establish_it_adm = yes
+	}
+	}
+}
+
+country_event = { #падение режима принца аймоне
+	id = ITA_protectorate_event.9
+	title = ITA_protectorate_event.9.t
+	desc = ITA_protectorate_event.9.d
+	picture = GFX_report_aimone
+	
+	mean_time_to_happen = {days = 14}
+	
+	#trigger = {
+	#has_global_flag = italian_cw_by_states_happened_flag
+	#tag = CRO
+	#CRO = {
+	#is_in_faction_with = GER
+	#is_in_faction_with = RSI
+	#	has_country_leader = {
+	#	character = ITA_prince_aimone
+	#	ruling_only = yes
+	#	}
+	#	}
+	#}
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_protectorate_event.9.a
+		add_popularity = {ideology = fascism popularity = -0.1}
+		CRO = {
+			ITA_prince_aimone = {
+				set_nationality = RSI
+				}
+			}
+	}
+}
+
+country_event = { #хорватия захватывает далмацию
+	id = ITA_protectorate_event.10
+	title = ITA_protectorate_event.10.t
+	desc = ITA_protectorate_event.10.d
+	picture = GFX_report_event_generic_italian_fascists
+	
+	trigger = {
+	has_global_flag = italian_cw_by_states_happened_flag
+	tag = CRO
+	CRO = {
+	is_in_faction_with = GER
+	is_in_faction_with = RSI
+	103 = {is_owned_by = RSI}
+	}
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+	name = ITA_protectorate_event.10.a
+	add_political_power = -25
+	
+	
+	if = {
+	limit = {
+	has_country_leader = {
+	character = ITA_prince_aimone ruling_only = yes
+	}
+	}
+	country_event = {id = ITA_protectorate_event.9 days = 1}
+	}
+	
+	hidden_effect = {country_event = {id = GER_italy_cw_event.2 days = 3}}
+	if = {
+	limit = {
+	103 = {is_controlled_by = RSI}
+	}
+	103 = {transfer_state_to = ROOT}
+	}
+	}
+}
+
+country_event = { ##шефкет верлаци или адвокат
+	id = ITA_protectorate_event.11
+	title = ITA_protectorate_event.11.t
+	desc = ITA_protectorate_event.11.d
+	picture = GFX_report_event_SWE_summer_government
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { ##наш
+	name = ITA_protectorate_event.11.a
+	add_political_power = 5
+	ALB = {
+		add_country_leader_role = {
+			character = ALB_shefket_verlaci
+			promote_leader = yes
+			country_leader = {
+			ideology = fascism_ideology
+			traits = {conservative_grandee}
+			expire = "1965.1.1.1"
+			id = -1
+			}
+		}
+	}
+		ai_chance = {
+		base = 100
+		}
+}
+	
+option = { ##местный
+	name = ITA_protectorate_event.11.b
+	ALB = {add_political_power = 15}
+	}
+}
+country_event = { ##местное коллаборации в греции
+	id = ITA_protectorate_event.12
+	title = ITA_protectorate_event.12.t
+	desc = ITA_protectorate_event.12.d
+	picture = GFX_report_event_SWE_summer_government
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##космидис
+	name = ITA_protectorate_event.12.a
+	GRE = {retire_character = GRE_georg}
+
+	HEL = {
+	
+	set_country_flag = allowed_local_collab_flag
+	
+	retire_country_leader = yes
+	
+	set_cosmetic_tag = GRE
+	
+	every_controlled_state = {
+	add_compliance = 15
+	}
+	
+	create_country_leader = {
+	name = GRE_georgios_kosmidis
+	picture = GFX_portrait_gre_georgios_kosmidis
+	expire = "1965.1.1"
+	ideology = gen_nazism
+	traits = {
+	leader_of_protectorate
+	eager_collaborator
+	}
+	}
+	
+	}
+	HEL = { add_autonomy_ratio = { value = 0.75 } }
+	
+	
+	}
+	
+option = { ##меркурис
+	name = ITA_protectorate_event.12.b
+	GRE = {retire_character = GRE_george_mercouris}
+
+	HEL = {
+	
+	set_country_flag = allowed_local_collab_flag
+	
+	retire_country_leader = yes
+	
+	set_cosmetic_tag = GRE
+	
+	every_controlled_state = {
+	add_compliance = 10
+	}
+	
+	create_country_leader = {
+	name = GRE_george_mercouris
+	picture = GFX_portrait_gre_george_mercouris
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+	traits = {
+	leader_of_protectorate
+	eager_collaborator
+	}
+	}
+	}
+	HEL = { add_autonomy_ratio = { value = 0.5 } }
+	
+	
+	}
+}
+country_event = { ##македония
+	id = ITA_protectorate_event.13
+	title = ITA_protectorate_event.13.t
+	desc = ITA_protectorate_event.13.d
+	picture = GFX_report_event_bul_troops_macedonia
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##сербия
+	name = ITA_protectorate_event.13.a
+	
+	trigger = {
+	SER = {
+	is_subject_of = ROOT
+	}
+	}
+	
+	add_stability = 0.02
+
+	106 = {transfer_state_to = SER}
+	803 = {transfer_state_to = SER}
+}
+	
+option = { ##болгария
+	name = ITA_protectorate_event.13.b
+	
+	trigger = {
+	BUL = {
+	is_subject_of = ROOT
+	}
+	}
+	
+	add_war_support = 0.02
+
+	106 = {transfer_state_to = BUL}
+	803 = {transfer_state_to = BUL}
+	}
+	
+option = { ##независимая македония, север сербии
+	name = ITA_protectorate_event.13.c
+	
+	#trigger = {
+	#SER = {
+	#is_subject_of = ROOT
+	#}
+	#}
+	
+	upgrade_italian_col_emp = yes
+
+	803 = {transfer_state_to = MAC}
+	106 = {transfer_state_to = MAC}
+	
+	MAC = {
+	make_this_country_protectorate = yes
+	
+	set_cosmetic_tag = italian_protectorate
+	
+	establish_it_adm = yes
+	}
+	}
+}
+
+
+country_event = { ##фракия
+	id = ITA_protectorate_event.14
+	title = ITA_protectorate_event.14.t
+	desc = ITA_protectorate_event.14.d
+	picture = GFX_report_event_gre_fascism
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##греция
+	name = ITA_protectorate_event.14.a
+	
+	trigger = {
+	HEL = {
+	is_subject_of = ROOT
+	}
+	}
+	
+	set_global_flag = hel_thrace_flag
+	
+	#unlock_decision_tooltip = ITA_mutilied_megali_idea
+	
+	custom_effect_tooltip = generic_skip_one_line_tt
+
+	184 = {transfer_state_to = HEL}
+}
+	
+option = { ##болгария
+	name = ITA_protectorate_event.13.b
+	
+	trigger = {
+	BUL = {
+	is_subject_of = ROOT
+	}
+	}
+
+	set_global_flag = bul_thrace_flag
+	
+	#unlock_decision_tooltip = ITA_give_stambul_to_tur
+	
+	custom_effect_tooltip = generic_skip_one_line_tt
+
+	184 = {transfer_state_to = BUL}
+	}
+}
+
+country_event = { ##россия
+	id = ITA_protectorate_event.15
+	title = ITA_protectorate_event.15.t
+	desc = ITA_protectorate_event.15.d
+	picture = GFX_report_event_SOV_demands
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##наш
+	name = ITA_protectorate_event.15.a
+	
+	add_political_power = -10
+	
+	PRR = {
+	add_political_power = 25
+			create_country_leader = {
+				name = ITA_giovanni_messe
+				desc = ""
+				picture = GFX_portrait_ITA_giovanni_messe
+				ideology = fascism_ideology
+				traits = { leader_of_protectorate }
+			}
+	}
+	
+}
+	
+option = { ##русский
+	name = ITA_protectorate_event.15.b
+	
+	add_political_power = 10
+	
+	PRR = {
+	set_cosmetic_tag = PRR_NTS
+			create_country_leader = {
+				name = PRR_victor_baydalakov
+				desc = ""
+				picture = GFX_portrait_victor
+				ideology = fascism_ideology
+				traits = { solidarist }
+			}
+	set_party_name = {
+	ideology = fascism
+	name = NTS_long
+	long_name = NTS_short
+	}
+	}
+}
+
+}
+
+country_event = { ##плимут
+	id = ITA_protectorate_event.16
+	title = ITA_protectorate_event.16.t
+	desc = ITA_protectorate_event.16.d
+	picture = GFX_report_event_ast_navy
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##наш
+	name = ITA_protectorate_event.16.a
+	
+	navy_experience = 15
+	123 = {transfer_state_to = ROOT}
+}
+	
+option = { ##англ
+	name = ITA_protectorate_event.16.b
+	
+	add_political_power = 15
+	123 = {
+	transfer_state_to = PBR
+	add_compliance = 10
+	}
+}
+}
+
+country_event = { ##кале
+	id = ITA_protectorate_event.17
+	title = ITA_protectorate_event.17.t
+	desc = ITA_protectorate_event.17.d
+	picture = GFX_report_event_ast_transfer_singapore
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##франция
+	name = ITA_protectorate_event.17.a
+	
+	trigger = {FCO = {is_subject_of = ROOT}}
+	
+	29 = {transfer_state_to = FCO}
+	29 = {add_compliance = 10}
+}
+	
+option = { ##голландия
+	name = ITA_protectorate_event.17.b
+	
+	trigger = {LUX = {is_subject_of = ROOT}}
+	
+	29 = {transfer_state_to = LUX}
+	29 = {add_compliance = 10}
+	}
+}
+
+
+country_event = { ##slovenia
+	id = ITA_protectorate_event.18
+	title = ITA_protectorate_event.18.t
+	desc = ITA_protectorate_event.18.d
+	picture = GFX_report_event_german_inspect_troops
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##swiss
+	name = ITA_protectorate_event.18.a
+	
+	trigger = {SWI = {is_subject_of = ROOT}}
+	
+	102 = {transfer_state_to = SWI}
+	
+}
+	
+option = { ##austr
+	name = ITA_protectorate_event.18.b
+	
+	trigger = {AUS = {is_subject_of = ROOT}}
+	
+	102 = {transfer_state_to = AUS}
+	}
+	
+option = { ##no one
+	name = ITA_protectorate_event.18.c
+	
+	trigger = {SLV = {is_subject_of = ROOT}}
+	
+	add_political_power = 15
+	
+	}
+}
+country_event = { ##california
+	id = ITA_protectorate_event.19
+	title = ITA_protectorate_event.19.t
+	desc = ITA_protectorate_event.19.d
+	picture = GFX_report_event_american_hunger_march
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##mex
+	name = ITA_protectorate_event.19.a
+	
+	trigger = {RIG = {is_subject_of = ROOT}}
+	
+	484 = {transfer_state_to = RIG}	
+}
+	
+option = { ##usa
+	name = ITA_protectorate_event.19.b
+	
+	trigger = {
+	USI = {is_subject_of = ROOT}
+	#NOT = {has_global_flag = cant_give_cal_usi}
+	}
+	
+	484 = {transfer_state_to = USI}
+	
+	#custom_effect_tooltip = cant_give_texas_mex
+	
+	#set_global_flag = cant_give_texas_mex
+	}
+}
+
+country_event = { ##aztlan
+	id = ITA_protectorate_event.20
+	title = ITA_protectorate_event.20.t
+	desc = ITA_protectorate_event.20.d
+	picture = GFX_report_event_tanks_mexico_city
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##mex
+	name = ITA_protectorate_event.20.a
+	
+	trigger = {
+	RIG = {is_subject_of = ROOT}
+	#NOT = {has_global_flag = cant_give_texas_mex}
+	}
+	
+	every_state = {
+	limit = {
+	OR = {
+						state = 375
+						state = 376
+						state = 377
+						state = 378
+						state = 379
+						state = 380
+						state = 382
+						state = 374
+	}
+	}
+	transfer_state_to = RIG
+	}
+	
+	#custom_effect_tooltip = cant_give_cal_usi
+	
+	#set_global_flag = cant_give_cal_usi
+}
+	
+option = { ##usa
+	name = ITA_protectorate_event.20.b
+	
+	trigger = {USI = {is_subject_of = ROOT}}
+	
+	every_state = {
+	limit = {
+	OR = {
+						state = 375
+						state = 376
+						state = 377
+						state = 378
+						state = 379
+						state = 380
+						state = 382
+						state = 374
+	}
+	}
+	transfer_state_to = USI
+	}
+	
+	#custom_effect_tooltip = cant_give_texas_mex
+	
+	#set_global_flag = cant_give_texas_mex
+	}
+}
+country_event = { ##alaska
+	id = ITA_protectorate_event.21
+	title = ITA_protectorate_event.21.t
+	desc = ITA_protectorate_event.21.d
+	picture = GFX_report_event_canada_patriation
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##usa
+	name = ITA_protectorate_event.19.b
+	
+	trigger = {
+	USI = {is_subject_of = ROOT}
+	}
+		
+	463 = {transfer_state_to = USI}
+	
+}
+	
+option = { ##canada
+	name = ITA_protectorate_event.21.b
+	
+	trigger = {QUE = {is_subject_of = ROOT}}
+	
+	463 = {transfer_state_to = QUE}
+	
+	}
+}
+
+country_event = { ##kurdistan
+	id = ITA_protectorate_event.22
+	title = ITA_protectorate_event.22.t
+	desc = ITA_protectorate_event.22.d
+	picture = GFX_report_event_tur_kurdish_guerillas
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##tur
+	name = ITA_protectorate_event.22.a
+	
+	trigger = {
+	ANA = {is_subject_of = ROOT}
+	}
+		ANA = { transfer_state = 344 }
+		ANA = { transfer_state = 350 }
+		ANA = { transfer_state = 353 }
+		ANA = { transfer_state = 352 }
+		ANA = { transfer_state = 800 }
+}
+	
+option = { ##pal
+	name = ITA_protectorate_event.3.a
+	
+	trigger = {PAL = {is_subject_of = ROOT}}
+	
+		PAL = { transfer_state = 344 }
+		PAL = { transfer_state = 350 }
+		PAL = { transfer_state = 353 }
+		PAL = { transfer_state = 352 }
+		PAL = { transfer_state = 800 }
+	
+	}
+}
+country_event = { ##Patagonia
+	id = ITA_protectorate_event.23
+	title = ITA_protectorate_event.23.t
+	desc = ITA_protectorate_event.23.d
+	picture = GFX_report_event_ARG_coup_consolidating #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = ITA_patagonia_question
+	}
+	}
+	
+option = { ##arg
+	name = ITA_protectorate_event.23.a
+	
+	trigger = {
+	ARG = {is_subject_of = ROOT}
+	}
+		ARG = { transfer_state = 512 }
+		ARG = { transfer_state = 955 }
+		ARG = { transfer_state = 954 }
+		ARG = { transfer_state = 953 }
+
+}
+	
+option = { ##wla
+	name = ITA_protectorate_event.23.b
+	
+		upgrade_italian_col_emp = yes
+
+		set_global_flag = WGL_italian_colony
+
+		512= {transfer_state_to = WLA}
+		955= {transfer_state_to = WLA}
+		954= {transfer_state_to = WLA}
+		953= {transfer_state_to = WLA}
+
+
+		WLA = {
+		make_this_country_protectorate_alt = yes
+
+			set_party_name = {
+				ideology = fascism
+				long_name =  WGL_italian_colony_IMG_LONG_NAME
+				name = WGL_italian_colony_IMG_SHORT_NAME
+			}
+            establish_it_adm = yes
+
+			set_cosmetic_tag = WGL_italian_colony
+		}
+	}
+}
+country_event = { ##tulon
+	id = ITA_protectorate_event.25
+	title = ITA_protectorate_event.25.t
+	desc = ITA_protectorate_event.25.d
+	picture = GFX_report_event_generic_italian_celebration #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##
+	name = ITA_protectorate_event.1.b
+	
+	trigger = {
+	NOT = {
+	has_global_flag = give_alps_to_fco
+	}
+	}
+	
+	custom_effect_tooltip = ALL_can_be_later_integrated
+	
+	32 = {transfer_state_to = ROOT}
+	851 = {transfer_state_to = ROOT}
+	
+	set_global_flag = give_root_tulon
+	
+	}
+	
+option = { ##
+	name = ITA_protectorate_event.24.b
+	
+	#trigger = {
+	#has_global_flag = give_alps_to_fco
+	#}
+	
+	if = {
+	limit = {
+	FCO = {is_subject_of = ROOT}
+	}
+	32 = {transfer_state_to = FCO}
+	851 = {transfer_state_to = FCO}
+	}
+	
+	else = {
+	set_global_flag = give_tulon_to_fco
+	}
+	
+	custom_effect_tooltip = if_not_exists_later
+	}
+}
+country_event = { ##china
+	id = ITA_protectorate_event.26
+	title = ITA_protectorate_event.26.t
+	desc = ITA_protectorate_event.26.d
+	picture = GFX_report_event_japanese_chinese_surrender #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##
+	name = ITA_protectorate_event.26.a
+	
+	ITC = {
+	add_stability = 0.03
+	}
+	
+	}
+	
+option = { ##
+	name = ITA_protectorate_event.26.b
+	
+	add_political_power = 10
+				
+				add_victory_points = {
+				province = 9843
+				value = -10
+				}	
+	}
+}
+country_event = { ##hawai
+	id = ITA_protectorate_event.27
+	title = ITA_honolulu_fate
+	desc = ITA_protectorate_event.27.d
+	picture = GFX_report_event_usa_destroyers #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##we
+	name = ITA_protectorate_event.27.a
+	
+	629 = {transfer_state_to = ROOT}
+	
+	}
+	
+option = { ##usa
+	name = ITA_protectorate_event.19.b
+	
+	trigger = {USI = {is_subject_of = ROOT}}
+	
+	629 = {transfer_state_to = USI}
+	
+	}
+}
+country_event = { ##taiwan
+	id = ITA_protectorate_event.28
+	title = ITA_taiwan_fate
+	desc = ITA_protectorate_event.28.d
+	picture = GFX_report_event_china_soviet_volunteers #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##we
+	name = ITA_protectorate_event.27.a
+	
+	524 = {transfer_state_to = ROOT}
+	
+	}	
+option = { ##china
+	name = ITA_protectorate_event.28.a
+	
+	trigger = {ITC = {is_subject_of = ROOT}}
+	
+	524 = {transfer_state_to = ITC}
+	
+	}
+	
+option = { ##japan
+	name = ITA_protectorate_event.28.b
+	
+	trigger = {ITJ = {is_subject_of = ROOT}}
+	
+	524 = {transfer_state_to = ITJ}
+	
+	}
+}
+country_event = { ##sinkiang
+	id = ITA_protectorate_event.29
+	title = ITA_sinkiang_fate
+	desc = ITA_protectorate_event.29.d
+	picture = GFX_report_event_china_soviet_volunteers #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##sik
+	name = ITA_protectorate_event.29.a
+	
+	upgrade_italian_col_emp = yes
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 617
+				state = 287
+				state = 760
+				state = 618
+				state = 287
+				state = 759
+				state = 619
+				}
+		}
+		transfer_state_to = SIK
+		}
+		
+		SIK = {
+		
+		set_cosmetic_tag = SIK_italian
+		
+		make_this_country_protectorate = yes
+		
+		establish_it_adm = yes
+		}
+		
+	}
+option = { ##china
+	name = ITA_protectorate_event.28.a
+	
+	trigger = {ITC = {is_subject_of = ROOT}}
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 617
+				state = 287
+				state = 760
+				state = 618
+				state = 287
+				state = 759
+				state = 619
+				}
+		}
+		transfer_state_to = ITC
+		}
+	
+	}
+}
+country_event = { ##tibet
+	id = ITA_protectorate_event.30
+	title = ITA_tibet_fate
+	desc = ITA_protectorate_event.30.d
+	picture = GFX_report_event_asian_politicians #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##tib
+	name = ITA_protectorate_event.29.a
+	
+	upgrade_italian_col_emp = yes
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 601
+				state = 322
+				state = 758
+				state = 757
+				}
+		}
+		transfer_state_to = TIB
+		}
+		
+		TIB = {
+		
+		set_cosmetic_tag = TIB_italian
+		
+		make_this_country_protectorate = yes
+		
+		establish_it_adm = yes
+		}
+		
+	}	
+option = { ##china
+	name = ITA_protectorate_event.28.a
+	
+	trigger = {ITC = {is_subject_of = ROOT}}
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 601
+				state = 322
+				state = 758
+				state = 757
+				}
+		}
+		transfer_state_to = ITC
+		}
+	
+	}	
+option = { ##india
+	name = ITA_protectorate_event.30.b
+	
+	trigger = {KHL = {is_subject_of = ROOT}}
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 601
+				state = 322
+				state = 758
+				state = 757
+				}
+		}
+		transfer_state_to = KHL
+		}
+	
+	}
+}
+country_event = { ##amur
+	id = ITA_protectorate_event.31
+	title = ITA_amur_fate
+	desc = ITA_protectorate_event.31.d
+	picture = GFX_report_event_asian_politicians #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = ITA_amur_fate
+	}
+	}
+	
+option = { ##russia
+	name = ITA_protectorate_event.31.a
+
+		trigger = {PRR = {is_subject_of = ROOT}}
+		
+		every_state = {
+			limit = {
+			OR = {
+				state = 560 # Tyumen
+				state = 657 # Novosibirsk
+				state = 561 # Omsk
+				state = 409 # Tyumen
+				state = 408 # Novosibirsk
+				}
+		}
+		transfer_state_to = PRR
+		add_compliance = 20
+		}
+	hidden_effect = {
+	set_global_flag = amur_prr
+	}
+	}	
+option = { ##china
+	name = ITA_protectorate_event.28.a
+	
+	trigger = {
+	MAN = {NOT = {is_subject_of = ROOT}}
+	ITC = {is_subject_of = ROOT}
+	}
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 560 # Tyumen
+				state = 657 # Novosibirsk
+				state = 561 # Omsk
+				state = 409 # Tyumen
+				state = 408 # Novosibirsk
+				}
+		}
+		transfer_state_to = ITC
+		}
+	hidden_effect = {
+	set_global_flag = amur_itc
+	}	
+	}	
+option = { ##manchu
+	name = ITA_protectorate_event.31.b
+	
+	trigger = {MAN = {is_subject_of = ROOT}}
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 560 # Tyumen
+				state = 657 # Novosibirsk
+				state = 561 # Omsk
+				state = 409 # Tyumen
+				state = 408 # Novosibirsk
+				}
+		}
+		transfer_state_to = MAN
+		}
+	hidden_effect = {
+	set_global_flag = amur_man
+	}
+	}
+}
+country_event = { ##manchu
+	id = ITA_protectorate_event.32
+	title = ITA_manchu_fate
+	desc = ITA_protectorate_event.32.d
+	picture = GFX_report_event_manchukuo_army #neeeds a better picture
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = ITA_manchu_fate
+	}
+	}
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##manchu
+	name = ITA_protectorate_event.29.a
+	
+	upgrade_italian_col_emp = yes
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 610 # Tyumen
+				state = 715 # Novosibirsk
+				state = 761 # Omsk
+				state = 714 # Tyumen
+				state = 328 # Novosibirsk
+				state = 717 # Novosibirsk
+				state = 716 # Novosibirsk
+				}
+		}
+		transfer_state_to = MAN
+		
+		MAN = {
+		
+		set_cosmetic_tag = MAN_italian
+		
+		make_this_country_protectorate = yes
+		
+		establish_it_adm = yes
+		
+		}
+		
+		}
+	}	
+option = { ##china
+	name = ITA_protectorate_event.28.a
+	
+	trigger = {ITC = {is_subject_of = ROOT}}
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 610 # Tyumen
+				state = 715 # Novosibirsk
+				state = 761 # Omsk
+				state = 714 # Tyumen
+				state = 328 # Novosibirsk
+				state = 717 # Novosibirsk
+				state = 716 # Novosibirsk
+				}
+		}
+		transfer_state_to = ITC
+		}
+	
+	}
+}
+country_event = { ##mongolia
+	id = ITA_protectorate_event.33
+	title = ITA_mongolia_fate
+	desc = ITA_protectorate_event.33.d
+	picture = GFX_report_event_manchukuo_army #neeeds a better picture
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = ITA_mongolia_fate
+	}
+	}
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##mon
+	name = ITA_protectorate_event.33.a
+	
+	upgrade_italian_col_emp = yes
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 329 # Tyumen
+				state = 330 # Novosibirsk
+				state = 818 # Omsk
+				state = 817 # Tyumen
+				state = 819 # Novosibirsk
+				state = 820 # Novosibirsk
+				}
+			}
+		transfer_state_to = MON
+		}
+		
+		MON = {
+		
+		set_cosmetic_tag = MON_italian
+		
+		make_this_country_protectorate = yes
+		
+		establish_it_adm = yes
+		
+		}
+	}
+	
+option = { ##china
+	name = ITA_protectorate_event.28.a
+	
+	trigger = {ITC = {is_subject_of = ROOT}}
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 329 # Tyumen
+				state = 330 # Novosibirsk
+				state = 818 # Omsk
+				state = 817 # Tyumen
+				state = 819 # Novosibirsk
+				state = 820 # Novosibirsk
+				}
+		}
+		transfer_state_to = ITC
+		}
+	
+	}
+option = { ##russia
+	name = ITA_protectorate_event.31.a
+	
+	trigger = {PRR = {is_subject_of = ROOT}}
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 329 # Tyumen
+				state = 330 # Novosibirsk
+				state = 818 # Omsk
+				state = 817 # Tyumen
+				state = 819 # Novosibirsk
+				state = 820 # Novosibirsk
+				}
+		}
+		transfer_state_to = PRR
+		}
+	
+	}
+}
+country_event = { ##mongolia
+	id = ITA_protectorate_event.34
+	title = ITA_outer_mongolia_fate
+	desc = ITA_protectorate_event.34.d
+	picture = GFX_report_event_manchukuo_army #neeeds a better picture
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = ITA_outer_mongolia_fate
+	}
+	}
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##mon
+	name = ITA_protectorate_event.34.a
+	
+	trigger = {MON = {is_subject_of = ROOT}}
+		
+		every_state = {
+			limit = {
+			OR = {
+				state = 621
+				state = 612
+				state = 611
+				}
+		}
+		transfer_state_to = MON
+		}
+}
+		
+option = { ##china all
+	name = ITA_protectorate_event.34.b
+	
+	trigger = {ITC = {is_subject_of = ROOT}}
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 621
+				state = 612
+				state = 611
+				}
+		}
+		transfer_state_to = ITC
+		}
+	
+	}	
+option = { ##china man split
+	name = ITA_protectorate_event.34.c
+	
+	trigger = {
+	ITC = {is_subject_of = ROOT}
+	MAN = {is_subject_of = ROOT}
+	}
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 621
+				}
+		}
+		transfer_state_to = ITC
+		}
+	
+		every_state = {
+			limit = {
+			OR = {
+				state = 612
+				state = 611
+				}
+		}
+		transfer_state_to = MAN
+		}
+	
+	}
+}
+country_event = { ##voevodina
+	id = ITA_protectorate_event.35
+	title = ITA_voevodina_question
+	desc = ITA_protectorate_event.35.d
+	picture = GFX_report_event_hungary_gains_transylvania #neeeds a better picture
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = ITA_voevodina_question
+	}
+	}
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##ser
+	name = ITA_protectorate_event.13.a
+	
+	trigger = {SER = {is_subject_of = ROOT}}
+	45 = {transfer_state_to = SER}
+}
+		
+option = { ##hun
+	name = ITA_protectorate_event.35.b
+	
+	trigger = {HUN = {is_subject_of = ROOT}}
+	45 = {transfer_state_to = HUN}
+	}
+	
+	option = { ##cro
+	name = ITA_protectorate_event.35.c
+	
+	trigger = {CRO = {is_subject_of = ROOT}}
+	45 = {transfer_state_to = CRO}
+	}
+}
+country_event = { ##ukraine
+	id = ITA_protectorate_event.36
+	title = ITA_this_state_ukraine
+	desc = ITA_protectorate_event.36.d
+	picture = GFX_report_event_hungary_gains_transylvania #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	#fire_only_once = yes
+	
+option = { ##UKR
+	name = ITA_protectorate_event.36.a
+	
+	trigger = {UKR = {is_subject_of = ROOT}}
+	FROM.FROM = {transfer_state_to = UKR}
+}
+		
+option = { ##ROM
+	name = ITA_protectorate_event.36.b
+	
+	trigger = {ROM = {is_subject_of = ROOT}}
+	FROM.FROM = {transfer_state_to = ROM}
+	}
+}
+country_event = { ##BUL
+	id = ITA_protectorate_event.37
+	title = ITA_this_state_bul_rom
+	desc = ITA_protectorate_event.37.d
+	picture = GFX_report_event_hungary_gains_transylvania #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	#fire_only_once = yes
+	
+option = { ##bul
+	name = ITA_protectorate_event.13.b
+	
+	trigger = {BUL = {is_subject_of = ROOT}}
+	77 = {transfer_state_to = BUL}
+	971 = {transfer_state_to = BUL}
+}
+		
+option = { ##ROM
+	name = ITA_protectorate_event.36.b
+	
+	trigger = {ROM = {is_subject_of = ROOT}}
+	77 = {transfer_state_to = BUL}
+	971 = {transfer_state_to = BUL}
+	}		
+option = { ##split
+	name = ITA_protectorate_event.34.c
+	
+	trigger = {
+	ROM = {is_subject_of = ROOT}
+	BUL = {is_subject_of = ROOT}
+	}
+	77 = {transfer_state_to = BUL}
+	971 = {transfer_state_to = ROM}
+	}
+}
+country_event = { ##aland
+	id = ITA_protectorate_event.38
+	title = ITA_aland_fate
+	desc = ITA_protectorate_event.38.d
+	picture = GFX_report_event_FIN_karelian_forest_guerillas #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	#fire_only_once = yes
+	
+option = { ##SCA
+	name = ITA_protectorate_event.38.a
+	
+	trigger = {SMI = {is_subject_of = ROOT}}
+	145 = {transfer_state_to = SMI}
+}
+		
+option = { ##FIN
+	name = ITA_protectorate_event.38.b
+	
+	trigger = {KAR = {is_subject_of = ROOT}}
+	145 = {transfer_state_to = KAR}
+	}
+}
+country_event = { ##pavlodar
+	id = ITA_protectorate_event.39
+	title = ITA_pavlodar_fate
+	desc = ITA_protectorate_event.39.d
+	picture = GFX_report_event_SOV_young_builders_of_communism #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##SCA
+	name = ITA_protectorate_event.31.a
+	
+	trigger = {PRR = {is_subject_of = ROOT}}
+	882 = {transfer_state_to = PRR}
+	588 = {transfer_state_to = PRR}
+}
+		
+option = { ##FIN
+	name = ITA_protectorate_event.39.b
+	
+	trigger = {KAZ = {is_subject_of = ROOT}}
+	882 = {transfer_state_to = KAZ}
+	588 = {transfer_state_to = KAZ}
+	}
+}
+country_event = { ##cossacks
+	id = ITA_protectorate_event.40
+	title = ITA_cossacks_fate
+	desc = ITA_protectorate_event.40.d
+	picture = GFX_report_event_SOV_cossack_cavalry #neeeds a better picture
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##prr
+	name = ITA_protectorate_event.31.a
+	
+	trigger = {PRR = {is_subject_of = ROOT}}
+		every_state = {
+		 	limit = {
+			OR = {
+				state = 218
+				state = 236
+				state = 237
+				state = 238
+				state = 235
+				state = 234
+				}
+			}
+		transfer_state_to = PRR
+		add_compliance = 20
+		}
+}
+		
+option = { ##puppet
+	name = ITA_protectorate_event.40.a
+	
+	ai_chance = {
+	base = 1
+	}
+	
+	upgrade_italian_col_emp = yes
+	
+	country_event = ITA_protectorate_event.41
+	
+		every_state = {
+		 	limit = {
+			OR = {
+				state = 218
+				state = 236
+				state = 237
+				state = 238
+				state = 235
+				state = 234
+				}
+			}
+		transfer_state_to = DON
+		add_compliance = 50
+		add_claim_by = DON
+		}
+		
+	DON = {
+	
+	set_cosmetic_tag = DON_italian
+	
+	make_this_country_protectorate = yes
+	
+	}
+	}
+}
+
+country_event = { ##cossacks
+	id = ITA_protectorate_event.41
+	title = ITA_protectorate_event.41.t
+	desc = ITA_protectorate_event.41.d
+	picture = GFX_report_event_SOV_cossack_cavalry
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+option = { ##krasnov
+	name = ITA_protectorate_event.41.a
+	
+	DON = {
+	create_country_leader = {
+	name = SOV_pyotr_krasnov
+	desc = ""
+	picture = GFX_portrait_SOV_pyotr_krasnov
+	ideology = fascism_ideology
+	traits = { anti_communist_crusader cossack_ataman }
+	}	
+	}
+	
+}
+		
+option = { ##shkuro
+	name = ITA_protectorate_event.41.b
+	
+	DON = {
+	create_country_leader = {
+	name = SOV_andrey_shkuro
+	desc = ""
+	picture = GFX_portrait_SOV_andrey_shkuro
+	ideology = fascism_ideology
+	traits = { guerilla_warfare_expert cossack_ataman }
+	}	
+	}
+}
+	
+option = { ##pannwitz
+	name = ITA_protectorate_event.41.c
+	
+	DON = {
+	create_country_leader = {
+	name = GER_helmuth_von_pannwitz
+	desc = ""
+	picture = GFX_portrait_pannwitz
+	ideology = fascism_ideology
+	traits = { likes_germany GER_loyalty_of_wehrmacht cossack_ataman }
+	}
+	}
+}
+
+}

@@ -1,0 +1,135 @@
+#	Example:
+#
+#	example_dynamic_modifier = {
+#		icon = "GFX_idea_unknown" # optional, will show up in guis if icon is specified
+#		enable = { always = yes } #optional, the modifier won't apply if not enabled
+#		remove_trigger = { always = no } #optional, will remove the modifier if true
+#       attacker_modifier = no  # if yes this modifier will also be read in combat for
+#                               # people engaging in the combat even if not in the state
+#
+#		# list of modifiers
+#		fuel_cost = 321
+#		max_fuel = var_max_fuel # will be taken from a variable
+#	}
+#
+#
+#	In a script file:
+#
+#	effect = {
+#		add_dynamic_modifier = {
+#			modifier = example_dynamic_modifier
+#			scope = GER # optional, if you specify this your dynamic modifier scoped to this scope (root is the effect scope)
+#			days = 14 # optional, will be removed after this many days passes
+#		}
+#	}
+#
+#	can be added to countries, states or unit leaders
+#	will only updated daily, unless forced by force_update_dynamic_modifier effect
+
+AOI__ethiopian_partisans = { #STATE MODIFIER
+	enable = { always = yes }
+	icon = GFX_modifiers_ETH_arranged_territorial_expansion
+	army_attack_factor = -0.10
+	army_defence_factor = -0.10
+	army_speed_factor = -0.05
+	resistance_damage_to_garrison = 0.10
+	resistance_activity = 0.25
+	resistance_growth = 0.25
+	resistance_target = 0.25
+	
+}
+
+AOI__ethiopian_partisans_1 = { #STATE MODIFIER
+	enable = { always = yes }
+	icon = GFX_modifiers_ETH_arranged_territorial_expansion
+	army_attack_factor = -0.05
+	army_defence_factor = -0.05
+	army_speed_factor = -0.05
+	resistance_damage_to_garrison = 0.10
+	resistance_activity = 0.1
+	resistance_growth = 0.15
+	resistance_target = 0.15
+	
+	}
+
+AOI_musulmanic_majority = {
+	enable = { always = yes }
+	icon = GFX_modifiers_tur_traditionalist_unrest
+	army_attack_factor = 0.05
+	resistance_activity = -0.05
+	army_org_regain = 0.05
+}
+AOI_christian_majority = {
+	enable = { always = yes }
+	icon = GFX_modifiers_SOV_capital_of_the_tsars
+	compliance_growth = 0.01
+	resistance_decay = 0.05
+	state_production_speed_buildings_factor = 0.025
+}
+AOI_religious_balance = {
+	enable = { always = yes }
+	icon = GFX_modifiers_ITA_established_mafia
+	state_production_speed_buildings_factor = 0.05
+}
+AOI_pushing_into_state = {
+	enable = { always = yes }
+	icon = GFX_modifiers_FIN_motti_tactics_modifier
+	army_attack_factor = 0.075
+	army_defence_factor = 0.075
+	army_speed_factor = 0.075
+}
+LBA_supporting_separatism = {
+	enable = { always = yes }
+	icon = GFX_modifiers_generic_fascist_corporatism
+	local_resources_factor = -0.3
+	local_factories = -0.3
+	local_manpower = -0.25
+	local_intel_to_enemies = 0.25
+	army_attack_factor = -0.05
+	army_defence_factor = -0.05
+	disable_strategic_redeployment = 1
+}
+ozav_ozak_established_modifier = {
+	enable = { always = yes }
+	icon = GFX_modifiers_generic_fascist_corporatism
+	compliance_growth = 0.1
+	resistance_growth = -0.1
+	required_garrison_factor = 0.1
+	local_factories = 0.15
+	local_manpower = 0.15
+}
+
+AOI_army_of_africa_orientale = { #NATIONAL SPIRIT
+	enable = { always = yes }
+
+	icon = GFX_idea_aoi_army
+	
+	promote_cost_factor = AOI_army_promotion_cost
+	planning_speed = AOI_army_planning_speed
+	experience_gain_army_factor = AOI_army_xp_gain
+	army_leader_start_attack_level = army_leader_start_attack_lvl
+	army_leader_start_planning_level = AOI_army_leader_start_planning_lvl
+	army_org_regain = AOI_army_org_regain
+	special_forces_attack_factor = AOI_army_special_forces_attack_factor
+	special_forces_defence_factor = AOI_army_special_forces_defence_factor
+	army_org = AOI_army_army_org
+	special_forces_cap = AOI_army_special_forces_cap
+	modifier_army_sub_unit_irregular_infantry_attack_factor = AOI_army_modifier_army_sub_unit_irregular_infantry_attack_factor
+	modifier_army_sub_unit_irregular_infantry_defence_factor = AOI_army_modifier_army_sub_unit_irregular_infantry_defence_factor
+	modifier_army_sub_unit_irregular_infantry_speed_factor = AOI_army_modifier_army_sub_unit_irregular_infantry_speed_factor
+	equipment_capture_factor = AOI_army_equipment_capture_factor
+	attrition = AOI_army_attrition
+	production_speed_rail_way_factor = AOI_army_production_speed_rail_way_factor
+	cas_damage_reduction = AOI_army_cas_damage_reduction
+	dig_in_speed_factor = AOI_army_dig_in_speed_factor	
+}
+ITA_having_colonies = { #NATIONAL SPIRIT
+	enable = { always = yes }
+
+	icon = GFX_idea_ita_colonies
+	
+	subjects_autonomy_gain = ITA_colonial_empire_autonomy_gain
+	consumer_goods_factor = ITA_colonial_empire_consumer
+	production_speed_buildings_factor = ITA_colonial_empire_construction
+	industrial_capacity_factory = ITA_colonial_empire_factory
+}

@@ -1,5 +1,10 @@
 ﻿capital = 2 # Rome
 
+	set_autonomy = { 
+	target = LBA 
+	autonomy_state = autonomy_integrated_puppet 
+	}
+	
 ETH_set_up_lon_arms_resolution_effect = yes 
 
 if = {
@@ -31,52 +36,64 @@ IF = {
 	}
 }
 
+add_to_tech_sharing_group = ita_aoi_sharing_group
+
 add_ideas = {
 	vittorio_emanuele
 	vittoria_mutilata
+	ITA_gold_for_motherland
 	limited_exports
 	limited_conscription
-	partial_economic_mobilisation
+	corporatism_economy
 }
 
 # RESISTANCE / COMPLIANCE
 
-550 = { #ERITREA
-	start_resistance = yes
-	set_compliance = 20
-	set_resistance = 0
-	set_garrison_strength = 1.0
-}
+#550 = { #ERITREA
+#	start_resistance = yes
+#	set_compliance = 20
+#	set_resistance = 0
+#	set_garrison_strength = 1.0
+#}
+#
+#559 = { #SOMALILAND
+#	start_resistance = yes
+#	set_compliance = 20
+#	set_resistance = 0
+#	set_garrison_strength = 1.0
+#}
+#
+#844 = { #JUBALAND
+#	start_resistance = yes
+#	set_compliance = 20
+#	set_resistance = 0
+#	set_garrison_strength = 1.0
+#}
 
-559 = { #SOMALILAND
-	start_resistance = yes
-	set_compliance = 20
-	set_resistance = 0
-	set_garrison_strength = 1.0
-}
-
-844 = { #JUBALAND
-	start_resistance = yes
-	set_compliance = 20
-	set_resistance = 0
-	set_garrison_strength = 1.0
-}
-
-every_owned_state = { #LIBYAN STATES
-	limit = {
-		is_core_of = LBA
-		NOT = { state = 273 } #Don't add resistance in the middle of the impassable desert thanks
-	}
-	start_resistance = yes
-	set_compliance = 35
-	set_resistance = 0
-	set_garrison_strength = 1.0
-}
+#every_owned_state = { #LIBYAN STATES
+#	limit = {
+#		is_core_of = LBA
+#		NOT = { state = 273 } #Don't add resistance in the middle of the impassable desert thanks
+#	}
+#	start_resistance = yes
+#	set_compliance = 35
+#	set_resistance = 0
+#	set_garrison_strength = 1.0
+#}
 
 
 #######################################
 ############ MISSIOLINIS ##############
 #######################################
+
+
+set_variable = {ITA_colonial_empire_autonomy_gain = -0.1}
+set_variable = {ITA_colonial_empire_consumer = 0.07}
+set_variable = {ITA_colonial_empire_construction = 0}
+set_variable = {ITA_colonial_empire_factory = 0}
+
+
+add_dynamic_modifier = {modifier = ITA_having_colonies}
 
 set_variable = { ITA_missiolinis_number_of_missions_triggered = 0 }
 set_variable = { ITA_missiolinis_number_of_missions_resolved = 0 }
@@ -491,6 +508,15 @@ if = {
 
 1939.1.1 = {
 
+			set_autonomy = { 
+				target = AOI 
+				autonomy_state = autonomy_puppet 
+			}
+			set_autonomy = {
+				target = ALB 
+				autonomy_state = autonomy_puppet 
+			}
+
 	add_political_power = 1198
 	add_command_power = 100
 	
@@ -502,7 +528,11 @@ if = {
 		remove_ideas = MTG_naval_treaty_adherent
 		remove_naval_treaty_effect = yes
 	}
-
+	
+	remove_ideas = {
+	ITA_gold_for_motherland
+	}
+	
 	#adding ministers
 	add_ideas = {
 		ITA_giovanni_marinelli
@@ -748,6 +778,7 @@ set_popularities = {
 
 recruit_character = ITA_benito_mussolini
 recruit_character = ITA_grand_council
+recruit_character = ITA_republican_fascist_party
 recruit_character = ITA_vittorio_emanuele_iii
 recruit_character = ITA_ferruccio_parri
 recruit_character = ITA_palmiro_togliatti
@@ -758,14 +789,11 @@ recruit_character = ITA_ugo_cavallero
 recruit_character = ITA_giovanni_messe
 recruit_character = ITA_sebastiano_visconti_prasca
 recruit_character = ITA_ubaldo_soddu
-recruit_character = ITA_italo_balbo
 
-recruit_character = ITA_ettore_bastico
 recruit_character = ITA_italo_gariboldi
 recruit_character = ITA_pietro_pintor
 recruit_character = ITA_mario_berti
 recruit_character = ITA_carlo_geloso
-recruit_character = ITA_giuseppe_tellera
 recruit_character = ITA_francesco_zingales
 recruit_character = ITA_ezio_rosi
 recruit_character = ITA_mario_vercellino
@@ -868,6 +896,9 @@ recruit_character = ITA_mario_castoldi
 recruit_character = ITA_giovanni_giorgi
 recruit_character = ITA_filippo_bonfiglietti
 recruit_character = ITA_curio_bernardis
+
+recruit_character = ITA_leone_massimo
+recruit_character = ITA_piera_fondelli
 
 
 ########################################
@@ -1549,6 +1580,9 @@ if = {
 
 
 1939.1.1 = {
+
+	set_country_flag = ITA_established_albania
+	
 	if = {
 		limit = {
 			has_dlc = "By Blood Alone"

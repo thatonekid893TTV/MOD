@@ -1,0 +1,171 @@
+characters = {
+
+		ITA_italo_balbo = {
+		name = ITA_italo_balbo
+		portraits = {
+			army = {
+				large = GFX_portrait_italy_italo_balbo_alt
+				small = GFX_portrait_ITA_italo_balbo_small
+			}
+			civilian = {
+				large = GFX_portrait_italy_italo_balbo_alt
+			}
+		}
+		country_leader = {
+			ideology = fascism_ideology
+			traits = { aviation_hero anti_communist }
+			expire = "1965.1.1.1"
+			id = -1
+		}
+		advisor = {
+			slot = air_chief
+			idea_token = italo_balbo
+			allowed = {
+			OR = {
+			original_tag = ITA
+			original_tag = LBA
+			}
+			}
+			available = {
+			NOT = {has_government = communism}
+			}
+			
+			traits = {
+				air_chief_all_weather_2
+			}
+			cost = 100
+			ai_will_do = {
+				base = 1.000
+			}
+		}
+		
+		field_marshal = {
+			traits = { career_officer politically_connected trait_reckless media_personality }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = 0
+			visible = {
+				always = yes
+			}
+		}
+	}
+LBA_alessandro_lessona = {
+		name = AOI_alessandro_lessona
+		portraits = {
+
+			army = {
+				small = GFX_idea_lessona
+			}
+		}
+			advisor = {
+				slot = political_advisor
+				idea_token = LBA_alessandro_lessona
+				allowed  = {
+					original_tag  = LBA
+				}
+				available = {
+				is_puppet = yes
+				OR = {
+				has_government = fascism
+				has_government = neutrality
+				}
+				NOT = {
+				has_idea = LBA_attilio_teruzzi
+				}
+				#any_other_country = {
+				#has_idea = AOI_alessandro_lessona
+				#NOT = {has_war_with = ROOT}
+				#}
+				}
+				
+				traits = {
+					minister_of_colonies_lessona
+				}
+				cost = 150
+
+		}
+
+	}
+LBA_attilio_teruzzi = {
+		name = AOI_attilio_teruzzi
+		portraits = {
+
+			army = {
+				small = GFX_idea_teruzzi
+			}
+		}
+			advisor = {
+				slot = political_advisor
+				idea_token = LBA_attilio_teruzzi
+				allowed  = {
+					original_tag = LBA
+				}
+				available = {
+				is_puppet = yes
+				OR = {
+				has_government = fascism
+				has_government = neutrality
+				}
+				NOT = {
+				has_idea = LBA_attilio_teruzzi
+				}
+				#any_other_country = {
+				#has_idea = AOI_attilio_teruzzi
+				#NOT = {has_war_with = ROOT}
+				#}
+				}
+				
+				traits = {
+					minister_of_colonies_teruzzi
+				}
+				cost = 150
+
+		}
+
+	}
+	LBA_rene_guenon = {
+		name = LBA_rene_guenon
+		portraits = {
+
+			army = {
+				small = GFX_idea_guenon
+				large = GFX_army_guenon
+			}
+		}
+		corps_commander = {
+			traits = { desert_fox media_personality }
+			skill = 3
+			attack_skill = 4
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 3
+			legacy_id = 0
+			visible = {
+				has_completed_focus = LBA_deal_with_genon
+			}
+		}
+			advisor = {
+				slot = political_advisor
+				idea_token = LBA_rene_guenon
+				allowed  = {
+					original_tag = LBA
+				}
+				available = {
+				has_completed_focus = PROT_north_african_protectorate
+				907 = {is_fully_controlled_by = ROOT}
+				}
+				
+				traits = {
+					traditionalist_militarist
+				}
+				cost = 150
+
+		}
+
+	}
+
+}	
+

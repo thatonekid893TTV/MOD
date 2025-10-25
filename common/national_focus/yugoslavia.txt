@@ -13,7 +13,7 @@ focus_tree = {
 	
 	default = no
 
-	continuous_focus_position = { x = 50 y = 1650 }
+	continuous_focus_position = { x = 50 y = 1700 }
 
 #	focus = {
 #		id = YUG_
@@ -57,7 +57,7 @@ focus_tree = {
 
 	focus = {
 		id = YUG_western_focus
-		icon = GFX_goal_generic_position_armies
+		icon = GFX_focus_generic_treaty
 		mutually_exclusive = { focus = YUG_recognize_the_soviet_union }
 		x = 2
 		y = 0
@@ -90,7 +90,7 @@ focus_tree = {
 
 	focus = {
 		id = YUG_friendship_treaty_with_italy
-		icon = GFX_goal_generic_improve_relations
+		icon = GFX_focus_befriend_italy
 		prerequisite = { focus = YUG_western_focus }
 		mutually_exclusive = { focus = YUG_reinforce_old_alliances }
 		x = -2
@@ -146,14 +146,14 @@ focus_tree = {
 
 	focus = {
 		id = YUG_reinforce_old_alliances
-		icon = GFX_goal_generic_major_alliance
+		icon = GFX_focus_chi_reach_out_to_france
 		prerequisite = { focus = YUG_western_focus }
 		mutually_exclusive = { focus = YUG_friendship_treaty_with_italy }
 		x = 2
 		y = 1
 		relative_position_id = YUG_western_focus
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -219,7 +219,7 @@ focus_tree = {
 
 	focus = {
 		id = YUG_attract_allied_capital
-		icon = GFX_goal_generic_intelligence_exchange
+		icon = GFX_focus_generic_british_trade
 		prerequisite = { focus = YUG_friendship_treaty_with_italy focus = YUG_reinforce_old_alliances }
 		x = 1
 		y = 1
@@ -252,7 +252,7 @@ focus_tree = {
 
 	focus = {
 		id = YUG_attract_axis_capital
-		icon = GFX_goal_generic_intelligence_exchange
+		icon = GFX_focus_generic_german_trade
 		prerequisite = { focus = YUG_friendship_treaty_with_italy focus = YUG_reinforce_old_alliances }
 		x = -1
 		y = 1
@@ -364,7 +364,7 @@ focus_tree = {
 
 	focus = {
 		id = YUG_limited_self_government
-		icon = GFX_goal_anschluss
+		icon = GFX_goal_support_democracy
 		prerequisite = { focus = YUG_attract_allied_capital focus = YUG_attract_axis_capital }
 		mutually_exclusive = { focus = YUG_evolution }
 		x = 0
@@ -547,6 +547,9 @@ focus_tree = {
 				controls_state = 736
 				controls_state = 852
 				controls_state = 163
+				controls_state = 1018
+				controls_state = 1030
+				controls_state = 1036
 			}
 			is_subject = no
 		}
@@ -727,6 +730,8 @@ focus_tree = {
 		available = {
 			controls_state = 109
 			controls_state = 103
+			controls_state = 1018
+			controls_state = 1019
 			is_subject = no
 		}
 
@@ -820,6 +825,8 @@ focus_tree = {
 					
 					set_cosmetic_tag = dalmatia
 					transfer_state = 103
+					transfer_state = 1018
+					transfer_state = 1019
 					PREV = {
 						puppet = PREV
 						set_autonomy = { target = PREV autonomy_state = autonomy_integrated_puppet }
@@ -1734,14 +1741,14 @@ focus_tree = {
 	
 	focus = {
 		id = YUG_evolution
-		icon = GFX_goal_anschluss
+		icon = GFX_focus_spr_crush_the_revolution
 		prerequisite = { focus = YUG_attract_allied_capital focus = YUG_attract_axis_capital }
 		mutually_exclusive = { focus = YUG_limited_self_government }
 		x = 0
 		y = 1
 		relative_position_id = YUG_attract_axis_capital
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -1815,7 +1822,7 @@ focus_tree = {
 
 	focus = {
 		id = YUG_establish_the_banovina_of_croatia
-		icon = GFX_focus_YUG_banovina_of_croatia
+		icon = GFX_goal_cro_reborn
 		prerequisite = { focus = YUG_evolution }
 		mutually_exclusive = { focus = YUG_crush_the_ustasa }
 		x = 1
@@ -1846,7 +1853,7 @@ focus_tree = {
 			remove_ideas = YUG_idea_croatian_opposition
 			add_timed_idea = {
 				idea = YUG_idea_croats_suppressed
-				days = 1250
+				days = 180
 			}
 		}
 	}
@@ -1887,12 +1894,12 @@ focus_tree = {
 			remove_ideas = YUG_idea_slovene_nationalism
 			add_timed_idea = {
 				idea = YUG_idea_slovene_nationalism_2
-				days = 1060
+				days = 180
 			}
 			ITA = {
 				add_opinion_modifier = { 
 						target = ROOT
-						modifier = small_increase
+						modifier = medium_increase
 				}
 			}
 		}
@@ -2004,7 +2011,7 @@ focus_tree = {
 	
 	focus = {
 		id = YUG_concessions_for_macedonians
-		icon = GFX_focus_generic_concessions
+		icon = GFX_focus_BUL_support_macedonian_organizations
 		prerequisite = { focus = YUG_slovenia_for_support focus = YUG_ban_slovene_nationalist_parties }
 		mutually_exclusive = { focus = YUG_surrender_macedonia }
 		x = 0
@@ -2038,7 +2045,7 @@ focus_tree = {
 			remove_ideas = YUG_idea_macedonian_opposition
 			add_timed_idea = {
 				idea = YUG_idea_macedonian_opposition_1
-				days = 1060
+				days = 180
 			}
 		}
 	}
@@ -2102,7 +2109,7 @@ focus_tree = {
 
 	focus = {
 		id = YUG_invite_german_military_mission
-		icon = GFX_focus_generic_military_mission
+		icon = GFX_focus_GER_appease_the_wehrmacht
 		prerequisite = { focus = YUG_concessions_for_macedonians focus = YUG_surrender_macedonia focus = YUG_banat_for_support focus = YUG_autonomous_transylvania focus = YUG_fortify_banat }
 		x = 0
 		y = 1
@@ -2164,7 +2171,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUG_concessions_for_macedonians
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 100
@@ -2281,7 +2288,7 @@ focus_tree = {
 
 	focus = {
 		id = YUG_zara_for_axis
-		icon = GFX_goal_generic_attack_allies
+		icon = GFX_focus_ITA_italy_first
 		prerequisite = { focus = YUG_join_axis }
 		mutually_exclusive = { focus = YUG_surrender_italian_claims }
 		x = 0
@@ -2333,14 +2340,14 @@ focus_tree = {
 
 	focus = {
 		id = YUG_surrender_italian_claims
-		icon = GFX_goal_support_fascism
+		icon = GFX_SOV_demand_balkan_submission_ccp_2d_sov_compatibility
 		prerequisite = { focus = YUG_join_axis }
 		mutually_exclusive = { focus = YUG_zara_for_axis }
 		x = -2
 		y = 1
 		relative_position_id = YUG_join_axis
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 100
@@ -2410,7 +2417,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUG_zara_for_axis
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 50
@@ -2449,6 +2456,12 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
+			create_wargoal = {
+			type = take_state_focus
+			target = 731.controller
+			generator = { 731 }
+			}
+			
 			if = {
 				limit = {
 					owns_state = 106
@@ -2482,7 +2495,7 @@ focus_tree = {
 	
 	focus = {
 		id = YUG_greater_yugoslavia
-		icon = GFX_goal_generic_occupy_states_ongoing_war
+		icon = GFX_goal_yugoslavianism
 		prerequisite = { focus = YUG_claim_macedonia }
 		x = 0
 		y = 1
@@ -2507,24 +2520,92 @@ focus_tree = {
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
-		complete_tooltip = {
-
-		}
-
 		completion_reward = {
+		#add_war_support = 0.05
+		unlock_decision_category_tooltip = YUG_form_greater_yug_cat
+		custom_effect_tooltip = give_wargoals_4_bul_states_tt
+		hidden_effect = {
+			create_wargoal = {
+			type = take_state_focus
+			target = 48.controller
+			generator = { 48 }
+			}
+			create_wargoal = {
+			type = take_state_focus
+			target = 801.controller
+			generator = { 801 }
+			}
+			create_wargoal = {
+			type = take_state_focus
+			target = 212.controller
+			generator = { 212 }
+			}
+			create_wargoal = {
+			type = take_state_focus
+			target = 211.controller
+			generator = { 211 }
+			}
+		}
+			
 			BUL = {
 				every_owned_state = {
 					limit = { is_core_of = BUL }
 					add_claim_by = YUG
 				}
 			}
+
 			news_event = { id = news.325 }
 		}
 	}
 
 	focus = {
+		id = YUG_ask_for_stiria
+		icon = GFX_focus_generic_befriend_austria
+		prerequisite = { focus = YUG_greater_yugoslavia }
+		x = 1
+		y = 1
+		relative_position_id = YUG_greater_yugoslavia
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+		102 = {is_owned_and_controlled_by = ROOT}
+		any_country = {
+		owns_state = 976
+		NOT = {has_war_with = ROOT}
+		}
+		}
+
+		bypass = {
+		ROOT = {owns_state = 976}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		random_other_country = {
+		limit = {
+		owns_state = 976
+		}
+		country_event = {id = AOI_event.33 hours = 4}
+		}
+		custom_effect_tooltip = if_they_accept_tt
+		effect_tooltip = {
+		976 = {transfer_state_to = ROOT}
+		ROOT = {add_political_power = -75}
+		}
+		}
+	}
+	
+	focus = {
 		id = YUG_invite_italian_naval_experts
-		icon = GFX_goal_generic_occupy_states_coastal
+		icon = GFX_focus_ITA_decima_flottiglia_mas
 		prerequisite = { focus = YUG_zara_for_axis focus = YUG_surrender_italian_claims }
 		x = 0
 		y = 1
@@ -2564,13 +2645,13 @@ focus_tree = {
 
 	focus = {
 		id = YUG_all_yugoslavian_regiments
-		icon = GFX_goal_rhineland
+		icon = GFX_focus_generic_fascist_troops
 		prerequisite = { focus = YUG_greater_yugoslavia }
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = YUG_greater_yugoslavia
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			factor = 80
@@ -2653,6 +2734,8 @@ focus_tree = {
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+		remove_ideas = YUG_regent_pavel
+		
 			retire_country_leader = yes
 			YUG_peter_ii = {
 				promote_character = {ideology = despotism }
@@ -2672,7 +2755,7 @@ focus_tree = {
 	
 	focus = {
 		id = YUG_coronation
-		icon = GFX_goal_support_democracy
+		icon = GFX_focus_generic_monarchy_1
 		prerequisite = { focus = YUG_end_the_regency focus = YUG_join_axis }
 		x = -2
 		y = 1
@@ -2712,6 +2795,7 @@ focus_tree = {
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+		remove_ideas = YUG_regent_pavel
 			if = {
 				limit = {
 					OR = {
@@ -2777,7 +2861,7 @@ focus_tree = {
 	
 	focus = {
 		id = YUG_royal_wedding
-		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		icon = GFX_focus_generic_royal_wedding
 		prerequisite = { focus = YUG_end_the_regency }
 		x = 0
 		y = 1
@@ -2811,7 +2895,7 @@ focus_tree = {
 
 	focus = { #Yugoslavia joining the faction of the country they married
 		id = YUG_join_allies
-		icon = GFX_goal_generic_major_alliance
+		icon = GFX_focus_generic_monarchy_2
 		prerequisite = { focus = YUG_royal_wedding }
 		prerequisite = { focus = YUG_coronation }
 		mutually_exclusive = { focus = YUG_enforced_neutrality }
@@ -3091,7 +3175,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUG_autonomous_transylvania
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -3130,7 +3214,7 @@ focus_tree = {
 	
 	focus = {
 		id = YUG_defence_army_of_yugoslavia
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_focus_SWE_defense_act
 		prerequisite = { focus = YUG_towards_independence }
 		x = 0
 		y = 1
@@ -3229,7 +3313,7 @@ focus_tree = {
 	
 	focus = {
 		id = YUG_defence_league
-		icon = GFX_goal_generic_alliance
+		icon = GFX_goal_yugoslavia
 		prerequisite = { focus = YUG_defence_army_of_yugoslavia }
 		x = 0
 		y = 1
@@ -3331,7 +3415,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = YUG_autonomous_transylvania
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -3370,7 +3454,7 @@ focus_tree = {
 	
 	focus = {
 		id = YUG_guarantee_religious_liberties
-		icon = GFX_goal_generic_neutrality_focus
+		icon = GFX_focus_generic_democratic_europe
 		prerequisite = { focus = YUG_united_kingdom }
 		mutually_exclusive = {  }
 		x = 0
@@ -3403,7 +3487,7 @@ focus_tree = {
 	
 	focus = {
 		id = YUG_reunite_the_kingdom
-		icon = GFX_focus_generic_home_defense
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
 		prerequisite = { focus = YUG_guarantee_religious_liberties }
 		mutually_exclusive = {  }
 		x = 0
@@ -3448,7 +3532,7 @@ focus_tree = {
 					}
 					is_subject_of = ROOT
 				}
-				every_owned_state = {
+				every_state = {
 					limit = {
 						is_core_of = PREV
 					}
@@ -3473,7 +3557,7 @@ focus_tree = {
 		id = YUG_recognize_the_soviet_union
 		icon = GFX_focus_generic_soviet_politics
 		mutually_exclusive = { focus = YUG_western_focus }
-		x = 11
+		x = 13
 		y = 0
 
 		cost = 10
@@ -3537,7 +3621,7 @@ focus_tree = {
 
 	focus = {
 		id = YUG_form_peasant_councils
-		icon = GFX_goal_generic_demand_territory
+		icon = GFX_focus_ITA_peasants_rise
 		prerequisite = { focus = YUG_recognize_the_soviet_union }
 		x = -1
 		y = 1
@@ -3646,6 +3730,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		completion_reward = {
+		remove_ideas = YUG_regent_pavel
 			set_politics = {
 				ruling_party = communism
 				elections_allowed = no
@@ -3669,11 +3754,11 @@ focus_tree = {
 		icon = GFX_focus_generic_join_comintern
 		prerequisite = { focus = YUG_abolish_the_monarchy }
 		mutually_exclusive = { focus = YUG_yugoslavian_path_to_communism }
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = YUG_abolish_the_monarchy
 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
 			factor = 40
@@ -3732,7 +3817,7 @@ focus_tree = {
 		icon = GFX_goal_generic_war_with_comintern
 		prerequisite = { focus = YUG_abolish_the_monarchy }
 		mutually_exclusive = { focus = YUG_join_comintern }
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = YUG_abolish_the_monarchy
 
@@ -3764,7 +3849,7 @@ focus_tree = {
 		id = YUG_form_the_federal_republic
 		icon = GFX_goal_generic_forceful_treaty
 		prerequisite = { focus = YUG_yugoslavian_path_to_communism focus = YUG_join_comintern }
-		x = 0
+		x = -2
 		y = 1
 		relative_position_id = YUG_yugoslavian_path_to_communism
 
@@ -3798,7 +3883,7 @@ focus_tree = {
 		id = YUG_pan_slavic_workers_congress
 		icon = GFX_focus_YUG_pan_slavic_congress
 		prerequisite = { focus = YUG_yugoslavian_path_to_communism }
-		x = 3
+		x = 1
 		y = 1
 		relative_position_id = YUG_yugoslavian_path_to_communism
 
@@ -3836,7 +3921,7 @@ focus_tree = {
 		icon = GFX_focus_generic_socialist_science
 		prerequisite = { focus = YUG_join_comintern }
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = YUG_join_comintern
 
 		cost = 10
@@ -3870,11 +3955,11 @@ focus_tree = {
 
 	focus = {
 		id = YUG_federal_defense_council
-		icon = GFX_goal_demand_sudetenland
+		icon = GFX_focus_SOV_builder_of_the_red_army
 		prerequisite = { focus = YUG_form_the_federal_republic }
 		x = 0
-		y = 2
-		relative_position_id = YUG_yugoslavian_path_to_communism
+		y = 1
+		relative_position_id = YUG_form_the_federal_republic
 
 		cost = 10
 
@@ -4031,11 +4116,11 @@ focus_tree = {
 
 	focus = {
 		id = YUG_pan_balkan_workers_congress
-		icon = GFX_focus_YUG_pan_slavic_congress
+		icon = GFX_focus_BUL_balkan_federation_of_socialist_republics
 		prerequisite = { focus = YUG_invite_bulgaria }
 		prerequisite = { focus = YUG_invite_albania }
 		prerequisite = { focus = YUG_federal_defense_council }
-		x = -1
+		x = 0
 		y = 1
 		relative_position_id = YUG_invite_bulgaria
 
@@ -4071,7 +4156,7 @@ focus_tree = {
 		id = YUG_invite_romania
 		icon = GFX_focus_invite_romania
 		prerequisite = { focus = YUG_pan_balkan_workers_congress }
-		x = -2
+		x = -3
 		y = 1
 		relative_position_id = YUG_pan_balkan_workers_congress
 
@@ -4138,7 +4223,7 @@ focus_tree = {
 		id = YUG_invite_greece
 		icon = GFX_focus_generic_befriend_greece
 		prerequisite = { focus = YUG_pan_balkan_workers_congress }
-		x = 0
+		x = -1
 		y = 1
 		relative_position_id = YUG_pan_balkan_workers_congress
 
@@ -4205,7 +4290,7 @@ focus_tree = {
 		id = YUG_invite_hungary
 		icon = GFX_focus_generic_befriend_hungary
 		prerequisite = { focus = YUG_pan_balkan_workers_congress }
-		x = 2
+		x = 3
 		y = 1
 		relative_position_id = YUG_pan_balkan_workers_congress
 
@@ -4271,12 +4356,10 @@ focus_tree = {
 	focus = {
 		id = YUG_invite_turkey
 		icon = GFX_focus_generic_befriend_turkey
-		prerequisite = { focus = YUG_invite_greece }
-		prerequisite = { focus = YUG_invite_hungary }
-		prerequisite = { focus = YUG_invite_romania }
-		x = 0
+		prerequisite = { focus = YUG_pan_balkan_workers_congress }
+		x = 1
 		y = 1
-		relative_position_id = YUG_invite_greece
+		relative_position_id = YUG_pan_balkan_workers_congress
 
 		cost = 5
 
@@ -4330,6 +4413,37 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = YUG_united_balkans
+		icon = GFX_focus_BUL_the_unification_of_the_balkans
+		prerequisite = { focus = YUG_federal_defense_council focus = YUG_research_collaboration}
+		x = -3
+		y = 0
+		relative_position_id = YUG_pan_balkan_workers_congress
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		available = {
+			is_puppet = no
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+		unlock_decision_category_tooltip = YUG_form_balkans_cat
+		}
+	}
 
 	############################
 	######### INDUSTRY #########
@@ -4338,7 +4452,7 @@ focus_tree = {
 	focus = {
 		id = YUG_industrialization_program
 		icon = GFX_goal_generic_construction
-		x = 20
+		x = 23
 		y = 0
 
 		cost = 10
@@ -5465,7 +5579,7 @@ focus_tree = {
 	focus = {
 		id = YUG_modernize_the_air_force
 		icon = GFX_goal_generic_air_doctrine
-		x = 27
+		x = 30
 		y = 0
 
 		cost = 10
@@ -6128,7 +6242,7 @@ focus_tree = {
 	focus = {
 		id = YUG_army_modernization
 		icon = GFX_goal_generic_army_doctrines
-		x = 37
+		x = 40
 		y = 0
 
 		cost = 10
@@ -6866,7 +6980,7 @@ focus_tree = {
 		id = YUG_expand_the_split_shipyards
 		icon = GFX_goal_generic_construct_naval_dockyard
 		mutually_exclusive = { focus = YUG_expand_the_serbian_shipyards }
-		x = 45
+		x = 48
 		y = 0
 
 		cost = 10

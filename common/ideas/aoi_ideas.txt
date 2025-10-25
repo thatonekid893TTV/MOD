@@ -1,0 +1,2226 @@
+ideas = {
+country = {
+		AOI_africa_orientale_italiana_idea = {
+	
+			picture = ITA_aoi
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				resistance_damage_to_garrison = -0.15
+				non_core_manpower = 0.25
+				industry_repair_factor = 0.3
+				consumer_goods_factor = -0.15
+				weekly_manpower = 150 
+			}
+		}
+		AOI_africa_orientale_italiana_independent_idea = {
+		
+			name = AOI_africa_orientale_italiana_idea
+	
+			picture = ITA_aoi
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				resistance_damage_to_garrison = -0.1
+				industry_repair_factor = 0.15
+			}
+		}
+		LBA_italian_irredentism_ns = {
+			removal_cost = -1
+			
+			name = LBA_prisoners_in_our_own_sea
+
+			picture = ITA_italian_irredentism
+				
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+					
+			modifier = {
+				justify_war_goal_time = -0.25
+				justify_war_goal_when_in_major_war_time = -0.35
+			}
+		}
+		AOI_ethiopian_slavery = {
+	
+			picture = FRA_scw_intervention_republicans_focus
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+			stability_factor = -0.05
+			political_power_factor = -0.10
+			compliance_growth = -0.1
+			production_speed_buildings_factor = -0.1
+			economy_cost_factor = 0.25
+			research_speed_factor = -0.05
+			}
+		}
+		
+		AOI_novus_ordo_idea = { 
+	
+			picture = ITA_new_roman_empire_ns
+	
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			modifier = {
+			army_attack_factor = 0.1
+			army_defence_factor = 0.1
+			justify_war_goal_time = -0.5
+			justify_war_goal_when_in_major_war_time = -0.25
+			ai_focus_aggressive_factor = 0.5
+			local_non_core_manpower = 0.2
+			state_resources_factor = 0.1
+			compliance_growth = 0.1
+			resistance_decay = 0.05
+			local_factories = 0.25
+			}
+		}
+
+		AOI_illiteracy = {
+	
+			picture = jap_duplicate_research
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+		
+			modifier = {
+			research_speed_factor = -0.10
+			land_doctrine_cost_factor = 0.15
+			}
+		}
+		AOI_help_of_partisans = {
+	
+			picture = ETH_cie
+	
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+			modifier = {
+			army_org = 5
+			ai_focus_aggressive_factor = 0.25
+			}
+			targeted_modifier = {
+				tag = AOI
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+		LBA_muslim_militarism_ns = {
+		
+			name = LBA_ignine_muslim_militarism
+	
+			picture = PER_islamic_traditions_ns
+	
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+			
+			modifier = {
+			ai_focus_aggressive_factor = 0.15
+			ai_desired_divisions_factor = 0.15
+			army_attack_factor = 0.10
+			army_defence_factor = 0.1
+			army_org_regain = 0.05
+			war_support_factor = 0.05
+			}
+		}
+		LBA_sword_of_islam_ns = {
+		
+			name = LBA_sword_of_islam
+	
+			picture = PER_islamic_traditions_ns
+	
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+			
+			modifier = {
+			ai_focus_aggressive_factor = 0.15
+			army_morale_factor = 0.05
+			army_core_attack_factor = 0.05
+			army_core_defence_factor = 0.05
+			}
+		}
+		PROT_superarmy_ns = {
+		
+			name = PROT_superarmy
+	
+			picture = chi_army_corruption3
+	
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+			
+			modifier = {
+			experience_gain_army_factor = 0.05
+			acclimatization_cold_climate_gain_factor = 0.1
+			acclimatization_hot_climate_gain_factor = 0.1
+			army_org_regain = 0.1
+			promote_cost_factor = -0.1
+			}
+		}
+		LBA_italian_exiles_idea = {
+			
+			picture = ita_army
+	
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+			
+			modifier = {
+			weekly_manpower = 1000
+			research_speed_factor = 0.1
+			experience_gain_army = 0.05
+			experience_gain_air = 0.05
+			experience_gain_navy = 0.05
+			}
+		}
+		LBA_operation_clara_idea = {
+		
+			name = LBA_operation_clara_cat
+	
+			picture = italy_revolt
+	
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+			
+			modifier = {
+			naval_invasion_prep_speed = 0.15
+			naval_invasion_penalty = -0.1
+			naval_invasion_capacity = 2
+			}
+			
+			targeted_modifier = {
+				tag = ITA 
+				attack_bonus_against = 0.125
+				defense_bonus_against = 0.125
+			}
+		}
+
+		LBA_italian_libya_idea = {
+			
+			picture = lba_libia_italiana
+	
+			removal_cost = -1	
+	
+			allowed = {
+			original_tag = LBA
+			is_subject = yes
+			}
+			modifier = {
+			consumer_goods_factor = -0.1
+			weekly_manpower = 100
+			global_building_slots_factor = 0.1
+			}
+		}
+		LBA_italian_libya_19_state_idea = {
+		
+			name = LBA_italian_libya_idea
+			
+			picture = lba_libia_italiana
+	
+			removal_cost = -1	
+	
+			allowed = {
+			original_tag = LBA
+			}
+			
+			cancel = {
+			is_subject = no
+			}
+			
+			modifier = {
+			consumer_goods_factor = -0.2
+			weekly_manpower = 100
+			global_building_slots_factor = 0.15
+			production_speed_buildings_factor = 0.10
+			cic_to_overlord_factor = 0.05
+			mic_to_overlord_factor = 0.05
+			}
+		}
+		LBA_italian_libya_19_state_no_puppet_idea = {
+		
+			name = LBA_italian_libya_idea
+			
+			picture = lba_libia_italiana
+	
+			removal_cost = -1	
+	
+			allowed = {
+			original_tag = LBA
+			}
+			modifier = {
+			consumer_goods_factor = -0.05
+			global_building_slots_factor = 0.15
+			production_speed_buildings_factor = 0.05
+			}
+		}
+		LBA_italian_libya_idea_not_puppet = {
+		
+			name = LBA_italian_libya_idea
+	
+			picture = lba_libia_italiana
+	
+			removal_cost = -1	
+	
+			allowed = {
+			original_tag = LBA
+			}
+			modifier = {
+			global_building_slots_factor = 0.1
+			}
+		}
+		LBA_muslim_fascism_assosiation_ns = {
+		
+			name = LBA_muslim_fascism_assosiation
+	
+			picture = AFG_fascist_graduates
+	
+			removal_cost = -1	
+	
+			allowed = {
+			original_tag = LBA
+			}
+			modifier = {
+			fascism_drift = 0.03
+			political_power_factor = 0.05
+			training_time_army_factor = -0.05
+			conscription_factor = 0.05
+			research_speed_factor = 0.05
+			}
+		}
+		
+		LBA_reparations_lba = {
+			
+			picture = generic_economic_crisis
+	
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+			modifier = {
+			political_power_gain = -0.25
+			consumer_goods_factor = 0.25
+			production_lack_of_resource_penalty_factor = 0.15
+			}
+		}
+		LBA_reparations_other_countries = {
+			
+			picture = GER_economy_of_conquest
+	
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+			
+			modifier = {
+			consumer_goods_factor = -0.15
+			production_lack_of_resource_penalty_factor = -0.1
+			}
+		}
+		
+		LBA_fascist_reforms_idea = {
+			
+			picture = generic_fascist_workers
+	
+			removal_cost = -1	
+	
+			allowed = {
+			has_government = fascism
+			}
+			modifier = {
+			fascism_drift = 0.02
+			communism_drift = 0.01
+			industrial_capacity_factory = 0.05
+			production_factory_efficiency_gain_factor = 0.1
+			production_factory_max_efficiency_factor = 0.1
+			}
+		}
+		
+		AOI_illiteracy_1 = {
+	
+			picture = jap_duplicate_research
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			
+			modifier = {
+			research_speed_factor = -0.05
+			land_doctrine_cost_factor = 0.075
+			}
+		}
+		ITA_surrender_idea = {
+	
+			picture = jap_duplicate_research
+	
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+
+			
+			modifier = {
+			surrender_limit = -0.25
+			}
+		}
+		
+		AOI_better_local_education = { 
+	
+			picture = generic_research_bonus
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			
+			modifier = {
+		stability_factor = 0.05
+		research_speed_factor = 0.05
+			}
+		}
+		
+	AOI_strenghten_military = {
+	
+			picture = ITA_regio_esercito_1
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			
+			modifier = {
+				experience_gain_army = 0.07
+				land_doctrine_cost_factor = -0.10
+				army_org_factor = 0.05
+				resistance_garrison_penetration_chance = -0.1
+				war_support_factor = 0.05
+			}
+		}
+	AOI_undeveloped_country = {
+	
+			picture = man_five_year_plan_industry
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			
+			modifier = {
+			consumer_goods_factor = 0.05
+			production_speed_buildings_factor = -0.10
+			global_building_slots_factor = -0.10
+
+			}
+		}
+	AOI_undeveloped_country_1 = { 
+	
+			picture = man_five_year_plan_industry
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			
+			modifier = {
+			consumer_goods_factor = 0.05
+			production_speed_buildings_factor = -0.05
+			global_building_slots_factor = -0.05
+
+			}
+		}
+	AOI_italian_settlers_idea = {
+	
+			picture = ETH_italian_settlers
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			
+			modifier = {
+			monthly_population = 0.10
+			industrial_capacity_factory = 0.1
+			}
+			targeted_modifier = {
+				tag = ITA 
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+			}
+		}
+	LBA_musulmanic_italians = { 
+	
+			picture = raj_marginalized_muslim_community_happy
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = LBA
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			
+			modifier = {
+			fascism_drift = 0.03
+			stability_factor = 0.03
+			war_stability_factor = 0.03
+			production_factory_efficiency_gain_factor = 0.05
+			industrial_capacity_factory = 0.1
+			}
+		}
+		
+	AOI_roman_bank = {
+	
+			picture = tur_balkan_central_bank_wealthy_greece
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			
+			modifier = {
+			political_power_gain = 0.1
+			consumer_goods_factor = -0.05
+			production_speed_infrastructure_factor = 0.075
+			production_speed_industrial_complex_factor = 0.075
+			}
+		}
+		
+	AOI_new_nation = {
+	
+			picture = ITA_italian_irredentism
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+				has_government = fascism
+			}
+
+			
+			modifier = {
+			stability_factor = -0.025
+			political_power_gain = 0.1
+			conscription = 0.015
+			monthly_population = 0.05
+			#compliance_growth = 0.01
+			fascism_drift = 0.01
+			}
+		}
+		
+	AOI_pearl_of_africa_idea = { 
+	
+			picture = ITA_italian_irredentism
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+				has_government = fascism
+			}
+
+			
+			modifier = {
+			stability_factor = 0.05
+			political_power_gain = 0.2
+			conscription = 0.02
+			monthly_population = 0.20
+			compliance_growth = 0.02
+			fascism_drift = 0.05
+			}
+		}
+
+	AOI_tourism = {
+	
+			picture = generic_coastal_defense_ships
+	
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+		
+			modifier = {
+			political_power_factor = 0.05
+			production_speed_buildings_factor = 0.015
+			civilian_intel_factor = 0.1
+			agency_upgrade_time = -0.1
+			intel_network_gain_factor = 0.1
+			}
+		}	
+		
+	AOI_agrarian_development = { 
+	
+			picture = HUN_agrarian_tradition
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+			consumer_goods_factor = -0.05
+			heat_attrition_factor = -0.05
+			attrition = -0.05
+			}
+		}
+		
+	AOI_fight_as_partisans = {
+	
+			name = AOI_embrace_partisans_tactic
+	
+			picture = citizen_militia_2
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+			compliance_growth_on_our_occupied_states = -0.05
+			resistance_growth_on_our_occupied_states = 0.25
+			resistance_decay_on_our_occupied_states = -0.25
+			resistance_target_on_our_occupied_states = 0.25
+			resistance_damage_to_garrison_on_our_occupied_states = 0.25
+			}
+		}		
+	
+	
+	AOI_military_infrastructure = { 
+	
+			picture = man_five_year_plan_industry
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			
+			modifier = {
+			production_speed_arms_factory_factor = 0.10
+			production_speed_supply_node_factor = 0.15
+			}
+		}
+		
+	AOI_african_war = { 
+	
+			picture = eng_imperial_conscription
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			
+			modifier = {
+			mobilization_speed = 0.1
+			training_time_army_factor = -0.1
+			conscription = 0.015
+			}
+		}
+	AOI_planes_from_metropoly = { 
+	
+			picture = NORDIC_airforce_communist
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+			license_purchase_cost = -0.2
+			}
+			
+			equipment_bonus = {
+				small_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.15
+				}
+
+				small_plane_cas_airframe = {
+					instant = yes
+					build_cost_ic = -0.15
+				}
+				medium_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.15
+				}
+				large_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.15
+				}
+
+				transport_plane_equipment = {
+					instant = yes
+					build_cost_ic = -0.15
+				}
+			}
+		}
+		
+	AOI_superaereo_idea	= { 
+	
+			picture = ITA_regia_aeronautica_3
+	
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			modifier = {
+			license_purchase_cost = -0.2
+			air_ace_bonuses_factor = 0.10
+			air_attack_factor = 0.1
+			air_defence_factor = 0.1
+			air_cas_efficiency = 0.1
+			air_mission_xp_gain_factor = 0.05
+			air_range_factor = 0.1
+			air_weather_penalty = -0.1
+			air_untrained_pilots_penalty_factor = -0.1
+		}
+		equipment_bonus = {
+				small_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.15
+				}
+
+				small_plane_cas_airframe = {
+					instant = yes
+					build_cost_ic = -0.15
+				}
+				medium_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.15
+				}
+				large_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.15
+				}
+
+				transport_plane_equipment = {
+					instant = yes
+					build_cost_ic = -0.15
+				}
+			}
+		}
+		
+		AOI_young_officers = {
+
+			removal_cost = -1
+
+			picture = generic_army_war_college
+			allowed = {
+			always = yes
+			}			
+			modifier = {
+			experience_gain_army_factor = 0.05
+			army_leader_start_attack_level = 1
+			army_leader_start_planning_level = 1
+			promote_cost_factor = -0.1
+			}
+		}
+		AOI_improved_army_ns = {
+			name = AOI_modernisation_of_army
+
+			removal_cost = -1
+
+			picture = generic_army_war_college
+			allowed = {
+			always = yes
+			}			
+			modifier = {
+			promote_cost_factor = -0.1
+			planning_speed = 0.1
+			}
+		}
+		
+		AOI_hospitals = {
+		
+			allowed = {
+			always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = BEL_traditional_family_values
+			
+			modifier = {
+			experience_loss_factor = -0.10
+			}
+		}
+		
+		AOI_bersaglieri_idea = {
+			allowed = {
+			always = yes
+			}
+			removal_cost = -1
+
+			picture = eng_special_air_service
+			
+			modifier = {
+			army_org_regain = 0.05
+			special_forces_attack_factor = 0.1
+			special_forces_defence_factor = 0.1
+			army_org = 5
+			special_forces_cap = 0.1
+			}
+		}
+
+		AOI_defending_homeland = {
+		
+			allowed = {
+			always = yes
+			}
+			removal_cost = -1
+
+			picture = YUG_federal_defense_council
+			
+			modifier = {
+			max_surrender_limit_offset = 0.05
+			army_defence_factor = 0.10
+			production_speed_bunker_factor = 0.15
+			production_speed_coastal_bunker_factor = 0.15
+			}
+		}
+
+		AOI_dubat_idea = {
+		
+			allowed = {
+			always = yes
+			}
+			removal_cost = -1
+
+			picture = por_colonial_army
+			
+			modifier = {
+				modifier_army_sub_unit_irregular_infantry_attack_factor = 0.05
+				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.05
+				modifier_army_sub_unit_irregular_infantry_speed_factor = 0.05
+			}
+		}
+		
+		AOI_capturing_equipment = {
+			allowed = {
+			always = yes
+			}
+			removal_cost = -1
+
+			picture = ETH_scavenging_tactics
+			
+			modifier = {
+			equipment_capture_factor = 0.1
+			}
+		}
+		AOI_military_logistics = {
+			allowed = {
+			always = yes
+			}
+			removal_cost = -1
+
+			picture = generic_supply_line
+			
+			modifier = {
+			attrition = -0.10
+			production_speed_rail_way_factor = 0.05
+			production_speed_supply_node_factor = 0.05
+			}
+		}
+
+		AOI_camouflage_experts_idea = {
+			allowed = {
+			always = yes
+			}
+			removal_cost = -1
+
+			picture = SWE_land_air_warfare
+			
+			modifier = {
+			cas_damage_reduction = 0.05
+			dig_in_speed_factor = 0.05
+			}
+		}
+
+		AOI_self_sufficient_economy_idea = {
+			allowed = { 
+				always = yes
+			}
+			removal_cost = -1
+
+			picture = GER_autarky
+			
+			modifier = {
+				production_speed_arms_factory_factor = 0.1
+				production_speed_dockyard_factor = 0.1
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_fuel_silo_factor = 0.1
+				production_speed_synthetic_refinery_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.1
+				line_change_production_efficiency_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.15
+				production_factory_max_efficiency_factor = 0.15
+				production_factory_start_efficiency_factor = 0.15
+			}
+		}
+		AOI_towards_african_unity = {
+
+			picture = por_colonial_assimilation
+
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = AOI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+
+			modifier = {
+			army_core_attack_factor = 0.05
+			army_core_defence_factor = 0.05
+			acclimatization_hot_climate_gain_factor = 0.1
+			heat_attrition_factor = -0.1
+			justify_war_goal_time = -0.1
+			}
+		}
+		
+		
+
+	ITA_total_power_of_duce = {
+
+			picture = ITA_shadow_of_mussolini
+
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = ITA
+			}
+
+			allowed_civil_war = {
+			has_government = fascism
+			}
+			modifier = {
+				political_power_factor = 0.15
+				war_support_factor = 0.05
+				stability_factor = 0.05
+				experience_gain_army = -0.05
+				experience_gain_air = -0.05
+				experience_gain_navy = -0.05
+			}
+		}
+		ITA_bend_the_bars_idea = {
+
+			picture = generic_naval_invasion
+
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = ITA
+			}
+
+			modifier = {
+			experience_gain_navy = 0.05
+			industrial_capacity_dockyard = 0.2
+			naval_invasion_prep_speed = 0.2
+			naval_invasion_capacity = 3
+			naval_invasion_penalty = -0.15
+			}
+		}
+		
+		ITA_italo_german_protectorate = {
+
+			picture = generic_fascism_drift_2
+
+			removal_cost = -1	
+	
+			allowed = { 
+				original_tag = ITA
+			}
+			
+			cancel = {
+			OR = {
+			is_subject = no
+			has_war_with = GER
+			has_war_with = ITA
+			}
+			}
+
+			modifier = {
+				local_resources_factor = 0.2
+				industrial_capacity_factory = 0.1
+				production_speed_buildings_factor = 0.1
+				production_lack_of_resource_penalty_factor = -0.1
+				resistance_damage_to_garrison = -0.1
+			}
+			targeted_modifier = {
+				tag = GER
+				cic_to_target_factor = 0.2
+				mic_to_target_factor = 0.2
+			}
+			targeted_modifier = {
+				tag = ITA
+				cic_to_target_factor = -0.1
+				mic_to_target_factor = -0.1
+			}
+		}
+		
+		YUG_regent_pavel = {
+
+			picture = por_monarchist_uprising
+
+			removal_cost = -1	
+	
+			allowed = {
+				original_tag = YUG
+			}
+			available = {
+				NOT = {
+				OR = {
+				has_government = communism
+				has_country_leader = { ruling_only = yes character = YUG_prince_paul }
+				has_country_leader = { ruling_only = yes character = YUG_peter_ii }
+				}
+			}
+		}
+
+			modifier = {
+			political_power_factor = -0.05
+			stability_factor = 0.05
+			}
+		}
+		ALB_greater_albania_idea = {
+
+			picture = albania_advisors
+
+			removal_cost = -1	
+	
+			allowed = {
+				original_tag = ALB
+			}
+
+			modifier = {
+			war_support_factor = 0.05
+			army_core_attack_factor = 0.05
+			army_core_defence_factor = 0.05
+			army_org = 5
+			}
+		}
+
+		PROT_italianism = {
+
+			picture = ITA_impero_italiano
+			
+			name = PROT_propagate_italianism
+
+			removal_cost = -1	
+	
+			allowed = {
+			is_subject = yes
+			}
+			allowed_civil_war = {
+			always = no
+			}
+
+			modifier = {
+			stability_factor = -0.05
+			master_ideology_drift = 0.01
+			non_core_manpower = 0.1
+			required_garrison_factor = -0.1
+			compliance_gain = 0.05
+			}
+		}
+		PROT_economic_help = {
+
+			picture = generic_economic_increase
+
+			removal_cost = -1	
+	
+			allowed = {
+			is_subject = yes
+			}
+
+			modifier = {
+			production_speed_buildings_factor = 0.1
+			consumer_goods_factor = -0.1
+			}
+		}
+
+		PROT_extend_conscription_ns = {
+		
+			name = PROT_extend_conscription
+
+			picture = tfv_can_conscription_crisis
+
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+
+			modifier = {
+			conscription = 0.015
+			}
+		}
+		PROT_our_technologies_ns = {
+		
+			name = PROT_our_technologies
+
+			picture = eng_imperial_conscription
+
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+
+			modifier = {
+			research_speed_factor = 0.05
+			planning_speed = 0.1
+			training_time_factor = -0.1
+			}
+		}
+		PROT_italian_doctrine_ns = {
+		
+			name = PROT_italian_doctrine
+
+			picture = eng_imperial_conscription
+
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+
+			modifier = {
+				experience_gain_army = 0.07
+				land_doctrine_cost_factor = -0.15	
+			}
+		}
+		PROT_own_forces_ns = {
+		
+			name = PROT_own_forces
+
+			picture = por_colonial_army
+
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+
+			modifier = {
+			industrial_capacity_factory = 0.1
+			conscription_factor = 0.1
+			mobilization_laws_cost_factor = -0.1			
+			}
+		}
+		PROT_metropolitan_army_ns = {
+		
+			name = PROT_metropolitan_army
+
+			picture = eng_imperial_conscription
+
+			removal_cost = -1	
+	
+			allowed = {
+			always = yes
+			}
+
+			modifier = {
+			max_command_power = 20
+			weekly_manpower = 100
+			required_garrison_factor = -0.1
+			supply_consumption_factor = -0.1
+			resistance_growth = -0.05
+			}
+		}
+		GRE_global_workers_liberation_ns = {
+		
+			name = GRE_global_workers_liberation
+
+			picture = por_iberian_workers_united
+
+			removal_cost = -1	
+	
+			allowed = {
+			has_government = communism
+			}
+
+			modifier = {
+			compliance_gain = 0.1
+			local_non_core_manpower = 0.1
+			justify_war_goal_time = -0.25
+			}
+		}
+		FRA_crusade_against_democracy_ns = {
+
+			name = SPA_crusade_against_democracy
+
+			picture = SPA_crusade_against_democracy
+
+			allowed = {
+				original_tag = FRA
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				army_defence_factor = 0.05
+				army_attack_factor = 0.05
+				army_org_factor = 0.1
+				training_time_factor = -0.2
+				conscription = 0.05
+				army_morale_factor = 0.1
+				political_power_factor = 0.1
+			}
+		}
+		FRA_extra_dynasty_rights_ns = {
+
+			name = FRA_extra_dynasty_rights
+
+			picture = generic_monarchist_uprising
+
+			allowed = {
+				original_tag = FRA
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+			army_attack_factor = 0.075
+			army_defence_factor = 0.075
+			land_doctrine_cost_factor = -0.1
+			annex_cost_factor = -0.15
+			puppet_cost_factor = -0.15
+			}
+		}
+		
+		ALL_war_of_independence = {
+
+			picture = RAJ_independence_movement
+
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			on_add = {
+				set_rule = { can_join_factions = no }
+			}
+
+			on_remove = { 
+				set_rule = { can_join_factions = yes }
+			}
+			modifier = {
+			custom_modifier_tooltip = PRU_no_factions_tt
+			war_support_factor = 0.15
+			army_core_attack_factor = 0.05
+			army_core_defence_factor = 0.1
+			}
+		}
+		
+		ITA_third_triumvirate_ns = {
+		
+			name = ITA_third_triumvirate
+
+			picture = ITA_new_roman_empire_ns
+
+			allowed = {
+				always = yes
+			}
+
+			modifier = {
+			resistance_damage_to_garrison = -0.1
+			required_garrison_factor = -0.1
+			subjects_autonomy_gain = -0.1
+			conscription_factor = 0.1
+			annex_cost_factor = -0.15
+			puppet_cost_factor = -0.15
+			}
+		}
+		LBA_great_liberator_idea = {
+		
+			name = LBA_great_liberator
+
+			picture = ITA_shadow_of_mussolini
+
+			allowed = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			compliance_gain = 0.05
+			resistance_damage_to_garrison = -0.1
+			required_garrison_factor = -0.1
+			non_core_manpower = 0.1
+			}
+		}
+		ITA_cultural_independence_ns = {
+		
+			name = ITA_cultural_independence
+
+			picture = ITA_shadow_of_mussolini
+
+			allowed = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			compliance_gain = 0.05
+			resistance_growth = -0.1
+			required_garrison_factor = -0.1
+			local_non_core_manpower = 0.05
+			improve_relations_maintain_cost_factor = -0.1
+			}
+		}
+		LBA_by_blood_alone_ns = {
+		
+			name = ITA_by_blood_alone
+
+			picture = RAJ_private_military_complex
+
+			allowed = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			army_attack_factor = 0.05
+			air_attack_factor = 0.1
+			air_superiority_bonus_in_combat = 0.1
+			navy_org = 5
+			navy_capital_ship_attack_factor = 0.1
+			surrender_limit = 0.05
+			}
+		}
+		LBA_republican_national_army_ns = {
+		
+			name = LBA_reform_republican_nat_army
+
+			picture = ITA_camicie_nere
+
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			conscription_factor = 0.15
+			fascism_drift = 0.02
+			army_core_attack_factor = 0.05
+			army_core_defence_factor = 0.05
+			command_power_gain_mult = 0.1
+			special_forces_cap_flat = 3
+			}
+		}
+		LBA_republican_national_army_africa_ns = {
+		
+			name = LBA_reform_republican_nat_army
+
+			picture = ITA_camicie_nere
+
+			allowed = {
+				always = yes
+			}
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			conscription_factor = 0.15
+			fascism_drift = 0.02
+			army_core_attack_factor = 0.05
+			army_core_defence_factor = 0.05
+			command_power_gain_mult = 0.1
+			special_forces_cap_flat = 3
+			experience_gain_army = 0.05
+			promote_cost_factor = -0.1
+			heat_attrition_factor = -0.05
+			}
+		}
+		ALL_microstate_idea = {
+		
+			picture = FRA_scw_intervention_republicans_focus
+		
+			allowed = {
+				always = yes
+			}
+			
+			cancel = {
+			is_major = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			political_power_factor = -0.5
+			annex_cost_factor = 0.5
+			puppet_cost_factor = 0.5
+			}
+		}
+		LBA_new_start_for_regia_marina_ns = {
+		
+			name = LBA_new_start_for_regia_marina
+		
+			picture = SOV_modernize_the_far_eastern_fleet_vanilla_ccp_sov_compatibility
+		
+			allowed = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			research_bonus = { naval_equipment = 0.15 }
+			modifier = {
+			experience_gain_navy_unit_factor = 0.15
+			}
+		}
+		LBA_regia_aeronautica_development_ns = {
+		
+			name = LBA_regia_aeronautica_development
+		
+			picture = air_support_focus
+		
+			allowed = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			research_bonus = { air_equipment = 0.15 }
+			modifier = {
+			experience_gain_air_unit = 0.1
+			air_weather_penalty = -0.1
+			}
+		}
+		TRI_equality = {
+		
+			picture = air_support_focus
+		
+			allowed = {
+				always = yes
+			}
+			
+			cancel = {
+			is_subject = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			political_power_factor = 0.15
+			annex_cost_factor = -0.1
+			puppet_cost_factor = -0.1
+			subjects_autonomy_gain = -0.5
+			extra_trade_to_overlord_factor = 0.15
+			}
+		}
+		TRI_strength = {
+		
+			picture = air_support_focus
+		
+			allowed = {
+				always = yes
+			}
+			
+			cancel = {
+			is_subject = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			resistance_damage_to_garrison = -0.1
+			war_support_factor = 0.1
+			war_stability_factor = 0.1
+			army_strength_factor = 0.1
+			army_morale_factor = 0.1
+			}
+		}
+		TRI_econ_coop = {
+		
+			picture = air_support_focus
+		
+			allowed = {
+				always = yes
+			}
+			
+			cancel = {
+			is_subject = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			trade_laws_cost_factor = -0.25
+			economy_cost_factor = -0.25
+			consumer_goods_factor = -0.1
+			}
+		}
+		TRI_econ_coop_puppet = {
+		
+			picture = air_support_focus
+		
+			allowed = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			autonomy_gain = -0.1
+			cic_to_overlord_factor = 0.15
+			mic_to_overlord_factor = 0.15
+			}
+		}
+		TRI_arm_coop = {
+		
+			picture = air_support_focus
+		
+			allowed = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			experience_gain_army = 0.05
+			experience_gain_air = 0.05
+			experience_gain_navy = 0.05
+			training_time_army_factor = -0.1
+			land_doctrine_cost_factor = -0.1
+			army_leader_cost_factor = -0.1
+			}
+		}
+		ALB_ita_personal_union = {
+		
+			picture = ITA_vittorio_emanuele_of_albania
+		
+			allowed = {
+				always = yes
+			}
+			
+			cancel = {
+			OR = {
+			has_war_with = ITA
+			has_government = communism
+			NOT = {is_subject_of = ITA}
+			}
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			political_power_factor = 0.05
+			party_popularity_stability_factor = 0.05
+			master_ideology_drift = 0.05
+			}
+		}
+		SWI_aggresive_wars_ns = {
+		
+			picture = FRA_army_of_aggression_focus
+		
+			allowed = {
+				always = yes
+			}
+			
+			name = SWI_aggresive_wars
+			
+			cancel = {
+			is_subject = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			conscription_factor = 0.1
+			justify_war_goal_time = -0.25
+			justify_war_goal_when_in_major_war_time = -0.35
+			}
+		}
+		SWI_our_will_ns = {
+		
+			picture = FRA_army_of_aggression_focus
+		
+			allowed = {
+				always = yes
+			}
+			
+			name = SWI_aggresive_wars
+			
+			cancel = {
+			is_subject = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			army_attack_factor = 0.05
+			army_org_regain = 0.05
+			conscription_factor = 0.1
+			justify_war_goal_time = -0.25
+			justify_war_goal_when_in_major_war_time = -0.35
+			puppet_cost_factor = -0.1
+			annex_cost_factor = -0.1
+			}
+		}
+		
+		SWI_secret_service_idea = {
+		
+			picture = generic_spy_intel
+		
+			allowed = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			operative_slot = 1
+			intelligence_agency_defense = 0.2
+			resistance_damage_to_garrison = -0.1
+			}
+		}
+		
+		SWI_secret_service_idea_better = {
+		
+			picture = generic_spy_intel
+		
+			allowed = {
+				always = yes
+			}
+			
+			name = SWI_secret_service_idea
+			
+			removal_cost = -1
+
+			modifier = {
+			operative_slot = 2
+			intelligence_agency_defense = 0.2
+			resistance_damage_to_garrison = -0.1
+			resistance_decay = 0.05
+			resistance_garrison_penetration_chance = -0.05
+			}
+		}
+		
+		SWI_communist_party_recognition_idea = {
+		
+			picture = por_iberian_workers_united
+		
+			allowed = {
+				always = yes
+			}
+			
+			name = SWI_communist_party_recognition
+			
+			removal_cost = -1
+
+			modifier = {
+			political_power_factor = 0.05
+			consumer_goods_factor = -0.05
+			communism_drift = 0.05
+			}
+		}
+		
+		SWI_mountain_country_idea = {
+		
+			picture = generic_fortify_the_borders
+		
+			allowed = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			modifier_army_sub_unit_mountaineers_attack_factor = 0.05
+			modifier_army_sub_unit_mountaineers_defence_factor = 0.05
+			modifier_army_sub_unit_mountaineers_speed_factor = 0.05
+			modifier_army_sub_unit_mountaineers_max_org_factor = 0.05
+			}
+		}
+		
+		SWI_treaties_capital_idea = {
+		
+			picture = HUN_treaty_of_triannon
+		
+			allowed = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			intel_network_gain_factor = 0.05
+			improve_relations_maintain_cost_factor = -0.15
+			}
+		}
+		
+		SWI_flood_their_market_ns = {
+		
+			picture = HUN_treaty_of_triannon
+		
+			allowed = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			consumer_goods_factor = 0.3
+			}
+		}
+		
+		SWI_instigate_sabotages_ns = {
+		
+			picture = HUN_treaty_of_triannon
+		
+			allowed = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			research_speed_factor = -0.1
+			production_speed_buildings_factor = -0.25
+			}
+		}
+		
+		ENG_lost_war_idea = {
+		
+			picture = eng_guided_by_britain
+		
+			allowed = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			stability_weekly = -0.003
+			war_support_weekly = -0.003
+			stability_factor = -0.1
+			war_support_factor = -0.1
+			political_power_factor = -0.15
+			}
+		}
+		ITA_suez_channel_trade = {
+		
+			picture = can_wartime_prices_and_trade_board
+		
+			allowed = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			civilian_intel_factor = 0.1
+			consumer_goods_factor = -0.1
+			naval_coordination = 0.1
+			trade_opinion_factor = 0.25
+			}
+		}
+		ITA_monaco_trade = {
+		
+			picture = GER_german_trade
+		
+			allowed = {
+				always = yes
+			}
+			
+			cancel = {
+			MNC = {
+			OR = {
+			exists = no
+			has_war_with = ROOT
+			}
+			}
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			civilian_intel_factor = 0.05
+			min_export = 0.05
+			production_factory_max_efficiency_factor = 0.05
+			production_lack_of_resource_penalty_factor = -0.05
+			}
+		}
+		
+		CRO_prince_aimone_idea = {
+		
+			picture = aimone
+			
+			name = ITA_prince_aimone
+			
+			cancel = {
+			has_country_leader = {character = ITA_prince_aimone ruling_only = yes }
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			stability_factor = -0.03
+			political_power_factor = 0.05
+			experience_gain_navy = 0.05
+			}
+		}
+		
+		SWI_swiss_hegemony_ns = {
+		
+			picture = generic_fascism_rising
+			
+			name = SWI_swiss_hegemony
+			
+			allowed_civil_war = {
+			has_completed_focus = SWI_swiss_hegemony
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			command_power_gain_mult = 0.05
+			surrender_limit = 0.05
+				conscription_factor = 0.15
+				drift_defence_factor = 0.05
+				army_org_factor = 0.05
+				offensive_war_stability_factor = 0.1
+				compliance_growth = 0.05
+				resistance_decay = 0.05
+				army_core_defence_factor = 0.1
+				army_core_attack_factor = 0.1
+			}
+		}
+		
+		SWI_helvetism_ns = {
+		
+			picture = SWI_swiss_neutrality
+			
+			name = SWI_helvetism
+			
+			cancel = {
+			OR = {
+			has_government = communism
+			has_government = fascism
+			}
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			compliance_gain = 0.1
+			}
+		}
+		
+		ALL_colonial_militia = {
+		
+			picture = ITA_camicie_nere
+			
+			name = ITA_milizia_coloniale
+			
+			cancel = {
+			OR = {
+			has_government = communism
+			has_government = democratic
+			}
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				conscription_factor = 0.1
+				fascism_drift = 0.02
+				modifier_army_sub_unit_militia_max_org_factor = 0.05
+				army_core_defence_factor = 0.05
+			}
+		}		
+		AOI_forze_armate = {
+		
+			picture = por_colonial_army
+						
+			cancel = {
+			has_completed_focus = AOI_ask_for_independence
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				non_core_manpower = 0.05
+				mobilization_speed = 0.05
+				modifier_army_sub_unit_irregular_infantry_attack_factor = 0.05
+				modifier_army_sub_unit_irregular_infantry_defence_factor = 0.05
+			}
+		}
+		LBA_africa_corps_ns = {
+		
+			picture = generic_acquire_tanks
+			
+			name = LBA_africa_corps
+			
+			available = {
+			always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			army_armor_attack_factor = 0.05
+			heat_attrition_factor = -0.05
+			}
+		}
+		ITA_carolingian_empire_idea = {
+		
+			picture = GER_holy_roman_empire_of_the_german_nation
+			#picture = BEL_burgundian_heritage_ns
+			
+			allowed = {
+			always = yes
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+			political_power_factor = 0.05
+			surrender_limit = 0.05
+			justify_war_goal_time = -0.2
+			army_morale_factor = 0.1
+			army_speed_factor = 0.05
+			annex_cost_factor = -0.1
+			neutrality_drift = 0.05
+			}
+		}
+		YUG_idea_federal_defense_council = {
+			
+			picture = YUG_federal_defense_council
+
+			allowed = {
+				original_tag = YUG
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				max_planning = 0.1
+				army_defence_factor = 0.1
+			}
+		}
+		ITA_service_female_ns = {
+			
+			picture = SOV_fascist_womens_movement
+			
+			name = ITA_service_female
+
+			allowed = {
+			always = yes
+			}
+			
+			cancel = {
+			NOT = {
+			OR = {
+			has_government = fascism
+			ITA_is_kinda_fascist = yes
+			}
+			}
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+			training_time_army_factor = -0.05
+			experience_loss_factor = -0.05
+			army_org_regain = 0.05
+			}
+		}
+		ITA_massaie_rurali = {
+			
+			picture = ARG_women_in_industry
+			
+			allowed = {
+			always = yes
+			}
+			
+			cancel = {
+			OR = {
+			has_war_with_major = no
+			ITA_is_kinda_fascist = no
+			}
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+			supply_consumption_factor = -0.05
+			attrition = -0.05
+			consumer_goods_factor = -0.03
+			}
+		}
+		ITA_sold_females = {
+			
+			picture = FRA_factory_strikes
+			
+			allowed = {
+			always = yes
+			}
+			
+			cancel = {
+			OR = {
+			has_war_with_major = no
+			ITA_is_kinda_fascist = no
+			}
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+			industrial_capacity_factory = 0.075
+			production_speed_buildings_factor = 0.05
+			}
+		}
+		
+		ITA_gold_for_motherland = {
+		
+			picture = raj_metal_and_steel_factory_ishapore
+		
+			allowed = {
+				original_tag = ITA
+			}
+			
+			cancel = {
+			NOT = {
+			has_global_flag = second_italo_ethiopian_war_flag
+			}
+			}
+			
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			modifier = {
+				stability_factor = -0.05
+				country_resource_steel = 8
+				fascism_drift = 0.03
+			}
+		}
+		
+		PROT_occupation_of_italy = {
+		
+			picture = italy_revolt
+		
+			allowed = {
+				always = yes
+			}
+			
+			cancel = {
+			is_subject = no
+			}
+			
+			allowed_civil_war = {
+			is_subject = no
+			}
+			
+			modifier = {
+			surrender_limit = 0.1
+			autonomy_gain_global_factor = -0.1
+			local_resources_factor = 0.1
+			cic_to_overlord_factor = 0.1
+			mic_to_overlord_factor = 0.1			
+			}
+		}		
+		PROT_cannot_go_independent = {
+		
+			picture = ita_army
+		
+			allowed = {
+				always = yes
+			}
+			
+			cancel = {
+			NOT = {
+			is_subject_of = ITA
+			}
+			}
+			
+			allowed_civil_war = {
+			is_subject = no
+			}
+			
+			modifier = {
+			autonomy_gain_global_factor = -0.75
+			}
+		}
+	}
+}

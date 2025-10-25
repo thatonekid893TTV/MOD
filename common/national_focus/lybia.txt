@@ -1,0 +1,1994 @@
+﻿
+focus_tree = {
+	id = lybian_focus
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 0
+			original_tag = LBA
+		}
+	}
+	
+	default = no
+
+	continuous_focus_position = { x = 100 y = 0 }
+
+	initial_show_position = {
+		x = 0
+		y = 0
+	}
+
+focus = {
+		id = LBA_balbo_path
+		icon = GFX_focus_ITA_italo_balbo
+		#prerequisite = { focus = }
+		#mutually_exclusive = { focus = }
+		#relative_position_id = 
+		x = 10
+		y = 0
+
+		cost = 5
+		available = {
+			has_country_leader = {
+			character = ITA_italo_balbo
+			ruling_only = yes
+			}
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_political_power = 50
+		add_stability = 0.05
+		}	
+	}
+
+focus = {
+		id = LBA_investments_from_metropoly
+		icon = GFX_SOV_aristocratic_investments_ccp_2d_sov_compatibility
+		prerequisite = { focus = LBA_balbo_path }
+		relative_position_id = LBA_balbo_path
+		x = -1
+		y = 2
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		is_puppet = yes
+		}
+
+		completion_reward = {
+		add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+focus = {
+		id = LBA_continue_italian_settlers
+		icon = GFX_focus_ETH_invite_italian_settlers
+		prerequisite = { focus = LBA_balbo_path }
+		relative_position_id = LBA_investments_from_metropoly
+		x = 2
+		y = 0
+
+		cost = 10
+		available = {
+		NOT = {has_war_with = ITA}
+		}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+			every_owned_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+			}
+			add_manpower = 10000
+		}
+		add_ideas = AOI_italian_settlers_idea
+		add_ideas = ITA_ALB_italian_settlers
+				random_owned_state = {
+					limit = {
+						OR = {
+							has_state_category = rural
+							has_state_category = pastoral
+						}
+						NOT = {
+							has_state_flag = ETH_has_italian_settlers
+						}
+					}
+					ETH_upgrade_state_category = yes
+					set_state_flag = ETH_has_italian_settlers
+				}
+				random_owned_state = {
+					limit = {
+						OR = {
+							has_state_category = rural
+							has_state_category = pastoral
+						}
+						NOT = {
+							has_state_flag = ETH_has_italian_settlers
+						}
+					}
+					ETH_upgrade_state_category = yes
+					set_state_flag = ETH_has_italian_settlers
+				}
+		}
+	}
+	
+focus = {
+		id = LBA_visit_of_mussolini_in_africa
+		icon = GFX_focus_ITA_culto_del_duce
+		prerequisite = { focus = LBA_continue_italian_settlers}
+		prerequisite = {focus = LBA_investments_from_metropoly }
+		relative_position_id = LBA_continue_italian_settlers
+		x = -1
+		y = 1
+
+		cost = 5
+		available = {
+		OVERLORD = {
+		has_government = fascism
+		NOT = {has_civil_war = yes}
+		}
+		}
+		
+		search_filters = {}
+
+
+		completion_reward = {
+		add_political_power = 50
+			add_popularity = {
+			ideology = fascism
+			popularity = 0.05
+			}
+		}
+	}	
+focus = {
+		id = LBA_sword_of_islam
+		icon = GFX_focus_ITA_islam
+		prerequisite = {focus = LBA_visit_of_mussolini_in_africa }
+		relative_position_id = LBA_visit_of_mussolini_in_africa
+		x = 0
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+		add_war_support = 0.05
+		add_ideas = LBA_sword_of_islam_ns
+		}
+	}		
+focus = {
+		id = LBA_19_state_of_italy
+		icon = GFX_focus_ITA_italian_libya
+		prerequisite = {focus = LBA_sword_of_islam }
+		relative_position_id = LBA_sword_of_islam
+		x = 1
+		y = 1
+
+		cost = 10
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = LBA_italian_libya_idea
+		add_idea = LBA_italian_libya_19_state_idea
+		}
+		}
+	}
+
+focus = {
+		id = LBA_muslim_fascist_assosiation
+		icon = GFX_goal_muslim_government
+		prerequisite = {focus = LBA_sword_of_islam }
+		relative_position_id = LBA_sword_of_islam
+		x = -1
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_popularity = {
+			ideology = fascism
+			popularity = 0.05
+			}
+		add_ideas = LBA_musulmanic_italians
+		}
+	}
+
+focus = {
+		id = LBA_prepare_for_war
+		icon = GFX_focus_generic_africa_liberation
+		prerequisite = {focus = LBA_muslim_fascist_assosiation }
+		prerequisite = {focus = LBA_19_state_of_italy}
+		relative_position_id = LBA_muslim_fascist_assosiation
+		x = 1
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_death_of_balbo
+		icon = GFX_focus_SWE_neither_death_nor_dishonor
+		mutually_exclusive = {focus = LBA_balbo_survived}
+		prerequisite = {focus = LBA_prepare_for_war}
+		relative_position_id = LBA_prepare_for_war
+		x = 6
+		y = 1
+
+		cost = 5
+		available = {
+		always = no
+		}
+		allow_branch = {
+		NOT = {has_completed_focus = LBA_host_italian_exiles}
+		}		
+		search_filters = {}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_new_governor_of_lba
+		icon = GFX_focus_GER_loyalty_to_the_fuhrer
+		prerequisite = {focus = LBA_death_of_balbo}
+		relative_position_id = LBA_death_of_balbo
+		x = -1
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_balbo_survived
+		icon = GFX_focus_ITA_recall_balbo
+		mutually_exclusive = {focus = LBA_death_of_balbo}
+		prerequisite = {focus = LBA_prepare_for_war}
+		relative_position_id = LBA_death_of_balbo
+		x = 2
+		y = 0
+
+		cost = 5
+		available = {
+		always = no
+		}
+		
+		allow_branch = {
+		NOT = {has_completed_focus = LBA_host_italian_exiles}
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_eternal_marshall
+		icon = GFX_focus_ITA_bold_fascism
+		prerequisite = {focus = LBA_balbo_survived}
+		relative_position_id = LBA_balbo_survived
+		x = 1
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_better_antiair
+		icon = GFX_focus_ITA_anti_air
+		prerequisite = {focus = LBA_balbo_survived focus = LBA_death_of_balbo}
+		relative_position_id = LBA_balbo_survived
+		x = -1
+		y = 2
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_el_alamein_battle
+		icon = GFX_goal_generic_attack_allies
+		prerequisite = {focus = LBA_prepare_for_war}
+		mutually_exclusive = {focus = LBA_defence_focus}
+		relative_position_id = LBA_prepare_for_war
+		x = 2
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_push_to_cairo
+		icon = GFX_focus_IRQ_liberate_north_africa
+		prerequisite = {focus = LBA_el_alamein_battle}
+		relative_position_id = LBA_el_alamein_battle
+		x = 1
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+
+focus = {
+		id = LBA_exit_to_east_africa
+		icon = GFX_goal_flag_aoi
+		prerequisite = {focus = LBA_push_to_cairo}
+		relative_position_id = LBA_push_to_cairo
+		x = 0
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+focus = {
+		id = LBA_defence_focus
+		icon = GFX_goal_generic_defence
+		prerequisite = {focus = LBA_prepare_for_war}
+		mutually_exclusive = {focus = LBA_el_alamein_battle}
+		relative_position_id = LBA_prepare_for_war
+		x = -2
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_defence_of_tobruk
+		icon = GFX_focus_AST_rats_tobruk
+		prerequisite = {focus = LBA_defence_focus}
+		relative_position_id = LBA_defence_focus
+		x = -1
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_dont_let_them_pass
+		icon = GFX_focus_AST_never_gallipoli
+		prerequisite = {focus = LBA_defence_of_tobruk}
+		relative_position_id = LBA_defence_of_tobruk
+		x = 0
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+		}
+	}
+	
+focus = {
+		id = LBA_we_won
+		icon = GFX_focus_BEL_v_for_victory
+		prerequisite = {focus = LBA_dont_let_them_pass focus = LBA_exit_to_east_africa}
+		mutually_exclusive = {focus = LBA_we_lost}
+		relative_position_id = LBA_dont_let_them_pass
+		x = 0
+		y = 1
+
+		cost = 5
+		available = {
+		has_capitulated = no
+			custom_trigger_tooltip = {
+			tooltip = controls_all_start_lba_states
+			every_state = {
+			limit = {
+			OR = {
+			state = 273
+			state = 448
+			state = 449
+			state = 450
+			state = 451
+			state = 661
+			state = 662
+			state = 663
+			}
+			}
+			is_fully_controlled_by = ROOT
+			}
+			}
+		}
+		
+		allow_branch = {
+		NOT = {has_completed_focus = LBA_host_italian_exiles}
+		}		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		add_war_support = 0.1
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
+focus = {
+		id = LBA_we_lost
+		icon = GFX_focus_spr_crush_the_revolution
+		prerequisite = {focus = LBA_dont_let_them_pass focus = LBA_exit_to_east_africa}
+		mutually_exclusive = {focus = LBA_we_won}
+		relative_position_id = LBA_exit_to_east_africa
+		x = 0
+		y = 1
+
+		cost = 5
+		available = {
+		surrender_progress > 0.85
+		}
+		allow_branch = {
+		NOT = {has_completed_focus = LBA_host_italian_exiles}
+		}
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		add_stability = -0.1
+		add_war_support = -0.15
+			add_popularity = {
+			ideology = fascism
+			popularity = -0.15
+			}		
+		}
+	}
+
+focus = {
+		id = LBA_gain_independence
+		icon = GFX_focus_generic_subjugation
+		prerequisite = {focus = LBA_we_won}
+		mutually_exclusive = {focus = LBA_stick_with_italy}
+		relative_position_id = LBA_we_won
+		x = 3
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_stick_with_italy
+		icon = GFX_goal_italia_flag
+		prerequisite = {focus = LBA_we_won }
+		mutually_exclusive = {focus = LBA_gain_independence}
+		relative_position_id = LBA_we_won
+		x = -2
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_agreements_with_allies
+		icon = GFX_focus_chi_british_cooperation
+		prerequisite = {focus = LBA_we_lost}
+		mutually_exclusive = {focus = LBA_we_lost}
+		relative_position_id = LBA_we_lost
+		x = 2
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+	
+focus = {
+		id = LBA_north_african_protectorate
+		icon = GFX_focus_IRQ_unite_maghreb
+		prerequisite = {focus = LBA_stick_with_italy}
+		mutually_exclusive = {focus = LBA_unite_with_aoi focus = LBA_accepts_islam focus = LBA_kingdom_of_libya}
+		relative_position_id = LBA_stick_with_italy
+		x = -1
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_unite_with_aoi
+		icon = GFX_focus_ITA_imperial_recognition
+		prerequisite = {focus = LBA_stick_with_italy}
+		mutually_exclusive = {focus = LBA_north_african_protectorate focus = LBA_accepts_islam focus = LBA_kingdom_of_libya}
+		relative_position_id = LBA_stick_with_italy
+		x = 1
+		y = 1
+
+		cost = 5
+		available = {
+		AOI = {
+		NOT = {
+		has_completed_focus = AOI_ask_for_independence
+		}
+		}
+		}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_libyan_hegemony
+		icon = GFX_focus_GER_realize_mittelafrika
+		prerequisite = {focus = LBA_unite_with_aoi focus = LBA_north_african_protectorate}
+		relative_position_id = LBA_unite_with_aoi
+		x = -1
+		y = 2
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_accepts_islam
+		icon = GFX_focus_PER_islamic_solidarity
+		prerequisite = {focus = LBA_gain_independence}
+		mutually_exclusive = {focus = LBA_north_african_protectorate focus = LBA_unite_with_aoi focus = LBA_kingdom_of_libya}
+		relative_position_id = LBA_gain_independence
+		x = 0
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_deal_with_genon
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = {focus = LBA_accepts_islam}
+		relative_position_id = LBA_accepts_islam
+		x = 1
+		y = 1
+
+		cost = 5
+		available = {
+		has_idea = LBA_rene_guenon
+		}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		show_unit_leaders_tooltip = LBA_rene_guenon
+		}
+	}
+focus = {
+		id = LBA_fascist_khalifate
+		icon = GFX_focus_TUR_loosen_the_laws_on_secularism
+		prerequisite = {focus = LBA_accepts_islam}
+		relative_position_id = LBA_accepts_islam
+		x = -1
+		y = 1
+
+		cost = 10
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		add_threat = 10
+		custom_effect_tooltip = add_core_on_all_andalus_tt
+		#set_cosmetic_tag = 
+		hidden_effect = {
+				165 = { add_core_of = ROOT }
+				171 = { add_core_of = ROOT }
+				792 = { add_core_of = ROOT }
+				172 = { add_core_of = ROOT }
+				790 = { add_core_of = ROOT }
+				789 = { add_core_of = ROOT }
+				41 = { add_core_of = ROOT }
+				173 = { add_core_of = ROOT }
+				169 = { add_core_of = ROOT }
+				168 = { add_core_of = ROOT }
+				167 = { add_core_of = ROOT }
+				794 = { add_core_of = ROOT }
+				793 = { add_core_of = ROOT }
+				791 = { add_core_of = ROOT }
+				788 = { add_core_of = ROOT }
+				178 = { add_core_of = ROOT }
+				177 = { add_core_of = ROOT }
+				176 = { add_core_of = ROOT }
+				175 = { add_core_of = ROOT }
+				174 = { add_core_of = ROOT }
+				170 = { add_core_of = ROOT }
+				166 = { add_core_of = ROOT }
+				112 = { add_core_of = ROOT }
+				179 = { add_core_of = ROOT }
+				180 = { add_core_of = ROOT }
+				181 = { add_core_of = ROOT }
+				697 = { add_core_of = ROOT }
+				698 = { add_core_of = ROOT }
+				795 = { add_core_of = ROOT }
+				118 = { add_core_of = ROOT }
+				#Morocco
+				290 = { add_core_of = ROOT }
+				461 = { add_core_of = ROOT }
+				462 = { add_core_of = ROOT }
+				783 = { add_core_of = ROOT }
+				#Tunisia
+				458 = { add_core_of = ROOT }
+				665 = { add_core_of = ROOT }
+				#Western Sahara
+				699 = { add_core_of = ROOT }
+				#Algeria
+				459 = { add_core_of = ROOT }
+				460 = { add_core_of = ROOT }
+				513 = { add_core_of = ROOT }
+				514 = { add_core_of = ROOT }
+				#Libya
+				273 = { add_core_of = ROOT }
+				448 = { add_core_of = ROOT }
+				449 = { add_core_of = ROOT }
+				450 = { add_core_of = ROOT }
+				451 = { add_core_of = ROOT }
+				661 = { add_core_of = ROOT }
+				662 = { add_core_of = ROOT }
+				663 = { add_core_of = ROOT }
+				#Sicily
+				115 = { add_core_of = ROOT }
+				#Malta
+				116 = { add_core_of = ROOT }
+				#Rhodes
+				164 = { add_core_of = ROOT }
+				#Crete
+				182 = { add_core_of = ROOT }
+				#Cyprus
+				183 = { add_core_of = ROOT }
+				#Sardinia and Corsica
+				114 = { add_core_of = ROOT }
+				1 = { add_core_of = ROOT }
+				676 = { add_core_of = ROOT }
+				675 = { add_core_of = ROOT }
+				291 = { add_core_of = ROOT }
+				# Saudi Arabia
+				292 = { add_core_of = ROOT }
+				679 = { add_core_of = ROOT }
+				678 = { add_core_of = ROOT }
+				857 = { add_core_of = ROOT }
+				858 = { add_core_of = ROOT }
+				854 = { add_core_of = ROOT }
+				855 = { add_core_of = ROOT }
+				856 = { add_core_of = ROOT }
+				859 = { add_core_of = ROOT }
+				# Colonial Arabia
+				677 = { add_core_of = ROOT }
+				680 = { add_core_of = ROOT }
+				553 = { add_core_of = ROOT }
+				554 = { add_core_of = ROOT }
+				679 = { add_core_of = ROOT }
+				293 = { add_core_of = ROOT }
+				294 = { add_core_of = ROOT }
+				454 = { add_core_of = ROOT }
+				455 = { add_core_of = ROOT }
+				656 = { add_core_of = ROOT }
+				658 = { add_core_of = ROOT }
+				799 = { add_core_of = ROOT }
+				765 = { add_core_of = ROOT }
+				659 = { add_core_of = ROOT }
+				906 = { add_core_of = ROOT }
+				1010 = { add_core_of = ROOT }
+				1011 = { add_core_of = ROOT }
+				992 = { add_core_of = ROOT }
+				1014 = { add_core_of = ROOT }
+				1013 = { add_core_of = ROOT }
+				1015 = { add_core_of = ROOT }
+				1016 = { add_core_of = ROOT }
+				# Egypt
+				552 = { add_core_of = ROOT }
+				453 = { add_core_of = ROOT }
+				456 = { add_core_of = ROOT }
+				446 = { add_core_of = ROOT }
+				907 = { add_core_of = ROOT }
+				457 = { add_core_of = ROOT }
+				452 = { add_core_of = ROOT }
+				447 = { add_core_of = ROOT }
+				419 = { add_core_of = ROOT }
+				421 = { add_core_of = ROOT }
+				420 = { add_core_of = ROOT }
+				417 = { add_core_of = ROOT }
+				413 = { add_core_of = ROOT }
+				266 = { add_core_of = ROOT }
+				418 = { add_core_of = ROOT }
+				411 = { add_core_of = ROOT }
+				412 = { add_core_of = ROOT }
+				416 = { add_core_of = ROOT }
+				414 = { add_core_of = ROOT }
+				410 = { add_core_of = ROOT }
+				1000 = { add_core_of = ROOT }
+				1001 = { add_core_of = ROOT }
+				1002 = { add_core_of = ROOT }
+				1003 = { add_core_of = ROOT }
+				1004 = { add_core_of = ROOT }
+			415 = { add_core_of = ROOT }
+				267 = { add_core_of = ROOT }
+				1005 = { add_core_of = ROOT }
+				1006 = { add_core_of = ROOT }
+				1007 = { add_core_of = ROOT }
+				1008 = { add_core_of = ROOT }
+				1009 = { add_core_of = ROOT }
+			787 = { add_core_of = ROOT }
+				445 = { add_core_of = ROOT }
+				442 = { add_core_of = ROOT }
+				444 = { add_core_of = ROOT }
+				440 = { add_core_of = ROOT }
+				441 = { add_core_of = ROOT }
+				443 = { add_core_of = ROOT }
+				987 = { add_core_of = ROOT }
+				988 = { add_core_of = ROOT }
+				1012 = { add_core_of = ROOT }
+			# Azerbaijan
+			229 = { add_core_of = ROOT }
+			# Armenia
+			230 = { add_core_of = ROOT }
+			# Georgia
+			231 = { add_core_of = ROOT }
+			# Grozny
+			232 = { add_core_of = ROOT }
+			233 = { add_core_of = ROOT }
+			821 = { add_core_of = ROOT }
+			828 = { add_core_of = ROOT }
+			827 = { add_core_of = ROOT }
+			826 = { add_core_of = ROOT }
+			# Turkey
+			350 = { add_core_of = ROOT }
+			352 = { add_core_of = ROOT }
+			353 = { add_core_of = ROOT }
+			354 = { add_core_of = ROOT }
+			800 = { add_core_of = ROOT }
+		}
+	}
+}
+	
+focus = {
+		id = LBA_finish_all_bad_people
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = {focus = LBA_fascist_khalifate focus = LBA_north_african_protectorate focus = LBA_unite_with_aoi}
+		relative_position_id = LBA_fascist_khalifate
+		x = -2
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = LBA_eternal_jihad
+		icon = GFX_goal_jihad
+		prerequisite = {focus = LBA_fascist_khalifate}
+		prerequisite = {focus = LBA_deal_with_genon}
+		relative_position_id = LBA_fascist_khalifate
+		x = 1
+		y = 2
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_mediteraneo
+		icon = GFX_focus_ITA_new_europe
+		prerequisite = {focus = LBA_libyan_hegemony}
+		relative_position_id = LBA_libyan_hegemony
+		x = 0
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		}
+	}
+focus = {
+		id = LBA_kingdom_of_libya
+		icon = GFX_focus_generic_monarchy_1
+		prerequisite = {focus = LBA_gain_independence focus = LBA_agreements_with_allies}
+		mutually_exclusive = {focus = LBA_north_african_protectorate focus = LBA_accepts_islam focus = LBA_unite_with_aoi}
+		relative_position_id = LBA_agreements_with_allies
+		x = 0
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+			add_popularity = {
+			ideology = neutrality
+			popularity = 0.2
+			}
+			
+			set_politics = {
+				ruling_party = neutrality
+			}		
+		}
+	}
+	
+focus = {
+		id = LBA_king_of_lybia
+		icon = GFX_focus_rom_royal_dictatorship
+		prerequisite = {focus = LBA_kingdom_of_libya}
+		relative_position_id = LBA_kingdom_of_libya
+		x = 0
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		add_stability = 0.1
+		add_war_support = 0.1
+			add_popularity = {
+			ideology = neutrality
+			popularity = 0.15
+			}
+			
+		}
+	}
+
+focus = {
+		id = LBA_deterrence_focus
+		icon = GFX_focus_generic_advanced_military_studies
+		prerequisite = {focus = LBA_king_of_lybia}
+		relative_position_id = LBA_king_of_lybia
+		x = 0
+		y = 2
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		add_ideas = deterrence
+		}
+	}
+	
+focus = {
+		id = LBA_colonial_militia
+		icon = GFX_focus_RSI_troops
+		prerequisite = { focus = LBA_continue_italian_settlers}
+		prerequisite = {focus = LBA_investments_from_metropoly }
+		relative_position_id = LBA_continue_italian_settlers
+		x = 14
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+		add_manpower = 20000
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment_1
+				amount = 2000
+			    producer = ITA
+			}
+			add_equipment_to_stockpile = {
+			    type = support_equipment
+				amount = 100
+			    producer = ITA
+			}
+		}
+	}
+	
+focus = {
+		id = LBA_strengthen_ascari_corps
+		icon = GFX_focus_ITA_strengthen_ascari_corps
+		prerequisite = { focus = LBA_colonial_militia }
+		relative_position_id = LBA_colonial_militia
+		x = -1
+		y = 1
+
+		cost = 10
+		available = {
+		}
+
+	completion_reward = {
+	army_experience = 10
+	create_corps_commander = {
+	name = "Abd al-Qadir ibn Ishaq"
+	picture = GFX_portrait
+	traits = {ascari_officer trickster trait_reckless desert_fox }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+	}
+	create_corps_commander = {
+	name = "Ahmad ibn Muhammad"
+	picture = GFX_portrait
+	traits = { ascari_officer trickster guerilla_fighter desert_fox  }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+	}
+				division_template = { 
+					name = "Divisione Ascari" 
+					division_names_group = ITA_COL_02
+					#is_locked = yes
+
+					regiments = { 
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 1 y = 0 }
+						infantry = {x = 1 y = 2}
+						infantry = {x = 1 y = 1}
+					}
+				support = { 
+				logistics_company = { x = 0 y = 0 }
+				armored_car_recon = {x = 0 y = 1}
+				}					
+
+					priority = 0 
+				}
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Divisione Ascari\" start_experience_factor = 0.3 start_equipment_factor = 1 start_manpower_factor = 1"
+						owner = ROOT
+						count = 3
+					}
+				}
+			}
+		}
+		
+	focus = {
+		id = LBA_training_in_desert
+		icon = GFX_focus_PER_desert_training
+		prerequisite = { focus = LBA_strengthen_ascari_corps}
+		relative_position_id = LBA_strengthen_ascari_corps
+		x = -2
+		y = 1
+
+		cost = 10
+		available = {}
+		
+
+		completion_reward = {
+
+		}
+	}
+	
+	focus = {
+		id = LBA_army_modernisation
+		icon = GFX_focus_ITA_army_primacy
+		prerequisite = { focus = LBA_training_in_desert}
+		relative_position_id = LBA_training_in_desert
+		x = 0
+		y = 1
+
+		cost = 10
+		available = {}
+		
+
+		completion_reward = {
+
+		}
+	}
+
+	focus = {
+		id = LBA_increase_air_budget
+		icon = GFX_focus_BRA_italian_aircraft_development
+		prerequisite = { focus = LBA_colonial_militia }
+		relative_position_id = LBA_colonial_militia
+		x = 1
+		y = 1
+		relative_position_id = LBA_colonial_militia
+
+		cost = 5
+		available = {}
+
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		air_experience = 35
+		}
+	}
+
+	focus = { 
+		id = LBA_division_folgore
+		icon = GFX_focus_generic_paratrooper
+		prerequisite = { focus = LBA_combined_land_and_air_warfare }
+		relative_position_id = LBA_increase_air_budget
+		x = -1
+		y = 2
+
+		cost = 10
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+		}
+	}
+
+	focus = { 
+		id = LBA_airports_of_libya
+		icon = GFX_goal_generic_build_airforce
+		prerequisite = { focus = LBA_increase_air_budget }
+		relative_position_id = LBA_increase_air_budget
+		x = 2
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					add_building_construction = {
+						type = air_base
+						level = 4
+						instant_build = yes
+					}
+				}
+		}
+	}
+	focus = { 
+		id = LBA_air_industry
+		icon = GFX_SOV_increase_aircraft_production_ccp_2d_sov_compatibility
+		prerequisite = { focus = LBA_airports_of_libya }
+		relative_position_id = LBA_airports_of_libya
+		x = -1
+		y = 1
+
+		cost = 10
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+		add_ideas = AOI_planes_from_metropoly
+	
+		random_owned_controlled_state = {
+		add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = { 
+		id = LBA_air_designs
+		icon = GFX_goal_italy_fiat_g_50
+		prerequisite = { focus = LBA_airports_of_libya }
+		relative_position_id = LBA_airports_of_libya
+		x = 1
+		y = 1
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = air_equipment
+			}
+		}
+	}
+	focus = { 
+		id = LBA_superaereo
+		icon = GFX_focus_NORDIC_dem_selector_airforce
+		prerequisite = { focus = LBA_air_designs focus = LBA_air_industry}
+		relative_position_id = LBA_airports_of_libya
+		x = 0
+		y = 2
+
+		cost = 10
+		available = {}
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		swap_ideas = {
+		remove_idea = AOI_planes_from_metropoly
+		add_idea = AOI_superaereo_idea 
+		}
+		}
+	}
+	focus = {
+		id = LBA_combined_land_and_air_warfare
+		icon = GFX_focus_generic_combined_arms
+		prerequisite = { focus = LBA_increase_air_budget}
+		prerequisite = {focus = LBA_strengthen_ascari_corps }
+		relative_position_id = LBA_increase_air_budget
+		x = -1
+		y = 1
+
+		cost = 10
+		available = {}
+		
+
+		completion_reward = {
+
+		}
+	}
+	
+	
+	
+	
+	focus = {
+		id = LBA_develop_libya
+		icon = GFX_focus_generic_develop_libya
+		prerequisite = { focus = LBA_investments_from_metropoly }
+		relative_position_id = LBA_investments_from_metropoly
+		x = -7
+		y = 1
+
+		cost = 10
+		
+		available = {
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+		random_owned_controlled_state = {
+		add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		random_owned_controlled_state = {
+		add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = LBA_finish_litoranea_balbo
+		icon = GFX_focus_ITA_via_balbia
+		prerequisite = { focus = LBA_develop_libya }
+
+		x = 0
+		y = 1
+		relative_position_id = LBA_develop_libya
+		cost = 5
+		available = {
+			OR = {
+				448 = {
+					state_is_fully_controlled_by_ROOT_or_subject = yes
+				}
+				449 = {
+					state_is_fully_controlled_by_ROOT_or_subject = yes
+				}
+				450 = {
+					state_is_fully_controlled_by_ROOT_or_subject = yes
+				}
+				451 = {
+					state_is_fully_controlled_by_ROOT_or_subject = yes
+				}
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		completion_reward = {
+			if = { #TRIPOLI
+				limit = {
+					448 = {
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				448 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = { #EL AGHELIA
+				limit = {
+					449 = {
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				449 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = { #BENGHASI
+				limit = {
+					450 = {
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				450 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = { #DERNA
+				limit = {
+					451 = {
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				451 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = LBA_fascist_education
+		icon = GFX_focus_generic_fascist_propaganda
+		prerequisite = { focus = LBA_finish_litoranea_balbo }
+		prerequisite = {focus = LBA_oil_in_tripoli focus = LBA_steel_in_tripoli}
+
+		x = 0
+		y = 2
+		relative_position_id = LBA_finish_litoranea_balbo
+		cost = 10
+		available = {
+
+		}
+
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+	focus = {
+		id = LBA_institute_of_tripoly
+		icon = GFX_SOV_leningrad_polytechnical_institute_ccp_2d_sov_compatibility
+		prerequisite = { focus = LBA_fascist_education }
+		x = 1
+		y = 1
+		relative_position_id = LBA_fascist_education
+		cost = 10
+		available = {
+		}
+
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+
+
+	focus = {
+		id = LBA_libyan_railway
+		icon = GFX_focus_generic_railroad
+		prerequisite = {focus = LBA_fascist_education}
+		x = -1
+		y = 1
+		relative_position_id = LBA_fascist_education
+		cost = 10
+		available = {
+			448 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+			449 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+			450 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+			451 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		completion_reward = {
+			# Tripoli - Tobruk
+			build_railway = {
+				path = { 1149 4194 7209 9980 1118 1041 4047 10046 10117 12088 4057 1198 1127 4120 11954 10123 12094 4151 1204 7082 9992 1130 }
+			}
+
+			custom_effect_tooltip = ITA_libyan_railway_state_modifier_tt
+			every_state = {
+				limit = {
+					OR = {
+						#LIBYA
+						state = 448 #TRIPOLI
+						state = 449 #EL AGHELIA
+						state = 450 #BENGHASI
+						state = 451 #DERNA
+						#TUNISIA
+						state = 665 #GABES
+						state = 458 #TUNISIA
+						#ALGERIA
+						state = 460 #CONSTANTINE
+						state = 459 #ALGIERS
+						#EGYPT
+						state = 452 #MATROUH
+						state = 447 #ALEXANDRIA
+						state = 446 #CAIRO
+					}
+					state_is_fully_controlled_by_ROOT_or_subject = yes
+				}
+				add_dynamic_modifier = { modifier = ITA_libyan_railway_modifier days = 730 scope = ROOT }
+			}
+		}
+	}
+
+	focus = {
+		id = LBA_prospect_for_oil
+		icon = GFX_focus_PER_increase_oil_sales
+		prerequisite = { focus = LBA_oil_in_tripoli }
+
+
+		x = -1
+		y = 1
+		relative_position_id = LBA_oil_in_tripoli
+		cost = 5
+
+		bypass = {
+			662 = {
+				has_state_flag = sirte_oil_developed
+			}
+		}
+
+		available = {
+
+			662 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		completion_reward = {
+			add_resource = {
+				type = oil
+				amount = 4
+				state = 450
+			}
+			450 = {
+				ITA_check_for_cooperatives_and_add_dm = yes #If appropriate, apply dm from Cooperatives for Intensive Exploitation 
+				set_state_flag = benghazi_oil_developed
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 2
+					instant_build = yes
+				}
+			}	
+		}
+	}
+
+
+focus = {
+		id = LBA_oil_in_tripoli
+		icon = GFX_goal_generic_oil_refinery
+		prerequisite = { focus = LBA_develop_libya }
+		relative_position_id = LBA_develop_libya
+		x = -2
+		y = 2
+
+		cost = 8
+		available = {}		
+
+		search_filters = {}
+		available = {
+			has_tech = excavation1
+			448 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+		}
+
+		completion_reward = {
+			if = {
+				limit = {
+					448 = { 
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				add_resource = {
+			    	type = oil
+			    	amount = 8
+			    	state = 448   
+				}
+				448 = { #TRIPOLI
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = fuel_silo
+						level = 1
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						has_tech = synth_oil_experiments
+					}
+					448 = { #TRIPOLI
+						add_extra_state_shared_building_slots = 1
+						add_building_construction = {
+							type = synthetic_refinery
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+				else = {
+					custom_effect_tooltip = ITA_potential_refinery_in_libya_tt
+				}
+
+				unlock_decision_tooltip = develop_tripoli_oil_fields
+			}
+		}
+	}
+
+	focus = {
+		id = LBA_steel_in_tripoli
+		icon = GFX_focus_generic_steel
+		prerequisite = { focus = LBA_develop_libya }
+		relative_position_id = LBA_develop_libya
+		x = 2
+		y = 2
+
+		cost = 5
+		available = {}
+		
+		search_filters = {}
+		available = {
+			has_tech = excavation1
+			448 = {
+				state_is_fully_controlled_by_ROOT_or_subject = yes
+			}
+		}
+
+		completion_reward = {
+			if = {
+				limit = {
+					448 = { 
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}	
+				add_resource = {
+				    type = steel
+				    amount = 16
+				    state = 448  
+				}
+				448 = { #TRIPOLI
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+
+				unlock_decision_tooltip = develop_tripoli_steel_deposits
+			}
+		}
+	}
+
+	focus = {
+		id = LBA_fleet_of_fourth_shore
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = LBA_steel_in_tripoli }
+		relative_position_id = LBA_steel_in_tripoli
+		x = 1
+		y = 1
+
+		cost = 10
+		available = {}
+		
+		search_filters = {}
+		available = {
+		}
+
+		completion_reward = {
+		random_owned_controlled_state = {
+		limit = {is_coastal = yes}
+		add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LBA_via_della_vittoria
+		icon = GFX_goal_reichsautobahn
+		prerequisite = { focus = LBA_libyan_railway }
+		prerequisite = {focus = LBA_institute_of_tripoly}
+
+		x = 1
+		y = 1
+		relative_position_id = LBA_libyan_railway
+		cost = 10
+		available = {
+			451 = {
+			CONTROLLER = {
+			OR = {
+			tag = ROOT
+			tag = ITA
+			}
+			}
+			}
+			452 = {
+			CONTROLLER = {
+			OR = {
+			tag = ROOT
+			tag = ITA
+			}
+			}			
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		completion_reward = {
+			451 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				if = {
+					limit = {
+						has_resistance = yes
+					}
+					add_compliance = 5
+				}
+			}
+			452 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				if = {
+					limit = {
+						has_resistance = yes
+					}
+					add_compliance = 5
+				}
+			}
+
+			# EXTRA STATES 
+
+			custom_effect_tooltip = ITA_via_della_vittoria_extra_states_tt
+
+			#LIBYA
+			if = {
+				limit = {
+					450 = { #BENGHASI
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				450 = { #BENGHASI
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+			if = {
+				limit = {
+					449 = { #EL AGHELIA
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				449 = { #EL AGHELIA
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+			if = {
+				limit = {
+					448 = { #TRIPOLI
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				448 = { #TRIPOLI
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+
+			#TUNISIA
+			if = {
+				limit = {
+					665 = { #GABES
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				665 = { #GABES
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+			if = {
+				limit = {
+					458 = { #TUNISIA
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				458 = { #TUNISIA
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+			#ALGERIA
+			if = {
+				limit = {
+					460 = { #CONSTANTINE
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				460 = { #CONSTANTINE
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+			if = {
+				limit = {
+					459 = { #ALGIERS
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				459 = { #ALGIERS
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+
+			#MOROCCO
+			if = {
+				limit = {
+					461 = { #CASABLANCA
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				461 = { #CASABLANCA
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+			if = {
+				limit = {
+					290 = { #SPANISH AFRICA (Mediterranean coast of Morocco)
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				290 = { #SPANISH AFRICA (Mediterranean coast of Morocco)
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+
+			#EGYPT
+			if = {
+				limit = {
+					447 = { #ALEXANDRIA
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				447 = { #ALEXANDRIA
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+			if = {
+				limit = {
+					446 = { #CAIRO
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				446 = { #CAIRO
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+			if = {
+				limit = {
+					453 = { #SINAI
+						state_is_fully_controlled_by_ROOT_or_subject = yes
+					}
+				}
+				453 = { #SINAI
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+					if = {
+						limit = {
+							has_resistance = yes
+						}
+						add_compliance = 5
+					}
+				}
+			}
+		}
+	}
+
+}

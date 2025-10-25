@@ -10,6 +10,7 @@ bookmarks = {
 		
 
 		"GRE"={
+			minor = yes
 			history = "GRE_GATHERING_STORM_DESC"
 			ideology = neutrality
 			ideas = {
@@ -264,8 +265,55 @@ bookmarks = {
 			}
 		}
 
+			"ITA"={
+			history = "ITA_GATHERING_STORM_DESC"
+			ideology = fascism
+			available = { has_dlc = "By Blood Alone" }
+			ideas = {
+				vittorio_emanuele
+				ITA_iri_fake_ns
+				ITA_re_fake_ns
+			}	
+			focuses = {
+				ITA_comandante_diavolo
+				ITA_il_sol_dell_avvenire
+				ITA_a_colonial_empire
+			}		
+		}
+		"ITA"={
+			history = "ITA_GATHERING_STORM_DESC"
+			ideology = fascism
+			available = { NOT = { has_dlc = "By Blood Alone" } }
+			ideas = {
+				vittorio_emanuele
+				ITA_iri_fake_ns
+				ITA_re_fake_ns
+			}	
+			focuses = {
+				ITA_comandante_diavolo
+				ITA_to_live_as_a_lion
+				ITA_a_colonial_empire
+			}		
+		}
+
+		"POR"={
+			history = "PORTUGAL_GATHERING_STORM_DESC"
+			ideology = democratic
+			ideas = {
+				POR_unstable_republic
+				POR_unreliable_army
+			}
+			focuses = {
+				POR_iberia_united
+				POR_proclaim_the_kingdom_of_hispania
+				POR_integration_scheme
+			}
+		}
+
+
 			ICE={
-			history = "Among us"
+				minor = yes
+			history = ICE_GATHERING_STORM_DESC
 			ideology = democratic
 			ideas = {
 				idea_ice_volcanic_activity

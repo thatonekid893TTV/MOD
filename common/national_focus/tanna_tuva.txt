@@ -1421,43 +1421,9 @@ focus_tree = {
 			SPR_scw_in_progress = yes
 		}
 		completion_reward = {
-			effect_tooltip = {
-				add_ideas = SPR_war_involvement
-			}
-			if = {
-				limit = {
-					has_government = fascism
-				}
-				hidden_effect = {
-					add_ideas = SPR_war_involvement_spa
-				}
-				SPA = {
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = generic_supported_spain_civil_war	
-					}
-				}
-				add_ai_strategy = {
-			        type = support
-			        id = SPA
-			        value = 500
-			    }
-			}
-			else = {
-				hidden_effect = {
-					add_ideas = SPR_war_involvement_spr
-				}
-				SPD = {
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = generic_supported_spain_civil_war	
-					}
-				}
-				add_ai_strategy = {
-			        type = support
-			        id = SPD
-			        value = 500
-			    }
+			add_timed_idea = {
+				idea = Spanish_Aid_idea
+				days = 180
 			}
 		}
 	}
@@ -4080,7 +4046,7 @@ focus_tree = {
 	focus = {
 	search_filters = { FOCUS_FILTER_ANNEXATION}
 		id = Mongolian_Subjegation
-		icon = GFX_focus_MON_nationalist_sentiment
+		icon = GFX_focus_generic_attack_mongolia
 		prerequisite = { focus = Glory_To_The_Siberian_People }
 
 		x = 45
@@ -4095,13 +4061,12 @@ focus_tree = {
 			add_state_claim = 330
 			add_state_claim = 817
 			add_state_claim = 819
-			TAN = {
 			create_wargoal = {
 				type = puppet
 				target = MON
+				generator = { 818 820 330 817 819 }
 				expire = 180
 			}
-		}
 		}
 	}
 	focus = {
@@ -4122,6 +4087,7 @@ focus_tree = {
 			create_wargoal = {
 				type = puppet
 				target = MEN
+				generator = { 612 611 }
 				expire = 180
 			}	
 		}
@@ -4679,6 +4645,23 @@ focus_tree = {
 				target = TUR
 				type = annex_everything
 			}
+		}
+	}
+	focus = {
+	search_filters = { FOCUS_FILTER_POLITICAL}
+		id = The_Turanist_Nation
+		icon = GFX_focus_TUR_turanist_ambition
+		prerequisite = { focus = Fin_Urga }
+		prerequisite = { focus = Turkey_The_Final_Piece }
+
+		x = 30
+		y = 28
+		cost = 5
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			set_cosmetic_tag = TAN_Turanist_Dream
 		}
 	}
 
@@ -6182,7 +6165,7 @@ focus_tree = {
 	focus = {
 	search_filters = { FOCUS_FILTER_POLITICAL}
 		id = The_Great_Mongol_Nation
-		icon = GFX_focus_MON_nationalist_sentiment
+		icon = GFX_focus_ETH_boots_on_the_shore
 		prerequisite = { focus = The_Inner-Mongolia_Question }
 		mutually_exclusive = { focus = Become_A_Japanese_Protectorate }
 
@@ -6551,7 +6534,7 @@ focus_tree = {
 	focus = {
 	search_filters = { FOCUS_FILTER_ANNEXATION}
 		id = Strike_Warsaw
-		icon = GFX_focus_generic_attack_poland
+		icon = GFX_focus_POL_sanation_right
 		prerequisite = { focus = Retake_Kieven_Rus }
 
 		x = 52

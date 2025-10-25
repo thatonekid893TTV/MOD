@@ -1,0 +1,923 @@
+
+ITALIAN_unite_italy_category = {
+ITALIAN_unite_italy = {
+		icon = generic_form_nation
+		
+		highlight_states = {
+		 	highlight_state_targets = {
+					state = 158
+					state = 159
+					state = 39
+					state = 850
+					state = 160
+					state = 161
+					state = 2
+					state = 157
+					state = 117
+					state = 849
+					state = 156
+					state = 114
+					state = 162
+					state = 115
+				}
+		}
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		available = {
+					controls_state = 158
+					controls_state = 159
+					controls_state = 39
+					controls_state = 850
+					controls_state = 160
+					controls_state = 161
+					controls_state = 2
+					controls_state = 157
+					controls_state = 117
+					controls_state = 849
+					controls_state = 156
+					controls_state = 114
+					controls_state = 162
+					controls_state = 115
+		}
+
+		complete_effect = {
+		#add_stability = 0.15
+		set_cosmetic_tag = ITA
+		add_ideas = ITA_italian_irredentism_ns
+		custom_effect_tooltip = form_eu_italy_coring_states_tt
+		hidden_effect = {
+		country_event = {id = AOI_event.30 hours = 24}
+		set_global_flag = ITALIAN_italy_formed
+					158 = {add_core_of = ROOT}
+					159 = {add_core_of = ROOT}
+					39 = {add_core_of = ROOT}
+					850 = {add_core_of = ROOT}
+					160 = {add_core_of = ROOT}
+					736 = {add_core_of = ROOT}
+					852 = {add_core_of = ROOT}
+					161 = {add_core_of = ROOT}
+					2 = {add_core_of = ROOT}
+					157 = {add_core_of = ROOT}
+					117 = {add_core_of = ROOT}
+					849 = {add_core_of = ROOT}
+					156 = {add_core_of = ROOT}
+					114 = {add_core_of = ROOT}
+					162 = {add_core_of = ROOT}
+					115 = {add_core_of = ROOT}
+					}
+		}
+	}
+	
+ITALIAN_greater_italy = {
+		icon = generic_form_nation
+		
+		highlight_states = {
+		 	highlight_state_targets = {
+					state = 103
+					state = 853
+					state = 735
+					state = 1
+					state = 116
+					state = 846
+					state = 164
+					state = 182
+					state = 736
+					state = 163
+					state = 852
+				}
+		}
+		
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		
+		available = {
+		has_global_flag = ITALIAN_italy_formed
+					controls_state = 116
+					controls_state = 846
+					controls_state = 164
+					controls_state = 182
+					controls_state = 736
+					controls_state = 163
+					controls_state = 852
+			}
+
+		complete_effect = {
+		set_cosmetic_tag = greater_italy 
+		custom_effect_tooltip = gain_cores_on_the_highlighted_states_tt
+		add_ideas = ITA_italia_irredenta_achieved
+		
+		hidden_effect = {
+		#set_global_flag = ITALIAN_italy_formed
+					116 = {add_core_of = ROOT}
+					1 = {add_core_of = ROOT}
+					735 = {add_core_of = ROOT}
+					853 = {add_core_of = ROOT}
+					103 = {add_core_of = ROOT}
+					846 = {add_core_of = ROOT}
+					182 = {add_core_of = ROOT}
+					164 = {add_core_of = ROOT}
+					163 = {add_core_of = ROOT}
+					736 = {add_core_of = ROOT}
+					852 = {add_core_of = ROOT}
+			}
+		}
+	}
+}
+
+YUG_form_greater_yug_cat = {
+YUG_form_greater_yug = {
+		icon = generic_form_nation
+		
+		highlight_states = {
+		highlight_state_targets = {
+		state = 853
+		state = 102
+		state = 104
+		state = 109
+		state = 804
+		state = 105
+		state = 108
+		state = 45
+		state = 764
+		state = 802
+		state = 970
+		state = 106
+		state = 805
+		state = 44
+		state = 934
+		#state = 163
+		state = 48
+		state = 801
+		state = 212
+		state = 211
+		state = 731
+		state = 184
+		state = 803
+		state = 103
+		state = 107
+		} 
+	}
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		available = {
+		is_subject = no
+		custom_trigger_tooltip = {
+		tooltip = greater_yug_yug_states
+		controls_state = 853
+		controls_state = 102
+		controls_state = 104
+		controls_state = 109
+		controls_state = 804
+		controls_state = 105
+		controls_state = 108
+		controls_state = 45
+		controls_state = 764
+		controls_state = 802
+		controls_state = 970
+		controls_state = 106
+		controls_state = 803
+		controls_state = 103
+		controls_state = 107
+		}
+
+		controls_state = 805
+		controls_state = 44
+		controls_state = 934
+		#controls_state = 163
+		controls_state = 48
+		controls_state = 801
+		controls_state = 212
+		controls_state = 211
+		controls_state = 731
+		controls_state = 184
+		}
+
+		complete_effect = {
+		news_event = {id = FORMABLES_news.2}
+		set_cosmetic_tag = YUG_greater_yug
+		custom_effect_tooltip = generic_skip_one_line_tt
+		48 = {add_core_of = ROOT}
+		801 = {add_core_of = ROOT}
+		212 = {add_core_of = ROOT}
+		211 = {add_core_of = ROOT}
+		805 = {add_core_of = ROOT}
+		44 = {add_core_of = ROOT}
+		77 = {add_core_of = ROOT}
+		934 = {add_core_of = ROOT}
+		731 = {add_core_of = ROOT}
+		184 = {add_core_of = ROOT}
+		163 = {add_core_of = ROOT}
+		852 = {add_core_of = ROOT}
+		736 = {add_core_of = ROOT}
+		976 = {add_core_of = ROOT}
+		77 = {add_core_of = ROOT}
+		}
+	}
+}
+YUG_form_balkans_cat = {
+	
+	YUG_form_balkans = {
+	name = HUN_unify_the_balkans_decision
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = YUG
+		}
+
+		visible = {
+			has_completed_focus = YUG_united_balkans
+			
+			#NOT = { has_global_flag = balkan_union_formed_flag }
+		}
+		visible_when_empty = no
+
+		available = {
+			
+			is_subject = no
+
+			custom_trigger_tooltip = {
+				tooltip = has_control_over_all_highlighted_states_tt
+				controls_state = 109
+				controls_state = 103
+				controls_state = 104
+				controls_state = 804
+				controls_state = 105
+				controls_state = 107
+				controls_state = 108
+				controls_state = 802
+				controls_state = 803
+				controls_state = 106
+				controls_state = 970
+				controls_state = 934
+				controls_state = 44
+				controls_state = 805
+				controls_state = 48
+				controls_state = 212
+				controls_state = 801
+				controls_state = 211
+				controls_state = 81
+				controls_state = 46
+				controls_state = 77
+				controls_state = 971
+				controls_state = 79
+				controls_state = 78
+				controls_state = 766
+				controls_state = 80
+				controls_state = 163
+				controls_state = 764
+				controls_state = 45
+				controls_state = 82
+				controls_state = 84
+				controls_state = 76
+				controls_state = 83
+				controls_state = 184
+				controls_state = 731
+				controls_state = 185
+				controls_state = 47
+				controls_state = 186
+			}
+
+		}
+
+		on_map_mode = decision_view_only
+
+		highlight_states = { 
+			highlight_state_targets = {
+				state = 109
+				state = 103
+				state = 104
+				state = 804
+				state = 105
+				state = 107
+				state = 108
+				state = 802
+				state = 803
+				state = 106
+				state = 970
+				state = 934
+				state = 1017
+				state = 44
+				state = 805
+				state = 48
+				state = 212
+				state = 801
+				state = 211
+				state = 81
+				state = 46
+				state = 77
+				state = 971
+				state = 79
+				state = 78
+				state = 766
+				state = 80
+				state = 163
+				state = 764
+				state = 45
+				state = 82
+				state = 84
+				state = 76
+				state = 83
+				state = 184
+				state = 731
+				state = 185
+				state = 47
+				state = 186
+			}
+		}
+
+		cost = 100
+
+		complete_effect = {
+			hidden_effect = {
+				drop_cosmetic_tag = yes
+			}
+			set_cosmetic_tag = UBF_united_balkan_federation 
+
+			every_state = {
+				limit = {
+					NOT = {
+						is_core_of = ROOT
+					}
+					OR = {
+						state = 109
+						state = 103
+						state = 104
+						state = 804
+						state = 105
+						state = 107
+						state = 108
+						state = 802
+						state = 803
+						state = 106
+						state = 970
+						state = 934
+						state = 44
+						state = 805
+						state = 48
+						state = 212
+						state = 801
+						state = 211
+						state = 81
+						state = 46
+						state = 77
+						state = 971
+						state = 79
+						state = 78
+						state = 766
+						state = 80
+						state = 163
+						state = 764
+						state = 45
+						state = 82
+						state = 84
+						state = 76
+						state = 83
+						state = 184
+						state = 731
+						state = 185
+						state = 47
+						state = 186
+					}
+				}
+				add_core_of = ROOT
+			}
+
+			hidden_effect = {
+				set_global_flag = balkan_union_formed_flag
+			}
+		}
+
+		ai_will_do = {
+			base = 2000
+		}
+	}
+}
+ALB_greater_alb_cat = {
+ALB_greater_alb = {
+		icon = generic_form_nation
+		
+		highlight_states = {
+		highlight_state_targets = {
+		state = 934
+		state = 44
+		state = 805
+		state = 802
+		state = 970
+		}
+		}
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		available = {
+		is_subject = no
+		controls_state =934
+		controls_state =44
+		controls_state =805
+		controls_state =802
+		controls_state =970
+		}
+
+		modifier = {
+		}
+
+		complete_effect = {
+		news_event = {id = FORMABLES_news.1}
+		add_ideas = ALB_greater_albania_idea
+		802 = {add_core_of = ROOT}
+		970 = {add_core_of = ROOT}
+		}
+		
+		ai_will_do = {
+			base = 2000
+		}
+	}
+}
+
+
+FRA_revive_napoleonic_empire_cat = {
+FRA_revive_napoleonic_empire = {
+		icon = generic_form_nation
+		
+		highlight_states = {
+		highlight_state_targets = {
+		state = 165
+		state = 158
+		state = 162
+		state = 8
+		state = 42
+		state = 51
+		state = 6
+		state = 980
+		state = 34
+		state = 977
+		state = 35
+		state = 7
+		state = 36
+		state = 56
+				state = 29
+				state = 18
+				state = 17
+				state = 28
+				state = 15
+				state = 16
+				state = 27
+				state = 14
+				state = 30
+				state = 24
+				state = 23
+				state = 33
+				state = 26
+				state = 20
+				state = 32
+				state = 735
+				state = 25
+				state = 22
+				state = 21
+				state = 851
+				state = 19
+				state = 1
+				state = 785
+				state = 31
+				state = 806
+		}
+		}
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		
+		available = {
+		is_subject = no
+		custom_trigger_tooltip = {
+		tooltip = controls_all_states_tt
+		controls_state =  165
+		controls_state =  158
+		controls_state =  162
+		controls_state =  8
+		controls_state =  42
+		controls_state =  51
+		controls_state =  6
+		controls_state =  980
+		controls_state =  34
+		controls_state =  977
+		controls_state =  35
+		controls_state =  7
+		controls_state =  36
+		controls_state =  56
+				controls_state =  29
+				controls_state =  18
+				controls_state =  17
+				controls_state =  28
+				controls_state =  15
+				controls_state =  16
+				controls_state =  27
+				controls_state =  14
+				controls_state =  30
+				controls_state =  24
+				controls_state =  23
+				controls_state =  33
+				controls_state =  26
+				controls_state =  20
+				controls_state =  32
+				controls_state =  735
+				controls_state =  25
+				controls_state =  22
+				controls_state =  21
+				controls_state =  851
+				controls_state =  19
+				controls_state =  1
+				controls_state =  785
+				controls_state =  31
+				controls_state =  806
+		}
+		}
+
+		complete_effect = {
+		add_stability = 0.05
+		add_war_support = 0.05
+		every_state = {
+		limit = {
+		NOT = {is_core_of = ROOT}
+		OR = {
+		state = 165
+		state = 158
+		state = 162
+		state = 8
+		state = 42
+		state = 51
+		state = 6
+		state = 980
+		state = 34
+		state = 977
+		state = 35
+		state = 7
+		state = 36
+		state = 56
+				state = 29
+				state = 18
+				state = 17
+				state = 28
+				state = 15
+				state = 16
+				state = 27
+				state = 14
+				state = 30
+				state = 24
+				state = 23
+				state = 33
+				state = 26
+				state = 20
+				state = 32
+				state = 735
+				state = 25
+				state = 22
+				state = 21
+				state = 851
+				state = 19
+				state = 1
+				state = 785
+				state = 31
+				state = 806
+		}
+		}
+		add_core_of = ROOT
+		}
+		163 = {add_claim_by = ROOT}
+		103 = {add_claim_by = ROOT}
+		1018 = {add_claim_by = ROOT}
+		853 = {add_claim_by = ROOT}
+		852 = {add_claim_by = ROOT}
+		736 = {add_claim_by = ROOT}
+		}
+		
+		ai_will_do = {
+			base = 2000
+		}
+	}
+}
+
+SWI_nostra_alpine_state_dec_cat = {
+SWI_nostra_alpine_state = {
+		icon = generic_form_nation
+		
+		highlight_states = {
+		highlight_state_targets = {
+		state = 3
+		state = 151
+		state = 845
+		state = 847
+		state = 846
+		state = 848
+		state = 153
+		state = 152
+		state = 4
+		state = 976
+		state = 975
+		}
+		}
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		
+		available = {
+		is_subject = no
+		custom_trigger_tooltip = {
+		controls_state =3
+		controls_state =151
+		controls_state =845
+		controls_state =847
+		controls_state =846
+		controls_state =848
+		controls_state =153
+		controls_state =152
+		controls_state =4
+		controls_state =976
+		controls_state =975
+		}
+		}
+
+		complete_effect = {
+		hidden_effect = {
+		set_country_flag = formed_alpine_flag
+		}
+		set_cosmetic_tag = SWI_alpine
+		every_state = {
+		limit = {
+		NOT = {is_core_of = ROOT}
+		OR = {
+		state = 3
+		state = 151
+		state = 845
+		state = 847
+		state = 846
+		state = 848
+		state = 153
+		state = 152
+		state = 4
+		state = 976
+		state = 975
+		}
+		}
+		add_core_of = ROOT
+		}
+		}
+		
+		ai_will_do = {
+			base = 2000
+		}
+	}
+	SWI_integrate_bolzano = {
+		icon = generic_form_nation
+		
+		visible = {
+		has_country_flag = formed_alpine_flag
+		}
+		
+		cost = 25
+		
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		
+		available = {
+		is_subject = no
+		controls_state = 39
+		controls_state = 850
+		}
+
+		complete_effect = {
+		39 = {add_core_of = ROOT}
+		850 = {add_core_of = ROOT}
+		}
+		
+		ai_will_do = {
+			base = 2000
+		}
+	}
+	SWI_integrate_veneto = {
+		icon = generic_form_nation
+		
+		visible = {
+		has_country_flag = formed_alpine_flag
+		}
+		
+		cost = 50
+		
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		
+		available = {
+		is_subject = no
+		controls_state = 160
+		}
+
+		complete_effect = {
+		160 = {add_core_of = ROOT}
+		}
+		
+		ai_will_do = {
+			base = 2000
+		}
+	}
+	SWI_integrate_slovenia = {
+		icon = generic_form_nation
+		
+		visible = {
+		has_country_flag = formed_alpine_flag
+		}
+		
+		cost = 35
+		
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		
+		available = {
+		is_subject = no
+		controls_state = 736
+		controls_state = 853
+		controls_state = 102
+		}
+
+		complete_effect = {
+		736 = {add_core_of = ROOT}
+		853 = {add_core_of = ROOT}
+		102 = {add_core_of = ROOT}
+		}
+		
+		ai_will_do = {
+			base = 2000
+		}
+	}
+	SWI_integrate_lombardy = {
+		icon = generic_form_nation
+		
+		visible = {
+		has_country_flag = formed_alpine_flag
+		}
+		
+		cost = 50
+		
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		
+		available = {
+		is_subject = no
+		controls_state = 159
+		}
+
+		complete_effect = {
+		159 = {add_core_of = ROOT}
+		}
+		
+		ai_will_do = {
+			base = 2000
+		}
+	}
+	SWI_integrate_piemont = {
+		icon = generic_form_nation
+		
+		visible = {
+		has_country_flag = formed_alpine_flag
+		}
+		
+		cost = 50
+		
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		
+		available = {
+		is_subject = no
+		controls_state = 158
+		}
+
+		complete_effect = {
+		158 = {add_core_of = ROOT}
+		}
+		
+		ai_will_do = {
+			base = 2000
+		}
+	}
+	SWI_integrate_french_alps = {
+		icon = generic_form_nation
+		
+		visible = {
+		has_country_flag = formed_alpine_flag
+		}
+		
+		cost = 75
+		
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		
+		available = {
+		is_subject = no
+		controls_state = 21
+		controls_state = 735
+		controls_state = 32
+		controls_state = 851
+		}
+
+		complete_effect = {
+		21 = {add_core_of = ROOT}
+		735 = {add_core_of = ROOT}
+		32 = {add_core_of = ROOT}
+		851 = {add_core_of = ROOT}
+		}
+		
+		ai_will_do = {
+			base = 2000
+		}
+	}
+	SWI_integrate_south_germany = {
+		icon = generic_form_nation
+		
+		visible = {
+		has_country_flag = formed_alpine_flag
+		}
+		
+		cost = 100
+		
+		on_map_mode = decision_view_only
+		fire_only_once = yes
+		
+		available = {
+		is_subject = no
+		controls_state = 50
+		controls_state = 52
+		controls_state = 53
+		controls_state = 54
+		controls_state = 978
+		}
+
+		complete_effect = {
+		50 = {add_core_of = ROOT}
+		52 = {add_core_of = ROOT}
+		53 = {add_core_of = ROOT}
+		54 = {add_core_of = ROOT}
+		978 = {add_core_of = ROOT}
+		}
+		
+		ai_will_do = {
+			base = 2000
+		}
+	}
+}
+
+
+political_actions = {
+	ROM_integrate_balta = {
+		priority = 100
+
+		icon = GFX_decision_generic_civil_support
+
+		ai_will_do = {
+			base = 10
+		}
+
+		allowed = {
+			original_tag = ROM
+		}
+		
+		cost = 25
+		
+		days_remove = 15
+
+		visible = {
+		always = yes
+		}
+
+		available = {
+		is_subject = no
+		834 = {is_fully_controlled_by = ROOT}
+		}
+
+		remove_effect = {
+		834 = {add_core_of = ROOT}
+		}
+	}
+	LBA_rename_giarabub = {
+		priority = 100
+
+		icon = GFX_decision_generic_civil_support
+
+		ai_will_do = {
+			base = 10
+		}
+
+		allowed = {
+			original_tag = LBA
+		}
+		
+		cost = 5
+		
+		fire_only_once = yes
+
+		available = {
+		is_subject = no
+		663 = {is_fully_controlled_by = ROOT}
+		}
+
+		complete_effect = {
+		add_stability = 0.01
+		add_war_support 0.01
+		set_province_name = {id = 1060 name = NAME_JAGHBUB}
+		}
+	} 
+}

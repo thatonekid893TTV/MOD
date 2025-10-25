@@ -1,0 +1,1239 @@
+﻿
+
+add_namespace = AOI_event
+
+#отмена рабства
+country_event = {
+	id = AOI_event.1
+	title = AOI_event.1.t
+	desc = AOI_event.1.d
+	picture = GFX_report_ethiopian_slavery
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = AOI_event.1.a
+		remove_ideas = AOI_ethiopian_slavery
+				every_state = {
+				limit = {
+					is_owned_by = ROOT
+				}
+				add_compliance = 10
+			}
+		}
+	}
+#грациани становится лидером	
+country_event = {
+	id = AOI_event.2
+	title = AOI_event.2.t
+	desc = AOI_event.2.d
+	picture = GFX_report_badoglio_graziani
+	
+	fire_only_once = yes
+
+	trigger = {
+	is_subject_of = ITA
+	has_country_leader = { ruling_only = yes character = ITA_pietro_badoglio }
+	}
+	
+    mean_time_to_happen = {
+        days = 140
+    }
+
+	option = {
+		name = AOI_event.2.a
+		ITA = {country_event = {id = AOI_event.27}}
+					AOI = {
+						ITA_pietro_badoglio = {
+				  			set_nationality = ITA
+				   		}	
+					}
+
+					ITA = {
+						ITA_rodolfo_graziani = {
+				  			set_nationality = AOI
+				   		}	
+					}
+			add_country_leader_role = {
+			character = ITA_rodolfo_graziani
+			promote_leader = yes
+			country_leader = {
+			ideology = fascism_ideology
+			traits = { viceroy_of_aoi_graziani }
+			expire = "1965.1.1.1"
+			id = -1
+
+			}
+		}		}
+	}
+#бадольо становится лидером
+country_event = {
+	id = AOI_event.3
+	title = AOI_event.3.t
+	desc = AOI_event.3.d
+	picture = GFX_report_badoglio_graziani
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.2.a
+		ITA = {country_event = {id = AOI_event.26}}
+					ITA = {
+						ITA_pietro_badoglio = {
+				  			set_nationality = AOI
+				   		}	
+					}
+			add_country_leader_role = {
+			character = ITA_pietro_badoglio
+			promote_leader = yes
+			country_leader = {
+			ideology = fascism_ideology
+			traits = { viceroy_of_aoi_badoglio }
+			expire = "1965.1.1.1"
+			id = -1
+
+			}
+		}
+	}
+}
+country_event = {
+	id = AOI_event.26
+	title = AOI_event.3.t
+	desc = AOI_event.3.d
+	picture = GFX_report_badoglio_graziani
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.2.a
+			custom_effect_tooltip = {
+			ITA = {
+					ITA_pietro_badoglio = {
+			  			set_nationality = AOI
+			   		}	
+				}
+			}
+		}
+	}
+country_event = {
+	id = AOI_event.27
+	title = AOI_event.2.t
+	desc = AOI_event.2.d
+	picture = GFX_report_badoglio_graziani
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.2.a
+			custom_effect_tooltip = {
+			ITA = {
+					ITA_rodolfo_graziani = {
+			  			set_nationality = AOI
+			   		}
+				}
+			}
+		}
+	}
+#поселенцы
+country_event = {
+	id = AOI_event.4
+	title = AOI_event.4.t
+	desc = AOI_event.4.d
+	picture = GFX_report_romanamente
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.4.a
+			ROOT = {add_to_tech_sharing_group = ita_aoi_sharing_group}
+			every_other_country = {
+				limit = {
+					original_tag = ITA
+				}
+				add_to_tech_sharing_group = ita_aoi_sharing_group 
+			}
+		}
+	}
+#банк ива	
+country_event = {
+	id = AOI_event.5
+	title = AOI_event.5.t
+	desc = AOI_event.5.d
+	picture = GFX_report_roman_bank
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.5.a
+		add_ideas = AOI_roman_bank
+		}
+	}
+
+	#для британии, ива готовится к войне
+country_event = {
+	id = AOI_event.6
+	title = AOI_event.6.t
+	desc = AOI_event.6.d
+	picture = GFX_report_event_indian_parade
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.6.a
+		ai_chance = {
+		base = 95
+		}
+		add_war_support = 0.05
+				883 = {
+					add_building_construction = {
+						type = supply_node
+						province = 12725
+						level = 1
+						instant_build = yes
+					}
+				}
+				269 = {
+					add_building_construction = {
+						type = supply_node
+						province = 10833
+						level = 1
+						instant_build = yes
+					}
+				}
+	}
+	option = {
+		name = AOI_event.6.b
+		ai_chance = {
+			base = 5
+		}
+		add_political_power = 25
+	}
+}
+#мескель
+country_event = {
+	id = AOI_event.7
+	title = AOI_event.7.t
+	desc = AOI_event.7.d
+	picture = GFX_report_maskal
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+
+	option = {
+		name = AOI_event.7.a #абба джофир
+		set_country_flag = AOI_jofir
+		custom_effect_tooltip = AOI_jofir
+		hidden_effect = {country_event = {id = AOI_event.8 hours = 24}}
+		838 = {add_compliance = 5}
+
+	}
+	option = {
+		name = AOI_event.7.b #гугса
+		set_country_flag = AOI_gugsa
+		custom_effect_tooltip = AOI_gugsa
+		hidden_effect = {country_event = {id = AOI_event.8 hours = 24}}
+		843 = {add_compliance = 5}
+
+	}
+	option = {
+		name = AOI_event.7.c #хайле текле хайманон
+		set_country_flag = AOI_tekle
+		custom_effect_tooltip = AOI_tekle
+		hidden_effect = {country_event = {id = AOI_event.8 hours = 24}}
+		840 = {add_compliance = 5}
+
+
+	}
+}
+
+#мескель2
+country_event = {
+	id = AOI_event.8
+	title = AOI_event.8.t
+	desc = AOI_event.8.d
+	picture = GFX_report_maskal
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.8.a #стабка
+		add_political_power = 10
+		add_stability = 0.025
+	}
+	option = {
+		name = AOI_event.8.b #армия
+		army_experience = 15
+		air_experience = 5
+	}
+	option = {
+		name = AOI_event.8.c #локаль
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = industry
+		}
+	}
+}
+#передача военных генералов
+country_event = {
+	id = AOI_event.9
+	title = AOI_event.9.t
+	desc = AOI_event.9.d
+	picture = GFX_report_event_gre_allied_diplomacy_military
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.9.a
+AOI = {country_event = {id = AOI_event.11 hours = 4} }
+set_global_flag = geloso
+	}
+	option = {
+		name = AOI_event.9.b 
+
+	set_global_flag = guzzoni
+AOI = {country_event = {id = AOI_event.11 hours = 4} }
+
+	}
+	option = {
+		name = AOI_event.9.c
+
+	set_global_flag = biroli
+AOI = {country_event = {id = AOI_event.11 hours = 4} }
+	}
+}
+
+
+country_event = { #да
+	id = AOI_event.11
+	title = AOI_event.11.t
+	desc = AOI_event.11.d
+	picture = GFX_report_event_por_salazar_military
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.11.a
+		IF = {
+		limit = {
+		has_global_flag = biroli}
+					ITA = {
+						ITA_alessandro_pirzio_biroli = {
+				  			set_nationality = AOI
+						remove_any_country_role_from_character = yes
+
+				   		}	
+					}					
+		}
+		ELSE_IF = {
+		limit = {
+		has_global_flag = geloso}
+				ITA = {
+						ITA_carlo_geloso = {
+				  			set_nationality = AOI
+						remove_any_country_role_from_character = yes
+
+				   		}	
+					}
+		}
+		ELSE = {
+					ITA = {
+						ITA_alfredo_guzzoni = {
+				  			set_nationality = AOI
+						remove_any_country_role_from_character = yes
+
+				   		}	
+					}
+				}
+			}
+	}
+country_event = { #итало африканский союз
+	id = AOI_event.12
+	title = AOI_event.12.t
+	desc = AOI_event.12.d
+	picture = GFX_report_italoafrica
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #да
+		name = AOI_event.12.a
+		AOI = {country_event = {id = AOI_event.13 hours = 4}}
+		ai_chance = {
+		base = 95
+		}
+	}
+	option = { #нет
+		name = AOI_event.12.b
+		AOI = {country_event = {id = AOI_event.14 hours = 4}}
+		ai_chance = {
+		base = 5
+		}
+	}
+}
+
+country_event = { #итало африканский союз да 
+	id = AOI_event.13
+	title = AOI_event.13.t
+	desc = AOI_event.13.d
+	picture = GFX_report_italoafrica
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = { #да
+		name = AOI_event.13.a
+		set_cosmetic_tag = italo_africa
+		hidden_effect = {news_event = {id = AOI_news.2 hours = 4} }
+		
+		FROM = {
+		every_subject_country = {
+		country_event = {id = NSB_soviet_foreign_politics_events.200 days = 1}
+		}
+		}
+		
+		add_political_power = -100
+			every_state = {
+				limit = {
+				is_core_of = FROM
+				}
+				add_core_of = ROOT
+			}
+			FROM = {
+			every_unit_leader = {
+			set_nationality = ROOT
+			}
+			}
+		annex_country = { target = FROM transfer_troops = yes}
+				FROM = {
+					every_enemy_country = {
+						ROOT = {
+							declare_war_on = {	
+								target = PREV
+								type = annex_everything
+							}
+						}
+					}
+				}
+		}
+
+}
+country_event = { #итало африканский союз нет
+	id = AOI_event.14
+	title = AOI_event.14.t
+	desc = AOI_event.14.d
+	picture = GFX_report_event_spr_civil_war_faction_defeated
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.14.a
+		ai_chance = {
+		base = 25
+		}
+		set_country_flag = AOI_union_was_refused
+				uncomplete_national_focus = {
+				focus = AOI_italo_african_union
+				uncomplete_children = yes
+				refund_political_power = yes
+		}
+	}
+	option = {
+		name = AOI_event.14.b
+		set_country_flag = AOI_union_was_refused
+		ai_chance = {
+		base = 75
+		}
+		add_war_support = 0.05
+		every_state = {
+		limit = {
+		is_core_of = FROM
+		}
+		add_claim_by = ROOT
+		}
+		ROOT = {
+			create_wargoal = {
+				target = FROM
+				type = annex_everything
+			}
+		}	
+	}
+}
+
+unit_leader_event = {
+	id = AOI_event.15
+	title = AOI_event.15.t
+	desc = AOI_event.15.d
+	picture = GFX_report_event_generic_mussolini
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.15.a
+		ai_chance = {
+		base = 80
+		}
+		
+		add_political_power = -25
+			ETH = {
+				ETH_seyoum_mengesha = {
+					#demote_leader = yes
+					#if = {
+					#	limit = {
+					#		is_advisor = yes
+					#	}
+					#	remove_any_country_role_from_character = yes
+					#}
+					set_nationality = ROOT
+				}
+			}
+	set_country_flag = AOI_mengesha_on_our_side
+	custom_effect_tooltip = AOI_mengesha_on_our_side
+	}
+	option = {
+	name = AOI_event.15.b
+	add_stability = 0.025
+	}
+
+}
+
+country_event = {
+	id = AOI_event.16
+	title = AOI_event.16.t
+	desc = AOI_event.16.d
+	picture = GFX_report_balcha
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.16.a
+		set_country_flag = balcha_killed
+		custom_effect_tooltip = balcha_killed
+			ETH = {
+				ETH_balcho_safo = {
+					demote_leader = yes
+					if = {
+						limit = {
+							is_advisor = yes
+						}
+						remove_any_country_role_from_character = yes
+					}
+				}
+			}
+		
+	}
+}
+
+country_event = {
+	id = AOI_event.17
+	title = AOI_event.17.t
+	desc = AOI_event.17.d
+	picture = GFX_report_desio
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = AOI_event.17.a
+		
+		random_owned_controlled_state = {
+				add_resource = {
+					type = steel
+					amount = 12
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = aluminium
+					amount = 9
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = tungsten
+					amount = 6
+				}
+			}
+		}
+option = {
+		name = AOI_event.17.b
+		
+		random_owned_controlled_state = {
+				add_resource = {
+					type = steel
+					amount = 6
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = aluminium
+					amount = 9
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = tungsten
+					amount = 12
+				}
+			}
+		}
+option = {
+		name = AOI_event.17.c
+		
+		random_owned_controlled_state = {
+				add_resource = {
+					type = steel
+					amount = 9
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = aluminium
+					amount = 12
+				}
+			}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = tungsten
+					amount = 6
+				}
+			}
+		}
+	}
+country_event = { #больницы
+	id = AOI_event.18
+	title = AOI_event.18.t
+	desc = AOI_event.18.d
+	picture = GFX_report_event_generic_construction_site
+	
+	fire_only_once = yes
+
+	trigger = {
+	OR = {
+	has_completed_focus = AOI_developing_resources
+	has_completed_focus = AOI_urbanisation
+	}
+}
+
+	mean_time_to_happen = {
+		days = 60
+	}
+
+	option = {
+		name = AOI_event.18.a
+		add_ideas = AOI_hospitals
+	}
+}
+
+country_event = { #фачета нера
+	id = AOI_event.19
+	title = AOI_event.19.t
+	desc = AOI_event.19.d
+	picture = GFX_report_event_generic_construction_site
+	
+	fire_only_once = yes
+
+	trigger = {
+	has_completed_focus = AOI_abolish_slavery
+}
+
+	mean_time_to_happen = {
+		days = 28
+	}
+
+	option = {
+		name = AOI_event.19.a
+		add_popularity = {
+		ideology = fascism
+		popularity = 0.025
+		}
+	}
+}
+
+country_event = { #террор в адисабебе
+	id = AOI_event.20
+	title = AOI_event.20.t
+	desc = AOI_event.20.d
+	picture = GFX_report_event_chinese_soldiers_city_ruin
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = AOI_event.20.a
+		add_stability = -0.05
+		damage_building = { type = infrastructure damage = 1.5}
+		damage_building = { type = industrial_complex damage = 1.5}
+	}
+}
+ #партизаны +10 атаки и обороны
+country_event = {
+	id = AOI_event.21
+	title = AOI_event.21.t
+	desc = AOI_event.21.d
+	picture = GFX_report_event_tur_kurdish_guerillas
+	
+	fire_only_once = yes
+
+	trigger = {
+	original_tag = AOI
+		any_country = {
+		is_major = yes
+		has_war_with = AOI
+		}
+	}
+	mean_time_to_happen = { days = 14 }
+
+	option = {
+		name = AOI_event.21.a
+		every_country = {
+		limit = {
+		is_major = yes
+		has_war_with = AOI
+		}
+		add_timed_idea = {idea = AOI_help_of_partisans days = 720}
+		}
+	}
+}
+
+country_event = { #дженале
+	id = AOI_event.22
+	title = AOI_event.22.t
+	desc = AOI_event.22.d
+	picture = GFX_report_genale
+	
+	fire_only_once = yes
+	
+	trigger = {
+	has_completed_focus = AOI_agrarian_effort
+	}
+	
+	mean_time_to_happen = {
+		days = 50
+	}
+	
+
+	option = { #да
+		name = AOI_event.22.a
+		add_political_power = -20
+			842 = {
+				add_building_construction = {
+					type = dam
+					level = 1
+					instant_build = yes
+					province = {
+						id = 13238
+					}
+				}
+			}
+		
+	}
+	option = {#нет
+		name = AOI_event.22.b
+	}
+}
+
+country_event = {
+	id = AOI_event.23
+	title = AOI_event.23.t
+	desc = AOI_event.23.d
+	picture = GFX_report_amedeo_surrenders
+	
+	fire_only_once = yes
+	
+	trigger = {
+	original_tag = AOI
+	has_government = fascism
+	owns_state = 271
+	any_enemy_country = {
+	controls_state = 271
+	}
+	has_completed_focus = AOI_amedeo_sign
+	}
+	
+	immediate = {
+	hidden_effect = {
+	set_global_flag = AOI_amedeo_surrenders
+	}
+	}
+	
+	mean_time_to_happen = {
+		days = 28
+	}
+	
+	option = {
+		name = AOI_event.23.a
+		add_war_support = -0.15
+		retire_character = AOI_prince_amedeo
+			
+			add_country_leader_role = {
+			character = AOI_guglielmo_nasi
+			promote_leader = yes
+			country_leader = {
+			ideology = fascism_ideology
+			traits = { viceroy_of_aoi_nasi }
+			expire = "1965.1.1.1"
+			id = -1
+
+			}
+		}
+		
+	}
+}
+
+country_event = {
+	id = AOI_event.24
+	title = AOI_event.24.t
+	desc = AOI_event.24.d
+	picture = GFX_report_event_canada_treaty
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AOI_event.24.a
+		ROOT = {end_puppet = FROM}
+		FROM = {
+		swap_ideas = {
+		remove_idea = AOI_africa_orientale_italiana_idea
+		add_idea = AOI_africa_orientale_italiana_independent_idea
+		}
+		}
+		
+		ai_chance = {
+		base = 0.95
+		}
+	}
+	option = {
+	name = AOI_event.24.b
+	add_political_power = -150
+	add_stability = -0.15
+	add_war_support = -0.15
+		ai_chance = {
+		base = 0.05
+		}
+	}
+}
+
+
+country_event = {
+	id = AOI_event.25
+	title = AOI_event.25.t
+	desc = AOI_event.25.d
+	picture = GFX_report_italoafrica
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AOI_event.25.a
+		897 = {transfer_state_to = FROM}
+		896 = {transfer_state_to = FROM}
+		544 = {transfer_state_to = FROM}
+
+		ai_chance = {
+		base = 60
+		}	
+	}
+	option = {
+	name = AOI_event.25.b
+				FROM = {
+					create_wargoal = {
+						target = ROOT
+						type = annex_everything
+					}
+				}
+		ai_chance = {
+		base = 40
+		}				
+	}
+}
+
+
+country_event = {
+	id = AOI_event.30
+	title = AOI_event.30.t
+	desc = AOI_event.30.d
+	picture = GFX_report_event_generic_military_parade
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AOI_event.30.a
+		ai_chance = {
+			base = 25
+		}
+		trigger = {
+			owns_state = 2
+			NOT = {
+				capital_scope = {
+					state = 2
+				}
+			}
+		}
+		set_capital = {
+		 	state = 2
+		 	remember_old_capital = no
+		}
+	}
+	option = {
+	name = AOI_event.30.b
+		ai_chance = {
+			base = 25
+		}
+		trigger = {
+			owns_state = 159
+			NOT = {
+				capital_scope = {
+					state = 159
+				}
+			}
+		}
+		set_capital = {
+		 	state = 159
+		 	remember_old_capital = no
+		}
+	}
+	option = {
+		ai_chance = {
+			base = 25
+		}
+	name = AOI_event.30.c
+		trigger = {
+			owns_state = 117
+			NOT = {
+				capital_scope = {
+					state = 117
+				}
+			}
+		}
+		ai_chance = {
+			base = 25
+		}
+		set_capital = {
+		 	state = 117
+		 	remember_old_capital = no
+		}	
+	}
+	option = {
+		ai_chance = {
+			base = 25
+		}
+	name = AOI_event.30.e
+	add_political_power = 50
+		capital_scope = {
+			add_extra_state_shared_building_slots = 3
+		}
+	}
+}
+
+country_event = {
+	id = AOI_event.31
+	title = AOI_event.31.t
+	desc = AOI_event.31.d
+	picture = GFX_report_event_generic_military_parade
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AOI_event.31.a
+		ai_chance = {
+			base = 75
+			modifier = {
+				factor = 20
+				has_opinion = {
+					target = FROM
+					value > 65
+				}
+			}
+		}
+		IF = {
+		limit = {
+		AOI = {is_ai = yes}
+		}
+					LBA = {
+					set_cosmetic_tag = africa_italiana_lba
+					annex_country = {
+						target = AOI
+						transfer_troops = yes
+					}
+				every_state = {
+				limit = {is_core_of = AOI}
+				add_core_of = LBA
+				}
+			AOI = {
+			every_unit_leader = {
+			set_nationality = LBA
+			}
+			}
+				every_state = {
+				limit = {
+				OR = {
+		state = 452
+		state = 447
+		state = 907
+		state = 456
+		state = 457
+		state = 551
+		state = 883
+		state = 886
+		state = 884
+		state = 549
+		state = 887
+		state = 885
+		state = 458
+		state = 446
+		state = 453
+		state = 767
+		state = 552
+		state = 665
+				}
+				}
+				add_core_of = LBA
+				}
+				}
+		}
+		ELSE_IF = {
+		limit = {
+		AOI = {is_ai = no}
+		}
+		AOI = {
+					set_cosmetic_tag = africa_italiana_aoi
+					annex_country = {
+						target = LBA
+						transfer_troops = yes
+					}
+			LBA = {
+			every_unit_leader = {
+			set_nationality = AOI
+			}
+			}
+
+				every_state = {
+				limit = {
+				OR = {
+		state = 452
+		state = 447
+		state = 907
+		state = 456
+		state = 446
+		state = 453
+		state = 767
+		state = 552
+		state = 457
+		state = 551
+		state = 883
+		state = 886
+		state = 884
+		state = 549
+		state = 887
+		state = 885
+		state = 458
+		state = 665
+				}
+				}
+				add_core_of = AOI
+			}				
+		}
+	}
+}
+	option = {
+	name = AOI_event.31.b
+	add_political_power = -100
+	add_stability = -0.1
+		add_popularity = {
+		ideology = fascism
+		popularity = -0.1
+		}
+	}
+}
+
+country_event = {
+	id = AOI_event.32
+	title = AOI_event.30.t
+	desc = AOI_event.32.d
+	picture = GFX_report_event_generic_military_parade
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AOI_event.32.a
+		ai_chance = {
+			base = 75
+		}
+	add_political_power = -25
+	set_capital = {state = 2}
+	}
+	
+	option = {
+	name = AOI_event.32.b
+		ai_chance = {
+			base = 25
+		}
+	add_victory_points = { province = 5010 value = 15 }
+	}
+}
+
+country_event = {
+	id = AOI_event.33
+	title = AOI_event.33.t
+	desc = AOI_event.33.d
+	picture = GFX_report_event_generic_military_parade
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AOI_event.33.a
+		ai_chance = {
+			base = 75
+		}
+		FROM = {transfer_state = 976}
+		FROM = {add_political_power = -75}
+		ROOT = {add_political_power = 75}
+	}
+	
+	option = {
+	name = AOI_event.33.b
+		ai_chance = {
+			base = 25
+		}
+	add_war_support = 0.05
+	FROM = {country_event = {id = AOI_event.34 hours = 4} }
+	}
+}
+
+country_event = {
+	id = AOI_event.34
+	title = AOI_event.34.t
+	desc = AOI_event.34.d
+	picture = GFX_report_event_generic_military_parade
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AOI_event.34.a
+		ai_chance = {
+			base = 50
+		}
+		add_stability = -0.05
+	}
+	
+	option = {
+	name = AOI_event.34.b
+		ai_chance = {
+			base = 50
+		}
+	add_war_support = 0.05
+			create_wargoal = {
+			type = take_state_focus
+			target = 976.owner
+			generator = { 976 }
+			}
+	}
+}
+
+#country_event = { #создать аои через захват адис абебы
+#	id = AOI_event.35
+#	title = AOI_event.35.t
+#	desc = AOI_event.35.d
+#	picture = GFX_report_event_ETH_ethiopian_warriors
+#	
+#	fire_only_once = yes
+#	
+#	immediate = {
+#	hidden_effect = {
+#	ETH = {add_war_support = -0.1 add_stability = -0.05}
+#	}
+#	}
+#	
+#	trigger = {
+#	tag = ITA
+#	has_global_flag = second_italo_ethiopian_war_flag
+#	has_war_with = ETH
+#	271 = {state_is_fully_controlled_by_ROOT_or_subject = yes}
+#	}
+#
+#	option = {
+#		name = AOI_event.35.a
+#		
+#		custom_effect_tooltip = aoi_founded_tt
+#		
+#		unlock_decision_tooltip = send_more_men_to_the_AOI
+#		unlock_decision_tooltip = send_more_weapons_to_the_AOI
+#		
+#		hidden_effect = {
+#		create_aoi_as_puppet = yes
+#		}
+#		
+#		ai_chance = {
+#			base = 1
+#		}
+#	}
+#	
+#	option = {
+#	name = AOI_event.35.b
+#	add_political_power = 25
+#	add_stability = -0.03
+#	add_war_support = -0.03
+#	}
+#}
+
+country_event = { #стартап
+	id = AOI_event.100
+	title = AOI_event.100.t
+	desc = AOI_event.100.d
+	#picture = africa_nostra
+	
+	fire_only_once = yes
+	
+	option = {
+		name = AOI_event.2.a
+		#country_event = {id = SETTINGS_event.1}
+	}
+	option = {
+	name = AOI_event.100.a
+	trigger = {always = no}
+	country_event = {id = AOI_event.101}
+	}
+}
+country_event = { #изменения
+	id = AOI_event.101
+	title = AOI_event.101.t
+	desc = AOI_event.101.d
+	#picture = africa_nostra
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+		name = AOI_event.101.a
+		country_event = {id = SETTINGS_event.1}
+	}
+}

@@ -1,0 +1,73 @@
+characters = {
+	HEL_georgious_tsolakoglou = {
+		name = HEL_georgious_tsolakoglou
+		portraits = {
+			civilian = {
+				large = GFX_portrait_georgious
+				small = GFX_portrait_generic
+			}
+		}
+
+		country_leader = {
+			ideology = despotism
+			traits = { leader_of_protectorate }
+			expire = "1965.1.1.1"
+			id = -1
+
+		}
+		country_leader = {
+			ideology = fascism_ideology
+			traits = { leader_of_protectorate }
+			expire = "1965.1.1.1"
+			id = -1
+
+		}
+
+		field_marshal = {
+			traits = { politically_connected inflexible_strategist }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = -1
+			visible = {
+				NOT = {
+					has_government = communism
+					has_government = democratic
+				}
+			}
+		}
+	}
+	
+	EGY_fuad = {
+		name = EGY_fuad
+		portraits = {
+			civilian = {
+				large = GFX_portrait_egy_faud_i
+			}
+		}
+
+		country_leader = {
+			ideology = despotism
+			traits = {divisive_absolute_monarch}
+			expire = "1965.1.1.1"
+			id = -1
+		}
+	}
+	EGY_farouk = { 
+		name = EGY_farouk
+		portraits = {
+			civilian = {
+				large = GFX_portrait_egy_farouk
+			}
+		}
+ 
+		country_leader = {
+			ideology = despotism
+			traits = {disgraced_monarch}
+			expire = "1965.1.1.1"
+			id = -1
+		}
+	}
+}

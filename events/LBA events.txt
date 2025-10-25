@@ -1,0 +1,562 @@
+﻿
+add_namespace = LBA_event
+
+country_event = {
+	id = LBA_event.100
+	title = LBA_event.100.t
+	desc = LBA_event.100.d
+	picture = GFX_report_event_ITA_italian_civil_war
+	
+	trigger = {
+	NOT = {has_global_flag = italian_cw_by_states_happened_flag}
+	tag = RSI
+	surrender_progress > 0.75
+	LBA = {
+	has_government = fascism
+	surrender_progress < 0.1
+	}
+	ITA = {
+	has_completed_focus = ITA_defy_the_duce
+	}
+	}
+	
+	fire_only_once = yes
+	option = {
+	name = LBA_event.100.a
+	
+	if = {
+	limit = {RSI = {is_ai = yes}}
+	LBA	= { change_tag_from = ROOT }
+	}
+	
+	LBA = {
+	country_event = {id = LBA_event.1 days = 2}
+	}
+	ITA = {drop_cosmetic_tag = yes}
+	}
+}
+
+country_event = {
+	id = LBA_event.101 #кто лидер
+	title = LBA_event.101.t
+	desc = LBA_event.101.d
+	picture = GFX_report_event_ITA_grand_council
+	
+	fire_only_once = yes
+	
+	immediate = {
+	hidden_effect = {
+	set_country_flag = LBA_italian_exiles_path_flag
+
+				remove_country_leader_role = {
+					character = ITA_benito_mussolini
+					ideology = fascism_ideology
+				}
+		}
+	}
+	
+	is_triggered_only = yes
+
+	option = {
+		name = LBA_event.101.a
+		retire_country_leader = yes
+		add_war_support = 0.025
+			add_country_leader_role = {
+			character = ITA_benito_mussolini
+			promote_leader = yes
+			country_leader = {
+			ideology = fascism_ideology
+			expire = "1965.1.1.1"
+			id = -1
+			traits = {il_duce_providence_strengthen}
+			}
+		}	
+	mark_focus_tree_layout_dirty = yes
+	
+	hidden_effect = {
+	set_country_flag = lba_benito
+	}
+				ITA_benito_mussolini = {
+					add_unit_leader_trait = old_guard
+					add_unit_leader_trait = politically_connected
+					add_unit_leader_trait = media_personality
+					add_unit_leader_trait = harsh_leader
+				}
+	
+	}
+	
+	option = {
+		name = LBA_event.101.b
+		army_experience = 5
+			add_country_leader_role = {
+			character = ITA_rodolfo_graziani
+			promote_leader = yes
+			country_leader = {
+			ideology = fascism_ideology
+			expire = "1965.1.1.1"
+			id = -1
+			traits = {assignee harsh_country_leader}
+			}
+		}
+				ITA_benito_mussolini = {
+					add_unit_leader_trait = old_guard
+					add_unit_leader_trait = politically_connected
+					add_unit_leader_trait = media_personality
+					add_unit_leader_trait = harsh_leader
+				}
+				
+	mark_focus_tree_layout_dirty = yes
+
+	hidden_effect = {
+	set_country_flag = lba_graziani
+	}
+	
+	}
+	
+	option = {
+		name = LBA_event.101.c
+		navy_experience = 5
+			add_country_leader_role = {
+			character = ITA_junio_valerio_borghese
+			promote_leader = yes
+			country_leader = {
+			ideology = fascism_ideology
+			expire = "1965.1.1.1"
+			id = -1
+			traits = {
+			assignee diverstant_specialist
+			}
+			}
+		}
+				ITA_benito_mussolini = {
+					add_unit_leader_trait = old_guard
+					add_unit_leader_trait = politically_connected
+					add_unit_leader_trait = media_personality
+					add_unit_leader_trait = harsh_leader
+				}
+				
+	mark_focus_tree_layout_dirty = yes
+	
+	hidden_effect = {
+	set_country_flag = lba_valerio
+	}
+	
+	}
+	
+	option = {
+		name = LBA_event.101.e
+		add_political_power = 50
+		add_country_leader_trait = assignee
+		
+				ITA_benito_mussolini = {
+					add_unit_leader_trait = old_guard
+					add_unit_leader_trait = politically_connected
+					add_unit_leader_trait = media_personality
+					add_unit_leader_trait = harsh_leader
+				}
+				
+	mark_focus_tree_layout_dirty = yes
+	
+	hidden_effect = {
+	set_country_flag = lba_balbo
+	}
+	
+	}
+}
+
+country_event = {
+	id = LBA_event.1
+	title = LBA_event.1.t
+	desc = LBA_event.1.d
+	picture = GFX_report_event_ITA_italian_civil_war
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+	name = LBA_event.1.a
+	
+		drop_cosmetic_tag = yes
+	
+		IF = {
+		limit = {has_idea = LBA_italian_libya_idea}
+		swap_ideas = {
+		remove_idea = LBA_italian_libya_idea
+		add_idea = LBA_italian_libya_idea_not_puppet
+		}
+		}
+		ELSE_IF = {
+		limit = {has_idea = LBA_italian_libya_19_state_idea}
+		swap_ideas = {
+		remove_idea = LBA_italian_libya_19_state_idea
+		add_idea = LBA_italian_libya_19_state_no_puppet_idea
+		}		
+		}
+		
+				RSI = {
+					transfer_units_fraction = {
+						target = ROOT
+						size = 0.8
+						stockpile_ratio = 0.7
+						army_ratio = 0.7
+						navy_ratio = 0.7
+						air_ratio = 0.8
+					}
+				}
+		OVERLORD = {
+			set_autonomy = {
+			    target = ROOT
+			    autonomy_state = autonomy_free
+			}
+		}
+	
+	ITA = {white_peace = ROOT}
+	ETH = {white_peace = ROOT}
+	
+	hidden_effect = {
+	
+	RSI = {
+	add_timed_idea = {idea = ITA_surrender_idea days = 2}
+			ITA_benito_mussolini = {
+				set_nationality = ROOT
+			}
+			every_unit_leader = {
+			set_nationality = ROOT
+			}
+		}
+		country_event = {id = LBA_event.2 days = 4}
+		}
+	}
+}
+
+country_event = {
+	id = LBA_event.2
+	title = LBA_event.2.t
+	desc = LBA_event.2.d
+	picture = GFX_report_event_generic_mussolini
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = LBA_event.2.a
+		
+		set_country_flag = LBA_italian_exiles_path_flag
+		custom_effect_tooltip = LBA_italian_exiles_path_flag
+		mark_focus_tree_layout_dirty = yes
+		
+		ai_chance = {
+		base = 100
+		}
+	}
+	
+	option = {
+		name = LBA_event.2.b
+		
+		trigger = {always = no}
+		
+		add_political_power = -150
+		add_country_leader_trait = supreme_leader
+		set_country_flag = LBA_italian_exiles_path_flag
+		set_country_flag = no_elections_lba_council_flag
+		custom_effect_tooltip = no_elections_lba_council_flag
+	}
+}
+country_event = {
+	id = LBA_event.3 #запрос поддержки
+	title = LBA_event.3.t
+	desc = LBA_event.3.d
+	picture = GFX_report_event_gre_allied_diplomacy_military
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = LBA_event.3.a
+		ai_chance = {
+		base = 99
+		}		
+		custom_effect_tooltip = will_be_dragged_into_war_focus_tt
+		custom_effect_tooltip = will_get_reparations_tt
+		hidden_effect = {
+		set_country_flag = agreed_to_support_flag
+		}
+		FROM = {country_event = {id = LBA_event.4 hours = 4}}
+	}
+	option = {
+	add_political_power = 25
+		FROM = {country_event = {id = LBA_event.5 hours = 4}}	
+		ai_chance = {
+		base = 1
+		}
+	}
+}
+
+country_event = {
+	id = LBA_event.4 #да
+	title = LBA_event.4.t
+	desc = LBA_event.4.d
+	picture = GFX_report_event_gre_allied_diplomacy_military
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AOI_event.5.a
+		if = {
+		limit = {
+		FROM = {tag = GER}
+		bba_get_fighter_GER_effect = yes
+		bba_get_cas_GER_effect = yes
+		}
+		}
+		if = {
+		limit = {
+		FROM = {tag = ENG}
+		bba_get_fighter_ENG_effect = yes
+		bba_get_cas_ENG_effect = yes
+		}
+		}
+		if = {
+		limit = {
+		FROM = {tag = FRA}
+		bba_get_fighter_FRA_effect = yes
+		bba_get_cas_FRA_effect = yes
+		}
+		}
+	}
+}
+country_event = {
+	id = LBA_event.5 #нет
+	title = LBA_event.5.t
+	desc = LBA_event.5.d
+	picture = GFX_report_event_por_salazar_military
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = LBA_event.5.a
+		IF = {
+		limit = {
+		FROM = {tag = GER}
+		ROOT = {tag = ITA}
+		}
+		ROOT = {
+			declare_war_on = {
+			target = SWI
+			type = annex_everything
+			}
+		}
+		}
+	}
+}
+country_event = {
+	id = LBA_event.6 #запрос снаряжения
+	title = LBA_event.6.t
+	desc = LBA_event.6.d
+	picture = GFX_report_event_generic_truck
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+		base = 85
+		}
+		name = LBA_event.6.a
+		FROM = {country_event = {id = LBA_event.7 hours = 4}}
+	}
+	option = {
+		ai_chance = {
+		base = 15
+		}
+		name = LBA_event.3.b
+		add_political_power = 25
+	}
+}
+
+country_event = {
+	id = LBA_event.7 #снаряжение да
+	title = LBA_event.4.t
+	desc = LBA_event.7.d
+	picture = GFX_report_event_generic_truck
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AOI_event.2.a
+		add_political_power = -25
+		ROOT = {
+			add_equipment_to_stockpile = { 
+				type = infantry_equipment_1 
+				amount = 2000
+				producer = FROM
+			}
+		}
+	}
+}
+
+country_event = {
+	id = LBA_event.8 # страны требуют репараций
+	title = LBA_event.8.t
+	desc = LBA_event.8.d
+	picture = GFX_report_event_soviet_finnish_pact
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = LBA_event.8.a
+		add_political_power = -25
+		add_ideas = LBA_reparations_lba
+		every_country = {
+		limit = {has_country_flag = agreed_to_support_flag }
+		add_ideas = LBA_reparations_other_countries
+		}
+	}
+}
+
+country_event = {
+	id = LBA_event.9 # отказ от репараций
+	title = LBA_event.9.t
+	desc = LBA_event.9.d
+	picture = GFX_report_event_hol_cabinet_de_geer
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = LBA_event.9.a
+		ai_chance = {base = 30}
+		FROM = {country_event = {id = LBA_event.10 hours = 4}}
+		add_political_power = -25
+		add_stability = -0.05
+		add_war_support = -0.05
+		remove_ideas = LBA_reparations_other_countries
+	}
+	option = {
+		name = LBA_event.9.b
+		ai_chance = {base = 70}
+		FROM = {country_event = {id = LBA_event.11 hours = 4}}
+		ROOT = {
+		add_ai_strategy = {
+		type = antagonize
+		id = FROM
+		value = 100
+		}
+		}
+		add_war_support = 0.05
+			ROOT = {
+				create_wargoal = {
+				target = FROM
+				type = annex_everything
+			}
+		}
+		remove_ideas = LBA_reparations_other_countries
+	}
+}
+country_event = {
+	id = LBA_event.10 # отказались платить репарации, пох
+	title = LBA_event.10.t
+	desc = LBA_event.10.d
+	picture = GFX_report_event_german_italian_pact
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = AOI_event.11.a
+		add_political_power = 15
+	}
+}
+country_event = {
+	id = LBA_event.11 # отказались платить репарации, война
+	title = LBA_event.11.t
+	desc = LBA_event.11.d
+	picture = GFX_report_event_soviet_tanks
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = LBA_event.11.a
+		add_political_power = -25
+		if = {
+		limit = {
+		FROM = {
+		is_in_faction_with = ROOT
+		is_faction_leader = yes
+		}
+		}
+		ROOT = {leave_faction = yes}
+		}
+	}
+}
+
+country_event = {
+	id = LBA_event.12 #сепаратизм италия
+	title = LBA_event.12.t
+	desc = LBA_event.12.d
+	picture = GFX_report_event_tur_politician_march
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = LBA_event.12.a
+		114 = {add_dynamic_modifier = {modifier = LBA_supporting_separatism scope = ROOT days = 180}}
+		115 = {add_dynamic_modifier = {modifier = LBA_supporting_separatism scope = ROOT days = 180}}
+	}
+}
+country_event = {
+	id = LBA_event.13 #восстание партизан
+	title = LBA_event.13.t
+	desc = LBA_event.13.d
+	picture = GFX_report_event_FIN_karelian_forest_guerillas
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = LBA_event.13.a
+		load_oob = LBA_partisans_army
+	}
+}
+country_event = {
+	id = LBA_event.14 #разобраться с монархией
+	title = LBA_event.14.t
+	desc = LBA_event.14.d
+	picture = GFX_report_partisans
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = LBA_event.14.a
+		add_manpower = -10
+	}
+	option = {
+		name = LBA_event.14.b
+		add_manpower = -10
+	}
+	option = {
+		name = LBA_event.14.c
+		add_manpower = -10
+	}
+}

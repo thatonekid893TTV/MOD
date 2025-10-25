@@ -1,0 +1,2676 @@
+﻿
+focus_tree = {
+	id = protectorate_focus
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 30
+			original_tag = LBA
+		}
+		modifier = {
+			add = 10
+			original_tag = HEL
+		}
+		modifier = {
+			add = 10
+			original_tag = FCO
+		}
+		modifier = {
+			add = 10
+			original_tag = ITB
+		}
+		modifier = {
+			add = 10
+			original_tag = ITC
+		} 
+		modifier = {
+			add = 10
+			original_tag = PBR
+		}
+		modifier = {
+			add = 10
+			original_tag = PRR
+		}
+		modifier = {
+			add = 10
+			original_tag = USI
+		}
+		modifier = {
+			add = 10
+			original_tag = ANA
+		}
+		modifier = {
+			add = 10
+			original_tag = ITJ
+		}
+	}
+	
+	default = no
+
+	continuous_focus_position = { x = 150 y = 150 }
+
+	initial_show_position = {
+		x = 0
+		y = 0
+	}
+
+#focus = {
+#		id = PROT_
+#		icon = GFX_
+#		#prerequisite = { focus = }
+#		#mutually_exclusive = { focus = }
+#		#relative_position_id = 
+#		x = 10
+#		y = 1
+#
+#		cost = 5
+#		available = {
+#		}
+#
+#		search_filters = { }
+#
+#		completion_reward = {
+#		}	
+#	}
+
+focus = {
+		id = PROT_italian_puppet
+		icon = GFX_focus_CZE_german_puppet
+		#prerequisite = { focus = }
+		#mutually_exclusive = { focus = }
+		#relative_position_id
+		x = 18
+		y = 0
+
+		cost = 8
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = ITA_servizio_informazione_militare_ns
+		add_political_power = 150
+		}	
+	}
+
+focus = {
+		id = PROT_italian_investments
+		icon = GFX_focus_befriend_italy
+		prerequisite = { focus = PROT_italian_puppet}
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_italian_puppet
+		x = 0
+		y = 1
+
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+focus = {
+		id = PROT_overlord_economy_model
+		icon = GFX_goal_italy_nationalize_the_banks
+		prerequisite = { focus = PROT_italian_investments }
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_italian_investments
+		x = -6
+		y = 1
+
+		cost = 10
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = PROT_economic_help
+		upgrade_economy_law = yes
+		}
+	}
+focus = {
+		id = PROT_root_autobahn
+		icon = GFX_goal_reichsautobahn
+		prerequisite = {focus = PROT_university_of_capital}
+		prerequisite = { focus = PROT_overlord_economy_model }
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_overlord_economy_model
+		x = 0
+		y = 2
+
+		cost = 8
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		if = {
+		limit = {
+		tag = LBA
+		}
+			every_state = {
+				limit = {
+					OR = {
+						#LIBYA
+						state = 448 #TRIPOLI
+						state = 449 #EL AGHELIA
+						state = 450 #BENGHASI
+						state = 451 #DERNA
+					}
+					state_is_fully_controlled_by_ROOT_or_subject = yes
+				}
+				add_dynamic_modifier = { modifier = ITA_libyan_railway_modifier days = 365 }
+			}
+		}
+		capital_scope = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_extra_state_shared_building_slots = 1
+		}
+		}
+	}
+focus = {
+		id = PROT_defence_forts
+		icon = GFX_goal_fortify_the_westwall
+		prerequisite = {focus = PROT_root_autobahn }
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_root_autobahn
+		x = 0
+		y = 1
+
+		cost = 10
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = deterrence
+		every_owned_state = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					instant_build = yes
+					province = {
+						all_provinces = yes
+						limit_to_border = yes
+					}
+				}
+			}
+			every_owned_state = {
+			limit = {is_coastal = yes}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 1
+					instant_build = yes
+					province = {
+						all_provinces = yes
+					}
+				}
+			}
+		}	
+	}
+
+focus = {
+		id = PROT_italian_settlers
+		icon = GFX_focus_ETH_invite_italian_settlers
+		prerequisite = { focus = PROT_italian_investments }
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_italian_investments
+		x = 0
+		y = 1
+
+		cost = 10
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		every_owned_state = {
+			limit = {
+				is_fully_controlled_by = ROOT
+			}
+			add_manpower = 10000
+		}
+		add_ideas = AOI_italian_settlers_idea
+		add_ideas = ITA_ALB_italian_settlers
+				random_controlled_state = {
+					limit = {
+						OR = {
+							has_state_category = rural
+							has_state_category = pastoral
+						}
+						NOT = {
+							has_state_flag = ETH_has_italian_settlers
+						}
+					}
+					ETH_upgrade_state_category = yes
+					set_state_flag = ETH_has_italian_settlers
+				}
+				random_controlled_state = {
+					limit = {
+						OR = {
+							has_state_category = rural
+							has_state_category = pastoral
+						}
+						NOT = {
+							has_state_flag = ETH_has_italian_settlers
+						}
+					}
+					ETH_upgrade_state_category = yes
+					set_state_flag = ETH_has_italian_settlers
+				}
+		}	
+	}
+focus = {
+		id = PROT_university_of_capital
+		icon = GFX_focus_generic_university_1
+		prerequisite = { focus = PROT_italian_settlers focus = PROT_overlord_economy_model }
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_italian_settlers
+		x = -3
+		y = 1
+
+		cost = 8
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_research_slot = 1
+		}	
+	}
+focus = {
+		id = PROT_industry_civil
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = PROT_university_of_capital}
+		prerequisite = {focus = PROT_overlord_economy_model }
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_university_of_capital
+		x = 3
+		y = 1
+
+		cost = 8
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = industry
+		}
+		random_owned_state = {
+add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+		}
+		}	
+	}
+focus = {
+		id = PROT_more_resources
+		icon = GFX_focus_generic_resource_extraction
+		prerequisite = { focus = PROT_industry_civil}
+		relative_position_id = PROT_industry_civil
+		x = 0
+		y = 1
+
+		cost = 10
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		random_owned_controlled_state = {
+			limit = {
+			impassable = no
+			}
+				add_resource = {
+					type = steel
+					amount = 12
+				}
+			}
+			if = {
+			limit = {original_tag = LBA}
+			random_owned_controlled_state = {
+				add_resource = {
+					type = oil
+					amount = 8
+				}
+			}
+			}
+			else = {
+			random_owned_controlled_state = {
+				add_resource = {
+					type = tungsten
+					amount = 8
+				}
+			}
+			}
+
+			random_owned_controlled_state = {
+				add_resource = {
+					type = aluminium
+					amount = 6
+				}
+			}
+		}	
+	}
+focus = {
+		id = PROT_industry_mil
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = PROT_root_autobahn}
+		prerequisite = {focus = PROT_industry_civil }
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_industry_civil
+		x = -3
+		y = 2
+
+		cost = 8
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = industry
+		}
+		random_owned_state = {
+		add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+		}
+		}	
+	}
+focus = {
+		id = PROT_atomic
+		icon = GFX_SOV_soviet_atomic_bomb_project_ccp_2d_sov_compatibility
+		prerequisite = { focus = PROT_industry_mil}
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_industry_mil
+		x = 1
+		y = 1
+
+		cost = 10
+		available = {
+		OR = {
+		date > 1943.1.1
+		num_of_factories > 35
+		}
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1
+				uses = 1
+				category = nuclear
+			}
+				capital_scope = {
+				construct_building_in_random_province = {
+				nuclear_facility = 1
+				}
+			}
+		}	
+	}
+	
+focus = {
+		id = PROT_research_group
+		icon = GFX_focus_NORDIC_com_research
+		prerequisite = { focus = PROT_industry_mil}
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_industry_mil
+		x = -1
+		y = 1
+
+		cost = 8
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_research_slot = 1
+		}	
+	}
+	
+focus = {
+		id = PROT_propagate_italianism
+		icon = GFX_focus_RSI_italy_awakened
+		prerequisite = { focus = PROT_italian_investments}
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_italian_settlers
+		x = 6
+		y = 0
+
+		cost = 8
+		available = {
+		}
+		
+		ai_will_do = {
+			base = 3
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		if = {
+		limit = {original_tag = LBA}
+		add_ideas = LBA_musulmanic_italians
+		}
+		else = {
+		add_ideas = PROT_italianism
+		}
+
+			if = {
+			limit = { ROOT = { has_government = neutrality } }
+			add_popularity = {ideology = neutrality popularity = 0.05}}
+			if = {
+			limit = { ROOT = { has_government = democratic } }
+			add_popularity = {ideology = democratic popularity = 0.05}}
+			if = {
+			limit = { ROOT = { has_government = fascism } }
+			add_popularity = {ideology = fascism popularity = 0.05}}
+			if = {
+			limit = { ROOT = { has_government = communism } }
+			add_popularity = {ideology = communism popularity = 0.05}}
+		}
+	}
+focus = {
+		id = PROT_root_army
+		icon = {
+		value = GFX_focus_NORDIC_dem_army
+		trigger = {NOT = {has_government = fascism}}
+		}
+		icon = {
+		value = GFX_focus_ITA_blackshirts	
+		}
+		prerequisite = { focus = PROT_propagate_italianism}
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_propagate_italianism
+		x = 0
+		y = 1
+		
+		dynamic = yes
+
+		cost = 8
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+	
+	any_character = {
+	limit = {
+	is_country_leader = yes
+	#is_corps_commander = no
+	#is_field_marshal = no
+	#is_navy_leader = no
+	}
+	add_corps_commander_role = {
+		skill = 2
+		attack_skill = 2
+		defense_skill = 2
+		planning_skill = 2
+		logistics_skill = 2
+	}
+	}
+		
+		
+		army_experience = 25
+		add_war_support = 0.10
+				division_template = {
+						name = "Militia"
+						is_locked = no
+						force_allow_recruiting = yes
+						priority = 1
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+						}
+					}
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Militia\" start_experience_factor = 0.4 start_manpower_factor = 1.0 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+			}
+		}
+	}
+	
+focus = {
+		id = PROT_air_force
+		icon = GFX_goal_generic_air_fighter2	
+		prerequisite = { focus = PROT_root_army}
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_root_army
+		x = 5
+		y = 1
+
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		air_experience = 40
+		}
+	}
+focus = {
+		id = PROT_naval_forces
+		icon = GFX_focus_generic_navy_battleship2	
+		prerequisite = { focus = PROT_root_army}
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_root_army
+		x = 7
+		y = 1
+
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		navy_experience = 40
+		}
+	}
+focus = {
+		id = PROT_more_production
+		icon = GFX_focus_SMB_blue_water_fleet	
+		prerequisite = { focus = PROT_air_force}
+		prerequisite = { focus = PROT_naval_forces}
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_naval_forces
+		x = -1
+		y = 1
+
+		cost = 10
+		available = {
+		}
+		
+
+		search_filters = { }
+
+		completion_reward = {
+		random_owned_state = {
+		add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+		}
+		random_owned_state = {
+		limit = {is_coastal = yes}
+		add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+			type = dockyard
+			level = 3
+			instant_build = yes
+			}
+		}
+		}
+	}
+focus = {
+		id = PROT_doctrine
+		icon = GFX_focus_prc_infiltration	
+		prerequisite = { focus = PROT_more_production}
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_more_production
+		x = 0
+		y = 1
+
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
+		}
+		add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = naval_doctrine
+		}
+		}
+	}
+focus = {
+		id = PROT_superair
+		icon = GFX_goal_italy_fiat_g_50	
+		prerequisite = { focus = PROT_air_force}
+		prerequisite = { focus = PROT_doctrine}
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_air_force
+		x = 0
+		y = 3
+
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		custom_effect_tooltip = wip_tt
+			add_tech_bonus = {
+				bonus = 1
+				uses = 4
+				category = air_equipment
+			}
+		}
+	}
+focus = {
+		id = PROT_superfleet
+		icon = GFX_focus_GER_high_seas_fleet	
+		prerequisite = { focus = PROT_naval_forces}
+		prerequisite = { focus = PROT_doctrine}
+		#mutually_exclusive = { focus = }
+		relative_position_id = PROT_naval_forces
+		x = 0
+		y = 3
+
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		custom_effect_tooltip = wip_tt
+
+			add_tech_bonus = {
+				bonus = 1
+				uses = 4
+				category = naval_equipment
+			}
+		}
+	}
+focus = {
+		id = PROT_metropolitan_army
+		icon = GFX_focus_ITA_brigate_nere
+		prerequisite = { focus = PROT_root_army}
+		mutually_exclusive = { focus = PROT_own_forces}
+		relative_position_id = PROT_root_army
+		x = -1
+		y = 1
+
+		cost = 5
+		available = {
+		is_subject=yes
+		}
+		
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = PROT_metropolitan_army_ns
+		}
+	}
+focus = {
+		id = PROT_own_forces
+		icon = GFX_focus_generic_fascist_troops
+		prerequisite = { focus = PROT_root_army}
+		mutually_exclusive = { focus = PROT_metropolitan_army }
+		relative_position_id = PROT_root_army
+		x = 1
+		y = 1
+
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = PROT_own_forces_ns
+		}
+	}
+focus = {
+		id = PROT_italian_doctrine
+		icon = GFX_focus_ITA_alpine_division
+		prerequisite = { focus = PROT_metropolitan_army}
+		relative_position_id = PROT_metropolitan_army
+		x = -1
+		y = 1
+		
+		ai_will_do = {
+			base = 2
+		}
+
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = PROT_italian_doctrine_ns
+		}
+	}
+focus = {
+		id = PROT_our_technologies
+		icon = GFX_focus_RSI_firing_squad
+		prerequisite = { focus = PROT_own_forces}
+		relative_position_id = PROT_own_forces
+		x = 1
+		y = 1
+
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = PROT_our_technologies_ns
+		}
+	}
+focus = {
+		id = PROT_extend_conscription
+		icon = GFX_focus_generic_limited_social_mobilization
+		prerequisite = { focus = PROT_root_army}
+		relative_position_id = PROT_root_army
+		x = 0
+		y = 2
+
+		cost = 5
+		available = {
+		}
+		
+		ai_will_do = {
+			base = 2
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = PROT_extend_conscription_ns
+		}
+	}
+	
+focus = {
+		id = LBA_africa_corps
+		icon = GFX_focus_ITA_afrika_korps
+		prerequisite = {focus = PROT_root_army}
+		relative_position_id = PROT_root_army
+		x = -3
+		y = 1
+
+		cost = 3
+		available = {
+		has_war = yes
+		is_in_faction_with = GER
+		OR = {
+		is_in_faction_with = ITA
+		has_country_flag = LBA_italian_exiles_path_flag
+		}
+		}
+		
+		allow_branch = {
+		original_tag = LBA
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+		add_ideas = LBA_africa_corps_ns
+		
+		GER = {add_ideas = LBA_africa_corps_ns}
+		
+		if = {
+		limit = {
+		ITA = {
+		OR = {
+		is_in_faction_with = ROOT
+		ROOT = {is_subject_of = PREV}
+		}
+		}
+		}
+		ITA = {add_ideas = LBA_africa_corps_ns}
+		}
+		
+		hidden_effect = {
+		add_equipment_to_stockpile = {
+		type = anti_tank_equipment
+		amount = 36
+		producer = ITA
+		}
+		add_equipment_to_stockpile = {
+		type = medium_tank_chassis_0
+		amount = 250
+		producer = ITA
+		}
+		add_equipment_to_stockpile = {
+		type = motorized_equipment_1
+		amount = 200
+		producer = ITA
+		}
+		}
+				division_template = {
+					name = "101 Motorised division" 
+					regiments = { 
+						motorized = { x = 0 y = 0 }
+						motorized = { x = 0 y = 1 }
+						motorized = { x = 0 y = 2 }
+						motorized = { x = 1 y = 0 }
+						motorized = { x = 1 y = 1 }
+						motorized = { x = 1 y = 2 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+						mot_recon = { x = 0 y = 1 }
+						artillery = { x = 0 y = 2 }
+					}
+				}
+				division_template = {
+					name = "132 Armored division"
+					regiments = { 
+						light_armor = { x = 0 y = 0 }
+						light_armor = { x = 0 y = 1 }
+						light_armor = { x = 0 y = 2 }
+						medium_armor = { x = 1 y = 0 }
+						medium_armor = { x = 1 y = 1 }
+						medium_armor = { x = 1 y = 2 }
+						motorized = { x = 2 y = 0 }
+						motorized = { x = 2 y = 1 }
+						motorized = { x = 2 y = 2 }
+						motorized = { x = 2 y = 3 }
+					}
+					support = { 
+						engineer = { x = 0 y = 0 }
+						artillery = { x = 0 y = 1 }
+						anti_air = { x = 0 y = 2 }
+					}
+				}
+				division_template = { 
+					name = "133 Armored division"
+					regiments = { 
+						light_armor = { x = 0 y = 0 }
+						light_armor = { x = 0 y = 1 }
+						light_armor = { x = 0 y = 2 }
+						light_armor = { x = 1 y = 0 }
+						light_armor = { x = 1 y = 1 }
+						light_armor = { x = 1 y = 2 }
+						motorized = { x = 2 y = 0 }
+						motorized = { x = 2 y = 1 }
+						motorized = { x = 2 y = 2 }
+						motorized = { x = 2 y = 3 }
+					}
+					support = { 
+						engineer = { x = 0 y = 0 }
+						artillery = { x = 0 y = 1 }
+						anti_tank = { x = 0 y = 2 }
+					}
+				}
+				capital_scope = {
+						create_unit = {
+							division = "division_template = \"101 Motorised division\" start_experience_factor = 1 start_equipment_factor = 1"
+							owner = ROOT
+							count = 1
+						}
+						create_unit = {
+							division = "division_template = \"132 Armored division\" start_experience_factor = 1 start_equipment_factor = 1"
+							owner = ROOT
+							count = 1
+						}
+						create_unit = {
+							division = "division_template = \"133 Armored division\" start_experience_factor = 1 start_equipment_factor = 1"
+							owner = ROOT
+							count = 1
+						}
+			}
+		}
+	}
+	
+	
+focus = {
+		id = PROT_superarmy
+		icon = {
+		value = GFX_focus_SOV_the_glory_of_the_red_army_alternative
+		}
+		icon = {
+		value = GFX_focus_SOV_the_glory_of_the_red_army_communism
+		trigger = {has_government = communism}
+		}
+		prerequisite = { focus = PROT_extend_conscription}
+		prerequisite = { focus = PROT_italian_doctrine focus = PROT_our_technologies}
+		relative_position_id = PROT_extend_conscription
+		x = 0
+		y = 2
+		
+		dynamic = yes
+		
+		ai_will_do = {
+			base = 10
+		}
+
+		cost = 8
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = PROT_superarmy_ns
+			custom_effect_tooltip = ITA_battaglioni_d_assalto_tt
+			hidden_effect = {
+				set_technology = { blackshirt_assault_battalion_tech = 1 popup = no }
+			}
+		}
+	}
+focus = {
+		id = PROT_core_lands
+		icon = GFX_focus_generic_italy_propaganda
+		prerequisite = { focus = PROT_propagate_italianism}
+		prerequisite = { focus = PROT_italian_settlers}
+		relative_position_id = PROT_superarmy
+		x = -4
+		y = 0
+		
+		allow_branch = {
+		NOT = {
+		OR = {
+		original_tag = LBA
+		original_tag = ALB
+		original_tag = CRO
+		original_tag = AOI
+		original_tag = SLV
+		}
+		}
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+		
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		custom_effect_tooltip = wip_tt
+
+		add_political_power = 25
+		
+		every_owned_state = {
+		limit = {
+		NOT = {is_core_of = ROOT}
+		}
+		add_resistance = -10
+		add_compliance = 20
+		}
+		}
+	}
+focus = {
+		id = PROT_greater_albania
+		icon = GFX_focus_ITA_albanian_irredentism
+		prerequisite = { focus = PROT_propagate_italianism}
+		prerequisite = { focus = PROT_italian_settlers}
+		relative_position_id = PROT_superarmy
+		x = -4
+		y = 0
+		
+		allow_branch = {
+		original_tag = ALB
+		}	
+		
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_political_power = 50
+		add_ideas = ALB_greater_albania_idea
+		}
+	}
+	focus = {
+		id = PROT_integrate_lands_aoi
+		name = AOI_integrate_lands
+		icon = GFX_focus_ETH_consolidate_east_africa
+		prerequisite = { focus = PROT_propagate_italianism}
+		prerequisite = { focus = PROT_italian_settlers}
+		relative_position_id = PROT_superarmy
+		x = -4
+		y = 0
+		
+		allow_branch = {
+		original_tag = AOI
+		}	
+		
+		cost = 5
+		available = {
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		every_owned_state = {
+		add_resistance = -10 
+		add_compliance = 25
+		}
+		unlock_decision_category_tooltip = AOI_establish_full_order
+		}
+	}
+focus = {
+		id = PROT_greater_slovenia
+		icon = GFX_goal_slovenia
+		prerequisite = { focus = PROT_propagate_italianism}
+		prerequisite = { focus = PROT_italian_settlers}
+		relative_position_id = PROT_superarmy
+		x = -4
+		y = 0
+		
+		allow_branch = {
+		original_tag = SLV
+		}	
+		
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		custom_effect_tooltip = wip_tt
+		
+		1033 = {add_core_of = ROOT}
+		
+		add_stability = 0.1
+		add_war_support = 0.05
+		add_political_power = 50
+		}
+	}
+focus = {
+		id = PROT_core_bosnia
+		icon = GFX_focus_YUG_safeguard_bosnia
+		prerequisite = { focus = PROT_propagate_italianism}
+		prerequisite = { focus = PROT_italian_settlers}
+		relative_position_id = PROT_superarmy
+		x = -4
+		y = 0
+		
+		allow_branch = {
+		original_tag = CRO
+		}	
+		
+		cost = 10
+		
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_stability = -0.05
+		if = {
+		limit = {has_country_leader_with_trait = ITA_tomislav_of_croatia}
+		swap_ruler_traits = {
+		remove = ITA_tomislav_of_croatia
+		add = ITA_tomislav_of_croatia_nostra
+		}
+		}
+		104 = {
+		add_core_of = ROOT
+		}
+		804 = {
+		add_core_of = ROOT
+		}
+		105 = {add_claim_by = ROOT}
+		45 = {add_claim_by = ROOT}
+		}
+	}
+focus = {
+		id = PROT_north_african_protectorate
+		icon = GFX_focus_IRQ_unite_maghreb
+		prerequisite = { focus = PROT_propagate_italianism}
+		prerequisite = { focus = PROT_italian_settlers}
+		relative_position_id = PROT_superarmy
+		x = -4
+		y = 0
+		
+		allow_branch = {
+		original_tag = LBA
+		NOT = {has_country_flag = LBA_italian_exiles_path_flag}
+		}	
+		
+		cost = 10
+		available = {
+		has_global_flag = north_african_prot_flag
+		controls_state = 448
+		controls_state = 458
+		controls_state = 459
+		controls_state = 907
+		}
+		
+		bypass = {
+		has_global_flag = divided_north_africa_prot_flag
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		
+		ITA = {
+		upgrade_italian_col_emp = yes
+		}
+		
+		set_cosmetic_tag = LBA_north_africa
+	every_state = {
+	limit = {
+	OR = {
+	state = 783
+	state = 462
+	state = 461
+	state = 290
+	state = 459
+	state = 460
+	state = 513
+	state = 458
+	state = 665
+	state = 452
+	state = 447
+	state = 907
+	state = 446
+	state = 453
+	state = 456
+	state = 457
+	state = 1034
+	}
+	}
+	add_core_of = ROOT
+	}
+	every_state = {
+	limit = {
+	is_controlled_by = ROOT
+	OR = {
+	state = 783
+	state = 462
+	state = 461
+	state = 290
+	state = 459
+	state = 460
+	state = 513
+	state = 458
+	state = 665
+	state = 452
+	state = 447
+	state = 907
+	state = 446
+	state = 453
+	state = 456
+	state = 457
+	state = 1034
+	}
+	}
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+		add_extra_state_shared_building_slots = 1
+		}
+	}
+}
+	
+focus = {
+		id = PROT_italian_hegemony
+		icon = GFX_focus_ITA_italian_hegemony
+		prerequisite = { focus = PROT_atomic focus = PROT_research_group}
+		prerequisite = {focus = PROT_north_african_protectorate focus = PROT_integrate_lands_aoi focus = PROT_greater_albania focus = PROT_greater_slovenia focus = PROT_core_lands focus = PROT_core_bosnia}
+		prerequisite = { focus = PROT_superair focus = PROT_superarmy focus = PROT_superfleet}
+		relative_position_id = PROT_superarmy
+		x = -2
+		y = 1
+
+		cost = 10
+		
+		available = {
+		OR = {
+		AND = {
+		is_subject_of = LBA
+		LBA = {has_country_flag = LBA_italian_exiles_path_flag}
+		}
+		is_subject_of = ITA
+		}
+		}
+
+		ai_will_do = {
+			base = 100
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		#set_rule = {can_create_factions = yes}
+		add_stability = 0.1
+		add_ideas = ITA_italian_hegemony_subjects
+
+		load_focus_tree = generic_focus_improved
+		
+		}
+	}
+	
+	
+focus = {
+		id = LBA_host_italian_exiles
+		icon = GFX_focus_RSI_RSI
+		relative_position_id = PROT_italian_puppet
+		x = 18
+		y = 0
+
+		allow_branch = {
+		has_country_flag = LBA_italian_exiles_path_flag
+		}
+		
+		#offset = {
+		#	x = -24
+		#	y = 0
+		#	trigger = {
+		#		has_completed_focus = LBA_fascist_empire
+		#	}
+		#}
+		
+		ai_will_do = {
+			base = 10
+		}
+		
+		cost = 2
+		available = {
+		has_government = fascism
+		is_subject = no
+		ITA = {NOT = {has_government = fascism}}
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		mark_focus_tree_layout_dirty = yes
+		custom_effect_tooltip = formables_lba_not_available
+		set_cosmetic_tag = ITA_exile
+		add_timed_idea = {idea = LBA_italian_exiles_idea days = 365}
+		every_state = {
+		limit = {is_core_of = ITA}
+		add_claim_by = ROOT
+		}
+		hidden_effect = {
+				set_party_name = { 
+				ideology = fascism 
+				name = ITA_rfp_long
+				long_name = ITA_rfp_short
+				}
+			ITA = {
+				ITA_junio_valerio_borghese = {
+				set_nationality = ROOT
+				}
+			}
+			ITA = {
+				ITA_piera_fondelli = {
+				set_nationality = ROOT
+				}
+			}
+			ITA = {
+				ITA_prince_aimone = {
+				set_nationality = ROOT
+				}
+			}
+		}
+	}
+}
+	
+focus = {
+		id = LBA_leadership_question
+		icon = GFX_focus_BUL_form_a_regency_council
+		relative_position_id = LBA_host_italian_exiles
+		prerequisite = {focus = LBA_host_italian_exiles}
+		x = 0
+		y = 1
+		
+		cost = 1
+		available = {
+		NOT = {has_country_flag = no_elections_lba_council_flag}
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		country_event = {id = LBA_event.101}
+		}
+	}
+
+focus = {
+		id = LBA_ignine_muslim_militarism
+		icon = GFX_focus_ITA_oath
+		relative_position_id = LBA_host_italian_exiles
+		prerequisite = {focus = LBA_leadership_question}
+		x = 0
+		y = 2
+		
+		cost = 7
+		available = {
+		has_government = fascism
+		is_subject = no
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+		
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = LBA_muslim_militarism_ns
+		}
+	}
+
+focus = {
+		id = LBA_call_to_aoi
+		icon = GFX_goal_flag_aoi
+		relative_position_id = LBA_ignine_muslim_militarism
+		prerequisite = {focus = LBA_ignine_muslim_militarism}
+		x = -2
+		y = 1
+		
+		cost = 5
+		available = {
+		has_government = fascism
+		is_subject = no
+		ITA = {NOT = {has_government = fascism}}
+		NOT = {has_completed_focus = LBA_war_of_liberation}
+		AOI = {
+		exists = yes
+		NOT = {has_war_with = ROOT}
+		OR = {
+		has_government = fascism
+		has_government = neutrality
+		}
+		}
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		AOI = {country_event = NSB_soviet_foreign_politics_events.200 days = 1}
+		}
+	}
+focus = {
+		id = LBA_camicie_nere
+		icon = GFX_focus_ITA_battaglioni_m
+		relative_position_id = LBA_ignine_muslim_militarism
+		prerequisite = {focus = LBA_ignine_muslim_militarism}
+		x = 0
+		y = 1
+		
+		cost = 5
+		available = {
+		has_government = fascism
+		is_subject = no
+		ITA = {NOT = {has_government = fascism}}
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		#show_unit_leaders_tooltip = ITA_junio_valerio_borghese
+		#add_ideas = ITA_camicie_nere
+		hidden_effect = {
+		division_template = {
+						name = "Blackshirts brigade"
+						is_locked = no
+						#force_allow_recruiting = yes
+						priority = 1
+						regiments = {
+					militia = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 1 y = 0 }
+					militia = { x = 1 y = 1 }
+					militia = { x = 1 y = 2 }
+					militia = { x = 0 y = 2 }
+						}
+				support = { 
+				engineer = { x = 0 y = 0 }
+				recon = { x = 0 y = 1 }
+				}
+			}
+		}
+		capital_scope = {
+					create_unit = {
+						division = "division_template = \"Blackshirts brigade\" start_experience_factor = 0.6 start_equipment_factor = 1 start_manpower_factor = 1"
+						owner = ROOT
+						count = 6
+					}
+				}
+			}
+	}
+focus = {
+		id = LBA_call_for_fascist_europe
+		icon = GFX_focus_RSI_big_brother
+		relative_position_id = LBA_camicie_nere
+		prerequisite = {focus = LBA_camicie_nere}
+		x = 3
+		y = 1
+		
+		cost = 5
+		available = {
+		has_government = fascism
+		is_subject = no
+		ITA = {NOT = {has_government = fascism}}
+		
+		any_country = {
+        capital_scope = {is_on_continent = europe}
+		has_government = fascism
+		NOT = {has_war_with = ROOT}
+		is_major = yes
+		}
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		if = {
+		limit = {
+		NOT = {has_idea = ITA_servizio_informazione_militare_ns}
+		}
+		add_ideas = ITA_servizio_informazione_militare_ns
+		}
+		
+		ITA_create_pietro_koch_operative = yes
+		
+		every_country = {
+		limit = {
+        capital_scope = {is_on_continent = europe}
+		has_government = fascism
+		NOT = {has_war_with = ROOT}
+		is_major = yes
+		}
+		country_event = {id = LBA_event.3 hours = 4}
+		}
+		every_country = {
+		limit = {
+		OR = {
+		has_government = fascism
+		has_government = neutrality
+		}
+		NOT = {has_war_with = ROOT}
+		is_major = yes
+		}
+		country_event = {id = LBA_event.6 hours = 4}
+		}
+		}
+	}
+focus = {
+		id = LBA_operation_klara
+		icon = GFX_goal_generic_major_war
+		relative_position_id = LBA_call_for_fascist_europe
+		prerequisite = { focus = LBA_call_for_fascist_europe }
+		x = 0
+		y = 1
+		
+		cost = 5
+		available = {
+		has_government = fascism
+		is_subject = no
+		ITA = {NOT = {has_government = fascism}}
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		army_experience = 25
+		air_experience = 25
+		navy_experience = 25
+		unlock_decision_category_tooltip = LBA_operation_clara_cat
+		}
+	}
+
+focus = {
+		id = LBA_support_separatism
+		icon = GFX_focus_ITA_bend_the_bars
+		relative_position_id = LBA_camicie_nere
+		prerequisite = {focus = LBA_camicie_nere}
+		x = 0
+		y = 2
+		
+		cost = 8
+		available = {
+		OR = {
+		114 = {
+		is_fully_controlled_by = ITA
+		}
+		115 = {
+		is_fully_controlled_by = ITA
+		}
+		}
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+
+		search_filters = { }
+
+		completion_reward = {		
+		ITA = {
+		add_stability = -0.1
+		add_war_support = -0.05
+		add_popularity = {ideology = fascism popularity = 0.1}
+		country_event = {id = LBA_event.12}
+		}
+		}
+	}
+focus = {
+		id = LBA_war_of_liberation
+		icon = GFX_focus_ITA_italy_arms
+		relative_position_id = LBA_camicie_nere
+		prerequisite = {focus = LBA_support_separatism}
+		prerequisite = {focus = LBA_operation_klara}
+		x = 0
+		y = 3
+
+		will_lead_to_war_with = ITA
+
+		cost = 8
+		available = {
+		has_government = fascism
+		is_subject = no
+		ITA = {NOT = {has_government = fascism}}
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		
+		show_unit_leaders_tooltip = ITA_piera_fondelli
+		
+		set_rule = {can_create_factions = yes}
+		set_rule = {can_generate_female_aces = yes}
+		set_major = yes
+		
+		add_war_support = 0.1
+		declare_war_on = {
+			target = ITA
+			type = annex_everything
+		}
+		
+		add_civil_war_target = ITA
+		
+		add_ideas = ITA_service_female_ns
+
+		hidden_effect = {
+		news_event = {id = LBA_news.1 hours = 4}
+		}
+	}
+}
+focus = {
+		id = LBA_we_have_returned
+		icon = {
+		trigger = {has_country_flag = lba_benito}
+		value = GFX_focus_ITA_capo_supremo
+		}
+		icon = {
+		trigger = {has_country_flag = lba_valerio}
+		value = GFX_focus_ITA_OLD_call_borghese
+		}
+		icon = {
+		trigger = {has_country_flag = lba_balbo}
+		value = GFX_focus_ITA_italo_balbo
+		}
+		icon = {
+		trigger = {has_country_flag = lba_graziani}
+		value = GFX_goal_ITA_graziani
+		}
+		
+		icon = {
+		value = GFX_goal_ITA_ani
+		}
+		
+		dynamic = yes
+		
+		relative_position_id = LBA_war_of_liberation
+		prerequisite = {focus = LBA_war_of_liberation}
+		x = 0
+		y = 1
+		
+		ai_will_do = {
+			base = 200
+		}
+		
+		cost = 2
+		available = {
+		2 = {
+		controller = {
+		OR = {
+		tag = ROOT
+		is_subject_of = ROOT
+		is_in_faction_with = ROOT
+		}
+		}
+		}
+		custom_effect_tooltip = generic_skip_one_line_tt
+		any_state = {
+		NOT = {state = 2}
+		is_core_of = ITA
+		is_owned_by = ITA
+		controller = {
+		OR = {
+		tag = ROOT
+		is_subject_of = ROOT
+		is_in_faction_with = ROOT
+		}
+		}
+		}
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+
+		set_cosmetic_tag = ITA_rsi
+		
+		custom_effect_tooltip = generic_skip_one_line_tt
+		
+		add_country_leader_trait = capo_supremo
+		
+		effect_tooltip = {
+		custom_effect_tooltip = if_mussolini_leader
+		swap_ruler_traits = { remove = il_duce_providence_strengthen add = il_duce_devotion }
+		}
+		custom_effect_tooltip = generic_skip_one_line_tt
+		effect_tooltip = {
+		custom_effect_tooltip = if_other_leader
+		add_ideas = ITA_divino_duce_1
+		}
+		
+		custom_effect_tooltip = generic_skip_one_line_tt
+		
+		every_state = {
+		limit = {is_core_of = ITA}
+		add_core_of = ROOT
+		}
+		hidden_effect = {
+		every_state = {
+		limit = {
+		NOT = {is_core_of = ITA}
+		OR = {
+		is_owned_by = ITA
+		is_claimed_by = ITA
+		}
+		NOT = {is_core_of = ROOT}
+		}
+		add_claim_by = ROOT
+		}
+		}
+		
+		hidden_effect = {
+		remove_ideas = ALL_colonial_militia
+		set_portraits = {
+			character = ITA_benito_mussolini
+			civilian = { large = GFX_portrait_mussolini_staring }
+			}
+		if = {
+		limit = {
+		has_country_leader = {
+				character = ITA_benito_mussolini
+				ruling_only = yes
+			}
+			}
+		swap_ruler_traits = { remove = il_duce_providence_strengthen add = il_duce_devotion }
+		}
+		else = {
+		add_ideas = ITA_divino_duce_1
+		}
+		}
+		}
+	}
+	
+focus = {
+		id = LBA_finish_resistance
+		icon = GFX_focus_ITA_banda_carita
+		relative_position_id = LBA_we_have_returned
+		prerequisite = {focus = LBA_we_have_returned}
+		x = 0
+		y = 1
+		
+		cost = 8
+		available = {
+		2 = {is_owned_and_controlled_by = ROOT}
+		OR = {
+		NOT = {country_exists = ITA}
+		ITA = {has_capitulated = yes}
+		}
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		
+		ITA_create_padre_ildefonso_operative = yes
+		
+		set_capital = {state = 2}
+		custom_effect_tooltip = mafia_will_be_killed_tt
+		swap_ideas = {
+		remove_idea = ITA_servizio_informazione_militare_ns
+		add_idea = ITA_servizio_informazione_militare_banda_carita
+		}
+		mark_focus_tree_layout_dirty = yes
+		
+		hidden_effect = {
+		news_event = {id = LBA_news.2}
+		remove_dynamic_modifier = {modifier = ITA_mafia_on_the_rise}
+		remove_dynamic_modifier = {modifier = ITA_mafia_on_the_rise_no_lar}
+		remove_dynamic_modifier = {modifier = ITA_established_mafia_no_lar}
+		remove_dynamic_modifier = {modifier = ITA_established_mafia}
+		
+		every_state = {
+		limit = {
+		OR = {
+		has_dynamic_modifier = {modifier = ITA_mafia_on_the_rise }
+		has_dynamic_modifier = {modifier = ITA_established_mafia }
+		has_dynamic_modifier = {modifier = ITA_established_mafia_no_lar }
+		has_dynamic_modifier = {modifier = ITA_mafia_on_the_rise_no_lar }
+		}
+		}
+		remove_dynamic_modifier = {modifier = ITA_mafia_on_the_rise }
+		remove_dynamic_modifier = {modifier = ITA_mafia_on_the_rise_no_lar }
+		remove_dynamic_modifier = {modifier = ITA_established_mafia_no_lar }
+		remove_dynamic_modifier = {modifier = ITA_established_mafia }
+		}
+		
+		}
+		
+		custom_effect_tooltip = generic_skip_one_line_tt
+		
+		country_event = {id = LBA_event.8 hours = 24}
+
+		custom_effect_tooltip = generic_skip_one_line_tt
+
+		every_state = {
+		limit = {is_core_of = ITA}
+		remove_core_of = ITA
+		}
+		
+		hidden_effect = {
+		country_event = {id = LBA_event.14 hours = 48}
+		every_state = {
+		limit = {is_claimed_by = ITA}
+		remove_claim_by = ITA
+		}
+		remove_ideas = LBA_italian_libya_idea
+		remove_ideas = LBA_italian_libya_idea_not_puppet
+		remove_ideas = LBA_italian_libya_19_state_idea
+		remove_ideas = LBA_italian_libya_19_state_no_puppet_idea
+		remove_ideas = ITA_ALB_italian_settlers
+		remove_ideas = LBA_sword_of_islam_ns
+		}
+	}
+}
+
+focus = {
+		id = LBA_fascist_reforms
+		icon = GFX_focus_ITA_generic_fascist_workers
+		relative_position_id = LBA_finish_resistance
+		prerequisite = {focus = LBA_finish_resistance}
+		x = -3
+		y = 1
+		
+		cost = 5
+		available = {
+		has_government = fascism
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = LBA_fascist_reforms_idea
+		}
+	}
+focus = {
+		id = LBA_expand_corporatism
+		icon = GFX_goal_italy_autarky
+		relative_position_id = LBA_fascist_reforms
+		prerequisite = {focus = LBA_fascist_reforms}
+		x = 1
+		y = 1
+		
+		cost = 10
+		available = {
+		has_government = fascism
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		random_owned_controlled_state = {
+		limit = {is_core_of = ROOT}
+		add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+		}
+		random_owned_controlled_state = {
+		limit = {is_core_of = ROOT}
+		add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+		}
+		every_state = {
+		limit = {
+		NOT = {is_core_of = ROOT}
+		is_owned_and_controlled_by = ROOT
+		}
+		add_dynamic_modifier = {modifier = ITA_expanded_corporatism_modifier scope = ROOT}
+		}
+		}
+	}
+focus = {
+		id = LBA_pontid_swamps
+		icon = GFX_focus_generic_land_reclamation
+		relative_position_id = LBA_fascist_reforms
+		prerequisite = {focus = LBA_fascist_reforms}
+		x = -1
+		y = 1
+		
+		cost = 5
+		available = {
+		has_government = fascism
+		2 = {is_fully_controlled_by = ROOT}
+		157 = {is_fully_controlled_by = ROOT}
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = industry
+		}
+		2 = {add_extra_state_shared_building_slots = 3}
+		157 = {add_extra_state_shared_building_slots = 3}
+		}
+	}
+focus = {
+		id = LBA_reform_education
+		icon = GFX_focus_ARG_fascist_researchers
+		#icon = GFX_focus_generic_fascist_propaganda_ccp_2d_sov_compatibility
+		relative_position_id = LBA_fascist_reforms
+		prerequisite = {focus = LBA_pontid_swamps focus = LBA_expand_corporatism}
+		x = 0
+		y = 2
+		
+		cost = 5
+		available = {
+		has_government = fascism
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+
+focus = {
+		id = LBA_reform_republican_nat_army
+		icon = GFX_focus_RSI_republican_guard
+		relative_position_id = LBA_finish_resistance
+		prerequisite = {focus = LBA_finish_resistance}
+		x = 3
+		y = 1
+		
+		cost = 5
+		available = {
+		OR = {
+		has_completed_focus = PROT_italian_doctrine
+		has_completed_focus = PROT_our_technologies
+		}
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus = PROT_our_technologies
+		}
+		remove_ideas = PROT_own_forces_ns
+		remove_ideas = PROT_our_technologies_ns
+		}
+		if = {
+		limit = {
+		has_completed_focus = PROT_italian_doctrine
+		}
+		remove_ideas = PROT_metropolitan_army_ns
+		remove_ideas = PROT_italian_doctrine_ns
+		}
+		add_ideas = LBA_republican_national_army_ns
+	}
+}
+focus = {
+		id = LBA_african_war
+		icon = GFX_focus_generic_africa_liberation
+		relative_position_id = LBA_reform_republican_nat_army
+		prerequisite = {focus = LBA_reform_republican_nat_army}
+		x = -1
+		y = 1
+		
+		cost = 5
+		available = {
+		any_state = {
+		is_on_continent = africa
+		is_owned_and_controlled_by = ROOT
+		}
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		ITA = {
+		ITA_amedeo_guillet = {
+		set_nationality = ROOT
+		}
+		}
+		swap_ideas = {
+		remove_idea = LBA_republican_national_army_ns
+		add_idea = LBA_republican_national_army_africa_ns
+		}
+		}
+	}
+focus = {
+		id = LBA_regia_aeronautica_development
+		icon = GFX_goal_italy_fiat_g_50
+		relative_position_id = LBA_reform_republican_nat_army
+		prerequisite = {focus = LBA_reform_republican_nat_army}
+		x = 1
+		y = 1
+		
+		cost = 5
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = LBA_regia_aeronautica_development_ns
+		}
+	}
+
+focus = {
+		id = LBA_new_start_for_regia_marina
+		icon = GFX_focus_ITA_fleet_supremacy
+		relative_position_id = LBA_reform_republican_nat_army
+		prerequisite = {focus = LBA_regia_aeronautica_development focus = LBA_african_war}
+		x = 0
+		y = 2
+		
+		cost = 10
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = LBA_new_start_for_regia_marina_ns
+		random_owned_controlled_state = {
+		limit = {
+		is_core_of = ROOT
+		is_coastal = yes
+		}
+		add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+		}
+		}
+	}
+
+focus = {
+		id = LBA_god_loves_trinity
+		icon = GFX_focus_ita_struggle_eth
+		relative_position_id = LBA_fascist_reforms
+		prerequisite = { focus = LBA_reform_republican_nat_army }
+		x = 4
+		y = 2
+		
+		cost = 8
+		available = {
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		unlock_decision_category_tooltip = LBA_external_politics_cat
+		unlock_decision_tooltip = LBA_east_africa
+				create_wargoal = {
+					type = annex_everything
+					target = ETH
+				}
+		}
+	}
+
+	
+focus = {
+		id = LBA_restore_vatican
+		icon = GFX_focus_generic_vatican_state
+		relative_position_id = LBA_finish_resistance
+		prerequisite = {focus = LBA_finish_resistance}
+		x = 0
+		y = 1
+		
+		cost = 3
+		available = {
+		owns_state = 1027
+		PAP = {exists = no}
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_ideas = ITA_papal_support
+		1027 = {transfer_state_to = PAP}
+		PAP = {
+		create_country_leader = {
+		name = ITA_papa_pio_xii
+		picture = GFX_portrait_ITA_papa_pio_xii
+		expire = "1965.1.1"
+		ideology = fascism_ideology
+		traits = {
+		fascist_sympathies
+		supreme_pontiff
+		}
+		}			
+		}
+				ROOT = {
+					set_autonomy = {
+					    target = PAP
+					    autonomy_state = autonomy_satellite
+					    end_wars = no
+					    end_civil_wars = no
+					}
+				}
+		every_country = {
+		limit = {
+		capital_scope = {is_on_continent = europe}
+		NOT = {has_war_with = ROOT}
+		OR = {
+		has_government = fascism
+		has_government = neutrality
+		}
+		}
+		add_opinion_modifier = {target = PREV modifier = medium_increase }
+		}
+		
+		}
+	}
+	
+focus = {
+		id = LBA_stop_treaties
+		icon = GFX_focus_AUS_disregard_the_treaties
+		relative_position_id = LBA_finish_resistance
+		prerequisite = {focus = LBA_fascist_reforms}
+		x = -1
+		y = 3
+		
+		cost = 8
+		available = {
+		has_completed_focus = LBA_call_for_fascist_europe
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		remove_ideas = LBA_reparations_lba
+		every_country = {
+		limit = {has_idea = LBA_reparations_other_countries}
+		country_event = {id = LBA_event.9 hours = 4}
+		}
+		}
+	}
+focus = {
+		id = LBA_fascist_empire
+		icon = GFX_focus_ITA_fascist_empire
+		relative_position_id = LBA_restore_vatican
+		prerequisite = {focus = LBA_stop_treaties}
+		prerequisite = {focus = LBA_god_loves_trinity}
+		x = 0
+		y = 3
+		
+		cost = 2
+		available = {
+		has_government = fascism
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		#custom_effect_tooltip = no_longer_tree_available_tt
+		mark_focus_tree_layout_dirty = yes
+		set_cosmetic_tag = LBA_fascist_italy
+		unlock_decision_tooltip = LBA_italian_irredentism_decision
+		}
+	}
+
+focus = {
+		id = LBA_push_towards_irredentism
+		icon = GFX_focus_ITA_greater_italy
+		relative_position_id = LBA_fascist_empire
+		prerequisite = {focus = LBA_fascist_empire}
+		x = 0
+		y = 1
+		
+		cost = 5
+		available = {
+		is_subject = no
+		has_government = fascism
+		}
+		
+		completion_reward = {
+		add_ideas = LBA_italian_irredentism_ns
+			every_state = {
+			limit = {
+			OR = {
+					state =1
+					state =846
+					state =164
+					state =182
+					state =736
+					state =163
+					state =852
+					state =118
+					state =446
+					state =116
+					state =458
+					state =1018
+					state =665
+					state =735
+					state =853
+					state =103
+					state =1025
+					state =1019
+					state =1031
+	}
+	}
+	add_claim_by = ROOT
+	}
+	}
+}
+focus = {
+		id = LBA_demand_dalmatia
+		icon = GFX_focus_YUG_devolved_croatia
+		relative_position_id = LBA_push_towards_irredentism
+		prerequisite = {focus = LBA_push_towards_irredentism}
+		x = -4
+		y = 1
+		
+		cost = 10
+		available = {
+		is_subject = no
+		has_government = fascism
+		}
+		
+		completion_reward = {
+		103 = {
+		owner = {
+		country_event = {id = BBA_italy_interaction_events.8 days = 1}
+		}
+		}
+		}
+	}
+focus = {
+		id = LBA_albania_occupation
+		icon = GFX_goal_italy_albanian_protectorate
+		relative_position_id = LBA_push_towards_irredentism
+		prerequisite = {focus = LBA_push_towards_irredentism }
+		x = -2
+		y = 1
+		
+		cost = 5
+		available = {
+		}
+		
+		bypass = {
+		OR = {
+		ALB = {exists = no}
+		44 = {is_owned_and_controlled_by = ROOT}
+		}
+		}
+
+		search_filters = { }
+
+		completion_reward = {
+		add_political_power = 50
+		every_state = {
+		limit = {is_core_of = ALB}
+		add_claim_by = ROOT
+		}
+			if = {
+				limit = {
+					ALB = { has_war = no }
+				}
+				ALB = { country_event = { id = italy.3 hours = 1 } }
+			}
+			else = {
+				create_wargoal = {
+					type = take_state_focus
+					target = ALB
+					generator = { 44 805 934}
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = LBA_demand_ticino
+		icon = GFX_focus_SWI_the_national_redoubt
+		relative_position_id = LBA_push_towards_irredentism
+		prerequisite = {focus = LBA_push_towards_irredentism}
+		x = 2
+		y = 1
+		
+		cost = 5
+		available = {
+		is_subject = no
+		has_government = fascism
+		846 = {
+		owner = {
+		NOT = {has_war_with = ROOT}
+		}
+		}		
+		}
+		
+		bypass = {
+		owns_state = 846
+		}
+		
+		completion_reward = {
+		846 = {
+		owner = {
+		country_event = {id = BBA_italy_interaction_events.1 days = 1}
+		}
+		}
+		}
+	}
+	focus = {
+		id = LBA_demand_nizza
+		icon = GFX_focus_attack_france
+		relative_position_id = LBA_push_towards_irredentism
+		prerequisite = {focus = LBA_push_towards_irredentism}
+		x = 4
+		y = 1
+		
+		cost = 10
+		available = {
+		is_subject = no
+		has_government = fascism
+		}
+		
+		bypass = {
+		owns_state = 1025
+		owns_state = 1031
+		owns_state = 735
+		}
+		
+		completion_reward = {
+		1031 = {
+		owner = {
+		country_event = {id = BBA_italy_interaction_events.103 days = 1}
+		}
+		}
+		}
+	}
+	focus = {
+		id = LBA_lost_greek_islands
+		icon = GFX_focus_generic_attack_greece
+		relative_position_id = LBA_push_towards_irredentism
+		prerequisite = {focus = LBA_push_towards_irredentism}
+		x = 0
+		y = 1
+		
+		cost = 5
+		available = {
+		is_subject = no
+		has_government = fascism
+		}
+		
+		bypass = {
+		owns_state = 182
+		}
+		
+		completion_reward = {
+		182 = {
+		owner = {
+		country_event = {id = BBA_italy_interaction_events.100 days = 1}
+		}
+		}
+		}
+	}
+	focus = {
+		id = LBA_malta_diktat
+		icon = GFX_focus_attack_britain
+		relative_position_id = LBA_push_towards_irredentism
+		prerequisite = {focus = LBA_lost_greek_islands}
+		prerequisite = {focus = LBA_demand_dalmatia focus = LBA_albania_occupation}
+		prerequisite = {focus = LBA_demand_nizza focus = LBA_demand_ticino}
+		x = 0
+		y = 2
+		
+		cost = 5
+		available = {
+		is_subject = no
+		has_government = fascism
+		}
+		
+		bypass = {
+		owns_state = 116
+		}
+		
+		completion_reward = {
+		ITA_create_carmelo_borg_pisani_operative = yes
+		116 = {
+		owner = {
+		country_event = {id = BBA_italy_interaction_events.104 days = 1}
+		}
+		}
+		}
+	}
+focus = {
+		id = LBA_subdue_sentinels
+		icon = GFX_focus_ITA_subdue_the_sentinels
+		relative_position_id = LBA_malta_diktat
+		prerequisite = {focus = LBA_malta_diktat}
+		x = 0
+		y = 1
+		
+		cost = 5
+		available = {
+		has_war = yes
+		}
+		
+		completion_reward = {
+		add_country_leader_trait = military_modernizer
+		add_timed_idea = {idea = ITA_bend_the_bars_idea days = 270}
+		}
+	}	
+focus = {
+		id = LBA_bulding_italian_empire
+		icon = GFX_focus_ITA_new_europe
+		relative_position_id = LBA_fascist_empire
+		prerequisite = {focus = LBA_malta_diktat}
+		mutually_exclusive = {focus = LBA_restoration_of_rome}
+		x = -1
+		y = 5
+		
+		cost = 5
+		available = {
+		has_global_flag = LBA_greater_italy_formed
+		AOI = {is_subject_of = ROOT}
+		}
+		
+		completion_reward = {
+		add_stability = 0.05
+		add_ideas = ITA_impero_italiano
+		every_state = {
+		limit = {
+		OR = {
+		state = 118
+		state = 446
+		state = 453
+		state = 452
+		state = 447
+		state = 907
+		state = 456
+		state = 457
+			state =  551 
+			state =  883
+			state =  886
+			state =  549 
+			state =  885 
+			state =  884 
+			state =  887
+			state =  458
+			state =  665
+		}
+		}
+		add_claim_by = ROOT
+		}
+		}
+	}
+	focus = {
+		id = LBA_great_liberator
+		icon = GFX_focus_RSI_new_fascism
+		relative_position_id = LBA_bulding_italian_empire
+		prerequisite = {focus = LBA_bulding_italian_empire}
+		x = -1
+		y = 1
+		
+		cost = 5
+		available = {
+		is_subject = no
+		has_government = fascism
+		has_war_with_major = yes
+		}
+		
+		completion_reward = {
+		add_ideas = LBA_great_liberator_idea
+		}
+	}
+	focus = {
+		id = LBA_roman_assimilation
+		icon = GFX_focus_ITA_rome_conference
+		relative_position_id = LBA_restoration_of_rome
+		prerequisite = {focus = LBA_restoration_of_rome}
+		x = 1
+		y = 1
+		
+		cost = 5
+		available = {
+		is_subject = no
+		has_government = fascism
+		any_controlled_state = {
+		NOT = {is_core_of = ROOT}
+		}
+		}
+		
+		completion_reward = {
+		every_state = {
+		limit = {
+		is_controlled_by = ROOT
+		NOT = {is_core_of = ROOT}
+		}
+		add_compliance = 10
+		add_resistance = -10
+		}
+		}
+	}
+focus = {
+		id = LBA_restoration_of_rome
+		icon = GFX_focus_ITA_mare_nostrum
+		relative_position_id = LBA_fascist_empire
+		prerequisite = {focus = LBA_malta_diktat}
+		mutually_exclusive = {focus = LBA_bulding_italian_empire}
+		x = 1
+		y = 5
+		
+		cost = 5
+		available = {
+		has_global_flag = LBA_greater_italy_formed
+		NOT = {ITA = {has_completed_focus = ITA_mare_nostrum_bba}}
+		}
+		
+		completion_reward = {
+		unlock_decision_category_tooltip = form_roman_empire_category
+		}
+	}
+
+focus = {
+		id = LBA_hang_every_traitor
+		icon = GFX_focus_generic_spread_fascism
+		relative_position_id = LBA_restoration_of_rome
+		prerequisite = {focus = LBA_bulding_italian_empire focus = LBA_restoration_of_rome}
+		x = -1
+		y = 1
+		
+		cost = 10
+		available = {
+		is_subject = no
+		OR = {
+		NOT = {
+		has_government = democratic
+		has_government = communism
+		}
+		}
+		}
+		
+		completion_reward = {
+				
+		every_country = {
+		limit = {
+		OR = {
+		is_major = yes
+		is_neighbor_of = ROOT
+		}
+		NOT = {is_in_faction_with = ROOT}
+		has_government = democratic
+		}
+				ROOT = {
+					create_wargoal = {
+						target = PREV
+						type = topple_government
+					}
+				}
+			}
+
+		every_country = {
+		limit = {
+		OR = {
+		is_major = yes
+		is_neighbor_of = ROOT
+		}
+		NOT = {is_in_faction_with = ROOT}
+		has_government = communism
+		}
+				ROOT = {
+					create_wargoal = {
+						target = PREV
+						type = topple_government
+					}
+				}
+			}
+		}
+	}
+focus = {
+		id = LBA_by_blood_alone
+		icon = GFX_focus_ITA_by_blood_alone
+		relative_position_id = LBA_hang_every_traitor
+		prerequisite = {focus = LBA_hang_every_traitor}
+		x = 0
+		y = 1
+		
+		cost = 10
+		available = {
+		has_war_with_major = yes
+		}
+		
+		completion_reward = {
+		add_stability = -0.05
+		add_war_support = 0.05
+		set_rule = { can_use_kamikaze_pilots = yes }
+		add_ideas = LBA_by_blood_alone_ns
+		}
+	}
+}

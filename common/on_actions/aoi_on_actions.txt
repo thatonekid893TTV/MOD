@@ -1,0 +1,183 @@
+on_actions = {
+    on_startup = {
+        effect = { # NEVER FORGET! Important to include this line to distinguish it from random_events = { ... }
+		
+		set_global_flag = flag_colored_puppets
+		
+			every_state = {
+			limit = {is_core_of = SUD}
+			add_claim_by = EGY
+			}
+			
+			475 = {add_core_of = YUC}
+			
+			605 = {
+				add_building_construction = {
+					type = supply_node
+					province = 6999
+					level = 1
+					instant_build = yes
+				}
+			}
+			260 = {
+				add_building_construction = {
+					type = supply_node
+					province = 413
+					level = 1
+					instant_build = yes
+				}
+			}
+			84 = {
+				add_building_construction = {
+					type = supply_node
+					province = 690
+					level = 1
+					instant_build = yes
+				}
+			}
+			155 = {
+				add_building_construction = {
+					type = supply_node
+					province = 6720
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			every_country = {
+			limit = {
+			OR = {
+			tag = PAL
+			tag = JOR
+			tag = SYR
+			tag = KUW
+			tag = LEB
+			}
+			}
+			drop_cosmetic_tag = yes
+			}
+		}
+	}
+	#used when puppeting in a peace conference
+	#ROOT = nation being puppeted, FROM = overlord
+
+	#on_puppet = {
+	#	effect = {
+	#		if = {
+	#			limit = {
+	#			has_global_flag = italian_cw_by_states_happened_flag
+	#				ROOT = {
+	#				original_tag = ITA
+	#				has_government = fascism
+	#				}
+	#				FROM = {
+	#					original_tag = GER
+	#					has_government = fascism
+	#				}
+	#			}
+	#			FROM = {country_event = {id = GER_italy_cw_event.1}}
+	#		}
+	#	}
+	#}
+	
+	on_civil_war_end = {
+		effect = {
+
+			#End of итальянская гражданка, иср выиграла
+			if = {
+				limit = {
+					FROM = {
+						original_tag = ITA
+					}
+					ROOT = {
+						original_tag = ITA
+						has_government = fascism
+					}
+				}
+			news_event = ITA_news.5
+			}
+			#End of итальянская гражданка, клн выиграл
+			if = {
+				limit = {
+					FROM = {
+						original_tag = ITA
+					}
+					ROOT = {
+						original_tag = ITA
+						NOT = {has_government = fascism}
+					}
+				}
+			news_event = ITA_news.4
+			}
+		}
+	}
+	
+	# ROOT is capitulated country, FROM is winner
+	on_capitulation_immediate = {
+		effect = {
+		
+			if = {
+				limit = {
+					FROM = {
+					OR = {
+					tag = RDS
+					is_in_faction_with = RDS
+					}
+					}
+					tag = RSI
+					RSI = {
+						has_character = ITA_benito_mussolini
+					}
+				}
+				news_event = ITA_news.2
+				}
+		}
+	}
+		
+	on_capitulation = {
+		effect = {
+			#if = {
+				#limit = {
+				#	tag = ITA
+				#	FROM = {
+				#	tag = LBA
+				#	has_country_flag = LBA_italian_exiles_path_flag
+				#	}
+				#}
+				#news_event = {id = LBA_news.2}
+				#}
+			
+			#if = {
+			#	limit = {
+			#		tag = ITA
+			#		LBA = {
+			#			has_war_with = ITA
+			#			controls_state = 2
+			#			has_country_flag = LBA_italian_exiles_path_flag
+			#		}
+			#	}
+			#	news_event = {id = LBA_news.2}
+			#	}
+			}
+		}
+		
+	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
+	
+on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						TAG = ERI # don't include POL as the event is about Soviet capture of Warsaw
+						TAG = ITA
+					}
+					NOT = { ITA = { has_war_with = ERI } }
+					FROM = { original_tag = ETH }
+					FROM = { has_war_with = ITA }
+					FROM.FROM = { state = 841 }
+				}
+				news_event = AOI_news.6
+			}
+		}
+	}
+}

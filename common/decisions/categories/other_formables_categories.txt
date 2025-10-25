@@ -1,0 +1,135 @@
+ITALIAN_unite_italy_category = { 
+
+	icon = GFX_decision_category_ITA_colonial_management
+
+	picture = GFX_decision_cat_picture_greater_italy
+	
+	allowed = {
+	OR = {
+		original_tag = PAP
+		original_tag = LBV
+		original_tag = SPM
+		original_tag = TOS
+		original_tag = TTS
+		}
+	}
+	
+	priority = 0
+
+	
+	visible = {
+	#NOT = {has_global_flag = ITALIAN_italy_formed}
+	}
+}
+
+YUG_form_greater_yug_cat = {
+
+	icon = GFX_decision_category_ger_reichskommissariats
+
+	picture = GFX_greater_yug_picture
+	
+	allowed = {
+	original_tag = YUG
+	}
+	
+	priority = 1
+
+	
+	visible = {
+	has_completed_focus = YUG_greater_yugoslavia
+	}
+}
+YUG_form_balkans_cat = {
+
+	icon = GFX_decision_category_generic_communism
+
+	picture = GFX_decision_cat_picture_balkan_federation
+	
+	allowed = {
+	original_tag = YUG
+	}
+	
+	priority = 100
+
+	
+	visible = {
+	has_completed_focus = YUG_united_balkans
+	}
+}
+
+ALB_greater_alb_cat = {
+
+	#name = ALB_greater_alb
+
+	icon = GFX_decision_category_generic_political_actions
+
+	picture = GFX_greater_alb_picture
+	
+	allowed = {
+	original_tag = ALB
+	}
+	
+	priority = 1
+
+	
+	visible = {
+	always = yes
+	}
+}
+FRA_revive_napoleonic_empire_cat = {
+
+	#name = ALB_greater_alb
+
+	icon = GFX_decision_category_generic_political_actions
+
+	#picture = GFX_greater_alb_picture
+	
+	allowed = {
+	original_tag = FRA
+	}
+	
+	priority = 100
+
+	
+	visible = {
+	has_completed_focus = FRA_proclaim_the_third_empire
+	}
+}
+
+SWI_nostra_alpine_state_dec_cat = {
+
+	icon = GFX_decision_category_generic_political_actions
+
+	picture = GFX_alpine_conf_picture
+	
+	allowed = {
+	original_tag = SWI
+	}
+	
+	priority = 100
+
+	
+	visible = {
+	OR = {
+	has_completed_focus = SWI_the_alpine_supremacy
+	has_completed_focus = SWI_the_alpine_protectorate
+	has_completed_focus = SWI_austrian_ultimatum
+	}
+	}
+}
+SETTINGS_dec_cat = {
+
+	icon = GFX_decision_category_generic_political_actions
+
+	
+	allowed = {
+	always = yes
+	}
+	
+	priority = 100
+
+	
+	visible = {
+	is_ai = no
+	}
+}
