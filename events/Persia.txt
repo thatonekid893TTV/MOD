@@ -1,0 +1,2238 @@
+﻿###########################
+# Persia Events
+###########################
+
+add_namespace = persia
+
+# Persians Demand (Syria)
+country_event = {
+	id = persia.1
+	title = persia.1.t
+	desc = persia.1.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # Accept demands
+		name = persia.1.a
+		ai_chance = { 
+			factor = 90 
+		}
+
+		if = {
+			limit = {
+				ROOT = { controls_state = 677 }
+			}
+			PER = { transfer_state = 677 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 1004 }
+			}
+			PER = { transfer_state = 1004 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 554 }
+			}
+			PER = { transfer_state = 554 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 988 }
+			}
+			PER = { transfer_state = 988 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 989 }
+			}
+			PER = { transfer_state = 989 }
+		}
+		PER = { transfer_state = 553 }
+		if = {
+			limit = {
+				ROOT = { controls_state = 680 }
+			}
+			PER = { transfer_state = 680 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 799 }
+			}
+			PER = { transfer_state = 799 }
+		}
+			PER = { transfer_state = 1021 }
+			PER = { transfer_state = 1022 }
+		hidden_effect = {
+			news_event = { id = news.500 days = 1 }
+		}
+	}
+	
+	option = { # Refuse demands
+		name = persia.1.b
+		ai_chance = { 
+			factor = 10 
+		}
+		effect_tooltip = {
+			PER = {
+				create_wargoal = {
+				type = take_state_focus
+				target = FRA
+				generator = { 554 }
+				}
+			}
+		}
+		hidden_effect = {
+			news_event = { id = news.501 hours = 6 }
+			PER = {
+				country_event = { id = persia.2 days = 1 }
+			}
+		}
+	}
+}
+
+
+# France Refuses Demands
+country_event = {
+	id = persia.2
+	title = persia.2.t
+	desc = persia.2.d
+	picture = GFX_report_event_soviet_tanks_snow
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = persia.2.a
+		create_wargoal = {
+			type = take_state
+			target = FRA
+			generator = { 554 }
+		}			
+		create_wargoal = {
+			type = take_state
+			target = SYR
+			generator = { 554 }
+		}		
+	}
+}
+
+# Tehran University
+news_event = {
+	id = persia.10
+	title = persia.10.t
+	desc =persia.10.d
+	picture = GFX_news_event_generic_read_write
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = persia.10.a
+		trigger = { TAG = PER }
+	}
+}
+
+# Iranian Civil War
+country_event = {
+	id = persia.3
+	title = persia.3.t
+	desc = persia.3.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { 
+		name = persia.3.a
+		hidden_effect = {
+			set_capital = 411
+			start_civil_war = {
+				ideology = neutrality
+				capital = 266
+				states = { 266 417 420 418 416 419 }
+			}
+			random_country = {
+				limit = {
+					original_tag = PER
+					has_government = neutrality
+				}
+				set_equipment_fraction = 0.5
+				set_national_unity = 0.9
+				add_popularity = {
+					ideology = neutrality
+					popularity = 1
+				}
+			# Tehran
+			266 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 6
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 10
+				}
+			# Khorasan
+			416 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+				}
+			# Gilan
+			420 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				}
+			# Azerbaijan
+			419 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 4
+				}
+				load_oob = "PER_Civil_War"
+			}
+			news_event = { hours = 6 id = news.502 }
+			set_country_flag = iranian_civil_war
+		}
+		custom_effect_tooltip = reformation_chosen
+	}
+}
+
+
+
+# Kayhan Established
+country_event = {
+	id = persia.8
+	title = persia.8.t
+	desc = persia.8.d
+	picture = GFX_report_event_gathering_protest
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		NOT = { has_country_flag = PER_night_of_purification }
+		democratic > 0.5 
+	}
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	option = {
+		name = persia.8.a
+		# Tehran
+		266 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = radar_station
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+	}
+}
+
+# Soviet Support of Communists
+country_event = {
+	id = persia.5
+	title = persia.5.t
+	desc = persia.5.d
+	picture = GFX_report_event_albanian_partisans
+	
+	trigger = {
+		tag = PER
+		NOT = { has_government = communism }
+		has_idea = PER_corrupt_bureaucracy_judiciary
+		communism < 0.5 
+	}
+
+	mean_time_to_happen = {
+		days = 320
+	}
+
+	option = {
+		name = persia.5.a
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+	}
+}
+
+# Rahbar Established
+country_event = {
+	id = persia.7
+	title = persia.7.t
+	desc = persia.7.d
+	picture = GFX_report_event_gathering_protest
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		NOT = { has_country_flag = PER_night_of_purification }
+		communism > 0.5 
+	}
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	option = {
+		name = persia.7.a
+		# Tehran
+		266 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = radar_station
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.1
+		}
+	}
+}
+
+# Closed Economy
+country_event = {
+	id = persia.15
+	title = persia.15.t
+	desc = persia.15.d
+	picture = GFX_report_event_fascist_speech
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		has_government = fascism
+		date > 1938.6.1
+	}
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	option = {
+		name = persia.15.a
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.1
+		}
+	}
+	
+	option = {
+		name = persia.15.b
+		add_ideas = limited_exports
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.05
+		}
+	}
+	
+	option = {
+		name = persia.15.c
+		add_ideas = closed_economy
+	}
+}
+
+# Etelaat Take-over
+country_event = {
+	id = persia.16
+	title = persia.16.t
+	desc = persia.16.d
+	picture = GFX_report_event_gathering_protest
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		fascism > 0.5 
+	}
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	option = {
+		name = persia.16.a
+		# Tehran
+		266 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = radar_station
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.1
+		}
+	}
+}
+
+# Night of Purification
+country_event = {
+	id = persia.6
+	title = persia.6.t
+	desc = persia.6.d
+	
+	picture = GFX_report_event_british_inspect_troops
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = PER
+		has_government = fascism
+	}
+
+	mean_time_to_happen = {
+		days = 5
+	}
+
+	option = {
+		name = persia.6.a
+		custom_effect_tooltip = PER_night_of_redemption_hidden_effect
+		hidden_effect = {
+			set_country_flag = PER_night_of_purification
+			}
+			
+		413 = {
+			add_manpower = -15000
+		}
+		266 = {
+			add_manpower = -15000
+		}
+		419 = {
+			add_manpower = -15000
+		}
+		416 = {
+			add_manpower = -15000
+		}
+		411 = {
+			add_manpower = -15000
+		}
+		412 = {
+			add_manpower = -15000
+		}
+	}
+	
+	option = {
+		name = persia.6.b
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.2
+		}
+	}
+}
+
+# Student Movement
+country_event = {
+	id = persia.9
+	title = persia.9.t
+	desc = persia.9.d
+	picture = GFX_report_event_crowd_in_prague
+	
+	trigger = {
+		tag = PER
+		NOT = { has_government = fascism }
+		has_idea = PER_corrupt_bureaucracy_judiciary
+		has_completed_focus = PER_establish_tehran_university
+		fascism < 0.5 
+	}
+
+	mean_time_to_happen = {
+		days = 320
+	}
+
+	option = {
+		name = persia.9.a
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.05
+		}
+	}
+}
+
+# Move the Capital
+country_event = {
+	id = persia.21
+	title = persia.21.t
+	desc = persia.21.d
+	picture = GFX_report_event_crowd_in_prague
+	
+	trigger = {
+		tag = PER
+		has_government = fascism
+		has_completed_focus = PER_reform_the_judiciary
+		PER = { has_civil_war = no }
+		date > 1940.1.1
+	}
+
+	mean_time_to_happen = {
+		days = 160
+	}
+
+	option = { # Move the Capital
+		name = persia.21.a
+		set_capital = 411
+	}
+	
+	option = { # Do Nothing
+		name = persia.21.b
+		ai_chance = { 
+			factor = 30 
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.1
+		}
+	}
+}
+
+# Nationalized Oil
+country_event = {
+	id = persia.11
+	title = persia.11.t
+	desc = persia.11.d
+	picture = GFX_report_event_fascist_speech
+	
+	is_triggered_only = yes
+
+	option = { # Do Nothing
+		name = persia.11.a
+		ai_chance = { 
+			factor = 99 
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 100
+			}
+		}
+		hidden_effect = {
+			news_event = { hours = 12 id = news.506 }
+		}
+	}
+	
+	option = { # Claim Persia
+		name = persia.11.b
+		ai_chance = { 
+			factor = 01
+		}
+		ENG = {
+			create_wargoal = {
+			type = take_state_focus
+			target = PER
+			generator = { 413 }
+			}
+		}
+		hidden_effect = {
+			news_event = { hours = 12 id = news.507 }
+		}
+	}
+}
+
+# Fate of Yemen & Oman
+country_event = {
+	id = persia.12
+	title = persia.12.t
+	desc = persia.12.d
+	picture = GFX_report_event_fascist_speech
+	
+	trigger = {
+		tag = PER
+		has_completed_focus = PER_gulf_claims
+		fascism > 0.5 
+		PER = { 
+			controls_state = 292
+			controls_state = 679
+			controls_state = 678 
+		}
+		NOT = { 
+			PER = { 
+			controls_state = 293
+			controls_state = 294
+			}
+		}
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+
+	option = { # Do Nothing
+		name = persia.12.a
+		ai_chance = { 
+			factor = 30 
+		}
+	}
+	
+	option = { # Claim their land
+		name = persia.12.b
+		ai_chance = { 
+			factor = 70
+		}
+		PER = {
+			create_wargoal = {
+			type = take_state_focus
+			target = YEM
+			generator = { 293 }
+			}
+		}
+		PER = {
+			create_wargoal = {
+			type = take_state_focus
+			target = OMA
+			generator = { 294 }
+			}
+		}
+		hidden_effect = {
+			news_event = { hours = 12 id = news.508 }
+		}
+	}
+}
+
+# Afghan Reunification
+country_event = {
+	id = persia.13
+	title = persia.13.t
+	desc = persia.13.d
+	picture = GFX_report_event_fascist_speech
+	
+	trigger = {
+		tag = PER
+		has_completed_focus = PER_revive_the_empire
+		NOT = { has_completed_focus = PER_claim_afghanistan } 
+		fascism > 0.5 
+		NOT = { 
+			415 = { is_owned_by = PER } 
+			267 = { is_owned_by = PER } 
+		}
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 210
+	}
+
+	option = { # Do Nothing
+		name = persia.13.a
+		ai_chance = { 
+			factor = 30 
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.1
+		}
+	}
+	
+	option = { # Claim their land
+		name = persia.13.b
+		ai_chance = { 
+			factor = 70
+		}
+		complete_national_focus = PER_claim_afghanistan
+	}
+}
+
+# Kurdish Incorporation
+country_event = {
+	id = persia.14
+	title = persia.14.t
+	desc = persia.14.d
+	picture = GFX_report_event_fascist_speech
+	
+	trigger = {
+		tag = PER
+		352 = { is_owned_by = PER } 
+		350 = { is_owned_by = PER } 
+		353 = { is_owned_by = PER } 
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	option = { # Welcome Home Brothers
+		name = persia.14.a
+		ai_chance = { 
+			factor = 30 
+		}
+		352 = { add_core_of = PER }
+		350 = { add_core_of = PER }
+		353 = { add_core_of = PER }	
+	}
+}
+
+# Azeri Incorporation
+country_event = {
+	id = persia.17
+	title = persia.17.t
+	desc = persia.17.d
+	picture = GFX_report_event_fascist_speech
+	
+	trigger = {
+		tag = PER
+		229 = { is_controlled_by = PER } 
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+
+	option = { # Welcome Home Brothers
+		name = persia.17.a
+		229 = { add_core_of = PER }
+	}
+}
+
+# Tajik & Uzbek Incorporation
+country_event = {
+	id = persia.18
+	title = persia.18.t
+	desc = persia.18.d
+	picture = GFX_report_event_fascist_speech
+	
+	trigger = {
+		tag = PER
+		732 = { is_controlled_by = PER } 
+		405 = { is_controlled_by = PER } 
+		586 = { is_controlled_by = PER } 
+		584 = { is_controlled_by = PER } 
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+
+	option = { # Welcome Home Brothers
+		name = persia.18.a
+		732 = { add_core_of = PER }
+		405 = { add_core_of = PER }
+		586 = { add_core_of = PER }
+		584 = { add_core_of = PER }
+	}
+}
+
+# Caucasus Integration
+country_event = {
+	id = persia.19
+	title = persia.19.t
+	desc = persia.19.d
+	picture = GFX_report_event_fascist_speech
+	
+	trigger = {
+		tag = PER
+		230 = { is_controlled_by = PER } 
+		231 = { is_controlled_by = PER } 
+		233 = { is_controlled_by = PER } 
+		232 = { is_controlled_by = PER } 
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+
+	option = { # Welcome Home Brothers
+		name = persia.19.a
+		230 = { add_core_of = PER }
+		231 = { add_core_of = PER }
+		233 = { add_core_of = PER }
+		232 = { add_core_of = PER }
+	}
+}
+
+# Expanded Mines
+country_event = {
+	id = persia.20
+	title = persia.20.t
+	desc = persia.20.d
+	picture = GFX_report_event_fascist_speech
+	
+	trigger = {
+		tag = PER
+		has_completed_focus = PER_search_for_steel
+		date > 1936.2.2
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+
+	option = { # Tungsten
+		name = persia.20.a
+		#Isfahan
+			add_resource = {
+				type = tungsten
+				amount = 12
+				state = 411
+			}
+		# Fars
+			add_resource = {
+				type = tungsten
+				amount = 12
+				state = 412
+			}
+	}
+	
+	option = { # Aluminum
+		name = persia.20.b
+		# Khorasan
+			add_resource = {
+				type = aluminium
+				amount = 12
+				state = 416
+			}
+		# Tehran
+			add_resource = {
+				type = aluminium
+				amount = 12
+				state = 266
+			}
+	}
+	
+	option = { # Steel
+		name = persia.20.c
+		# Azerbaijan
+			add_resource = {
+				type = steel
+				amount = 24
+				state = 419
+			}
+	}
+}
+
+country_event = {
+	id = persia.22
+	title = "Rise of the Timurids"
+	desc = "As in the old times, the Turkish section in our country wants to rise and come to better positions in the state."
+	picture = GFX_report_event_tur_turkish_soldiers
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "Muhammed Bidar Bakht Timurid can lead us"
+		create_country_leader = {
+			name = "Muhammed Bidar Bakht Timurid"
+			desc = ""
+			picture = "gfx/leaders/TUR/portait_Bakht_Timurid.jpg"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = {
+				military_doctor
+				TUR_chess_master
+			}
+		}
+		
+	}
+	option = {
+		name = "Mirza Khurshid Jah Bahadur lead the Empire"
+		ai_chance = {
+			factor = 90
+		}
+		create_country_leader = {
+			name = "Mirza Khurshid Jah Bahadur"
+			desc = ""
+			picture = "gfx/leaders/PER/portrait_RAJ_mirza_khurshid_jah_bahadur.dds"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = {
+				RAJ_heir_of_the_empire
+			}
+		}
+		
+	}
+}
+
+country_event = {
+	id = persia.23
+	title = persia.23.t
+	desc = persia.23.d
+	picture = GFX_report_event_polish_tanks_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = persia.23.a
+		release = KUR
+		KUR = {
+			division_template = {
+				name = "People's Militia"
+				priority = 1
+				division_names_group = KUR_INF_01
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+		
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+				}
+				support = {
+				}
+				is_locked = yes
+				force_allow_recruiting = yes
+			}
+			random_owned_controlled_state = {
+				limit = { PREV = { has_full_control_of_state = PREV } }
+				create_unit = {
+					division = "name = \"Uprising Militia\" division_template = \"People's Militia\" start_experience_factor = 0.3" 
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Uprising Militia\" division_template = \"People's Militia\" start_experience_factor = 0.3" 
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Uprising Militia\" division_template = \"People's Militia\" start_experience_factor = 0.3" 
+					owner = PREV
+				}
+				create_unit = {
+					division = "name = \"Uprising Militia\" division_template = \"People's Militia\" start_experience_factor = 0.3" 
+					owner = PREV
+				}
+			}
+		}
+	}
+
+}
+
+country_event = {
+	id = persia.24
+	title = persia.24.t
+	desc = persia.24.d
+	picture = GFX_report_event_polish_tanks_01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = persia.24.a
+		PER = {
+			set_autonomy = { target = IRQ autonomy_state = autonomy_dominion }
+		}
+	}
+
+	option = {
+		name = persia.24.b
+		IRQ = {
+			start_civil_war = {
+				ruling_party = fascism
+				# Original country's ideology changes to communism
+				ideology = ROOT
+				# Breakaway gets old ideology of ROOT
+				size = 0.5
+				states = {
+					675 676
+				}
+				keep_political_leader = yes
+				keep_political_party_members = yes
+			}
+		}
+		PER = {
+			random_other_country = {
+				limit = {
+					original_tag = IRQ
+					not = { has_government = fascism }
+				}
+				PER = {
+					set_autonomy = { target = PREV autonomy_state = autonomy_integrated_puppet }
+				}
+			}
+		}
+		random_other_country = {
+			limit = {
+				original_tag = IRQ
+				not = { has_government = fascism }
+			}
+			declare_war_on = IRQ
+		}
+	}
+
+}
+
+
+###########################
+# Persian World News Events
+###########################
+
+# France Accepts Demands (Syria)
+news_event = {
+	id = news.500
+	title = news.500.t
+	desc = news.500.d
+	picture = GFX_news_event_012
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.500.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = FRA
+				is_in_faction_with = PER
+			}
+		}
+	}
+	option = {
+		name = news.500.b
+		trigger = { TAG = PER }
+	}
+	option = {
+		name = news.500.c
+		trigger = { TAG = FRA }
+	}
+	option = {
+		name = news.500.f
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = FRA
+			}
+			is_in_faction_with = PER
+		}
+	}
+}	
+
+# France Refuses Demands
+news_event = {
+	id = news.501
+	title = news.501.t
+	desc = news.501.d
+	picture = GFX_news_event_011
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.501.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = FRA
+				is_in_faction_with = PER
+			}
+		}
+	}
+	
+	option = {
+		name = news.501.b
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.501.c
+		trigger = { TAG = FRA }
+	}
+	
+	option = {
+		name = news.501.f
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = FRA
+			}
+			is_in_faction_with = PER
+		}
+	}
+}
+
+# The Iranian Civil War
+news_event = {
+	id = news.502
+	title = news.502.t
+	desc = news.502.d
+	picture = GFX_news_event_032
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.502.a
+		trigger = {
+			NOT = { original_tag = PER }
+		}
+	}
+	
+	option = {
+		name = news.502.b
+		trigger = { 
+			original_tag = PER
+		}
+	}
+}
+
+# End of the Iranian Civil War (Victory)
+news_event = {
+	id = news.503
+	title = news.503.t
+	desc = news.503.d
+	picture = GFX_news_event_033
+	
+	major = yes
+	
+	trigger = {
+		has_country_flag = iranian_civil_war
+		PER = { has_civil_war = no }
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	fire_only_once = yes
+	
+	immediate = {
+		clr_country_flag = iranian_civil_war
+		set_country_flag = reformist_victory
+	}
+	
+	option = {
+		name = news.503.a
+		trigger = {
+			NOT = { original_tag = PER }
+		}
+	}
+	
+	option = {
+		name = news.503.b
+		trigger = { original_tag = PER }
+	}
+}
+
+# Karbala
+news_event = {
+	id = news.504
+	title = news.504.t
+	desc = news.504.d
+	picture = GFX_news_event_003
+
+	major = yes
+	
+	trigger = {
+		291 = { is_controlled_by = PER }
+		NOT = { has_global_flag = conquest_of_karbala }
+	}
+	
+	immediate = {
+		set_global_flag = conquest_of_karbala
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.128.b
+		trigger = { TAG = USA }
+	}
+}
+
+# Mecca
+news_event = {
+	id = news.505
+	title = news.505.t
+	desc = news.505.d
+	picture = GFX_news_event_003
+
+	major = yes
+	
+	trigger = {
+		679 = { is_controlled_by = PER }
+		NOT = { has_global_flag = conquest_of_mecca }
+	}
+	
+	immediate = {
+		set_global_flag = conquest_of_mecca
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.505.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.505.b
+		trigger = {
+			NOT = { original_tag = PER }
+		}
+	}
+}
+
+# Fate of Persia (Britain capitulates)
+news_event = {
+	id = news.506
+	title = news.506.t
+	desc = news.506.d
+	picture = GFX_news_event_023
+
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.506.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.506.b
+		trigger = { TAG = ENG }
+	}
+	
+	option = {
+		name = news.506.c
+		trigger = {
+			NOT = {
+				TAG = ENG
+				TAG = PER
+			}
+		}
+	}
+}
+
+
+# Fate of Persia (Britain claims Khuzestan)
+news_event = {
+	id = news.507
+	title = news.507.t
+	desc = news.507.d
+	picture = GFX_news_event_023
+
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.507.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.507.b
+		trigger = { TAG = ENG }
+	}
+	
+	option = {
+		name = news.507.c
+		trigger = {
+			NOT = {
+				TAG = ENG
+				TAG = PER
+			}
+		}
+	}
+}
+
+# Fate of Yemen & Oman
+news_event = {
+	id = news.508
+	title = news.508.t
+	desc = news.508.d
+	picture = GFX_news_event_023
+
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.508.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.508.b
+		trigger = {
+			NOT = {
+				TAG = PER
+			}
+		}
+	}
+}
+
+# The Fall of Baku (Persia)
+news_event = {
+	id = news.509
+	title = news.509.t
+	desc = news.509.d
+	picture = GFX_news_event_kiev_ruins
+	
+	major = yes
+	
+	trigger = {
+		229 = { is_controlled_by = PER }
+		229 = { is_owned_by = SOV }
+		PER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_baku }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_baku
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = SOV
+			}
+		}
+	}
+	
+	option = {
+		name = news.509.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.103.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Fall of Cairo (Persia)
+news_event = {
+	id = news.510
+	title = news.510.t
+	desc = news.510.d
+	picture = GFX_news_event_042
+	
+	major = yes
+	
+	trigger = {
+		446 = { is_controlled_by = PER }
+		446 = { is_owned_by = ENG }
+		PER = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_cairo }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_cairo
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = ENG
+			}
+		}
+	}
+	
+	option = {
+		name = news.509.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# The Fall of Washington (Persia)
+news_event = {
+	id = news.511
+	title = news.511.t
+	desc = news.511.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		361 = { is_controlled_by = PER }
+		361 = { is_owned_by = USA }
+		PER = { has_war_with = USA }
+		NOT = { has_global_flag = fall_of_washington }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_washington
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = USA
+			}
+		}
+	}
+	
+	option = {
+		name = news.509.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.100.c
+		trigger = { TAG = USA }
+	}
+}
+
+# The Fall of New York (Persia)
+news_event = {
+	id = news.512
+	title = news.512.t
+	desc = news.512.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		358 = { is_controlled_by = PER }
+		358 = { is_owned_by = USA }
+		PER = { has_war_with = USA }
+		NOT = { has_global_flag = fall_of_new_york }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_new_york
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = USA
+			}
+		}
+	}
+	
+	option = {
+		name = news.509.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.100.c
+		trigger = { TAG = USA }
+	}
+}
+
+# The Fall of Gibraltar (Persia)
+news_event = {
+	id = news.513
+	title = news.513.t
+	desc = news.513.d
+	picture = GFX_news_event_052
+	
+	major = yes
+	
+	trigger = {
+		118 = { is_controlled_by = PER }
+		118 = { is_owned_by = ENG }
+		PER = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_gibraltar_ger }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_gibraltar_ger
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = ENG
+			}
+		}
+	}
+	
+	option = {
+		name = news.509.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# The Fall of Singapore (Persia)
+news_event = {
+	id = news.514
+	title = news.514.t
+	desc = news.514.d
+	picture = GFX_news_event_038
+	
+	major = yes
+	
+	trigger = {
+		336 = { is_controlled_by = PER }
+		336 = { is_owned_by = ENG }
+		PER = { has_war_with = ENG }
+		NOT = { has_global_flag = fall_of_singapore }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_singapore
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = ENG
+			}
+		}
+	}
+	
+	option = {
+		name = news.509.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.100.c
+		trigger = { TAG = ENG }
+	}
+}
+
+# The Fall of Ankara (Persia)
+news_event = {
+	id = news.515
+	title = news.515.t
+	desc = news.515.d
+	picture = GFX_news_event_kiev_ruins
+	
+	major = yes
+	
+	trigger = {
+		49 = { is_controlled_by = PER }
+		49 = { is_owned_by = TUR }
+		PER = { has_war_with = TUR }
+		NOT = { has_global_flag = fall_of_ankara }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_ankara
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = TUR
+			}
+		}
+	}
+	
+	option = {
+		name = news.509.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.103.c
+		trigger = { TAG = TUR }
+	}
+}
+
+# Crossing of the Bosphorus (Persia)
+news_event = {
+	id = news.516
+	title = news.516.t
+	desc = news.516.d
+	picture = GFX_news_event_052
+	
+	major = yes
+	
+	trigger = {
+		341 = { is_controlled_by = PER }
+		341 = { is_owned_by = TUR }
+		PER = { has_war_with = TUR }
+		NOT = { has_global_flag = crossing_bosphorus }
+	}
+	
+	immediate = {
+		set_global_flag = crossing_bosphorus
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = TUR
+			}
+		}
+	}
+	
+	option = {
+		name = news.509.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.100.c
+		trigger = { TAG = TUR }
+	}
+}
+
+# The Fall of Kiev
+news_event = {
+	id = news.517
+	title = news.517.t
+	desc = news.517.d
+	picture = GFX_news_event_kiev_ruins
+	
+	major = yes
+	
+	trigger = {
+		202 = { is_controlled_by = PER }
+		202 = { is_owned_by = SOV }
+		PER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_kiev }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_kiev
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = SOV
+			}
+		}
+	}
+	
+	option = {
+		name = news.509.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.103.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Fall of Stalingrad
+news_event = {
+	id = news.518
+	title = news.518.t
+	desc = news.518.d
+	picture = GFX_news_event_soviet_soldiers_ruins
+	
+	major = yes
+	
+	trigger = {
+		217 = { is_controlled_by = PER }
+		217 = { is_owned_by = SOV }
+		PER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_stalingrad }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_stalingrad
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = SOV
+			}
+		}
+	}
+	
+	option = {
+		name = news.509.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.103.c
+		trigger = { TAG = SOV }
+	}
+}
+
+# The Fall of Moscow
+news_event = {
+	id = news.519
+	title = news.519.t
+	desc = news.519.d
+	picture = GFX_news_event_soldiers_marching
+	
+	major = yes
+	
+	trigger = {
+		219 = { is_controlled_by = PER }
+		219 = { is_owned_by = SOV }
+		PER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_moscow }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_moscow
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.519.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = SOV
+			}
+		}
+	}
+	
+	option = {
+		name = news.519.b
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.519.c
+		trigger = { TAG = SOV }
+	}
+}
+
+
+# The Fall of Sevastopol
+news_event = {
+	id = news.520
+	title = news.520.t
+	desc = news.520.d
+	picture = GFX_news_event_kiev_ruins
+	
+	major = yes
+	
+	trigger = {
+		137 = { is_controlled_by = PER }
+		137 = { is_owned_by = SOV }
+		PER = { has_war_with = SOV }
+		NOT = { has_global_flag = fall_of_sevastopol }
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_sevastopol
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = news.145.a
+		trigger = {
+			NOT = {
+				TAG = PER
+				TAG = SOV
+			}
+		}
+	}
+	
+	option = {
+		name = news.509.a
+		trigger = { TAG = PER }
+	}
+	
+	option = {
+		name = news.103.c
+		trigger = { TAG = SOV }
+	}
+}
+country_event = {
+	id = persia.25
+	title = "Uç beyi"
+	desc = "The time has come for the Turkish principalities to rise again and take their country back"
+	picture = GFX_report_event_tur_turkish_soldiers
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "TÜRKLER İÇİN!"
+		ai_chance = {
+			factor = 100
+		}
+		PER = { set_autonomy = { target = AFG autonomy_state = autonomy_puppet }	}
+        AFG = {
+			create_country_leader = {
+				name = "Emanullah Han"
+				desc = ""
+				picture = "GFX_amanullah_kha"
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					unpopular_monarch
+				}
+			}
+		}
+	}
+	option = {
+		name = "No"
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+country_event = {
+	id = persia.26
+	title = "Memlüklerin emaneti"
+	desc = "We want the Turkmen lands in Syria"
+	picture = GFX_report_event_tur_turkish_soldiers
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "Sure"
+		ai_chance = {
+			factor = 100
+		}
+        PER = {
+			transfer_state = 553
+			transfer_state = 680
+			transfer_state = 677
+			transfer_state = 799
+			transfer_state = 554
+	    }
+	}
+	option = {
+		name = "No"
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+country_event = {
+	id = persia.27
+	title = "Leader selection"
+	desc = "There are 2 major nationalist candidates in the country."
+	picture = GFX_report_event_tur_turkish_soldiers
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "The old leader!"
+		ai_chance = {
+			factor = 10
+		}
+		create_country_leader = {
+			name = "Suphi Ramazanoğlu"
+			desc = ""
+			picture = "GFX_Suphi_Ramazanoğlu"
+			expire = "1965.1.1"
+			ideology = moderatism
+			traits = {
+				leader_of_the_old_world
+			}
+        }
+
+	}
+
+	option = {
+		name = "New dynasty"
+		ai_chance = {
+			factor = 10
+		}
+		create_country_leader = {
+			name = "Hakkı Manço"
+			desc = ""
+			picture = "gfx/leaders/TUR/portrait_Hakk_Karamanco.png"
+			expire = "1965.1.1"
+			ideology = moderatism
+			traits = {
+				new_dynastic_ruler
+			}
+        }
+	}
+}
+country_event = { 
+	id = persia.28
+	title = "Seljuks demand Syria!"
+	desc = "Syria, which was a former Seljuk land, was turned into its own colony by the French at the end of World War I.."
+	picture = GFX_report_event_soviet_purge_politicians
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Sure Syria is useless colony anyway"	#yes 
+		ai_chance = { factor = 50 
+		modifier = {
+				FRA = {
+					has_war = yes
+				}
+				factor = 70
+			}
+	}
+		if = {
+			limit = {
+				ROOT = { controls_state = 677 }
+			}
+			FROM = { transfer_state = 677 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 554 }
+			}
+			FROM = { transfer_state = 554 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 553 }
+			}
+			FROM = { transfer_state = 553 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 680 }
+			}
+			FROM = { transfer_state = 680 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 799 }
+			}
+			FROM = { transfer_state = 799 }
+		}
+	}
+	option = {
+		name = "Nope!"	#no
+		ai_chance = { factor = 50 }
+ 		add_political_power = -250
+		add_stability = -0.15
+		TUR = {
+		create_wargoal = {
+			type = take_state_focus
+			target = FRA
+		    }   
+		}
+	}
+}
+country_event = { 
+	id = persia.29
+	title = "Seljuks demand Arap Lands!"
+	desc = "Arap Lands, which was a former Seljuk land, was turned into its own colony by the United Kingdom at the end of World War I.."
+	picture = GFX_report_event_soviet_purge_politicians
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Sure Arap Lands are useless colony anyway"	#yes 
+		ai_chance = { factor = 60 
+		modifier = {
+				ENG = {
+					has_war = yes
+				}
+				factor = 80
+			}
+	}
+		if = {
+			limit = {
+				ROOT = { controls_state = 658 }
+			}
+			FROM = { transfer_state = 658 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 765 }
+			}
+			FROM = { transfer_state = 765 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 659 }
+			}
+			FROM = { transfer_state = 659 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 294 }
+			}
+			FROM = { transfer_state = 294 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 656 }
+			}
+			FROM = { transfer_state = 656 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 455 }
+			}
+			FROM = { transfer_state = 455 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 454 }
+			}
+			FROM = { transfer_state = 454 }
+		}
+	}
+	option = {
+		name = "Nope!"	#no
+		ai_chance = { factor = 40 }
+ 		add_political_power = -250
+		add_stability = -0.15
+		TUR = {
+		create_wargoal = {
+			type = take_state_focus
+			target = ENG
+		    }   
+		}
+	}
+}
+country_event = { 
+	id = persia.30
+	title = "Seljuks demand Lands!"
+	desc = "Some Lands, which was a former Seljuk land, was turned into its own colony by the Soviet Union at the end of World War I.."
+	picture = GFX_report_event_soviet_purge_politicians
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Sure these Lands are useless anyway"	#yes 
+		ai_chance = { factor = 60 
+		modifier = {
+				SOV = {
+					has_war = yes
+				}
+				factor = 80
+			}
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 229 }
+			}
+			FROM = { transfer_state = 229 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 230 }
+			}
+			FROM = { transfer_state = 230 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 231 }
+			}
+			FROM = { transfer_state = 231 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 826 }
+			}
+			FROM = { transfer_state = 826 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 544 }
+			}
+			FROM = { transfer_state = 544 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 557 }
+			}
+			FROM = { transfer_state = 557 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 823 }
+			}
+			FROM = { transfer_state = 823 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 831 }
+			}
+			FROM = { transfer_state = 831 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 832 }
+			}
+			FROM = { transfer_state = 832 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 830 }
+			}
+			FROM = { transfer_state = 830 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 742 }
+			}
+			FROM = { transfer_state = 742 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 405 }
+			}
+			FROM = { transfer_state = 405 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 732 }
+			}
+			FROM = { transfer_state = 732 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 585 }
+			}
+			FROM = { transfer_state = 585 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 404 }
+			}
+			FROM = { transfer_state = 404 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 586 }
+			}
+			FROM = { transfer_state = 586 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 589 }
+			}
+			FROM = { transfer_state = 589 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 587 }
+			}
+			FROM = { transfer_state = 587 }
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 584 }
+			}
+			FROM = { transfer_state = 584 }
+		}
+	}
+	option = {
+		name = "Nope!"	#no
+		ai_chance = { factor = 40 }
+ 		add_political_power = -250
+		add_stability = -0.15
+		TUR = {
+		create_wargoal = {
+			type = take_state_focus
+			target = SOV
+		    }   
+		}
+	}
+}

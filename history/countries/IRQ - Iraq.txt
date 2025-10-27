@@ -96,7 +96,6 @@ IF = {
 	recruit_character = IRQ_ahmed_barzani
 	recruit_character = IRQ_mustafa_barzani
 	recruit_character = IRQ_muhammad_ali_jawad
-	recruit_character = IRQ_maruf_al_rusafi
 
 	IRQ_salah_al_din_al_sabbagh = {
 		set_character_flag = IRQ_golden_square_char
@@ -115,7 +114,11 @@ IF = {
 	add_ideas = IRQ_golden_square
 	add_ideas = IRQ_anglo_iraqi_treaty
 	add_ideas = IRQ_agrarian_society
-
+    add_ideas = TUR_shii_state
+	add_ideas = IRQ_king_ghazi_1
+	add_ideas = IRQ_religious_revolts_1
+	add_ideas = IRQ_kurdish_unrest_1
+	
 	#variables for Royal Iraqi Army modifier
 
 	set_variable = { IRQ_experience_gain_army_factor = -0.03 }
@@ -147,7 +150,7 @@ IF = {
 	set_variable = { IRQ_modifier_army_sub_unit_cavalry_speed_factor = 0 }
 
 	add_dynamic_modifier = {
-		modifier = IRQ_royal_army_modifier_IRQ
+		modifier = IRQ_royal_army_modifier
 	}
 
 	#Variables for Air Force Modifier 
@@ -262,26 +265,6 @@ IF = {
 		complete_national_focus = IRQ_baghdad_colleges_of_engineering_and_education
 		complete_national_focus = IRQ_found_southern_steel_plants
 		complete_national_focus = IRQ_modernization
-
-		diplomatic_relation = {
-			country = TUR
-			relation = non_aggression_pact
-			active = yes
-		}
-
-		diplomatic_relation = {
-			country = PER
-			relation = non_aggression_pact
-			active = yes
-		}
-
-		diplomatic_relation = {
-			country = AFG
-			relation = non_aggression_pact
-			active = yes
-		}
-
-		add_dynamic_modifier = { modifier = SSB_saadabad_pact }
 
 		remove_ideas = {
 			IRQ_bakr_sidqi

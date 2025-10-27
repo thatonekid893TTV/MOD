@@ -1,0 +1,738 @@
+﻿###########################
+# Iraqi Events
+###########################
+
+add_namespace = iraqi
+
+# Turkey Alliance
+country_event = {
+	id = iraqi.1
+	title = iraqi.1.t
+	desc = iraqi.1.d
+	picture = GFX_report_event_hitler_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = iraqi.1.a
+		ai_chance = { factor = 95 }
+
+		IRQ = {
+			set_country_flag = IRQ_turkey_signed_alliance
+		}
+		diplomatic_relation = {
+			country = TUR
+			relation = non_aggression_pact
+			active = yes
+		}
+		TUR = {
+			add_opinion_modifier = { 
+				target = IRQ
+				modifier =  IRQ_alliance_with_turkey_boost
+			}
+			give_guarantee = IRQ
+		}
+		IRQ = {
+			country_event = iraqi.2
+			add_opinion_modifier = { 
+				target = TUR
+				modifier =  IRQ_alliance_with_turkey_boost
+			}
+			give_guarantee = TUR
+		}
+	}
+
+	option = {
+		name = iraqi.1.b
+		ai_chance = { factor = 5 }
+		
+		IRQ = {
+			country_event = iraqi.3
+		}
+	}
+}
+
+country_event = {
+	id = iraqi.2
+	title = iraqi.2.t
+	desc = iraqi.2.d
+	picture = GFX_report_event_canada_treaty
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = iraqi.2.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = {
+	id = iraqi.3
+	title = iraqi.3.t
+	desc = iraqi.3.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = iraqi.3.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+# Bakr Sidqi dead
+country_event = {
+	id = iraqi.4
+	title = iraqi.4.t
+	desc = iraqi.4.d
+	picture = GFX_report_event_dead_soldiers
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = iraqi.4.a
+		ai_chance = { factor = 100 }
+		
+		remove_unit_leader = 870
+		set_country_flag = IRQ_bakr_sidqi_unavailable
+	}
+}
+
+# King Ghazi dead
+country_event = {
+	id = iraqi.5
+	title = iraqi.5.t
+	desc = iraqi.5.d
+	picture = GFX_report_event_generic_funeral
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = iraqi.5.a
+		ai_chance = { factor = 100 }
+		
+		if = {
+			limit = {
+				has_idea = IRQ_king_ghazi_1
+			}
+			swap_ideas = {
+				remove_idea = IRQ_king_ghazi_1
+				add_idea = IRQ_abd_al_ilah
+			}
+		}
+		if = {
+			limit = {
+				has_idea = IRQ_king_ghazi_2
+			}
+			swap_ideas = {
+				remove_idea = IRQ_king_ghazi_2
+				add_idea = IRQ_abd_al_ilah
+			}
+		}
+		if = {
+			limit = {
+				has_idea = IRQ_king_ghazi_3
+			}
+			swap_ideas = {
+				remove_idea = IRQ_king_ghazi_3
+				add_idea = IRQ_abd_al_ilah
+			}
+		}
+		if = {
+			limit = {
+				has_idea = IRQ_king_ghazi_4
+			}
+			swap_ideas = {
+				remove_idea = IRQ_king_ghazi_4
+				add_idea = IRQ_abd_al_ilah
+			}
+		}
+		if = {
+			limit = {
+				has_idea = IRQ_king_ghazi_5
+			}
+			swap_ideas = {
+				remove_idea = IRQ_king_ghazi_5
+				add_idea = IRQ_abd_al_ilah
+			}
+		}
+		if = {
+			limit = {
+				has_country_leader = { ruling_only = yes name = "Ghazi I" }
+			}
+			kill_country_leader = yes
+			create_country_leader = {
+				name = "'Abd al-Ilah"
+				desc = "POLITICS_ABD_AL_ILAH_DESC"
+				picture = "Portrait_Iraq_Abd_al_Ilah.dds"
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					#
+				}
+			}
+		}
+        set_country_flag = IRQ_king_ghazi_dead
+	}
+}
+
+# King Ghazi seizes power
+country_event = {
+	id = iraqi.6
+	title = iraqi.6.t
+	desc = iraqi.6.d
+	picture = GFX_report_event_king_speech
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+	
+	option = {
+		name = iraqi.6.a
+		ai_chance = { factor = 100 }
+		
+		retire_country_leader = yes
+		set_party_name = { ideology = neutrality long_name = IRQ_house_of_hashim_long name = IRQ_house_of_hashim }
+		create_country_leader = {
+			name = "Ghazi I"
+			desc = "POLITICS_GHAZI_I_DESC"
+			picture = "GFX_portrait_iraq_ghazi"
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = {
+				fascist_sympathies
+			}
+		}
+		IRQ_ghazi_i = {
+			remove_advisor_role = {
+				slot = political_advisor 
+			}
+		}
+
+		custom_effect_tooltip = generic_skip_one_line_tt
+
+		IF = {
+			limit = {
+				NOT = {
+					has_country_flag = IRQ_has_abd_al_illah_regent_flag
+				}
+			}
+			set_country_flag = IRQ_has_abd_al_illah_regent_flag
+		}
+		activate_advisor = IRQ_abd_al_ilah_regent
+		if = {
+			limit = {
+				has_idea = IRQ_king_ghazi_4
+			}
+			remove_ideas = IRQ_king_ghazi_4
+		}
+		if = {
+			limit = {
+				has_idea = IRQ_king_ghazi_5
+			}
+			remove_ideas = IRQ_king_ghazi_5
+		}
+	}
+}
+
+# Golden Square
+country_event = {
+	id = iraqi.7
+	title = iraqi.7.t
+	desc = iraqi.7.d
+	picture = GFX_report_event_saf_coup
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = iraqi.7.a
+		ai_chance = { factor = 90 }
+		
+        set_party_name = { ideology = fascism long_name = IRQ_golden_square name = IRQ_golden_square }
+		load_focus_tree = golden_square_focus
+		set_cosmetic_tag = IRQ_GOLDEN_SQUARE
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+		create_country_leader = {
+			name = "Rashid Ali al-Gaylani"
+			desc = "POLITICS_RASHID_ALI_AL_GAYLANI_DESC"
+			picture = "Portrait_Iraq_Rashid_Ali_al_Gaylani.dds"
+			expire = "1965.1.1"
+			ideology = fascism_ideology
+			traits = {
+				#
+			}
+		}
+	}
+	
+	option = {
+		name = iraqi.7.b
+		ai_chance = { factor = 10 }
+		
+		start_civil_war = {
+			ruling_party = neutrality
+			ideology = fascism
+			size = 0.5
+		}
+        hidden_effect = {
+            D01 = {
+                set_cosmetic_tag = IRQ_GOLDEN_SQUARE
+                load_focus_tree = golden_square_focus
+            }
+        }
+	}
+}
+
+country_event = { 
+	id = iraqi.8
+	title = "Jordan Plan"
+	desc = ""
+	picture = GFX_report_anlastik
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = {
+		name = "Sure"
+		ai_chance = {
+			factor = 99
+		}
+		IRQ = {
+			transfer_state = 455
+			transfer_state = 656
+
+			add_state_core = 455
+			add_state_core = 656
+		}
+	}
+
+	option = {
+		name = "No"
+		ai_chance = {
+			factor = 01
+		}
+		country_event = bftb_turkey.149
+	}
+}
+
+country_event = { 
+	id = iraqi.9
+	title = IRQ_political_events.73.t
+	desc = IRQ_political_events.73.desc
+	picture = GFX_report_event_generic_funeral
+
+	is_triggered_only = yes
+
+	mean_time_to_happen = { days = 35 }
+
+	hidden = no
+
+	fire_only_once = yes
+	
+	# Abd Al-Ilah shall make the Hashemites Great Again
+	option = {
+		name = IRQ_political_events.73.a
+		ai_chance = {
+			base = 10
+		}
+
+		IF = {
+			limit = {
+				has_idea = IRQ_abd_al_ilah_regent
+			}
+			remove_ideas = IRQ_abd_al_ilah_regent
+			custom_effect_tooltip = generic_skip_one_line_tt
+		}
+
+		IF = {
+			limit = {
+				NOT = {
+					has_country_flag = IRQ_has_faisal_as_direct_ruler_flag
+				}
+			}
+			set_country_flag = IRQ_has_faisal_as_direct_ruler_flag
+		}
+		IF = {
+			limit = {
+				NOT = {
+					has_idea = IRQ_faisal_ii
+				}
+			}
+			activate_advisor = IRQ_faisal_ii
+			custom_effect_tooltip = generic_skip_one_line_tt
+		}
+
+		IRQ_abd_al_ilah = {
+			add_country_leader_role = {
+				country_leader = {
+					ideology = despotism
+					expire = "1965.1.1.1"
+					traits = { IRQ_hashemite_regent }
+				}
+				promote_leader = yes
+			} 
+		}
+
+	}
+	# It is Imperative that we retain the constitutional nature of our monarchy!
+	option = {
+		name = IRQ_political_events.73.b
+		ai_chance = {
+			base = 0
+		}
+
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.1
+		}	
+		hidden_effect = {
+			set_country_flag = IRQ_regent_turned_down_absolute_powers
+		}
+
+	}
+	
+} 
+
+country_event = {
+	id = iraqi.10
+	title = "Hashemite wants Middle East lands"
+	desc = "The Hashemite are back and want their old lands these are palestine, qatar, kuwait, jordan, adu dhabi and aden"
+	picture = GFX_report_event_tur_machine_gunners
+
+    is_triggered_only = yes
+
+	option = {
+		name = "We can't resist the Hashemite, let's give the lands back"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_completed_focus = ENG_steady_as_she_goes
+				factor = 70
+			}
+			modifier = {
+				has_completed_focus = ENG_concessions_to_the_trade_unions
+				factor = 100
+			}
+			modifier = {
+				add = -25
+				IRQ = { has_army_size = { size < 50 } }
+			}
+			modifier = {
+				add = 50
+				IRQ = { has_army_size = { size > 50 } }
+			}
+			modifier = {
+				add = 20
+				is_in_faction_with = IRQ
+			}
+		}
+        	IRQ = { transfer_state = 1014 }
+			IRQ = { transfer_state = 992 }
+			IRQ = { transfer_state = 656 }
+			IRQ = { transfer_state = 765 }
+			IRQ = { transfer_state = 658 }
+			IRQ = { transfer_state = 659 }
+			IRQ = { transfer_state = 1013 }
+			IRQ = { transfer_state = 294 }
+			IRQ = { transfer_state = 1015 }
+			IRQ = { transfer_state = 1016 }
+			IRQ = { transfer_state = 906 }
+	}		
+	option = {
+     name = "Ottoman? Let's remind them again that they are sick men"
+	 ai_chance = {
+		factor = 50
+	}
+	 IRQ = {country_event = IRQ_political_events.62}
+	 IRQ = {
+          	create_wargoal = {
+				type = topple_government
+				target = ENG
+			}
+		 }
+
+	}
+}
+country_event = {
+	id = iraqi.11
+	title = "Hashemite want Egypt and Cyprus back"
+	desc = "We took Egypt in return for protecting the Hashemite and now they want it back."
+	picture = GFX_report_event_tur_machine_gunners
+
+    is_triggered_only = yes
+
+	option = {
+		name = "We can't resist the Hashemite, let's give the lands back"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_completed_focus = ENG_steady_as_she_goes
+				factor = 70
+			}
+			modifier = {
+				has_completed_focus = ENG_concessions_to_the_trade_unions
+				factor = 100
+			}
+			modifier = {
+				add = -25
+				IRQ = { has_army_size = { size < 50 } }
+			}
+			modifier = {
+				add = 50
+				IRQ = { has_army_size = { size > 50 } }
+			}
+			modifier = {
+				add = 20
+				is_in_faction_with = IRQ
+			}
+		}
+		IRQ = { transfer_state = 453 }
+		IRQ = { transfer_state = 447 }
+		IRQ = { transfer_state = 452 }
+		IRQ = { transfer_state = 446 }
+		IRQ = { transfer_state = 457 }
+		IRQ = { transfer_state = 456 }
+		IRQ = { transfer_state = 552 }
+		IRQ = { transfer_state = 183 }
+		IRQ = { transfer_state = 907 }
+
+	}		
+	option = {
+     name = "Hashemite? Let's remind them again that they are sick men"
+	 ai_chance = {
+		factor = 50
+	}
+	IRQ = {country_event = IRQ_political_events.62}
+         IRQ = {
+          	create_wargoal = {
+				type = topple_government
+				target = ENG
+			}
+		 }
+
+	}
+}
+country_event = {
+	id = iraqi.12
+	title = "Libya's revenge"
+	desc = "The Hashemite want the state of Libya, which we fought and took from the Hashemite, back in time."
+	picture = GFX_report_event_tur_machine_gunners
+
+    is_triggered_only = yes
+
+	option = {
+		name = "We can't resist the Hashemite, let's give the lands back"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				add = -25
+				IRQ = { has_army_size = { size < 50 } }
+			}
+			modifier = {
+				add = 50
+				IRQ = { has_army_size = { size > 50 } }
+			}
+			modifier = {
+				add = 20
+				is_in_faction_with = IRQ
+			}
+		}
+        	IRQ = { transfer_state = 451 }
+			IRQ = { transfer_state = 663 }
+			IRQ = { transfer_state = 450 }
+			IRQ = { transfer_state = 662 }
+			IRQ = { transfer_state = 449 }
+			IRQ = { transfer_state = 661 }
+			IRQ = { transfer_state = 448 }
+			IRQ = { transfer_state = 273 }
+			IRQ = { transfer_state = 164 }
+	}		
+	option = {
+     name = "Hashemite? Let's remind them again that they are sick men"
+	 ai_chance = {
+		factor = 50
+	}
+	IRQ = {country_event = IRQ_political_events.62}
+         IRQ = {
+          	create_wargoal = {
+				type = topple_government
+				target = ITA
+			}
+		 }
+
+	}
+}
+country_event = {  
+	id = iraqi.13
+	title = "The Hashemite want their old lands back!"
+	desc = ""
+	picture = GFX_report_event_tur_military_affair
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Sure"	#sounds good
+		ai_chance = {
+			factor = 50
+			modifier = {
+				add = -25
+				IRQ = { has_army_size = { size < 50 } }
+			}
+			modifier = {
+				add = 50
+				IRQ = { has_army_size = { size > 50 } }
+			}
+			modifier = {
+				add = 20
+				is_in_faction_with = IRQ
+			}
+			modifier = {
+				factor = 0.8
+				strength_ratio = { tag = FROM ratio < 0.5 }
+			}
+			modifier = {
+				factor = 0.8
+				has_opinion = { target = FROM value > 99 }
+			}
+			modifier = {
+				factor = 0.8
+				strength_ratio = { tag = FROM ratio < 0.3 }
+			}
+			modifier = {
+				factor = 0.8
+				strength_ratio = { tag = FROM ratio < 0.2 }
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = FROM ratio < 0.1 }
+			}
+		}
+		IRQ = {
+			transfer_state = 665
+			transfer_state = 458
+			transfer_state = 460
+			transfer_state = 513
+			transfer_state = 459
+			transfer_state = 462
+			transfer_state = 461
+			transfer_state = 290
+			transfer_state = 783
+		}
+	}
+	
+	option = {
+		name = "No way"	#no way 
+		ai_chance = { factor = 50 }
+		IRQ = {
+			country_event = IRQ_political_events.62
+		create_wargoal = {
+			type = take_state_focus
+			target = FRA
+		}
+	    }
+	}
+}
+	country_event = {  
+		id = iraqi.14
+		title = "Iraqi Shiites want our support!"
+		desc = ""
+		picture = GFX_report_event_tur_military_affair
+		
+		is_triggered_only = yes
+		
+		option = {
+			name = "Sure"	#sounds good
+			ai_chance = { factor = 100 }
+			 IRQ = {
+				country_event = iraqi.15
+			 }
+		}
+		
+		option = {
+			name = "No way"	#no way 
+			ai_chance = { factor = 0 }
+			IRQ = {
+				country_event = iraqi.16
+			 }
+		}	
+    }
+
+	country_event = {  
+		id = iraqi.15
+		title = "They Accept!"
+		desc = ""
+		picture = GFX_report_event_tur_military_affair
+		
+		is_triggered_only = yes
+		
+		option = {
+			name = "Nice"	#sounds good
+            add_political_power = 100
+			add_war_support = 0.05
+			if = {
+				limit = {
+					has_completed_focus = IRQ_shia_seek_foreign_support
+				}
+				set_country_flag = PER_help
+			}
+
+			if = {
+				limit = {
+					has_completed_focus = IRQ_ingratiate_ourselves_to_the_british
+				}
+				set_country_flag = ENG_help
+			}
+			 
+		}
+		
+    }
+
+	country_event = {  
+		id = iraqi.16
+		title = "They Refuse!"
+		desc = ""
+		picture = GFX_report_event_tur_military_affair
+		
+		is_triggered_only = yes
+		
+		option = {
+			name = "Nice"	#sounds good
+            
+			 
+		}
+		
+    }
+
+	country_event = {  
+		id = iraqi.17
+		title = "Iraqi insurgents want British involvement in civil war!"
+		desc = ""
+		picture = GFX_report_event_tur_military_affair
+		
+		is_triggered_only = yes
+		
+		option = {
+			name = "Sure"	#sounds good
+			ai_chance = { factor = 100 }
+			 IRQ = {
+				country_event = iraqi.15
+			 }
+		}
+		
+		option = {
+			name = "No way"	#no way 
+			ai_chance = { factor = 0 }
+			IRQ = {
+				country_event = iraqi.16
+			 }
+		}	
+		
+    }

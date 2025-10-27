@@ -13,6 +13,21 @@ if = {
 		}
 	}
 }
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "PER_1936_air_bba" #intentionally using 36 oob (No significant airforce expansion)
+	else = {
+		set_air_oob = "PER_1936_air_legacy"
+	}
+}
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "PER_1936_naval_mtg"
+	else = {
+		set_naval_oob = "PER_1936_naval"
+	}
+}
 
 # Starting tech
 
@@ -101,7 +116,7 @@ set_variable = { PER_giants_training_time = 0 }
 
 
 ### Variables for opposition modifier
-set_variable = { PER_opposition_political_power_factor = -0.1 }
+set_variable = { PER_opposition_political_power_factor = 0.1 }
 set_variable = { PER_opposition_research_speed_factor = 0 }
 set_variable = { PER_opposition_stability_factor = -0.1 }
 set_variable = { PER_opposition_conscription_factor = -0.05 }
@@ -126,14 +141,6 @@ set_variable = { PER_army_attack_factor = -0.05 }
 set_variable = { PER_special_units_special_forces = 0.15 }
 set_variable = { PER_spec_force_training = -0.15 }
 
-### VARIABLES FOR TECHNOLOGICAL MODIFIER ###
-set_variable = { PER_technological_modifier_research_speed_factor = 0 }
-set_variable = { PER_technological_modifier_special_project_speed_factor = 0 }
-set_variable = { PER_technological_modifier_production_cost_air_facility_factor = 0 }
-set_variable = { PER_technological_modifier_production_cost_land_facility_factor = 0 }
-set_variable = { PER_technological_modifier_production_cost_naval_facility_factor = 0 }
-set_variable = { PER_technological_modifier_production_cost_nuclear_facility_factor = 0 }
-
 IF = {
 	limit = {
 		has_dlc = "Graveyard of Empires"
@@ -143,10 +150,13 @@ IF = {
 	add_ideas = PER_islamic_traditions_ns
 	add_ideas = PER_azerbaijan_resistance_idea
 	add_ideas = PER_kurdistan_resistance_idea
+	add_ideas = TUR_shii_state
+	add_ideas = PER_qajar_issue
+	add_ideas = PER_corrupt_bureaucracy_judiciary
+	add_ideas = fear_of_commies
 
 	recruit_character = PER_reza_shah_pahlavi
 	recruit_character = PER_mohammed_reza_pahlavi
-	recruit_character = PER_mohammad_hassan_mirza
 	recruit_character = PER_mohammad_ali_foroughi
 	recruit_character = PER_ali_dashti
 	recruit_character = PER_zia_ol_din_tabatabee
@@ -184,10 +194,72 @@ IF = {
 	recruit_character = PER_generic_non_aligned
 	recruit_character = PER_sky_guy
 	recruit_character = PER_land_guy
-	recruit_character = PER_karim_buzarjamehri 
-	recruit_character = PER_abdolsamad_kambakhsh
-	recruit_character = PER_assadollah_hosseinpoor
+
+	recruit_character = PER_soleyman_mirza_eskandari
+	recruit_character = PER_mir_afkhami
+	recruit_character = PER_reza_mizani
+	recruit_character = PER_ali_razmara
+	recruit_character = PER_hassan_majid_firooz
+	recruit_character = PER_ahmad_mira_khosravani
+	recruit_character = PER_ahmad_khan_nakhjaavan
+	recruit_character = PER_mohammed_nakhjavani
+	recruit_character = PER_abdolreza_afkhami
+	recruit_character = PER_fazlollah_zahedi
+	recruit_character = PER_mohammed_reza_pahlavi
+	recruit_character = PER_ali_akbar_deiva
+	recruit_character = PER_hossein_afkhami
+	recruit_character = PER_ali_zohayli
+	recruit_character = PER_mahmud_jam
+	recruit_character = PER_ali_khan_mansour
+	recruit_character = PER_Hassan_Shirali 
+	recruit_character = PER_Vandad_Rahbar
+	recruit_character = PER_bardia_mazandarani
+	recruit_character = PER_abu_l_hasan_al_isfahani
+	recruit_character = PER_seyed_hossein_boroujerdi
+	recruit_character = PER_abolghasem_kashani
+	recruit_character = PER_mahmoud_taleghani
+	recruit_character = PER_sayyid_hasan_mudarris
+	recruit_character = PER_mohammed_ali_foroughi
+	recruit_character = PER_ernest_perron
+	recruit_character = PER_seyed_bagher_qasemi
+	recruit_character = PER_mohamed_tadayon
+	recruit_character = PER_gholam_ali_farivar
+	recruit_character = PER_mostafa_fateh
+	recruit_character = PER_muhammad_taqi_bahar
+	recruit_character = PER_ali_mansur
+	recruit_character = PER_abolqasem_nadjm
+	recruit_character = PER_javad_sad
+	recruit_character = PER_khalil_fahimi
+	recruit_character = PER_morteza_yazdi
+    recruit_character = PER_shamseddin_amir_alaei
+	recruit_character = PER_mohsen_rais
+	recruit_character = PER_ibrahim_hakimi
+	recruit_character = PER_mohammed_saed
+	recruit_character = PER_amanullah_jahanbani
+	recruit_character = PER_yadollah_bayandor
+	recruit_character = PER_mohammad_shahbakhti
+	recruit_character = PER_karim_buzarjomehri
+	recruit_character = PER_hassan_arfa
 	recruit_character = PER_haj_ali_razmara
+	recruit_character = PER_assadollah_hosseinpoor
+	recruit_character = PER_mohammadhosayn_ayrom
+	recruit_character = PER_morteza_yazdanpanah
+	recruit_character = PER_mohammadvali_gharani
+	recruit_character = PER_jafar_shafaghat
+	recruit_character = PER_hedayat_gilanshah
+	recruit_character = PER_seyyed_jalal_al_e_ahmad
+	recruit_character = PER_mohammad_ali_khanji
+	recruit_character = PER_suleiman_eskandari
+	recruit_character = PER_anvar_hamai
+	recruit_character = PER_ehsan_tabari
+	recruit_character = PER_fereydoun_keshavarz
+	recruit_character = PER_reza_radmanesh
+	recruit_character = PER_khosro_roozbeh
+    recruit_character = PER_ezatullah_siamak
+	recruit_character = PER_gholamhossein_bigdeli
+	recruit_character = PER_abdulsamad_adl_qajar
+	recruit_character = PER_mohammad_ali_mobashery
+	recruit_character = PER_lahak_khan_bavand
 	recruit_character = PER_rokneddin_mokhtari
 	recruit_character = PER_kazem_hasibi
 	recruit_character = PER_ahmad_zirakzadeh
@@ -203,9 +275,7 @@ IF = {
 		recruit_character = PER_hasan_arfa
 		recruit_character = PER_dalir_pesyan
 		recruit_character = PER_sohrab_tahmasebi
-		recruit_character = PER_mir_afkhami
 		recruit_character = PER_ahmad_khan_nakhjavan
-		recruit_character = PER_reza_mizani
 		recruit_character = PER_ali_razmara
 		recruit_character = PER_hassan_majid_firooz
 		recruit_character = PER_ahmad_mira_khosravani
@@ -241,6 +311,7 @@ IF = {
 		complete_national_focus = PER_expand_imperial_guard
 		complete_national_focus = PER_persian_german_trade
 		complete_national_focus = PER_increase_military_funding
+		complete_national_focus = PER_saadabad_treaty
 		complete_national_focus = PER_rapid_industrialization
 		complete_national_focus = PER_tehran_power_plant
 		complete_national_focus = PER_increase_education_funding
@@ -251,26 +322,6 @@ IF = {
 		complete_national_focus = PER_trial_fifty_three
 		complete_national_focus = PER_open_abadan
 		complete_national_focus = PER_military_high_schools
-
-		diplomatic_relation = {
-			country = TUR
-			relation = non_aggression_pact
-			active = yes
-		}
-
-		diplomatic_relation = {
-			country = IRQ
-			relation = non_aggression_pact
-			active = yes
-		}
-
-		diplomatic_relation = {
-			country = AFG
-			relation = non_aggression_pact
-			active = yes
-		}
-
-		add_dynamic_modifier = { modifier = SSB_saadabad_pact }
 
 		ELSE = {
 			#generic focuses

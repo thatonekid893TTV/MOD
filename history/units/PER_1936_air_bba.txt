@@ -1,0 +1,115 @@
+﻿air_wings = {
+
+	air_wings = {
+		### Royal Iranian Air Force ###
+		266 = {
+			# 1st Air Group -- Hawker Furys
+			small_plane_airframe_0 =  {
+				owner = "PER" 
+				amount = 72
+				creator = "ENG"
+				version_name = "Hawker Fury"
+			}
+			# 2nd, 3rd Air Groups -- Hawker Hinds, Audaxes
+			small_plane_cas_airframe_0 =  {
+				owner = "PER" 
+				amount = 48
+				creator = "ENG"
+				version_name = "Fairey Gordon"
+			}
+		}
+	}
+	
+	### IIAF Fighter Command ###
+	266 = { 
+		
+		small_plane_airframe_1 = {
+			owner = "PER" 
+			amount = 100
+			version_name = "R-5"
+		}
+
+		small_plane_cas_airframe_1 = {
+			owner = "PER" 
+			amount = 100
+			version_name = "R-55"
+		}
+
+		small_plane_airframe_1 = {
+			owner = "PER" 
+			amount = 100
+			version_name = "R-5"
+		}
+
+		small_plane_cas_airframe_1 = {
+			owner = "PER" 
+			amount = 100
+			version_name = "R-55"
+		}
+
+		transport_plane_equipment_1 = {
+			owner = "PER" 
+			amount = 100
+		}
+
+
+	}
+}
+
+#########################
+## STARTING PRODUCTION ##
+#########################
+instant_effect = {
+
+	add_equipment_to_stockpile = {
+		type = small_plane_airframe_1
+		amount = 100
+	}
+
+	add_equipment_to_stockpile = {
+		type = small_plane_cas_airframe_1
+		amount = 100
+	}
+
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_1
+		amount = 100
+	}
+
+	add_equipment_to_stockpile = {
+		type = transport_plane_equipment_1
+		amount = 200
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = small_plane_airframe_1
+			creator = "PER" 
+			version_name = "R-5"
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = small_plane_cas_airframe_1
+			creator = "PER" 
+			version_name = "R-55"
+		}
+		requested_factories = 1
+		progress = 0.85
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = transport_plane_equipment_1
+			creator = "PER" 
+		}
+		requested_factories = 1
+		progress = 0.99
+		efficiency = 100
+	}
+}

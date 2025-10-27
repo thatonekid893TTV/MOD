@@ -2316,7 +2316,7 @@ focus_tree = {
 	focus = {
 		id = gram_focus_alb_lower_class_education
 		icon = GFX_focus_NOR_moscows_education_centers
-		x = 24
+		x = 25
 		y = 23
 		cost = 5
 		available = {
@@ -2342,8 +2342,8 @@ focus_tree = {
 	focus = {
 		id = gram_focus_alb_new_step_forward
 		icon = GFX_focus_CHL_union_of_hispanic_republics
-		x = 24
-		y = 25
+		x = 25
+		y = 24
 		cost = 5
 		available = {
 			is_subject = no
@@ -2354,7 +2354,7 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { 
-			focus = gram_focus_alb_lower_class_education 
+			focus = gram_focus_alb_lower_class_education
 		}
 		completion_reward = {
 
@@ -3322,6 +3322,9 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = gram_focus_alb_peoples_revolution
 		}
+		ai_will_do = {
+			factor = 2
+		}
 		relative_position_id = gram_focus_alb_new_era_for_the_republic
 		x = 6
 		y = 1
@@ -3368,6 +3371,9 @@ focus_tree = {
 		prerequisite = {
 			focus = ALB_democratic_victory
 		}
+		ai_will_do = {
+			factor = 2
+		}
 		completion_reward = {
 			add_stability = 0.15
 			add_popularity = {
@@ -3386,6 +3392,9 @@ focus_tree = {
 		relative_position_id = ALB_democratic_victory
 		prerequisite = {
 			focus = ALB_democratic_victory
+		}
+		ai_will_do = {
+			factor = 2
 		}
 		completion_reward = {
 			add_stability = 0.15
@@ -3407,6 +3416,9 @@ focus_tree = {
 		prerequisite = {
 			focus = ALB_democratic_victory
 		}
+		ai_will_do = {
+			factor = 2
+		}
 		completion_reward = {
 			add_war_support = 0.15
 			add_popularity = {
@@ -3417,6 +3429,9 @@ focus_tree = {
 	}
 
 	focus = {
+		ai_will_do = {
+			factor = 2
+		}
 		id = ALB_our_new_era_dem
 		icon = GFX_focus_ITA_liberate_gramsci
 		cost = 10
@@ -3454,6 +3469,9 @@ focus_tree = {
 		prerequisite = {
 			focus = ALB_our_new_era_dem
 		}
+		ai_will_do = {
+			factor = 2
+		}
 		completion_reward = {
 			country_event = {
 				id = democratic_alb.3
@@ -3470,6 +3488,9 @@ focus_tree = {
 		y = 2
 		available = {
 			always = no
+		}
+		ai_will_do = {
+			factor = 2
 		}
 		prerequisite = {
 			focus = ALB_diplomatic_action
@@ -3495,6 +3516,9 @@ focus_tree = {
 		prerequisite = {
 			focus = ALB_diplomatic_action
 		}
+		ai_will_do = {
+			factor = 2
+		}
 		completion_reward = {
 				custom_effect_tooltip = ENG_completed_by_event_tt
 				create_faction = "Balkan Democratic League"
@@ -3509,6 +3533,9 @@ focus_tree = {
 		x = 2
 		prerequisite = {
 			focus = ALB_our_new_era_dem
+		}
+		ai_will_do = {
+			factor = 2
 		}
 		available = {
 			NOT = {
@@ -3537,6 +3564,9 @@ focus_tree = {
 		prerequisite = {
 			focus = ALB_our_new_era_dem
 		}
+		ai_will_do = {
+			factor = 2
+		}
 		relative_position_id = ALB_our_new_era_dem
 		completion_reward = {
 			add_ideas = gram_idea_alb_king_zog
@@ -3553,6 +3583,9 @@ focus_tree = {
 		icon = GFX_goal_support_communism
 		available = {
 			always = no
+		}
+		ai_will_do = {
+			factor = 2
 		}
 		cost = 10
 		x = 22
@@ -3613,6 +3646,9 @@ focus_tree = {
 		available = {
 			always = no
 		}
+		ai_will_do = {
+			factor = 2
+		}
 		cost = 10
 		x = 0
 		y = 1
@@ -3637,7 +3673,7 @@ focus_tree = {
 		y = 9
 		cost = 10
 		ai_will_do = {
-			factor = 2
+			factor = 20
 		}
 		mutually_exclusive = {
 			focus = ALB_restore_elections

@@ -4518,16 +4518,9 @@ focus_tree = {
 
 	        custom_effect_tooltip = generic_skip_one_line_tt
 
-	        IF = {
-	        	limit = {
-	        		NOT = {
-	        			has_tech = tech_mountaineers
-	        		}
-	        	}
-	        	set_technology = {
-	        	    tech_mountaineers = 1
-	        	    popup = no
-	        	}
+	        set_technology = {
+	            tech_mountaineers = 1
+	            popup = no
 	        }
 
 	        division_template = {
@@ -8398,10 +8391,7 @@ focus_tree = {
 			}
 		}
 		available = {
-			OR = {
-				is_in_faction = no
-				is_in_faction_with = GER
-			}
+			is_in_faction = no
 			is_subject = no
 			OR = {
 				has_government = fascism
@@ -8544,10 +8534,8 @@ focus_tree = {
 			factor = 10
 		}
 		bypass = { 
-			OR = {
-				is_in_faction_with = GER 
-				is_subject = yes
-			}
+			is_in_faction_with = GER 
+			is_subject = yes
 		}
 		available = {
 			is_subject = no
@@ -9445,10 +9433,7 @@ focus_tree = {
 			factor = 10
 		}
 		available = {
-			OR = {
-				is_in_faction = no
-				is_faction_leader = yes
-			}
+			is_in_faction = no
 			has_army_manpower = { size > 120000 }
 			has_war_support > 0.40
 		}
@@ -9479,10 +9464,7 @@ focus_tree = {
 			}
 		}
 		available = {
-			OR = {
-				is_in_faction = no
-				is_in_faction_with = ENG
-			}
+			is_in_faction = no
 			is_subject = no
 			OR = {
 				has_government = democratic

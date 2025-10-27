@@ -1,0 +1,953 @@
+ideas = {
+
+	country = {
+
+		AZR_war_idea = {
+			removal_cost = -1	
+			allowed = { always = no }
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = generic_intel_bonus
+			modifier = {
+				justify_war_goal_time = -0.25
+				army_attack_factor = 0.1
+				army_core_attack_factor = 0.1	
+			 }
+		}
+
+		AZR_greater = {
+			removal_cost = -1	
+			allowed = { always = no }
+			allowed_civil_war = {
+				always = yes
+			}
+			picture = TUR_lousan_2
+			modifier = {
+				political_power_gain = 0.05
+				mobilization_speed = 0.25
+				stability_factor = 0.05
+			 }
+		}
+
+		AZR_class_issue = {
+			picture = AFG_practical_farming_classes_in_Kabul_idea
+
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				drift_defence_factor = -0.5
+				political_power_factor = -0.15
+				war_support_factor = -0.1
+				}
+			}
+
+			AZR_the_oil = {
+				picture = oil_strikes
+
+				allowed = {
+					always = yes
+				}
+
+				allowed_civil_war = {
+					always = no
+				}
+
+				removal_cost = -1
+
+				modifier = {
+					consumer_goods_factor = -0.3
+					min_export = 0.9
+					global_building_slots_factor = 0.25
+					trade_opinion_factor = 0.2
+				}
+			}
+
+		AZR_brutal_state = {
+				picture = NGX_not_effect_burocracy
+
+				allowed = {
+					always = yes
+				}
+
+				allowed_civil_war = {
+					always = no
+				}
+
+				removal_cost = -1
+
+				modifier = {
+					stability_factor = 0.15
+					research_speed_factor = 0.05
+					defensive_war_stability_factor = 0.2
+				}
+		}
+
+		AZR_way_to_shia = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			cancel = {
+				has_war = no
+			}
+
+			removal_cost = -1
+
+			picture = nepal_army_support
+			
+
+			rule = {
+				can_join_factions = no
+			}
+
+			modifier = {
+				army_attack_factor = 0.10
+			}
+			targeted_modifier = {
+				tag = PER
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+		}
+
+		AZR_unification_war = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			cancel = {
+				has_war = no
+			}
+
+			removal_cost = -1
+
+			picture = chi_army_corruption2
+			
+
+			rule = {
+				can_join_factions = no
+			}
+
+			modifier = {
+				army_attack_factor = 0.10
+				army_core_attack_factor = 0.10
+				army_core_defence_factor = 0.10
+				pocket_penalty = -0.25
+				conscription = 0.01
+				training_time_factor = -0.1
+				join_faction_tension = 1.00
+				ai_focus_aggressive_factor = 0.3
+				ai_get_ally_desire_factor = -100
+				ai_call_ally_desire_factor = -100
+				ai_join_ally_desire_factor = -100
+			}
+		}
+
+		AZR_azerbaijan_spirit = { #Turkic Settlement
+			
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_morale_bonus
+
+			modifier = {				
+				cavalry_attack_factor = 0.10
+				cavalry_defence_factor = 0.10
+			}
+		}
+
+		AZR_recruitment = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+            available = {
+			}
+
+			picture = chi_army_corruption3
+				
+			removal_cost = -1
+				
+			modifier = {
+			    conscription = 0.05
+			    war_support_factor = 0.05
+			}
+		}
+
+
+		AZR_etatism = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+            available = {
+			}
+
+			picture = tur_etatism
+				
+			removal_cost = -1
+				
+			modifier = {
+				consumer_goods_factor = -0.10
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_infrastructure_factor = 0.1
+				production_speed_arms_factory_factor = 0.05
+				production_speed_dockyard_factor = 0.05
+			}
+		}
+
+		AZR_Armenian_Terrorism = {
+			available = {
+				AZR = { has_idea = AZR_idea_armenian_opposition  }
+			}
+			allowed = { always = no }
+			picture = FIU_sabotaged_army
+			modifier = {
+				stability_factor = -0.2
+			}
+			targeted_modifier = {
+				tag = ARM
+				defense_bonus_against = -0.15
+			}
+		}
+
+		AZR_Dependance_On_Germany = {
+			allowed = { always = no }
+			available = {
+				country_exists = GER
+			}
+			picture = ger_rebuild_the_nation
+			modifier = {
+				political_power_cost = 0.35
+				stability_factor = -0.2
+				production_oil_factor = 0.25
+				industrial_factory_donations = 2
+				max_fuel_factor = 0.3
+				fuel_gain_factor_from_states = 0.5
+			}
+			targeted_modifier = {
+				tag = GER
+				extra_trade_to_target_factor = 0.5
+				trade_cost_for_target_factor = -0.5
+				cic_to_target_factor = 0.2
+			}
+		}
+
+		AZR_french_drill = {
+
+			picture = generic_intel_bonus
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_leader_start_defense_level = 1
+			}
+		}
+	
+		AZR_the_anti_fascist_crusade = {
+
+			picture = SPR_anti_fascist_crusade
+
+			allowed = {
+				NOT = { has_government = fascism }
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				offence = 0.1
+			}
+		}
+	
+		AZR_focus_on_epo = {
+
+			picture = hol_aloof_neutrality
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+						
+			modifier = {
+				generate_wargoal_tension = -0.10
+				join_faction_tension = -1.00
+				lend_lease_tension = -0.50
+				send_volunteers_tension = -0.50
+				guarantee_tension = -1.0
+			}
+		}
+		AZR_supreme = { 
+
+			allowed = {
+				original_tag = AZR
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = tur_kemalist_army_officers_powerful_loyal
+				
+			removal_cost = -1
+				
+			modifier = {
+				max_planning = 0.1
+				army_morale_factor = 0.1
+				experience_gain_army_factor = 0.05
+				command_power_gain_mult = 0.25
+			}
+		}
+		AZR_oil_interests = {
+		
+			allowed = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			picture = azr_oil
+			
+			modifier = {
+				trade_opinion_factor = 0.25 
+				consumer_goods_factor = -0.15
+				industrial_capacity_factory = -0.05
+				min_export = 0.15
+				local_resources_factor = -0.2
+			}
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.1
+				mic_to_target_factor = 0
+				extra_trade_to_target_factor = 0.4
+				trade_cost_for_target_factor = -0.2
+			}
+		}
+
+		AZR_Pan_turkish_teory = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_fascism_drift_bonus
+			
+			modifier = {
+				fascism_drift = 0.1
+				fascism_acceptance = 85
+			}
+		}
+		
+		AZR_turkic_state = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+			}
+
+			removal_cost = -1
+
+			picture = tur_kemalist_army_officers_powerful_neutral
+			
+			modifier = {
+				war_support_weekly = 0.01
+				resistance_target = -0.05
+				no_supply_grace = 48
+			}
+		}
+		AZR_idea_peasant_councils = {
+
+			picture = generic_communism_drift_bonus
+			
+			allowed = {
+				original_tag = AZR
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			picture = generic_communism_drift_bonus
+			
+			modifier = {
+				communism_drift = 0.2
+			}
+		}
+		
+		AZR_idea_empowered_peasant_councils = {
+			
+			picture = generic_communism_drift_bonus
+			
+			allowed = {
+				original_tag = AZR
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			picture = generic_communism_drift_bonus
+			
+			modifier = {
+				drift_defence_factor = 0.25
+				production_speed_buildings_factor = 0.1
+			}
+		}
+		
+		AZR_idea_very_empowered_peasant_councils = {
+			
+			picture = generic_communism_drift_bonus
+			
+			allowed = {
+				original_tag = AZR
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			picture = generic_communism_drift_bonus
+			
+			modifier = {
+				drift_defence_factor = 0.5
+				production_speed_buildings_factor = 0.1
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+			}
+		}
+		AZR_idea_sovyet_aid = {
+
+			picture = generic_goods_red_bonus
+			
+			available = {
+				AZR = {
+					NOT = { has_war_with = SOV }
+					exists = yes
+					has_capitulated = no
+				}
+			}
+			
+			allowed = {
+				original_tag = AZR
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+		AZR_period_of_significant_economic_growth_I = {
+			
+			available = {
+				has_war = no
+			}
+			
+			picture = generic_political_support
+			
+			removal_cost = -1
+
+			modifier = {
+				custom_effect_tooltip = AZR_careful_war
+				political_power_gain = 0.05
+				production_factory_efficiency_gain_factor = 0.1
+				production_speed_buildings_factor = 0.05
+				consumer_goods_factor = -0.03
+				MONTHLY_POPULATION = 0.05
+				research_speed_factor = 0.05
+			}
+		}
+		AZR_master_end = {
+			
+			picture = generic_foreign_capital
+
+			allowed = {
+				original_tag = YUG
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				consumer_goods_factor = 0.10
+				army_org_Factor = 0.15
+				planning_speed = 0.15
+				stability_factor = -0.15
+			}
+		}
+		
+		AZR_idea_rebuiled_empire = {
+			
+			picture = generic_volunteer_expedition_bonus
+
+			allowed = {
+				original_tag = AZR
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_factor = 0.25
+				political_advisor_cost_factor = -0.25
+				trade_laws_cost_factor = -0.25
+				mobilization_laws_cost_factor = -0.25
+				economy_cost_factor = -0.25
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.1
+			}
+		}
+		AZR_idea_armenian_opposition = {
+			
+			picture = ARM_Guerrillas
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_advisor_cost_factor = 0.25
+				trade_laws_cost_factor = 0.25
+				mobilization_laws_cost_factor = 0.25
+				economy_cost_factor = 0.25
+			}
+		}
+		AZR_workforce = {
+
+			picture = generic_production_bonus
+
+			available = {
+				
+			}
+			
+			modifier = {
+				consumer_goods_factor = -0.05
+				industrial_capacity_factory = 0.05
+				production_speed_buildings_factor = 0.05
+			}
+		}
+		AZR_islamic_law = {
+			
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = raj_marginalized_muslim_community_angry
+			
+			modifier = {
+				political_power_factor = 0.2
+				stability_factor = 0.09
+			}
+		}
+		AZR_collectivist_ethos = {
+		
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+		
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				democratic_drift = -0.01
+				fascism_drift = -0.01	
+                neutrality_drift = -0.01				
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				production_speed_buildings_factor = 0.03
+				consumer_goods_factor = -0.01
+			}
+		}
+		AZR_reform_the_tax_system_I = {
+
+			picture = generic_goods_red_bonus
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+
+			}
+			
+			modifier = {
+				political_power_gain = 0.15
+				consumer_goods_factor = -0.03
+			}
+		}
+		AZR_focus_on_quality = {
+			allowed = {
+				always = no 
+			}
+
+			picture = generic_war_preparation
+
+			modifier = {
+				experience_gain_army_factor = 0.05
+			
+				military_leader_cost_factor = -0.15
+			
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				army_org_factor = 0.04
+				
+				acclimatization_cold_climate_gain_factor = 0.05
+				acclimatization_hot_climate_gain_factor = 0.05
+				
+				training_time_factor = 0.15
+			}
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		AZR_democracy_of_the_east = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+			}
+
+			removal_cost = -1
+
+			picture = YUG_federal_defense_council
+			
+			modifier = {
+				ai_focus_defense_factor = 0.5
+				monthly_population = 0.3
+				legitimacy_gain_factor = 0.1
+			}
+		}
+		AZR_liberal_reforms = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+			
+			modifier = {
+				industrial_capacity_factory = 0.50
+				political_power_factor = 0.1
+				production_speed_buildings_factor  = 0.05
+			}
+		}
+		AZR_ideological_fanaticism_I = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+	
+			modifier = {
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
+				
+				army_morale_factor = 0.04
+				
+				conscription_factor = 0.05
+			}
+		}
+		AZR_soviet_infuulance = {
+			available = {
+				country_exists = SOV
+			}
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			picture = SOV_factionalism_modifier
+			modifier = {
+				conscription_factor = -0.60
+				industrial_capacity_factory = -0.50
+				industrial_capacity_dockyard = -0.50
+				command_power_gain_mult = -0.75
+				max_command_power = -75
+				communism_drift = 0.01
+				stability_factor = -0.05
+				political_power_factor = -0.02
+				consumer_goods_factor = 0.05
+				production_speed_buildings_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.05
+				research_speed_factor = 0.1
+			}
+
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.1
+				mic_to_target_factor = 0.1
+				extra_trade_to_target_factor = 0.5
+				trade_cost_for_target_factor = -0.35
+			}
+		}
+		AZR_german_offisers = { 
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+			}
+			removal_cost = -1
+			picture = ger_rebuild_the_nation
+			modifier = {
+				ai_focus_aggressive_factor = 0.25
+				army_attack_factor = 0.12
+				army_speed_factor = 0.12
+				army_org_factor = 0.12
+				convoy_raiding_efficiency_factor = 0.12
+			}
+		}
+		AZR_soviet_trate = {
+			
+			available = {
+			}
+
+			picture = generic_fascism_drift_2
+
+			removal_cost = -1
+			
+			targeted_modifier = {
+				tag = SOV
+				attack_bonus_against = 0.1
+			}
+			
+			modifier = {
+				planning_speed = 0.15
+			
+				army_morale_factor = 0.06
+				army_speed_factor = 0.03
+				
+				army_bonus_air_superiority_factor = 0.15
+			}
+		}
+		AZR_rebuilded = {
+			
+			available = {
+				
+			}
+
+			picture = generic_fascism_drift_2
+
+			removal_cost = -1
+			
+			modifier = {
+				experience_gain_navy = 0.05
+			
+				navy_refit_speed = 0.05
+				navy_refit_ic_cost = -0.1
+			
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.15
+				
+				production_speed_dockyard_factor = 0.05
+				political_power_gain = -0.15
+			
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+				production_speed_infrastructure_factor = 0.05
+				
+				local_resources_factor = 0.10
+				
+				consumer_goods_factor = -0.05
+			}
+		}
+		AZR_defeatism = {
+			
+			available = {
+				
+			}
+
+			picture = generic_infantry_equipment_manufacturer_2
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_gain = -1
+				
+				stability_weekly = 0.002
+				war_support_weekly = 0.001
+				
+				ai_get_ally_desire_factor = -100
+			}
+		}
+		AZR_Eng_Deal = {
+
+			picture = generic_foreign_capital
+			
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = -0.05
+			
+				fascism_acceptance = 85
+			
+				local_resources_factor = 0.10
+				consumer_goods_factor = -0.05
+			}
+			
+			targeted_modifier = { 
+				tag = ENG
+				trade_opinion_factor = 0.5
+				extra_trade_to_target_factor = 0.15
+				trade_cost_for_target_factor = -0.15
+			}
+		}
+		
+		AZR_secular_republic = {
+			
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = tur_funkplan
+			
+			modifier = {
+				stability_factor = 0.1
+				industrial_capacity_factory = 0.10
+				monthly_population = 0.05
+			}
+		}
+		AZR_mass_infantry_production = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+			}
+
+			removal_cost = -1
+
+			picture = generic_fortify_the_borders
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.15 instant = yes
+				}
+			}
+		}
+	}
+}
