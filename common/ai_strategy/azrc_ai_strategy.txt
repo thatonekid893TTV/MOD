@@ -1,0 +1,166 @@
+AZR_vol_2aif = {
+    allowed = {
+        always = yes
+    }
+    enable = {
+		AST = { has_idea = MMR_AST_2aif_idea }
+		NOT = {
+			tag = AST
+			has_war_with = AST
+		}
+        OR = {
+			has_government = democratic
+			has_government = neutrality
+		}
+		any_owned_state = {
+			OR = {
+				is_on_continent = asia
+				is_on_continent = australia
+			}
+		}
+		NOT = { is_in_faction_with = AST }
+    }
+    abort = {
+        AST = { NOT = { has_idea = MMR_AST_2aif_idea } }
+    }
+    ai_strategy = {
+		type = diplo_action_acceptance
+		id = NZL
+		value = 100
+		target = send_volunteers
+	}
+}
+AZR_vol_2nzef = {
+    allowed = {
+        always = yes
+    }
+    enable = {
+		NZL = { has_idea = NZL_2nzef }
+		NOT = {
+			tag = NZL
+			has_war_with = NZL
+		}
+        OR = {
+			has_government = democratic
+			has_government = neutrality
+		}
+		any_owned_state = {
+			OR = {
+				is_on_continent = asia
+				is_on_continent = australia
+			}
+		}
+		NOT = { is_in_faction_with = NZL }
+    }
+    abort = {
+        NZL = { NOT = { has_idea = NZL_2nzef } }
+    }
+    ai_strategy = {
+		type = diplo_action_acceptance
+		id = NZL
+		value = 100
+		target = send_volunteers
+	}
+}
+AZR_vol_peacekeeper_AST = {
+    allowed = {
+        always = yes
+    }
+    enable = {
+		AST = { has_idea = MMR_NZL_pacific_peacekeepers }
+		NOT = {
+			tag = AST
+			has_war_with = AST
+		}
+        OR = {
+			has_government = democratic
+			has_government = neutrality
+		}
+		any_owned_state = {
+			OR = {
+				is_on_continent = asia
+				is_on_continent = australia
+			}
+		}
+		NOT = {
+			any_country = {
+				is_in_faction_with = ROOT
+				has_government = fascism
+			}
+		}
+    }
+    abort = {
+        AST = { NOT = { has_idea = MMR_NZL_pacific_peacekeepers } }
+    }
+    ai_strategy = {
+		type = diplo_action_acceptance
+		id = AST
+		value = 100
+		target = send_volunteers
+	}
+}
+AZR_vol_peacekeeper_NZL = {
+    allowed = {
+        always = yes
+    }
+    enable = {
+		NZL = { has_idea = MMR_NZL_pacific_peacekeepers }
+		NOT = {
+			tag = NZL
+			has_war_with = NZL
+		}
+        OR = {
+			has_government = democratic
+			has_government = neutrality
+		}
+		any_owned_state = {
+			OR = {
+				is_on_continent = asia
+				is_on_continent = australia
+			}
+		}
+		NOT = {
+			any_country = {
+				is_in_faction_with = ROOT
+				has_government = fascism
+			}
+		}
+    }
+    abort = {
+        NZL = { NOT = { has_idea = MMR_NZL_pacific_peacekeepers } }
+    }
+    ai_strategy = {
+		type = diplo_action_acceptance
+		id = NZL
+		value = 100
+		target = send_volunteers
+	}
+}
+AZR_vol_direct_support = {
+    allowed = {
+        always = yes
+    }
+    enable = {
+		AST = { has_idea = AST_direct_support }
+		NOT = {
+			tag = AST
+			has_war_with = AST
+		}
+        has_government = communism
+		any_core_state = {
+			OR = {
+				is_on_continent = asia
+				is_on_continent = australia
+			}
+		}
+    }
+    abort = {
+        AST = { NOT = { has_idea = AST_direct_support } }
+    }
+    ai_strategy = {
+		type = diplo_action_acceptance
+		id = AST
+		value = 100
+		target = send_volunteers
+	}
+}

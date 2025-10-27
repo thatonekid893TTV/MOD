@@ -1,0 +1,1806 @@
+focus_tree = {
+	id = focus-els
+	continuous_focus_position = { x = 150 y = 1050 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = ELS
+		}
+	}
+	#Fuerza Naval de El Salvador
+	focus = {
+		id = ELS_fuerza_naval_de_el_salvador
+		icon = GFX_ELS_fuerza_naval_de_el_salvador-646137
+		x = 20
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			navy_experience = 25
+			
+			
+		}
+	}
+
+	#Fuerza Aérea Salvadoreña
+	focus = {
+		id = ELS_fuerzaaereasalvadorena
+		icon = GFX_goal_generic_air_production
+		x = 22
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+	#Central American Politics
+	focus = {
+		id = ELS_central_american_politics
+		icon = GFX_goal_generic_neutrality_focus
+		x = 1
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.08 }
+			
+			
+			set_politics = {
+				ruling_party = fascism 
+			        elections_allowed = yes
+			        last_election = } 
+			add_stability = -0.025
+			
+			add_political_power = 45
+			
+			
+		}
+	}
+
+	#Maintain Close American Relations
+	focus = {
+		id = ELS_maintain_close_american_relations
+		icon = GFX_ELS_maintain_close_american_relations-645900
+		x = 1
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ELS_central_american_politics  }
+		mutually_exclusive = { focus = ELS_break_american_ties  }
+		ai_will_do = { factor = 4 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.08 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.05
+			
+			
+			
+		}
+	}
+
+	#American Political Ties
+	focus = {
+		id = ELS_american_political_ties
+		icon = GFX_ELS_american_political_ties-646107
+		x = 0
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ELS_maintain_close_american_relations  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.05 
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#American Industrial Ties
+	focus = {
+		id = ELS_american_industrial_ties
+		icon = GFX_ELS_american_industrial_ties-645641
+		x = 2
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_maintain_close_american_relations  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.05 }
+			
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			USA = {
+				add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#American Military Ties
+	focus = {
+		id = ELS_american_military_ties
+		icon = GFX_ELS_american_military_ties-645838
+		x = 4
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = ELS_maintain_close_american_relations  }
+		completion_reward = {
+			add_manpower = 15250
+			
+			add_offsite_building = { type = arms_factory level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Distance From European Fascists
+	focus = {
+		id = ELS_distance_from_european_fascists
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		x = 0
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ELS_american_political_ties  } prerequisite = { focus = ELS_american_industrial_ties  } prerequisite = { focus = ELS_american_military_ties  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.05 }
+			
+			
+			add_stability = 0.05 
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Reinforce the Intelligence Agency
+	focus = {
+		id = ELS_reinforce_the_intelligence_agency
+		icon = GFX_ELS_reinforce_the_intelligence_agency-645980
+		x = 2
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ELS_american_political_ties  } prerequisite = { focus = ELS_american_industrial_ties  } prerequisite = { focus = ELS_american_military_ties  }
+		available = {
+			has_intelligence_agency = no
+			
+			
+		}
+		completion_reward = {
+			create_intelligence_agency = yes
+			
+			add_political_power = 75
+			
+			add_command_power = 45
+			
+			
+		}
+	}
+
+	#Establish Political Militias
+	focus = {
+		id = ELS_establish_political_militias
+		icon = GFX_ELS_establish_political_militias-646336
+		x = 4
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = ELS_american_political_ties  } prerequisite = { focus = ELS_american_industrial_ties  } prerequisite = { focus = ELS_american_military_ties  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_manpower = 41370
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Crush the Rebellion Plot
+	focus = {
+		id = ELS_crush_the_rebellion_plot
+		icon = GFX_focus_ger_bulwark_against_bolshevism
+		x = 5
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = ELS_suppress_student_strikes  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			add_stability = -0.05 
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Repeal the Constitution
+	focus = {
+		id = ELS_repeal_the_constitution
+		icon = GFX_ELS_repeal_the_constitution-645593
+		x = 7
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = ELS_suppress_student_strikes  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			add_stability = -0.05 
+			
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#Government Control of the University
+	focus = {
+		id = ELS_government_control_of_the_university
+		icon = GFX_ELS_government_control_of_the_university-645994
+		x = 6
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = ELS_maintain_close_american_relations  focus = ELS_break_american_ties  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.1 }
+			
+			
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.1 }
+			
+			
+			add_stability = -0.1
+			
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Suppress Student Strikes
+	focus = {
+		id = ELS_suppress_student_strikes
+		icon = GFX_focus_generic_support_the_left_right
+		x = 6
+		y = 3
+		cost = 15
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = ELS_government_control_of_the_university  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism 
+			    popularity = -0.09 }
+			
+			
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = -0.09 }
+			
+			
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Provide Safehaven for German Refugees
+	focus = {
+		id = ELS_provide_safehaven_for_german_refugees
+		icon = GFX_ELS_provide_safehaven_for_german_refugees-646335
+		x = 0
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ELS_distance_from_european_fascists  }
+		available = {
+			threat > 0.2
+			
+			
+		}
+		completion_reward = {
+			add_stability = 0.15
+			
+			add_manpower = 37600
+			
+			
+		}
+	}
+
+	#Intern German Nationals
+	focus = {
+		id = ELS_intern_german_nationals
+		icon = GFX_focus_attack_germany
+		x = 0
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ELS_provide_safehaven_for_german_refugees  }
+		bypass = {
+			GER = {
+				NOT = {
+						has_government = fascism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Intern Italian Nationals
+	focus = {
+		id = ELS_intern_italian_nationals
+		icon = GFX_ELS_intern_italian_nationals-322
+		x = 2
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ELS_provide_safehaven_for_german_refugees  }
+		bypass = {
+			ITA = {
+				NOT = {
+						has_government = fascism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Intern Japanese Nationals
+	focus = {
+		id = ELS_intern_japanese_nationals
+		icon = GFX_focus_attack_japan
+		x = 4
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ELS_provide_safehaven_for_german_refugees  }
+		bypass = {
+			JAP = {
+				NOT = {
+						has_government = fascism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Join the Fight
+	focus = {
+		id = ELS_join_the_fight
+		icon = GFX_ELS_join_the_fight-645596
+		x = 0
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ELS_intern_japanese_nationals  focus = ELS_intern_italian_nationals  focus = ELS_intern_german_nationals  }
+		mutually_exclusive = { focus = ELS_remainneutralsellweapons  }
+		available = {
+			USA = {
+				is_in_faction_with = ENG
+			
+				has_defensive_war = yes
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			ENG = {
+				has_capitulated = no
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			ENG = {
+				country_event = {
+					id = generic.2
+				}
+			
+			
+			}
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Remain Neutral, Sell Weapons
+	focus = {
+		id = ELS_remainneutralsellweapons
+		icon = GFX_ELS_remainneutralsellweapons-645854
+		x = 2
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_intern_japanese_nationals  focus = ELS_intern_italian_nationals  focus = ELS_intern_german_nationals  }
+		mutually_exclusive = { focus = ELS_join_the_fight  }
+		completion_reward = {
+			USA = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = ELS
+			}
+			
+			
+			
+			}
+			ENG = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = ELS
+			}
+			
+			
+			
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = ELS
+			}
+			
+			
+			
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = ELS
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 4 }
+			
+			
+			
+			
+		}
+	}
+
+	#Break American Ties
+	focus = {
+		id = ELS_break_american_ties
+		icon = GFX_ELS_break_american_ties-645883
+		x = 9
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ELS_central_american_politics  }
+		mutually_exclusive = { focus = ELS_maintain_close_american_relations  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.08 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.05 }
+			
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#German Political Ties
+	focus = {
+		id = ELS_german_political_ties
+		icon = GFX_focus_ger_oppose_hitler
+		x = 8
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ELS_break_american_ties  }
+		bypass = {
+			GER = {
+				has_civil_war = yes
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_war_support = 0.05 
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#German Industrial Ties
+	focus = {
+		id = ELS_german_industrial_ties
+		icon = GFX_ELS_german_industrial_ties-645532
+		x = 10
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_break_american_ties  }
+		bypass = {
+			GER = {
+				has_civil_war = yes
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			GER = {
+				add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#German Military Ties
+	focus = {
+		id = ELS_german_military_ties
+		icon = GFX_focus_ger_return_of_the_kaiser
+		x = 12
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = ELS_break_american_ties  }
+		bypass = {
+			GER = {
+				has_civil_war = yes
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_manpower = 12455
+			
+			add_offsite_building = { type = arms_factory level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Italian Political Ties
+	focus = {
+		id = ELS_italian_political_ties
+		icon = GFX_focus_befriend_italy
+		x = 8
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ELS_german_political_ties  }
+		bypass = {
+			ITA = {
+				has_civil_war = yes
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_war_support = 0.1
+			
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Italian Industrial Ties
+	focus = {
+		id = ELS_italian_industrial_ties
+		icon = GFX_goal_generic_construct_military
+		x = 10
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_german_industrial_ties  }
+		bypass = {
+			ITA = {
+				has_civil_war = yes
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			ITA = {
+				add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#Italian Military Ties
+	focus = {
+		id = ELS_italian_military_ties
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 12
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = ELS_german_military_ties  }
+		bypass = {
+			ITA = {
+				has_civil_war = yes
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_manpower = 11075
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Corporatism
+	focus = {
+		id = ELS_corporatism
+		icon = GFX_ELS_corporatism-646014
+		x = 15
+		y = 0
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Fascist Teachings in Schools
+	focus = {
+		id = ELS_fascist_teachings_in_schools
+		icon = GFX_focus_generic_military_academy
+		x = 6
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ELS_crush_the_rebellion_plot  } prerequisite = { focus = ELS_repeal_the_constitution  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Recognize Nationalist Spain
+	focus = {
+		id = ELS_recognize_nationalist_spain
+		icon = GFX_ELS_recognize_nationalist_spain-124
+		x = 7
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ELS_fascist_teachings_in_schools  }
+		available = {
+			SPR = {
+				NOT = {
+						has_government = democratic
+			
+					has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_political_power = 50
+			
+			SPR = {
+				add_political_power = 25
+			
+				add_stability = 0.025
+			
+			
+			}
+			
+		}
+	}
+
+	#Recognize Manchukuo
+	focus = {
+		id = ELS_recognize_manchukuo
+		icon = GFX_focus_jap_manchurian_project
+		x = 5
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ELS_fascist_teachings_in_schools  }
+		completion_reward = {
+			add_political_power = 50
+			
+			MAN = {
+				add_political_power = 50
+			
+				add_stability = 0.025
+			
+			
+			}
+			
+		}
+	}
+
+	#Ejército Salvadoreño
+	focus = {
+		id = ELS_ejercitosalvadoreno
+		icon = GFX_ELS_ejercitosalvadoreno-645650
+		x = 18
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Italian Air Training
+	focus = {
+		id = ELS_italian_air_training
+		icon = GFX_ELS_italian_air_training-645574
+		x = 23
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = ELS_fuerzaaereasalvadorena  }
+		available = {
+			NOT = {
+				has_war_with = ITA
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_manpower = 4575
+			
+			air_experience = 50
+			
+			ITA = {
+				add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#Spread Axis Sympathy Propaganda
+	focus = {
+		id = ELS_spread_axis_sympathy_propaganda
+		icon = GFX_ELS_spread_axis_sympathy_propaganda-645922
+		x = 9
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ELS_italian_political_ties  } prerequisite = { focus = ELS_italian_industrial_ties  } prerequisite = { focus = ELS_italian_military_ties  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Spread Central American Unity Propaganda
+	focus = {
+		id = ELS_spread_central_american_unity_propaganda
+		icon = GFX_goal_generic_propaganda
+		x = 11
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ELS_italian_political_ties  } prerequisite = { focus = ELS_italian_industrial_ties  } prerequisite = { focus = ELS_italian_military_ties  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Abandon Democracy
+	focus = {
+		id = ELS_abandon_democracy
+		icon = GFX_ELS_abandon_democracy-645453
+		x = 8
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ELS_spread_axis_sympathy_propaganda  } prerequisite = { focus = ELS_spread_central_american_unity_propaganda  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = -0.1 }
+			
+			
+			set_politics = {
+				ruling_party = fascism
+			        elections_allowed = no
+			        last_election = } 
+			add_political_power = 100
+			
+			add_command_power = 50
+			
+			
+		}
+	}
+
+	#Join the Axis
+	focus = {
+		id = ELS_join_the_axis
+		icon = GFX_focus_ger_revive_kaiserreich
+		x = 10
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ELS_spread_axis_sympathy_propaganda  } prerequisite = { focus = ELS_spread_central_american_unity_propaganda  }
+		mutually_exclusive = { focus = ELS_join_nova_imperium  } mutually_exclusive = { focus = ELS_form_the_latin_american_union  }
+		available = {
+			GER = {
+				has_government = fascism
+			
+				has_civil_war = no
+			
+				is_faction_leader = yes
+			
+			
+			}
+			
+		}
+		bypass = {
+			is_in_faction = yes
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			GER = {
+			country_event = {
+				id = generic.2
+			}
+			
+			
+			}
+			
+		}
+		will_lead_to_war_with = GER
+	}
+
+	#Join Nova Imperium
+	focus = {
+		id = ELS_join_nova_imperium
+		icon = GFX_ELS_join_nova_imperium-646057
+		x = 12
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ELS_spread_axis_sympathy_propaganda  } prerequisite = { focus = ELS_spread_central_american_unity_propaganda  }
+		mutually_exclusive = { focus = ELS_join_the_axis  } mutually_exclusive = { focus = ELS_form_the_latin_american_union  }
+		available = {
+			ITA = {
+				has_government = fascism
+			
+				has_civil_war = yes
+			
+				is_faction_leader = yes
+			
+			
+			}
+			
+		}
+		bypass = {
+			is_in_faction = yes
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			ITA = {
+			country_event = {
+				id = generic.2
+			}
+			
+			
+			}
+			
+		}
+		will_lead_to_war_with = ITA
+	}
+
+	#Form the Latin American Union
+	focus = {
+		id = ELS_form_the_latin_american_union
+		icon = GFX_ELS_form_the_latin_american_union-645501
+		x = 14
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ELS_spread_axis_sympathy_propaganda  } prerequisite = { focus = ELS_spread_central_american_unity_propaganda  }
+		mutually_exclusive = { focus = ELS_join_the_axis  } mutually_exclusive = { focus = ELS_join_nova_imperium  }
+		available = {
+			is_in_faction = no
+			
+			
+			
+		}
+		bypass = {
+			in_in_faction = yes
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			create_faction = "América Latino"
+			
+		}
+	}
+
+	#Integrate Guatemala
+	focus = {
+		id = ELS_integrate_guatemala
+		icon = GFX_ELS_integrate_guatemala-412
+		x = 10
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ELS_form_the_latin_american_union  focus = ELS_join_nova_imperium  focus = ELS_join_the_axis  }
+		available = {
+			is_neighbor_of = GUA
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = GUA
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = GUA
+	}
+
+	#Integrate Honduras
+	focus = {
+		id = ELS_integrate_honduras
+		icon = GFX_ELS_integrate_honduras-412
+		x = 11
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ELS_form_the_latin_american_union  focus = ELS_join_nova_imperium  focus = ELS_join_the_axis  }
+		available = {
+			is_neighbor_of = HON
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = HON
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = HON
+	}
+
+	#Integrate Nicaragua
+	focus = {
+		id = ELS_integrate_nicaragua
+		icon = GFX_ELS_integrate_nicaragua-412
+		x = 12
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ELS_form_the_latin_american_union  focus = ELS_join_nova_imperium  focus = ELS_join_the_axis  }
+		available = {
+			is_neighbor_of = NIC
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = NIC
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = NIC
+	}
+
+	#Integrate Costa Rica
+	focus = {
+		id = ELS_integrate_costa_rica
+		icon = GFX_ELS_integrate_costa_rica-412
+		x = 13
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ELS_form_the_latin_american_union  focus = ELS_join_nova_imperium  focus = ELS_join_the_axis  }
+		available = {
+			is_neighbor_of = COS
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = COS
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = COS
+	}
+
+	#Integrate Panama
+	focus = {
+		id = ELS_integrate_panama
+		icon = GFX_ELS_integrate_panama-412
+		x = 14
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ELS_form_the_latin_american_union  focus = ELS_join_nova_imperium  focus = ELS_join_the_axis  }
+		available = {
+			is_neighbor_of = PAN
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = PAN
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = PAN
+	}
+
+	#Integrate All of Mexico
+	focus = {
+		id = ELS_integrate_all_of_mexico
+		icon = GFX_ELS_integrate_all_of_mexico-231
+		x = 9
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ELS_form_the_latin_american_union  focus = ELS_join_nova_imperium  focus = ELS_join_the_axis  }
+		available = {
+			is_neighbor_of = MEX
+			
+			owns_state = 312
+			
+			owns_state = 317
+			
+			owns_state = 316
+			
+			
+		}
+		completion_reward = {
+			add_state_core = 311 add_state_core = 474 add_state_core = 475 add_state_core = 476 add_state_core = 477 add_state_core = 485 add_state_core = 277 add_state_core = 478 add_state_core = 479 add_state_core = 480 add_state_core = 481 add_state_core = 482 add_state_core = 483 add_state_core = 484 add_state_claim = 375 add_state_claim = 376 add_state_claim = 377 add_state_claim = 378 add_state_claim = 379 add_state_claim = 380 add_state_claim = 382 
+			
+			create_wargoal = {
+			    type = annex_everything
+			    target = MEX
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = MEX
+	}
+
+	#Reduce the Budget
+	focus = {
+		id = ELS_reduce_the_budget
+		icon = GFX_focus_hol_abandon_the_gold_standard
+		x = 15
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ELS_corporatism  }
+		completion_reward = {
+			add_stability = 0.05 
+			
+			314 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#Loan Extensions
+	focus = {
+		id = ELS_loan_extensions
+		icon = GFX_ELS_loan_extensions-645795
+		x = 14
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_reduce_the_budget  }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Reduce Interest Rates
+	focus = {
+		id = ELS_reduce_interest_rates
+		icon = GFX_ELS_reduce_interest_rates-645670
+		x = 16
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_reduce_the_budget  }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Martinez Doctrine
+	focus = {
+		id = ELS_martinez_doctrine
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		x = 14
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_loan_extensions  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Default on Debts
+	focus = {
+		id = ELS_default_on_debts
+		icon = GFX_ELS_default_on_debts-645666
+		x = 16
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_reduce_interest_rates  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Coffee Exports
+	focus = {
+		id = ELS_coffee_exports
+		icon = GFX_ELS_coffee_exports-645905
+		x = 15
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_martinez_doctrine  } prerequisite = { focus = ELS_default_on_debts  }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 3 }
+			
+			
+			
+		}
+	}
+
+	#Pan-American Highway
+	focus = {
+		id = ELS_panamerican_highway
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 13
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_corporatism  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			314 = {
+			set_building_level = {
+			    type = infrastructure
+			    level = 4
+			    instant_build = yes
+			}
+			
+			
+			}
+			
+		}
+	}
+
+	#Military Advisors From the Allies
+	focus = {
+		id = ELS_military_advisors_from_the_allies
+		icon = GFX_focus_eng_chiefs_of_staff_committee
+		x = 17
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = ELS_ejercitosalvadoreno  }
+		mutually_exclusive = { focus = ELS_military_advisors_from_the_axis  }
+		available = {
+			NOT = {
+				is_in_faction_with = GER
+			
+				is_in_faction_with = ITA
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			add_command_power = 50
+			
+			army_experience = 25
+			
+			ENG = {
+				army_experience = 5
+			
+			
+			}
+			
+		}
+	}
+
+	#Military Advisors From the Axis
+	focus = {
+		id = ELS_military_advisors_from_the_axis
+		icon = GFX_ELS_military_advisors_from_the_axis-60
+		x = 19
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = ELS_ejercitosalvadoreno  }
+		mutually_exclusive = { focus = ELS_military_advisors_from_the_allies  }
+		available = {
+			NOT = {
+				is_ally_with = ENG
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			add_command_power = 50
+			
+			army_experience = 25
+			
+			GER = {
+				army_experience = 5
+			
+			
+			}
+			
+			
+		}
+	}
+
+	#Joint Training Exercises
+	focus = {
+		id = ELS_joint_training_exercises
+		icon = GFX_ELS_joint_training_exercises-646230
+		x = 21
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = ELS_ejercitosalvadoreno  } prerequisite = { focus = ELS_fuerza_naval_de_el_salvador  } prerequisite = { focus = ELS_fuerzaaereasalvadorena  }
+		completion_reward = {
+			add_manpower = 15150
+			
+			army_experience = 25
+			
+			navy_experience = 25
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+	#Fill Brigades
+	focus = {
+		id = ELS_fill_brigades
+		icon = GFX_focus_generic_manpower
+		x = 18
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = ELS_military_advisors_from_the_allies  focus = ELS_military_advisors_from_the_axis  }
+		completion_reward = {
+			add_manpower = 32575
+			
+			
+		}
+	}
+
+	#Proper Production
+	focus = {
+		id = ELS_proper_production
+		icon = GFX_goal_generic_production
+		x = 20
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_military_advisors_from_the_allies  focus = ELS_military_advisors_from_the_axis  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Weapons For the Army
+	focus = {
+		id = ELS_weapons_for_the_army
+		icon = GFX_focus_generic_tank_production
+		x = 19
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ELS_fill_brigades  } prerequisite = { focus = ELS_proper_production  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 2500
+			    producer = ELS
+			}
+			
+			
+			
+		}
+	}
+
+}

@@ -1,0 +1,187 @@
+#####################
+
+###  ##  #  # # #  ## 
+ #  #  # ## # # # #   
+ #  #### # ## ##   #  
+ #  #  # #  # # #   # 
+ #  #  # #  # # # ## 
+
+ #################### 
+
+
+#NZL_nz_railways_organization = {
+#	include = generic_mobile_tank_organization
+#	name = NZL_nz_railways_organization
+#	icon = GFX_idea_NZL_nz_railways
+#	allowed = {
+#		original_TAG = NZL
+#		has_dlc = "Together for Victory"
+#	}
+#	available = {
+#		owner = { is_subject = no }
+#	}
+#}
+NZL_christchurch_workshops_organization = {
+	include = generic_infantry_tank_organization
+	name = NZL_christchurch_workshops_organization
+	icon = GFX_idea_NZL_christchurch_workshops
+	allowed = {
+		original_TAG = NZL
+		has_dlc = "Together for Victory"
+	}
+	available = {
+		owner = { has_completed_focus = NZL_bob_semple_tank }
+	}
+}
+
+#####################
+
+ ## #  # ### ###   ## 
+#   #  #  #  #  # #   
+ #  ####  #  ###   #  
+  # #  #  #  #      # 
+##  #  # ### #    ##  
+ 
+#####################
+
+NZL_st_mary_bay_ship_organization = {
+	name = NZL_st_mary_bay_ship_organization
+	include = generic_escort_ship_organization
+	icon = GFX_idea_NZL_st_mary_bay_ship
+	allowed = {
+		original_TAG = NZL
+		has_dlc = "Together for Victory"
+	}
+	available = {
+		owner = { has_completed_focus = NZL_expand_devonport_naval_base }
+		owner = {
+			owns_state = 1018
+			controls_province = 4543
+		}
+	}
+}
+NZL_port_chalmers_shipbuilding_organization = {
+	name = NZL_port_chalmers_shipbuilding
+	include = generic_refurbishment_repair_organization
+	icon = GFX_idea_NZL_port_chalmers_shipbuilding
+	allowed = {
+		original_TAG = NZL
+		has_dlc = "Together for Victory"
+	}
+	available = {
+		owner = {
+			OR = {
+				has_completed_focus = NZL_a_polynesian_navy
+				has_completed_focus = NZL_expand_port_chalmers
+			}
+		}
+		owner = {
+			owns_state = 723
+			controls_province = 2211
+		}
+	}
+}
+
+###########################
+
+###  #    ##  #  # ###  ## 
+#  # #   #  # ## # #   #   
+###  #   #### # ## ##   #  
+#    #   #  # #  # #     # 
+#    ### #  # #  # ### ##  
+
+###########################
+#AZR
+NZL_aero_engine_services_organization  = {
+	name = NZL_aero_engine_services
+	include = generic_light_aircraft_organization
+	icon = GFX_idea_generic_air_manufacturer_1
+	allowed = {
+		original_TAG = NZL
+	}
+	available = {
+		owner = { 
+			OR = {
+				has_completed_focus = NZL_light_up_the_skies
+				has_completed_focus = NZL_indigenous_air_designs
+			}
+		}
+	}
+}
+NZL_air_parts_organization  = {
+	name = NZL_air_parts
+	include = generic_multi_role_aircraft_organization
+	icon = GFX_idea_generic_air_manufacturer_3
+	allowed = {
+		original_TAG = NZL
+	}
+	available = {
+		owner = { 
+			OR = {
+				has_completed_focus = NZL_light_up_the_skies
+				has_completed_focus = NZL_indigenous_air_designs
+			}
+		}
+	}
+}
+#AZR
+################################### 
+
+#   #  ##  ### ### ###  ### ### #   
+## ## #  #  #  #   #  #  #  #   #   
+# # # ####  #  ##  ###   #  ##  #   
+#   # #  #  #  #   #  #  #  #   #   
+#   # #  #  #  ### #  # ### ### ### 
+
+
+###################################
+#AZR
+NZL_colonial_ammunition_company_organization = {
+	name = NZL_colonial_ammunition_company
+	include = generic_artillery_organization
+	icon = GFX_idea_generic_infantry_equipment_manufacturer_3
+	allowed = {
+		original_TAG = NZL
+		has_dlc = "Together for Victory"
+	}
+	available = {
+		owner = { 
+			has_completed_focus = NZL_artillery_focus
+		}
+	}
+}
+NZL_charlton_mw_organization_organization = {
+	name = NZL_charlton_mw_organization
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_NZL_charlton_mw
+	allowed = {
+		original_TAG = NZL
+		has_dlc = "Together for Victory"
+	}
+}
+NZL_scott_brothers_company_organization  = {
+	name = NZL_scott_brothers_company
+	include = generic_support_equipment_organization
+	icon = GFX_idea_generic_infantry_equipment_manufacturer_1
+	allowed = {
+		original_TAG = NZL
+	}
+}
+NZL_tappenden_motors_organization  = {
+	name = NZL_tappenden_motors
+	include = generic_motorized_mechanized_organization
+	icon = GFX_idea_generic_motorized_equipment_manufacturer_3
+	allowed = {
+		original_TAG = NZL
+	}
+}
+NZL_dominion_motors_organization  = {
+	name = NZL_dominion_motors
+	include = generic_armored_car_organization
+	icon = GFX_idea_generic_tank_manufacturer_1
+	allowed = {
+		original_TAG = NZL
+		has_dlc = "La Resistance"
+	}
+}
+#AZR

@@ -1,0 +1,2504 @@
+focus_tree = {
+	id = focus-gua
+	continuous_focus_position = { x = 150 y = 1570 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = GUA
+		}
+	}
+	#Close Ally of the U.S.
+	focus = {
+		id = GUA_close_ally_of_the_us
+		icon = GFX_focus_usa_guarantee_the_american_dream
+		x = 0
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = GUA_cementubicosrule  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Ally Central America
+	focus = {
+		id = GUA_ally_central_america
+		icon = GFX_GUA_ally_central_america-645615
+		x = 15
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_tropic_union  }
+		available = {
+			HON = {
+				is_in_faction = no
+			
+				NOT = {
+						has_government = fascism
+			
+					has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			HON = {
+				is_in_faction = no
+			
+				NOT = {
+						has_government = fascism
+			
+					has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			HON = {
+				is_in_faction = no
+			
+				NOT = {
+						has_government = fascism
+			
+					has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			HON = {
+				is_in_faction = no
+			
+				NOT = {
+						has_government = fascism
+			
+					has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_to_faction = HON
+			
+			add_to_faction = COS
+			
+			add_to_faction = PAN
+			
+			add_to_faction = NIC
+			
+			
+		}
+	}
+
+	#Ally Mexico
+	focus = {
+		id = GUA_ally_mexico
+		icon = GFX_focus_mex_soldaderas
+		x = 17
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_pacify_el_salvador  } prerequisite = { focus = GUA_ally_the_caribbean  } prerequisite = { focus = GUA_pacify_the_dominican_republic  }
+		mutually_exclusive = { focus = GUA_pacify_mexico  }
+		available = {
+			MEX = {
+				is_in_faction = no
+			
+				NOT = {
+						has_government = fascism
+			
+					has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_to_faction = MEX
+			
+			
+		}
+	}
+
+	#Invite German Military Advisors
+	focus = {
+		id = GUA_invite_german_military_advisors
+		icon = GFX_focus_ger_oppose_hitler
+		x = 4
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GUA_empower_the_generals  }
+		available = {
+			GER = {
+				has_civil_war = no
+			
+				NOT = {
+						has_government = democratic 
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_war_support = 0.05 
+			
+			add_manpower = 35620
+			
+			
+		}
+	}
+
+	#Invite Central American Nationalists
+	focus = {
+		id = GUA_invite_central_american_nationalists
+		icon = GFX_GUA_invite_central_american_nationalists-262135
+		x = 4
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_latin_american_nationalism  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			add_manpower = 27050
+			
+			
+		}
+	}
+
+	#Integrate El Salvador
+	focus = {
+		id = GUA_integrate_el_salvador
+		icon = GFX_GUA_integrate_el_salvador-412
+		x = 4
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_la_revolucion  }
+		available = {
+			is_neighbor_of = ELS
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = ELS
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = ELS
+	}
+
+	#Integrate Honduras
+	focus = {
+		id = GUA_integrate_honduras
+		icon = GFX_GUA_integrate_honduras-412
+		x = 6
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_la_revolucion  }
+		available = {
+			is_neighbor_of = HON
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = HON
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = HON
+	}
+
+	#Integrate Costa Rica
+	focus = {
+		id = GUA_integrate_costa_rica
+		icon = GFX_GUA_integrate_costa_rica-412
+		x = 7
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_la_revolucion  }
+		available = {
+			is_neighbor_of = COS
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = COS
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = COS
+	}
+
+	#Improve German Relations
+	focus = {
+		id = GUA_improve_german_relations
+		icon = GFX_goal_generic_dangerous_deal
+		x = 7
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_grant_german_immigrants_protection  }
+		bypass = {
+			GER = {
+				has_civil_war = yes
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			GER = {
+				add_political_power = 10
+			
+				add_popularity = {
+			    ideology = fascism
+			    popularity = 0.025}
+			
+			
+			
+			}
+			add_political_power = 50
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			
+			
+		}
+	}
+
+	#Continue Ubico's Rule
+	focus = {
+		id = GUA_continueubicosrule
+		icon = GFX_GUA_continueubicosrule-645957
+		x = 1
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_central_american_politics  }
+		available = {
+			has_government = neutrality
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 100
+			
+			
+			create_intelligence_agency = yes
+			
+			
+		}
+	}
+
+	#Central American Politics
+	focus = {
+		id = GUA_central_american_politics
+		icon = GFX_goal_generic_neutrality_focus
+		x = 1
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			add_stability = -0.025
+			
+			add_political_power = 45
+			
+			
+		}
+	}
+
+	#Seeds of Revolution
+	focus = {
+		id = GUA_seeds_of_revolution
+		icon = GFX_focus_spr_crush_the_revolution
+		x = 10
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = GUA_central_american_politics  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.05}
+			
+			
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = -0.05 }
+			
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Cement Ubico's Rule
+	focus = {
+		id = GUA_cementubicosrule
+		icon = GFX_GUA_cementubicosrule-645750
+		x = 1
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_continueubicosrule  }
+		mutually_exclusive = { focus = GUA_begin_the_process_of_removing_ubico  } mutually_exclusive = { focus = GUA_revolution  }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.05 }
+			
+			
+			add_stability = -0.025 
+			
+			add_war_support = 0.05
+			
+			
+			
+		}
+	}
+
+	#Resist German Propaganda
+	focus = {
+		id = GUA_resist_german_propaganda
+		icon = GFX_GUA_resist_german_propaganda-645996
+		x = 3
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = GUA_continueubicosrule  } prerequisite = { focus = GUA_antinazi_propaganda  }
+		available = {
+			NOT = {
+				has_government = fascism
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.05 }
+			
+			
+			add_stability = 0.1
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Anti-Nazi Propaganda
+	focus = {
+		id = GUA_antinazi_propaganda
+		icon = GFX_GUA_antinazi_propaganda-646372
+		x = 5
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = GUA_central_american_politics  }
+		mutually_exclusive = { focus = GUA_grant_german_immigrants_protection  }
+		ai_will_do = { factor = 3 }
+		available = {
+			NOT = {
+				has_government = fascism
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_stability = 0.1
+			
+			add_war_support = -0.025
+			
+			
+		}
+	}
+
+	#Grant German Immigrants Protection
+	focus = {
+		id = GUA_grant_german_immigrants_protection
+		icon = GFX_GUA_grant_german_immigrants_protection-262009
+		x = 7
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_central_american_politics  }
+		mutually_exclusive = { focus = GUA_antinazi_propaganda  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 150
+			
+			
+			
+		}
+	}
+
+	#United People
+	focus = {
+		id = GUA_united_people
+		icon = GFX_GUA_united_people-646368
+		x = 5
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = GUA_antinazi_propaganda  }
+		completion_reward = {
+			add_stability = 0.05
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Begin the Process of Removing Ubico
+	focus = {
+		id = GUA_begin_the_process_of_removing_ubico
+		icon = GFX_GUA_begin_the_process_of_removing_ubico-646334
+		x = 6
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_united_people  focus = GUA_improve_german_relations  }
+		mutually_exclusive = { focus = GUA_cementubicosrule  } mutually_exclusive = { focus = GUA_revolution  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.1 }
+			
+			
+			add_stability = -0.05 
+			
+			add_war_support = 0.05 
+			
+			add_political_power = 25
+			
+			
+		}
+	}
+
+	#Labor Movements
+	focus = {
+		id = GUA_labor_movements
+		icon = GFX_GUA_labor_movements-646203
+		x = 9
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_seeds_of_revolution  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.05 }
+			
+			
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.05 }
+			
+			
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+		}
+	}
+
+	#University and Agrarian Reforms
+	focus = {
+		id = GUA_university_and_agrarian_reforms
+		icon = GFX_GUA_university_and_agrarian_reforms-645995
+		x = 11
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GUA_seeds_of_revolution  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			add_political_power = -100
+			
+			313 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#Revolution
+	focus = {
+		id = GUA_revolution
+		icon = GFX_GUA_revolution-88
+		x = 10
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = GUA_labor_movements  } prerequisite = { focus = GUA_university_and_agrarian_reforms  }
+		mutually_exclusive = { focus = GUA_cementubicosrule  } mutually_exclusive = { focus = GUA_begin_the_process_of_removing_ubico  }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = -0.1 }
+			
+			
+			add_stability = -0.1
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Depression Recovery
+	focus = {
+		id = GUA_depression_recovery
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 15
+		y = 0
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Close Relations With the U.S.
+	focus = {
+		id = GUA_close_relations_with_the_us
+		icon = GFX_GUA_close_relations_with_the_us-645900
+		x = 15
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_depression_recovery  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			USA = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#Economic Development
+	focus = {
+		id = GUA_economic_development
+		icon = GFX_GUA_economic_development-645960
+		x = 13
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_close_relations_with_the_us  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Coffee Exports
+	focus = {
+		id = GUA_coffee_exports
+		icon = GFX_GUA_coffee_exports-645905
+		x = 17
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_close_relations_with_the_us  }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#The United Fruit Company
+	focus = {
+		id = GUA_the_united_fruit_company
+		icon = GFX_goal_generic_positive_trade_relations
+		x = 15
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_close_relations_with_the_us  }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			add_stability = -0.025
+			
+			
+		}
+	}
+
+	#Placate the UFCO
+	focus = {
+		id = GUA_placate_the_ufco
+		icon = GFX_GUA_placate_the_ufco-645940
+		x = 17
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = GUA_the_united_fruit_company  }
+		available = {
+			NOT = {
+				has_government = neutrality
+			
+			
+				has_government = fascism
+			
+			}
+			
+			
+			
+		}
+		completion_reward = {
+			add_stability = 0.15
+			
+			add_political_power = -150
+			
+			
+		}
+	}
+
+	#Empower the UFCO
+	focus = {
+		id = GUA_empower_the_ufco
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 13
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_the_united_fruit_company  }
+		available = {
+			has_government = neutrality
+			
+			
+		}
+		completion_reward = {
+			add_political_power = 50
+			
+			add_stability = -0.025
+			
+			313 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#Air Training Exercises
+	focus = {
+		id = GUA_air_training_exercises
+		icon = GFX_goal_generic_build_airforce
+		x = 24
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GUA_fuerzaaereaguatemalteca  }
+		completion_reward = {
+			air_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4500
+			
+			
+		}
+	}
+
+	#UFCO Tax Exemptions
+	focus = {
+		id = GUA_ufco_tax_exemptions
+		icon = GFX_focus_mex_privatisation
+		x = 13
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_empower_the_ufco  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.025 }
+			
+			
+			add_stability = -0.025
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Grant UFCO Land Ownership
+	focus = {
+		id = GUA_grant_ufco_land_ownership
+		icon = GFX_GUA_grant_ufco_land_ownership-645862
+		x = 12
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_empower_the_ufco  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.025 }
+			
+			
+			add_stability = -0.025
+			
+			add_extra_state_shared_building_slots = 2
+			
+			
+		}
+	}
+
+	#UFCO Railway and Port Ownership
+	focus = {
+		id = GUA_ufco_railway_and_port_ownership
+		icon = GFX_GUA_ufco_railway_and_port_ownership-645973
+		x = 14
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_empower_the_ufco  }
+		mutually_exclusive = { focus = GUA_nationalize_the_land  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.025}
+			
+			
+			add_stability = -0.025
+			
+			313 = {
+				set_building_level = {
+			    type = infrastructure
+			    level = 5
+			    instant_build = yes
+			}
+			
+			
+			}
+			
+		}
+	}
+
+	#Farmers Subsidies
+	focus = {
+		id = GUA_farmers_subsidies
+		icon = GFX_GUA_farmers_subsidies-645921
+		x = 18
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_placate_the_ufco  }
+		completion_reward = {
+			add_stability = 0.05
+			
+			313 = {
+				add_extra_state_shared_building_slots = 1
+			
+			
+			}
+			
+		}
+	}
+
+	#Tax Cuts for the Populace
+	focus = {
+		id = GUA_tax_cuts_for_the_populace
+		icon = GFX_focus_hol_abandon_the_gold_standard
+		x = 17
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_placate_the_ufco  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.05 }
+			
+			
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.05
+			
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Nationalize the Land
+	focus = {
+		id = GUA_nationalize_the_land
+		icon = GFX_focus_GRE_a_land_of_mountains
+		x = 16
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_placate_the_ufco  }
+		mutually_exclusive = { focus = GUA_ufco_railway_and_port_ownership  }
+		completion_reward = {
+			add_stability = 0.05 
+			
+			313 = {
+				set_building_level = {
+			    type = infrastructure
+			    level = 4
+			    instant_build = yes
+			}
+			
+			
+			}
+			
+		}
+	}
+
+	#Research Expansion
+	focus = {
+		id = GUA_research_expansion
+		icon = GFX_focus_research
+		x = 15
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GUA_ufco_tax_exemptions  focus = GUA_grant_ufco_land_ownership  focus = GUA_ufco_railway_and_port_ownership  focus = GUA_farmers_subsidies  focus = GUA_tax_cuts_for_the_populace  focus = GUA_nationalize_the_land  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Fuerzas Armadas de Guatemala
+	focus = {
+		id = GUA_fuerzas_armadas_de_guatemala
+		icon = GFX_focus_generic_combined_arms
+		x = 20
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			army_experience = 25
+			
+			
+			
+			
+			
+		}
+	}
+
+	#Establish the Honor Guard
+	focus = {
+		id = GUA_establish_the_honor_guard
+		icon = GFX_GUA_establish_the_honor_guard-646048
+		x = 19
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GUA_fuerzas_armadas_de_guatemala  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.025 }
+			
+			
+			add_manpower = 5600
+			
+			army_experience = 10
+			
+			
+		}
+	}
+
+	#Fuerza Aérea Guatemalteca
+	focus = {
+		id = GUA_fuerzaaereaguatemalteca
+		icon = GFX_focus_eng_special_air_service
+		x = 24
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+	#Expand Production
+	focus = {
+		id = GUA_expand_production
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 22
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_fuerzas_armadas_de_guatemala  } prerequisite = { focus = GUA_fuerzaaereaguatemalteca  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Army Training Exercises
+	focus = {
+		id = GUA_army_training_exercises
+		icon = GFX_GUA_army_training_exercises-646255
+		x = 20
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GUA_fuerzas_armadas_de_guatemala  }
+		completion_reward = {
+			army_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4500
+			
+			
+		}
+	}
+
+	#The Radio
+	focus = {
+		id = GUA_the_radio
+		icon = GFX_GUA_the_radio-646330
+		x = 26
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GUA_fuerzaaereaguatemalteca  }
+		completion_reward = {
+			add_tech_bonus = {
+			    bonus = 1.0
+			    uses = 1
+			    category = radar_tech
+			}
+			
+			
+			air_experience = 10
+			
+			
+		}
+	}
+
+	#Fill Brigades
+	focus = {
+		id = GUA_fill_brigades
+		icon = GFX_focus_generic_manpower
+		x = 20
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GUA_army_training_exercises  }
+		completion_reward = {
+			add_manpower = 32575
+			
+			
+		}
+	}
+
+	#Train Pilots
+	focus = {
+		id = GUA_train_pilots
+		icon = GFX_GUA_train_pilots-645534
+		x = 24
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GUA_air_training_exercises  }
+		completion_reward = {
+			add_manpower = 15250
+			
+			air_experience = 10
+			
+			
+		}
+	}
+
+	#Guatemala Defense Plan
+	focus = {
+		id = GUA_guatemala_defense_plan
+		icon = GFX_focus_generic_home_defense
+		x = 22
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = GUA_fill_brigades  } prerequisite = { focus = GUA_train_pilots  }
+		completion_reward = {
+			add_command_power = 75
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Increased Production
+	focus = {
+		id = GUA_increased_production
+		icon = GFX_GUA_increased_production-646144
+		x = 22
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_expand_production  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#American Military Cooperation
+	focus = {
+		id = GUA_american_military_cooperation
+		icon = GFX_GUA_american_military_cooperation-645900
+		x = 23
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GUA_guatemala_defense_plan  }
+		available = {
+			is_ally_with = USA
+			
+			
+		}
+		completion_reward = {
+			USA = {
+				army_experience = 25
+			
+			
+			}
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Commonwealth Military Cooperation
+	focus = {
+		id = GUA_commonwealth_military_cooperation
+		icon = GFX_focus_chi_british_cooperation
+		x = 25
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GUA_guatemala_defense_plan  }
+		available = {
+			is_ally_with = ENG
+			
+			
+		}
+		completion_reward = {
+			ENG = {
+				army_experience = 25
+			
+			
+			}
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Establish a Navy
+	focus = {
+		id = GUA_establish_a_navy
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 21
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_placate_the_ufco  } prerequisite = { focus = GUA_guatemala_defense_plan  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Expand the Honor Guard
+	focus = {
+		id = GUA_expand_the_honor_guard
+		icon = GFX_GUA_expand_the_honor_guard-645807
+		x = 19
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GUA_establish_the_honor_guard  } prerequisite = { focus = GUA_guatemala_defense_plan  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.025}
+			
+			
+			add_political_power = 50
+			
+			add_manpower = 10000
+			
+			
+		}
+	}
+
+	#Benefit Landowners
+	focus = {
+		id = GUA_benefit_landowners
+		icon = GFX_GUA_benefit_landowners-645949
+		x = 2
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_cementubicosrule  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 100
+			
+			
+			313 = {
+				add_extra_state_shared_building_slots = 5
+			
+			
+			}
+			
+		}
+	}
+
+	#The Little Napoleon of the Tropics
+	focus = {
+		id = GUA_the_little_napoleon_of_the_tropics
+		icon = GFX_focus_por_luso_tropicalism
+		x = 1
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = GUA_close_ally_of_the_us  } prerequisite = { focus = GUA_benefit_landowners  }
+		completion_reward = {
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Declare Neutrality
+	focus = {
+		id = GUA_declare_neutrality
+		icon = GFX_goal_generic_neutrality_focus
+		x = 0
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = GUA_the_little_napoleon_of_the_tropics  }
+		available = {
+			threat > 0.2
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.025 }
+			
+			
+			add_stability = 0.056
+			
+			
+		}
+	}
+
+	#Reaffirm Neutrality
+	focus = {
+		id = GUA_reaffirm_neutrality
+		icon = GFX_GUA_reaffirm_neutrality-646378
+		x = 0
+		y = 7
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = GUA_declare_neutrality  }
+		available = {
+			threat > 0.5
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.025}
+			
+			
+			add_stability = 0.028
+			
+			
+		}
+	}
+
+	#Probity Law
+	focus = {
+		id = GUA_probity_law
+		icon = GFX_GUA_probity_law-645593
+		x = 2
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_the_little_napoleon_of_the_tropics  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.025}
+			
+			
+			add_stability = 0.05
+			
+			add_war_support = 0.05
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Militarize Schools
+	focus = {
+		id = GUA_militarize_schools
+		icon = GFX_focus_generic_military_academy
+		x = 2
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_probity_law  }
+		completion_reward = {
+			add_manpower = 29500
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.15 }
+			
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Join the Fight
+	focus = {
+		id = GUA_join_the_fight
+		icon = GFX_GUA_join_the_fight-645596
+		x = 0
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = GUA_reaffirm_neutrality  } prerequisite = { focus = GUA_militarize_schools  }
+		mutually_exclusive = { focus = GUA_remainneutralsellweapons  }
+		available = {
+			USA = {
+				is_in_faction_with = ENG
+			
+				has_defensive_war = yes
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			ENG = {
+				has_capitulated = no
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			ENG = {
+			
+			country_event = {
+				id = generic.2
+			}
+			
+			}
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#War Propaganda Against Japan
+	focus = {
+		id = GUA_war_propaganda_against_japan
+		icon = GFX_focus_attack_japan
+		x = 0
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = GUA_join_the_fight  }
+		available = {
+			has_war_with = JAP
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.05 }
+			
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#War Propaganda Against Germany
+	focus = {
+		id = GUA_war_propaganda_against_germany
+		icon = GFX_focus_attack_germany
+		x = 2
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = GUA_join_the_fight  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.05 }
+			
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Unrest
+	focus = {
+		id = GUA_unrest
+		icon = GFX_focus_spr_crush_the_revolution
+		x = 4
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = GUA_join_the_fight  focus = GUA_remainneutralsellweapons  }
+		completion_reward = {
+			complete_national_focus = GUA_revolution
+			
+			
+			
+			
+		}
+	}
+
+	#Remain Neutral, Sell Weapons
+	focus = {
+		id = GUA_remainneutralsellweapons
+		icon = GFX_GUA_remainneutralsellweapons-645854
+		x = 2
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_reaffirm_neutrality  } prerequisite = { focus = GUA_militarize_schools  }
+		mutually_exclusive = { focus = GUA_join_the_fight  }
+		completion_reward = {
+			USA = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = GUA
+			}
+			
+			
+			
+			}
+			ENG = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = GUA
+			}
+			
+			
+			
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = GUA
+			}
+			
+			
+			
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = GUA
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 4 }
+			
+			
+			
+		}
+	}
+
+	#Unite University Protestors
+	focus = {
+		id = GUA_unite_university_protestors
+		icon = GFX_GUA_unite_university_protestors-646163
+		x = 7
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_revolution  focus = GUA_begin_the_process_of_removing_ubico  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.1 }
+			
+			
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.1 }
+			
+			
+			add_political_power = -25
+			
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Organize Labor Movements
+	focus = {
+		id = GUA_organize_labor_movements
+		icon = GFX_GUA_organize_labor_movements-646155
+		x = 9
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_revolution  focus = GUA_begin_the_process_of_removing_ubico  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.1 }
+			
+			
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.1 }
+			
+			
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Force Abdication
+	focus = {
+		id = GUA_force_abdication
+		icon = GFX_goal_generic_forceful_treaty
+		x = 8
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = GUA_unite_university_protestors  } prerequisite = { focus = GUA_organize_labor_movements  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = -0.1 }
+			
+			
+			retire_country_leader = yes
+			
+			add_stability = 0.025
+			
+			
+		}
+	}
+
+	#Communist Partisans
+	focus = {
+		id = GUA_communist_partisans
+		icon = GFX_GUA_communist_partisans-645779
+		x = 11
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GUA_revolution  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.1 }
+			
+			
+			add_manpower = 19755
+			
+			
+		}
+	}
+
+	#Pro-Democracy Movements
+	focus = {
+		id = GUA_prodemocracy_movements
+		icon = GFX_GUA_prodemocracy_movements-427
+		x = 10
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_revolution  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.1 }
+			
+			
+			add_stability = 0.1 
+			
+			add_war_support = 0.1
+			
+			add_political_power = 25
+			
+			
+		}
+	}
+
+	#Ten Year Spring
+	focus = {
+		id = GUA_ten_year_spring
+		icon = GFX_focus_generic_strike_at_democracy2
+		x = 10
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = GUA_force_abdication  } prerequisite = { focus = GUA_prodemocracy_movements  }
+		ai_will_do = { factor = 4 }
+		available = {
+			neutrality < 0.5
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = -0.1 }
+			
+			
+			set_politics = {
+				ruling_party = democratic
+			        elections_allowed = yes
+			        last_election = }
+			
+		}
+	}
+
+	#Empower the Generals
+	focus = {
+		id = GUA_empower_the_generals
+		icon = GFX_GUA_empower_the_generals-645923
+		x = 5
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_begin_the_process_of_removing_ubico  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			add_command_power = 75
+			
+			add_manpower = 10000
+			
+			
+		}
+	}
+
+	#Latin American Nationalism
+	focus = {
+		id = GUA_latin_american_nationalism
+		icon = GFX_GUA_latin_american_nationalism-645922
+		x = 6
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_begin_the_process_of_removing_ubico  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			add_war_support = 0.1
+			
+			add_manpower = 20500
+			
+			
+		}
+	}
+
+	#La Revolucion
+	focus = {
+		id = GUA_la_revolucion
+		icon = GFX_GUA_la_revolucion-646003
+		x = 6
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_force_abdication  } prerequisite = { focus = GUA_latin_american_nationalism  }
+		available = {
+			neutrality < 0.5
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = -0.1 }
+			
+			
+			set_politics = {
+				ruling_party = fascism
+			        elections_allowed = no
+			        last_election = }
+			
+		}
+	}
+
+	#Literacy Campaigns
+	focus = {
+		id = GUA_literacy_campaigns
+		icon = GFX_focus_research
+		x = 8
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GUA_ten_year_spring  focus = GUA_la_revolucion  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Ban Communist Parties
+	focus = {
+		id = GUA_ban_communist_parties
+		icon = GFX_GUA_ban_communist_parties-645539
+		x = 8
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_force_abdication  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism 
+			    popularity = -1.0 }
+			
+			
+			
+		}
+	}
+
+	#Focus On Ourselves
+	focus = {
+		id = GUA_focus_on_ourselves
+		icon = GFX_GUA_focus_on_ourselves-645801
+		x = 10
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_ten_year_spring  }
+		mutually_exclusive = { focus = GUA_tropic_union  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.1 }
+			
+			
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Land Reform
+	focus = {
+		id = GUA_land_reform
+		icon = GFX_GUA_land_reform-645774
+		x = 9
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_focus_on_ourselves  }
+		completion_reward = {
+			313 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#Indigenous Assistance
+	focus = {
+		id = GUA_indigenous_assistance
+		icon = GFX_goal_generic_position_armies
+		x = 11
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GUA_focus_on_ourselves  }
+		completion_reward = {
+			313 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#Tropic Union
+	focus = {
+		id = GUA_tropic_union
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		x = 13
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_prodemocracy_movements  }
+		mutually_exclusive = { focus = GUA_focus_on_ourselves  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			create_faction = "Tropic Union" 
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Pacify El Salvador
+	focus = {
+		id = GUA_pacify_el_salvador
+		icon = GFX_goal_generic_major_war
+		x = 13
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_tropic_union  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = ELS
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = ELS
+	}
+
+	#Ally the Caribbean
+	focus = {
+		id = GUA_ally_the_caribbean
+		icon = GFX_goal_generic_alliance
+		x = 15
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GUA_ally_central_america  }
+		available = {
+			CUB = {
+				is_in_faction = no
+			
+				NOT = {
+						has_government = fascism
+			
+					has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			HAI = {
+				is_in_faction = no
+			
+				NOT = {
+						has_government = fascism
+			
+					has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_to_faction = CUB
+			
+			add_to_faction = HAI
+			
+			
+		}
+	}
+
+	#Pacify the Dominican Republic
+	focus = {
+		id = GUA_pacify_the_dominican_republic
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		x = 17
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_tropic_union  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = DOM
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = DOM
+	}
+
+	#Pacify Mexico
+	focus = {
+		id = GUA_pacify_mexico
+		icon = GFX_focus_mex_jefe_maximo
+		x = 13
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_pacify_el_salvador  } prerequisite = { focus = GUA_pacify_the_dominican_republic  } prerequisite = { focus = GUA_ally_the_caribbean  }
+		mutually_exclusive = { focus = GUA_ally_mexico  }
+		available = {
+			MEX = {
+				NOT = {
+						has_government = democratic 
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = MEX
+			}
+			
+			
+			
+		}
+	}
+
+	#Integrate Nicaragua
+	focus = {
+		id = GUA_integrate_nicaragua
+		icon = GFX_GUA_integrate_nicaragua-412
+		x = 5
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_la_revolucion  }
+		available = {
+			is_neighbor_of = NIC
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = NIC
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = NIC
+	}
+
+	#Integrate Panama
+	focus = {
+		id = GUA_integrate_panama
+		icon = GFX_GUA_integrate_panama-412
+		x = 6
+		y = 9
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_integrate_nicaragua  focus = GUA_integrate_costa_rica  }
+		available = {
+			is_neighbor_of = PAN
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = PAN
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = PAN
+	}
+
+	#Continue North
+	focus = {
+		id = GUA_continue_north
+		icon = GFX_GUA_continue_north-231
+		x = 5
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_integrate_panama  }
+		mutually_exclusive = { focus = GUA_continue_south  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = MEX
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = MEX
+	}
+
+	#Continue South
+	focus = {
+		id = GUA_continue_south
+		icon = GFX_GUA_continue_south-645982
+		x = 7
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_integrate_panama  }
+		mutually_exclusive = { focus = GUA_continue_north  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = COL
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = COL
+	}
+
+	#El Dominio Del Norte
+	focus = {
+		id = GUA_el_dominio_del_norte
+		icon = GFX_GUA_el_dominio_del_norte-262115
+		x = 5
+		y = 11
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_continue_north  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = USA
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = CAN
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = USA
+		will_lead_to_war_with = CAN
+	}
+
+	#El Dominio Del Sur
+	focus = {
+		id = GUA_el_dominio_del_sur
+		icon = GFX_GUA_el_dominio_del_sur-645527
+		x = 7
+		y = 11
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GUA_continue_south  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = VEN
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = ECU
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = BRA
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = PRU
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = PAR
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = BOL
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = CHL
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = ARG
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = URG
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = VEN
+		will_lead_to_war_with = ECU
+		will_lead_to_war_with = PRU
+		will_lead_to_war_with = BRA
+		will_lead_to_war_with = BOL
+		will_lead_to_war_with = PAR
+		will_lead_to_war_with = ARG
+		will_lead_to_war_with = URG
+		will_lead_to_war_with = CHL
+	}
+
+}

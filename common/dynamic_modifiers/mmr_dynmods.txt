@@ -1,0 +1,195 @@
+#Icons in countrystateview
+
+MMR_NZL_anti_colonial_agitation_dec_dm = {
+	icon = GFX_modifiers_generic_resistance
+	
+	resistance_target = 0.25
+	
+	remove_trigger = {
+		has_resistance = no
+	}
+}
+MMR_NZL_anti_colonial_agitation_dec_dm_2 = {
+	icon = GFX_mmr_hands_white_flag
+	
+	enable = {
+		CONTROLLER = { original_tag = NZL }
+	}
+	
+	custom_modifier_tooltip = MMR_NZL_anti_colonial_agitation_dec_dm_2_tt
+	resistance_target = -0.25
+	resistance_decay = 0.25
+	resistance_damage_to_garrison = -0.25
+	custom_modifier_tooltip = AZR_MMR_NZL_anti_colonial_agitation_dec_dm_2_is_enabled_disabled_tt
+	remove_trigger = {
+		has_resistance = no
+	}
+}
+AZR_NZL_beeby_education_reforms_dynmod = {
+	icon = GFX_AFG_democratic_graduates
+	
+	enable = {
+		tag = NZL
+	}
+	
+	stability_factor = 0.05
+	research_speed_factor = AZR_NZL_beeby_education_reforms_dynmod_research_var.global
+	consumer_goods_factor = 0.1
+	
+	remove_trigger = {
+		NOT = { has_government = democratic }
+	}
+}
+
+#########################################            AST START              ######################################
+
+MMR_AST_ngvr_dynmod = {
+	icon = GFX_modifiers_FIN_weapon_caches
+	enable = {
+		is_controlled_by = OWNER
+		OWNER = {
+			original_tag = AST
+			has_completed_focus = AST_ngvr
+		}
+	}
+	enemy_army_speed_factor = -0.1
+	enemy_local_supplies = -0.1
+	enemy_attrition = 0.25
+	local_intel_to_enemies = -0.5
+	equipment_capture_for_controller = 0.1
+	custom_modifier_tooltip = AZR_owner_controller_dynmod_is_enabled_disabled_tt
+	remove_trigger = {
+		OWNER = { NOT = { original_tag = AST } has_completed_focus = AST_ngvr }
+	}
+}
+MMR_AST_ngvr_dynmod_enemy_controlled = {
+	icon = GFX_modifiers_FIN_weapon_caches
+	enable = {
+		NOT = { is_controlled_by = OWNER }
+		OWNER = {
+			original_tag = AST
+			has_completed_focus = AST_ngvr
+		}
+	}
+	army_speed_factor_for_controller = -0.1
+	local_supplies_for_controller = -0.1
+	attrition_for_controller = 0.25
+	compliance_growth = -0.1
+	resistance_decay = -0.1
+	resistance_growth = 0.1
+	disable_strategic_redeployment_for_controller = 1
+	enemy_intel_network_gain_factor_over_occupied_tag = 0.25
+	enemy_operative_detection_chance_factor_over_occupied_tag = -0.25
+	custom_modifier_tooltip = AZR_not_owner_controller_dynmod_is_enabled_disabled_tt
+	remove_trigger = {
+		OWNER = { NOT = { original_tag = AST } has_completed_focus = AST_ngvr }
+	}
+}
+MMR_AST_top_end_start_dynmod = {
+	icon = GFX_modifiers_conscription_exemptions_granted
+	enable = {
+		always = yes
+	}
+	local_factories = -0.1
+	local_manpower = -0.5
+	state_resources_factor = -0.25
+	
+	remove_trigger = {
+		OWNER = { NOT = { original_tag = AST } has_government = communism }
+		is_core_of = OWNER
+	}
+}
+MMR_AST_central_ast_start_dynmod = {
+	icon = GFX_modifiers_conscription_exemptions_granted
+	enable = {
+		always = yes
+	}
+	local_manpower = -0.25
+	
+	remove_trigger = {
+		OWNER = { NOT = { original_tag = AST } has_government = communism }
+		is_core_of = OWNER
+	}
+}
+MMR_AST_top_end_industrialize_dynmod = {
+	icon = GFX_modifiers_ETH_state_development
+	enable = {
+		always = yes
+	}
+	local_building_slots_factor = 0.25
+	local_manpower = -0.5
+	
+}
+MMR_AST_top_end_assimilation_dynmod = {
+	icon = GFX_modifiers_SWE_hygienic_housing
+	enable = {
+		always = yes
+	}
+	local_factories = -0.1
+	state_resources_factor = -0.1
+	
+	remove_trigger = {
+		OWNER = { NOT = { original_tag = AST } has_government = communism }
+		is_core_of = OWNER
+	}
+}
+MMR_AST_top_end_marshall_law_dynmod = {
+	icon = GFX_modifiers_conscription_exemptions_granted
+	enable = {
+		always = yes
+	}
+	local_manpower = -1
+	enemy_attrition = 0.1
+	enemy_army_speed_factor = -0.1
+	
+	remove_trigger = {
+		OWNER = { NOT = { original_tag = AST } has_government = communism }
+		is_core_of = OWNER
+	}
+}
+MMR_AST_central_ast_marshall_lawdynmod = {
+	icon = GFX_modifiers_conscription_exemptions_granted
+	enable = {
+		always = yes
+	}
+	local_manpower = -0.5
+	
+	remove_trigger = {
+		OWNER = { NOT = { original_tag = AST } has_government = communism }
+		is_core_of = OWNER
+	}
+}
+MMR_AST_top_end_marshall_law_dynmod_for_AST = {
+	icon = GFX_modifiers_generic_defense
+	enable = {
+		CONTROLLER = { original_tag = AST }
+	}
+	army_speed_factor_for_controller = 0.25
+	attrition_for_controller =-0.25
+	equipment_capture_for_controller = 0.05
+	local_supplies_for_controller = 0.25
+	local_intel_to_enemies = -0.5
+	enemy_intel_network_gain_factor_over_occupied_tag = -0.5
+	#local_resources = 0.15
+	custom_modifier_tooltip = MMR_AST_top_end_marshall_law_dynmod_for_AST_tt
+	custom_modifier_tooltip = AZR_owner_controller_dynmod_is_enabled_disabled_tt
+	remove_trigger = {
+		OWNER = { NOT = { has_government = fascism } has_war = no }
+	}
+}
+MMR_AST_top_end_post_marshall_law_dynmod = {
+	icon = GFX_modifiers_conscription_exemptions_granted
+	enable = {
+		always = yes
+	}
+	local_factories = -0.1
+	local_manpower = -0.5
+	state_resources_factor = -0.1
+	
+	remove_trigger = {
+		OWNER = { NOT = { original_tag = AST } has_government = communism }
+		is_core_of = OWNER
+	}
+}
+
+###

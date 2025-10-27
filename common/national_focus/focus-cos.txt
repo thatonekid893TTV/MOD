@@ -1,0 +1,1378 @@
+focus_tree = {
+	id = focus-cos
+	continuous_focus_position = { x = 150 y = 1440 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = COS
+		}
+	}
+	#Central American Politics
+	focus = {
+		id = COS_central_american_politics
+		icon = GFX_goal_generic_neutrality_focus
+		x = 1
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			add_stability = -0.025
+			
+			add_political_power = 45
+			
+			
+		}
+	}
+
+	#Create the Ministry of Health
+	focus = {
+		id = COS_create_the_ministry_of_health
+		icon = GFX_COS_create_the_ministry_of_health-646163
+		x = 4
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = COS_central_american_politics  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Create Banking Institutions
+	focus = {
+		id = COS_create_banking_institutions
+		icon = GFX_COS_create_banking_institutions-645670
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_central_american_politics  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#1936 Elections
+	focus = {
+		id = COS_1936_elections
+		icon = GFX_COS_1936_elections-427
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_finish_repairing_earthquake_damages  } prerequisite = { focus = COS_create_banking_institutions  } prerequisite = { focus = COS_create_the_ministry_of_health  }
+		ai_will_do = { factor = 10 }
+		available = {
+			date > 1936.05.05
+			
+			
+		}
+		completion_reward = {
+			retire_country_leader = yes
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Finish Repairing Earthquake Damages
+	focus = {
+		id = COS_finish_repairing_earthquake_damages
+		icon = GFX_COS_finish_repairing_earthquake_damages-646229
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = COS_central_american_politics  }
+		completion_reward = {
+			add_stability = 0.1
+			
+			316 = {
+				set_building_level = {
+			    type = infrastructure
+			    level = 4
+			    instant_build = yes
+			}
+			
+			
+			}
+			
+		}
+	}
+
+	#Banking Reforms
+	focus = {
+		id = COS_banking_reforms
+		icon = GFX_COS_banking_reforms-645795
+		x = 0
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_1936_elections  }
+		completion_reward = {
+			add_political_power = 100
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Increase Support For the United Fruit Co.
+	focus = {
+		id = COS_increase_support_for_the_united_fruit_co
+		icon = GFX_COS_increase_support_for_the_united_fruit_co-262055
+		x = 6
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_1936_elections  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			add_stability = -0.1
+			
+			add_political_power = 100
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Establish Ports
+	focus = {
+		id = COS_establish_ports
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 2
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_1936_elections  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 4
+			add_building_construction = {
+			type = dockyard
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Pursue Political Power
+	focus = {
+		id = COS_pursue_political_power
+		icon = GFX_goal_generic_political_pressure
+		x = 4
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_1936_elections  }
+		completion_reward = {
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#Amend the Constitution to Allow Consecutive Terms
+	focus = {
+		id = COS_amend_the_constitution_to_allow_consecutive_terms
+		icon = GFX_COS_amend_the_constitution_to_allow_consecutive_terms-645593
+		x = 8
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_increase_support_for_the_united_fruit_co  } prerequisite = { focus = COS_pursue_political_power  }
+		mutually_exclusive = { focus = COS_maintain_costa_rican_elections  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.05 }
+			
+			
+			set_politics = {
+				ruling_party = democratic
+			        elections_allowed = no
+			        last_election = }
+			 add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Construction Reforms
+	focus = {
+		id = COS_construction_reforms
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 0
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_banking_reforms  } prerequisite = { focus = COS_establish_ports  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Iron Bars and Cement Administration
+	focus = {
+		id = COS_iron_bars_and_cement_administration
+		icon = GFX_focus_generic_industry_1
+		x = 2
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_banking_reforms  } prerequisite = { focus = COS_establish_ports  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Maintain Costa Rican Elections
+	focus = {
+		id = COS_maintain_costa_rican_elections
+		icon = GFX_COS_maintain_costa_rican_elections-646188
+		x = 5
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_increase_support_for_the_united_fruit_co  } prerequisite = { focus = COS_pursue_political_power  }
+		mutually_exclusive = { focus = COS_amend_the_constitution_to_allow_consecutive_terms  }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.1
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Pro-German President
+	focus = {
+		id = COS_progerman_president
+		icon = GFX_focus_chi_mission_to_germany
+		x = 10
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = COS_maintain_costa_rican_elections  focus = COS_amend_the_constitution_to_allow_consecutive_terms  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_stability = -0.05
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Conservative Stance
+	focus = {
+		id = COS_conservative_stance
+		icon = GFX_goal_generic_defence
+		x = 4
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = COS_maintain_costa_rican_elections  focus = COS_amend_the_constitution_to_allow_consecutive_terms  }
+		completion_reward = {
+			add_political_power = 50
+			
+			add_command_power = 50
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Education Reforms
+	focus = {
+		id = COS_education_reforms
+		icon = GFX_focus_research
+		x = 0
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = COS_construction_reforms  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Agriculture Reforms
+	focus = {
+		id = COS_agriculture_reforms
+		icon = GFX_COS_agriculture_reforms-645857
+		x = 2
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_iron_bars_and_cement_administration  }
+		completion_reward = {
+			316 = {
+				add_extra_state_shared_building_slots = 4
+			
+			
+			}
+			
+		}
+	}
+
+	#UFCO Influence in Government
+	focus = {
+		id = COS_ufco_influence_in_government
+		icon = GFX_COS_ufco_influence_in_government-645461
+		x = 6
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_amend_the_constitution_to_allow_consecutive_terms  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.05 }
+			
+			
+			add_war_support = 0.05
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Invite German Advisors
+	focus = {
+		id = COS_invite_german_advisors
+		icon = GFX_focus_ger_reichskommisariats
+		x = 8
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_amend_the_constitution_to_allow_consecutive_terms  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Costa Rican Art Museam
+	focus = {
+		id = COS_costa_rican_art_museam
+		icon = GFX_focus_AST_rats_tobruk
+		x = 1
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = COS_agriculture_reforms  } prerequisite = { focus = COS_education_reforms  }
+		completion_reward = {
+			add_stability = 0.1
+			
+			
+		}
+	}
+
+	#1940 Elections
+	focus = {
+		id = COS_1940_elections
+		icon = GFX_COS_1940_elections-427
+		x = 5
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_maintain_costa_rican_elections  }
+		ai_will_do = { factor = 10 }
+		available = {
+			date > 1940.01.01
+			
+			
+		}
+		completion_reward = {
+			retire_country_leader = yes
+			
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.05 }
+			
+			
+			USA = {
+				add_political_power = 25
+			
+			
+			}
+			
+		}
+	}
+
+	#Coffee Barons
+	focus = {
+		id = COS_coffee_barons
+		icon = GFX_COS_coffee_barons-645905
+		x = 3
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_conservative_stance  }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Meet With the American President
+	focus = {
+		id = COS_meet_with_the_american_president
+		icon = GFX_COS_meet_with_the_american_president-645900
+		x = 5
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_1940_elections  }
+		completion_reward = {
+			add_stability = 0.05
+			
+			add_political_power = 50
+			
+			USA = {
+				add_political_power = 25
+			
+			
+			}
+			
+		}
+	}
+
+	#Support the Working Class
+	focus = {
+		id = COS_support_the_working_class
+		icon = GFX_focus_por_workers_of_iberia
+		x = 3
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_1940_elections  } prerequisite = { focus = COS_coffee_barons  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.1 }
+			
+			
+			add_stability = 0.05
+			
+			add_war_support = 0.1
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Attention to Undeveloped Regions
+	focus = {
+		id = COS_attention_to_undeveloped_regions
+		icon = GFX_COS_attention_to_undeveloped_regions-645689
+		x = 1
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_1940_elections  } prerequisite = { focus = COS_coffee_barons  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Tax Reform and Minimum Wages
+	focus = {
+		id = COS_tax_reform_and_minimum_wages
+		icon = GFX_COS_tax_reform_and_minimum_wages-645672
+		x = 0
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_support_the_working_class  } prerequisite = { focus = COS_attention_to_undeveloped_regions  }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Join the Fight
+	focus = {
+		id = COS_join_the_fight
+		icon = GFX_COS_join_the_fight-645596
+		x = 4
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = COS_meet_with_the_american_president  }
+		mutually_exclusive = { focus = COS_remainneutralsellweapons  }
+		available = {
+			USA = {
+				is_in_faction_with = ENG
+			
+				has_defensive_war = yes
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			ENG = {
+				has_capitulated = no
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			ENG = {
+				country_event = {
+					id = generic.2
+				}
+			
+			}
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Remain Neutral, Sell Weapons
+	focus = {
+		id = COS_remainneutralsellweapons
+		icon = GFX_COS_remainneutralsellweapons-645854
+		x = 6
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_meet_with_the_american_president  }
+		mutually_exclusive = { focus = COS_join_the_fight  }
+		completion_reward = {
+			USA = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = COS
+			}
+			
+			
+			
+			}
+			ENG = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = COS
+			}
+			
+			
+			
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = COS
+			}
+			
+			
+			
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = COS
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 4 }
+			
+			
+			
+			
+		}
+	}
+
+	#Retirement Reforms
+	focus = {
+		id = COS_retirement_reforms
+		icon = GFX_focus_focus_fra_down_marianne
+		x = 2
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = COS_support_the_working_class  } prerequisite = { focus = COS_attention_to_undeveloped_regions  }
+		completion_reward = {
+			add_stability = 0.05
+			
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#Ally the Socialists
+	focus = {
+		id = COS_ally_the_socialists
+		icon = GFX_focus_prc_agrarian_socialism
+		x = 1
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_tax_reform_and_minimum_wages  } prerequisite = { focus = COS_retirement_reforms  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Ally the Industrialists
+	focus = {
+		id = COS_ally_the_industrialists
+		icon = GFX_focus_RAJ_indian_gentlemen_offcers
+		x = 7
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = COS_ufco_influence_in_government  }
+		completion_reward = {
+			add_war_support = 0.05
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Ally the Military
+	focus = {
+		id = COS_ally_the_military
+		icon = GFX_COS_ally_the_military-262024
+		x = 9
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = COS_invite_german_advisors  }
+		completion_reward = {
+			add_war_support = 0.05
+			
+			add_manpower = 51260
+			
+			
+		}
+	}
+
+	#Ally Conservative Church Officials
+	focus = {
+		id = COS_ally_conservative_church_officials
+		icon = GFX_COS_ally_conservative_church_officials-645904
+		x = 11
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = COS_progerman_president  }
+		available = {
+			fascism < 0.8
+			
+			
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			
+			add_stability = 0.1
+			
+			
+		}
+	}
+
+	#Ban the Communist Party
+	focus = {
+		id = COS_ban_the_communist_party
+		icon = GFX_COS_ban_the_communist_party-645539
+		x = 11
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_ally_conservative_church_officials  focus = COS_ally_the_military  focus = COS_ally_the_industrialists  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = -1.0 }
+			
+			
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#Major Coffee Exports
+	focus = {
+		id = COS_major_coffee_exports
+		icon = GFX_COS_major_coffee_exports-645545
+		x = 9
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COS_ally_conservative_church_officials  focus = COS_ally_the_military  focus = COS_ally_the_industrialists  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.05 }
+			
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Break Relations With the U.S.
+	focus = {
+		id = COS_break_relations_with_the_us
+		icon = GFX_COS_break_relations_with_the_us-645883
+		x = 7
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_ally_conservative_church_officials  } prerequisite = { focus = COS_ally_the_military  } prerequisite = { focus = COS_ally_the_industrialists  }
+		completion_reward = {
+			add_war_support = 0.05
+			
+			add_political_power = 100
+			
+			USA = {
+				add_political_power = -25
+			
+			
+			}
+			
+		}
+	}
+
+	#Union of the Caribbean
+	focus = {
+		id = COS_union_of_the_caribbean
+		icon = GFX_COS_union_of_the_caribbean-645655
+		x = 9
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COS_ban_the_communist_party  } prerequisite = { focus = COS_major_coffee_exports  } prerequisite = { focus = COS_break_relations_with_the_us  }
+		available = {
+			is_faction_leader = no
+			
+			
+		}
+		bypass = {
+			is_in_faction = yes
+			
+			
+		}
+		completion_reward = {
+			create_faction = "Caribbean Union" 
+			add_war_support = 0.05
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+			navy_experience = 50
+			
+			
+		}
+	}
+
+	#Integrate Guatemala
+	focus = {
+		id = COS_integrate_guatemala
+		icon = GFX_COS_integrate_guatemala-412
+		x = 5
+		y = 9
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COS_union_of_the_caribbean  }
+		available = {
+			is_neighbor_of = GUA
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = GUA
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = GUA
+	}
+
+	#Integrate El Salvador
+	focus = {
+		id = COS_integrate_el_salvador
+		icon = GFX_COS_integrate_el_salvador-412
+		x = 7
+		y = 9
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COS_union_of_the_caribbean  }
+		available = {
+			is_neighbor_of = ELS
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = ELS
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = ELS
+	}
+
+	#Integrate Honduras
+	focus = {
+		id = COS_integrate_honduras
+		icon = GFX_COS_integrate_honduras-412
+		x = 9
+		y = 9
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COS_union_of_the_caribbean  }
+		available = {
+			is_neighbor_of = HON
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = HON
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = HON
+	}
+
+	#Integrate Nicaragua
+	focus = {
+		id = COS_integrate_nicaragua
+		icon = GFX_COS_integrate_nicaragua-412
+		x = 11
+		y = 9
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COS_union_of_the_caribbean  }
+		available = {
+			is_neighbor_of = NIC
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = NIC
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = NIC
+	}
+
+	#Integrate Panama
+	focus = {
+		id = COS_integrate_panama
+		icon = GFX_COS_integrate_panama-412
+		x = 13
+		y = 9
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COS_union_of_the_caribbean  }
+		available = {
+			is_neighbor_of = PAN
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = PAN
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = PAN
+	}
+
+	#Integrate Cuba
+	focus = {
+		id = COS_integrate_cuba
+		icon = GFX_COS_integrate_cuba-377
+		x = 8
+		y = 10
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COS_integrate_guatemala  } prerequisite = { focus = COS_integrate_el_salvador  } prerequisite = { focus = COS_integrate_honduras  } prerequisite = { focus = COS_integrate_nicaragua  } prerequisite = { focus = COS_integrate_panama  }
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = CUB
+			}
+			
+			
+			add_state_core = 315 add_state_core = 689 add_state_core = 693 add_state_core = 690 
+			
+		}
+		will_lead_to_war_with = CUB
+	}
+
+	#Integrate Hispanola
+	focus = {
+		id = COS_integrate_hispanola
+		icon = GFX_COS_integrate_hispanola-377
+		x = 10
+		y = 10
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COS_integrate_guatemala  } prerequisite = { focus = COS_integrate_el_salvador  } prerequisite = { focus = COS_integrate_honduras  } prerequisite = { focus = COS_integrate_nicaragua  } prerequisite = { focus = COS_integrate_panama  }
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = HAI
+			}
+			
+			
+			create_wargoal = {
+			    type = annex_everything
+			    target = DOM
+			}
+			
+			
+			
+			add_state_core = 318 add_state_core = 319 add_state_core = 686 add_state_core = 694 add_state_core = 308 add_state_core = 692 add_state_core = 691 add_state_core = 695 
+			
+			
+		}
+		will_lead_to_war_with = HAI
+		will_lead_to_war_with = DOM
+	}
+
+}

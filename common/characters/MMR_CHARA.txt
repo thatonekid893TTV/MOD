@@ -1,0 +1,3535 @@
+characters={
+	
+	###NZL
+	
+	MMR_NZL_t_m_wilkes={
+		name="T. M. Wilkes"
+		portraits={
+			army={
+				small="GFX_idea_ENG_neil_ritchie"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = MMR_NZL_t_m_wilkes
+			allowed  = {
+				original_tag = NZL
+			}
+			available = {
+				has_completed_focus = NZL_form_the_rnzaf_azr
+			}
+			traits  = {
+				air_chief_safety_1
+			}
+		}
+	}
+	MMR_NZL_richard_washbourn ={
+		name="Richard Washbourn"
+		portraits={
+			navy={
+				small="GFX_idea_RAJ_generic_navy_1"
+				large="GFX_Portrait_The_Raj_Generic_navy_1"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = MMR_NZL_richard_washbourn_nc
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = { has_completed_focus = NZL_strengthen_the_commonwealth }
+			}
+			available = {
+				has_completed_focus = NZL_form_the_rnzn_azr
+				has_completed_focus = NZL_statute_of_westminster
+			}
+			traits  = {
+				navy_chief_decisive_battle_1
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_richard_washbourn_hc
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = { has_completed_focus = NZL_statute_of_westminster }
+			}
+			available = {
+				has_completed_focus = NZL_form_the_rnzn_azr
+				has_completed_focus = NZL_strengthen_the_commonwealth
+			}
+			traits  = {
+				navy_screen_1
+			}
+		}
+		navy_leader={
+			#MMR
+			visible = {
+				has_completed_focus = NZL_form_the_rnzn_azr
+				has_completed_focus = NZL_statute_of_westminster
+			}
+			#MMR
+			traits={ gunnery_expert }
+			skill=2
+			attack_skill=2
+			defense_skill=1
+			maneuvering_skill=2
+			coordination_skill=2
+			legacy_id=-1
+		}
+	}
+	MMR_NZL_edward_parry ={
+		name="Edward Parry"
+		portraits={
+			army={
+				small="GFX_idea_USA_generic_navy_2"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = MMR_NZL_edward_parry
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = { has_completed_focus = NZL_statute_of_westminster }
+			}
+			available = {
+				has_completed_focus = NZL_form_the_rnzn_azr
+				has_completed_focus = NZL_strengthen_the_commonwealth
+			}
+			traits  = {
+				navy_chief_old_guard
+			}
+		}
+		navy_leader={
+			#MMR
+			visible = {
+				has_completed_focus = NZL_strengthen_the_commonwealth
+				has_completed_focus = NZL_form_the_rnzn_azr
+			}
+			#MMR
+			traits={ navy_career_officer }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			maneuvering_skill=2
+			coordination_skill=2
+			legacy_id=-1
+		}
+	}
+	MMR_NZL_atwell_lake ={
+		name="Atwell Lake"
+		portraits={
+			army={
+				small="GFX_idea_USA_frank_jack_fletcher"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = MMR_NZL_atwell_lake
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 100
+			visible = {
+				NOT = { has_completed_focus = NZL_statute_of_westminster }
+			}
+			available = {
+				has_completed_focus = NZL_form_the_rnzn_azr
+				has_completed_focus = NZL_strengthen_the_commonwealth
+			}
+			traits  = {
+				navy_chief_reform_2
+			}
+		}
+	}
+	MMR_NZL_william_sinclair_burgess ={
+		name="William Sinclair-Burgess"
+		portraits={
+			army={
+				small="GFX_idea_NZL_william_sinclair_burgess"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MMR_NZL_william_sinclair_burgess_ac
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_army_reforms
+						has_completed_focus = NZL_statute_of_westminster
+					}
+				}
+			}
+			available = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_army_reforms
+						has_completed_focus = NZL_statute_of_westminster
+					}
+				}
+			}
+			traits  = {
+				army_chief_old_guard
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_william_sinclair_burgess_hc
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = { has_completed_focus = NZL_statute_of_westminster }
+			}
+			available = {
+				has_completed_focus = NZL_army_reforms
+				NOT = { has_completed_focus = NZL_statute_of_westminster }
+				has_war = yes
+			}
+			cost = 100
+			traits  = {
+				army_artillery_2
+			}
+		}
+	}
+	MMR_NZL_j_e_duigan={
+		name="J.E. Duigan"
+		portraits={
+			army={
+				small="GFX_idea_NZL_j_e_duigan"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MMR_NZL_j_e_duigan
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = { has_completed_focus = NZL_the_lee_affair }
+			}
+			available = {
+				has_completed_focus = NZL_army_reforms
+				NOT = { has_completed_focus = NZL_the_lee_affair }
+			}
+			traits  = {
+				army_chief_drill_1
+			}
+		}
+	}
+	MMR_NZL_edward_puttick={
+		name="Edward Puttick"
+		portraits={
+			army={
+				small="GFX_idea_NZL_edward_puttick"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MMR_NZL_edward_puttick_ac
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = { has_completed_focus = NZL_statute_of_westminster }
+			}
+			available = {
+				has_completed_focus = NZL_army_reforms
+				has_completed_focus = NZL_strengthen_the_commonwealth
+				custom_trigger_tooltip = { tooltip = MMR_NZL_edward_puttick_tt NOT = { NZL = { has_country_flag = mmr_nzl_ep_hc_chosen } } }
+			}
+			cost = 100
+			traits  = {
+				army_chief_offensive_2
+			}
+			on_add = {
+				NZL = { set_country_flag = mmr_nzl_ep_ac_chosen }
+			}
+			on_remove = {
+				NZL = { clr_country_flag = mmr_nzl_ep_ac_chosen }
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_edward_puttick_hc
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = { has_completed_focus = NZL_statute_of_westminster }
+			}
+			available = {
+				has_completed_focus = NZL_strengthen_the_commonwealth
+				custom_trigger_tooltip = { tooltip = MMR_NZL_edward_puttick_tt NOT = { NZL = { has_country_flag = mmr_nzl_ep_ac_chosen } } }
+			}
+			cost = 100
+			traits  = {
+				army_infantry_2
+			}
+			on_add = {
+				NZL = { set_country_flag = mmr_nzl_ep_hc_chosen }
+			}
+			on_remove = {
+				NZL = { clr_country_flag = mmr_nzl_ep_hc_chosen }
+			}
+		}
+	}
+	MMR_NZL_norman_weir={
+		name="Norman Weir"
+		portraits={
+			army={
+				small="GFX_idea_NZL_n_weir"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MMR_NZL_norman_weir
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+			}
+			available = {
+				has_completed_focus = NZL_army_reforms
+				has_government = democratic
+			}
+			cost = 100
+			traits  = {
+				army_chief_organizational_2
+			}
+		}
+	}
+	MMR_NZL_k_l_stewart={
+		name="K.L. Stewart"
+		portraits={
+			army={
+				small="GFX_idea_ENG_archibald_wavell"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MMR_NZL_k_l_stewart_ac
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = { has_completed_focus = NZL_the_lee_affair }
+			}
+			available = {
+				has_completed_focus = NZL_army_reforms
+				NOT = { has_completed_focus = NZL_the_lee_affair }
+				custom_trigger_tooltip = { tooltip = MMR_NZL_k_l_stewart_tt NOT = { NZL = { has_country_flag = mmr_nzl_kls_hc_chosen } } }
+			}
+			cost = 100
+			traits  = {
+				army_chief_planning_2
+			}
+			on_add = {
+				NZL = { set_country_flag = mmr_nzl_kls_ac_chosen }
+			}
+			on_remove = {
+				NZL = { clr_country_flag = mmr_nzl_kls_ac_chosen }
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_k_l_stewart_hc
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = { has_completed_focus = NZL_the_lee_affair }
+			}
+			available = {
+				has_completed_focus = NZL_army_reforms
+				NOT = { has_completed_focus = NZL_the_lee_affair }
+				custom_trigger_tooltip = { tooltip = MMR_NZL_k_l_stewart_tt NOT = { NZL = { has_country_flag = mmr_nzl_kls_ac_chosen } } }
+			}
+			cost = 100
+			traits  = {
+				army_commando_2
+			}
+			on_add = {
+				NZL = { set_country_flag = mmr_nzl_kls_hc_chosen }
+			}
+			on_remove = {
+				NZL = { clr_country_flag = mmr_nzl_kls_hc_chosen }
+			}
+		}
+	}
+	MMR_NZL_arapeta_awatere={
+		name="Arapeta Awatere"
+		portraits={
+			army={
+				small="GFX_idea_generic_air_south_america_3"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_arapeta_awatere
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+			}
+			available = {
+				is_subject = no
+				OR = {
+					custom_trigger_tooltip = {
+						tooltip = NZL_waitangi_tribunal_tt
+						OR = {
+							has_idea = NZL_strengthened_treaty_of_waitangi_volunteers
+							has_idea = NZL_strengthened_treaty_of_waitangi_volunteers_australasia
+						}
+					}
+					has_idea = AZR_NZL_waitangi_tribunal
+				}
+			}
+			cost = 200
+			traits  = {
+				MMR_NZL_maori_army_historian
+			}
+		}
+	}
+	MMR_NZL_rangi_royal ={
+		name="Rangi Royal"
+		portraits={
+			army={
+				small="GFX_portrait_ITA_achille_starace_small"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MMR_NZL_rangi_royal_ac
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				has_completed_focus = NZL_break_with_the_empire
+			}
+			available = {
+				OR = {
+					has_completed_focus = NZL_maori_volunteers
+					has_completed_focus = NZL_maori_conscription
+				}
+			}
+			cost = 50
+			traits  = {
+				army_chief_reform_1
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_rangi_royal_hc
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				is_subject = no
+				NOT = { has_completed_focus = NZL_break_with_the_empire }
+			}
+			available = {
+				is_subject = no
+				OR = {
+					has_completed_focus = NZL_maori_volunteers
+					has_completed_focus = NZL_maori_conscription
+				}
+			}
+			cost = 50
+			traits  = {
+				army_entrenchment_1
+			}
+		}
+	}
+	MMR_NZL_henry_te_reiwhati_vercoe ={
+		name="Henry Te Reiwhati Vercoe"
+		portraits={
+			army={
+				small="GFX_idea_ENG_tom_moore"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_henry_te_reiwhati_vercoe
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+			}
+			available = {
+				has_completed_focus = NZL_maori_volunteers
+			}
+			cost = 50
+			traits  = {
+				army_cavalry_1
+			}
+		}
+	}
+	MMR_NZL_charles_bennett ={
+		name="Charles Bennett"
+		portraits={
+			army={
+				small="GFX_idea_generic_air_close_air_sup_asian_2d"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MMR_NZL_charles_bennett_ac
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				has_completed_focus = NZL_break_with_the_empire
+			}
+			available = {
+				OR = {
+					has_completed_focus = NZL_maori_volunteers
+					has_completed_focus = NZL_maori_conscription
+				}
+				custom_trigger_tooltip = { tooltip = MMR_NZL_charles_bennett_tt NOT = { NZL = { has_country_flag = mmr_nzl_cb_hc_chosen } } }
+			}
+			cost = 50
+			traits  = {
+				army_chief_morale_1
+			}
+			on_add = {
+				NZL = { set_country_flag = mmr_nzl_cb_ac_chosen }
+			}
+			on_remove = {
+				NZL = { clr_country_flag = mmr_nzl_cb_ac_chosen }
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_charles_bennett_hc
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				has_completed_focus = NZL_break_with_the_empire
+			}
+			available = {
+				OR = {
+					has_completed_focus = NZL_maori_volunteers
+					has_completed_focus = NZL_maori_conscription
+				}
+				custom_trigger_tooltip = { tooltip = MMR_NZL_charles_bennett_tt NOT = { NZL = { has_country_flag = mmr_nzl_cb_ac_chosen } } }
+			}
+			cost = 100
+			traits  = {
+				army_radio_intelligence_2
+			}
+			on_add = {
+				NZL = { set_country_flag = mmr_nzl_cb_hc_chosen }
+			}
+			on_remove = {
+				NZL = { clr_country_flag = mmr_nzl_cb_hc_chosen }
+			}
+		}
+	}
+	MMR_NZL_arnold_reedy ={
+		name="Arnold Reedy"
+		portraits={
+			army={
+				small="GFX_idea_MEX_matias_santos_ramos"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MMR_NZL_arnold_reedy
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				has_completed_focus = NZL_break_with_the_empire
+			}
+			available = {
+				is_subject = no
+				OR = {
+					has_completed_focus = NZL_maori_volunteers
+					has_completed_focus = NZL_maori_conscription
+				}
+			}
+			cost = 50
+			traits  = {
+				army_chief_old_guard
+			}
+		}
+	}
+	MMR_NZL_haane_manahi ={
+		name="Haane Manahi"
+		portraits={
+			army={
+				small="GFX_portrait_ITA_hamid_idris_awate_small"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_haane_manahi
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				has_completed_focus = NZL_break_with_the_empire
+			}
+			available = {
+				has_completed_focus = NZL_maori_volunteers
+			}
+			cost = 50
+			traits  = {
+				army_infantry_1
+			}
+		}
+	}
+	MMR_NZL_lawrence_hogben ={
+		name="Lawrence Hogben"
+		portraits={
+			army={
+				small="GFX_idea_ITA_generic_land_3"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_lawrence_hogben
+			allowed  = {
+				original_tag = NZL
+			}
+			available = {
+				date > 1938.07.01
+				has_government = democratic
+				OR = {
+					is_subject = no
+					has_completed_focus = NZL_statute_of_westminster
+					has_completed_focus = NZL_statute_of_westminster_loyalist
+				}
+			}
+			cost = 100
+			traits  = {
+				MMR_navy_meteorologist
+			}
+		}
+	}
+	MMR_NZL_howard_kippenberger ={
+		name="Howard Kippenberger"
+		portraits={
+			army={
+				large="GFX_portrait_ENG_generic_land_4"
+				small="GFX_idea_ENG_generic_land_4"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = MMR_NZL_howard_kippenberger
+			allowed  = {
+				original_tag = NZL
+			}
+			available = {
+			}
+			cost = 100
+			traits  = {
+				military_theorist
+			}
+		}
+		corps_commander={
+			visible = {
+				OR = {
+					has_completed_focus = NZL_nz_corps
+					AND = {
+						has_completed_focus = NZL_statute_of_westminster
+						has_completed_focus = NZL_army_reforms
+					}
+				}
+			}
+			traits = { brilliant_strategist }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	MMR_NZL_james_roberts ={
+		name="James Roberts"
+		portraits={
+			civilian={
+				small="GFX_idea_POL_henryk_floyar_rajchman"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_james_roberts
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 75
+			visible = {
+				has_government = democratic
+			}
+			available = {
+				has_completed_focus = NZL_the_first_labor_government_azr
+				OR = {
+					has_country_leader = { character = NZL_michael_joseph_savage }
+					has_country_leader = { character = NZL_peter_fraser }
+				}
+				IF = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+			}
+			traits  = {
+				MMR_NZL_popular_reformer 
+			}
+		}
+	}
+	MMR_NZL_walter_nash={
+		name="Walter Nash"
+		portraits={
+			civilian={
+				small="GFX_idea_NZL_walter_nash"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_walter_nash
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 75
+			visible = {
+				has_government = democratic
+			}
+			available = {
+				has_government = democratic
+				OR = {
+					has_country_leader = { character = NZL_michael_joseph_savage }
+					has_country_leader = { character = NZL_peter_fraser }
+				}
+			}
+			traits  = {
+				MMR_NZL_pacifist_financial_expert 
+			}
+		}
+	}
+	MMR_NZL_peter_fraser={
+		name="Peter Fraser"
+		portraits={
+			civilian={
+				small="GFX_idea_SAF_abram_fischer"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_peter_fraser
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 75
+			visible = {
+				has_government = democratic
+				NOT = { has_country_leader = { character = NZL_peter_fraser } }
+			}
+			available = {
+				has_government = democratic
+				has_country_leader = { character = NZL_michael_joseph_savage }
+			}
+			traits  = {
+				MMR_NZL_social_democrat_politician 
+			}
+		}
+	}
+	MMR_NZL_fred_jones={
+		name="Fred Jones"
+		portraits={
+			civilian={
+				small="GFX_idea_usa_william_donovan"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_fred_jones
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 75
+			visible = {
+				has_government = democratic
+			}
+			available = {
+				has_government = democratic
+				OR = {
+					has_country_leader = { character = NZL_michael_joseph_savage }
+					has_country_leader = { character = NZL_peter_fraser }
+				}
+			}
+			traits  = {
+				AZR_armaments_organizer
+			}
+		}
+	}
+	MMR_NZL_bill_parry={
+		name="Bill Parry"
+		portraits={
+			civilian={
+				small="GFX_idea_SAF_sir_patrick_duncan"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_bill_parry
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 75
+			visible = {
+				has_government = democratic
+			}
+			available = {
+				has_government = democratic
+				OR = {
+					has_country_leader = { character = NZL_michael_joseph_savage }
+					has_country_leader = { character = NZL_peter_fraser }
+				}
+				
+			}
+			traits  = {
+				silent_workhorse
+			}
+		}
+	}
+	MMR_NZL_henry_kelliher={
+		name="Henry Kelliher"
+		portraits={
+			civilian={
+				small="GFX_idea_SAF_nicolaas_havenga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_henry_kelliher
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				has_government = democratic
+			}
+			available = {
+				has_government = democratic
+			}
+			traits  = {
+				captain_of_industry 
+			}
+		}
+	}
+	MMR_NZL_george_forbes ={
+		name="George Forbes"
+		portraits={
+			civilian={
+				large="GFX_portrait_GER_konstantin_von_neurath"
+				small="GFX_portrait_GER_konstantin_von_neurath_small"
+			}
+		}
+		country_leader={
+			ideology=centrism
+			traits = { AZR_NZL_honest_george }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_george_forbes_pa
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 75
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_the_lee_affair
+						has_completed_focus = NZL_in_the_darkness
+						has_government = fascism
+						has_government = communism
+					}
+				}
+			}
+			available = {
+				OR = {
+					has_country_leader = { character = MMR_NZL_charles_wilkinson }
+					has_country_leader = { character = MMR_NZL_adam_hamilton }
+					has_country_leader = { character = NZL_sidney_holland }
+				}
+			}
+			traits  = {
+				AZR_NZL_honest_george
+			}
+		}
+	}
+	MMR_NZL_adam_hamilton={
+		name="Adam Hamilton"
+		portraits={
+			civilian={
+				large="GFX_portrait_FRA_edouard_daladier"
+			}
+		}
+		country_leader={
+			ideology=moderatism
+			traits = { AZR_NZL_incompetent_economist AZR_NZL_blamed_for_the_great_depression AZR_NZL_unpopular_compromise anti_communist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			traits = { AZR_NZL_incompetent_economist AZR_NZL_blamed_for_the_great_depression AZR_NZL_unpopular_compromise anti_communist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	MMR_NZL_charles_wilkinson={
+		name="Charles Wilkinson"
+		portraits={
+			civilian={
+				large="GFX_portrait_Manuel_Azana"
+			}
+		}
+		country_leader={
+			ideology=moderatism
+			traits = { AZR_NZL_independent_nationalist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		country_leader={
+			ideology=conservatism
+			traits = { AZR_NZL_independent_nationalist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	MMR_NZL_jack_harris={
+		name="Jack Harris"
+		portraits={
+			civilian={
+				small="GFX_portrait_GER_wilhelm_iv_small"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_jack_harris
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 100
+			visible = {
+				has_government = democratic
+			}
+			available = {
+				has_government = democratic
+				OR = {
+					has_completed_focus = NZL_promote_trade
+					has_country_leader = { character = MMR_NZL_charles_wilkinson }
+					has_country_leader = { character = MMR_NZL_adam_hamilton }
+					has_country_leader = { character = NZL_sidney_holland }
+				}
+			}
+			traits  = {
+				MMR_NZL_shipping_magnate 
+			}
+		}
+	}
+	MMR_NZL_j_g_coates={
+		name="J. G. Coates"
+		portraits={
+			civilian={
+				small="GFX_idea_HUN_kalman_daranyi"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_j_g_coates
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 75
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_the_lee_affair
+						has_completed_focus = NZL_in_the_darkness
+						has_government = fascism
+						has_government = communism
+					}
+				}
+			}
+			available = {
+				OR = {
+					has_completed_focus = NZL_american_industrial_aid
+					has_country_leader = { character = MMR_NZL_adam_hamilton }
+					has_country_leader = { character = NZL_sidney_holland }
+				}
+			}
+			traits  = {
+				MMR_NZL_liberal_conservative_agrarianist 
+			}
+		}
+	}
+	MMR_NZL_eugene_casey={ #DEPRECATED
+		name="Eugene Casey"
+		portraits={
+			civilian={
+				small="GFX_idea_USA_arleigh_burke"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_eugene_casey
+			allowed  = {
+				original_tag = NZL
+			}
+			available = {
+				OR = {
+					has_government = democratic
+					has_government = communism
+				}
+			}
+			traits  = {
+				MMR_NZL_railway_engineer 
+			}
+		}
+	}
+	MMR_NZL_john_a_lee={
+		name="John A. Lee"
+		portraits={
+			civilian={
+				small="GFX_idea_eng_alan_turing"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_john_a_lee
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_in_the_darkness
+					}
+				}
+			}
+			available = {
+				has_completed_focus = NZL_the_lee_affair
+				IF = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+			}
+			traits  = {
+				MMR_NZL_veteran_socialist_politician 
+			}
+			ai_will_do = { factor = 10 modifier = { is_subject = yes NOT = { is_subject_of = ENG } factor = 0 } }
+		}
+	}
+	MMR_NZL_jack_locke ={
+		name="Jack Locke"
+		portraits={
+			civilian={
+				large="GFX_portrait_lat_vilis_lacis"
+			}
+		}
+		country_leader={
+			ideology=stalinism
+			traits = { HUN_ardent_stalinist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	MMR_NZL_sid_scott={
+		name="Sid Scott"
+		portraits={
+			civilian={
+				small="GFX_idea_eng_stewart_menzies"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_sid_scott
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_in_the_darkness
+					}
+				}
+			}
+			available = {
+				has_government = communism
+			}
+			traits  = {
+				MMR_NZL_communist_editor 
+			}
+		}
+	}
+	MMR_NZL_alexander_galbraith={
+		name="Alexander Galbraith"
+		portraits={
+			civilian={
+				small="GFX_idea_generic_war_industrialist_commonwealth_2d"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_alexander_galbraith
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_in_the_darkness
+					}
+				}
+			}
+			available = {
+				has_government = communism
+			}
+			traits  = {
+				MMR_NZL_com_trade_unionist 
+			}
+		}
+	}
+	MMR_NZL_fintan_patrick_walsh={
+		name="Fintan Patrick Walsh"
+		portraits={
+			civilian={
+				small="GFX_idea_SAF_e_g_jansen"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_fintan_patrick_walsh
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_in_the_darkness
+					}
+				}
+			}
+			available = {
+				has_government = communism
+			}
+			traits  = {
+				AZR_NZL_soc_seaman
+			}
+		}
+	}
+	MMR_NZL_bill_bland={
+		name="Bill Bland"
+		portraits={
+			civilian={
+				small="GFX_idea_POL_edward_osobka_morawski"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_bill_bland
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_in_the_darkness
+						has_completed_focus = NZL_champion_the_peace_movement
+						has_country_leader = { character = MMR_NZL_jack_locke ruling_only = no }
+					}
+				}
+			}
+			available = {
+				date > 1939.01.01
+				has_country_leader = { character = MMR_NZL_jack_locke }
+			}
+			traits  = {
+				MMR_NZL_staunch_stalinist 
+			}
+		}
+	}
+	MMR_NZL_hedwig_weitzel={
+		name="Hedwig Weitzel"
+		gender = female
+		portraits={
+			civilian={
+				small="GFX_idea_POL_wanda_wasilewska"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_hedwig_weitzel
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_in_the_darkness
+					}
+				}
+			}
+			available = {
+				has_government = communism
+				has_completed_focus = NZL_women_in_the_workforce
+			}
+			traits  = {
+				MMR_NZL_feminist_educator 
+			}
+		}
+	}
+	MMR_NZL_ron_smith ={
+		name="Ron Smith"
+		portraits={
+			civilian={
+				small="GFX_idea_FRA_pierre_pucheu"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_ron_smith
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_in_the_darkness
+						has_completed_focus = NZL_pacific_communist_alternative
+						has_completed_focus = NZL_join_comintern
+					}
+				}
+			}
+			available = {
+				has_government = communism
+				has_completed_focus = NZL_champion_the_peace_movement
+			}
+			traits  = {
+				SWI_socialist_pacifist 
+			}
+		}
+	}
+	MMR_NZL_vic_wilcox ={
+		name="Vic Wilcox"
+		portraits={
+			civilian={
+				small="GFX_idea_clement_attlee"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_vic_wilcox
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_in_the_darkness
+						has_completed_focus = NZL_join_comintern
+					}
+				}
+			}
+			available = {
+				has_government = communism
+				has_completed_focus = NZL_embrace_agrarian_socialism
+			}
+			traits  = {
+				MMR_NZL_agrarian_unionist 
+			}
+		}
+	}
+	MMR_NZL_lloyd_mandeno = {
+		name="Lloyd Mandeno"
+		portraits={
+			civilian={
+				small="GFX_idea_SOV_nikolay_voznesensky"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_lloyd_mandeno
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_in_the_darkness
+						has_completed_focus = NZL_join_comintern
+					}
+				}
+			}
+			available = {
+				has_completed_focus = NZL_rural_infrastructure_investment
+			}
+			cost = 75
+			traits  = {
+				MMR_NZL_rural_electrification_expert 
+			}
+		}
+	}
+	MMR_NZL_graham_beresford_parkinson={
+		name="Graham Beresford Parkinson"
+		portraits={
+			army={
+				large="GFX_portrait_ENG_generic_land_2"
+				small="GFX_idea_ENG_generic_land_2"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_graham_beresford_parkinson
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 50
+			visible = {
+				NOT = { has_government = communism }
+			}
+			available = {
+				is_subject = no
+				has_completed_focus = NZL_statute_of_westminster
+				NOT = { has_government = communism }
+			}
+			traits  = {
+				army_artillery_1 
+			}
+		}
+		corps_commander={
+			visible = { has_completed_focus = NZL_statute_of_westminster NOT = { has_government = communism } }
+			traits = { career_officer trait_engineer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	MMR_NZL_harold_barrowclough={
+		name="Harold Barrowclough"
+		portraits={
+			army={
+				large="GFX_portrait_ENG_william_gott"
+				small="GFX_portrait_ENG_william_gott_small"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_harold_barrowclough
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 50
+			visible = {
+				NOT = { has_government = communism }
+			}
+			available = {
+				is_subject = no
+				NOT = { has_government = communism }
+			}
+			traits  = {
+				army_infantry_1 
+			}
+		}
+		corps_commander={
+			visible = { has_government = fascism }
+			traits = { war_hero infantry_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	MMR_NZL_donald_stott={
+		name="Donald Stott"
+		portraits={
+			civilian={
+				small="GFX_idea_bul_vladimir_stoychev"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_donald_stott
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_the_lee_affair
+					}
+				}
+			}
+			available = {
+				has_government = fascism
+			}
+			traits  = {
+				army_radio_intelligence_1 
+			}
+		}
+	}
+	MMR_NZL_albert_davy ={
+		name="Albert Davy"
+		portraits={
+			civilian={
+				small="GFX_idea_LAT_vilhelms_munters"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_albert_davy
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_the_lee_affair
+					}
+				}
+			}
+			available = {
+				has_completed_focus = NZL_in_the_darkness
+				IF = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+			}
+			traits  = {
+				MMR_NZL_radical_anti_socialist 
+			}
+			ai_will_do = { factor = 10 modifier = { is_subject = yes NOT = { is_subject_of = ENG } factor = 0 } }
+		}
+	}
+	MMR_NZL_campbell_begg={
+		name="Campbell Begg"
+		portraits={
+			civilian={
+				small="GFX_idea_POL_joachim_stefan_bartoszewicz"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_campbell_begg
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 75
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_the_lee_affair
+					}
+				}
+			}
+			available = {
+				has_government = fascism
+			}
+			traits  = {
+				MMR_NZL_fascist_doctor 
+			}
+		}
+	}
+	MMR_NZL_jack_andrews={
+		name="Jack Andrews"
+		portraits={
+			civilian={
+				small="GFX_idea_AST_frank_ford"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_jack_andrews
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_the_lee_affair
+					}
+				}
+			}
+			available = {
+				has_government = fascism
+			}
+			traits  = {
+				AZR_NZL_veteran_industrialist 
+			}
+		}
+	}
+	MMR_NZL_a_n_field={
+		name="A. N. Field"
+		portraits={
+			civilian={
+				small="GFX_idea_EST_hendrik_allik"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_a_n_field
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_the_lee_affair
+					}
+				}
+			}
+			available = {
+				has_government = fascism
+				has_completed_focus = NZL_maori_work_camps
+			}
+			traits  = {
+				MMR_NZL_radical_fascist_journalist 
+			}
+		}
+	}
+	MMR_NZL_lionel_terry={
+		name="Lionel Terry"
+		portraits={
+			civilian={
+				small="GFX_idea_soviet_vsevolod_merkulov"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_lionel_terry
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_completed_focus = NZL_constitution_amendment_act
+						has_completed_focus = NZL_strengthen_the_commonwealth
+						has_completed_focus = NZL_the_lee_affair
+					}
+				}
+			}
+			available = {
+				has_government = fascism
+				has_completed_focus = NZL_maori_work_camps
+				has_completed_focus = NZL_autarcky
+			}
+			traits  = {
+				MMR_NZL_white_supremecist 
+			}
+		}
+	}
+	MMR_NZL_bill_gilbert ={
+		name="Bill Gilbert"
+		portraits={
+			army={
+				small="GFX_idea_CZE_konrad_henlein"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_NZL_bill_gilbert
+			allowed = {
+				original_tag = NZL
+			}
+			visible = { has_dlc =  "La Resistance" }
+			available = { has_intelligence_agency = yes }
+			traits  = { head_of_intelligence }
+		}
+	}
+	MMR_NZL_miles_barnett={
+		name="Miles Barnett"
+		portraits={
+			civilian={
+				small="GFX_idea_NZL_keith_j_holyoake"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_miles_barnett
+			cost = 100
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+			}
+			available = {
+			}
+			traits  = {
+				AZR_air_meteorologist
+			}
+		}
+	}
+	MMR_NZL_morgan_o_brien={
+		name="Morgan O'Brien"
+		portraits={
+			civilian={
+				small="GFX_idea_SPA_enrique_canovas_lacruz"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_morgan_o_brien
+			cost = 100
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				has_dlc = "La Resistance"
+			}
+			available = {
+			}
+			traits  = {
+				AZR_cipher_expert
+			}
+		}
+	}
+	MMR_NZL_morgan_o_brien_no_lar={
+		name="Morgan O'Brien"
+		portraits={
+			civilian={
+				small="GFX_idea_SPA_enrique_canovas_lacruz"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_morgan_o_brien_no_lar
+			cost = 100
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+				NOT = { has_dlc = "La Resistance" }
+			}
+			available = {
+			}
+			traits  = {
+				AZR_cipher_expert_no_lar
+			}
+		}
+	}
+	MMR_NZL_george_davis_goff={
+		name="George Davis-Goff"
+		portraits={
+			civilian={
+				small="GFX_idea_CAN_george_jones"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = MMR_NZL_george_davis_goff
+			cost = 100
+			allowed  = {
+				original_tag = NZL
+			}
+			visible = {
+			}
+			available = {
+				is_subject = no
+				has_government = democratic
+				has_completed_focus = NZL_independent_new_zealand
+			}
+			traits  = {
+				naval_theorist
+			}
+		}
+	}
+	MMR_NZL_thomas_joseph_king={
+		name="Thomas Joseph King"
+		portraits={
+			civilian={
+				small="GFX_idea_SAF_james_mitchell_baker"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_NZL_thomas_joseph_king
+			allowed  = {
+				original_tag = NZL
+			}
+			cost = 100
+			visible = {
+			}
+			available = {
+			}
+			traits  = {
+				army_logistics_2 
+			}
+		}
+	}
+	MMR_NZL_bill_hamilton ={
+		name="Bill Hamilton"
+		portraits={
+			army={
+				large="GFX_portrait_AUS_herbert_wagner"
+			}
+		}
+		scientist = {
+			traits = { scientist_trait_gifted_engineer }
+			skills = {
+				specialization_naval = 1
+			}
+		}
+	}
+	# MMR_NZL_george_julius ={
+		# name="George Julius"
+		# portraits={
+			# army={
+				# large="GFX_portrait_generic_europe_male_01"
+			# }
+		# }
+		# scientist = {
+			# traits = { scientist_trait_fast_learner scientist_trait_resourceful }
+			# skills = {
+				# specialization_air = 1
+			# }
+		# }
+	# }
+	MMR_NZL_fred_white  ={
+		name="Fred White"
+		portraits={
+			army={
+				large="GFX_portrait_ENG_john_cockcroft"
+			}
+		}
+		scientist = {
+			traits = { scientist_trait_electronics_specialist }
+			skills = {
+				specialization_air = 1
+			}
+		}
+	}
+	MMR_NZL_thomas_leech  ={
+		name="Thomas Leech"
+		portraits={
+			army={
+				large="GFX_portrait_FRA_frederic_joliot_curie"
+			}
+		}
+		scientist = {
+			visible = { OWNER = { has_completed_focus = NZL_department_of_scientific_and_industrial_research } }
+			traits = { scientist_trait_fast_learner }
+			skills = {
+				specialization_air = 1
+			}
+		}
+	}
+	MMR_NZL_bill_gallagher ={
+		name="Bill Gallagher"
+		portraits={
+			army={
+				large="GFX_portrait_USA_william_francis_gibbs"
+			}
+		}
+		scientist = {
+			traits = {  }
+			skills = {
+				specialization_land = 1
+			}
+		}
+	}
+	MMR_NZL_clifford_dalton ={
+		name="Clifford Dalton"
+		portraits={
+			army={
+				large="GFX_portrait_SOV_sergei_korolev"
+			}
+		}
+		scientist = {
+			traits = { scientist_trait_fast_learner }
+			skills = {
+				specialization_nuclear = 1
+			}
+		}
+	}
+	MMR_NZL_ernest_marsden ={
+		name="Ernest Marsden"
+		portraits={
+			army={
+				large="GFX_portrait_ENG_frank_whittle"
+			}
+		}
+		scientist = {
+			traits = { scientist_trait_nuclear_specialist }
+			skills = {
+				specialization_nuclear = 2
+			}
+		}
+	}
+	
+	
+	###AST
+	
+	MMR_AST_joseph_lyons={
+		name="Joseph Lyons"
+		portraits={
+			civilian={
+				large=GFX_portrait_MMR_AST_joseph_lyons
+			}
+		}
+		country_leader={
+			ideology=conservatism
+			traits = { MMR_AST_popular_appeaser }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	MMR_AST_robert_g_menzies={
+		name=AST_robert_g_menzies
+		portraits={
+			civilian={
+				large="GFX_portrait_MMR_AST_robert_menzies"
+				small="GFX_idea_AST_robert_g_menzies" #small="GFX_idea_generic_political_advisor_europe_2"
+			}
+		}
+		country_leader={
+			ideology=conservatism
+			traits = { chamberlain_appeaser }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_robert_g_menzies
+			cost = 75
+			visible = {
+				has_government = democratic
+				NOT = { has_country_leader = { character = MMR_AST_robert_g_menzies } }
+			}
+			available = {
+				has_country_leader = { character = MMR_AST_joseph_lyons }
+			}
+			allowed = {
+				original_tag = AST
+			}
+			traits = {
+				AZR_backroom_backstabber 
+			}
+		}		
+	}
+	MMR_AST_staniforth_ricketson={
+		name="Staniforth Ricketson"
+		portraits={
+			civilian={
+				small="GFX_idea_eng_stewart_menzies"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_staniforth_ricketson
+			allowed  = { original_tag = AST }
+			cost = 75
+			visible = {
+				has_government = democratic
+			}
+			available = {
+				OR = {
+					has_country_leader = { character = MMR_AST_joseph_lyons }
+					has_country_leader = { character = MMR_AST_robert_g_menzies }
+				}
+			}
+			traits  = {
+				financial_expert 
+			}
+		}
+	}
+	MMR_AST_geoffrey_street={
+		name="Geoffrey Street"
+		portraits={
+			civilian={
+				small="GFX_idea_alexander_kerensky" 
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_geoffrey_street
+			allowed  = { original_tag = AST }
+			cost = 75
+			visible = {
+				has_government = democratic
+			}
+			available = {
+				OR = {
+					has_country_leader = { character = MMR_AST_joseph_lyons }
+					has_country_leader = { character = MMR_AST_robert_g_menzies }
+				}
+			}
+			#cost = 100
+			traits  = {
+				MMR_AST_rearmament_proponent 
+			}
+		}
+	}
+	MMR_AST_charles_merrett={
+		name="Charles Merrett"
+		portraits={
+			civilian={
+				small="GFX_idea_LIT_mykolas_slezevicius"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_charles_merrett
+			allowed  = { original_tag = AST }
+			cost = 75
+			visible = {
+				OR = {
+					has_completed_focus = AST_promote_trade
+					has_country_leader = { character = MMR_AST_joseph_lyons }
+					has_country_leader = { character = MMR_AST_robert_g_menzies }
+				}
+			}
+			available = {
+				OR = {
+					has_completed_focus = AST_promote_trade
+					has_country_leader = { character = MMR_AST_joseph_lyons }
+					has_country_leader = { character = MMR_AST_robert_g_menzies }
+				}
+			}
+			traits  = {
+				MMR_AST_verteran_liberal_merchant 
+			}
+		}
+	}
+	MMR_AST_john_latham={
+		name="John Latham"
+		portraits={
+			civilian={
+				small="GFX_idea_USA_arleigh_burke"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_john_latham
+			allowed  = { original_tag = AST }
+			cost = 50
+			visible = {
+				has_government = democratic
+			}
+			available = {
+				OR = {
+					has_country_leader = { character = MMR_AST_joseph_lyons }
+					has_country_leader = { character = MMR_AST_robert_g_menzies }
+				}
+			}
+			traits  = {
+				MMR_AST_anti_communist_chief_justice 
+			}
+		}
+	}
+	MMR_AST_billy_hughes={
+		name="Billy Hughes"
+		portraits={
+			civilian={
+				small="GFX_idea_victor_denain"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_billy_hughes
+			allowed  = { original_tag = AST }
+			cost = 75
+			visible = {
+				OR = {
+					has_government = democratic
+					has_country_leader = { character = AST_earle_page }
+				}
+			}
+			available = {
+				OR = {
+					has_country_leader = { character = MMR_AST_joseph_lyons }
+					has_country_leader = { character = MMR_AST_robert_g_menzies }
+					has_country_leader = { character = AST_earle_page }
+				}
+			}
+			traits  = {
+				MMR_AST_populist_little_digger 
+			}
+		}
+	}
+	MMR_AST_earle_page={
+		name="Earle Page"
+		portraits={
+			civilian={
+				small="GFX_idea_AST_earle_page"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_earle_page
+			allowed  = { original_tag = AST }
+			visible = {
+				NOT = {
+					OR = {
+						has_country_flag = earle_page_retired_flag
+						has_country_leader = { character = MMR_AST_jack_lang }
+						has_government = fascism
+						has_government = communism
+					}
+				}
+			}
+			available = {
+				OR = {
+					has_country_leader = { character = MMR_AST_joseph_lyons }
+					has_country_leader = { character = MMR_AST_robert_g_menzies }
+					has_country_leader = { character = MMR_AST_archie_cameron }
+					has_country_leader = { character = MMR_AST_arthur_fadden }
+				}
+			}
+			traits  = {
+				MMR_NZL_liberal_conservative_agrarianist 
+			}
+		}
+	}
+	MMR_AST_alexander_hore_ruthven={
+		name=AST_alexander_hore_ruthven
+		portraits={
+			army={
+				small="GFX_idea_AST_alexander_hore_ruthven" #small="GFX_idea_generic_political_advisor_europe_1"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_alexander_hore_ruthven
+			visible = { is_subject_of = ENG NOT = { has_government = communism } }
+			available = { is_subject_of = ENG }
+			allowed = {
+				original_tag = AST
+			}
+			traits = {
+				quartermaster_general 
+			}
+		}		
+	}
+	MMR_AST_ben_chifley={
+		name=AST_ben_chifley
+		portraits={
+			army={
+				large="GFX_portrait_MMR_AST_ben_chifley"
+				small="GFX_idea_AST_ben_chifley" #small="GFX_idea_generic_political_advisor_europe_3"
+			}
+		}
+		country_leader={
+			ideology=socialism
+			traits = { MMR_AST_light_on_the_hill }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_ben_chifley
+			allowed = {
+				original_tag = AST
+				has_dlc = "Together for Victory"
+			}
+			cost = 75
+			visible = {
+				has_government = democratic
+			}
+			traits = {
+				MMR_AST_labor_financial_expert
+			}
+			available = {
+				has_country_leader = { character = AST_john_curtin }
+			}
+		}		
+	}
+	MMR_AST_herbert_v_evatt={
+		name=AST_herbert_v_evatt
+		portraits={
+			army={
+				small="GFX_idea_AST_herbert_v_evatt" #small="GFX_idea_generic_political_advisor_europe_2"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_herbert_v_evatt
+			allowed = {
+				original_tag = AST
+			}
+			cost = 75
+			visible = {
+				has_government = democratic
+			}
+			traits = {
+				silent_workhorse 
+			}
+			available = {
+				OR = {
+					has_country_leader = { character = AST_john_curtin }
+					has_country_leader = { character = MMR_AST_ben_chifley }
+				}
+			}
+		}		
+	}
+	MMR_AST_frank_forde={
+		name=AST_frank_forde
+		portraits={
+			army={
+				small="GFX_idea_amadeo_bordiga"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_frank_forde
+			cost = 75
+			allowed = {
+				original_tag = AST
+			}
+			visible = {
+				has_government = democratic
+			}
+			available = {
+				OR = {
+					has_country_leader = { character = AST_john_curtin }
+					has_country_leader = { character = MMR_AST_ben_chifley }
+				}
+			}
+			traits = {
+				compassionate_gentleman 
+			}
+		}
+	}
+	MMR_AST_jack_beasley={
+		name=AST_jack_beasley
+		portraits={
+			army={
+				small="GFX_idea_AST_jack_beasley" #small="GFX_idea_generic_political_advisor_europe_3"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_jack_beasley
+			allowed = {
+				original_tag = AST
+				has_dlc = "Together for Victory"
+			}
+			cost = 100
+			visible = {
+				OR = {
+					has_government = democratic
+					has_country_leader = { character = MMR_AST_jack_lang }
+				}
+			}
+			available = {
+				IF = {
+					limit = { has_country_flag = MMR_lang_labor_split_ends }
+					OR = {
+						has_country_leader = { character = AST_john_curtin }
+						has_country_leader = { character = MMR_AST_ben_chifley }
+					}
+				}
+				ELSE = { has_country_leader = { character = MMR_AST_jack_lang } }
+			}
+			traits = {
+				AZR_armaments_organizer 
+			}
+		}		
+	}
+	MMR_AST_eddie_ward={
+		name="Eddie Ward"
+		portraits={
+			civilian={
+				large="GFX_portrait_USA_generic_2"
+				small="GFX_portrait_FIN_yrjo_leino_small"
+			}
+		}
+		country_leader={
+			ideology=centrism
+			traits = { anti_communist MMR_pacifist_nationalist_rabble_rouser }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_eddie_ward_pa
+			allowed  = { original_tag = AST }
+			visible = {
+				NOT = { has_country_leader = { character = MMR_AST_eddie_ward } }
+				NOT = { has_country_flag = MMR_lang_labor_split_ends }
+				OR = {
+					has_government = democratic
+					has_country_leader = { character = MMR_AST_jack_lang }
+				}
+			}
+			available = {
+				has_country_leader = { character = MMR_AST_jack_lang }
+			}
+			traits  = {
+				MMR_pacifist_nationalist_rabble_rouser 
+			}
+		}
+	}
+	MMR_AST_james_dunn ={
+		name="James Dunn"
+		portraits={
+			civilian={
+				small="GFX_portrait_AUS_otto_schobel_small"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_james_dunn
+			allowed  = { original_tag = AST }
+			visible = {
+				NOT = { has_country_flag = MMR_lang_labor_split_ends }
+				OR = {
+					has_government = democratic
+					has_country_leader = { character = MMR_AST_jack_lang }
+				}
+			}
+			available = {
+				has_country_leader = { character = MMR_AST_jack_lang }
+			}
+			traits  = {
+				MMR_AST_digger_dunn 
+			}
+		}
+	}
+	MMR_AST_archie_cameron ={
+		name="Archie Cameron"
+		portraits={
+			civilian={
+				large="GFX_portrait_BUL_georgi_dimitrov"
+				small="GFX_idea_BUL_georgi_dimitrov"
+			}
+		}
+		country_leader={
+			ideology=moderatism
+			traits = { anti_communist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_archie_cameron_pa
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_country_leader = { character = AST_earle_page }
+					has_country_leader = { character = MMR_AST_archie_cameron }
+					has_country_leader = { character = MMR_AST_arthur_fadden }
+					AND = {
+						has_country_leader = { character = MMR_AST_king_edward }
+						NOT = { has_completed_focus = AST_empower_the_exiles }
+					}
+					NOT = { has_country_flag = AZR_has_not_gone_country }
+				}
+			}
+			available = {
+				IF = {
+					limit = { has_completed_focus = AST_monarchist_coup }
+					AND = {
+						has_government = neutrality
+						has_completed_focus = AST_monarchist_coup
+						has_country_leader = { character = MMR_AST_king_edward }
+					}
+				}
+				ELSE = {
+					OR = {
+						has_country_leader = { character = AST_earle_page }
+						has_country_leader = { character = MMR_AST_arthur_fadden }
+					}
+				}
+			}
+			traits  = {
+				AZR_nationalist_workhorse
+			}
+		}
+	}
+	MMR_AST_arthur_fadden ={
+		name="Arthur Fadden"
+		portraits={
+			civilian={
+				large="GFX_portrait_lat_vilis_lacis"
+				small="GFX_idea_LAT_vilis_lacis"
+			}
+		}
+		country_leader={
+			ideology=moderatism
+			traits = { political_dancer }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_arthur_fadden_pa
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_country_leader = { character = AST_earle_page }
+					has_country_leader = { character = MMR_AST_archie_cameron }
+					has_country_leader = { character = MMR_AST_arthur_fadden }
+					AND = {
+						has_country_leader = { character = MMR_AST_king_edward }
+						NOT = { has_completed_focus = AST_empower_the_exiles }
+					}
+					NOT = { has_country_flag = AZR_has_not_gone_country }
+				}
+			}
+			available = {
+				IF = {
+					limit = { has_completed_focus = AST_monarchist_coup }
+					AND = {
+						has_government = neutrality
+						has_completed_focus = AST_monarchist_coup
+						has_country_leader = { character = MMR_AST_king_edward }
+					}
+				}
+				ELSE = {
+					OR = {
+						has_country_leader = { character = AST_earle_page }
+						has_country_leader = { character = MMR_AST_arthur_fadden }
+					}
+				}
+			}
+			traits  = {
+				MMR_AST_shrewd_treasurer
+			}
+		}
+	}
+	MMR_AST_fred_paterson ={
+		name="Fred Paterson"
+		portraits={
+			civilian={
+				large="GFX_portrait_POL_stanislaw_mikolajczyk"
+				small="GFX_idea_POL_joachim_stefan_bartoszewicz"
+			}
+		}
+		country_leader={
+			ideology=marxism
+			traits = { marxist_academic }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_fred_paterson
+			allowed  = { original_tag = AST }
+			visible = {
+				NOT = { has_government = communism }
+				OR = {
+					NOT = {
+						OR = {
+							has_completed_focus = AST_support_the_centre_party
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+						}
+					}
+				}
+				NOT = { has_country_leader = { character = MMR_AST_fred_paterson } }
+			}
+			available = {
+				has_completed_focus = AST_empower_the_workers
+				OR = {
+					has_country_leader = { character = AST_john_curtin }
+					has_country_leader = { character = MMR_AST_ben_chifley }
+				}
+				IF = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+			}
+			traits  = {
+				MMR_AST_marxist_academic 
+			}
+			ai_will_do = { factor = 10 modifier = { is_subject = yes NOT = { is_subject_of = ENG } factor = 0 } }
+		}
+	}
+	MMR_AST_william_earsman={
+		name="William Earsman"
+		portraits={
+			civilian={
+				small="GFX_idea_bul_ivan_dochev"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_william_earsman
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_government = communism
+					NOT = {
+						OR = {
+							has_completed_focus = AST_support_the_centre_party
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+						}
+					}
+				}
+			}
+			available = {
+				has_government = communism
+			}
+			traits  = {
+				MMR_AST_self_educated_tradesman 
+			}
+		}
+	}
+	MMR_AST_christian_jollie_smith={
+		name="Christian Jollie Smith"
+		gender = female
+		portraits={
+			civilian={
+				small="GFX_idea_POL_wanda_wasilewska"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_christian_jollie_smith
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_government = communism
+					NOT = {
+						OR = {
+							has_completed_focus = AST_support_the_centre_party
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+						}
+					}
+				}
+			}
+			available = {
+				has_government = communism
+				has_completed_focus = AST_women_in_the_workforce
+			}
+			traits  = {
+				MMR_AST_socialist_lawyer 
+			}
+		}
+	}
+	MMR_AST_william_ferguson ={
+		name="William Ferguson"
+		portraits={
+			civilian={
+				small="GFX_idea_tur_sevket_sureyya_aydemir"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_william_ferguson
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_government = communism
+					NOT = {
+						OR = {
+							has_completed_focus = AST_support_the_centre_party
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+						}
+					}
+				}
+			}
+			available = {
+				has_government = communism
+				has_completed_focus = AST_aboriginal_reconciliation
+			}
+			traits  = {
+				MMR_AST_aboriginal_activist 
+			}
+		}
+	}
+	MMR_AST_katharine_prichard={
+		name="Katharine Prichard"
+		gender = female
+		portraits={
+			civilian={
+				small="GFX_idea_EST_august_jakobson" 
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_katharine_prichard
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_government = communism
+					NOT = {
+						OR = {
+							has_completed_focus = AST_support_the_centre_party
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_workers_paradise
+						}
+					}
+				}
+			}
+			available = {
+				has_government = communism
+				custom_trigger_tooltip = { tooltip = MMR_stalin_comintern_check_tt MMR_stalin_comintern_check = yes }
+				NOT = { has_completed_focus = AST_workers_paradise }
+			}
+			traits  = {
+				MMR_AST_communist_writer 
+			}
+		}
+	}
+	MMR_AST_jack_miles ={
+		name="Jack Miles"
+		portraits={
+			civilian={
+				large="GFX_portrait_SOV_aleksandr_kerensky"
+				small="GFX_idea_eng_alan_turing"
+			}
+		}
+		country_leader={
+			ideology=stalinism
+			traits = { MMR_AST_devoted_stalinist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_jack_miles
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_government = communism
+					NOT = {
+						OR = {
+							has_completed_focus = AST_support_the_centre_party
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_workers_paradise
+						}
+					}
+				}
+				NOT = { has_country_leader = { character = MMR_AST_jack_miles } }
+			}
+			available = {
+				has_government = communism
+				custom_trigger_tooltip = { tooltip = MMR_stalin_comintern_check_tt MMR_stalin_comintern_check = yes }
+				NOT = { has_completed_focus = AST_workers_paradise }
+			}
+			traits  = {
+				HUN_ardent_stalinist 
+			}
+		}
+	}
+	MMR_AST_lance_sharkey ={
+		name="Lance Sharkey"
+		portraits={
+			civilian={
+				small="GFX_idea_AST_lance_sharkey"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_lance_sharkey
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_government = communism
+					NOT = {
+						OR = {
+							has_completed_focus = AST_support_the_centre_party
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_workers_paradise
+						}
+					}
+				}
+			}
+			available = {
+				has_government = communism
+				custom_trigger_tooltip = { tooltip = MMR_stalin_comintern_check_tt MMR_stalin_comintern_check = yes }
+				NOT = { has_completed_focus = AST_workers_paradise }
+			}
+			traits  = {
+				MMR_AST_staunch_stalinist_activist 
+			}
+		}
+	}
+	MMR_AST_william_john_miles ={
+		name="William John Miles"
+		portraits={
+			civilian={
+				large="GFX_portrait_Wilhelm_Pieck"
+			}
+		}
+		country_leader={
+			ideology=gen_nazism
+			traits = { MMR_AST_jindyworobak_fascist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	MMR_AST_hubert_primrose ={
+		name="Hubert Primrose"
+		portraits={
+			civilian={
+				small="GFX_idea_joachim_von_ribbentrop"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_hubert_primrose_ac_1
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_government = fascism
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							AND = {
+								has_government = neutrality
+								has_completed_focus = AST_monarchist_coup
+								has_country_leader = { character = MMR_AST_king_edward }
+							}
+						}
+					}
+				}
+			}
+			available = {
+				has_completed_focus = AST_support_the_centre_party
+				NOT = {
+					OR = {
+						has_country_leader = { character = MMR_AST_william_john_miles }
+						has_country_leader = { character = MMR_AST_p_r_stephensen }
+					}
+				}
+				IF = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+			}
+			traits  = {
+				 MMR_AST_fascist_politician
+			}
+			ai_will_do = { factor = 10 modifier = { is_subject = yes NOT = { is_subject_of = ENG } factor = 0 } }
+		}
+	}
+	MMR_AST_hubert_primrose_2 ={
+		name="Hubert Primrose"
+		portraits={
+			civilian={
+				small="GFX_idea_joachim_von_ribbentrop"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_hubert_primrose_ac_2
+			allowed  = { original_tag = AST }
+			cost = 100
+			visible = {
+				has_completed_focus = AST_monarchist_coup
+				has_country_leader = { character = MMR_AST_king_edward }
+			}
+			available = {
+				has_government = neutrality
+				has_country_leader = { character = MMR_AST_king_edward }
+			}
+			traits  = {
+				 AZR_monarchist_lapdog
+			}
+		}
+	}
+	MMR_AST_p_r_stephensen ={
+		name="P. R. Stephensen"
+		portraits={
+			civilian={
+				large="GFX_portrait_MMR_AST_p_r_stephensen"
+				small="GFX_idea_AST_p_r_stephensen"
+			}
+		}
+		country_leader={
+			ideology=gen_nazism
+			traits = { MMR_AST_jindyworobak_fascist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_p_r_stephensen
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					AND = {
+						has_government = fascism
+						NOT = { has_completed_focus = AST_a_new_australia }
+					}
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_a_new_australia
+						}
+					}
+				}
+				NOT = { has_country_leader = { character = MMR_AST_p_r_stephensen } }
+			}
+			available = {
+				has_government = fascism
+				has_country_leader = { character = MMR_AST_william_john_miles }
+			}
+			traits  = {
+				MMR_AST_jindyworobak_editor
+			}
+		}
+	}
+	MMR_AST_adela_pankhurst={
+		name="Adela Pankhurst"
+		gender = female
+		portraits={
+			civilian={
+				small="GFX_idea_ENG_sylvia_pankhurst"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_adela_pankhurst
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					AND = {
+						has_government = fascism
+						NOT = { has_completed_focus = AST_a_new_australia }
+					}
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_a_new_australia
+						}
+					}
+				}
+			}
+			available = {
+				has_government = fascism
+				is_in_faction_with = JAP
+				OR = {
+					has_country_leader = { character = MMR_AST_william_john_miles }
+					has_country_leader = { character = MMR_AST_p_r_stephensen }
+				}
+			}
+			traits  = {
+				MMR_AST_anti_communist_feminist_activist 
+			}
+		}
+	}
+	MMR_AST_rex_ingamells ={
+		name="Rex Ingamells"
+		portraits={
+			civilian={
+				small="GFX_idea_LAT_vilhelms_munters"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_rex_ingamells
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					AND = {
+						has_government = fascism
+						NOT = { has_completed_focus = AST_a_new_australia }
+					}
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_a_new_australia
+						}
+					}
+				}
+			}
+			available = {
+				has_government = fascism
+				OR = {
+					has_country_leader = { character = MMR_AST_william_john_miles }
+					has_country_leader = { character = MMR_AST_p_r_stephensen }
+				}
+			}
+			traits  = {
+				MMR_AST_jindyworobak_poet
+			}
+		}
+	}
+	MMR_AST_charles_hardy ={
+		name="Charles Hardy"
+		portraits={
+			civilian={
+				small="GFX_idea_EST_boris_kumm"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_charles_hardy
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_government = fascism
+					has_country_leader = { character = AST_earle_page }
+					has_country_leader = { character = MMR_AST_archie_cameron }
+					has_country_leader = { character = MMR_AST_arthur_fadden }
+					has_country_leader = { character = MMR_AST_king_edward }
+					NOT = { has_country_flag = AZR_has_not_gone_country }
+				}
+			}
+			available = {
+				OR = {
+					has_government = fascism
+					has_country_leader = { character = AST_earle_page }
+					has_country_leader = { character = MMR_AST_archie_cameron }
+					has_country_leader = { character = MMR_AST_arthur_fadden }
+					has_country_leader = { character = MMR_AST_king_edward }
+				}
+			}
+			traits  = {
+				MMR_AST_airforce_organizer
+			}
+		}
+	}
+	MMR_AST_francis_de_groot ={
+		name="Francis de Groot"
+		portraits={
+			civilian={
+				small="GFX_idea_tur_sukru_saracoglu"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_francis_de_groot
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					AND = {
+						has_government = fascism
+						NOT = { has_completed_focus = AST_the_jindyworobak_coup }
+					}
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_the_jindyworobak_coup
+						}
+					}
+					AND = {
+						has_government = neutrality
+						has_completed_focus = AST_monarchist_coup
+						has_country_leader = { character = MMR_AST_king_edward }
+					}
+				}
+			}
+			available = {
+				IF = {
+					limit = { has_completed_focus = AST_monarchist_coup }
+					has_government = neutrality
+					has_country_leader = { character = MMR_AST_king_edward }
+					ELSE = {
+						has_government = fascism
+						has_country_leader = { character = AST_eric_campbell }
+					}
+				}
+			}
+			traits  = {
+				MMR_AST_popular_anti_communist
+			}
+		}
+	}
+	MMR_AST_stanley_porteus ={
+		name="Stanley Porteus"
+		portraits={
+			civilian={
+				small="GFX_idea_FRA_pierre_pucheu"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_stanley_porteus
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					AND = {
+						has_government = fascism
+						NOT = { OR = { has_completed_focus = AST_the_jindyworobak_coup has_completed_focus = AST_monarchist_coup } }
+					}
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_the_jindyworobak_coup
+							has_completed_focus = AST_monarchist_coup
+						}
+					}
+				}
+			}
+			available = {
+				has_government = fascism
+				has_country_leader = { character = AST_eric_campbell }
+			}
+			traits  = {
+				MMR_NZL_fascist_doctor
+			}
+		}
+	}
+	MMR_AST_eric_butler ={
+		name="Eric Butler"
+		portraits={
+			civilian={
+				small="GFX_idea_speer"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_eric_butler
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					AND = {
+						has_government = fascism
+						NOT = { OR = { has_completed_focus = AST_the_jindyworobak_coup has_completed_focus = AST_monarchist_coup } }
+					}
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_the_jindyworobak_coup
+							has_completed_focus = AST_monarchist_coup
+						}
+					}
+				}
+			}
+			available = {
+				has_government = fascism
+				has_country_leader = { character = AST_eric_campbell }
+			}
+			traits  = {
+				MMR_NZL_radical_fascist_journalist
+			}
+		}
+	}
+	MMR_AST_alexander_rud_mills ={
+		name="Alexander Rud Mills"
+		portraits={
+			civilian={
+				small="GFX_idea_ernst_thalmann"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_alexander_rud_mills
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					AND = {
+						has_government = fascism
+						NOT = { has_completed_focus = AST_monarchist_coup }
+					}
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_monarchist_coup
+						}
+					}
+				}
+			}
+			available = {
+				has_government = fascism
+				is_in_faction_with = GER
+			}
+			traits  = {
+				MMR_AST_odinist
+			}
+		}
+	}
+	MMR_AST_eleonora_tennant ={
+		name="Eleonora Tennant"
+		gender = female
+		portraits={
+			civilian={
+				small="GFX_idea_dolores_ibarruri"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_eleonora_tennant
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					AND = {
+						has_government = fascism
+						NOT = { has_completed_focus = AST_monarchist_coup }
+					}
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_monarchist_coup
+						}
+					}
+				}
+			}
+			available = {
+				has_government = fascism
+				is_in_faction_with = GER
+			}
+			traits  = {
+				MMR_AST_radical_nazi_feminist
+			}
+		}
+	}
+	MMR_AST_moses_gabb={
+		name="Moses Gabb"
+		portraits={
+			civilian={
+				large="GFX_portrait_TUR_sefik_husnu"
+				small="GFX_idea_tur_sefik_husnu"
+			}
+		}
+		country_leader={
+			ideology=fascism_ideology
+			traits = { MMR_AST_pacific_mussolini MMR_AST_uncharismatic MMR_AST_unpopular_dictator }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_moses_gabb
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					AND = {
+						has_government = fascism
+						NOT = { has_completed_focus = AST_a_new_australia }
+					}
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+							has_completed_focus = AST_a_new_australia
+						}
+					}
+				}
+				NOT = { has_country_leader = { character = MMR_AST_moses_gabb } }
+			}
+			available = {
+				OR = {
+					has_country_leader = { character = MMR_AST_william_john_miles }
+					has_country_leader = { character = MMR_AST_p_r_stephensen }
+				}
+			}
+			traits  = {
+				war_industrialist 
+			}
+		}
+	}
+	MMR_AST_oswald_mosley={
+		name=ENG_oswald_mosley
+		portraits={
+			army={
+				small="GFX_idea_ENG_oswald_mosley"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_oswald_mosley
+			visible = {
+				has_completed_focus = AST_empower_the_exiles
+				NOT = {
+					ENG = { 
+						OR = {
+							has_completed_focus = ENG_organize_the_blackshirts
+							has_government = fascism
+						}
+					}
+				}
+			}
+			available  = {
+				has_government = fascism 
+				has_country_leader = { character = MMR_AST_king_edward }
+				NOT = { ENG = { has_government = fascism } }
+			}
+			allowed  = {
+				has_dlc = "Man the Guns"
+			}
+			traits  = {
+				economic_organizer 
+			}
+			ai_will_do  = {
+				base = 1
+			}
+		}
+	}
+	MMR_AST_david_lloyd_george={
+		name=ENG_david_lloyd_george
+		portraits={
+			army={
+				small="GFX_idea_ENG_david_lloyd_george"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_david_lloyd_george
+			visible = {
+				OR = {
+					has_completed_focus = AST_empower_the_exiles
+					has_completed_focus = AST_monarchist_coup
+				}
+			}
+			available  = {
+				has_country_leader = { character = MMR_AST_king_edward }
+			}
+			allowed  = {
+				has_dlc = "Man the Guns"
+			}
+			traits  = {
+				old_figurehead 
+			}
+			ai_will_do  = {
+				base = 1
+			}
+		}
+	}
+	MMR_AST_j_l_treloar={
+		name="J. L. Treloar"
+		portraits={
+			army={
+				small="GFX_idea_LIT_antanas_venclova"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_j_l_treloar
+			allowed = {
+				original_tag = AST
+			}
+			visible = { has_dlc = "La Resistance" }
+			available = { has_intelligence_agency = yes }
+			traits  = { head_of_intelligence }
+		}
+	}
+	MMR_AST_francis_derham={
+		name="Francis Derham"
+		portraits={
+			army={
+				large="GFX_portrait_europe_generic_5"
+				small="GFX_idea_generic_army_chief_off_commonwealth_2d"
+			}
+		}
+		corps_commander={
+			visible = {
+				OR = {
+					has_country_leader = { character = AST_eric_campbell }
+					has_country_leader = { character = MMR_AST_king_edward }
+				}
+			}
+			traits = { politically_connected mmr_trait_AST_new_guard_loyalist }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_AST_francis_derham
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_government = fascism
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+						}
+					}
+					AND = {
+						has_government = neutrality
+						has_completed_focus = AST_monarchist_coup
+						has_country_leader = { character = MMR_AST_king_edward }
+					}
+				}
+			}
+			available = {
+				IF = {
+					limit = { has_completed_focus = AST_monarchist_coup }
+					has_government = neutrality
+					has_country_leader = { character = MMR_AST_king_edward }
+					ELSE = {
+						has_government = fascism
+						has_country_leader = { character = AST_eric_campbell }
+					}
+				}
+			}
+			traits  = {
+				army_infantry_1
+			}
+		}
+	}
+	MMR_AST_herbert_lloyd={
+		name="Herbert Lloyd"
+		portraits={
+			army={
+				large="GFX_portrait_MMR_herbert_lloyd"
+				small="GFX_idea_jimmy_doolittle"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_AST_herbert_lloyd
+			allowed  = { original_tag = AST }
+			visible = {
+				OR = {
+					has_government = fascism
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+						}
+					}
+					AND = {
+						has_government = neutrality
+						has_completed_focus = AST_monarchist_coup
+						has_country_leader = { character = MMR_AST_king_edward }
+					}
+				}
+			}
+			available = {
+				IF = {
+					limit = { has_completed_focus = AST_monarchist_coup }
+					has_government = neutrality
+					has_country_leader = { character = MMR_AST_king_edward }
+					ELSE = {
+						has_government = fascism
+						has_country_leader = { character = AST_eric_campbell }
+					}
+				}
+			}
+			cost = 100
+			traits  = {
+				army_artillery_2
+			}
+		}
+	}
+	MMR_AST_ernest_squires={
+		name="Ernest Squires"
+		portraits={
+			army={
+				small="GFX_idea_archibald_wavell"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = MMR_AST_ernest_squires
+			allowed = {
+				original_tag = AST
+			}
+			visible = {
+				NOT = { has_government = communism }
+			}
+			available = {
+				is_in_faction_with = ENG
+				NOT = { has_government = communism }
+			}
+			traits  = {
+				army_chief_reform_2
+			}
+			cost =  100
+		}
+	}
+	MMR_AST_henry_burrell ={
+		name="Henry Burrell"
+		portraits={
+			army={
+				small="GFX_idea_cyril_newall"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = MMR_AST_henry_burrell
+			allowed = {
+				original_tag = AST
+			}
+			available = {
+				NOT = { has_government = fascism }
+			}
+			traits  = {
+				navy_chief_maneuver_1
+			}
+		}
+	}
+	MMR_AST_john_field ={
+		name="John Field"
+		portraits={
+			army={
+				small="GFX_idea_SAF_pierre_van_ryneveld"
+			}
+		}
+		advisor={
+			slot = theorist
+			idea_token = MMR_AST_john_field
+			allowed  = {
+				original_tag = AST
+			}
+			available = {
+			}
+			traits = {
+				military_theorist
+			}
+			cost = 100
+		}
+	}
+	MMR_AST_george_jones ={
+		name="George Jones"
+		portraits={
+			army={
+				small="GFX_idea_cyril_newall"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = MMR_AST_george_jones
+			allowed  = {
+				original_tag = AST
+			}
+			available = {
+				NOT = {
+					OR = {
+						has_country_leader = { character = MMR_AST_joseph_lyons }
+						has_country_leader = { character = MMR_AST_robert_g_menzies }
+					}
+				}
+			}
+			traits = {
+				air_chief_ground_support_1
+			}
+			cost = 50
+		}
+	}
+	MMR_AST_william_bostock ={
+		name="William Bostock"
+		portraits={
+			army={
+				small="GFX_idea_CAN_harold_edwards"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_AST_william_bostock
+			allowed  = {
+				original_tag = AST
+			}
+			available = {
+			}
+			traits = {
+				air_tactical_bombing_2
+			}
+			cost = 100
+		}
+	}
+	MMR_AST_alan_payne ={
+		name="Alan Payne"
+		portraits={
+			army={
+				large="GFX_portrait_USA_andrew_mckee"
+			}
+		}
+		scientist = {
+			visible = { OWNER = { has_completed_focus = AST_cockatoo_island_shipyards } }
+			traits = { scientist_trait_fast_learner }
+			skills = { specialization_naval = 1 }
+		}
+	}
+	MMR_AST_lawrence_wackett ={
+		name="Lawrence Wackett"
+		portraits={
+			army={
+				large="GFX_portrait_SOV_vladimir_kotelnikov"
+			}
+		}
+		scientist = {
+			visible = { OWNER = { has_country_flag = azr_ast_cac_formed_flag } }
+			traits = { scientist_trait_aircraft_specialist }
+			skills = {
+				specialization_air = 3
+			}
+		}
+	}
+	MMR_AST_arthur_baird ={
+		name="Arthur Baird"
+		portraits={
+			army={
+				large="GFX_portrait_AUS_paul_eisler"
+			}
+		}
+		scientist = {
+			traits = { scientist_trait_aircraft_specialist }
+			skills = {
+				specialization_air = 2
+			}
+		}
+	}
+	MMR_AST_eric_burhop ={
+		name="Eric Burhop"
+		portraits={
+			army={
+				large="GFX_portrait_HUN_gyorgy_jendrassik"
+			}
+		}
+		scientist = {
+			traits = { scientist_trait_electronics_specialist scientist_trait_bright scientist_trait_resourceful }
+			skills = {
+				specialization_air = 2
+			}
+		}
+	}
+	MMR_AST_john_o_brien  ={
+		name="John O'Brien"
+		portraits={
+			army={
+				large="GFX_portrait_BEL_alfred_renard"
+			}
+		}
+		scientist = {
+			traits = { scientist_trait_artillery_specialist }
+			skills = {
+				specialization_land = 2
+			}
+		}
+	}
+	MMR_AST_lancelot_de_mole ={
+		name="Lancelot de Mole"
+		portraits={
+			army={
+				large="GFX_portrait_ITA_curio_bernardis"
+			}
+		}
+		scientist = {
+			traits = { scientist_trait_armored_specialist }
+			skills = {
+				specialization_land = 1
+			}
+		}
+	}
+	MMR_AST_lewis_bandt ={
+		name="Lewis Bandt"
+		portraits={
+			army={
+				large="GFX_portrait_AUS_eugen_sanger"
+			}
+		}
+		scientist = {
+			traits = { scientist_trait_fast_learner scientist_trait_resourceful }
+			skills = {
+				specialization_land = 1
+			}
+		}
+	}
+	MMR_AST_mark_oliphant ={
+		name="Mark Oliphant"
+		portraits={
+			army={
+				large="GFX_portrait_GER_konrad_zuse"
+			}
+		}
+		scientist = {
+			traits = { scientist_trait_nuclear_warfare_expert scientist_trait_bright scientist_trait_resourceful }
+			skills = {
+				specialization_nuclear = 2
+			}
+		}
+	}
+	MMR_AST_jack_lang ={
+		name="Jack Lang"
+		portraits={
+			civilian={
+				large="GFX_portrait_britain_generic_3"
+			}
+		}
+		country_leader={
+			ideology=centrism
+			traits = { anti_communist MMR_AST_the_big_fella }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	MMR_AST_king_edward={
+		name="Edward I"
+		portraits={
+			civilian={
+				large="GFX_portrait_Edward_VIII"
+			}
+		}
+		country_leader={
+			ideology=rexism
+			traits = { inexperienced_imperialist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		country_leader={
+			ideology=despotism
+			traits = { inexperienced_imperialist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+}
+###

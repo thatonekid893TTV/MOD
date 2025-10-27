@@ -1,0 +1,97 @@
+technology_sharing_group = {
+	id = nz_usa_research
+	name = nz_usa_research_name
+	desc = nz_usa_research_desc
+	picture = GFX_technology_sharing_default
+	research_sharing_per_country_bonus = 0.05
+	available = {
+		OR = {
+			original_tag = USA
+			original_tag = NZL
+		}
+		NZL = {
+			is_subject = no
+			is_in_faction_with = USA
+		}
+		USA = {
+			is_subject = no
+			is_major = yes
+			is_in_faction_with = NZL
+		}
+	}
+}
+technology_sharing_group = {
+	id = nz_eng_com_research
+	name = nz_eng_com_research_name
+	desc = nz_eng_com_research_desc
+	picture = GFX_technology_sharing_default
+	research_sharing_per_country_bonus = 0.1
+	available = {
+		OR = {
+			original_tag = ENG
+			original_tag = NZL
+		}
+		NZL = {
+			is_subject = no
+			is_in_faction_with = ENG
+			has_government = communism
+		}
+		ENG = {
+			is_subject = no
+			is_major = yes
+			is_in_faction_with = NZL
+			has_government = communism
+		}
+	}
+}
+technology_sharing_group = {
+	id = ast_eng_com_research
+	name = ast_eng_com_research_name
+	desc = ast_eng_com_research_desc
+	picture = GFX_technology_sharing_default
+	research_sharing_per_country_bonus = 0.1
+	available = {
+		OR = {
+			original_tag = ENG
+			original_tag = AST
+		}
+		AST = {
+			is_subject = no
+			is_in_faction_with = ENG
+			has_government = communism
+		}
+		ENG = {
+			is_subject = no
+			is_major = yes
+			is_in_faction_with = AST
+			has_government = communism
+		}
+	}
+}
+technology_sharing_group = {
+	id = nzl_pa_research_research
+	name = nzl_pa_research_research_name
+	desc = nzl_pa_research_research_desc
+	picture = GFX_technology_sharing_default
+	research_sharing_per_country_bonus = 0.05
+	available = {
+		OR = {
+			original_tag = NZL
+			is_in_faction_with = NZL
+		}
+	}
+}
+technology_sharing_group = {
+	id = azr_nzl_ast_research_research
+	name = azr_nzl_ast_research_research_name
+	desc = azr_nzl_ast_research_research_desc
+	picture = GFX_technology_sharing_default
+	research_sharing_per_country_bonus = 0.1
+	available = {
+		OR = {
+			original_tag = NZL
+			original_tag = AST
+		}
+	}
+}
+###

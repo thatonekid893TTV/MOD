@@ -1,0 +1,2356 @@
+focus_tree = {
+	id = focus-cub
+	continuous_focus_position = { x = 150 y = 1310 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = CUB
+		}
+	}
+	#Grant Amnesties
+	focus = {
+		id = CUB_grant_amnesties
+		icon = GFX_goal_generic_defence
+		x = 3
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CUB_caribbean_politics  }
+		available = {
+			has_completed_focus = CUB_1936_presidential_election
+			
+			
+		}
+		completion_reward = {
+			add_stability = -0.1
+			
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#Establish Minimum Wage Laws
+	focus = {
+		id = CUB_establish_minimum_wage_laws
+		icon = GFX_CUB_establish_minimum_wage_laws-646074
+		x = 5
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_caribbean_politics  }
+		available = {
+			has_completed_focus = CUB_1936_presidential_election
+			
+			
+		}
+		completion_reward = {
+			add_stability = 0.025
+			
+			add_political_power = 25
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Introduce Pensions
+	focus = {
+		id = CUB_introduce_pensions
+		icon = GFX_CUB_introduce_pensions-645593
+		x = 6
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_establish_minimum_wage_laws  } prerequisite = { focus = CUB_establish_insurance  }
+		completion_reward = {
+			add_stability = 0.025
+			
+			add_political_power = -75
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Setting the Stage
+	focus = {
+		id = CUB_setting_the_stage
+		icon = GFX_CUB_setting_the_stage-645863
+		x = 2
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CUB_remainneutralsellweapons  focus = CUB_join_the_fight  }
+		available = {
+			has_war = no
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.1 }
+			
+			
+			add_popularity = {
+			    ideology = democratic
+			    popularity = -0.05 }
+			
+			
+			add_command_power = 25
+			
+			
+		}
+	}
+
+	#Military Focus
+	focus = {
+		id = CUB_military_focus
+		icon = GFX_goal_generic_construct_military
+		x = 10
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_develop_the_country  } prerequisite = { focus = CUB_stack_the_government_with_loyalists  }
+		completion_reward = {
+			315 = {
+				remove_building = {
+			    type = industrial_complex
+			    level = 6
+			}
+			
+			
+			
+			}
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+			type = arms_factory
+			level = 3
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Stack the Government With Loyalists
+	focus = {
+		id = CUB_stack_the_government_with_loyalists
+		icon = GFX_CUB_stack_the_government_with_loyalists-645618
+		x = 9
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CUB_military_coup  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.06 }
+			
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.03 }
+			
+			
+			add_stability = -0.1
+			
+			add_political_power = 50
+			
+			add_command_power = 50
+			
+			
+		}
+	}
+
+	#Military Coup
+	focus = {
+		id = CUB_military_coup
+		icon = GFX_CUB_military_coup-646375
+		x = 10
+		y = 0
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		available = {
+			has_completed_focus = CUB_setting_the_stage
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = -0.05 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.1 }
+			
+			
+			set_politics = {
+				ruling_party = neutrality
+			        elections_allowed = no
+			        last_election = } 
+			add_stability = -0.25
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Develop the Country
+	focus = {
+		id = CUB_develop_the_country
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 11
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_military_coup  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			315 = {
+				set_building_level = {
+			    type = infrastructure
+			    level = 5
+			    instant_build = yes
+			}
+			
+			add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#Caribbean Politics
+	focus = {
+		id = CUB_caribbean_politics
+		icon = GFX_goal_generic_neutrality_focus
+		x = 1
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			add_stability = -0.025
+			
+			add_political_power = 45
+			
+			
+		}
+	}
+
+	#Expanding American Cooperation
+	focus = {
+		id = CUB_expanding_american_cooperation
+		icon = GFX_CUB_expanding_american_cooperation-645900
+		x = 1
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CUB_caribbean_politics  }
+		completion_reward = {
+			add_political_power = 50
+			
+			USA = {
+				add_political_power = 25
+			
+			
+			}
+			
+		}
+	}
+
+	#1936 Presidential Election
+	focus = {
+		id = CUB_1936_presidential_election
+		icon = GFX_CUB_1936_presidential_election-645614
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CUB_expanding_american_cooperation  }
+		completion_reward = {
+			retire_country_leader = yes
+			
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Establish Insurance
+	focus = {
+		id = CUB_establish_insurance
+		icon = GFX_CUB_establish_insurance-645837
+		x = 7
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_caribbean_politics  }
+		available = {
+			has_completed_focus = CUB_1936_presidential_election
+			
+			
+		}
+		completion_reward = {
+			add_stability = 0.025
+			
+			add_political_power = -50
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Pass the Law of Sugar Coordination
+	focus = {
+		id = CUB_pass_the_law_of_sugar_coordination
+		icon = GFX_CUB_pass_the_law_of_sugar_coordination-646001
+		x = 3
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_grant_amnesties  }
+		available = {
+			has_completed_focus = CUB_introduce_pensions
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.08 }
+			
+			
+			add_stability = 0.05
+			
+			add_political_power = 50
+			
+			315 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#Cuban Nationals Decree
+	focus = {
+		id = CUB_cuban_nationals_decree
+		icon = GFX_focus_focus_fra_national_resistance_council
+		x = 2
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CUB_1936_presidential_election  } prerequisite = { focus = CUB_pass_the_law_of_sugar_coordination  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.08 }
+			
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.04 }
+			
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Expand Farmers Unions
+	focus = {
+		id = CUB_expand_farmers_unions
+		icon = GFX_CUB_expand_farmers_unions-645812
+		x = 4
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_pass_the_law_of_sugar_coordination  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			315 = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Strain U.S. Cooperation
+	focus = {
+		id = CUB_strain_us_cooperation
+		icon = GFX_CUB_strain_us_cooperation-645883
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CUB_1936_presidential_election  } prerequisite = { focus = CUB_pass_the_law_of_sugar_coordination  }
+		completion_reward = {
+			add_political_power = 50
+			
+			USA = {
+				add_political_power = -25
+			
+			
+			}
+			
+		}
+	}
+
+	#Strain German Relations
+	focus = {
+		id = CUB_strain_german_relations
+		icon = GFX_focus_attack_germany
+		x = 6
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CUB_1936_presidential_election  } prerequisite = { focus = CUB_pass_the_law_of_sugar_coordination  }
+		completion_reward = {
+			add_political_power = 50
+			
+			GER = {
+				add_political_power = -10
+			
+			
+			}
+			
+		}
+	}
+
+	#United Against Evil
+	focus = {
+		id = CUB_united_against_evil
+		icon = GFX_focus_ger_bulwark_against_bolshevism
+		x = 2
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = CUB_strain_us_cooperation  }
+		mutually_exclusive = { focus = CUB_push_the_revolution  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.05 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Push the Revolution
+	focus = {
+		id = CUB_push_the_revolution
+		icon = GFX_goal_generic_war_with_comintern
+		x = 7
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CUB_strain_german_relations  }
+		mutually_exclusive = { focus = CUB_united_against_evil  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = -0.1 }
+			
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#1940 Presidential Election
+	focus = {
+		id = CUB_1940_presidential_election
+		icon = GFX_CUB_1940_presidential_election-645614
+		x = 1
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CUB_1936_presidential_election  } prerequisite = { focus = CUB_united_against_evil  }
+		available = {
+			date > 1940.01.01
+			
+			
+		}
+		completion_reward = {
+			retire_country_leader = yes
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Befriend Spain
+	focus = {
+		id = CUB_befriend_spain
+		icon = GFX_CUB_befriend_spain-126
+		x = 0
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CUB_1940_presidential_election  }
+		available = {
+			SPR = {
+				has_civil_war = no
+			
+			
+			}
+			
+			NOT = {
+				has_war_with = SPR
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			add_war_support = 0.05
+			
+			SPR = {
+			add_political_power = 25
+			
+			
+			}
+			
+		}
+	}
+
+	#Befriend Britain
+	focus = {
+		id = CUB_befriend_britain
+		icon = GFX_focus_chi_british_cooperation
+		x = 1
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CUB_1940_presidential_election  }
+		available = {
+			NOT = {
+				has_war_with = ENG
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.05 }
+			
+			
+			add_war_support = 0.05
+			
+			ENG = {
+				add_political_power = 25
+			
+			
+			}
+			
+		}
+	}
+
+	#Join the Fight
+	focus = {
+		id = CUB_join_the_fight
+		icon = GFX_CUB_join_the_fight-645596
+		x = 1
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CUB_befriend_britain  }
+		mutually_exclusive = { focus = CUB_remainneutralsellweapons  }
+		ai_will_do = { factor = 2 }
+		available = {
+			USA = {
+				is_in_faction_with = ENG
+			
+				has_defensive_war = yes
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			ENG = {
+				has_capitulated = no
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			ENG = {
+				country_event = {
+					id = generic.2
+				}
+			
+			
+			}
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Remain Neutral, Sell Weapons
+	focus = {
+		id = CUB_remainneutralsellweapons
+		icon = GFX_CUB_remainneutralsellweapons-645854
+		x = 3
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_befriend_britain  }
+		mutually_exclusive = { focus = CUB_join_the_fight  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			USA = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = CUB
+			}
+			
+			
+			
+			}
+			ENG = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = CUB
+			}
+			
+			
+			
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = CUB
+			}
+			
+			
+			
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = CUB
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 4 }
+			
+			
+			
+			
+		}
+	}
+
+	#Naval Expansion
+	focus = {
+		id = CUB_naval_expansion
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 3
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_united_against_evil  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			add_equipment_to_stockpile = {
+			    type = convy
+			    amount = 50
+			    producer = CUB
+			}
+			
+			
+			
+		}
+	}
+
+	#American Ship Modernization
+	focus = {
+		id = CUB_american_ship_modernization
+		icon = GFX_focus_generic_navy_battleship2
+		x = 3
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_naval_expansion  }
+		available = {
+			is_in_faction_with = USA
+			
+			
+		}
+		completion_reward = {
+			navy_experience = 50
+			
+			air_experience = 25
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = dockyard
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Align the Socialists
+	focus = {
+		id = CUB_align_the_socialists
+		icon = GFX_focus_prc_agrarian_socialism
+		x = 5
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_1940_presidential_election  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.08 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Continue Labor Laws
+	focus = {
+		id = CUB_continue_labor_laws
+		icon = GFX_CUB_continue_labor_laws-646147
+		x = 4
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_align_the_socialists  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Ally Organized Crime Syndicates
+	focus = {
+		id = CUB_ally_organized_crime_syndicates
+		icon = GFX_focus_mex_triumph_over_the_cristeros
+		x = 8
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = CUB_stack_the_government_with_loyalists  }
+		completion_reward = {
+			add_stability = -0.08
+			
+			add_political_power = 56
+			
+			add_manpower = 7525
+			
+			
+		}
+	}
+
+	#U.S. Backed and Funded
+	focus = {
+		id = CUB_us_backed_and_funded
+		icon = GFX_focus_usa_recruit_the_free_corps
+		x = 9
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_military_focus  } prerequisite = { focus = CUB_ally_organized_crime_syndicates  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = -0.05 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#American Weapons and Industry
+	focus = {
+		id = CUB_american_weapons_and_industry
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		x = 11
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = CUB_develop_the_country  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.04 }
+			
+			
+			add_manpower = 5500
+			
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 4500
+			    producer = USA
+			}
+			
+			
+			add_equipment_to_stockpile = {
+			    type = convoy
+			    amount = 25
+			    producer = USA
+			}
+			
+			
+			
+		}
+	}
+
+	#Heavily Arm Police Enforcers
+	focus = {
+		id = CUB_heavily_arm_police_enforcers
+		icon = GFX_CUB_heavily_arm_police_enforcers-646159
+		x = 11
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = CUB_us_backed_and_funded  } prerequisite = { focus = CUB_american_weapons_and_industry  }
+		completion_reward = {
+			army_experience = -35
+			
+			add_political_power = -70
+			
+			add_manpower = 10000
+			
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 2500
+			    producer = CUB
+			}
+			
+			
+			
+		}
+	}
+
+	#The Student Riots
+	focus = {
+		id = CUB_the_student_riots
+		icon = GFX_CUB_the_student_riots-646119
+		x = 11
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CUB_heavily_arm_police_enforcers  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			add_stability = -0.05
+			
+			add_war_support = -0.05
+			
+			unlock_national_focus = CUB_push_the_revolution
+			
+			
+		}
+	}
+
+	#Support From the USSR
+	focus = {
+		id = CUB_support_from_the_ussr
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		x = 5
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CUB_push_the_revolution  }
+		available = {
+			SOV = {
+				has_government = communism
+			
+				has_civil_war = no
+			
+			
+			}
+			
+			NOT = {
+				has_completed_focus = CUB_fight_for_the_government
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			add_war_support = 0.1
+			
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 2500
+			    producer = SOV
+			}
+			
+			
+			
+		}
+	}
+
+	#Support From Red China
+	focus = {
+		id = CUB_support_from_red_china
+		icon = GFX_focus_prc_proclaim_the_peoples_republic
+		x = 9
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CUB_push_the_revolution  }
+		available = {
+			PRC = {
+				has_government = communism
+			
+				has_capitulated = no
+			
+				NOT = {
+						is_subject = yes
+			
+			
+			}
+			
+			
+			}
+			
+			NOT = {
+				has_completed_focus = CUB_fight_for_the_government
+			
+			
+			}
+			
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			add_war_support = 0.05
+			
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = PRC
+			}
+			
+			
+			
+		}
+	}
+
+	#Fight For the Government
+	focus = {
+		id = CUB_fight_for_the_government
+		icon = GFX_CUB_fight_for_the_government-646334
+		x = 7
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = CUB_push_the_revolution  }
+		bypass = {
+			has_government = communism
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+			set_politics = {
+				ruling_party = communism
+			        elections_allowed = no
+			        last_election = } 
+			add_stability = -0.1
+			
+			add_war_support = 0.1
+			
+			set_equipment_fraction = 0.33
+			
+			add_manpower = -3000
+			
+			
+		}
+	}
+
+	#Supply Socialists Abroad
+	focus = {
+		id = CUB_supply_socialists_abroad
+		icon = GFX_CUB_supply_socialists_abroad-645600
+		x = 7
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_fight_for_the_government  }
+		mutually_exclusive = { focus = CUB_aggressive_revolutions  }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Aggressive Revolutions
+	focus = {
+		id = CUB_aggressive_revolutions
+		icon = GFX_CUB_aggressive_revolutions-88
+		x = 11
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_fight_for_the_government  }
+		mutually_exclusive = { focus = CUB_supply_socialists_abroad  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+			retire_country_leader = yes
+			
+			
+		}
+	}
+
+	#Caribbean Socialism
+	focus = {
+		id = CUB_caribbean_socialism
+		icon = GFX_CUB_caribbean_socialism-645549
+		x = 6
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = CUB_supply_socialists_abroad  }
+		completion_reward = {
+			HAI = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+				add_stability = -0.06
+			
+			
+			}
+			DOM = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+				add_stability = -0.06
+			
+			
+			}
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.035 }
+			
+			
+			
+		}
+	}
+
+	#Central American Socialism
+	focus = {
+		id = CUB_central_american_socialism
+		icon = GFX_CUB_central_american_socialism-645581
+		x = 5
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = CUB_caribbean_socialism  }
+		completion_reward = {
+			GUA = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+				add_stability = -0.06
+			
+			
+			}
+			HON = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+				add_stability = -0.06
+			
+			
+			}
+			ELS = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+				add_stability = -0.06
+			
+			
+			}
+			NIC = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+				add_stability = -0.06
+			
+			
+			}
+			COS = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+				add_stability = -0.06
+			
+			
+			}
+			PAN = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+				add_stability = -0.06
+			
+			
+			}
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.056}
+			
+			
+			
+		}
+	}
+
+	#Northern South American Socialism
+	focus = {
+		id = CUB_northern_south_american_socialism
+		icon = GFX_CUB_northern_south_american_socialism-645772
+		x = 5
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = CUB_central_american_socialism  }
+		completion_reward = {
+			VEN = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+				add_stability = -0.06
+			
+			
+			}
+			COL = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+				add_stability = -0.06
+			
+			
+			}
+			ECU = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+				add_stability = -0.06
+			
+			
+			}
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.07 }
+			
+			
+			
+		}
+	}
+
+	#Supply the Soviets
+	focus = {
+		id = CUB_supply_the_soviets
+		icon = GFX_goal_generic_soviet_construction
+		x = 8
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_supply_socialists_abroad  focus = CUB_aggressive_revolutions  }
+		available = {
+			SOV = {
+				has_government = communism
+			
+				has_war = yes
+			
+			
+			}
+			
+		}
+		bypass = {
+			SOV = {
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			SOV = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 2000
+			    producer = CUB
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = arms_factory level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Supply the Chinese Socialists
+	focus = {
+		id = CUB_supply_the_chinese_socialists
+		icon = GFX_CUB_supply_the_chinese_socialists-262099
+		x = 10
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_aggressive_revolutions  focus = CUB_supply_socialists_abroad  }
+		available = {
+			PRC = {
+				has_government = communism
+			
+				is_subject = no
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			PRC = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 2000
+			    producer = CUB
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = arms_factory level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Supply Spanish Republicans
+	focus = {
+		id = CUB_supply_spanish_republicans
+		icon = GFX_CUB_supply_spanish_republicans-120
+		x = 13
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CUB_fight_for_the_government  }
+		available = {
+			NOT = {
+				has_war_with = SPR
+			
+			
+			}
+			
+			SPR = {
+				has_civil_war = no
+			
+				NOT = {
+						has_government = neutrality
+			
+					has_government = fascism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.035 }
+			
+			
+			add_war_support = 0.05
+			
+			SPR = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 2500
+			    producer = CUB
+			}
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#Invite Republican Refugees
+	focus = {
+		id = CUB_invite_republican_refugees
+		icon = GFX_CUB_invite_republican_refugees-82
+		x = 15
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = CUB_fight_for_the_government  }
+		available = {
+			SPR = {
+				has_civil_war = no
+			
+				NOT = {
+						has_government = democratic
+			
+					has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_stability = 0.05
+			
+			add_manpower = 17520
+			
+			SPR = {
+				add_manpower = -10000
+			
+			
+			}
+			
+		}
+	}
+
+	#Influence Eastern Europe
+	focus = {
+		id = CUB_influence_eastern_europe
+		icon = GFX_focus_generic_polish_deal
+		x = 7
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = CUB_caribbean_socialism  focus = CUB_supply_the_soviets  }
+		completion_reward = {
+			FIN = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+				add_stability = -0.03 }
+			
+			EST = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+				add_stability = -0.03 }
+			
+			LAT = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+				add_stability = -0.03 }
+			
+			LIT = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+				add_stability = -0.03 }
+			
+			POL = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+				add_stability = -0.03 }
+			
+			ROM = {
+				add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+				add_stability = -0.03 }
+			
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			
+		}
+	}
+
+	#A Means of Transport
+	focus = {
+		id = CUB_a_means_of_transport
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 11
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_aggressive_revolutions  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+			type = dockyard
+			level = 3
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			navy_experience = 50
+			
+			air_experience = 50
+			
+			
+		}
+	}
+
+	#Cuban Rocket Sites
+	focus = {
+		id = CUB_cuban_rocket_sites
+		icon = GFX_focus_rocketry
+		x = 9
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CUB_supply_the_soviets  focus = CUB_supply_the_chinese_socialists  }
+		completion_reward = {
+			add_tech_bonus = {
+			    bonus = 0.75
+			    uses = 2
+			    category = rocketry
+			}
+			
+			
+		}
+	}
+
+	#Unite Hispanola
+	focus = {
+		id = CUB_unite_hispanola
+		icon = GFX_CUB_unite_hispanola-645684
+		x = 13
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CUB_aggressive_revolutions  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = HAI
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = DOM
+			}
+			
+			
+			HAI = {
+			add_state_claim = 319
+			
+			
+			}
+			
+			DOM = {
+				add_state_claim = 318
+			
+			
+			}
+			
+		}
+		will_lead_to_war_with = HAI
+		will_lead_to_war_with = DOM
+	}
+
+	#A Foothold in Central America
+	focus = {
+		id = CUB_a_foothold_in_central_america
+		icon = GFX_focus_ger_bulwark_against_bolshevism
+		x = 12
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CUB_aggressive_revolutions  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = HON
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = NIC
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = COS
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = HON
+		will_lead_to_war_with = NIC
+		will_lead_to_war_with = COS
+	}
+
+	#Threaten the Canal
+	focus = {
+		id = CUB_threaten_the_canal
+		icon = GFX_CUB_threaten_the_canal-646048
+		x = 14
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CUB_a_foothold_in_central_america  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = PAN
+			}
+			
+			
+			add_state_claim = 685
+			
+			
+		}
+	}
+
+	#Subjugate Mexico
+	focus = {
+		id = CUB_subjugate_mexico
+		icon = GFX_focus_mex_jefe_maximo
+		x = 12
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CUB_a_foothold_in_central_america  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = GUA
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = MEX
+			}
+			
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = ELS
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = GUA
+		will_lead_to_war_with = MEX
+		will_lead_to_war_with = ELS
+	}
+
+	#Wake the Giant
+	focus = {
+		id = CUB_wake_the_giant
+		icon = GFX_CUB_wake_the_giant-645453
+		x = 13
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CUB_unite_hispanola  } prerequisite = { focus = CUB_threaten_the_canal  } prerequisite = { focus = CUB_subjugate_mexico  }
+		available = {
+			NOT = {
+				is_ally_with = USA
+			
+			
+			}
+			
+			
+		}
+		bypass = {
+			has_war_with = USA
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = USA
+			}
+			
+			
+			add_state_core = 366
+			
+			
+		}
+		will_lead_to_war_with = USA
+	}
+
+	#Fuerzas Armadas Revolucionarias
+	focus = {
+		id = CUB_fuerzas_armadas_revolucionarias
+		icon = GFX_CUB_fuerzas_armadas_revolucionarias-645663
+		x = 13
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Defensa Anti-Aérea y Fuerza Aérea Revolucionaria
+	focus = {
+		id = CUB_defensaantiaereayfuerzaaerearevolucionaria
+		icon = GFX_focus_generic_air_defense
+		x = 18
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+	#U.S. Army Research Assistance
+	focus = {
+		id = CUB_us_army_research_assistance
+		icon = GFX_goal_tfv_generic_tech_sharing
+		x = 14
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CUB_fuerzas_armadas_revolucionarias  } prerequisite = { focus = CUB_defensaantiaereayfuerzaaerearevolucionaria  }
+		available = {
+			NOT = {
+				has_government = communism
+			}
+			
+			
+			
+			USA = {
+				has_government = democratic
+			
+				has_civil_war = no
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Soviet Army Research Assistance
+	focus = {
+		id = CUB_soviet_army_research_assistance
+		icon = GFX_goal_tfv_generic_tech_sharing
+		x = 16
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CUB_fuerzas_armadas_revolucionarias  } prerequisite = { focus = CUB_defensaantiaereayfuerzaaerearevolucionaria  }
+		available = {
+			has_government = communism
+			
+			
+			
+			SOV = {
+				has_government = communism
+			
+				has_civil_war = no
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Develop Our Own Weapons
+	focus = {
+		id = CUB_develop_our_own_weapons
+		icon = GFX_CUB_develop_our_own_weapons-646170
+		x = 15
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CUB_fuerzas_armadas_revolucionarias  } prerequisite = { focus = CUB_defensaantiaereayfuerzaaerearevolucionaria  }
+		available = {
+			USA = {
+				NOT = {
+						has_government = democratic
+			
+			
+			}
+			
+			
+			}
+			SOV = {
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Shipyard Expansion
+	focus = {
+		id = CUB_shipyard_expansion
+		icon = GFX_CUB_shipyard_expansion-645803
+		x = 17
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_defensaantiaereayfuerzaaerearevolucionaria  focus = CUB_fuerzas_armadas_revolucionarias  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Allied Training
+	focus = {
+		id = CUB_allied_training
+		icon = GFX_focus_eng_decolonization
+		x = 13
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = CUB_fuerzas_armadas_revolucionarias  }
+		completion_reward = {
+			army_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4500
+			
+			USA = {
+				army_experience = 5
+			
+			
+			}
+			ENG = {
+				army_experience = 5
+			
+			
+			}
+			
+		}
+	}
+
+	#Doctrine Developments
+	focus = {
+		id = CUB_doctrine_developments
+		icon = GFX_goal_generic_air_doctrine
+		x = 19
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = CUB_defensaantiaereayfuerzaaerearevolucionaria  }
+		completion_reward = {
+			air_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4500
+			
+			
+		}
+	}
+
+	#Air Detection Research
+	focus = {
+		id = CUB_air_detection_research
+		icon = GFX_goal_generic_radar
+		x = 18
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CUB_defensaantiaereayfuerzaaerearevolucionaria  }
+		completion_reward = {
+			add_tech_bonus = {
+			    bonus = 0.5
+			    uses = 2
+			    category = radar_tech
+			}
+			
+			
+			air_experience = 10
+			
+			
+		}
+	}
+
+	#Convert Factory Productions
+	focus = {
+		id = CUB_convert_factory_productions
+		icon = GFX_focus_generic_tank_production
+		x = 16
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CUB_allied_training  } prerequisite = { focus = CUB_doctrine_developments  }
+		completion_reward = {
+			315 = {
+				remove_building = {
+			    type = industrial_complex
+			    level = 1
+			}
+			
+			
+			
+			}
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			add_political_power = -100
+			
+			
+		}
+	}
+
+}

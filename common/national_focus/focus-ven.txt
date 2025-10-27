@@ -1,0 +1,1535 @@
+focus_tree = {
+	id = focus-ven
+	continuous_focus_position = { x = 150 y = 1180 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = VEN
+		}
+	}
+	#South American Politics
+	focus = {
+		id = VEN_south_american_politics
+		icon = GFX_goal_generic_neutrality_focus
+		x = 1
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			add_stability = -0.025
+			
+			add_political_power = 45
+			
+			
+		}
+	}
+
+	#Accept Constitutional Guarantees
+	focus = {
+		id = VEN_accept_constitutional_guarantees
+		icon = GFX_VEN_accept_constitutional_guarantees-646378
+		x = 1
+		y = 1
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = VEN_south_american_politics  }
+		mutually_exclusive = { focus = VEN_refuse_constitutional_guarantees  }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.1 }
+			
+			
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Refuse Constitutional Guarantees
+	focus = {
+		id = VEN_refuse_constitutional_guarantees
+		icon = GFX_VEN_refuse_constitutional_guarantees-645454
+		x = 8
+		y = 1
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = VEN_south_american_politics  }
+		mutually_exclusive = { focus = VEN_accept_constitutional_guarantees  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.1 }
+			
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#Reform the Constitution
+	focus = {
+		id = VEN_reform_the_constitution
+		icon = GFX_goal_generic_dangerous_deal
+		x = 1
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = VEN_accept_constitutional_guarantees  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.08 }
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.04 }
+			
+			
+			add_stability = 0.05
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Reduce Presidential Terms
+	focus = {
+		id = VEN_reduce_presidential_terms
+		icon = GFX_VEN_reduce_presidential_terms-262035
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = VEN_reform_the_constitution  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Exile by Presidential Decree
+	focus = {
+		id = VEN_exile_by_presidential_decree
+		icon = GFX_focus_mex_exile_calles
+		x = 2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = VEN_reform_the_constitution  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Ban Communist Parties
+	focus = {
+		id = VEN_ban_communist_parties
+		icon = GFX_VEN_ban_communist_parties-645539
+		x = 2
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = VEN_exile_by_presidential_decree  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = -0.05 }
+			
+			
+			add_stability = -0.1 
+			
+			add_war_support = 0.05
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Ban Anarchist Parties
+	focus = {
+		id = VEN_ban_anarchist_parties
+		icon = GFX_focus_spr_anarchism_knows_no_borders
+		x = 0
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = VEN_exile_by_presidential_decree  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = -0.05 }
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = -0.05 }
+			
+			
+			add_stability = -0.05
+			
+			add_war_support = 0.05
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Establish the Ministry of Health and Social Assistance
+	focus = {
+		id = VEN_establish_the_ministry_of_health_and_social_assistance
+		icon = GFX_focus_research
+		x = 4
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = VEN_accept_constitutional_guarantees  focus = VEN_refuse_constitutional_guarantees  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Establish the Ministry of Agriculture and Breeding
+	focus = {
+		id = VEN_establish_the_ministry_of_agriculture_and_breeding
+		icon = GFX_goal_generic_construction2
+		x = 4
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = VEN_establish_the_ministry_of_health_and_social_assistance  }
+		completion_reward = {
+			489 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			307 = {
+				add_extra_state_shared_building_slots = 3
+			
+			
+			}
+			488 = {
+				add_extra_state_shared_building_slots = 1
+			
+			
+			}
+			
+		}
+	}
+
+	#Establish the Venezuelan Children's Council
+	focus = {
+		id = VEN_establishthevenezuelanchildrenscouncil
+		icon = GFX_VEN_establishthevenezuelanchildrenscouncil-646365
+		x = 4
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = VEN_establish_the_ministry_of_agriculture_and_breeding  }
+		completion_reward = {
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Establish the Technical Institute of Immigration and Colonization
+	focus = {
+		id = VEN_establish_the_technical_institute_of_immigration_and_colonization
+		icon = GFX_VEN_establish_the_technical_institute_of_immigration_and_colonization-645484
+		x = 4
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = VEN_establishthevenezuelanchildrenscouncil  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			add_manpower = 15000
+			
+			
+		}
+	}
+
+	#Further the Country Towards Democracy
+	focus = {
+		id = VEN_further_the_country_towards_democracy
+		icon = GFX_focus_generic_strike_at_democracy2
+		x = 1
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = VEN_ban_communist_parties  } prerequisite = { focus = VEN_ban_anarchist_parties  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.1 }
+			
+			
+			add_political_power = -50
+			
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Further Improve U.S. Relations
+	focus = {
+		id = VEN_further_improve_us_relations
+		icon = GFX_focus_usa_build_the_pentagon
+		x = 0
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = VEN_further_the_country_towards_democracy  }
+		available = {
+			USA = {
+				has_government = democratic
+			
+			
+			}
+			
+		}
+		bypass = {
+			USA = {
+				has_civil_war = yes
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.05 }
+			
+			
+			add_political_power = 50
+			
+			USA = {
+				add_political_power = 10
+			
+			
+			}
+			
+		}
+	}
+
+	#Establish Chinese Relations
+	focus = {
+		id = VEN_establish_chinese_relations
+		icon = GFX_focus_generic_china1
+		x = 0
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = VEN_further_improve_us_relations  }
+		available = {
+			CHI = {
+				exists = yes
+			
+				is_subject = no
+			
+			
+			}
+			
+		}
+		bypass = {
+			CHI = {
+				exists = no
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.025 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 25
+			
+			CHI = {
+				add_political_power = 10
+			
+			
+			}
+			
+		}
+	}
+
+	#Establish Russian Relations
+	focus = {
+		id = VEN_establish_russian_relations
+		icon = GFX_VEN_establish_russian_relations-262103
+		x = 0
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = VEN_establish_chinese_relations  }
+		available = {
+			SOV = {
+				has_civil_war = no
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.05 }
+			
+			
+			add_political_power = 25
+			
+			SOV = {
+				add_political_power = 10
+			
+			
+			}
+			
+		}
+	}
+
+	#Expand Oil Exports
+	focus = {
+		id = VEN_expand_oil_exports
+		icon = GFX_VEN_expand_oil_exports-645966
+		x = 8
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = VEN_accept_constitutional_guarantees  focus = VEN_refuse_constitutional_guarantees  }
+		available = {
+			controls_state = 307
+			
+			
+		}
+		completion_reward = {
+			307 = {
+				add_resource = {
+			    type = oil
+			    amount = 25
+			}
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#American Supplies
+	focus = {
+		id = VEN_american_supplies
+		icon = GFX_VEN_american_supplies-262058
+		x = 6
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = VEN_accept_constitutional_guarantees  }
+		completion_reward = {
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 5000
+			    producer = USA
+			}
+			
+			
+			
+		}
+	}
+
+	#Self Sufficient
+	focus = {
+		id = VEN_self_sufficient
+		icon = GFX_VEN_self_sufficient-60
+		x = 7
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = VEN_american_supplies  focus = VEN_expand_oil_exports  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Negotiate Oil Prices
+	focus = {
+		id = VEN_negotiate_oil_prices
+		icon = GFX_focus_usa_guarantee_the_american_dream
+		x = 6
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = VEN_american_supplies  } prerequisite = { focus = VEN_self_sufficient  }
+		available = {
+			controls_state = 307
+			
+			USA = {
+				controls_state = 375
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			307 = {
+				add_resource = {
+			    type = oil
+			    amount = 10
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			USA = {
+				375 = {
+						add_resource = {
+			    type = oil
+			    amount = 20
+			}
+			
+			
+					add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			}
+			
+			}
+			
+		}
+	}
+
+	#Nationalize the Oil Fields
+	focus = {
+		id = VEN_nationalize_the_oil_fields
+		icon = GFX_goal_generic_oil_refinery
+		x = 8
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = VEN_expand_oil_exports  } prerequisite = { focus = VEN_self_sufficient  }
+		available = {
+			has_completed_focus = VEN_refuse_constitutional_guarantees
+			
+			
+		}
+		completion_reward = {
+			307 = {
+				add_resource = {
+			    type = oil
+			    amount = 30
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			USA = {
+				add_political_power = -50
+			
+			
+			}
+			
+		}
+	}
+
+	#German Mining Grants
+	focus = {
+		id = VEN_german_mining_grants
+		icon = GFX_VEN_german_mining_grants-645959
+		x = 9
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = VEN_refuse_constitutional_guarantees  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Join the Fight
+	focus = {
+		id = VEN_join_the_fight
+		icon = GFX_VEN_join_the_fight-645596
+		x = 2
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = VEN_further_the_country_towards_democracy  }
+		mutually_exclusive = { focus = VEN_remainneutralsellweapons  }
+		available = {
+			USA = {
+				is_in_faction_with = ENG
+			
+				has_defensive_war = yes
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			ENG = {
+				has_capitulated = no
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			ENG = {
+				country_event = {
+					id = generic.2
+				}
+			
+			
+			}
+			add_war_support = 0.1
+			
+			
+			
+		}
+	}
+
+	#Remain Neutral, Sell Weapons
+	focus = {
+		id = VEN_remainneutralsellweapons
+		icon = GFX_VEN_remainneutralsellweapons-645854
+		x = 4
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = VEN_further_the_country_towards_democracy  }
+		mutually_exclusive = { focus = VEN_join_the_fight  }
+		completion_reward = {
+			USA = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = VEN
+			}
+			
+			
+			
+			}
+			ENG = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = VEN
+			}
+			
+			
+			
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = VEN
+			}
+			
+			
+			
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = VEN
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 4 }
+			
+			
+			
+			
+		}
+	}
+
+	#Purchase Italian Vessels
+	focus = {
+		id = VEN_purchase_italian_vessels
+		icon = GFX_focus_generic_navy_battleship2
+		x = 7
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = VEN_self_sufficient  }
+		available = {
+			NOT = {
+				has_war_with = ITA
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			add_equipment_to_stockpile = {
+			    type = convoy
+			    amount = 20
+			    producer = ITA
+			}
+			
+			
+			ITA = {
+				add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#The Fifth Column
+	focus = {
+		id = VEN_the_fifth_column
+		icon = GFX_focus_BUL_form_a_regency_council
+		x = 11
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = VEN_refuse_constitutional_guarantees  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			
+		}
+	}
+
+	#Government Coup
+	focus = {
+		id = VEN_government_coup
+		icon = GFX_VEN_government_coup-646107
+		x = 11
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = VEN_the_fifth_column  }
+		mutually_exclusive = { focus = VEN_military_coup  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.1 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.1 }
+			
+			
+			set_politics = {
+				ruling_party = neutrality
+			        elections_allowed = no
+			        last_election = } 
+			add_political_power = 100
+			
+			add_command_power = 25
+			
+			
+		}
+	}
+
+	#Military Coup
+	focus = {
+		id = VEN_military_coup
+		icon = GFX_VEN_military_coup-428
+		x = 13
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = VEN_the_fifth_column  }
+		mutually_exclusive = { focus = VEN_government_coup  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			retire_country_leader = yes
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Invite German Immigrants
+	focus = {
+		id = VEN_invite_german_immigrants
+		icon = GFX_focus_generic_manpower
+		x = 10
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = VEN_the_fifth_column  }
+		completion_reward = {
+			add_manpower = 15250
+			
+			
+		}
+	}
+
+	#Autarky
+	focus = {
+		id = VEN_autarky
+		icon = GFX_focus_generic_industry_3
+		x = 9
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = VEN_german_mining_grants  } prerequisite = { focus = VEN_invite_german_immigrants  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Guyana Claims
+	focus = {
+		id = VEN_guyana_claims
+		icon = GFX_VEN_guyana_claims-645881
+		x = 12
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_OCCUPATION_COST
+		}
+		prerequisite = { focus = VEN_military_coup  focus = VEN_government_coup  }
+		completion_reward = {
+			add_state_claim = 687
+			
+			
+		}
+	}
+
+	#Dutch Oil Fields
+	focus = {
+		id = VEN_dutch_oil_fields
+		icon = GFX_VEN_dutch_oil_fields-646391
+		x = 13
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = VEN_against_the_colonial_powers  }
+		completion_reward = {
+			add_state_core = 695 add_state_core = 310 
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = HOL
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = HOL
+	}
+
+	#Influence on American Nations
+	focus = {
+		id = VEN_influence_on_american_nations
+		icon = GFX_VEN_influence_on_american_nations-645527
+		x = 11
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = VEN_guyana_claims  }
+		mutually_exclusive = { focus = VEN_against_the_colonial_powers  }
+		completion_reward = {
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Against the Colonial Powers
+	focus = {
+		id = VEN_against_the_colonial_powers
+		icon = GFX_focus_AST_never_gallipoli
+		x = 13
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = VEN_guyana_claims  }
+		mutually_exclusive = { focus = VEN_influence_on_american_nations  }
+		completion_reward = {
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Force the Issue
+	focus = {
+		id = VEN_force_the_issue
+		icon = GFX_focus_eng_decolonization
+		x = 15
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = VEN_against_the_colonial_powers  }
+		completion_reward = {
+			add_state_core = 687 
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = ENG
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = ENG
+	}
+
+	#Occupy Suriname
+	focus = {
+		id = VEN_occupy_suriname
+		icon = GFX_focus_attack_france
+		x = 14
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = VEN_dutch_oil_fields  } prerequisite = { focus = VEN_force_the_issue  }
+		completion_reward = {
+			add_state_core = 309 
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = FRA
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = FRA
+	}
+
+	#Subjugate Colombia
+	focus = {
+		id = VEN_subjugate_colombia
+		icon = GFX_VEN_subjugate_colombia-645868
+		x = 9
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = VEN_influence_on_american_nations  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = COL
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = COL
+	}
+
+	#Fight For the Amazon
+	focus = {
+		id = VEN_fight_for_the_amazon
+		icon = GFX_VEN_fight_for_the_amazon-645866
+		x = 11
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = VEN_influence_on_american_nations  }
+		completion_reward = {
+			add_state_core = 967 add_state_core = 969 
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = BRA
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = BRA
+	}
+
+	#Fuerza Armada Nacional Bolivariana
+	focus = {
+		id = VEN_fuerza_armada_nacional_bolivariana
+		icon = GFX_VEN_fuerza_armada_nacional_bolivariana-262089
+		x = 15
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Aviación Militar Bolivariana
+	focus = {
+		id = VEN_aviacionmilitarbolivariana
+		icon = GFX_focus_eng_special_air_service
+		x = 19
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+	#Armada Bolivariana de Venezuela
+	focus = {
+		id = VEN_armada_bolivariana_de_venezuela
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 17
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			navy_experience = 25
+			
+			
+		}
+	}
+
+	#Army Training Exercises
+	focus = {
+		id = VEN_army_training_exercises
+		icon = GFX_goal_generic_army_doctrines
+		x = 15
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = VEN_fuerza_armada_nacional_bolivariana  }
+		completion_reward = {
+			army_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4500
+			
+			
+		}
+	}
+
+	#Naval Training Exercises
+	focus = {
+		id = VEN_naval_training_exercises
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		x = 17
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = VEN_armada_bolivariana_de_venezuela  }
+		completion_reward = {
+			navy_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4000
+			
+			
+		}
+	}
+
+	#Air Training Exercises
+	focus = {
+		id = VEN_air_training_exercises
+		icon = GFX_goal_generic_air_doctrine
+		x = 19
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = VEN_aviacionmilitarbolivariana  }
+		completion_reward = {
+			air_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 3000
+			
+			
+		}
+	}
+
+	#Allied Industry
+	focus = {
+		id = VEN_allied_industry
+		icon = GFX_focus_hol_the_fourth_ally
+		x = 16
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = VEN_army_training_exercises  } prerequisite = { focus = VEN_naval_training_exercises  } prerequisite = { focus = VEN_air_training_exercises  }
+		available = {
+			has_completed_focus = VEN_accept_constitutional_guarantees
+			
+			
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Our Own Industry
+	focus = {
+		id = VEN_our_own_industry
+		icon = GFX_VEN_our_own_industry-645641
+		x = 18
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = VEN_army_training_exercises  } prerequisite = { focus = VEN_naval_training_exercises  } prerequisite = { focus = VEN_air_training_exercises  }
+		available = {
+			has_completed_focus = VEN_refuse_constitutional_guarantees
+			
+			
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Technological Advancements
+	focus = {
+		id = VEN_technological_advancements
+		icon = GFX_focus_research2
+		x = 17
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = VEN_our_own_industry  focus = VEN_allied_industry  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+}

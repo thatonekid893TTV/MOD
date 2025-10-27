@@ -1,0 +1,172 @@
+#####################
+
+###  ##  #  # # #  ## 
+ #  #  # ## # # # #   
+ #  #### # ## ##   #  
+ #  #  # #  # # #   # 
+ #  #  # #  # # # ## 
+
+ #################### 
+
+AST_new_south_wales_rc_organization = {
+	name = AST_new_south_wales_rc_organization
+	include = generic_mobile_tank_organization
+	icon = GFX_idea_new_south_wales_rc
+	allowed = {
+		original_TAG = AST
+		has_dlc = "Together for Victory"
+	}
+	available = {
+		owner = {
+			#has_completed_focus = AST_standard_gauge_railway
+			has_completed_focus = AST_sentinel_tank_project
+		}
+	}
+}
+
+#####################
+
+ ## #  # ### ###   ## 
+#   #  #  #  #  # #   
+ #  ####  #  ###   #  
+  # #  #  #  #      # 
+##  #  # ### #    ##  
+ 
+#####################
+
+AST_cockatoo_doe_organization = {
+	name = AST_cockatoo_doe_organization
+	include = generic_raider_ship_organization
+	icon = GFX_idea_Cockatoo_doe
+	allowed = {
+		original_TAG = AST
+		has_dlc = "Together for Victory"
+	}
+	available = {
+		owner = {
+			owns_state = 285
+			controls_province = 12406
+		}
+	}
+}
+AST_evans_deakin_co_organization = {
+	name = AST_evans_deakin_co_organization
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_evans_deakin_co
+	allowed = {
+		original_TAG = AST
+		has_dlc = "Together for Victory"
+	}
+	available = {
+		owner = { has_completed_focus = AST_kangaroo_point_shipyards }
+		owner = {
+			owns_state = 521
+			controls_province = 7564
+		}
+	}
+}
+
+
+###########################
+
+###  #    ##  #  # ###  ## 
+#  # #   #  # ## # #   #   
+###  #   #### # ## ##   #  
+#    #   #  # #  # #     # 
+#    ### #  # #  # ### ##  
+
+###########################
+
+AST_com_aircraft_corporation_organization = {
+	name = AST_com_aircraft_corporation_organization_azr
+	include = generic_light_aircraft_organization
+	icon = GFX_idea_com_aircraft_corporation
+	allowed = {
+		original_TAG = AST
+		has_dlc = "Together for Victory"
+	}
+	available = {
+		custom_trigger_tooltip = {
+			tooltip = azr_ast_cac_tt
+			owner = { has_country_flag = azr_ast_cac_formed_flag }
+		}
+	}
+}
+AST_de_havilland_australia_organization = {
+	name = AST_de_havilland_australia
+	include = generic_multi_role_aircraft_organization
+	icon = GFX_idea_de_havilland
+	allowed = {
+		original_TAG = AST
+	}
+	available = {
+		owner = {
+			IF = {
+				limit = { has_completed_focus = AST_claim_the_throne }
+				OR = {
+					any_controlled_state = { is_core_of = ENG }
+					is_in_faction_with = ENG
+				}
+			}
+			ELSE = { is_in_faction_with = ENG }
+		}
+	}
+}
+
+
+
+################################### 
+
+#   #  ##  ### ### ###  ### ### #   
+## ## #  #  #  #   #  #  #  #   #   
+# # # ####  #  ##  ###   #  ##  #   
+#   # #  #  #  #   #  #  #  #   #   
+#   # #  #  #  ### #  # ### ### ### 
+
+
+###################################
+
+AST_defence_explosive_factory_maribyrnong_organization = {
+	name = AST_defence_explosive_factory_maribyrnong
+	include = generic_artillery_organization
+	icon = GFX_idea_generic_infantry_equipment_manufacturer_3
+	allowed = {
+		original_TAG = AST
+		has_dlc = "Together for Victory"
+	}
+}
+AST_lithgow_saf_organization = {
+	name = AST_lithgow_saf_organization
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_lithgow_saf
+	allowed = {
+		original_TAG = AST
+		has_dlc = "Together for Victory"
+	}
+}
+AST_lysaghts_works_organization = {
+	name = AST_lysaghts_works_organization
+	include = generic_support_equipment_organization
+	icon = GFX_idea_lysaghts_works
+	allowed = {
+		original_TAG = AST
+		has_dlc = "Together for Victory"
+	}
+}
+AST_australian_national_industries_organization = {
+	name = AST_australian_national_industries
+	include = generic_motorized_mechanized_organization
+	icon = GFX_idea_generic_motorized_equipment_manufacturer_3
+	allowed = {
+		original_TAG = AST
+	}
+}
+AST_perry_engineering_organization = {
+	name = AST_perry_engineering
+	include = generic_armored_car_organization
+	icon = GFX_idea_canadian_car_foundry
+	allowed = {
+		original_TAG = AST
+		has_dlc = "La Resistance"
+	}
+}

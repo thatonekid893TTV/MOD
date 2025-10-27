@@ -1,0 +1,1194 @@
+characters={
+	AST_eric_campbell={
+		name=AST_eric_campbell
+		portraits={
+			civilian={
+				large="GFX_AST_eric_campbell"
+			}
+		}
+		country_leader={
+			ideology=fascism_ideology
+			traits = { fascist_militia_leader } #MMR
+			expire="1965.1.1.1"
+			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = MMR_AST_eric_campbell_pa
+			visible = {
+				has_government = fascism
+				has_completed_focus = AST_kingdom_of_australia
+			}
+			available = {
+				has_government = fascism
+				has_country_leader = { name = "Edward VIII" }
+			}
+			allowed = {
+				original_tag = AST
+			}
+			cost = 75
+			traits = {
+				MMR_popular_fascist_militia_leader 
+			}
+		}
+	}
+	
+	AST_richard_dixon={
+		name=AST_richard_dixon
+		portraits={
+			civilian={
+				large="GFX_AST_richard_dixon"
+			}
+		}
+		country_leader={
+			ideology=stalinism
+			traits = { MMR_AST_well_trained_communist } #MMR
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	
+	AST_john_curtin={
+		name=AST_john_curtin
+		portraits={
+			civilian={
+				large=GFX_portrait_AST_john_curtin
+			}
+		}
+		country_leader={
+			ideology=socialism
+			traits = { MMR_NZL_social_democrat_politician } #MMR
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+
+	AST_earle_page={
+		name=AST_earle_page
+		portraits={
+			civilian={
+				large="GFX_AST_earle_page"
+			}
+		}
+		country_leader={
+			ideology=centrism
+			traits = { MMR_NZL_liberal_conservative_agrarianist } #MMR
+			expire="1965.1.1.1"
+			id=-1
+		}
+		#AZR
+		advisor={
+			slot = political_advisor
+			idea_token = AST_earle_page_pa
+			allowed  = { original_tag = AST }
+			visible = {
+				has_government = neutrality
+				has_completed_focus = AST_monarchist_coup
+				has_country_leader = { character = MMR_AST_king_edward }
+			}
+			available = {
+				has_government = neutrality
+				has_country_leader = { character = MMR_AST_king_edward }
+			}
+			traits  = {
+				MMR_NZL_liberal_conservative_agrarianist
+			}
+		}
+		#AZR
+	}
+
+	AST_rod_hull={
+		name=AST_rod_hull
+		portraits={
+			civilian={
+				large=GFX_portrait_AST_rod_hull
+			}
+		}
+		country_leader={
+			ideology=despotism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+
+	AST_leslie_morshead={
+		name=AST_leslie_morshead
+		portraits={
+			army={
+				large="GFX_AST_leslie_morshead"
+				small=GFX_portrait_AST_leslie_morshead_small
+			}
+		}
+		corps_commander={
+			#MMR
+			visible = {
+				NOT = {
+					OR = {
+						has_government = communism
+						has_country_leader = { character = MMR_AST_william_john_miles }
+						has_country_leader = { character = MMR_AST_p_r_stephensen }
+						has_country_leader = { character = MMR_AST_moses_gabb }
+					}
+				}
+			}
+			traits = { infantry_leader infantry_expert mmr_trait_AST_new_guard_loyalist }
+			#MMR
+			skill=4
+			attack_skill=4
+			defense_skill=2
+			planning_skill=5
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	#MMR
+	AST_thomas_blamey={
+		name=AST_thomas_blamey
+		portraits={
+			army={
+				large="GFX_AST_thomas_blamey"
+				small=GFX_portrait_AST_thomas_blamey_small
+			}
+		}
+		corps_commander={
+			visible = {
+				NOT = {
+					OR = {
+						has_government = communism
+						has_country_leader = { character = MMR_AST_william_john_miles }
+						has_country_leader = { character = MMR_AST_p_r_stephensen }
+						has_country_leader = { character = MMR_AST_moses_gabb }
+						has_country_flag = AST_thomas_blamey_ac_flag
+					}
+				}
+			}
+			traits = { trait_reckless mmr_trait_AST_new_guard_loyalist }
+			skill=4
+			attack_skill=4
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=-1
+		}
+		advisor={
+			slot = army_chief
+			idea_token = AST_thomas_blamey_ac
+			allowed  = { original_tag = AST }
+			#MMR
+			visible = {
+				OR = {
+					has_government = fascism
+					NOT = {
+						OR = {
+							has_completed_focus = AST_empower_the_workers
+							has_completed_focus = AST_protect_the_homeland
+							has_completed_focus = AST_support_the_policy_of_appeasement
+						}
+					}
+					AND = {
+						has_government = neutrality
+						has_completed_focus = AST_monarchist_coup
+						has_country_leader = { character = MMR_AST_king_edward }
+					}
+				}
+			}
+			available = {
+				IF = {
+					limit = { has_completed_focus = AST_monarchist_coup }
+					has_government = neutrality
+					has_country_leader = { character = MMR_AST_king_edward }
+					ELSE = {
+						has_government = fascism
+						has_country_leader = { character = AST_eric_campbell }
+					}
+				}
+				custom_trigger_tooltip = { tooltip = AST_thomas_blamey_ac_tt }
+			}
+			#MMR
+			cost = 200
+			traits  = {
+				army_chief_offensive_3
+			}
+			on_add = { AST = { set_country_flag = AST_thomas_blamey_ac_flag } }
+			on_remove = { AST = { clr_country_flag = AST_thomas_blamey_ac_flag } }
+		}
+	}
+	#MMR
+	AST_henry_wynter={
+		name=AST_henry_wynter
+		portraits={
+			army={
+				large="GFX_AST_henry_wynter"
+				small=GFX_portrait_AST_henry_wynter_small
+			}
+		}
+		#MMR
+		advisor={
+			slot = high_command
+			idea_token = AST_henry_wynter
+			allowed  = { original_tag = AST }
+			visible = {
+				has_country_flag = AZR_AST_henry_wynter_unfit_flag
+			}
+			available = {
+				
+			}
+			cost = 50
+			traits  = {
+				army_logistics_2
+			}
+		}
+		corps_commander={
+			visible = { NOT = { has_country_flag = AZR_AST_henry_wynter_unfit_flag } }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
+		}
+		#MMR
+	}
+
+	AST_alan_vasey={
+		name=AST_alan_vasey
+		portraits={
+			army={
+				large="GFX_AST_alan_vasey"
+				small=GFX_portrait_AST_alan_vasey_small
+			}
+		}
+		corps_commander={
+			traits={ hill_fighter }
+			skill=3
+			attack_skill=2
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+
+	AST_horace_robertson={
+		name=AST_horace_robertson
+		portraits={
+			army={
+				large="GFX_AST_horace_robertson"
+				small=GFX_portrait_AST_horace_robertson_small
+			}
+		}
+		corps_commander={
+			traits={ desert_fox }
+			skill=3
+			attack_skill=3
+			defense_skill=1
+			planning_skill=3
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+
+	AST_john_northcott={
+		name=AST_john_northcott
+		portraits={
+			army={
+				large="GFX_AST_john_northcott"
+				small="GFX_idea_AST_john_northcott"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = AST_john_northcott_ac
+			allowed  = {
+				original_tag = AST
+			}
+			available = {
+				custom_trigger_tooltip = { tooltip = AST_john_northcott_ac_tt }
+			}
+			traits = {
+				army_chief_maneuver_1
+			}
+			cost = 50
+			on_add = { AST = { set_country_flag = AST_john_northcott_ac_flag } }
+			on_remove = { AST = { clr_country_flag = AST_john_northcott_ac_flag } }
+		}
+		corps_commander={
+			visible = { NOT = { has_country_flag = AST_john_northcott_ac_flag } }
+			traits={ armor_officer }
+			#MMR
+			skill=1
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=1
+			#MMR
+			legacy_id=-1
+		}
+	}
+
+	AST_harold_farncomb={
+		name=AST_harold_farncomb
+		portraits={
+			army={
+				large="GFX_AST_harold_farncomb"
+				small=GFX_portrait_AST_harold_farncomb_small
+			}
+		}
+		navy_leader={
+			traits={ aviation_enthusiast naval_lineage }
+			skill=4
+			attack_skill=3
+			defense_skill=3
+			maneuvering_skill=3
+			coordination_skill=4
+			legacy_id=-1
+		}
+	}
+
+	AST_victor_crutchley={
+		name=AST_victor_crutchley
+		portraits={
+			army={
+				large="GFX_AST_victor_crutchley"
+				small=GFX_portrait_AST_victor_crutchley_small
+			}
+		}
+		navy_leader={
+			traits={ bold }
+			skill=3
+			attack_skill=3
+			defense_skill=2
+			maneuvering_skill=3
+			coordination_skill=2
+			legacy_id=-1
+		}
+	}
+
+	AST_iven_mackay = { #Empty character that can become unit leader later
+		name=AST_iven_mackay
+		portraits={
+			army={
+				large="GFX_AST_iven_mackay"
+				small=GFX_portrait_AST_iven_mackay_small
+			}
+		}
+	}
+
+
+	### THEORISTS ###
+
+	AST_norman_makin={
+		name=AST_norman_makin
+		portraits={
+			army={
+				small="GFX_idea_AST_norman_makin" #small="GFX_idea_generic_political_advisor_europe_3"
+			}
+		}
+		advisor={
+			cost = 100
+			slot = theorist
+			idea_token = AST_norman_makin
+			ledger = navy
+			allowed = {
+				original_tag = AST
+			}
+			available = {
+				OR = {
+					has_country_leader = { character = MMR_AST_jack_lang }
+					NOT = {
+						OR = {
+							has_government = fascism
+							has_government = neutrality
+						}
+					}
+				}
+			}
+			traits = {
+				naval_theorist
+			}
+		}		
+	}
+
+	AST_james_fairbairn={
+		name=AST_james_fairbairn
+		portraits={
+			army={
+				small="GFX_idea_AST_james_fairbairn" #small="GFX_idea_generic_political_advisor_europe_2"
+			}
+		}
+		advisor={
+			cost = 100
+			slot = theorist
+			idea_token = AST_james_fairbairn
+			ledger = air
+			allowed = {
+				original_tag = AST
+			}
+			available = { NOT = { has_government = communism } } #MMR
+			traits = {
+				air_warfare_theorist
+			}
+		}
+	}
+
+	### ARMY CHIEFS ###
+	#MMR
+	AST_john_lavarack={
+		name=AST_john_lavarack
+		portraits={
+			army={
+				large="GFX_portrait_ENG_generic_land_4"
+				small="GFX_idea_AST_john_lavarack" #small="GFX_idea_generic_army_europe_5"
+			}
+		}
+		corps_commander={
+			traits={ inflexible_strategist }
+			visible = {
+				OR = {
+					has_government = communism
+					has_country_leader = { character = AST_john_curtin }
+					has_country_leader = { character = MMR_AST_ben_chifley }
+					has_country_leader = { character = MMR_AST_jack_lang }
+				}
+			}
+			skill=1
+			attack_skill=1
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+		advisor={
+			slot = army_chief
+			idea_token = AST_john_lavarack_ac
+			allowed = {
+				original_tag = AST
+			}
+			#AZR
+			visible = {
+				NOT = {
+					OR = {
+						has_government = fascism
+						AND = {
+							has_government = neutrality
+							has_completed_focus = AST_monarchist_coup
+							has_country_leader = { character = MMR_AST_king_edward }
+						}
+					}
+				}
+			}
+			available = {
+				IF = {
+					limit = { has_government = fascism }
+					NOT = {
+						OR = {
+							has_government = fascism
+							has_country_leader = { character = MMR_AST_king_edward }
+						}
+					}
+					ELSE = {
+						NOT = { has_government = fascism }
+					}
+				}
+				custom_trigger_tooltip = { tooltip = AST_john_lavarack_tt NOT = { has_country_flag = jl_t_chosen } }
+			}
+			#AZR
+			traits = {
+				army_chief_defensive_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+			on_add = { AST = { set_country_flag = jl_ac_chosen } }
+			on_remove = { AST = { clr_country_flag = jl_ac_chosen } }
+		}
+		advisor={
+			slot = theorist
+			idea_token = AST_john_lavarack_t
+			allowed = {
+				original_tag = AST
+			}
+			#AZR
+			visible = {
+				NOT = {
+					OR = {
+						has_government = fascism
+						AND = {
+							has_government = neutrality
+							has_completed_focus = AST_monarchist_coup
+							has_country_leader = { character = MMR_AST_king_edward }
+						}
+					}
+				}
+			}
+			available = {
+				IF = {
+					limit = { has_government = fascism }
+					NOT = {
+						OR = {
+							has_government = fascism
+							has_country_leader = { character = MMR_AST_king_edward }
+						}
+					}
+					ELSE = {
+						NOT = { has_government = fascism }
+					}
+				}
+				custom_trigger_tooltip = { tooltip = AST_john_lavarack_tt NOT = { has_country_flag = jl_ac_chosen } }
+			}
+			#AZR
+			traits = {
+				grand_battle_plan_expert
+			}
+			cost = 150
+			ai_will_do = {
+				factor = 1.000
+			}
+			on_add = { AST = { set_country_flag = jl_t_chosen } }
+			on_remove = { AST = { clr_country_flag = jl_t_chosen } }
+		}
+	}
+	#MMR
+	AST_sydney_rowell={
+		name=AST_sydney_rowell
+		portraits={
+			army={
+				small="GFX_idea_AST_sydney_rowell" #small="GFX_idea_generic_army_europe_3"
+			}
+		}
+		#MMR was org army chief
+		advisor={
+			slot = high_command
+			idea_token = AST_sydney_rowell
+			allowed = {
+				original_tag = AST
+			}
+			traits = {
+				army_regrouping_1
+			}
+			cost = 50
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+
+	AST_vernon_sturdee={
+		name=AST_vernon_sturdee
+		portraits={
+			army={
+				small="GFX_idea_AST_vernon_sturdee" #small="GFX_idea_generic_army_europe_5"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = AST_vernon_sturdee
+			allowed = {
+				original_tag = AST
+			}
+			traits = {
+				army_chief_offensive_1
+			}
+			cost =  50
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+
+
+	### NAVY CHIEFS ###
+
+	AST_ragnar_colvin={
+		name=AST_ragnar_colvin
+		portraits={
+			army={
+				small="GFX_idea_AST_ragnar_colvin" #small="GFX_idea_generic_navy_europe_2"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = AST_ragnar_colvin
+			allowed = {
+				original_tag = AST
+			}
+			available = { is_in_faction_with = ENG } #MMR
+			traits = {
+				navy_chief_reform_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+
+	AST_jack_crace={
+		name=AST_jack_crace
+		portraits={
+			army={
+				small="GFX_idea_AST_jack_crace" #small="GFX_idea_generic_navy_europe_1"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = AST_jack_crace
+			allowed = {
+				original_tag = AST
+			}
+			available = { NOT = { has_government = communism } } #MMR
+			traits = {
+				navy_chief_decisive_battle_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}		
+	}
+
+
+	### AIR CHIEFS ###
+
+	AST_richard_williams={
+		name=AST_richard_williams
+		portraits={
+			army={
+				small="GFX_idea_AST_richard_williams" #small="GFX_idea_generic_air_europe_1"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = AST_richard_williams
+			allowed = {
+				original_tag = AST
+			}
+			traits = {
+				air_chief_ground_support_2  #MMR
+			}
+			cost = 100 #MMR was 200
+			ai_will_do = {
+				factor = 1.000
+			}
+		}		
+	}
+
+	AST_charles_burnett={
+		name=AST_charles_burnett
+		portraits={
+			army={
+				small="GFX_idea_AST_charles_burnett" #small="GFX_idea_generic_air_europe_3"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = AST_charles_burnett
+			allowed = {
+				original_tag = AST
+			}
+			available = {
+				has_country_leader = { character = MMR_AST_robert_g_menzies }
+				is_in_faction_with = ENG
+			}
+			traits = {
+				air_chief_reform_3  #MMR was reform_2
+			}
+			cost = 100 #MMR was 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+
+
+	### MILITARY HIGH COMMAND ###
+
+	MMR_AST_brudenell_white={
+		name="Brudenell White"
+		portraits={
+			civilian={
+				small="GFX_idea_edward_ellington"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_AST_brudenell_white
+			allowed  = { original_tag = AST }
+			visible = {
+				NOT = { AST = { has_country_flag = MMR_AST_bwhite_survives } }
+			}
+			available = {
+				#has_war = yes
+			}
+			cost = 50
+			traits  = {
+				army_infantry_3
+			}
+		}
+	}
+	MMR_AST_brudenell_white_2={
+		name="Brudenell White"
+		portraits={
+			civilian={
+				small="GFX_idea_edward_ellington"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = MMR_AST_brudenell_white_2
+			allowed  = { original_tag = AST }
+			visible = {
+				AST = { has_country_flag = MMR_AST_bwhite_survives }
+			}
+			available = {
+				#has_war = yes
+			}
+			cost = 200
+			traits  = {
+				army_infantry_3
+			}
+		}
+	}
+	
+	AST_clive_caldwell={
+		name=AST_clive_caldwell
+		portraits={
+			army={
+				small="GFX_idea_generic_air_europe_1"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = AST_clive_caldwell
+			ledger = air
+			allowed = {
+				original_tag = AST
+			}
+			visible = { }
+			available = { }
+			traits = {
+				air_air_superiority_3
+			}
+			cost = 200
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+	
+	
+	AST_john_collins={
+		name=AST_john_collins
+		portraits={
+			army={
+				small="GFX_idea_AST_john_collins" #small="GFX_idea_generic_navy_europe_1"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = AST_john_collins
+			ledger = navy
+			allowed = {
+				original_tag = AST
+			}
+			available = { is_in_faction_with = ENG } #MMR
+			traits = {
+				navy_capital_ship_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}		
+	}
+	#MMR
+	AST_edmund_herring={
+		name=AST_edmund_herring
+		portraits={
+			army={
+				small="GFX_idea_AST_edmund_herring" #small="GFX_idea_generic_army_europe_1"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = AST_edmund_herring
+			ledger = army
+			allowed = {
+				original_tag = AST
+			}
+			visible = {
+				NOT = {
+					OR = {
+						has_government = communism
+						has_country_leader = { character = MMR_AST_william_john_miles }
+						has_country_leader = { character = MMR_AST_p_r_stephensen }
+					}
+				}
+			}
+			available = {
+				NOT = {
+					OR = {
+						has_government = communism
+						has_country_leader = { character = MMR_AST_william_john_miles }
+						has_country_leader = { character = MMR_AST_p_r_stephensen }
+					}
+				}
+			}
+			traits = {
+				army_commando_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+		corps_commander={ #AZR
+			visible = {
+				OR = {
+					has_country_leader = { character = AST_eric_campbell }
+					has_country_leader = { character = MMR_AST_king_edward }
+				}
+			}
+			traits = { career_officer commando mmr_trait_AST_new_guard_loyalist }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	#MMR
+	AST_arthur_drakeford={
+		name=AST_arthur_drakeford
+		portraits={
+			army={
+				small="GFX_idea_AST_arthur_drakeford" #small="GFX_idea_generic_army_europe_4"
+			}
+		}
+		advisor={			
+			slot = high_command
+			idea_token = AST_arthur_drakeford
+			ledger = air
+			allowed = {
+				original_tag = AST
+				has_dlc = "Together for Victory"
+			}
+			visible = { NOT = { has_government = fascism } }
+			available = { NOT = { has_government = fascism } }
+			traits = {
+				air_air_combat_training_2
+			}
+			cost = 100
+		}		
+	}
+	#MMR v
+	AST_arthur_allen={
+		name=AST_arthur_allen
+		portraits={
+			army={
+				small="GFX_idea_AST_arthur_allen" #small="GFX_idea_generic_army_europe_2"
+			}
+		}
+		advisor={		
+			slot = high_command
+			idea_token = AST_arthur_allen
+			ledger = army
+			allowed = {
+				original_tag = AST
+			}
+			traits = {
+				army_entrenchment_3 #MMR was infantry
+			}
+			cost = 200
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+	#MMR ^
+	AST_cederic_hicks={
+		name=AST_cederic_hicks
+		portraits={
+			army={
+				small="GFX_idea_AST_cederic_hicks" #small="GFX_idea_generic_army_europe_4"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = AST_cederic_hicks
+			ledger = army
+			allowed = {
+				original_tag = AST
+				has_dlc = "Together for Victory"
+			}
+			cost = 150.000
+			available = {
+				has_completed_focus = AST_australian_army_catering_corps
+			}
+			traits = {
+				army_logistics_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
+		}		
+	}
+
+
+	### POLITICAL ADVISORS ###
+
+	AST_alexander_hore_ruthven={
+		name=AST_alexander_hore_ruthven
+		portraits={
+			army={
+				small="GFX_idea_AST_alexander_hore_ruthven" #small="GFX_idea_generic_political_advisor_europe_1"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = AST_alexander_hore_ruthven
+			allowed = {
+				original_tag = AST
+			}
+			traits = {
+				quartermaster_general 
+			}
+		}		
+	}
+	AST_robert_g_menzies={
+		name=AST_robert_g_menzies
+		portraits={
+			army={
+				small="GFX_idea_AST_robert_g_menzies" #small="GFX_idea_generic_political_advisor_europe_2"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = AST_robert_g_menzies
+			allowed = {
+				original_tag = AST
+			}
+			traits = {
+				AZR_backroom_backstabber 
+			}
+		}		
+	}
+	AST_ben_chifley={
+		name=AST_ben_chifley
+		portraits={
+			army={
+				small="GFX_idea_AST_ben_chifley" #small="GFX_idea_generic_political_advisor_europe_3"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = AST_ben_chifley
+			allowed = {
+				original_tag = AST
+				has_dlc = "Together for Victory"
+			}
+			cost = 100.000
+			traits = {
+				MMR_AST_labor_financial_expert
+			}
+			available = {
+				has_completed_focus = AST_never_another_gallipoli
+			}
+		}		
+	}
+	AST_herbert_v_evatt={
+		name=AST_herbert_v_evatt
+		portraits={
+			army={
+				small="GFX_idea_AST_herbert_v_evatt" #small="GFX_idea_generic_political_advisor_europe_2"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = AST_herbert_v_evatt
+			allowed = {
+				original_tag = AST
+			}
+			cost = 100.000
+			traits = {
+				silent_workhorse 
+			}
+		}		
+	}
+	AST_jack_beasley={
+		name=AST_jack_beasley
+		portraits={
+			army={
+				small="GFX_idea_AST_jack_beasley" #small="GFX_idea_generic_political_advisor_europe_3"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = AST_jack_beasley
+			allowed = {
+				original_tag = AST
+				has_dlc = "Together for Victory"
+			}
+			traits = {
+				AZR_armaments_organizer 
+			}
+		}		
+	}
+
+	AST_frank_forde={
+		name=AST_frank_forde
+		portraits={
+			army={
+				small="GFX_idea_generic_political_advisor_europe_3"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = AST_frank_forde
+			allowed = {
+				original_tag = AST
+				has_dlc = "Together for Victory"
+			}
+			traits = {
+				compassionate_gentleman 
+			}
+		}
+	}
+
+	AST_generic_fascist_demagogue={
+		name=AST_generic_fascist_demagogue
+		portraits={
+			army={
+				small="GFX_idea_generic_political_advisor_europe_4"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = AST_generic_fascist_demagogue
+			allowed = {
+				original_tag = AST
+			}
+			available = {
+				if = {
+					limit = {
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_support_the_centre_party 
+				}
+				if = {
+					limit = {
+						has_dlc = "Man the Guns"
+					}
+					NOT = {
+						has_autonomy_state = autonomy_supervised_state
+					}
+				}
+			}
+			traits = {
+				fascist_demagogue 
+			}
+			do_effect = {
+				NOT = {
+					has_government = fascism 
+				}
+			}
+			ai_will_do = {
+				factor = 0.000
+			}
+		}		
+	}
+
+	AST_lance_sharkey={
+		name=AST_lance_sharkey
+		portraits={
+			army={
+				small="GFX_idea_AST_lance_sharkey" #small="GFX_idea_generic_communist_revolutionary_western_european_2d"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = AST_lance_sharkey
+			allowed = {
+				original_tag = AST
+			}
+			available = {
+				if = {
+					limit = {
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_empower_the_workers 
+				}
+				if = {
+					limit = {
+						has_dlc = "Man the Guns"
+					}
+					NOT = {
+						has_autonomy_state = autonomy_supervised_state
+					}
+				}
+			}
+			traits = {
+				communist_revolutionary 
+			}
+			do_effect = {
+				NOT = {
+					has_government = communism 
+				}
+			}
+			ai_will_do = {
+				factor = 0.000
+			}
+		}		
+	}
+	
+	AST_arthur_calwell={
+		name=AST_arthur_calwell
+		portraits={
+			army={
+				small="GFX_idea_AST_arthur_calwell" #small="GFX_idea_generic_democratic_reformer_western_european_2d"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = AST_arthur_calwell
+			allowed = {
+				original_tag = AST
+			}
+			available = {
+				if = {
+					limit = {
+						has_dlc = "Together for Victory"
+					}
+					or = {
+						has_completed_focus = AST_protect_the_homeland 
+						has_completed_focus = AST_support_the_policy_of_appeasement 
+					}
+				}
+				if = {
+					limit = {
+						has_dlc = "Man the Guns"
+					}
+					NOT = {
+						has_autonomy_state = autonomy_supervised_state
+					}
+				}
+			}
+			traits = {
+				democratic_reformer 
+			}
+			do_effect = {
+				NOT = {
+					has_government = democratic 
+				}
+			}
+			ai_will_do = {
+				factor = 0.000
+			}
+		}		
+	}
+
+	#Illusive Gentleman auto-generated
+}

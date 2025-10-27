@@ -1,0 +1,183 @@
+MMR_NZL_anti_colonial_agitation_dec = {
+	allowed = {
+		original_tag = NZL
+	}
+	visible = {
+		has_completed_focus = NZL_anti_colonial_agitation
+		is_subject = no
+		#test
+		#always = yes
+	}
+	priority = 3
+	visible_when_empty = no
+	icon = GFX_decision_category_saf_anti_colonialist_crusade
+}
+MMR_NZL_anti_colonial_pressure_dec = {
+	allowed = {
+		original_tag = NZL
+	}
+	visible = {
+		has_completed_focus = NZL_anti_colonial_pressure
+		is_subject = no
+		#test
+		#always = yes
+	}
+	priority = 2
+	visible_when_empty = no
+	icon = GFX_decision_category_generic_democracy
+}
+MMR_NZL_integrate_polynesian_subjects = {
+	allowed = {
+		original_tag = NZL
+	}
+	visible = {
+		#always = yes
+		has_completed_focus = NZL_anti_colonial_refuge
+		has_completed_focus = NZL_claim_polynesia
+		has_completed_focus = NZL_decolonize
+		is_subject = no
+	}
+	priority = 4
+	visible_when_empty = no
+	icon = GFX_decision_category_generic_propaganda
+}
+AZR_AST_hung_election_countdown_c = {
+	allowed = {
+		original_tag = AST
+	}
+	visible = {
+		always = yes
+	}
+	priority = 10
+	visible_when_empty = no
+	icon = GFX_decision_category_generic_democracy
+}
+AZR_AST_no_confidence_dec_c = {
+	allowed = {
+		original_tag = AST
+	}
+	visible = {
+		always = yes
+		#has_country_flag = MMR_AST_ncv_crisis_flag
+		#has_government = democratic
+		NOT = { has_country_flag = MMR_AST_no_conf_vote_thwarted_flag }
+	}
+	priority = 20
+	visible_when_empty = no
+	icon = GFX_decision_category_generic_crisis
+}
+AZR_NZL_wartime_cabinet_countdown_c = {
+	allowed = {
+		original_tag = NZL
+	}
+	visible = {
+		always = yes
+	}
+	priority = 10
+	visible_when_empty = no
+	icon = GFX_decision_category_generic_political_actions
+}
+AZR_NZL_wartime_coalition_countdown_c = {
+	allowed = {
+		original_tag = NZL
+	}
+	visible = {
+		always = yes
+	}
+	priority = 10
+	visible_when_empty = no
+	icon = GFX_decision_category_generic_political_actions
+}
+AZR_AST_alan_vasey_sick_c = {
+	allowed = {
+		original_tag = AST
+	}
+	visible = {
+		always = yes
+	}
+	priority = 6
+	visible_when_empty = no
+	icon = GFX_decision_category_military_operation
+}
+AZR_fascism_on_the_rise = {
+	icon = generic_fascism
+
+	allowed = {
+		OR = {
+			original_tag = AST
+			original_tag = NZL
+		}
+	}
+	priority = 2
+	visible_when_empty = no
+}
+AZR_communism_on_the_rise = {
+	icon = generic_communism
+
+	allowed = {
+		OR = {
+			original_tag = AST
+			original_tag = NZL
+		}
+	}
+	priority = 2
+	visible_when_empty = no
+}
+AZR_NZL_mobilize_the_masses_c = {
+	allowed = {
+		original_tag = NZL
+	}
+	visible = {
+		has_completed_focus = NZL_pacific_communist_alternative
+		has_completed_focus = NZL_rural_infrastructure_investment
+		NOT = {
+			284 = {
+				free_building_slots = {
+					building = industrial_complex
+					size < 1
+					include_locked = yes
+				}
+			}
+			723 = {
+				free_building_slots = {
+					building = industrial_complex
+					size < 1
+					include_locked = yes
+				}
+			}
+		}
+	}
+	priority = 2
+	visible_when_empty = yes
+	icon = GFX_decision_category_generic_communist_revolution
+}
+AZR_NZL_prepare_ast_for_lib_c = {
+	allowed = {
+		original_tag = NZL
+	}
+	visible = {
+		always = yes
+	}
+	priority = 2
+	visible_when_empty = no
+	icon = GFX_decision_category_SOV_propaganda
+}
+AZR_NZL_prepare_ast_for_lib_AST_protect_from_NZL_c = {
+	allowed = {
+		original_tag = AST
+	}
+	visible = {
+		always = yes
+	}
+	priority = 2
+	visible_when_empty = no
+	icon = GFX_decision_category_generic_fortification
+}
+MMR_test_dec_1 = {
+	allowed = {
+		always = yes
+	}
+	visible_when_empty = no
+	priority = 1000
+	icon = GFX_decision_category_generic_formable_nations
+}

@@ -1,0 +1,339 @@
+add_namespace = 1_custom
+
+#1938 Colombian Elections
+country_event = {
+	id = 1_custom.1
+	title = 1_custom.1.t
+	desc = 1_custom.1.d
+
+	picture = 1_1938_colombian_elections-750
+	fire_only_once = yes
+	trigger = {
+		tag = COL
+
+date > 1938.02.01
+
+
+	}
+	mean_time_to_happen = { days = 1 }
+	timeout_days = 14
+	option = {
+		name = 1_custom.1.a
+		trigger = {
+			
+		}
+		ai_chance = { factor = 4 }
+		retire_country_leader = yes
+
+add_stability = 0.05
+
+add_political_power = 25
+
+
+unlock_national_focus = COL_1938_liberal_victory
+
+
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+		name = 1_custom.1.b
+		trigger = {
+			
+		}
+		ai_chance = { factor = 1 }
+		add_popularity = {
+    ideology = democratic
+    popularity = -0.25 }
+
+
+add_popularity = {
+    ideology = neutrality
+    popularity = 0.25 }
+
+
+set_politics = {
+	ruling_party = neutrality
+        elections_allowed = yes
+        last_election = 1938.02.01 
+        election_frequency = 48 }
+
+unlock_national_focus = COL_1938_moderate_victory
+
+
+		hidden_effect = {
+			
+		}
+	}
+}
+
+#The 1942 Colombian Elections
+country_event = {
+	id = 1_custom.2
+	title = 1_custom.2.t
+	desc = 1_custom.2.d
+
+	picture = 1_the_1942_colombian_elections-750
+	fire_only_once = yes
+	trigger = {
+		date > 1942.02.01
+
+
+tag = COL
+
+
+	}
+	mean_time_to_happen = { days = 1 }
+	timeout_days = 14
+	option = {
+		name = 1_custom.2.a
+		trigger = {
+			has_government = neutrality
+
+
+		}
+		ai_chance = { factor = 1 }
+		add_popularity = {
+    ideology = democratic 
+    popularity = 0.05 }
+
+
+add_political_power = 50
+
+set_politics = {
+	ruling_party = democratic
+        elections_allowed = yes
+        last_election = 1942.02.01
+        election_frequency = 48 } 
+retire_country_leader = yes
+
+
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+		name = 1_custom.2.b
+		trigger = {
+			has_government = neutrality
+
+
+		}
+		ai_chance = { factor = 1 }
+		add_popularity = {
+    ideology = neutrality
+    popularity = 0.05 }
+
+
+add_war_support = 0.025
+
+retire_country_leader = yes
+
+
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+		name = 1_custom.2.c
+		trigger = {
+			has_government = democratic
+
+
+		}
+		ai_chance = { factor = 1 }
+		add_popularity = {
+    ideology = democratic
+    popularity = 0.05 }
+
+
+add_popularity = {
+    ideology = neutrality
+    popularity = 0.05 }
+
+
+add_political_power = -50
+
+add_stability = 0.025
+
+
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+		name = 1_custom.2.d
+		trigger = {
+			has_government = democratic
+
+
+		}
+		ai_chance = { factor = 1 }
+		add_popularity = {
+    ideology = democratic
+    popularity = -0.25 }
+
+
+add_popularity = {
+    ideology = neutrality
+    popularity = 0.25 }
+
+
+add_stability = -0.05
+
+add_political_power = 50
+
+
+		hidden_effect = {
+			
+		}
+	}
+}
+
+#The 1941 Venezuelan Election
+country_event = {
+	id = 1_custom.3
+	title = 1_custom.3.t
+	desc = 1_custom.3.d
+
+	picture = 1_the_1941_venezuelan_election-750
+	trigger = {
+		tag = VEN
+
+date > 1941.01.01
+
+
+VEN = {
+	has_completed_focus = VEN_accept_constitutional_guarantees
+
+
+}
+
+	}
+	mean_time_to_happen = { days = 1 }
+	timeout_days = 14
+	option = {
+		name = 1_custom.3.a
+		trigger = {
+			
+		}
+		ai_chance = { factor = 1 }
+		set_politics = {
+	ruling_party = democratic
+        elections_allowed = yes
+        last_election = 1941.01.01 }
+
+		hidden_effect = {
+			
+		}
+	}
+}
+
+#Haitian Immigrant Crisis
+country_event = {
+	id = 1_custom.4
+	title = 1_custom.4.t
+	desc = 1_custom.4.d
+
+	picture = 1_haitian_immigrant_crisis-694
+	fire_only_once = yes
+	mean_time_to_happen = { days = 1 }
+	timeout_days = 14
+	option = {
+		name = 1_custom.4.a
+		trigger = {
+			
+		}
+		ai_chance = { factor = 1 }
+		add_stability = -0.1
+
+add_manpower = 37150
+
+
+country_event = {
+    id = 1_custom.5
+    days = 1
+    random = 14
+    random_days = 14
+}
+
+
+
+		hidden_effect = {
+			
+		}
+	}
+}
+
+#El Corte
+country_event = {
+	id = 1_custom.5
+	title = 1_custom.5.t
+	desc = 1_custom.5.d
+
+	picture = 1_el_corte-722
+	fire_only_once = yes
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 1 }
+	timeout_days = 14
+	option = {
+		name = 1_custom.5.a
+		trigger = {
+			
+		}
+		ai_chance = { factor = 1 }
+		add_popularity = {
+    ideology = fascism
+    popularity = 0.05 }
+
+
+add_political_power = 200
+
+add_manpower = -32575
+
+
+HAI = {
+	country_event = {
+    id = 1_custom.6
+    days = 1
+    random = 14
+    random_days = 14
+}
+
+
+
+}
+
+		hidden_effect = {
+			
+		}
+	}
+}
+
+#The Parsley Massacre
+country_event = {
+	id = 1_custom.6
+	title = 1_custom.6.t
+	desc = 1_custom.6.d
+
+	picture = 1_the_parsley_massacre-777
+	is_triggered_only = yes
+	mean_time_to_happen = { days = 1 }
+	timeout_days = 14
+	option = {
+		name = 1_custom.6.a
+		trigger = {
+			
+		}
+		ai_chance = { factor = 1 }
+		add_political_power = -150
+
+	add_stability = -0.05
+
+	add_war_support = -0.05
+		hidden_effect = {
+			
+		}
+	}
+}

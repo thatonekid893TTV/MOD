@@ -1,0 +1,283 @@
+leader_traits = {
+	MMR_NZL_pacifist_financial_expert = {
+		random = no
+		sprite = 13
+		consumer_goods_factor = -0.20
+		war_support_factor = -0.05
+		defensive_war_stability_factor = 0.15
+	}
+	MMR_NZL_com_trade_unionist = {
+		random = no
+		sprite = 10
+		min_export = -0.1
+		communism_drift = 0.03
+		stability_factor = 0.05
+		production_speed_infrastructure_factor = 0.05
+		production_speed_industrial_complex_factor = 0.05
+		production_speed_rail_way_factor = 0.05
+	}
+	MMR_NZL_staunch_stalinist = {
+		random = no
+		sprite = 13
+		industrial_capacity_factory = 0.1
+		drift_defence_factor = 0.15
+	}
+	MMR_NZL_feminist_educator = {
+		random = no
+		sprite = 13
+		stability_factor = -0.05
+		research_speed_factor = 0.07
+		political_power_factor = 0.05
+		consumer_goods_factor = 0.10
+	}
+	MMR_NZL_agrarian_unionist = {
+		random = no
+		sprite = 13
+		party_popularity_stability_factor = 0.1
+		political_power_factor = 0.05
+		stability_factor = 0.05
+		production_lack_of_resource_penalty_factor = -0.1
+	}
+	MMR_NZL_communist_editor = {
+		sprite = 13
+		random = no
+		political_power_factor = 0.05
+		party_popularity_stability_factor = 0.15
+		communism_drift = 0.02
+	}
+	MMR_NZL_veteran_socialist_politician = {
+		sprite = 13
+		random = no
+		communism_drift = 0.08
+		stability_factor = -0.05
+		trade_laws_cost_factor = -0.10
+		political_advisor_cost_factor = -0.10
+		mobilization_laws_cost_factor = -0.15
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 0
+				is_subject = yes
+				NOT = { is_subject_of = ENG }
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = neutrality
+					has_government = fascism
+				}
+			}
+		}
+	}
+	MMR_NZL_fascist_doctor = {
+		sprite = 13
+		random = no
+		political_power_factor = 0.05
+		research_speed_factor = 0.05
+		war_support_factor = 0.05
+	}
+	MMR_NZL_white_supremecist = {
+		sprite = 13
+		random = no
+		stability_factor = -0.05
+		war_support_factor = 0.10
+		conscription = 0.02
+		consumer_goods_factor = 0.15
+	}
+	MMR_NZL_radical_fascist_journalist = {
+		sprite = 13
+		random = no
+		fascism_drift = 0.02
+		political_power_factor = 0.1
+		stability_factor = -0.05
+	}
+	MMR_NZL_liberal_conservative_agrarianist = {
+		sprite = 13
+		random = no
+		political_power_factor = 0.05
+		party_popularity_stability_factor = 0.1
+		consumer_goods_factor = 0.10
+		production_speed_buildings_factor = 0.10
+	}
+	MMR_NZL_radical_anti_socialist = {
+		sprite = 13
+		random = no
+		stability_factor = -0.05
+		fascism_drift = 0.08
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 0
+				is_subject = yes
+				NOT = { is_subject_of = ENG }
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = neutrality
+					has_government = communism
+				}
+			}
+		}
+	}
+	MMR_NZL_social_democrat_politician = {
+		random = no
+		sprite = 13
+		political_power_factor = 0.10
+		stability_factor = 0.05
+		consumer_goods_factor = 0.05
+	}
+	MMR_NZL_shipping_magnate = {
+		random = no
+		sprite = 10
+		production_speed_industrial_complex_factor = 0.05
+		production_speed_infrastructure_factor = 0.05
+		production_speed_rail_way_factor = 0.05
+		production_speed_supply_node_factor = 0.05
+		production_speed_synthetic_refinery_factor = 0.05
+		trade_opinion_factor = 0.25
+		democratic_drift = 0.02
+	}
+	MMR_NZL_railway_engineer = {
+		random = no
+		sprite = 10
+		production_speed_rail_way_factor = 0.20
+		production_speed_buildings_factor = -0.05
+	}
+	MMR_NZL_rural_electrification_expert = {
+		random = no
+		sprite = 10
+		production_speed_infrastructure_factor = 0.15
+		global_building_slots_factor = 0.1
+		consumer_goods_factor = -0.05
+	}
+	MMR_NZL_maori_army_historian = {
+		sprite = 18
+		command_cap_increase = 10
+		conscription = 0.02
+		war_support_factor = 0.05
+		ai_will_do = {
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	MMR_NZL_feminist_pacifist = {
+		random = no
+		stability_factor = -0.05
+		war_support_factor = -0.05
+	}
+	MMR_NZL_reluctant_fascist = {
+		random = no
+		political_power_factor = -0.1
+		fascism_acceptance = -15
+		fascism_drift = 0.01
+		democratic_drift = 0.01
+		neutrality_drift = 0.01
+		party_popularity_stability_factor = 0.05
+	}
+	MMR_NZL_founder_of_the_republic = {
+		random = no
+		party_popularity_stability_factor = 0.25
+	}
+	MMR_NZL_popular_reformer = {
+		random = no
+		sprite = 13
+		democratic_drift = 0.10
+		party_popularity_stability_factor = 0.1
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				add = 100
+				has_completed_focus = NZL_constitution_amendment_act
+			}
+		}
+	}
+	AZR_NZL_big_sister = {
+		random = no
+		party_popularity_stability_factor = 0.1
+		communism_drift = 0.05
+		political_power_factor = 0.1
+	}
+	AZR_NZL_big_brother = {
+		random = no
+		party_popularity_stability_factor = 0.1
+		communism_drift = 0.05
+		political_power_factor = 0.1
+	}
+	AZR_fatherly_socialist = {
+		stability_factor = 0.1
+		political_power_factor = 0.05
+	}
+	AZR_NZL_phoenix_foundry = {
+		random = no
+	}
+	AZR_NZL_new_zealand_forest_products = {
+		random = no
+	}
+	AZR_NZL_soc_seaman = {
+		random = no
+		sprite = 3
+		experience_gain_navy = 0.2
+		war_support_factor = 0.05
+		naval_accidents_chance = -0.1
+		naval_enemy_fleet_size_ratio_penalty_factor = 0.1
+		navy_org_factor = 0.1
+	}
+	AZR_NZL_veteran_industrialist = {
+		random = no
+		sprite = 13
+		political_power_factor = 0.05
+		war_support_factor = 0.05
+		trade_opinion_factor = 0.10
+		party_popularity_stability_factor = 0.05
+		production_speed_buildings_factor = 0.05
+		mobilization_laws_cost_factor = -0.15
+	}
+	AZR_NZL_honest_george = {
+		random = no
+		sprite = 13
+		stability_factor = 0.05
+		political_power_factor = 0.1
+	}
+	AZR_NZL_incompetent_economist = {
+		random = no
+		sprite = 13
+		consumer_goods_factor = 0.1
+		production_speed_buildings_factor = -0.05
+	}
+	AZR_NZL_blamed_for_the_great_depression = {
+		sprite = 13
+		random = no
+		stability_factor = -0.1
+	}
+	AZR_NZL_unpopular_compromise = {
+		sprite = 13
+		random = no
+		political_power_factor = -0.05
+	}
+	AZR_NZL_independent_nationalist = {
+		sprite = 13
+		random = no
+		stability_factor = 0.05
+		war_support_factor = 0.025
+		political_power_factor = -0.15
+		consumer_goods_factor = -0.05
+		autonomy_gain = 0.25
+		autonomy_gain_trade_factor = 0.25
+		autonomy_gain_warscore_factor = 0.25
+	}
+}

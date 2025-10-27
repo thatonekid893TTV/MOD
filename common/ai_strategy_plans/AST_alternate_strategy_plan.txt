@@ -1,0 +1,218 @@
+AST_alternate_democratic = {
+	name = "Australia does it alone!"
+	desc = ""
+
+	allowed = {
+		original_tag = AST
+		has_dlc = "Together for Victory"
+	}
+	enable = {
+		OR = {
+			has_country_flag = AZR_AST_AI_RANDOM_DEMOCRATIC_ALTERNATE 
+			has_game_rule = {
+				rule = AST_ai_behavior
+				option = DEMOCRATIC_ALTERNATE
+			}
+		}
+	}
+	abort = {
+		
+	}
+
+	ai_national_focuses = {
+		#1936 F
+		AST_standard_gauge_railway						#1930s
+		AST_industries_assistance_corporation			#1941
+		AST_western_australian_government_railways		#1937
+		AST_south_australian_housing_trust				#1936
+		AST_additional_militia_training					#1938 #35
+		AST_aboriginal_new_deal							#1938 #35
+		#1937 F
+		AST_never_another_gallipoli
+		AST_protect_the_homeland
+		AST_sever_ties_with_uk
+		AST_vote_of_no_confidence						#35
+	}
+
+	research = {
+		industry = 20.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+		dd_tech = 5
+	}
+
+	ideas = {
+		free_trade = 100
+	}
+
+	traits = {
+		captain_of_industry = 5
+		war_industrialist = 5
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+
+}
+
+AST_alternate_fascist = {
+	name = "Australia goes fascist"
+	desc = ""
+
+	allowed = {
+		original_tag = AST
+		has_dlc = "Together for Victory"
+	}
+	enable = {
+		OR = {
+			has_country_flag = AZR_AST_AI_RANDOM_FASCIST 
+			has_game_rule = {
+				rule = AST_ai_behavior
+				option = FASCIST
+			}
+		}
+	}
+	abort = {
+		
+	}
+
+	ai_national_focuses = {
+		#1936 F
+		AST_standard_gauge_railway						#1930s
+		AST_industries_assistance_corporation			#1941
+		AST_western_australian_government_railways		#1937
+		AST_south_australian_housing_trust				#1936
+		AST_additional_militia_training					#1938 #35
+		AST_aboriginal_new_deal							#1938 #35
+		#1937 F
+		AST_never_another_gallipoli
+		AST_support_the_centre_party
+		AST_protect_the_south_west_pacific
+		AST_royal_australian_artillery_azr
+		AST_department_of_supply_and_development
+		#1938 F
+		AST_port_pirie_railway_junction					 #35
+		AST_expand_lithgow_small_arms_factory
+		AST_cockatoo_island_shipyards					 #35
+		AST_kangaroo_point_shipyards					 #35
+	}
+
+	research = {
+		industry = 20.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+		dd_tech = 5
+	}
+
+	ideas = {
+		
+	}
+
+	traits = {
+		captain_of_industry = 5
+		war_industrialist = 5
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+
+}
+
+AST_alternate_communist = {
+	name = "Australia goes communist"
+	desc = ""
+
+	allowed = {
+		original_tag = AST
+		has_dlc = "Together for Victory"
+	}
+	enable = {
+		OR = {
+			has_country_flag = AZR_AST_AI_RANDOM_COMMUNIST 
+			has_game_rule = {
+				rule = AST_ai_behavior
+				option = COMMUNIST
+			}
+		}
+	}
+	abort = {
+
+	}
+
+	ai_national_focuses = {
+		#1936 F
+		AST_standard_gauge_railway						#1930s
+		AST_industries_assistance_corporation			#1941
+		AST_western_australian_government_railways		#1937
+		AST_south_australian_housing_trust				#1936
+		AST_additional_militia_training					#1938 #35
+		AST_aboriginal_new_deal							#1938 #35
+		#1937 F
+		AST_never_another_gallipoli
+		AST_empower_the_workers
+		AST_port_pirie_railway_junction					 #35
+		AST_expand_lithgow_small_arms_factory
+		AST_royal_australian_artillery_azr
+		AST_department_of_supply_and_development
+		#1938 F +35			
+		AST_purge_the_new_guard	
+		AST_cockatoo_island_shipyards					 #35
+		AST_kangaroo_point_shipyards					 #35
+		AST_expand_the_raaf
+		AST_delegation_to_china							 #35
+		AST_commitment_to_the_cause
+	}
+
+	research = {
+		industry = 20.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+		dd_tech = 5
+	}
+
+	ideas = {
+		
+	}
+
+	traits = {
+		captain_of_industry = 5
+		war_industrialist = 5
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+
+}

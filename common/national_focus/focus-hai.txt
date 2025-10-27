@@ -1,0 +1,1137 @@
+focus_tree = {
+	id = focus-hai
+	continuous_focus_position = { x = 150 y = 1440 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = HAI
+		}
+	}
+	#Caribbean Politics
+	focus = {
+		id = HAI_caribbean_politics
+		icon = GFX_goal_generic_neutrality_focus
+		x = 1
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			add_stability = -0.025
+			
+			add_political_power = 45
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.15 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.15 }
+			
+			
+			
+		}
+	}
+
+	#Enforce the New Constitution
+	focus = {
+		id = HAI_enforce_the_new_constitution
+		icon = GFX_goal_generic_forceful_treaty
+		x = 1
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_caribbean_politics  }
+		completion_reward = {
+			add_stability = -0.05
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Dissolve the Legislature
+	focus = {
+		id = HAI_dissolve_the_legislature
+		icon = GFX_HAI_dissolve_the_legislature-646365
+		x = 0
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_enforce_the_new_constitution  }
+		completion_reward = {
+			add_stability = -0.05
+			
+			add_political_power = 50
+			
+			
+			add_popularity = {
+			    ideology = democratic
+			    popularity = -0.01 }
+			
+			
+			
+		}
+	}
+
+	#Shuffle Judges
+	focus = {
+		id = HAI_shuffle_judges
+		icon = GFX_focus_usa_voter_registration_act
+		x = 2
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_enforce_the_new_constitution  }
+		completion_reward = {
+			add_stability = -0.05
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Appoint Senators
+	focus = {
+		id = HAI_appoint_senators
+		icon = GFX_HAI_appoint_senators-646099
+		x = 4
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_enforce_the_new_constitution  }
+		completion_reward = {
+			add_stability = -0.05
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Ban the Communist Party
+	focus = {
+		id = HAI_ban_the_communist_party
+		icon = GFX_HAI_ban_the_communist_party-645539
+		x = 1
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_dissolve_the_legislature  } prerequisite = { focus = HAI_shuffle_judges  } prerequisite = { focus = HAI_appoint_senators  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = -1.0 }
+			
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.04 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.06 }
+			
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Silence Opposition Parties
+	focus = {
+		id = HAI_silence_opposition_parties
+		icon = GFX_focus_rom_parties_end
+		x = 3
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_dissolve_the_legislature  } prerequisite = { focus = HAI_shuffle_judges  } prerequisite = { focus = HAI_appoint_senators  }
+		completion_reward = {
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#Purge the Military
+	focus = {
+		id = HAI_purge_the_military
+		icon = GFX_HAI_purge_the_military-262098
+		x = 2
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HAI_ban_the_communist_party  } prerequisite = { focus = HAI_silence_opposition_parties  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = -0.1 }
+			
+			
+			add_manpower = -5000
+			
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Worker's Populism
+	focus = {
+		id = HAI_workerspopulism
+		icon = GFX_HAI_workerspopulism-645969
+		x = 9
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_armed_rebellion  }
+		mutually_exclusive = { focus = HAI_representative_democracy  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+			add_stability = 0.05
+			
+			add_war_support = 0.05
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			retire_country_leader = yes
+			
+			set_politics = {
+				ruling_party = communism
+			        elections_allowed = yes
+			        last_election = 1936.01.01 }
+			
+		}
+	}
+
+	#Begin the Path to Rig the Election
+	focus = {
+		id = HAI_begin_the_path_to_rig_the_election
+		icon = GFX_focus_generic_support_the_left_right
+		x = 2
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_purge_the_military  }
+		mutually_exclusive = { focus = HAI_remember_the_slave_rebellions  }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.08 }
+			
+			
+			add_stability = -0.08
+			
+			add_political_power = 56
+			
+			
+		}
+	}
+
+	#Ensure Congressional Support
+	focus = {
+		id = HAI_ensure_congressional_support
+		icon = GFX_HAI_ensure_congressional_support-645672
+		x = 0
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_begin_the_path_to_rig_the_election  }
+		available = {
+			has_political_power > 70
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			add_political_power = -70
+			
+			
+		}
+	}
+
+	#Unsure Judges Loyalty
+	focus = {
+		id = HAI_unsure_judges_loyalty
+		icon = GFX_HAI_unsure_judges_loyalty-645492
+		x = 2
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_begin_the_path_to_rig_the_election  }
+		available = {
+			has_political_power > 70
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			add_political_power = -70
+			
+			
+		}
+	}
+
+	#Ensure Military Loyalty
+	focus = {
+		id = HAI_ensure_military_loyalty
+		icon = GFX_HAI_ensure_military_loyalty-262024
+		x = 4
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HAI_begin_the_path_to_rig_the_election  }
+		available = {
+			has_political_power > 70
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_war_support = 0.05
+			
+			add_command_power = 50
+			
+			add_political_power = -70
+			
+			
+		}
+	}
+
+	#Vincent's Successor
+	focus = {
+		id = HAI_vincentssuccessor
+		icon = GFX_HAI_vincentssuccessor-645493
+		x = 2
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_ensure_congressional_support  } prerequisite = { focus = HAI_unsure_judges_loyalty  } prerequisite = { focus = HAI_ensure_military_loyalty  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			set_politics = {
+				ruling_party = neutrality
+			        elections_allowed = no
+			        last_election = 1937.06.06 } 
+			
+			retire_country_leader = yes
+			
+			add_political_power = -105
+			
+			
+		}
+	}
+
+	#Establish Self as Head of Military Guard
+	focus = {
+		id = HAI_establish_self_as_head_of_military_guard
+		icon = GFX_HAI_establish_self_as_head_of_military_guard-645838
+		x = 4
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HAI_ensure_military_loyalty  }
+		available = {
+			NOT = {
+				has_government = democratic
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_manpower = 19850
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Suspend the Constitution
+	focus = {
+		id = HAI_suspend_the_constitution
+		icon = GFX_HAI_suspend_the_constitution-262036
+		x = 0
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HAI_ensure_congressional_support  }
+		available = {
+			has_war = yes
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = -0.1 }
+			
+			
+			add_stability = -0.1
+			
+			add_war_support = 0.15
+			
+			
+		}
+	}
+
+	#Suppress Political Opposition
+	focus = {
+		id = HAI_suppress_political_opposition
+		icon = GFX_HAI_suppress_political_opposition-646025
+		x = 0
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = HAI_vincentssuccessor  } prerequisite = { focus = HAI_suspend_the_constitution  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = -0.05 }
+			
+			
+			add_popularity = {
+			    ideology = democratic
+			    popularity = -0.05 }
+			
+			
+			add_stability = -0.05
+			
+			add_war_support = 0.05
+			
+			add_political_power = 70
+			
+			
+		}
+	}
+
+	#Join the Fight
+	focus = {
+		id = HAI_join_the_fight
+		icon = GFX_HAI_join_the_fight-645596
+		x = 2
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HAI_vincentssuccessor  focus = HAI_armed_rebellion  }
+		mutually_exclusive = { focus = HAI_remainneutralsellweapons  }
+		available = {
+			USA = {
+				is_in_faction_with = ENG
+			
+				has_defensive_war = yes
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			ENG = {
+				has_capitulated = no
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			ENG = {
+				country_event = {
+					id = generic.2
+				}
+			
+			
+			}
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Remain Neutral, Sell Weapons
+	focus = {
+		id = HAI_remainneutralsellweapons
+		icon = GFX_HAI_remainneutralsellweapons-645854
+		x = 4
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HAI_vincentssuccessor  focus = HAI_armed_rebellion  }
+		mutually_exclusive = { focus = HAI_join_the_fight  }
+		completion_reward = {
+			USA = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = HAI
+			}
+			
+			
+			
+			}
+			ENG = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = HAI
+			}
+			
+			
+			
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = HAI
+			}
+			
+			
+			
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = HAI
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 4 }
+			
+			
+			
+			
+		}
+	}
+
+	#Rubber Extract
+	focus = {
+		id = HAI_rubber_extract
+		icon = GFX_focus_generic_rubber
+		x = 3
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HAI_caribbean_politics  }
+		completion_reward = {
+			318 = {
+				add_resource = {
+			    type = rubber
+			    amount = 3
+			}
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#Remember the Slave Rebellions
+	focus = {
+		id = HAI_remember_the_slave_rebellions
+		icon = GFX_HAI_remember_the_slave_rebellions-88
+		x = 8
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_purge_the_military  }
+		mutually_exclusive = { focus = HAI_begin_the_path_to_rig_the_election  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.05 }
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+			add_popularity = {
+			    ideology = democratic
+			    popularity = -0.05 }
+			
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Street Riots
+	focus = {
+		id = HAI_street_riots
+		icon = GFX_HAI_street_riots-262072
+		x = 6
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_remember_the_slave_rebellions  }
+		available = {
+			NOT = {
+				has_completed_focus = HAI_armed_rebellion
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			add_stability = -0.05
+			
+			add_war_support = 0.05
+			
+			add_manpower = 9405
+			
+			
+		}
+	}
+
+	#Bribe Politicians
+	focus = {
+		id = HAI_bribe_politicians
+		icon = GFX_HAI_bribe_politicians-645542
+		x = 8
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_remember_the_slave_rebellions  }
+		mutually_exclusive = { focus = HAI_resort_to_looting  }
+		available = {
+			NOT = {
+				has_completed_focus = HAI_armed_rebellion
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			318 = {
+				remove_building = {
+			    type = industrial_complex
+			    level = 1
+			}
+			
+			
+			
+			}
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+			add_stability = -0.05
+			
+			add_war_support = 0.05
+			
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#Resort to Looting
+	focus = {
+		id = HAI_resort_to_looting
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		x = 10
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HAI_remember_the_slave_rebellions  }
+		mutually_exclusive = { focus = HAI_bribe_politicians  }
+		available = {
+			NOT = {
+				has_completed_focus = HAI_armed_rebellion
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			add_stability = -0.12
+			
+			add_war_support = -0.06
+			
+			add_political_power = -100
+			
+			
+		}
+	}
+
+	#Armed Rebellion
+	focus = {
+		id = HAI_armed_rebellion
+		icon = GFX_HAI_armed_rebellion-646001
+		x = 8
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = HAI_resort_to_looting  focus = HAI_bribe_politicians  focus = HAI_street_riots  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+			add_stability = -0.1
+			
+			add_war_support = 0.05
+			
+			retire_country_leader = yes
+			
+			
+		}
+	}
+
+	#People's Militias
+	focus = {
+		id = HAI_peoplesmilitias
+		icon = GFX_HAI_peoplesmilitias-646021
+		x = 10
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HAI_resort_to_looting  focus = HAI_bribe_politicians  focus = HAI_street_riots  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			add_manpower = 19450
+			
+			
+		}
+	}
+
+	#Restore Constitutional Integrity
+	focus = {
+		id = HAI_restore_constitutional_integrity
+		icon = GFX_HAI_restore_constitutional_integrity-262055
+		x = 6
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HAI_street_riots  focus = HAI_resort_to_looting  focus = HAI_bribe_politicians  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.06 }
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.03 }
+			
+			
+			add_stability = 0.05
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Representative Democracy
+	focus = {
+		id = HAI_representative_democracy
+		icon = GFX_HAI_representative_democracy-427
+		x = 7
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HAI_armed_rebellion  }
+		mutually_exclusive = { focus = HAI_workerspopulism  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.1 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = -0.1 }
+			
+			
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.1
+			
+			
+			retire_country_leader = yes
+			
+			set_politics = {
+				ruling_party = democratic
+			        elections_allowed = yes
+			        last_election = 1936.01.01 }
+			
+		}
+	}
+
+	#Overthrow Trujillo
+	focus = {
+		id = HAI_overthrow_trujillo
+		icon = GFX_HAI_overthrow_trujillo-645990
+		x = 7
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HAI_workerspopulism  focus = HAI_representative_democracy  }
+		mutually_exclusive = { focus = HAI_unite_hispanola  }
+		available = {
+			DOM = {
+				has_government = fascism
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = DOM
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = DOM
+	}
+
+	#Unite Hispanola
+	focus = {
+		id = HAI_unite_hispanola
+		icon = GFX_HAI_unite_hispanola-646335
+		x = 9
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HAI_workerspopulism  focus = HAI_representative_democracy  }
+		available = {
+			DOM = {
+				NOT = {
+						has_government = fascism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = DOM
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = DOM
+	}
+
+	#Armée d'Haiti
+	focus = {
+		id = HAI_armeedhaiti
+		icon = GFX_HAI_armeedhaiti-645650
+		x = 6
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Corps d'Aviation des Forces Armées d’Haïti
+	focus = {
+		id = HAI_corpsdaviationdesforcesarmeesdhaiti
+		icon = GFX_focus_generic_air_defense
+		x = 8
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 4500
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+	#Caribbean Shipping
+	focus = {
+		id = HAI_caribbean_shipping
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 7
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HAI_armeedhaiti  } prerequisite = { focus = HAI_corpsdaviationdesforcesarmeesdhaiti  }
+		completion_reward = {
+			navy_experience = 10
+			
+			add_equipment_to_stockpile = {
+			    type = convoy
+			    amount = 25
+			    producer = HAI
+			}
+			
+			
+			
+		}
+	}
+
+	#Restack Army
+	focus = {
+		id = HAI_restack_army
+		icon = GFX_focus_chi_army_reform
+		x = 6
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HAI_armeedhaiti  }
+		completion_reward = {
+			add_manpower = 5000
+			
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Experimental Detection
+	focus = {
+		id = HAI_experimental_detection
+		icon = GFX_goal_generic_radar
+		x = 8
+		y = 2
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HAI_corpsdaviationdesforcesarmeesdhaiti  }
+		completion_reward = {
+			add_tech_bonus = {
+			    bonus = 0.5
+			    uses = 1
+			    category = radar_tech
+			}
+			
+			
+			
+		}
+	}
+
+	#Production Increase
+	focus = {
+		id = HAI_production_increase
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 7
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HAI_experimental_detection  focus = HAI_restack_army  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Research Funding
+	focus = {
+		id = HAI_research_funding
+		icon = GFX_focus_research
+		x = 7
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HAI_production_increase  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			add_political_power = -100
+			
+			
+		}
+	}
+
+}

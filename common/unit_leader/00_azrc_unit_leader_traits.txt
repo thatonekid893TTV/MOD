@@ -1,0 +1,61 @@
+leader_traits = {
+	mmr_trait_AST_new_guard_loyalist = {
+
+		type = all
+		trait_type = personality_trait
+
+		allowed = {
+			FROM = { original_tag = AST }
+		}
+
+		new_commander_weight = {
+			factor = 0
+		}
+	}
+	
+	mmr_trait_AST_NZL_desert_acclimatization = {
+
+		type = land
+		trait_type = personality_trait
+
+		allowed = {
+			FROM = {
+				OR = {
+					original_tag = AST
+					original_tag = NZL
+				}
+			}
+		}
+		
+		modifier = {
+			trait_desert_fox_xp_gain_factor = 0.25
+		}
+
+		new_commander_weight = {
+			factor = 0
+		}
+	}
+	
+	mmr_trait_AST_NZL_mountain_acclimatization = {
+
+		type = land
+		trait_type = personality_trait
+
+		allowed = {
+			FROM = {
+				OR = {
+					original_tag = AST
+					original_tag = NZL
+				}
+			}
+		}
+		
+		modifier = {
+			trait_mountaineer_xp_gain_factor = 0.25
+		}
+
+		new_commander_weight = {
+			factor = 0
+		}
+	}
+}

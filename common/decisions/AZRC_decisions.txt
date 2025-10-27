@@ -1,0 +1,7630 @@
+MMR_NZL_anti_colonial_agitation_dec = {
+	#Anti-DEI Agitation
+	MMR_NZL_anti_colonial_agitation_dec_d_1 = {
+		priority = 10
+		visible = {
+			INS = {
+				is_subject = yes
+				NOT = { has_government = communism }
+			}
+			NOT = {
+				OR = {
+					has_subject = INS
+					any_country = {
+						has_subject = INS
+						is_ally_with = ROOT
+					}
+				}
+			}
+		}
+		available = {
+			INS = { is_subject = yes }
+			hidden_trigger = {
+				command_power > 10
+				has_equipment = {
+					infantry_equipment > 750
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 10
+			has_equipment = {
+				infantry_equipment > 750
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = INS
+				is_core_of = INS
+			}
+		}
+		days_re_enable = 180
+		custom_cost_text = MMR_NZL_anti_colonial_agitation_dec_tt
+		icon = GFX_decision_generic_civil_support
+		complete_effect = {
+			INS = {
+				IF = {
+					limit = { NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea } }
+					add_timed_idea = {
+						idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea
+						days = 180
+					}
+					custom_effect_tooltip = generic_skip_one_line_tt
+					IF = {
+						limit = { NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack } }
+						add_ideas = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack
+						ELSE_IF = {
+							limit = { NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack_2 } }
+							add_ideas = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack_2
+						}
+					}
+				}
+			}
+			every_state = {
+				limit = {
+					is_controlled_by = INS
+					NOT = { is_core_of = INS }
+					has_resistance = yes
+					#has_active_resistance = yes
+					OR = {
+						AND = {
+							is_coastal = yes
+							is_on_continent = australia
+						}
+						AND = {
+							is_on_continent = asia
+							OR = {
+								is_one_state_island = yes
+								is_island_state = yes
+							}
+						}
+					}
+					NOT = {
+						OR = {
+							state = 422
+							state = 281
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = MMR_NZL_anti_colonial_agitation_dec_dm
+					days = 90
+				}
+				IF = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 } } }
+					add_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 }
+				}
+				IF = {
+					limit = { infrastructure > 0 }
+					random = {
+						chance = 10
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+					}
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			random_country = {
+					limit = { has_subject = INS }
+					country_event = { id = mmr_nzl.2 hours = 6 }
+				}
+			hidden_effect = {
+				add_command_power = -10
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -750
+				}
+				set_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_1_INS_gf
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-AST Agitation
+	MMR_NZL_anti_colonial_agitation_dec_d_2 = {
+		priority = 9
+		visible = {
+			AST = {
+				NOT = {
+					OR = {
+						has_government = communism
+						is_in_faction_with = NZL
+					}
+				}
+			}
+		}
+		available = {
+			hidden_trigger = {
+				command_power > 10
+				has_equipment = {
+					infantry_equipment > 750
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 10
+			has_equipment = {
+				infantry_equipment > 750
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_controlled_by = AST
+				NOT = { is_core_of = AST }
+				has_resistance = yes
+				#has_active_resistance = yes
+				is_coastal = yes
+				is_on_continent = australia
+			}
+		}
+		days_re_enable = 90
+		custom_cost_text = MMR_NZL_anti_colonial_agitation_dec_tt
+		icon = GFX_decision_generic_civil_support
+		complete_effect = {
+			every_state = {
+				limit = {
+					is_controlled_by = AST
+					NOT = { is_core_of = AST }
+					has_resistance = yes
+					#has_active_resistance = yes
+					OR = {
+						AND = {
+							is_coastal = yes
+							is_on_continent = australia
+						}
+						AND = {
+							is_on_continent = asia
+							OR = {
+								is_one_state_island = yes
+								is_island_state = yes
+							}
+						}
+					}
+					NOT = {
+						OR = {
+							state = 422
+							state = 281
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = MMR_NZL_anti_colonial_agitation_dec_dm
+					days = 90
+				}
+				IF = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 } } }
+					add_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 }
+				}
+				IF = {
+					limit = { infrastructure > 0 }
+					random = {
+						chance = 10
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				add_command_power = -10
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -250
+				}
+				set_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_2_AST_gf
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-MAL Agitation
+	MMR_NZL_anti_colonial_agitation_dec_d_3 = {
+		priority = 8
+		visible = {
+			MAL = {
+				is_subject = yes
+				NOT = { has_government = communism }
+			}
+			NOT = {
+				OR = {
+					has_subject = MAL
+					any_country = {
+						has_subject = MAL
+						is_ally_with = ROOT
+					}
+				}
+			}
+		}
+		available = {
+			MAL = { is_subject = yes }
+			hidden_trigger = {
+				command_power > 10
+				has_equipment = {
+					infantry_equipment > 750
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 10
+			has_equipment = {
+				infantry_equipment > 750
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = MAL
+				is_core_of = MAL
+			}
+		}
+		days_re_enable = 180
+		custom_cost_text = MMR_NZL_anti_colonial_agitation_dec_tt
+		icon = GFX_decision_generic_civil_support
+		complete_effect = {
+			MAL = {
+				IF = {
+					limit = { NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea } }
+					add_timed_idea = {
+						idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea
+						days = 180
+					}
+					custom_effect_tooltip = generic_skip_one_line_tt
+					custom_effect_tooltip = generic_skip_one_line_tt
+					IF = {
+						limit = { NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack } }
+						add_ideas = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack
+						ELSE_IF = {
+							limit = { NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack_2 } }
+							add_ideas = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack_2
+						}
+					}
+				}
+			}
+			every_state = {
+				limit = {
+					OR = {
+						AND = {
+							is_controlled_by = MAL
+							NOT = { is_core_of = MAL }
+						}
+						AND = {
+							NOT = { is_controlled_by = MAL }
+							is_core_of = MAL
+						}
+					}
+					has_resistance = yes
+					#has_active_resistance = yes
+					OR = {
+						AND = {
+							is_coastal = yes
+							is_on_continent = australia
+						}
+						AND = {
+							is_on_continent = asia
+							OR = {
+								is_one_state_island = yes
+								is_island_state = yes
+							}
+						}
+					}
+					NOT = {
+						OR = {
+							state = 422
+							state = 281
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = MMR_NZL_anti_colonial_agitation_dec_dm
+					days = 90
+				}
+				IF = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 } } }
+					add_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 }
+				}
+				IF = {
+					limit = { infrastructure > 0 }
+					random = {
+						chance = 10
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+					}
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			random_country = {
+				limit = { has_subject = MAL }
+				country_event = { id = mmr_nzl.3 hours = 6 }
+			}
+			hidden_effect = {
+				add_command_power = -10
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -750
+				}
+				set_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_3_MAL_gf
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-ENG Agitation
+	MMR_NZL_anti_colonial_agitation_dec_d_5 = {
+		priority = 6
+		visible = {
+			any_state = {
+				is_owned_and_controlled_by = ENG
+				NOT = { is_core_of = ENG }
+				has_resistance = yes
+				#has_active_resistance = yes
+				OR = {
+					AND = {
+						is_coastal = yes
+						is_on_continent = australia
+					}
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+				#IF = { #MMR
+				#	limit = {
+				#		MAL = {
+				#			is_subject = yes
+				#			NOT = { has_government = communism }
+				#		}
+				#	}
+				#	NOT = { is_core_of = MAL }
+				#}
+			}
+			NOT = { is_ally_with = ENG }
+		}
+		available = {
+			hidden_trigger = {
+				command_power > 10
+				has_equipment = {
+					infantry_equipment > 750
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 10
+			has_equipment = {
+				infantry_equipment > 750
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_and_controlled_by = ENG
+				NOT = { is_core_of = ENG }
+				has_resistance = yes
+				#has_active_resistance = yes
+				OR = {
+					AND = {
+						is_coastal = yes
+						is_on_continent = australia
+					}
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+				#IF = { #MMR
+				#	limit = {
+				#		MAL = {
+				#			is_subject = yes
+				#			NOT = { has_government = communism }
+				#		}
+				#	}
+				#	NOT = { is_core_of = MAL }
+				#}
+			}
+		}
+		days_re_enable = 90
+		custom_cost_text = MMR_NZL_anti_colonial_agitation_dec_tt
+		icon = GFX_decision_generic_civil_support
+		complete_effect = {
+			every_state = {
+				limit = {
+					is_owned_and_controlled_by = ENG
+					NOT = { is_core_of = ENG }
+					has_resistance = yes
+					#has_active_resistance = yes
+					OR = {
+						AND = {
+							is_coastal = yes
+							is_on_continent = australia
+						}
+						AND = {
+							is_on_continent = asia
+							OR = {
+								is_one_state_island = yes
+								is_island_state = yes
+							}
+						}
+					}
+					NOT = {
+						OR = {
+							state = 422
+							state = 281
+						}
+					}
+					#IF = { #MMR
+					#	limit = {
+					#		MAL = {
+					#			is_subject = yes
+					#			NOT = { has_government = communism }
+					#		}
+					#	}
+					#	NOT = { is_core_of = MAL }
+					#}
+				}
+				add_dynamic_modifier = {
+					modifier = MMR_NZL_anti_colonial_agitation_dec_dm
+					days = 90
+				}
+				IF = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 } } }
+					add_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 }
+				}
+				IF = {
+					limit = { infrastructure > 0 }
+					random = {
+						chance = 10
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				ENG = { country_event = { id = mmr_nzl.5 hours = 6 } }
+				add_command_power = -10
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -250
+				}
+				set_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_5_ENG_gf
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-FRA Agitation
+	MMR_NZL_anti_colonial_agitation_dec_d_6 = {
+		priority = 5
+		visible = {
+			any_state = {
+				is_owned_and_controlled_by = FRA
+				NOT = { is_core_of = FRA }
+				has_resistance = yes
+				#has_active_resistance = yes
+				OR = {
+					AND = {
+						is_coastal = yes
+						is_on_continent = australia
+					}
+					AND = {
+						is_on_continent = asia
+							OR = {
+								is_one_state_island = yes
+								is_island_state = yes
+							}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			NOT = { is_ally_with = FRA }
+		}
+		available = {
+			hidden_trigger = {
+				command_power > 10
+				has_equipment = {
+					infantry_equipment > 750
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 10
+			has_equipment = {
+				infantry_equipment > 750
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_and_controlled_by = FRA
+				NOT = { is_core_of = FRA }
+				has_resistance = yes
+				#has_active_resistance = yes
+				OR = {
+					AND = {
+						is_coastal = yes
+						is_on_continent = australia
+					}
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+		}
+		days_re_enable = 90
+		custom_cost_text = MMR_NZL_anti_colonial_agitation_dec_tt
+		icon = GFX_decision_generic_civil_support
+		complete_effect = {
+			every_state = {
+				limit = {
+					is_owned_and_controlled_by = FRA
+					NOT = { is_core_of = FRA }
+					has_resistance = yes
+					#has_active_resistance = yes
+					OR = {
+						AND = {
+							is_coastal = yes
+							is_on_continent = australia
+						}
+						AND = {
+							is_on_continent = asia
+							OR = {
+								is_one_state_island = yes
+								is_island_state = yes
+							}
+						}
+					}
+					NOT = {
+						OR = {
+							state = 422
+							state = 281
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = MMR_NZL_anti_colonial_agitation_dec_dm
+					days = 90
+				}
+				IF = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 } } }
+					add_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 }
+				}
+				IF = {
+					limit = { infrastructure > 0 }
+					random = {
+						chance = 10
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				FRA = { country_event = { id = mmr_nzl.5 hours = 6 } }
+				add_command_power = -10
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -250
+				}
+				set_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_6_FRA_gf
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-JAP Agitation
+	MMR_NZL_anti_colonial_agitation_dec_d_7 = {
+		priority = 4
+		visible = {
+			any_state = {
+				is_owned_and_controlled_by = JAP
+				NOT = { is_core_of = JAP }
+				has_resistance = yes
+				#has_active_resistance = yes
+				OR = {
+					AND = {
+						is_coastal = yes
+						is_on_continent = australia
+					}
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			NOT = { is_ally_with = JAP }
+		}
+		available = {
+			hidden_trigger = {
+				command_power > 10
+				has_equipment = {
+					infantry_equipment > 750
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 10
+			has_equipment = {
+				infantry_equipment > 750
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_and_controlled_by = JAP
+				NOT = { is_core_of = JAP }
+				has_resistance = yes
+				#has_active_resistance = yes
+				OR = {
+					AND = {
+						is_coastal = yes
+						is_on_continent = australia
+					}
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+		}
+		days_re_enable = 90
+		custom_cost_text = MMR_NZL_anti_colonial_agitation_dec_tt
+		icon = GFX_decision_generic_civil_support
+		complete_effect = {
+			every_state = {
+				limit = {
+					is_owned_and_controlled_by = JAP
+					NOT = { is_core_of = JAP }
+					has_resistance = yes
+					#has_active_resistance = yes
+					OR = {
+						AND = {
+							is_coastal = yes
+							is_on_continent = australia
+						}
+						AND = {
+							is_on_continent = asia
+							OR = {
+								is_one_state_island = yes
+								is_island_state = yes
+							}
+						}
+					}
+					NOT = {
+						OR = {
+							state = 422
+							state = 281
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = MMR_NZL_anti_colonial_agitation_dec_dm
+					days = 90
+				}
+				IF = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 } } }
+					add_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 }
+				}
+				IF = {
+					limit = { infrastructure > 0 }
+					random = {
+						chance = 10
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				JAP = { country_event = { id = mmr_nzl.5 hours = 6 } }
+				add_command_power = -10
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -250
+				}
+				set_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_7_JAP_gf
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-USA Agitation
+	MMR_NZL_anti_colonial_agitation_dec_d_8 = {
+		priority = 3
+		visible = {
+			any_state = {
+				is_owned_and_controlled_by = USA
+				NOT = { is_core_of = USA }
+				has_resistance = yes
+				#has_active_resistance = yes
+				OR = {
+					AND = {
+						is_coastal = yes
+						is_on_continent = australia
+					}
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			NOT = { is_ally_with = USA }
+		}
+		available = {
+			hidden_trigger = {
+				command_power > 10
+				has_equipment = {
+					infantry_equipment > 750
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 10
+			has_equipment = {
+				infantry_equipment > 750
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_and_controlled_by = USA
+				NOT = { is_core_of = USA }
+				has_resistance = yes
+				#has_active_resistance = yes
+				OR = {
+					AND = {
+						is_coastal = yes
+						is_on_continent = australia
+					}
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+		}
+		days_re_enable = 90
+		custom_cost_text = MMR_NZL_anti_colonial_agitation_dec_tt
+		icon = GFX_decision_generic_civil_support
+		complete_effect = {
+			every_state = {
+				limit = {
+					is_owned_and_controlled_by = USA
+					NOT = { is_core_of = USA }
+					has_resistance = yes
+					#has_active_resistance = yes
+					OR = {
+						AND = {
+							is_coastal = yes
+							is_on_continent = australia
+						}
+						AND = {
+							is_on_continent = asia
+							OR = {
+								is_one_state_island = yes
+								is_island_state = yes
+							}
+						}
+					}
+					NOT = {
+						OR = {
+							state = 422
+							state = 281
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = MMR_NZL_anti_colonial_agitation_dec_dm
+					days = 90
+				}
+				IF = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 } } }
+					add_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 }
+				}
+				IF = {
+					limit = { infrastructure > 0 }
+					random = {
+						chance = 10
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				USA = { country_event = { id = mmr_nzl.5 hours = 6 } }
+				add_command_power = -10
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -250
+				}
+				set_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_8_USA_gf
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-PHI Agitation
+	MMR_NZL_anti_colonial_agitation_dec_d_9 = {
+		priority = 2
+		visible = {
+			PHI = {
+				is_subject = yes
+				NOT = { has_government = communism }
+			}
+			NOT = {
+				OR = {
+					has_subject = PHI
+					any_country = {
+						has_subject = PHI
+						is_ally_with = ROOT
+					}
+				}
+			}
+		}
+		available = {
+			PHI = { is_subject = yes }
+			hidden_trigger = {
+				command_power > 10
+				has_equipment = {
+					infantry_equipment > 750
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 10
+			has_equipment = {
+				infantry_equipment > 750
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = PHI
+				is_core_of = PHI
+			}
+		}
+		days_re_enable = 90
+		custom_cost_text = MMR_NZL_anti_colonial_agitation_dec_tt
+		icon = GFX_decision_generic_civil_support
+		complete_effect = {
+			PHI = {
+				IF = {
+					limit = { NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea } }
+					add_timed_idea = {
+						idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea
+						days = 180
+					}
+					custom_effect_tooltip = generic_skip_one_line_tt
+					IF = {
+						limit = { NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack } }
+						add_ideas = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack
+						ELSE_IF = {
+							limit = { NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack_2 } }
+							add_ideas = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack_2
+						}
+					}
+				}
+			}
+			every_state = {
+				limit = {
+					OR = {
+						AND = {
+							is_controlled_by = PHI
+							NOT = { is_core_of = PHI }
+						}
+						AND = {
+							NOT = { is_controlled_by = PHI }
+							is_core_of = PHI
+						}
+					}
+					has_resistance = yes
+					#has_active_resistance = yes
+					OR = {
+						AND = {
+							is_coastal = yes
+							is_on_continent = australia
+						}
+						AND = {
+							is_on_continent = asia
+							OR = {
+								is_one_state_island = yes
+								is_island_state = yes
+							}
+						}
+					}
+					NOT = {
+						OR = {
+							state = 422
+							state = 281
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = MMR_NZL_anti_colonial_agitation_dec_dm
+					days = 90
+				}
+				IF = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 } } }
+					add_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 }
+				}
+				IF = {
+					limit = { infrastructure > 0 }
+					random = {
+						chance = 10
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+					}
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			random_country = {
+				limit = { has_subject = PHI }
+				country_event = { id = mmr_nzl.6 hours = 6 }
+			}
+			hidden_effect = {
+				add_command_power = -10
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -750
+				}
+				set_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_9_PHI_gf
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-Colonial Agitation General
+	MMR_NZL_anti_colonial_agitation_dec_d_10 = {
+		priority = 1
+		visible = {
+			any_state = {
+				has_resistance = yes
+				#has_active_resistance = yes
+				is_coastal = yes
+				OR = {
+					AND = {
+						is_coastal = yes
+						is_on_continent = australia
+					}
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+				NOT = {
+					CONTROLLER = {
+						OR = {
+							original_tag = ROOT
+							is_ally_with = ROOT
+							IF = {
+								limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_1_INS_gf } }
+								original_tag = INS
+							}
+							IF = {
+								limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_2_AST_gf } }
+								original_tag = AST
+							}
+							IF = {
+								limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_3_MAL_gf } }
+								original_tag = MAL
+							}
+							#IF = { #MMR
+							#	limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_4_SAW_gf } }
+							#	original_tag = SAW
+							#}
+							IF = {
+								limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_5_ENG_gf } }
+							#	IF = {
+							#		limit = {
+							#			MAL = {
+							#				is_subject = yes
+							#				NOT = { has_government = communism }
+							#			}
+							#		}
+							#		OR = {
+							#			original_tag = ENG
+							#			original_tag = MAL
+							#			PREV = { is_core_of = MAL }
+							#		}
+							#	}
+							#	ELSE = {
+									original_tag = ENG
+							#	}
+							}
+							IF = {
+								limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_6_FRA_gf } }
+								original_tag = FRA
+							}
+							IF = {
+								limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_7_JAP_gf } }
+								original_tag = JAP
+							}
+							IF = {
+								limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_8_USA_gf } }
+								original_tag = USA
+							}
+							IF = {
+								limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_9_PHI_gf } }
+								original_tag = PHI
+							}
+						}
+					}
+				}
+			}
+		}
+		available = {
+			hidden_trigger = {
+				command_power > 10
+				has_equipment = {
+					infantry_equipment > 250
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 10
+			has_equipment = {
+				infantry_equipment > 250
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				any_state = {
+					has_resistance = yes
+					#has_active_resistance = yes
+					is_coastal = yes
+					OR = {
+						AND = {
+							is_coastal = yes
+							is_on_continent = australia
+						}
+						AND = {
+							is_on_continent = asia
+							OR = {
+								is_one_state_island = yes
+								is_island_state = yes
+							}
+						}
+					}
+					NOT = {
+						OR = {
+							state = 422
+							state = 281
+						}
+					}
+					NOT = {
+						CONTROLLER = {
+							OR = {
+								original_tag = ROOT
+								is_ally_with = ROOT
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_1_INS_gf } }
+									original_tag = INS
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_2_AST_gf } }
+									original_tag = AST
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_3_MAL_gf } }
+									original_tag = MAL
+								}
+								#IF = { #MMR
+								#	limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_4_SAW_gf } }
+								#	original_tag = SAW
+								#}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_5_ENG_gf } }
+								#	IF = {
+								#		limit = {
+								#			MAL = {
+								#				is_subject = yes
+								#				NOT = { has_government = communism }
+								#			}
+								#		}
+								#		OR = {
+								#			original_tag = ENG
+								#			original_tag = MAL
+								#			PREV = { is_core_of = MAL }
+								#		}
+								#	}
+								#	ELSE = {
+										original_tag = ENG
+								#	}
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_6_FRA_gf } }
+									original_tag = FRA
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_7_JAP_gf } }
+									original_tag = JAP
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_8_USA_gf } }
+									original_tag = USA
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_9_PHI_gf } }
+									original_tag = PHI
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		days_re_enable = 7
+		custom_cost_text = MMR_NZL_anti_colonial_agitation_dec_tt_lower_cost
+		icon = GFX_decision_generic_civil_support
+		complete_effect = {
+			random_state = {
+				limit = {
+					has_resistance = yes
+					#has_active_resistance = yes
+					OR = {
+						AND = {
+							is_coastal = yes
+							is_on_continent = australia
+						}
+						AND = {
+							is_on_continent = asia
+							OR = {
+								is_one_state_island = yes
+								is_island_state = yes
+							}
+						}
+					}
+					NOT = {
+						OR = {
+							state = 422
+							state = 281
+						}
+					}
+					NOT = {
+						CONTROLLER = {
+							OR = {
+								original_tag = ROOT
+								is_ally_with = ROOT
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_1_INS_gf } }
+									original_tag = INS
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_2_AST_gf } }
+									original_tag = AST
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_3_MAL_gf } }
+									original_tag = MAL
+								}
+								#IF = { #MMR
+								#	limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_4_SAW_gf } }
+								#	original_tag = SAW
+								#}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_5_ENG_gf } }
+								#	IF = {
+								#		limit = {
+								#			MAL = {
+								#				is_subject = yes
+								#				NOT = { has_government = communism }
+								#			}
+								#		}
+								#		OR = {
+								#			original_tag = ENG
+								#			original_tag = MAL
+								#			PREV = { is_core_of = MAL }
+								#		}
+								#	}
+								#	ELSE = {
+										original_tag = ENG
+								#	}
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_6_FRA_gf } }
+									original_tag = FRA
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_7_JAP_gf } }
+									original_tag = JAP
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_8_USA_gf } }
+									original_tag = USA
+								}
+								IF = {
+									limit = { NOT = { has_global_flag = MMR_NZL_anti_colonial_agitation_dec_d_9_PHI_gf } }
+									original_tag = PHI
+								}
+							}
+						}
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = MMR_NZL_anti_colonial_agitation_dec_dm
+					days = 90
+				}
+				IF = {
+					limit = { NOT = { has_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 } } }
+					custom_effect_tooltip = generic_skip_one_line_tt
+					add_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 }
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				IF = {
+					limit = { infrastructure > 0 }
+					random = {
+						chance = 10
+						damage_building = {
+							type = infrastructure
+							damage = 1
+						}
+					}
+				}
+				hidden_effect = {
+					save_event_target_as = MMR_NZL_aca_d10_target_state
+					CONTROLLER = { save_event_target_as = MMR_NZL_aca_d10_target_controller }
+				}
+			}
+			hidden_effect = {
+				event_target:MMR_NZL_aca_d10_target_controller = {
+					country_event = { id = mmr_nzl.5 hours = 6 }
+				}
+				add_command_power = -10
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -250
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-Puppet Agitation
+	MMR_NZL_anti_colonial_agitation_dec_d_11 = {
+		priority = 1
+		visible = {
+			any_other_country = {
+				check_variable = { global.azr_is_general_puppet_agitated_var = THIS }
+			}
+		}
+		available = {
+			hidden_trigger = {
+				command_power > 10
+				has_equipment = {
+					infantry_equipment > 250
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 10
+			has_equipment = {
+				infantry_equipment > 250
+			}
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_by = INS
+				is_core_of = INS
+			}
+		}
+		days_re_enable = 14
+		custom_cost_text = MMR_NZL_anti_colonial_agitation_dec_tt_lower_cost
+		icon = GFX_decision_generic_civil_support
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					check_variable = { global.azr_is_general_puppet_agitated_var = THIS }
+				}
+				add_timed_idea = {
+					idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea
+					days = 180
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				IF = {
+					limit = { NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack } }
+					add_ideas = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack
+					ELSE_IF = {
+						limit = { NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack_2 } }
+						add_ideas = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack_2
+					}
+				}
+				every_state = {
+					limit = {
+						is_controlled_by = PREV
+						NOT = { is_core_of = PREV }
+						has_resistance = yes
+						#has_active_resistance = yes
+						OR = {
+							AND = {
+								is_coastal = yes
+								is_on_continent = australia
+							}
+							AND = {
+								is_on_continent = asia
+								OR = {
+									is_one_state_island = yes
+									is_island_state = yes
+								}
+							}
+						}
+						NOT = {
+							OR = {
+								state = 422
+								state = 281
+							}
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = MMR_NZL_anti_colonial_agitation_dec_dm
+						days = 90
+					}
+					IF = {
+						limit = { NOT = { has_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 } } }
+						add_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm_2 }
+					}
+					IF = {
+						limit = { infrastructure > 0 }
+						random = {
+							chance = 10
+							damage_building = {
+								type = infrastructure
+								damage = 1
+							}
+						}
+					}
+				}
+				custom_effect_tooltip = generic_skip_one_line_tt
+				save_event_target_as = MMR_NZL_anti_colonial_agitation_dec_d_11_country
+				hidden_effect = {
+					random_country = {
+						limit = { has_subject = PREV }
+						country_event = { id = mmr_nzl.2001 hours = 6 }
+					}
+				}
+			}
+			custom_effect_tooltip = MMR_NZL_anti_colonial_agitation_dec_d_11_tt
+			hidden_effect = {
+				add_command_power = -10
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -250
+				}
+				clear_variable = global.azr_is_general_puppet_agitated_var
+				clear_variable = global.azr_is_general_overlord_agitated_var
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+}
+MMR_NZL_anti_colonial_pressure_dec = {
+	#Anti-AST Colonial Diplomacy
+	MMR_NZL_anti_colonial_pressure_dec_d_1 = {
+		priority = 9
+		visible = {
+			any_state = {
+				is_owned_and_controlled_by = AST
+				NOT = { is_core_of = AST }
+				has_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			AST = {
+				NOT = {
+					OR = {
+						#is_ally_with = ROOT
+						is_subject_of = ROOT
+						has_country_flag = MMR_has_rejected_colonial_pressure
+					}
+				}
+			}
+		}
+		available = {
+			any_state = {
+				is_owned_and_controlled_by = AST
+				NOT = { is_core_of = AST }
+				has_resistance = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			NOT = { has_war_with = AST }
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_controlled_by = AST
+				NOT = { is_core_of = AST }
+				has_resistance = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+		}
+		days_re_enable = 14
+		cost = 75
+		icon = GFX_decision_SWI_swiss_democratic_tradition_campaign
+		complete_effect = {
+			IF = {
+				limit = {
+					AST = { is_subject = yes }
+				}
+				random_country = {
+					limit = { has_subject = AST }
+					country_event = { id = mmr_nzl.20 hours = 6 }
+				}
+			}
+			ELSE = {
+				AST = { country_event = { id = mmr_nzl.20 hours = 6 } }
+			}
+			custom_effect_tooltip = MMR_NZL_anti_colonial_pressure_dec_d_1_tt
+			effect_tooltip = {
+				every_possible_country = {
+					limit = {
+						exists = no
+						any_core_state = {
+							is_owned_and_controlled_by = AST
+							NOT = { is_core_of = AST }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+					}
+					AST = { release_on_controlled = PREV }
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.15
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = MMR_NZL_liberator
+					}
+				}
+				every_country = {
+					limit = {
+						any_core_state = {
+							is_owned_and_controlled_by = AST
+							NOT = { is_core_of = AST }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+					}
+					every_core_state = {
+						limit = {
+							is_core_of = PREV
+							is_owned_and_controlled_by = AST
+							NOT = { is_core_of = AST }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+						PREV = { transfer_state = PREV }
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.15
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = MMR_NZL_liberator
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-ENG Colonial Diplomacy
+	MMR_NZL_anti_colonial_pressure_dec_d_2 = {
+		priority = 8
+		visible = {
+			any_state = {
+				is_owned_and_controlled_by = ENG
+				NOT = { is_core_of = ENG }
+				has_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			ENG = {
+				NOT = {
+					OR = {
+						#is_ally_with = ROOT
+						is_subject_of = ROOT
+						has_country_flag = MMR_has_rejected_colonial_pressure
+					}
+				}
+			}
+		}
+		available = {
+			any_state = {
+				is_owned_and_controlled_by = ENG
+				NOT = { is_core_of = ENG }
+				has_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			NOT = { has_war_with = ENG }
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_and_controlled_by = ENG
+				NOT = { is_core_of = ENG }
+				has_resistance = yes
+				#has_active_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+		}
+		days_re_enable = 14
+		cost = 75
+		icon = GFX_decision_SWI_swiss_democratic_tradition_campaign
+		complete_effect = {
+			IF = {
+				limit = {
+					ENG = { is_subject = yes }
+				}
+				random_country = {
+					limit = { has_subject = ENG }
+					country_event = { id = mmr_nzl.20 hours = 6 }
+				}
+			}
+			ELSE = {
+				ENG = { country_event = { id = mmr_nzl.20 hours = 6 } }
+			}
+			custom_effect_tooltip = MMR_NZL_anti_colonial_pressure_dec_d_1_tt
+			effect_tooltip = {
+				every_possible_country = {
+					limit = {
+						exists = no
+						any_core_state = {
+							is_owned_and_controlled_by = ENG
+							NOT = { is_core_of = ENG }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+					}
+					ENG = { release_on_controlled = PREV }
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.15
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = MMR_NZL_liberator
+					}
+				}
+				every_country = {
+					limit = {
+						any_core_state = {
+							is_owned_and_controlled_by = ENG
+							NOT = { is_core_of = ENG }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+					}
+					every_core_state = {
+						limit = {
+							is_core_of = PREV
+							is_owned_and_controlled_by = ENG
+							NOT = { is_core_of = ENG }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+						PREV = { transfer_state = PREV }
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.15
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = MMR_NZL_liberator
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-FRA Colonial Diplomacy
+	MMR_NZL_anti_colonial_pressure_dec_d_3 = {
+		priority = 7
+		visible = {
+			any_state = {
+				is_owned_and_controlled_by = FRA
+				NOT = { is_core_of = FRA }
+				has_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			FRA = {
+				NOT = {
+					OR = {
+						#is_ally_with = ROOT
+						is_subject_of = ROOT
+						has_country_flag = MMR_has_rejected_colonial_pressure
+					}
+				}
+			}
+		}
+		available = {
+			any_state = {
+				is_owned_and_controlled_by = FRA
+				NOT = { is_core_of = FRA }
+				has_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			NOT = { has_war_with = FRA }
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_and_controlled_by = FRA
+				NOT = { is_core_of = FRA }
+				has_resistance = yes
+				#has_active_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+		}
+		days_re_enable = 14
+		cost = 75
+		icon = GFX_decision_SWI_swiss_democratic_tradition_campaign
+		complete_effect = {
+			IF = {
+				limit = {
+					FRA = { is_subject = yes }
+				}
+				random_country = {
+					limit = { has_subject = FRA }
+					country_event = { id = mmr_nzl.20 hours = 6 }
+				}
+			}
+			ELSE = {
+				FRA = { country_event = { id = mmr_nzl.20 hours = 6 } }
+			}
+			custom_effect_tooltip = MMR_NZL_anti_colonial_pressure_dec_d_1_tt
+			effect_tooltip = {
+				every_possible_country = {
+					limit = {
+						exists = no
+						any_core_state = {
+							is_owned_and_controlled_by = FRA
+							NOT = { is_core_of = FRA }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+					}
+					FRA = { release_on_controlled = PREV }
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.15
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = MMR_NZL_liberator
+					}
+				}
+				every_country = {
+					limit = {
+						any_core_state = {
+							is_owned_and_controlled_by = FRA
+							NOT = { is_core_of = FRA }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+					}
+					every_core_state = {
+						limit = {
+							is_core_of = PREV
+							is_owned_and_controlled_by = FRA
+							NOT = { is_core_of = FRA }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+						PREV = { transfer_state = PREV }
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.15
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = MMR_NZL_liberator
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-JAP Colonial Diplomacy
+	MMR_NZL_anti_colonial_pressure_dec_d_4 = {
+		priority = 6
+		visible = {
+			any_state = {
+				is_owned_and_controlled_by = JAP
+				NOT = { is_core_of = JAP }
+				has_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			JAP = {
+				NOT = {
+					OR = {
+						#is_ally_with = ROOT
+						is_subject_of = ROOT
+						has_country_flag = MMR_has_rejected_colonial_pressure
+					}
+				}
+			}
+		}
+		available = {
+			any_state = {
+				is_owned_and_controlled_by = JAP
+				NOT = { is_core_of = JAP }
+				has_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			NOT = { has_war_with = JAP }
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_and_controlled_by = JAP
+				NOT = { is_core_of = JAP }
+				has_resistance = yes
+				#has_active_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+		}
+		days_re_enable = 14
+		cost = 75
+		icon = GFX_decision_SWI_swiss_democratic_tradition_campaign
+		complete_effect = {
+			IF = {
+				limit = {
+					JAP = { is_subject = yes }
+				}
+				random_country = {
+					limit = { has_subject = JAP }
+					country_event = { id = mmr_nzl.20 hours = 6 }
+				}
+			}
+			ELSE = {
+				JAP = { country_event = { id = mmr_nzl.20 hours = 6 } }
+			}
+			custom_effect_tooltip = MMR_NZL_anti_colonial_pressure_dec_d_1_tt
+			effect_tooltip = {
+				every_possible_country = {
+					limit = {
+						exists = no
+						any_core_state = {
+							is_owned_and_controlled_by = JAP
+							NOT = { is_core_of = JAP }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+					}
+					JAP = { release_on_controlled = PREV }
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.15
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = MMR_NZL_liberator
+					}
+				}
+				every_country = {
+					limit = {
+						any_core_state = {
+							is_owned_and_controlled_by = JAP
+							NOT = { is_core_of = JAP }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+					}
+					every_core_state = {
+						limit = {
+							is_core_of = PREV
+							is_owned_and_controlled_by = JAP
+							NOT = { is_core_of = JAP }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+						PREV = { transfer_state = PREV }
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.15
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = MMR_NZL_liberator
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#Anti-USA Colonial Diplomacy
+	MMR_NZL_anti_colonial_pressure_dec_d_5 = {
+		priority = 5
+		visible = {
+			any_state = {
+				is_owned_and_controlled_by = USA
+				NOT = { is_core_of = USA }
+				has_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			USA = {
+				NOT = {
+					OR = {
+						#is_ally_with = ROOT
+						is_subject_of = ROOT
+						has_country_flag = MMR_has_rejected_colonial_pressure
+					}
+				}
+			}
+		}
+		available = {
+			any_state = {
+				is_owned_and_controlled_by = USA
+				NOT = { is_core_of = USA }
+				has_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+			NOT = { has_war_with = USA }
+		}
+		highlight_states = {
+			highlight_states_trigger = {
+				is_owned_and_controlled_by = USA
+				NOT = { is_core_of = USA }
+				has_resistance = yes
+				#has_active_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						OR = {
+							is_one_state_island = yes
+							is_island_state = yes
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						state = 422
+						state = 281
+					}
+				}
+			}
+		}
+		days_re_enable = 14
+		cost = 75
+		icon = GFX_decision_SWI_swiss_democratic_tradition_campaign
+		complete_effect = {
+			IF = {
+				limit = {
+					USA = { is_subject = yes }
+				}
+				random_country = {
+					limit = { has_subject = USA }
+					country_event = { id = mmr_nzl.20 hours = 6 }
+				}
+			}
+			ELSE = {
+				USA = { country_event = { id = mmr_nzl.20 hours = 6 } }
+			}
+			custom_effect_tooltip = MMR_NZL_anti_colonial_pressure_dec_d_1_tt
+			effect_tooltip = {
+				every_possible_country = {
+					limit = {
+						exists = no
+						any_core_state = {
+							is_owned_and_controlled_by = USA
+							NOT = { is_core_of = USA }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+					}
+					USA = { release_on_controlled = PREV }
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.15
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = MMR_NZL_liberator
+					}
+				}
+				every_country = {
+					limit = {
+						any_core_state = {
+							is_owned_and_controlled_by = USA
+							NOT = { is_core_of = USA }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+					}
+					every_core_state = {
+						limit = {
+							is_core_of = PREV
+							is_owned_and_controlled_by = USA
+							NOT = { is_core_of = USA }
+							has_resistance = yes
+							#has_active_resistance = yes
+							is_coastal = yes
+							OR = {
+								is_on_continent = australia
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+						PREV = { transfer_state = PREV }
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = 0.15
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = MMR_NZL_liberator
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	#General Colonial Diplomacy
+	MMR_NZL_anti_colonial_pressure_dec_d_6 = {
+		priority = 4
+		visible = {
+			any_other_country = {
+				check_variable = { global.azr_is_general_diplomatic_pressure_var = THIS }
+			}
+		}
+		available = {
+		}
+		days_re_enable = 14
+		cost = 50
+		icon = GFX_decision_SWI_swiss_democratic_tradition_campaign
+		complete_effect = {
+			hidden_effect = {
+				random_other_country = {
+					limit = {
+						check_variable = { global.azr_is_general_diplomatic_pressure_var = THIS }
+					}
+					save_event_target_as = MMR_NZL_anti_colonial_pressure_dec_d_6_et
+				}
+			}
+			IF = {
+				limit = {
+					event_target:MMR_NZL_anti_colonial_pressure_dec_d_6_et = { is_subject = yes }
+				}
+				random_country = {
+					limit = { has_subject = event_target:MMR_NZL_anti_colonial_pressure_dec_d_6_et }
+					country_event = { id = mmr_nzl.20 hours = 6 }
+				}
+				ELSE = {
+					event_target:MMR_NZL_anti_colonial_pressure_dec_d_6_et = { country_event = { id = mmr_nzl.20 hours = 6 } }
+				}
+			}
+			custom_effect_tooltip = MMR_NZL_anti_colonial_pressure_dec_d_1_tt
+			effect_tooltip = {
+				random_country = {
+					limit = {
+						check_variable = { global.azr_is_general_diplomatic_pressure_var = THIS }
+					}
+					every_possible_country = {
+						limit = {
+							exists = no
+							any_core_state = {
+								is_owned_and_controlled_by = PREV.PREV
+								NOT = { is_core_of = PREV.PREV }
+								has_resistance = yes
+								#has_active_resistance = yes
+								is_coastal = yes
+								OR = {
+									is_on_continent = australia
+									AND = {
+										is_on_continent = asia
+										OR = {
+											is_one_state_island = yes
+											is_island_state = yes
+										}
+									}
+								}
+								NOT = {
+									OR = {
+										state = 422
+										state = 281
+									}
+								}
+							}
+						}
+						PREV = { release_on_controlled = PREV }
+						add_popularity = {
+							ideology = democratic
+							popularity = 0.15
+						}
+						add_opinion_modifier = {
+							target = ROOT
+							modifier = MMR_NZL_liberator
+						}
+					}
+					every_country = {
+						limit = {
+							any_core_state = {
+								is_owned_and_controlled_by = PREV.PREV
+								NOT = { is_core_of = PREV.PREV }
+								has_resistance = yes
+								#has_active_resistance = yes
+								is_coastal = yes
+								OR = {
+									is_on_continent = australia
+									AND = {
+										is_on_continent = asia
+										OR = {
+											is_one_state_island = yes
+											is_island_state = yes
+										}
+									}
+								}
+								NOT = {
+									OR = {
+										state = 422
+										state = 281
+									}
+								}
+							}
+						}
+						every_core_state = {
+							limit = {
+								is_owned_and_controlled_by = PREV.PREV
+								NOT = { is_core_of = PREV.PREV }
+								has_resistance = yes
+								#has_active_resistance = yes
+								is_coastal = yes
+								OR = {
+									is_on_continent = australia
+									AND = {
+										is_on_continent = asia
+										OR = {
+											is_one_state_island = yes
+											is_island_state = yes
+										}
+									}
+								}
+								NOT = {
+									OR = {
+										state = 422
+										state = 281
+									}
+								}
+							}
+							PREV = { transfer_state = PREV }
+						}
+						add_popularity = {
+							ideology = democratic
+							popularity = 0.15
+						}
+						add_opinion_modifier = {
+							target = ROOT
+							modifier = MMR_NZL_liberator
+						}
+					}
+				}
+			}
+			clear_variable = global.azr_is_general_diplomatic_pressure_var
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+}
+MMR_NZL_integrate_polynesian_subjects = {
+	MMR_NZL_integrate_polynesian_subjects_d_1 = {
+		priority = 1
+		visible = {
+			any_country = {
+				is_subject_of = NZL
+				any_owned_state = {
+					is_controlled_by = PREV
+					OR = {
+						state = 629 #Hawaii
+						state = 641 #Tahiti
+						state = 726 #Samoa
+						state = 727
+						state = 984
+						state = 643
+						state = 642
+						state = 630
+						state = 631
+					}
+				}
+			}
+		}
+		available = {
+			any_country = {
+				is_subject_of = NZL
+				any_owned_state = {
+					is_controlled_by = PREV
+					OR = {
+						state = 629 #Hawaii
+						state = 641 #Tahiti
+						state = 726 #Samoa
+						state = 727
+						state = 984
+						state = 643
+						state = 642
+						state = 630
+						state = 631
+					}
+				}
+			}
+		}
+		days_re_enable = 30
+		cost = 150
+		icon = GFX_decision_generic_nationalism
+		complete_effect = {
+			every_other_country = {
+				limit = {
+					is_subject_of = NZL
+					any_owned_state = {
+						is_controlled_by = PREV
+						OR = {
+							state = 629 #Hawaii
+							state = 641 #Tahiti
+							state = 726 #Samoa
+							state = 727
+							state = 984
+							state = 643
+							state = 642
+							state = 630
+							state = 631
+						}
+					}
+					any_owned_state = {
+						is_controlled_by = PREV
+						NOT = {
+							OR = {
+								state = 629 #Hawaii
+								state = 641 #Tahiti
+								state = 726 #Samoa
+								state = 727
+								state = 984
+								state = 643
+								state = 642
+								state = 630
+								state = 631
+							}
+						}
+					}
+				}
+				every_owned_state = {
+					limit = {
+						is_controlled_by = PREV
+						OR = {
+							state = 629 #Hawaii
+							state = 641 #Tahiti
+							state = 726 #Samoa
+							state = 727
+							state = 984
+							state = 643
+							state = 642
+							state = 630
+							state = 631
+						}
+					}
+					transfer_state_to = ROOT
+				}
+			}
+			every_other_country = {
+				limit = {
+					is_subject_of = NZL
+					any_owned_state = {
+						is_controlled_by = PREV
+						OR = {
+							state = 629 #Hawaii
+							state = 641 #Tahiti
+							state = 726 #Samoa
+							state = 727
+							state = 984
+							state = 643
+							state = 642
+							state = 630
+							state = 631
+						}
+					}
+					NOT = {
+						any_owned_state = {
+							is_controlled_by = PREV
+							NOT = {
+								OR = {
+									state = 629 #Hawaii
+									state = 641 #Tahiti
+									state = 726 #Samoa
+									state = 727
+									state = 984
+									state = 643
+									state = 642
+									state = 630
+									state = 631
+								}
+							}
+						}
+					}
+				}
+				ROOT = {
+					annex_country = {
+						target = PREV
+						transfer_troops = yes
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+}
+AZR_AST_hung_election_countdown_c = {
+	AZR_AST_hung_election_countdown_d = {
+		priority = 1
+		fire_only_once = yes
+		days_mission_timeout = 90
+		activation = {
+			#test
+			#always = yes
+			has_country_flag = MMR_AST_1937_fed_election_redo
+		}
+		available = { hidden_trigger = { always = no } }
+		timeout_effect = {
+			custom_effect_tooltip = AZR_AST_hung_election_countdown_tt
+			hidden_effect = { country_event = { id = mmr_ast.101 } }
+		}
+		icon = GFX_decision_generic_political_rally
+		complete_effect = { }
+		ai_will_do = {
+			base = 0
+		}
+	}
+}
+AZR_AST_no_confidence_dec_c = {
+	AZR_AST_no_confidence_countdown_d = {
+		priority = 10
+		fire_only_once = yes
+		days_mission_timeout = var:AZR_AST_no_confidence_countdown_d_var
+		activation = {
+			#test
+			#always = yes
+			has_country_flag = MMR_AST_ncv_crisis_flag
+			OR = {
+				has_country_leader = { character = MMR_AST_robert_g_menzies }
+				has_country_leader = { character = AST_john_curtin }
+				has_country_leader = { character = AST_earle_page }
+				has_country_leader = { character = MMR_AST_archie_cameron }
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = AZR_AST_no_confidence_countdown_d_tt
+				has_country_flag = MMR_AST_no_conf_vote_thwarted_flag
+			}
+		}
+		timeout_effect = {
+			country_event = { id = mmr_ast.6 }
+		}
+		icon = GFX_decision_generic_political_address
+		complete_effect = { }
+		ai_will_do = {
+			base = 0
+		}
+	}
+	AZR_AST_no_confidence_nat_unity_gov_d = {
+		priority = 6
+		fire_only_once = yes
+		visible = {
+			#test
+			#always = yes
+			has_country_flag = MMR_AST_ncv_crisis_flag
+			OR = {
+				has_country_leader = { character = MMR_AST_robert_g_menzies }
+				has_country_leader = { character = AST_john_curtin }
+				has_country_leader = { character = AST_earle_page }
+				has_country_leader = { character = MMR_AST_archie_cameron }
+			}
+			NOT = { has_country_flag = AZR_AST_has_selected_nat_unity_gov }
+		}
+		available = {
+			
+		}
+		icon = GFX_decision_hol_exchange_intelligence_data
+		cost = 50
+		complete_effect = {
+			custom_effect_tooltip = AZR_AST_no_confidence_dec_c_tt #35 days effect will happen
+			effect_tooltip = { country_event = { id = mmr_ast.5 } }
+			set_country_flag = AZR_AST_has_selected_nat_unity_gov
+			add_to_variable = { var:AZR_AST_no_confidence_countdown_d_var = 35 }
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	AZR_AST_no_confidence_nat_unity_gov_timer_d = {
+		priority = 6
+		fire_only_once = yes
+		days_mission_timeout = 35
+		is_good = yes
+		activation = {
+			#test
+			#always = yes
+			has_country_flag = AZR_AST_has_selected_nat_unity_gov
+		}
+		available = { hidden_trigger = { always = no } }
+		timeout_effect = { country_event = { id = mmr_ast.5 } }
+		icon = GFX_decision_generic_political_discourse
+		complete_effect = { }
+		ai_will_do = {
+			base = 0
+		}
+	}
+	AZR_AST_no_confidence_advisory_war_council_d = {
+		priority = 5
+		fire_only_once = yes
+		visible = {
+			#test
+			#always = yes
+			has_country_flag = MMR_AST_ncv_crisis_flag
+			OR = {
+				has_country_leader = { character = MMR_AST_robert_g_menzies }
+				has_country_leader = { character = AST_john_curtin }
+				has_country_leader = { character = AST_earle_page }
+				has_country_leader = { character = MMR_AST_archie_cameron }
+			}
+			has_country_flag = MMR_AST_nat_unity_gov_failed
+			NOT = { has_country_flag = AZR_AST_has_selected_advisory_war_council }
+		}
+		available = {
+			has_war = yes
+			custom_trigger_tooltip = {
+				tooltip = AZR_AST_no_confidence_advisory_war_council_d_tt
+				has_country_flag = MMR_AST_nat_unity_gov_failed
+			}
+		}
+		icon = GFX_decision_hol_exchange_intelligence_data
+		cost = 50
+		complete_effect = {
+			custom_effect_tooltip = AZR_AST_no_confidence_dec_c_tt #35 days effect will happen add 35 days to timer
+			effect_tooltip = { country_event = { id = mmr_ast.501 } }
+			set_country_flag = AZR_AST_has_selected_advisory_war_council
+			add_to_variable = { var:AZR_AST_no_confidence_countdown_d_var = 35 }
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	AZR_AST_no_confidence_advisory_war_council_timer_d = {
+		priority = 5
+		fire_only_once = yes
+		days_mission_timeout = 35
+		is_good = yes
+		activation = {
+			#test
+			#always = yes
+			has_country_flag = AZR_AST_has_selected_advisory_war_council
+		}
+		available = { hidden_trigger = { always = no } }
+		timeout_effect = { country_event = { id = mmr_ast.501 } }
+		icon = GFX_decision_generic_political_discourse
+		complete_effect = { }
+		ai_will_do = {
+			base = 0
+		}
+	}
+}
+AZR_NZL_wartime_cabinet_countdown_c = {
+	AZR_NZL_wartime_cabinet_countdown_d = {
+		priority = 1
+		fire_only_once = yes
+		days_mission_timeout = 42
+		is_good = yes
+		activation = {
+			#test
+			#always = yes
+			has_country_flag = azl_ast_wartime_cabinet_forming_flag
+		}
+		available = { hidden_trigger = { always = no } }
+		timeout_effect = { country_event = { id = mmr_nzl.2061 } }
+		icon = GFX_decision_generic_political_discourse
+		complete_effect = { }
+		ai_will_do = {
+			base = 0
+		}
+	}
+}
+AZR_NZL_wartime_coalition_countdown_c = {
+	AZR_NZL_wartime_coalition_countdown_d = {
+		priority = 1
+		fire_only_once = yes
+		days_mission_timeout = 42
+		is_good = yes
+		activation = {
+			#test
+			#always = yes
+			has_country_flag = azl_ast_wartime_coalition_forming_flag
+		}
+		available = { hidden_trigger = { always = no } }
+		timeout_effect = { country_event = { id = mmr_nzl.2062 } }
+		icon = GFX_decision_generic_political_discourse
+		complete_effect = { }
+		ai_will_do = {
+			base = 0
+		}
+	}
+}
+political_actions = {
+	AZR_NZL_holland_takes_over_d = {
+		priority = 100
+		fire_only_once = yes
+		visible = {
+			has_country_leader = { character = MMR_NZL_adam_hamilton }
+			NOT = { has_country_flag = mmr_nzl_holland_nat_leader }
+		}
+		available = {
+			has_country_leader = { character = MMR_NZL_adam_hamilton }
+		}
+		icon = GFX_decision_generic_political_discourse
+		cost = 150
+		complete_effect = {
+			country_event = { id = mmr_nzl.2071 }
+			effect_tooltip = {
+				retire_character = MMR_NZL_adam_hamilton
+				promote_character = {
+					character = NZL_sidney_holland
+					ideology = conservatism
+				}
+				promote_character = {
+					character = NZL_sidney_holland
+					ideology = centrism
+				}
+			}
+		}
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 10
+				has_war = yes
+			}
+		}
+	}
+	AZR_NZL_change_names_1_d = {
+		priority = 100
+		fire_only_once = yes
+		visible = {
+			has_government = communism
+			NOT = {
+				OR = {
+					has_completed_focus = NZL_maori_conscription
+					has_completed_focus = NZL_maori_work_camps
+				}
+			}
+		}
+		available = {
+			has_completed_focus = NZL_waitangi_tribunal
+		}
+		icon = GFX_decision_eng_trade_unions_support
+		cost = 25
+		complete_effect = {
+			284 = { set_state_name = "Te Ika-a-Māui" }
+			set_province_name = { id = 4543 name = "Tāmaki Makaurau" }
+			set_province_name = { id = 1814 name = "Te Whanganui-a-Tara" }
+			723 = { set_state_name = "Te Waipounamu" }
+			set_province_name = { id = 2197 name = "Ōtautahi" }
+			set_province_name = { id = 2211 name = "Ōtepoti" }
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			set_global_flag = azr_nzl_has_native_names
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	#change back
+	AZR_NZL_change_names_2_d = {
+		priority = 100
+		fire_only_once = yes
+		visible = {
+			NOT = { has_government = communism }
+			has_global_flag = azr_nzl_has_native_names
+		}
+		available = {
+			NOT = { has_government = communism }
+		}
+		icon = GFX_decision_eng_trade_unions_support
+		cost = 25
+		complete_effect = {
+			284 = { reset_state_name = yes }
+			reset_province_name = 4543
+			reset_province_name = 1814
+			723 = { reset_state_name = yes }
+			reset_province_name = 2197
+			reset_province_name = 2211
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	AZR_AST_disband_voac_d = {
+		priority = 100
+		fire_only_once = yes
+		visible = {
+			has_idea = AST_volunteer_air_observers_corps_azr_idea
+			has_war = no
+		}
+		available = {
+			NOT = { has_government = communism }
+		}
+		icon = GFX_decision_SWI_dismiss_council
+		cost = 25
+		complete_effect = {
+			remove_ideas = AST_volunteer_air_observers_corps_azr_idea
+		}
+		ai_will_do = {
+			base = 1000
+		}
+	}
+}
+form_polynesia_category = {
+	AZR_NZL_transfer_jap_polynesia = {
+		priority = 1
+		fire_only_once = no
+		
+		visible = {
+			is_subject = no
+			is_subject = no
+			is_in_faction = yes
+			has_government = fascism
+			NOT = { has_global_flag = form_polynesia_flag }
+
+			629 = { OR = { OWNER = { OR = { tag = ROOT is_in_faction_with = ROOT } } CONTROLLER = { OR = { tag = ROOT is_in_faction_with = ROOT } } } }
+			684 = { OR = { OWNER = { OR = { tag = ROOT is_in_faction_with = ROOT } } CONTROLLER = { OR = { tag = ROOT is_in_faction_with = ROOT } } } }
+			638 = { OR = { OWNER = { OR = { tag = ROOT is_in_faction_with = ROOT } } CONTROLLER = { OR = { tag = ROOT is_in_faction_with = ROOT } } } }
+			641 = { OR = { OWNER = { OR = { tag = ROOT is_in_faction_with = ROOT } } CONTROLLER = { OR = { tag = ROOT is_in_faction_with = ROOT } } } }
+			646 = { OR = { OWNER = { OR = { tag = ROOT is_in_faction_with = ROOT } } CONTROLLER = { OR = { tag = ROOT is_in_faction_with = ROOT } } } }
+			726 = { OR = { OWNER = { OR = { tag = ROOT is_in_faction_with = ROOT } } CONTROLLER = { OR = { tag = ROOT is_in_faction_with = ROOT } } } }
+			any_other_country = {
+				OR = {
+					629 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+					684 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+					638 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+					641 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+					646 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+					726 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+				}
+			}
+		}
+
+		available = {
+			is_subject = no
+			is_in_faction = yes
+			has_government = fascism
+			284 = { is_owned_and_controlled_by = ROOT }
+			723 = { is_owned_and_controlled_by = ROOT }
+		}
+		icon = generic_form_nation
+		cost = 50
+		complete_effect = {
+			every_other_country = {
+				limit = {
+					is_in_faction_with = ROOT
+					OR = {
+						629 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+						684 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+						638 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+						641 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+						646 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+						726 = { NOT = { is_core_of = PREV } OR = { is_owned_by = PREV is_controlled_by = PREV } }
+					}
+				}
+				every_owned_state = {
+					limit = {
+						NOT = { is_core_of = PREV }
+						OR = {
+							state = 629 #Hawaii
+							state = 684 #Caroline Islands
+							state = 638 #Guam
+							state = 641 #Tahiti
+							state = 646 #Saipan
+							state = 726 #Samoa
+						}
+					}
+					IF = {
+						limit = { NOT = { is_fully_controlled_by = OWNER } }
+						ROOT = { set_state_owner = PREV }
+						ELSE = { ROOT = { transfer_state = PREV } }
+					}
+				}
+				every_controlled_state = {
+					limit = {
+						NOT = { is_core_of = PREV }
+						NOT = { is_owned_by = PREV }
+						OR = {
+							state = 629 #Hawaii
+							state = 684 #Caroline Islands
+							state = 638 #Guam
+							state = 641 #Tahiti
+							state = 646 #Saipan
+							state = 726 #Samoa
+						}
+					}
+					ROOT = { set_state_controller = PREV }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+}
+AZR_AST_alan_vasey_sick_c = {
+	AZR_AST_alan_vasey_sick_d = {
+		priority = 1
+		fire_only_once = yes
+		days_mission_timeout = 30
+		activation = {
+			#test
+			#always = yes
+			has_country_flag = MMR_AST_alan_vasey_currently_sick_flag
+		}
+		available = { hidden_trigger = { always = no } }
+		timeout_effect = {
+			clr_country_flag = MMR_AST_alan_vasey_currently_sick_flag
+			remove_trait = {
+				 character = AST_alan_vasey
+				 trait = sick
+			}
+		}
+		icon = GFX_decision_generic_army_support
+		complete_effect = { }
+		ai_will_do = {
+			base = 0
+		}
+	}
+}
+
+AZR_NZL_mobilize_the_masses_c = {
+	AZR_NZL_mobilize_the_masses_north_island_d = {
+		priority = 1
+		visible = {
+			has_completed_focus = NZL_pacific_communist_alternative
+			has_completed_focus = NZL_rural_infrastructure_investment
+			284 = { is_owned_and_controlled_by = ROOT }
+			NOT = {
+				284 = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+		available = {
+			284 = {
+				free_building_slots = {
+					building = industrial_complex
+					size < 1
+					include_locked = no
+				}
+			}
+		}
+		days_re_enable = 30
+		cost = 75
+		icon = GFX_decision_generic_electricity
+		complete_effect = {
+			284 = { add_extra_state_shared_building_slots = 1 }
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	AZR_NZL_mobilize_the_masses_south_island_d = {
+		priority = 1
+		visible = {
+			has_completed_focus = NZL_pacific_communist_alternative
+			has_completed_focus = NZL_rural_infrastructure_investment
+			723 = { is_owned_and_controlled_by = ROOT }
+			NOT = {
+				723 = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}
+				}
+			}
+		}
+		available = {
+			723 = {
+				free_building_slots = {
+					building = industrial_complex
+					size < 1
+					include_locked = no
+				}
+			}
+		}
+		days_re_enable = 30
+		cost = 75
+		icon = GFX_decision_generic_electricity
+		complete_effect = {
+			723 = { add_extra_state_shared_building_slots = 1 }
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+}
+
+AZR_NZL_prepare_ast_for_lib_c = {
+	AZR_NZL_prepare_ast_for_lib_turn_dixon_d = {
+		priority = 10
+		visible = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+			}
+			has_completed_focus = NZL_anti_colonial_agitation
+		}
+		available = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		icon = GFX_decision_hol_exchange_intelligence_data
+		complete_effect = {
+			IF = {
+				limit = { any_country = { original_tag = AST has_country_leader = { character = AST_richard_dixon } } }
+				random_country = {
+					limit = { is_ai = yes is_in_faction = no has_war = no original_tag = AST has_country_leader = { character = AST_richard_dixon } }
+					ROOT = { puppet = PREV }
+					custom_effect_tooltip = AST_richard_dixon_marxism_tt
+					set_country_leader_ideology = marxism
+				}
+				random_country = {
+					limit = { is_ai = no has_war = no is_in_faction = no original_tag = AST has_country_leader = { character = AST_richard_dixon } }
+					ROOT = { add_to_faction = PREV }
+					custom_effect_tooltip = AST_richard_dixon_marxism_tt
+					set_country_leader_ideology = marxism
+				}
+			}
+			ELSE = {
+				set_country_flag = AZR_NZL_prepare_ast_for_lib_turn_dixon_d_flag
+				add_war_support = 0.01
+				AST = {
+					add_popularity = {
+						ideology = communism
+						popularity = 0.01
+					}
+					custom_effect_tooltip = AST_richard_dixon_marxism_tt
+					hidden_effect = {
+						remove_country_leader_role = {
+							character = AST_richard_dixon
+							ideology = stalinism
+						}
+						add_country_leader_role = {
+							character = AST_richard_dixon
+							promote_leader = yes
+							country_leader = {
+								ideology = marxism
+								expire = "1965.1.1.1"
+								traits = { MMR_AST_well_trained_communist }
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	AZR_NZL_prepare_ast_for_lib_small_com_prop_effort_d = {
+		priority = 8
+		visible = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+			has_completed_focus = NZL_anti_colonial_agitation
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_turn_dixon_d_flag
+			NOT = { has_country_flag = AZR_NZL_prepare_ast_for_lib_small_com_prop_effort_d_active_flag }
+		}
+		available = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+		}
+		cost = 100
+		icon = GFX_decision_eng_propaganda_campaigns
+		complete_effect = {
+			set_country_flag = AZR_NZL_prepare_ast_for_lib_small_com_prop_effort_d_active_flag
+			AST = {
+				add_timed_idea = {
+					idea = AZR_NZL_AST_prepare_ast_for_lib_small_com_prop_effort_idea
+					days = 180
+				}
+				IF = {
+					limit = { NOT = { has_country_flag = AZR_AST_NZL_propaganda_first } }
+					set_country_flag = AZR_AST_NZL_propaganda_first
+					country_event = { id = mmr_ast.42 }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	AZR_NZL_prepare_ast_for_lib_small_com_prop_effort_d_m = {
+		priority = 9
+		days_mission_timeout = 180
+		activation = {
+			#test
+			#always = yes
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_small_com_prop_effort_d_active_flag
+		}
+		available = { hidden_trigger = { always = no } }
+		timeout_effect = {
+			clr_country_flag = AZR_NZL_prepare_ast_for_lib_small_com_prop_effort_d_active_flag
+			AST = {
+				remove_ideas = AZR_NZL_AST_prepare_ast_for_lib_small_com_prop_effort_idea
+			}
+		}
+		icon = GFX_decision_generic_political_rally
+		complete_effect = { }
+		ai_will_do = {
+			base = 0
+		}
+	}
+	AZR_NZL_prepare_ast_for_lib_medium_com_prop_effort_d = {
+		priority = 7
+		visible = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+			has_completed_focus = NZL_anti_colonial_agitation
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_turn_dixon_d_flag
+			NOT = { has_country_flag = AZR_NZL_prepare_ast_for_lib_medium_com_prop_effort_d_active_flag }
+		}
+		available = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+		}
+		cost = 150
+		icon = GFX_decision_eng_propaganda_campaigns
+		complete_effect = {
+			set_country_flag = AZR_NZL_prepare_ast_for_lib_medium_com_prop_effort_d_active_flag
+			AST = {
+				add_timed_idea = {
+					idea = AZR_NZL_AST_prepare_ast_for_lib_medium_com_prop_effort_idea
+					days = 180
+				}
+				IF = {
+					limit = { NOT = { has_country_flag = AZR_AST_NZL_propaganda_first } }
+					set_country_flag = AZR_AST_NZL_propaganda_first
+					country_event = { id = mmr_ast.42 }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	AZR_NZL_prepare_ast_for_lib_medium_com_prop_effort_d_m = {
+		priority = 8
+		days_mission_timeout = 180
+		activation = {
+			#test
+			#always = yes
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_medium_com_prop_effort_d_active_flag
+		}
+		available = { hidden_trigger = { always = no } }
+		timeout_effect = {
+			clr_country_flag = AZR_NZL_prepare_ast_for_lib_medium_com_prop_effort_d_active_flag
+			AST = {
+				remove_ideas = AZR_NZL_AST_prepare_ast_for_lib_medium_com_prop_effort_idea
+			}
+		}
+		icon = GFX_decision_generic_political_rally
+		complete_effect = { }
+		ai_will_do = {
+			base = 0
+		}
+	}
+	AZR_NZL_prepare_ast_for_lib_large_com_prop_effort_d = {
+		priority = 6
+		visible = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+			has_completed_focus = NZL_anti_colonial_agitation
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_turn_dixon_d_flag
+			NOT = { has_country_flag = AZR_NZL_prepare_ast_for_lib_large_com_prop_effort_d_active_flag }
+		}
+		available = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+		}
+		cost = 200
+		icon = GFX_decision_eng_propaganda_campaigns
+		complete_effect = {
+			set_country_flag = AZR_NZL_prepare_ast_for_lib_large_com_prop_effort_d_active_flag
+			AST = {
+				add_timed_idea = {
+					idea = AZR_NZL_AST_prepare_ast_for_lib_large_com_prop_effort_idea
+					days = 180
+				}
+				IF = {
+					limit = { NOT = { has_country_flag = AZR_AST_NZL_propaganda_first } }
+					set_country_flag = AZR_AST_NZL_propaganda_first
+					country_event = { id = mmr_ast.42 }
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	AZR_NZL_prepare_ast_for_lib_large_com_prop_effort_d_m = {
+		priority = 7
+		days_mission_timeout = 180
+		activation = {
+			#test
+			#always = yes
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_large_com_prop_effort_d_active_flag
+		}
+		available = { hidden_trigger = { always = no } }
+		timeout_effect = {
+			clr_country_flag = AZR_NZL_prepare_ast_for_lib_large_com_prop_effort_d_active_flag
+			AST = {
+				remove_ideas = AZR_NZL_AST_prepare_ast_for_lib_large_com_prop_effort_idea
+			}
+		}
+		icon = GFX_decision_generic_political_rally
+		complete_effect = { }
+		ai_will_do = {
+			base = 0
+		}
+	}
+	
+	AZR_NZL_prepare_ast_for_lib_sabotage_ast_navy_d_1 = {
+		priority = 2
+		fire_only_once = yes
+		visible = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+			has_completed_focus = NZL_anti_colonial_agitation
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_turn_dixon_d_flag
+		}
+		available = {
+			has_government = communism
+			AST = { communism > 0.1 }
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 20
+			has_equipment = {
+				infantry_equipment > 500
+			}
+		}
+		custom_cost_text = AZR_NZL_prepare_ast_for_lib_sabotage_ast_navy_d_1_c_tt
+		icon = GFX_decision_generic_prepare_civil_war
+		complete_effect = {
+			set_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_navy_d_1_flag
+			custom_effect_tooltip = AZR_NZL_prepare_ast_for_lib_sabotage_ast_navy_d_1_tt
+			hidden_effect = {
+				add_command_power = -20
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -500
+				}
+				AST = {
+					IF = {
+						limit = { NOT = { has_country_flag = AZR_AST_NZL_propaganda_first } }
+						set_country_flag = AZR_AST_NZL_propaganda_first
+						country_event = { id = mmr_ast.42 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	
+	AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1 = {
+		priority = 3
+		fire_only_once = yes
+		visible = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack } }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+			has_completed_focus = NZL_anti_colonial_agitation
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_turn_dixon_d_flag
+		}
+		available = {
+			has_government = communism
+			AST = { communism > 0.05 }
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 20
+			has_equipment = {
+				infantry_equipment > 500
+			}
+		}
+		custom_cost_text = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1_c_tt
+		icon = GFX_decision_generic_prepare_civil_war
+		complete_effect = {
+			set_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1_flag
+			custom_effect_tooltip = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1_tt #on war with AST
+			effect_tooltip = {
+				AST = {
+					add_ideas = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack
+				}
+			}
+			hidden_effect = {
+				add_command_power = -20
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -500
+				}
+				AST = {
+					IF = {
+						limit = { NOT = { has_country_flag = AZR_AST_NZL_propaganda_first } }
+						set_country_flag = AZR_AST_NZL_propaganda_first
+						country_event = { id = mmr_ast.42 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_2 = {
+		priority = 1
+		fire_only_once = yes
+		visible = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack NOT = { has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack_2 } }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+			has_completed_focus = NZL_anti_colonial_agitation
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_turn_dixon_d_flag
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1_flag
+		}
+		available = {
+			AST = { communism > 0.2 }
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism }
+				any_country = {
+					original_tag = AST
+					has_civil_war = yes
+					has_government = communism
+				}
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 40
+			has_equipment = {
+				infantry_equipment > 1000
+			}
+		}
+		custom_cost_text = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_2_c_tt
+		icon = GFX_decision_generic_prepare_civil_war
+		complete_effect = {
+			set_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_2_flag
+			custom_effect_tooltip = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_2_tt #on war with AST
+			effect_tooltip = {
+				AST = {
+					swap_ideas = {
+						remove_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack
+						add_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack_2
+					}
+				}
+			}
+			hidden_effect = {
+				add_command_power = -40
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -1000
+				}
+			}
+		}
+		ai_will_do = {
+			base = 50
+		}
+	}
+	
+	AZR_NZL_liberate_ast_puppet_com_ast_join_war_d = {
+		priority = 15
+		visible = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism has_civil_war = yes is_subject = no is_in_faction = no }
+			}
+			any_country = {
+				original_tag = AST
+				has_government = communism
+				has_civil_war = yes
+				NOT = { is_subject_of = ROOT }
+			}
+			has_completed_focus = NZL_liberate_ast
+		}
+		available = {
+			has_government = communism
+			NOT = {
+				has_war_with = AST
+				is_in_faction_with = AST
+				AST = { has_government = communism has_civil_war = yes is_subject = no is_in_faction = no }
+			}
+			any_country = {
+				original_tag = AST
+				has_government = communism
+				has_civil_war = yes
+				NOT = { is_subject_of = ROOT }
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		icon = GFX_decision_hol_exchange_intelligence_data
+		complete_effect = {
+			custom_effect_tooltip = AZR_NZL_liberate_ast_puppet_com_ast_join_war_d_tt #this will put us at war with AST
+			random_country = {
+				limit = { is_ai = yes has_civil_war = yes original_tag = AST has_government = communism }
+				ROOT = {
+					puppet = {
+						target = PREV
+						end_wars = no
+						end_civil_wars = no
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 2
+				has_completed_focus = NZL_domestic_arms_industry
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = NZL_think_big
+			}
+			modifier = {
+				factor = 1.5
+				has_completed_focus = NZL_expand_devonport_naval_base
+			}
+			modifier = {
+				factor = 1.5
+				fighting_army_strength_ratio = {
+					tag = AST
+					ratio > 0.5
+				}
+			}
+			modifier = {
+				factor = 2
+				fighting_army_strength_ratio = {
+					tag = AST
+					ratio > 1
+				}
+			}
+			modifier = {
+				factor = 1.5
+				naval_strength_ratio = {
+					tag = AST
+					ratio > 0.5
+				}
+			}
+		}
+	}
+}
+AZR_NZL_prepare_ast_for_lib_AST_protect_from_NZL_c = {
+	AZR_NZL_prepare_ast_for_lib_AST_protect_military_d_1 = {
+		priority = 2
+		visible = {
+			NOT = {
+				has_government = communism
+				has_war_with = NZL
+				is_in_faction_with = NZL
+			}
+			NZL = { has_government = communism has_completed_focus = NZL_anti_colonial_agitation has_country_flag = AZR_NZL_prepare_ast_for_lib_turn_dixon_d_flag }
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_AST_protect_from_NZL_flag
+		}
+		available = {
+			NOT = {
+				has_government = communism
+				has_war_with = NZL
+				is_in_faction_with = NZL
+			}
+		}
+		custom_cost_trigger = {
+			command_power > 30
+		}
+		custom_cost_text = AZR_NZL_prepare_ast_for_lib_AST_protect_military_d_1_c_tt
+		days_re_enable = 35
+		icon = GFX_decision_onmap_recruit_operative
+		complete_effect = {
+			add_war_support = -0.01
+			set_country_flag = AZR_NZL_prepare_ast_for_lib_AST_protect_military_d_1_flag
+			custom_effect_tooltip = AZR_NZL_prepare_ast_for_lib_AST_protect_military_d_1_tt
+			hidden_effect = {
+				add_command_power = -30
+				random_list = {
+					10 = {
+						country_event = { id = mmr_ast.421 }
+						modifier = {
+							factor = 0
+							OR = {
+								has_country_flag = AST_ignored_NZL_sabotage_army
+								NOT = {
+									NZL = {
+										OR = {
+											has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1_flag
+											has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_2_flag
+										}
+									}
+								}
+							}
+						}
+					}
+					10 = {
+						country_event = { id = mmr_ast.422 }
+						modifier = {
+							factor = 0
+							OR = {
+								has_country_flag = AST_ignored_NZL_sabotage_navy
+								NOT = { NZL = { has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_navy_d_1_flag } }
+							}
+						}
+					}
+					20 = {
+						#nothing
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	AZR_NZL_prepare_ast_for_lib_AST_counter_propaganda_d_1 = {
+		priority = 3
+		visible = {
+			NOT = {
+				has_government = communism
+				has_war_with = NZL
+				is_in_faction_with = NZL
+			}
+			NZL = { has_government = communism has_completed_focus = NZL_anti_colonial_agitation has_country_flag = AZR_NZL_prepare_ast_for_lib_turn_dixon_d_flag }
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_AST_protect_from_NZL_flag
+		}
+		available = {
+			NOT = {
+				has_government = communism
+				has_war_with = NZL
+				is_in_faction_with = NZL
+			}
+		}
+		cost = 100
+		days_re_enable = 360
+		icon = GFX_decision_generic_nationalism
+		complete_effect = {
+			IF = {
+				limit = { has_government = democratic }
+				add_timed_idea = {
+					idea = AZR_NZL_AST_prepare_ast_for_lib_AST_counter_propaganda_democratic_idea
+					days = 360
+				}
+			}
+			IF = {
+				limit = { has_government = neutrality }
+				add_timed_idea = {
+					idea = AZR_NZL_AST_prepare_ast_for_lib_AST_counter_propaganda_neutrality_idea
+					days = 360
+				}
+			}
+			IF = {
+				limit = { has_government = neutrality }
+				add_timed_idea = {
+					idea = AZR_NZL_AST_prepare_ast_for_lib_AST_counter_propaganda_fascism_idea
+					days = 360
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+	AZR_NZL_prepare_ast_for_lib_AST_crackdown_on_communists_d_1 = {
+		priority = 3
+		visible = {
+			NOT = {
+				has_government = communism
+				has_war_with = NZL
+				is_in_faction_with = NZL
+			}
+			NZL = { has_government = communism has_completed_focus = NZL_anti_colonial_agitation has_country_flag = AZR_NZL_prepare_ast_for_lib_turn_dixon_d_flag }
+			has_country_flag = AZR_NZL_prepare_ast_for_lib_AST_protect_from_NZL_flag
+		}
+		available = {
+			NOT = {
+				has_government = communism
+				has_war_with = NZL
+				is_in_faction_with = NZL
+			}
+			communism > 0
+		}
+		cost = 50
+		days_re_enable = 35
+		icon = GFX_decision_generic_nationalism
+		complete_effect = {
+			add_stability = -0.05
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+}
+
+#AZR [ideology on the rise]
+
+fascism_on_the_rise = {
+	AZR_prepare_for_fascist_civil_war = {
+		priority = 2
+		icon = generic_prepare_civil_war
+
+		available = {
+			fascism > 0.1
+			num_of_controlled_states > 1
+		}
+
+		visible = {
+			NOT = { has_country_flag = preparation_for_fascism_civil_war }
+			OR = {
+				has_idea_with_trait = MMR_NZL_radical_anti_socialist
+				has_idea_with_trait = MMR_AST_fascist_politician
+				has_idea = AZR_NZL_legion_cooperation_idea
+			}
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+		}
+		
+		fire_only_once = yes
+		
+		cost = 50
+		
+		complete_effect = {
+			set_country_flag = preparation_for_fascism_civil_war_azr
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	AZR_expand_civil_fascism_support = {
+		priority = 2
+		icon = generic_civil_support
+
+		visible = {
+			OR = {
+				has_country_flag = preparation_for_fascism_civil_war_azr
+				has_country_flag = open_up_political_discourse_fascism_azr
+			}
+			OR = {
+				has_idea_with_trait = MMR_NZL_radical_anti_socialist
+				has_idea_with_trait = MMR_AST_fascist_politician
+				has_idea = AZR_NZL_legion_cooperation_idea
+			}
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+		}
+
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		
+		fire_only_once = no
+		
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {
+			fascism_drift = 0.02
+			stability_weekly = -0.03
+ 			political_power_gain = -0.2
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	AZR_army_support_for_fascist_civil_war = {
+		priority = 2
+		icon = generic_army_support
+
+		visible = {
+			has_country_flag = preparation_for_fascism_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_radical_anti_socialist
+				has_idea_with_trait = MMR_AST_fascist_politician
+				has_idea = AZR_NZL_legion_cooperation_idea
+			}
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+		}
+
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+	
+		fire_only_once = no
+	
+		cost = 50
+
+		days_remove = 30
+
+		modifier = {
+			command_power_gain = -0.2
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					check_variable = { var = army_support_var value = 0.1 compare = less_than }
+				}
+				set_variable = { var = army_support_var value = 0.1 } 
+			}
+			if = {
+				limit = {
+					check_variable = { var = army_support_var value = 0.1 compare = greater_than_or_equals }
+				}
+				add_to_variable = { var = army_support_var value = 0.1 } 
+			}
+			set_country_flag = military_support_for_fascism_civil_war
+			custom_effect_tooltip = army_support_TT
+		}
+		
+		complete_effect = {
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	AZR_ensure_general_loyalty_for_fascist_civil_war = {
+		priority = 2
+		icon = generic_army_support
+
+		available = {
+			has_country_flag = military_support_for_fascism_civil_war
+		}
+
+		visible = {
+			has_country_flag = preparation_for_fascism_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_radical_anti_socialist
+				has_idea_with_trait = MMR_AST_fascist_politician
+				has_idea = AZR_NZL_legion_cooperation_idea
+			}
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			country_event = { id = decisions.1 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	AZR_ensure_marshal_loyalty_for_fascist_civil_war = {
+		priority = 2
+		icon = generic_army_support
+
+		available = {
+			has_country_flag = military_support_for_fascism_civil_war
+		}
+
+		visible = {
+			has_country_flag = preparation_for_fascism_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_radical_anti_socialist
+				has_idea_with_trait = MMR_AST_fascist_politician
+				has_idea = AZR_NZL_legion_cooperation_idea
+			}
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			country_event = { id = decisions.2 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	AZR_siphon_equipment_stockpiles_for_fascist_civil_war = {
+		priority = 2
+		icon = generic_prepare_civil_war
+
+		available = {
+			has_country_flag = military_support_for_fascism_civil_war
+			has_equipment = { infantry_equipment > 1000 }
+			command_power > 2
+		}
+
+		visible = {
+			has_country_flag = preparation_for_fascism_civil_war_azr
+			has_country_flag = military_support_for_fascism_civil_war
+			OR = {
+				has_idea_with_trait = MMR_NZL_radical_anti_socialist
+				has_idea_with_trait = MMR_AST_fascist_politician
+				has_idea = AZR_NZL_legion_cooperation_idea
+			}
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+		}
+	
+		fire_only_once = no
+	
+		cost = 50
+		
+		complete_effect = {
+			add_command_power = -2
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
+			}
+			set_country_flag = siphoned_equipment_stockpiles_for_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	AZR_formulate_surprise_attack_plan_for_fascist_civil_war = {
+		priority = 2
+		icon = generic_army_support
+
+		available = {
+			has_country_flag = military_support_for_fascism_civil_war
+			command_power > 2
+		}
+
+		visible = {
+			has_country_flag = preparation_for_fascism_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_radical_anti_socialist
+				has_idea_with_trait = MMR_AST_fascist_politician
+				has_idea = AZR_NZL_legion_cooperation_idea
+			}
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			add_command_power = -2
+			custom_effect_tooltip = formulate_surprise_attack_plan_for_civil_war_tt
+			set_country_flag = formulated_surprise_attack_plan_for_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	AZR_ignite_the_fascist_civil_war_single_state = {
+		priority = 2
+		icon = generic_ignite_civil_war
+		name = ignite_the_fascist_civil_war
+
+		available = {
+			has_stability < 0.5
+			fascism > 0.50
+		}
+
+		visible = {
+			has_country_flag = preparation_for_fascism_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_radical_anti_socialist
+				has_idea_with_trait = MMR_AST_fascist_politician
+				has_idea = AZR_NZL_legion_cooperation_idea
+			}
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+			check_variable = { num_owned_states = 1 }
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			set_politics = { ruling_party = fascism elections_allowed = no }
+			clr_country_flag = preparation_for_fascism_civil_war
+			clr_country_flag = military_support_for_fascism_civil_war
+			clr_country_flag = civil_support_for_fascism_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	AZR_ignite_the_fascist_civil_war = {
+		priority = 2
+		icon = generic_ignite_civil_war
+
+		available = {
+			has_stability < 0.5
+		}
+
+		visible = {
+			has_country_flag = preparation_for_fascism_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_radical_anti_socialist
+				has_idea_with_trait = MMR_AST_fascist_politician
+				has_idea = AZR_NZL_legion_cooperation_idea
+			}
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+			check_variable = { num_owned_states > 1 }
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = communism
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@communism
+				}
+			}
+			if = {
+				limit = {
+					has_government = neutrality
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@neutrality
+				}
+			}
+			subtract_from_variable = {
+				var = civil_war_size_var
+				value = army_support_var
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = civil_war_size_var
+						value = 0.3
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = 0.3
+				}
+			}
+			start_civil_war = {
+				ruling_party = fascism
+				ideology = ROOT
+				size = civil_war_size_var
+				keep_unit_leaders_trigger = {
+					has_trait = hidden_sympathies
+				}
+			}
+			clr_country_flag = preparation_for_fascism_civil_war
+			clr_country_flag = military_support_for_fascism_civil_war
+			clr_country_flag = civil_support_for_fascism_civil_war
+			set_country_flag = ideology_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	AZR_rebuild_the_nation_fascism = {
+		priority = 2
+		icon = generic_construction
+
+		visible = {
+			has_government = fascism
+			has_country_flag = won_ideology_civil_war
+		}
+
+		fire_only_once = yes
+	
+		cost = 25
+
+		days_remove = 365
+
+		modifier = {
+			political_power_gain = -1
+			industry_repair_factor = 0.20
+			production_speed_industrial_complex_factor = 0.1
+			production_speed_infrastructure_factor = 0.1
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.1
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+	AZR_open_up_political_discourse_fascism_azr = {
+		priority = 2
+		icon = generic_political_discourse
+
+		available = {
+			fascism < 0.9
+			democratic < 0.9
+			communism < 0.9
+			neutrality < 0.9
+		}
+
+		visible = {
+			NOT = { has_country_flag = open_up_political_discourse_fascism_azr }
+			OR = {
+				has_idea_with_trait = MMR_NZL_radical_anti_socialist
+				has_idea_with_trait = MMR_AST_fascist_politician
+				has_idea = AZR_NZL_legion_cooperation_idea
+			}
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+		}
+		
+		remove_trigger = {
+			has_government = fascism
+		}
+		
+		fire_only_once = yes
+		
+		cost = 75
+		
+		complete_effect = {
+			set_country_flag = open_up_political_discourse_fascism_azr
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	AZR_discredit_government_fascism = {
+		priority = 2
+		icon = generic_political_discourse
+
+		available = {
+			fascism < 0.8
+			democratic < 0.8
+			communism < 0.8
+			neutrality < 0.8
+			OR = {
+				has_idea_with_trait = MMR_NZL_radical_anti_socialist
+				has_idea_with_trait = MMR_AST_fascist_politician
+				has_idea = AZR_NZL_legion_cooperation_idea
+			}
+		}
+
+		visible = {
+			has_country_flag = open_up_political_discourse_fascism_azr
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+		}
+		
+		remove_trigger = {
+			has_government = fascism
+		}
+		
+		fire_only_once = yes
+		
+		cost = 50
+		
+		complete_effect = {
+			add_stability = -0.010
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = communism
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = neutrality
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.1
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	AZR_hold_the_fascist_national_referendum = {
+		priority = 2
+		icon = generic_political_discourse
+
+		available = {
+			fascism > 0.5
+		}
+
+		visible = {
+			OR = {
+				fascism > 0.6
+				has_country_flag = open_up_political_discourse_fascism_azr
+			}
+			NOT = { has_government = fascism }
+			check_has_focus_tree_to_switch_to_fascism = yes
+		}
+		
+		remove_trigger = {
+			has_government = fascism
+		}
+		
+		fire_only_once = yes
+		
+		cost = 100
+		
+		complete_effect = {
+			country_event = { id = political.18 }
+		}
+		
+		ai_will_do = {
+			factor = 210
+			modifier = {
+				fascism > 0.6
+				factor = 10
+			}
+		}
+	}
+}
+
+communism_on_the_rise = {
+	AZR_prepare_for_communist_civil_war = {
+		priority = 2
+		icon = generic_prepare_civil_war
+
+		available = {
+			communism > 0.1
+			num_of_controlled_states > 1
+		}
+
+		visible = {
+			NOT = { has_country_flag = preparation_for_communism_civil_war }
+			OR = {
+				has_idea_with_trait = MMR_NZL_veteran_socialist_politician
+				has_idea_with_trait = marxist_academic
+				has_idea = AZR_AST_popular_front_idea
+			}
+			NOT = { has_government = communism }
+			check_has_focus_tree_to_switch_to_communism = yes
+		}
+		
+		fire_only_once = yes
+		
+		cost = 50
+		
+		complete_effect = {
+			set_country_flag = preparation_for_communist_civil_war_azr
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	AZR_expand_civil_communist_support = {
+		priority = 2
+		icon = generic_civil_support
+
+		visible = {
+			OR = {
+				has_country_flag = preparation_for_communist_civil_war_azr
+				has_country_flag = open_up_political_discourse_communism
+			}
+			OR = {
+				has_idea_with_trait = MMR_NZL_veteran_socialist_politician
+				has_idea_with_trait = marxist_academic
+				has_idea = AZR_AST_popular_front_idea
+			}
+			NOT = { has_government = communism }
+			check_has_focus_tree_to_switch_to_communism = yes
+		}
+
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+		
+		fire_only_once = no
+		
+		cost = 25
+
+		days_remove = 30
+
+		modifier = {
+			communism_drift = 0.02
+			stability_weekly = -0.03
+ 			political_power_gain = -0.2
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	AZR_army_support_for_communist_civil_war = {
+		priority = 2
+		icon = generic_army_support
+
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_veteran_socialist_politician
+				has_idea_with_trait = marxist_academic
+				has_idea = AZR_AST_popular_front_idea
+			}
+			NOT = { has_government = communism }
+			check_has_focus_tree_to_switch_to_communism = yes
+		}
+
+		cancel_trigger = {
+			hidden_trigger = {
+				has_civil_war = yes
+			}
+		}
+	
+		fire_only_once = no
+	
+		cost = 50
+
+		days_remove = 30
+
+		modifier = {
+			command_power_gain = -0.2
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					check_variable = { var = army_support_var value = 0.1 compare = less_than }
+				}
+				set_variable = { var = army_support_var value = 0.1 } 
+			}
+			if = {
+				limit = {
+					check_variable = { var = army_support_var value = 0.1 compare = greater_than_or_equals }
+				}
+				add_to_variable = { var = army_support_var value = 0.1 } 
+			}
+			set_country_flag = military_support_for_communist_civil_war
+		}
+		
+		complete_effect = {
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	AZR_ensure_general_loyalty_for_communist_civil_war = {
+		priority = 2
+		icon = generic_army_support
+
+		available = {
+			has_country_flag = military_support_for_communist_civil_war
+			command_power > 2
+		}
+
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_veteran_socialist_politician
+				has_idea_with_trait = marxist_academic
+				has_idea = AZR_AST_popular_front_idea
+			}
+			NOT = { has_government = communism }
+			check_has_focus_tree_to_switch_to_communism = yes
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			country_event = { id = decisions.1 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	AZR_ensure_marshal_loyalty_for_communist_civil_war = {
+		priority = 2
+		icon = generic_army_support
+
+		available = {
+			has_country_flag = military_support_for_communist_civil_war
+			command_power > 2
+		}
+
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_veteran_socialist_politician
+				has_idea_with_trait = marxist_academic
+				has_idea = AZR_AST_popular_front_idea
+			}
+			NOT = { has_government = communism }
+			check_has_focus_tree_to_switch_to_communism = yes
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			country_event = { id = decisions.2 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	AZR_siphon_equipment_stockpiles_for_communist_civil_war = {
+		priority = 2
+		icon = generic_prepare_civil_war
+
+		available = {
+			has_country_flag = military_support_for_communist_civil_war
+			has_equipment = { infantry_equipment > 1000 }
+			command_power > 2
+		}
+
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war_azr
+			has_country_flag = military_support_for_communist_civil_war
+			OR = {
+				has_idea_with_trait = MMR_NZL_veteran_socialist_politician
+				has_idea_with_trait = marxist_academic
+				has_idea = AZR_AST_popular_front_idea
+			}
+			NOT = { has_government = communism }
+			check_has_focus_tree_to_switch_to_communism = yes
+		}
+	
+		fire_only_once = no
+	
+		cost = 50
+		
+		complete_effect = {
+			add_command_power = -2
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
+			}
+			set_country_flag = siphoned_equipment_stockpiles_for_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	AZR_formulate_surprise_attack_plan_for_communist_civil_war = {
+		priority = 2
+		icon = generic_army_support
+
+		available = {
+			has_country_flag = military_support_for_communist_civil_war
+			command_power > 2
+		}
+
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_veteran_socialist_politician
+				has_idea_with_trait = marxist_academic
+				has_idea = AZR_AST_popular_front_idea
+			}
+			NOT = { has_government = communism }
+			check_has_focus_tree_to_switch_to_communism = yes
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			add_command_power = -2
+			custom_effect_tooltip = formulate_surprise_attack_plan_for_civil_war_tt
+			set_country_flag = formulated_surprise_attack_plan_for_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	AZR_ignite_the_communist_civil_war_single_state = {
+		priority = 2
+		icon = generic_ignite_civil_war
+		name = ignite_the_communist_civil_war
+
+		available = {
+			has_stability < 0.5
+			communism > 0.50
+		}
+
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_veteran_socialist_politician
+				has_idea_with_trait = marxist_academic
+				has_idea = AZR_AST_popular_front_idea
+			}
+			NOT = { has_government = communism }
+			check_has_focus_tree_to_switch_to_communism = yes
+			check_variable = { num_owned_states = 1 }
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			set_politics = { ruling_party = communism elections_allowed = no }
+			clr_country_flag = preparation_for_communist_civil_war_azr
+			clr_country_flag = military_support_for_communist_civil_war
+			clr_country_flag = civil_support_for_communist_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	AZR_ignite_the_communist_civil_war = {
+		priority = 2
+		icon = generic_ignite_civil_war
+
+		available = {
+			has_stability < 0.5
+		}
+
+		visible = {
+			has_country_flag = preparation_for_communist_civil_war_azr
+			OR = {
+				has_idea_with_trait = MMR_NZL_veteran_socialist_politician
+				has_idea_with_trait = marxist_academic
+				has_idea = AZR_AST_popular_front_idea
+			}
+			NOT = { has_government = communism }
+			check_has_focus_tree_to_switch_to_communism = yes
+			check_variable = { num_owned_states > 1 }
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			if = {
+				limit = {
+					has_government = fascism
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@fascism
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@democratic
+				}
+			}
+			if = {
+				limit = {
+					has_government = neutrality
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = party_popularity@neutrality
+				}
+			}
+			subtract_from_variable = {
+				var = civil_war_size_var
+				value = army_support_var
+			}
+			if = {
+				limit = {
+					check_variable = {
+						var = civil_war_size_var
+						value = 0.3
+						compare = less_than
+					}
+				}
+				set_variable = {
+					var = civil_war_size_var
+					value = 0.3
+				}
+			}
+			start_civil_war = {
+				ruling_party = communism
+				ideology = ROOT
+				size = civil_war_size_var
+				keep_unit_leaders_trigger = {
+					has_trait = hidden_sympathies
+				}				
+			}
+			clr_country_flag = preparation_for_communist_civil_war_azr
+			clr_country_flag = military_support_for_communist_civil_war
+			clr_country_flag = civil_support_for_communist_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	AZR_open_up_political_discourse_communist = {
+		priority = 2
+		icon = generic_political_discourse
+
+		available = {
+			fascism < 0.9
+			democratic < 0.9
+			communism < 0.9
+			neutrality < 0.9
+		}
+
+		visible = {
+			OR = {
+				has_idea_with_trait = MMR_NZL_veteran_socialist_politician
+				has_idea_with_trait = marxist_academic
+				has_idea = AZR_AST_popular_front_idea
+			}
+			NOT = { has_government = communism }
+			check_has_focus_tree_to_switch_to_communism = yes
+		}
+		
+		remove_trigger = {
+			has_government = communism
+		}
+		
+		fire_only_once = yes
+		
+		cost = 75
+		
+		complete_effect = {
+			set_country_flag = open_up_political_discourse_communist_azr
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	AZR_discredit_government_communism = {
+		priority = 2
+		icon = generic_political_discourse
+
+		available = {
+			fascism < 0.8
+			democratic < 0.8
+			communism < 0.8
+			neutrality < 0.8
+			OR = {
+				has_idea_with_trait = MMR_NZL_veteran_socialist_politician
+				has_idea_with_trait = marxist_academic
+				has_idea = AZR_AST_popular_front_idea
+			}
+		}
+
+		visible = {
+			has_country_flag = open_up_political_discourse_communist_azr
+			NOT = { has_government = communism }
+			check_has_focus_tree_to_switch_to_communism = yes
+		}
+		
+		remove_trigger = {
+			has_government = communism
+		}
+		
+		fire_only_once = yes
+		
+		cost = 50
+		
+		complete_effect = {
+			add_stability = -0.010
+			if = {
+				limit = {
+					has_government = fascism
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.1
+				}
+			}
+			if = {
+				limit = {
+					has_government = neutrality
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.1
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	AZR_hold_the_communist_national_referendum = {
+		priority = 2
+		icon = generic_political_discourse
+
+		available = {
+			communism > 0.5
+		}
+
+		visible = {
+			NOT = { has_government = communism }
+			OR = {
+				communism > 0.6
+				has_country_flag = open_up_political_discourse_communist_azr
+			}
+			check_has_focus_tree_to_switch_to_communism = yes
+		}
+		
+		remove_trigger = {
+			has_government = communism
+		}
+		
+		fire_only_once = yes
+		
+		cost = 100
+		
+		complete_effect = {
+			country_event = { id = political.19 }
+		}
+		
+		ai_will_do = {
+			factor = 210
+			modifier = {
+				communism > 0.6
+				factor = 10
+			}
+		}
+	}
+}
+
+prospect_for_resources = {
+	azr_develop_ironsand_deposits = { #284
+
+		icon = steel
+
+		allowed = {
+
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 284
+			}
+		}
+		available = {
+			has_tech = excavation1
+			num_of_civilian_factories_available_for_projects > 2
+			owns_state = 284
+			controls_state = 284
+		}
+
+		visible = {
+			owns_state = 284
+			controls_state = 284
+			284 = {
+				steel > 1
+				NOT = {
+					has_state_flag = ironsand_deposits_developed_1
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 90
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			base = 0.3
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				has_resources_in_country = {
+					resource = steel
+					amount < 1
+				}
+			}
+		}
+		remove_effect = {
+			284 = { set_state_flag = ironsand_deposits_developed_1 }
+			284 = {
+				add_resource = {
+					type = steel
+					amount = 5
+				}
+			}
+		}
+	}
+	azr_develop_ironsand_deposits_2 = { #284
+
+		icon = steel
+
+		allowed = {
+
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 284
+			}
+		}
+		available = {
+			IF = {
+				limit = { original_tag = NZL }
+				has_completed_focus = NZL_department_of_scientific_and_industrial_research
+			}
+			has_tech = excavation5
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 284
+			controls_state = 284
+		}
+
+		visible = {
+			owns_state = 284
+			controls_state = 284
+			284 = {
+				has_state_flag = ironsand_deposits_developed_1
+				NOT = { has_state_flag = ironsand_deposits_developed_2 }
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.3
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				has_resources_in_country = {
+					resource = steel
+					amount < 1
+				}
+			}
+		}
+		remove_effect = {
+			284 = { set_state_flag = ironsand_deposits_developed_2 }
+			284 = {
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_ironsand_deposits_3 = { #284
+
+		icon = steel
+
+		allowed = {
+
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 284
+			}
+		}
+		available = {
+			IF = {
+				limit = { original_tag = NZL }
+				has_completed_focus = NZL_department_of_scientific_and_industrial_research
+			}
+			has_tech = excavation5
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 284
+			controls_state = 284
+		}
+
+		visible = {
+			owns_state = 284
+			controls_state = 284
+			284 = {
+				has_state_flag = ironsand_deposits_developed_1
+				has_state_flag = ironsand_deposits_developed_2
+				NOT = { has_state_flag = ironsand_deposits_developed_3 }
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.3
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				has_resources_in_country = {
+					resource = steel
+					amount < 1
+				}
+			}
+		}
+		remove_effect = {
+			284 = { set_state_flag = ironsand_deposits_developed_3 }
+			284 = {
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_taranaki_oil_fields = { #284
+
+		icon = oil
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation5
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 284
+			controls_state = 284
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 284
+			}
+		}
+
+		visible = {
+			owns_state = 284
+			controls_state = 284
+			284 = {
+				oil > 1
+				NOT = {
+					has_state_flag = taranaki_oil_fields_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			284 = {
+				set_state_flag = taranaki_oil_fields_developed
+			}
+			284 = {
+				add_resource = {
+					type = oil
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_south_island_tungsten_deposits = { #723
+
+		icon = tungsten
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation3
+			num_of_civilian_factories_available_for_projects > 2
+			owns_state = 723
+			controls_state = 723
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 723
+			}
+		}
+
+		visible = {
+			owns_state = 723
+			controls_state = 723
+			723 = {
+				NOT = {
+					has_state_flag = south_island_tungsten_deposits_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 90
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			723 = {
+				set_state_flag = south_island_tungsten_deposits_developed
+			}
+			723 = {
+				add_resource = {
+					type = tungsten
+					amount = 6
+				}
+			}
+		}
+	}
+	azr_develop_nsw_shale_oil_mines = { #285
+
+		icon = oil
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation5
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 285
+			controls_state = 285
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 285
+			}
+		}
+
+		visible = {
+			owns_state = 285
+			controls_state = 285
+			285 = {
+				oil > 1
+				NOT = {
+					has_state_flag = nsw_shale_oil_mines_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			285 = {
+				set_state_flag = nsw_shale_oil_mines_developed
+			}
+			285 = {
+				add_resource = {
+					type = oil
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_tirrawarra_oil_fields = { #519
+
+		icon = oil
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation2
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 519
+			controls_state = 519
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 519
+			}
+		}
+
+		visible = {
+			owns_state = 519
+			controls_state = 519
+			519 = {
+				has_state_flag = azr_ast_oil_discovered
+				NOT = {
+					has_state_flag = tirrawarra_oil_fields_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			519 = {
+				set_state_flag = tirrawarra_oil_fields_developed
+			}
+			519 = {
+				add_resource = {
+					type = oil
+					amount = 5
+				}
+			}
+		}
+	}
+	azr_develop_jackson_oil_fields = { #873
+
+		icon = oil
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation2
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 873
+			controls_state = 873
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 873
+			}
+		}
+
+		visible = {
+			owns_state = 873
+			controls_state = 873
+			873 = {
+				has_state_flag = azr_ast_oil_discovered
+				NOT = {
+					has_state_flag = jackson_oil_fields_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			873 = {
+				set_state_flag = jackson_oil_fields_developed
+			}
+			873 = {
+				add_resource = {
+					type = oil
+					amount = 5
+				}
+			}
+		}
+	}
+	azr_develop_jackson_oil_fields_2 = { #873
+
+		icon = oil
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation3
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 873
+			controls_state = 873
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 873
+			}
+		}
+
+		visible = {
+			owns_state = 873
+			controls_state = 873
+			873 = {
+				has_state_flag = azr_ast_oil_discovered
+				has_state_flag = jackson_oil_fields_developed
+				NOT = {
+					has_state_flag = jackson_oil_fields_developed_2
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			873 = {
+				set_state_flag = jackson_oil_fields_developed_2
+			}
+			873 = {
+				add_resource = {
+					type = oil
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_barrow_island_oil_fields = { #522
+
+		icon = oil
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation4
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 522
+			522 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 522
+			}
+		}
+
+		visible = {
+			owns_state = 522
+			controls_state = 522
+			controls_province = 5125
+			522 = {
+				has_state_flag = azr_ast_oil_discovered
+				NOT = {
+					has_state_flag = barrow_island_oil_fields_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			522 = {
+				set_state_flag = barrow_island_oil_fields_developed
+			}
+			522 = {
+				add_resource = {
+					type = oil
+					amount = 5
+				}
+			}
+		}
+	}
+	azr_develop_barrow_island_oil_fields_2 = { #522
+
+		icon = oil
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation5
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 522
+			522 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 522
+			}
+		}
+
+		visible = {
+			owns_state = 522
+			controls_state = 522
+			controls_province = 5125
+			522 = {
+				has_state_flag = azr_ast_oil_discovered
+				has_state_flag = barrow_island_oil_fields_developed
+				NOT = {
+					has_state_flag = barrow_island_oil_fields_developed_2
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			522 = {
+				set_state_flag = barrow_island_oil_fields_developed_2
+			}
+			522 = {
+				add_resource = {
+					type = oil
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_halibut_oil_fields = { #517
+
+		icon = oil
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation2
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 517
+			controls_state = 517
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 517
+			}
+		}
+
+		visible = {
+			owns_state = 517
+			controls_state = 517
+			517 = {
+				has_state_flag = azr_ast_oil_discovered
+				NOT = {
+					has_state_flag = halibut_oil_fields_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			517 = {
+				set_state_flag = halibut_oil_fields_developed
+			}
+			517 = {
+				add_resource = {
+					type = oil
+					amount = 5
+				}
+			}
+		}
+	}
+	azr_develop_halibut_oil_fields_2 = { #517
+
+		icon = oil
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation2
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 517
+			controls_state = 517
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 517
+			}
+		}
+
+		visible = {
+			owns_state = 517
+			controls_state = 517
+			517 = {
+				has_state_flag = azr_ast_oil_discovered
+				has_state_flag = halibut_oil_fields_developed
+				NOT = {
+					has_state_flag = halibut_oil_fields_developed_2
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			517 = {
+				set_state_flag = halibut_oil_fields_developed_2
+			}
+			517 = {
+				add_resource = {
+					type = oil
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_halibut_oil_fields_3 = { #517
+
+		icon = oil
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation3
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 517
+			controls_state = 517
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 517
+			}
+		}
+
+		visible = {
+			owns_state = 517
+			controls_state = 517
+			517 = {
+				has_state_flag = azr_ast_oil_discovered
+				has_state_flag = halibut_oil_fields_developed
+				has_state_flag = halibut_oil_fields_developed_2
+				NOT = {
+					has_state_flag = halibut_oil_fields_developed_3
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			517 = {
+				set_state_flag = halibut_oil_fields_developed_3
+			}
+			517 = {
+				add_resource = {
+					type = oil
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_mereenie_oil_fields = { #520
+
+		icon = oil
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation5
+			num_of_civilian_factories_available_for_projects > 4
+			520 = {
+				is_owned_and_controlled_by = ROOT
+				has_dynamic_modifier = { modifier = MMR_AST_top_end_industrialize_dynmod }
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 520
+			}
+		}
+
+		visible = {
+			owns_state = 520
+			controls_state = 520
+			520 = {
+				has_state_flag = azr_ast_oil_discovered
+				NOT = {
+					has_state_flag = mereenie_oil_fields_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			520 = {
+				set_state_flag = mereenie_oil_fields_developed
+			}
+			520 = {
+				add_resource = {
+					type = oil
+					amount = 5
+				}
+			}
+		}
+	}
+	azr_develop_pilbara_iron_deposits = { #870
+
+		icon = steel
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation2
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 870
+			870 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 870
+			}
+		}
+
+		visible = {
+			owns_state = 870
+			controls_state = 870
+			controls_province = 5125
+			870 = {
+				has_state_flag = azr_ast_iron_discovered
+				NOT = {
+					has_state_flag = pilbara_iron_deposits_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			870 = {
+				set_state_flag = pilbara_iron_deposits_developed
+			}
+			870 = {
+				add_resource = {
+					type = steel
+					amount = 5
+				}
+			}
+		}
+	}
+	azr_develop_pilbara_iron_deposits_2 = { #870
+
+		icon = steel
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation4
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 870
+			870 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 870
+			}
+		}
+
+		visible = {
+			owns_state = 870
+			controls_state = 870
+			controls_province = 5125
+			870 = {
+				has_state_flag = azr_ast_iron_discovered
+				has_state_flag = pilbara_iron_deposits_developed
+				NOT = {
+					has_state_flag = pilbara_iron_deposits_developed_2
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			870 = {
+				set_state_flag = pilbara_iron_deposits_developed_2
+			}
+			870 = {
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_pilbara_iron_deposits_3 = { #870
+
+		icon = steel
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation5
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 870
+			870 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 870
+			}
+		}
+
+		visible = {
+			owns_state = 870
+			controls_state = 870
+			controls_province = 5125
+			870 = {
+				has_state_flag = azr_ast_iron_discovered
+				has_state_flag = pilbara_iron_deposits_developed
+				has_state_flag = pilbara_iron_deposits_developed_2
+				NOT = {
+					has_state_flag = pilbara_iron_deposits_developed_3
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			870 = {
+				set_state_flag = pilbara_iron_deposits_developed_3
+			}
+			870 = {
+				add_resource = {
+					type = steel
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_huntly_bauxite_mine = { #522
+
+		icon = aluminium
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation5
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 522
+			522 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 522
+			}
+		}
+
+		visible = {
+			owns_state = 522
+			controls_state = 522
+			522 = {
+				has_state_flag = azr_ast_alu_discovered
+				NOT = {
+					has_state_flag = huntly_bauxite_mine_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			522 = {
+				set_state_flag = huntly_bauxite_mine_developed
+			}
+			522 = {
+				add_resource = {
+					type = aluminium
+					amount = 5
+				}
+			}
+		}
+	}
+	azr_develop_gove_bauxite_mine_base = { #520
+
+		icon = aluminium
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation3
+			num_of_civilian_factories_available_for_projects > 2
+			owns_state = 520
+			520 = { is_fully_controlled_by = ROOT }
+			OR = {
+				has_completed_focus = AST_end_marshall_law
+				has_completed_focus = AST_industrialize_top_end_nt
+				has_completed_focus = AST_full_assimilation
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 520
+			}
+		}
+
+		visible = {
+			NOT = { has_government = fascism }
+			owns_state = 520
+			controls_state = 520
+			520 = {
+				has_state_flag = azr_ast_alu_discovered
+				NOT = {
+					has_state_flag = gove_bauxite_mine_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 100
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			520 = {
+				set_state_flag = gove_bauxite_mine_developed
+			}
+			520 = {
+				add_resource = {
+					type = aluminium
+					amount = 5
+				}
+			}
+		}
+	}
+	azr_develop_gove_bauxite_mine_base_2 = { #520
+
+		icon = aluminium
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation4
+			num_of_civilian_factories_available_for_projects > 2
+			owns_state = 520
+			520 = { is_fully_controlled_by = ROOT }
+			OR = {
+				has_completed_focus = AST_end_marshall_law
+				has_completed_focus = AST_industrialize_top_end_nt
+				has_completed_focus = AST_full_assimilation
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 520
+			}
+		}
+
+		visible = {
+			NOT = { has_government = fascism }
+			owns_state = 520
+			controls_state = 520
+			520 = {
+				has_state_flag = azr_ast_alu_discovered
+				has_state_flag = gove_bauxite_mine_developed
+				NOT = {
+					has_state_flag = gove_bauxite_mine_developed_2
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			520 = {
+				set_state_flag = gove_bauxite_mine_developed_2
+			}
+			520 = {
+				add_resource = {
+					type = aluminium
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_gove_bauxite_mine_base_3 = { #520
+
+		icon = aluminium
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation5
+			num_of_civilian_factories_available_for_projects > 2
+			owns_state = 520
+			520 = { is_fully_controlled_by = ROOT }
+			OR = {
+				has_completed_focus = AST_end_marshall_law
+				has_completed_focus = AST_industrialize_top_end_nt
+				has_completed_focus = AST_full_assimilation
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 520
+			}
+		}
+
+		visible = {
+			NOT = { has_government = fascism }
+			owns_state = 520
+			controls_state = 520
+			520 = {
+				has_state_flag = azr_ast_alu_discovered
+				has_state_flag = gove_bauxite_mine_developed
+				has_state_flag = gove_bauxite_mine_developed_2
+				NOT = {
+					has_state_flag = gove_bauxite_mine_developed_3
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			520 = {
+				set_state_flag = gove_bauxite_mine_developed_3
+			}
+			520 = {
+				add_resource = {
+					type = aluminium
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_gove_bauxite_mine_fascism = { #520
+
+		icon = aluminium
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation3
+			num_of_civilian_factories_available_for_projects > 2
+			owns_state = 520
+			520 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 520
+			}
+		}
+
+		visible = {
+			has_government = fascism
+			owns_state = 520
+			controls_state = 520
+			520 = {
+				has_state_flag = azr_ast_alu_discovered
+				NOT = {
+					has_state_flag = gove_bauxite_mine_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			520 = {
+				set_state_flag = gove_bauxite_mine_developed
+			}
+			520 = {
+				IF = {
+					limit = { OWNER = { has_completed_focus = AST_exploit_outback } }
+					add_resource = {
+						type = aluminium
+						amount = 10
+					}
+				}
+				ELSE = {
+					add_resource = {
+						type = aluminium
+						amount = 5
+					}
+				}
+			}
+		}
+	}
+	azr_develop_gove_bauxite_mine_fascism_2 = { #520
+
+		icon = aluminium
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation4
+			num_of_civilian_factories_available_for_projects > 2
+			owns_state = 520
+			520 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 520
+			}
+		}
+
+		visible = {
+			has_government = fascism
+			owns_state = 520
+			controls_state = 520
+			520 = {
+				has_state_flag = azr_ast_alu_discovered
+				has_state_flag = gove_bauxite_mine_developed
+				NOT = {
+					has_state_flag = gove_bauxite_mine_developed_2
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			520 = {
+				set_state_flag = gove_bauxite_mine_developed_2
+			}
+			520 = {
+				add_resource = {
+					type = aluminium
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_gove_bauxite_mine_fascism_3 = { #520
+
+		icon = aluminium
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation4
+			num_of_civilian_factories_available_for_projects > 2
+			owns_state = 520
+			520 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 520
+			}
+		}
+
+		visible = {
+			has_government = fascism
+			owns_state = 520
+			controls_state = 520
+			520 = {
+				has_state_flag = azr_ast_alu_discovered
+				has_state_flag = gove_bauxite_mine_developed
+				has_state_flag = gove_bauxite_mine_developed_2
+				NOT = {
+					has_state_flag = gove_bauxite_mine_developed_3
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			520 = {
+				set_state_flag = gove_bauxite_mine_developed_3
+			}
+			520 = {
+				add_resource = {
+					type = aluminium
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_weipa_bauxite_mine = { #872
+
+		icon = aluminium
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation3
+			num_of_civilian_factories_available_for_projects > 2
+			owns_state = 872
+			872 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 872
+			}
+		}
+
+		visible = {
+			owns_state = 872
+			controls_state = 872
+			872 = {
+				has_state_flag = azr_ast_alu_discovered
+				NOT = {
+					has_state_flag = weipa_bauxite_mine_developed
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			872 = {
+				set_state_flag = weipa_bauxite_mine_developed
+			}
+			872 = {
+				add_resource = {
+					type = aluminium
+					amount = 5
+				}
+			}
+		}
+	}
+	azr_develop_weipa_bauxite_mine_2 = { #872
+
+		icon = aluminium
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation3
+			num_of_civilian_factories_available_for_projects > 2
+			owns_state = 872
+			872 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 872
+			}
+		}
+
+		visible = {
+			owns_state = 872
+			controls_state = 872
+			872 = {
+				has_state_flag = azr_ast_alu_discovered
+				has_state_flag = weipa_bauxite_mine_developed
+				NOT = {
+					has_state_flag = weipa_bauxite_mine_developed_2
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			872 = {
+				set_state_flag = weipa_bauxite_mine_developed_2
+			}
+			872 = {
+				add_resource = {
+					type = aluminium
+					amount = 10
+				}
+			}
+		}
+	}
+	azr_develop_weipa_bauxite_mine_3 = { #872
+
+		icon = aluminium
+
+		allowed = {
+		
+		}
+
+		available = {
+			has_tech = excavation3
+			num_of_civilian_factories_available_for_projects > 2
+			owns_state = 872
+			872 = { is_fully_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 872
+			}
+		}
+
+		visible = {
+			owns_state = 872
+			controls_state = 872
+			872 = {
+				has_state_flag = azr_ast_alu_discovered
+				has_state_flag = weipa_bauxite_mine_developed
+				has_state_flag = weipa_bauxite_mine_developed_2
+				NOT = {
+					has_state_flag = weipa_bauxite_mine_developed_3
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 20 #10 was the default weight before, meant for ITA.
+				original_tag = ITA
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = { #Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						SOV_we_want_to_send_ultimatums = yes
+					}
+					AND = { #Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = { has_idea = scraping_the_barrel }
+					}
+				}
+			}
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				fuel_ratio < 0.5
+			}
+		}
+
+		remove_effect = {
+			872 = {
+				set_state_flag = weipa_bauxite_mine_developed_3
+			}
+			872 = {
+				add_resource = {
+					type = aluminium
+					amount = 10
+				}
+			}
+		}
+	}
+}
+
+MMR_test_dec_1 = {
+	MMR_test_dec_1_d_1 = {
+		priority = 1
+		fire_only_once = no
+		visible = {
+			always = no
+			#original_tag = AST
+		}
+		available = {
+		}
+		icon = generic_research
+		complete_effect = {
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+}

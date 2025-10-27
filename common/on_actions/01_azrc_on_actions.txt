@@ -1,0 +1,1040 @@
+on_actions = {
+	on_startup = {
+	
+		#test
+		
+		
+		#live
+		effect = {
+			random_country = {
+				limit = { owns_state = 336 }
+				save_global_event_target_as = AZR_is_singapore_owner
+			}
+			284 = { add_building_construction = { type = dam level = 1 province = 12664 instant_build = yes } }
+			723 = {
+				add_building_construction = { type = dam level = 1 province = 5195 instant_build = yes }
+				add_building_construction = { type = naval_base level = 1 province = 2211 instant_build = yes }
+			}
+			285 = { remove_building = { type = dam level = 1 province = 4864 } }
+			518 = { remove_building = { type = dam level = 1 province = 5187 } }
+			711 = { add_claim_by = AST }
+			712 = { add_claim_by = AST }
+			NZL = {
+				###NZL_promote_democratic_values
+				every_other_country = {
+					limit = {
+						NOT = { has_government = democratic }
+						OR = {
+							capital_scope = { is_on_continent = australia }
+							AND = {
+								capital_scope = {
+									is_on_continent = asia
+									is_one_state_island = yes
+								}
+							}
+							original_tag = JAP
+							original_tag = PHI
+							#is_ally_with = ROOT
+						}
+					}
+					add_to_array = { global.MMR_NZL_pdv_array = THIS }
+				}
+				set_variable = { global.MMR_NZL_pdv_var = 0 }
+				
+				for_each_scope_loop = {
+					array = global.MMR_NZL_pdv_array
+					add_to_variable = {
+						var = global.MMR_NZL_pdv_var
+						value = 5
+					}
+				}
+				clamp_variable = {
+					var = global.MMR_NZL_pdv_var
+					min = 0
+					max = 50
+				}
+				clear_array = global.MMR_NZL_pdv_array
+				divide_variable = { global.MMR_NZL_pdv_var = 100 }
+				
+				###NZL_democratic_faction_investments
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = no
+						num_of_factories > 50
+					}
+					add_to_array = { global.MMR_NZL_dfi_full_plus_array = THIS }
+				}
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = no
+						NOT = { num_of_factories > 50 }
+					}
+					add_to_array = { global.MMR_NZL_dfi_full_array = THIS }
+				}
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = yes
+					}
+					add_to_array = { global.MMR_NZL_dfi_sub_array = THIS }
+				}
+				set_variable = { global.MMR_NZL_dfi_var = 0 }
+				
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfi_full_plus_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfi_var
+						value = 2
+					}
+				}
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfi_full_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfi_var
+						value = 1
+					}
+				}
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfi_sub_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfi_var
+						value = 0.5
+					}
+				}
+				clamp_variable = {
+					var = global.MMR_NZL_dfi_var
+					min = 0
+					max = 10
+				}
+				round_variable = global.MMR_NZL_dfi_var
+				clear_array = global.MMR_NZL_dfi_full_plus_array
+				clear_array = global.MMR_NZL_dfi_full_array
+				clear_array = global.MMR_NZL_dfi_sub_array
+				#dfi dockyards
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = no
+						num_of_naval_factories > 20
+					}
+					add_to_array = { global.MMR_NZL_dfid_full_plus_array = THIS }
+				}
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = no
+						num_of_naval_factories < 20
+						num_of_naval_factories > 10
+					}
+					add_to_array = { global.MMR_NZL_dfid_full_array = THIS }
+				}
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = yes
+						num_of_naval_factories < 10
+						num_of_naval_factories > 0
+					}
+					add_to_array = { global.MMR_NZL_dfid_sub_array = THIS }
+				}
+				set_variable = { global.MMR_NZL_dfid_var = 0 }
+				
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfid_full_plus_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfid_var
+						value = 2
+					}
+				}
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfid_full_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfid_var
+						value = 1
+					}
+				}
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfid_sub_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfid_var
+						value = 0.5
+					}
+				}
+				round_variable = global.MMR_NZL_dfid_var
+				clamp_variable = {
+					var = global.MMR_NZL_dfid_var
+					min = 0
+					max = 10
+				}
+				clear_array = global.MMR_NZL_dfid_full_plus_array
+				clear_array = global.MMR_NZL_dfid_full_array
+				clear_array = global.MMR_NZL_dfid_sub_array
+				###
+				retire_character = generic_communist_revolutionary
+				retire_character = generic_democratic_reformer
+				retire_character = generic_fascist_demagogue
+				#1320 days
+				IF = {
+					limit = { has_start_date > 1939.8.13 }
+					news_event = { id = mmr_nzl.208 days = 225 } #mjs dies
+				}
+				ELSE = {
+					country_event = { id = mmr_nzl.2113 days = 682 random_days = 45 } #freeman to farrelly
+					news_event = { id = mmr_nzl.205 days = 133 } #nat party formed
+					news_event = { id = mmr_nzl.208 days = 1545 } #mjs dies
+				}
+			}
+			AST = {
+				set_variable = { var:AZR_AST_no_confidence_countdown_d_var = 365 }
+				520 = { add_dynamic_modifier = { modifier = MMR_AST_top_end_start_dynmod } }
+				674 = { add_dynamic_modifier = { modifier = MMR_AST_central_ast_start_dynmod } }
+				IF = {
+					limit = { has_start_date > 1939.8.13 }
+					country_event = { id = mmr_ast.18 days = 364 } #canberra air disaster
+					news_event = { id = mmr_ast.9 days = 2150 } #curtin dies
+					country_event = { id = mmr_ast.17 days = 880 } #wjm dies
+					news_event = { id = mmr_ast.33 days = 199 } #squires dies
+					news_event = { id = mmr_ast.8 days = 2207 } #liberal party formed
+				}
+				ELSE = {
+					country_event = { id = mmr_ast.19 days = 31 random_days = 27 } #lang labor neg
+					country_event = { id = mmr_ast.18 days = 1684 } #canberra air disaster
+					news_event = { id = mmr_ast.2 days = 1191 } #lyons dies
+					news_event = { id = mmr_ast.9 days = 3470 } #curtin dies
+					country_event = { id = mmr_ast.17 days = 2200 } #wjm dies
+					news_event = { id = mmr_ast.33 days = 1519 } #squires dies
+					news_event = { id = mmr_ast.8 days = 3527 } #liberal party formed
+					country_event = { id = mmr_ast.34 days = 289 } #cac formed
+					country_event = { id = mmr_ast.36 days = 756 } #day of mourning
+				}
+			}
+			518 = {
+				set_variable = { AZR_AST_no_tasmania_pop_25 = 518.state_population }
+				divide_variable = { AZR_AST_no_tasmania_pop_25 = 4 }
+			}
+			#set_variable = { global.azr_month_name_var = 1 }
+			#set_variable = { global.azr_next_year_name_var = global.year }
+			#every_country = {
+			#	limit = { is_ai = no }
+			#	country_event = { id = mmr_intro.1 }
+			#}
+			AST = {
+				IF = {
+					limit = {
+						AND = {
+							is_historical_focus_on = no
+							has_game_rule = {
+								rule = AST_ai_behavior
+								option = DEFAULT
+							}
+						}
+					}
+					random_list = {
+						20 = { set_country_flag = AZR_AST_AI_RANDOM_COMMUNIST }
+						30 = { set_country_flag = AZR_AST_AI_RANDOM_DEMOCRATIC_ALTERNATE }
+						30 = { set_country_flag = AZR_AZR_AST_AI_RANDOM_DEMOCRATIC_HISTORICAL }
+						20 = { set_country_flag = AZR_AST_AI_RANDOM_FASCIST }
+					}
+				}
+				IF = {
+					limit = {
+						has_game_rule = {
+							rule = AST_ai_behavior
+							option = RANDOM
+						}
+					}
+					random_list = {
+						25 = { set_country_flag = AZR_AST_AI_RANDOM_COMMUNIST }
+						25 = { set_country_flag = AZR_AST_AI_RANDOM_DEMOCRATIC_ALTERNATE }
+						25 = { set_country_flag = AZR_AZR_AST_AI_RANDOM_DEMOCRATIC_HISTORICAL }
+						25 = { set_country_flag = AZR_AST_AI_RANDOM_FASCIST }
+					}
+				}
+			}
+			NZL = {
+				IF = {
+					limit = {
+						has_dlc = "Together for Victory"
+						OR = {
+							AND = {
+								is_historical_focus_on = no
+								has_game_rule = {
+									rule = NZL_ai_behavior
+									option = DEFAULT
+								}
+							}
+							has_game_rule = {
+								rule = NZL_ai_behavior
+								option = RANDOM
+							}
+						}
+					}
+					random_list = {
+						25 = { set_country_flag = AZR_NZL_AI_RANDOM_COMMUNIST }
+						25 = { set_country_flag = AZR_NZL_AI_RANDOM_DEMOCRATIC_ALTERNATE }
+						25 = { set_country_flag = AZR_NZL_AI_RANDOM_DEMOCRATIC_HISTORICAL }
+						25 = { set_country_flag = AZR_NZL_AI_RANDOM_FASCIST }
+					}
+				}
+			}
+		}
+	}
+}
+on_actions = {
+	on_daily_AST = {
+		effect = {
+			IF = {
+				limit = {
+					has_idea = MMR_NZL_women_in_the_workforce_comintern
+					has_idea = tot_economic_mobilisation
+					NOT = { has_decision = women_in_the_workforce }
+				}
+				activate_decision = women_in_the_workforce
+			}
+			IF = {
+				limit = {
+					any_country = {
+						NOT = { owns_state = 336 }
+						event_target:AZR_is_singapore_owner = { tag = THIS }
+					}
+				}
+				clear_global_event_target = AZR_is_singapore_owner
+			}
+			IF = {
+				limit = {
+					any_country = {
+						owns_state = 336
+						NOT = { event_target:AZR_is_singapore_owner = { tag = THIS } }
+					}
+				}
+				random_country = {
+					limit = { owns_state = 336 }
+					save_global_event_target_as = AZR_is_singapore_owner
+				}
+			}
+		}
+	}
+	on_daily_NZL = {
+		effect = {
+			IF = {
+				limit = {
+					has_idea = MMR_NZL_women_in_the_workforce_comintern
+					has_idea = tot_economic_mobilisation
+					NOT = { has_decision = women_in_the_workforce }
+				}
+				activate_decision = women_in_the_workforce
+			}
+			IF = {
+				limit = {
+					NOT = {
+						OR = {
+							has_completed_focus = NZL_in_the_darkness
+							has_completed_focus = NZL_the_lee_affair
+							has_completed_focus = NZL_strengthen_the_commonwealth
+						}
+					}
+				}
+				###NZL_promote_democratic_values
+				every_other_country = {
+					limit = {
+						NOT = { has_government = democratic }
+						OR = {
+							capital_scope = { is_on_continent = australia }
+							AND = {
+								capital_scope = {
+									is_on_continent = asia
+									is_one_state_island = yes
+								}
+							}
+							original_tag = JAP
+							original_tag = PHI
+							is_ally_with = ROOT
+						}
+					}
+					add_to_array = { global.MMR_NZL_pdv_array = THIS }
+				}
+				set_variable = { global.MMR_NZL_pdv_var = 0 }
+				
+				for_each_scope_loop = {
+					array = global.MMR_NZL_pdv_array
+					add_to_variable = {
+						var = global.MMR_NZL_pdv_var
+						value = 5
+					}
+				}
+				clamp_variable = {
+					var = global.MMR_NZL_pdv_var
+					min = 0
+					max = 50
+				}
+				clear_array = global.MMR_NZL_pdv_array
+				divide_variable = { global.MMR_NZL_pdv_var = 100 }
+				
+				###NZL_democratic_faction_investments
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = no
+						num_of_factories > 50
+					}
+					add_to_array = { global.MMR_NZL_dfi_full_plus_array = THIS }
+				}
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = no
+						NOT = { num_of_factories > 50 }
+					}
+					add_to_array = { global.MMR_NZL_dfi_full_array = THIS }
+				}
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = yes
+					}
+					add_to_array = { global.MMR_NZL_dfi_sub_array = THIS }
+				}
+				set_variable = { global.MMR_NZL_dfi_var = 0 }
+				
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfi_full_plus_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfi_var
+						value = 2
+					}
+				}
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfi_full_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfi_var
+						value = 1
+					}
+				}
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfi_sub_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfi_var
+						value = 0.5
+					}
+				}
+				round_variable = global.MMR_NZL_dfi_var
+				clamp_variable = {
+					var = global.MMR_NZL_dfi_var
+					min = 0
+					max = 10
+				}
+				clear_array = global.MMR_NZL_dfi_full_plus_array
+				clear_array = global.MMR_NZL_dfi_full_array
+				clear_array = global.MMR_NZL_dfi_sub_array
+				#dfi dockyards
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = no
+						num_of_naval_factories > 20
+					}
+					add_to_array = { global.MMR_NZL_dfid_full_plus_array = THIS }
+				}
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = no
+						num_of_naval_factories < 20
+						num_of_naval_factories > 10
+					}
+					add_to_array = { global.MMR_NZL_dfid_full_array = THIS }
+				}
+				every_other_country = {
+					limit = {
+						has_government = democratic
+						is_in_faction_with = NZL
+						is_subject = yes
+						num_of_naval_factories < 10
+						num_of_naval_factories > 0
+					}
+					add_to_array = { global.MMR_NZL_dfid_sub_array = THIS }
+				}
+				set_variable = { global.MMR_NZL_dfid_var = 0 }
+				
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfid_full_plus_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfid_var
+						value = 2
+					}
+				}
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfid_full_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfid_var
+						value = 1
+					}
+				}
+				for_each_scope_loop = {
+					array = global.MMR_NZL_dfid_sub_array
+					add_to_variable = {
+						var = global.MMR_NZL_dfid_var
+						value = 0.5
+					}
+				}
+				round_variable = global.MMR_NZL_dfid_var
+				clamp_variable = {
+					var = global.MMR_NZL_dfid_var
+					min = 0
+					max = 10
+				}
+				clear_array = global.MMR_NZL_dfid_full_plus_array
+				clear_array = global.MMR_NZL_dfid_full_array
+				clear_array = global.MMR_NZL_dfid_sub_array
+			}
+			IF = {
+				limit = {
+					has_completed_focus = NZL_anti_colonial_pressure
+					NOT = { any_country = { check_variable = { global.azr_is_general_diplomatic_pressure_var = THIS } } }
+				}
+				random_other_country = {
+					limit = {
+						OR = {
+							any_country = {
+								exists = no
+								any_core_state = {
+									is_owned_and_controlled_by = PREV.PREV
+									NOT = { is_core_of = PREV.PREV }
+									has_resistance = yes
+									#has_active_resistance = yes
+									is_coastal = yes
+									OR = {
+										is_on_continent = australia
+										AND = {
+											is_on_continent = asia
+											OR = {
+												is_one_state_island = yes
+												is_island_state = yes
+											}
+										}
+									}
+								}
+							}
+							any_country = {
+								any_core_state = {
+									is_owned_and_controlled_by = PREV.PREV
+									NOT = { is_core_of = PREV.PREV }
+									has_resistance = yes
+									#has_active_resistance = yes
+									is_coastal = yes
+									OR = {
+										is_on_continent = australia
+										AND = {
+											is_on_continent = asia
+											OR = {
+												is_one_state_island = yes
+												is_island_state = yes
+											}
+										}
+									}
+									NOT = {
+										OR = {
+											state = 422
+											state = 281
+										}
+									}
+								}
+							}
+						}
+						NOT = {
+							has_war_with = ROOT
+							#is_ally_with = ROOT
+							is_subject_of = ROOT
+							has_country_flag = MMR_has_rejected_colonial_pressure
+							OR = {
+								tag = AST
+								tag = ENG
+								tag = FRA
+								tag = JAP
+								tag = USA
+							}
+						}
+					}
+					set_variable = { global.azr_is_general_diplomatic_pressure_var = THIS }
+				}
+			}
+			IF = {
+				limit = {
+					has_completed_focus = NZL_anti_colonial_agitation
+					NOT = { any_country = { check_variable = { global.azr_is_general_puppet_agitated_var = THIS } } }
+				}
+				random_other_country = {
+					limit = {
+						is_subject = yes
+						NOT = {
+							OR = {
+								is_subject_of = ROOT
+								AND = {
+									any_country = {
+										is_ally_with = ROOT
+										PREV = { is_subject_of = PREV }
+									}
+								}
+								has_government = communism
+								tag = PHI
+								tag = INS
+								tag = MAL
+								original_tag = AST
+							}
+							has_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea
+						}
+						any_core_state = {
+							is_owned_by = PREV
+							OR = {
+								AND = {
+									is_coastal = yes
+									is_on_continent = australia
+								}
+								AND = {
+									is_on_continent = asia
+									OR = {
+										is_one_state_island = yes
+										is_island_state = yes
+									}
+								}
+							}
+							NOT = {
+								OR = {
+									state = 422
+									state = 281
+								}
+							}
+						}
+					}
+					set_variable = { global.azr_is_general_puppet_agitated_var = THIS }
+					random_other_country = {
+						limit = { has_subject = PREV }
+						set_variable = { global.azr_is_general_overlord_agitated_var = THIS }
+					}
+				}
+			}
+			IF = {
+				limit = {
+					has_idea = MMR_NZL_women_in_the_workforce_comintern
+					has_idea = tot_economic_mobilisation
+					NOT = { has_decision = women_in_the_workforce }
+				}
+				activate_decision = women_in_the_workforce
+			}
+		}
+	}
+}
+on_actions = {
+	on_monthly = {
+		effect = {
+			518 = {
+				set_variable = { AZR_AST_no_tasmania_pop_25 = 518.state_population }
+				divide_variable = { AZR_AST_no_tasmania_pop_25 = 4 }
+			}
+		}
+	}
+}
+on_actions = {
+	on_ruling_party_change = {
+		effect = {
+			IF = {
+				limit = {
+					original_tag = NZL
+					has_government = communism
+					NOT = { has_country_flag = NZL_cpa_flag }
+				}
+				set_party_name = {
+					ideology = communism
+					long_name = NZL_communism_party_change_long
+					name = NZL_communism_party_change
+				}
+				set_country_flag = NZL_cpa_flag
+				#country_event = {
+				#	
+				#}
+			}
+		}
+	}
+}
+#on_actions = {
+#	on_monthly_AST = {
+#		effect = {
+#			IF = { limit = { NOT = { has_country_flag = MMR_AST_1937_fed_election_redo } }
+#				IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 1 } }
+#					set_variable = { global.azr_month_name_var = 2 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#				}
+#				ELSE_IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 2 } }
+#					set_variable = { global.azr_month_name_var = 3 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#				}
+#				ELSE_IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 3 } }
+#					set_variable = { global.azr_month_name_var = 4 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#				}
+#				ELSE_IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 4 } }
+#					set_variable = { global.azr_month_name_var = 5 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#				}
+#				ELSE_IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 5 } }
+#					set_variable = { global.azr_month_name_var = 6 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#				}
+#				ELSE_IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 6 } }
+#					set_variable = { global.azr_month_name_var = 7 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#				}
+#				ELSE_IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 7 } }
+#					set_variable = { global.azr_month_name_var = 8 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#				}
+#				ELSE_IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 8 } }
+#					set_variable = { global.azr_month_name_var = 9 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#				}
+#				ELSE_IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 9 } }
+#					set_variable = { global.azr_month_name_var = 10 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#					add_to_variable = { var = global.azr_next_year_name_var value = 1 }
+#				}
+#				ELSE_IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 10 } }
+#					set_variable = { global.azr_month_name_var = 11 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#					add_to_variable = { var = global.azr_next_year_name_var value = 1 }
+#				}
+#				ELSE_IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 11 } }
+#					set_variable = { global.azr_month_name_var = 12 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#					add_to_variable = { var = global.azr_next_year_name_var value = 1 }
+#				}
+#				ELSE_IF = {
+#					limit = { check_variable = { global.azr_month_name_var = 12 } }
+#					set_variable = { global.azr_month_name_var = 1 }
+#					set_variable = { global.azr_next_year_name_var = global.year }
+#					add_to_variable = { var = global.azr_next_year_name_var value = 1 }
+#				}
+#			}
+#		}
+#	}
+#}
+on_actions = {
+	on_new_term_election = {
+		effect = {
+			IF = {
+				limit = {
+					ROOT = { original_tag = AST }
+					OR = {
+						has_country_leader = { character = MMR_AST_joseph_lyons }
+						has_country_leader = { character = MMR_AST_robert_g_menzies }
+						has_country_leader = { character = AST_john_curtin }
+						has_country_leader = { character = MMR_AST_ben_chifley }
+						has_country_leader = { character = AST_earle_page }
+						has_country_leader = { character = MMR_AST_archie_cameron }
+						has_country_leader = { character = MMR_AST_arthur_fadden }
+					}
+				}
+				IF = {
+					limit = { NOT = { any_country = { has_country_flag = azr_ast_completed_1937_election_flag } } }
+					country_event = { id = mmr_ast.1 }
+					set_country_flag = azr_ast_completed_1937_election_flag
+					ELSE_IF = {
+						limit = { NOT = { any_country = { has_country_flag = azr_ast_completed_1940_election_flag } } }
+						country_event = { id = mmr_ast.4 }
+						set_country_flag = azr_ast_completed_1940_election_flag
+						ELSE_IF = {
+							limit = { NOT = { any_country = { has_country_flag = azr_ast_completed_1943_election_flag } } }
+							country_event = { id = mmr_ast.7 }
+							set_country_flag = azr_ast_completed_1943_election_flag
+							ELSE_IF = {
+								limit = { NOT = { any_country = { has_country_flag = azr_ast_completed_1946_election_flag } } }
+								country_event = { id = mmr_ast.10 }
+								set_country_flag = azr_ast_completed_1946_election_flag
+								ELSE_IF = {
+									limit = { NOT = { any_country = { has_country_flag = azr_ast_completed_1949_election_flag } } }
+									country_event = { id = mmr_ast.11 }
+									set_country_flag = azr_ast_completed_1949_election_flag
+								}
+
+							}
+						}
+					}
+				}
+			}
+			IF = {
+				limit = {
+					ROOT = { original_tag = NZL }
+					has_government = democratic
+				}
+				IF = {
+					limit = { NOT = { any_country = { has_country_flag = azr_nzl_completed_1938_election_flag } } }
+					country_event = { id = mmr_nzl.200 }
+					set_country_flag = azr_nzl_completed_1938_election_flag
+					ELSE_IF = {
+						limit = { NOT = { any_country = { has_country_flag = azr_nzl_completed_1943_election_flag } } }
+						country_event = { id = mmr_nzl.202 }
+						set_country_flag = azr_nzl_completed_1943_election_flag
+						ELSE_IF = {
+							limit = { NOT = { any_country = { has_country_flag = azr_nzl_completed_1946_election_flag } } }
+							country_event = { id = mmr_nzl.203 }
+							set_country_flag = azr_nzl_completed_1946_election_flag
+							ELSE_IF = {
+								limit = { NOT = { any_country = { has_country_flag = azr_nzl_completed_1949_election_flag } } }
+								country_event = { id = mmr_nzl.204 }
+								set_country_flag = azr_nzl_completed_1949_election_flag
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+on_actions = {
+	on_army_leader_won_combat = {
+		effect = {
+			random_country = {
+				limit = { has_character = AST_alan_vasey tag = FROM }
+				IF = {
+					limit = {
+						ROOT = { is_character = AST_alan_vasey NOT = { has_trait = sick } }
+						date > 1944.02.01
+						FROM = { NOT = { has_country_flag = AZR_AST_alan_vasey_sick_1_flag } }
+					}
+					FROM = { country_event = mmr_ast.381 set_country_flag = AZR_AST_alan_vasey_sick_1_flag }
+				}
+				ELSE_IF = {
+					limit = {
+						ROOT = { is_character = AST_alan_vasey NOT = { has_trait = sick } }
+						date > 1944.03.01
+						FROM = { NOT = { has_country_flag = AZR_AST_alan_vasey_sick_2_flag } }
+					}
+					FROM = { country_event = mmr_ast.382 set_country_flag = AZR_AST_alan_vasey_sick_2_flag }
+				}
+				ELSE_IF = {
+					limit = {
+						ROOT = { is_character = AST_alan_vasey NOT = { has_trait = sick } }
+						date > 1944.06.01
+						FROM = { NOT = { has_country_flag = AZR_AST_alan_vasey_sick_3_flag } }
+					}
+					FROM = { country_event = mmr_ast.383 set_country_flag = AZR_AST_alan_vasey_sick_3_flag }
+				}
+				ELSE_IF = {
+					limit = {
+						ROOT = { is_character = AST_alan_vasey }
+						date > 1945.03.04
+						FROM = { NOT = { has_country_flag = AZR_AST_alan_vasey_killed_flag } }
+					}
+					FROM = { country_event = mmr_ast.384 set_country_flag = AZR_AST_alan_vasey_killed_flag }
+				}
+			}
+		}
+	}
+}
+on_actions = {
+	on_army_leader_lost_combat = {
+		effect = {
+			random_country = {
+				limit = { has_character = AST_alan_vasey tag = FROM }
+				IF = {
+					limit = {
+						ROOT = { is_character = AST_alan_vasey NOT = { has_trait = sick } }
+						date > 1944.02.01
+						FROM = { NOT = { has_country_flag = AZR_AST_alan_vasey_sick_1_flag } }
+					}
+					FROM = { country_event = mmr_ast.381 set_country_flag = AZR_AST_alan_vasey_sick_1_flag }
+				}
+				ELSE_IF = {
+					limit = {
+						ROOT = { is_character = AST_alan_vasey NOT = { has_trait = sick } }
+						date > 1944.03.01
+						FROM = { NOT = { has_country_flag = AZR_AST_alan_vasey_sick_2_flag } }
+					}
+					FROM = { country_event = mmr_ast.382 set_country_flag = AZR_AST_alan_vasey_sick_2_flag }
+				}
+				ELSE_IF = {
+					limit = {
+						ROOT = { is_character = AST_alan_vasey NOT = { has_trait = sick } }
+						date > 1944.06.01
+						FROM = { NOT = { has_country_flag = AZR_AST_alan_vasey_sick_3_flag } }
+					}
+					FROM = { country_event = mmr_ast.383 set_country_flag = AZR_AST_alan_vasey_sick_3_flag }
+				}
+				ELSE_IF = {
+					limit = {
+						ROOT = { is_character = AST_alan_vasey }
+						date > 1945.03.04
+						FROM = { NOT = { has_country_flag = AZR_AST_alan_vasey_killed_flag } }
+					}
+					FROM = { country_event = mmr_ast.384 set_country_flag = AZR_AST_alan_vasey_killed_flag }
+				}
+			}
+		}
+	}
+}
+on_actions = {
+	on_declare_war = {
+		effect = { 
+			IF = {
+				limit = {
+					OR = {
+						AND = {
+							FROM = { tag = NZL }
+							ROOT = { tag = AST }
+						}
+						AND = {
+							FROM = { tag = AST }
+							ROOT = { tag = NZL }
+						}
+						AST = { has_war_with = NZL }
+						NZL = { has_war_with = NZL }
+					}
+					NZL = {
+						OR = {
+							has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_navy_d_1_flag
+							has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1_flag
+							has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_2_flag
+						}
+					}
+					NOT = { has_global_flag = NZL_has_activated_liberate_ast_effects_flag }
+				}
+				IF = {
+					limit = { NZL = { has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_navy_d_1_flag } }
+					random = {
+						chance = 1
+						AST = {
+							transfer_ship = {
+								prefer_name = "HMAS Australia"
+								type = heavy_cruiser
+								target = NZL
+								exclude_refitting = no
+							}
+						}
+					}
+					random = {
+						chance = 5
+						AST = {
+							transfer_ship = {
+								prefer_name = "HMAS Canberra"
+								type = heavy_cruiser
+								target = NZL
+								exclude_refitting = no
+							}
+						}
+					}
+					random = {
+						chance = 10
+						AST = {
+							transfer_ship = {
+								prefer_name = "HMAS Adelaide"
+								type = light_cruiser
+								target = NZL
+								exclude_refitting = no
+							}
+						}
+					}
+					random = {
+						chance = 10
+						AST = {
+							transfer_ship = {
+								prefer_name = "HMAS Sydney"
+								type = light_cruiser
+								target = NZL
+								exclude_refitting = no
+							}
+						}
+					}
+					random = {
+						chance = 5
+						AST = {
+							transfer_ship = {
+								type = light_cruiser
+								target = NZL
+								exclude_refitting = no
+							}
+						}
+					}
+					random_list = {
+						5 = {
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+						}
+						10 = {
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+						}
+						15 = {
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+						}
+						20 = {
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+						}
+						25 = {
+							AST = { transfer_ship = { type = destroyer target = NZL exclude_refitting = no } }
+						}
+					}
+				}
+				IF = {
+					limit = { NZL = { has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_2_flag } }
+					add_ideas = MMR_NZL_anti_colonial_agitation_dec_d_2_idea_attack
+					ELSE_IF = {
+						limit = { NZL = { has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1_flag } }
+						add_ideas = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_attack
+					}
+				}
+				set_global_flag = NZL_has_activated_liberate_ast_effects_flag
+			}
+		}
+	}
+}
+# on_actions = {
+	# on_ace_killed = {
+		# effect = {
+			# IF = {
+				# limit = {
+					# original_tag = AST
+					# meta_trigger = {
+						# text = {
+							# set_temp_variable = { azr_clive_caldwell_name_check = [azr_clive_caldwell_check_name] }
+							# set_temp_variable = { azr_clive_caldwell_surname_check = [azr_clive_caldwell_check_surname] }
+							# check_variable = { azr_clive_caldwell_name_check = [FROM.GetName] }
+							# check_variable = { azr_clive_caldwell_surname_check = [FROM.GetSurname] }
+						# }
+					# }
+				# }
+				# retire_character = AST_clive_caldwell
+			# }
+		# }
+	# }
+# }

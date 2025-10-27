@@ -1,0 +1,7711 @@
+add_namespace = mmr_nzl
+add_namespace = mmr_ast
+#NZL_pacific_communist_alternative request to join
+country_event = {
+	id = mmr_nzl.1
+	title = mmr_nzl.1.t
+	desc = mmr_nzl.1.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#yes
+	option = {
+		name = mmr_nzl.1.a
+		FROM = { add_to_faction = ROOT }
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.101 days = 1 } }
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_idea = neutrality_idea
+			}
+			modifier = {
+				factor = 0
+				is_in_faction = yes
+			}
+		}
+	}
+	#no
+	option = {
+		name = mmr_nzl.1.b
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.102 days = 1 } }
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0.2
+				FROM = { is_ai = no }
+			}
+			modifier = {
+				factor = 9
+				has_country_leader_ideology = stalinism
+			}
+		}
+	}
+}
+#NZL_pacific_communist_alternative NZL FROM says yes
+country_event = {
+	id = mmr_nzl.101
+	title = mmr_nzl.101.t
+	desc = mmr_nzl.101.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	#we are brothers in arms!
+	option = {
+		name = mmr_nzl.101.a
+	}
+}
+#NZL_pacific_communist_alternative NZL FROM says no
+country_event = {
+	id = mmr_nzl.102
+	title = mmr_nzl.102.t
+	desc = mmr_nzl.102.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	#hopefully they will not stand in our way
+	option = {
+		name = mmr_nzl.102.a
+	}
+}
+#NZL agitation against INS (OVERLORD)
+country_event = {
+	id = mmr_nzl.2
+	title = mmr_nzl.2.t
+	desc = mmr_nzl.2.desc
+	picture = GFX_report_event_FIN_karelian_forest_guerillas
+	
+	is_triggered_only = yes
+	
+	#crack down on this infiltration
+	option = {
+		name = mmr_nzl.2.a
+		trigger = {
+			has_capitulated = no
+			command_power > 10
+			has_equipment = { infantry_equipment > 750 }
+		}
+		add_command_power = -10
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -750
+		}
+		INS = {
+			swap_ideas = {
+				remove_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea
+				add_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_2
+			}
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.103 days = 1 } }
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+	#no
+	option = {
+		name = mmr_nzl.2.b
+		add_stability = -0.02
+		INS = {
+			add_autonomy_score = {
+				value = 50
+				localization = mmr_nzl_overlord_abandon_tt
+			}
+			add_stability = -0.05
+			#add_popularity = { #MMR
+			#	ideology = neutrality
+			#	popularity = -0.05
+			#}
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.05
+			}
+		}
+		custom_effect_tooltip = mmr_nzl_cant_crckdown_tt
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL agitation against INS (OVERLORD) response to crackdown
+country_event = {
+	id = mmr_nzl.103
+	title = mmr_nzl.103.t
+	desc = mmr_nzl.103.desc
+	picture = GFX_report_event_dutch_soldiers_indonesia
+	
+	is_triggered_only = yes
+	
+	#their oppression betrays their fear, and forments their inevitable downfall
+	option = {
+		name = mmr_nzl.103.a
+		add_war_support = 0.02
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL agitation against generic (OVERLORD)
+country_event = {
+	id = mmr_nzl.2001
+	title = mmr_nzl.2001.t
+	desc = mmr_nzl.2001.desc
+	picture = GFX_report_event_FIN_karelian_forest_guerillas
+	
+	is_triggered_only = yes
+	
+	#crack down on this infiltration
+	option = {
+		name = mmr_nzl.2.a
+		trigger = {
+			has_capitulated = no
+			command_power > 10
+			has_equipment = { infantry_equipment > 250 }
+		}
+		add_command_power = -10
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -250
+		}
+		INS = {
+			swap_ideas = {
+				remove_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea
+				add_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_2
+			}
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.103 days = 1 } }
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+	#no
+	option = {
+		name = mmr_nzl.2.b
+		add_stability = -0.02
+		INS = {
+			add_autonomy_score = {
+				value = 50
+				localization = mmr_nzl_overlord_abandon_tt
+			}
+			add_stability = -0.05
+			#add_popularity = { #MMR
+			#	ideology = neutrality
+			#	popularity = -0.05
+			#}
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.05
+			}
+		}
+		custom_effect_tooltip = mmr_nzl_cant_crckdown_tt_lower_cost
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL agitation against generic (OVERLORD) response to crackdown
+country_event = {
+	id = mmr_nzl.2002
+	title = mmr_nzl.2002.t
+	desc = mmr_nzl.2002.desc
+	picture = GFX_report_event_dutch_soldiers_indonesia
+	
+	is_triggered_only = yes
+	
+	#their oppression betrays their fear, and forments their inevitable downfall
+	option = {
+		name = mmr_nzl.103.a
+		add_war_support = 0.02
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL agitation against MAL (OVERLORD)
+country_event = {
+	id = mmr_nzl.3
+	title = mmr_nzl.3.t
+	desc = mmr_nzl.3.desc
+	picture = GFX_report_event_FIN_karelian_forest_guerillas
+	
+	is_triggered_only = yes
+	
+	#crack down on this infiltration
+	option = {
+		name = mmr_nzl.2.a
+		trigger = {
+			has_capitulated = no
+			command_power > 10
+			has_equipment = { infantry_equipment > 750 }
+		}
+		add_command_power = -10
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -750
+		}
+		MAL = {
+			swap_ideas = {
+				remove_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea
+				add_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_2
+			}
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.104 days = 1 } }
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+	#no
+	option = {
+		name = mmr_nzl.2.b
+		add_stability = -0.02
+		MAL = {
+			add_autonomy_score = {
+				value = 50
+				localization = mmr_nzl_overlord_abandon_tt
+			}
+			add_stability = -0.05
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.05
+			}
+		}
+		custom_effect_tooltip = mmr_nzl_cant_crckdown_tt
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL agitation against MAL (OVERLORD) response to crackdown
+country_event = {
+	id = mmr_nzl.104
+	title = mmr_nzl.104.t
+	desc = mmr_nzl.104.desc
+	picture = GFX_report_event_dutch_soldiers_indonesia
+	
+	is_triggered_only = yes
+	
+	#their oppression betrays their fear, and forments their inevitable downfall
+	option = {
+		name = mmr_nzl.103.a
+		add_war_support = 0.02
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL agitation against SAW (POSS OVERLORD)
+#country_event = {
+#	id = mmr_nzl.4
+#	title = mmr_nzl.4.t
+#	desc = mmr_nzl.4.desc
+#	picture = GFX_report_event_FIN_karelian_forest_guerillas
+#	
+#	is_triggered_only = yes
+#	
+#	#crack down on this infiltration
+#	option = {
+#		name = mmr_nzl.2.a
+#		trigger = {
+#			has_capitulated = no
+#			command_power > 10
+#			has_equipment = { infantry_equipment > 750 }
+#		}
+#		add_command_power = -10
+#		add_equipment_to_stockpile = {
+#			type = infantry_equipment
+#			amount = -750
+#		}
+#		IF = {
+#			limit = { ROOT = { NOT = { tag = SAW } } }
+#			SAW = {
+#				swap_ideas = {
+#					remove_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea
+#					add_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_2
+#				}
+#			}
+#		}
+#		ELSE = {
+#			swap_ideas = {
+#				remove_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea
+#				add_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_2
+#			}
+#		}
+#		hidden_effect = {
+#			NZL = { country_event = { id = mmr_nzl.105 days = 1 } }
+#		}
+#		ai_chance = {
+#			base = 9
+#		}
+#	}
+#	#no
+#	option = {
+#		name = mmr_nzl.2.b
+#		IF = {
+#			limit = { ROOT = { NOT = { tag = SAW } } }
+#			add_stability = -0.02
+#			SAW = {
+#				add_autonomy_score = {
+#					value = 50
+#					localization = mmr_nzl_overlord_abandon_tt
+#				}
+#				add_stability = -0.05
+#				add_popularity = {
+#					ideology = communism
+#					popularity = 0.05
+#				}
+#			}
+#		}
+#		ELSE = {
+#			add_stability = -0.05
+#			add_popularity = {
+#				ideology = communism
+#				popularity = 0.05
+#			}
+#		}
+#	}
+#}
+#NZL agitation against SAW (POSS OVERLORD) response to crackdown
+#country_event = {
+#	id = mmr_nzl.105
+#	title = mmr_nzl.105.t
+#	desc = mmr_nzl.105.desc
+#	picture = GFX_report_event_dutch_soldiers_indonesia
+#	
+#	is_triggered_only = yes
+#	
+#	#their oppression betrays their fear, and forments their inevitable downfall
+#	option = {
+#		name = mmr_nzl.103.a
+#		add_war_support = 0.02
+#	}
+#}
+#NZL agitation against occupier
+country_event = {
+	id = mmr_nzl.5
+	title = mmr_nzl.5.t
+	desc = mmr_nzl.5.desc
+	picture = GFX_report_event_FIN_karelian_forest_guerillas
+	
+	is_triggered_only = yes
+	
+	#crack down on this infiltration
+	option = {
+		name = mmr_nzl.5.a
+		every_owned_state = {
+			limit = { has_dynamic_modifier = { modifier = MMR_NZL_anti_colonial_agitation_dec_dm } }
+			set_occupation_law = martial_law_occupation 
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+	#no
+	option = {
+		name = mmr_nzl.5.b
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL agitation against PHI (OVERLORD)
+country_event = {
+	id = mmr_nzl.6
+	title = mmr_nzl.6.t
+	desc = mmr_nzl.6.desc
+	picture = GFX_report_event_FIN_karelian_forest_guerillas
+	
+	is_triggered_only = yes
+	
+	#crack down on this infiltration
+	option = {
+		name = mmr_nzl.2.a
+		trigger = {
+			has_capitulated = no
+			command_power > 10
+			has_equipment = { infantry_equipment > 750 }
+		}
+		add_command_power = -10
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -750
+		}
+		PHI = {
+			swap_ideas = {
+				remove_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea
+				add_idea = MMR_NZL_anti_colonial_agitation_dec_d_1_idea_2
+			}
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.107 days = 1 } }
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+	#no
+	option = {
+		name = mmr_nzl.2.b
+		add_stability = -0.02
+		PHI = {
+			add_autonomy_score = {
+				value = 50
+				localization = mmr_nzl_overlord_abandon_tt
+			}
+			add_stability = -0.05
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.05
+			}
+		}
+		custom_effect_tooltip = mmr_nzl_cant_crckdown_tt
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL agitation against PHI (OVERLORD) response to crackdown
+country_event = {
+	id = mmr_nzl.107
+	title = mmr_nzl.107.t
+	desc = mmr_nzl.107.desc
+	picture = GFX_report_event_dutch_soldiers_indonesia
+	
+	is_triggered_only = yes
+	
+	#their oppression betrays their fear, and forments their inevitable downfall
+	option = {
+		name = mmr_nzl.107.a
+		add_war_support = 0.02
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Other communist state NZL requests to join faction
+country_event = {
+	id = mmr_nzl.7
+	title = mmr_nzl.7.t
+	desc = mmr_nzl.7.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	#yes
+	option = {
+		name = mmr_nzl.7.a
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.108 days = 1 } }
+		}
+		ai_chance = {
+			base = 9
+			modifier = {
+				add = 40
+				FROM = { is_ai = no }
+			}
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+	#no
+	option = {
+		name = mmr_nzl.7.b
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.109 days = 1 } }
+			set_country_flag = azr_nzl_rej_pca
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				FROM = { is_ai = no }
+			}
+			modifier = {
+				add = 3
+				has_opinion = { target = FROM value < -10 }
+			}
+		}
+	}
+}
+#Other communist state NZL requests to join faction yes
+country_event = {
+	id = mmr_nzl.108
+	title = mmr_nzl.108.t
+	desc = mmr_nzl.108.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	#Our brother republics stand together!
+	option = {
+		name = mmr_nzl.108.a
+		FROM = { add_to_faction = ROOT }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Other communist state NZL requests to join faction no
+country_event = {
+	id = mmr_nzl.109
+	title = mmr_nzl.109.t
+	desc = mmr_nzl.109.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	#We will have to reevaluate our foreign policy
+	option = {
+		name = mmr_nzl.109.a
+		ai_chance = {
+			base = 1
+		}
+		IF = {
+			limit = {
+				AST = {
+					is_faction_leader = yes
+					has_government = communism
+					has_civil_war = no
+					all_core_state = { is_controlled_by = PREV }
+					any_controlled_state = { is_coastal = yes }
+					NOT = { has_war_with = ROOT }
+					custom_trigger_tooltip = {
+						tooltip = azr_nzl_rej_pca_tt
+						NOT = { has_country_flag = azr_nzl_rej_pca }
+					}
+				}
+			}
+			AST = { country_event = { id = mmr_nzl.7 hours = 1 } }
+		}
+		ELSE_IF = {
+			limit = {
+				INS = {
+					is_faction_leader = yes
+					has_government = communism
+					has_civil_war = no
+					all_core_state = { is_controlled_by = PREV }
+					any_controlled_state = { is_coastal = yes }
+					NOT = { has_war_with = ROOT }
+					custom_trigger_tooltip = {
+						tooltip = azr_nzl_rej_pca_tt
+						NOT = { has_country_flag = azr_nzl_rej_pca }
+					}
+				}
+			}
+			INS = { country_event = { id = mmr_nzl.7 hours = 1 } }
+		}
+		ELSE_IF = {
+			limit = {
+				JAP = {
+					is_faction_leader = yes
+					has_government = communism
+					has_civil_war = no
+					all_core_state = { is_controlled_by = PREV }
+					any_controlled_state = { is_coastal = yes }
+					NOT = { has_war_with = ROOT }
+					custom_trigger_tooltip = {
+						tooltip = azr_nzl_rej_pca_tt
+						NOT = { has_country_flag = azr_nzl_rej_pca }
+					}
+				}
+			}
+			JAP = { country_event = { id = mmr_nzl.7 hours = 1 } }
+		}
+		ELSE_IF = {
+			limit = {
+				USA = {
+					is_faction_leader = yes
+					has_government = communism
+					has_civil_war = no
+					all_core_state = { is_controlled_by = PREV }
+					any_controlled_state = { is_coastal = yes }
+					NOT = { has_war_with = ROOT }
+					custom_trigger_tooltip = {
+						tooltip = azr_nzl_rej_pca_tt
+						NOT = { has_country_flag = azr_nzl_rej_pca }
+					}
+				}
+			}
+			USA = { country_event = { id = mmr_nzl.7 hours = 1 } }
+		}
+		ELSE_IF = {
+			limit = {
+				PRC = {
+					is_faction_leader = yes
+					has_government = communism
+					has_civil_war = no
+					all_owned_state = { is_controlled_by = PREV }
+					any_controlled_state = { is_coastal = yes }
+					NOT = { has_war_with = ROOT }
+					custom_trigger_tooltip = {
+						tooltip = azr_nzl_rej_pca_tt
+						NOT = { has_country_flag = azr_nzl_rej_pca }
+					}
+				}
+			}
+			PRC = { country_event = { id = mmr_nzl.7 hours = 1 } }
+		}
+		ELSE_IF = {
+			limit = {
+				any_other_country = {
+					is_faction_leader = yes
+					has_government = communism
+					capital_scope = { is_on_continent = australia }
+					has_civil_war = no
+					OR = {
+						all_core_state = { is_controlled_by = PREV }
+						all_owned_state = { is_controlled_by = PREV }
+					}
+					any_controlled_state = { is_coastal = yes }
+					NOT = { has_war_with = ROOT }
+					custom_trigger_tooltip = {
+						tooltip = azr_nzl_rej_pca_tt
+						NOT = { has_country_flag = azr_nzl_rej_pca }
+					}
+					IF = {
+						limit = { original_tag = SOV }
+						NOT = { has_country_leader = { character = SOV_iosif_stalin } }
+					}
+				}
+			}
+			random_other_country = {
+				limit = {
+					is_faction_leader = yes
+					has_government = communism
+					capital_scope = { is_on_continent = australia }
+					has_civil_war = no
+					OR = {
+						all_core_state = { is_controlled_by = PREV }
+						all_owned_state = { is_controlled_by = PREV }
+					}
+					any_controlled_state = { is_coastal = yes }
+					NOT = { has_war_with = ROOT }
+					custom_trigger_tooltip = {
+						tooltip = azr_nzl_rej_pca_tt
+						NOT = { has_country_flag = azr_nzl_rej_pca }
+					}
+					IF = {
+						limit = { original_tag = SOV }
+						NOT = { has_country_leader = { character = SOV_iosif_stalin } }
+					}
+				}
+				country_event = { id = mmr_nzl.7 hours = 1 }
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				any_other_country = {
+					is_faction_leader = yes
+					has_government = communism
+					capital_scope = { is_on_continent = asia }
+					has_civil_war = no
+					OR = {
+						all_core_state = { is_controlled_by = PREV }
+						all_owned_state = { is_controlled_by = PREV }
+					}
+					any_controlled_state = { is_coastal = yes }
+					NOT = { has_war_with = ROOT }
+					custom_trigger_tooltip = {
+						tooltip = azr_nzl_rej_pca_tt
+						NOT = { has_country_flag = azr_nzl_rej_pca }
+					}
+					IF = {
+						limit = { original_tag = SOV }
+						NOT = { has_country_leader = { character = SOV_iosif_stalin } }
+					}
+				}
+			}
+			random_other_country = {
+				limit = {
+					is_faction_leader = yes
+					has_government = communism
+					capital_scope = { is_on_continent = asia }
+					has_civil_war = no
+					OR = {
+						all_core_state = { is_controlled_by = PREV }
+						all_owned_state = { is_controlled_by = PREV }
+					}
+					any_controlled_state = { is_coastal = yes }
+					NOT = { has_war_with = ROOT }
+					custom_trigger_tooltip = {
+						tooltip = azr_nzl_rej_pca_tt
+						NOT = { has_country_flag = azr_nzl_rej_pca }
+					}
+					IF = {
+						limit = { original_tag = SOV }
+						NOT = { has_country_leader = { character = SOV_iosif_stalin } }
+					}
+				}
+				country_event = { id = mmr_nzl.7 hours = 1 }
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				any_other_country = {
+					has_government = communism
+					capital_scope = {
+						OR = {
+							is_on_continent = australia
+							is_on_continent = asia
+						}
+					}
+					has_civil_war = no
+					has_war = no
+					is_in_faction = no
+					any_controlled_state = { is_coastal = yes }
+					IF = {
+						limit = { original_tag = SOV }
+						NOT = { has_country_leader = { character = SOV_iosif_stalin } }
+					}
+				}
+			}
+			create_faction = PACIFIC_COMMUNIST_ALTERNATIVE
+			every_other_country = {
+				limit = {
+					is_in_faction = no
+					has_war = no
+					has_government = communism
+					capital_scope = { is_on_continent = asia }
+					has_civil_war = no
+					IF = {
+						limit = { original_tag = SOV }
+						NOT = { has_country_leader = { character = SOV_iosif_stalin } }
+					}
+					any_controlled_state = { is_coastal = yes }
+				}
+				country_event = { id = mmr_nzl.1 hours = 1 }
+			}
+		}
+		ELSE = {
+			uncomplete_national_focus = {
+			  focus = NZL_pacific_communist_alternative
+			  uncomplete_children = yes
+			  refund_political_power = yes
+			}
+		}
+	}
+}
+#NZL anti-colonial pressure gen
+country_event = {
+	id = mmr_nzl.20
+	title = mmr_nzl.20.t
+	desc = mmr_nzl.20.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#This is Absurd
+	option = {
+		name = mmr_nzl.20.a
+		hidden_effect = {
+			set_country_flag = MMR_has_rejected_colonial_pressure
+			FROM = { country_event = { id = mmr_nzl.121 days = 1 } }
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0.1
+				FROM = { is_ai = no }
+			}
+			modifier = {
+				factor = 0.5
+				has_war = yes
+			}
+			modifier = {
+				factor = 0.1
+				has_capitulated = yes
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 3
+				has_government = neutrality
+				any_country = {
+					is_major = yes
+					has_government = fascism
+					ROOT = { is_in_faction_with = PREV }
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_government = communism
+			}
+			modifier = {
+				factor = 0.1
+				has_government = democratic
+			}
+		}
+	}
+	#perhaps a compromise can be made
+	option = {
+		name = mmr_nzl.20.b
+		custom_effect_tooltip = mmr_nzl_20_tt
+		effect_tooltip = {
+			every_possible_country = {
+				limit = {
+					any_core_state = {
+						is_controlled_by = AST
+						NOT = { is_core_of = AST }
+						has_resistance = yes
+						is_coastal = yes
+						OR = {
+							is_on_continent = australia
+							AND = {
+								is_on_continent = asia
+								is_one_state_island = yes
+							}
+						}
+					}
+				}
+				ROOT = { release_puppet_on_controlled = PREV }
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.10
+				}
+			}
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.122 days = 1 } }
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 5
+				FROM = { is_ai = no }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					any_operative_leader = {
+						operative_leader_mission = diplomatic_pressure
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				has_capitulated = yes
+			}
+			modifier = {
+				factor = 1
+				has_government = fascism
+			}
+			modifier = {
+				factor = 1
+				has_government = neutrality
+			}
+			modifier = {
+				factor = 10
+				has_government = communism
+			}
+			modifier = {
+				factor = 2
+				has_government = democratic
+			}
+		}
+	}
+	#we accept
+	option = {
+		name = mmr_nzl.20.c
+		every_possible_country = {
+			limit = {
+				any_core_state = {
+					is_controlled_by = ROOT
+					NOT = { is_core_of = ROOT }
+					has_resistance = yes
+					is_coastal = yes
+					OR = {
+						is_on_continent = australia
+						AND = {
+							is_on_continent = asia
+							is_one_state_island = yes
+						}
+					}
+				}
+			}
+			ROOT = { release_on_controlled = PREV }
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.15
+			}
+			add_opinion_modifier = {
+				target = FROM
+				modifier = MMR_NZL_liberator
+			}
+			add_to_array = { ROOT.NZL_liberated = THIS }
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.123 days = 1 } }
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				any_country = {
+					has_war_with = ROOT
+					is_ai = no
+				}
+			}
+			modifier = {
+				factor = 3
+				has_capitulated = yes
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					any_operative_leader = {
+						operative_leader_mission = diplomatic_pressure
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 1
+				has_government = neutrality
+			}
+			modifier = {
+				factor = 1
+				has_government = communism
+			}
+			modifier = {
+				factor = 2
+				has_government = democratic
+			}
+		}
+	}
+}
+#NZL anti-colonial pressure gen FROM says no
+country_event = {
+	id = mmr_nzl.121
+	title = mmr_nzl.121.t
+	desc = mmr_nzl.121.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#A frustrating shame
+	option = {
+		name = mmr_nzl.121.a
+		add_opinion_modifier = {
+			target = FROM
+			modifier = MMR_NZL_refused_ac_diplo
+		}
+	}
+	#We will have to pressure them more 'directly'
+	option = {
+		name = mmr_nzl.121.b
+		trigger = {
+			has_war = no
+			command_power > 10
+			has_equipment = { infantry_equipment > 750 }
+		}
+		add_opinion_modifier = {
+			target = FROM
+			modifier = MMR_NZL_refused_ac_diplo
+		}
+		add_command_power = -10
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -750
+		}
+		every_state = {
+			limit = {
+				is_owned_and_controlled_by = FROM
+				NOT = { is_core_of = FROM }
+				has_resistance = yes
+				#has_active_resistance = yes
+				is_coastal = yes
+				OR = {
+					is_on_continent = australia
+					AND = {
+						is_on_continent = asia
+						is_one_state_island = yes
+					}
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = MMR_NZL_anti_colonial_agitation_dec_dm
+				days = 90
+			}
+		}
+		ai_chance = {
+			base = 4
+		}
+	}
+}
+#NZL anti-colonial pressure gen FROM says puppet
+country_event = {
+	id = mmr_nzl.122
+	title = mmr_nzl.122.t
+	desc = mmr_nzl.122.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#we can agree to these terms
+	option = {
+		name = mmr_nzl.122.a
+		hidden_effect = { FROM = { country_event = { id = mmr_nzl.124 days = 1 } } }
+		ai_chance = {
+			base = 4
+		}
+	}
+	#this is not acceptable
+	option = {
+		name = mmr_nzl.122.b
+		custom_effect_tooltip = mmr_nzl_122_b_tt
+		hidden_effect = { FROM = { country_event = { id = mmr_nzl.125 days = 1 } } }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0.2
+				FROM = { is_ai = no }
+			}
+		}
+	}
+}
+#NZL anti-colonial pressure gen FROM says yes
+country_event = {
+	id = mmr_nzl.123
+	title = mmr_nzl.123.t
+	desc = mmr_nzl.123.desc
+	picture = GFX_report_event_chinese_japanese_handshake
+	
+	is_triggered_only = yes
+	
+	#a victory for diplomacy!
+	option = {
+		name = mmr_nzl.123.a
+		add_political_power = 150
+		add_stability = 0.05
+		effect_tooltip = {
+			every_country = {
+				limit = { is_in_array = { FROM.NZL_liberated = THIS } }
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.15
+				}
+				add_opinion_modifier = {
+					target = FROM
+					modifier = MMR_NZL_liberator
+				}
+			}
+		}
+	}
+}
+#NZL anti-colonial pressure gen NZL accepts puppet
+country_event = {
+	id = mmr_nzl.124
+	title = mmr_nzl.124.t
+	desc = mmr_nzl.124.desc
+	picture = GFX_report_event_chinese_japanese_handshake
+	
+	is_triggered_only = yes
+	
+	#a new age for the pacific
+	option = {
+		name = mmr_nzl.124.a
+		add_political_power = 25
+		every_possible_country = {
+			limit = {
+				any_core_state = {
+					is_controlled_by = AST
+					NOT = { is_core_of = AST }
+					has_resistance = yes
+					is_coastal = yes
+					OR = {
+						is_on_continent = australia
+						AND = {
+							is_on_continent = asia
+							is_one_state_island = yes
+						}
+					}
+				}
+			}
+			ROOT = { release_puppet_on_controlled = PREV }
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.10
+			}
+		}
+	}
+}
+#NZL anti-colonial pressure NZL pushes back
+country_event = {
+	id = mmr_nzl.125
+	title = mmr_nzl.125.t
+	desc = mmr_nzl.125.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	#This is Absurd
+	option = {
+		name = mmr_nzl.20.a
+		hidden_effect = {
+			set_country_flag = MMR_has_rejected_colonial_pressure
+			FROM = { country_event = { id = mmr_nzl.121 days = 1 } }
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0.1
+				FROM = { is_ai = no }
+			}
+			modifier = {
+				factor = 0.5
+				has_war = yes
+			}
+			modifier = {
+				factor = 0.1
+				has_capitulated = yes
+			}
+			modifier = {
+				factor = 5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 3
+				has_government = neutrality
+				any_country = {
+					is_major = yes
+					has_government = fascism
+					ROOT = { is_in_faction_with = PREV }
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_government = communism
+			}
+			modifier = {
+				factor = 0.1
+				has_government = democratic
+			}
+		}
+	}
+	#we accept
+	option = {
+		name = mmr_nzl.20.c
+		every_possible_country = {
+			limit = {
+				any_core_state = {
+					is_controlled_by = ROOT
+					NOT = { is_core_of = ROOT }
+					has_resistance = yes
+					is_coastal = yes
+					OR = {
+						is_on_continent = australia
+						AND = {
+							is_on_continent = asia
+							is_one_state_island = yes
+						}
+					}
+				}
+			}
+			ROOT = { release_on_controlled = PREV }
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.15
+			}
+			add_opinion_modifier = {
+				target = FROM
+				modifier = MMR_NZL_liberator
+			}
+			add_to_array = { ROOT.NZL_liberated = THIS }
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.123 days = 1 } }
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = 5
+				FROM = { is_ai = no }
+			}
+			modifier = {
+				factor = 0
+				any_country = {
+					has_war_with = ROOT
+					is_ai = no
+				}
+			}
+			modifier = {
+				factor = 3
+				has_capitulated = yes
+			}
+			modifier = {
+				factor = 0.5
+				has_government = fascism
+			}
+			modifier = {
+				factor = 1
+				has_government = neutrality
+			}
+			modifier = {
+				factor = 1
+				has_government = communism
+			}
+			modifier = {
+				factor = 2
+				has_government = democratic
+			}
+		}
+	}
+}
+#NZL pacific alliance invitation
+country_event = {
+	id = mmr_nzl.31
+	title = mmr_nzl.31.t
+	desc = mmr_nzl.31.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	#yes
+	option = {
+		name = mmr_nzl.31.a
+		FROM = { add_to_faction = ROOT }
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.131 days = 1 } }
+		}
+		ai_chance = {
+			base = 3
+			modifier = {
+				factor = 0
+				is_in_faction = yes
+			}
+			modifier = {
+				factor = 0
+				has_idea = neutrality_idea
+			}
+			modifier = {
+				factor = 0.1
+				is_major = yes
+			}
+			modifier = {
+				factor = 12
+				FROM = { is_ai = no }
+			}
+		}
+	}
+	#no
+	option = {
+		name = mmr_nzl.31.b
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.132 days = 1 } }
+		}
+	}
+}
+#NZL pacific alliance invitation FROM says yes
+country_event = {
+	id = mmr_nzl.131
+	title = mmr_nzl.131.t
+	desc = mmr_nzl.131.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	#a great day for freedom and democracy in the Pacific
+	option = {
+		name = mmr_nzl.131.a
+	}
+}
+#NZL pacific alliance invitation FROM says no
+country_event = {
+	id = mmr_nzl.132
+	title = mmr_nzl.132.t
+	desc = mmr_nzl.132.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	#we will carry forth without them
+	option = {
+		name = mmr_nzl.132.a
+	}
+}
+#USA NZL requests to join faction
+country_event = {
+	id = mmr_nzl.32
+	title = mmr_nzl.32.t
+	desc = mmr_nzl.32.desc
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	#yes
+	option = {
+		name = mmr_nzl.32.a
+		random_country = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = USA
+			}
+			add_to_faction = FROM
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.133 days = 1 } }
+		}
+		ai_chance = {
+			base = 9
+			modifier = {
+				add = 40
+				FROM = { is_ai = no }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+		}
+	}
+	#no
+	option = {
+		name = mmr_nzl.32.b
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_nzl.134 days = 1 } }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL requests to join faction USA says yes
+country_event = {
+	id = mmr_nzl.133
+	title = mmr_nzl.133.t
+	desc = mmr_nzl.133.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	#Our brother republics stand together!
+	option = {
+		name = mmr_nzl.133.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL requests to join faction USA says no
+country_event = {
+	id = mmr_nzl.134
+	title = mmr_nzl.134.t
+	desc = mmr_nzl.134.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	#We will have to reevaluate our foreign policy
+	option = {
+		name = mmr_nzl.134.a
+		uncomplete_national_focus = {
+			focus = NZL_seek_american_protection
+			uncomplete_children = yes
+			refund_political_power = yes
+		}
+		hidden_effect = { set_country_flag = MMR_NZL_usa_rej }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#1938 New Zealand general election
+country_event = {
+	id = mmr_nzl.200
+	title = mmr_nzl.200.t
+	desc = mmr_nzl.200.desc
+	picture = GFX_report_event_election_vote
+	
+	immediate = {
+		set_variable = { mmr_ast_neu_swap_neg = party_popularity@neutrality }
+		multiply_variable = { mmr_ast_neu_swap_neg = -1 }
+		set_variable = { mmr_ast_neu_swap = party_popularity@neutrality }
+	}
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	#Labour Victory: Stab increase plus nuetral increase (both small)
+	option = {
+		name = mmr_nzl.200.a
+		add_stability = 0.02
+		IF = { limit = { has_completed_focus = NZL_the_lee_affair NOT = { has_completed_focus = NZL_break_with_the_empire } }
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			ELSE = {
+				add_popularity = {
+					ideology = neutrality
+					popularity = 0.02
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	#National Victory: large stab decrease, National Party takes power, neutrality support is given to dems, labour gov idea is removed, National gov spirit added
+	option = {
+		name = mmr_nzl.200.b
+		IF = {
+			limit = { NOT = { has_idea = NZL_first_labor_government } }
+			add_ideas = NZL_first_national_government_idea
+			ELSE = {
+				swap_ideas = {
+					remove_idea = NZL_first_labor_government
+					add_idea = NZL_first_national_government_idea
+				}
+			}
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = NZL_democratic_national_party_long
+			name = NZL_democratic_national_party
+		}
+		IF = {
+			limit = { has_country_flag = mmr_nzl_wilkinson_nat_leader }
+			promote_character = {
+				character = MMR_NZL_charles_wilkinson
+				ideology = conservatism
+			}
+			add_stability = -0.1
+			ELSE_IF = {
+				limit = { has_country_flag = mmr_nzl_holland_nat_leader }
+				promote_character = {
+					character = NZL_sidney_holland
+					ideology = conservatism
+				}
+				ELSE = {
+					promote_character = {
+						character = MMR_NZL_adam_hamilton
+						ideology = conservatism
+					}
+				}
+			}
+		}
+		#hidden_effect = {
+		#	set_temp_variable = {
+		#		var = mmr_ast_dem_swap_neg
+		#		value = party_popularity@democratic
+		#	}
+		#	set_temp_variable = {
+		#		var = mmr_ast_dem_swap
+		#		value = party_popularity@democratic
+		#	}
+		#	set_temp_variable = {
+		#		var = mmr_ast_neu_swap
+		#		value = party_popularity@neutrality
+		#	}
+		#	multiply_temp_variable = { mmr_ast_dem_swap_neg = -1 }
+		#	set_temp_variable = {
+		#		var = mmr_ast_fasc
+		#		value = party_popularity@fascism
+		#	}
+		#	set_temp_variable = {
+		#		var = mmr_ast_com
+		#		value = party_popularity@communism
+		#	}
+		#	round_temp_variable = mmr_ast_dem_swap
+		#	round_temp_variable = mmr_ast_neu_swap
+		#	round_temp_variable = mmr_ast_fasc
+		#	round_temp_variable = mmr_ast_com
+		#	set_temp_variable = {
+		#		var = mmr_ast_pop_total
+		#		value = mmr_ast_dem_swap
+		#	}
+		#	add_to_temp_variable = {
+		#		var = mmr_ast_pop_total
+		#		value = mmr_ast_neu_swap
+		#	}
+		#	add_to_temp_variable = {
+		#		var = mmr_ast_pop_total
+		#		value = mmr_ast_fasc
+		#	}
+		#	add_to_temp_variable = {
+		#		var = mmr_ast_pop_total
+		#		value = mmr_ast_com
+		#	}
+		##	IF = {
+		#		limit = {
+		#			check_variable = {
+		#				var = mmr_ast_pop_total
+		#				value = 100
+		#				compare = greater_than
+		#			}
+		#		}
+		#	}
+		#}
+		IF = { limit = { has_completed_focus = NZL_in_the_darkness NOT = { has_completed_focus = NZL_our_pacific_empire } }
+			add_popularity = {
+				ideology = neutrality
+				popularity = var:mmr_ast_neu_swap_neg
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+			ELSE = {
+				add_popularity = {
+					ideology = democratic
+					popularity = var:mmr_ast_neu_swap
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = var:mmr_ast_neu_swap_neg
+				}
+			}
+		}
+		
+			#set_popularities = {
+			#	democratic = var:mmr_ast_neu_swap
+			#	neutrality = var:mmr_ast_dem_swap
+			#	fascism = var:mmr_ast_fasc
+			#	communism = var:mmr_ast_com
+			#}
+		ai_chance = {
+			base = 10
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = NZL_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = AZR_NZL_AI_RANDOM_DEMOCRATIC_HISTORICAL 
+					has_game_rule = {
+						rule = NZL_ai_behavior
+						option = DEMOCRATIC_HISTORICAL
+					}
+				}
+				factor = 0
+			}
+		}
+	}
+}
+#postpone the 1941 census due to war if 1941
+news_event = {
+	id = mmr_nzl.201
+	title = mmr_nzl.201.t
+	desc = mmr_nzl.201.desc
+	picture = GFX_news_event_generic_sign_treaty2
+	
+	immediate = {
+		hidden_effect = { set_country_flag = mmr_nzl_census_pstponed }
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1941.01.01
+		date < 1941.09.01
+		any_country = {
+			is_major = yes
+			has_war_with = ROOT
+		}
+	}
+	
+	mean_time_to_happen = { days = 1 }
+	
+	#Makes election come in 1943 instead of 1941
+	option = {
+		name = mmr_nzl.201.a
+		IF = {
+			limit = { has_elections = yes }
+			IF = {
+				limit = { has_government = democratic }
+				custom_effect_tooltip = mmr_nzl_201_tt #elections in 1943
+				hidden_effect = {
+					set_politics = {
+						ruling_party = democratic
+						elections_allowed = yes
+						last_election = "1940.9.25"
+						election_frequency = 36
+					}
+				}
+				IF = {
+					limit = {
+						OR = {
+							has_country_leader = { character = NZL_michael_joseph_savage }
+							has_country_leader = { character = NZL_peter_fraser }
+						}
+					}
+					add_stability = -0.01
+					add_popularity = {
+						ideology = neutrality
+						popularity = 0.02
+					}
+				}
+				ELSE = {
+					add_popularity = {
+						ideology = neutrality
+						popularity = 0.01
+					}
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = 0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.01
+				}
+			}
+			IF = {
+				limit = { has_government = neutrality }
+				custom_effect_tooltip = mmr_nzl_201_tt #elections in 1943
+				hidden_effect = {
+					set_politics = {
+						ruling_party = neutrality
+						elections_allowed = yes
+						last_election = "1940.9.25"
+						election_frequency = 36
+					}
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.02
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = 0.02
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.01
+				}
+			}
+			IF = {
+				limit = { has_government = fascism }
+				custom_effect_tooltip = mmr_nzl_201_tt #elections in 1943
+				hidden_effect = {
+					set_politics = {
+						ruling_party = fascism
+						elections_allowed = yes
+						last_election = "1940.9.25"
+						election_frequency = 36
+					}
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.02
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = 0.02
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = 0.01
+				}
+			}
+			IF = {
+				limit = { has_government = communism }
+				custom_effect_tooltip = mmr_nzl_201_tt #elections in 1943
+				hidden_effect = {
+					set_politics = {
+						ruling_party = communism
+						elections_allowed = yes
+						last_election = "1940.9.25"
+						election_frequency = 36
+					}
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = 0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = 0.02
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.02
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#1943 New Zealand general election
+country_event = {
+	id = mmr_nzl.202
+	title = mmr_nzl.202.t
+	desc = mmr_nzl.202.desc
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		set_variable = { mmr_ast_neu_swap_neg = party_popularity@neutrality }
+		multiply_variable = { mmr_ast_neu_swap_neg = -1 }
+		set_variable = { mmr_ast_neu_swap = party_popularity@neutrality }
+		
+		set_variable = { mmr_ast_dem_swap_fraction = party_popularity@democratic }
+		divide_variable = { mmr_ast_dem_swap_fraction = 3 }
+		set_variable = { ROOT.last_election_year_var = global.year }
+	}
+	
+	#Labour Victory:
+	#If remaining power: Stab decrease war support increase (if at war) plus significant nuetral increase (both small) 1 increase for commies
+	#If changing power: Stab increase war support decrease (if at war) Labour Party takes power, 1/3 dem support is given to neutrality, labour gov idea is added, 5 increase for commies
+	option = {
+		name = mmr_nzl.202.a
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = NZL_michael_joseph_savage }
+					has_country_leader = { character = NZL_peter_fraser }
+				}
+			}
+			IF = { limit = { has_war = yes } add_stability = -0.02 add_war_support = 0.02 }
+			IF = { limit = { has_completed_focus = NZL_the_lee_affair NOT = { has_completed_focus = NZL_break_with_the_empire } }
+				add_popularity = {
+					ideology = communism
+					popularity = 0.05
+				}
+				ELSE = {
+					add_popularity = {
+						ideology = neutrality
+						popularity = 0.05
+					}
+				}
+			}
+		}
+		ELSE = {
+			IF = { limit = { has_war = yes } add_stability = 0.02 add_war_support = -0.02 }
+			IF = {
+				limit = { has_completed_focus = NZL_the_first_labor_government_azr }
+				swap_ideas = {
+					remove_idea = NZL_first_national_government_idea
+					add_idea = NZL_first_labor_government
+				}
+			}
+			IF = {
+				limit = { has_completed_focus = NZL_empower_the_trade_unions }
+				add_ideas = AZR_NZL_empower_the_trade_unions_idea
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = NZL_democratic_party_long
+				name = NZL_democratic_party
+			}
+			IF = {
+				limit = { has_country_flag = mmr_nzl_mjs_died }
+				promote_character = {
+					character = NZL_peter_fraser
+					ideology = socialism
+				}
+				ELSE = {
+					promote_character = {
+						character = NZL_michael_joseph_savage
+						ideology = socialism
+					}
+				}
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = mmr_ast_dem_swap_fraction
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+	#National Victory:
+	#If remaining power: Stab decrease war support increase (if at war) plus significant nuetral increase (both small) 1 increase for commies
+	#If changing power: Stab increase war support decrease (if at war) National Party takes power, neutrality support is given to dems, labour gov idea is removed, National gov spirit added, 5 increase for commies
+	option = {
+		name = mmr_nzl.202.b
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = MMR_NZL_adam_hamilton }
+					has_country_leader = { character = NZL_sidney_holland }
+				}
+			}
+			IF = { limit = { has_war = yes } add_stability = -0.02 add_war_support = 0.02 }
+			IF = { limit = { has_completed_focus = NZL_in_the_darkness NOT = { has_completed_focus = NZL_our_pacific_empire } }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+				ELSE = {
+					add_popularity = {
+						ideology = communism
+						popularity = 0.01
+					}
+				}
+			}
+		}
+		ELSE = {
+			IF = { limit = { has_war = yes } add_stability = 0.02 add_war_support = -0.02 }
+			IF = {
+				limit = { has_completed_focus = NZL_the_first_labor_government_azr }
+				swap_ideas = {
+					remove_idea = NZL_first_labor_government
+					add_idea = NZL_first_national_government_idea
+				}
+			}
+			IF = {
+				limit = { has_completed_focus = NZL_empower_the_industrialists }
+				add_ideas = AZR_NZL_empower_the_industrialists_idea
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = NZL_democratic_national_party_long
+				name = NZL_democratic_national_party
+			}
+			IF = {
+				limit = { has_country_flag = mmr_nzl_wilkinson_nat_leader }
+				promote_character = {
+					character = MMR_NZL_charles_wilkinson
+					ideology = conservatism
+				}
+				ELSE_IF = {
+					limit = { has_country_flag = mmr_nzl_holland_nat_leader }
+					promote_character = {
+						character = NZL_sidney_holland
+						ideology = conservatism
+					}
+					ELSE = {
+						promote_character = {
+							character = MMR_NZL_adam_hamilton
+							ideology = conservatism
+						}
+					}
+				}
+			}
+			IF = { limit = { has_completed_focus = NZL_in_the_darkness NOT = { has_completed_focus = NZL_our_pacific_empire } }
+				add_popularity = {
+					ideology = neutrality
+					popularity = var:mmr_ast_neu_swap_neg
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.1
+				}
+				ELSE = {
+					add_popularity = {
+						ideology = neutrality
+						popularity = var:mmr_ast_neu_swap_neg
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = var:mmr_ast_neu_swap
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+				}
+			}
+		}
+			
+		ai_chance = {
+			base = 20
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = NZL_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = AZR_NZL_AI_RANDOM_DEMOCRATIC_HISTORICAL 
+					has_game_rule = {
+						rule = NZL_ai_behavior
+						option = DEMOCRATIC_HISTORICAL
+					}
+				}
+				factor = 0
+			}
+		}
+	}
+}
+#1946 New Zealand general election
+country_event = {
+	id = mmr_nzl.203
+	title = mmr_nzl.203.t
+	desc = mmr_nzl.203.desc
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		set_variable = { mmr_ast_neu_swap_neg = party_popularity@neutrality }
+		multiply_variable = { mmr_ast_neu_swap_neg = -1 }
+		set_variable = { mmr_ast_neu_swap = party_popularity@neutrality }
+		
+		set_variable = { mmr_ast_dem_swap_fraction = party_popularity@democratic }
+		divide_variable = { mmr_ast_dem_swap_fraction = 3 }
+		set_variable = { ROOT.last_election_year_var = global.year }
+	}
+	
+	#Labour Victory:
+	#If remaining power: Stab decrease plus significant nuetral increase (both small) large decrease for commies
+	#If changing power: Stab increase war support decrease (if at war) Labour Party takes power, 1/3 dem support is given to neutrality, labour gov idea is added, 5 increase for commies
+	option = {
+		name = mmr_nzl.203.a
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = NZL_michael_joseph_savage }
+					has_country_leader = { character = NZL_peter_fraser }
+				}
+			}
+			add_stability = -0.02
+			IF = { limit = { has_completed_focus = NZL_the_lee_affair NOT = { has_completed_focus = NZL_break_with_the_empire } }
+				add_popularity = {
+					ideology = communism
+					popularity = 0.05
+				}
+				ELSE = {
+					add_popularity = {
+						ideology = neutrality
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = -0.05
+					}
+				}
+			}
+		}
+		ELSE = {
+			IF = { limit = { has_war = yes } add_stability = 0.02 add_war_support = -0.02 }
+			IF = {
+				limit = { has_completed_focus = NZL_the_first_labor_government_azr }
+				swap_ideas = {
+					remove_idea = NZL_first_national_government_idea
+					add_idea = NZL_first_labor_government
+				}
+			}
+			IF = {
+				limit = { has_completed_focus = NZL_empower_the_trade_unions }
+				add_ideas = AZR_NZL_empower_the_trade_unions_idea
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = NZL_democratic_party_long
+				name = NZL_democratic_party
+			}
+			IF = {
+				limit = { has_country_flag = mmr_nzl_mjs_died }
+				promote_character = {
+					character = NZL_peter_fraser
+					ideology = socialism
+				}
+				ELSE = {
+					promote_character = {
+						character = NZL_michael_joseph_savage
+						ideology = socialism
+					}
+				}
+			}
+			IF = { limit = { has_completed_focus = NZL_the_lee_affair NOT = { has_completed_focus = NZL_break_with_the_empire } }
+				add_popularity = {
+					ideology = communism
+					popularity = 0.05
+				}
+				ELSE = {
+					add_popularity = {
+						ideology = neutrality
+						popularity = mmr_ast_dem_swap_fraction
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+	#National Victory:
+	#If remaining power: Stab decrease plus significant nuetral increase (both small) large decrease for commies
+	#If changing power: Stab increase war support decrease (if at war) Labour Party takes power, 1/3 dem support is given to neutrality, labour gov idea is added, 5 increase for commies
+	option = {
+		name = mmr_nzl.203.b
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = MMR_NZL_adam_hamilton }
+					has_country_leader = { character = NZL_sidney_holland }
+				}
+			}
+			add_stability = -0.02
+			IF = { limit = { has_completed_focus = NZL_in_the_darkness NOT = { has_completed_focus = NZL_our_pacific_empire } }
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+				ELSE = {
+					add_popularity = {
+						ideology = neutrality
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = -0.05
+					}
+				}
+			}
+		}
+		ELSE = {
+			IF = { limit = { has_war = yes } add_stability = 0.02 add_war_support = -0.02 }
+			IF = {
+				limit = { has_completed_focus = NZL_the_first_labor_government_azr }
+				swap_ideas = {
+					remove_idea = NZL_first_labor_government
+					add_idea = NZL_first_national_government_idea
+				}
+			}
+			IF = {
+				limit = { has_completed_focus = NZL_empower_the_industrialists }
+				add_ideas = AZR_NZL_empower_the_industrialists_idea
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = NZL_democratic_national_party_long
+				name = NZL_democratic_national_party
+			}
+			IF = {
+				limit = { has_country_flag = mmr_nzl_wilkinson_nat_leader }
+				promote_character = {
+					character = MMR_NZL_charles_wilkinson
+					ideology = conservatism
+				}
+				ELSE_IF = {
+					limit = { has_country_flag = mmr_nzl_holland_nat_leader }
+					promote_character = {
+						character = NZL_sidney_holland
+						ideology = conservatism
+					}
+					ELSE = {
+						promote_character = {
+							character = MMR_NZL_adam_hamilton
+							ideology = conservatism
+						}
+					}
+				}
+			}
+			IF = { limit = { has_completed_focus = NZL_in_the_darkness NOT = { has_completed_focus = NZL_our_pacific_empire } }
+				add_popularity = {
+					ideology = neutrality
+					popularity = var:mmr_ast_neu_swap_neg
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = var:mmr_ast_neu_swap
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.1
+				}
+				ELSE = {
+					add_popularity = {
+						ideology = neutrality
+						popularity = var:mmr_ast_neu_swap_neg
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = var:mmr_ast_neu_swap
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = 0.05
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 20
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = NZL_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = AZR_NZL_AI_RANDOM_DEMOCRATIC_HISTORICAL 
+					has_game_rule = {
+						rule = NZL_ai_behavior
+						option = DEMOCRATIC_HISTORICAL
+					}
+				}
+				factor = 0
+			}
+		}
+	}
+}
+#1949 New Zealand general election
+country_event = {
+	id = mmr_nzl.204
+	title = mmr_nzl.204.t
+	desc = mmr_nzl.204.desc
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		set_variable = { mmr_ast_neu_swap_neg = party_popularity@neutrality }
+		multiply_variable = { mmr_ast_neu_swap_neg = -1 }
+		set_variable = { mmr_ast_neu_swap = party_popularity@neutrality }
+		
+		set_variable = { mmr_ast_dem_swap_fraction = party_popularity@democratic }
+		divide_variable = { mmr_ast_dem_swap_fraction = 3 }
+		set_variable = { ROOT.last_election_year_var = global.year }
+	}
+	
+	#National Victory:
+	#If remaining power: national remains in power, small stab loss
+	#If changing power: National Party takes power, neutrality support is given to dems, labour gov idea is removed, National gov spirit added
+	option = {
+		name = mmr_nzl.204.a
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = MMR_NZL_adam_hamilton }
+					has_country_leader = { character = NZL_sidney_holland }
+				}
+			}
+			add_stability = -0.02
+		}
+		ELSE = {
+			IF = {
+				limit = { has_completed_focus = NZL_the_first_labor_government_azr }
+				swap_ideas = {
+					remove_idea = NZL_first_labor_government
+					add_idea = NZL_first_national_government_idea
+				}
+			}
+			IF = {
+				limit = { has_completed_focus = NZL_empower_the_industrialists }
+				add_ideas = AZR_NZL_empower_the_industrialists_idea
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = NZL_democratic_national_party_long
+				name = NZL_democratic_national_party
+			}
+			IF = {
+				limit = { has_country_flag = mmr_nzl_wilkinson_nat_leader }
+				promote_character = {
+					character = MMR_NZL_charles_wilkinson
+					ideology = conservatism
+				}
+				ELSE_IF = {
+					limit = { has_country_flag = mmr_nzl_holland_nat_leader }
+					promote_character = {
+						character = NZL_sidney_holland
+						ideology = conservatism
+					}
+					ELSE = {
+						promote_character = {
+							character = MMR_NZL_adam_hamilton
+							ideology = conservatism
+						}
+					}
+				}
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = mmr_ast_dem_swap_fraction
+			}
+		}
+		
+		custom_effect_tooltip = mmr_nzl_204_tt
+		ai_chance = {
+			base = 100
+		}
+	}
+	#Labour Victory:
+	#If remaining power: labour remains in power, small stab loss
+	#If changing power: Labour Party takes power, 1/3 dem support is given to neutrality, labour gov idea is added
+	option = {
+		name = mmr_nzl.204.b
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = NZL_michael_joseph_savage }
+					has_country_leader = { character = NZL_peter_fraser }
+				}
+			}
+			add_stability = -0.02
+		}
+		ELSE = {
+			IF = {
+				limit = { has_completed_focus = NZL_the_first_labor_government_azr }
+				swap_ideas = {
+					remove_idea = NZL_first_national_government_idea
+					add_idea = NZL_first_labor_government
+				}
+			}
+			IF = {
+				limit = { has_completed_focus = NZL_empower_the_trade_unions }
+				add_ideas = AZR_NZL_empower_the_trade_unions_idea
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = NZL_democratic_party_long
+				name = NZL_democratic_party
+			}
+			IF = {
+				limit = { has_country_flag = mmr_nzl_mjs_died }
+				promote_character = {
+					character = NZL_peter_fraser
+					ideology = socialism
+				}
+				ELSE = {
+					promote_character = {
+						character = NZL_michael_joseph_savage
+						ideology = socialism
+					}
+				}
+			}
+			IF = { limit = { has_completed_focus = NZL_in_the_darkness NOT = { has_completed_focus = NZL_our_pacific_empire } }
+				add_popularity = {
+					ideology = neutrality
+					popularity = var:mmr_ast_neu_swap_neg
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = 0.1
+				}
+				ELSE = {
+					add_popularity = {
+						ideology = neutrality
+						popularity = var:mmr_ast_neu_swap_neg
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = var:mmr_ast_neu_swap
+					}
+				}
+			}
+		}
+		custom_effect_tooltip = mmr_nzl_204_tt
+		ai_chance = {
+			base = 20
+			modifier = {
+				OR = {
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = NZL_ai_behavior
+							option = DEFAULT
+						}
+					}
+					has_country_flag = AZR_NZL_AI_RANDOM_DEMOCRATIC_HISTORICAL 
+					has_game_rule = {
+						rule = NZL_ai_behavior
+						option = DEMOCRATIC_HISTORICAL
+					}
+				}
+				factor = 0
+			}
+		}
+	}
+}
+#National Party is formed
+news_event = {
+	id = mmr_nzl.205
+	title = mmr_nzl.205.t
+	desc = mmr_nzl.205.desc
+	picture = GFX_news_event_turkey_affirms_interest_in_protecting_balkans
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#Neutrality gains 10, Adam Hamilton comes
+	option = {
+		name = mmr_nzl.205.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.10
+		}
+		set_party_name = {
+			ideology = neutrality
+			long_name = NZL_neutrality_party_long
+			name = NZL_neutrality_party
+		}
+		hidden_effect = { country_event = { id = mmr_nzl.2051 days = 80 random_days = 20 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Chaos in Nats (Adam Hamilton Reform coup) lose nat
+country_event = {
+	id = mmr_nzl.2051
+	title = mmr_nzl.2051.t
+	desc = mmr_nzl.2051.desc
+	picture = GFX_report_event_hol_cabinet_gerbrandy
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#Coup fails
+	option = {
+		name = mmr_nzl.2051.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.05
+		}
+		hidden_effect = { country_event = { id = mmr_nzl.2052 days = 70 random_days = 20 } }
+		ai_chance = {
+			base = 9
+		}
+	}
+	#Coup succeeds
+	option = {
+		name = mmr_nzl.2051.b
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.025
+		}
+		retire_character = MMR_NZL_george_forbes
+		promote_character = {
+			character = MMR_NZL_adam_hamilton
+			ideology = moderatism
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+#National Party leadership vote
+country_event = {
+	id = mmr_nzl.2052
+	title = mmr_nzl.2052.t
+	desc = mmr_nzl.2052.desc
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#Adam Hamilton wins by 1 vote
+	option = {
+		name = mmr_nzl.2052.a
+		promote_character = {
+			character = MMR_NZL_adam_hamilton
+			ideology = moderatism
+		}
+		hidden_effect = { country_event = { id = mmr_nzl.2053 } }
+		ai_chance = {
+			base = 9
+		}
+	}
+	#Wilkinson Wins (reform leave Nats) by 1 vote
+	option = {
+		name = mmr_nzl.2052.b
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.1
+		}
+		retire_character = MMR_NZL_adam_hamilton
+		retire_character = MMR_NZL_j_g_coates
+		retire_character = NZL_sidney_holland
+		promote_character = {
+			character = MMR_NZL_charles_wilkinson
+			ideology = moderatism
+		}
+		set_country_flag = mmr_nzl_wilkinson_nat_leader
+		hidden_effect = { country_event = { id = mmr_nzl.2054 } }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+#Hamilton sinches National Leadership as compromise candidate
+news_event = {
+	id = mmr_nzl.2053
+	title = mmr_nzl.2053.t
+	desc = mmr_nzl.2053.desc
+	picture = GFX_report_event_imperial_conference
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#
+	option = {
+		name = mmr_nzl.2053.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Wilkinson sinches National Leaders and Reform leaves
+news_event = {
+	id = mmr_nzl.2054
+	title = mmr_nzl.2054.t
+	desc = mmr_nzl.2054.desc
+	picture = GFX_report_event_gre_balkan_pact
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#
+	option = {
+		name = mmr_nzl.2054.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Forbes retires 1943
+news_event = {
+	id = mmr_nzl.2055
+	title = mmr_nzl.2055.t
+	desc = mmr_nzl.2055.desc
+	picture = GFX_report_event_tur_ataturk_inonu_parliament
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1943.01.01
+		has_character = MMR_NZL_george_forbes
+		NOT = {
+			OR = {
+				OR = {
+					has_completed_focus = NZL_the_lee_affair
+					has_completed_focus = NZL_in_the_darkness
+					has_government = fascism
+					has_government = communism
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 300 }
+	
+	#
+	option = {
+		name = mmr_nzl.2055.a
+		retire_character = MMR_NZL_george_forbes
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Hamilton Suggests Wartime Coalition (In mid-July 1940, after six weeks of negotiations) (a year after war with major as democratic labour)
+country_event = {
+	id = mmr_nzl.206
+	title = mmr_nzl.206.t
+	desc = mmr_nzl.206.desc
+	picture = GFX_report_event_SWE_summer_government
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		NOT = {
+			OR = {
+				has_country_flag = mmr_nzl_wilkinson_nat_leader
+				has_country_flag = mmr_nzl_holland_nat_leader
+			}
+		}
+		OR = {
+			has_country_leader = { character = NZL_michael_joseph_savage }
+			has_country_leader = { character = NZL_peter_fraser }
+		}
+		has_war = yes
+		any_other_country = {
+			has_war_with = ROOT
+			is_major = yes
+		}
+	}
+	
+	#immediate = {
+	#	set_variable = { mmr_ast_neu_swap_neg = party_popularity@neutrality }
+	#	multiply_variable = { mmr_ast_neu_swap_neg = -1 }
+	#	set_variable = { mmr_ast_neu_swap = party_popularity@neutrality }
+	#	
+	#	set_variable = { mmr_ast_dem_swap_fraction = party_popularity@democratic }
+	#	divide_variable = { mmr_ast_dem_swap_fraction = 3 }
+	#}
+	
+	#Form a "Wartime Cabinet" with a 4-2 Labour majority (small stability increase, large dem bonus)
+	option = {
+		name = mmr_nzl.206.a
+		set_country_flag = azl_ast_wartime_cabinet_forming_flag
+		custom_effect_tooltip = mmr_nzl_206_tt_1 #will get effects below when cabinet/coalition forms
+		effect_tooltip = {
+			add_stability = 0.02
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+		}
+		ai_chance = {
+			base = 80
+		}
+	}
+	#We should stand united! (neutrality bonus, small stability decrese, war support bonus)
+	option = {
+		name = mmr_nzl.206.b
+		set_country_flag = azl_ast_wartime_coalition_forming_flag
+		custom_effect_tooltip = mmr_nzl_206_tt_2 #will get effects below when cabinet/coalition forms
+		effect_tooltip = {
+			add_war_support = 0.05
+			add_stability = -0.02
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.05
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+	#They can dictate wartime policy when they win an election (significant stability decrese)
+	option = {
+		name = mmr_nzl.206.c
+		add_stability = -0.05
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.01
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+}
+#Wartime Cabinet Established
+country_event = {
+	id = mmr_nzl.2061
+	title = mmr_nzl.2061.t
+	desc = mmr_nzl.2061.desc
+	picture = GFX_report_event_SWE_saltsjobaden
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	#get effects from 6 weeks ago
+	option = {
+		name = mmr_nzl.2061.a
+		add_stability = 0.02
+		add_popularity = {
+			ideology = democratic
+			popularity = 0.05
+		}
+		hidden_effect = { news_event = { id = mmr_nzl.207 days = 100 random_days = 40 } }
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+#Wartime Coalition Government Formed
+country_event = {
+	id = mmr_nzl.2062
+	title = mmr_nzl.2062.t
+	desc = mmr_nzl.2062.desc
+	picture = GFX_report_event_SWE_saltsjobaden
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#get effects from 6 weeks ago
+	option = {
+		name = mmr_nzl.2062.a
+		add_war_support = 0.05
+		add_stability = -0.02
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+#NZL hidden event to get war with major
+country_event = {
+	id = mmr_nzl.2063
+	
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = NZL
+		has_war = yes
+		any_other_country = {
+			is_major = yes
+			has_war_with = ROOT
+		}
+	}
+	
+	immediate = {
+		country_event = { id = mmr_nzl.206 days = 365 }
+	}
+}
+#4 months after wartime cabinet formed Sidney Holland takes over National
+news_event = {
+	id = mmr_nzl.207
+	title = mmr_nzl.207.t
+	desc = mmr_nzl.207.desc
+	picture = GFX_news_event_king_speech
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#Neutrality gains 10, Sidney Holland takes over National
+	option = {
+		name = mmr_nzl.207.a
+		set_country_flag = mmr_nzl_holland_nat_leader
+		promote_character = {
+			character = NZL_sidney_holland
+			ideology = centrism
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.1
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+#Sidney Holland takes over National (National are in power)
+country_event = {
+	id = mmr_nzl.2071
+	title = mmr_nzl.2071.t
+	desc = mmr_nzl.2071.desc
+	picture = GFX_report_event_FIN_svinhufvud_speech
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = { NOT = { has_country_flag = mmr_nzl_holland_nat_leader } }
+	
+	#Sidney Holland takes over National
+	option = {
+		name = mmr_nzl.2071.a
+		set_country_flag = mmr_nzl_holland_nat_leader
+		retire_character = MMR_NZL_adam_hamilton
+		promote_character = {
+			character = NZL_sidney_holland
+			ideology = conservatism
+		}
+		promote_character = {
+			character = NZL_sidney_holland
+			ideology = centrism
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+#Michael Joseph Savage Dies
+news_event = {
+	id = mmr_nzl.208
+	title = mmr_nzl.208.t
+	desc = mmr_nzl.208.desc
+	picture = GFX_news_event_generic_funeral
+	
+	immediate = {
+		set_country_flag = mmr_nzl_mjs_died
+		IF = {
+			limit = { has_country_leader = { character = NZL_michael_joseph_savage } }
+			retire_character = NZL_michael_joseph_savage
+			promote_character = {
+				character = NZL_peter_fraser
+				ideology = socialism
+			}
+			set_country_flag = mmr_nzl_mjs_died_in_office
+		}
+		ELSE = { retire_character = NZL_michael_joseph_savage }
+	}
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#Peter Fraser takes over
+	option = {
+		name = mmr_nzl.208.a
+		trigger = { has_government = democratic }
+		ai_chance = {
+			base = 10
+		}
+	}
+	#Peter Fraser takes over
+	option = {
+		name = mmr_nzl.208.b
+		trigger = { NOT = { has_government = democratic } }
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+#Invite Australia to PCA
+country_event = {
+	id = mmr_nzl.209
+	title = mmr_nzl.209.t
+	desc = mmr_nzl.209.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = mmr_nzl.209.a
+		FROM = { country_event = { id = mmr_nzl.2091 days = 1 } }
+		ai_chance = {
+			base = 99
+		}
+	}
+	#Reject
+	option = {
+		name = mmr_nzl.209.b
+		FROM = { country_event = { id = mmr_nzl.2092 days = 1 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Invite Australia to PCA (Yes)
+country_event = {
+	id = mmr_nzl.2091
+	title = mmr_nzl.2091.t
+	desc = mmr_nzl.2091.desc
+	picture = GFX_report_event_generic_handshake
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_nzl.2091.a
+		add_to_faction = FROM
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+#Invite Australia to PCA (No)
+country_event = {
+	id = mmr_nzl.2092
+	title = mmr_nzl.2092.t
+	desc = mmr_nzl.2092.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_nzl.2092.a
+	}
+}
+#AST (NZL sends) NZL interferes in our politics
+country_event = {
+	id = mmr_nzl.210
+	title = mmr_nzl.210.t
+	desc = mmr_nzl.210.desc
+	picture = GFX_report_event_communists_in_riga
+	
+	is_triggered_only = yes
+	
+	
+	#shows the effects AST got
+	option = {
+		name = mmr_nzl.210.a
+		IF = {
+			limit = { AST = { communism < 0.05 } }
+			add_stability = -0.05
+			add_war_support = -0.05
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+		}
+		ELSE_IF = {
+			limit = { AST = { communism < 0.1 } }
+			add_stability = -0.1
+			add_war_support = -0.1
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+		}
+		ELSE_IF = {
+			limit = { AST = { communism < 0.25 } }
+			add_stability = -0.1
+			add_war_support = -0.1
+			add_popularity = {
+				ideology = communism
+				popularity = 0.15
+			}
+		}
+		ELSE = {
+			add_stability = -0.25
+			add_war_support = -0.25
+			add_popularity = {
+				ideology = communism
+				popularity = 0.25
+			}
+			IF = {
+				limit = { AST = { is_ai = yes } }
+				start_civil_war = {
+					ideology = communism
+					size = ROOT.party_popularity@communism
+					navy_ratio = 0.2
+					air_ratio = 0.2
+					capital = 285
+					states = { 285 }
+					keep_unit_leaders_trigger = {
+						OR = {
+							is_character = AST_leslie_morshead
+							is_character = AST_thomas_blamey
+							is_character = AST_edmund_herring
+							is_character = MMR_AST_francis_derham
+							NOT = { is_character = AST_john_lavarack }
+						}
+					}
+					set_country_flag = AZR_NZL_lib_com_AST_breakaway
+					add_popularity = {
+						ideology = communism
+						popularity = 0.5
+					}
+					load_focus_tree = {
+					  tree = australian_focus
+					  copy_completed_from = AST
+					}
+					uncomplete_national_focus = {
+						focus = AST_support_the_policy_of_appeasement
+						uncomplete_children = yes
+						refund_political_power = no
+					}
+					uncomplete_national_focus = {
+						focus = AST_never_another_gallipoli
+						uncomplete_children = yes
+						refund_political_power = no
+					}
+					complete_national_focus = AST_never_another_gallipoli
+					complete_national_focus = AST_abandon_the_westminster_system
+					complete_national_focus = AST_empower_the_workers
+					complete_national_focus = AST_purge_the_new_guard
+				}
+				hidden_effect = {
+					add_popularity = {
+						ideology = communism
+						popularity = -0.35
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Faction leader (NZL sends) NZL sends soldiers (Rally)
+country_event = {
+	id = mmr_nzl.211
+	title = mmr_nzl.211.t
+	desc = mmr_nzl.211.desc
+	picture = GFX_report_event_british_inspect_troops
+	
+	is_triggered_only = yes
+	
+	
+	#shows the effects ENG got
+	option = {
+		name = mmr_nzl.211.a
+		effect_tooltip = { NZL = { add_ideas = NZL_rally_behind_the_commonwealth_idea } }
+		add_ideas = NZL_ENG_rally_behind_the_commonwealth_idea
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Faction leader (NZL sends) NZL sends soldiers (Mother)
+country_event = {
+	id = mmr_nzl.212
+	title = mmr_nzl.212.t
+	desc = mmr_nzl.212.desc
+	picture = GFX_report_event_canadian_soldiers
+	
+	is_triggered_only = yes
+	
+	
+	#shows the effects ENG got
+	option = {
+		name = mmr_nzl.212.a
+		effect_tooltip = { NZL = { add_ideas = NZL_rally_behind_the_commonwealth_idea_improved } }
+		IF = {
+			limit = { has_idea = NZL_ENG_rally_behind_the_commonwealth_idea }
+			swap_ideas = {
+				remove_idea = NZL_ENG_rally_behind_the_commonwealth_idea
+				add_idea = NZL_ENG_rally_behind_the_commonwealth_idea_improved
+			}
+		}
+		ELSE = { add_ideas = NZL_ENG_rally_behind_the_commonwealth_idea_improved }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#SOV (NZL sends) NZL requests our consent to take leadership of South East Asian Pacific Communist Movement from CPA
+country_event = {
+	id = mmr_nzl.213
+	title = mmr_nzl.213.t
+	desc = mmr_nzl.213.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	
+	#Accept (NZL gets effects, AST gets neg opinion modifier to us)
+	option = {
+		name = mmr_nzl.213.a
+		FROM = { country_event = { id = mmr_nzl.2131 days = 1 } }
+		ai_chance = {
+			base = 99
+		}
+	}
+	#Reject (NZL gets neg opinion modifier to us)
+	option = {
+		name = mmr_nzl.213.b
+		FROM = { country_event = { id = mmr_nzl.2132 days = 1 } }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_opinion = {
+					target = FROM
+					value > 75
+				}
+			}
+		}
+	}
+}
+#NZL requests our consent to take leadership of South East Asian Pacific Communist Movement from CPA (Yes)
+country_event = {
+	id = mmr_nzl.2131
+	title = mmr_nzl.2131.t
+	desc = mmr_nzl.2131.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_nzl.2131.a
+		add_political_power = 120
+		AST = { add_ideas = NZL_take_australasian_com_lead_AST_idea }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL requests our consent to take leadership of South East Asian Pacific Communist Movement from CPA (No)
+country_event = {
+	id = mmr_nzl.2132
+	title = mmr_nzl.2132.t
+	desc = mmr_nzl.2132.desc
+	picture = GFX_report_event_SOV_demands
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_nzl.2132.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL beeby research bonus addition start
+country_event = {
+	id = mmr_nzl.2111
+	
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		IF = {
+			#limit = { check_variable = { AZR_NZL_beeby_education_reforms_dynmod_research_var.global < 0.15 } }
+			limit = {
+				OR = {
+					has_idea = AZR_NZL_beeby_1_idea
+					has_idea = AZR_NZL_beeby_2_idea
+					has_idea = AZR_NZL_beeby_3_idea
+					has_idea = AZR_NZL_beeby_4_idea
+					has_idea = AZR_NZL_beeby_5_idea
+					has_idea = AZR_NZL_beeby_6_idea
+					has_idea = AZR_NZL_beeby_7_idea
+					has_idea = AZR_NZL_beeby_8_idea
+					has_idea = AZR_NZL_beeby_9_idea
+					has_idea = AZR_NZL_beeby_10_idea
+					has_idea = AZR_NZL_beeby_11_idea
+					has_idea = AZR_NZL_beeby_12_idea
+					has_idea = AZR_NZL_beeby_13_idea
+					has_idea = AZR_NZL_beeby_14_idea
+				}
+			}
+			country_event = { id = mmr_nzl.2112 days = 365 }
+		}
+	}
+}
+#NZL beeby research bonus addition
+country_event = {
+	id = mmr_nzl.2112
+	
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		#add_to_variable = { AZR_NZL_beeby_education_reforms_dynmod_research_var.global = 0.01 }
+		IF = { limit = { has_idea = AZR_NZL_beeby_1_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_1_idea add_idea = AZR_NZL_beeby_2_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_2_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_2_idea add_idea = AZR_NZL_beeby_3_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_3_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_3_idea add_idea = AZR_NZL_beeby_4_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_4_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_4_idea add_idea = AZR_NZL_beeby_5_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_5_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_5_idea add_idea = AZR_NZL_beeby_6_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_6_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_6_idea add_idea = AZR_NZL_beeby_7_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_7_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_7_idea add_idea = AZR_NZL_beeby_8_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_8_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_8_idea add_idea = AZR_NZL_beeby_9_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_9_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_9_idea add_idea = AZR_NZL_beeby_10_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_10_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_10_idea add_idea = AZR_NZL_beeby_11_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_11_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_11_idea add_idea = AZR_NZL_beeby_12_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_12_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_12_idea add_idea = AZR_NZL_beeby_13_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_13_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_13_idea add_idea = AZR_NZL_beeby_14_idea } }
+		ELSE_IF = { limit = { has_idea = AZR_NZL_beeby_14_idea } swap_ideas = { remove_idea = AZR_NZL_beeby_14_idea add_idea = AZR_NZL_beeby_15_idea } }
+		country_event = { id = mmr_nzl.2111 }
+	}
+}
+#Freeman Changed to Farrelly
+country_event = {
+	id = mmr_nzl.2113
+	
+	hidden = yes
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		has_character = NZL_elsie_farrelly
+	}
+	
+	immediate = {
+		IF = {
+			limit = { has_completed_focus = NZL_the_lee_affair }
+			country_event = { id = mmr_nzl.215 }
+			ELSE = { set_character_name = { character = NZL_elsie_farrelly name = NZL_elsie_farrelly } }
+		}
+		set_global_flag = azr_elsie_name_change_f
+	}
+}
+#Farrelly Changed to Locke
+country_event = {
+	id = mmr_nzl.2114
+	
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		tag = NZL
+		has_character = NZL_elsie_farrelly
+		has_global_flag = azr_elsie_name_change_f
+		date > 1941.01.01
+		NOT = { has_completed_focus = NZL_the_lee_affair }
+	}
+	
+	immediate = {
+		set_character_name = { character = NZL_elsie_farrelly name = AZR_NZL_elsie_locke }
+	}
+}
+#CPNZ leadership contested
+country_event = {
+	id = mmr_nzl.214
+	title = mmr_nzl.214.t
+	desc = mmr_nzl.214.desc
+	picture = GFX_report_event_generic_communist_congress
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	#Keep Elsie Farrely
+	option = {
+		name = mmr_nzl.214.a
+		retire_character = MMR_NZL_jack_locke
+		#retire_character = MMR_NZL_bill_bland
+		ai_chance = {
+			base = 3
+		}
+	}
+	#Switch to Jack Locke
+	option = {
+		name = mmr_nzl.214.b
+		retire_character = NZL_elsie_farrelly
+		promote_character = {
+			character = MMR_NZL_jack_locke
+			ideology = stalinism
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				SOV = {
+					NOT = {
+						has_country_flag = SOV_AI_RANDOM_COMMUNIST_HISTORICAL
+						has_game_rule = { rule = SOV_ai_behavior option = HISTORICAL }
+						has_game_rule = { rule = SOV_ai_behavior option = DEFAULT }
+					}
+				}
+				factor = 0
+			}
+		}
+	}
+}
+#Freeman Changed to Farrelly Divorce annouced
+country_event = {
+	id = mmr_nzl.215
+	title = mmr_nzl.215.t
+	desc = mmr_nzl.215.desc
+	picture = GFX_report_event_ROM_mistress
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	#Scandal
+	option = {
+		name = mmr_nzl.215.a
+		custom_effect_tooltip = mmr_nzl_215_tt
+		set_character_name = {
+			character = NZL_elsie_farrelly
+			name = AZR_NZL_elsie_farrelly
+		}
+		add_stability = -0.01
+		add_popularity = {
+			ideology = communism
+			popularity = -0.01
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Demand International Cooperation
+country_event = {
+	id = mmr_nzl.216
+	title = mmr_nzl.216.t
+	desc = mmr_nzl.216.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	timeout_days = 6
+	
+	#yes
+	option = {
+		name = mmr_nzl.216.a
+		IF = {
+			limit = {
+				is_subject = no
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+				}
+				NOT = {
+					any_other_country = {
+						has_government = fascism
+						is_in_faction_with = PREV
+					}
+				}
+			}
+			add_war_support = -0.01
+			add_stability = 0.01
+			add_opinion_modifier = { target = NZL modifier = MMR_NZL_intl_coop_yes }
+			add_to_variable = { global.NZL_promote_international_cooperation_var = 0.001 }
+			add_to_variable = { global.NZL_com_dem_neu_coop_var = 1 }
+		}
+		ELSE_IF = {
+			limit = {
+				is_subject = no
+				OR = {
+					has_government = communism
+					has_government = fascism
+				}
+				OR = {
+					is_major = no
+					NOT = { has_added_tension_amount > 1 }
+				}
+			}
+			add_war_support = -0.05
+			add_stability = 0.05
+			add_opinion_modifier = { target = NZL modifier = MMR_NZL_intl_coop_yes }
+			add_to_variable = { global.NZL_promote_international_cooperation_var = 0.01 }
+			add_to_variable = { global.NZL_com_fasc_int_coop_var = 1 }
+		}
+		ELSE_IF = {
+			limit = {
+				OR = {
+					has_government = communism
+					has_government = fascism
+				}
+				is_major = yes
+				has_added_tension_amount > 1
+			}
+			add_war_support = -0.05
+			add_stability = 0.05
+			add_threat = -1
+			add_opinion_modifier = { target = NZL modifier = MMR_NZL_intl_coop_yes }
+			add_to_variable = { global.NZL_promote_international_cooperation_var = 0.01 }
+			add_to_variable = { global.NZL_com_fasc_int_coop_var = 1 }
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_government = democratic
+				NOT = { has_country_leader_ideology = populism }
+				factor = 20
+			}
+			modifier = {
+				has_government = democratic
+				has_country_leader_ideology = populism
+				factor = 5
+			}
+			modifier = {
+				has_government = neutrality
+				NOT = { has_country_leader_ideology = despotism }
+				factor = 5
+			}
+			modifier = {
+				has_government = neutrality
+				has_country_leader_ideology = anarchism
+				factor = 5
+			}
+			modifier = {
+				has_government = neutrality
+				has_country_leader_ideology = despotism
+				factor = 1
+			}
+			modifier = {
+				has_government = fascism
+				factor = 0.5
+			}
+			modifier = {
+				has_government = communism
+				factor = 2
+			}
+			modifier = {
+				has_idea = free_trade
+				factor = 2
+			}
+		}
+	}
+	#no
+	option = {
+		name = mmr_nzl.216.b
+		add_opinion_modifier = { target = NZL modifier = MMR_NZL_intl_coop_no }
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_government = democratic
+				NOT = { has_country_leader_ideology = populism }
+				factor = 0.5
+			}
+			modifier = {
+				has_government = democratic
+				has_country_leader_ideology = populism
+				factor = 1
+			}
+			modifier = {
+				has_government = neutrality
+				NOT = { has_country_leader_ideology = despotism }
+				factor = 2
+			}
+			modifier = {
+				has_government = neutrality
+				has_country_leader_ideology = anarchism
+				factor = 0.5
+			}
+			modifier = {
+				has_government = neutrality
+				has_country_leader_ideology = despotism
+				factor = 5
+			}
+			modifier = {
+				has_government = fascism
+				factor = 5
+			}
+			modifier = {
+				has_government = communism
+				factor = 2
+			}
+			modifier = {
+				has_idea = limited_exports
+				factor = 2
+			}
+			modifier = {
+				has_idea = closed_economy
+				factor = 5
+			}
+		}
+	}
+}
+#Demand International Cooperation we recieve stablity and knowledge of who said yes
+country_event = {
+	id = mmr_nzl.2161
+	title = mmr_nzl.2161.t
+	desc = mmr_nzl.2161.desc
+	picture = GFX_report_event_communist_leader
+	
+	is_triggered_only = yes
+	timeout_days = 7
+	
+	#Good
+	option = {
+		name = mmr_nzl.2161.a
+		trigger = {
+			check_variable = {
+				var = var:global.NZL_promote_international_cooperation_var
+				value = 0.1
+				compare = greater_than_or_equals
+			}
+		}
+		custom_effect_tooltip = mmr_nzl_2161_tt
+		hidden_effect = { add_stability = var:global.NZL_promote_international_cooperation_var }
+		ai_chance = {
+			base = 10
+		}
+	}
+	#Bad
+	option = {
+		name = mmr_nzl.2161.b
+		trigger = {
+			check_variable = { var:global.NZL_promote_international_cooperation_var > 0 }
+			check_variable = { var:global.NZL_promote_international_cooperation_var < 0.1 }
+		}
+		custom_effect_tooltip = mmr_nzl_2161_tt
+		hidden_effect = { add_stability = var:global.NZL_promote_international_cooperation_var }
+		ai_chance = {
+			base = 10
+		}
+	}
+	#None
+	option = {
+		name = mmr_nzl.2161.c
+		trigger = { check_variable = { var:global.NZL_promote_international_cooperation_var = 0 } }
+		custom_effect_tooltip = mmr_nzl_2161_tt_2
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+#NZL Reach out to former Legion members
+country_event = {
+	id = mmr_nzl.217
+	title = mmr_nzl.217.t
+	desc = mmr_nzl.217.desc
+	picture = GFX_report_event_fascist_militia
+
+	fire_only_once = yes
+	
+	trigger = {
+		has_completed_focus = NZL_statute_of_westminster
+		NOT = {
+			OR = {
+				focus_progress = {
+				  focus = NZL_the_lee_affair
+				  progress > 0
+				}
+				focus_progress = {
+				  focus = NZL_in_the_darkness
+				  progress > 0
+				}
+				focus_progress = {
+				  focus = NZL_constitution_amendment_act
+				  progress > 0
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 15 }
+	
+	#The Legion will protect us from communists and socialists
+	option = {
+		name = mmr_nzl.217.a
+		add_ideas = AZR_NZL_legion_cooperation_idea
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				OR = {
+					has_country_flag = AZR_NZL_AI_RANDOM_FASCIST
+					has_game_rule = { rule = NZL_ai_behavior option = FASCIST }
+				}
+			}
+		}
+	}
+	#The Legion is a poisoned chalice
+	option = {
+		name = mmr_nzl.217.b
+		ai_chance = {
+			base = 1
+			# modifier = {
+				# factor = 0
+				# OR = {
+					# has_country_flag = AZR_NZL_AI_RANDOM_DEMOCRATIC_ALTERNATE
+					# has_country_flag = AZR_NZL_AI_RANDOM_COMMUNIST
+					# has_game_rule = { rule = NZL_ai_behavior option = DEMOCRATIC_ALTERNATE }
+					# has_game_rule = { rule = NZL_ai_behavior option = COMMUNIST_STALIN_NZL }
+					# has_game_rule = { rule = NZL_ai_behavior option = COMMUNIST_ENG_NZL }
+					# has_game_rule = { rule = NZL_ai_behavior option = COMMUNIST_PCA_NZL }
+					# has_game_rule = { rule = NZL_ai_behavior option = COMMUNIST_PEACE_NZL }
+				# }
+			# }
+		}
+	}
+}
+#George Julius Dies
+news_event = {
+	id = mmr_nzl.218
+	title = mmr_nzl.218.t
+	desc = mmr_nzl.218.desc
+	picture = GFX_news_event_generic_funeral
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#A Natioanl Tragedy
+	option = {
+		name = mmr_nzl.218.a
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+###############################################################################################################
+###############################################################################################################
+###############################################################################################################
+##############################################################################    MMR_AST    ##################
+###############################################################################################################
+###############################################################################################################
+###############################################################################################################
+#1937 Australian federal election
+country_event = {
+	id = mmr_ast.1
+	title = mmr_ast.1.t
+	desc = mmr_ast.1.desc
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	#UAP Victory: small stability dip
+	option = {
+		name = mmr_ast.1.a
+		add_stability = -0.02
+		IF = {
+			limit = { has_completed_focus = AST_abandon_the_westminster_system }
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+		}
+		set_country_flag = AZR_has_not_gone_country
+		ai_chance = {
+			base = 100
+			modifier = {
+				has_game_rule = {
+					rule = AST_ai_behavior
+					option = DEMOCRATIC_ALTERNATE
+				}
+				factor = 0.2
+			}
+			modifier = {
+				has_game_rule = {
+					rule = AST_ai_behavior
+					option = COMMUNIST
+				}
+				factor = 0
+			}
+		}
+	}
+	#Hung election: redo in 3 months
+	option = {
+		name = mmr_ast.1.b
+		add_stability = -0.05
+		set_country_flag = MMR_AST_1937_fed_election_redo
+		custom_effect_tooltip = mmr_ast_1_tt
+		ai_chance = {
+			base = 20
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+}
+#1937 Australian federal election redo (althist)
+country_event = {
+	id = mmr_ast.101
+	title = mmr_ast.101.t
+	desc = mmr_ast.101.desc
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		has_country_flag = MMR_AST_1937_fed_election_redo
+	}
+	
+	#UAP Decisive Victory: small stability bonus
+	option = {
+		name = mmr_ast.101.a
+		add_stability = 0.02
+		IF = {
+			limit = { has_completed_focus = AST_abandon_the_westminster_system }
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+		}
+		set_country_flag = AZR_has_not_gone_country
+		ai_chance = {
+			base = 30
+			modifier = {
+				has_game_rule = {
+					rule = AST_ai_behavior
+					option = COMMUNIST
+				}
+				factor = 0
+			}
+		}
+	}
+	#Labor Decisive Victory: small stability bonus, John Curtin becomes leader
+	option = {
+		name = mmr_ast.101.b
+		add_stability = 0.02
+		promote_character = {
+			character = AST_john_curtin
+			ideology = socialism
+		}
+		set_party_name = {
+			ideology = democratic
+			long_name = AST_democratic_labor_party_long
+			name = AST_democratic_labor_party
+		}
+		IF = {
+			limit = { has_completed_focus = AST_abandon_the_westminster_system }
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.05
+			}
+		}
+		set_country_flag = AZR_has_not_gone_country
+		ai_chance = {
+			base = 30
+		}
+	}
+	#Country Party Decisive Victory: small stability dip Earle Page becomes leader, australian becomes neutrality with cosmetic tag to keep original flag
+	option = {
+		name = mmr_ast.101.c
+		hidden_effect = { set_cosmetic_tag = AST_country_party_tag }
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.1
+		}
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = yes
+			election_frequency = 36
+		}
+		add_stability = -0.02
+		set_country_flag = azr_ast_country_party_won
+		hidden_effect = {
+			load_focus_tree = { tree = australian_focus keep_completed = yes }
+			mark_focus_tree_layout_dirty = yes
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				has_game_rule = {
+					rule = AST_ai_behavior
+					option = COMMUNIST
+				}
+				factor = 0
+			}
+		}
+	}
+}
+#Joseph Lyons Dies
+news_event = {
+	id = mmr_ast.2
+	title = mmr_ast.2.t
+	desc = mmr_ast.2.desc
+	picture = GFX_news_event_generic_funeral
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = MMR_AST_lyons_died_flag
+			IF = {
+				limit = { has_country_leader = { character = MMR_AST_joseph_lyons } }
+				retire_character = MMR_AST_joseph_lyons
+				promote_character = {
+					character = MMR_AST_robert_g_menzies
+					ideology = conservatism
+				}
+				set_country_flag = MMR_AST_lyons_died_in_office
+			}
+			ELSE = { retire_character = MMR_AST_joseph_lyons }
+		}
+	}
+	
+	#Menzies becomes National Leader (If Menzies is leader add 10 pp and 1 stab (national mourning))
+	option = {
+		name = mmr_ast.2.a
+		trigger = {
+			NOT = { has_government = communism }
+		}
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = MMR_AST_joseph_lyons }
+					has_country_leader = { character = MMR_AST_robert_g_menzies }
+					has_country_flag = MMR_AST_lyons_died_in_office
+				}
+			}
+			add_political_power = 10
+			add_stability = 0.01
+			hidden_effect = { news_event = { id = mmr_ast.3 days = 60 random_days = 80 } }
+		}
+		ai_chance = {
+			base = 20
+		}
+	}
+	option = {
+		name = mmr_ast.9.b
+		trigger = { has_government = communism }
+		ai_chance = {
+			base = 20
+		}
+	}
+}
+#A few months after Menzies becomes leader, Page resigns
+news_event = {
+	id = mmr_ast.3
+	title = mmr_ast.3.t
+	desc = mmr_ast.3.desc
+	picture = GFX_news_event_canada_treaty
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	#Cameron Becomes Country Party Leader
+	option = {
+		name = mmr_ast.3.a
+		set_country_flag = earle_page_retired_flag
+		retire_character = AST_earle_page
+		promote_character = {
+			character = MMR_AST_archie_cameron
+			ideology = moderatism
+		}
+		ai_chance = {
+			base = 20
+		}
+	}
+}
+#1940 Australian federal election
+country_event = {
+	id = mmr_ast.4
+	title = mmr_ast.4.t
+	desc = mmr_ast.4.desc
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		set_variable = { ROOT.last_election_year_var = global.year }
+	}
+	
+	#UAP narrow victory:
+	#If remaining power: Stab small decrease, neutrality party collapse, Arthur Fadden becomes leader of acp
+	#If changing power: Stab large decrease, neutrality party collapse, Arthur Fadden becomes leader of acp
+	option = {
+		name = mmr_ast.4.a
+		IF = {
+			limit = { NOT = { has_country_flag = azr_ast_country_party_won } }
+			IF = {
+				limit = {
+					OR = {
+						has_country_leader = { character = MMR_AST_joseph_lyons }
+						has_country_leader = { character = MMR_AST_robert_g_menzies }
+					}
+				}
+				add_stability = -0.02
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.10
+				}
+				ELSE = {
+					promote_character = {
+						character = MMR_AST_robert_g_menzies
+						ideology = conservatism
+					}
+					set_party_name = {
+						ideology = democratic
+						long_name = AST_democratic_party_long
+						name = AST_democratic_party
+					}
+					add_stability = -0.05
+					add_popularity = {
+						ideology = neutrality
+						popularity = -0.10
+					}
+					hidden_effect = { news_event = { id = mmr_ast.3 days = 60 random_days = 80 } }
+				}
+			}
+		}
+		IF = {
+			limit = { has_country_flag = azr_ast_country_party_won }
+			set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1940.09.21" election_frequency = 36 }
+			promote_character = {
+				character = MMR_AST_robert_g_menzies
+				ideology = conservatism
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = AST_democratic_party_long
+				name = AST_democratic_party
+			}
+			add_stability = -0.05
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.10
+			}
+			hidden_effect = { news_event = { id = mmr_ast.3 days = 60 random_days = 80 } }
+			hidden_effect = {
+				load_focus_tree = { tree = australian_focus keep_completed = yes }
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+		IF = {
+			limit = { has_completed_focus = AST_united_under_the_crown NOT = { has_idea = MMR_AST_united_under_the_crown_idea } }
+			add_ideas = MMR_AST_united_under_the_crown_idea
+		}
+		ai_chance = {
+			base = 100
+			modifier = {
+				has_government = neutrality
+				factor = 0.1
+			}
+		}
+	}
+	#Labor narrow victory: 
+	#If remaining power: Stab small decrease, neutrality party collapse, Arthur Fadden becomes leader of acp
+	#If changing power: Stab large decrease, neutrality party collapse, Arthur Fadden becomes leader of acp
+	option = {
+		name = mmr_ast.4.b
+		IF = {
+			limit = { NOT = { has_country_flag = azr_ast_country_party_won } }
+			IF = {
+				limit = {
+					OR = {
+						has_country_leader = { character = AST_john_curtin }
+						has_country_leader = { character = MMR_AST_ben_chifley }
+					}
+				}
+				add_stability = -0.02
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.10
+				}
+				ELSE = {
+					promote_character = {
+						character = AST_john_curtin
+						ideology = socialism
+					}
+					set_party_name = {
+						ideology = democratic
+						long_name = AST_democratic_labor_party_long
+						name = AST_democratic_labor_party
+					}
+					add_stability = -0.05
+					add_popularity = {
+						ideology = neutrality
+						popularity = -0.10
+					}
+				}
+			}
+		}
+		IF = {
+			limit = { has_country_flag = azr_ast_country_party_won }
+			set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1940.09.21" election_frequency = 36 }
+			promote_character = {
+				character = AST_john_curtin
+				ideology = socialism
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = AST_democratic_labor_party_long
+				name = AST_democratic_labor_party
+			}
+			add_stability = -0.05
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.10
+			}
+			hidden_effect = {
+				load_focus_tree = { tree = australian_focus keep_completed = yes }
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+		IF = {
+			limit = {
+				has_country_leader = { character = MMR_AST_ben_chifley }
+				NOT = { has_country_flag = azr_ast_chifley_has_won_an_election_flag }
+			}
+			set_country_flag = azr_ast_chifley_has_won_an_election_flag
+		}
+		IF = {
+			limit = { has_completed_focus = AST_labor_bulwark_against_bolshevism NOT = { has_idea = MMR_AST_labor_bulwark_against_bolshevism_idea } }
+			add_ideas = MMR_AST_labor_bulwark_against_bolshevism_idea
+		}
+		IF = {
+			limit = { has_completed_focus = AST_labor_loyalism NOT = { has_idea = MMR_AST_labor_loyalism_idea } }
+			add_ideas = MMR_AST_labor_loyalism_idea
+		}
+		ai_chance = {
+			base = 20
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+			modifier = {
+				has_government = neutrality
+				factor = 0.5
+			}
+		}
+	}
+	#Country Party narrow victory: 
+	#If remaining power: Stab small decrease, neutrality party decrease
+	#Can't change to this
+	option = {
+		name = mmr_ast.4.c
+		trigger = {
+			has_government = neutrality
+			OR = {
+				has_country_leader = { character = AST_earle_page }
+				has_country_leader = { character = MMR_AST_archie_cameron }
+				has_country_leader = { character = MMR_AST_arthur_fadden }
+			}
+		}
+		add_stability = -0.02
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.02
+		}
+		IF = {
+			limit = {
+				NOT = { has_country_flag = AZR_AST_page_no_confidence }
+				has_country_leader = { character = AST_earle_page }
+			}
+			country_event = { id = mmr_ast.401 days = 30 random_days = 5 }
+		}
+		IF = {
+			limit = {
+				has_country_flag = AZR_AST_page_no_confidence
+				has_country_leader = { character = MMR_AST_archie_cameron }
+			}
+			country_event = { id = mmr_ast.402 days = 30 random_days = 5 }
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+#Country Party leadership change if they maintain power in 1940
+country_event = {
+	id = mmr_ast.401
+	title = mmr_ast.401.t
+	desc = mmr_ast.401.desc
+	picture = GFX_report_event_FIN_svinhufvud_speech
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		NOT = { has_country_flag = AZR_AST_page_no_confidence }
+		has_country_leader = { character = AST_earle_page }
+	}
+	
+	#Arthur Fadden becomes leader
+	option = {
+		name = mmr_ast.401.a
+		promote_character = {
+			character = MMR_AST_arthur_fadden
+			ideology = moderatism
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.01
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	#Cameron becomes leader
+	option = {
+		name = mmr_ast.401.b
+		promote_character = {
+			character = MMR_AST_archie_cameron
+			ideology = moderatism
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.025
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+	#Page hangs on to power
+	option = {
+		name = mmr_ast.401.c
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.05
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+#Country Party leadership change if they maintain power in 1940 Yes Vote of No Confidence
+country_event = {
+	id = mmr_ast.402
+	title = mmr_ast.402.t
+	desc = mmr_ast.402.desc
+	picture = GFX_report_event_FIN_svinhufvud_speech
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		has_country_flag = AZR_AST_page_no_confidence
+		has_country_leader = { character = MMR_AST_archie_cameron }
+	}
+	
+	#Arthur Fadden becomes leader
+	option = {
+		name = mmr_ast.402.a
+		promote_character = {
+			character = MMR_AST_arthur_fadden
+			ideology = moderatism
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.01
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+	#Cameron hangs on to power
+	option = {
+		name = mmr_ast.402.b
+		promote_character = {
+			character = MMR_AST_archie_cameron
+			ideology = moderatism
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.05
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+#(through decision) offer national unity gov
+country_event = {
+	id = mmr_ast.5
+	title = mmr_ast.5.t
+	desc = mmr_ast.5.desc
+	picture = GFX_report_event_SWE_summer_government
+	
+	is_triggered_only = yes
+	
+	#Opposing party rejects (small stability increase)
+	option = {
+		name = mmr_ast.5.a
+		add_stability = 0.02
+		set_country_flag = MMR_AST_nat_unity_gov_failed
+		ai_chance = {
+			base = 9
+		}
+	}
+	#Opposing party accepts (no confidence vote is thwarted, significant stability dip, dems lose percentage points)
+	option = {
+		name = mmr_ast.5.b
+		custom_effect_tooltip = MMR_AST_no_conf_vote_thwarted_tt
+		set_country_flag = MMR_AST_no_conf_vote_thwarted_flag
+		add_stability = -0.1
+		add_popularity = {
+			ideology = democratic
+			popularity = -0.1
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+}
+#(through decision) offer advisory war council (if at war and national unity gov't rejects)
+country_event = {
+	id = mmr_ast.501
+	title = mmr_ast.501.t
+	desc = mmr_ast.501.desc
+	picture = GFX_report_event_SWE_saltsjobaden
+	
+	is_triggered_only = yes
+	
+	#Opposing party accepts (small dem party boost, gain invested pp, small stability boost, small war support boost)
+	option = {
+		name = mmr_ast.501.a
+		add_stability = 0.02
+		add_war_support = 0.02
+		add_political_power = 150
+		IF = {
+			limit = { democratic < 0.8 }
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+		}
+		ELSE = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.02
+			}
+		}
+		ai_chance = {
+			base = 9
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+	#Opposing party rejects (no confidence vote is thwarted)
+	option = {
+		name = mmr_ast.5.b
+		custom_effect_tooltip = MMR_AST_no_conf_vote_thwarted_tt
+		set_country_flag = MMR_AST_no_conf_vote_thwarted_flag
+		ai_chance = {
+			base = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+}
+#1941 No Confidence Vote
+country_event = {
+	id = mmr_ast.6
+	title = mmr_ast.6.t
+	desc = mmr_ast.6.desc
+	picture = GFX_report_event_ITA_democratic_parlament
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#Labor Gains Power: stab increase, war support increase
+	#UAP Gains Power: stab increase, war support increase
+	option = {
+		name = mmr_ast.6.a
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = AST_john_curtin }
+					has_country_leader = { character = MMR_AST_ben_chifley }
+				}
+			}
+			add_stability = 0.05
+			promote_character = {
+				character = MMR_AST_robert_g_menzies
+				ideology = conservatism
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = AST_democratic_party_long
+				name = AST_democratic_party
+			}
+			IF = {
+				limit = { has_completed_focus = AST_united_under_the_crown NOT = { has_idea = MMR_AST_united_under_the_crown_idea } }
+				add_ideas = MMR_AST_united_under_the_crown_idea
+			}
+		}
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = AST_earle_page } #test
+					has_country_leader = { character = MMR_AST_robert_g_menzies }
+					has_country_leader = { character = MMR_AST_archie_cameron }
+					has_country_leader = { character = MMR_AST_arthur_fadden }
+				}
+			}
+			add_stability = 0.05
+			set_party_name = {
+				ideology = democratic
+				long_name = AST_democratic_labor_party_long
+				name = AST_democratic_labor_party
+			}
+			IF = {
+				limit = { has_completed_focus = AST_labor_bulwark_against_bolshevism NOT = { has_idea = MMR_AST_labor_bulwark_against_bolshevism_idea } }
+				add_ideas = MMR_AST_labor_bulwark_against_bolshevism_idea
+			}
+			IF = {
+				limit = { has_completed_focus = AST_labor_loyalism NOT = { has_idea = MMR_AST_labor_loyalism_idea } }
+				add_ideas = MMR_AST_labor_loyalism_idea
+			}
+			IF = {
+				limit = { has_government = democratic }
+				promote_character = {
+					character = AST_john_curtin
+					ideology = socialism
+				}
+				ELSE = {
+					IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1935 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1935.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1936 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1936.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1937 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1937.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1938 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1938.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1939 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1939.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1940 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1940.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1941 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1941.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1942 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1942.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1943 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1943.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1944 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1944.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1945 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1945.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1946 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1946.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1947 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1947.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1947 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1948.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1948 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1948.09.21" election_frequency = 36 }
+					}
+					ELSE_IF = {
+						limit = { check_variable = { ROOT.last_election_year_var = 1949 } }
+						set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1949.09.21" election_frequency = 36 }
+					}
+					promote_character = {
+						character = AST_john_curtin
+						ideology = socialism
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 20
+		}
+	}
+}
+#1943 Australian federal election
+country_event = {
+	id = mmr_ast.7
+	title = mmr_ast.7.t
+	desc = mmr_ast.7.desc
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		set_variable = { ROOT.last_election_year_var = global.year }
+	}
+	
+	#Landslide Labor Victory:
+	#If remaining power: Stab large increase, neutrality party collapse
+	#If changing power: Stab large increase, neutrality party collapse
+	option = {
+		name = mmr_ast.7.a
+		IF = {
+			limit = { NOT = { has_country_flag = azr_ast_country_party_won } }
+			IF = {
+				limit = {
+					OR = {
+						has_country_leader = { character = AST_john_curtin }
+						has_country_leader = { character = MMR_AST_ben_chifley }
+					}
+				}
+				add_stability = 0.05
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.05
+				}
+				ELSE = {
+					promote_character = {
+						character = AST_john_curtin
+						ideology = socialism
+					}
+					set_party_name = {
+						ideology = democratic
+						long_name = AST_democratic_labor_party_long
+						name = AST_democratic_labor_party
+					}
+					add_stability = 0.05
+					add_popularity = {
+						ideology = neutrality
+						popularity = -0.05
+					}
+				}
+			}
+		}
+		IF = {
+			limit = { has_country_flag = azr_ast_country_party_won }
+			set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1943.09.21" election_frequency = 36 }
+			promote_character = {
+				character = AST_john_curtin
+				ideology = socialism
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = AST_democratic_labor_party_long
+				name = AST_democratic_labor_party
+			}
+			add_stability = 0.05
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.05
+			}
+			hidden_effect = {
+				load_focus_tree = { tree = australian_focus keep_completed = yes }
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+		IF = {
+			limit = {
+				has_country_leader = { character = MMR_AST_ben_chifley }
+				NOT = { has_country_flag = azr_ast_chifley_has_won_an_election_flag }
+			}
+			set_country_flag = azr_ast_chifley_has_won_an_election_flag
+		}
+		IF = {
+			limit = { has_completed_focus = AST_labor_bulwark_against_bolshevism NOT = { has_idea = MMR_AST_labor_bulwark_against_bolshevism_idea } }
+			add_ideas = MMR_AST_labor_bulwark_against_bolshevism_idea
+		}
+		IF = {
+			limit = { has_completed_focus = AST_labor_loyalism NOT = { has_idea = MMR_AST_labor_loyalism_idea } }
+			add_ideas = MMR_AST_labor_loyalism_idea
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+			modifier = {
+				has_government = neutrality
+				factor = 0.4
+			}
+		}
+	}
+	#UAP narrow victory: 
+	#If remaining power: Stab small decrease, neutrality party collapse
+	#If changing power: Stab large decrease, neutrality party collapse
+	option = {
+		name = mmr_ast.7.b
+		IF = {
+			limit = { NOT = { has_country_flag = azr_ast_country_party_won } }
+			IF = {
+				limit = { has_country_leader = { character = MMR_AST_robert_g_menzies } }
+				add_stability = -0.02
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.05
+				}
+				ELSE = {
+					promote_character = {
+						character = MMR_AST_robert_g_menzies
+						ideology = conservatism
+					}
+					set_party_name = {
+						ideology = democratic
+						long_name = AST_democratic_party_long
+						name = AST_democratic_party
+					}
+					add_stability = -0.05
+					add_popularity = {
+						ideology = neutrality
+						popularity = -0.05
+					}
+					hidden_effect = { news_event = { id = mmr_ast.3 days = 60 random_days = 80 } }
+				}
+			}
+		}
+		IF = {
+			limit = { has_country_flag = azr_ast_country_party_won }
+			set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1943.09.21" election_frequency = 36 }
+			promote_character = {
+				character = MMR_AST_robert_g_menzies
+				ideology = conservatism
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = AST_democratic_party_long
+				name = AST_democratic_party
+			}
+			add_stability = -0.05
+			add_popularity = {
+				ideology = neutrality
+				popularity = -0.05
+			}
+			hidden_effect = { news_event = { id = mmr_ast.3 days = 60 random_days = 80 } }
+			hidden_effect = {
+				load_focus_tree = { tree = australian_focus keep_completed = yes }
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+		IF = {
+			limit = { has_completed_focus = AST_united_under_the_crown NOT = { has_idea = MMR_AST_united_under_the_crown_idea } }
+			add_ideas = MMR_AST_united_under_the_crown_idea
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				has_country_leader = { character = MMR_AST_robert_g_menzies }
+				factor = 0.5
+			}
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+			modifier = {
+				has_government = neutrality
+				factor = 0.1
+			}
+		}
+	}
+	#Country Party narrow victory: 
+	#If remaining power: Stab small decrease, small neutrality party decrease
+	#Can't change to this
+	option = {
+		name = mmr_ast.7.c
+		trigger = {
+			has_government = neutrality
+			OR = {
+				has_country_leader = { character = AST_earle_page }
+				has_country_leader = { character = MMR_AST_archie_cameron }
+				has_country_leader = { character = MMR_AST_arthur_fadden }
+			}
+		}
+		add_stability = -0.02
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.02
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+#Liberal Party is Formed
+news_event = {
+	id = mmr_ast.8
+	title = mmr_ast.8.t
+	desc = mmr_ast.8.desc
+	picture = GFX_news_event_saf_coup
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		NOT = {
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+		}
+	}
+	
+	#UAP becomes Liberal Party
+	option = {
+		name = mmr_ast.8.a
+		set_country_flag = AST_uap_now_lib
+		IF = {
+			limit = { has_country_leader = { character = MMR_AST_robert_g_menzies } }
+			set_party_name = {
+				ideology = democratic
+				long_name = AST_democratic_liberal_party_long
+				name = AST_democratic_liberal_party
+			}
+		}
+		ai_chance = {
+			base = 30
+		}
+	}
+}
+#John Curtin Dies
+news_event = {
+	id = mmr_ast.9
+	title = mmr_ast.9.t
+	desc = mmr_ast.9.desc
+	picture = GFX_news_event_generic_funeral
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		hidden_effect = {
+			IF = {
+				limit = {
+					OR = {
+						has_country_leader = { character = MMR_AST_jack_lang }
+						has_country_leader = { character = AST_john_curtin }
+					}
+				}
+				retire_character = AST_john_curtin
+				promote_character = {
+					character = MMR_AST_ben_chifley
+					ideology = socialism
+				}
+				set_country_flag = MMR_AST_curtin_died_in_office
+			}
+			ELSE = { retire_character = AST_john_curtin }
+			set_country_flag = MMR_AST_curtin_died_flag
+		}
+	}
+	
+	#Ben Chifley becomes Labor Leader
+	option = {
+		name = mmr_ast.9.a
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+		}
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = AST_john_curtin }
+					has_country_leader = { character = MMR_AST_ben_chifley }
+					has_country_flag = MMR_AST_curtin_died_in_office
+				}
+			}
+			add_political_power = 10
+			add_stability = 0.01
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = mmr_ast.9.b
+		trigger = { has_government = communism }
+		ai_chance = {
+			base = 1
+		}
+	}
+	option = {
+		name = mmr_ast.9.c
+		trigger = { has_government = fascism }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#1946 Australian federal election
+country_event = {
+	id = mmr_ast.10
+	title = mmr_ast.10.t
+	desc = mmr_ast.10.desc
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#Labor Victory:
+	#If remaining power: Stab small increase
+	#If changing power: Stab small increase
+	option = {
+		name = mmr_ast.10.a
+		IF = {
+			limit = { NOT = { has_country_flag = azr_ast_country_party_won } }
+			IF = {
+				limit = {
+					OR = {
+						has_country_leader = { character = AST_john_curtin }
+						has_country_leader = { character = MMR_AST_ben_chifley }
+					}
+				}
+				add_stability = 0.02
+				ELSE_IF = {
+					limit = { has_country_flag = MMR_AST_curtin_died_flag }
+					promote_character = {
+						character = MMR_AST_ben_chifley
+						ideology = socialism
+					}
+					set_party_name = {
+						ideology = democratic
+						long_name = AST_democratic_labor_party_long
+						name = AST_democratic_labor_party
+					}
+					add_stability = 0.02
+					set_country_flag = azr_ast_chifley_has_won_an_election_flag
+					ELSE = {
+						promote_character = {
+							character = AST_john_curtin
+							ideology = socialism
+						}
+						set_party_name = {
+							ideology = democratic
+							long_name = AST_democratic_labor_party_long
+							name = AST_democratic_labor_party
+						}
+						add_stability = 0.02
+					}
+				}
+			}
+		}
+		IF = {
+			limit = { has_country_flag = azr_ast_country_party_won }
+			set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1946.09.21" election_frequency = 36 }
+			IF = {
+				limit = { has_country_flag = MMR_AST_curtin_died_flag }
+				promote_character = {
+					character = MMR_AST_ben_chifley
+					ideology = socialism
+				}
+				set_party_name = {
+					ideology = democratic
+					long_name = AST_democratic_labor_party_long
+					name = AST_democratic_labor_party
+				}
+				add_stability = 0.02
+				set_country_flag = azr_ast_chifley_has_won_an_election_flag
+				ELSE = {
+					promote_character = {
+						character = AST_john_curtin
+						ideology = socialism
+					}
+					set_party_name = {
+						ideology = democratic
+						long_name = AST_democratic_labor_party_long
+						name = AST_democratic_labor_party
+					}
+					add_stability = 0.02
+				}
+			}
+			hidden_effect = {
+				load_focus_tree = { tree = australian_focus keep_completed = yes }
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+		IF = {
+			limit = {
+				has_country_leader = { character = MMR_AST_ben_chifley }
+				NOT = { has_country_flag = azr_ast_chifley_has_won_an_election_flag }
+			}
+			set_country_flag = azr_ast_chifley_has_won_an_election_flag
+		}
+		IF = {
+			limit = { has_completed_focus = AST_labor_bulwark_against_bolshevism NOT = { has_idea = MMR_AST_labor_bulwark_against_bolshevism_idea } }
+			add_ideas = MMR_AST_labor_bulwark_against_bolshevism_idea
+		}
+		IF = {
+			limit = { has_completed_focus = AST_labor_loyalism NOT = { has_idea = MMR_AST_labor_loyalism_idea } }
+			add_ideas = MMR_AST_labor_loyalism_idea
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				has_government = neutrality
+				factor = 0.1
+			}
+		}
+	}
+	#Liberal victory: 
+	#If remaining power: Stab small increase
+	#If changing power: Stab small increase
+	option = {
+		name = mmr_ast.10.b
+		IF = {
+			limit = { NOT = { has_country_flag = azr_ast_country_party_won } }
+			IF = {
+				limit = { has_country_leader = { character = MMR_AST_robert_g_menzies } }
+				add_stability = 0.02
+				ELSE = {
+					promote_character = {
+						character = MMR_AST_robert_g_menzies
+						ideology = conservatism
+					}
+					set_party_name = {
+						ideology = democratic
+						long_name = AST_democratic_party_long
+						name = AST_democratic_party
+					}
+					add_stability = 0.02
+					IF = {
+						limit = { has_completed_focus = AST_united_under_the_crown NOT = { has_idea = MMR_AST_united_under_the_crown_idea } }
+						add_ideas = MMR_AST_united_under_the_crown_idea
+					}
+					hidden_effect = { news_event = { id = mmr_ast.3 days = 60 random_days = 80 } }
+				}
+			}
+		}
+		IF = {
+			limit = { has_country_flag = azr_ast_country_party_won }
+			set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1946.09.21" election_frequency = 36 }
+			promote_character = {
+				character = MMR_AST_robert_g_menzies
+				ideology = conservatism
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = AST_democratic_party_long
+				name = AST_democratic_party
+			}
+			add_stability = 0.02
+			IF = {
+				limit = { has_completed_focus = AST_united_under_the_crown NOT = { has_idea = MMR_AST_united_under_the_crown_idea } }
+				add_ideas = MMR_AST_united_under_the_crown_idea
+			}
+			hidden_effect = { news_event = { id = mmr_ast.3 days = 60 random_days = 80 } }
+			hidden_effect = {
+				load_focus_tree = { tree = australian_focus keep_completed = yes }
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+		ai_chance = {
+			base = 30
+			modifier = {
+				has_country_leader = { character = MMR_AST_robert_g_menzies }
+				factor = 0.5
+			}
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+			modifier = {
+				has_government = neutrality
+				factor = 0.1
+			}
+			modifier = {
+				has_completed_focus = AST_nationalize_the_banks
+				has_country_leader = { character = MMR_AST_ben_chifley }
+				factor = 10
+			}
+		}
+	}
+	#Country Party victory: 
+	#If remaining power: Stab small increase, small neutrality party increase
+	#Can't change to this
+	option = {
+		name = mmr_ast.10.c
+		trigger = {
+			has_government = neutrality
+			OR = {
+				has_country_leader = { character = AST_earle_page }
+				has_country_leader = { character = MMR_AST_archie_cameron }
+				has_country_leader = { character = MMR_AST_arthur_fadden }
+			}
+		}
+		add_stability = 0.02
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+#1949 Australian federal election
+country_event = {
+	id = mmr_ast.11
+	title = mmr_ast.11.t
+	desc = mmr_ast.11.desc
+	picture = GFX_report_event_election_vote
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#Labor Victory
+	option = {
+		name = mmr_ast.11.a
+		IF = {
+			limit = { NOT = { has_country_flag = azr_ast_country_party_won } }
+			IF = {
+				limit = {
+					OR = {
+						has_country_leader = { character = AST_john_curtin }
+						has_country_leader = { character = MMR_AST_ben_chifley }
+					}
+				}
+				ELSE_IF = {
+					limit = { has_country_flag = MMR_AST_curtin_died_flag }
+					promote_character = {
+						character = MMR_AST_ben_chifley
+						ideology = socialism
+					}
+					set_party_name = {
+						ideology = democratic
+						long_name = AST_democratic_labor_party_long
+						name = AST_democratic_labor_party
+					}
+					set_country_flag = azr_ast_chifley_has_won_an_election_flag
+					ELSE = {
+						promote_character = {
+							character = AST_john_curtin
+							ideology = socialism
+						}
+						set_party_name = {
+							ideology = democratic
+							long_name = AST_democratic_labor_party_long
+							name = AST_democratic_labor_party
+						}
+					}
+				}
+			}
+		}
+		IF = {
+			limit = { has_country_flag = azr_ast_country_party_won }
+			set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1949.09.21" election_frequency = 36 }
+			IF = {
+				limit = { has_country_flag = MMR_AST_curtin_died_flag }
+				promote_character = {
+					character = MMR_AST_ben_chifley
+					ideology = socialism
+				}
+				set_party_name = {
+					ideology = democratic
+					long_name = AST_democratic_labor_party_long
+					name = AST_democratic_labor_party
+				}
+				set_country_flag = azr_ast_chifley_has_won_an_election_flag
+				ELSE = {
+					promote_character = {
+						character = AST_john_curtin
+						ideology = socialism
+					}
+					set_party_name = {
+						ideology = democratic
+						long_name = AST_democratic_labor_party_long
+						name = AST_democratic_labor_party
+					}
+				}
+			}
+			hidden_effect = {
+				load_focus_tree = { tree = australian_focus keep_completed = yes }
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+		IF = {
+			limit = {
+				has_country_leader = { character = MMR_AST_ben_chifley }
+				NOT = { has_country_flag = azr_ast_chifley_has_won_an_election_flag }
+			}
+			set_country_flag = azr_ast_chifley_has_won_an_election_flag
+		}
+		IF = {
+			limit = { has_completed_focus = AST_labor_bulwark_against_bolshevism NOT = { has_idea = MMR_AST_labor_bulwark_against_bolshevism_idea } }
+			add_ideas = MMR_AST_labor_bulwark_against_bolshevism_idea
+		}
+		IF = {
+			limit = { has_completed_focus = AST_labor_loyalism NOT = { has_idea = MMR_AST_labor_loyalism_idea } }
+			add_ideas = MMR_AST_labor_loyalism_idea
+		}
+		custom_effect_tooltip = mmr_nzl_204_tt
+		ai_chance = {
+			base = 50
+			modifier = {
+				has_government = neutrality
+				factor = 0.1
+			}
+		}
+	}
+	#Liberal victory
+	option = {
+		IF = {
+			limit = { NOT = { has_country_flag = azr_ast_country_party_won } }
+			IF = {
+				limit = { has_country_leader = { character = MMR_AST_robert_g_menzies } }
+				ELSE = {
+					promote_character = {
+						character = MMR_AST_robert_g_menzies
+						ideology = conservatism
+					}
+					set_party_name = {
+						ideology = democratic
+						long_name = AST_democratic_party_long
+						name = AST_democratic_party
+					}
+					IF = {
+						limit = { has_completed_focus = AST_united_under_the_crown NOT = { has_idea = MMR_AST_united_under_the_crown_idea } }
+						add_ideas = MMR_AST_united_under_the_crown_idea
+					}
+					hidden_effect = { news_event = { id = mmr_ast.3 days = 60 random_days = 80 } }
+				}
+			}
+		}
+		IF = {
+			limit = { has_country_flag = azr_ast_country_party_won }
+			set_politics = { ruling_party = democratic elections_allowed = yes last_election = "1949.09.21" election_frequency = 36 }
+			promote_character = {
+				character = MMR_AST_robert_g_menzies
+				ideology = conservatism
+			}
+			set_party_name = {
+				ideology = democratic
+				long_name = AST_democratic_party_long
+				name = AST_democratic_party
+			}
+			IF = {
+				limit = { has_completed_focus = AST_united_under_the_crown NOT = { has_idea = MMR_AST_united_under_the_crown_idea } }
+				add_ideas = MMR_AST_united_under_the_crown_idea
+			}
+			hidden_effect = { news_event = { id = mmr_ast.3 days = 60 random_days = 80 } }
+			hidden_effect = {
+				load_focus_tree = { tree = australian_focus keep_completed = yes }
+				mark_focus_tree_layout_dirty = yes
+			}
+		}
+		name = mmr_ast.11.b
+		custom_effect_tooltip = mmr_nzl_204_tt
+		ai_chance = {
+			base = 50
+			modifier = {
+				has_completed_focus = AST_nationalize_the_banks
+				has_country_leader = { character = MMR_AST_ben_chifley }
+				factor = 10
+			}
+			modifier = {
+				has_government = neutrality
+				factor = 0.1
+			}
+		}
+	}
+	#Country Party victory: 
+	#If remaining power: Stab small increase, small neutrality party increase
+	#Can't change to this
+	option = {
+		name = mmr_ast.11.c
+		trigger = {
+			has_government = neutrality
+			OR = {
+				has_country_leader = { character = AST_earle_page }
+				has_country_leader = { character = MMR_AST_archie_cameron }
+				has_country_leader = { character = MMR_AST_arthur_fadden }
+			}
+		}
+		add_stability = 0.02
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.05
+		}
+		custom_effect_tooltip = mmr_nzl_204_tt
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+#CPA leadership contested
+country_event = {
+	id = mmr_ast.12
+	title = mmr_ast.12.t
+	desc = mmr_ast.12.desc
+	picture = GFX_report_event_generic_communist_congress
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	#Keep Richard Dixon
+	option = {
+		name = mmr_ast.12.a
+		retire_character = MMR_AST_jack_miles
+	}
+	#Switch to Jack Miles
+	option = {
+		name = mmr_ast.12.b
+		retire_character = AST_richard_dixon
+		promote_character = {
+			character = MMR_AST_jack_miles
+			ideology = stalinism
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Focus Vote of no confidence
+country_event = {
+	id = mmr_ast.13
+	title = mmr_ast.13.t
+	desc = mmr_ast.13.desc
+	picture = GFX_report_event_ITA_democratic_parlament
+	
+	is_triggered_only = yes
+	
+	
+	#If UAP in power Menzies Takes over, if Labor in power Chifley takes power, If Country in power Cameron takes power
+	option = {
+		name = mmr_ast.13.a
+		IF = {
+			limit = { has_country_leader = { character = AST_john_curtin } }
+			promote_character = {
+				character = MMR_AST_ben_chifley
+				ideology = socialism
+			}
+		}
+		ELSE_IF = {
+			limit = { has_country_leader = { character = MMR_AST_joseph_lyons } }
+			promote_character = {
+				character = MMR_AST_robert_g_menzies
+				ideology = conservatism
+			}
+			hidden_effect = { news_event = { id = mmr_ast.3 days = 60 random_days = 80 } }
+		}
+		ELSE_IF = {
+			limit = { has_country_leader = { character = AST_earle_page } }
+			promote_character = {
+				character = MMR_AST_archie_cameron
+				ideology = moderatism
+			}
+		}
+		ELSE_IF = {
+			limit = { has_country_leader = { character = MMR_AST_archie_cameron } }
+			promote_character = {
+				character = MMR_AST_arthur_fadden
+				ideology = moderatism
+			}
+		}
+		ELSE = {
+			add_stability = -0.1
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	#Jack Lang
+	option = {
+		name = mmr_ast.13.b
+		trigger = {
+			has_country_leader = { character = AST_john_curtin }
+			has_country_flag = MMR_lang_labor_split_continues
+		}
+		promote_character = {
+			character = MMR_AST_jack_lang
+			ideology = centrism
+		}
+		set_party_name = {
+			ideology = neutrality
+			long_name = AST_neutrality_lang_labor_party_long
+			name = AST_neutrality_lang_labor_party
+		}
+		custom_effect_tooltip = mmr_ast_13_b_tt
+		hidden_effect = {
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = yes
+				election_frequency = 36
+			}
+		}
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.25
+		}
+		set_cosmetic_tag = AST_lang_labor_tag
+		hidden_effect = {
+			load_focus_tree = { tree = australian_focus keep_completed = yes }
+			mark_focus_tree_layout_dirty = yes
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+}
+#New Guard Resurgent
+news_event = {
+	id = mmr_ast.14
+	title = mmr_ast.14.t
+	desc = mmr_ast.14.desc
+	picture = GFX_news_event_ANZAC_day
+	
+	is_triggered_only = yes
+	
+	
+	#We must address this crisis immediately
+	option = {
+		name = mmr_ast.14.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Crackdown on New Guard
+news_event = {
+	id = mmr_ast.141
+	title = mmr_ast.141.t
+	desc = mmr_ast.141.desc
+	picture = GFX_news_event_generic_communist_militia
+	
+	is_triggered_only = yes
+	
+	
+	#Fascism has no place in Australian society
+	option = {
+		name = mmr_ast.141.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Concessions to the New Guard
+news_event = {
+	id = mmr_ast.142
+	title = mmr_ast.142.t
+	desc = mmr_ast.142.desc
+	picture = GFX_news_event_generic_sign_treaty3
+	
+	is_triggered_only = yes
+	
+	
+	#Hopefully they will be placated
+	option = {
+		name = mmr_ast.142.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#New Guard Purge
+news_event = {
+	id = mmr_ast.143
+	title = mmr_ast.143.t
+	desc = mmr_ast.143.desc
+	picture = GFX_news_event_ITA_purged_fascists
+	
+	is_triggered_only = yes
+	
+	
+	#The New Guard coup has been thwarted
+	option = {
+		name = mmr_ast.143.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#New Guard Putsch
+news_event = {
+	id = mmr_ast.144
+	title = mmr_ast.144.t
+	desc = mmr_ast.144.desc
+	picture = GFX_news_event_067
+	
+	is_triggered_only = yes
+	
+	
+	#Now to make Australia great again!
+	#Australia has been saved!
+	option = {
+		name = mmr_ast.144.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Jindyworobak Coup
+news_event = {
+	id = mmr_ast.145
+	title = mmr_ast.145.t
+	desc = mmr_ast.145.desc
+	picture = GFX_news_event_063
+	
+	is_triggered_only = yes
+	
+	
+	#Australia First!
+	option = {
+		name = mmr_ast.145.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#GER AST seeks to join the Axis
+country_event = {
+	id = mmr_ast.15
+	title = mmr_ast.15.t
+	desc = mmr_ast.15.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = mmr_ast.15.a
+		FROM = { country_event = { id = mmr_ast.151 days = 1 } }
+		ai_chance = {
+			base = 9
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+		}
+	}
+	#Reject
+	option = {
+		name = mmr_ast.15.b
+		FROM = { country_event = { id = mmr_ast.152 days = 1 } }
+		ai_chance = {
+			base = 1
+			modifier = {
+				FROM = { is_ai = no }
+				factor = 0
+			}
+		}
+	}
+}
+#AST seeks to join the Axis (Yes)
+country_event = {
+	id = mmr_ast.151
+	title = mmr_ast.151.t
+	desc = mmr_ast.151.desc
+	picture = GFX_report_event_molotov_ribentrop_handshake
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.151.a
+		GER = { add_to_faction = AST }
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#AST seeks to join the Axis (No)
+country_event = {
+	id = mmr_ast.152
+	title = mmr_ast.152.t
+	desc = mmr_ast.152.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.152.a
+		uncomplete_national_focus = {
+			focus = AST_the_nazi_connection
+			uncomplete_children = yes
+			refund_political_power = yes
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#Aboriginal New Deal
+country_event = {
+	id = mmr_ast.16
+	title = mmr_ast.16.t
+	desc = mmr_ast.16.desc
+	picture = GFX_report_event_generic_sign_treaty3
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.16.a
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#William John Miles Dies
+country_event = {
+	id = mmr_ast.17
+	title = mmr_ast.17.t
+	desc = mmr_ast.17.desc
+	picture = GFX_report_event_ANZAC_day
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		has_country_leader = { character = MMR_AST_william_john_miles }
+	}
+	
+	#P. R. Stephensen will carry on WJM's work
+	option = {
+		name = mmr_ast.17.a
+		retire_character = MMR_AST_william_john_miles
+		promote_character = {
+			character = MMR_AST_p_r_stephensen
+			ideology = gen_nazism
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	#(If Moses Gabb is an Advisor) Moses Gabb launches a coup!
+	option = {
+		name = mmr_ast.17.b
+		trigger = {
+			any_character = {
+				is_character = MMR_AST_moses_gabb
+				is_hired_as_advisor = yes
+			}
+		}
+		retire_character = MMR_AST_william_john_miles
+		promote_character = {
+			character = MMR_AST_moses_gabb
+			ideology = fascism_ideology
+		}
+		ai_chance = {
+			base = 2
+		}
+	}
+}
+#William John Miles Dies (if P. R. Stephensen is country leader) (unused)
+country_event = {
+	id = mmr_ast.171
+	title = mmr_ast.171.t
+	desc = mmr_ast.171.desc
+	picture = GFX_report_event_ANZAC_day
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.171.a
+		retire_character = MMR_AST_william_john_miles
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#1940 Canberra air disaster (always same date)
+country_event = {
+	id = mmr_ast.18
+	title = mmr_ast.18.t
+	desc = mmr_ast.18.desc
+	picture = GFX_report_event_ITA_air_crash
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		hidden_effect = {
+			IF = {
+				limit = {
+					any_character = {
+						is_character = MMR_AST_brudenell_white
+						is_hired_as_advisor = yes
+					}
+				}
+				retire_character = MMR_AST_brudenell_white
+				ELSE = {
+					set_country_flag = MMR_AST_bwhite_survives
+				}
+			}
+		}
+	}
+	
+	#Starts government crisis (leading to 1941 no confidence vote) 
+	#Geoffrey Street or Frank Forde dies (UAP/Country or Labor)
+	#Brudenell White dies if in military high command
+	option = {
+		name = mmr_ast.18.a
+		set_country_flag = MMR_AST_ncv_crisis_flag
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = AST_john_curtin }
+					has_country_leader = { character = MMR_AST_ben_chifley }
+				}
+			}
+			retire_character = MMR_AST_frank_forde
+		}
+		IF = {
+			limit = {
+				OR = {
+					has_country_leader = { character = MMR_AST_robert_g_menzies }
+					has_country_leader = { character = AST_earle_page }
+					has_country_leader = { character = MMR_AST_archie_cameron }
+					has_country_leader = { character = MMR_AST_arthur_fadden }
+				}
+			}
+			retire_character = MMR_AST_geoffrey_street
+		}
+		effect_tooltip = {
+			IF = {
+				limit = {
+					any_character = {
+						is_character = MMR_AST_brudenell_white
+						is_hired_as_advisor = yes
+					}
+				}
+				retire_character = MMR_AST_brudenell_white
+				ELSE = {
+					custom_effect_tooltip = mmr_ast_18_tt #bwhite is more reluctant to join the military high command
+				}
+			}
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#Australasia United (Both (global event))
+news_event = {
+	id = mmr_ast.100
+	title = mmr_ast.100.t
+	desc = mmr_ast.100.desc
+	picture = GFX_news_event_king_speech
+	
+	is_triggered_only = yes
+	major = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.100.a
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#Confirming in new commonwealth
+news_event = {
+	id = mmr_ast.200
+	hidden = yes
+	
+	trigger = {
+		OR = {
+			original_tag = AST
+			original_tag = NZL
+		}
+		AZR_is_in_new_commonwealth_check = yes
+		NOT = { has_country_flag = azr_is_in_new_commonwealth }
+	}
+	
+	immediate = { set_country_flag = azr_is_in_new_commonwealth }
+	
+}
+#Lang Labour (feb 1936) Reconciliation (series of "unity conferences")
+country_event = {
+	id = mmr_ast.19
+	title = mmr_ast.19.t
+	desc = mmr_ast.19.desc
+	picture = GFX_report_event_SOV_demands
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	#Lang Labour rejoins labour (1 stability boost)
+	option = {
+		name = mmr_ast.19.a
+		set_country_flag = MMR_lang_labor_split_ends
+		add_stability = 0.01
+		custom_effect_tooltip = MMR_AST_available_political_advisor_if_labor_tt
+		show_ideas_tooltip = MMR_AST_jack_beasley
+		ai_chance = {
+			base = 9
+		}
+	}
+	#Lang Labour remains a split faction
+	#Jack Lang can become leader if AST ""severs ties"" with the UK
+	option = {
+		name = mmr_ast.19.b
+		set_country_flag = MMR_lang_labor_split_continues
+		custom_effect_tooltip = mmr_ast_lang_labor_tt
+		ai_chance = {
+			base = 1
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+}
+#MEX AST seeks to join faction
+country_event = {
+	id = mmr_ast.20
+	title = mmr_ast.20.t
+	desc = mmr_ast.20.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = mmr_ast.20.a
+		FROM = { country_event = { id = mmr_ast.201 days = 1 } }
+		ai_chance = {
+			base = 9
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+		}
+	}
+	#Reject
+	option = {
+		name = mmr_ast.20.b
+		FROM = { country_event = { id = mmr_ast.202 days = 1 } }
+		ai_chance = {
+			base = 1
+			modifier = {
+				FROM = { is_ai = no }
+				factor = 0
+			}
+		}
+	}
+}
+#AST seeks to join MEX faction (Yes)
+country_event = {
+	id = mmr_ast.201
+	title = mmr_ast.201.t
+	desc = mmr_ast.201.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.201.a
+		random_country = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = FROM
+			}
+			add_to_faction = ROOT
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#AST seeks to join MEX faction (No)
+country_event = {
+	id = mmr_ast.202
+	title = mmr_ast.202.t
+	desc = mmr_ast.202.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.202.a
+		uncomplete_national_focus = {
+			focus = AST_reach_out_to_mexicans
+			uncomplete_children = yes
+			refund_political_power = yes
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#Other SEA fascists AST invites us to their faction
+country_event = {
+	id = mmr_ast.21
+	title = mmr_ast.21.t
+	desc = mmr_ast.21.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = mmr_ast.21.a
+		FROM = { add_to_faction = ROOT }
+		hidden_effect = { FROM = { country_event = { id = mmr_ast.211 days = 1 } } }
+		ai_chance = {
+			base = 9
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+		}
+	}
+	#Reject
+	option = {
+		name = mmr_ast.21.b
+		FROM = { country_event = { id = mmr_ast.212 days = 1 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Other SEA fascists AST invites us to their faction (Yes)
+country_event = {
+	id = mmr_ast.211
+	title = mmr_ast.211.t
+	desc = mmr_ast.211.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.211.a
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#Other SEA fascists AST invites us to their faction (No)
+country_event = {
+	id = mmr_ast.212
+	title = mmr_ast.212.t
+	desc = mmr_ast.212.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.212.a
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#FRA AST demands handover of indo-pacific holdings
+country_event = {
+	id = mmr_ast.22
+	title = mmr_ast.22.t
+	desc = mmr_ast.22.desc
+	picture = GFX_report_event_SOV_demands
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = mmr_ast.22.a
+		FROM = { country_event = { id = mmr_ast.221 days = 1 } }
+		ai_chance = {
+			base = 1
+			modifier = {
+				FROM = { is_ai = no }
+				factor = 4
+			}
+			modifier = {
+				ROOT = { has_war = yes }
+				factor = 2
+			}
+			modifier = {
+				ROOT = { has_civil_war = yes }
+				factor = 2
+			}
+			modifier = {
+				any_country = { has_war_with = ROOT is_major = yes has_capitulated = no }
+				factor = 2
+			}
+			modifier = {
+				any_country = { has_war_with = ROOT is_major = yes has_capitulated = no capital_scope = { is_on_continent = europe } }
+				factor = 2
+			}
+			modifier = {
+				ROOT = { has_capitulated = yes }
+				factor = 10
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+			modifier = {
+				add = 1
+				FROM = {
+					any_operative_leader = {
+						operative_leader_mission = diplomatic_pressure
+					}
+				}
+			}
+		}
+	}
+	#Reject
+	option = {
+		name = mmr_ast.22.b
+		FROM = { country_event = { id = mmr_ast.222 days = 1 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#FRA AST demands handover of indo-pacific holdings (Yes)
+country_event = {
+	id = mmr_ast.221
+	title = mmr_ast.221.t
+	desc = mmr_ast.221.desc
+	picture = GFX_report_event_tur_ataturk_impassioned_speech
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.221.a
+		every_state = {
+			limit = {
+				OR = {
+					state = 635
+					state = 641
+					state = 713
+					state = 641
+					state = 706
+					state = 543
+					state = 708
+				}
+				is_owned_and_controlled_by = FROM
+			}
+			transfer_state_to = ROOT
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#FRA AST demands handover of indo-pacific holdings (No)
+country_event = {
+	id = mmr_ast.222
+	title = mmr_ast.222.t
+	desc = mmr_ast.222.desc
+	picture = GFX_report_event_soldiers_marching
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.222.a
+		FROM = {
+			ROOT = {
+				create_wargoal = {
+					type = take_state_focus
+					target = PREV
+					expire = 0
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+##ENG AST seeks to negotiate indo-pacific colonial empire #UNUSED
+#country_event = {
+#	id = mmr_ast.23
+#	title = mmr_ast.23.t
+#	desc = mmr_ast.23.desc
+#	picture = GFX_report_event_generic_read_write
+#	
+#	is_triggered_only = yes
+#	
+#	#They will be better able to administer east asia and the indo-pacific than us
+#	option = {
+#		name = mmr_ast.23.a
+#		FROM = { news_event = { id = mmr_ast.231 days = 1 } }
+#	}
+#	#They can have their claims and our SWPA holdings only
+#	option = {
+#		name = mmr_ast.23.b
+#		FROM = { country_event = { id = mmr_ast.232 days = 1 } }
+#	}
+#	#They can have their claims
+#	option = {
+#		name = mmr_ast.23.c
+#		FROM = { country_event = { id = mmr_ast.232 days = 1 } }
+#	}
+#	#They should be grateful we let them remain under our protection
+#	option = {
+#		name = mmr_ast.23.c
+#		FROM = { news_event = { id = mmr_ast.233 days = 1 } }
+#	}
+#}
+##ENG AST seeks to negotiate indo-pacific colonial empire (Option 1) #UNUSED
+#news_event = {
+#	id = mmr_ast.231
+#	title = mmr_ast.231.t
+#	desc = mmr_ast.231.desc
+#	picture = GFX_report_event_generic_read_write
+#	
+#	is_triggered_only = yes
+#	
+#	
+#	#
+#	option = {
+#		name = mmr_ast.231.a
+#		
+#	}
+#}
+##ENG AST seeks to negotiate indo-pacific colonial empire (Option 2+3) #UNUSED
+#country_event = {
+#	id = mmr_ast.232
+#	title = mmr_ast.232.t
+#	desc = mmr_ast.232.desc
+#	picture = GFX_report_event_generic_read_write
+#	
+#	is_triggered_only = yes
+#	
+#	#Make a large political effort to sway them
+#	option = {
+#		name = mmr_ast.232.a
+#		ENG = { country_event = { id = mmr_ast.235 days = 1 } }
+#	}
+#	#Assure resource rights will be maintained by them
+#	option = {
+#		name = mmr_ast.232.b
+#		ENG = { country_event = { id = mmr_ast.235 days = 1 } }
+#	}
+#	#Both of Previous
+#	option = {
+#		name = mmr_ast.232.c
+#		ENG = { news_event = { id = mmr_ast.235 days = 1 } }
+#	}
+#	#This is not worth the effort
+#	option = {
+#		name = mmr_ast.232.c
+#		ENG = { news_event = { id = mmr_ast.234 days = 1 } }
+#	}
+#}
+##ENG AST seeks to negotiate indo-pacific colonial empire (Option 4) #UNUSED
+#news_event = {
+#	id = mmr_ast.233
+#	title = mmr_ast.233.t
+#	desc = mmr_ast.233.desc
+#	picture = GFX_report_event_generic_read_write
+#	
+#	is_triggered_only = yes
+#	
+#	
+#	#
+#	option = {
+#		name = mmr_ast.231.a
+#		
+#	}
+#}
+##ENG AST seeks to negotiate indo-pacific colonial empire (ENG learns AST abandoned negotiations) #UNUSED
+#news_event = {
+#	id = mmr_ast.234
+#	title = mmr_ast.234.t
+#	desc = mmr_ast.234.desc
+#	picture = GFX_report_event_generic_read_write
+#	
+#	is_triggered_only = yes
+#	
+#	
+#	#
+#	option = {
+#		name = mmr_ast.234.a
+#		
+#	}
+#}
+##ENG AST seeks to negotiate indo-pacific colonial empire (from option 2-3) #UNUSED
+#country_event = {
+#	id = mmr_ast.235
+#	title = mmr_ast.235.t
+#	desc = mmr_ast.235.desc
+#	picture = GFX_report_event_generic_read_write
+#	
+#	is_triggered_only = yes
+#	
+#	#They have made a good case (ENG gets AST's pp and/or resource rights)
+#	option = {
+#		name = mmr_ast.235.a
+#		ENG = { news_event = { id = mmr_ast.237 days = 1 } }
+#	}
+#	#This is a good deal, we should make them pay for it though
+#	option = {
+#		name = mmr_ast.235.b
+#		ENG = { country_event = { id = mmr_ast.236 days = 1 } }
+#	}
+#	#They should be grateful we let them remain under our protection
+#	option = {
+#		name = mmr_ast.235.c
+#		ENG = { news_event = { id = mmr_ast.238 days = 1 } }
+#	}
+#}
+##ENG AST seeks to negotiate indo-pacific colonial empire (from option 2-3) #UNUSED
+#country_event = {
+#	id = mmr_ast.236
+#	title = mmr_ast.236.t
+#	desc = mmr_ast.236.desc
+#	picture = GFX_report_event_generic_read_write
+#	
+#	is_triggered_only = yes
+#	
+#	#We agree to this deal (pp and/or resource rights and payments)
+#	option = {
+#		name = mmr_ast.236.a
+#		ENG = { news_event = { id = mmr_ast.239 days = 1 } }
+#	}
+#	#This is not worth the effort
+#	option = {
+#		name = mmr_ast.236.b
+#		ENG = { country_event = { id = mmr_ast.234 days = 1 } }
+#	}
+#}
+##ENG AST seeks to negotiate indo-pacific colonial empire (Yes option 1) #UNUSED
+#news_event = {
+#	id = mmr_ast.237
+#	title = mmr_ast.237.t
+#	desc = mmr_ast.237.desc
+#	picture = GFX_report_event_generic_read_write
+#	
+#	is_triggered_only = yes
+#	
+#	
+#	#
+#	option = {
+#		name = mmr_ast.237.a
+#		
+#	}
+#}
+##ENG AST seeks to negotiate indo-pacific colonial empire (No option 3) (counteroffer) #UNUSED
+#news_event = {
+#	id = mmr_ast.238
+#	title = mmr_ast.238.t
+#	desc = mmr_ast.238.desc
+#	picture = GFX_report_event_generic_read_write
+#	
+#	is_triggered_only = yes
+#	
+#	
+#	#
+#	option = {
+#		name = mmr_ast.238.a
+#		
+#	}
+#}
+##ENG AST seeks to negotiate indo-pacific colonial empire (ENG learns AST agreed to deal) #UNUSED
+#news_event = {
+#	id = mmr_ast.239
+#	title = mmr_ast.239.t
+#	desc = mmr_ast.239.desc
+#	picture = GFX_report_event_generic_read_write
+#	
+#	is_triggered_only = yes
+#	
+#	
+#	#
+#	option = {
+#		name = mmr_ast.239.a
+#		
+#	}
+#}
+#Kingdom of Australia Proclaimed AST (global)
+news_event = {
+	id = mmr_ast.24
+	title = mmr_ast.24.t
+	desc = mmr_ast.24.desc
+	picture = GFX_news_event_king_speech
+	
+	is_triggered_only = yes
+	major = yes
+	
+	
+	#God Save the King!
+	option = {
+		trigger = {
+			ROOT = {
+				NOT = { has_war_with = AST }
+				OR = {
+					original_tag = AST
+					is_in_faction_with = AST
+					has_government = fascism
+					AND = {
+						has_government = neutrality
+						has_country_leader_ideology = despotism
+					}
+					AND = {
+						has_war_with = ENG
+						NOT = { has_government = communism }
+					}
+				}
+			}
+		}
+		name = mmr_ast.24.a
+		ai_chance = {
+			base = 1
+		}
+	}
+	#The colonial capitalists are desperate
+	option = {
+		trigger = {
+			NOT = { is_in_faction_with = AST }
+			has_government = communism
+		}
+		name = mmr_ast.24.b
+		ai_chance = {
+			base = 1
+		}
+	}
+	#A desperate act of authoritarianism and monarchism
+	option = {
+		trigger = {
+			NOT = { is_in_faction_with = AST }
+			has_government = democratic
+		}
+		name = mmr_ast.24.c
+		ai_chance = {
+			base = 1
+		}
+	}
+	#Concerning
+	option = {
+		trigger = {
+			NOT = { is_in_faction_with = AST }
+			has_government = neutrality
+		}
+		name = mmr_ast.24.d
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#USA AST requests to join faction
+country_event = {
+	id = mmr_ast.25
+	title = mmr_ast.25.t
+	desc = mmr_ast.25.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#yes
+	option = {
+		name = mmr_ast.25.a
+		effect_tooltip = {
+			random_country = {
+				limit = {
+					is_faction_leader = yes
+					is_in_faction_with = USA
+				}
+				add_to_faction = FROM
+			}
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_ast.251 days = 1 } }
+		}
+		ai_chance = {
+			base = 9
+			modifier = {
+				add = 40
+				FROM = { is_ai = no }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+		}
+	}
+	#no
+	option = {
+		name = mmr_ast.25.b
+		hidden_effect = {
+			FROM = { country_event = { id = mmr_ast.252 days = 1 } }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST requests to join faction USA says yes
+country_event = {
+	id = mmr_ast.251
+	title = mmr_ast.251.t
+	desc = mmr_ast.251.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	#Our brother republics stand together!
+	option = {
+		name = mmr_ast.251.a
+		random_country = {
+			limit = {
+				is_faction_leader = yes
+				is_in_faction_with = USA
+			}
+			add_to_faction = ROOT
+			add_ai_strategy = {
+				type = alliance
+				id = ROOT
+				value = 1000
+			}
+			ROOT = {
+				add_ai_strategy = {
+					type = alliance
+					id = PREV
+					value = 1000
+				}
+			}
+		}
+		hidden_effect = {
+			USA = {
+				add_ai_strategy = {
+					type = alliance
+					id = ROOT
+					value = 1000
+				}
+				ROOT = {
+					add_ai_strategy = {
+						type = alliance
+						id = PREV
+						value = 1000
+					}
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST requests to join faction USA says no
+country_event = {
+	id = mmr_ast.252
+	title = mmr_ast.252.t
+	desc = mmr_ast.252.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	#We will have to reevaluate our foreign policy
+	option = {
+		name = mmr_ast.252.a
+		uncomplete_national_focus = {
+			focus = AST_seek_american_protection
+			uncomplete_children = yes
+			refund_political_power = yes
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST demands handover of indian ocean holdings
+country_event = {
+	id = mmr_ast.26
+	title = mmr_ast.26.t
+	desc = mmr_ast.26.desc
+	picture = GFX_report_event_SOV_demands
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = mmr_ast.26.a
+		FROM = { country_event = { id = mmr_ast.261 days = 1 } }
+		ai_chance = {
+			base = 1
+			modifier = {
+				FROM = { is_ai = no }
+				factor = 4
+			}
+			modifier = {
+				ROOT = { has_war = yes }
+				factor = 2
+			}
+			modifier = {
+				ROOT = { has_civil_war = yes }
+				factor = 2
+			}
+			modifier = {
+				any_country = { has_war_with = ROOT is_major = yes has_capitulated = no }
+				factor = 2
+			}
+			modifier = {
+				any_country = { has_war_with = ROOT is_major = yes has_capitulated = no capital_scope = { is_on_continent = europe } }
+				factor = 2
+			}
+			modifier = {
+				ROOT = { has_capitulated = yes }
+				factor = 10
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+			modifier = {
+				add = 1
+				FROM = {
+					any_operative_leader = {
+						operative_leader_mission = diplomatic_pressure
+					}
+				}
+			}
+		}
+	}
+	#Reject
+	option = {
+		name = mmr_ast.26.b
+		FROM = { country_event = { id = mmr_ast.262 days = 1 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST demands handover of indian ocean holdings (Yes)
+country_event = {
+	id = mmr_ast.261
+	title = mmr_ast.261.t
+	desc = mmr_ast.261.desc
+	picture = GFX_report_event_tur_ataturk_impassioned_speech
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.261.a
+		every_state = {
+			limit = {
+				OR = {
+					region = 85
+					state = 543
+					state = 708
+					state = 422
+					state = 733
+					region = 60
+				}
+				is_owned_and_controlled_by = FROM
+			}
+			transfer_state_to = ROOT
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST demands handover of indian ocean holdings (No)
+country_event = {
+	id = mmr_ast.262
+	title = mmr_ast.262.t
+	desc = mmr_ast.262.desc
+	picture = GFX_report_event_soldiers_marching
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.262.a
+		FROM = {
+			ROOT = {
+				create_wargoal = {
+					type = take_state_focus
+					target = PREV
+					expire = 0
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#USA AST FRUMEL
+news_event = {
+	id = mmr_ast.27
+	title = mmr_ast.27.t
+	desc = mmr_ast.27.desc
+	picture = GFX_news_event_ast_planning
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.27.a
+		if = {
+			limit = { has_dlc = "La Resistance" }
+			add_ideas = MMR_AST_frumel_idea
+		}
+		ELSE = {
+			add_ideas = MMR_AST_frumel_idea_no_lar
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#ENG AST/NZL seeks to join BCA
+country_event = {
+	id = mmr_ast.28
+	title = mmr_ast.28.t
+	desc = mmr_ast.28.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = mmr_ast.28.a
+		FROM = { country_event = { id = mmr_ast.281 days = 1 } }
+		ai_chance = {
+			base = 9
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+		}
+	}
+	#Reject
+	option = {
+		name = mmr_ast.28.b
+		FROM = { country_event = { id = mmr_ast.282 days = 1 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST/NZL seeks to join BCA (Yes)
+country_event = {
+	id = mmr_ast.281
+	title = mmr_ast.281.t
+	desc = mmr_ast.281.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.281.a
+		FROM = { add_to_faction = ROOT }
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#AST/NZL seeks to join BCA (No)
+country_event = {
+	id = mmr_ast.282
+	title = mmr_ast.282.t
+	desc = mmr_ast.282.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.282.a
+		ai_chance = {
+			base = 9
+		}
+	}
+}
+#AST requests CC islands
+country_event = {
+	id = mmr_ast.29
+	title = mmr_ast.29.t
+	desc = mmr_ast.29.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = mmr_ast.29.a
+		FROM = { country_event = { id = mmr_ast.291 days = 1 } }
+		ai_chance = {
+			base = 9
+			modifier = {
+				add = 90
+				FROM = { is_ai = no }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+		}
+	}
+	#Reject
+	option = {
+		name = mmr_ast.29.b
+		FROM = { country_event = { id = mmr_ast.292 days = 1 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST requests CC islands (Yes)
+country_event = {
+	id = mmr_ast.291
+	title = mmr_ast.291.t
+	desc = mmr_ast.291.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.291.a
+		IF = {
+			limit = { 712 = { is_owned_and_controlled_by = FROM } }
+			712 = { transfer_state_to = ROOT }
+		}
+		IF = {
+			limit = { 711 = { is_owned_and_controlled_by = FROM } }
+			711 = { transfer_state_to = ROOT }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST requests CC islands (No)
+country_event = {
+	id = mmr_ast.292
+	title = mmr_ast.292.t
+	desc = mmr_ast.292.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.292.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST nationalize banks
+country_event = {
+	id = mmr_ast.30
+	title = mmr_ast.30.t
+	desc = mmr_ast.30.desc
+	picture = GFX_report_event_SOV_demands
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		focus_progress = {
+		  focus = AST_nationalize_the_banks
+		  progress > 0
+		}
+	}
+	
+	#Appeal the courts decision
+	option = {
+		name = mmr_ast.30.a
+		hidden_effect = { country_event = { id = mmr_ast.301 days = 7 } }
+		ai_chance = {
+			base = 80
+		}
+	}
+	#Go ahead with nationalization anyways
+	option = {
+		name = mmr_ast.30.b
+		set_country_flag = AST_nationalize_the_banks_anyways_flag
+		custom_effect_tooltip = AST_nationalize_the_banks_tt #will get when focus complete
+		effect_tooltip = {
+			add_stability = -0.25
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.15
+			}
+			add_ideas = MMR_AST_nationalize_the_banks_idea
+		}
+		ai_chance = {
+			base = 2
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+	#Abandon nationalization
+	option = {
+		name = mmr_ast.30.c
+		custom_effect_tooltip = AST_nationalize_the_banks_tt_2 #nationalization focus will fail
+		set_country_flag = AST_nationalize_the_banks_abandon_flag
+		add_stability = -0.05
+		ai_chance = {
+			base = 18
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+}
+#AST nationalize banks (appeal)
+country_event = {
+	id = mmr_ast.301
+	title = mmr_ast.301.t
+	desc = mmr_ast.301.desc
+	picture = GFX_report_event_ITA_democratic_parlament
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	#Establish national bank as compromise
+	option = {
+		name = mmr_ast.301.a
+		set_country_flag = AST_nationalize_the_banks_compromise_flag
+		custom_effect_tooltip = AST_nationalize_the_banks_tt #will get when focus complete
+		effect_tooltip = {
+			add_stability = -0.1
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.05
+			}
+			add_ideas = MMR_AST_nationalize_the_banks_compromise_idea
+		}
+		ai_chance = {
+			base = 80
+		}
+	}
+	#Go ahead with nationalization anyways
+	option = {
+		name = mmr_ast.301.b
+		set_country_flag = AST_nationalize_the_banks_anyways_flag
+		custom_effect_tooltip = AST_nationalize_the_banks_tt #will get when focus complete
+		effect_tooltip = {
+			add_stability = -0.25
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.15
+			}
+			add_ideas = MMR_AST_nationalize_the_banks_idea
+		}
+		ai_chance = {
+			base = 2
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+	#Abandon nationalization
+	option = {
+		name = mmr_ast.301.c
+		custom_effect_tooltip = AST_nationalize_the_banks_tt_2 #nationalization focus will fail
+		set_country_flag = AST_nationalize_the_banks_abandon_flag
+		add_stability = -0.05
+		ai_chance = {
+			base = 18
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+}
+#ENG AST seeks to rejoin Allies
+country_event = {
+	id = mmr_ast.31
+	title = mmr_ast.31.t
+	desc = mmr_ast.31.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = mmr_ast.31.a
+		FROM = { country_event = { id = mmr_ast.311 days = 1 } }
+		ai_chance = {
+			base = 9
+			modifier = {
+				add = 40
+				NZL = { is_ai = no }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+		}
+	}
+	#Reject
+	option = {
+		name = mmr_ast.31.b
+		FROM = { country_event = { id = mmr_ast.312 days = 1 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST seeks to rejoin Allies (Yes)
+country_event = {
+	id = mmr_ast.311
+	title = mmr_ast.311.t
+	desc = mmr_ast.311.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.311.a
+		FROM = { add_to_faction = ROOT }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST/NZL seeks to rejoin Allies (No)
+country_event = {
+	id = mmr_ast.312
+	title = mmr_ast.312.t
+	desc = mmr_ast.312.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.312.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#ENG AST seeks to rejoin Allies Fascist
+country_event = {
+	id = mmr_ast.32
+	title = mmr_ast.32.t
+	desc = mmr_ast.32.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = mmr_ast.32.a
+		FROM = { country_event = { id = mmr_ast.321 days = 1 } }
+		ai_chance = {
+			base = 9
+			modifier = {
+				add = 40
+				FROM = { is_ai = no }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 99
+				}
+			}
+		}
+	}
+	#Reject
+	option = {
+		name = mmr_ast.32.b
+		FROM = { country_event = { id = mmr_ast.322 days = 1 } }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST seeks to rejoin Allies Fascist (Yes)
+country_event = {
+	id = mmr_ast.321
+	title = mmr_ast.321.t
+	desc = mmr_ast.321.desc
+	picture = GFX_report_event_partition_of_india
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.321.a
+		FROM = { add_to_faction = ROOT }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST/NZL seeks to rejoin Allies Fascist (No)
+country_event = {
+	id = mmr_ast.322
+	title = mmr_ast.322.t
+	desc = mmr_ast.322.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.322.a
+		uncomplete_national_focus = {
+			focus = AST_ally_the_empire
+			uncomplete_children = yes
+			refund_political_power = yes
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Ernest Squires dies
+news_event = {
+	id = mmr_ast.33
+	title = mmr_ast.33.t
+	desc = mmr_ast.33.desc
+	picture = GFX_news_event_generic_funeral
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = { NOT = { has_government = communism } }
+	
+	#
+	option = {
+		name = mmr_ast.33.a
+		retire_character = MMR_AST_ernest_squires
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#CAC formed
+country_event = {
+	id = mmr_ast.34
+	title = mmr_ast.34.t
+	desc = mmr_ast.34.desc
+	picture = GFX_report_event_bul_aircraft_repairs
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = { set_country_flag = azr_ast_cac_formed_flag }
+	
+	#
+	option = {
+		name = mmr_ast.34.a
+		IF = {
+			limit = { has_dlc = "Arms Against Tyranny" }
+			custom_effect_tooltip = available_mio_tt
+			show_mio_tooltip = AST_com_aircraft_corporation_organization
+			ELSE = {
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = AST_commonwealth_aircraft_corporation
+			}
+		}
+		custom_effect_tooltip = mmr_ast_34_tt
+		custom_effect_tooltip = MMR_AST_lawrence_wackett_tt
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST hidden event to get war with major
+country_event = {
+	id = mmr_ast.35
+	
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = AST
+		has_war = yes
+		any_other_country = {
+			is_major = yes
+			has_war_with = ROOT
+		}
+	}
+	
+	immediate = {
+		set_country_flag = azr_has_had_war_with_major_flag
+	}
+}
+#National Day of Mourning
+country_event = {
+	id = mmr_ast.36
+	title = mmr_ast.36.t
+	desc = mmr_ast.36.desc
+	picture = GFX_report_event_bul_muraviev_protest
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = { set_country_flag = azr_ast_national_day_of_mourning_flag }
+	
+	#
+	option = {
+		name = mmr_ast.36.a
+		trigger = { NOT = { has_completed_focus = AST_a_new_australia } }
+		custom_effect_tooltip = mmr_ast_36_tt
+		ai_chance = {
+			base = 1
+		}
+	}
+	#
+	option = {
+		name = mmr_ast.36.b
+		trigger = { has_completed_focus = AST_a_new_australia }
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST event upon owning London as Edward
+country_event = {
+	id = mmr_ast.37
+	title = mmr_ast.37.t
+	desc = mmr_ast.37.desc
+	picture = GFX_report_event_royal_parade
+
+	fire_only_once = yes
+	
+	immediate = { hidden_effect = { swap_ideas = { remove_idea = AZR_AST_british_empire_10_idea add_idea = AZR_AST_british_empire_10_london_idea } } }
+	
+	trigger = {
+		original_tag = AST
+		has_completed_focus = AST_claim_the_throne
+		owns_state = 126
+	}
+	
+	mean_time_to_happen = { days = 4 }
+	
+	#Move capital to London
+	option = {
+		name = mmr_ast.37.a
+		set_capital = {
+		  state = 126
+		  remember_old_capital = yes
+		}
+		ai_chance = {
+			base = 9
+		}
+	}
+	#Keep capital in Canberra
+	option = {
+		name = mmr_ast.37.b
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST vasey sick 1
+country_event = {
+	id = mmr_ast.381
+	title = mmr_ast.381.t
+	desc = mmr_ast.381.desc
+	picture = GFX_report_event_FIN_karelian_forest_guerillas
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = MMR_AST_alan_vasey_currently_sick_flag
+			add_trait = {
+				 character = AST_alan_vasey
+				 trait = sick
+			}
+		}
+	}
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	#Hope he recovers swiftly
+	option = {
+		name = mmr_ast.381.a
+		effect_tooltip = {
+			add_trait = {
+				 character = AST_alan_vasey
+				 trait = sick
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST vasey sick 2
+country_event = {
+	id = mmr_ast.382
+	title = mmr_ast.382.t
+	desc = mmr_ast.382.desc
+	picture = GFX_report_event_FIN_karelian_forest_guerillas
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = MMR_AST_alan_vasey_currently_sick_flag
+			add_trait = {
+				 character = AST_alan_vasey
+				 trait = sick
+			}
+		}
+	}
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	#Poor Man
+	option = {
+		name = mmr_ast.382.a
+		effect_tooltip = {
+			add_trait = {
+				 character = AST_alan_vasey
+				 trait = sick
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST vasey sick 3
+country_event = {
+	id = mmr_ast.383
+	title = mmr_ast.383.t
+	desc = mmr_ast.383.desc
+	picture = GFX_report_event_FIN_karelian_forest_guerillas
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = MMR_AST_alan_vasey_currently_sick_flag
+			add_trait = {
+				 character = AST_alan_vasey
+				 trait = sick
+			}
+		}
+	}
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	#Perhaps we should take him out of active duty.
+	option = {
+		name = mmr_ast.383.a
+		effect_tooltip = {
+			add_trait = {
+				 character = AST_alan_vasey
+				 trait = sick
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST vasey dies
+country_event = {
+	id = mmr_ast.384
+	title = mmr_ast.384.t
+	desc = mmr_ast.384.desc
+	picture = GFX_report_event_airplane_crash
+	
+	immediate = { hidden_effect = { retire_character = AST_alan_vasey } }
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	#A Tragedy.
+	option = {
+		name = mmr_ast.384.a
+		custom_effect_tooltip = AZR_retire_alan_vasey_tt
+		add_war_support = -0.01
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST Henry Wynter deemed unfit for duty
+country_event = {
+	id = mmr_ast.391
+	title = mmr_ast.391.t
+	desc = mmr_ast.391.desc
+	picture = GFX_report_event_airplane_crash
+	
+	immediate = { set_country_flag = AZR_AST_henry_wynter_unfit_flag }
+
+	fire_only_once = yes
+	
+	trigger = {
+		has_character = AST_henry_wynter
+		date > 1941.01.01
+		has_war = yes
+	}
+	
+	#he can still be useful behind the frontlines
+	option = {
+		name = mmr_ast.391.a
+		custom_effect_tooltip = available_military_high_command
+		show_ideas_tooltip = AST_henry_wynter
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST Henry Wynter retire
+country_event = {
+	id = mmr_ast.392
+	title = mmr_ast.392.t
+	desc = mmr_ast.392.desc
+	picture = GFX_report_event_airplane_crash
+	
+	immediate = { hidden_effect = { retire_character = AST_henry_wynter } }
+
+	fire_only_once = yes
+	
+	trigger = {
+		has_character = AST_henry_wynter
+		date > 1944.09.18
+		has_country_flag = AZR_AST_henry_wynter_unfit_flag
+	}
+	
+	#May have a well deserved rest
+	option = {
+		name = mmr_ast.392.a
+		custom_effect_tooltip = AZR_retire_henry_wynter_tt
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST Morotai Mutiny
+country_event = {
+	id = mmr_ast.40
+	title = mmr_ast.40.t
+	desc = mmr_ast.40.desc
+	picture = GFX_report_event_AZR_AST_morotai_mutiny
+	
+	immediate = { hidden_effect = { retire_character = AST_henry_wynter } }
+
+	fire_only_once = yes
+	
+	trigger = {
+		has_character = AST_clive_caldwell
+		date > 1945.04.01
+		has_war = yes
+		is_in_faction_with = ENG
+		is_subject_of = ENG
+		668 = {
+			OWNER = {
+				has_war = yes
+				OR = {
+					gives_military_access_to = ROOT
+					is_in_faction_with = ROOT
+					is_subject_of = ROOT
+					tag = ROOT
+					has_war_with = ROOT
+				}
+			}
+			CONTROLLER = {
+				has_war = yes
+				OR = {
+					gives_military_access_to = ROOT
+					is_in_faction_with = ROOT
+					is_subject_of = ROOT
+					tag = ROOT
+				}
+			}
+		}
+	}
+	
+	#This insuborination cannot be tolerated.
+	option = {
+		name = mmr_ast.40.a
+		custom_effect_tooltip = AZR_retire_clive_caldwell_tt
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST Organize Popular Front
+country_event = {
+	id = mmr_ast.41
+	title = mmr_ast.41.t
+	desc = mmr_ast.41.desc
+	picture = GFX_report_event_SOV_demands
+
+	fire_only_once = yes
+	
+	trigger = {
+		has_completed_focus = AST_abandon_the_westminster_system
+		NOT = {
+			OR = {
+				focus_progress = {
+				  focus = AST_support_the_centre_party
+				  progress > 0
+				}
+				focus_progress = {
+				  focus = AST_empower_the_workers
+				  progress > 0
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 15 }
+	
+	#It is time form an Australian Popular Front
+	option = {
+		name = mmr_ast.41.a
+		add_ideas = AZR_AST_popular_front_idea
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = AZR_AST_AI_RANDOM_FASCIST
+					has_game_rule = {
+						rule = AST_ai_behavior
+						option = FASCIST
+					}
+				}
+			}
+		}
+	}
+	#The communists offer a poisoned chalice
+	option = {
+		name = mmr_ast.41.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_flag = AZR_AST_AI_RANDOM_COMMUNIST
+					has_game_rule = {
+						rule = AST_ai_behavior
+						option = COMMUNIST
+					}
+				}
+			}
+		}
+	}
+}
+#AST NZL does communist propaganda
+country_event = {
+	id = mmr_ast.42
+	title = mmr_ast.42.t
+	desc = mmr_ast.42.desc
+	picture = GFX_report_event_communists_in_riga
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_government = communism }
+	}
+	
+	#We must address this at once
+	option = {
+		name = mmr_ast.42.a
+		custom_effect_tooltip = mmr_ast_42_tt #decisions avail to counter NZL influence
+		set_country_flag = AZR_NZL_prepare_ast_for_lib_AST_protect_from_NZL_flag
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST NZL inflitrates army (ai shouldnt get)
+country_event = {
+	id = mmr_ast.421
+	title = mmr_ast.421.t
+	desc = mmr_ast.421.desc
+	picture = GFX_report_event_canadian_soldiers
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_government = communism }
+	}
+	
+	#Purge Army
+	option = {
+		name = mmr_ast.421.a
+		add_timed_idea = {
+			idea = MMR_AST_communists_purged_army_idea
+			days = 180
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = -0.025
+		}
+		NZL = { country_event = { id = mmr_ast.423 } }
+		IF = {
+			limit = { NZL = { has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1_flag } }
+			NZL = { clr_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1_flag }
+		}
+		IF = {
+			limit = { NZL = { has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_2_flag } }
+			NZL = { clr_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_2_flag }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	#Root out infiltration
+	option = {
+		name = mmr_ast.421.b
+		trigger = { has_intelligence_agency = yes }
+		add_political_power = -50
+		add_command_power = -25
+		NZL = { country_event = { id = mmr_ast.425 } }
+		IF = {
+			limit = { NZL = { has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1_flag } }
+			NZL = { clr_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_1_flag }
+		}
+		IF = {
+			limit = { NZL = { has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_2_flag } }
+			NZL = { clr_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_military_d_2_flag }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	#Not an issue
+	option = {
+		name = mmr_ast.421.c
+		set_country_flag = AST_ignored_NZL_sabotage_army
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#AST NZL inflitrates navy (ai shouldnt get)
+country_event = {
+	id = mmr_ast.422
+	title = mmr_ast.422.t
+	desc = mmr_ast.422.desc
+	picture = GFX_report_event_usa_british_sailors_destroyers
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_government = communism }
+	}
+	
+	#Purge Navy
+	option = {
+		name = mmr_ast.422.a
+		add_timed_idea = {
+			idea = MMR_AST_communists_purged_navy_idea
+			days = 180
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = -0.025
+		}
+		NZL = { country_event = { id = mmr_ast.424 } }
+		IF = {
+			limit = { NZL = { has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_navy_d_1_flag } }
+			NZL = { clr_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_navy_d_1_flag }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	#Root out infiltration
+	option = {
+		name = mmr_ast.422.b
+		trigger = { has_intelligence_agency = yes }
+		add_political_power = -25
+		add_command_power = -10
+		NZL = { country_event = { id = mmr_ast.426 } }
+		IF = {
+			limit = { NZL = { has_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_navy_d_1_flag } }
+			NZL = { clr_country_flag = AZR_NZL_prepare_ast_for_lib_sabotage_ast_navy_d_1_flag }
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+	#Not an issue
+	option = {
+		name = mmr_ast.422.c
+		set_country_flag = AST_ignored_NZL_sabotage_navy
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL AST purges army
+country_event = {
+	id = mmr_ast.423
+	title = mmr_ast.423.t
+	desc = mmr_ast.423.desc
+	picture = GFX_report_event_NOR_norway_exile_troops
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_government = communism
+	}
+	
+	#We will have to work harder and faster to liberate Australia
+	option = {
+		name = mmr_ast.423.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL AST purges navy
+country_event = {
+	id = mmr_ast.424
+	title = mmr_ast.424.t
+	desc = mmr_ast.424.desc
+	picture = GFX_report_event_portugal_navy_mutiny_prisoners
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_government = communism
+	}
+	
+	#We will have to work harder and faster to liberate Australia
+	option = {
+		name = mmr_ast.424.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL AST breaks up communist network in army
+country_event = {
+	id = mmr_ast.425
+	title = mmr_ast.425.t
+	desc = mmr_ast.425.desc
+	picture = GFX_report_event_soviet_purge_trial
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_government = communism
+	}
+	
+	#We will have to work harder and faster to liberate Australia
+	option = {
+		name = mmr_ast.425.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#NZL AST breaks up communist network in navy
+country_event = {
+	id = mmr_ast.426
+	title = mmr_ast.426.t
+	desc = mmr_ast.426.desc
+	picture = GFX_report_event_soviet_purge_trial
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_government = communism
+	}
+	
+	#We will have to work harder and faster to liberate Australia
+	option = {
+		name = mmr_ast.426.a
+		ai_chance = {
+			base = 1
+		}
+	}
+}
+#Invite NZ to Aussie Alliance
+country_event = {
+	id = mmr_ast.43
+	title = mmr_ast.43.t
+	desc = mmr_ast.43.desc
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+	
+	#Accept
+	option = {
+		name = mmr_ast.43.a
+		FROM = { add_to_faction = ROOT }
+		hidden_effect = { FROM = { country_event = { id = mmr_ast.431 days = 1 } } }
+		ai_chance = {
+			base = 99
+			modifier = {
+				add = -50
+				has_opinion = { target = FROM value < -50 }
+			}
+		}
+	}
+	#Reject
+	option = {
+		name = mmr_ast.43.b
+		FROM = { country_event = { id = mmr_ast.432 days = 1 } }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				FROM = { is_ai = no }
+			}
+			modifier = {
+				add = 1
+				has_opinion = { target = FROM value < 0 }
+			}
+		}
+	}
+}
+#Invite NZ to Aussie Alliance (Yes)
+country_event = {
+	id = mmr_ast.431
+	title = mmr_ast.431.t
+	desc = mmr_ast.431.desc
+	picture = GFX_report_event_generic_handshake
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.431.a
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+#Invite NZ to Aussie Alliance (No)
+country_event = {
+	id = mmr_ast.432
+	title = mmr_ast.432.t
+	desc = mmr_ast.432.desc
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	
+	#
+	option = {
+		name = mmr_ast.432.a
+	}
+}
+#Ellington Report
+country_event = {
+	id = mmr_ast.44
+	title = mmr_ast.44.t
+	desc = mmr_ast.44.desc
+	picture = GFX_report_event_SOV_purge_aircraft_1
+	
+	trigger = {
+		date > 1939.01.01
+		is_in_faction_with = ENG
+		has_completed_focus = AST_support_the_policy_of_appeasement
+	}
+	
+	mean_time_to_happen = { days = 7 }
+	
+	#Dismiss Richard Williams
+	option = {
+		name = mmr_ast.44.a
+		retire_character = AST_richard_williams
+		ai_chance = {
+			base = 1
+		}
+	}
+	#He is too valuable to lose
+	option = {
+		name = mmr_ast.44.b
+		add_political_power = -100
+		add_stability = -0.01
+		ai_chance = {
+			base = 0
+		}
+	}
+}

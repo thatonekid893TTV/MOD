@@ -1,0 +1,6449 @@
+﻿focus_tree = {
+	id = kingdomegypt_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = EGY
+		}
+	}
+	
+	default = no
+	
+	continuous_focus_position = { x = 175 y = 2600 }
+
+	focus = {
+		id = the_fate_of_our_nation
+		icon = GFX_focus_generic_national_security
+		x = 5
+		y = 5
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			ENG = {
+            puppet = EGY
+        	}
+			add_ideas = the_fate_of_our_nation
+			EGY = { add_opinion_modifier = { 
+			target = ENG modifier = large_decrease } 
+			}
+		}
+			ai_will_do = {
+			}
+		}
+	
+	focus = {
+		id = in_the_footsteps_of_giants
+		icon = GFX_focus_eng_the_sun_never_sets
+		x = 4
+		y = 1
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = abandon_westminster }
+
+		available = {
+			Not = { is_in_faction_with = USA}
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_fate_of_our_nation }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			ENG = { add_opinion_modifier = { 
+			target = EGY modifier = medium_increase } 
+			add_stability = 0.05
+			add_war_support = -0.05
+		}
+	}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = abandon_westminster
+		icon = GFX_focus_ger_break_anglo_french_colonial_hegemony
+		x = -4
+		y = 1
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = in_the_footsteps_of_giants }
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_fate_of_our_nation }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = -0.05
+			add_war_support = 0.05
+			ENG = { add_opinion_modifier = { 
+			target = EGY modifier = medium_decrease } 
+			set_autonomy = {
+    		target = EGY
+   			autonomous_state = autonomy_free
+    		end_wars = yes
+		}
+	}
+			add_timed_idea = { idea = abandon_westminster  days = 365 }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = inheriting_the_great_sun
+		icon = GFX_focus_TUR_the_sun_language_theory
+		x = 8
+		y = 8
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_jewel_of_the_empire }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = inheriting_the_great_sun
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = the_cradle_of_civilization
+		icon = GFX_focus_SOV_patriarch_of_all_russia
+		x = 8
+		y = 9
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = inheriting_the_great_sun }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = the_cradle_of_civilization
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = the_jewel_of_the_empire
+		icon = GFX_focus_ETH_the-italo_ethiopian_empire
+		x = 8
+		y = 7
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = in_the_footsteps_of_giants }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = jewel_of_the_empire
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = masters_of_the_mediterranean
+		icon = GFX_focus_generic_mediterranean_sea_focus
+		x = 10
+		y = 7
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = in_the_footsteps_of_giants }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_state = {
+            limit = {
+                is_coastal = yes  # Ensures the state is coastal
+            }
+            add_building_construction = {
+                type = dockyard
+                level = 1
+                instant_build = yes
+            }
+        }
+			random_owned_state = {
+            limit = {
+                is_coastal = yes  # Ensures the state is coastal
+            }
+            add_building_construction = {
+                type = dockyard
+                level = 1
+                instant_build = yes
+            }
+        }
+		add_equipment_to_stockpile = {
+            type = convoy
+            amount = 15  # Number of x to add
+        }
+	}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = british_sea_dominance
+		icon = GFX_focus_eng_imperial_federation
+		x = 10
+		y = 8
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = masters_of_the_mediterranean }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = british_sea_dominance
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = ships_from_beyond_the_horizon
+		icon = GFX_focus_eng_chiefs_of_staff_committee
+		x = 10
+		y = 9
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = british_sea_dominance }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = ships_from_beyond_the_horizon
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = a_new_dawn
+		icon = GFX_focus_ITA_new_horizons
+		x = 9
+		y = 10
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = the_cradle_of_civilization }
+		prerequisite = { focus = ships_from_beyond_the_horizon }
+		
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = a_new_dawn
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = the_twenty_sixth_constitution
+		icon = GFX_focus_POL_complete_april_constitution
+		x = 9
+		y = 11
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = a_new_dawn }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = the_twenty_sixth_constitution
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = a_new_political_cabinet
+		icon = GFX_focus_generic_improve_the_administration
+		x = 9
+		y = 15
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = the_twenty_sixth_constitution }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			ENG = { add_opinion_modifier = { 
+			target = EGY modifier = small_increase } 
+			}
+			FRA = { add_opinion_modifier = { 
+			target = EGY modifier = small_increase } 
+			}
+			USA = { add_opinion_modifier = { 
+			target = EGY modifier = small_increase } 
+			}
+			GER = { add_opinion_modifier = { 
+			target = EGY modifier = small_increase } 
+			}
+			ITA = { add_opinion_modifier = { 
+			target = EGY modifier = small_increase } 
+			}
+			SOV = { add_opinion_modifier = { 
+			target = EGY modifier = small_increase } 
+			}
+			add_political_power = 150
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = an_iron_constitution
+		icon = GFX_focus_SWI_helvetic_junta
+		x = 11
+		y = 12
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = the_twenty_sixth_constitution }
+		mutually_exclusive = { focus = liberal_democracy_prevails }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			ENG = { add_opinion_modifier = { 
+			target = EGY modifier = medium_decrease } 
+			}
+			add_ideas = an_iron_constitution
+			add_country_leader_trait = staunch_monarchist
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+		focus = {
+		id = establish_a_royal_dictatorship
+		icon = GFX_focus_rom_royal_dictatorship
+		x = 10
+		y = 13
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = an_iron_constitution }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			set_politics = {
+            ruling_party = neutrality
+        }
+		add_political_power = -300
+	}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = conscripting_the_royal_guard
+		icon = GFX_focus_POL_belarus_army
+		x = 12
+		y = 13
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = an_iron_constitution }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = the_kings_guard
+			add_manpower = 35000
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = moving_into_the_royal_palace
+		icon = GFX_focus_generic_royal_wedding
+		x = 12
+		y = 14
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = conscripting_the_royal_guard }
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = royal_palace
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = the_empire_stands
+		icon = GFX_focus_ETH_restore_the_empire_of_axum
+		x = 11
+		y = 15
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = moving_into_the_royal_palace }
+		prerequisite = { focus = inaugurate_the_king }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = the_empire_stands
+			remove_ideas = the_fate_of_our_nation
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = inaugurate_the_king
+		icon = GFX_focus_hun_elect_a_king
+		x = 10
+		y = 14
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = establish_a_royal_dictatorship }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_country_leader_trait = constitutional_monarch
+			add_country_leader_trait = legitimate_heir
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = liberal_democracy_prevails
+		icon = GFX_focus_generic_strike_at_democracy1
+		x = 7
+		y = 12
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = the_twenty_sixth_constitution }
+		mutually_exclusive = { focus = an_iron_constitution }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = liberal_democracy_prevails
+			add_country_leader_trait = liberal_democratic_paragon
+	}
+
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = free_elections
+		icon = GFX_focus_hol_the_foundations_of_defense
+		x = 8
+		y = 13
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = liberal_democracy_prevails}
+		mutually_exclusive = { focus = womens_rights }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			set_politics = {
+            ruling_party = democratic
+            election_frequency = 50 
+            elections_allowed = yes
+			}
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = womens_rights
+		icon = GFX_focus_BRA_good_neighbor_policy
+		x = 6
+		y = 13
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = liberal_democracy_prevails }
+		mutually_exclusive = { focus = free_elections }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = 0.05
+			add_ideas = womens_rights
+			add_manpower = 15000
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = an_egyptian_president
+		icon = GFX_focus_ETH_negusa-nagast
+		x = 8
+		y = 14
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = free_elections }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = 0.05
+			create_country_leader = {
+            name = "Mustafa el-Nahhas"
+            desc = "Mustafa el-Nahhas was a statesman who, as the leader of the nationalist Wafd party, was a dominant figure in Egyptian politics until the revolution of 1952."
+            picture = "gfx/leaders/EGY/Portrait_Mustafa_el_Nahhas.dds"
+            expire = "1965.1.1"  # Optional: date when this leader should no longer be in power
+            ideology = conservatism
+			}
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = a_british_prime_minister
+		icon = GFX_focus_eng_motion_of_no_confidence
+		x = 6
+		y = 14
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = womens_rights }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = -0.1
+			create_country_leader = {
+            name = "Sir Oliver Lyttelton"
+            desc = "Oliver Lyttelton was a British businessman from the Lyttelton family who was brought into government during the Second World War, holding a number of ministerial posts."
+            picture = "gfx/leaders/EGY/Portrait_Sir_Oliver_Lyttelton.dds"
+            expire = "1965.1.1"  # Optional: date when this leader should no longer be in power
+            ideology = liberalism
+			ENG = { add_opinion_modifier = { 
+			target = EGY modifier = medium_increase } 
+			}
+        }
+	}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = a_new_future
+		icon = GFX_focus_TUR_reform_the_balkan_pact
+		x = 7
+		y = 15
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = a_british_prime_minister focus = an_egyptian_president }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			if = {
+            limit = {
+                has_completed_focus = a_british_prime_minister
+            }
+			# Rewards if the previous focus has been completed
+            ENG = {  # Assuming ENG is the tag for the United Kingdom
+            annex_country = {
+                target = EGY  # ROOT refers to the country that completes the focus
+                transfer_troops = yes  # Optionally transfers troops to the annexing country
+            }
+        }
+			else = {
+            # Rewards if the previous focus has not been completed
+            add_ideas = a_new_future
+			remove_ideas = the_fate_of_our_nation
+        }
+	}
+}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = claiming_our_lands
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		x = 9
+		y = 16
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = a_new_future focus = the_empire_stands }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = a_call_for_war
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = following_the_nile
+		icon = GFX_focus_ETH_organization_of_african_unity
+		x = 9
+		y = 17
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = claiming_our_lands }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 551
+       		add_state_claim = 883
+        	add_state_claim = 886
+			add_state_claim = 549
+       		add_state_claim = 887
+        	add_state_claim = 767
+			add_state_claim = 885
+        	add_state_claim = 884
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = dominion_over_the_levant
+		icon = GFX_goal_generic_major_war
+		x = 9
+		y = 18
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = following_the_nile }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 454
+       		add_state_claim = 455
+        	add_state_claim = 554
+			add_state_claim = 553
+       		add_state_claim = 680
+        	add_state_claim = 799
+			add_state_claim = 344
+        	add_state_claim = 350
+			add_state_claim = 183
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = capturing_the_red_sea
+		icon = GFX_focus_ETH_an_arabic_base
+		x = 9
+		y = 19
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = dominion_over_the_levant }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 855
+       		add_state_claim = 679
+        	add_state_claim = 856
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = kick_out_the_italians
+		icon = GFX_focus_ITA_strengthen_ascari_corps
+		x = 8
+		y = 20
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = capturing_the_red_sea }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 273
+       		add_state_claim = 663
+        	add_state_claim = 451
+			add_state_claim = 450
+       		add_state_claim = 662
+        	add_state_claim = 661
+			add_state_claim = 448
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = ethiopia_is_ours
+		icon = GFX_focus_ETH_compensation
+		x = 10
+		y = 20
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = capturing_the_red_sea }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 550
+       		add_state_claim = 842
+        	add_state_claim = 841
+			add_state_claim = 843
+       		add_state_claim = 908
+        	add_state_claim = 268
+			add_state_claim = 840
+        	add_state_claim = 839
+			add_state_claim = 838
+			add_state_claim = 271
+        	add_state_claim = 837
+			add_state_claim = 836
+        	add_state_claim = 835
+			add_state_claim = 269
+			add_state_claim = 559
+			add_state_claim = 906
+			add_state_claim = 844
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = our_old_enemies
+		icon = GFX_focus_GRE_bedrock_of_balkan_stability
+		x = 8
+		y = 21
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = kick_out_the_italians }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 182
+       		add_state_claim = 164
+        	add_state_claim = 187
+			add_state_claim = 47
+       		add_state_claim = 186
+        	add_state_claim = 185
+			add_state_claim = 731
+			add_state_claim = 184
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = claiming_lake_victoria
+		icon = GFX_focus_generic_land_reclamation
+		x = 10
+		y = 21
+
+		available = {
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = ethiopia_is_ours }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 903
+       		add_state_claim = 547
+        	add_state_claim = 905
+			add_state_claim = 904
+       		add_state_claim = 548
+        	add_state_claim = 546
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = egypt_reigns_supreme
+		icon = GFX_focus_ETH_continuous_strengthen_the_black_lions
+		x = 9
+		y = 22
+
+		available = {
+			NOT = { has_completed_focus = a_british_prime_minister }
+		}
+
+		bypass = {	
+		}
+
+		cost = 10
+		prerequisite = { focus = our_old_enemies }
+		prerequisite = { focus = claiming_lake_victoria }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = egypt_reigns_supreme
+			add_stability = 0.2
+			add_war_support = 0.15
+		}
+		ai_will_do = {
+			# AI behavior rules
+		}
+	}
+
+	focus = {
+		id = our_friends_in_italy
+		icon = GFX_focus_befriend_italy
+		x = -7
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = follow_the_german_path }
+		mutually_exclusive = { focus = reach_out_to_the_soviets }
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = abandon_westminster }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_opinion_modifier = { target = ITA modifier = large_increase }
+			create_faction = "Mediterranean Sphere"
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = reach_out_to_the_soviets
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+		x = -1
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = follow_the_german_path }
+		mutually_exclusive = { focus = our_friends_in_italy }
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = abandon_westminster }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_opinion_modifier = { target = SOV modifier = large_increase }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = revolt_against_the_capitalists
+		icon = GFX_focus_ICE_embrace_the_workers_revolution
+		x = -1
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = reach_out_to_the_soviets }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = -0.15
+			remove_ideas = the_fate_of_our_nation
+			add_ideas = revolt_against_the_capitalists
+			set_politics = {
+            ruling_party = communism
+            election_frequency = 0  # Sets the frequency of elections to 'never'
+            elections_allowed = no
+        }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = organizing_with_the_unions
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		x = -1
+		y = 4
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = revolt_against_the_capitalists }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = organizing_with_the_unions
+			add_stability = 0.05
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = the_great_strike
+		icon = GFX_focus_SOV_international_union_of_soviet_republics
+		x = -1
+		y = 5
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = organizing_with_the_unions }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = the_great_strike
+			add_war_support = 0.05
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = seizing_the_factories
+		icon = GFX_focus_jap_strike_south
+		x = -1
+		y = 6
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_great_strike }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = 0.05
+			add_offsite_building = { type = industrial_complex level = 3 }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = seizing_power
+		icon = GFX_focus_NOR_a_new_norway_Trotsky_communism
+		x = -1
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = seizing_the_factories }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			add_manpower = 15000
+			add_country_leader_trait = militant_socialist
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = kicking_out_the_british
+		icon = GFX_focus_ICE_break_with_the_crown
+		x = -1
+		y = 8
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = seizing_power }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			ENG = { add_opinion_modifier = { 
+			target = EGY modifier = large_decrease } 
+			add_timed_idea = {
+    			idea = anti_british_sentiment
+    			days = 365
+			}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = our_greatest_ally
+		icon = GFX_focus_SOV_father_of_nations
+		x = -1
+		y = 9
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = kicking_out_the_british }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			SOV = {
+            add_to_faction = EGY
+        }
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1 #type of equipment, from file
+			amount = 7500 #amount
+			producer = SOV #Name of country that "built" the equipment
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1 #type of equipment, from file
+			amount = 5000 #amount
+			producer = SOV #Name of country that "built" the equipment
+		}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = aiding_the_chinese
+		icon = GFX_focus_chi_one_china_policy
+		x = 0
+		y = 10
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = our_greatest_ally }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_opinion_modifier = { target = PRC modifier = large_increase }
+			SOV = {
+            add_to_faction = PRC
+        }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = workers_of_the_world
+		icon = GFX_focus_por_workers_of_iberia
+		x = -2
+		y = 10
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = our_greatest_ally }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = workers_of_the_world
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = liberating_the_levant
+		icon = GFX_focus_hol_liberation
+		x = -2
+		y = 11
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = workers_of_the_world }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 454
+       		add_state_claim = 455
+        	add_state_claim = 554
+			add_state_claim = 553
+       		add_state_claim = 680
+        	add_state_claim = 799
+			add_state_claim = 344
+        	add_state_claim = 350
+			add_state_claim = 183
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = an_end_to_oppression
+		icon = GFX_focus_ARG_women_in_industry
+		x = 0
+		y = 11
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = aiding_the_chinese }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 454
+       		add_state_claim = 455
+        	add_state_claim = 554
+			add_state_claim = 553
+       		add_state_claim = 680
+        	add_state_claim = 799
+			add_state_claim = 344
+        	add_state_claim = 350
+			add_state_claim = 183
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = controlling_the_nile
+		icon = GFX_focus_ETH_african_wildfire
+		x = -2
+		y = 12
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = liberating_the_levant }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 551
+       		add_state_claim = 883
+        	add_state_claim = 886
+			add_state_claim = 549
+       		add_state_claim = 887
+        	add_state_claim = 767
+			add_state_claim = 885
+        	add_state_claim = 884
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = set_libya_free
+		icon = GFX_focus_focus_fra_liberte_egalite_solidarite
+		x = 0
+		y = 12
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = an_end_to_oppression }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 273
+       		add_state_claim = 663
+        	add_state_claim = 451
+			add_state_claim = 450
+       		add_state_claim = 662
+        	add_state_claim = 661
+			add_state_claim = 448
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = follow_the_german_path
+		icon = GFX_focus_chi_mission_to_germany
+		x = -4
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = our_friends_in_italy }
+		mutually_exclusive = { focus = reach_out_to_the_soviets }
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = abandon_westminster }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_opinion_modifier = { target = GER modifier = large_increase }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = meeting_with_the_reich
+		icon = GFX_focus_ger_reichskommisariats
+		x = -4
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = follow_the_german_path }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			set_politics = {
+            ruling_party = fascism
+            election_frequency = 0  # Sets the frequency of elections to 'never'
+            elections_allowed = no
+			}
+			create_country_leader = {
+            name = "Hassan al-Banna"
+            desc = "Hassan Ahmed Abdel Rahman Muhammed al-Banna, known as Hassan al-Banna, was an Egyptian schoolteacher and imam, best known for founding the Muslim Brotherhood, one of the largest and most influential Islamic revivalist organizations."
+            picture = "gfx/leaders/EGY/Portrait_Hassan_al_Banna.dds.dds"
+            expire = "1965.1.1"  # Optional: date when this leader should no longer be in power
+            ideology = nazism
+        }
+		GER = {
+            add_to_faction = EGY
+        }
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1 #type of equipment, from file
+			amount = 2500 #amount
+			producer = GER #Name of country that "built" the equipment
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1 #type of equipment, from file
+			amount = 1000 #amount
+			producer = GER #Name of country that "built" the equipment
+		}
+		remove_ideas = the_fate_of_our_nation
+	}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_new_socialism
+		icon = GFX_focus_SWE_socialist_reforms
+		x = -4
+		y = 4
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = meeting_with_the_reich }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = a_new_socialism
+			add_country_leader_trait = patriotic_socialist
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = egyptian_nationalism
+		icon = GFX_focus_generic_full_social_mobilization
+		x = -4
+		y = 5
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_new_socialism }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = egyptian_nationalism
+			add_country_leader_trait = nationalist_symbol
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_constitution_of_steel
+		icon = GFX_focus_LAT_suspend_constitution_of_latvia
+		x = -4
+		y = 6
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = egyptian_nationalism }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = a_constitution_of_steel
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_nation_born_of_fire
+		icon = GFX_focus_GRE_reviving_the_double_headed_eagle
+		x = -4
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_constitution_of_steel }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = a_nation_born_of_fire
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = bearers_of_history
+		icon = GFX_focus_generic_diplomatic_treaty
+		x = -4
+		y = 8
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_nation_born_of_fire }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = bearers_of_history
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = heir_to_rome
+		icon = GFX_focus_ITA_mare_nostrum
+		x = -4
+		y = 9
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = bearers_of_history }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			create_wargoal = { type = annex_everything target = FRA }
+			create_wargoal = { type = annex_everything target = ENG }
+			create_wargoal = { type = annex_everything target = TUR }
+			create_wargoal = { type = annex_everything target = GRE }
+			create_wargoal = { type = annex_everything target = ITA }
+			create_wargoal = { type = annex_everything target = AUS }
+			create_wargoal = { type = annex_everything target = SWI }
+			create_wargoal = { type = annex_everything target = SPA }
+			create_wargoal = { type = annex_everything target = POR }
+			create_wargoal = { type = annex_everything target = LUX }
+			create_wargoal = { type = annex_everything target = HOL }
+			create_wargoal = { type = annex_everything target = BEL }
+			create_wargoal = { type = annex_everything target = GER }
+			create_wargoal = { type = annex_everything target = ALB }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = studying_fascist_doctrine
+		icon = GFX_focus_ITA_albanian_fascist_militia
+		x = -7
+		y = 4
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = our_friends_in_italy }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			set_politics = {
+            ruling_party = fascism
+            election_frequency = 0  # Sets the frequency of elections to 'never'
+            elections_allowed = no
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = rally_the_people
+		icon = GFX_focus_generic_fascist_troops
+		x = -7
+		y = 6
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = studying_fascist_doctrine }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = rally_the_people
+			set_autonomy = {
+    		target = EGY
+   			autonomous_state = autonomy_free
+    		end_wars = yes
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = form_ranks
+		icon = GFX_focus_ITA_blackshirts
+		x = -8
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = our_friends_in_italy }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = form_ranks
+			add_manpower = 40000
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = reach_out_to_the_duce
+		icon = GFX_focus_ITA_to_live_as_a_lion
+		x = -6
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = our_friends_in_italy }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			EGY = {
+            add_to_faction = ITA
+       	 }
+		 
+
+	}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = italian_supplies
+		icon = GFX_focus_ITA_grande_rivolta_rurale
+		x = -6
+		y = 5
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = reach_out_to_the_duce }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_war_support = 0.05
+			add_equipment_to_stockpile = {
+			type = infantry_equipment_1 #type of equipment, from file
+			amount = 1000 #amount
+			producer = ITA #Name of country that "built" the equipment
+			}
+			add_equipment_to_stockpile = {
+			type = support_equipment_1 #type of equipment, from file
+			amount = 1500 #amount
+			producer = ITA #Name of country that "built" the equipment
+		}
+		add_equipment_to_stockpile = {
+			type = motorized_equipment #type of equipment, from file
+			amount = 2500 #amount
+			producer = ITA #Name of country that "built" the equipment
+		}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = organize_the_unions
+		icon = GFX_focus_FIN_finnish_federation_of_trade_unions
+		x = -8
+		y = 5
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = form_ranks }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = organize_the_unions
+			add_country_leader_trait = devoted_corporatist
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_nationalist_constitution
+		icon = GFX_focus_POL_complete_april_constitution
+		x = -6
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = rally_the_people }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = a_nationalist_constitution
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = our_supreme_leader
+		icon = GFX_focus_spa_strengthen_the_supreme_reality_of_spain
+		x = -6
+		y = 9
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_nationalist_constitution }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_country_leader_trait = mussolini_minister_of_foreign_affairs
+			add_country_leader_trait = mussolini_minister_of_justice
+			add_country_leader_trait = mussolini_minister_of_education
+			add_country_leader_trait = mussolini_minister_of_corporations
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_nation_in_arms
+		icon = GFX_focus_ITA_generic_fascist_workers
+		x = -6
+		y = 11
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = our_supreme_leader }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_manpower = 55000
+			add_ideas = a_nation_in_arms
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = the_peoples_spirit
+		icon = GFX_focus_CHL_promote_pan_hispanic_rhetoric
+		x = -6
+		y = 13
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_nation_in_arms }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = the_peoples_spirit
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = one_nation_one_people
+		icon = GFX_goal_generic_national_unity
+		x = -8
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = rally_the_people }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = one_nation_one_people
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_hold_on_the_red_sea
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		x = -8
+		y = 8
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = one_nation_one_people }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 855
+       		add_state_claim = 679
+        	add_state_claim = 856
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = sudan_is_ours
+		icon = GFX_goal_demand_sudetenland
+		x = -8
+		y = 9
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_hold_on_the_red_sea }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 551
+       		add_state_claim = 883
+        	add_state_claim = 886
+			add_state_claim = 549
+       		add_state_claim = 887
+        	add_state_claim = 767
+			add_state_claim = 885
+        	add_state_claim = 884
+		}
+			ai_will_do = {
+			}
+		}
+
+	focus = {
+		id = a_tight_grip
+		icon = GFX_focus_ARG_revive_the_colonial_plan
+		x = -8
+		y = 10
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = sudan_is_ours }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 454
+       		add_state_claim = 455
+        	add_state_claim = 554
+			add_state_claim = 553
+       		add_state_claim = 680
+        	add_state_claim = 799
+			add_state_claim = 344
+        	add_state_claim = 350
+			add_state_claim = 183
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = claim_ethiopia
+		icon = GFX_focus_ETH_consolidate_east_africa
+		x = -8
+		y = 11
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_tight_grip }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 550
+       		add_state_claim = 842
+        	add_state_claim = 841
+			add_state_claim = 843
+       		add_state_claim = 908
+        	add_state_claim = 268
+			add_state_claim = 840
+        	add_state_claim = 839
+			add_state_claim = 838
+			add_state_claim = 271
+        	add_state_claim = 837
+			add_state_claim = 836
+        	add_state_claim = 835
+			add_state_claim = 269
+			add_state_claim = 559
+			add_state_claim = 906
+			add_state_claim = 844
+			add_country_leader_trait = emperor_of_ethiopia
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = libya_is_ours
+		icon = GFX_focus_generic_develop_libya
+		x = -8
+		y = 12
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = claim_ethiopia }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 273
+       		add_state_claim = 663
+        	add_state_claim = 451
+			add_state_claim = 450
+       		add_state_claim = 662
+        	add_state_claim = 661
+			add_state_claim = 448
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_claim_on_the_mediterranean
+		icon = GFX_focus_generic_mediterranean_sea_focus
+		x = -8
+		y = 13
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = libya_is_ours }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_state_claim = 182
+       		add_state_claim = 164
+        	add_state_claim = 187
+			add_state_claim = 47
+       		add_state_claim = 186
+        	add_state_claim = 185
+			add_state_claim = 731
+			add_state_claim = 184
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = center_of_army_affairs
+		icon = GFX_focus_generic_improve_the_administration
+		x = 14
+		y = 0
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		#prerequisite = { focus = libya_is_ours }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = center_of_army_affairs
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = infantry_equipment_production
+		icon = GFX_focus_generic_commonwealth_build_infantry
+		x = 14
+		y = 1
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = center_of_army_affairs }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.30  
+    		uses = 2     
+    		category = infantry_tech
+			}
+			add_equipment_to_stockpile = {
+   			type = infantry_equipment 
+    		amount = 1250               
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = artillery_production
+		icon = GFX_goal_generic_army_artillery
+		x = 10
+		y = 1
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = center_of_army_affairs }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.30  
+    		uses = 2     
+    		category = artillery
+			}
+			add_equipment_to_stockpile = {
+   			type = artillery_equipment 
+    		amount = 750               
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = truck_manufacturing
+		icon = GFX_focus_generic_truck
+		x = 18
+		y = 1
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = center_of_army_affairs }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.30  
+    		uses = 2     
+    		category = motorized_equipment
+			}
+			add_equipment_to_stockpile = {
+   			type = motorized_equipment
+    		amount = 500               
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = factory_subsidies
+		icon = GFX_focus_generic_stockpile_fuel
+		x = 17
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = truck_manufacturing }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_controlled_state = {
+					add_resource = {
+					type = oil
+					amount = 8
+					state = 907
+				}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = government_grants
+		icon = GFX_focus_generic_self_management
+		x = 19
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = truck_manufacturing }
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			907 {
+			add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = state_sponsored_factories
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 17
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = factory_subsidies }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		completion_reward = {
+			447 {
+			add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = rubber_manufacturing
+		icon = GFX_focus_generic_rubber
+		x = 19
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+		cost = 10
+		prerequisite = { focus = government_grants }
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_controlled_state = {
+					add_resource = {
+					type = rubber
+					amount = 8
+					state = 907
+				}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = standard_issue_riflery
+		icon = GFX_focus_focus_fra_maquis
+		x = 15
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = infantry_equipment_production }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+   			type = infantry_equipment 
+    		amount = 1500               
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = mass_production
+		icon = GFX_goal_generic_production2
+		x = 13
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = infantry_equipment_production }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+   			type = infantry_equipment 
+    		amount = 2500               
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = funding_the_factories
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 11
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = artillery_production }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			456 {
+		add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+                type = arms_factory
+                level = 3
+                instant_build = yes
+            }
+			add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = acquiring_heavy_metals
+		icon = GFX_focus_generic_annex_country
+		x = 11
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = funding_the_factories }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_controlled_state = {
+					add_resource = {
+					type = steel
+					amount = 12
+					state = 907
+				}
+			}
+			random_owned_controlled_state = {
+					add_resource = {
+					type = tungsten
+					amount = 12
+					state = 907
+				}
+			}
+			random_owned_controlled_state = {
+					add_resource = {
+					type = chromium
+					amount = 12
+					state = 907
+				}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = molding_the_steel
+		icon = GFX_focus_generic_steel
+		x = 9
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = artillery_production }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			456 {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+					add_resource = {
+					type = steel
+					amount = 8
+					state = 907
+			}
+		}
+			}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = design_manufacturing
+		icon = GFX_focus_generic_treaty
+		x = 9
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = molding_the_steel }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.50  
+    		uses = 3     
+    		category = artillery
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = quality_inspection
+		icon = GFX_focus_generic_infiltration
+		x = 15
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = standard_issue_riflery }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.50  
+    		uses = 1     
+    		category = infantry_tech
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = weapons_maintenence
+		icon = GFX_goal_generic_air_production
+		x = 13
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = mass_production }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.50  
+    		uses = 1     
+    		category = infantry_tech
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = reaping_what_we_sow
+		icon = GFX_focus_generic_population_growth
+		x = 14
+		y = 4
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = weapons_maintenence }
+		prerequisite = { focus = quality_inspection }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = reaping_what_we_sow
+			add_research_slot = 1
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = the_fruits_of_our_labor
+		icon = GFX_focus_generic_concessions
+		x = 10
+		y = 4
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = acquiring_heavy_metals }
+		prerequisite = { focus = design_manufacturing }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = the_fruits_of_our_labor
+			add_research_slot = 1
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = our_blood_sweat_and_tears
+		icon = GFX_focus_POL_beck_ribbentrop
+		x = 18
+		y = 4
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = state_sponsored_factories }
+		prerequisite = { focus = rubber_manufacturing }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = our_blood_sweat_and_tears
+			add_research_slot = 1
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = the_general_staff
+		icon = GFX_focus_ETH_ecole_militaire_haile_selassie_1er
+		x = 14
+		y = 5
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = reaping_what_we_sow }
+		prerequisite = { focus = the_fruits_of_our_labor }
+		prerequisite = { focus = our_blood_sweat_and_tears }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			create_corps_commander = {
+            name="Aziz El Masri"
+            picture = "gfx/leaders/EGY/Portrait_Aziz_El_Masri.dds"
+            traits = { }
+            skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=1
+			logistics_skill=1
+        	}
+			create_corps_commander = {
+            name="Gamal Abdel Nasser"
+            picture = "Portrait_Gamal_Abdel_Nasser.dds"
+            traits={ }
+			skill=2
+			attack_skill=4
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=2
+        	}
+			create_corps_commander = {
+            name="Hussein Refki Pasha"
+            picture = "gfx/leaders/EGY/Portrait_Hussein_Refki_Pasha.dds"
+            traits={ army_infantry_2 }
+			skill=3
+			attack_skill=2
+			defense_skill=4
+			planning_skill=1
+			logistics_skill=3
+        	}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = generals_and_kings
+		icon = GFX_focus_POL_cossack_king
+		x = 14
+		y = 6
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_general_staff }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			create_corps_commander = {
+            name="Saad el-Shazly"
+            picture = "gfx/leaders/EGY/Portrait_Saad_el-Shazly.dds"
+            traits={ army_infantry_1 }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=1
+			logistics_skill=1
+        	}
+			add_ideas = generals_and_kings
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = men_for_the_army
+		icon = GFX_focus_generic_vatican_agents
+		x = 13
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = generals_and_kings }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = men_for_the_army
+			add_manpower = 40000
+		}
+		
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = officers_in_ranks
+		icon = GFX_focus_generic_women_in_military
+		x = 15
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = generals_and_kings }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = officers_in_ranks
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = an_army_to_defend
+		icon = GFX_focus_generic_home_defense
+		x = 14
+		y = 8
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = generals_and_kings }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = an_army_to_defend
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = and_an_army_to_attack
+		icon = GFX_goal_generic_attack_allies
+		x = 14
+		y = 9
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = an_army_to_defend }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = and_an_army_to_attack
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = naval_affairs_office
+		icon = GFX_focus_eng_chiefs_of_staff_committee
+		x = 10
+		y = 6
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		#prerequisite = { focus = an_army_to_defend }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = naval_affairs_office
+		}
+			ai_will_do = {
+			}
+		}
+		
+		focus = {
+		id = sea_faring_abilities
+		icon = GFX_focus_generic_destroyer
+		x = 10
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = naval_affairs_office }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.30  
+    		uses = 2     
+    		category = naval_doctrine
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = sailors_yet
+		icon = GFX_focus_SWI_establish_pro_helvetia	
+		x = 9
+		y = 8
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = sea_faring_abilities }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = sailors_yet
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_ship_to_be
+		icon = GFX_focus_ITA_modernize_ansaldo_facilities
+		x = 11
+		y = 9
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = our_own_designs }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.30  
+    		uses = 2
+    		category = cl_tech
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = all_hands_on_deck
+		icon = GFX_focus_generic_military_mission
+		x = 9
+		y = 9
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = sailors_yet }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = all_hands_on_deck
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = funding_the_naval_academy
+		icon = GFX_focus_ITA_new_horizons
+		x = 9
+		y = 10
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = all_hands_on_deck }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = funding_the_naval_academy
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = training_our_commanders
+		icon = GFX_focus_ETH_ecole_militaire_haile_selassie_1er
+		x = 9
+		y = 11
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = funding_the_naval_academy }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			create_navy_leader = {
+            name="Ahmed Ismail Ali"
+            picture = "gfx/leaders/EGY/Portrait_Ahmed_Ismail_Ali.dds"
+            traits = { }
+            skill=3
+			attack_skill=4
+			defense_skill=3
+			planning_skill=1
+			logistics_skill=4
+        	}
+			create_navy_leader = {
+            name="Mohamed Fawzi"
+            picture = "gfx/leaders/EGY/Portrait_Mohamed_Fawzi.dds"
+            traits = { }
+            skill=3
+			attack_skill=1
+			defense_skill=2
+			planning_skill=4
+			logistics_skill=2
+        	}
+			create_navy_leader = {
+            name="Mohamed Naguib"
+            picture = "gfx/leaders/EGY/Portrait_Mohamed_Naguib.dds"
+            traits = { }
+            skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+        	}
+			create_navy_leader = {
+            name="Abdel Moneim Riad"
+            picture = "gfx/leaders/EGY/Portrait_Abdel_Moneim_Riad.dds"
+            traits = { }
+            skill=3
+			attack_skill=1
+			defense_skill=3
+			planning_skill=1
+			logistics_skill=4
+        	}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = the_marine_corp
+		icon = GFX_focus_eng_special_air_service
+		x = 9
+		y = 12
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = training_our_commanders }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.50  
+    		uses = 1     
+    		category = marine_tech
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = our_own_designs
+		icon = GFX_focus_ITA_fiat_ansaldo_duopoly
+		x = 11
+		y = 8
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = german_designs }
+		mutually_exclusive = { focus = american_designs }
+
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = sea_faring_abilities }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas =our_own_designs
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = destroying_our_enemies
+		icon = GFX_goal_generic_navy_cruiser
+		x = 11
+		y = 10
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = our_own_designs }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.30  
+    		uses = 2
+    		category = dd_tech
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = you_boats
+		icon = GFX_goal_generic_navy_submarine
+		x = 11
+		y = 11
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = destroying_our_enemies }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.30  
+    		uses = 2   
+    		category = ss_tech
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = our_mightiest_vessels
+		icon = GFX_goal_generic_navy_battleship
+		x = 11
+		y = 12
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = you_boats }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.30  
+    		uses = 2     
+    		category = bb_tech
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = constructing_dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 10
+		y = 13
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+			has_completed_focus = naval_affairs_office
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_marine_corp }
+		prerequisite = { focus = our_mightiest_vessels }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 447 {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+        }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = repurposing_the_fisheries
+		icon = GFX_focus_generic_industry_2
+		x = 10
+		y = 14
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = constructing_dockyards }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 447 {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+        }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = government_owned_properties
+		icon = GFX_focus_spa_save_the_alcazar
+		x = 9
+		y = 15
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = constructing_dockyards }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 447 {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+        }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = making_use_of_our_ports
+		icon = GFX_focus_POL_warsaw_main_station
+		x = 11
+		y = 15
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = constructing_dockyards }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 447 {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+        }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = institute_of_air_technologies
+		icon = GFX_focus_BRA_air_force
+		x = 18
+		y = 6
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		#prerequisite = { focus = constructing_dockyards }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = institute_of_air_technologies
+		}
+			ai_will_do = {
+			}
+		}
+		
+		focus = {
+		id = when_man_took_flight
+		icon = GFX_focus_generic_air_bases
+		x = 18
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = institute_of_air_technologies }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = when_man_took_flight
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_national_indevor
+		icon = GFX_focus_ARG_air_force
+		x = 17
+		y = 8
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = when_man_took_flight }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = a_national_indevor
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = the_new_frontier
+		icon = GFX_focus_generic_cas_aircraft
+		x = 19
+		y = 8
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = when_man_took_flight }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = the_new_frontier
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = war_above
+		icon = GFX_focus_generic_multi_role_aircraft
+		x = 19
+		y = 9
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_new_frontier }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = war_above
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = terror_in_the_skies
+		icon = GFX_focus_NORDIC_dem_selector_airforce
+		x = 17
+		y = 9
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_national_indevor }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = terror_in_the_skies
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = establishing_command
+		icon = GFX_focus_hol_daf
+		x = 17
+		y = 10
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = terror_in_the_skies }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = air_command
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = fighter_craft
+		icon = GFX_focus_NORDIC_dem_airforce
+		x = 19
+		y = 10
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = war_above }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.50  
+    		uses = 3  
+    		category = light_fighter
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = heavy_bombers
+		icon = GFX_focus_usa_escort_fighters
+		x = 19
+		y = 11
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = fighter_craft }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.50  
+    		uses = 3  
+    		category = cat_heavy_fighter
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = promoting_air_commanders
+		icon = GFX_focus_generic_league_of_nations
+		x = 17
+		y = 11
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = establishing_command }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+   			bonus = 0.3  
+    		uses = 3  
+    		category = air_doctrine
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = fighter_ace_initiative
+		icon = GFX_focus_ITA_guardia_nazionale_repubblicana
+		x = 17
+		y = 12
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = promoting_air_commanders }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = fighter_ace_initiative
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = pilot_school
+		icon = GFX_focus_FIN_expand_air_force_academy
+		x = 19
+		y = 12
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = heavy_bombers }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = pilot_school
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = men_in_uniform
+		icon = GFX_focus_SOV_flying_clubs
+		x = 18
+		y = 13
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = fighter_ace_initiative }
+		prerequisite = { focus = pilot_school }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = men_in_uniform
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = constructing_air_bases
+		icon = GFX_goal_generic_build_airforce
+		x = 18
+		y = 14
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = men_in_uniform }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			907 = {
+            add_building_construction = {
+                type = air_base
+                level = 2 
+                instant_build = yes  
+            }
+        }
+		456 = {
+            add_building_construction = {
+                type = air_base
+                level = 1  
+                instant_build = yes 
+            }
+        }
+		446 = {}
+            add_building_construction = {
+                type = air_base
+                level = 1 
+                instant_build = yes 
+            }
+        }
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = establishing_atc
+		icon = GFX_focus_SWE_refuge_from_war
+		x = 17
+		y = 15
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = men_in_uniform }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			907 = {  # Replace '118' with the actual state ID where the air base should be added
+            add_building_construction = {
+                type = air_base
+                level = 3  # Adds 1 level of air base
+                instant_build = yes  # Change to no if you want normal construction time
+            }
+        }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = air_competitions
+		icon = GFX_focus_SOV_women_in_aviation
+		x = 19
+		y = 15
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = men_in_uniform }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = air_competitions
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_new_era_for_the_industry
+		icon = GFX_focus_ARG_march_to_la_casa_rosada
+		x = 27
+		y = 0
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		#prerequisite = { focus = men_in_uniform }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = a_new_era_for_the_industry
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = egyptian_industrialization
+		icon = GFX_focus_CHL_domestic_production_of_the_willys_mb
+		x = 27
+		y = 1
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_new_era_for_the_industry }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			447 {
+			add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = new_production_capabilities
+		icon = GFX_focus_ARG_yacimientos_petroliferos_fiscales
+		x = 25
+		y = 1
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_new_era_for_the_industry }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = new_production_capabilities
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = jobs_for_factories
+		icon = GFX_focus_ARG_women_in_industry
+		x = 29
+		y = 1
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_new_era_for_the_industry }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			457 {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			 add_ideas = jobs_for_factories
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = factory_modernization
+		icon = GFX_focus_DEN_no_regulations
+		x = 27
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = egyptian_industrialization }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = factory_modernization
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = industry_standards
+		icon = GFX_focus_BRA_rubber_war
+		x = 24
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = new_production_capabilities }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = industry_standards
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = labor_laws
+		icon = GFX_focus_generic_treaty
+		x = 30
+		y = 2
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = jobs_for_factories }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = labor_laws
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = new_protocols
+		icon = GFX_focus_DEN_heavy_regulations
+		x = 27
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = factory_modernization }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = new_protocols
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = eight_hour_work_days
+		icon = GFX_focus_ICE_embrace_the_workers_revolution	
+		x = 26
+		y = 4
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = twelve_hour_work_days }
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = new_protocols }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = eight_hour_work_days
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = twelve_hour_work_days
+		icon = GFX_focus_generic_public_works
+		x = 28
+		y = 4
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = eight_hour_work_days }
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = new_protocols }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = twelve_hour_work_days
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = worker_pensions
+		icon = GFX_focus_BRA_rio_protocol
+		x = 27
+		y = 5
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = new_protocols }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = worker_pensions
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = bolstering_the_job_market
+		icon = GFX_focus_CHL_work_on_the_panamerican_highway
+		x = 25
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = industry_standards }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = bolstering_the_job_market
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = providing_government_grants
+		icon = GFX_focus_BRA_reach_out_to_military_dem
+		x = 24
+		y = 4
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = industry_standards }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			907 {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes
+				}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = setting_the_minimum_wage
+		icon = GFX_focus_BRA_ethical_internationalism
+		x = 29
+		y = 3
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = labor_laws }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = setting_the_minimum_wage
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = crop_sharing_programs
+		icon = GFX_focus_BRA_cafe_com_leite_politics
+		x = 30
+		y = 4
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = labor_laws }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = crop_sharing_programs
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_new_economic_phase
+		icon = GFX_focus_ETH_adopt_the_lira
+		x = 30 
+		y = 5
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = crop_sharing_programs }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = a_new_economic_phase
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_nation_renewed
+		icon = GFX_focus_CHL_the_patagonian_giants
+		x = 24
+		y = 5
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = providing_government_grants }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = a_nation_renewed
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = investing_in_our_agricultural_industry
+		icon = GFX_focus_CHL_focus_on_cattle_and_wool
+		x = 25
+		y = 6
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_nation_renewed }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			907 {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_ideas = investing_in_our_agricultural_industry
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = force_the_farmers_into_factories
+		icon = GFX_focus_generic_agricultural_subsidies
+		x = 24
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = retain_our_traditions }
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = investing_in_our_agricultural_industry }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = force_the_farmers_into_factories
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = retain_our_traditions
+		icon = GFX_focus_DEN_schleswigian_farmers
+		x = 26
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = force_the_farmers_into_factories }
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = investing_in_our_agricultural_industry }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = retain_our_traditions
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = investing_in_our_textile_industry
+		icon = GFX_focus_CHL_enlarge_the_textile_industries
+		x = 29
+		y = 6
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_new_economic_phase }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			 add_ideas = investing_in_our_textile_industry
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = investing_in_our_fisheries
+		icon = GFX_focus_FIN_acquire_andros_dockyards
+		x = 28
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = constructing_military_dockyards }
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = investing_in_our_textile_industry }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = investing_in_our_fisheries
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = constructing_military_dockyards
+		icon = GFX_focus_generic_merchant_fleet
+		x = 30
+		y = 7
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = investing_in_our_fisheries }
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = investing_in_our_textile_industry }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 447 {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			 }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = handling_the_middle_management
+		icon = GFX_focus_generic_industrialists
+		x = 25
+		y = 8
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = force_the_farmers_into_factories focus =retain_our_traditions }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = handling_the_middle_management
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = establishing_the_mining_sect
+		icon = GFX_focus_generic_mining_industry
+		x = 29
+		y = 8
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = investing_in_our_fisheries focus = constructing_military_dockyards }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_controlled_state = {
+					add_resource = {
+					type = steel
+					amount = 8
+					state = 907
+				}
+			}
+			random_owned_controlled_state = {
+					add_resource = {
+					type = tungsten
+					amount = 8
+					state = 907
+				}
+			}
+			random_owned_controlled_state = {
+					add_resource = {
+					type = chromium
+					amount = 8
+					state = 907
+				}
+			}
+			add_ideas = establishing_the_mining_sect
+		}
+			ai_will_do = {
+			}
+		}
+		
+		focus = {
+		id = worker_syndicates
+		icon = GFX_focus_ITA_generic_fascist_workers
+		x = 27
+		y = 9
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = establishing_the_mining_sect }
+		prerequisite = { focus = handling_the_middle_management }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = worker_syndicates
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = first_economic_phase
+		icon = GFX_focus_generic_industry_1 	
+		x = 27
+		y = 10
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+			date > 1938.1.1
+			date < 1940.1.1
+		}
+		bypass = {
+			date > 1940.1.1
+		}
+
+		cost = 10
+		prerequisite = { focus = worker_syndicates }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_timed_idea = { idea = first_economic_phase  days = 365 }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = second_economic_phase
+		icon = GFX_focus_generic_industry_2
+		x = 27
+		y = 11
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+			date > 1940.1.1
+			date < 1942.1.1
+		}
+		bypass = {
+			date > 1942.1.1
+		}
+
+		cost = 10
+		prerequisite = { focus = first_economic_phase }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = { idea = second_economic_phase  days = 365 }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = third_economic_phase
+		icon = GFX_focus_generic_modernize_industry
+		x = 27
+		y = 12
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+			date > 1942.1.1
+			date < 1944.1.1
+		}
+		bypass = {
+			date > 1944.1.1
+		}
+
+		cost = 10
+		prerequisite = { focus = second_economic_phase }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = { idea = third_economic_phase  days = 365 }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = the_final_economic_phase
+		icon = GFX_focus_generic_industry_3
+		x = 27
+		y = 13
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+			date > 1944.1.1
+			date < 1946.1.1
+		}
+		bypass = {
+			date > 1946.1.1
+		}
+
+		cost = 10
+		prerequisite = { focus = third_economic_phase }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = { idea = final_economic_phase  days = 365 }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = following_the_west
+		icon = GFX_focus_focus_fra_down_marianne
+		x = 25
+		y = 14
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+			NOT = { has_completed_focus = a_new_economic_system }
+			OR = {
+            has_government = democratic
+            has_government = neutrality
+        }
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_final_economic_phase }
+		mutually_exclusive = { focus = following_the_east }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = following_the_west
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = clearing_the_land
+		icon = GFX_focus_ITA_grande_rivolta_rurale
+		x = 24
+		y = 15
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = following_the_west }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			907 {
+			add_extra_state_shared_building_slots = 3
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = expand_the_military_industry
+		icon = GFX_focus_generic_reorient_production
+		x = 26
+		y = 15
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = following_the_west }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 456 {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+                type = arms_factory
+                level = 3
+                instant_build = yes
+            	}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = expand_the_civilian_industry
+		icon = GFX_focus_generic_supply_line
+		x = 25
+		y = 18
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_army_of_egypt }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = expand_the_civilian_industry
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = improving_the_navy
+		icon = GFX_focus_generic_refit_civilian_ships
+		x = 25
+		y = 19
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = expand_the_civilian_industry }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = improving_the_navy
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = the_army_of_egypt
+		icon = GFX_focus_generic_winter_warfare
+		x = 25
+		y = 16
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = following_the_west }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_manpower = 165000
+			 add_ideas = the_army_of_egypt
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = constructing_advanced_infrastructure
+		icon = GFX_focus_generic_resource_extraction
+		x = 24
+		y = 17
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_army_of_egypt }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			457 {
+			add_extra_state_shared_building_slots = 5
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = expanding_at_all_fields
+		icon = GFX_focus_generic_tungsten
+		x = 26
+		y = 17
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_army_of_egypt }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			457 {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+                type = arms_factory
+                level = 2
+                instant_build = yes
+            	}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+                type = industrial_complex
+                level = 2
+                instant_build = yes
+            	}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+                type = dockyard
+                level = 2
+                instant_build = yes
+            	}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = like_the_west
+		icon = GFX_focus_usa_guarantee_the_american_dream
+		x = 25
+		y = 20
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = improving_the_navy }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = like_the_west
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = following_the_east
+		icon = GFX_focus_SOV_patriarch_of_all_russia
+		x = 29
+		y = 14
+		relative_position_id = the_fate_of_our_nation
+		mutually_exclusive = { focus = following_the_west }
+
+		available = {
+			NOT = { has_completed_focus = a_new_economic_system }
+			OR = {
+            has_government = communism
+            has_government = neutrality
+        }
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_final_economic_phase }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = following_the_east
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = civilian_programs
+		icon = GFX_focus_generic_university_2
+		x = 28
+		y = 15
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = following_the_east }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = civilian_programs
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = military_programs
+		icon = GFX_focus_POL_beck_ribbentrop
+		x = 30
+		y = 15
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = following_the_east }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = military_programs
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = naval_programs
+		icon = GFX_focus_generic_midget_submarines
+		x = 29
+		y = 16
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_final_economic_phase }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = naval_programs
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = making_use_of_our_territories
+		icon = GFX_focus_SWE_hygienic_housing
+		x = 28
+		y = 17
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = naval_programs }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			456 {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+                type = arms_factory
+                level = 2
+                instant_build = yes
+            	}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+                type = industrial_complex
+                level = 2
+                instant_build = yes
+            	}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = infrastructure_development
+		icon = GFX_focus_generic_railroad
+		x = 30
+		y = 17
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = naval_programs }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			456 {
+			add_extra_state_shared_building_slots = 3
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = increasing_conscription
+		icon = GFX_focus_generic_naval_discipline
+		x = 29
+		y = 18
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = naval_programs }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = increasing_conscription
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = expanding_in_all_fields
+		icon = GFX_focus_mex_privatisation
+		x = 29
+		y = 19
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = increasing_conscription }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			457 {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+                type = arms_factory
+                level = 3
+                instant_build = yes
+            	}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+                type = industrial_complex
+                level = 3
+                instant_build = yes
+            	}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+                type = dockyard
+                level = 3
+                instant_build = yes
+            	}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = like_the_east
+		icon = GFX_focus_SOV_panslavic_nationalism
+		x = 29
+		y = 20
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = expanding_in_all_fields }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = like_the_east
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_new_economic_system
+		icon = GFX_focus_ARG_strengthening_the_concordancia
+		x = 27
+		y = 21
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+			NOT = { has_completed_focus = following_the_east }
+			NOT = { has_completed_focus = following_the_west }
+			OR = {
+            has_government = fascism
+            has_government = neutrality
+        }
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_final_economic_phase }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = a_new_economic_system
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = our_national_identity
+		icon = GFX_focus_CHL_electing_a_toqui
+		x = 26
+		y = 22
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_new_economic_system }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = our_national_identity
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = molding_our_nation
+		icon = GFX_focus_BRA_tribunal
+		x = 28
+		y = 22
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_new_economic_system }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			457 {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+                type = arms_factory
+                level = 2
+                instant_build = yes
+            	}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+                type = industrial_complex
+                level = 2
+                instant_build = yes
+            	}
+			}
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = investing_in_our_people
+		icon = GFX_focus_generic_population_growth
+		x = 27
+		y = 23
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_new_economic_system }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = investing_in_our_people
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = a_new_draft
+		icon = GFX_goal_generic_forceful_treaty
+		x = 28
+		y = 24
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = investing_in_our_people }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = a_new_draft
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = the_expansion_project
+		icon = GFX_focus_generic_truck
+		x = 26
+		y = 24
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = investing_in_our_people }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			456 {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+                type = arms_factory
+                level = 3
+                instant_build = yes
+            	}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+                type = industrial_complex
+                level = 3
+                instant_build = yes
+            	}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+                type = dockyard
+                level = 3
+                instant_build = yes
+            	}
+			}
+			add_timed_idea = { idea = the_expansion_project  days = 365 }
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = ensuring_our_safety
+		icon = GFX_focus_ETH_peacekeeping_forces
+		x = 27
+		y = 25
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = investing_in_our_people }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = ensuring_our_safety
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = economic_management
+		icon = GFX_focus_FIN_parmis_devils
+		x = 27
+		y = 26
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = ensuring_our_safety }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = economic_management
+		}
+			ai_will_do = {
+			}
+		}
+
+		focus = {
+		id = forcing_cooperation_in_the_workplace
+		icon = GFX_focus_generic_improve_the_administration
+		x = 27
+		y = 27
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = economic_management }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = forcing_cooperation_in_the_workplace
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = a_nation_of_faith
+		icon = GFX_focus_CHL_the_patagonian_giants
+		x = 14
+		y = 17
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		#prerequisite = { focus = economic_management }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = a_nation_of_faith
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = king_of_king
+		icon = GFX_focus_generic_catholic_dominion
+		x = 16
+		y = 18
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_nation_of_faith }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = king_of_kings
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = lord_of_lords
+		icon = GFX_focus_POL_end_the_regency
+		x = 16
+		y = 19
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = king_of_king }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = lord_of_lords
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = a_christian_nation
+		icon = GFX_focus_por_concordat
+		
+		x = 15
+		y = 20
+		relative_position_id = the_fate_of_our_nation
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = lord_of_lords }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = a_christian_nation
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = in_the_footsteps_of_christ
+		icon = GFX_focus_spa_no_compromise_on_carlist_ideals
+		x = 1
+		y = 1
+		relative_position_id = lord_of_lords
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = lord_of_lords }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = forcing_cooperation_in_the_workplace
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = the_ten_commandments
+		icon = GFX_focus_POL_belarus_army
+		x = 0
+		y = 2
+		relative_position_id = lord_of_lords
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = lord_of_lords }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = forcing_cooperation_in_the_workplace
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = feeding_the_hungry
+		icon = GFX_focus_BRA_cafe_com_leite_politics
+		x = 1
+		y = 3
+		relative_position_id = lord_of_lords
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = in_the_footsteps_of_christ }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = feeding_the_hungry
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = with_christian_values
+		icon = GFX_focus_SOV_patriarch_of_all_russia
+		x = -1
+		y = 3
+		relative_position_id = lord_of_lords
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_christian_nation }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = with_christian_values
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = aiding_the_needy
+		icon = GFX_focus_SWE_form_rfsu
+		x = 0
+		y = 4
+		relative_position_id = lord_of_lords
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_ten_commandments }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = aiding_the_needy
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = housing_the_homeless
+		icon = GFX_focus_SWE_hygienic_housing
+		x = 1
+		y = 5
+		relative_position_id = lord_of_lords
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = aiding_the_needy }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = housing_the_homeless
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = healing_the_sick
+		icon = GFX_focus_generic_field_hostpital
+		x = -1
+		y = 5
+		relative_position_id = lord_of_lords
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = aiding_the_needy }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = healing_the_sick
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = in_christs_image
+		icon = GFX_focus_generic_pope
+		x = 0
+		y = 6
+		relative_position_id = lord_of_lords
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = aiding_the_needy }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = in_christs_image
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = allah_conquers_all
+		icon = GFX_focus_TUR_loosen_the_laws_on_secularism
+		x = -2
+		y = 1
+		relative_position_id = a_nation_of_faith
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = a_nation_of_faith }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = allah_conquers_all
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = the_lord_shall_come
+		icon = GFX_focus_TUR_the_sun_language_theory
+		x = -2
+		y = 2
+		relative_position_id = a_nation_of_faith
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = allah_conquers_all }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = the_lord_shall_come
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = spreading_his_message
+		icon = GFX_focus_TUR_reform_the_balkan_pact
+		x = -3
+		y = 3
+		relative_position_id = a_nation_of_faith
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_lord_shall_come }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = spreading_his_message
+			 create_wargoal = { type = annex_everything target = GRE }
+			 create_wargoal = { type = annex_everything target = YUG }
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = an_islamic_alliace
+		icon = GFX_focus_TUR_treaty_of_saadabad
+		x = -3
+		y = 5
+		relative_position_id = a_nation_of_faith
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = spreading_his_message }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			create_faction = "The Islamic Alliance"
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = rejecting_the_christian_way_of_life
+		icon = GFX_focus_mex_triumph_over_the_cristeros
+		x = -1
+		y = 3
+		relative_position_id = a_nation_of_faith
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_lord_shall_come }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = rejecting_the_christian_way_of_life
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = rejecting_the_european_way_of_life
+		icon = GFX_focus_usa_focus_on_europe
+		x = -1
+		y = 5
+		relative_position_id = a_nation_of_faith
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = rejecting_the_christian_way_of_life }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			EGY = { add_opinion_modifier = { 
+			target = FRA modifier = medium_decrease } 
+			}
+			EGY = { add_opinion_modifier = { 
+			target = ENG modifier = medium_decrease } 
+			}
+			EGY = { add_opinion_modifier = { 
+			target = GER modifier = medium_decrease } 
+			}
+			EGY = { add_opinion_modifier = { 
+			target = ITA modifier = medium_decrease } 
+			}
+			EGY = { add_opinion_modifier = { 
+			target = SOV modifier = medium_decrease } 
+			}
+			EGY = { add_opinion_modifier = { 
+			target = SPR modifier = medium_decrease } 
+			}
+			EGY = { add_opinion_modifier = { 
+			target = USA modifier = medium_decrease } 
+			}
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = sharia_law
+		icon = GFX_focus_TUR_ratify_the_six_arrows
+		x = -2
+		y = 4
+		relative_position_id = a_nation_of_faith
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_lord_shall_come }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = sharia_law
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = the_arabic_world_shall_prevail
+		icon = GFX_focus_TUR_support_the_golden_square
+		x = -2
+		y = 6
+		relative_position_id = a_nation_of_faith
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = sharia_law }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		EGY = {
+            add_to_faction = SAU
+       	}
+		EGY = {
+            add_to_faction = PER
+       	}
+		EGY = {
+            add_to_faction = IRQ
+       	}
+		EGY = {
+            add_to_faction = AFG
+       	}
+		EGY = {
+            add_to_faction = TUR
+       	}
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = the_mans_place
+		icon = GFX_focus_generic_military_mission
+		x = -3
+		y = 7
+		relative_position_id = a_nation_of_faith
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_arabic_world_shall_prevail }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = the_mans_place
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = the_womans_place
+		icon = GFX_focus_generic_population_growth
+		x = -1
+		y = 7
+		relative_position_id = a_nation_of_faith
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_arabic_world_shall_prevail }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = the_womans_place
+		}
+			ai_will_do = {
+		}
+	}
+	focus = {
+		id = in_allahs_image
+		icon = GFX_focus_TUR_turanist_ambition
+		x = -2
+		y = 8
+		relative_position_id = a_nation_of_faith
+
+		available = {
+		}
+		bypass = {
+		}
+
+		cost = 10
+		prerequisite = { focus = the_arabic_world_shall_prevail }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			 add_ideas = in_allahs_image
+		}
+			ai_will_do = {
+		}
+	}
+}

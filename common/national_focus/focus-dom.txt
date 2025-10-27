@@ -1,0 +1,1333 @@
+focus_tree = {
+	id = focus-dom
+	continuous_focus_position = { x = 150 y = 1310 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = DOM
+		}
+	}
+	#Accept Jewing Refugees
+	focus = {
+		id = DOM_accept_jewing_refugees
+		icon = GFX_DOM_accept_jewing_refugees-646335
+		x = 6
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = DOM_immigration_policies  }
+		available = {
+			GER = {
+				any_state = {
+						has_active_resistance = yes
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.05 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 50
+			
+			add_stability = 0.04
+			
+			
+		}
+	}
+
+	#Expand the University of Santo Dominico
+	focus = {
+		id = DOM_expand_the_university_of_santo_dominico
+		icon = GFX_DOM_expand_the_university_of_santo_dominico-645529
+		x = 3
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = DOM_caribbean_politics  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.1 }
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Expand the War Departments
+	focus = {
+		id = DOM_expand_the_war_departments
+		icon = GFX_DOM_expand_the_war_departments-645752
+		x = 1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = DOM_build_statues_of_el_jefe  }
+		completion_reward = {
+			add_manpower = 5100
+			
+			add_command_power = 75
+			
+			army_experience = 10
+			
+			navy_experience = 10
+			
+			
+		}
+	}
+
+	#Immigration Policies
+	focus = {
+		id = DOM_immigration_policies
+		icon = GFX_DOM_immigration_policies-645484
+		x = 7
+		y = 1
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = DOM_caribbean_politics  }
+		completion_reward = {
+			add_manpower = 5600
+			
+			
+			country_event = {
+			    id = 1_custom.4
+			    days = 1
+			    random = 14
+			    random_days = 14
+			}
+			
+			
+			
+		}
+	}
+
+	#Expand the Conflict
+	focus = {
+		id = DOM_expand_the_conflict
+		icon = GFX_focus_hol_war_on_pacifism
+		x = 4
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = DOM_refuse_reparation_settlement  }
+		completion_reward = {
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Build Statues of El Jefe
+	focus = {
+		id = DOM_build_statues_of_el_jefe
+		icon = GFX_focus_generic_steel
+		x = 1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_stack_congress_with_loyalists  focus = DOM_rename_dominica  }
+		completion_reward = {
+			add_political_power = 25
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Caribbean Politics
+	focus = {
+		id = DOM_caribbean_politics
+		icon = GFX_goal_generic_neutrality_focus
+		x = 1
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			add_stability = -0.025
+			add_political_power = 45
+			
+			
+			
+		}
+	}
+
+	#Cult of Personality
+	focus = {
+		id = DOM_cult_of_personality
+		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = DOM_caribbean_politics  }
+		completion_reward = {
+			add_stability = -0.05
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Rename Dominica
+	focus = {
+		id = DOM_rename_dominica
+		icon = GFX_DOM_rename_dominica-412
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = DOM_cult_of_personality  }
+		completion_reward = {
+			319 = {
+				set_state_name = "Ciudad Trujillo"
+			
+			}
+			add_stability = -0.05
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Stack Congress With Loyalists
+	focus = {
+		id = DOM_stack_congress_with_loyalists
+		icon = GFX_DOM_stack_congress_with_loyalists-645933
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = DOM_cult_of_personality  }
+		completion_reward = {
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#Viva Trujillo!
+	focus = {
+		id = DOM_vivatrujillo
+		icon = GFX_focus_GRE_reviving_the_double_headed_eagle
+		x = 4
+		y = 2
+		cost = 7
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = DOM_cult_of_personality  }
+		completion_reward = {
+			add_stability = 0.07
+			
+			
+		}
+	}
+
+	#Dios en el Cielo, Trujillo en la Tierra
+	focus = {
+		id = DOM_diosenelcielotrujilloenlatierra
+		icon = GFX_focus_spr_anarchism_knows_no_borders
+		x = 4
+		y = 3
+		cost = 7
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = DOM_vivatrujillo  }
+		completion_reward = {
+			add_stability = 0.07
+			
+			
+		}
+	}
+
+	#Año del Benefactor de la Patria
+	focus = {
+		id = DOM_anodelbenefactordelapatria
+		icon = GFX_focus_generic_diplomatic_treaty
+		x = 4
+		y = 4
+		cost = 7
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_build_statues_of_el_jefe  } prerequisite = { focus = DOM_diosenelcielotrujilloenlatierra  }
+		completion_reward = {
+			add_stability = 0.07
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Accept Spanish Refugees
+	focus = {
+		id = DOM_accept_spanish_refugees
+		icon = GFX_focus_spa_strengthen_the_supreme_reality_of_spain
+		x = 8
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_SPA_CIVIL_WAR
+		}
+		prerequisite = { focus = DOM_immigration_policies  }
+		available = {
+			date > 1937.01.01
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.08 }
+			
+			
+			add_manpower = 9970
+			
+			
+		}
+	}
+
+	#Accept Japanese Refugees
+	focus = {
+		id = DOM_accept_japanese_refugees
+		icon = GFX_focus_jap_spiritual_mobilization
+		x = 7
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = DOM_immigration_policies  }
+		available = {
+			JAP = {
+				has_offensive_war = yes
+			
+				NOT = {
+						has_civil_war = no
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.05 }
+			
+			
+			add_manpower = 9875
+			
+			
+		}
+	}
+
+	#Ban Slash-and-Burn for Agriculture
+	focus = {
+		id = DOM_ban_slashandburn_for_agriculture
+		icon = GFX_DOM_ban_slashandburn_for_agriculture-645949
+		x = 5
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_caribbean_politics  }
+		completion_reward = {
+			319 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Hull-Trujillo Treaty
+	focus = {
+		id = DOM_hulltrujillo_treaty
+		icon = GFX_DOM_hulltrujillo_treaty-270
+		x = 6
+		y = 4
+		cost = 20
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_vivatrujillo  }
+		available = {
+			NOT = {
+				has_war_with = USA
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 4
+			add_building_construction = {
+			type = industrial_complex
+			level = 4
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			USA = {
+			add_offsite_building = { type = industrial_complex level = 3 }
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#Restaurador de la Independencia Financiera de la Republica
+	focus = {
+		id = DOM_restaurador_de_la_independencia_financiera_de_la_republica
+		icon = GFX_focus_generic_industry_3
+		x = 6
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_anodelbenefactordelapatria  } prerequisite = { focus = DOM_hulltrujillo_treaty  }
+		completion_reward = {
+			add_political_power = 50
+			
+			add_stability = 0.05
+			
+			add_war_support = 0.05
+			
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			add_offsite_building = { type = arms_factory level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Accept Reparation Settlement
+	focus = {
+		id = DOM_accept_reparation_settlement
+		icon = GFX_focus_generic_treaty
+		x = 0
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = DOM_expand_the_war_departments  }
+		mutually_exclusive = { focus = DOM_refuse_reparation_settlement  }
+		ai_will_do = { factor = 3 }
+		available = {
+			has_completed_focus = DOM_immigration_policies
+			
+			
+		}
+		completion_reward = {
+			319 = {
+				remove_building = {
+			    type = industrial_complex
+			    level = 2
+			}
+			
+			
+			
+			}
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.05 }
+			
+			
+			add_stability = 0.04
+			
+			add_war_support = -0.08
+			
+			HAI = {
+				random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+			}
+			
+		}
+	}
+
+	#Refuse Reparation Settlement
+	focus = {
+		id = DOM_refuse_reparation_settlement
+		icon = GFX_goal_generic_forceful_treaty
+		x = 4
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = DOM_expand_the_war_departments  }
+		mutually_exclusive = { focus = DOM_accept_reparation_settlement  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_war_support = 0.1
+			
+			HAI = {
+				add_political_power = -100
+			
+			
+			}
+			USA = {
+				add_political_power = -25
+			
+			
+			}
+			
+		}
+	}
+
+	#House Cuban Exiles
+	focus = {
+		id = DOM_house_cuban_exiles
+		icon = GFX_focus_generic_self_management
+		x = 8
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = DOM_refuse_reparation_settlement  focus = DOM_accept_reparation_settlement  }
+		available = {
+			CUB = {
+				has_government = communism
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.04 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.02 }
+			
+			
+			add_manpower = 23100
+			
+			
+		}
+	}
+
+	#Increase Defense
+	focus = {
+		id = DOM_increase_defense
+		icon = GFX_focus_generic_air_defense
+		x = 8
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_house_cuban_exiles  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Crack Down on Opposition Parties
+	focus = {
+		id = DOM_crack_down_on_opposition_parties
+		icon = GFX_focus_AST_rats_tobruk
+		x = 1
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = DOM_accept_reparation_settlement  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.06 }
+			
+			
+			add_popularity = {
+			    ideology = democratic
+			    popularity = -0.04 }
+			
+			
+			add_stability = -0.8
+			
+			add_war_support = 0.04
+			
+			
+		}
+	}
+
+	#Establish the SIM
+	focus = {
+		id = DOM_establish_the_sim
+		icon = GFX_DOM_establish_the_sim-645980
+		x = 9
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_caribbean_politics  focus = DOM_ejercitoderepublicadominicana  }
+		available = {
+			has_intelligence_agency = no
+			
+			
+		}
+		completion_reward = {
+			create_intelligence_agency = yes
+			
+			
+		}
+	}
+
+	#Join the Fight
+	focus = {
+		id = DOM_join_the_fight
+		icon = GFX_DOM_join_the_fight-645596
+		x = 0
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = DOM_accept_reparation_settlement  }
+		mutually_exclusive = { focus = DOM_remainneutralsellweapons  }
+		available = {
+			USA = {
+				is_in_faction_with = ENG
+			
+				has_defensive_war = yes
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			ENG = {
+				has_capitulated = no
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			ENG = {
+				country_event = {
+					id = generic.2
+				}
+			
+			}
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Remain Neutral, Sell Weapons
+	focus = {
+		id = DOM_remainneutralsellweapons
+		icon = GFX_DOM_remainneutralsellweapons-645854
+		x = 2
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_accept_reparation_settlement  }
+		mutually_exclusive = { focus = DOM_join_the_fight  }
+		completion_reward = {
+			USA = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = DOM
+			}
+			
+			
+			
+			}
+			ENG = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = DOM
+			}
+			
+			
+			
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = DOM
+			}
+			
+			
+			
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = DOM
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 4 }
+			
+			
+			
+			
+		}
+	}
+
+	#Subjugate Haiti
+	focus = {
+		id = DOM_subjugate_haiti
+		icon = GFX_DOM_subjugate_haiti-412
+		x = 5
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = DOM_expand_the_conflict  }
+		mutually_exclusive = { focus = DOM_unite_hispanola  }
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = HAI
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = HAI
+	}
+
+	#Unite Hispanola
+	focus = {
+		id = DOM_unite_hispanola
+		icon = GFX_goal_generic_major_war
+		x = 3
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = DOM_expand_the_conflict  }
+		mutually_exclusive = { focus = DOM_subjugate_haiti  }
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = HAI
+			}
+			
+			
+			
+		}
+	}
+
+	#Use Cuban Exiles
+	focus = {
+		id = DOM_use_cuban_exiles
+		icon = GFX_focus_generic_manpower
+		x = 5
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = DOM_increase_defense  } prerequisite = { focus = DOM_subjugate_haiti  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.08 }
+			
+			
+			add_manpower = 8650
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = CUB
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = CUB
+	}
+
+	#Integrate Havana
+	focus = {
+		id = DOM_integrate_havana
+		icon = GFX_DOM_integrate_havana-645619
+		x = 3
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = DOM_unite_hispanola  }
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = CUB
+			}
+			
+			add_state_core = 315
+			
+		}
+		will_lead_to_war_with = CUB
+	}
+
+	#Trujillo, el Gran Comandante
+	focus = {
+		id = DOM_trujilloelgrancomandante
+		icon = GFX_goal_generic_position_armies
+		x = 7
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = DOM_restaurador_de_la_independencia_financiera_de_la_republica  focus = DOM_use_cuban_exiles  focus = DOM_integrate_havana  }
+		completion_reward = {
+			add_war_support = 0.1
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#A Caribbean Empire
+	focus = {
+		id = DOM_a_caribbean_empire
+		icon = GFX_DOM_a_caribbean_empire-645655
+		x = 3
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_FRA_OCCUPATION_COST
+		}
+		prerequisite = { focus = DOM_integrate_havana  }
+		completion_reward = {
+			add_state_core = 315 add_state_core = 689 add_state_core = 690 add_state_core = 693 add_state_core = 686 add_state_core = 694 add_state_core = 308 add_state_core = 692 add_state_core = 691 add_state_core = 695
+		}
+	}
+
+	#A Great Coalition
+	focus = {
+		id = DOM_a_great_coalition
+		icon = GFX_focus_generic_coastal_fort
+		x = 5
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_use_cuban_exiles  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = dockyard
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Ejército de República Dominicana
+	focus = {
+		id = DOM_ejercitoderepublicadominicana
+		icon = GFX_DOM_ejercitoderepublicadominicana-645750
+		x = 11
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Armada de Republica Dominicana
+	focus = {
+		id = DOM_armada_de_republica_dominicana
+		icon = GFX_goal_generic_navy_cruiser
+		x = 13
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 4500
+			
+			navy_experience = 25
+			
+			
+		}
+	}
+
+	#Fuerza Aérea de República Dominicana
+	focus = {
+		id = DOM_fuerzaaereaderepublicadominicana
+		icon = GFX_goal_generic_build_airforce
+		x = 15
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 4500
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+	#Army Training Exercises
+	focus = {
+		id = DOM_army_training_exercises
+		icon = GFX_focus_chi_army_reform
+		x = 11
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = DOM_ejercitoderepublicadominicana  }
+		completion_reward = {
+			army_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4500
+			
+			
+		}
+	}
+
+	#Naval Training Exercises
+	focus = {
+		id = DOM_naval_training_exercises
+		icon = GFX_DOM_naval_training_exercises-645581
+		x = 13
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = DOM_armada_de_republica_dominicana  }
+		completion_reward = {
+			navy_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4000
+			
+			
+		}
+	}
+
+	#Air Training Exercises
+	focus = {
+		id = DOM_air_training_exercises
+		icon = GFX_DOM_air_training_exercises-645858
+		x = 15
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = DOM_fuerzaaereaderepublicadominicana  }
+		completion_reward = {
+			air_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4000
+			
+			
+		}
+	}
+
+	#Modernize the Army
+	focus = {
+		id = DOM_modernize_the_army
+		icon = GFX_DOM_modernize_the_army-645960
+		x = 11
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_army_training_exercises  }
+		completion_reward = {
+			army_experience = 25
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Strengthen the Border Guard
+	focus = {
+		id = DOM_strengthen_the_border_guard
+		icon = GFX_goal_generic_defence
+		x = 9
+		y = 3
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = DOM_modernize_the_army  focus = DOM_establish_the_sim  }
+		available = {
+			NOT = {
+				owns_state = 318
+			
+				HAI = {
+						is_subject_of = DOM
+			
+			
+			}
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_manpower = 7000
+			
+			
+		}
+	}
+
+	#Strengthen the Radio, Telegraphs and Signals Detachment
+	focus = {
+		id = DOM_strengthentheradiotelegraphsandsignalsdetachment
+		icon = GFX_DOM_strengthentheradiotelegraphsandsignalsdetachment-646330
+		x = 11
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = DOM_modernize_the_army  }
+		completion_reward = {
+			add_tech_bonus = {
+			    bonus = 0.5
+			    uses = 1
+			    category = radar_tech
+			}
+			
+			
+			
+		}
+	}
+
+	#Nation of Shipping
+	focus = {
+		id = DOM_nation_of_shipping
+		icon = GFX_goal_generic_positive_trade_relations
+		x = 13
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_naval_training_exercises  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			add_equipment_to_stockpile = {
+			    type = convoy
+			    amount = 40
+			    producer = DOM
+			}
+			
+			
+			
+		}
+	}
+
+	#American Bases
+	focus = {
+		id = DOM_american_bases
+		icon = GFX_DOM_american_bases-646158
+		x = 15
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = DOM_air_training_exercises  }
+		available = {
+			NOT = {
+				has_war_with = USA
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			319 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+}

@@ -1,0 +1,1307 @@
+focus_tree = {
+	id = focus-nic
+	continuous_focus_position = { x = 150 y = 1180 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = NIC
+		}
+	}
+	#Depression Recovery
+	focus = {
+		id = NIC_depression_recovery
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 10
+		y = 0
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Central American Politics
+	focus = {
+		id = NIC_central_american_politics
+		icon = GFX_goal_generic_neutrality_focus
+		x = 1
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			add_stability = -0.025
+			
+			add_political_power = 45
+			
+			
+		}
+	}
+
+	#Amending the Constitution
+	focus = {
+		id = NIC_amending_the_constitution
+		icon = GFX_NIC_amending_the_constitution-645611
+		x = 1
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = NIC_central_american_politics  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.1 }
+			
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 56
+			
+			
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Reinforce Somoza's Rule
+	focus = {
+		id = NIC_reinforcesomozasrule
+		icon = GFX_NIC_reinforcesomozasrule-646073
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = NIC_amending_the_constitution  }
+		mutually_exclusive = { focus = NIC_remove_power_from_somoza  }
+		ai_will_do = { factor = 4 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.05 }
+			
+			
+			add_stability = -0.05 
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Seize German Assets
+	focus = {
+		id = NIC_seize_german_assets
+		icon = GFX_NIC_seize_german_assets-262070
+		x = 0
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_reinforcesomozasrule  }
+		completion_reward = {
+			add_stability = -0.025
+			
+			add_war_support = 0.05
+			
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Foreign Concessions
+	focus = {
+		id = NIC_foreign_concessions
+		icon = GFX_goal_generic_trade
+		x = 10
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_depression_recovery  }
+		completion_reward = {
+			add_stability = -0.025
+			
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Resource Exports to the U.S.
+	focus = {
+		id = NIC_resource_exports_to_the_us
+		icon = GFX_focus_generic_rubber
+		x = 9
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_foreign_concessions  }
+		available = {
+			USA = {
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+				controls_state = 361
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			USA = {
+				361 = {
+						add_resource = {
+			    type = rubber
+			    amount = 6
+			}
+			
+			
+			
+			}
+				add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level =2 }
+			
+			
+			
+		}
+	}
+
+	#Gold Exports to the U.S.
+	focus = {
+		id = NIC_gold_exports_to_the_us
+		icon = GFX_focus_hol_abandon_the_gold_standard
+		x = 11
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_foreign_concessions  }
+		available = {
+			USA = {
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			USA = {
+				add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Growing Plantations
+	focus = {
+		id = NIC_growing_plantations
+		icon = GFX_NIC_growing_plantations-645921
+		x = 2
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_reinforcesomozasrule  }
+		completion_reward = {
+			317 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#Benefit From Lend-Lease
+	focus = {
+		id = NIC_benefit_from_lendlease
+		icon = GFX_focus_focus_fra_maquis
+		x = 1
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = NIC_growing_plantations  } prerequisite = { focus = NIC_seize_german_assets  }
+		completion_reward = {
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = GER
+			}
+			
+			
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 800
+			    producer = SOV
+			}
+			
+			
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 400
+			    producer = POR
+			}
+			
+			
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 200
+			    producer = SPR
+			}
+			
+			
+			
+		}
+	}
+
+	#Liberalization and Democratization
+	focus = {
+		id = NIC_liberalization_and_democratization
+		icon = GFX_NIC_liberalization_and_democratization-646035
+		x = 0
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = NIC_benefit_from_lendlease  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.1 }
+			
+			
+			
+			
+			set_politics = {
+				ruling_party = neutrality 
+			        elections_allowed = yes
+			        last_election = }
+			 add_stability = 0.1
+			
+			
+		}
+	}
+
+	#Allow Trade Unions
+	focus = {
+		id = NIC_allow_trade_unions
+		icon = GFX_NIC_allow_trade_unions-645812
+		x = 2
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_benefit_from_lendlease  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Counter Coup the Government
+	focus = {
+		id = NIC_counter_coup_the_government
+		icon = GFX_focus_chi_army_reform
+		x = 1
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = NIC_liberalization_and_democratization  } prerequisite = { focus = NIC_allow_trade_unions  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.25 }
+			
+			
+			set_politics = {
+				ruling_party = neutrality
+			        elections_allowed = no
+			        last_election = } 
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Join the Fight
+	focus = {
+		id = NIC_join_the_fight
+		icon = GFX_NIC_join_the_fight-645596
+		x = 0
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = NIC_counter_coup_the_government  focus = NIC_international_alliances  }
+		mutually_exclusive = { focus = NIC_remainneutralsellweapons  } mutually_exclusive = { focus = NIC_mutual_assistance_reciprocation  }
+		available = {
+			USA = {
+				is_in_faction_with = ENG
+			
+				has_defensive_war = yes
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			ENG = {
+				has_capitulated = no
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			ENG = {
+				country_event = {
+					id = generic.2
+				}
+			
+			
+			}
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Remain Neutral, Sell Weapons
+	focus = {
+		id = NIC_remainneutralsellweapons
+		icon = GFX_NIC_remainneutralsellweapons-645854
+		x = 2
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_counter_coup_the_government  focus = NIC_international_alliances  }
+		mutually_exclusive = { focus = NIC_join_the_fight  } mutually_exclusive = { focus = NIC_mutual_assistance_reciprocation  }
+		completion_reward = {
+			USA = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = NIC
+			}
+			
+			
+			
+			}
+			ENG = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = NIC
+			}
+			
+			
+			
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = NIC
+			}
+			
+			
+			
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = NIC
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 4 }
+			
+			
+			
+			
+			
+		}
+	}
+
+	#Remove Power From Somoza
+	focus = {
+		id = NIC_remove_power_from_somoza
+		icon = GFX_NIC_remove_power_from_somoza-646109
+		x = 6
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = NIC_amending_the_constitution  }
+		mutually_exclusive = { focus = NIC_reinforcesomozasrule  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = -0.1 }
+			
+			
+			add_stability = 0.1
+			
+			add_war_support = -0.025
+			
+			
+		}
+	}
+
+	#Seize Somoza's Assets
+	focus = {
+		id = NIC_seizesomozasassets
+		icon = GFX_NIC_seizesomozasassets-645617
+		x = 4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_remove_power_from_somoza  }
+		completion_reward = {
+			317 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Establish a Presidency
+	focus = {
+		id = NIC_establish_a_presidency
+		icon = GFX_focus_usa_union_representation_act
+		x = 5
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = NIC_remove_power_from_somoza  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.1 }
+			
+			
+			set_politics = {
+				ruling_party = neutrality 
+			        elections_allowed = yes
+			        last_election = }
+			 add_political_power = 100
+			
+			
+		}
+	}
+
+	#Establish Extensive Trade Unions
+	focus = {
+		id = NIC_establish_extensive_trade_unions
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		x = 7
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_remove_power_from_somoza  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.1 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Redirect Military Loyalty
+	focus = {
+		id = NIC_redirect_military_loyalty
+		icon = GFX_NIC_redirect_military_loyalty-262098
+		x = 8
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = NIC_remove_power_from_somoza  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			add_war_support = 0.05 
+			
+			add_manpower = 25175
+			
+			
+		}
+	}
+
+	#University Expansions
+	focus = {
+		id = NIC_university_expansions
+		icon = GFX_NIC_university_expansions-645993
+		x = 6
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = NIC_remove_power_from_somoza  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Remove Somoza
+	focus = {
+		id = NIC_remove_somoza
+		icon = GFX_focus_rom_handle_king
+		x = 6
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = NIC_seizesomozasassets  } prerequisite = { focus = NIC_establish_a_presidency  } prerequisite = { focus = NIC_establish_extensive_trade_unions  } prerequisite = { focus = NIC_redirect_military_loyalty  }
+		completion_reward = {
+			set_politics = {
+				ruling_party = democratic
+			        elections_allowed = yes
+			        last_election = }
+			 add_stability = 0.05
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#International Alliances
+	focus = {
+		id = NIC_international_alliances
+		icon = GFX_goal_generic_major_alliance
+		x = 4
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = NIC_remove_somoza  }
+		mutually_exclusive = { focus = NIC_military_counter_coup  }
+		completion_reward = {
+			add_political_power = 35
+			
+			add_command_power = 35
+			
+			
+		}
+	}
+
+	#Mutual Assistance Reciprocation
+	focus = {
+		id = NIC_mutual_assistance_reciprocation
+		icon = GFX_NIC_mutual_assistance_reciprocation-645900
+		x = 4
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_international_alliances  }
+		mutually_exclusive = { focus = NIC_join_the_fight  } mutually_exclusive = { focus = NIC_remainneutralsellweapons  }
+		available = {
+			USA = {
+				NOT = {
+						has_government = fascism
+			
+					has_government = neutrality
+			
+			
+			}
+			
+			
+				is_faction_leader = yes
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			USA = {
+				add_to_faction = NIC
+			
+				random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+				random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+			}
+			add_war_support = 0.1
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Military Counter Coup
+	focus = {
+		id = NIC_military_counter_coup
+		icon = GFX_goal_generic_army_tanks
+		x = 6
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = NIC_remove_somoza  }
+		mutually_exclusive = { focus = NIC_international_alliances  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			set_politics = {
+				ruling_party = fascism
+			        elections_allowed = no
+			        last_election = }
+			 add_manpower = 15750
+			
+			
+		}
+	}
+
+	#Latin American Nationalism
+	focus = {
+		id = NIC_latin_american_nationalism
+		icon = GFX_NIC_latin_american_nationalism-262105
+		x = 8
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = NIC_remove_somoza  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Integrate Guatemala
+	focus = {
+		id = NIC_integrate_guatemala
+		icon = GFX_NIC_integrate_guatemala-412
+		x = 6
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = NIC_military_counter_coup  } prerequisite = { focus = NIC_latin_american_nationalism  }
+		available = {
+			is_neighbor_of = GUA
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = GUA
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = GUA
+	}
+
+	#Integrate Honduras
+	focus = {
+		id = NIC_integrate_honduras
+		icon = GFX_NIC_integrate_honduras-412
+		x = 8
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = NIC_military_counter_coup  } prerequisite = { focus = NIC_latin_american_nationalism  }
+		available = {
+			is_neighbor_of = HON
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = HON
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = HON
+	}
+
+	#Integrate El Salvador
+	focus = {
+		id = NIC_integrate_el_salvador
+		icon = GFX_NIC_integrate_el_salvador-412
+		x = 7
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = NIC_military_counter_coup  } prerequisite = { focus = NIC_latin_american_nationalism  }
+		available = {
+			is_neighbor_of = ELS
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = ELS
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = ELS
+	}
+
+	#Integrate Costa Rica
+	focus = {
+		id = NIC_integrate_costa_rica
+		icon = GFX_NIC_integrate_costa_rica-412
+		x = 9
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = NIC_military_counter_coup  } prerequisite = { focus = NIC_latin_american_nationalism  }
+		available = {
+			is_neighbor_of = COS
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = COS
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = COS
+	}
+
+	#Integrate Panama
+	focus = {
+		id = NIC_integrate_panama
+		icon = GFX_NIC_integrate_panama-412
+		x = 10
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = NIC_military_counter_coup  } prerequisite = { focus = NIC_latin_american_nationalism  }
+		available = {
+			is_neighbor_of = PAN
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = PAN
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = PAN
+	}
+
+	#Fuerzas Armadas de Nicaragua
+	focus = {
+		id = NIC_fuerzas_armadas_de_nicaragua
+		icon = GFX_NIC_fuerzas_armadas_de_nicaragua-645525
+		x = 13
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Training At Home
+	focus = {
+		id = NIC_training_at_home
+		icon = GFX_NIC_training_at_home-646230
+		x = 12
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = NIC_fuerzas_armadas_de_nicaragua  }
+		available = {
+			has_government = neutrality
+			
+			
+		}
+		completion_reward = {
+			army_experience = 10
+			
+			add_command_power = 25
+			
+			add_manpower = 4500
+			
+			
+		}
+	}
+
+	#Training Abroad
+	focus = {
+		id = NIC_training_abroad
+		icon = GFX_NIC_training_abroad-646237
+		x = 14
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = NIC_fuerzas_armadas_de_nicaragua  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = -0.05 }
+			
+			
+			army_experience = 30
+			
+			add_command_power = 60
+			
+			add_manpower = 4500
+			
+			
+		}
+	}
+
+	#Guardia Nacional
+	focus = {
+		id = NIC_guardia_nacional
+		icon = GFX_focus_focus_fra_national_resistance_council
+		x = 13
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_training_abroad  focus = NIC_training_at_home  }
+		completion_reward = {
+			add_war_support = 0.05
+			
+			add_manpower = 10000
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Coffee and Banana Exports
+	focus = {
+		id = NIC_coffee_and_banana_exports
+		icon = GFX_NIC_coffee_and_banana_exports-645905
+		x = 10
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_resource_exports_to_the_us  } prerequisite = { focus = NIC_gold_exports_to_the_us  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Steel Expansion
+	focus = {
+		id = NIC_steel_expansion
+		icon = GFX_focus_generic_steel
+		x = 12
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_gold_exports_to_the_us  } prerequisite = { focus = NIC_guardia_nacional  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+			317 = {
+				add_resource = {
+			    type = steel
+			    amount = 16
+			}
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#Aérea Nicaragüense
+	focus = {
+		id = NIC_aereanicaraguense
+		icon = GFX_focus_GRE_hellenic_armed_forces
+		x = 15
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = NIC_fuerzas_armadas_de_nicaragua  }
+		completion_reward = {
+			add_manpower = 5000
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+	#Heavy Industry
+	focus = {
+		id = NIC_heavy_industry
+		icon = GFX_focus_generic_industry_1
+		x = 14
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = NIC_guardia_nacional  } prerequisite = { focus = NIC_aereanicaraguense  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+}

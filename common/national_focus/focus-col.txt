@@ -1,0 +1,1862 @@
+focus_tree = {
+	id = focus-col
+	continuous_focus_position = { x = 150 y = 1440 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = COL
+		}
+	}
+	#South American Politics
+	focus = {
+		id = COL_south_american_politics
+		icon = GFX_goal_generic_neutrality_focus
+		x = 1
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			add_stability = -0.025
+			
+			add_political_power = 45
+			
+			
+		}
+	}
+
+	#Allow Creation of Labor Unions
+	focus = {
+		id = COL_allow_creation_of_labor_unions
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		x = 1
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_south_american_politics  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.085 }
+			
+			
+			add_stability = 0.05
+			
+			add_political_power = -60
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Pass Law 200 of 1936
+	focus = {
+		id = COL_pass_law_200_of_1936
+		icon = GFX_focus_generic_strike_at_democracy2
+		x = 3
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_south_american_politics  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.04 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.08 }
+			
+			
+			add_political_power = -60
+			
+			493 = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			306 = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			486 = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Revolución en Marcha
+	focus = {
+		id = COL_revolucionenmarcha
+		icon = GFX_COL_revolucionenmarcha-88
+		x = 4
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COL_allow_creation_of_labor_unions  } prerequisite = { focus = COL_pass_law_200_of_1936  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.025 }
+			
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.05
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Backing of Labor Sectors
+	focus = {
+		id = COL_backing_of_labor_sectors
+		icon = GFX_focus_generic_industry_1
+		x = 0
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_allow_creation_of_labor_unions  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.025 }
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Ally the Communists
+	focus = {
+		id = COL_ally_the_communists
+		icon = GFX_focus_generic_soviet_politics
+		x = 2
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COL_allow_creation_of_labor_unions  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 150
+			
+			
+		}
+	}
+
+	#American Steel Imports
+	focus = {
+		id = COL_american_steel_imports
+		icon = GFX_focus_generic_steel
+		x = 6
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_south_american_politics  }
+		available = {
+			has_completed_focus = COL_allow_creation_of_labor_unions
+			
+			
+			NOT = {
+				has_completed_focus = COL_cut_american_ties
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			493 = {
+				add_resource = {
+			    type = steel
+			    amount = 12
+			}
+			
+			
+			
+			}
+			493 = {
+				remove_building = {
+			    type = industrial_complex
+			    level = 1
+			}
+			
+			
+			
+			}
+			USA = {
+				random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+			}
+			
+		}
+	}
+
+	#Coffee Exports
+	focus = {
+		id = COL_coffee_exports
+		icon = GFX_COL_coffee_exports-645905
+		x = 6
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_american_steel_imports  }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 3 }
+			
+			
+			add_equipment_to_stockpile = {
+			    type = convoy
+			    amount = 50
+			    producer = COL
+			}
+			
+			
+			
+		}
+	}
+
+	#Negotiate Prices
+	focus = {
+		id = COL_negotiate_prices
+		icon = GFX_COL_negotiate_prices-645545
+		x = 6
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_coffee_exports  }
+		available = {
+			USA = {
+				has_war = yes
+			
+			
+			}
+			
+			NOT = {
+				has_war_with = COL
+			
+			
+			}
+			
+			
+			NOT = {
+				has_completed_focus = COL_cut_american_ties
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			add_political_power = 50
+			
+			USA = {
+				add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#Heavy Metals Shipments
+	focus = {
+		id = COL_heavy_metals_shipments
+		icon = GFX_focus_generic_tungsten
+		x = 8
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_american_steel_imports  }
+		available = {
+			NOT = {
+				has_war_with = USA
+			
+			
+				has_completed_focus = COL_cut_american_ties
+			
+			}
+			
+			
+			
+		}
+		completion_reward = {
+			486 = {
+				add_resource = {
+			    type = tungsten
+			    amount = 16
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			give_resource_rights = { receiver = USA state = 486 }
+			
+			
+		}
+	}
+
+	#Counter Axis Agents
+	focus = {
+		id = COL_counter_axis_agents
+		icon = GFX_COL_counter_axis_agents-645980
+		x = 4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = COL_revolucionenmarcha  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#1938 Liberal Victory
+	focus = {
+		id = COL_1938_liberal_victory
+		icon = GFX_COL_1938_liberal_victory-427
+		x = 0
+		y = 3
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COL_revolucionenmarcha  } prerequisite = { focus = COL_backing_of_labor_sectors  } prerequisite = { focus = COL_ally_the_communists  }
+		mutually_exclusive = { focus = COL_1938_moderate_victory  }
+		available = {
+			always = no
+			
+			
+		}
+	}
+
+	#1938 Moderate Victory
+	focus = {
+		id = COL_1938_moderate_victory
+		icon = GFX_COL_1938_moderate_victory-646378
+		x = 2
+		y = 3
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COL_revolucionenmarcha  } prerequisite = { focus = COL_backing_of_labor_sectors  } prerequisite = { focus = COL_ally_the_communists  }
+		mutually_exclusive = { focus = COL_1938_liberal_victory  }
+		available = {
+			always = no
+			
+			
+		}
+	}
+
+	#Protect Axis Refugees
+	focus = {
+		id = COL_protect_axis_refugees
+		icon = GFX_COL_protect_axis_refugees-646335
+		x = 2
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = COL_1938_liberal_victory  focus = COL_1938_moderate_victory  }
+		mutually_exclusive = { focus = COL_arrest_axis_refugees  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.025 }
+			
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_political_power = -84
+			
+			add_stability = 0.025
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Arrest Axis Refugees
+	focus = {
+		id = COL_arrest_axis_refugees
+		icon = GFX_COL_arrest_axis_refugees-646334
+		x = 0
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = COL_1938_moderate_victory  focus = COL_1938_liberal_victory  }
+		mutually_exclusive = { focus = COL_protect_axis_refugees  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = -0.05 }
+			
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.05 }
+			
+			
+			add_political_power = 56
+			
+			add_stability = -0.05
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#The Black List
+	focus = {
+		id = COL_the_black_list
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		x = 0
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COL_arrest_axis_refugees  }
+		completion_reward = {
+			add_political_power = 100
+			
+			USA = {
+				add_political_power = 25
+			
+			
+			}
+			
+		}
+	}
+
+	#Counter-Espionage Funding
+	focus = {
+		id = COL_counterespionage_funding
+		icon = GFX_COL_counterespionage_funding-646303
+		x = 4
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_counter_axis_agents  }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 3 }
+			
+			
+			add_offsite_building = { type = arms_factory level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Support For the United States
+	focus = {
+		id = COL_support_for_the_united_states
+		icon = GFX_COL_support_for_the_united_states-645900
+		x = 2
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COL_arrest_axis_refugees  focus = COL_protect_axis_refugees  }
+		mutually_exclusive = { focus = COL_cut_american_ties  }
+		ai_will_do = { factor = 4 }
+		available = {
+			has_completed_focus = COL_the_black_list
+			
+			
+			USA = {
+				has_civil_war = no
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic
+			    popularity = 0.05 }
+			
+			
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 5000
+			    producer = USA
+			}
+			
+			
+			add_equipment_to_stockpile = {
+			    type = convoy
+			    amount = 25
+			    producer = USA
+			}
+			
+			
+			add_offsite_building = { type = arms_factory level = 1 }
+			
+			
+			
+		}
+	}
+
+	#Cut American Ties
+	focus = {
+		id = COL_cut_american_ties
+		icon = GFX_COL_cut_american_ties-645883
+		x = 6
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = COL_protect_axis_refugees  }
+		mutually_exclusive = { focus = COL_support_for_the_united_states  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = -0.05 }
+			
+			
+			add_stability = -0.1
+			
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Seize Property
+	focus = {
+		id = COL_seize_property
+		icon = GFX_focus_generic_self_management
+		x = 2
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_the_black_list  } prerequisite = { focus = COL_support_for_the_united_states  }
+		completion_reward = {
+			add_stability = -0.025
+			
+			add_war_support = 0.025
+			
+			306 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			493 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#SCADTA Restrictions
+	focus = {
+		id = COL_scadta_restrictions
+		icon = GFX_COL_scadta_restrictions-646141
+		x = 0
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = COL_support_for_the_united_states  }
+		completion_reward = {
+			air_experience = 25
+			
+			add_war_support = 0.05
+			
+			add_manpower = 3560
+			
+			
+		}
+	}
+
+	#Atlantic Naval Cooperations
+	focus = {
+		id = COL_atlantic_naval_cooperations
+		icon = GFX_focus_chi_british_cooperation
+		x = 4
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_support_for_the_united_states  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			navy_experience = 25
+			
+			USA = {
+			navy_experience = 25
+			
+			
+			}
+			ENG = {
+				navy_experience = 25
+			
+			
+			}
+			
+		}
+	}
+
+	#National Industry Protections
+	focus = {
+		id = COL_national_industry_protections
+		icon = GFX_focus_generic_industry_2
+		x = 1
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_seize_property  } prerequisite = { focus = COL_scadta_restrictions  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.05 }
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Agrarian Reforms
+	focus = {
+		id = COL_agrarian_reforms
+		icon = GFX_COL_agrarian_reforms-645857
+		x = 3
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_seize_property  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = -0.04 }
+			
+			
+			add_political_power = -100
+			
+			493 = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			306 = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			486 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#Join the Fight
+	focus = {
+		id = COL_join_the_fight
+		icon = GFX_COL_join_the_fight-645596
+		x = 0
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = COL_national_industry_protections  } prerequisite = { focus = COL_agrarian_reforms  }
+		mutually_exclusive = { focus = COL_remainneutralsellweapons  }
+		available = {
+			USA = {
+				is_in_faction_with = ENG
+			
+				has_defensive_war = yes
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			ENG = {
+				has_capitulated = no
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			ENG = {
+				country_event = {
+					id = generic.2
+				}
+			
+			
+			}
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Remain Neutral, Sell Weapons
+	focus = {
+		id = COL_remainneutralsellweapons
+		icon = GFX_COL_remainneutralsellweapons-645854
+		x = 2
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_national_industry_protections  } prerequisite = { focus = COL_agrarian_reforms  }
+		mutually_exclusive = { focus = COL_join_the_fight  }
+		completion_reward = {
+			USA = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = COL
+			}
+			
+			
+			
+			}
+			ENG = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = COL
+			}
+			
+			
+			
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = COL
+			}
+			
+			
+			
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = COL
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 4 }
+			
+			
+			
+			
+		}
+	}
+
+	#Nationalize Resource Production
+	focus = {
+		id = COL_nationalize_resource_production
+		icon = GFX_focus_focus_fra_national_resistance_council
+		x = 8
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_heavy_metals_shipments  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.05
+			
+			add_war_support = 0.1
+			
+			USA = {
+				remove_resource_rights = 486
+			
+			add_political_power = -50
+			
+			
+			}
+			
+		}
+	}
+
+	#Offer Axis Refugees Asylum
+	focus = {
+		id = COL_offer_axis_refugees_asylum
+		icon = GFX_COL_offer_axis_refugees_asylum-645595
+		x = 6
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = COL_cut_american_ties  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.04 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.06 }
+			
+			
+			add_stability = 0.08
+			
+			add_war_support = 0.04
+			
+			
+		}
+	}
+
+	#Nationalize All Industries
+	focus = {
+		id = COL_nationalize_all_industries
+		icon = GFX_focus_generic_industry_3
+		x = 8
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_nationalize_resource_production  }
+		mutually_exclusive = { focus = COL_allied_research_cooperation  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Claims to Venezuela
+	focus = {
+		id = COL_claims_to_venezuela
+		icon = GFX_COL_claims_to_venezuela-645549
+		x = 8
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COL_revive_ideas_of_gran_colombia  }
+		completion_reward = {
+			add_state_claim = 489 add_state_claim = 695 add_state_claim = 307 add_state_claim = 488 
+			
+			create_wargoal = {
+			    type = annex_everything
+			    target = VEN
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = VEN
+	}
+
+	#Allied Research Cooperation
+	focus = {
+		id = COL_allied_research_cooperation
+		icon = GFX_focus_research
+		x = 6
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = COL_negotiate_prices  }
+		mutually_exclusive = { focus = COL_nationalize_all_industries  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Research Grants
+	focus = {
+		id = COL_research_grants
+		icon = GFX_focus_research
+		x = 8
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = COL_nationalize_all_industries  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Invite German Colombians to Government
+	focus = {
+		id = COL_invite_german_colombians_to_government
+		icon = GFX_focus_chi_mission_to_germany
+		x = 8
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = COL_cut_american_ties  }
+		completion_reward = {
+			add_political_power = 25
+			
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Revive Ideas of Gran Colombia
+	focus = {
+		id = COL_revive_ideas_of_gran_colombia
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		x = 7
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = COL_offer_axis_refugees_asylum  } prerequisite = { focus = COL_invite_german_colombians_to_government  }
+		completion_reward = {
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Disband Labor Unions
+	focus = {
+		id = COL_disband_labor_unions
+		icon = GFX_COL_disband_labor_unions-645539
+		x = 10
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = COL_cut_american_ties  }
+		mutually_exclusive = { focus = COL_integrate_labor_unions  }
+		available = {
+			has_government = neutrality
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = -1.0 }
+			
+			
+			add_stability = -0.1
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Integrate Labor Unions
+	focus = {
+		id = COL_integrate_labor_unions
+		icon = GFX_COL_integrate_labor_unions-426
+		x = 12
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = COL_cut_american_ties  }
+		mutually_exclusive = { focus = COL_disband_labor_unions  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+			add_political_power = -100
+			
+			add_stability = 0.1
+			
+			add_war_support = 0.05
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Claims Through the Coast
+	focus = {
+		id = COL_claims_through_the_coast
+		icon = GFX_COL_claims_through_the_coast-646302
+		x = 10
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_OCCUPATION_COST
+		}
+		prerequisite = { focus = COL_revive_ideas_of_gran_colombia  }
+		completion_reward = {
+			add_state_core = 687 add_state_core = 309 add_state_core = 310 add_state_core = 691
+			
+			
+		}
+	}
+
+	#Claims to Ecuador
+	focus = {
+		id = COL_claims_to_ecuador
+		icon = GFX_COL_claims_to_ecuador-645870
+		x = 6
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COL_revive_ideas_of_gran_colombia  }
+		completion_reward = {
+			add_state_claim = 305 add_state_claim = 490 add_state_claim = 649 
+			
+			create_wargoal = {
+			    type = annex_everything
+			    target = ECU
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = ECU
+	}
+
+	#Claims to Peru
+	focus = {
+		id = COL_claims_to_peru
+		icon = GFX_COL_claims_to_peru-645878
+		x = 4
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COL_revive_ideas_of_gran_colombia  }
+		completion_reward = {
+			add_state_claim = 491 
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = PRU
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = PRU
+	}
+
+	#Restore the Peru-Bolivian Confederation
+	focus = {
+		id = COL_restore_the_perubolivian_confederation
+		icon = GFX_COL_restore_the_perubolivian_confederation-645865
+		x = 4
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COL_claims_to_peru  }
+		available = {
+			PRU = {
+				is_subject_of = COL
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			PRU = {
+				add_state_core = 487
+			
+				add_state_core = 302
+			
+			
+			}
+			create_wargoal = {
+			    type = annex_everything
+			    target = BOL
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = BOL
+	}
+
+	#Protect the Galapagos Islands
+	focus = {
+		id = COL_protect_the_galapagos_islands
+		icon = GFX_goal_generic_fortify_city
+		x = 6
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_claims_to_ecuador  }
+		available = {
+			owns_state = 649
+			
+			controls_state = 649
+			
+			has_war = no
+			
+			
+		}
+		completion_reward = {
+			navy_experience = 25
+			
+			add_equipment_to_stockpile = {
+			    type = convoy
+			    amount = 25
+			    producer = COL
+			}
+			
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			649 = {
+			set_demilitarized_zone = yes
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#Seize Dutch Oil
+	focus = {
+		id = COL_seize_dutch_oil
+		icon = GFX_goal_generic_oil_refinery
+		x = 8
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COL_claims_to_venezuela  }
+		available = {
+			owns_state = 489
+			
+			controls_state = 489
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = HOL
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = HOL
+	}
+
+	#Seize the Guyana States
+	focus = {
+		id = COL_seize_the_guyana_states
+		icon = GFX_COL_seize_the_guyana_states-645881
+		x = 10
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COL_claims_through_the_coast  }
+		available = {
+			owns_state = 488
+			
+			controls_state = 488
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = FRA
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = ENG
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = FRA
+		will_lead_to_war_with = ENG
+	}
+
+	#Ejército Nacional de Colombia
+	focus = {
+		id = COL_ejercitonacionaldecolombia
+		icon = GFX_focus_generic_combined_arms
+		x = 10
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Armada Nacional de la República de Colombia
+	focus = {
+		id = COL_armadanacionaldelarepublicadecolombia
+		icon = GFX_focus_generic_navy_battleship2
+		x = 14
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			navy_experience = 25
+			
+			
+		}
+	}
+
+	#Obtain War Materials
+	focus = {
+		id = COL_obtain_war_materials
+		icon = GFX_goal_generic_dangerous_deal
+		x = 12
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = COL_ejercitonacionaldecolombia  } prerequisite = { focus = COL_armadanacionaldelarepublicadecolombia  }
+		completion_reward = {
+			306 = {
+				add_resource = {
+			    type = oil
+			    amount = 2
+			}
+			
+			
+				add_resource = {
+			    type = steel
+			    amount = 8
+			}
+			
+			
+			
+			}
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Rush the Canal
+	focus = {
+		id = COL_rush_the_canal
+		icon = GFX_goal_generic_air_naval_bomber
+		x = 7
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = COL_revive_ideas_of_gran_colombia  }
+		completion_reward = {
+			add_state_claim = 304
+			
+			add_state_claim = 685
+			
+			create_wargoal = {
+			    type = annex_everything
+			    target = PAN
+			}
+			
+			
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = USA
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = PAN
+		will_lead_to_war_with = USA
+	}
+
+	#Army Training Exercises
+	focus = {
+		id = COL_army_training_exercises
+		icon = GFX_goal_generic_army_doctrines
+		x = 10
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = COL_ejercitonacionaldecolombia  }
+		completion_reward = {
+			army_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4500
+			
+			
+		}
+	}
+
+	#Naval Training Exercises
+	focus = {
+		id = COL_naval_training_exercises
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		x = 14
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = COL_armadanacionaldelarepublicadecolombia  }
+		completion_reward = {
+			navy_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4500
+			
+			
+		}
+	}
+
+	#Fill Brigades
+	focus = {
+		id = COL_fill_brigades
+		icon = GFX_focus_generic_manpower
+		x = 10
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = COL_army_training_exercises  }
+		completion_reward = {
+			add_manpower = 21780
+			
+			add_war_support = 0.02
+			
+			
+		}
+	}
+
+	#Train Sailors
+	focus = {
+		id = COL_train_sailors
+		icon = GFX_COL_train_sailors-645718
+		x = 14
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = COL_naval_training_exercises  }
+		completion_reward = {
+			add_manpower = 18750
+			
+			add_war_support = 0.02
+			
+			
+		}
+	}
+
+	#Military Training Academies
+	focus = {
+		id = COL_military_training_academies
+		icon = GFX_COL_military_training_academies-61
+		x = 12
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = COL_fill_brigades  } prerequisite = { focus = COL_train_sailors  }
+		completion_reward = {
+			army_experience = 25
+			navy_experience = 25
+			air_experience = 10
+			
+			add_command_power = 50
+			
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+}

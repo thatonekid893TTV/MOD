@@ -1,0 +1,74 @@
+MMR_stalin_comintern_check = {
+	any_other_country = {
+		original_tag = SOV
+		hidden_trigger = {
+			exists = yes
+			has_capitulated = no
+		}
+		has_country_leader = { character = SOV_iosif_stalin }
+		has_government = communism 
+		is_faction_leader = yes 
+		has_civil_war = no
+	}
+}
+MMR_is_stalin_USSR = {
+	original_tag = SOV
+	hidden_trigger = {
+		exists = yes
+		has_capitulated = no
+	}
+	has_country_leader = { character = SOV_iosif_stalin }
+	has_government = communism 
+	is_faction_leader = yes 
+	has_civil_war = no
+}
+MMR_in_faction_with_stalin_comintern_check = {
+	any_other_country = {
+		original_tag = SOV
+		hidden_trigger = { 
+			exists = yes
+			has_capitulated = no
+		}
+		has_country_leader = { character = SOV_iosif_stalin }
+		has_government = communism 
+		is_faction_leader = yes 
+		has_civil_war = no
+		ROOT = { is_in_faction_with = PREV }
+	}
+}
+MMR_in_faction_with_eng_bca_check = {
+	any_other_country = {
+		original_tag = ENG
+		has_government = communism
+		is_faction_leader = yes
+		hidden_trigger = { 
+			exists = yes
+			has_capitulated = no
+		}
+		has_completed_focus = ENG_the_british_communist_alternative
+		has_civil_war = no
+		ROOT = { is_in_faction_with = PREV }
+	}
+}
+AZR_is_in_new_commonwealth_check = {
+	has_country_flag = ENG_abdication_crisis_dominion_will_leave
+	OR = {
+		CAN = { is_in_faction_with = ROOT is_faction_leader = yes has_country_flag = ENG_abdication_crisis_dominion_will_leave }
+		SAF = { is_in_faction_with = ROOT is_faction_leader = yes has_country_flag = ENG_abdication_crisis_dominion_will_leave }
+		BRM = { is_in_faction_with = ROOT is_faction_leader = yes has_country_flag = ENG_abdication_crisis_dominion_will_leave }
+		RAJ = { is_in_faction_with = ROOT is_faction_leader = yes has_country_flag = ENG_abdication_crisis_dominion_will_leave }
+		AST = { is_in_faction_with = ROOT is_faction_leader = yes has_country_flag = ENG_abdication_crisis_dominion_will_leave }
+		AND = {
+			has_country_flag = azr_is_in_new_commonwealth
+			any_other_country = { is_in_faction_with = ROOT has_country_flag = ENG_abdication_crisis_dominion_will_leave }
+		}
+	}
+}
+AZR_is_in_any_commonwealth_check = {
+	OR = {
+		AZR_is_in_new_commonwealth_check = yes
+		is_in_faction_with = ENG
+		is_subject_of = ENG
+	}
+}
+###

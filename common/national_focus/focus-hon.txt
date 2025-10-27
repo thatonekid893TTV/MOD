@@ -1,0 +1,1661 @@
+focus_tree = {
+	id = focus-hon
+	continuous_focus_position = { x = 150 y = 1050 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = HON
+		}
+	}
+	#Grant UFCO Land Ownership
+	focus = {
+		id = HON_grant_ufco_land_ownership
+		icon = GFX_HON_grant_ufco_land_ownership-645949
+		x = 11
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_empower_the_ufco  }
+		completion_reward = {
+			add_stability = -0.025
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Oust Andino, Continue Elections
+	focus = {
+		id = HON_oustandinocontinueelections
+		icon = GFX_focus_usa_voter_registration_act
+		x = 6
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_forbid_andino_from_reelection  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.1 }
+			
+			
+			set_politics = {
+				ruling_party = neutrality
+			        elections_allowed = yes
+			        last_election = 1936.1.1.12 } 
+			add_stability = 0.1
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Central American Politics
+	focus = {
+		id = HON_central_american_politics
+		icon = GFX_goal_generic_neutrality_focus
+		x = 1
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.15 }
+			
+			
+			add_political_power = 45
+			
+			
+			set_party_name = { 
+			    ideology = democratic 
+			    long_name = PNH 
+			    name = PNH 
+			}
+			
+			
+			set_party_name = { 
+			    ideology = neutrality 
+			    long_name = PLH 
+			    name = PLH 
+			}
+			
+			
+			
+			
+		}
+	}
+
+	#Liberal Dissent
+	focus = {
+		id = HON_liberal_dissent
+		icon = GFX_focus_generic_strike_at_democracy2
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HON_central_american_politics  }
+		completion_reward = {
+			add_stability = -0.1
+			
+			add_war_support = 0.1
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.1 }
+			
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+			
+		}
+	}
+
+	#Quell the Disease Outbreaks
+	focus = {
+		id = HON_quell_the_disease_outbreaks
+		icon = GFX_HON_quell_the_disease_outbreaks-646170
+		x = 10
+		y = 0
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_stability = 0.025
+			
+			add_manpower = 5600
+			
+			
+		}
+	}
+
+	#Depression Recovery
+	focus = {
+		id = HON_depression_recovery
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 14
+		y = 0
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Continue Andino's Term
+	focus = {
+		id = HON_continueandinosterm
+		icon = GFX_focus_generic_strike_at_democracy1
+		x = 2
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_central_american_politics  }
+		mutually_exclusive = { focus = HON_begin_the_process_of_removing_andino  }
+		ai_will_do = { factor = 5 }
+		available = {
+			has_stability > 0.5
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#Begin the Process of Removing Andino
+	focus = {
+		id = HON_begin_the_process_of_removing_andino
+		icon = GFX_focus_BUL_condemn_macedonian_organizations
+		x = 8
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = HON_central_american_politics  }
+		mutually_exclusive = { focus = HON_continueandinosterm  }
+		ai_will_do = { factor = 2 }
+		available = {
+			has_stability < 0.5
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Crushing Revolts
+	focus = {
+		id = HON_crushing_revolts
+		icon = GFX_focus_spr_crush_the_revolution
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HON_liberal_dissent  }
+		completion_reward = {
+			add_stability = -0.1
+			
+			add_war_support = 0.1
+			
+			
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = 0.1 }
+			
+			
+			
+			add_popularity = {
+			    ideology = communism
+			    popularity = 0.1 }
+			
+			
+			
+		}
+	}
+
+	#Recover United Fruit Co. Assets
+	focus = {
+		id = HON_recover_united_fruit_co_assets
+		icon = GFX_HON_recover_united_fruit_co_assets-262055
+		x = 12
+		y = 0
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			312 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#Control the Diseases
+	focus = {
+		id = HON_control_the_diseases
+		icon = GFX_HON_control_the_diseases-646163
+		x = 10
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HON_quell_the_disease_outbreaks  }
+		completion_reward = {
+			add_stability = 0.05 
+			
+			add_manpower = 7000
+			
+			
+			add_research_slot = 1
+			
+			
+		}
+	}
+
+	#Return Men to Work
+	focus = {
+		id = HON_return_men_to_work
+		icon = GFX_HON_return_men_to_work-645687
+		x = 12
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_recover_united_fruit_co_assets  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+		}
+	}
+
+	#UFCO Subsidies
+	focus = {
+		id = HON_ufco_subsidies
+		icon = GFX_focus_mex_privatisation
+		x = 9
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_empower_the_ufco  }
+		completion_reward = {
+			add_stability = -0.025
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Increase Military Output
+	focus = {
+		id = HON_increase_military_output
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 15
+		y = 1
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_depression_recovery  } prerequisite = { focus = HON_ejercito_de_honduras  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#The United Fruit Company
+	focus = {
+		id = HON_the_united_fruit_company
+		icon = GFX_goal_generic_positive_trade_relations
+		x = 12
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_return_men_to_work  }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			add_stability = -0.05 
+			
+			
+		}
+	}
+
+	#Empower the UFCO
+	focus = {
+		id = HON_empower_the_ufco
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 10
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_the_united_fruit_company  }
+		available = {
+			has_government = democratic 
+			
+			
+		}
+		completion_reward = {
+			add_political_power = 50
+			
+			add_stability = -0.05 
+			
+			312 = {
+				add_extra_state_shared_building_slots = 2
+			
+			
+			}
+			
+		}
+	}
+
+	#Placate the UFCO
+	focus = {
+		id = HON_placate_the_ufco
+		icon = GFX_HON_placate_the_ufco-645940
+		x = 14
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HON_the_united_fruit_company  }
+		available = {
+			NOT = {
+				has_government = democratic
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_stability = 0.15
+			
+			add_political_power = 150
+			
+			
+			
+		}
+	}
+
+	#Ejercito de Honduras
+	focus = {
+		id = HON_ejercito_de_honduras
+		icon = GFX_goal_generic_army_artillery2
+		x = 16
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			army_experience = 25
+			
+			
+		}
+	}
+
+	#Army Training Exercises
+	focus = {
+		id = HON_army_training_exercises
+		icon = GFX_goal_generic_army_doctrines
+		x = 17
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_ejercito_de_honduras  }
+		completion_reward = {
+			army_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4500
+			
+			
+		}
+	}
+
+	#Fill Brigades
+	focus = {
+		id = HON_fill_brigades
+		icon = GFX_focus_generic_manpower
+		x = 17
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_army_training_exercises  }
+		completion_reward = {
+			add_manpower = 32575
+			
+			
+		}
+	}
+
+	#Fuerza Aerea Hondurena
+	focus = {
+		id = HON_fuerza_aerea_hondurena
+		icon = GFX_goal_generic_build_airforce
+		x = 19
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		completion_reward = {
+			add_manpower = 5000
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+	#Air Training Exercises
+	focus = {
+		id = HON_air_training_exercises
+		icon = GFX_focus_generic_air_defense
+		x = 19
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_fuerza_aerea_hondurena  }
+		completion_reward = {
+			air_experience = 25
+			
+			add_command_power = 50
+			
+			add_manpower = 4500
+			
+			
+		}
+	}
+
+	#Train Pilots
+	focus = {
+		id = HON_train_pilots
+		icon = GFX_HON_train_pilots-645810
+		x = 19
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_air_training_exercises  }
+		completion_reward = {
+			add_manpower = 15250
+			
+			air_experience = 10
+			
+			
+		}
+	}
+
+	#Form the Military Aviation School
+	focus = {
+		id = HON_form_the_military_aviation_school
+		icon = GFX_HON_form_the_military_aviation_school-646187
+		x = 18
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HON_fill_brigades  } prerequisite = { focus = HON_train_pilots  }
+		completion_reward = {
+			add_research_slot = 1
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+	#U.S. Economic Cooperation
+	focus = {
+		id = HON_us_economic_cooperation
+		icon = GFX_HON_us_economic_cooperation-645900
+		x = 14
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_depression_recovery  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			USA = {
+				add_offsite_building = { type = industrial_complex level = 1 }
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#Form a Navy
+	focus = {
+		id = HON_form_a_navy
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 16
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_increase_military_output  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = dockyard
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = dockyard
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Nationalize the Land
+	focus = {
+		id = HON_nationalize_the_land
+		icon = GFX_focus_GRE_a_land_of_mountains
+		x = 13
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_placate_the_ufco  }
+		completion_reward = {
+			add_stability = 0.05 
+			
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = industrial_complex
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Tax Cuts
+	focus = {
+		id = HON_tax_cuts
+		icon = GFX_HON_tax_cuts-645666
+		x = 15
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_placate_the_ufco  }
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Maintain Support of the UFCO
+	focus = {
+		id = HON_maintain_support_of_the_ufco
+		icon = GFX_HON_maintain_support_of_the_ufco-646368
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_continueandinosterm  }
+		completion_reward = {
+			add_stability = -0.05 
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Oppose Strikes
+	focus = {
+		id = HON_oppose_strikes
+		icon = GFX_HON_oppose_strikes-645623
+		x = 0
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_crushing_revolts  } prerequisite = { focus = HON_maintain_support_of_the_ufco  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.05 }
+			
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Pay Our Debts
+	focus = {
+		id = HON_pay_our_debts
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		x = 2
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_maintain_support_of_the_ufco  }
+		completion_reward = {
+			add_stability = 0.05
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Ban the Communist Party
+	focus = {
+		id = HON_ban_the_communist_party
+		icon = GFX_HON_ban_the_communist_party-645539
+		x = 0
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_oppose_strikes  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism
+			    popularity = -1.0 }
+			
+			
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.1 }
+			
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#Crack Down On All Parties
+	focus = {
+		id = HON_crack_down_on_all_parties
+		icon = GFX_focus_rom_parties_end
+		x = 2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HON_oppose_strikes  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.05
+			
+			add_war_support = 0.025
+			
+			
+		}
+	}
+
+	#Call Upon the Constitutional Assembly
+	focus = {
+		id = HON_call_upon_the_constitutional_assembly
+		icon = GFX_HON_call_upon_the_constitutional_assembly-645611
+		x = 5
+		y = 2
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_continueandinosterm  focus = HON_begin_the_process_of_removing_andino  }
+		completion_reward = {
+			add_political_power = 28
+			
+			
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = -0.05 }
+			
+			
+			
+		}
+	}
+
+	#Constitutional Amendment to Allow Consecutive Terms
+	focus = {
+		id = HON_constitutional_amendment_to_allow_consecutive_terms
+		icon = GFX_HON_constitutional_amendment_to_allow_consecutive_terms-645593
+		x = 4
+		y = 3
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_call_upon_the_constitutional_assembly  } prerequisite = { focus = HON_continueandinosterm  }
+		completion_reward = {
+			add_political_power = 28
+			
+			add_stability = 0.1
+			
+			add_war_support = 0.025
+			
+			set_politics = {
+				ruling_party = democratic
+			        elections_allowed = no
+			        last_election = }
+			
+		}
+	}
+
+	#Exile Liberal Party Leaders
+	focus = {
+		id = HON_exile_liberal_party_leaders
+		icon = GFX_focus_mex_exile_calles
+		x = 4
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HON_constitutional_amendment_to_allow_consecutive_terms  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality
+			    popularity = -1.0 }
+			
+			
+			add_stability = 0.1
+			
+			
+		}
+	}
+
+	#Ally Other Central American Dictators
+	focus = {
+		id = HON_ally_other_central_american_dictators
+		icon = GFX_goal_generic_attack_allies
+		x = 2
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HON_ban_the_communist_party  } prerequisite = { focus = HON_crack_down_on_all_parties  } prerequisite = { focus = HON_exile_liberal_party_leaders  }
+		completion_reward = {
+			GUA = {
+				add_war_support = 0.05
+			
+			
+			}
+			ELS = {
+				add_war_support = 0.05
+			
+			
+			}
+			NIC = {
+				add_war_support = 0.05
+			
+			
+			}
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Join the War
+	focus = {
+		id = HON_join_the_war
+		icon = GFX_HON_join_the_war-645525
+		x = 0
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HON_ally_other_central_american_dictators  }
+		mutually_exclusive = { focus = HON_remainneutralsellweapons  }
+		available = {
+			USA = {
+				is_in_faction_with = ENG
+			
+				has_defensive_war = yes
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+			ENG = {
+				has_capitulated = no
+			
+				NOT = {
+						has_government = communism
+			
+			
+			}
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			ENG = {
+			country_event = {
+					id = generic.2
+				}
+			
+			}
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Remain Neutral, Sell Weapons
+	focus = {
+		id = HON_remainneutralsellweapons
+		icon = GFX_HON_remainneutralsellweapons-645854
+		x = 2
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_ally_other_central_american_dictators  }
+		mutually_exclusive = { focus = HON_join_the_war  }
+		completion_reward = {
+			USA = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = HON
+			}
+			
+			
+			
+			}
+			ENG = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = HON
+			}
+			
+			
+			
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = HON
+			}
+			
+			
+			
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = 1000
+			    producer = HON
+			}
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 4 }
+			
+			
+			
+			
+		}
+	}
+
+	#Provide Allies With Bananas
+	focus = {
+		id = HON_provide_allies_with_bananas
+		icon = GFX_goal_generic_trade
+		x = 0
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_join_the_war  }
+		completion_reward = {
+			USA = {
+				add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+			}
+			ENG = {
+				add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+			}
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Provide Allies With Materials
+	focus = {
+		id = HON_provide_allies_with_materials
+		icon = GFX_focus_generic_rubber
+		x = 2
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_join_the_war  }
+		available = {
+			USA = {
+				controls_state = 386
+			
+			
+			}
+			ENG = {
+				controls_state = 126
+			
+			
+			}
+			
+		}
+		completion_reward = {
+			USA = {
+				386 = {
+						add_resource = {
+			    type = rubber
+			    amount = 6
+			}
+			
+			
+			
+			}
+			
+			}
+			ENG = {
+				126 = {
+						add_resource = {
+			    type = rubber
+			    amount = 6
+			}
+			
+			
+			
+			}
+			
+			}
+			312 = {
+				add_resource = {
+			    type = rubber
+			    amount = 6
+			}
+			
+			
+			
+			}
+			
+		}
+	}
+
+	#Continued Military Expansion
+	focus = {
+		id = HON_continued_military_expansion
+		icon = GFX_goal_generic_construct_military
+		x = 4
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_ban_the_communist_party  } prerequisite = { focus = HON_crack_down_on_all_parties  } prerequisite = { focus = HON_exile_liberal_party_leaders  }
+		completion_reward = {
+			random_owned_controlled_state = {
+			limit = {
+			free_building_slots = {
+			building = arms_factory
+			size > 0
+			include_locked = yes
+			}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+			}
+			set_state_flag = REPLACE_ME_WITH_UNIQUE_IDENTIFIER
+			}
+			
+			
+		}
+	}
+
+	#Unite Central America
+	focus = {
+		id = HON_unite_central_america
+		icon = GFX_focus_ger_bulwark_against_bolshevism
+		x = 10
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HON_oustandinocontinueelections  }
+		completion_reward = {
+			add_manpower = 45275
+			
+			add_war_support = 0.025
+			
+			
+		}
+	}
+
+	#Integrate Guatemala
+	focus = {
+		id = HON_integrate_guatemala
+		icon = GFX_HON_integrate_guatemala-412
+		x = 10
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HON_unite_central_america  }
+		available = {
+			is_neighbor_of = GUA
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = GUA
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = GUA
+	}
+
+	#Integrate El Salvador
+	focus = {
+		id = HON_integrate_el_salvador
+		icon = GFX_HON_integrate_el_salvador-412
+		x = 12
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HON_unite_central_america  }
+		available = {
+			is_neighbor_of = ELS
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = ELS
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = ELS
+	}
+
+	#Integrate Nicaragua
+	focus = {
+		id = HON_integrate_nicaragua
+		icon = GFX_HON_integrate_nicaragua-412
+		x = 12
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HON_unite_central_america  }
+		available = {
+			is_neighbor_of = NIC
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = NIC
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = NIC
+	}
+
+	#Integrate Costa Rica
+	focus = {
+		id = HON_integrate_costa_rica
+		icon = GFX_HON_integrate_costa_rica-412
+		x = 14
+		y = 6
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HON_unite_central_america  }
+		available = {
+			is_neighbor_of = COS
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = COS
+			}
+			
+			
+			
+			
+		}
+		will_lead_to_war_with = COS
+	}
+
+	#Integrate Panama
+	focus = {
+		id = HON_integrate_panama
+		icon = GFX_HON_integrate_panama-412
+		x = 14
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HON_unite_central_america  }
+		available = {
+			is_neighbor_of = PAN
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = annex_everything
+			    target = PAN
+			}
+			
+			
+			
+			
+		}
+		will_lead_to_war_with = PAN
+	}
+
+	#Integrate Mexico
+	focus = {
+		id = HON_integrate_mexico
+		icon = GFX_focus_mex_jefe_maximo
+		x = 10
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = HON_integrate_guatemala }
+		available = {
+			is_neighbor_of = MEX
+			
+			
+		}
+		completion_reward = {
+			create_wargoal = {
+			    type = puppet_wargoal_focus
+			    target = MEX
+			}
+			
+			
+			
+		}
+		will_lead_to_war_with = MEX
+	}
+
+	#Ensure Military Loyalty
+	focus = {
+		id = HON_ensure_military_loyalty
+		icon = GFX_HON_ensure_military_loyalty-262098
+		x = 6
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_oustandinocontinueelections  }
+		mutually_exclusive = { focus = HON_empower_the_military  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = -0.1 }
+			
+			
+			army_experience = 25
+			
+			navy_experience = 25
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+	#Military Junta Electorate
+	focus = {
+		id = HON_military_junta_electorate
+		icon = GFX_HON_military_junta_electorate-262135
+		x = 8
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_empower_the_military  }
+		available = {
+			fascism > 0.3
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			set_politics = {
+				ruling_party = fascism
+			        elections_allowed = yes
+			        last_election = } 
+			add_war_support = 0.1
+			
+			
+			retire_country_leader = yes
+			
+			
+		}
+	}
+
+	#Stability in Government
+	focus = {
+		id = HON_stability_in_government
+		icon = GFX_HON_stability_in_government-646378
+		x = 6
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_ensure_military_loyalty  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = neutrality 
+			    popularity = 0.1 }
+			
+			
+			add_stability = 0.05 
+			
+			add_war_support = 0.05 
+			
+			
+		}
+	}
+
+	#Reshuffle the Government
+	focus = {
+		id = HON_reshuffle_the_government
+		icon = GFX_focus_AST_rats_tobruk
+		x = 8
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_begin_the_process_of_removing_andino  }
+		available = {
+			NOT = {
+				has_government = democratic
+			
+			
+			}
+			
+			
+		}
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = -0.05 }
+			
+			
+			add_political_power = 50
+			
+			add_command_power = 50
+			
+			
+		}
+	}
+
+	#Forbid Andino From Reelection
+	focus = {
+		id = HON_forbid_andino_from_reelection
+		icon = GFX_goal_generic_demand_territory
+		x = 6
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_begin_the_process_of_removing_andino  } prerequisite = { focus = HON_call_upon_the_constitutional_assembly  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = democratic 
+			    popularity = -0.1 }
+			
+			
+			add_stability = 0.1
+			
+			add_war_support = 0.1
+			
+			
+		}
+	}
+
+	#Encourage Trade Unions
+	focus = {
+		id = HON_encourage_trade_unions
+		icon = GFX_focus_por_latin_american_communism
+		x = 7
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HON_begin_the_process_of_removing_andino  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = communism 
+			    popularity = 0.05 }
+			
+			
+			add_stability = 0.05 
+			
+			add_political_power = -100
+			
+			add_offsite_building = { type = industrial_complex level = 2 }
+			
+			
+			
+		}
+	}
+
+	#Empower the Military
+	focus = {
+		id = HON_empower_the_military
+		icon = GFX_HON_empower_the_military-262024
+		x = 8
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HON_oustandinocontinueelections  } prerequisite = { focus = HON_reshuffle_the_government  }
+		mutually_exclusive = { focus = HON_ensure_military_loyalty  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.1 }
+			
+			
+			army_experience = 25
+			
+			navy_experience = 25
+			
+			air_experience = 25
+			
+			
+		}
+	}
+
+}
