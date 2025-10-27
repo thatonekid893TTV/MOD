@@ -1,0 +1,468 @@
+﻿capital = 284
+
+oob = "NZL_1936"
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "NZL_1936_air_bba"
+	else = {
+		set_air_oob = "NZL_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			naval_bomber1 = 1
+
+		}
+	}
+}
+
+# Starting tech
+set_stability = 0.5 #MMR was 0.8
+set_war_support = 0.2 #MMR was 0.3
+add_ideas = {
+	NZL_treaty_of_waitangi
+	AZR_NZL_AST_legacy_of_gallipoli
+	MMR_NZL_legacy_of_the_great_depression
+	AZR_NZL_first_labour_government_idea_start
+}
+
+set_party_name = {
+    ideology = neutrality
+    long_name = NZL_neutrality_party_start_long
+    name = NZL_neutrality_party_start
+}
+
+
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	support_weapons = 1 #MMR
+	tech_trucks = 1
+	gw_artillery = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+	electronic_mechanical_engineering = 1
+	radio = 1
+	basic_train = 1
+	trench_warfare = 1
+	fleet_in_being = 1
+}
+# if = {
+	# limit = {
+		# NOT = { has_dlc = "No Step Back" }
+	# }
+	# set_technology = {
+		# gwtank = 1
+	# }
+# }
+# if = {
+	# limit = {
+		# has_dlc = "No Step Back"
+	# }
+	# set_technology = {
+		# gwtank_chassis = 1
+	# }
+# }
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+		mtg_transport = 1
+	}
+}
+
+recruit_character = NZL_michael_joseph_savage
+recruit_character = MMR_NZL_george_forbes #MMR
+recruit_character = MMR_NZL_adam_hamilton #MMR
+recruit_character = NZL_sidney_holland
+recruit_character = NZL_john_ormond
+recruit_character = NZL_elsie_farrelly
+recruit_character = MMR_NZL_jack_locke #MMR
+recruit_character = NZL_bernard_freyberg
+recruit_character = NZL_robert_row
+recruit_character = NZL_william_stevens
+recruit_character = NZL_edmund_rupert_drummond
+recruit_character = NZL_peter_phipps
+recruit_character = NZL_r_a_cochrane
+#recruit_character = NZL_l_p_peterson
+#recruit_character = NZL_j_c_nichols
+#recruit_character = NZL_n_weir
+#recruit_character = NZL_j_e_duigan
+#recruit_character = NZL_edward_puttick
+recruit_character = NZL_norris_stephen_falla
+#recruit_character = NZL_trevor_handley
+#recruit_character = NZL_keith_j_holyoake
+#recruit_character = NZL_a_j_stallworthy
+#recruit_character = NZL_eric_prendergast
+#recruit_character = NZL_arthur_dawes
+#recruit_character = NZL_william_sinclair_burgess
+recruit_character = NZL_h_e_horan
+recruit_character = NZL_h_d_mcgregor
+#recruit_character = NZL_w_h_stratton
+#recruit_character = NZL_a_e_davy
+#recruit_character = NZL_walter_nash
+#recruit_character = NZL_w_a_veitch_milne
+recruit_character = NZL_peter_fraser
+
+#MMR
+recruit_character = MMR_NZL_t_m_wilkes
+recruit_character = MMR_NZL_richard_washbourn
+recruit_character = MMR_NZL_edward_parry
+recruit_character = MMR_NZL_atwell_lake
+recruit_character = MMR_NZL_william_sinclair_burgess
+recruit_character = MMR_NZL_j_e_duigan
+recruit_character = MMR_NZL_edward_puttick
+recruit_character = MMR_NZL_norman_weir
+recruit_character = MMR_NZL_k_l_stewart
+recruit_character = MMR_NZL_walter_nash
+recruit_character = MMR_NZL_peter_fraser
+recruit_character = MMR_NZL_j_g_coates
+recruit_character = MMR_NZL_alexander_galbraith
+recruit_character = MMR_NZL_sid_scott
+recruit_character = MMR_NZL_bill_bland
+recruit_character = MMR_NZL_hedwig_weitzel
+recruit_character = MMR_NZL_ron_smith
+recruit_character = MMR_NZL_vic_wilcox
+recruit_character = MMR_NZL_donald_stott
+recruit_character = MMR_NZL_campbell_begg
+recruit_character = MMR_NZL_a_n_field
+recruit_character = MMR_NZL_lionel_terry
+recruit_character = MMR_NZL_john_a_lee
+recruit_character = MMR_NZL_james_roberts
+recruit_character = MMR_NZL_albert_davy
+recruit_character = MMR_NZL_henry_kelliher
+recruit_character = MMR_NZL_jack_harris
+#recruit_character = MMR_NZL_eugene_casey
+recruit_character = MMR_NZL_lloyd_mandeno
+recruit_character = MMR_NZL_arapeta_awatere
+recruit_character = MMR_NZL_charles_bennett
+recruit_character = MMR_NZL_rangi_royal
+recruit_character = MMR_NZL_arnold_reedy
+recruit_character = MMR_NZL_henry_te_reiwhati_vercoe
+recruit_character = MMR_NZL_haane_manahi
+recruit_character = MMR_NZL_fred_jones
+recruit_character = MMR_NZL_bill_parry
+recruit_character = MMR_NZL_lawrence_hogben
+recruit_character = MMR_NZL_howard_kippenberger
+recruit_character = MMR_NZL_bill_gilbert
+recruit_character = MMR_NZL_morgan_o_brien
+recruit_character = MMR_NZL_morgan_o_brien_no_lar
+recruit_character = MMR_NZL_miles_barnett
+recruit_character = MMR_NZL_ernest_marsden
+recruit_character = MMR_NZL_clifford_dalton
+recruit_character = MMR_NZL_bill_gallagher
+#recruit_character = MMR_NZL_george_julius
+recruit_character = MMR_NZL_bill_hamilton
+recruit_character = MMR_NZL_fintan_patrick_walsh
+recruit_character = MMR_NZL_george_davis_goff
+recruit_character = MMR_NZL_jack_andrews
+recruit_character = MMR_NZL_graham_beresford_parkinson
+recruit_character = MMR_NZL_harold_barrowclough
+recruit_character = MMR_NZL_thomas_joseph_king
+recruit_character = MMR_NZL_charles_wilkinson
+recruit_character = MMR_NZL_fred_white
+recruit_character = MMR_NZL_thomas_leech
+#MMR
+
+if = {
+	limit = { has_dlc = "Together for Victory" }
+
+	add_to_tech_sharing_group = commonwealth_research
+}
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	oob = "NZL_1939"
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "NZL_1939_air_bba"
+		else = {
+			set_air_oob = "NZL_1939_air_legacy"
+		}
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+			set_naval_oob = "NZL_1939_naval_mtg"
+		else = {
+			set_naval_oob = "NZL_1939_naval_legacy"
+		}
+	}
+	
+	complete_national_focus = NZL_the_first_labor_government_azr								
+	complete_national_focus = NZL_strengthen_the_commonwealth
+	complete_national_focus = NZL_national_roads_board									
+	complete_national_focus = NZL_new_zealand_steel_azr
+	complete_national_focus = NZL_wairarapa_sheep_farms #35
+	complete_national_focus = NZL_ratana_alliance
+	#1937 +35
+	complete_national_focus = NZL_beeby_education_reforms #35
+	complete_national_focus = NZL_transfer_the_new_zealand_division #35
+	complete_national_focus = NZL_expand_the_nzpaf #35										
+	complete_national_focus = NZL_form_the_rnzaf_azr											
+	complete_national_focus = NZL_social_security_act
+	complete_national_focus = NZL_empower_the_trade_unions #35
+	complete_national_focus = NZL_bureau_of_industry
+	#1938
+	complete_national_focus = NZL_think_big
+	complete_national_focus = NZL_welfare_state
+	complete_national_focus = NZL_technology_sharing_with_britain
+	complete_national_focus = NZL_army_reforms
+	complete_national_focus = NZL_2nzef
+	#1939
+	complete_national_focus = NZL_desert_acclimatization #35
+	complete_national_focus = NZL_defend_our_islands
+	complete_national_focus = NZL_domestic_arms_industry
+	complete_national_focus = NZL_form_the_rnzn_azr
+	complete_national_focus = NZL_mountain_acclimatization #35
+	
+	remove_ideas = MMR_NZL_legacy_of_the_great_depression_fixing
+	set_country_flag = azr_nzl_completed_1938_election_flag
+	add_stability = 0.02
+	add_popularity = {
+		ideology = neutrality
+		popularity = 0.02
+	}
+	set_character_name = { character = NZL_elsie_farrelly name = NZL_elsie_farrelly }
+	set_global_flag = azr_elsie_name_change_f
+	add_popularity = {
+		ideology = neutrality
+		popularity = 0.10
+	}
+	retire_character = MMR_NZL_george_forbes
+	promote_character = {
+		character = MMR_NZL_adam_hamilton
+		ideology = moderatism
+	}
+	#set_variable = { AZR_NZL_beeby_education_reforms_dynmod_research_var.global = 0.03 }
+	remove_ideas = AZR_NZL_beeby_1_idea
+	add_ideas = AZR_NZL_beeby_3_idea
+	284 = {
+		add_building_construction = {
+			type = industrial_complex
+			level = 3
+			instant_build = yes
+		}
+	}
+	723 = {
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+	}
+
+	add_ideas = {
+		#laws
+		low_economic_mobilisation
+		limited_conscription
+	}
+
+	IF = {
+		limit = {
+			has_dlc = "By Blood Alone"
+		}
+		set_technology = {
+			iw_small_airframe = 1
+			basic_small_airframe = 1
+			iw_medium_airframe = 1
+			basic_medium_airframe = 1
+			engines_1 = 1
+			early_bombs = 1
+			air_torpedoe_1 = 1
+		}
+	}
+	IF = {
+		limit = {
+			NOT = { has_dlc = "By Blood Alone" }
+		}
+		set_technology = {
+			early_fighter = 1
+			fighter1 = 1
+			early_bomber = 1
+			tactical_bomber1 = 1
+		}
+	}
+	set_technology = {
+		interwar_artillery = 1
+		interwar_antitank = 1
+		infantry_weapons2 = 1
+		support_weapons = 1
+		support_weapons2 = 1
+
+		#doctrines
+		air_superiority = 1
+		grand_battle_plan = 1
+		trench_warfare = 1
+		fleet_in_being = 1
+		battlefleet_concentration = 1
+		submarine_operations = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		synth_oil_experiments = 1
+		fuel_silos = 1
+		oil_processing = 1
+		improved_oil_processing = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+	#complete_special_project = {
+	#	project = sp:sp_air_radar
+	#}
+	if = {
+		limit = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		set_technology = {
+			basic_light_tank = 1
+			improved_light_tank = 1
+			basic_medium_tank = 1
+			basic_heavy_tank = 1
+		}
+	}
+	if = {
+		limit = {
+			
+			has_dlc = "No Step Back"
+			
+		}
+		set_technology = {
+			basic_light_tank_chassis = 1
+			improved_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+			basic_heavy_tank_chassis = 1
+		}
+	}
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		set_technology = {
+			basic_destroyer = 1
+		}
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		set_technology = {
+			basic_ship_hull_light = 1
+			basic_ship_hull_cruiser = 1
+		}
+	}
+}
+set_politics = {
+	ruling_party = democratic
+	last_election = "1935.11.27"
+	election_frequency = 36
+	elections_allowed = yes
+}
+set_popularities = {
+	democratic = 90
+	neutrality = 10
+}
+
+set_convoys = 70
+
+1939.1.1 = {
+	set_politics = {
+		ruling_party = democratic
+		last_election = "1938.10.15"
+		election_frequency = 36 #was 60 changed azr
+		elections_allowed = yes
+	}
+
+	# Didn't take office until '40, added for flavor
+	#promote_character = NZL_peter_fraser #MMR
+	#retire_character = NZL_michael_joseph_savage #MMR
+	set_convoys = 80
+}
+
+
+### VARIANTS ###
+# 1936 Start #
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	### Ship Variants ###
+	create_equipment_variant = {
+		name = "Leander Class"
+		type = light_cruiser_1
+		upgrades = {
+			ship_reliability_upgrade = 2
+			ship_engine_upgrade = 2
+			ship_gun_upgrade = 2
+			ship_anti_air_upgrade = 2
+		}
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	# Light Cruisers #
+	create_equipment_variant = {
+		name = "Danae Class"
+		type = ship_hull_cruiser_1
+		name_group = NZL_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = empty
+		}
+	}
+}
+
+# 1939 Start #
+1939.1.1 = {
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		# Ship variants #
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		# Light Cruisers #
+		create_equipment_variant = {
+			name = "Leander Class"
+			type = ship_hull_cruiser_2
+			name_group = NZL_CL_HISTORICAL
+			modules = {
+				fixed_ship_battery_slot = ship_light_medium_battery_1
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = cruiser_ship_engine_2
+				fixed_ship_armor_slot = ship_armor_cruiser_1
+				front_1_custom_slot = ship_anti_air_1
+				mid_1_custom_slot = ship_torpedo_1
+				mid_2_custom_slot = ship_airplane_launcher_1
+				rear_1_custom_slot = ship_light_medium_battery_1
+			}
+		}
+	}
+}

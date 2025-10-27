@@ -1,0 +1,990 @@
+﻿##### Division Templates #####
+division_template = {
+	name = "Division d'Infanterie"		
+	division_names_group = FRA_INF_01
+	# Represents: Division d'Infanterie (Series A and B), Div. d'Inf. de Forteresse
+	# Difference is their equipment
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+		artillery_brigade = { x = 3 y = 0 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 } 	# Heavy Arty Regiment had 2x 155mm battalions
+		engineer = { x = 0 y = 1 }
+		recon = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Division d'Infanterie Motorisée"	# Division d'Infanterie Motorisée
+	division_names_group = FRA_MOT_01 #actually very wrong because in this division, infantry was on foot, only its support was motorised, but i will maybe keep it for gameplay
+
+	regiments = {
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 } 	# Heavy Arty Regiment had 2x 155mm battalions
+		engineer = { x = 0 y = 1 }
+		mot_recon = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Régiment d'Infanterie de Forteresse"		
+	division_names_group = FRA_GAR_01
+	priority = 0
+	template_counter = 6
+	# Represents: maginot troops
+	# Difference from DI is their equipment
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+		artillery = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Division d'Infanterie Alpine"	# Division d'Infanterie Alpine
+	division_names_group = FRA_MNT_01
+	# Note: trimmed to 3x Rgts w/ arty bn added, 1939
+
+	regiments = {
+		mountaineers = { x = 0 y = 0 }	# Regular mountain infantry (Infanterie Alpine)
+		mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }	
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+		mountaineers = { x = 2 y = 0 }	# Chasseurs Alpins (HOI3 elites)
+		mountaineers = { x = 2 y = 1 }	# Chasseurs Alpins (HOI3 elites)
+		mountaineers = { x = 2 y = 2 }	# Chasseurs Alpins (HOI3 elites)
+		artillery_brigade = { x = 3 y = 0 }	# Chasseurs Alpins (HOI3 elites)
+	}
+	support = {
+		engineer = { x = 0 y = 0 }      # Recon Group consisted of 26 ACs + motorcycles
+		recon = { x = 0 y = 1 }  # Heavy Arty Regiment had 1x 155mm, 1x 105mm battalions
+		winter_logistics_support = { x = 0 y = 2 } # TO REPESENT THE VERY GOOD SES
+	}
+	priority = 2
+}
+division_template = {
+	name = "Division Légère Mécanique" 		# Division Légère Mécanique
+	division_names_group = FRA_MEC_01
+
+	regiments = {
+		medium_armor = { x = 0 y = 0 }		# Souma tanks
+		light_armor = { x = 0 y = 1 }		# Hotchkiss tanks
+		medium_armor = { x = 1 y = 0 }		# Souma (Med.) tanks
+		light_armor = { x = 1 y = 1 }		# Hotchkiss tanks
+		motorized = { x = 2 y = 0 }			# 1xDragoonsRgt.
+		motorized = { x = 2 y = 1 }
+		motorized = { x = 2 y = 2 }
+		mot_artillery_brigade = { x = 3 y = 0 }
+	}
+	support = {
+		armored_car_recon = { x = 0 y = 0 }      # Recon Group consisted of 42 ACs + motorcycles
+		engineer = { x = 0 y = 1 }
+	}
+	priority = 2
+}
+division_template = {
+	name = "Régiment de Chars de Combat" 	# Brigade de Chars de Combat, independent armor brigades of 2x Rgts., 2 Bns. each
+	division_names_group = FRA_ARM_04
+	regiments = {
+		light_armor = { x = 0 y = 0 }
+		light_armor = { x = 0 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }      # Recon Group consisted of 64 ACs/scout cars
+		recon = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Régiment de Chars de Combat (lourds)" 	# Brigade de Chars de Combat, independent armor brigades of 2x Rgts., 2 Bns. each
+	division_names_group = FRA_ARM_04
+	regiments = {
+		heavy_armor = { x = 0 y = 0 }
+		light_armor = { x = 0 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }      # Recon Group consisted of 64 ACs/scout cars
+		recon = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Division de Cavalerie" 	# Division de Cavalerie
+	division_names_group = FRA_CAV_01
+	# Note: Transformed to DLC, DLM divisions, 1936-39 
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		motorized = { x = 1 y = 0 }
+		mot_artillery_brigade = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }      # Recon Group consisted of 64 ACs/scout cars
+	}
+}
+division_template = {
+	name = "Brigade Coloniale"			# Represents: 2xRgt colonial forces and , usually with old equipment
+	division_names_group = FRA_COL_01
+	template_counter = 66
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+	support = {
+	}
+	priority = 0
+}
+
+##### OOB #####
+
+# Maginot Line -- Régiment d'Forteresse
+units = {
+	division= {	
+		name = "155e RIF (Meuse)"
+		location = 3560
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "149e RIF (Crusnes)"
+		location = 9559
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "168e RIF (Moselle)"
+		location = 9559
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "162e RIF (Nied)"
+		location = 11502
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "146e RIF (Faulquemont)"
+		location = 11502
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "153e RIF (Sarre)"
+		location = 3629
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "37e RIF (Vosges)"
+		location = 549
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "23e RIF (Lauter)"
+		location = 549
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "172e RIF (Bas-Rhin)"
+		location = 9503
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "171e RIF (Haut-Rhin)"
+		location = 6529
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "30e DBAF (Savoie)"
+		location = 9745
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "157e DBAF (Dauphiné)"
+		location = 3764
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+	division= {	
+		name = "58e DBAF (Alpes-Maritimes)"
+		location = 9909
+		division_template = "Régiment d'Infanterie de Forteresse" 	# Garrison unit, reserve equipment
+		start_experience_factor = 0.3
+	}
+
+# Division actives
+# tanks
+
+division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 13011
+		division_template = "Division Légère Mécanique" 	# DLM is frontline, best equipment, L Arm = H-35
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.2
+		force_equipment_variants = { light_tank_chassis_1 = { owner = "FRA" version_name = "H-35" } }
+	}
+division= {	
+		name = "501ème Régiment de Chars de Combat"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 501
+		}
+		location = 11488
+		division_template = "Régiment de Chars de Combat" 			# b1
+		start_experience_factor = 0.2
+		force_equipment_variants = { light_tank_chassis_0 = { owner = "FRA" version_name = "FT-17" } }
+	}
+division= {	
+		name = "502ème Régiment de Chars de Combat"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 502
+		}
+		location = 625
+		division_template = "Régiment de Chars de Combat" 			# b1
+		start_experience_factor = 0.2
+		force_equipment_variants = { light_tank_chassis_0 = { owner = "FRA" version_name = "FT-17" } }
+	}
+division= {	
+		name = "503ème Régiment de Chars de Combat"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 503
+		}
+		location = 9523
+		division_template = "Régiment de Chars de Combat" 			# b1
+		start_experience_factor = 0.2
+		force_equipment_variants = { light_tank_chassis_0 = { owner = "FRA" version_name = "FT-17" } }
+	}
+division= {	
+		name = "504ème Régiment de Chars de Combat"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 504
+		}
+		location = 956 # i just know its in the alps probably
+		division_template = "Régiment de Chars de Combat" 			# b1
+		start_experience_factor = 0.3
+		force_equipment_variants = { light_tank_chassis_0 = { owner = "FRA" version_name = "FT-17" } }
+	}
+division= {	
+		name = "505ème Régiment de Chars de Combat"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 505
+		}
+		location = 11465
+		division_template = "Régiment de Chars de Combat" 			# b1
+		start_experience_factor = 0.2
+		force_equipment_variants = { light_tank_chassis_0 = { owner = "FRA" version_name = "FT-17" } }
+	}
+division= {	
+		name = "506ème Régiment de Chars de Combat"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 506
+		}
+		location = 9642 # many photos show besancon
+		division_template = "Régiment de Chars de Combat" 			# b1
+		start_experience_factor = 0.2
+		force_equipment_variants = { light_tank_chassis_0 = { owner = "FRA" version_name = "FT-17" } }
+	}
+division= {	
+		name = "507ème Régiment de Chars de Combat" #this one have d2 medium tanks too but idk how to represent it
+		division_name = {
+			is_name_ordered = yes
+			name_order = 507
+		}
+		location = 9505
+		division_template = "Régiment de Chars de Combat" 			# b1
+		start_experience_factor = 0.2
+		force_equipment_variants = { light_tank_chassis_0 = { owner = "FRA" version_name = "FT-17" } }
+	}
+division= {	
+		name = "508ème Régiment de Chars de Combat" 
+		division_name = {
+			is_name_ordered = yes
+			name_order = 508
+		}
+		location = 11488
+		division_template = "Régiment de Chars de Combat (lourds)" 			# b1
+		start_experience_factor = 0.2
+		force_equipment_variants = { light_tank_chassis_0 = { owner = "FRA" version_name = "FT-17" } }
+		force_equipment_variants = { heavy_tank_chassis_0 = { owner = "FRA" version_name = "Char B1" } }
+	}
+division= {	
+		name = "509ème Régiment de Chars de Combat" 		division_name = {
+			is_name_ordered = yes
+			name_order = 509
+		}
+		location = 3447
+		division_template = "Régiment de Chars de Combat" 			# b1
+		start_experience_factor = 0.2
+		force_equipment_variants = { light_tank_chassis_0 = { owner = "FRA" version_name = "FT-17" } }
+	}
+division= {	
+		name = "510ème Régiment de Chars de Combat" 		
+		division_name = {
+			is_name_ordered = yes
+			name_order = 509
+		}
+		location = 11516
+		division_template = "Régiment de Chars de Combat (lourds)" 			# b1
+		start_experience_factor = 0.2
+		force_equipment_variants = { light_tank_chassis_0 = { owner = "FRA" version_name = "FT-17" } }
+		force_equipment_variants = { heavy_tank_chassis_0 = { owner = "FRA" version_name = "Char B1" } }
+	}
+
+
+
+
+
+
+
+
+
+
+# infantry
+	
+	division= {	
+		# "1ère Division d'Infanterie Motorisée"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+	location = 11483
+		division_template = "Division d'Infanterie Motorisée" 	# Frontline, best equipment
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.6
+}
+division= {	
+		# "3e Division d'Infanterie Motorisée"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 11420
+		division_template = "Division d'Infanterie Motorisée" 	# Frontline, best equipment
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.50
+}
+division= {	
+		division_name = {
+			is_name_ordered = yes
+						name_order = 5
+		}
+		location = 6599
+				division_template = "Division d'Infanterie Motorisée" 	# Frontline, best equipment
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.70
+}
+division= {	
+		division_name = {
+			is_name_ordered = yes
+						name_order = 9
+		}
+		location = 6599  # not mentioned where in garnison
+		division_template = "Division d'Infanterie Motorisée" 	# Frontline, best equipment
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.70
+}
+division= {	
+		name = "10ème Division d'Infanterie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 11506
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+	}
+division= {	
+		name = "11ème Division d'Infanterie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 11
+				}
+						location = 11506 # not mentioned where in garnison
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+	}
+division= { 
+				division_name = {
+			is_name_ordered = yes
+			name_order = 12
+		}
+		location = 6599  # not mentioned where in garnison
+		division_template = "Division d'Infanterie Motorisée" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.60
+	}
+division= {	
+		name = "13ème Division d'Infanterie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+				}
+		location = 11642
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+	}
+division= {	
+		name = "14ème Division d'Infanterie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 14
+		}
+		location = 11506 # not mentioned where in garnison
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+	}
+division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 15
+		}
+		location = 3652  
+		division_template = "Division d'Infanterie Motorisée" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.55
+	}
+division= {	
+		name = "19ème Division d'Infanterie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 19
+		}
+		location = 11506 # not mentioned where in garnison
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+	}
+division= {	
+		name = "21ème Division d'Infanterie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 21
+		}
+		location = 11465
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+	}
+division= {	
+		name = "23ème Division d'Infanterie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 23
+		}
+		location = 620
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+	}
+division= {	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 25
+		}
+		location = 11576
+		division_template = "Division d'Infanterie Motorisée" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.90
+	}
+division= {	
+		name = "36ème Division d'Infanterie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 36
+		}
+		location = 9710
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+	}
+division= {	
+		name = "43ème Division d'Infanterie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 43
+		}
+		location = 9710 #not mentioned where 
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+	}
+
+
+
+
+# DLC
+
+
+
+	division= {	# "3ème Division de Cavalerie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 11488
+		division_template = "Division de Cavalerie" 	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+	division= {	# "2ème Division de Cavalerie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 11488
+		division_template = "Division de Cavalerie" 	
+		start_experience_factor = 0.1
+	}
+	division= {	# "1ère Division de Cavalerie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 11506
+		division_template = "Division de Cavalerie" 	
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.5
+
+	}
+
+
+# DIA
+
+
+
+division= {	# "27ème Division d'Infanterie Alpine"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 27
+		}
+		location = 9909
+		division_template = "Division d'Infanterie Alpine" 	# Frontline, best equipment
+		start_experience_factor = 0.3
+	}
+division= {	# "29ème Division d'Infanterie Alpine"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 29
+		}
+		location = 9909
+		division_template = "Division d'Infanterie Alpine" 	# Frontline, best equipment
+		start_experience_factor = 0.3
+	}
+
+# coloniale
+
+division= {
+		name = "1ère Division d'Infanterie Coloniale"
+		location = 9737
+				division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.2
+	}
+division= {
+		name = "1ère Division d'Infanterie Nord-Africaine"
+		location = 780 #probably since idk exactly
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+				start_experience_factor = 0.1
+				}
+division= {
+		name = "3ème Division d'Infanterie Nord-Africaine"
+		location = 9559 #not mentioned where
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+			start_equipment_factor = 0.6
+			start_experience_factor = 0.2
+	}
+division= {
+		name = "4ème Division d'Infanterie Nord-Africaine"
+		location = 9559 #not mentioned where
+	division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.1
+	}
+
+
+# in the empire (idk if i just give them to the colonies or not)
+
+division= {
+		name = "Division du Tonkin"
+		location = 4075 #not mentioned where
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+	}
+division= {
+		name = "Division de Cochinchine-Cambodge"
+		location = 7376 #not mentioned where exactly
+		division_template = "Division d'Infanterie" 	# Frontline, best equipment
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+	}
+division= {	
+		name = "Brigade d'Annam-Laos"	
+		location = 7376
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	division= {	
+		name = "1ère Bge. d'Infanterie Algérienne"
+		location = 1145
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "2ème Bge. d'Infanterie Algérienne"
+		location = 1145
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "4ème Bge. d'Infanterie Algérienne"
+		location = 1145
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "5ème Bge. d'Infanterie Algérienne"
+		location = 1145
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	# attached directly to Army
+	division= {	
+		name = "3ème Bge. d'Infanterie Algérienne"
+		location = 7132
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "7ème Bge. d'Infanterie Algérienne"
+		location = 7132
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "Groupement Cavalerie d'Algérienne"
+		location = 7132
+		division_template = "Division de Cavalerie" 	
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	
+	### Army: Protectorat de Tunisie ### -- Tunis
+	division= {	# "Division de Tunise"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 93
+		}
+		location = 11969
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.5
+
+	}
+	division= {	# "Division de Sousse"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 94
+		}
+		location = 9994
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.5
+
+	}
+
+	### Army: Protectorat du Maroc ### -- Casablanca
+	division= {	# "Division de Meknès"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 98
+		}
+		location = 7069
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.5
+
+	}
+	division= {	# "Division de Casablanca"	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 95
+		}
+		location = 7069
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	# "Division de Fès"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 96
+		}
+		location = 7100
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	# "Division de Marrakech"	
+		division_name = {
+			is_name_ordered = yes
+			name_order = 97
+		}
+		location = 7069
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "Groupement de Maroc"
+		location = 7100
+		division_template = "Division de Cavalerie" 	
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.3
+
+	}
+
+
+	##### Eastern Mediterranean Theatre #####
+	### Army: Mandat du Levant ### -- Beirut
+	division= {	
+		name = "Mandat du Levant"
+		location = 792
+		division_template = "Brigade Coloniale" 	# Colonial unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_experience_factor = 0.1
+		start_equipment_factor = 0.5
+
+	}
+
+	# Troupes de Madagascar
+	division= {	
+		name = "Troupes de Madagascar"	
+		location = 5222
+		division_template = "Brigade Coloniale" 	# Miltia unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_equipment_factor = 0.15
+
+	}
+
+
+	##### Far Seas Theatre ##### -- Dakar
+	division= {	
+		name = "Troupes de Sénégalais"
+		location = 4948
+		division_template = "Brigade Coloniale" 	# Miltia unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_equipment_factor = 0.3
+
+	}
+	division= {	
+		name = "Troupes de Afrique Equatoriale Française"	
+		location = 5139
+		division_template = "Brigade Coloniale" 	# Miltia unit, reserve equipment
+		force_equipment_variants = { infantry_equipment_0 = { owner = "FRA" } }
+		start_equipment_factor = 0.15
+
+	}
+	
+}
+
+
+
+	
+
+#########################
+## STARTING PRODUCTION ##
+#########################
+
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "FRA"
+		}
+		requested_factories = 2
+		progress = 0.1
+		efficiency = 50
+		industrial_manufacturer = mio:FRA_mas_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "FRA" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = artillery_equipment_1
+			creator = "FRA" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+		industrial_manufacturer = mio:FRA_schneider_organization
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = motorized_equipment_1
+			creator = "FRA" 
+		}
+		requested_factories = 1
+		progress = 0.4
+		efficiency = 50
+		industrial_manufacturer = mio:FRA_citroene_organization
+	}
+
+	add_equipment_production = {
+	 	equipment = {
+	 		type = heavy_tank_chassis_0
+	 		creator = "FRA" 
+	 		version_name = "Char B1"
+	 	}
+	 	requested_factories = 2
+	 	progress = 0.4
+		efficiency = 50
+	 	industrial_manufacturer = mio:FRA_renault_organization
+	 }
+
+	add_equipment_production = {
+		equipment = {
+			type = medium_tank_chassis_0
+			creator = "FRA" 
+			version_name = "Renault D2" 
+		}
+		requested_factories = 2
+		progress = 0.4
+		efficiency = 50
+		industrial_manufacturer = mio:FRA_renault_organization
+	}
+}
+###################

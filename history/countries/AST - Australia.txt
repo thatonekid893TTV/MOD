@@ -1,0 +1,619 @@
+﻿capital = 285
+
+oob = "AST_1936"
+#MMR
+set_research_slots = 3
+set_stability = 0.5 #MMR was 0.8
+set_war_support = 0.3
+#MMR
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	support_weapons = 1 #MMR
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+	tech_trucks = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	
+	electronic_mechanical_engineering = 1
+	radio = 1
+	
+	basic_train = 1
+	trench_warfare = 1
+	fuel_silos = 1
+
+	fleet_in_being = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_submarine = 1
+		transport = 1
+	}
+	set_naval_oob = "AST_1936_naval_legacy"
+}
+if = {
+	limit = {
+		 has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		early_ship_hull_submarine = 1
+		basic_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+		basic_cruiser_armor_scheme = 1
+		mtg_transport = 1
+	}
+	set_naval_oob = "AST_1936_naval"
+}
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+	set_air_oob = "AST_1936_air_bba"
+	set_technology = {
+		bba_early_transport_plane = 1
+	}
+	else = {
+		set_air_oob = "AST_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			cv_early_fighter = 1
+			cv_naval_bomber1 = 1
+			naval_bomber1 = 1
+			early_bomber = 1
+			CAS1 = 1
+			early_transport_plane = 1
+		}
+	}
+}
+#MMR
+recruit_character = AST_eric_campbell
+recruit_character = AST_richard_dixon
+recruit_character = AST_earle_page
+
+recruit_character = MMR_AST_joseph_lyons
+recruit_character = MMR_AST_robert_g_menzies
+recruit_character = MMR_AST_staniforth_ricketson
+recruit_character = MMR_AST_geoffrey_street
+recruit_character = MMR_AST_brudenell_white
+recruit_character = MMR_AST_brudenell_white_2
+recruit_character = MMR_AST_charles_merrett
+recruit_character = MMR_AST_earle_page
+recruit_character = MMR_AST_billy_hughes
+recruit_character = MMR_AST_john_latham
+recruit_character = MMR_AST_alexander_hore_ruthven
+recruit_character = MMR_AST_ben_chifley
+recruit_character = MMR_AST_herbert_v_evatt
+recruit_character = MMR_AST_jack_beasley
+recruit_character = MMR_AST_eddie_ward
+recruit_character = MMR_AST_frank_forde
+recruit_character = MMR_AST_fred_paterson
+recruit_character = MMR_AST_william_earsman
+recruit_character = MMR_AST_christian_jollie_smith
+recruit_character = MMR_AST_william_ferguson
+recruit_character = MMR_AST_katharine_prichard
+recruit_character = MMR_AST_jack_miles
+recruit_character = MMR_AST_lance_sharkey
+recruit_character = MMR_AST_william_john_miles
+recruit_character = MMR_AST_p_r_stephensen
+recruit_character = MMR_AST_hubert_primrose
+recruit_character = MMR_AST_hubert_primrose_2
+recruit_character = MMR_AST_adela_pankhurst
+recruit_character = MMR_AST_rex_ingamells
+recruit_character = MMR_AST_francis_de_groot
+recruit_character = MMR_AST_stanley_porteus
+recruit_character = MMR_AST_eric_butler
+recruit_character = MMR_AST_moses_gabb
+recruit_character = MMR_AST_charles_hardy
+recruit_character = MMR_AST_alexander_rud_mills
+recruit_character = MMR_AST_eleonora_tennant
+recruit_character = MMR_AST_j_l_treloar
+recruit_character = MMR_AST_francis_derham
+recruit_character = MMR_AST_herbert_lloyd
+recruit_character = MMR_AST_ernest_squires
+recruit_character = MMR_AST_henry_burrell
+recruit_character = MMR_AST_archie_cameron
+recruit_character = MMR_AST_arthur_fadden
+recruit_character = MMR_AST_jack_lang
+recruit_character = MMR_AST_oswald_mosley
+recruit_character = MMR_AST_david_lloyd_george
+recruit_character = MMR_AST_king_edward
+recruit_character = MMR_AST_john_o_brien
+recruit_character = MMR_AST_john_field
+recruit_character = MMR_AST_lewis_bandt
+recruit_character = MMR_AST_lancelot_de_mole
+recruit_character = MMR_AST_arthur_baird
+recruit_character =MMR_AST_eric_burhop
+recruit_character = MMR_AST_alan_payne
+recruit_character = MMR_AST_lawrence_wackett
+recruit_character = MMR_AST_mark_oliphant
+recruit_character = MMR_AST_george_jones
+recruit_character = MMR_AST_william_bostock
+recruit_character = MMR_AST_james_dunn
+
+recruit_character = AST_john_curtin
+recruit_character = AST_rod_hull
+recruit_character = AST_leslie_morshead
+recruit_character = AST_thomas_blamey
+recruit_character = AST_henry_wynter
+recruit_character = AST_alan_vasey
+recruit_character = AST_horace_robertson
+recruit_character = AST_john_northcott
+recruit_character = AST_harold_farncomb
+recruit_character = AST_victor_crutchley
+recruit_character = AST_clive_caldwell
+recruit_character = AST_sydney_rowell
+recruit_character = AST_richard_williams
+recruit_character = AST_ragnar_colvin
+recruit_character = AST_norman_makin
+recruit_character = AST_james_fairbairn
+recruit_character = AST_john_collins
+recruit_character = AST_arthur_allen
+recruit_character = AST_vernon_sturdee
+recruit_character = AST_jack_crace
+#recruit_character = AST_cederic_hicks
+recruit_character = AST_charles_burnett
+recruit_character = AST_edmund_herring
+recruit_character = AST_arthur_drakeford
+recruit_character = AST_john_lavarack
+#recruit_character = AST_robert_g_menzies
+#recruit_character = AST_ben_chifley
+#recruit_character = AST_frank_forde
+#recruit_character = AST_alexander_hore_ruthven
+#recruit_character = AST_jack_beasley
+#recruit_character = AST_lance_sharkey
+#recruit_character = AST_herbert_v_evatt
+#recruit_character = AST_generic_fascist_demagogue
+#recruit_character = AST_arthur_calwell
+
+#MMR
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	recruit_character = AST_iven_mackay #Empty char can become unit leader via FT
+}
+
+add_ideas = {
+	MMR_AST_white_australia #MMR MOVED
+	MMR_AST_rail_standardization_1_idea
+	AZR_NZL_AST_legacy_of_gallipoli
+}
+set_party_name = {
+	ideology = neutrality
+	long_name = AST_neutrality_azr_party_long
+	name = AST_neutrality_azr_party
+}
+set_party_name = {
+	ideology = democratic
+	long_name = AST_democratic_azr_party_long
+	name = AST_democratic_azr_party
+}
+#set_cosmetic_tag = AST_gen_azr
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	add_ideas = AST_great_depression_1
+
+	add_to_tech_sharing_group = commonwealth_research
+}
+
+1939.1.1 = {
+	add_political_power = 1198
+	add_command_power = 100
+	oob = "AST_1939"
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "AST_1939_air_bba"
+			set_technology = {
+				iw_small_airframe = 1
+				iw_large_airframe = 1
+				engines_1 = 1
+			}
+		else = {
+			set_air_oob = "AST_1939_air_legacy"
+			set_technology = {
+				fighter1 = 1
+				tactical_bomber1 = 1
+			}
+		}
+	}
+	set_country_flag = MMR_AST_lyons_died_flag
+	retire_character = MMR_AST_joseph_lyons
+	promote_character = {
+		character = MMR_AST_robert_g_menzies
+		ideology = conservatism
+	}
+	set_country_flag = MMR_AST_lyons_died_in_office
+	#1936 F
+	complete_national_focus = AST_standard_gauge_railway						#1930s
+	complete_national_focus = AST_industries_assistance_corporation			#1941 #35
+	complete_national_focus = AST_western_australian_government_railways		#1937
+	complete_national_focus = AST_south_australian_housing_trust				#1936
+	complete_national_focus = AST_additional_militia_training					#1938 #35
+	complete_national_focus = AST_expand_the_raaf								#1939 #35
+	complete_national_focus = AST_procur_american_models						#1937 #35
+	#1937 F
+	complete_national_focus = AST_support_the_policy_of_appeasement			#1938
+	complete_national_focus = AST_strengthen_ties_with_uk						#1937
+	complete_national_focus = AST_united_under_the_crown						#1936
+	complete_national_focus = AST_CSIR										#1936 #35
+	complete_national_focus = AST_swpa_protector								#1936
+	complete_national_focus = AST_dha_investment								#1937 #35
+	#1938 F
+	complete_national_focus = AST_port_pirie_railway_junction					#1937 #35
+	complete_national_focus = AST_aboriginal_new_deal							#1938 #35
+	complete_national_focus = AST_royal_australian_artillery_azr				#1930s #35
+	complete_national_focus = AST_daimler_dingo								#1938 #35
+	complete_national_focus = AST_promote_reservists							#1939 #35
+	complete_national_focus = AST_cockatoo_island_shipyards					#1942 #35
+	complete_national_focus = AST_protect_overseas_commerce					#1940s #35
+	complete_national_focus = AST_empire_air_training_scheme					#1940 #35
+	complete_national_focus = AST_expand_lithgow_small_arms_factory			#1940 #35
+	complete_national_focus = AST_commonwealth_aircraft_corporation			#1936 #35
+	#1939 F
+	complete_national_focus = AST_establish_advisory_war_council_azr			#1940 #35
+	complete_national_focus = AST_volunteer_defence_corps						#1940 #35
+	complete_national_focus = AST_citizen_military_forces						#1939 #35
+	complete_national_focus = AST_2aif										#1939 #35
+	complete_national_focus = AST_mountain_acclimatization					#1940 #35
+	complete_national_focus = AST_cac_boomerang_azr							#1941
+	
+	set_country_flag = MMR_lang_labor_split_ends
+	add_stability = 0.01 #far lang labor
+	add_stability = 0.05 #for strengthen ties with uk focus
+	set_country_flag = azr_ast_completed_1937_election_flag
+	set_country_flag = azr_ast_national_day_of_mourning_flag
+	add_stability = -0.02
+	set_country_flag = azr_ast_cac_formed_flag
+	set_country_flag = AZR_has_not_gone_country
+	285 = {
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+	}
+	517 = {
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+	}
+	519 = {
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+	}
+	521 = {
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+	}
+	871 = {
+		add_building_construction = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+	}
+
+	add_ideas = {
+		#laws		
+		volunteer_only
+		low_economic_mobilisation
+	}
+
+	
+	set_technology = {
+		interwar_artillery = 1
+		interwar_antitank = 1
+		infantry_weapons2 = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		
+
+		#doctrines
+		air_superiority = 1
+		grand_battle_plan = 1
+		trench_warfare = 1
+		fleet_in_being = 1
+		battlefleet_concentration = 1
+		submarine_operations = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_refining = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+	#complete_special_project = {
+	#	project = sp:sp_air_radar
+	#}
+	if = {
+		limit = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		set_technology = {
+			basic_light_tank = 1
+			improved_light_tank = 1
+			basic_medium_tank = 1
+			basic_heavy_tank = 1
+		}
+	}
+	if = {
+		limit = {
+			
+			has_dlc = "No Step Back"
+			
+		}
+		set_technology = {
+			basic_light_tank_chassis = 1
+			improved_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+			basic_heavy_tank_chassis = 1
+		}
+	}
+	if = {
+		limit = {
+			not = {
+				has_dlc = "Man the Guns"
+			}
+		}
+		set_technology = {
+			basic_destroyer = 1
+		}
+		set_naval_oob = "AST_1939_naval_legacy"
+	}
+	if = {
+		limit = {
+			has_dlc = "Man the Guns"
+		}
+		set_technology = {
+			basic_ship_hull_light = 1
+			basic_light_battery = 1
+			sonar = 1
+			improved_sonar = 1
+			improved_depth_charges = 1
+		}
+		set_naval_oob = "AST_1939_naval"
+	}
+}
+
+set_politics = {
+	ruling_party = democratic
+	last_election = "1934.10.23"
+	election_frequency = 36
+	elections_allowed = yes
+}
+
+set_popularities = {
+	democratic = 95
+	communism = 1
+	neutrality = 4
+}
+
+
+set_convoys = 100
+
+1939.1.1 = {
+	set_politics = {
+		ruling_party = democratic
+		last_election = "1937.10.23"
+		election_frequency = 36
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		democratic = 98
+		neutrality = 2
+	}
+
+	set_convoys = 100
+}
+
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	### Ship Variants ###
+	
+	create_equipment_variant = {
+		name = "Sydney Class"
+		type = light_cruiser_1
+		upgrades = {
+			ship_reliability_upgrade = 2
+			ship_engine_upgrade = 2
+			ship_gun_upgrade = 2
+			ship_anti_air_upgrade = 2
+		}
+	}
+	
+	create_equipment_variant = {
+		name = "Canberra Class"
+		type = heavy_cruiser_1
+		upgrades = {
+			ship_reliability_upgrade = 2
+			ship_engine_upgrade = 2
+			ship_armor_upgrade = 2
+			ship_gun_upgrade = 2
+		}
+	}
+}
+
+if = {
+	limit = { has_dlc = "Man the Guns" } 
+	### Ship Variants ###
+	# Light Cruisers #
+	create_equipment_variant = {
+		name = "Sydney Class"
+		type = ship_hull_cruiser_2
+		name_group = AST_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_light_medium_battery_2
+		}
+	}
+	create_equipment_variant = {
+		name = "Town Class"
+		type = ship_hull_cruiser_1
+		name_group = AST_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	# Heavy Cruisers #
+	create_equipment_variant = {
+		name = "Canberra Class"
+		type = ship_hull_cruiser_1
+		name_group = AST_CA_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_medium_battery_2
+		}
+	}
+	# Destroyers #
+	create_equipment_variant = {
+		name = "V/W Class"
+		type = ship_hull_light_1
+		name_group = AST_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+	}
+	create_equipment_variant = {
+		name = "S Class"
+		type = ship_hull_light_1
+		name_group = AST_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+		obsolete = yes
+	}
+}
+
+1939.1.1 = {
+	if = {
+		limit = {
+			not = { has_dlc = "Man the Guns" }
+		}
+		create_equipment_variant = {
+			name = "Arunta Class"
+			type = destroyer_1
+			upgrades = {
+				ship_torpedo_upgrade = 2
+				destroyer_engine_upgrade = 2
+				ship_ASW_upgrade = 2
+				ship_anti_air_upgrade = 2
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "Man the Guns"
+		}
+		create_equipment_variant = {
+			name = "Arunta Class"
+			type = ship_hull_light_2
+			name_group = AST_DD_HISTORICAL
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_sonar_2
+				fixed_ship_engine_slot = light_ship_engine_2
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = ship_light_battery_2
+				rear_1_custom_slot = ship_depth_charge_2
+			}
+		}
+	}
+}

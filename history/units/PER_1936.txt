@@ -1,0 +1,633 @@
+﻿division_template = {
+	name = "Piyade Sabok Brigade" 						# Infantry Division
+
+	division_names_group = PER_INF_01
+	template_counter = 7
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+        infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Dastebandi-e-Tank"			# Tank Brigade
+
+	regiments = {
+		light_armor = { x = 0 y = 0 }
+		light_armor = { x = 0 y = 1 }
+		light_armor = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+		motorized = { x = 1 y = 2 }
+	}
+}
+
+
+division_template = {						# Laresis only
+	name = "Jandarmery" 					# Garrison Devision
+	division_names_group = PER_GAR_01
+	template_counter = 6
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 2 y = 0 }
+		cavalry = { x = 2 y = 1 }
+		cavalry = { x = 3 y = 0 }
+		cavalry = { x = 3 y = 1 }
+		cavalry = { x = 4 y = 0 }
+		cavalry = { x = 4 y = 1 }
+	}
+	priority = 0
+	
+	support = {
+        military_police = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Persian Irregulers"		
+	division_names_group = PER_INF_01
+	template_counter = 66
+	is_locked = yes
+	force_allow_recruiting = yes
+	# Note: Represents levy and local army units 
+	# Buffed a bit in size
+	regiments = {
+		irregular_infantry = { x = 0 y = 0 }
+		irregular_infantry = { x = 0 y = 1 }
+		irregular_infantry = { x = 1 y = 0 }
+		irregular_infantry = { x = 1 y = 1 }
+		irregular_infantry = { x = 2 y = 0 }
+		irregular_infantry = { x = 2 y = 1 }
+	}
+	division_cap = 20
+}
+
+division_template = {
+	name = "Piyade Brigade"							# Infantry Division
+	division_names_group = PER_INF_01
+	
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		artillery_brigade = { x = 0 y = 3 }
+        infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		artillery_brigade = { x = 1 y = 3 }
+	}
+	
+	support = {
+        engineer = { x = 0 y = 0 }
+		anti_air = { x = 0 y = 1 }
+		artillery = { x = 0 y = 2 }
+    }
+}
+
+division_template = {
+	name = "Iranian Gendarmerie"			# Infantry Brigade
+
+	division_names_group = PER_GAR_01
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+	}
+
+	support = {
+        military_police = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Savarenezam Division"					# Cavalry Division
+	division_names_group = PER_CAV_01
+
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 0 y = 2 }
+		mot_artillery_brigade = { x = 0 y = 3 }
+        cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 1 y = 2 }
+		mot_artillery_brigade = { x = 1 y = 3 }
+		light_sp_anti_air_brigade = { x = 2 y = 0 }
+	}
+	
+	support = {
+        engineer = { x = 0 y = 0 }
+		anti_air = { x = 0 y = 1 }
+    }
+}
+
+division_template = {
+	name = "Motorizeh Brigade"					# Motorised Division
+	division_names_group = PER_MOT_01
+
+	regiments = {
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		mot_artillery_brigade = { x = 0 y = 3 }
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+		motorized = { x = 1 y = 2 }
+		mot_artillery_brigade = { x = 1 y = 3 }
+        light_sp_anti_air_brigade = { x = 2 y = 0 }
+		light_armor = { x = 2 y = 1 }
+	}
+	
+	support = {
+        engineer = { x = 0 y = 0 }
+		anti_air = { x = 0 y = 1 }
+    }
+}
+
+units = {
+	######## LAND OOB ########
+	##### Royal Iranian Army #####
+
+	division = {
+		name = "Dastebandi-e-Tank"
+		location = 10837
+		division_template = "Dastebandi-e-Tank"		
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.9
+		force_equipment_variants = {
+			light_tank_chassis_0 = { owner = PER version_name = "AH-IV" amount = 162 }
+		}
+	}
+
+	division = {
+		name = "1st Piyade Sabok"
+		location = 7953
+		division_template = "Piyade Sabok Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "2nd Piyade Sabok"
+		location = 7953
+		division_template = "Piyade Sabok Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "3rd Piyade Sabok"
+		location = 10837
+		division_template = "Piyade Sabok Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+	
+	division = {
+		name = "4th Piyade Sabok"
+		location = 7953
+		division_template = "Piyade Sabok Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "5th Piyade Sabok"
+		location = 1896
+		division_template = "Piyade Sabok Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+
+	division = {
+		name = "1st Persian Irregulers"
+		location = 10837
+		division_template = "Persian Irregulers"		
+		start_experience_factor = 0.4
+		start_equipment_factor = 1
+
+	}
+	
+	division = {
+		name = "2nd Persian Irregulers"
+		location = 10837
+		division_template = "Persian Irregulers"		
+		start_experience_factor = 0.4
+		start_equipment_factor = 1
+
+	}
+
+	division = {
+		name = "1st Iranian Gendarmerie"
+		location = 10837
+		division_template = "Iranian Gendarmerie"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.7
+
+	}
+	
+	division = {
+		name = "1st Savarenezam Division"
+		location = 1896
+		division_template = "Savarenezam Division"		
+		start_experience_factor = 0.4
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "2nd Savarenezam Division"
+		location = 5029
+		division_template = "Savarenezam Division"		
+		start_experience_factor = 0.4
+		start_equipment_factor = 1
+	}
+
+	division = {
+		name = "3rd Savarenezam Division"
+		location = 5029
+		division_template = "Savarenezam Division"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+
+	division = {
+		name = "4th Savarenezam Division"
+		location = 5029
+		division_template = "Savarenezam Division"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "1st Daste Piyade"
+		location = 7953
+		division_template = "Piyade Brigade"		
+		start_experience_factor = 0.4
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "2nd Daste Piyade"
+		location = 7953
+		division_template = "Piyade Brigade"		
+		start_experience_factor = 0.4
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "3rd Daste Piyade"
+		location = 10837
+		division_template = "Piyade Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+	
+	division = {
+		name = "4th Daste Piyade"
+		location = 7953
+		division_template = "Piyade Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+
+	division = {
+		name = "11th Daste Piyade"
+		location = 7953
+		division_template = "Piyade Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "5th Savarenezam Division"
+		location = 1896
+		division_template = "Savarenezam Division"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}	
+	
+	division = {
+		name = "6th Savarenezam Division"
+		location = 1896
+		division_template = "Savarenezam Division"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+
+	division = {
+		name = "7th Daste Piyade"
+		location = 1896
+		division_template = "Piyade Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+
+	division = {
+		name = "8th Daste Piyade"
+		location = 1896
+		division_template = "Piyade Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+
+	division = {
+		name = "9th Daste Piyade"
+		location = 1896
+		division_template = "Piyade Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+
+	division = {
+		name = "10th Daste Piyade"
+		location = 1896
+		division_template = "Piyade Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+
+	division = {
+		name = "4th Motorizeh Brigade"
+		location = 10837
+		division_template = "Savarenezam Division"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+	
+	division = {
+		name = "5th Motorizeh Brigade"
+		location = 10837
+		division_template = "Savarenezam Division"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+
+	division = {
+		name = "6th Motorizeh Brigade"
+		location = 10837
+		division_template = "Savarenezam Division"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+	
+	division = {
+		name = "1st Piyade Sabok"
+		location = 7953
+		division_template = "Piyade Sabok Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "2nd Piyade Sabok"
+		location = 7953
+		division_template = "Piyade Sabok Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "3rd Piyade Sabok"
+		location = 10837
+		division_template = "Piyade Sabok Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+	
+	division = {
+		name = "4th Piyade Sabok"
+		location = 7953
+		division_template = "Piyade Sabok Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	
+	division = {
+		name = "5th Piyade Sabok"
+		location = 1896
+		division_template = "Piyade Sabok Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+
+	division = {
+		name = "1st Motorizeh Brigade"
+		location = 10837
+		division_template = "Motorizeh Brigade"		
+		start_experience_factor = 0.4
+		start_equipment_factor = 1
+
+	}
+	
+	division = {
+		name = "2nd Motorizeh Brigade"
+		location = 10837
+		division_template = "Motorizeh Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+	
+	division = {
+		name = "3rd Motorizeh Brigade"
+		location = 10837
+		division_template = "Motorizeh Brigade"		
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+
+	}
+}
+
+air_wings = {
+	### Royal Iranian Air Force ###
+	266 = {
+		# 1st Air Group -- Hawker Furys
+		fighter_equipment_0 =  {
+			owner = "PER" 
+			amount = 24
+		}
+		# 2nd, 3rd Air Groups -- Hawker Hinds, Audaxes
+		CAS_equipment_1 =  {
+			owner = "PER" 
+			amount = 99
+		}
+		tac_bomber_equipment_0 =  {
+			owner = "PER" 
+			amount = 10
+		}
+		transport_plane_equipment_1 =  {
+			owner = "PER" 
+			amount = 3
+		}
+	}
+}
+
+########  Naval OOB in PER_1936_naval ########
+########  Air OOB in PER_1936_air_bba / PER_1936_air_legacy ########
+
+#########################
+## STARTING PRODUCTION ##
+#########################
+
+instant_effect = {
+
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "PER"
+		}
+		requested_factories = 1
+		progress = 0.31
+		efficiency = 100
+	}
+	add_equipment_production = {
+		equipment = {
+			type = light_tank_chassis_0
+			creator = "PER" 
+			version_name = "AH-IV"
+		}
+		requested_factories = 1
+		progress = 0.31
+		efficiency = 100
+	}
+
+	add_equipment_to_stockpile = {
+		type = infantry_equipment_1
+		amount = 6000
+	}
+
+	add_equipment_to_stockpile = {
+		type = artillery_equipment_1
+		amount = 4500
+	}
+
+	add_equipment_to_stockpile = {
+		type = support_equipment_1
+		amount = 1500
+	}
+
+	add_equipment_to_stockpile = {
+		type = anti_air_equipment_1
+		amount = 1500
+	}
+
+	add_equipment_to_stockpile = {
+		type = motorized_equipment_1
+		amount = 1000
+	}
+
+	add_equipment_to_stockpile = {
+		type = light_tank_chassis_1
+		amount = 400
+	}
+
+	add_equipment_to_stockpile = {
+		type = light_tank_aa_chassis_1
+		amount = 600
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = train_equipment_1
+			creator = "PER"
+		}
+		requested_factories = 1
+		progress = 0.99
+		efficiency = 100
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "PER"
+		}
+		requested_factories = 3
+		progress = 0.99
+		efficiency = 100
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "PER"
+		}
+		requested_factories = 1
+		progress = 0.99
+		efficiency = 100
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = artillery_equipment_1
+			creator = "PER"
+		}
+		requested_factories = 1
+		progress = 0.99
+		efficiency = 100
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = anti_air_equipment_1
+			creator = "PER"
+		}
+		requested_factories = 1
+		progress = 0.9
+		efficiency = 100
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = motorized_equipment_1
+			creator = "PER" 
+		}
+		requested_factories = 1
+		progress = 0.9
+		efficiency = 100
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = light_tank_chassis_1
+			creator = "PER" 
+			version_name = "Akhundak I"
+		}
+		requested_factories = 2
+		progress = 0.9
+		efficiency = 100
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = light_tank_aa_chassis_1
+			creator = "PER" 
+			version_name = "Arash I"
+		}
+		requested_factories = 2
+		progress = 0.9
+		efficiency = 100
+	}
+
+}

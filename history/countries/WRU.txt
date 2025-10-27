@@ -1,0 +1,195 @@
+capital = 219
+
+set_party_name = {
+	ideology = communism
+	long_name = SOV_communism_party_russian_long
+	name = SOV_communism_party_russian
+}
+set_party_name = {
+	ideology = fascism
+	long_name = SOV_fascism_party_russian_long
+	name = SOV_fascism_party_russian
+}
+set_party_name = {
+	ideology = neutrality
+	long_name = WRU_neutrality_party_russian_long
+	name = WRU_neutrality_party_russian
+}
+set_party_name = {
+	ideology = democratic
+	long_name = WRU_democratic_party_russian_long
+	name = WRU_democratic_party_russian
+}
+starting_train_buffer = 3.0
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_oob = "SOV_1936"
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_oob = "SOV_1936_nsb"
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "SOV_1936_naval_mtg"
+	else = {
+		set_naval_oob = "SOV_1936_naval_legacy"
+	}
+}
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "SOV_1936_air_bba"
+		set_technology = {
+			iw_small_airframe = 1
+			aa_lmg = 1
+			aa_cannon_1 = 1
+			early_bombs = 1
+			engines_1 = 1
+			engines_2 = 1
+			iw_medium_airframe = 1
+			iw_large_airframe = 1
+			basic_small_airframe = 1
+			basic_medium_airframe = 1
+			aircraft_construction = 1
+		}
+	else = {
+		set_air_oob = "SOV_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			fighter1 = 1
+			early_bomber = 1
+			strategic_bomber1 = 1
+			naval_bomber1 = 1
+		}
+	}
+}
+
+set_research_slots = 5
+set_stability = 0.7
+set_war_support = 0.8
+set_technology = { #WARNING: Do not just remove techs from here -> It can impact a lot of stuff. Before removing, double check that content does not count on these techs being researched
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_military_police = 1
+	tech_mountaineers = 1
+	motorised_infantry = 1
+	paratroopers = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	mass_assault = 1
+	fleet_in_being = 1
+	fuel_silos = 1
+	fuel_refining = 1
+	basic_train = 1
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		engine_tech_1 = 1
+		engine_tech_2 = 1
+	}
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+		mtg_transport = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	set_technology = {
+		armored_car1 = 1
+	}
+}
+
+set_convoys = 300
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1933.7.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	democratic = 1
+	fascism = 12
+	communism = 38
+    neutrality = 49
+}
+
+
+	recruit_character = WRU_metropolitan_meletius
+	recruit_character = WRU_patriarch_sergy
+	recruit_character = WRU_metropolitan_anastasy
+	recruit_character = WRU_metropolitan_nikolay
+	recruit_character = WRU_metropolitan_aleksy
+	recruit_character = WRU_anastasy_vonsyatsky
+	recruit_character = WRU_grigory_semyonov
+	recruit_character = WRU_nikolay_ustryalov
+	recruit_character = WRU_aleksandr_kazembek
+	recruit_character = WRU_aleksandr_prokofyev_seversky
+	recruit_character = WRU_vyacheslav_tkachyov
+	recruit_character = WRU_yan_nagursky
+	recruit_character = WRU_vasily_yanchenko
+	recruit_character = WRU_vladimir_kosmin
+	recruit_character = WRU_pyotr_krasnov
+	recruit_character = WRU_konstantin_nechayev
+	recruit_character = WRU_anton_denikin	
+	recruit_character = WRU_vladimir_tributs
+	recruit_character = WRU_ivan_yumashev	
+	recruit_character = WRU_nicolas
+	promote_character = WRU_nicolas	
