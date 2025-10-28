@@ -1,0 +1,206 @@
+RUSSIA2_DEBUG = {
+
+	RUSSIA2_DEBUG_give_1000_pp = {
+
+		allowed = {
+			
+		}
+
+		available = {
+			
+		}
+
+		complete_effect = {
+            add_political_power = 1000
+        }
+    }
+
+	RUSSIA2_DEBUG_give_2000_pp = {
+
+		allowed = {
+			
+		}
+
+		available = {
+			
+		}
+
+		complete_effect = {
+            add_political_power = 2000
+        }
+    }
+
+	RUSSIA2_DEBUG_annex_pol = {
+
+		allowed = {
+			
+		}
+
+		available = {
+			country_exists = POL
+		}
+
+		complete_effect = {
+            annex_country = {
+				target = POL
+			}
+        }
+    }
+
+	RUSSIA2_DEBUG_puppet_pol = {
+
+		allowed = {
+			
+		}
+
+		available = {
+			POL = {
+				exists = yes
+				NOT = {
+					is_subject_of = ROOT
+				}
+			}
+		}
+
+		complete_effect = {
+            puppet = POL
+        }
+    }
+
+	RUSSIA2_DEBUG_end_puppet_pol = {
+
+		allowed = {
+			
+		}
+
+		available = {
+			POL = {
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+
+		complete_effect = {
+            end_puppet = POL
+        }
+    }
+
+	RUSSIA2_DEBUG_create_faction = {
+
+		allowed = {
+			
+		}
+
+		available = {
+			is_faction_leader = no
+		}
+
+		complete_effect = {
+            create_faction = FACTION_DEBUG
+        }
+    }
+
+	RUSSIA2_DEBUG_dismantle_faction = {
+
+		allowed = {
+			
+		}
+
+		available = {
+			is_faction_leader = yes
+		}
+
+		complete_effect = {
+            dismantle_faction = yes
+        }
+    }
+
+    RUSSIA2_DEBUG_show_gui = {
+
+		allowed = {
+			
+		}
+
+		available = {
+			
+		}
+
+		visible = {
+            NOT = {
+                has_country_flag = sov_debug_national_obligations
+            }
+		}
+
+		complete_effect = {
+            set_country_flag = sov_debug_national_obligations
+        }
+    }
+
+    RUSSIA2_DEBUG_hide_gui = {
+
+		allowed = {
+			
+		}
+
+		available = {
+			
+		}
+
+		visible = {
+            has_country_flag = sov_debug_national_obligations
+		}
+
+		complete_effect = {
+            clr_country_flag = sov_debug_national_obligations
+        }
+    }
+
+	RUSSIA2_DEBUG_unlock_all_national_obligations = {
+
+		allowed = {
+
+		}
+
+		available = {
+
+		}
+
+		visible = {
+
+		}
+
+		complete_effect = {
+			add_to_array = { sov_national_obligations_unlocked_indexes = 1 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 2 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 3 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 4 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 5 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 6 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 7 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 8 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 9 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 10 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 11 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 12 }
+			add_to_array = { sov_national_obligations_unlocked_indexes = 13 }
+
+			if = {
+				limit = {
+					OR = {
+						check_variable = {
+							var = sov_national_obligations_selected_index
+							value = 1
+							compare = less_than
+						}
+						check_variable = {
+							var = sov_national_obligations_selected_index
+							value = 13
+							compare = greater_than
+						}
+					}
+				}
+				set_variable = { sov_national_obligations_selected_index = 1 }
+			}
+		}
+	}
+}

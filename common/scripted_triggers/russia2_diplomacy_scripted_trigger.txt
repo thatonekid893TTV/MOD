@@ -1,0 +1,2341 @@
+#Useful for fascist path
+#DIPLOMACY_JOIN_FACTION_ENABLE_TRIGGER = {
+#	if = {
+#		limit = {
+#			SOV = {
+#				has_completed_focus = SOV_new_way_life
+#			}
+#			NOT = {
+#				tag = YUG
+#				tag = BUL
+#				tag = POL
+#			}
+#			FROM = {
+#				tag = SOV
+#			}
+#		}
+#		custom_trigger_tooltip = {
+#			tooltip = RULE_INVITE_FACTION_NOT_SLAVIC
+#			always = no
+#		}
+#	}
+#}
+
+#PLEASE Paradox just let us write our own files, we literally have to copy-paste your whole triggers every time
+
+#Can't cancel military access while fascist exiles are still being transfered
+DIPLOMACY_REVOKE_MILACC_ENABLE_TRIGGER = {
+    if = {
+        limit = {
+            has_country_flag = {
+				flag = FROM_opened_manchurian_border
+				days < 365
+			}
+            FROM = {
+                has_country_flag = opened_manchurian_border
+            }
+        }
+        custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CANCEL_MILACC_SOV
+			always = no
+		}
+    }
+    else_if = {
+        limit = {
+            has_country_flag = {
+				flag = opened_manchurian_border
+				days < 365
+			}
+            FROM = {
+                has_country_flag = FROM_opened_manchurian_border
+            }
+        }
+        custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CANCEL_MILACC_FROM
+			always = no
+		}
+    }
+}
+
+DIPLOMACY_REVOKE_OFFER_MILACC_ENABLE_TRIGGER = {
+    if = {
+        limit = {
+            has_country_flag = {
+                flag = FROM_opened_manchurian_border
+                days < 365
+            }
+            FROM = {
+                has_country_flag = opened_manchurian_border
+            }
+        }
+        custom_trigger_tooltip = {
+            tooltip = RULE_CANT_REVOKE_OFFER_MILACC_SOV
+            always = no
+        }
+    }
+    else_if = {
+        limit = {
+            has_country_flag = {
+                flag = opened_manchurian_border
+                days < 365
+            }
+            FROM = {
+                has_country_flag = FROM_opened_manchurian_border
+            }
+        }
+        custom_trigger_tooltip = {
+            tooltip = RULE_CANT_REVOKE_OFFER_MILACC_FROM
+            always = no
+        }
+    }
+	if = {
+		limit = {
+			has_country_flag = SOV_enforced_military_access
+			FROM = {
+				original_tag = SOV
+			}
+		}
+		custom_trigger_tooltip = {
+            tooltip = RULE_CANT_REVOKE_OFFER_MILACC_FROM_ENFORCED_ACCESS
+            always = no
+        }
+	}
+}
+
+DIPLOMACY_GENERATE_WARGOAL_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			FROM = {
+				tag = PRT
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_HAVE_DIPLOMATIC_COUNTRIES_PROTESTOR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = PRT
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_HAVE_DIPLOMATIC_COUNTRIES_PROTESTOR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				sov_anarchist_russian_free_state = yes
+			}
+			has_government = anarchy
+			NOT = {
+				has_completed_focus = SOV_anarchist_election
+				has_completed_focus = SOV_spread_anarchism_beyond_our_neighbors
+				has_completed_focus = UKR_makhno_revenge
+				has_completed_focus = UKR_master_league
+				has_completed_focus = RSC_master_league
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JUSTIFY_WAR_ANARCHY
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_global_flag = second_russian_civil_war_in_progress
+				has_global_flag = second_russian_civil_war_over
+			}
+			has_global_flag = second_russian_civil_war_started
+			OR = {
+				FROM = {
+					tag = SOV
+					sov_in_scw = yes
+				}
+				FROM = {
+					tag = SOJ
+					soj_in_scw = yes
+				}
+				FROM = {
+					tag = UKR
+				}
+				FROM = {
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					is_in_faction_with = SOJ
+				}
+				FROM = {
+					is_in_faction_with = UKR
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JUSTIFY_WAR_COUNTRY_PARTICIPATING_RCW
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = second_russian_civil_war_in_progress
+			OR = {
+				FROM = {
+					tag = SOV
+					sov_in_scw = yes
+				}
+				FROM = {
+					tag = SOJ
+					soj_in_scw = yes
+				}
+				FROM = {
+					tag = UKR
+				}
+				FROM = {
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					is_in_faction_with = SOJ
+				}
+				FROM = {
+					is_in_faction_with = UKR
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JUSTIFY_WAR_COUNTRY_PARTICIPATING_RCW
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				tag = SOJ
+				tag = UKR
+			}
+			FROM = {
+				NOT = {
+					has_global_flag = second_russian_civil_war_in_progress
+					has_global_flag = second_russian_civil_war_over
+				}
+				has_global_flag = second_russian_civil_war_started
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JUSTIFY_WAR_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				is_in_array = { global.russian_scw_participants = ROOT.id }
+				has_global_flag = second_russian_civil_war_in_progress
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JUSTIFY_WAR_CIVIL_WAR
+			always = no
+		}
+	}
+    if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_wargoals
+				option = ALWAYS_FREE
+			}
+		}
+		hidden_trigger = {
+			always = yes
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_wargoals
+				option = LIMITED
+			}
+		}
+		hidden_trigger = {
+			always = yes
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_wargoals
+				option = FREE_25
+			}
+		}
+		threat>0.24
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_wargoals
+				option = FREE_50
+			}
+		}
+		threat>0.49
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_wargoals
+				option = FREE_75
+			}
+		}
+		threat>0.74
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_wargoals
+				option = FREE_100
+			}
+		}
+		threat>0.99
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_wargoals
+				option = FOCUSES_ONLY
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_WARGOALS_BLOCKED_TT
+			always = no
+		}
+	}
+    if = {
+        limit = {
+            tag = SOV
+            has_idea = SOV_Army_disorganisation
+        }
+        custom_trigger_tooltip = {
+            tooltip = RULE_CANT_JUSTIFY_ARMY_DISORGANISATION
+            always = no
+        }
+    }
+    else_if = {
+        limit = {
+            tag = SOV
+            OR = {
+                has_idea = SOV_Political_Unstability
+                has_idea = SOV_Political_Unstability2
+            }
+        }
+        custom_trigger_tooltip = {
+            tooltip = RULE_CANT_JUSTIFY_POLITICAL_UNSTABILITY
+            always = no
+        }
+    }
+    else_if = {
+        limit = {
+            tag = SOV
+            has_country_flag = SOV_konstantin_no_justify_allowed
+        }
+        custom_trigger_tooltip = {
+            tooltip = RULE_CANT_JUSTIFY_KONSTANTIN
+            always = no
+        }
+    }
+	else_if = {
+		limit = {
+			tag = SOV
+			has_government = communism
+			has_completed_focus = SOV_great_purge2
+			has_idea = SOV_Great_purge_idea_russia2
+			check_variable = {
+				var = sov_great_purge_completion
+				value = 100
+				compare = less_than
+			}
+		}
+		custom_trigger_tooltip = {
+            tooltip = RULE_CANT_JUSTIFY_GREAT_PURGE
+            always = no
+        }
+	}
+}
+
+DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			tag = PRT
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_HAVE_DIPLOMATIC_COUNTRIES_PROTESTOR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				sov_anarchist_russian_free_state = yes
+			}
+			has_government = anarchy
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_RELEASE_NATION_ANARCHY
+			always = no
+		}
+	}
+    if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = FREE
+			}
+			OR = {
+				NOT = { has_dlc = "Man the Guns" }
+				NOT = { original_tag = ENG }
+			}
+			OR = {
+				NOT = { has_dlc = "La Resistance" }
+				NOT = { original_tag = SPR }
+			}
+		}
+        hidden_trigger = {
+            always = yes
+        }
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = FREE
+			}
+			has_dlc = "Man the Guns"
+			original_tag = ENG
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_NOT_BRITAIN_TOOLTIP
+			NOT = { FROM = { tag = MLT } }
+			NOT = { FROM = { tag = CYP } }
+			NOT = { FROM = { tag = PAL } }
+			NOT = { FROM = { tag = ISR } }
+			NOT = { FROM = { tag = JOR } }
+			NOT = {
+				AND = {
+					FROM = { tag = EGY }
+					is_ironman = no
+				}
+			}
+			NOT = { FROM = { tag = KUW } }
+			NOT = { FROM = { tag = QAT } }
+			NOT = { FROM = { tag = UAE } }
+			NOT = { FROM = { tag = BLZ } }
+			NOT = { FROM = { tag = BAH } }
+			NOT = { FROM = { tag = JAM } }
+			NOT = { FROM = { tag = TRI } }
+			NOT = { FROM = { tag = BAS } }
+			NOT = { FROM = { tag = GYA } }
+			NOT = { FROM = { tag = SRL } }
+			NOT = { FROM = { tag = MLD } }
+			NOT = { FROM = { tag = FIJ } }
+			NOT = { FROM = { tag = BRM } }
+			NOT = { FROM = { tag = SUD } }
+			NOT = { FROM = { tag = SOM } }
+			NOT = { FROM = { tag = UGA } }
+			NOT = { FROM = { tag = KEN } }
+			NOT = { FROM = { tag = TZN } }
+			NOT = { FROM = { tag = ZAM } }
+			NOT = { FROM = { tag = MLW } }
+			NOT = { FROM = { tag = ZIM } }
+			NOT = { FROM = { tag = BOT } }
+			NOT = { FROM = { tag = NGA } }
+			NOT = { FROM = { tag = GHA } }
+			NOT = { FROM = { tag = SIE } }
+			NOT = { FROM = { tag = GAM } }
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = FREE
+			}
+			has_dlc = "La Resistance"
+			original_tag = SPR
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_SPAIN_TOOLTIP
+			has_global_flag = scw_over
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = FREE
+			}
+			has_dlc = "La Resistance"
+			original_tag = SPR
+			has_completed_focus = SPR_masters_of_our_own_fate
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_ANARCHIST_SPAIN_TOOLTIP
+			NOT = { original_tag = SPR }
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = PEACE_ONLY
+			}
+			OR = {
+				NOT = { has_dlc = "Man the Guns" }
+				NOT = { original_tag = ENG }
+			}
+			OR = {
+				NOT = { has_dlc = "La Resistance" }
+				NOT = { original_tag = SPR }
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_PEACE_ONLY_TOOLTIP
+			has_war = no
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = PEACE_ONLY
+			}
+			has_dlc = "Man the Guns"
+			original_tag = ENG
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_PEACE_ONLY_TOOLTIP
+			has_war = no
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_NOT_BRITAIN_TOOLTIP
+			NOT = { FROM = { tag = MLT } }
+			NOT = { FROM = { tag = CYP } }
+			NOT = { FROM = { tag = PAL } }
+			NOT = { FROM = { tag = ISR } }
+			NOT = { FROM = { tag = JOR } }
+			NOT = { FROM = { tag = EGY } }
+			NOT = { FROM = { tag = KUW } }
+			NOT = { FROM = { tag = QAT } }
+			NOT = { FROM = { tag = UAE } }
+			NOT = { FROM = { tag = BLZ } }
+			NOT = { FROM = { tag = BAH } }
+			NOT = { FROM = { tag = JAM } }
+			NOT = { FROM = { tag = TRI } }
+			NOT = { FROM = { tag = BAS } }
+			NOT = { FROM = { tag = GYA } }
+			NOT = { FROM = { tag = SRL } }
+			NOT = { FROM = { tag = MLD } }
+			NOT = { FROM = { tag = FIJ } }
+			NOT = { FROM = { tag = BRM } }
+			NOT = { FROM = { tag = SUD } }
+			NOT = { FROM = { tag = SOM } }
+			NOT = { FROM = { tag = UGA } }
+			NOT = { FROM = { tag = KEN } }
+			NOT = { FROM = { tag = TZN } }
+			NOT = { FROM = { tag = ZAM } }
+			NOT = { FROM = { tag = MLW } }
+			NOT = { FROM = { tag = ZIM } }
+			NOT = { FROM = { tag = BOT } }
+			NOT = { FROM = { tag = NGA } }
+			NOT = { FROM = { tag = GHA } }
+			NOT = { FROM = { tag = SIE } }
+			NOT = { FROM = { tag = GAM } }
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = PEACE_ONLY
+			}
+			has_dlc = "La Resistance"
+			original_tag = SPR
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_PEACE_ONLY_TOOLTIP
+			has_war = no
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_SPAIN_TOOLTIP
+			has_global_flag = scw_over
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = BLOCKED
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+    if = {
+        limit = {
+            original_tag = SOV
+            has_idea = SOV_Army_disorganisation
+        }
+        custom_trigger_tooltip = {
+            tooltip = RULE_CANT_RELEASE_ARMY_DISORGANISATION
+			NOT = {
+				is_in_array = { global.russia_reworked_russian_states = FROM }
+			}
+        }
+    }
+    if = {
+        limit = {
+            original_tag = SOV
+            has_completed_focus = SOV_rally_under_denikin_cause
+            NOT = {
+                has_global_flag = second_russian_civil_war_over
+                OR = {
+                    has_completed_focus = SOV_bring_back_old_life
+                    has_completed_focus = SOV_new_way_life
+                }
+            }
+        }
+        custom_trigger_tooltip = {
+            tooltip = RULE_CANT_RELEASE_SECOND_CIVIL_WAR
+            NOT = {
+				is_in_array = { global.russia_reworked_russian_states = FROM }
+			}
+        }
+    }
+    if = {
+        limit = {
+            original_tag = SOV
+            has_completed_focus = SOV_right_to_believe
+            NOT = {
+				OR = {
+					has_completed_focus = SOV_reunification
+					has_completed_focus = SOV_freedom_all
+				}
+            }
+        }
+        custom_trigger_tooltip = {
+            tooltip = RULE_CANT_RELEASE_REUNIFICATION
+            NOT = {
+				is_in_array = { global.russia_reworked_russian_states = FROM }
+			}
+        }
+    }
+    if = {
+        limit = {
+            original_tag = SOV
+            has_completed_focus = SOV_bring_back_old_life
+            NOT = {
+                has_completed_focus = SOV_reintegrate_lost_state
+            }
+        }
+        custom_trigger_tooltip = {
+            tooltip = RULE_CANT_RELEASE_LOST_STATE
+            NOT = {
+				is_in_array = { global.russia_reworked_russian_states = FROM }
+			}
+        }
+    }
+    if = {
+        limit = {
+            original_tag = SOV
+            has_completed_focus = SOV_new_way_life
+            NOT = {
+                has_completed_focus = SOV_russian_nationalism
+            }
+        }
+        custom_trigger_tooltip = {
+            tooltip = RULE_CANT_RELEASE_RUSSIAN_NATIONALISM
+            NOT = {
+				is_in_array = { global.russia_reworked_russian_states = FROM }
+			}
+        }
+    }
+	if = {
+        limit = {
+            original_tag = SOV
+            has_idea = SOV_Exiled_russia
+        }
+        custom_trigger_tooltip = {
+            tooltip = RULE_CANT_RELEASE_EXILED_RUSSIA
+            always = no
+        }
+    }
+}
+
+DIPLOMACY_OFFER_JOIN_FACTION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			FROM = {
+				tag = PRT
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_HAVE_DIPLOMATIC_COUNTRIES_PROTESTOR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				OR = {
+					has_idea = SOV_Political_Unstability
+					has_idea = SOV_Political_Unstability2
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_POLITICAL_INSTABILITY_SOV
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_east
+			has_country_flag = expand_diplomacy_outside_europe
+			FROM = {
+				OR = {
+					any_state = {
+						is_capital= yes
+						is_on_continent = middle_east
+						is_owned_by = FROM
+					}
+					any_state = {
+						is_capital= yes
+						is_on_continent = asia
+						is_owned_by = FROM
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_OFFER_JOIN_FACTION_ANARCHY_ASIAN_COMMUNE_EXTENDED
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_west
+			has_country_flag = expand_diplomacy_outside_asia
+			FROM = {
+				any_state = {
+					is_capital = yes
+					is_on_continent = europe
+					is_owned_by = FROM
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_OFFER_JOIN_FACTION_ANARCHY_EUROPEAN_COMMUNE_EXTENDED
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_east
+			NOT = {
+				has_country_flag = expand_diplomacy_outside_europe
+			}
+			FROM = {
+				NOT = {
+					any_state = {
+						is_capital= yes
+						is_on_continent = europe
+						is_owned_by = FROM
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_OFFER_JOIN_FACTION_ANARCHY_ASIAN_COMMUNE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_west
+			NOT = {
+				has_country_flag = expand_diplomacy_outside_asia
+			}
+			FROM = {
+				NOT = {
+					OR = {
+						any_state = {
+							is_capital = yes
+							is_on_continent = asia
+							is_owned_by = FROM
+						}
+						any_state = {
+							is_capital = yes
+							is_on_continent = middle_east
+							is_owned_by = FROM
+						}
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_OFFER_JOIN_FACTION_ANARCHY_EUROPEAN_COMMUNE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				sov_anarchist_russian_free_state = yes
+			}
+			has_government = anarchy
+			NOT = {
+				has_idea = SOV_Contact_with_outside
+			}
+			FROM = {
+				NOT = {
+					has_government = anarchy
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_NATION_NON_ANARCHIST_GOV
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				has_government = anarchy
+				NOT = {
+					has_idea = SOV_Contact_with_outside
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_NATION_ANARCHY
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_global_flag = second_russian_civil_war_in_progress
+				has_global_flag = second_russian_civil_war_over
+			}
+			has_global_flag = second_russian_civil_war_started
+			OR = {
+				FROM = {
+					tag = SOV
+					sov_in_scw = yes
+				}
+				FROM = {
+					tag = SOJ
+					soj_in_scw = yes
+				}
+				FROM = {
+					tag = UKR
+				}
+				FROM = {
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					is_in_faction_with = SOJ
+				}
+				FROM = {
+					is_in_faction_with = UKR
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_FACTION_COUNTRY_PARTICIPATING_RCW
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = second_russian_civil_war_in_progress
+			OR = {
+				FROM = {
+					tag = SOV
+					sov_in_scw = yes
+				}
+				FROM = {
+					tag = SOJ
+					soj_in_scw = yes
+				}
+				FROM = {
+					tag = UKR
+				}
+				FROM = {
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					is_in_faction_with = SOJ
+				}
+				FROM = {
+					is_in_faction_with = UKR
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_FACTION_COUNTRY_PARTICIPATING_RCW
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				tag = SOJ
+				tag = UKR
+			}
+			FROM = {
+				NOT = {
+					has_global_flag = second_russian_civil_war_in_progress
+					has_global_flag = second_russian_civil_war_over
+				}
+				has_global_flag = second_russian_civil_war_started
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_FACTION_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				is_in_array = { global.russian_scw_participants = ROOT.id }
+				has_global_flag = second_russian_civil_war_in_progress
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_FACTION_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Uncertain_fate
+		}
+        custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_IDEA_UNCERTAIN_FATE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Closed_alliance
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_IDEA_CLOSED_ALLIANCE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Alliance_with_america
+			FROM = {
+				capital_scope = {
+					NOT = {
+						is_on_continent = north_america
+						is_on_continent = south_america
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_IDEA_ALLIANCE_AMERICA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Alliance_with_asia
+			FROM = {
+				capital_scope = {
+					NOT = {
+						is_on_continent = asia
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_IDEA_ALLIANCE_ASIA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Alliance_with_europe
+			FROM = {
+				capital_scope = {
+					NOT = {
+						is_on_continent = europe
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_IDEA_ALLIANCE_EUROPE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Uncertain_fate
+			}
+		}
+        custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_SOV_IDEA_UNCERTAIN_FATE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Closed_alliance
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_SOV_IDEA_CLOSED_ALLIANCE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Alliance_with_america
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_SOV_IDEA_ALLIANCE_AMERICA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Alliance_with_asia
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_SOV_IDEA_ALLIANCE_ASIA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Alliance_with_europe
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_SOV_IDEA_ALLIANCE_EUROPE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_idea = SOV_Communist_influence_international_1
+				has_idea = SOV_Communist_influence_international_2
+				has_idea = SOV_Communist_influence_international_3
+			}
+			FROM = {
+				tag = SOV
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_SOV_IDEA_INFLUENCE_INTERNATIONAL
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			FROM = {
+				OR = {
+					has_idea = SOV_Communist_influence_international_1
+					has_idea = SOV_Communist_influence_international_2
+					has_idea = SOV_Communist_influence_international_3
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_INVITE_FROM_IDEA_INFLUENCE_INTERNATIONAL
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_JOIN_FACTION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			tag = PRT
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_HAVE_DIPLOMATIC_COUNTRIES_PROTESTOR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			OR = {
+				has_idea = SOV_Political_Unstability
+				has_idea = SOV_Political_Unstability2
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_FACTION_POLITICAL_INSTABILITY_SOV
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_east
+			has_country_flag = expand_diplomacy_outside_europe
+			FROM = {
+				OR = {
+					any_state = {
+						is_capital= yes
+						is_on_continent = middle_east
+						is_owned_by = FROM
+					}
+					any_state = {
+						is_capital= yes
+						is_on_continent = asia
+						is_owned_by = FROM
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_FACTION_ANARCHY_ASIAN_COMMUNE_EXTENDED
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_west
+			has_country_flag = expand_diplomacy_outside_asia
+			FROM = {
+				any_state = {
+					is_capital = yes
+					is_on_continent = europe
+					is_owned_by = FROM
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_FACTION_ANARCHY_EUROPEAN_COMMUNE_EXTENDED
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_east
+			NOT = {
+				has_country_flag = expand_diplomacy_outside_europe
+			}
+			FROM = {
+				NOT = {
+					any_state = {
+						is_capital= yes
+						is_on_continent = europe
+						is_owned_by = FROM
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_FACTION_ANARCHY_ASIAN_COMMUNE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_west
+			NOT = {
+				has_country_flag = expand_diplomacy_outside_asia
+			}
+			FROM = {
+				NOT = {
+					OR = {
+						any_state = {
+							is_capital = yes
+							is_on_continent = asia
+							is_owned_by = FROM
+						}
+						any_state = {
+							is_capital = yes
+							is_on_continent = middle_east
+							is_owned_by = FROM
+						}
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_FACTION_ANARCHY_EUROPEAN_COMMUNE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				sov_anarchist_russian_free_state = yes
+			}
+			has_government = anarchy
+			NOT = {
+				has_idea = SOV_Contact_with_outside
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_FACTION_ANARCHY
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_global_flag = second_russian_civil_war_in_progress
+				has_global_flag = second_russian_civil_war_over
+			}
+			has_global_flag = second_russian_civil_war_started
+			OR = {
+				FROM = {
+					tag = SOV
+					sov_in_scw = yes
+				}
+				FROM = {
+					tag = SOJ
+					soj_in_scw = yes
+				}
+				FROM = {
+					tag = UKR
+				}
+				FROM = {
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					is_in_faction_with = SOJ
+				}
+				FROM = {
+					is_in_faction_with = UKR
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_FACTION_COUNTRY_PARTICIPATING_RCW
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = second_russian_civil_war_in_progress
+			OR = {
+				FROM = {
+					tag = SOV
+					sov_in_scw = yes
+				}
+				FROM = {
+					tag = SOJ
+					soj_in_scw = yes
+				}
+				FROM = {
+					tag = UKR
+				}
+				FROM = {
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					is_in_faction_with = SOJ
+				}
+				FROM = {
+					is_in_faction_with = UKR
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_FACTION_COUNTRY_PARTICIPATING_RCW
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				tag = SOJ
+				tag = UKR
+			}
+			FROM = {
+				NOT = {
+					has_global_flag = second_russian_civil_war_in_progress
+					has_global_flag = second_russian_civil_war_over
+				}
+				has_global_flag = second_russian_civil_war_started
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_FACTION_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				is_in_array = { global.russian_scw_participants = ROOT.id }
+				has_global_flag = second_russian_civil_war_in_progress
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_FACTION_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Uncertain_fate
+			}
+		}
+        custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_IDEA_UNCERTAIN_FATE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Closed_alliance
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_IDEA_CLOSED_ALLIANCE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Alliance_with_america
+			}
+			capital_scope = {
+				NOT = {
+					is_on_continent = north_america
+					is_on_continent = south_america
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_IDEA_ALLIANCE_AMERICA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Alliance_with_asia
+			}
+			capital_scope = {
+				NOT = {
+					is_on_continent = asia
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_IDEA_ALLIANCE_ASIA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Alliance_with_europe
+			}
+			capital_scope = {
+				NOT = {
+					is_on_continent = europe
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_IDEA_ALLIANCE_EUROPE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Uncertain_fate
+		}
+        custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_SOV_IDEA_UNCERTAIN_FATE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Closed_alliance
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_SOV_IDEA_CLOSED_ALLIANCE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Alliance_with_america
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_SOV_IDEA_ALLIANCE_AMERICA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Alliance_with_asia
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_SOV_IDEA_ALLIANCE_ASIA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Alliance_with_europe
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_SOV_IDEA_ALLIANCE_EUROPE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_idea = SOV_Communist_influence_international_1
+				has_idea = SOV_Communist_influence_international_2
+				has_idea = SOV_Communist_influence_international_3
+			}
+			FROM = {
+				tag = SOV
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_JOIN_SOV_IDEA_INFLUENCE_INTERNATIONAL
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			FROM = {
+				OR = {
+					has_idea = SOV_Communist_influence_international_1
+					has_idea = SOV_Communist_influence_international_2
+					has_idea = SOV_Communist_influence_international_3
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_JOIN_INVITE_FROM_IDEA_INFLUENCE_INTERNATIONAL
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_CREATE_FACTION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			FROM = {
+				tag = PRT
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_HAVE_DIPLOMATIC_COUNTRIES_PROTESTOR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			OR = {
+				has_idea = SOV_Political_Unstability
+				has_idea = SOV_Political_Unstability2
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FACTION_POLITICAL_INSTABILITY_SOV
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_east
+			has_country_flag = expand_diplomacy_outside_europe
+			FROM = {
+				OR = {
+					any_state = {
+						is_capital= yes
+						is_on_continent = middle_east
+						is_owned_by = FROM
+					}
+					any_state = {
+						is_capital= yes
+						is_on_continent = asia
+						is_owned_by = FROM
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FACTION_ANARCHY_ASIAN_COMMUNE_EXTENDED
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_west
+			has_country_flag = expand_diplomacy_outside_asia
+			FROM = {
+				any_state = {
+					is_capital = yes
+					is_on_continent = europe
+					is_owned_by = FROM
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FACTION_ANARCHY_EUROPEAN_COMMUNE_EXTENDED
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_east
+			NOT = {
+				has_country_flag = expand_diplomacy_outside_europe
+			}
+			FROM = {
+				NOT = {
+					any_state = {
+						is_capital= yes
+						is_on_continent = europe
+						is_owned_by = FROM
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FACTION_ANARCHY_ASIAN_COMMUNE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_government = anarchy
+			has_idea = SOV_Contact_with_outside
+			has_completed_focus = SOV_spread_revolution_west
+			NOT = {
+				has_country_flag = expand_diplomacy_outside_asia
+			}
+			FROM = {
+				NOT = {
+					OR = {
+						any_state = {
+							is_capital = yes
+							is_on_continent = asia
+							is_owned_by = FROM
+						}
+						any_state = {
+							is_capital = yes
+							is_on_continent = middle_east
+							is_owned_by = FROM
+						}
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FACTION_ANARCHY_EUROPEAN_COMMUNE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				sov_anarchist_russian_free_state = yes
+			}
+			has_government = anarchy
+			NOT = {
+				has_idea = SOV_Contact_with_outside
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FACTION_ANARCHY
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				has_government = anarchy
+				NOT = {
+					has_idea = SOV_Contact_with_outside
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FACTION_COUNTRIES_ANARCHY
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_global_flag = second_russian_civil_war_in_progress
+				has_global_flag = second_russian_civil_war_over
+			}
+			has_global_flag = second_russian_civil_war_started
+			OR = {
+				FROM = {
+					tag = SOV
+					sov_in_scw = yes
+				}
+				FROM = {
+					tag = SOJ
+					soj_in_scw = yes
+				}
+				FROM = {
+					tag = UKR
+				}
+				FROM = {
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					is_in_faction_with = SOJ
+				}
+				FROM = {
+					is_in_faction_with = UKR
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FACTION_COUNTRY_PARTICIPATING_RCW
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = second_russian_civil_war_in_progress
+			OR = {
+				FROM = {
+					tag = SOV
+					sov_in_scw = yes
+				}
+				FROM = {
+					tag = SOJ
+					soj_in_scw = yes
+				}
+				FROM = {
+					tag = UKR
+				}
+				FROM = {
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					is_in_faction_with = SOJ
+				}
+				FROM = {
+					is_in_faction_with = UKR
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FACTION_COUNTRY_PARTICIPATING_RCW
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				tag = SOJ
+				tag = UKR
+			}
+			FROM = {
+				NOT = {
+					has_global_flag = second_russian_civil_war_in_progress
+					has_global_flag = second_russian_civil_war_over
+				}
+				has_global_flag = second_russian_civil_war_started
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FACTION_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				is_in_array = { global.russian_scw_participants = ROOT.id }
+				has_global_flag = second_russian_civil_war_in_progress
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FACTION_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Uncertain_fate
+			}
+		}
+        custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_WITH_IDEA_UNCERTAIN_FATE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Closed_alliance
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_WITH_IDEA_CLOSED_ALLIANCE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Alliance_with_america
+			}
+			capital_scope = {
+				NOT = {
+					is_on_continent = north_america
+					is_on_continent = south_america
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_WITH_IDEA_ALLIANCE_AMERICA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Alliance_with_asia
+			}
+			capital_scope = {
+				NOT = {
+					is_on_continent = asia
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_WITH_IDEA_ALLIANCE_ASIA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_idea = SOV_Alliance_with_europe
+			}
+			capital_scope = {
+				NOT = {
+					is_on_continent = europe
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_WITH_IDEA_ALLIANCE_EUROPE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Uncertain_fate
+			NOT = {
+				FROM = {
+					is_subject_of = ROOT
+				}
+			}
+		}
+        custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_IDEA_UNCERTAIN_FATE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Closed_alliance
+			NOT = {
+				FROM = {
+					is_subject_of = ROOT
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_IDEA_CLOSED_ALLIANCE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Alliance_with_america
+			NOT = {
+				FROM = {
+					OR = {
+						capital_scope = {
+							is_on_continent = north_america
+							is_on_continent = south_america
+						}
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_IDEA_ALLIANCE_AMERICA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Alliance_with_asia
+			NOT = {
+				FROM = {
+					OR = {
+						capital_scope = {
+							is_on_continent = asia
+						}
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_IDEA_ALLIANCE_ASIA
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Alliance_with_europe
+			NOT = {
+				FROM = {
+					OR = {
+						capital_scope = {
+							is_on_continent = europe
+						}
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_IDEA_ALLIANCE_EUROPE
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_idea = SOV_Communist_influence_international_1
+				has_idea = SOV_Communist_influence_international_2
+				has_idea = SOV_Communist_influence_international_3
+			}
+			FROM = {
+				tag = SOV
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_SOV_IDEA_INFLUENCE_INTERNATIONAL
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			FROM = {
+				OR = {
+					has_idea = SOV_Communist_influence_international_1
+					has_idea = SOV_Communist_influence_international_2
+					has_idea = SOV_Communist_influence_international_3
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_CREATE_FROM_IDEA_INFLUENCE_INTERNATIONAL
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_LEAVE_FACTION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_leave_faction
+				option = BLOCKED
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LEAVE_FACTION_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				sov_anarchist_russian_free_state = yes
+			}
+			has_government = anarchy
+			NOT = {
+				has_idea = SOV_Contact_with_outside
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_LEAVE_FACTION_ANARCHY
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = UKR
+			has_country_flag = ukr_accepted_royal_faction_with_sov
+			is_in_faction_with = SOV
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_LEAVE_UKRAIN_FROM_FACTION_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_DISMANTLE_FACTION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				sov_anarchist_russian_free_state = yes
+			}
+			has_government = anarchy
+			NOT = {
+				has_idea = SOV_Contact_with_outside
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_DISMANTLE_FACTION_ANARCHY
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				tag = SOJ
+				tag = UKR
+			}
+			FROM = {
+				NOT = {
+					has_global_flag = second_russian_civil_war_in_progress
+					has_global_flag = second_russian_civil_war_over
+				}
+				has_global_flag = second_russian_civil_war_started
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_DISMANTLE_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				is_in_array = { global.russian_scw_participants = ROOT.id }
+				has_global_flag = second_russian_civil_war_in_progress
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_DISMANTLE_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			tag = SOV
+			has_idea = SOV_Closed_alliance
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_DISMANTLE_IDEA_CLOSED_ALLIANCE
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_ASSUME_FACTION_LEADERSHIP_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			tag = PRT
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_HAVE_DIPLOMATIC_COUNTRIES_PROTESTOR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				tag = SOJ
+				tag = UKR
+			}
+			FROM = {
+				NOT = {
+					has_global_flag = second_russian_civil_war_in_progress
+					has_global_flag = second_russian_civil_war_over
+				}
+				has_global_flag = second_russian_civil_war_started
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_ASSUME_LEADERSHIP_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				is_in_array = { global.russian_scw_participants = ROOT.id }
+				has_global_flag = second_russian_civil_war_in_progress
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_ASSUME_LEADERSHIP_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				tag = SOV
+				has_government = fascism
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_ASSUME_FACTION_LEADERSHIP_RUSSIA_FASCIST
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_KICK_FROM_FACTION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			FROM = {
+				tag = UKR
+			}
+			UKR = {
+				has_country_flag = ukr_accepted_royal_faction_with_sov
+				is_in_faction_with = SOV
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_KICK_UKRAIN_FROM_FACTION_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_kick_faction
+				option = BLOCKED
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_KICK_FROM_FACTION_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				sov_anarchist_russian_free_state = yes
+			}
+			has_government = anarchy
+			NOT = {
+				has_idea = SOV_Contact_with_outside
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_KICK_FACTION_ANARCHY
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_GUARANTEE_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			FROM = {
+				tag = PRT
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_HAVE_DIPLOMATIC_COUNTRIES_PROTESTOR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_global_flag = second_russian_civil_war_in_progress
+				has_global_flag = second_russian_civil_war_over
+			}
+			has_global_flag = second_russian_civil_war_started
+			OR = {
+				FROM = {
+					tag = SOV
+					sov_in_scw = yes
+				}
+				FROM = {
+					tag = SOJ
+					soj_in_scw = yes
+				}
+				FROM = {
+					tag = UKR
+				}
+				FROM = {
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					is_in_faction_with = SOJ
+				}
+				FROM = {
+					is_in_faction_with = UKR
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_GUARANTEE_COUNTRY_PARTICIPATING_RCW
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			has_global_flag = second_russian_civil_war_in_progress
+			OR = {
+				FROM = {
+					tag = SOV
+					sov_in_scw = yes
+				}
+				FROM = {
+					tag = SOJ
+					soj_in_scw = yes
+				}
+				FROM = {
+					tag = UKR
+				}
+				FROM = {
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					is_in_faction_with = SOJ
+				}
+				FROM = {
+					is_in_faction_with = UKR
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_GUARANTEE_COUNTRY_PARTICIPATING_RCW
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				tag = SOV
+				tag = SOJ
+				tag = UKR
+			}
+			FROM = {
+				NOT = {
+					has_global_flag = second_russian_civil_war_in_progress
+					has_global_flag = second_russian_civil_war_over
+				}
+				has_global_flag = second_russian_civil_war_started
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_GUARANTEE_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			FROM = {
+				OR = {
+					AND = {
+						is_in_array = { global.russian_scw_participants = ROOT.id }
+						has_global_flag = second_russian_civil_war_in_progress
+					}
+				}
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_CANT_GUARANTEE_CIVIL_WAR
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_guarantees
+				option = ALWAYS_FREE
+			}
+		}
+		hidden_trigger = {
+			always = yes
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_guarantees
+				option = LIMITED
+			}
+		}
+		hidden_trigger = {
+			always = yes # Handled by game logic.
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_guarantees
+				option = SAME_IDEOLOGY
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_GUARANTEES_SAME_IDEOLOGY_TOOLTIP
+			has_government = FROM
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_guarantees
+				option = BLOCKED
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_GUARANTEES_BLOCKED_TOOLTIP
+			always = no
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = signed_slavic_pact
+			SOV = {
+				exists = yes
+			}
+			any_state = {
+				has_state_flag = SOV_slavic_states
+				is_controlled_by = FROM
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_GUARANTEE_SLAVIC_STATE_NATION_NOT
+			always = no
+		}
+	}
+}

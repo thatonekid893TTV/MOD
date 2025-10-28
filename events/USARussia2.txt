@@ -1,0 +1,847 @@
+###########################
+# American Events
+###########################
+
+add_namespace = russia2_america
+
+# Check if File is Loaded
+country_event = {
+	id = russia2_america.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_americas
+	}
+}
+
+#USA Invitation (Unholy Alliance) to the International
+country_event = {
+	id = russia2_america.1
+	title = russia2_america.1.t
+	desc = russia2_america.1.d
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = { #Accepts
+		ai_chance = { base = 75 }
+		name = russia2_america.1.a
+		SOV = {
+			add_to_faction = USA
+			country_event = { id = russia2_america.2 days = 1 }
+		}
+		USA = {
+			set_country_flag = unholy_alliance
+		}
+	}
+
+	option = { #Refuse
+		ai_chance = { base = 25 }
+		name = russia2_america.1.b
+		SOV = {
+			country_event = { id = russia2_america.3 days = 1 }
+		}
+	}
+}
+
+#USA Accepts the Invitation
+country_event = {
+	id = russia2_america.2
+	title = russia2_america.2.t
+	desc = russia2_america.2.d
+	picture = GFX_handshake_russia2
+
+	is_triggered_only = yes
+
+	option = { #Good
+		name = russia2_america.2.a
+		hidden_effect = {
+			news_event = { id = newsrussia2.46 days = 1 }
+		}
+	}
+}
+
+#USA Refuses the Invitation
+country_event = {
+	id = russia2_america.3
+	title = russia2_america.3.t
+	desc = russia2_america.3.d
+	picture = GFX_report_event_generic_parliament
+
+	is_triggered_only = yes
+
+	option = { #Bad
+		name = russia2_america.3.a
+	}
+}
+
+#USA Receives the Soviet Proposition of an Union
+country_event = {
+	id = russia2_america.4
+	title = russia2_america.4.t
+	desc = russia2_america.4.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				SOV = {
+					surrender_progress > 0.6
+				}
+			}
+		}
+		name = russia2_america.4.a
+		if = {
+			limit = {
+				SOV = {
+					is_ai = yes
+				}
+			}
+			custom_effect_tooltip = SOV_america_change
+			hidden_effect = {
+				SOV = { change_tag_from = USA }
+			}
+		}
+		else = {
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+		SOV = {
+			country_event = { days = 1 id = russia2_america.5 }
+		}
+	}
+
+	option = { #Refuse
+		ai_chance = {
+			base = 0
+		}
+		name = russia2_america.4.b
+		SOV = {
+			country_event = { days = 1 id = russia2_america.6 }
+		}
+	}
+}
+
+#USA Accepts the Proposition
+country_event = {
+	id = russia2_america.5
+	title = russia2_america.5.t
+	desc = russia2_america.5.d
+	picture = GFX_report_event_generic_sign_treaty3
+
+	is_triggered_only = yes
+
+	option = { #Nice
+		name = russia2_america.5.a
+		SOV = {
+			set_country_flag = fall_of_america
+		}
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_core_of = USA
+				}
+				set_state_flag = USA_core_state
+				SOV = {
+					add_state_core = PREV
+				}
+			}
+			every_state = {
+				limit = {
+					is_owned_by = USA
+					NOT = {
+						is_core_of = USA
+					}
+				}
+				set_state_flag = USA_not_core_state
+			}
+		}
+		USA = {
+			every_character = {
+				limit = {
+					is_unit_leader = yes
+				}
+				set_character_flag = flag_former_american_general
+				set_nationality = SOV
+			}
+			transfer_navy = {
+				target = SOV
+			}
+		}
+		SOV = {
+			annex_country = { target = USA transfer_troops = yes }
+		}
+		custom_effect_tooltip = SOV_soviet_american_cores
+		hidden_effect = {
+			news_event = { days = 1 id = newsrussia2.64 }
+			SOV = {
+				set_cosmetic_tag = SNAU
+			}
+		}
+	}
+}
+
+#USA Refuses the proposition
+country_event = {
+	id = russia2_america.6
+	title = russia2_america.6.t
+	desc = russia2_america.6.d
+	picture = GFX_broken_tank_russia2
+
+	is_triggered_only = yes
+
+	option = { # Fools
+		name = russia2_america.6.a
+	}
+}
+
+#The War is Over - America Becomes Free
+country_event = {
+	id = russia2_america.7
+	title = russia2_america.7.t
+	desc = russia2_america.7.d
+	picture = GFX_report_event_generic_rally
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		SOV = {
+			has_cosmetic_tag = SNAU
+			has_country_flag = fall_of_america
+			has_war = no
+			is_subject = no
+		}
+		OR = {
+			NOT = {
+				country_exists = USA
+			}
+			USA = {
+				is_subject_of = SOV
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	immediate = {
+		set_variable = {
+			var = keep_union_stability_loss
+			value = SOV.stability
+		}
+		divide_variable = {
+			var = keep_union_stability_loss
+			value = -2
+		}
+		set_variable = {
+			var = keep_union_war_support_loss
+			value = SOV.has_war_support
+		}
+		divide_variable = {
+			var = keep_union_war_support_loss
+			value = -2
+		}
+	}
+
+	option = { #Release USA
+		name = russia2_america.7.a
+		custom_effect_tooltip = SOV_america_release
+		custom_effect_tooltip = SOV_america_cores
+		hidden_effect = {
+			clr_country_flag = fall_of_america
+			if = {
+				limit = {
+					has_cosmetic_tag = SNAU
+				}
+				drop_cosmetic_tag = yes
+			}
+
+			if = {
+				limit = {
+					NOT = {
+						country_exists = USA
+					}
+				}
+				release = USA
+			}
+
+			else_if = {
+				limit = {
+					USA = {
+						is_subject_of = SOV
+					}
+				}
+				set_autonomy = {
+					target = USA
+					autonomy_state = autonomy_free
+				}
+			}
+
+			if = {
+				limit = {
+					is_faction_leader = yes
+					USA = {
+						is_subject = no
+						is_in_faction = no
+					}
+				}
+				add_to_faction = USA
+			}
+
+			SOV = {
+				every_character = {
+					limit = {
+						has_character_flag = flag_former_american_general
+					}
+					clr_character_flag = flag_former_american_general
+					set_nationality = USA
+				}
+			}
+
+			every_state = {
+				limit = {
+					has_state_flag = USA_core_state
+				}
+				remove_core_of = SOV
+			}
+
+			every_state = {
+				limit = {
+					has_state_flag = USA_not_core_state
+				}
+				USA = {
+					transfer_state = PREV
+				}
+			}
+		}
+	}
+
+	option = { #Keep the Union
+		name = russia2_america.7.b
+
+		every_character = {
+			limit = {
+				has_character_flag = flag_former_american_general
+			}
+			clr_character_flag = flag_former_american_general
+			set_nationality = USA
+		}
+		add_stability = keep_union_stability_loss
+		add_war_support = keep_union_war_support_loss
+	}
+}
+
+#Alaskan Purchase
+country_event = {
+	id = russia2_america.8
+	title = russia2_america.8.t
+	desc = russia2_america.8.d
+	picture = GFX_report_event_german_polish_border
+
+	is_triggered_only = yes
+
+	option = { #Alright
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = -30
+				463 = {
+					is_core_of = ROOT
+				}
+			}
+		}
+		name = russia2_america.8.a
+		if = {
+			limit = {
+				463 = {
+					is_core_of = ROOT
+				}
+			}
+			remove_state_core = 463
+		}
+		add_timed_idea = {
+		    idea = SOV_Alaskan_payment_received
+		    days = 180
+		}
+		SOV = {
+			country_event = russia2_america.9
+			transfer_state = 463
+			transfer_state = 650
+		}
+	}
+
+	option = { #No
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 30
+				463 = {
+					is_core_of = ROOT
+				}
+			}
+		}
+		name = russia2_america.8.b
+		SOV = {
+			country_event = russia2_america.10
+		}
+	}
+}
+
+#Alaska Holder Accepts
+country_event = {
+	id = russia2_america.9
+	title = russia2_america.9.t
+	desc = russia2_america.9.d
+	picture = GFX_handshake_russia2
+
+	is_triggered_only = yes
+
+	option = { #Yay
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.9.a
+		add_state_core = 463
+		add_timed_idea = {
+		    idea = SOV_Alaskan_payment
+		    days = 180
+		}
+	}
+}
+
+#Alaska Holder Refuses
+country_event = {
+	id = russia2_america.10
+	title = russia2_america.10.t
+	desc = russia2_america.10.d
+	picture = GFX_report_event_generic_sign_treaty3
+
+	is_triggered_only = yes
+
+	option = { #Oh
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.10.a
+	}
+}
+
+#Russia Wants Alaska (Agressive democracy)
+country_event = {
+	id = russia2_america.11
+	title = russia2_america.11.t
+	desc = russia2_america.11.d
+	picture = GFX_report_event_finnish_letter
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		ai_chance = {
+			base = 95
+		}
+		name = russia2_america.11.a
+		SOV = {
+			country_event = { id = russia2_america.12 hours = 18 }
+		}
+	}
+
+	option = { #Accept
+		ai_chance = {
+			base = 5
+		}
+		name = russia2_america.11.b
+		SOV = {
+			country_event = { id = russia2_america.13 hours = 18 }
+		}
+	}
+}
+
+#Alaska Holder Accept
+country_event = {
+	id = russia2_america.12
+	title = russia2_america.12.t
+	desc = russia2_america.12.d
+	picture = GFX_handshake_russia2
+
+	is_triggered_only = yes
+
+	option = { #Alaska is ours again
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.12.a
+		add_timed_idea = {
+			idea = SOV_Alaska_transaction_democratic
+			days = 210
+		}
+		transfer_state = 463
+		if = {
+			limit = {
+				FROM = {
+					owns_state = 650
+				}
+			}
+			transfer_state = 650
+		}
+	}
+}
+
+#Alaska Holder Refuse
+country_event = {
+	id = russia2_america.13
+	title = russia2_america.13.t
+	desc = russia2_america.13.d
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	option = { #Damn
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.13.a
+		create_wargoal = {
+			type = take_state
+			target = FROM
+			generator = { 463 }
+		}
+	}
+}
+
+#Russia Accept to Cede Siberia After CW
+country_event = {
+	id = russia2_america.14
+	title = russia2_america.14.t
+	desc = russia2_america.14.d
+	picture = GFX_soldiers_handshaking_kolchak_russia2
+
+	is_triggered_only = yes
+
+	option = { #Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.14.a
+		custom_effect_tooltip = if_we_accept_and_send_volunteers_gain_good_tt
+		custom_effect_tooltip = upon_start_civil_war_idea_tt
+		show_ideas_tooltip = SOV_Participation_russian_civil_war_foreign
+	}
+}
+
+#Treaty of Vladivostok - Siberia
+country_event = {
+	id = russia2_america.15
+	title = russia2_america.15.t
+	desc = russia2_america.15.d
+	picture = GFX_ship_dockyard_russia2
+
+	is_triggered_only = yes
+
+	option = { #Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.15.a
+		transfer_state = 562
+		transfer_state = 637
+		transfer_state = 644
+		transfer_state = 574
+		transfer_state = 822
+		transfer_state = 876
+		transfer_state = 877
+		transfer_state = 874
+		hidden_effect = {
+			562 = {
+				set_compliance = 25
+			}
+			637 = {
+				set_compliance = 25
+			}
+			644 = {
+				set_compliance = 25
+			}
+			574 = {
+				set_compliance = 25
+			}
+			822 = {
+				set_compliance = 25
+			}
+			876 = {
+				set_compliance = 25
+			}
+			877 = {
+				set_compliance = 25
+			}
+			874 = {
+				set_compliance = 25
+			}
+		}
+	}
+}
+
+#Russia Wants Siberia Back
+country_event = {
+	id = russia2_america.16
+	title = russia2_america.16.t
+	desc = russia2_america.16.d
+	picture = GFX_report_event_generic_sign_treaty3
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		ai_chance = {
+			base = 80
+			modifier = {
+				add = -60
+				OR = {
+					SOV = {
+						has_country_flag = SOV_fascist_focus_on_america
+					}
+					any_country = {
+						is_major = yes
+						has_war_with = SOV
+					}
+				}
+			}
+		}
+		name = russia2_america.16.a
+		SOV = {
+			country_event = { id = russia2_america.17 days = 1 }
+		}
+	}
+
+	option = { #Refuse
+		ai_chance = {
+			base = 20
+			modifier = {
+				add = 60
+				OR = {
+					SOV = {
+						has_country_flag = SOV_fascist_focus_on_america
+					}
+					any_country = {
+						is_major = yes
+						has_war_with = SOV
+					}
+				}
+			}
+		}
+		name = russia2_america.16.b
+		SOV = {
+			country_event = { id = russia2_america.18 days = 1 }
+		}
+	}
+}
+
+#USA Accept to Return Siberia
+country_event = {
+	id = russia2_america.17
+	title = russia2_america.17.t
+	desc = russia2_america.17.d
+	picture = GFX_handshake_russia2
+
+	is_triggered_only = yes
+
+	option = { #Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.17.a
+		transfer_state = 562
+		transfer_state = 637
+		transfer_state = 644
+		transfer_state = 574
+		transfer_state = 822
+		transfer_state = 876
+		transfer_state = 877
+		transfer_state = 874
+		clr_country_flag = america_receive_siberia_generic
+	}
+}
+
+#USA Refuse to Return Siberia
+country_event = {
+	id = russia2_america.18
+	title = russia2_america.18.t
+	desc = russia2_america.18.d
+	picture = GFX_military_parade_russia2
+
+	is_triggered_only = yes
+
+	option = { #Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.18.a
+		SOV = {
+			create_wargoal = {
+				target = USA
+				type = take_claimed_state
+			}
+		}
+	}
+}
+
+#SOV Wins Border War
+country_event = {
+	id = russia2_america.19
+	title = russia2_america.19.t
+	desc = russia2_america.19.d
+	picture = GFX_cavalry_parade_russia2
+
+	is_triggered_only = yes
+
+	option = { #Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.19.a
+		transfer_state = 562
+		transfer_state = 637
+		transfer_state = 644
+		transfer_state = 574
+		transfer_state = 822
+		transfer_state = 876
+		transfer_state = 877
+		transfer_state = 874
+		clr_country_flag = america_receive_siberia_generic
+		add_doctrine_cost_reduction = {
+			name = SOV_siberia_border_conflict
+			cost_reduction = 0.5
+			uses = 1
+			category = land_doctrine
+		}
+		USA = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = SOV
+				value = -100
+			}
+		}
+	}
+}
+
+#SOV lose Border War
+country_event = {
+	id = russia2_america.20
+	title = russia2_america.20.t
+	desc = russia2_america.20.d
+	picture = GFX_broken_tank_russia2
+
+	is_triggered_only = yes
+
+	option = { #Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.20.a
+		add_stability = -0.1
+		add_war_support = -0.1
+		USA = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = SOV
+				value = -100
+			}
+		}
+	}
+}
+
+#USA Wins Border War
+country_event = {
+	id = russia2_america.21
+	title = russia2_america.21.t
+	desc = russia2_america.21.d
+	picture = GFX_report_event_generic_train
+
+	is_triggered_only = yes
+
+	option = { #Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.21.a
+		add_stability = 0.1
+		add_war_support = 0.15
+		add_doctrine_cost_reduction = {
+			name = SOV_siberia_border_conflict
+			cost_reduction = 0.5
+			uses = 1
+			category = land_doctrine
+		}
+		USA = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = SOV
+				value = -100
+			}
+		}
+	}
+}
+
+#USA lose Border War
+country_event = {
+	id = russia2_america.22
+	title = russia2_america.22.t
+	desc = russia2_america.22.d
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	option = { #Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.22.a
+		add_stability = -0.1
+		add_war_support = -0.1
+		USA = {
+			add_ai_strategy = {
+				type = antagonize
+				id = SOV
+				value = 100
+			}
+			add_ai_strategy = {
+				type = contain
+				id = SOV
+				value = 100
+			}
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = SOV
+				value = -100
+			}
+		}
+	}
+}
+
+#Russia Mobilize Troops in our Siberian Border
+country_event = {
+	id = russia2_america.23
+	title = russia2_america.23.t
+	desc = russia2_america.23.d
+	picture = GFX_report_event_soldiers_marching
+
+	is_triggered_only = yes
+
+	option = { #that's worying
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_america.23.a
+		custom_effect_tooltip = better_send_troops_siberia
+		USA = {
+			add_ai_strategy = {
+				type = prepare_for_war
+				id = SOV
+				value = 100
+			}
+		}
+	}
+}

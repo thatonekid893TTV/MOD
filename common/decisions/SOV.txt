@@ -1,0 +1,1001 @@
+SOV_russia_reworked_load_decision_category_soviet = {
+
+	SOV_russia_reworked_load_decision_soviet = {
+		allowed = {
+			original_tag = SOV
+		}
+
+		visible = {
+			always = no
+		}
+	}
+}
+
+operations = {
+
+	SOV_seize_manchuria = {
+
+		icon = generic_operation
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			JAP = {
+				OR = {
+					has_completed_focus = JAP_pre_emptive_coup
+					has_completed_focus = JAP_cast_the_die
+				}
+			}
+			MAN = { is_puppet = no }
+			NOT = {
+				has_war_with = MAN
+				is_in_faction_with = MAN
+			}
+		}
+
+		cost = 25
+		fire_only_once = yes
+		visible = {
+			JAP = {
+				OR = {
+					has_completed_focus = JAP_strengthen_civilian_government
+					has_completed_focus = JAP_cast_the_die
+				}	
+			}
+			MAN = { exists = yes }
+		}
+
+		complete_effect = {
+			MAN = {
+				country_event = { id = russia2_manchukuo.2 days = 1 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				MAN = {
+					is_ai = no
+				}
+				factor = 0 #we're mean but not that mean
+			}
+			modifier = {
+				threat < 0.25
+				factor = 0
+			}
+		}
+	}
+}
+
+political_actions = {
+
+	SOV_return_manchuria = {
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			has_government = communism
+			OR = {
+				AND = {
+					owns_state = 610
+					owns_state = 716
+					owns_state = 328
+					owns_state = 715
+					owns_state = 714
+					owns_state = 717
+				}
+				AND = {
+					MAN = { is_puppet_of = SOV }
+					owns_state = 610
+					owns_state = 716
+					owns_state = 328
+					owns_state = 715
+					owns_state = 714
+					owns_state = 717
+				}
+			}
+		}
+		cost = 0
+		fire_only_once = yes
+		visible = {
+			has_government = communism
+			JAP = { has_completed_focus = JAP_strengthen_civilian_government }
+			PRC = { exists = yes }
+		}
+
+		complete_effect = {
+			PRC = {
+				transfer_state = 609
+				transfer_state = 610
+				transfer_state = 716
+				transfer_state = 715
+				transfer_state = 328
+				transfer_state = 717
+				transfer_state = 714
+				country_event = { id = wtt_japan.125 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	demand_tribute_from_new_communist_china = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			tag = SOV
+		}
+
+		available = {
+			has_government = communism
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 150
+					#Has somewhat won against CHI and JAP
+				count_triggers = {
+					amount = 10
+					595 = { is_controlled_by = FROM }
+					596 = { is_controlled_by = FROM }
+					597 = { is_controlled_by = FROM }
+					598 = { is_controlled_by = FROM }
+					600 = { is_controlled_by = FROM }
+					601 = { is_controlled_by = FROM }
+					602 = { is_controlled_by = FROM }
+					603 = { is_controlled_by = FROM }
+					605 = { is_controlled_by = FROM }
+					606 = { is_controlled_by = FROM }
+					607 = { is_controlled_by = FROM }
+					608 = { is_controlled_by = FROM }
+					613 = { is_controlled_by = FROM }
+					614 = { is_controlled_by = FROM }
+					620 = { is_controlled_by = FROM }
+				}
+			}
+
+		}
+
+		cost = 10
+
+		visible = {
+			has_government = communism
+			FROM = {
+				has_country_flag = WTT_support_from_soviet
+				NOT = { has_war_with = ROOT }
+				NOT = { is_subject_of = ROOT }
+				NOT = { has_idea = PRC_soviet_tribute_6 }
+			}
+		}
+
+		targets = { CHI PRC GXC YUN SHX XSM SIK }
+		targets_dynamic = yes
+
+		target_trigger = {
+			FROM = {
+				tag = event_target:WTT_communist_china
+				has_country_flag = WTT_support_from_soviet
+			}
+		}
+
+		fire_only_once = no
+
+		days_re_enable = 180
+
+		complete_effect = {
+			FROM = {
+				country_event = { id = wtt_warlord_vs_prc.21 }
+				custom_effect_tooltip = if_they_accept
+				effect_tooltip = {
+					PRC_soviet_tribute_level_up = yes
+				}
+			}
+		}
+	}
+
+	demand_full_integration = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			tag = SOV
+		}
+
+		available = {
+			has_government = communism
+			FROM = { has_soviet_tribute = yes }
+		}
+
+		cost = WTT_communist_china_integration_cost?300
+
+		visible = {
+			has_government = communism
+			FROM = { has_country_flag = WTT_support_from_soviet }
+		}
+
+		targets = { CHI PRC GXC YUN SHX XSM SIK }
+		targets_dynamic = yes
+
+		target_trigger = {
+			FROM = { has_country_flag = WTT_support_from_soviet }
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				#Has won against CHI and JAP
+				595 = { is_controlled_by = FROM }
+				596 = { is_controlled_by = FROM }
+				597 = { is_controlled_by = FROM }
+				598 = { is_controlled_by = FROM }
+				600 = { is_controlled_by = FROM }
+				601 = { is_controlled_by = FROM }
+				602 = { is_controlled_by = FROM }
+				603 = { is_controlled_by = FROM }
+				605 = { is_controlled_by = FROM }
+				606 = { is_controlled_by = FROM }
+				607 = { is_controlled_by = FROM }
+				608 = { is_controlled_by = FROM }
+				613 = { is_controlled_by = FROM }
+				614 = { is_controlled_by = FROM }
+				620 = { is_controlled_by = FROM }
+			}
+			modifier = {
+				add = 50
+				FROM = {
+					check_variable = { WTT_communist_china_integration_cost < 200 }
+				}
+			}
+			modifier = {
+				add = 50
+				FROM = {
+					check_variable = { WTT_communist_china_integration_cost < 150 }
+				}
+			}
+			modifier = {
+				add = 50
+				FROM = {
+					check_variable = { WTT_communist_china_integration_cost < 100 }
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		complete_effect = {
+			FROM = { country_event = { id = wtt_warlord_vs_prc.31 } }
+		}
+	}
+
+	#SOVIET MISSION TO OCCUPY TURKEY
+	SOV_set_up_puppet_state_in_turkey = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			has_dlc = "Battle for the Bosporus"
+			tag = SOV
+		}
+
+		available = {
+			NOT = { army_manpower_in_state = { state = 354 amount < 9600 } }
+			NOT = { army_manpower_in_state = { state = 353 amount < 9600 } }
+			NOT = { army_manpower_in_state = { state = 352 amount < 9600 } }
+			NOT = { army_manpower_in_state = { state = 349 amount < 9600 } }
+			NOT = { army_manpower_in_state = { state = 350 amount < 9600 } }
+			NOT = { army_manpower_in_state = { state = 355 amount < 9600 } }
+			NOT = { army_manpower_in_state = { state = 800 amount < 9600 } }
+			NOT = { army_manpower_in_state = { state = 344 amount < 28800 } }
+			NOT = { army_manpower_in_state = { state = 348 amount < 48000 } }
+			NOT = { army_manpower_in_state = { state = 356 amount < 9600 } }
+			NOT = { army_manpower_in_state = { state = 346 amount < 9600 } }
+			NOT = { army_manpower_in_state = { state = 345 amount < 28800 } }
+			NOT = { army_manpower_in_state = { state = 343 amount < 48000 } }
+			NOT = { army_manpower_in_state = { state = 347 amount < 48000 } }
+			NOT = { army_manpower_in_state = { state = 339 amount < 48000 } }
+			NOT = { army_manpower_in_state = { state = 342 amount < 48000 } }
+			NOT = { army_manpower_in_state = { state = 343 amount < 48000 } }
+			NOT = { army_manpower_in_state = { state = 49 amount < 124000 } }
+		}
+
+		target_trigger = {
+			FROM = {
+				original_tag = TUR
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		days_remove = 90
+
+		visible = {
+			has_government = communism
+			has_global_flag = GRE_turkey_surrenders
+			FROM = {
+				NOT = { 
+					is_subject_of = SOV 
+					is_subject_of = GRE
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+
+		remove_effect = {
+		}
+
+		complete_effect = {
+			TUR = {
+				country_event = { id = bftb_greece.34 }
+			}
+			hidden_effect = {
+				clr_global_flag = GRE_turkey_surrenders
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
+
+debug_decisions = { #TODO_Manu: Comment these out, Manu pls stop
+
+}
+
+
+
+########     ###    ########     ###    ##    ##  #######  ####    ###    
+##     ##   ## ##   ##     ##   ## ##   ###   ## ##     ##  ##    ## ##   
+##     ##  ##   ##  ##     ##  ##   ##  ####  ## ##     ##  ##   ##   ##  
+########  ##     ## ########  ##     ## ## ## ## ##     ##  ##  ##     ## 
+##        ######### ##   ##   ######### ##  #### ##     ##  ##  ######### 
+##        ##     ## ##    ##  ##     ## ##   ### ##     ##  ##  ##     ## 
+##        ##     ## ##     ## ##     ## ##    ##  #######  #### ##     ## 
+
+
+SOV_paranoia_system = {
+
+}
+
+
+
+########  ########   #######  ########     ###     ######      ###    ##    ## ########     ###        ######     ###    ##     ## ########     ###    ####  ######   ##    ## 
+##     ## ##     ## ##     ## ##     ##   ## ##   ##    ##    ## ##   ###   ## ##     ##   ## ##      ##    ##   ## ##   ###   ### ##     ##   ## ##    ##  ##    ##  ###   ## 
+##     ## ##     ## ##     ## ##     ##  ##   ##  ##         ##   ##  ####  ## ##     ##  ##   ##     ##        ##   ##  #### #### ##     ##  ##   ##   ##  ##        ####  ## 
+########  ########  ##     ## ########  ##     ## ##   #### ##     ## ## ## ## ##     ## ##     ##    ##       ##     ## ## ### ## ########  ##     ##  ##  ##   #### ## ## ## 
+##        ##   ##   ##     ## ##        ######### ##    ##  ######### ##  #### ##     ## #########    ##       ######### ##     ## ##        #########  ##  ##    ##  ##  #### 
+##        ##    ##  ##     ## ##        ##     ## ##    ##  ##     ## ##   ### ##     ## ##     ##    ##    ## ##     ## ##     ## ##        ##     ##  ##  ##    ##  ##   ### 
+##        ##     ##  #######  ##        ##     ##  ######   ##     ## ##    ## ########  ##     ##     ######  ##     ## ##     ## ##        ##     ## ####  ######   ##    ## 
+
+
+SOV_propaganda_campaigns = {
+
+}
+
+
+
+ ######    #######   ######  ########  ########   #######  ##    ## ######## ##    ## ########  ######  ######## ########   #######  ##    ## 
+##    ##  ##     ## ##    ## ##     ## ##     ## ##     ##  ##  ##  ##       ##   ##     ##    ##    ##    ##    ##     ## ##     ##  ##  ##  
+##        ##     ## ##       ##     ## ##     ## ##     ##   ####   ##       ##  ##      ##    ##          ##    ##     ## ##     ##   ####   
+##   #### ##     ##  ######  ########  ########  ##     ##    ##    ######   #####       ##     ######     ##    ########  ##     ##    ##    
+##    ##  ##     ##       ## ##        ##   ##   ##     ##    ##    ##       ##  ##      ##          ##    ##    ##   ##   ##     ##    ##    
+##    ##  ##     ## ##    ## ##        ##    ##  ##     ##    ##    ##       ##   ##     ##    ##    ##    ##    ##    ##  ##     ##    ##    
+ ######    #######   ######  ##        ##     ##  #######     ##    ######## ##    ##    ##     ######     ##    ##     ##  #######     ##    
+
+
+
+SOV_gosproyektstroy_decision_category = {
+
+}
+
+
+
+########  #######  ########  ######## ####  ######   ##    ##    ########   #######  ##       #### ######## ####  ######   ######  
+##       ##     ## ##     ## ##        ##  ##    ##  ###   ##    ##     ## ##     ## ##        ##     ##     ##  ##    ## ##    ## 
+##       ##     ## ##     ## ##        ##  ##        ####  ##    ##     ## ##     ## ##        ##     ##     ##  ##       ##       
+######   ##     ## ########  ######    ##  ##   #### ## ## ##    ########  ##     ## ##        ##     ##     ##  ##        ######  
+##       ##     ## ##   ##   ##        ##  ##    ##  ##  ####    ##        ##     ## ##        ##     ##     ##  ##             ## 
+##       ##     ## ##    ##  ##        ##  ##    ##  ##   ###    ##        ##     ## ##        ##     ##     ##  ##    ## ##    ## 
+##        #######  ##     ## ######## ####  ######   ##    ##    ##         #######  ######## ####    ##    ####  ######   ######  
+
+
+###############################
+### COVERT SUPPORT FOR POUM ###
+###############################
+
+SOV_soviet_aid_to_poum_decision_category = {
+
+}
+
+
+
+##############
+### BALTIC ###
+##############
+
+SOV_diplomacy_baltic_decision_category = {
+
+}
+
+
+##############
+### NORDIC ###
+##############
+
+SOV_diplomacy_nordic_decision_category = {
+
+}
+
+
+##############
+### BALKAN ###
+##############
+
+SOV_diplomacy_balkan_decision_category = {
+
+}
+
+
+###################
+### MIDDLE EAST ###
+###################
+
+SOV_diplomacy_middle_east_decision_category = {
+	SOV_preparations_for_operation_countenance = { # Mission for SOV (or SOV + ENG) to prepare the invasion of Iran
+		priority = 50
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			OR = {
+				original_tag = SOV
+				original_tag = ENG
+			}
+		}
+
+		available =  {
+			hidden_trigger = { always = no }
+		}
+
+		activation = {
+			always = no
+		}
+
+		cancel_trigger = {
+			OR = {
+				is_subject = yes
+				NOT = { country_exists = PER }
+				is_in_faction_with = PER
+				has_war_with = PER
+				has_guaranteed = PER
+				has_non_aggression_pact_with = PER
+				AND = {
+					has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
+					SOV = { has_war_with = ENG }
+				}
+			}
+		}
+
+		is_good = yes
+
+		days_mission_timeout = SOV.SOV_operation_countenance_preparation_days
+
+		timeout_effect = {
+			if = { #SOV invading alone
+				limit = {
+					NOT = { has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag }
+				}
+				declare_war_on = {
+					target = PER
+					type = puppet_wargoal_focus
+				}
+			}
+			else = { #SOV + ENG invading together, SOV perspective
+				if = { #SOV triggers the actual effects
+					limit = {
+						original_tag = SOV
+					}
+					declare_war_on = {
+						target = PER
+						type = puppet_wargoal_focus
+					}
+					ENG = {
+						add_to_war = { targeted_alliance = SOV enemy = PER hostility_reason = asked_to_join single_target_only = yes}
+					}
+				}
+				else = { #ENG only sees a fake
+					effect_tooltip = {
+						SOV = {
+							declare_war_on = {
+								target = PER
+								type = puppet_wargoal_focus
+							}
+						}
+						add_to_war = { targeted_alliance = SOV enemy = PER hostility_reason = asked_to_join single_target_only = yes}
+					}
+
+					hidden_effect = { news_event = { id = nsb_news.104 days = 4 random_days = 2 } } #Only ENG sends the news event.
+				}
+			}
+
+			activate_mission = SOV_operation_countenance
+			if = { #Activate mission for ENG if joint operation
+				limit = {
+					has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
+					tag = SOU
+				}
+				ENG = {
+					activate_mission = SOV_operation_countenance
+				}
+			}
+			if = { #Activate mission for ENG if joint operation
+				limit = {
+					has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
+					tag = ENG
+				}
+				SOU = {
+					activate_mission = SOV_operation_countenance
+				}
+			}
+			custom_effect_tooltip = SOV_preparations_for_operation_countenance_mission_tt
+
+			hidden_effect = { #Add all AI strategies
+				SOV_anglo_soviet_invasion_add_ai_strategies_effect = yes
+			}
+		}
+	}
+
+	SOV_operation_countenance = { # Mission for SOV (or SOV + ENG) to capitulate Iran in time, before they seek foreign help
+		priority = 50
+
+		icon = generic_operation
+
+		allowed = {
+			OR = {
+				original_tag = SOV
+				original_tag = ENG
+			}
+		}
+
+		available =  {
+			PER = { has_capitulated = yes }
+			all_of_scopes = {
+				array = SOV_iranian_initial_states
+				OR = {
+					is_controlled_by = SOV
+					any_allied_country = {
+						controls_state = PREV
+					}
+					AND = {
+						has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
+						OR = {
+							is_controlled_by = ENG
+							ENG = {
+								any_allied_country = {
+									controls_state = PREV
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		activation = {
+			always = no
+		}
+
+		days_mission_timeout = SOV.SOV_operation_countenance_mission_days
+
+		timeout_effect = { #FAIL -> Lose some stuff and Iran wants to enter an alliance
+			add_political_power = -25
+			add_command_power = -25
+			add_war_support = -0.05
+
+			hidden_effect = { #AI strategies
+				if = {
+					limit = {
+						OR = {
+							original_tag = SOV
+							AND = {
+								original_tag = ENG
+								has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
+								NOT = { country_exists = SOV }
+							}
+						}
+					}
+					SOV_failed_anglo_soviet_invasion_ai_strategies_effect = yes
+				}
+			}
+		}
+
+		complete_effect = {
+			add_command_power = 50
+			add_war_support = 0.1
+
+			effect_tooltip = {
+				if = { #Soviets alone (or joint but ENG died)
+					limit = {
+						OR = {
+							has_global_flag = SOV_soviet_invasion_of_iran_flag
+							AND = {
+								has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
+								NOT = { country_exists = ENG }
+							}
+						}
+					}
+					FROM = {
+						puppet = ROOT #SOV puppet Iran
+						transfer_state = 419 #Tibriz (AZB)
+						transfer_state = 420 #Gilan (AZB)
+						transfer_state = 416 #Khorasan
+					}
+					give_resource_rights = { receiver = FROM state = 411 }
+					give_resource_rights = { receiver = FROM state = 412 }
+					give_resource_rights = { receiver = FROM state = 413 }
+				}
+				else_if = {
+					limit = {
+						has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
+					}
+					ENG = {
+						puppet = ROOT #ENG gets to puppet Iran
+					}
+					SOV = {
+						transfer_state = 419 #Tibriz (AZB)
+						transfer_state = 420 #Gilan (AZB)
+						transfer_state = 416 #Khorasan
+					}
+					FROM = {
+						give_resource_rights = { receiver = SOV state = 411 }
+						give_resource_rights = { receiver = SOV state = 412 }
+						give_resource_rights = { receiver = ENG state = 413 }
+						give_military_access = ROOT
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+############
+### ASIA ###
+############
+
+SOV_diplomacy_asia_decision_category = {
+
+}
+
+
+ ######  #### ##    ## ##    ## ####    ###    ##    ##  ######   ####  ######     ########  ##     ## ##     ## ##     ## #### ########  ######  
+##    ##  ##  ###   ## ##   ##   ##    ## ##   ###   ## ##    ##  #### ##    ##    ##     ## ##     ## ###   ### ###   ###  ##  ##       ##    ## 
+##        ##  ####  ## ##  ##    ##   ##   ##  ####  ## ##         ##  ##          ##     ## ##     ## #### #### #### ####  ##  ##       ##       
+ ######   ##  ## ## ## #####     ##  ##     ## ## ## ## ##   #### ##    ######     ##     ## ##     ## ## ### ## ## ### ##  ##  ######    ######  
+      ##  ##  ##  #### ##  ##    ##  ######### ##  #### ##    ##             ##    ##     ## ##     ## ##     ## ##     ##  ##  ##             ## 
+##    ##  ##  ##   ### ##   ##   ##  ##     ## ##   ### ##    ##       ##    ##    ##     ## ##     ## ##     ## ##     ##  ##  ##       ##    ## 
+ ######  #### ##    ## ##    ## #### ##     ## ##    ##  ######         ######     ########   #######  ##     ## ##     ## #### ########  ######  
+
+
+SOV_soviet_aid_decision_category = {
+
+}
+
+
+########  ########  ######   #######  ##     ## ########   ######  ########    ########  ########   #######   ######  ########  ########  ######  ######## ####  #######  ##    ## 
+##     ## ##       ##    ## ##     ## ##     ## ##     ## ##    ## ##          ##     ## ##     ## ##     ## ##    ## ##     ## ##       ##    ##    ##     ##  ##     ## ###   ## 
+##     ## ##       ##       ##     ## ##     ## ##     ## ##       ##          ##     ## ##     ## ##     ## ##       ##     ## ##       ##          ##     ##  ##     ## ####  ## 
+########  ######    ######  ##     ## ##     ## ########  ##       ######      ########  ########  ##     ##  ######  ########  ######   ##          ##     ##  ##     ## ## ## ## 
+##   ##   ##             ## ##     ## ##     ## ##   ##   ##       ##          ##        ##   ##   ##     ##       ## ##        ##       ##          ##     ##  ##     ## ##  #### 
+##    ##  ##       ##    ## ##     ## ##     ## ##    ##  ##    ## ##          ##        ##    ##  ##     ## ##    ## ##        ##       ##    ##    ##     ##  ##     ## ##   ### 
+##     ## ########  ######   #######   #######  ##     ##  ######  ########    ##        ##     ##  #######   ######  ##        ########  ######     ##    ####  #######  ##    ## 
+
+
+prospect_for_resources = {
+
+}
+
+
+
+##     ## ######## ########   ######   ########    ########  ########  ######  ####  ######   ##    ## ######## ########   ######  
+###   ### ##       ##     ## ##    ##  ##          ##     ## ##       ##    ##  ##  ##    ##  ###   ## ##       ##     ## ##    ## 
+#### #### ##       ##     ## ##        ##          ##     ## ##       ##        ##  ##        ####  ## ##       ##     ## ##       
+## ### ## ######   ########  ##   #### ######      ##     ## ######    ######   ##  ##   #### ## ## ## ######   ########   ######  
+##     ## ##       ##   ##   ##    ##  ##          ##     ## ##             ##  ##  ##    ##  ##  #### ##       ##   ##         ## 
+##     ## ##       ##    ##  ##    ##  ##          ##     ## ##       ##    ##  ##  ##    ##  ##   ### ##       ##    ##  ##    ## 
+##     ## ######## ##     ##  ######   ########    ########  ########  ######  ####  ######   ##    ## ######## ##     ##  ######  
+
+
+SOV_merge_designers_dec_cat = {
+
+}
+
+
+
+   ###     ######     ###    ########  ######## ##     ## ##    ##     #######  ########     ######   ######  #### ######## ##    ##  ######  ########  ######  
+  ## ##   ##    ##   ## ##   ##     ## ##       ###   ###  ##  ##     ##     ## ##          ##    ## ##    ##  ##  ##       ###   ## ##    ## ##       ##    ## 
+ ##   ##  ##        ##   ##  ##     ## ##       #### ####   ####      ##     ## ##          ##       ##        ##  ##       ####  ## ##       ##       ##       
+##     ## ##       ##     ## ##     ## ######   ## ### ##    ##       ##     ## ######       ######  ##        ##  ######   ## ## ## ##       ######    ######  
+######### ##       ######### ##     ## ##       ##     ##    ##       ##     ## ##                ## ##        ##  ##       ##  #### ##       ##             ## 
+##     ## ##    ## ##     ## ##     ## ##       ##     ##    ##       ##     ## ##          ##    ## ##    ##  ##  ##       ##   ### ##    ## ##       ##    ## 
+##     ##  ######  ##     ## ########  ######## ##     ##    ##        #######  ##           ######   ######  #### ######## ##    ##  ######  ########  ######  
+
+
+SOV_national_academy_of_sciences_dec_cat = {
+
+}
+
+
+##    ## #### ##       ##          ######## ########   #######  ########  ######  ##    ## ##    ##               ##    ##  #######     ##          ###    ########  
+##   ##   ##  ##       ##             ##    ##     ## ##     ##    ##    ##    ## ##   ##   ##  ##                ###   ## ##     ##    ##         ## ##   ##     ## 
+##  ##    ##  ##       ##             ##    ##     ## ##     ##    ##    ##       ##  ##     ####                 ####  ## ##     ##    ##        ##   ##  ##     ## 
+#####     ##  ##       ##             ##    ########  ##     ##    ##     ######  #####       ##       #######    ## ## ## ##     ##    ##       ##     ## ########  
+##  ##    ##  ##       ##             ##    ##   ##   ##     ##    ##          ## ##  ##      ##                  ##  #### ##     ##    ##       ######### ##   ##   
+##   ##   ##  ##       ##             ##    ##    ##  ##     ##    ##    ##    ## ##   ##     ##                  ##   ### ##     ##    ##       ##     ## ##    ##  
+##    ## #### ######## ########       ##    ##     ##  #######     ##     ######  ##    ##    ##                  ##    ##  #######     ######## ##     ## ##     ## 
+
+
+SOV_kill_trotsky_dec_cat = {
+
+}
+
+
+#### ##    ## ########  ##     ##  ######  ######## ########  ##    ##    ########  ######## ##        #######   ######     ###    ######## ####  #######  ##    ## 
+ ##  ###   ## ##     ## ##     ## ##    ##    ##    ##     ##  ##  ##     ##     ## ##       ##       ##     ## ##    ##   ## ##      ##     ##  ##     ## ###   ## 
+ ##  ####  ## ##     ## ##     ## ##          ##    ##     ##   ####      ##     ## ##       ##       ##     ## ##        ##   ##     ##     ##  ##     ## ####  ## 
+ ##  ## ## ## ##     ## ##     ##  ######     ##    ########     ##       ########  ######   ##       ##     ## ##       ##     ##    ##     ##  ##     ## ## ## ## 
+ ##  ##  #### ##     ## ##     ##       ##    ##    ##   ##      ##       ##   ##   ##       ##       ##     ## ##       #########    ##     ##  ##     ## ##  #### 
+ ##  ##   ### ##     ## ##     ## ##    ##    ##    ##    ##     ##       ##    ##  ##       ##       ##     ## ##    ## ##     ##    ##     ##  ##     ## ##   ### 
+#### ##    ## ########   #######   ######     ##    ##     ##    ##       ##     ## ######## ########  #######   ######  ##     ##    ##    ####  #######  ##    ## 
+
+
+#Category only allowed for SOV
+SOV_industry_relocation = {
+
+}
+
+
+   ###    ########  #######  ##     ## ####  ######     ########  ########   #######        ## ########  ######  ######## 
+  ## ##      ##    ##     ## ###   ###  ##  ##    ##    ##     ## ##     ## ##     ##       ## ##       ##    ##    ##    
+ ##   ##     ##    ##     ## #### ####  ##  ##          ##     ## ##     ## ##     ##       ## ##       ##          ##    
+##     ##    ##    ##     ## ## ### ##  ##  ##          ########  ########  ##     ##       ## ######   ##          ##    
+#########    ##    ##     ## ##     ##  ##  ##          ##        ##   ##   ##     ## ##    ## ##       ##          ##    
+##     ##    ##    ##     ## ##     ##  ##  ##    ##    ##        ##    ##  ##     ## ##    ## ##       ##    ##    ##    
+##     ##    ##     #######  ##     ## ####  ######     ##        ##     ##  #######   ######  ########  ######     ##    
+
+
+SOV_infiltrate_foreign_atomic_programs_dec_cat = {
+
+}
+
+
+ ######   #######  ##     ## ########  ######   #######  ##    ## 
+##    ## ##     ## ###   ### ##       ##    ## ##     ## ###   ## 
+##       ##     ## #### #### ##       ##       ##     ## ####  ## 
+##       ##     ## ## ### ## ######   ##       ##     ## ## ## ## 
+##       ##     ## ##     ## ##       ##       ##     ## ##  #### 
+##    ## ##     ## ##     ## ##       ##    ## ##     ## ##   ### 
+ ######   #######  ##     ## ########  ######   #######  ##    ## 
+ 
+
+SOV_comecon_dec_cat = {
+
+}
+
+
+ ######   ########  ########    ###    ########    ########     ###    ######## ########  ####  #######  ######## ####  ######     ##      ##    ###    ########  
+##    ##  ##     ## ##         ## ##      ##       ##     ##   ## ##      ##    ##     ##  ##  ##     ##    ##     ##  ##    ##    ##  ##  ##   ## ##   ##     ## 
+##        ##     ## ##        ##   ##     ##       ##     ##  ##   ##     ##    ##     ##  ##  ##     ##    ##     ##  ##          ##  ##  ##  ##   ##  ##     ## 
+##   #### ########  ######   ##     ##    ##       ########  ##     ##    ##    ########   ##  ##     ##    ##     ##  ##          ##  ##  ## ##     ## ########  
+##    ##  ##   ##   ##       #########    ##       ##        #########    ##    ##   ##    ##  ##     ##    ##     ##  ##          ##  ##  ## ######### ##   ##   
+##    ##  ##    ##  ##       ##     ##    ##       ##        ##     ##    ##    ##    ##   ##  ##     ##    ##     ##  ##    ##    ##  ##  ## ##     ## ##    ##  
+ ######   ##     ## ######## ##     ##    ##       ##        ##     ##    ##    ##     ## ####  #######     ##    ####  ######      ###  ###  ##     ## ##     ## 
+
+
+SOV_great_patriotic_war = {
+
+}
+
+################################################################################
+	
+	 ##  ##  #   # ### ### ###      ##  ### #   # ### #       #   #  ##  ###  
+	#   #  # #   #  #  #    #      #  #  #  #   #  #  #       #   # #  # #  # 
+	 #  #  #  # #   #  ##   #      #     #   # #   #  #       # # # #### ###  
+	  # #  #  # #   #  #    #      #  #  #   # #   #  #       # # # #  # #  # 
+	##   ##    #   ### ###  #       ##  ###   #   ### ###      # #  #  # #  # 
+	
+
+################################################################################
+
+SOV_soviet_civil_war_dec_cat = {
+	## Stalin's crackdowns in unlocked Regions
+	# Ukraine
+	SOV_ukraine_crackdown_timer = {
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+		allowed = { tag = SOV }
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		is_good = no
+
+		days_mission_timeout = 45
+		days_re_enable = 10
+
+		fire_only_once = no
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+		cancel_if_not_visible = yes
+
+		timeout_effect = {
+
+		}
+	}
+	# The Great Steppe Region
+	SOV_steppe_crackdown_timer = {
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+		allowed = { tag = SOV }
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		is_good = no
+
+		days_mission_timeout = 45
+		days_re_enable = 10
+
+		fire_only_once = no
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+		cancel_if_not_visible = yes
+
+		timeout_effect = {
+
+		}
+	}
+
+	# The Northern Region
+	SOV_northern_crackdown_timer = {
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+		allowed = { tag = SOV }
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		is_good = no
+
+		days_mission_timeout = 45
+		days_re_enable = 10
+
+		fire_only_once = no
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+		cancel_if_not_visible = yes
+
+		timeout_effect = {
+		}
+	}
+
+	# The Siberian Region
+	SOV_siberian_crackdown_timer = {
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+		allowed = { tag = SOV }
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		is_good = no
+
+		days_mission_timeout = 45
+		days_re_enable = 10
+
+		fire_only_once = no
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+		cancel_if_not_visible = yes
+
+		timeout_effect = {
+
+		}
+
+	}
+
+	# The urals Region
+	SOV_urals_crackdown_timer = {
+
+		priority = 10
+
+		icon = generic_ignite_civil_war
+		allowed = { tag = SOV }
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		is_good = no
+
+		days_mission_timeout = 45
+		days_re_enable = 10
+
+		fire_only_once = no
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			always = no
+		}
+		cancel_if_not_visible = yes
+
+		timeout_effect = {
+
+		}
+	}
+}
+
+
+########  ######## ########  ##     ##    ###    ##    ## ######## ##    ## ########    ########  ######## ##     ##  #######  ##       ##     ## ######## ####  #######  ##    ## 
+##     ## ##       ##     ## ###   ###   ## ##   ###   ## ##       ###   ##    ##       ##     ## ##       ##     ## ##     ## ##       ##     ##    ##     ##  ##     ## ###   ## 
+##     ## ##       ##     ## #### ####  ##   ##  ####  ## ##       ####  ##    ##       ##     ## ##       ##     ## ##     ## ##       ##     ##    ##     ##  ##     ## ####  ## 
+########  ######   ########  ## ### ## ##     ## ## ## ## ######   ## ## ##    ##       ########  ######   ##     ## ##     ## ##       ##     ##    ##     ##  ##     ## ## ## ## 
+##        ##       ##   ##   ##     ## ######### ##  #### ##       ##  ####    ##       ##   ##   ##        ##   ##  ##     ## ##       ##     ##    ##     ##  ##     ## ##  #### 
+##        ##       ##    ##  ##     ## ##     ## ##   ### ##       ##   ###    ##       ##    ##  ##         ## ##   ##     ## ##       ##     ##    ##     ##  ##     ## ##   ### 
+##        ######## ##     ## ##     ## ##     ## ##    ## ######## ##    ##    ##       ##     ## ########    ###     #######  ########  #######     ##    ####  #######  ##    ## 
+
+
+SOV_permanent_revolution_dec_cat = {
+
+}
+
+SOV_panslavic_nationalism = {
+
+}

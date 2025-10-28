@@ -1,0 +1,1375 @@
+defined_text = { # Used to know which state the overall investment is currently in (helps the player know if (s)he should do the Reunification or not)
+	name = GetInvestmentOverallStatus
+	text = {
+		trigger = {
+			original_tag = SOV
+            set_temp_variable = { weak_investment = sov_country_investment_count }
+            divide_temp_variable = { weak_investment = 3 }
+            check_variable = {
+                var = sov_total_investment
+                value = 0
+                compare = greater_than
+            }
+			check_variable = {
+				var = sov_total_investment
+				value = weak_investment
+				compare = less_than
+			}
+		}
+		localization_key = SOV_INVESTMENT_WEAK
+	}
+	text = {
+		trigger = {
+            set_temp_variable = { weak_investment = sov_country_investment_count }
+            divide_temp_variable = { weak_investment = 3 }
+            set_temp_variable = { medium_investment = sov_country_investment_count }
+            divide_temp_variable = { medium_investment = 3 }
+            multiply_temp_variable = { medium_investment = 2 }
+			check_variable = {
+                var = sov_total_investment
+                value = 0
+                compare = greater_than
+            }
+            check_variable = {
+                var = sov_total_investment
+                value = weak_investment
+                compare = greater_than_or_equals
+            }
+			check_variable = {
+				var = sov_total_investment
+				value = medium_investment
+				compare = less_than
+			}
+		}
+		localization_key = SOV_INVESTMENT_MEDIUM
+	}
+  	text = {
+		trigger = {
+            set_temp_variable = { medium_investment = sov_country_investment_count }
+            divide_temp_variable = { medium_investment = 3 }
+            multiply_temp_variable = { medium_investment = 2 }
+			check_variable = {
+                var = sov_total_investment
+                value = 0
+                compare = greater_than
+            }
+			check_variable = {
+				var = sov_total_investment
+				value = medium_investment
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = SOV_INVESTMENT_HIGH
+	}
+  	text = {
+		localization_key = SOV_INVESTMENT_NONE
+	}
+}
+
+defined_text = { #If Germany controls Slovenia during the Alliance event, they will have to hand it over
+	name = GetSloveniaStatus
+	text = {
+		trigger = {
+			GER = {
+				controls_state = 102
+			}
+		}
+		localization_key = SOV_GERMAN_ALLIANCE_FOR_SLOVENIA
+	}
+	text = {
+		localization_key = SOV_GERMAN_ALLIANCE
+	}
+}
+
+#If SOV is not communist, we change the name of some focuses & ideas
+defined_text = {
+	name = GetPCDIName
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_PCDI_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_PCDI_COMMUNISM
+	}
+}
+
+defined_text = {
+	name = GetPCDIDesc
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_PCDI_DESC_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_PCDI_DESC_COMMUNISM
+	}
+}
+
+defined_text = {
+	name = GetWelcomeTannuTuvaName
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_WELCOME_TANNU_TUVA_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_WELCOME_TANNU_TUVA_COMMUNISM
+	}
+}
+
+defined_text = {
+	name = GetWelcomeTannuTuvaDesc
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_WELCOME_TANNU_TUVA_DESC_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_WELCOME_TANNU_TUVA_DESC_COMMUNISM
+	}
+}
+
+defined_text = {
+	name = GetWorkersCultureName
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_WORKERS_CULTURE_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_WORKERS_CULTURE_COMMUNISM
+	}
+}
+
+defined_text = {
+	name = GetWorkersCultureDesc
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_WORKERS_CULTURE_DESC_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_WORKERS_CULTURE_DESC_COMMUNISM
+	}
+}
+
+defined_text = {
+	name = GetProgressCultName
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_PROGRESS_CULT_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_PROGRESS_CULT_COMMUNISM
+	}
+}
+
+defined_text = {
+	name = GetProgressCultDesc
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_PROGRESS_CULT_DESC_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_PROGRESS_CULT_DESC_COMMUNISM
+	}
+}
+
+defined_text = {
+	name = GetSocialistScienceName
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_SOCIALIST_SCIENCE_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_SOCIALIST_SCIENCE_COMMUNISM
+	}
+}
+
+defined_text = {
+	name = GetSocialistScienceDesc
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_SOCIALIST_SCIENCE_DESC_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_SOCIALIST_SCIENCE_DESC_COMMUNISM
+	}
+}
+
+defined_text = {
+	name = GetAviationCultName
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_AVIATION_CULT_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_AVIATION_CULT_COMMUNISM
+	}
+}
+
+defined_text = {
+	name = GetAviationCultDesc
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_AVIATION_CULT_DESC_NO_COMMUNISM
+	}
+	text = {
+		localization_key = SOV_AVIATION_CULT_DESC_COMMUNISM
+	}
+}
+
+#Used to inform the player about the current support status of a house
+defined_text = {
+	name = GetSupportHouse1
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^1
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = SOV_SUPPORTING_HOUSE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^1
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = SOV_NEUTRAL_HOUSE
+	}
+	text = {
+		localization_key = SOV_OPPOSED_HOUSE
+	}
+}
+
+defined_text = {
+	name = GetSupportHouse2
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^2
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = SOV_SUPPORTING_HOUSE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^2
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = SOV_NEUTRAL_HOUSE
+	}
+	text = {
+		localization_key = SOV_OPPOSED_HOUSE
+	}
+}
+
+defined_text = {
+	name = GetSupportHouse3
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^3
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = SOV_SUPPORTING_HOUSE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^3
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = SOV_NEUTRAL_HOUSE
+	}
+	text = {
+		localization_key = SOV_OPPOSED_HOUSE
+	}
+}
+
+defined_text = {
+	name = GetSupportHouse4
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^4
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = SOV_SUPPORTING_HOUSE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^4
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = SOV_NEUTRAL_HOUSE
+	}
+	text = {
+		localization_key = SOV_OPPOSED_HOUSE
+	}
+}
+
+defined_text = {
+	name = GetSupportHouse5
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^5
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = SOV_SUPPORTING_HOUSE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^5
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = SOV_NEUTRAL_HOUSE
+	}
+	text = {
+		localization_key = SOV_OPPOSED_HOUSE
+	}
+}
+
+defined_text = {
+	name = GetSupportHouse6
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^6
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = SOV_SUPPORTING_HOUSE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^6
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = SOV_NEUTRAL_HOUSE
+	}
+	text = {
+		localization_key = SOV_OPPOSED_HOUSE
+	}
+}
+
+defined_text = {
+	name = GetSupportHouse7
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^7
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = SOV_SUPPORTING_HOUSE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^7
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = SOV_NEUTRAL_HOUSE
+	}
+	text = {
+		localization_key = SOV_OPPOSED_HOUSE
+	}
+}
+
+defined_text = {
+	name = GetSupportHouse8
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^8
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = SOV_SUPPORTING_HOUSE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^8
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = SOV_NEUTRAL_HOUSE
+	}
+	text = {
+		localization_key = SOV_OPPOSED_HOUSE
+	}
+}
+
+defined_text = {
+	name = GetSupportHouse9
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^9
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = SOV_SUPPORTING_HOUSE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^9
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = SOV_NEUTRAL_HOUSE
+	}
+	text = {
+		localization_key = SOV_OPPOSED_HOUSE
+	}
+}
+
+defined_text = {
+	name = GetSupportHouse10
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^10
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = SOV_SUPPORTING_HOUSE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = house_russia^10
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = SOV_NEUTRAL_HOUSE
+	}
+	text = {
+		localization_key = SOV_OPPOSED_HOUSE
+	}
+}
+
+defined_text = {
+	name = GetSOVFlagshipName
+	text = {
+		trigger = {
+			SOV = {
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+		localization_key = SOV_ROVETSKAYA_ROSSIYA
+	}
+	text = {
+		localization_key = SOV_SOVETSKAYA_ROSSIYA
+	}
+}
+
+defined_text = {
+	name = GetSOVInviteYugoslavia
+	text = {
+		trigger = {
+			NOT = {
+				country_exists = YUG
+			}
+			OR = {
+				country_exists = SER
+				country_exists = CRO
+				country_exists = BOS
+				country_exists = SLV
+				country_exists = MNT
+				country_exists = MAC
+			}
+		}
+		localization_key = SOV_INVITE_BALKAN
+	}
+	text = {
+		localization_key = SOV_INVITE_YUGOSLAVIA
+	}
+}
+
+defined_text = {
+	name = GetSOVInviteYugoslaviaDesc
+	text = {
+		trigger = {
+			NOT = {
+				country_exists = YUG
+			}
+			OR = {
+				country_exists = SER
+				country_exists = CRO
+				country_exists = BOS
+				country_exists = SLV
+				country_exists = MNT
+				country_exists = MAC
+			}
+		}
+		localization_key = SOV_INVITE_BALKAN_DESC
+	}
+	text = {
+		localization_key = SOV_INVITE_YUGOSLAVIA_DESC
+	}
+}
+
+defined_text = {
+	name = GetFascismFascist
+	text = {
+		trigger = {
+			check_variable = {
+				var = fascism_anastasy_konstantin
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_FASCISM_FASCIST
+	}
+	text = {
+		localization_key = SOV_FASCISM_FASCIST_NOT
+	}
+}
+
+defined_text = {
+	name = GetEncryptionFascist
+	text = {
+		trigger = {
+			check_variable = {
+				var = encryption_anastasy_konstantin
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_ENCRYPTION_FASCIST
+	}
+	text = {
+		localization_key = SOV_ENCRYPTION_FASCIST_NOT
+	}
+}
+
+defined_text = {
+	name = GetOperativeFascist
+	text = {
+		trigger = {
+			check_variable = {
+				var = operative_anastasy_konstantin
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_OPERATIVE_FASCIST
+	}
+	text = {
+		localization_key = SOV_OPERATIVE_FASCIST_NOT
+	}
+}
+
+defined_text = {
+	name = GetWarFascist
+	text = {
+		trigger = {
+			check_variable = {
+				var = war_weekly_anastasy_konstantin
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_WAR_FASCIST
+	}
+	text = {
+		localization_key = SOV_WAR_FASCIST_NOT
+	}
+}
+
+defined_text = {
+	name = GetSpecialAttackFascist
+	text = {
+		trigger = {
+			check_variable = {
+				var = special_attack_anastasy_konstantin
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_SPECIAL_ATTACK_FASCIST
+	}
+	text = {
+		localization_key = SOV_SPECIAL_ATTACK_FASCIST_NOT
+	}
+}
+
+defined_text = {
+	name = GetSpecialDefenceFascist
+	text = {
+		trigger = {
+			check_variable = {
+				var = special_defence_anastasy_konstantin
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_SPECIAL_DEFENCE_FASCIST
+	}
+	text = {
+		localization_key = SOV_SPECIAL_DEFENCE_FASCIST_NOT
+	}
+}
+
+defined_text = {
+	name = GetIdeaFascistName
+	text = {
+		trigger = {
+			SOV = {
+				has_idea = SOV_Otdel_bezopasnosti
+			}
+		}
+		localization_key = SOV_SECURITY_DEPARTMENT_IDEA_NAME
+	}
+	text = {
+		localization_key = SOV_FASCIST_WOMEN_IDEA_NAME
+	}
+}
+
+defined_text = {
+	name = GetIdeaFascistDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_idea = SOV_Otdel_bezopasnosti
+			}
+		}
+		localization_key = SOV_SECURITY_DEPARTMENT_IDEA_DESC
+	}
+	text = {
+		localization_key = SOV_FASCIST_WOMEN_IDEA_DESC
+	}
+}
+
+defined_text = {
+	name = GetDecisionFascistDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_idea = SOV_Otdel_bezopasnosti
+			}
+		}
+		localization_key = SOV_SECURITY_DECISION_DEPARTMENT_IDEA_DESC
+	}
+	text = {
+		localization_key = SOV_FASCIST_DECISION_WOMEN_IDEA_DESC
+	}
+}
+
+defined_text = {
+	name = GetFascistReturnName
+	text = {
+		trigger = {
+			SOV = {
+				has_country_flag = konstantin_rodzaevsky_executed
+			}
+		}
+		localization_key = SOV_FASCIST_RETURN_ANASTASY
+	}
+	text = {
+		localization_key = SOV_FASCIST_RETURN_KONSTANTIN
+	}
+}
+
+defined_text = {
+	name = GetFascistReturnDesc
+	text = {
+		trigger = {
+			SOV = {
+				has_country_flag = konstantin_rodzaevsky_executed
+			}
+		}
+		localization_key = SOV_FASCIST_RETURN_ANASTASY_DESC
+	}
+	text = {
+		localization_key = SOV_FASCIST_RETURN_KONSTANTIN_DESC
+	}
+}
+
+defined_text = {
+	name = GetDemocraticLocalResources
+	text = {
+		trigger = {
+			check_variable = {
+				var = local_ressource_ice_puppet
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_DEMOCRATIC_LOCAL_RESOJRCES
+	}
+	text = {
+		localization_key = SOV_DEMOCRATIC_LOCAL_RESOJRCES_NOT
+	}
+}
+
+defined_text = {
+	name = GetDemocraticAlaskaImmigration
+	text = {
+		trigger = {
+			check_variable = {
+				var = alaska_immigration_calculation_demo
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_ALASKA_IMMIGRATION_CALCULATION_DEMOCRATIC_LOC
+	}
+	text = {
+		localization_key = SOV_ALASKA_IMMIGRATION_CALCULATION_DEMOCRATIC_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetDemocraticAlaskaEmigration
+	text = {
+		trigger = {
+			check_variable = {
+				var = alaska_emigration_calculation_demo
+				value = 0
+				compare = less_than
+			}
+		}
+		localization_key = SOV_ALASKA_EMIGRATION_CALCULATION_DEMOCRATIC_LOC
+	}
+	text = {
+		localization_key = SOV_ALASKA_EMIGRATION_CALCULATION_DEMOCRATIC_LOC_NOT
+	}
+}
+
+#Get United Russia Strength
+defined_text = {
+	name = GetUnitedRussiaStrength
+	text = {
+		trigger = {
+			check_variable = {
+				var = united_russia_strength
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = SOV_UNITED_RUSSIA_WEAK
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = united_russia_strength
+				value = 2
+				compare = equals
+			}
+		}
+		localization_key = SOV_UNITED_RUSSIA_MODERATE
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = united_russia_strength
+				value = 3
+				compare = equals
+			}
+		}
+		localization_key = SOV_UNITED_RUSSIA_HIGH
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = united_russia_strength
+				value = 4
+				compare = greater_than_or_equals
+			}
+		}
+		localization_key = SOV_UNITED_RUSSIA_OVERWHELMING
+	}
+	text = {
+		localization_key = SOV_UNITED_RUSSIA_INSIGNIFICANT
+	}
+}
+
+defined_text = {
+	name = GetPPGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = pp_gain_church_power
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_PP_CHURCH_POWER_LOC_GREATER
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				var = pp_gain_church_power
+				value = 0
+				compare = less_than
+			}
+		}
+		localization_key = SOV_PP_CHURCH_POWER_LOC_LESS
+	}
+	text = {
+		localization_key = SOV_PP_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetStabilityGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = stability_gain_church_power
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_STABILITY_CHURCH_POWER_LOC
+	}
+	text = {
+		localization_key = SOV_STABILITY_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetWarSupportGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = war_support_gain_church_power
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_WAR_SUPPORT_CHURCH_POWER_LOC
+	}
+	text = {
+		localization_key = SOV_WAR_SUPPORT_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetResearchSpeedGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = research_gain_church_power
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_RESEARCH_SPEED_CHURCH_POWER_LOC
+	}
+	text = {
+		localization_key = SOV_RESEARCH_SPEED_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetResistanceTargetGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = resistance_gain_church_power
+				value = 0
+				compare = less_than
+			}
+		}
+		localization_key = SOV_RESISTANCE_TARGET_CHURCH_POWER_LOC
+	}
+	text = {
+		localization_key = SOV_RESISTANCE_TARGET_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetArmyCoreAttackDivisionGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = army_core_attack_gain_church_power
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_ARMY_CORE_ATTACK_DIVISION_CHURCH_POWER_LOC
+	}
+	text = {
+		localization_key = SOV_ARMY_CORE_ATTACK_DIVISION_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetArmyCoreDefenseDivisionGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = army_core_defense_gain_church_power
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_ARMY_CORE_DEFENSE_DIVISION_CHURCH_POWER_LOC
+	}
+	text = {
+		localization_key = SOV_ARMY_CORE_DEFENSE_DIVISION_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetArmyMobilizationSpeedDivisionGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = mobilization_gain_church_power
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_ARMY_MOBILIZATION_SPPED_DIVISION_CHURCH_POWER_LOC
+	}
+	text = {
+		localization_key = SOV_ARMY_MOBILIZATION_SPPED_DIVISION_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetBuildingSpeedGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = building_gain_church_power
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_BUILDING_SPEED_CHURCH_POWER_LOC
+	}
+	text = {
+		localization_key = SOV_BUILDING_SPEED_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetBuildingInfrastructureGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = infrastructure_gain_church_power
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_BUILDING_INFRASTRUCTURE_CHURCH_POWER_LOC
+	}
+	text = {
+		localization_key = SOV_BUILDING_INFRASTRUCTURE_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetFactoryOutputGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = industrial_fac_gain_church_power
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_FACTORY_OUTPUT_CHURCH_POWER_LOC
+	}
+	text = {
+		localization_key = SOV_FACTORY_OUTPUT_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetFactoryCapGainChurchPower
+	text = {
+		trigger = {
+			check_variable = {
+				var = efficiency_fac_gain_church_power
+				value = 0
+				compare = greater_than
+			}
+		}
+		localization_key = SOV_FACTORY_EFFICIENCY_CHURCH_POWER_LOC
+	}
+	text = {
+		localization_key = SOV_FACTORY_EFFICIENCY_CHURCH_POWER_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetIdeaChurchControl
+	text = {
+		trigger = {
+			SOV = {
+				has_idea = SOV_Church_power
+			}
+		}
+		localization_key = SOV_CHURCH_CONTROL_LOC_DESC
+	}
+	text = {
+		localization_key = SOV_FASCIST_WOMEN_IDEA_DESC_NOT
+	}
+}
+
+defined_text = {
+	name = GetKievAdjective
+	text = {
+		trigger = {
+			has_global_flag = UKR_kiev_renamed
+		}
+		localization_key = UKR_KYIVAN
+	}
+	text = {
+		localization_key = UKR_KIEVAN
+	}
+}
+
+defined_text = {
+	name = GetMilitaristicTypeLoc
+	text = {
+		trigger = {
+			check_variable = {
+				var = militaristic_personality_type_anarchist
+				value = 0
+				compare = equals
+			}
+		}
+		localization_key = SOV_MILITARISTIC_TYPE_A_LOC
+	}
+	text = {
+		localization_key = SOV_MILITARISTIC_TYPE_A_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetMilitaristicTypeLoc
+	text = {
+		trigger = {
+			check_variable = {
+				var = militaristic_personality_type_anarchist
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = SOV_MILITARISTIC_TYPE_B_LOC
+	}
+	text = {
+		localization_key = SOV_MILITARISTIC_TYPE_B_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetEconomicTypeLoc
+	text = {
+		trigger = {
+			check_variable = {
+				var = economic_personality_type_anarchist
+				value = 0
+				compare = equals
+			}
+		}
+		localization_key = SOV_ECONOMIC_TYPE_A_LOC
+	}
+	text = {
+		localization_key = SOV_ECONOMIC_TYPE_A_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetEconomicTypeLoc
+	text = {
+		trigger = {
+			check_variable = {
+				var = economic_personality_type_anarchist
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = SOV_ECONOMIC_TYPE_B_LOC
+	}
+	text = {
+		localization_key = SOV_ECONOMIC_TYPE_B_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetSocialTypeLoc
+	text = {
+		trigger = {
+			check_variable = {
+				var = social_personality_type_anarchist
+				value = 0
+				compare = equals
+			}
+		}
+		localization_key = SOV_SOCIAL_TYPE_A_LOC
+	}
+	text = {
+		localization_key = SOV_SOCIAL_TYPE_A_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetSocialTypeLoc
+	text = {
+		trigger = {
+			check_variable = {
+				var = social_personality_type_anarchist
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = SOV_SOCIAL_TYPE_B_LOC
+	}
+	text = {
+		localization_key = SOV_SOCIAL_TYPE_B_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetPeacefulTypeLoc
+	text = {
+		trigger = {
+			check_variable = {
+				var = peaceful_personality_type_anarchist
+				value = 0
+				compare = equals
+			}
+		}
+		localization_key = SOV_PEACEFUL_TYPE_A_LOC
+	}
+	text = {
+		localization_key = SOV_PEACEFUL_TYPE_A_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetPeacefulTypeLoc
+	text = {
+		trigger = {
+			check_variable = {
+				var = peaceful_personality_type_anarchist
+				value = 1
+				compare = equals
+			}
+		}
+		localization_key = SOV_PEACEFUL_TYPE_B_LOC
+	}
+	text = {
+		localization_key = SOV_PEACEFUL_TYPE_B_LOC_NOT
+	}
+}
+
+defined_text = {
+	name = GetTsarWeTrustName
+	text = {
+		trigger = {
+			has_country_leader = {
+				character = SOV_Anastasia_nikolaevna
+				ruling_only = yes
+			}
+		}
+		localization_key = SOV_TSARINA_WE_TRUST_TITLE
+	}
+	text = {
+		localization_key = SOV_TSAR_WE_TRUST_TITLE
+	}
+}
+
+defined_text = {
+	name = GetTsarWeTrustDesc
+	text = {
+		trigger = {
+			has_country_leader = {
+				character = SOV_Anastasia_nikolaevna
+				ruling_only = yes
+			}
+		}
+		localization_key = SOV_TSARINA_WE_TRUST_DESC
+	}
+	text = {
+		localization_key = SOV_TSAR_WE_TRUST_DESC
+	}
+}
+
+defined_text = {
+	name = GetTsarAdjective
+	text = {
+		trigger = {
+			has_country_leader = {
+				character = SOV_Anastasia_nikolaevna
+				ruling_only = yes
+			}
+		}
+		localization_key = SOV_TSARINA_ADJ
+	}
+	text = {
+		localization_key = SOV_TSAR_ADJ
+	}
+}
+
+defined_text = {
+	name = GetNoMajorPurgeCostArmyExperience
+	text = {
+		trigger = {
+			has_army_experience > 24
+		}
+		localization_key = LOC_reform_purge_no_major_cost_army_experience_yes
+	}
+	text = {
+		localization_key = LOC_reform_purge_no_major_cost_army_experience_no
+	}
+}
+
+defined_text = {
+	name = GetMajorPurgeCostArmyExperience
+	text = {
+		trigger = {
+			has_army_experience > 49
+		}
+		localization_key = LOC_reform_purge_major_cost_army_experience_yes
+	}
+	text = {
+		localization_key = LOC_reform_purge_major_cost_army_experience_no
+	}
+}
+
+defined_text = {
+	name = GetNoMajorPurgeCostPoliticalPower
+	text = {
+		trigger = {
+			has_political_power > 49
+		}
+		localization_key = LOC_reform_purge_no_major_cost_political_power_yes
+	}
+	text = {
+		localization_key = LOC_reform_purge_no_major_cost_political_power_no
+	}
+}
+
+defined_text = {
+	name = GetMajorPurgeCostPoliticalPower
+	text = {
+		trigger = {
+			has_political_power > 74
+		}
+		localization_key = LOC_reform_purge_major_cost_political_power_yes
+	}
+	text = {
+		localization_key = LOC_reform_purge_major_cost_political_power_no
+	}
+}

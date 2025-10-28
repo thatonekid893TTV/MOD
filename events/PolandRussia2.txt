@@ -1,0 +1,2055 @@
+###########################
+# Polish Events
+###########################
+
+add_namespace = russia2_poland
+
+# Check if File is Loaded
+country_event = {
+	id = russia2_poland.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_polands
+	}
+}
+
+#Polish Ultimatum (Soviet Union demands the East)
+country_event = {
+	id = russia2_poland.1
+	title = russia2_poland.1.t
+	desc = russia2_poland.1.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+
+	option = { #Cede the Lands
+		name = russia2_poland.1.a
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0
+				OR = {
+					any_other_country = {
+						is_major = yes
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		effect_tooltip = {
+			SOV = {
+				if = {
+					limit = {
+						OR = {
+							POL = {
+								OR = {
+									owns_state = 96
+									controls_state = 96
+								}
+							}
+							any_country = {
+								OR = {
+									owns_state = 96
+									controls_state = 96
+								}
+								is_subject_of = ROOT
+							}
+						}
+					}
+					transfer_state = 96
+				}
+				if = {
+					limit = {
+						OR = {
+							POL = {
+								OR = {
+									owns_state = 95
+									controls_state = 95
+								}
+							}
+							any_country = {
+								OR = {
+									owns_state = 95
+									controls_state = 95
+								}
+								is_subject_of = ROOT
+							}
+						}
+					}
+					transfer_state = 95
+				}
+				if = {
+					limit = {
+						OR = {
+							POL = {
+								OR = {
+									owns_state = 94
+									controls_state = 94
+								}
+							}
+							any_country = {
+								OR = {
+									owns_state = 94
+									controls_state = 94
+								}
+								is_subject_of = ROOT
+							}
+						}
+					}
+					transfer_state = 94
+				}
+				if = {
+					limit = {
+						OR = {
+							POL = {
+								OR = {
+									owns_state = 93
+									controls_state = 93
+								}
+							}
+							any_country = {
+								OR = {
+									owns_state = 93
+									controls_state = 93
+								}
+								is_subject_of = ROOT
+							}
+						}
+					}
+					transfer_state = 93
+				}
+				if = {
+					limit = {
+						OR = {
+							POL = {
+								OR = {
+									owns_state = 91
+									controls_state = 91
+								}
+							}
+							any_country = {
+								OR = {
+									owns_state = 91
+									controls_state = 91
+								}
+								is_subject_of = ROOT
+							}
+						}
+					}
+					transfer_state = 91
+				}
+				if = {
+					limit = {
+						OR = {
+							POL = {
+								OR = {
+									owns_state = 89
+									controls_state = 89
+								}
+							}
+							any_country = {
+								OR = {
+									owns_state = 89
+									controls_state = 89
+								}
+								is_subject_of = ROOT
+							}
+						}
+					}
+					transfer_state = 89
+				}
+				if = {
+					limit = {
+						OR = {
+							POL = {
+								OR = {
+									owns_state = 97
+									controls_state = 97
+								}
+							}
+							any_country = {
+								OR = {
+									owns_state = 97
+									controls_state = 97
+								}
+								is_subject_of = ROOT
+							}
+						}
+					}
+					transfer_state = 97
+				}
+				if = {
+					limit = {
+						OR = {
+							POL = {
+								OR = {
+									owns_state = 784
+									controls_state = 784
+								}
+							}
+							any_country = {
+								OR = {
+									owns_state = 784
+									controls_state = 784
+								}
+								is_subject_of = ROOT
+							}
+						}
+					}
+					transfer_state = 784
+				}
+			}
+		}
+		SOV = {country_event = { id = russia2_poland.2} }
+		if = {
+			limit = {
+				NOT = {
+					tag = POL
+				}
+ 			}
+			custom_effect_tooltip = SOV_poland_is_subject_tt
+		}
+	}
+
+	option = {
+		name = russia2_poland.1.b
+		ai_chance = { base = 70 }
+		effect_tooltip = {
+			SOV = {
+				create_wargoal = {
+					type = take_state_focus
+					target = POL
+					generator = { 96 95 94 93 91 89 97 784 }
+				}
+			}
+		}
+		SOV = { country_event = { id = russia2_poland.3 } }
+		if = {
+			limit = {
+				NOT = {
+					tag = POL
+				}
+ 			}
+			custom_effect_tooltip = SOV_poland_is_subject_tt
+		}
+	}
+}
+
+# Poland Cedes the East
+country_event = {
+	id = russia2_poland.2
+	title = russia2_poland.2.t
+	desc = russia2_poland.2.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.2.a
+		ai_chance = {
+			base = 100
+		}
+		if = {
+			limit = {
+				OR = {
+					POL = {
+						OR = {
+							owns_state = 96
+							controls_state = 96
+						}
+					}
+					any_country = {
+						OR = {
+							owns_state = 96
+							controls_state = 96
+						}
+						is_subject_of = FROM
+					}
+					any_country = {
+						OR = {
+							owns_state = 96
+							controls_state = 96
+						}
+						tag = FROM
+					}
+				}
+			}
+			transfer_state = 96
+		}
+		if = {
+			limit = {
+				OR = {
+					POL = {
+						OR = {
+							owns_state = 95
+							controls_state = 95
+						}
+					}
+					any_country = {
+						OR = {
+							owns_state = 95
+							controls_state = 95
+						}
+						is_subject_of = FROM
+					}
+					any_country = {
+						OR = {
+							owns_state = 95
+							controls_state = 95
+						}
+						tag = FROM
+					}
+				}
+			}
+			transfer_state = 95
+		}
+		if = {
+			limit = {
+				OR = {
+					POL = {
+						OR = {
+							owns_state = 94
+							controls_state = 94
+						}
+					}
+					any_country = {
+						OR = {
+							owns_state = 94
+							controls_state = 94
+						}
+						is_subject_of = FROM
+					}
+					any_country = {
+						OR = {
+							owns_state = 94
+							controls_state = 94
+						}
+						tag = FROM
+					}
+				}
+			}
+			transfer_state = 94
+		}
+		if = {
+			limit = {
+				OR = {
+					POL = {
+						OR = {
+							owns_state = 93
+							controls_state = 93
+						}
+					}
+					any_country = {
+						OR = {
+							owns_state = 93
+							controls_state = 93
+						}
+						is_subject_of = FROM
+					}
+					any_country = {
+						OR = {
+							owns_state = 93
+							controls_state = 93
+						}
+						tag = FROM
+					}
+				}
+			}
+			transfer_state = 93
+		}
+		if = {
+			limit = {
+				OR = {
+					POL = {
+						OR = {
+							owns_state = 91
+							controls_state = 91
+						}
+					}
+					any_country = {
+						OR = {
+							owns_state = 91
+							controls_state = 91
+						}
+						is_subject_of = FROM
+					}
+					any_country = {
+						OR = {
+							owns_state = 91
+							controls_state = 91
+						}
+						tag = FROM
+					}
+				}
+			}
+			transfer_state = 91
+		}
+		if = {
+			limit = {
+				OR = {
+					POL = {
+						OR = {
+							owns_state = 89
+							controls_state = 89
+						}
+					}
+					any_country = {
+						OR = {
+							owns_state = 89
+							controls_state = 89
+						}
+						is_subject_of = FROM
+					}
+					any_country = {
+						OR = {
+							owns_state = 89
+							controls_state = 89
+						}
+						tag = FROM
+					}
+				}
+			}
+			transfer_state = 89
+		}
+		if = {
+			limit = {
+				OR = {
+					POL = {
+						OR = {
+							owns_state = 97
+							controls_state = 97
+						}
+					}
+					any_country = {
+						OR = {
+							owns_state = 97
+							controls_state = 97
+						}
+						is_subject_of = FROM
+					}
+					any_country = {
+						OR = {
+							owns_state = 97
+							controls_state = 97
+						}
+						tag = FROM
+					}
+				}
+			}
+			transfer_state = 97
+		}
+		if = {
+			limit = {
+				OR = {
+					POL = {
+						OR = {
+							owns_state = 784
+							controls_state = 784
+						}
+					}
+					any_country = {
+						OR = {
+							owns_state = 784
+							controls_state = 784
+						}
+						is_subject_of = FROM
+					}
+					any_country = {
+						OR = {
+							owns_state = 784
+							controls_state = 784
+						}
+						tag = FROM
+					}
+				}
+			}
+			transfer_state = 784
+		}
+		hidden_effect = {
+			news_event = { id = newsrussia2.60 }
+		}
+	}
+}
+
+# Poland Refuses to Cede the East
+country_event = {
+	id = russia2_poland.3
+	title = russia2_poland.3.t
+	desc = russia2_poland.3.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.3.a
+		ai_chance = {
+			base = 100
+		}
+		create_wargoal = {
+			type = take_state_focus
+			target = POL
+			generator = { 96 95 94 93 91 89 784 }
+		}
+	}
+}
+
+# Fate of Poland
+country_event = {
+	id = russia2_poland.4
+	title = russia2_poland.4.t
+	desc = russia2_poland.4.d
+	picture = GFX_report_event_generic_military_parade
+	is_triggered_only = yes
+
+	option = { #Ask for a puppet
+		trigger = {
+			POL = {
+				is_subject = no
+			}
+		}
+		name = russia2_poland.4.a
+		ai_chance = {
+			base = 60
+		}
+		POL = {
+			country_event = { id = russia2_poland.5 days = 1 }
+		}
+	}
+
+	option = { #Ask for land
+		name = russia2_poland.4.b
+		ai_chance = {
+			base = 40
+		}
+		POL = {
+			country_event = { id = russia2_poland.8 days = 1 }
+		}
+	}
+
+	option = { #Just attack them
+		name = russia2_poland.4.c
+		ai_chance = {
+			base = 0
+		}
+		create_wargoal = {
+			type = take_state_focus
+			target = POL
+			generator = { 96 95 94 93 91 89 784 }
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.89 days = 1
+			}
+		}
+	}
+}
+
+# Ask Poland to be puppet
+country_event = {
+	id = russia2_poland.5
+	title = russia2_poland.5.t
+	desc = russia2_poland.5.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = { #Okay...
+		name = russia2_poland.5.a
+		ai_chance = {
+			base = 50
+		}
+		SOV = {
+			puppet = POL
+			hidden_effect = {
+				set_autonomy = {
+				    target = POL
+				    autonomy_state = autonomy_imperial_governorates
+				}
+			}
+			country_event = { id = russia2_poland.6 days = 1 }
+			set_country_flag = poland_accept_imperial_puppet
+		}
+		hidden_effect = {
+			news_event = { id = newsrussia2.85 days = 2 }
+			POL = {
+				set_popularities = {
+					democratic = 10
+					neutrality = 70
+					fascism = 10
+					communism = 10
+				}
+			}
+		}
+	}
+
+	option = { #No
+		name = russia2_poland.5.b
+		ai_chance = {
+			base = 50
+		}
+		SOV = {
+			country_event = { id = russia2_poland.7 days = 1 }
+		}
+		hidden_effect = {
+			news_event = { id = newsrussia2.86 days = 2 }
+		}
+	}
+}
+
+# Poland Accepts Puppet
+country_event = {
+	id = russia2_poland.6
+	title = russia2_poland.6.t
+	desc = russia2_poland.6.d
+	picture = GFX_report_event_royal_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.6.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Poland Refuses Puppet
+country_event = {
+	id = russia2_poland.7
+	title = russia2_poland.7.t
+	desc = russia2_poland.7.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.7.a
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = poland_other_occassion
+	}
+}
+
+#Demand Polish Territory
+country_event = {
+	id = russia2_poland.8
+	title = russia2_poland.8.t
+	desc = russia2_poland.8.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = { #Cede the Lands
+		name = russia2_poland.8.a
+		ai_chance = {
+			base = 70
+			modifier = {
+				add = -60
+				OR = {
+					any_other_country = {
+						is_major = yes
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		SOV = {
+			if = {
+				limit = { POL = { owns_state = 96 controls_state = 96 } }
+				transfer_state = 96
+			}
+			if = {
+				limit = { POL = { owns_state = 95 controls_state = 95 } }
+				transfer_state = 95
+			}
+			if = {
+				limit = { POL = { owns_state = 94 controls_state = 94 } }
+				transfer_state = 94
+			}
+			if = {
+				limit = { POL = { owns_state = 93 controls_state = 93 } }
+				transfer_state = 93
+			}
+			if = {
+				limit = { POL = { owns_state = 91 controls_state = 91 } }
+				transfer_state = 91
+			}
+			if = {
+				limit = { POL = { owns_state = 89 controls_state = 89 } }
+				transfer_state = 89
+			}
+			if = {
+				limit = { POL = { owns_state = 784 controls_state = 784 } }
+				transfer_state = 784
+			}
+			give_guarantee = POL
+			set_country_flag = has_given_eastern_poland
+		}
+		country_event = { id = russia2_poland.9 days = 1 }
+		if = {
+			limit = {
+				NOT = {
+					tag = POL
+				}
+ 			}
+			custom_effect_tooltip = SOV_poland_is_subject_tt
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.87 days = 2
+			}
+		}
+	}
+
+	option = {
+		name = russia2_poland.8.b
+		ai_chance = { base = 30 }
+		SOV = {
+			country_event = { id = russia2_poland.10 days = 1 }
+		}
+		if = {
+			limit = {
+				NOT = {
+					tag = POL
+				}
+ 			}
+			custom_effect_tooltip = SOV_poland_is_subject_tt
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.88 days = 2
+			}
+		}
+	}
+}
+
+# Poland Cedes the East
+country_event = {
+	id = russia2_poland.9
+	title = russia2_poland.9.t
+	desc = russia2_poland.9.d
+	picture = GFX_report_event_molotov_ribentrop_handshake
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.9.a
+		ai_chance = {
+			base = 100
+		}
+		hidden_effect = {
+			news_event = { id = newsrussia2.60 }
+		}
+	}
+}
+
+# Poland Refuses to Cede the East
+country_event = {
+	id = russia2_poland.10
+	title = russia2_poland.10.t
+	desc = russia2_poland.10.d
+	picture = GFX_report_event_polish_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.10.a
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = poland_other_occassion
+	}
+}
+
+# Poland Receive Event to Become a Puppet
+country_event = {
+	id = russia2_poland.11
+	title = russia2_poland.11.t
+	desc = russia2_poland.11.d
+	picture = GFX_report_event_hol_cabinet_gerbrandy
+
+	is_triggered_only = yes
+
+	option = { #Accepts
+		name = russia2_poland.11.a
+		ai_chance = {
+			base = 80
+			modifier = {
+				add = -40
+				OR = {
+					any_other_country = {
+						is_major = yes
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_poland.12 days = 1 }
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.85 days = 2
+			}
+		}
+	}
+
+	option = { #Refuse
+		name = russia2_poland.11.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				add = 40
+				OR = {
+					any_other_country = {
+						is_major = yes
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_poland.13 days = 1 }
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.86 days = 2
+			}
+		}
+	}
+}
+
+# Poland Accepts to Become a Puppet
+country_event = {
+	id = russia2_poland.12
+	title = russia2_poland.12.t
+	desc = russia2_poland.12.d
+	picture = GFX_report_event_soviet_german_soldier_handshake
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.12.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			set_autonomy = {
+				target = POL
+				autonomy_state = autonomy_imperial_governorates
+			}
+		}
+		hidden_effect ={
+			POL = {
+				set_popularities = {
+					democratic = 10
+					neutrality = 70
+					fascism = 10
+					communism = 10
+				}
+			}
+		}
+	}
+}
+
+# Poland Refused to Become a Puppet
+country_event = {
+	id = russia2_poland.13
+	title = russia2_poland.13.t
+	desc = russia2_poland.13.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.13.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Poland Receive Event to Be Annexed
+country_event = {
+	id = russia2_poland.14
+	title = russia2_poland.14.t
+	desc = russia2_poland.14.d
+	picture = GFX_report_event_hol_cabinet_gerbrandy
+
+	is_triggered_only = yes
+
+	option = { #Accepts
+		name = russia2_poland.14.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+					any_other_country = {
+						is_major = yes
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_poland.15 days = 1 }
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.100 days = 2
+			}
+		}
+	}
+
+	option = { #Refuse
+		name = russia2_poland.14.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				OR = {
+					any_other_country = {
+						is_major = yes
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_poland.16 days = 1 }
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.101 days = 2
+			}
+		}
+	}
+}
+
+# Poland Accepts to Be Annexed
+country_event = {
+	id = russia2_poland.15
+	title = russia2_poland.15.t
+	desc = russia2_poland.15.d
+	picture = GFX_report_event_soviet_german_soldier_handshake
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.15.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			transfer_state = 97
+			transfer_state = 92
+			transfer_state = 88
+			transfer_state = 90
+			transfer_state = 10
+			transfer_state = 87
+			transfer_state = 98
+			add_state_core = 97
+			add_state_core = 92
+			add_state_core = 88
+			add_state_core = 90
+			add_state_core = 10
+			add_state_core = 87
+			add_state_core = 98
+		}
+		if = {
+			limit = {
+				has_country_flag = decide_to_restore_prussia_and_other_kingdom_for_decisions
+				country_exists = PRE
+				PRE = {
+					is_subject_of = SOV
+				}
+			}
+			PRE = {
+				transfer_state = 85
+				transfer_state = 86
+				transfer_state = 762
+				transfer_state = 807
+				add_state_core = 85
+				add_state_core = 86
+				add_state_core = 762
+				add_state_core = 807
+			}
+		}
+		else = {
+			GER = {
+				transfer_state = 85
+				transfer_state = 86
+				transfer_state = 762
+				transfer_state = 807
+				add_state_core = 85
+				add_state_core = 86
+				add_state_core = 762
+				add_state_core = 807
+			}
+		}
+	}
+}
+
+# Poland Refused to Be Annexed
+country_event = {
+	id = russia2_poland.16
+	title = russia2_poland.16.t
+	desc = russia2_poland.16.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.16.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = POL
+			}
+		}
+	}
+}
+
+#Poland Receive Event to be Divided
+country_event = {
+	id = russia2_poland.17
+	title = russia2_poland.17.t
+	desc = russia2_poland.17.d
+	picture = GFX_report_event_hol_cabinet_gerbrandy
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_poland.17.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+					any_other_country = {
+						is_major = yes
+						NOT = {
+							tag = POL
+						}
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_poland.18 days = 1 }
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.102 days = 2
+			}
+		}
+	}
+
+	option = { #Refuse
+		name = russia2_poland.17.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				OR = {
+					any_other_country = {
+						is_major = yes
+						NOT = {
+							tag = POL
+						}
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_poland.19 days = 1 }
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.103 days = 2
+			}
+		}
+	}
+}
+
+# Poland Accepts to Be Divided
+country_event = {
+	id = russia2_poland.18
+	title = russia2_poland.18.t
+	desc = russia2_poland.18.d
+	picture = GFX_report_event_soviet_german_soldier_handshake
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.18.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			transfer_state = 96
+			transfer_state = 95
+			transfer_state = 784
+			transfer_state = 94
+			transfer_state = 93
+			transfer_state = 91
+			transfer_state = 89
+			transfer_state = 92
+			transfer_state = 97
+			transfer_state = 10
+			transfer_state = 90
+			transfer_state = 88
+			add_state_core = 96
+			add_state_core = 95
+			add_state_core = 784
+			add_state_core = 94
+			add_state_core = 93
+			add_state_core = 91
+			add_state_core = 89
+			add_state_core = 92
+			add_state_core = 97
+			add_state_core = 10
+			add_state_core = 90
+			add_state_core = 88
+		}
+		if = {
+			limit = {
+				has_country_flag = decide_to_restore_prussia_and_other_kingdom_for_decisions
+				country_exists = PRE
+				PRE = {
+					is_subject_of = SOV
+				}
+			}
+			PRE = {
+				transfer_state = 85
+				transfer_state = 86
+				transfer_state = 762
+				transfer_state = 807
+				transfer_state = 87
+				transfer_state = 98
+				add_state_core = 85
+				add_state_core = 86
+				add_state_core = 762
+				add_state_core = 807
+				add_state_core = 87
+				add_state_core = 98
+			}
+		}
+		else = {
+			GER = {
+				transfer_state = 85
+				transfer_state = 86
+				transfer_state = 762
+				transfer_state = 807
+				transfer_state = 87
+				transfer_state = 98
+				add_state_core = 85
+				add_state_core = 86
+				add_state_core = 762
+				add_state_core = 807
+				add_state_core = 87
+				add_state_core = 98
+			}
+		}
+	}
+}
+
+# Poland Refused the Deal
+country_event = {
+	id = russia2_poland.19
+	title = russia2_poland.19.t
+	desc = russia2_poland.19.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.19.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = POL
+			}
+		}
+	}
+}
+
+#Poland Receive Event to Return Stolen Land
+country_event = {
+	id = russia2_poland.20
+	title = russia2_poland.20.t
+	desc = russia2_poland.20.d
+	picture = GFX_report_event_hol_cabinet_gerbrandy
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_poland.20.a
+		ai_chance = {
+			base = 70
+			modifier = {
+				add = -40
+				OR = {
+					any_other_country = {
+						is_major = yes
+						NOT = {
+							tag = POL
+						}
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_poland.21 days = 1 }
+		}
+	}
+
+	option = { #Refuse
+		name = russia2_poland.20.b
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = 40
+				OR = {
+					any_other_country = {
+						is_major = yes
+						NOT = {
+							tag = POL
+						}
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_poland.22 days = 1 }
+		}
+	}
+}
+
+# Poland Accepts to Return Land
+country_event = {
+	id = russia2_poland.21
+	title = russia2_poland.21.t
+	desc = russia2_poland.21.d
+	picture = GFX_report_event_soviet_german_soldier_handshake
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.21.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			transfer_state = 96
+			transfer_state = 95
+			transfer_state = 784
+			transfer_state = 94
+			transfer_state = 93
+			transfer_state = 91
+			transfer_state = 89
+			add_state_core = 96
+			add_state_core = 95
+			add_state_core = 784
+			add_state_core = 94
+			add_state_core = 93
+			add_state_core = 91
+			add_state_core = 89
+		}
+		if = {
+			limit = {
+				has_country_flag = decide_to_restore_prussia_and_other_kingdom_for_decisions
+				country_exists = PRE
+				PRE = {
+					is_subject_of = SOV
+				}
+			}
+			PRE = {
+				transfer_state = 85
+				transfer_state = 86
+				transfer_state = 762
+				transfer_state = 807
+				add_state_core = 85
+				add_state_core = 86
+				add_state_core = 762
+				add_state_core = 807
+			}
+		}
+		else = {
+			GER = {
+				transfer_state = 85
+				transfer_state = 86
+				transfer_state = 762
+				transfer_state = 807
+				add_state_core = 85
+				add_state_core = 86
+				add_state_core = 762
+				add_state_core = 807
+			}
+		}
+	}
+}
+
+# Poland Refused the Deal
+country_event = {
+	id = russia2_poland.22
+	title = russia2_poland.22.t
+	desc = russia2_poland.22.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.22.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = POL
+			}
+		}
+	}
+}
+
+#Poland Receive Event to Becom Puppet
+country_event = {
+	id = russia2_poland.23
+	title = russia2_poland.23.t
+	desc = russia2_poland.23.d
+	picture = GFX_report_event_hol_cabinet_gerbrandy
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_poland.23.a
+		ai_chance = {
+			base = 70
+			modifier = {
+				add = -40
+				OR = {
+					any_other_country = {
+						is_major = yes
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_poland.24 days = 1 }
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.85 days = 2
+			}
+		}
+	}
+
+	option = { #Refuse
+		name = russia2_poland.23.b
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = 40
+				OR = {
+					any_other_country = {
+						is_major = yes
+						OR = {
+							is_in_faction_with = POL
+							has_guaranteed = POL
+						}
+						NOT = {
+							tag = SOV
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_poland.25 days = 1 }
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.86 days = 2
+			}
+		}
+	}
+}
+
+# Poland Accepts to Become a Puppet
+country_event = {
+	id = russia2_poland.24
+	title = russia2_poland.24.t
+	desc = russia2_poland.24.d
+	picture = GFX_report_event_soviet_german_soldier_handshake
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.24.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			set_autonomy = {
+				target = POL
+				autonomy_state = autonomy_imperial_governorates
+			}
+		}
+		hidden_effect = {
+			POL = {
+				set_popularities = {
+					democratic = 10
+					neutrality = 70
+					fascism = 10
+					communism = 10
+				}
+			}
+		}
+	}
+}
+
+# Poland Refused to Become a Puppet
+country_event = {
+	id = russia2_poland.25
+	title = russia2_poland.25.t
+	desc = russia2_poland.25.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.25.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = POl
+			}
+		}
+	}
+}
+
+# Ukraine demands the East
+country_event = {
+	id = russia2_poland.26
+	title = russia2_poland.26.t
+	desc = russia2_poland.26.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { # Accept demands
+		name = russia2_poland.26.a
+		ai_chance = {
+			base = 90
+			modifier = {
+				factor = 10
+				any_other_country = {
+					is_major = yes
+					NOT = { tag = UKR }
+					OR = {
+						is_in_faction_with = ROOT
+						has_guaranteed = ROOT
+					}
+				}
+			}
+		}
+		UKR = {
+			country_event = { days = 2 id = russia2_poland.27 }
+		}
+		if = {
+			limit = {
+				any_country = {
+					owns_state = 93
+					is_subject_of = ROOT
+					NOT = {
+						tag = ROOT
+					}
+				}
+ 			}
+			custom_effect_tooltip = UKR_poland_is_subject_tt
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					owns_state = 91
+					is_subject_of = ROOT
+					NOT = {
+						tag = ROOT
+					}
+				}
+ 			}
+			custom_effect_tooltip = UKR_poland_is_subject_tt2
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					owns_state = 89
+					is_subject_of = ROOT
+					NOT = {
+						tag = ROOT
+					}
+				}
+ 			}
+			custom_effect_tooltip = UKR_poland_is_subject_tt3
+		}
+	}
+	option = { # Refuse
+		name = russia2_poland.26.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = 80
+				any_other_country = {
+					is_major = yes
+					NOT = { tag = UKR }
+					OR = {
+						is_in_faction_with = ROOT
+						has_guaranteed = ROOT
+					}
+				}
+			}
+		}
+		UKR = {
+			country_event = { days = 2 id = russia2_poland.28 }
+			effect_tooltip = {
+				create_wargoal = {
+					type = take_state
+					target = ROOT
+					generator = { 93 91 89 }
+				}
+			}
+		}
+		if = {
+			limit = {
+				UKR = {
+					is_subject = yes
+				}
+			}
+			UKR = {
+				OVERLORD = {
+					country_event = { days = 2 id = russia2_poland.29 }
+					effect_tooltip = {
+						create_wargoal = {
+							type = take_state
+							target = ROOT
+							generator = { 93 91 89 }
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_country = {
+					owns_state = 93
+					is_subject_of = ROOT
+					NOT = {
+						tag = ROOT
+					}
+				}
+ 			}
+			custom_effect_tooltip = UKR_poland_is_subject_tt
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					owns_state = 91
+					is_subject_of = ROOT
+					NOT = {
+						tag = ROOT
+					}
+				}
+ 			}
+			custom_effect_tooltip = UKR_poland_is_subject_tt2
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					owns_state = 89
+					is_subject_of = ROOT
+					NOT = {
+						tag = ROOT
+					}
+				}
+ 			}
+			custom_effect_tooltip = UKR_poland_is_subject_tt3
+		}
+	}
+}
+
+# Romania surrenders Bessarabia
+country_event = { #TODO What to do ?
+	id = russia2_poland.27
+	title = russia2_poland.27.t
+	desc = russia2_poland.27.d
+	picture = GFX_report_event_soviet_army_greeted
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.27.a
+		ai_chance = {
+			base = 100
+		}
+		if = {
+			limit = {
+				OR = {
+					FROM = {
+						OR = {
+							owns_state = 93
+							controls_state = 93
+						}
+					}
+					any_country = {
+						is_subject_of = FROM
+						OR = {
+							owns_state = 93
+							controls_state = 93
+						}
+					}
+				}
+			}
+			transfer_state = 93
+		}
+		if = {
+			limit = {
+				OR = {
+					FROM = {
+						OR = {
+							owns_state = 91
+							controls_state = 91
+						}
+					}
+					any_country = {
+						is_subject_of = FROM
+						OR = {
+							owns_state = 91
+							controls_state = 91
+						}
+					}
+				}
+			}
+			transfer_state = 91
+		}
+		if = {
+			limit = {
+				OR = {
+					FROM = {
+						OR = {
+							owns_state = 89
+							controls_state = 89
+						}
+					}
+					any_country = {
+						is_subject_of = FROM
+						OR = {
+							owns_state = 89
+							controls_state = 89
+						}
+					}
+				}
+			}
+			transfer_state = 89
+		}
+	}
+}
+
+# Romania refuses to surrender Bessarabia
+country_event = {
+	id = russia2_poland.28
+	title = russia2_poland.28.t
+	desc = russia2_poland.28.d
+	picture = GFX_report_event_stalin_02
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_poland.28.a
+		ai_chance = {
+			base = 100
+		}
+		if = {
+			limit = {
+				any_country = {
+					is_subject_of = FROM
+					OR = {
+						owns_state = 93
+						controls_state = 93
+						owns_state = 91
+						controls_state = 91
+						owns_state = 89
+						controls_state = 89
+					}
+				}
+			}
+			every_country = {
+				limit = {
+					is_subject_of = FROM
+					OR = {
+						owns_state = 93
+						controls_state = 93
+						owns_state = 91
+						controls_state = 91
+						owns_state = 89
+						controls_state = 89
+					}
+				}
+				ROOT = {
+					create_wargoal = {
+						type = take_state
+						target = PREV
+						generator = { 93 91 89 }
+					}
+				}
+			}
+		}
+		create_wargoal = {
+			type = take_state
+			target = FROM
+			generator = { 93 91 89 }
+		}
+	}
+}
+
+# Romania refuses to surrender Bessarabia to Ukraine
+country_event = {
+	id = russia2_poland.29
+	title = russia2_poland.29.t
+	desc = russia2_poland.29.d
+	picture = GFX_report_event_stalin_02
+
+	is_triggered_only = yes
+
+	# Kill em
+	option = {
+		name = russia2_poland.29.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				strength_ratio = {
+					tag = FROM
+					ratio > 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				UKR = {
+					is_subject_of = ROOT
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						is_subject_of = FROM
+						OR = {
+							owns_state = 93
+							controls_state = 93
+							owns_state = 91
+							controls_state = 91
+							owns_state = 89
+							controls_state = 89
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject_of = FROM
+						OR = {
+							owns_state = 93
+							controls_state = 93
+							owns_state = 91
+							controls_state = 91
+							owns_state = 89
+							controls_state = 89
+						}
+					}
+					ROOT = {
+						create_wargoal = {
+							type = take_core_state
+							target = PREV
+						}
+					}
+				}
+			}
+			create_wargoal = {
+				type = take_core_state
+				target = FROM
+			}
+			UKR = {
+				country_event = russia2_poland.30
+			}
+		}
+	}
+
+	# Whatever
+	option = {
+		name = russia2_poland.29.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = -50
+				strength_ratio = {
+					tag = FROM
+					ratio > 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				UKR = {
+					is_subject_of = ROOT
+				}
+			}
+			UKR = {
+				country_event = russia2_poland.31
+			}
+		}
+	}
+}
+
+# OVERLORD Supports our Claims
+country_event = {
+	id = russia2_poland.30
+	title = russia2_poland.30.t
+	desc = russia2_poland.30.d
+	picture = GFX_report_event_stalin_02
+
+	is_triggered_only = yes
+
+	# Okay
+	option = {
+		name = russia2_poland.30.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# OVERLORD Doesn't Care
+country_event = {
+	id = russia2_poland.31
+	title = russia2_poland.31.t
+	desc = russia2_poland.31.d
+	picture = GFX_report_event_stalin_02
+
+	is_triggered_only = yes
+
+	# Tf
+	option = {
+		name = russia2_poland.31.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Second Ultimatum for Poland
+country_event = {
+	id = russia2_poland.32
+	title = russia2_poland.32.t
+	desc = russia2_poland.32.d
+	picture = GFX_menacing_tanks_russia2
+
+	is_triggered_only = yes
+
+	#Accept
+	option = {
+		name = russia2_poland.32.a
+		ai_chance = {
+			base = 70
+			modifier = {
+				add = -40
+				OR = {
+					is_major = yes
+					is_in_faction = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					tag = POL
+				}
+			}
+			custom_effect_tooltip =  receive_this_event_because_pol_is_our_puppet_neutrality
+		}
+		SOV = {
+			country_event = { id = russia2_poland.33 hours = 5 }
+		}
+	}
+
+	#Refuse
+	option = {
+		name = russia2_poland.32.b
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = 40
+				OR = {
+					is_major = yes
+					is_in_faction = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					tag = POL
+				}
+			}
+			custom_effect_tooltip =  receive_this_event_because_pol_is_our_puppet_neutrality
+		}
+		custom_effect_tooltip = lead_to_war_against_russian_junta
+		SOV = {
+			country_event = { id = russia2_poland.34 hours = 5 }
+		}
+	}
+}
+
+#We receive Poland
+country_event = {
+	id = russia2_poland.33
+	title = russia2_poland.33.t
+	desc = russia2_poland.33.d
+	picture = GFX_soldiers_handshaking_kolchak_russia2
+
+	is_triggered_only = yes
+
+	#Good
+	option = {
+		name = russia2_poland.33.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			annex_country = {
+				target = POL
+			}
+		}
+	}
+}
+
+#We Don't receive Poland
+country_event = {
+	id = russia2_poland.34
+	title = russia2_poland.34.t
+	desc = russia2_poland.34.d
+	picture = GFX_soldiers_parade_russia2
+
+	is_triggered_only = yes
+
+	#War
+	option = {
+		name = russia2_poland.34.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = POL
+			}
+		}
+	}
+}

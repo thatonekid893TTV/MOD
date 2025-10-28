@@ -1,0 +1,756 @@
+###########################
+# Yalta Conference
+###########################
+
+add_namespace = russia2_yaltas
+
+# Check if File is Loaded
+country_event = {
+	id = russia2_yaltas.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_yaltas
+	}
+}
+
+#The Yalta Conference Begins (either USA, ENG or FRA can get it, triggered by focus only)
+country_event = {
+	id = russia2_yaltas.1
+	title = russia2_yaltas.1.t
+	desc = russia2_yaltas.1.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = { #Accept the conference
+		ai_chance = {
+			base = 80
+			modifier = {
+				add = 20
+				is_historical_focus_on = yes
+			}
+		}
+		name = russia2_yaltas.1.a
+		if = { #Is USA
+			limit = {
+				tag = USA
+			}
+			set_country_flag = usa_accepted_yalta_conference
+		}
+		else_if = { #Is UK
+			limit = {
+				tag = ENG
+			}
+			set_country_flag = eng_accepted_yalta_conference
+		}
+		else_if = { #Is France
+			limit = {
+				tag = FRA
+			}
+			set_country_flag = fra_accepted_yalta_conference
+		}
+		SOV = { country_event = { days = 1 id = russia2_yaltas.2 } }
+	}
+
+	option = { #Refuse the conference
+		name = russia2_yaltas.1.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		SOV = { country_event = { days = 1 id = russia2_yaltas.3 } }
+	}
+}
+
+#Someone Accepts (at least one needs to accept for the conference to keep going)
+country_event = {
+	id = russia2_yaltas.2
+	title = russia2_yaltas.2.t
+	desc = russia2_yaltas.2.d
+	picture = GFX_handshake_russia2
+
+	is_triggered_only = yes
+
+	option = { #Goodbye Germany
+		name = russia2_yaltas.2.a
+	}
+}
+
+#Someone Refuses (if nobody accepts the conference ends)
+country_event = {
+	id = russia2_yaltas.3
+	title = russia2_yaltas.3.t
+	desc = russia2_yaltas.3.d
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	option = { #Too bad
+		name = russia2_yaltas.3.a
+	}
+}
+
+#Germany is ded
+country_event = {
+	id = russia2_yaltas.4
+	title = russia2_yaltas.4.t
+	desc = russia2_yaltas.4.d
+	picture = GFX_report_event_generic_parliament
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = { base = 100 }
+		name = russia2_yaltas.4.a
+	}
+}
+
+#Polish Territory
+country_event = {
+	id = russia2_yaltas.5
+	title = russia2_yaltas.5.t
+	desc = russia2_yaltas.5.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { #Transfer states to Poland (release Poland if it doesn't exist)
+		ai_chance = {
+			base = 80
+			modifier = {
+				add = 20
+				is_historical_focus_on = yes
+			}
+		}
+		name = russia2_yaltas.5.a
+		POL = {
+			remove_state_core = 784
+			remove_state_core = 96
+			remove_state_core = 95
+			remove_state_core = 94
+			remove_state_core = 93
+			remove_state_core = 91
+			remove_state_core = 89
+		}
+		if = {
+			limit = {
+				NOT = {
+					country_exists = POL
+				}
+			}
+			SOV = {
+				release_puppet = POL
+			}
+		}
+		POL = {
+			transfer_state = 67
+			transfer_state = 66
+			transfer_state = 68
+			transfer_state = 63
+			transfer_state = 5
+			add_state_core = 67
+			add_state_core = 66
+			add_state_core = 68
+			add_state_core = 63
+			add_state_core = 5
+			add_opinion_modifier = { target = SOV modifier = moved_polish_borders }
+		}
+		SOV = {
+			add_state_core = 96
+			add_state_core = 784
+			add_state_core = 95
+			add_state_core = 94
+			add_state_core = 93
+			add_state_core = 91
+			add_state_core = 89
+		}
+	}
+
+	option = { #Give the land to DDR
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		name = russia2_yaltas.5.b
+		DDR = {
+			transfer_state = 67
+			transfer_state = 66
+			transfer_state = 68
+			transfer_state = 63
+			add_state_core = 67
+			add_state_core = 66
+			add_state_core = 68
+			add_state_core = 63
+		}
+	}
+}
+
+#USA, ENG or FRA gets the event to release WGR
+country_event = {
+	id = russia2_yaltas.6
+	title = russia2_yaltas.6.t
+	desc = russia2_yaltas.6.d
+	picture = GFX_report_event_communist_leader
+
+	is_triggered_only = yes
+
+	option = { #Release WGR as a puppet or give back its cores if it already exist
+		name = russia2_yaltas.6.a
+		ai_chance = {
+			base = 90
+			modifier = {
+				add = 10
+				is_historical_focus_on = yes
+			}
+		}
+		if = { #Is USA
+			limit = {
+				tag = USA
+			}
+			if = {
+				limit = {
+					country_exists = WGR
+				}
+				every_state = {
+		    		limit = {
+		    			is_owned_by = USA
+		    			is_core_of = WGR
+		    		}
+	    			WGR = { transfer_state = PREV }
+				}
+			}
+			else = {
+				USA = {
+					release_puppet = WGR
+				}
+				hidden_effect = {
+					news_event = { id = newsrussia2.36 days = 2 }
+				}
+			}
+			if = { #UK gets the event if they are a valid target
+				limit = {
+					ENG = {
+						has_country_flag = eng_accepted_yalta_conference
+						OR = {
+							has_full_control_of_state = 52
+							has_full_control_of_state = 53
+							has_full_control_of_state = 50
+							has_full_control_of_state = 54
+							has_full_control_of_state = 42
+							has_full_control_of_state = 55
+							has_full_control_of_state = 57
+							has_full_control_of_state = 59
+							has_full_control_of_state = 58
+							has_full_control_of_state = 56
+							has_full_control_of_state = 51
+						}
+					}
+				}
+				ENG = { country_event = { id = russia2_yaltas.6 days = 2 } }
+			}
+			else_if = { #France gets the event if they are a valid target
+				limit = {
+					FRA = {
+						has_country_flag = fra_accepted_yalta_conference
+						OR = {
+							has_full_control_of_state = 52
+							has_full_control_of_state = 53
+							has_full_control_of_state = 50
+							has_full_control_of_state = 54
+							has_full_control_of_state = 42
+							has_full_control_of_state = 55
+							has_full_control_of_state = 57
+							has_full_control_of_state = 59
+							has_full_control_of_state = 58
+							has_full_control_of_state = 56
+							has_full_control_of_state = 51
+							has_full_control_of_state = 909
+							has_full_control_of_state = 978							
+						}
+					}
+				}
+				FRA = { country_event = { id = russia2_yaltas.6 days = 2 } }
+			}
+		}
+		else_if = { #Is UK
+			limit = {
+				tag = ENG
+			}
+			if = {
+				limit = {
+					country_exists = WGR
+				}
+				every_state = {
+		    		limit = {
+		    			is_owned_by = ENG
+		    			is_core_of = WGR
+		    		}
+	    			WGR = { transfer_state = PREV }
+				}
+			}
+			else = {
+				ENG = {
+					release_puppet = WGR
+				}
+				hidden_effect = {
+					news_event = { id = newsrussia2.36 days = 2 }
+				}
+			}
+			if = { #France gets the event if they are a valid target
+				limit = {
+					FRA = {
+						has_country_flag = fra_accepted_yalta_conference
+						OR = {
+							has_full_control_of_state = 52
+							has_full_control_of_state = 53
+							has_full_control_of_state = 50
+							has_full_control_of_state = 54
+							has_full_control_of_state = 42
+							has_full_control_of_state = 55
+							has_full_control_of_state = 57
+							has_full_control_of_state = 59
+							has_full_control_of_state = 58
+							has_full_control_of_state = 56
+							has_full_control_of_state = 51
+							has_full_control_of_state = 909
+							has_full_control_of_state = 978		
+						}
+					}
+				}
+				FRA = { country_event = { id = russia2_yaltas.6 days = 2 } }
+			}
+		}
+		else_if = { #Is France
+			limit = {
+				tag = FRA
+			}
+			if = {
+				limit = {
+					country_exists = WGR
+				}
+				every_state = {
+		    		limit = {
+		    			is_owned_by = FRA
+		    			is_core_of = WGR
+		    		}
+	    			WGR = { transfer_state = PREV }
+				}
+			}
+			else = {
+				FRA = {
+					release_puppet = WGR
+				}
+				hidden_effect = {
+					news_event = { id = newsrussia2.36 days = 2 }
+				}
+			}
+		}
+	}
+
+	option = { #Refuse and keep the territory
+		name = russia2_yaltas.6.b
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		if = {
+			limit = {
+				tag = USA
+			}
+			if = {
+				limit = { #UK gets the event if they are a valid target
+					ENG = {
+						has_country_flag = eng_accepted_yalta_conference
+						OR = {
+							has_full_control_of_state = 52
+							has_full_control_of_state = 53
+							has_full_control_of_state = 50
+							has_full_control_of_state = 54
+							has_full_control_of_state = 42
+							has_full_control_of_state = 55
+							has_full_control_of_state = 57
+							has_full_control_of_state = 59
+							has_full_control_of_state = 58
+							has_full_control_of_state = 56
+							has_full_control_of_state = 51
+							has_full_control_of_state = 909
+							has_full_control_of_state = 978		
+						}
+					}
+				}
+				ENG = { country_event = { id = russia2_yaltas.6 days = 1 } }
+			}
+			else_if = { #France gets the event if they are a valid target
+				limit = {
+					FRA = {
+						has_country_flag = fra_accepted_yalta_conference
+						OR = {
+							has_full_control_of_state = 52
+							has_full_control_of_state = 53
+							has_full_control_of_state = 50
+							has_full_control_of_state = 54
+							has_full_control_of_state = 42
+							has_full_control_of_state = 55
+							has_full_control_of_state = 57
+							has_full_control_of_state = 59
+							has_full_control_of_state = 58
+							has_full_control_of_state = 56
+							has_full_control_of_state = 51
+							has_full_control_of_state = 909
+							has_full_control_of_state = 978									
+						}
+					}
+				}
+				FRA = { country_event = { id = russia2_yaltas.6 days = 1 } }
+			}
+		}
+		else_if = {
+			limit = {
+				tag = ENG
+			}
+			if = { #France gets the event if they are a valid target
+				limit = {
+					FRA = {
+						has_country_flag = fra_accepted_yalta_conference
+						OR = {
+							has_full_control_of_state = 52
+							has_full_control_of_state = 53
+							has_full_control_of_state = 50
+							has_full_control_of_state = 54
+							has_full_control_of_state = 42
+							has_full_control_of_state = 55
+							has_full_control_of_state = 57
+							has_full_control_of_state = 59
+							has_full_control_of_state = 58
+							has_full_control_of_state = 56
+							has_full_control_of_state = 51
+							has_full_control_of_state = 909
+							has_full_control_of_state = 978									
+						}
+					}
+				}
+				FRA = { country_event = { id = russia2_yaltas.6 days = 1 } }
+			}
+		}
+	}
+}
+
+#Call USSR in the war against Japan if the Yalta Conference happened (USA had to accept)
+country_event = {
+	id = russia2_yaltas.7
+	title = russia2_yaltas.7.t
+	desc = russia2_yaltas.7.d
+	picture = GFX_report_event_soviet_in_riga
+
+	trigger = { #Is USA and at war with Japan
+		tag = USA
+		is_subject = no
+		has_war_with = JAP
+		has_country_flag = usa_accepted_yalta_conference
+		SOV = {
+			has_war = no
+			is_subject = no
+			has_country_flag = yalta_conference_over
+			has_government = communism
+		}
+	}
+
+	fire_only_once = yes
+
+	mean_time_to_happen = { days = 15 }
+
+	option = { #Ask the Soviets to join
+		name = russia2_yaltas.7.a
+		ai_chance = {
+			base = 80
+			modifier = {
+				add = 20
+				is_historical_focus_on = yes
+			}
+		}
+		SOV = { country_event = { id = russia2_yaltas.8 days = 1 } }
+	}
+
+	option = { #We can deal with Japan on our own~
+		name = russia2_yaltas.7.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+
+#USA Asks the Soviets to join the war against Japan
+country_event = {
+	id = russia2_yaltas.8
+	title = russia2_yaltas.8.t
+	desc = russia2_yaltas.8.d
+	picture = GFX_report_event_soviet_invasion_map
+
+	is_triggered_only = yes
+
+	option = { #Join the war against Japan
+		ai_chance = {
+			base = 80
+			modifier = {
+				add = 20
+				is_historical_focus_on = yes
+			}
+		}
+		name = russia2_yaltas.8.a
+		SOV = {
+			add_to_war = {
+				targeted_alliance = USA
+				enemy = JAP
+				hostility_reason = asked_to_join
+			}
+		}
+		USA = { country_event = { id = russia2_yaltas.9 days = 1 } }
+	}
+
+	option = { #Do not join
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		name = russia2_yaltas.8.b
+		USA = { country_event = { id = russia2_yaltas.10 days = 1 } }
+	}
+}
+
+#Soviet Accepts
+country_event = {
+	id = russia2_yaltas.9
+	title = russia2_yaltas.9.t
+	desc = russia2_yaltas.9.d
+	picture = GFX_handshake_russia2
+
+	is_triggered_only = yes
+
+	option = { #Yay
+		name = russia2_yaltas.9.a
+		add_opinion_modifier = { target = SOV modifier = accepted_intervention_japan }
+	}
+}
+
+#Soviet Refuses
+country_event = {
+	id = russia2_yaltas.10
+	title = russia2_yaltas.10.t
+	desc = russia2_yaltas.10.d
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	option = { #Traitors!
+		name = russia2_yaltas.10.a
+		add_opinion_modifier = { target = SOV modifier = refused_intervention_japan }
+	}
+}
+
+#West Germany New Capital
+country_event = {
+	id = russia2_yaltas.11
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = WGR
+		WGR = {
+			has_government = democratic
+		}
+		51 = {
+			is_owned_and_controlled_by = WGR
+		}
+	}
+
+	mean_time_to_happen = { days = 1 }
+
+	hidden = yes
+
+	immediate = {
+		WGR = {
+			set_capital = {
+				state = 51
+			}
+		}
+	}
+}
+
+#USA, ENG or FRA gets event that Yalta Conference is cancelled
+country_event = {
+	id = russia2_yaltas.12
+	title = russia2_yaltas.12.t
+	desc = russia2_yaltas.12.d
+	picture = GFX_report_event_degaulle_churchill
+
+	is_triggered_only = yes
+
+	option = { #Damn Russian
+		name = russia2_yaltas.12.a
+		if = {
+			limit = {
+				NOT = {
+					any_country = {
+						OR = {
+							has_country_flag = usa_accepted_yalta_conference
+							has_country_flag = eng_accepted_yalta_conference
+							has_country_flag = fra_accepted_yalta_conference
+						}
+					}
+				}
+			}
+			custom_effect_tooltip = yalta_conference_cancelled
+		}
+		else = {
+			custom_effect_tooltip = yalta_conference_cancelled_with_sov
+		}
+	}
+}
+
+#SOV gets event that Yalta Conference with USA is cancelled
+country_event = {
+	id = russia2_yaltas.13
+	title = russia2_yaltas.13.t
+	desc = russia2_yaltas.13.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { #Traitors!
+		name = russia2_yaltas.13.a
+		if = {
+			limit = {
+				any_country = {
+					OR = {
+						has_country_flag = usa_accepted_yalta_conference
+						has_country_flag = eng_accepted_yalta_conference
+						has_country_flag = fra_accepted_yalta_conference
+					}
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						has_country_flag = usa_accepted_yalta_conference
+						has_country_flag = eng_accepted_yalta_conference
+						has_country_flag = fra_accepted_yalta_conference
+					}
+				}
+				country_event = { id = russia2_yaltas.16 hours = 8 }
+			}
+		}
+		else = {
+			custom_effect_tooltip = yalta_cancel_because_war_with_participants
+		}
+	}
+}
+
+#SOV gets event that Yalta Conference with ENG is cancelled
+country_event = {
+	id = russia2_yaltas.14
+	title = russia2_yaltas.14.t
+	desc = russia2_yaltas.14.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { #Traitors!
+		name = russia2_yaltas.14.a
+		if = {
+			limit = {
+				any_country = {
+					OR = {
+						has_country_flag = usa_accepted_yalta_conference
+						has_country_flag = eng_accepted_yalta_conference
+						has_country_flag = fra_accepted_yalta_conference
+					}
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						has_country_flag = usa_accepted_yalta_conference
+						has_country_flag = eng_accepted_yalta_conference
+						has_country_flag = fra_accepted_yalta_conference
+					}
+				}
+				country_event = { id = russia2_yaltas.16 hours = 8 }
+			}
+		}
+		else = {
+			custom_effect_tooltip = yalta_cancel_because_war_with_participants
+		}
+	}
+}
+
+#SOV gets event that Yalta Conference with FRA is cancelled
+country_event = {
+	id = russia2_yaltas.15
+	title = russia2_yaltas.15.t
+	desc = russia2_yaltas.15.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { #Traitors!
+		name = russia2_yaltas.15.a
+		if = {
+			limit = {
+				any_country = {
+					OR = {
+						has_country_flag = usa_accepted_yalta_conference
+						has_country_flag = eng_accepted_yalta_conference
+						has_country_flag = fra_accepted_yalta_conference
+					}
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						has_country_flag = usa_accepted_yalta_conference
+						has_country_flag = eng_accepted_yalta_conference
+						has_country_flag = fra_accepted_yalta_conference
+					}
+				}
+				country_event = { id = russia2_yaltas.16 hours = 8 }
+			}
+		}
+		else = {
+			custom_effect_tooltip = yalta_cancel_because_war_with_participants
+		}
+	}
+}
+
+#Participant has Been Ousted
+country_event = {
+	id = russia2_yaltas.16
+	title = russia2_yaltas.16.t
+	desc = russia2_yaltas.16.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Rip
+		name = russia2_yaltas.16.a
+	}
+}

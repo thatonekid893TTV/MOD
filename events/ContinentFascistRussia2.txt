@@ -1,0 +1,615 @@
+###########################
+# Continent Events
+###########################
+
+add_namespace = russia2_continent
+
+# Check if File is Loaded
+country_event = {
+	id = russia2_continent.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_continents
+	}
+}
+
+# Receive Event to Cede Land or to Be Annexed by NAF by Russia
+country_event = {
+	id = russia2_continent.1
+	title = russia2_continent.1.t
+	desc = russia2_continent.1.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.1.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				has_state_flag = north_america_fascist_nation_puppet
+				is_owned_by = ROOT
+			}
+			NAF = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = north_america_fascist_nation_puppet
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_continent.1.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#FROM Refuse
+country_event = {
+	id = russia2_continent.2
+	title = russia2_continent.2.t
+	desc = russia2_continent.2.d
+	picture = GFX_report_event_german_italian_pact
+
+	is_triggered_only = yes
+
+	option = {#Damn
+		name = russia2_continent.2.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+# Receive Event to Cede Land or to Be Annexed by CAF by Russia
+country_event = {
+	id = russia2_continent.3
+	title = russia2_continent.3.t
+	desc = russia2_continent.3.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.3.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				has_state_flag = central_america_fascist_nation_puppet
+				is_owned_by = ROOT
+			}
+			CAF = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = central_america_fascist_nation_puppet
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_continent.3.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#Receive Event to Cede Land or to Be Annexed by SAR by Russia
+country_event = {
+	id = russia2_continent.4
+	title = russia2_continent.4.t
+	desc = russia2_continent.4.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.4.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				has_state_flag = south_america_fascist_nation_puppet
+				is_owned_by = ROOT
+			}
+			SAR = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = south_america_fascist_nation_puppet
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_continent.4.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#Receive Event to Cede Land or to Be Annexed by CAI by Russia
+country_event = {
+	id = russia2_continent.5
+	title = russia2_continent.5.t
+	desc = russia2_continent.5.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.5.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				has_state_flag = caraibe_america_fascist_nation_puppet
+				is_owned_by = ROOT
+			}
+			CAI = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = caraibe_america_fascist_nation_puppet
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_continent.5.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#Receive Event to Cede Land or to Be Annexed by MEF by Russia
+country_event = {
+	id = russia2_continent.6
+	title = russia2_continent.6.t
+	desc = russia2_continent.6.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.6.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				has_state_flag = middle_east_fascist_nation_puppet
+				is_owned_by = ROOT
+			}
+			MEF = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = middle_east_fascist_nation_puppet
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_continent.6.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#Receive Event to Cede Land or to Be Annexed by AFF by Russia
+country_event = {
+	id = russia2_continent.7
+	title = russia2_continent.7.t
+	desc = russia2_continent.7.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.7.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				has_state_flag = africa_fascist_nation_puppet
+				is_owned_by = ROOT
+			}
+			AFF = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = africa_fascist_nation_puppet
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_continent.7.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#Receive Event to Cede Land or to Be Annexed by SFR by Russia
+country_event = {
+	id = russia2_continent.8
+	title = russia2_continent.8.t
+	desc = russia2_continent.8.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.8.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				has_state_flag = south_asia_fascist_nation_puppet
+				is_owned_by = ROOT
+			}
+			SFR = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = south_asia_fascist_nation_puppet
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_continent.8.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#Receive Event to Cede Land or to Be Annexed by SEA by Russia
+country_event = {
+	id = russia2_continent.9
+	title = russia2_continent.9.t
+	desc = russia2_continent.9.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.9.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				has_state_flag = south_east_asia_fascist_nation_puppet
+				is_owned_by = ROOT
+			}
+			SEA = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = south_east_asia_fascist_nation_puppet
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_continent.9.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#Receive Event to Cede Land or to Be Annexed by EAR by Russia
+country_event = {
+	id = russia2_continent.10
+	title = russia2_continent.10.t
+	desc = russia2_continent.10.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.10.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				has_state_flag = east_asia_fascist_nation_puppet
+				is_owned_by = ROOT
+			}
+			EAR = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = east_asia_fascist_nation_puppet
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_continent.10.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#Receive Event to Cede Land or to Be Annexed by OCE by Russia
+country_event = {
+	id = russia2_continent.11
+	title = russia2_continent.11.t
+	desc = russia2_continent.11.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.11.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				has_state_flag = oceania_fascist_nation_puppet
+				is_owned_by = ROOT
+			}
+			OCE = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = oceania_fascist_nation_puppet
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_continent.11.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#Receive Event to Cede Land or to Be Annexed by EUR by Russia
+country_event = {
+	id = russia2_continent.12
+	title = russia2_continent.12.t
+	desc = russia2_continent.12.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.12.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				has_state_flag = europe_fascist_nation_puppet
+				is_owned_by = ROOT
+			}
+			EUR = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = europe_fascist_nation_puppet
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_continent.12.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#The Future of Continent
+country_event = {
+	id = russia2_continent.13
+	title = russia2_continent.13.t
+	desc = russia2_continent.13.d
+	picture = GFX_report_event_ast_parliament_house
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_continent.13.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = 100
+		add_stability = 0.05
+		FROM = {
+			country_event = russia2_continent.14
+			effect_tooltip = {
+				add_autonomy_score = {
+					value = 200
+					localization = CON_future_of_root_continent
+				}
+				if = {
+					limit = {
+						is_subject_of = SOV
+					}
+					add_ideas = CON_Recognized_continent
+				}
+				else = {
+					add_ideas = CON_Recognized_continent1
+				}
+			}
+		}
+	}
+
+	option = { #Refuse
+		name = russia2_continent.13.b
+		ai_chance = {
+			base = 0
+		}
+		add_political_power = 50
+		FROM = {
+			country_event = russia2_continent.15
+		}
+	}
+}
+
+#OVERLORD Accepts
+country_event = {
+	id = russia2_continent.14
+	title = russia2_continent.14.t
+	desc = russia2_continent.14.d
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+
+	option = { #Yay
+		name = russia2_continent.14.a
+		ai_chance = {
+			base = 100
+		}
+		add_autonomy_score = {
+			value = 200
+			localization = CON_future_of_root_continent
+		}
+		if = {
+			limit = {
+				is_subject_of = SOV
+			}
+			add_ideas = CON_Recognized_continent
+		}
+		else = {
+			add_ideas = CON_Recognized_continent1
+		}
+	}
+}
+
+#OVERLORD Refuses
+country_event = {
+	id = russia2_continent.15
+	title = russia2_continent.15.t
+	desc = russia2_continent.15.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { #Oh
+		name = russia2_continent.15.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = 100
+	}
+}

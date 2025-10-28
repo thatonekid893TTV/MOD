@@ -1,0 +1,357 @@
+on_actions = {
+
+	#SOJ Gets Annexed By SOV and Receives Events
+	on_capitulation_immediate  = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = {
+						tag = SOJ
+					}
+					FROM = {
+						tag = SOV
+						has_country_flag = black_revolution_civil_war_in_progress
+					}
+				}
+				ROOT = {
+					transfer_navy = {
+						target = FROM
+					}
+				}
+				every_state = {
+					limit = {
+						is_owned_by = ROOT
+					}
+					FROM = {
+						transfer_state = PREV
+					}
+				}
+				FROM = {
+					country_event = { id = russia2_russia.412 hours = 6 }
+					#news_event = { id = newsrussia2.67 days = 1 }
+				}
+			}
+		}
+	}
+
+	#SOV Gets Annexed By SOJ and Receives Events
+	on_capitulation_immediate  = { #TODO Event and News Event for BR
+		effect = {
+			if = {
+				limit = {
+					ROOT = {
+						tag = SOV
+						has_country_flag = black_revolution_civil_war_in_progress
+					}
+					FROM = {
+						tag = SOJ
+					}
+				}
+				ROOT = {
+					transfer_navy = {
+						target = FROM
+					}
+				}
+				every_state = {
+					limit = {
+						is_owned_by = ROOT
+					}
+					FROM = {
+						transfer_state = PREV
+					}
+				}
+				FROM = {
+					#country_event = { id = russia2_russia. hours = 3 }
+					#news_event = { id = newsrussia2.68 days = 1 }
+				}
+
+			}
+		}
+	}
+
+	#Decrease Anarchy Support When Puppeting a Country via Peace Deal
+	on_puppet = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							tag = ROOT
+						}
+					}
+				}
+				ROOT = {
+					country_event = { id = russia2_generic.38 hours = 1 }
+				}
+			}
+		}
+	}
+
+	#Decrease Anarchy Support When Releasing a Country Via Peace Deal
+	on_liberate = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							tag = ROOT
+						}
+					}
+				}
+				ROOT = {
+					country_event = { id = russia2_generic.38 hours = 1 }
+				}
+			}
+		}
+	}
+
+	#Decrease Anarchy Support When Releasing a Country
+	on_release_as_free = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							tag = ROOT
+						}
+					}
+				}
+				ROOT = {
+					country_event = { id = russia2_generic.38 hours = 1 }
+				}
+			}
+		}
+	}
+
+	#Decrease Anarchy Support When Releasing a Country and Puppet
+	on_release_as_puppet = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							tag = ROOT
+						}
+					}
+				}
+				ROOT = {
+					country_event = { id = russia2_generic.38 hours = 1 }
+				}
+			}
+		}
+	}
+
+	on_subject_free = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							tag = ROOT
+						}
+					}
+				}
+				ROOT = {
+					country_event = { id = russia2_generic.38 hours = 1 }
+				}
+			}
+		}
+	}
+
+	on_subject_autonomy_level_change  = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							tag = ROOT
+						}
+					}
+				}
+				ROOT = {
+					country_event = { id = russia2_generic.38 hours = 1 }
+				}
+			}
+		}
+	}
+
+	#Anarchist Civil War Caused by the Individualist, if the anarchist side win. Annex ROOT
+	on_civil_war_end = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = {
+						has_government = anarchy
+					}
+					SOV = {
+						has_government = anarchy
+					}
+				}
+				SOV = {
+					annex_country = {
+						target = ROOT
+						transfer_troops = yes
+					}
+				}
+				clr_global_flag = an_anarchist_recolution_is_happening_indi
+			}
+			else_if = {
+				limit = {
+					ROOT = {
+						NOT = {
+							has_government = anarchy
+						}
+					}
+					FROM = {
+						has_government = anarchy
+					}
+					SOV = {
+						has_government = anarchy
+					}
+				}
+				clr_global_flag = an_anarchist_recolution_is_happening_indi
+				ROOT = {
+					SOV = {
+						country_event = { id = russia2_russia.660 }
+					}
+				}
+			}
+		}
+	}
+
+	#Division Spawn in Targeted States after Declare War - Anarcho-Communism
+	on_declare_war = {
+		effect = {
+			if = {
+				limit ={
+					ROOT = {
+						tag = SOV
+						has_government = anarchy
+						has_country_flag = can_infiltrate_foreign_countries_wargoal
+					}
+					FROM = {
+						any_owned_state = {
+							has_state_flag = is_chosen_infiltrated_states_anarchist_communism
+						}
+					}
+				}
+				if = {
+					limit = {
+						ROOT = {
+							NOT = {
+								has_template = "Taynaya Militsiya Diviziya"
+							}
+						}
+					}
+					division_template = {
+						name = "Taynaya Militsiya Diviziya"
+						is_locked = yes
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 0 y = 3 }
+							infantry = { x = 0 y = 4 }
+							infantry = { x = 1 y = 0 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+				FROM = {
+					clear_variable = anarchist_state_infiltration
+					hidden_effect = {
+						country_event = { id = russia2_russia.657 hours = 8 }
+					}
+				}
+			}
+		}
+	}
+
+	#Remove Militia Division after A War
+	on_peace = {
+		effect = {
+			if = {
+				limit = {
+					THIS = {
+						tag = SOV
+						has_government = anarchy
+						has_country_flag = can_infiltrate_foreign_countries_wargoal
+						has_template = "Taynaya Militsiya Diviziya"
+					}
+				}
+				delete_unit_template_and_units = {
+					division_template = "Taynaya Militsiya Diviziya"
+					disband = no
+				}
+			}
+		}
+	}
+
+	#Annex Puppet for Left Path Just in Case
+	on_puppet = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = SOV
+						has_government = anarchy
+						NOT = {
+							has_completed_focus = SOV_embrace_total_anarchy
+						}
+					}
+					ROOT = {
+						NOT = {
+							tag = EAC
+							tag = NAC
+							tag = WAC
+							tag = SWA
+							tag = AEA
+							tag = SAE
+						}
+					}
+				}
+				FROM = {
+					annex_country = {
+						target = ROOT
+					}
+				}
+			}
+		}
+	}
+
+	on_weekly_sov = {
+		effect = {
+			if = {
+				limit = {
+					has_government = anarchy
+					NOT = {
+						has_completed_focus = SOV_embrace_total_anarchy
+					}
+					any_country = {
+						NOT = {
+							tag = EAC
+							tag = NAC
+							tag = WAC
+							tag = SWA
+							tag = AEA
+							tag = SAE
+						}
+						is_subject_of = SOV
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject_of = SOV
+					}
+					SOV = {
+						annex_country = {
+							target = PREV
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,8061 @@
+###########################
+# News Events (Russia 2.0)
+###########################
+add_namespace = newsrussia2
+
+# Check if File is Loaded
+country_event = {
+	id = newsrussia2.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_newsrussia2
+	}
+}
+
+#Mongolia accepts puppet
+news_event = {
+	id = newsrussia2.1
+	title = newsrussia2.1.t
+	desc = newsrussia2.1.d
+	picture = GFX_news_event_006
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = newsrussia2.1.a
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = MON
+				tag = CHI
+				tag = JAP
+				is_in_faction_with = SOV
+			}
+		}
+	}
+	option = {
+		name = newsrussia2.1.b
+		trigger = { tag = SOV }
+	}
+	option = {
+		name = newsrussia2.1.c
+		trigger = { tag = MON }
+	}
+	option = {
+		name = newsrussia2.1.e
+		trigger = { tag = CHI }
+	}
+	option = {
+		name = newsrussia2.1.f
+		trigger = { tag = JAP }
+	}
+
+	option = {
+		name = newsrussia2.1.g
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FIN
+				tag = CHI
+				tag = JAP
+			}
+			is_in_faction_with = SOV
+		}
+	}
+}
+
+# Finland Refuses Demands
+news_event = {
+	id = newsrussia2.2
+	title = newsrussia2.2.t
+	desc = newsrussia2.2.d
+	picture = GFX_news_event_011
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = newsrussia2.2.a
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FIN
+				tag = GER
+				is_in_faction_with = SOV
+			}
+		}
+	}
+	option = {
+		name = newsrussia2.2.b
+		trigger = { tag = SOV }
+	}
+	option = {
+		name = newsrussia2.2.c
+		trigger = { tag = FIN }
+	}
+	option = {
+		name = newsrussia2.2.e
+		trigger = { tag = GER }
+	}
+	option = {
+		name = newsrussia2.2.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FIN
+				tag = GER
+			}
+			is_in_faction_with = SOV
+		}
+	}
+}
+
+# Finland Accepts Demands
+news_event = {
+	id = newsrussia2.3
+	title = newsrussia2.3.t
+	desc = newsrussia2.3.d
+	picture = GFX_news_event_012
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = newsrussia2.3.a
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FIN
+				tag = GER
+				is_in_faction_with = SOV
+			}
+		}
+	}
+	option = {
+		name = newsrussia2.3.b
+		trigger = { tag = SOV }
+	}
+	option = {
+		name = newsrussia2.3.c
+		trigger = { tag = FIN }
+	}
+	option = {
+		name = newsrussia2.3.e
+		trigger = { tag = GER }
+	}
+
+	option = {
+		name = newsrussia2.3.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FIN
+				tag = GER
+			}
+			is_in_faction_with = SOV
+		}
+	}
+}
+
+# Finland Accepts Puppet
+news_event = {
+	id = newsrussia2.4
+	title = newsrussia2.4.t
+	desc = newsrussia2.4.d
+	picture = GFX_news_event_012
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = newsrussia2.4.a
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FIN
+				tag = GER
+				is_in_faction_with = SOV
+			}
+		}
+	}
+	option = {
+		name = newsrussia2.4.b
+		trigger = { tag = SOV }
+	}
+	option = {
+		name = newsrussia2.4.c
+		trigger = { tag = FIN }
+	}
+	option = {
+		name = newsrussia2.4.e
+		trigger = { tag = GER }
+	}
+
+	option = {
+		name = newsrussia2.4.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FIN
+				tag = GER
+			}
+			is_in_faction_with = SOV
+		}
+	}
+}
+
+#Tannu Accepts Integration
+news_event = {
+	id = newsrussia2.5
+	title = newsrussia2.5.t
+	desc = newsrussia2.5.d
+	picture = GFX_russia2news_event_handshake
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is soviet
+		name = newsrussia2.5.a
+		trigger = { tag = SOV }
+	}
+
+	option = { #Is in faction with Soviet
+		name = newsrussia2.5.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Neutral
+		name = newsrussia2.5.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Tannu Tuva Refuses Integration
+news_event = {
+	id = newsrussia2.6
+	title = newsrussia2.6.t
+	desc = newsrussia2.6.d
+	picture = GFX_news_event_military_planning
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is soviet or in faction with Soviet
+		name = newsrussia2.6.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = { #Neutral
+		name = newsrussia2.6.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+}
+
+#Estonia accepts
+news_event = {
+	id = newsrussia2.7
+	title = newsrussia2.7.t
+	desc = newsrussia2.7.d
+	picture = GFX_news_event_064
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #is soviet
+		name = newsrussia2.7.a
+		trigger = { tag = SOV }
+	}
+
+	option = { #is other baltics
+		name = newsrussia2.7.b
+		trigger = {
+			tag = LAT
+			tag = LIT
+			tag = FIN
+			tag = EST
+		}
+	}
+
+	option = { #in faction with soviet
+		name = newsrussia2.7.c
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #neutral
+		name = newsrussia2.7.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = LAT
+				tag = LIT
+				tag = FIN
+				tag = EST
+			}
+		}
+	}
+}
+
+#Estonia refuse
+news_event = {
+	id = newsrussia2.8
+	title = newsrussia2.8.t
+	desc = newsrussia2.8.d
+	picture = GFX_news_event_011
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #is soviet
+		name = newsrussia2.8.a
+		trigger = { tag = SOV }
+	}
+
+	option = { #in faction with soviet
+		name = newsrussia2.8.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #neutral
+		name = newsrussia2.8.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = LAT
+				tag = LIT
+				tag = FIN
+				tag = EST
+			}
+		}
+	}
+
+	option = { #is baltic
+		name = newsrussia2.8.e
+		trigger = {
+			tag = LAT
+			tag = LIT
+			tag = FIN
+			tag = EST
+		}
+	}
+}
+
+#Lithuania accepts Soviet ultimatum
+news_event = {
+	id = newsrussia2.9
+	title = newsrussia2.9.t
+	desc = newsrussia2.9.d
+	picture = GFX_news_event_064
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #is soviet
+		name = newsrussia2.9.a
+		trigger = { tag = SOV }
+	}
+
+	option = { #is in faction with soviets
+		name = newsrussia2.9.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #neutral
+		name = newsrussia2.9.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = GER
+				tag = LAT
+				tag = LIT
+				tag = FIN
+				tag = EST
+			}
+		}
+	}
+
+	option = { # is baltic
+		name = newsrussia2.9.e
+		trigger = {
+			tag = LAT
+			tag = LIT
+			tag = FIN
+			tag = EST
+		}
+	}
+
+	option = { #is Germany
+		name = newsrussia2.9.f
+		trigger = { tag = GER }
+	}
+}
+
+#Lithuania refuse Soviet ultimatum
+news_event = {
+	id = newsrussia2.10
+	title = newsrussia2.10.t
+	desc = newsrussia2.10.d
+	picture = GFX_news_event_011
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #is soviet
+		name = newsrussia2.10.a
+		trigger = { tag = SOV }
+	}
+
+	option = { #is in faction with soviets
+		name = newsrussia2.10.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #neutral
+		name = newsrussia2.10.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = LAT
+				tag = LIT
+				tag = FIN
+				tag = EST
+			}
+		}
+	}
+
+	option = { # is baltic
+		name = newsrussia2.10.e
+		trigger = {
+			tag = LAT
+			tag = LIT
+			tag = FIN
+			tag = EST
+		}
+	}
+}
+
+#Latvia accepts
+news_event = {
+	id = newsrussia2.11
+	title = newsrussia2.11.t
+	desc = newsrussia2.11.d
+	picture = GFX_news_event_064
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #is soviet
+		name = newsrussia2.11.a
+		trigger = { tag = SOV }
+	}
+
+	option = { #is other baltics
+		name = newsrussia2.11.b
+		trigger = {
+			tag = LAT
+			tag = LIT
+			tag = FIN
+			tag = EST
+		}
+	}
+
+	option = { #in faction with soviet
+		name = newsrussia2.11.c
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #neutral
+		name = newsrussia2.11.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = LAT
+				tag = LIT
+				tag = FIN
+				tag = EST
+			}
+		}
+	}
+}
+
+#Latvia refuse
+news_event = {
+	id = newsrussia2.12
+	title = newsrussia2.12.t
+	desc = newsrussia2.12.d
+	picture = GFX_news_event_011
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #is soviet
+		name = newsrussia2.12.a
+		trigger = { tag = SOV }
+	}
+
+	option = { #in faction with soviet
+		name = newsrussia2.12.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #neutral
+		name = newsrussia2.12.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = LAT
+				tag = LIT
+				tag = FIN
+				tag = EST
+			}
+		}
+	}
+
+	option = { #is baltic
+		name = newsrussia2.12.e
+		trigger = {
+			tag = LAT
+			tag = LIT
+			tag = FIN
+			tag = EST
+		}
+	}
+}
+
+#Germany Accepts Russian Exile
+news_event = {
+	id = newsrussia2.13
+	title = newsrussia2.13.t
+	desc = newsrussia2.13.d
+	picture = GFX_news_event_hitler_speech
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+	name = newsrussia2.13.a
+	trigger = {
+		tag = SOV
+		}
+	}
+
+	option = {
+	name = newsrussia2.13.b
+	trigger = {
+		tag = GER
+		}
+	}
+
+	option = {
+	name = newsrussia2.13.c
+	trigger = {
+		is_in_faction_with = SOV
+		NOT = {
+			tag = SOV
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.13.e
+	trigger = {
+		is_in_faction_with = GER
+		NOT = {
+			tag = GER
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.13.f
+	trigger = {
+		NOT = {
+			tag = SOV
+			tag = GER
+			is_in_faction_with = SOV
+			is_in_faction_with = GER
+			}
+		}
+	}
+}
+
+#Soviet recover territories
+news_event = {
+	id = newsrussia2.14
+	title = newsrussia2.14.t
+	desc = newsrussia2.14.d
+	picture = GFX_news_event_tank_factory
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+	name = newsrussia2.14.a
+	trigger = {
+		tag = SOV
+		}
+	}
+
+	option = {
+	name = newsrussia2.14.b
+	trigger = {
+		tag = GER
+		}
+	}
+
+	option = {
+	name = newsrussia2.14.c
+	trigger = {
+		is_in_faction_with = SOV
+		NOT = {
+			tag = SOV
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.14.e
+	trigger = {
+		is_in_faction_with = GER
+		NOT = {
+			tag = GER
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.14.f
+	trigger = {
+		NOT = {
+			tag = SOV
+			tag = GER
+			is_in_faction_with = SOV
+			is_in_faction_with = GER
+			}
+		}
+	}
+}
+
+#Peasants Revolt in Russia
+news_event = {
+	id = newsrussia2.15
+	title = newsrussia2.15.t
+	desc = newsrussia2.15.d
+	picture = GFX_news_event_005
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+	name = newsrussia2.15.a
+	trigger = {
+		tag = SOV
+		}
+	}
+
+	option = {
+	name = newsrussia2.15.b
+	trigger = {
+		tag = USA
+		}
+	}
+
+	option = {
+	name = newsrussia2.15.c
+	trigger = {
+		is_in_faction_with = SOV
+		NOT = {
+			tag = SOV
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.15.e
+	trigger = {
+		is_in_faction_with = USA
+		NOT = {
+			tag = USA
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.15.f
+	trigger = {
+		NOT = {
+			tag = SOV
+			tag = USA
+			is_in_faction_with = SOV
+			is_in_faction_with = USA
+			}
+		}
+	}
+}
+
+#Proclaimed Neutrality
+news_event = {
+	id = newsrussia2.16
+	title = newsrussia2.16.t
+	desc = newsrussia2.16.d
+	picture = GFX_news_event_034
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+	name = newsrussia2.16.a
+	trigger = {
+		tag = SOV
+		}
+	}
+
+	option = {
+	name = newsrussia2.16.b
+	trigger = {
+		tag = GER
+		}
+	}
+
+	option = {
+	name = newsrussia2.16.c
+	trigger = {
+		is_in_faction_with = SOV
+		NOT = {
+			tag = SOV
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.16.e
+	trigger = {
+		is_in_faction_with = GER
+		NOT = {
+			tag = GER
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.16.f
+	trigger = {
+		NOT = {
+			tag = SOV
+			tag = GER
+			is_in_faction_with = SOV
+			is_in_faction_with = GER
+			}
+		}
+	}
+}
+
+#Russia Enacts Anti-Capitalism Diplomacy
+news_event = {
+	id = newsrussia2.17
+	title = newsrussia2.17.t
+	desc = newsrussia2.17.d
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+	name = newsrussia2.17.a
+	trigger = {
+		tag = SOV
+		}
+	}
+
+	option = {
+	name = newsrussia2.17.b
+	trigger = {
+		is_in_faction_with = SOV
+		NOT = {
+			tag = SOV
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.17.c
+	trigger = {
+		NOT = {
+			is_in_faction_with = SOV
+			}
+		has_government = democratic
+		}
+	}
+
+	option = {
+	name = newsrussia2.17.e
+	trigger = {
+		NOT = {
+			tag = SOV
+			is_in_faction_with = SOV
+			has_government = democratic
+			}
+		}
+	}
+}
+
+#Russia Enacts Anti-Fascist Diplomacy
+news_event = {
+	id = newsrussia2.18
+	title = newsrussia2.18.t
+	desc = newsrussia2.18.d
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+	name = newsrussia2.18.a
+	trigger = {
+		tag = SOV
+		}
+	}
+
+	option = {
+	name = newsrussia2.18.b
+	trigger = {
+		is_in_faction_with = SOV
+		NOT = {
+			tag = SOV
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.18.c
+	trigger = {
+		NOT = {
+			is_in_faction_with = SOV
+			}
+		has_government = fascism
+		}
+	}
+
+	option = {
+	name = newsrussia2.18.e
+	trigger = {
+		NOT = {
+			tag = SOV
+			is_in_faction_with = SOV
+			has_government = fascism
+			}
+		}
+	}
+}
+
+#France Joins Comintern
+news_event = {
+	id = newsrussia2.19
+	title = newsrussia2.19.t
+	desc = newsrussia2.19.d
+	picture = GFX_news_event_generic_rally2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+	name = newsrussia2.19.a
+	trigger = {
+		tag = SOV
+		}
+	}
+
+	option = {
+	name = newsrussia2.19.b
+	trigger = {
+		is_in_faction_with = SOV
+		NOT = {
+			tag = SOV
+			tag = FRA
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.19.c
+	trigger = {
+		tag = FRA
+		}
+	}
+
+	option = {
+	name = newsrussia2.19.e
+	trigger = {
+		NOT = {
+			tag = SOV
+			tag = FRA
+			is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Communist China Joins Comintern
+news_event = {
+	id = newsrussia2.20
+	title = newsrussia2.20.t
+	desc = newsrussia2.20.d
+	picture = GFX_news_event_chinese_soldiers_city_ruin
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+	name = newsrussia2.20.a
+	trigger = {
+		tag = SOV
+		}
+	}
+
+	option = {
+	name = newsrussia2.20.b
+	trigger = {
+			tag = PRC
+		}
+	}
+
+	option = {
+	name = newsrussia2.20.c
+	trigger = {
+		is_in_faction_with = SOV
+		NOT = {
+			tag = SOV
+			tag = PRC
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.20.e
+	trigger = {
+		NOT = {
+			tag = SOV
+			tag = PRC
+			is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Communist China Rejects Pressure
+news_event = {
+	id = newsrussia2.21
+	title = newsrussia2.21.t
+	desc = newsrussia2.21.d
+	picture = GFX_russia2news_event_tank_menacing
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+	name = newsrussia2.21.a
+	trigger = {
+		tag = SOV
+		}
+	}
+
+	option = {
+	name = newsrussia2.21.b
+	trigger = {
+		tag = PRC
+		}
+	}
+
+	option = {
+	name = newsrussia2.21.c
+	trigger = {
+		is_in_faction_with = SOV
+		NOT = {
+			tag = SOV
+			tag = PRC
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.21.e
+	trigger = {
+		NOT = {
+			tag = SOV
+			tag = PRC
+			is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Middle East Ultimatums
+news_event = {
+	id = newsrussia2.22
+	title = newsrussia2.22.t
+	desc = newsrussia2.22.d
+	picture = GFX_news_event_soviet_tanks
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+	name = newsrussia2.22.a
+	trigger = {
+		tag = SOV
+		}
+	}
+
+	option = {
+	name = newsrussia2.22.b
+	trigger = {
+		OR = {
+			tag = AFG
+			tag = PER
+			tag = IRQ
+			tag = TUR
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.22.c
+	trigger = {
+		is_in_faction_with = SOV
+		NOT = {
+			tag = SOV
+			tag = AFG
+			tag = PER
+			tag = IRQ
+			tag = TUR
+			}
+		}
+	}
+
+	option = {
+	name = newsrussia2.22.e
+	trigger = {
+		NOT = {
+			tag = SOV
+			tag = AFG
+			tag = PER
+			tag = IRQ
+			tag = TUR
+			is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#The Katyn Massacre
+news_event = {
+	id = newsrussia2.23
+	title = newsrussia2.23.t
+	desc = newsrussia2.23.d
+	picture = GFX_news_event_hungarian_soldiers
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.23.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in faction with SOV
+		name = newsrussia2.23.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany or Axis
+		name = newsrussia2.23.c
+		trigger = {
+			OR = {
+				tag = GER
+				is_in_faction_with = GER
+			}
+		}
+	}
+
+	option = { #Is Allies
+		name = newsrussia2.23.e
+		trigger = {
+			OR = {
+				tag = ENG
+				is_in_faction_with = ENG
+			}
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.23.f
+		trigger = {
+			NOT = {
+				tag = ENG
+				tag = SOV
+				tag = GER
+				is_in_faction_with = ENG
+				is_in_faction_with = SOV
+				is_in_faction_with = GER
+			}
+		}
+	}
+}
+
+#Japan Cedes South Sakhalin
+news_event = {
+	id = newsrussia2.24
+	title = newsrussia2.24.t
+	desc = newsrussia2.24.d
+	picture = GFX_news_event_eng_decolonization
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.24.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in faction with Soviet
+		name = newsrussia2.24.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Japan or in faction with Japan
+		name = newsrussia2.24.c
+		trigger = {
+			is_in_faction_with = JAP
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.24.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+				is_in_faction_with = SOV
+				is_in_faction_with = JAP
+			}
+		}
+	}
+}
+
+#Sakhalin Treaty Signed
+news_event = {
+	id = newsrussia2.25
+	title = newsrussia2.25.t
+	desc = newsrussia2.25.d
+	picture = GFX_news_event_generic_read_write
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.25.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in faction with Soviet
+		name = newsrussia2.25.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Japan or in faction with Japan
+		name = newsrussia2.25.c
+		trigger = {
+			is_in_faction_with = JAP
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.25.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+				is_in_faction_with = SOV
+				is_in_faction_with = JAP
+			}
+		}
+	}
+}
+
+#South Sakhalin Seized
+news_event = {
+	id = newsrussia2.26
+	title = newsrussia2.26.t
+	desc = newsrussia2.26.d
+	picture = GFX_news_event_004
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.26.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in faction with Soviet
+		name = newsrussia2.26.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Japan or in faction with Japan
+		name = newsrussia2.26.c
+		trigger = {
+			is_in_faction_with = JAP
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.26.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+				is_in_faction_with = SOV
+				is_in_faction_with = JAP
+			}
+		}
+	}
+}
+
+#Yalta Conference
+news_event = {
+	id = newsrussia2.27
+	title = newsrussia2.27.t
+	desc = newsrussia2.27.d
+	picture = GFX_russia2news_event_yalta
+
+	major = yes
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.27.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in faction with Soviet
+		name = newsrussia2.27.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+				has_country_flag = usa_accepted_yalta_conference
+				has_country_flag = eng_accepted_yalta_conference
+				has_country_flag = fra_accepted_yalta_conference
+			}
+		}
+	}
+
+	option = { #Is Germany or in faction with Germany
+		name = newsrussia2.27.c
+		trigger = {
+			is_in_faction_with = GER
+			NOT = {
+				has_country_flag = usa_accepted_yalta_conference
+				has_country_flag = eng_accepted_yalta_conference
+				has_country_flag = fra_accepted_yalta_conference
+			}
+		}
+	}
+
+	option = { #Is either USA, UK or France and has accepted the Yalta Conference
+			name = newsrussia2.27.c
+			trigger = {
+				OR = {
+					has_country_flag = usa_accepted_yalta_conference
+					has_country_flag = eng_accepted_yalta_conference
+					has_country_flag = fra_accepted_yalta_conference
+				}
+			}
+		}
+
+	option = { #Is Neutral
+		name = newsrussia2.27.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				is_in_faction_with = SOV
+				is_in_faction_with = GER
+				has_country_flag = usa_accepted_yalta_conference
+				has_country_flag = eng_accepted_yalta_conference
+				has_country_flag = fra_accepted_yalta_conference
+			}
+		}
+	}
+}
+
+#UK Joins the War Against Iran
+news_event = {
+	id = newsrussia2.28
+	title = newsrussia2.28.t
+	desc = newsrussia2.28.d
+	picture = GFX_russia2news_event_iran_invasion
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with Soviet
+		name = newsrussia2.28.a
+		trigger = {
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is UK or in faction with UK
+		name = newsrussia2.28.b
+		trigger = {
+			is_in_faction_with = ENG
+		}
+	}
+
+	option = { #Is Iran or in faction with Iran
+		name = newsrussia2.28.c
+		trigger = {
+			is_in_faction_with = PER
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.28.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = ENG
+				tag = PER
+				is_in_faction_with = SOV
+				is_in_faction_with = JAP
+				is_in_faction_with = PER
+			}
+		}
+	}
+}
+
+#Stalin Assassination is a Failure/Civil WAR
+news_event = {
+	id = newsrussia2.29
+	title = newsrussia2.29.t
+	desc = newsrussia2.29.d
+	picture = GFX_russia2news_event_battle_with_tanks
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet Union
+		name = newsrussia2.29.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Any Communist Country
+		name = newsrussia2.29.b
+		trigger = {
+			has_government = communism
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.29.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { #Rest of the World/Neutral
+		name = newsrussia2.29.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				has_government = communism
+			}
+		}
+	}
+}
+
+#Civil War in Russia Against Stalin
+news_event = {
+	id = newsrussia2.30
+	title = newsrussia2.30.t
+	desc = newsrussia2.30.d
+	picture = GFX_russia2news_event_battle_with_tanks
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.30.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Communist
+		name = newsrussia2.30.b
+		trigger = {
+			has_government = communism
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.30.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.30.e
+		trigger = {
+			NOT = {
+				tag = GER
+				tag = SOV
+				has_government = communism
+			}
+		}
+	}
+}
+
+#Leon Trotsky Comes Back
+news_event = {
+	id = newsrussia2.31
+	title = newsrussia2.31.t
+	desc = newsrussia2.31.d
+	picture = GFX_news_event_024
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.31.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Communist
+		name = newsrussia2.31.b
+		trigger = {
+			has_government = communism
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.31.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				has_government = communism
+			}
+		}
+	}
+}
+
+#Stalin's Death
+news_event = {
+	id = newsrussia2.32
+	title = newsrussia2.32.t
+	desc = newsrussia2.32.d
+	picture = GFX_russia2news_event_stalin_death
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.32.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { # Is Axis
+		name = newsrussia2.32.b
+		trigger = {
+			OR = {
+				tag = GER
+				is_in_faction_with = GER
+			}
+		}
+	}
+
+	option = { #any allied countries
+		name = newsrussia2.32.c
+		trigger = {
+			OR = {
+				tag = ENG
+				is_in_faction_with = ENG
+			}
+			OR = {
+				is_in_faction_with = SOV
+			}
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+}
+
+#Stalin Died - 1953
+news_event = {
+	id = newsrussia2.33
+	title = newsrussia2.33.t
+	desc = newsrussia2.33.d
+	picture = GFX_russia2news_event_stalin_death
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.33.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Allies
+		name = newsrussia2.33.b
+		trigger = {
+			OR = {
+				tag = ENG
+				is_in_faction_with = ENG
+			}
+		}
+	}
+
+	option = { #Is Fascist
+		name = newsrussia2.33.c
+		trigger = {
+			has_government = fascism
+		}
+	}
+
+	option = { #Is communist
+		name = newsrussia2.33.e
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			has_government = communism
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.33.f
+		trigger = {
+			NOT = {
+				has_government = communism
+				has_government = fascism
+				tag = SOV
+				tag = ENG
+				is_in_faction_with = ENG
+			}
+		}
+	}
+}
+
+#Stalin Assassination is successful
+news_event = {
+	id = newsrussia2.34
+	title = newsrussia2.34.t
+	desc = newsrussia2.34.d
+	picture = GFX_news_event_generic_funeral
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet Union
+		name = newsrussia2.34.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Any Communist Country
+		name = newsrussia2.34.b
+		trigger = {
+			has_government = communism
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.34.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { #Rest of the World/Neutral
+		name = newsrussia2.34.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+			}
+			OR = {
+				has_government = fascism
+				has_government = democratic
+				has_government = neutrality
+			}
+		}
+	}
+}
+
+#East Germany is released
+news_event = {
+	id = newsrussia2.35
+	title = newsrussia2.35.t
+	desc = newsrussia2.35.d
+
+	picture = GFX_russia2news_event_battle_with_tanks
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.35.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is DDR
+		name = newsrussia2.35.b
+		trigger = {
+			tag = DDR
+		}
+	}
+
+	option = { #Is Communist
+		name = newsrussia2.35.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = DDR
+				is_in_faction_with = SOV
+			}
+			has_government = communism
+		}
+	}
+
+	option 	= { #Is in Faction with SOV
+		name = newsrussia2.35.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = DDR
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is Allies
+		name = newsrussia2.35.f
+		trigger = {
+			tag = ENG
+			is_in_faction_with = ENG
+		}
+	}
+
+	option = {#Is Democratic
+		name = newsrussia2.35.g
+		trigger = {
+			NOT = {
+				tag = ENG
+				is_in_faction_with = ENG
+			}
+			has_government = democratic
+		}
+	}
+
+	option = {#Neutral
+		name = newsrussia2.35.h
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = ENG
+				tag = DDR
+				is_in_faction_with = SOV
+				is_in_faction_with = ENG
+			}
+			has_government = fascism
+			has_government = neutrality
+		}
+	}
+}
+
+#West Germany is released
+news_event = {
+	id = newsrussia2.36
+	title = newsrussia2.36.t
+	desc = newsrussia2.36.d
+
+	picture = GFX_russia2news_event_west_germany_release
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.36.a
+		trigger = {
+			tag = SOV
+
+		}
+	}
+
+	option = { #Is WGR
+		name = newsrussia2.36.b
+		trigger = {
+			tag = WGR
+		}
+	}
+
+	option = { #Is Communist
+		name = newsrussia2.36.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			has_government = communism
+		}
+	}
+
+	option 	= { #Is in Faction with SOV
+		name = newsrussia2.36.e
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is Allies
+		name = newsrussia2.36.f
+		trigger = {
+			tag = ENG
+			is_in_faction_with = ENG
+		}
+	}
+
+	option = {#Is Democratic
+		name = newsrussia2.36.g
+		trigger = {
+			NOT = {
+				tag = WGR
+				tag = ENG
+				is_in_faction_with = ENG
+			}
+			has_government = democratic
+		}
+	}
+
+	option = {#Neutral
+		name = newsrussia2.36.h
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = ENG
+				tag = DDR
+				tag = WGR
+				is_in_faction_with = SOV
+				is_in_faction_with = ENG
+			}
+		}
+	}
+}
+
+#Warsaw Pact
+news_event = {
+	id = newsrussia2.37
+	title = newsrussia2.37.t
+	desc = newsrussia2.37.d
+	picture = GFX_russia2news_event_warsaw_pact
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.37.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { # Is in Faction with SOV
+		name = newsrussia2.37.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is communist
+		name = newsrussia2.37.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			has_government = communism
+		}
+	}
+
+	option = { #Is Allies
+		name = newsrussia2.37.e
+		trigger = {
+			tag = ENG
+			is_in_faction_with = ENG
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.37.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = ENG
+				is_in_faction_with = SOV
+				is_in_faction_with = ENG
+			}
+			has_government = democratic
+			has_government = fascism
+			has_government = neutrality
+		}
+	}
+}
+
+#Soviet accepts to join the war against Japan
+news_event = {
+	id = newsrussia2.38
+	title = newsrussia2.38.t
+	desc = newsrussia2.38.d
+	picture = GFX_russia2news_event_sov_join_war_jap
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.38.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Japan
+		name = newsrussia2.38.b
+		trigger = {
+			tag = JAP
+		}
+	}
+
+	option = { #Is Allies
+		name = newsrussia2.38.c
+		trigger = {
+			tag = ENG
+			is_in_faction_with = ENG
+		}
+	}
+
+	option = { #Is In Faction With SOV
+		name = newsrussia2.38.e
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is In Faction With JAP
+		name = newsrussia2.38.f
+		trigger = {
+			NOT = {
+				tag = JAP
+			}
+			is_in_faction_with = JAP
+		}
+	}
+
+	option = { #Rest of The World Not In A War Against JAP
+		name = newsrussia2.38.g
+		trigger = {
+			NOT = {
+				tag = JAP
+				tag = SOV
+				tag = ENG
+				is_in_faction_with = JAP
+				is_in_faction_with = SOV
+				is_in_faction_with = ENG
+				has_war_with = JAP
+			}
+		}
+	}
+}
+
+#SOV Attacks West Germany
+news_event = {
+	id = newsrussia2.39
+	title = newsrussia2.39.t
+	desc = newsrussia2.39.d
+	picture = GFX_russia2news_event_sov_war_against_west_germany
+
+	major = yes
+
+	fire_only_once = yes
+
+	trigger = {
+		SOV = {
+			has_war_with = WGR
+		}
+	}
+
+	option = { #Is SOV
+		name = newsrussia2.39.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is DDR
+		name = newsrussia2.39.b
+		trigger = {
+			tag = DDR
+		}
+	}
+
+	option = { #Is In Faction With SOV
+		name = newsrussia2.39.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = DDR
+			}
+		}
+	}
+
+	option = { #Is Allies
+		name = newsrussia2.39.e
+		trigger = {
+			tag = ENG
+			is_in_faction_with = ENG
+			NOT = {
+				tag = WGR
+			}
+		}
+	}
+
+	option = { #Is WGR
+		name = newsrussia2.39.f
+		trigger = {
+			tag = WGR
+		}
+	}
+
+	option = { #Rest Of The World Not Participating in the War
+		name = newsrussia2.39.g
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = DDR
+				tag = ENG
+				tag = WGR
+				is_in_faction_with = SOV
+				is_in_faction_with = ENG
+				has_war_with = SOV
+				has_war_with = ENG
+			}
+		}
+	}
+}
+
+#Egyptian Revolt
+news_event = {
+	id = newsrussia2.40
+	title = newsrussia2.40.t
+	desc = newsrussia2.40.d
+	picture = GFX_russia2news_event_egypt_revolt
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.40.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = {# Is FROM
+		name = newsrussia2.40.b
+		trigger = {
+			tag = FROM
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = { #Is Egypt
+		name = newsrussia2.40.c
+		trigger = {
+			tag = EGY
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.40.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = FROM
+				tag = EGY
+			}
+		}
+	}
+}
+
+#Minor Joins 4th International
+news_event = {
+	id = newsrussia2.41
+	title = newsrussia2.41.t
+	desc = newsrussia2.41.d
+	picture = GFX_news_event_generic_read_write
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.41.a
+		trigger = {
+			NOT = {
+				tag = FROM
+			}
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = {# Is FROM
+		name = newsrussia2.41.b
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.41.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = FROM
+			}
+		}
+	}
+}
+
+#Proletarian Union
+news_event = {
+	id = newsrussia2.42
+	title = newsrussia2.42.t
+	desc = newsrussia2.42.d
+	picture = GFX_russia2news_event_proletarian_union
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.42.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.42.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Socialist Union
+news_event = {
+	id = newsrussia2.43
+	title = newsrussia2.43.t
+	desc = newsrussia2.43.d
+	picture = GFX_news_event_generic_rally_3
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.43.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.43.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.43.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Creation of the 4th International
+news_event = {
+	id = newsrussia2.44
+	title = newsrussia2.44.t
+	desc = newsrussia2.44.d
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {#Is Soviet
+		name = newsrussia2.44.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = {#Is in Faction With SOV
+		name = newsrussia2.44.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			has_government = communism
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = {#Is Communist
+		name = newsrussia2.44.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			has_government = communism
+		}
+	}
+
+	option = {#Rest of the World
+		name = newsrussia2.44.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				has_government = communism
+			}
+		}
+	}
+}
+
+#Spain Joins the 4th International
+news_event = {
+	id = newsrussia2.45
+	title = newsrussia2.45.t
+	desc = newsrussia2.45.d
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {#Is Soviet
+		name = newsrussia2.45.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = {#Is in Faction with SOV
+		name = newsrussia2.45.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = SPR
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = {#Is Spain
+		name = newsrussia2.45.c
+		trigger = {
+			tag = SPR
+		}
+	}
+
+	option = {#Is Communist
+		name = newsrussia2.45.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = SPR
+				is_in_faction_with = SOV
+			}
+			has_government = communism
+		}
+	}
+
+	option = {#Rest of the World
+		name = newsrussia2.45.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = SPR
+				is_in_faction_with = SOV
+				has_government = communism
+			}
+		}
+	}
+}
+
+#USA Joins the 4th International
+news_event = {
+	id = newsrussia2.46
+	title = newsrussia2.46.t
+	desc = newsrussia2.46.d
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {#Is Soviet
+		name = newsrussia2.46.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = {#Is in Faction with SOV
+		name = newsrussia2.46.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = USA
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = {#Is USA
+		name = newsrussia2.46.c
+		trigger = {
+			tag = USA
+		}
+	}
+
+	option = {#Is Communist
+		name = newsrussia2.46.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = USA
+				is_in_faction_with = SOV
+			}
+			has_government = communism
+		}
+	}
+
+	option = {#Rest of the World
+		name = newsrussia2.46.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = USA
+				is_in_faction_with = SOV
+				has_government = communism
+			}
+		}
+	}
+}
+
+#Communist China Joins the 4th International
+news_event = {
+	id = newsrussia2.47
+	title = newsrussia2.47.t
+	desc = newsrussia2.47.d
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {#Is Soviet
+		name = newsrussia2.47.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = {#Is in Faction with SOV
+		name = newsrussia2.47.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = PRC
+				tag = SIK
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = {#Is PRC or SIK
+		name = newsrussia2.47.c
+		trigger = {
+			OR = {
+				tag = PRC
+				tag = SIK
+			}
+		}
+	}
+
+	option = {#Is Communist
+		name = newsrussia2.47.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = PRC
+				tag = SIK
+				is_in_faction_with = SOV
+			}
+			has_government = communism
+		}
+	}
+
+	option = {#Rest of the World
+		name = newsrussia2.47.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = PRC
+				tag = SIK
+				tag = CHI
+				tag = SHX
+				tag = XSM
+				tag = YUN
+				tag = GXC
+				tag = MAN
+				is_in_faction_with = SOV
+				has_government = communism
+			}
+		}
+	}
+
+	option = {#Chinese Warlords
+		name = newsrussia2.47.g
+		trigger = {
+			OR = {
+				tag = CHI
+				tag = SHX
+				tag = XSM
+				tag = YUN
+				tag = GXC
+				tag = MAN
+			}
+		}
+	}
+}
+
+#Korean Liberation
+news_event = {
+	id = newsrussia2.48
+	title = newsrussia2.48.t
+	desc = newsrussia2.48.d
+	picture = GFX_russia2news_event_korean_uprising
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.48.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = { # Is FROM
+		name = newsrussia2.48.b
+		trigger = {
+			tag = FROM
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Korea
+		name = newsrussia2.48.c
+		trigger = {
+			tag = KOR
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.48.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = FROM
+				tag = KOR
+			}
+		}
+	}
+}
+
+#Uprising Indochina
+news_event = {
+	id = newsrussia2.49
+	title = newsrussia2.49.t
+	desc = newsrussia2.49.d
+	picture = GFX_russia2news_event_indochina_revolt
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.49.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = {# Is FROM
+		name = newsrussia2.49.b
+		trigger = {
+			tag = FROM
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Indochina
+		name = newsrussia2.49.c
+		trigger = {
+			OR = {
+				tag = VIN
+				tag = CAM
+				tag = LAO
+			}
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.49.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = FROM
+				tag = VIN
+				tag = CAM
+				tag = LAO
+			}
+		}
+	}
+}
+
+#Tibet liberation
+news_event = {
+	id = newsrussia2.50
+	title = newsrussia2.50.t
+	desc = newsrussia2.50.d
+	picture = GFX_russia2news_event_tibetian_revolt
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.50.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = {# Is FROM
+		name = newsrussia2.50.b
+		trigger = {
+			tag = FROM
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Tibet
+		name = newsrussia2.50.c
+		trigger = {
+			tag = TIB
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.50.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = FROM
+				tag = TIB
+			}
+		}
+	}
+}
+
+#Ethiopian Liberation
+news_event = {
+	id = newsrussia2.51
+	title = newsrussia2.51.t
+	desc = newsrussia2.51.d
+	picture = GFX_russia2news_event_ethiopian_revolt
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.51.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = {# Is FROM
+		name = newsrussia2.51.b
+		trigger = {
+			tag = FROM
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Ethiopia
+		name = newsrussia2.51.c
+		trigger = {
+			tag = ETH
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.51.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = FROM
+				tag = ETH
+			}
+		}
+	}
+}
+
+#Uprising in Morocco
+news_event = {
+	id = newsrussia2.52
+	title = newsrussia2.52.t
+	desc = newsrussia2.52.d
+	picture = GFX_russia2news_event_moroccan_revolt
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.52.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = {# Is FROM
+		name = newsrussia2.52.b
+		trigger = {
+			tag = FROM
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Morocco
+		name = newsrussia2.52.c
+		trigger = {
+			tag = MOR
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.52.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = FROM
+				tag = MOR
+			}
+		}
+	}
+}
+
+#Disolve Yugoslavia
+news_event = {
+	id = newsrussia2.53
+	title = newsrussia2.53.t
+	desc = newsrussia2.53.d
+	picture = GFX_russia2news_event_yugoslavian_revolt
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.53.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = {# Is FROM
+		name = newsrussia2.53.b
+		trigger = {
+			tag = FROM
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Independent Yugoslavian Country
+		name = newsrussia2.53.c
+		trigger = {
+			OR = {
+				tag = SER
+				tag = MAC
+				tag = MNT
+				tag = BOS
+				tag = CRO
+				tag = SLV
+			}
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.53.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = FROM
+				OR = {
+					tag = SER
+					tag = MAC
+					tag = MNT
+					tag = BOS
+					tag = CRO
+					tag = SLV
+				}
+			}
+		}
+	}
+}
+
+#Divide the British Isle
+news_event = {
+	id = newsrussia2.54
+	title = newsrussia2.54.t
+	desc = newsrussia2.54.d
+	picture = GFX_russia2news_event_british_revolt
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.54.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = {# Is FROM
+		name = newsrussia2.54.b
+		trigger = {
+			tag = FROM
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Independent British Isle Country
+		name = newsrussia2.54.c
+		trigger = {
+			OR = {
+				tag = SCO
+				tag = WLS
+				tag = NIR
+			}
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.54.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = FROM
+				OR = {
+					tag = SCO
+					tag = WLS
+					tag = NIR
+				}
+			}
+		}
+	}
+}
+
+#Liberate Iberia
+news_event = {
+	id = newsrussia2.55
+	title = newsrussia2.55.t
+	desc = newsrussia2.55.d
+	picture = GFX_russia2news_event_spanish_revolt
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.55.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = {# Is FROM
+		name = newsrussia2.55.b
+		trigger = {
+			tag = FROM
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Independent Iberian Country
+		name = newsrussia2.55.c
+		trigger = {
+			OR = {
+				tag = CAT
+				tag = NAV
+				tag = GLC
+			}
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.55.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = FROM
+				OR = {
+					tag = CAT
+					tag = NAV
+					tag = GLC
+				}
+			}
+		}
+	}
+}
+
+#Japan Refuses Giving South Sakhalin
+news_event = {
+	id = newsrussia2.56
+	title = newsrussia2.56.t
+	desc = newsrussia2.56.d
+	picture = GFX_news_event_japanese_army_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.56.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in faction with Soviet
+		name = newsrussia2.56.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Japan or in faction with Japan
+		name = newsrussia2.56.c
+		trigger = {
+			is_in_faction_with = JAP
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.56.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+				is_in_faction_with = SOV
+				is_in_faction_with = JAP
+			}
+		}
+	}
+}
+
+#Lost Border War Against Japan
+news_event = {
+	id = newsrussia2.57
+	title = newsrussia2.57.t
+	desc = newsrussia2.57.d
+	picture = GFX_news_event_japanese_army_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.57.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in faction with Soviet
+		name = newsrussia2.57.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Japan or in faction with Japan
+		name = newsrussia2.57.c
+		trigger = {
+			is_in_faction_with = JAP
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.57.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+				is_in_faction_with = SOV
+				is_in_faction_with = JAP
+			}
+		}
+	}
+}
+
+#Khrushchev is the New Leader of the USSR
+news_event = {
+	id = newsrussia2.58
+	title = newsrussia2.58.t
+	desc = newsrussia2.58.d
+	picture = GFX_russia2news_event_nikita_khruschev
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.58.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in faction with Soviet
+		name = newsrussia2.58.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.58.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Vasily is the New Leader of the USSR
+news_event = {
+	id = newsrussia2.59
+	title = newsrussia2.59.t
+	desc = newsrussia2.59.d
+	picture = GFX_russia2news_event_vasily_stalin
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.59.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in faction with Soviet
+		name = newsrussia2.59.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.59.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Eastern Poland Ceded to the Soviet Union
+news_event = {
+	id = newsrussia2.60
+	title = newsrussia2.60.t
+	desc = newsrussia2.60.d
+	picture = GFX_russia2news_event_soldiers_handshaking
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		POL = {
+			save_event_target_as = Poland
+		}
+	}
+
+	#[POL.GetNameDefCap] recognises the strength of the [FROM.GetFactionName]!
+	option = {
+		name = newsrussia2.60.a
+		trigger = {
+			is_in_faction_with = SOV
+		}
+	}
+
+	#[FROM.GetNameDef] consumes everything in its path.
+	option = {
+		name = newsrussia2.60.b
+		trigger = {
+			NOT = {
+				is_in_faction_with = SOV
+			}
+			is_in_faction = yes
+		}
+	}
+
+	#[POL.GetNameDef] must have been left with no other choice.
+	option = {
+		name = newsrussia2.60.c
+		trigger = {
+			is_in_faction = no
+		}
+	}
+}
+
+#[ROM.GetNameDef] Cedes Bessarabia to the [FROM.GetName]
+news_event = {
+	id = newsrussia2.61
+	title = newsrussia2.61.t
+	desc = newsrussia2.61.d
+	picture = GFX_news_event_generic_sign_treaty3
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		ROM = {
+			save_event_target_as = Romania
+		}
+	}
+
+	#This is essential to the [FROM.GetAdjective] strategy.
+	option = {
+		name = newsrussia2.61.a
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = { tag = SOV }
+		}
+	}
+
+	#The countries of the world must face the evil of [FROM.GetNameDef]!
+	option = {
+		name = newsrussia2.61.b
+		trigger = {
+			has_war_with = SOV
+			NOT = { tag = GER }
+		}
+	}
+
+	#[PREV.GetNameDefCap] is in an unfortunate position.
+	option = {
+		name = newsrussia2.61.c
+		trigger = {
+			NOT = {
+				is_in_faction_with = SOV
+			}
+			NOT = {
+				has_war_with = SOV
+			}
+			NOT = {
+				OR = {
+					tag = GER
+					tag = PREV
+					tag = SOV
+				}
+			}
+		}
+	}
+
+	#Is Soviet
+	option = {
+		name = newsrussia2.61.e
+		trigger = { tag = SOV }
+	}
+
+	#Is Germany
+	option = {
+		name = newsrussia2.61.f
+		trigger = { tag = GER }
+	}
+
+	#Is PREV
+	option = {
+		name = newsrussia2.61.g
+		trigger = { tag = PREV }
+	}
+}
+
+# Romania refuses to surrender Bessarabia
+news_event = {
+	id = newsrussia2.62
+	title = newsrussia2.62.t
+	desc = newsrussia2.62.d
+	picture = GFX_news_event_romanian_soldiers
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = newsrussia2.62.a
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = ROM
+				tag = GER
+			}
+		}
+	}
+	option = {
+		name = newsrussia2.62.b
+		trigger = { tag = SOV }
+	}
+	option = {
+		name = newsrussia2.62.c
+		trigger = { tag = ROM }
+	}
+	option = {
+		name = newsrussia2.62.e
+		trigger = { tag = GER }
+	}
+}
+
+#Disolve Yugoslavia peacefuly
+news_event = {
+	id = newsrussia2.63
+	title = newsrussia2.63.t
+	desc = newsrussia2.63.d
+	picture = GFX_russia2news_event_yugoslavian_revolt
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet or in faction with SOV
+		name = newsrussia2.63.a
+		trigger = {
+			OR = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = { #Is Independent Yugoslavian Country
+		name = newsrussia2.63.b
+		trigger = {
+			OR = {
+				tag = SER
+				tag = MAC
+				tag = MNT
+				tag = BOS
+				tag = CRO
+				tag = SLV
+			}
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.63.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = SER
+				tag = MAC
+				tag = MNT
+				tag = BOS
+				tag = CRO
+				tag = SLV
+			}
+		}
+	}
+}
+
+#USA and Soviet Union has formed an union (Soviet-American Union)
+news_event = {
+	id = newsrussia2.64
+	title = newsrussia2.64.t
+	desc = newsrussia2.64.d
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.64.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.64.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Has War Against SOV
+		name = newsrussia2.64.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			has_war_with = SOV
+		}
+	}
+
+	option = { #Neutral
+		name = newsrussia2.64.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				has_war_with = SOV
+			}
+		}
+	}
+}
+
+#Revolution Joins 4th International
+news_event = {
+	id = newsrussia2.65
+	title = newsrussia2.65.t
+	desc = newsrussia2.65.d
+	picture = GFX_news_event_generic_read_write
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is Soviet
+		name = newsrussia2.65.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.65.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = {# Is FROM (Revolution)
+		name = newsrussia2.65.c
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { #Is Neutral
+		name = newsrussia2.65.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				tag = FROM
+			}
+		}
+	}
+
+	option = { #Enemy of FROM
+		name = newsrussia2.65.f
+		trigger = {
+			has_war_with = FROM
+		}
+	}
+}
+
+# TODO : check this?
+news_event = {
+	id = newsrussia2.66
+	title = newsrussia2.66.t
+	picture = GFX_news_event_023
+
+	major = yes
+
+	trigger = {
+		NOT = {
+			has_global_flag = SOV_fourth_international_fired_rework
+			has_completed_focus = SOV_avoid_purge
+		}
+		SOV = {
+			OR = {
+				has_completed_focus = SOV_great_purge2
+				NOT = { has_country_flag = SOV_purge_started }
+			}
+			has_government = communism
+		}
+		date > 1938.9.1
+	}
+
+	immediate = {
+		set_global_flag = SOV_fourth_international_fired_rework
+
+		# Set flag for amount of purges (completing focus counts as 1)
+		SOV = {
+			#1
+			if = {
+				limit = {
+					has_completed_focus = SOV_great_purge2
+					has_country_flag = no_political_purge
+					has_country_flag = purge_1_no_purge
+					has_country_flag = purge_2_no_purge
+				}
+				set_country_flag = SOV_purged_1
+			}
+			#2
+			if = {
+				limit = {
+					has_completed_focus = SOV_great_purge2
+					OR = {
+						AND = {
+							NOT = { has_country_flag = no_political_purge }
+							has_country_flag = purge_1_no_purge
+							has_country_flag = purge_2_no_purge
+						}
+						AND = {
+							has_country_flag = no_political_purge
+							NOT = { has_country_flag = purge_1_no_purge }
+							has_country_flag = purge_2_no_purge
+						}
+						AND = {
+							has_country_flag = no_political_purge
+							has_country_flag = purge_1_no_purge
+							NOT = { has_country_flag = purge_2_no_purge }
+						}
+					}
+				}
+				set_country_flag = SOV_purged_2
+			}
+			#3
+			if = {
+				limit = {
+					has_completed_focus = SOV_great_purge2
+					OR = {
+						AND = {
+							NOT = { has_country_flag = no_political_purge }
+							NOT = { has_country_flag = purge_1_no_purge }
+							has_country_flag = purge_2_no_purge
+						}
+						AND = {
+							has_country_flag = no_political_purge
+							NOT = { has_country_flag = purge_1_no_purge }
+							NOT = { has_country_flag = purge_2_no_purge }
+						}
+						AND = {
+							NOT = { has_country_flag = no_political_purge }
+							has_country_flag = purge_1_no_purge
+							NOT = { has_country_flag = purge_2_no_purge }
+						}
+					}
+				}
+				set_country_flag = SOV_purged_3
+			}
+			#4
+			if = {
+				limit = {
+					SOV = {
+						has_country_flag = sov_purge_over
+					}
+				}
+				set_country_flag = SOV_purged_4
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 2 }
+
+	desc = {
+		#not enough ppl killed
+		text = newsrussia2.66.d_1
+		trigger = {
+			SOV = {
+				OR = {
+					NOT = { has_completed_focus = SOV_great_purge2 }
+					has_country_flag = no_political_purge
+					has_country_flag = purge_1_no_purge
+					has_country_flag = purge_2_no_purge
+				}
+			}
+		}
+	}
+	desc = {
+		text = newsrussia2.66.d_2
+		trigger = {
+			SOV = {
+				has_completed_focus = SOV_great_purge2
+				NOT = { has_country_flag = no_political_purge }
+				NOT = { has_country_flag = purge_1_no_purge }
+				NOT = { has_country_flag = purge_2_no_purge	}
+			}
+		}
+	}
+
+	option = {
+		name = newsrussia2.66.a
+		trigger = { NOT = {	tag = SOV } }
+	}
+	option = {
+		name = newsrussia2.66.b
+		trigger = { tag = SOV }
+	}
+}
+
+#The White Guard Wins the Civil War
+news_event = {
+	id = newsrussia2.67
+	title = newsrussia2.67.t
+	desc = newsrussia2.67.d
+	picture = GFX_russia2news_event_cavalry_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.67.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is SOV Ally
+		name = newsrussia2.67.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is Russian State
+		name = newsrussia2.67.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			is_in_array = { global.russia_reworked_russian_states = THIS }
+		}
+	}
+
+	option = { #Is Enemy of White Guard
+		name = newsrussia2.67.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				is_in_array = { global.russia_reworked_russian_states = THIS }
+			}
+			has_war_with = SOV
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+		name = newsrussia2.67.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				is_in_array = { global.russia_reworked_russian_states = THIS }
+				has_war_with = SOV
+			}
+		}
+	}
+}
+
+#The Soviet Union Wins the Civil War
+news_event = {
+	id = newsrussia2.68
+	title = newsrussia2.68.t
+	desc = newsrussia2.68.d
+	picture = GFX_russia2news_event_soviet_union_wins_scw
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.68.a
+		trigger = {
+			tag = SOV #SOV Will be Freed Right After the CW
+		}
+	}
+
+	option = { #Is SOJ Ally
+		name = newsrussia2.68.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is Russian State
+		name = newsrussia2.68.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			is_in_array = { global.russia_reworked_russian_states = THIS }
+		}
+	}
+
+	option = { #Is Enemy of White Guard
+		name = newsrussia2.68.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				is_in_array = { global.russia_reworked_russian_states = THIS }
+			}
+			has_war_with = SOV
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+		name = newsrussia2.68.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				is_in_array = { global.russia_reworked_russian_states = THIS }
+				has_war_with = SOV
+			}
+		}
+	}
+}
+
+#SOV Becomes Democratic After the Insurection
+news_event = {
+	id = newsrussia2.69
+	title = newsrussia2.69.t
+	desc = newsrussia2.69.d
+	picture = GFX_russia2news_event_alexander_kerensky
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.69.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Communist
+		name = newsrussia2.69.b
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	option = { #Is Fascist Germany
+		name = newsrussia2.69.c
+		trigger = {
+			GER = {
+				has_government = fascism
+			}
+			tag = GER
+		}
+	}
+
+	option = { #Is Fascist
+		name = newsrussia2.69.e
+		trigger = {
+			has_government = fascism
+			NOT = {
+				tag = GER
+			}
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+		name = newsrussia2.69.f
+		trigger = {
+			NOT = {
+				tag = GER
+				tag = SOV
+				has_government = fascism
+				has_government = communism
+			}
+		}
+	}
+}
+
+#Creation of the Russian Sphere
+news_event = {
+	id = newsrussia2.70
+	title = newsrussia2.70.t
+	desc = newsrussia2.70.d
+	picture = GFX_news_event_generic_sign_treaty3
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.70.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Russian State (UKR,...)
+		name = newsrussia2.70.b
+		trigger = {
+			OR = {
+				tag = UKR
+				tag = BLR
+				tag = GEO
+				tag = AZR
+				tag = ARM
+				tag = KAZ
+				tag = TMS
+			}
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+		name = newsrussia2.70.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = UKR
+				tag = BLR
+				tag = GEO
+				tag = AZR
+				tag = ARM
+				tag = KAZ
+				tag = TMS
+			}
+		}
+	}
+}
+
+#ENG Blockade Russia
+news_event = {
+	id = newsrussia2.71
+	title = newsrussia2.71.t
+	desc = newsrussia2.71.d
+	picture = GFX_russia2news_event_eng_naval_blockade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.71.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #ENG
+		name = newsrussia2.71.b
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	option = { #Is in Faction with ENG
+		name = newsrussia2.71.c
+		trigger = {
+			NOT = {
+				tag = ENG
+			}
+			OR = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+
+	option = { #Fascist/Communist
+		name = newsrussia2.71.e
+		trigger = {
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+	name = newsrussia2.71.f
+		trigger = {
+			NOT = {
+				has_government = fascism
+				has_government = communism
+				tag = ENG
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+				tag = SOV
+			}
+		}
+	}
+}
+
+#The Blockade Has Ended
+news_event = {
+	id = newsrussia2.72
+	title = newsrussia2.72.t
+	desc = newsrussia2.72.d
+	picture = GFX_news_event_017
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.72.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is In Faction With SOV
+	name = newsrussia2.72.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #ENG
+		name = newsrussia2.72.c
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	option = { #Is in Faction with ENG
+		name = newsrussia2.72.e
+		trigger = {
+			NOT = {
+				tag = ENG
+			}
+			OR = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+	name = newsrussia2.72.f
+		trigger = {
+			NOT = {
+				tag = ENG
+				is_in_faction_with = ENG
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#ENG Has Cut All Diplomatic Ties With SOV
+news_event = {
+	id = newsrussia2.73
+	title = newsrussia2.73.t
+	desc = newsrussia2.73.d
+	picture = GFX_news_event_generic_sign_treaty2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.73.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is In Faction With SOV
+	name = newsrussia2.73.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #ENG
+		name = newsrussia2.73.c
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	option = { #Is in Faction with ENG
+		name = newsrussia2.73.e
+		trigger = {
+			NOT = {
+				tag = ENG
+			}
+			OR = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+	name = newsrussia2.73.f
+		trigger = {
+			NOT = {
+				tag = ENG
+				is_in_faction_with = ENG
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Escalation Between SOV and ENG (SOV Threatens to War ENG Over the Blockade)
+news_event = {
+	id = newsrussia2.74
+	title = newsrussia2.74.t
+	desc = newsrussia2.74.d
+	picture = GFX_russia2news_event_preparation_war
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.74.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is In Faction With SOV
+	name = newsrussia2.74.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #ENG
+		name = newsrussia2.74.c
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	option = { #Is in Faction with ENG
+		name = newsrussia2.74.e
+		trigger = {
+			NOT = {
+				tag = ENG
+			}
+			OR = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+	name = newsrussia2.74.f
+		trigger = {
+			NOT = {
+				tag = ENG
+				is_in_faction_with = ENG
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#SOV Gives Up - Naval Blockade
+news_event = {
+	id = newsrussia2.75
+	title = newsrussia2.75.t
+	desc = newsrussia2.75.d
+	picture = GFX_news_event_worker_protests
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.75.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is In Faction With SOV
+	name = newsrussia2.75.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #ENG
+		name = newsrussia2.75.c
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	option = { #Is in Faction with ENG
+		name = newsrussia2.75.e
+		trigger = {
+			NOT = {
+				tag = ENG
+			}
+			OR = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+	name = newsrussia2.75.f
+		trigger = {
+			NOT = {
+				tag = ENG
+				is_in_faction_with = ENG
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Air Raid Over ENG Ships
+news_event = {
+	id = newsrussia2.76
+	title = newsrussia2.76.t
+	desc = newsrussia2.76.d
+	picture = GFX_russia2news_event_soviet_plane
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.76.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is In Faction With SOV
+	name = newsrussia2.76.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #ENG
+		name = newsrussia2.76.c
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	option = { #Is in Faction with ENG
+		name = newsrussia2.76.e
+		trigger = {
+			NOT = {
+				tag = ENG
+			}
+			OR = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+	name = newsrussia2.76.f
+		trigger = {
+			NOT = {
+				tag = ENG
+				is_in_faction_with = ENG
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#SOV is at War Against ENG
+news_event = {
+	id = newsrussia2.77
+	title = newsrussia2.77.t
+	desc = newsrussia2.77.d
+	picture = GFX_russia2news_event_battle_with_tanks
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.77.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is In Faction With SOV
+	name = newsrussia2.77.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #ENG
+		name = newsrussia2.77.c
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	option = { #Is in Faction with ENG
+		name = newsrussia2.77.e
+		trigger = {
+			NOT = {
+				tag = ENG
+			}
+			OR = {
+				is_in_faction_with = ENG
+				is_subject_of = ENG
+			}
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+	name = newsrussia2.77.f
+		trigger = {
+			NOT = {
+				tag = ENG
+				is_in_faction_with = ENG
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Second Civil War Start - White Guard
+news_event = {
+	id = newsrussia2.78
+	title = newsrussia2.78.t
+	desc = newsrussia2.78.d
+	picture = GFX_russia2news_event_russian_civil_war
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV (White Guards)
+		name = newsrussia2.78.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is SOJ
+	name = newsrussia2.78.b
+		trigger = {
+			tag = SOJ
+		}
+	}
+
+	option = { #Is Communist
+		name = newsrussia2.78.c
+		trigger = {
+			has_government = communism
+			NOT = {
+				tag = SOJ
+			}
+		}
+	}
+
+	option = { #Fascist
+		name = newsrussia2.78.e
+		trigger = {
+			has_government = fascism
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.78.f
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+}
+
+#Reunification With Russian State - Democratic (UKR,...)
+news_event = {
+	id = newsrussia2.79
+	title = newsrussia2.79.t
+	desc = newsrussia2.79.d
+	picture = GFX_russia2news_event_handshake
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.79.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Communist
+		name = newsrussia2.79.b
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	option = { #Fascist
+		name = newsrussia2.79.c
+		trigger = {
+			has_government = fascism
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.79.e
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+}
+
+#The Entente Was Reformed
+news_event = {
+	id = newsrussia2.80
+	title = newsrussia2.80.t
+	desc = newsrussia2.80.d
+	picture = GFX_news_event_generic_sign_treaty1
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.80.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.80.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Fascist/Communist
+		name = newsrussia2.80.c
+		trigger = {
+			OR = {
+				has_government = communism
+				has_government = fascism
+			}
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.80.e
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Provisional Military Junta (Non-Aligned Path After Completing "The Military Junta")
+news_event = {
+	id = newsrussia2.81
+	title = newsrussia2.81.t
+	desc = newsrussia2.81.d
+	picture = GFX_news_event_soldiers_marching
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.81.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Communist
+		name = newsrussia2.81.b
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	option = { #Fascist
+		name = newsrussia2.81.c
+		trigger = {
+			has_government = fascism
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.81.e
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+}
+
+#Restoration of the Tsar
+news_event = {
+	id = newsrussia2.82
+	title = newsrussia2.82.t
+	desc = newsrussia2.82.d
+	picture = GFX_news_event_006
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.82.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Communist
+		name = newsrussia2.82.b
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	option = { #Fascist
+		name = newsrussia2.82.c
+		trigger = {
+			has_government = fascism
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.82.e
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+}
+
+#General's Coup (Military Junta is Still in Power)
+news_event = {
+	id = newsrussia2.83
+	title = newsrussia2.83.t
+	desc = newsrussia2.83.d
+	picture = GFX_russia2news_event_russian_civil_war
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.83.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Communist
+		name = newsrussia2.83.b
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	option = { #Fascist
+		name = newsrussia2.83.c
+		trigger = {
+			has_government = fascism
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.83.e
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+}
+
+#Reintegration of the Lost State
+news_event = {
+	id = newsrussia2.84
+	title = newsrussia2.84.t
+	desc = newsrussia2.84.d
+	picture = GFX_news_event_017
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.84.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Lost State
+		name = newsrussia2.84.b
+		trigger = {
+			OR = {
+				tag = UKR
+				tag = BLR
+				tag = GEO
+				tag = AZR
+				tag = ARM
+				tag = KAZ
+				tag = TMS
+			}
+		}
+	}
+
+	option = { #Fascist/Communist
+		name = newsrussia2.84.c
+		trigger = {
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.84.e
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+}
+
+#Poland Accepts to Become An Imperial Subject
+news_event = {
+	id = newsrussia2.85
+	title = newsrussia2.85.t
+	desc = newsrussia2.85.d
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.85.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Poland
+		name = newsrussia2.85.b
+		trigger = {
+			tag = POL
+		}
+	}
+
+	option = { #Fascist/Communist
+		name = newsrussia2.85.c
+		trigger = {
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+			NOT = {
+				tag = SOV
+				tag = POL
+			}
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.85.e
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+				tag = POL
+			}
+		}
+	}
+}
+
+#Poland Refuse to Become An Imperial Subject
+news_event = {
+	id = newsrussia2.86
+	title = newsrussia2.86.t
+	desc = newsrussia2.86.d
+	picture = GFX_news_event_057
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.86.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Poland Or In Faction With POL
+		name = newsrussia2.86.b
+		trigger = {
+			OR = {
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+
+	option = { #Fascist/Communist
+		name = newsrussia2.86.c
+		trigger = {
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+			NOT = {
+				tag = SOV
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.86.e
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+}
+
+#Poland Accepts to Cede the East for Guarantee
+news_event = {
+	id = newsrussia2.87
+	title = newsrussia2.87.t
+	desc = newsrussia2.87.d
+	picture = GFX_news_event_006
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.87.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Poland Or In Faction With POL
+		name = newsrussia2.87.b
+		trigger = {
+			OR = {
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+
+	option = { #Fascist/Communist
+		name = newsrussia2.87.c
+		trigger = {
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+			NOT = {
+				tag = SOV
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.87.e
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+}
+
+#Poland Refuse to Cede the East for Guarantee
+news_event = {
+	id = newsrussia2.88
+	title = newsrussia2.88.t
+	desc = newsrussia2.88.d
+	picture = GFX_news_event_003
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.88.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Poland Or In Faction With POL
+		name = newsrussia2.88.b
+		trigger = {
+			OR = {
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+
+	option = { #Fascist/Communist
+		name = newsrussia2.88.c
+		trigger = {
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+			NOT = {
+				tag = SOV
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.88.e
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+}
+
+#SOV Will Attack Poland (Fate of Poland)
+news_event = {
+	id = newsrussia2.89
+	title = newsrussia2.89.t
+	desc = newsrussia2.89.d
+	picture = GFX_news_event_generic_panzer_attack
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.89.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Poland Or In Faction With POL
+		name = newsrussia2.89.b
+		trigger = {
+			OR = {
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+
+	option = { #Fascist/Communist
+		name = newsrussia2.89.c
+		trigger = {
+			OR = {
+				has_government = fascism
+				has_government = communism
+			}
+			NOT = {
+				tag = SOV
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+
+	option = { #Democratic OR Neutral
+	name = newsrussia2.89.e
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+			}
+			NOT = {
+				tag = SOV
+				tag = POL
+				is_in_faction_with = POL
+			}
+		}
+	}
+}
+
+#Finland Accepts Puppet Request From SOV
+news_event = {
+	id = newsrussia2.90
+	title = newsrussia2.90.t
+	desc = newsrussia2.90.d
+	picture = GFX_news_event_generic_read_write
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.90.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Finland
+		name = newsrussia2.90.b
+		trigger = {
+			tag = FIN
+		}
+	}
+
+	option = { #Rest of The World
+		name = newsrussia2.90.c
+		trigger = {
+			NOT = {
+				tag = FIN
+				tag = SOV
+			}
+		}
+	}
+}
+
+#Finland Refuse Puppet Request From SOV
+news_event = {
+	id = newsrussia2.91
+	title = newsrussia2.91.t
+	desc = newsrussia2.91.d
+	picture = GFX_news_event_hungary_refused
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.91.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Finland
+		name = newsrussia2.91.b
+		trigger = {
+			tag = FIN
+		}
+	}
+
+	option = { #Rest of The World
+		name = newsrussia2.91.c
+		trigger = {
+			NOT = {
+				tag = FIN
+				tag = SOV
+			}
+		}
+	}
+}
+
+#Finland Accepts Alliance Request From SOV
+news_event = {
+	id = newsrussia2.92
+	title = newsrussia2.92.t
+	desc = newsrussia2.92.d
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.92.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Finland
+		name = newsrussia2.92.b
+		trigger = {
+			tag = FIN
+		}
+	}
+
+	option = { #Rest of The World
+		name = newsrussia2.92.c
+		trigger = {
+			NOT = {
+				tag = FIN
+				tag = SOV
+			}
+		}
+	}
+}
+
+#Finland Refuse Puppet Request From SOV
+news_event = {
+	id = newsrussia2.93
+	title = newsrussia2.93.t
+	desc = newsrussia2.93.d
+	picture = GFX_news_event_011
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.93.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Finland
+		name = newsrussia2.93.b
+		trigger = {
+			tag = FIN
+		}
+	}
+
+	option = { #Rest of The World
+		name = newsrussia2.93.c
+		trigger = {
+			NOT = {
+				tag = FIN
+				tag = SOV
+			}
+		}
+	}
+}
+
+#SOV Will Attack Finland
+news_event = {
+	id = newsrussia2.94
+	title = newsrussia2.94.t
+	desc = newsrussia2.94.d
+	picture = GFX_news_event_012
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.94.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Finland
+		name = newsrussia2.94.b
+		trigger = {
+			tag = FIN
+		}
+	}
+
+	option = { #Rest of The World
+		name = newsrussia2.94.c
+		trigger = {
+			NOT = {
+				tag = FIN
+				tag = SOV
+			}
+		}
+	}
+}
+
+#Creation of the Slavic Alliance
+news_event = {
+	id = newsrussia2.95
+	title = newsrussia2.95.t
+	desc = newsrussia2.95.d
+	picture = GFX_news_event_017
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.95.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.95.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Fascist
+		name = newsrussia2.95.c
+		trigger = {
+			has_government = fascism
+		}
+	}
+
+	option = { # Communist
+		name = newsrussia2.95.e
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	option = { # Democratic Or Neutrality
+	name = newsrussia2.95.f
+		trigger = {
+			OR = {
+				has_government = neutrality
+				has_government = democratic
+			}
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#FROM Has Joined Slavic Alliance
+news_event = {
+	id = newsrussia2.96
+	title = newsrussia2.96.t
+	desc = newsrussia2.96.d
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.96.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.96.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+				tag = FROM
+			}
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.96.c
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { # Rest of the World
+		name = newsrussia2.96.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Restoration of the Monarchy in Germany
+news_event = {
+	id = newsrussia2.97
+	title = newsrussia2.97.t
+	desc = newsrussia2.97.d
+	picture = GFX_russia2news_event_cavalry_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.97.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.97.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.97.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { # Rest of the World
+		name = newsrussia2.97.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#New Polish and Germans Borders (russia2_russia.248 and .249)
+news_event = {
+	id = newsrussia2.98
+	title = newsrussia2.98.t
+	desc = newsrussia2.98.d
+	picture = GFX_news_event_generic_sign_treaty2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.98.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.98.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.98.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { # Is Poland
+		name = newsrussia2.98.e
+		trigger = {
+			tag = POL
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.98.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				tag = POL
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Poland Get Eastern Germany and SOV Gets Eastern Poland
+news_event = {
+	id = newsrussia2.99
+	title = newsrussia2.99.t
+	desc = newsrussia2.99.d
+	picture = GFX_news_event_017
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.99.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.99.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany (This Is Outrageous !)
+		name = newsrussia2.99.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { # Is Poland
+		name = newsrussia2.99.e
+		trigger = {
+			tag = POL
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.99.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				tag = POL
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Poland Accepts to Integrate With SOV
+news_event = {
+	id = newsrussia2.100
+	title = newsrussia2.100.t
+	desc = newsrussia2.100.d
+	picture = GFX_russia2news_event_handshake
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.100.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.100.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.100.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.100.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Poland Refused to Integrate With SOV
+news_event = {
+	id = newsrussia2.101
+	title = newsrussia2.101.t
+	desc = newsrussia2.101.d
+	picture = GFX_news_event_064
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.101.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.101.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.101.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { # Is Poland
+	name = newsrussia2.101.e
+		trigger = {
+			tag = POL
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.101.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				tag = POL
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Poland Accepts to be Repartitionated Between GER and SOV
+news_event = {
+	id = newsrussia2.102
+	title = newsrussia2.102.t
+	desc = newsrussia2.102.d
+	picture = GFX_news_event_canada_patriation
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.102.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.102.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.102.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.102.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Poland Refused to be Repartitionated With SOV
+news_event = {
+	id = newsrussia2.103
+	title = newsrussia2.103.t
+	desc = newsrussia2.103.d
+	picture = GFX_russia2news_event_preparation_war
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.103.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.103.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.103.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { # Is Poland
+	name = newsrussia2.103.e
+		trigger = {
+			tag = POL
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.103.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				tag = POL
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Russian Military Junta Annouce Their Ambitions
+news_event = {
+	id = newsrussia2.104
+	title = newsrussia2.104.t
+	desc = newsrussia2.104.d
+	picture = GFX_russia2news_event_military_parade_moscow
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.104.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Has a Slavic State
+		name = newsrussia2.104.b
+		trigger = {
+			tag = CZE
+			tag = HUN
+			tag = POL
+			tag = EST
+			tag = BUL
+			tag = LAT
+			tag = LIT
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.104.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.104.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				tag = CZE
+				tag = HUN
+				tag = POL
+				tag = EST
+				tag = BUL
+				tag = LAT
+				tag = LIT
+			}
+		}
+	}
+}
+
+#Russian Military Junta Send Ultimatum to All Slavic Country
+news_event = {
+	id = newsrussia2.105
+	title = newsrussia2.105.t
+	desc = newsrussia2.105.d
+	picture = GFX_russia2news_event_preparation_war
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.105.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Has a Slavic State
+		name = newsrussia2.105.b
+		trigger = {
+			tag = CZE
+			tag = HUN
+			tag = POL
+			tag = EST
+			tag = BUL
+			tag = LAT
+			tag = LIT
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.105.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.105.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				tag = CZE
+				tag = HUN
+				tag = POL
+				tag = EST
+				tag = BUL
+				tag = LAT
+				tag = LIT
+			}
+		}
+	}
+}
+
+#Proclaimation of the Slavic Empire
+news_event = {
+	id = newsrussia2.106
+	title = newsrussia2.106.t
+	desc = newsrussia2.106.d
+	picture = GFX_news_event_050
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.106.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With SOV
+		name = newsrussia2.106.b
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+				tag = GER
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.106.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { #Is Fascist
+		name = newsrussia2.106.e
+		trigger = {
+			has_government = fascism
+			NOT = {
+				tag = GER
+			}
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.106.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				has_government = fascism
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Russo-German Pact
+news_event = {
+	id = newsrussia2.107
+	title = newsrussia2.107.t
+	desc = newsrussia2.107.d
+	picture = GFX_news_event_hitler_handshake
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.107.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Has Slavic State
+		name = newsrussia2.107.b
+		trigger = {
+			tag = CZE
+			tag = HUN
+			tag = POL
+			tag = EST
+			tag = BUL
+			tag = LAT
+			tag = LIT
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.107.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { #Is Fascist
+		name = newsrussia2.107.e
+		trigger = {
+			has_government = fascism
+			NOT = {
+				tag = GER
+			}
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.107.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				has_government = fascism
+				tag = CZE
+				tag = HUN
+				tag = POL
+				tag = EST
+				tag = BUL
+				tag = LAT
+				tag = LIT
+			}
+		}
+	}
+}
+
+#Alliance With Germany
+news_event = {
+	id = newsrussia2.108
+	title = newsrussia2.108.t
+	desc = newsrussia2.108.d
+	picture = GFX_news_event_german_inspect_troops
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.108.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Has Slavic State
+		name = newsrussia2.108.b
+		trigger = {
+			tag = CZE
+			tag = HUN
+			tag = POL
+			tag = EST
+			tag = BUL
+			tag = LAT
+			tag = LIT
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.108.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { #Is in Faction With Germany
+		name = newsrussia2.108.e
+		trigger = {
+			is_in_faction_with = GER
+			NOT = {
+				tag = GER
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Fascist
+		name = newsrussia2.108.f
+		trigger = {
+			has_government = fascism
+			NOT = {
+				tag = GER
+			}
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.108.g
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				has_government = fascism
+				is_in_faction_with = GER
+				tag = CZE
+				tag = HUN
+				tag = POL
+				tag = EST
+				tag = BUL
+				tag = LAT
+				tag = LIT
+			}
+		}
+	}
+}
+
+#Russia Betray Germany
+news_event = {
+	id = newsrussia2.109
+	title = newsrussia2.109.t
+	desc = newsrussia2.109.d
+	picture = GFX_russia2news_event_tank_menacing
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.109.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.109.b
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { #Is in Faction With Germany
+		name = newsrussia2.109.c
+		trigger = {
+			is_in_faction_with = GER
+			NOT = {
+				tag = GER
+			}
+		}
+	}
+
+	option = { #Is Allies
+		name = newsrussia2.109.e
+		trigger = {
+			OR = {
+				tag = ENG
+				is_in_faction_with = ENG
+			}
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.109.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				tag = ENG
+				is_in_faction_with = GER
+				is_in_faction_with = ENG
+			}
+		}
+	}
+}
+
+#Russia French Pact
+news_event = {
+	id = newsrussia2.110
+	title = newsrussia2.110.t
+	desc = newsrussia2.110.d
+	picture = GFX_news_event_churchill_degaulle
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.110.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is France
+	name = newsrussia2.110.b
+		trigger = {
+			tag = FRA
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.110.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { #Has Slavic State
+		name = newsrussia2.110.e
+		trigger = {
+			tag = CZE
+			tag = HUN
+			tag = POL
+			tag = EST
+			tag = BUL
+			tag = LAT
+			tag = LIT
+			NOT = {
+				tag = SOV
+			}
+		}
+	}
+
+	option = { #Is Allies
+		name = newsrussia2.110.f
+		trigger = {
+			OR = {
+				tag = ENG
+				is_in_faction_with = ENG
+			}
+
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.110.g
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				tag = ENG
+				tag = FRA
+				tag = CZE
+				tag = HUN
+				tag = POL
+				tag = EST
+				tag = BUL
+				tag = LAT
+				tag = LIT
+				is_in_faction_with = ENG
+			}
+		}
+	}
+}
+
+#Italy Join the Entente
+news_event = {
+	id = newsrussia2.111
+	title = newsrussia2.111.t
+	desc = newsrussia2.111.d
+	picture = GFX_news_event_yugoslav_coup
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.111.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Italy
+	name = newsrussia2.111.b
+		trigger = {
+			tag = ITA
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.111.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { # Is YugoSlavia
+		name = newsrussia2.111.e
+		trigger = {
+			tag = YUG
+		}
+	}
+
+	option = { #Is in faction with SOV
+		name = newsrussia2.111.f
+		trigger = {
+			is_in_faction_with = SOV
+			NOT = {
+				tag = SOV
+				tag = ITA
+			}
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.111.g
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				tag = ITA
+				tag = YUG
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Italy Give up Slavic Claims
+news_event = {
+	id = newsrussia2.112
+	title = newsrussia2.112.t
+	desc = newsrussia2.112.d
+	picture = GFX_russia2news_event_soldiers_handshaking
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.112.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Italy
+	name = newsrussia2.112.b
+		trigger = {
+			tag = ITA
+		}
+	}
+
+	option = { #Is Germany
+		name = newsrussia2.112.c
+		trigger = {
+			tag = GER
+		}
+	}
+
+	option = { # Is YugoSlavia
+		name = newsrussia2.112.e
+		trigger = {
+			tag = YUG
+		}
+	}
+
+	option = { #Is Allies
+		name = newsrussia2.112.f
+		trigger = {
+			OR = {
+				tag = ENG
+				is_in_faction_with = ENG
+			}
+		}
+	}
+
+	option = { # Rest of the World
+	name = newsrussia2.112.g
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = GER
+				tag = ITA
+				tag = YUG
+				is_in_faction_with = ENG
+			}
+		}
+	}
+}
+
+#The Tsar Comes Back - Democratic Path
+news_event = {
+	id = newsrussia2.113
+	title = newsrussia2.113.t
+	desc = newsrussia2.113.d
+	picture = GFX_news_event_006
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.113.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is Any Russian State
+		name = newsrussia2.113.b
+		trigger = {
+			OR = {
+				tag = UKR
+				tag = BLR
+				tag = KAZ
+				tag = TMS
+				tag = GEO
+				tag = AZR
+				tag = ARM
+			}
+		}
+	}
+
+	option = { #Is Communist
+		name = newsrussia2.113.c
+		trigger = {
+			has_government = communism
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.113.e
+		trigger = {
+			NOT = {
+				tag = UKR
+				tag = BLR
+				tag = KAZ
+				tag = TMS
+				tag = GEO
+				tag = AZR
+				tag = ARM
+				tag = SOV
+				has_government = communism
+			}
+		}
+	}
+}
+
+#Konstantin Return
+news_event = {
+	id = newsrussia2.114
+	title = newsrussia2.114.t
+	desc = newsrussia2.114.d
+	picture = GFX_news_event_050
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.114.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.114.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.114.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Konstantin Wins the Power Struggle
+news_event = {
+	id = newsrussia2.115
+	title = newsrussia2.115.t
+	desc = newsrussia2.115.d
+	picture = GFX_russia2news_event_blackshirt_russia
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.115.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.115.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.115.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Anastasy Wins the Power Struggle
+news_event = {
+	id = newsrussia2.116
+	title = newsrussia2.116.t
+	desc = newsrussia2.116.d
+	picture = GFX_russia2news_event_anastasy_win
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.116.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.116.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.116.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Policy of Aggression towards Europe
+news_event = {
+	id = newsrussia2.117
+	title = newsrussia2.117.t
+	desc = newsrussia2.117.d
+	picture = GFX_russia2news_event_cavalry_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.117.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.117.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is European Country
+		name = newsrussia2.117.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			any_owned_state = {
+				is_capital = yes
+				is_on_continent = europe
+			}
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.117.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				any_owned_state = {
+					is_capital = yes
+					is_on_continent = europe
+				}
+			}
+		}
+	}
+}
+
+#Policy of Aggression towards Asia
+news_event = {
+	id = newsrussia2.118
+	title = newsrussia2.118.t
+	desc = newsrussia2.118.d
+	picture = GFX_russia2news_event_cavalry_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.118.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.118.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is Asian Country
+		name = newsrussia2.118.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			any_owned_state = {
+				is_capital = yes
+				is_on_continent = asia
+			}
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.118.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				any_owned_state = {
+					is_capital = yes
+					is_on_continent = asia
+				}
+			}
+		}
+	}
+}
+
+#Policy of Aggression towards America
+news_event = {
+	id = newsrussia2.119
+	title = newsrussia2.119.t
+	desc = newsrussia2.119.d
+	picture = GFX_russia2news_event_cavalry_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.119.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.119.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is American Country
+		name = newsrussia2.119.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			any_owned_state = {
+				is_capital = yes
+				OR = {
+					is_on_continent = north_america
+					is_on_continent = south_america
+				}
+			}
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.119.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				any_owned_state = {
+					is_capital = yes
+					OR = {
+						is_on_continent = north_america
+						is_on_continent = south_america
+					}
+				}
+			}
+		}
+	}
+}
+
+#Future Foes - Defensive
+news_event = {
+	id = newsrussia2.120
+	title = newsrussia2.120.t
+	desc = newsrussia2.120.d
+	picture = GFX_russia2news_event_preparation_war
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.120.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.120.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.120.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Alliance - Russia Choose Europe
+news_event = {
+	id = newsrussia2.121
+	title = newsrussia2.121.t
+	desc = newsrussia2.121.d
+	picture = GFX_news_event_generic_sign_treaty3
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.121.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.121.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is European Country
+		name = newsrussia2.121.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			any_owned_state = {
+				is_capital = yes
+				is_on_continent = europe
+			}
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.121.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				any_owned_state = {
+					is_capital = yes
+					is_on_continent = europe
+				}
+			}
+		}
+	}
+}
+
+#Alliance - Russia Choose Asia
+news_event = {
+	id = newsrussia2.122
+	title = newsrussia2.122.t
+	desc = newsrussia2.122.d
+	picture = GFX_news_event_generic_sign_treaty3
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.122.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.122.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is Asian Country
+		name = newsrussia2.122.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			any_owned_state = {
+				is_capital = yes
+				is_on_continent = asia
+			}
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.122.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				any_owned_state = {
+					is_capital = yes
+					is_on_continent = asia
+				}
+			}
+		}
+	}
+}
+
+#Alliance - Russia Choose America
+news_event = {
+	id = newsrussia2.123
+	title = newsrussia2.123.t
+	desc = newsrussia2.123.d
+	picture = GFX_news_event_generic_sign_treaty3
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.123.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.123.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is American Country
+		name = newsrussia2.123.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			any_owned_state = {
+				is_capital = yes
+				OR = {
+					is_on_continent = north_america
+					is_on_continent = south_america
+				}
+			}
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.123.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				any_owned_state = {
+					is_capital = yes
+					OR = {
+						is_on_continent = north_america
+						is_on_continent = south_america
+					}
+				}
+			}
+		}
+	}
+}
+
+#Alliance - Russia choose closed alliance
+news_event = {
+	id = newsrussia2.124
+	title = newsrussia2.124.t
+	desc = newsrussia2.124.d
+	picture = GFX_news_event_bose_meeting
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.124.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.124.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.124.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Pact of Non-interference with Russia
+news_event = {
+	id = newsrussia2.125
+	title = newsrussia2.125.t
+	desc = newsrussia2.125.d
+	picture = GFX_news_event_generic_read_write
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.125.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.125.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #has Idea SOV_Root_russian_pact
+		name = newsrussia2.125.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+			has_idea = SOV_Root_russian_pact
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.125.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+				has_idea = SOV_Root_russian_pact
+			}
+		}
+	}
+}
+
+#The Tragedy of (Get Year) - Anastasy
+news_event = {
+	id = newsrussia2.126
+	title = newsrussia2.126.t
+	desc = newsrussia2.126.d
+	picture = GFX_news_event_generic_funeral
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.126.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.126.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.126.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#The Tragedy of (Get Year) - Pavel
+news_event = {
+	id = newsrussia2.127
+	title = newsrussia2.127.t
+	desc = newsrussia2.127.d
+	picture = GFX_news_event_generic_funeral
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.127.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.127.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.127.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Russia Wants to Formalize the Third Rome
+news_event = {
+	id = newsrussia2.128
+	title = newsrussia2.128.t
+	desc = newsrussia2.128.d
+	picture = GFX_russia2news_event_military_parade_moscow
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.128.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.128.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.128.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Formation  of the Third Rome
+news_event = {
+	id = newsrussia2.129
+	title = newsrussia2.129.t
+	desc = newsrussia2.129.d
+	picture = GFX_news_event_generic_rally2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.129.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.129.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.129.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Russian and Japanese Joint invasion of China
+news_event = {
+	id = newsrussia2.130
+	title = newsrussia2.130.t
+	desc = newsrussia2.130.d
+	picture = GFX_news_event_japanese_army_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV Or JAP
+		name = newsrussia2.130.a
+		trigger = {
+			OR = {
+				tag = SOV
+				tag = JAP
+			}
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.130.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is China
+		name = newsrussia2.130.c
+		trigger = {
+			OR = {
+				tag = CHI
+				tag = PRC
+				tag = SHX
+				tag = XSM
+				tag = SIK
+				tag = TIB
+				tag = YUN
+				tag = GXC
+			}
+			NOT = {
+				tag = SOV
+				tag = JAP
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.130.e
+		trigger = {
+			NOT = {
+				tag = CHI
+				tag = PRC
+				tag = SHX
+				tag = XSM
+				tag = SIK
+				tag = TIB
+				tag = YUN
+				tag = GXC
+				tag = SOV
+				tag = JAP
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Russian Join the invasion of China Led by Japan
+news_event = {
+	id = newsrussia2.131
+	title = newsrussia2.131.t
+	desc = newsrussia2.131.d
+	picture = GFX_news_event_chinese_soldiers_mountain
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV Or JAP
+		name = newsrussia2.131.a
+		trigger = {
+			OR = {
+				tag = SOV
+				tag = JAP
+			}
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.131.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is China
+		name = newsrussia2.131.c
+		trigger = {
+			OR = {
+				tag = CHI
+				tag = PRC
+				tag = SHX
+				tag = XSM
+				tag = SIK
+				tag = TIB
+				tag = YUN
+				tag = GXC
+			}
+			NOT = {
+				tag = SOV
+				tag = JAP
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.131.e
+		trigger = {
+			NOT = {
+				tag = CHI
+				tag = PRC
+				tag = SHX
+				tag = XSM
+				tag = SIK
+				tag = TIB
+				tag = YUN
+				tag = GXC
+				tag = SOV
+				tag = JAP
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#The Sino-Japanese Peace Conference has been Successful
+news_event = {
+	id = newsrussia2.132
+	title = newsrussia2.132.t
+	desc = newsrussia2.132.d
+	picture = GFX_news_event_generic_sign_treaty3
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.132.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.132.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is Leader of China
+		name = newsrussia2.132.c
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = { #is Japan
+		name = newsrussia2.132.e
+		trigger = {
+			tag = JAP
+			NOT = {
+				tag = SOV
+				tag = event_target:WTT_current_china_leader
+				is_in_faction_with = SOV
+			}
+		}
+	}
+
+	option = { #Is Chines Nations but Not the Leader
+		name = newsrussia2.132.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+				tag = event_target:WTT_current_china_leader
+				is_in_faction_with = SOV
+			}
+			is_literally_china = yes
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.132.g
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+				tag = event_target:WTT_current_china_leader
+				is_in_faction_with = SOV
+				is_literally_china = yes
+			}
+		}
+	}
+}
+
+#China Joins the Russian Faction
+news_event = {
+	id = newsrussia2.133
+	title = newsrussia2.133.t
+	desc = newsrussia2.133.d
+	picture = GFX_news_event_009
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.133.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.133.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = event_target:WTT_current_china_leader
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is Leader of China
+		name = newsrussia2.133.c
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+	}
+
+	option = { #Is Chines Nations but Not the Leader
+		name = newsrussia2.133.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = event_target:WTT_current_china_leader
+				is_in_faction_with = SOV
+			}
+			is_literally_china = yes
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.133.f
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = event_target:WTT_current_china_leader
+				is_in_faction_with = SOV
+				is_literally_china = yes
+			}
+		}
+	}
+}
+
+#Italy Joins the Russian Faction
+news_event = {
+	id = newsrussia2.134
+	title = newsrussia2.134.t
+	desc = newsrussia2.134.d
+	picture = GFX_russia2news_event_handshake
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.134.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.134.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = ITA
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is italy
+		name = newsrussia2.134.c
+		trigger = {
+			tag = Ita
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.134.e
+		trigger = {
+			NOT = {
+				tag = ITA
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Anastasy Seeks Great Ambnitions
+news_event = {
+	id = newsrussia2.135
+	title = newsrussia2.135.t
+	desc = newsrussia2.135.d
+	picture = GFX_russia2news_event_russian_civil_war
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.135.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.135.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.135.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Anastasy Formed greater Russia
+news_event = {
+	id = newsrussia2.136
+	title = newsrussia2.136.t
+	desc = newsrussia2.136.d
+	picture = GFX_news_event_050
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.136.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.136.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.136.c
+		trigger = {
+			NOT = {
+				tag = SOV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Russia Has Formed a Continental Puppet
+news_event = {
+	id = newsrussia2.137
+	title = newsrussia2.137.t
+	desc = newsrussia2.137.d
+	picture = GFX_news_event_038
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.137.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.137.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is Continental Puppet
+		name = newsrussia2.137.c
+		trigger = {
+			tag = PREV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.137.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = PREV
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Creation of the Unthinkable Alliance (Japan)
+news_event = {
+	id = newsrussia2.138
+	title = newsrussia2.138.t
+	desc = newsrussia2.138.d
+	picture = GFX_news_event_041
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.138.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.138.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is Japan
+		name = newsrussia2.138.c
+		trigger = {
+			tag = JAP
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.138.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = JAP
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Perpetual Defense Liberty - Accepts
+news_event = {
+	id = newsrussia2.139
+	title = newsrussia2.139.t
+	desc = newsrussia2.139.d
+	picture = GFX_russia2news_event_soldiers_handshaking
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.139.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.139.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.139.c
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.139.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#New Russian Era - Annex Someone
+news_event = {
+	id = newsrussia2.140
+	title = newsrussia2.140.t
+	desc = newsrussia2.140.d
+	picture = GFX_russia2news_event_tank_menacing
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.140.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.140.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.140.c
+		trigger = {
+			tag = PREV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.140.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#New Russian Era - Puppet Someone
+news_event = {
+	id = newsrussia2.141
+	title = newsrussia2.141.t
+	desc = newsrussia2.141.d
+	picture = GFX_russia2news_event_soldiers_handshaking
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.141.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.141.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.141.c
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.141.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Perpetual Defense Liberty - Refuse
+news_event = {
+	id = newsrussia2.142
+	title = newsrussia2.142.t
+	desc = newsrussia2.142.d
+	picture = GFX_russia2news_event_tank_menacing
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.142.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.142.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.142.c
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.142.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#New Russian Era - Someone Refuse to be Annexed
+news_event = {
+	id = newsrussia2.143
+	title = newsrussia2.143.t
+	desc = newsrussia2.143.d
+	picture = GFX_russia2news_event_tank_menacing
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.143.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.143.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.143.c
+		trigger = {
+			tag = PREV
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.143.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#New Russian Era - Someone Refused to be Puppet
+news_event = {
+	id = newsrussia2.144
+	title = newsrussia2.144.t
+	desc = newsrussia2.144.d
+	picture = GFX_news_event_003
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.144.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.144.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.144.c
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.144.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Civil War Caused by the International
+news_event = {
+	id = newsrussia2.145
+	title = newsrussia2.145.t
+	desc = newsrussia2.145.d
+	picture = GFX_russia2news_event_battle_with_tanks
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.145.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.145.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.145.c
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.145.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Country Joins the 4th International (Influenced)
+news_event = {
+	id = newsrussia2.146
+	title = newsrussia2.146.t
+	desc = newsrussia2.146.d
+	picture = GFX_news_event_generic_rally2
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.146.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.146.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.146.c
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.146.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Civil War Caused by the Iron Curtain
+news_event = {
+	id = newsrussia2.147
+	title = newsrussia2.147.t
+	desc = newsrussia2.147.d
+	picture = GFX_news_event_worker_protests
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.147.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.147.b
+		trigger = {
+			NOT = {
+				tag = SOV
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.147.c
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.147.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Country Joins the Commnitern (Iron Curtain)
+news_event = {
+	id = newsrussia2.148
+	title = newsrussia2.148.t
+	desc = newsrussia2.148.d
+	picture = GFX_news_event_stalin_meeting
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.148.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.148.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.148.c
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.148.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Country becomes Communist without war
+news_event = {
+	id = newsrussia2.149
+	title = newsrussia2.149.t
+	desc = newsrussia2.149.d
+	picture = GFX_news_event_generic_rally
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is SOV
+		name = newsrussia2.149.a
+		trigger = {
+			tag = SOV
+		}
+	}
+
+	option = { #Is in Faction With Russia
+		name = newsrussia2.149.b
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+			}
+			is_in_faction_with = SOV
+		}
+	}
+
+	option = { #Is FROM
+		name = newsrussia2.149.c
+		trigger = {
+			tag = FROM
+		}
+	}
+
+	option = { #Rest of the World
+		name = newsrussia2.149.e
+		trigger = {
+			NOT = {
+				tag = SOV
+				tag = FROM
+				is_in_faction_with = SOV
+			}
+		}
+	}
+}
+
+#Ukraine Wins the Second Civil War
+news_event = {
+	id = newsrussia2.150
+	title = newsrussia2.150.t
+	desc = newsrussia2.150.d
+	picture = GFX_russia2news_event_cavalry_parade
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { #Is UKR
+		name = newsrussia2.150.a
+		trigger = {
+			tag = UKR
+		}
+	}
+
+	option = { #Is UKR Ally
+		name = newsrussia2.150.b
+		trigger = {
+			NOT = {
+				tag = UKR
+			}
+			is_in_faction_with = UKR
+		}
+	}
+
+	option = { #Is Russian State
+		name = newsrussia2.150.c
+		trigger = {
+			NOT = {
+				tag = UKR
+				is_in_faction_with = UKR
+			}
+			is_in_array = { global.russia_reworked_russian_states = THIS }
+		}
+	}
+
+	option = { #Is Enemy of Ukraine
+		name = newsrussia2.150.e
+		trigger = {
+			NOT = {
+				tag = UKR
+				is_in_faction_with = UKR
+				is_in_array = { global.russia_reworked_russian_states = THIS }
+			}
+			has_war_with = UKR
+		}
+	}
+
+	option = { #Neutral/Rest of the World
+		name = newsrussia2.150.f
+		trigger = {
+			NOT = {
+				tag = UKR
+				is_in_faction_with = UKR
+				is_in_array = { global.russia_reworked_russian_states = THIS }
+				has_war_with = UKR
+			}
+		}
+	}
+}

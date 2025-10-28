@@ -1,0 +1,404 @@
+
+add_namespace = russia2_tannu
+
+# Check if File is Loaded
+country_event = {
+	id = russia2_tannu.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_tannu
+	}
+}
+
+#Tannu integration
+country_event = {
+	id = russia2_tannu.1
+	title = russia2_tannu.1.t
+	desc = russia2_tannu.1.d
+	picture = GFX_report_event_soviet_tanks_snow
+	
+	is_triggered_only = yes
+	
+	option = { #Tannu Accepts
+		name = russia2_tannu.1.a
+		ai_chance = { base = 100 }
+		custom_effect_tooltip = SOV_game_totally_over_TT	
+		hidden_effect = {
+			SOV = {
+				country_event = { days = 1 id = russia2_tannu.2 }
+			}
+		}
+	}
+	
+	option = { #Tannu Refuse
+		name = russia2_tannu.1.b
+		ai_chance = { base = 0 }
+		hidden_effect = {
+			SOV = {
+				country_event = { days = 1 id = russia2_tannu.3 }
+			}
+		}
+	}	
+}	
+
+#Tannu Accepts
+country_event = {
+	id = russia2_tannu.2
+	title = russia2_tannu.2.t
+	desc = russia2_tannu.2.d
+	picture = GFX_report_event_soviet_finnish_pact
+
+	is_triggered_only = yes
+	
+	option = {# nice
+		name = russia2_tannu.2.a
+		annex_country = { target = TAN }
+		hidden_effect = {
+			news_event = { days = 2 id = newsrussia2.5 }
+		}			
+	}
+}
+
+#Tannu Refuses 
+country_event = {
+	id = russia2_tannu.3
+	title = russia2_tannu.3.t
+	desc = russia2_tannu.3.d
+	picture = GFX_report_event_soviet_tanks_snow
+		
+	is_triggered_only = yes
+		
+	option = {# damn
+		name = russia2_tannu.3.a
+		hidden_effect = {
+			news_event = { days = 2 id = newsrussia2.6 }
+		}			
+	}
+}
+
+#4th International - Tanna Tuva Invitation
+country_event = {
+	id = russia2_tannu.4
+	title = russia2_tannu.4.t
+	desc = russia2_tannu.4.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { #Accept
+		name = russia2_tannu.4.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				has_government = communism
+			}
+		}
+		SOV = { add_to_faction = TAN }
+	}
+
+	option = {	#Refuse
+		name = russia2_tannu.4.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_government = communism
+			}
+		}
+	}
+}
+
+#SOV Is Not Communist Anymore, Take Over the Communist Government?
+country_event = {
+	id = russia2_tannu.5
+	title = russia2_tannu.5.t
+	desc = russia2_tannu.5.d
+	picture = GFX_report_event_generic_read_write
+	
+	trigger = {
+		tag = TAN
+		has_government = communism
+		is_subject = no
+		has_civil_war = no
+		NOT = {
+			has_country_flag = minor_helped_soj_scw
+		}
+		SOV = {
+			NOT = {
+				has_government = communism
+				has_war_with = TAN
+				is_subject = yes
+				has_civil_war = yes
+				has_global_flag = second_russian_civil_war_in_progress
+			}
+			OR = {
+				AND = {
+					has_completed_focus = SOV_launch_insurrection
+					has_government = democratic
+				}
+				AND = {
+					has_completed_focus = SOV_bring_back_old_life
+					has_government = neutrality
+				}
+				AND = {
+					has_completed_focus = SOV_night_manchurian_border
+					has_government = fascism
+				}
+			}
+		}
+	}
+
+	fire_only_once = yes
+	
+	option = { #Become Democratic
+		name = russia2_tannu.5.a
+		ai_chance = {
+			base = 80
+		}
+		trigger = {
+			SOV = {
+				has_government = democratic
+			}
+		}
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+		}
+		set_popularities = {
+			democratic = 80
+			neutrality = 10
+			fascism = 5
+			communism = 5
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = SOV
+			value = 10
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = SOV
+			value = 100
+		}
+		SOV = {
+			add_ai_strategy = {
+				type = befriend
+				id = TAN
+				value = 10
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = TAN
+				value = 100
+			}
+		}
+	}
+
+	option = { #Become Non-Alligned
+		name = russia2_tannu.5.b
+		ai_chance = {
+			base = 80
+		}
+		trigger = {
+			SOV = {
+				has_government = neutrality
+			}
+		}
+		set_politics = {
+			ruling_party = neutrality
+		}
+		set_popularities = {
+			democratic = 10
+			neutrality = 80
+			fascism = 5
+			communism = 5
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = SOV
+			value = 10
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = SOV
+			value = 100
+		}
+		SOV = {
+			add_ai_strategy = {
+				type = befriend
+				id = TAN
+				value = 10
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = TAN
+				value = 100
+			}
+		}
+	}
+
+	option = { #Become Fascist
+		name = russia2_tannu.5.c
+		ai_chance = {
+			base = 60
+		}
+		trigger = {
+			SOV = {
+				has_government = fascism
+			}
+		}
+		set_politics = {
+			ruling_party = fascism
+		}
+		set_popularities = {
+			democratic = 5
+			neutrality = 5
+			fascism = 85
+			communism = 5
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = SOV
+			value = 10
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = SOV
+			value = 100
+		}
+		SOV = {
+			puppet = ROOT
+			country_event = { id = russia2_russia.265 days = 1 }
+			add_ai_strategy = {
+				type = befriend
+				id = TAN
+				value = 10
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = TAN
+				value = 100
+			}
+		}
+	}
+
+	option = { #Remain Communist
+		name = russia2_tannu.5.e
+		ai_chance = {
+			base = 20
+			modifier = {
+				add = 20
+				SOV = {
+					has_government = fascism
+				}
+			}
+		}
+		add_popularity = {
+			ideology = communism
+			popularity = 0.1
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = SOV
+			value = -200
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = SOV
+			value = -200
+		}
+		SOV = {
+			add_ai_strategy = {
+				type = befriend
+				id = TAN
+				value = -100
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = TAN
+				value = -100
+			}
+		}
+	}
+}
+
+#SOV Ask Unification With TAN
+country_event = {
+	id = russia2_tannu.6
+	title = russia2_tannu.6.t
+	desc = russia2_tannu.6.d
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_tannu.6.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			country_event = { id = russia2_tannu.7 days = 1 }
+		}
+	}
+
+	option = { #Refuse
+		name = russia2_tannu.6.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_tannu.8 days = 1 }
+		}
+	}
+}
+
+#TAN Accept
+country_event = {
+	id = russia2_tannu.7
+	title = russia2_tannu.7.t
+	desc = russia2_tannu.7.d
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	option = { #Good
+		name = russia2_tannu.7.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			annex_country = {
+				target = FROM
+			}
+			add_state_core = 329
+		}
+	}
+}
+
+#TAN Refuse
+country_event = {
+	id = russia2_tannu.8
+	title = russia2_tannu.8.t
+	desc = russia2_tannu.8.d
+	picture = GFX_report_event_chinese_soldiers_01
+
+	is_triggered_only = yes
+
+	option = { #Good
+		name = russia2_tannu.8.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = FROM
+			}
+		}
+	}
+}

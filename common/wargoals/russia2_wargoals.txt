@@ -1,0 +1,144 @@
+wargoal_types = {
+
+	liberate_workers = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+        war_name = SOVIET_WORKER_LIBERATION
+
+		allowed = {
+            always = no
+		}
+
+		puppet = {
+            always = yes
+        }
+
+		puppet_cost = -80
+		take_states_cost = 50
+
+		threat = 2
+	}
+
+    take_claimed_slavic_state = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		war_name = RUSSIAN_RECLAMATION_SLAVIC_STATE
+
+        allowed = {
+            tag = SOV
+            has_government = neutrality
+		}
+
+		take_states = {
+			is_claimed_by = ROOT
+			is_owned_by = PREV
+			is_controlled_by = PREV
+            OR = {
+                has_state_flag = SOV_slavic_states
+                has_state_flag = SOV_czech_slavic_states
+            }
+		}
+
+		generate_base_cost = 75
+		generate_per_state_cost = 0
+
+        take_states_limit = 100
+		take_states_cost = -75
+
+		threat = 0.10
+	}
+
+    defense_liberty = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+        war_name = RUSSIAN_DEFENSE_LIBERTY
+
+		allowed = {
+            always = no
+		}
+
+		puppet = {
+            always = yes
+        }
+
+		puppet_cost = -65
+
+		threat = 2
+	}
+
+	second_russian_civil_war = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+        war_name = SECOND_RUSSIAN_CIVIL_WAR
+
+		allowed = {
+            always = no
+		}
+
+		puppet = {
+            always = no
+        }
+
+		puppet_cost = 10000
+
+		threat = 0
+	}
+
+	defense_external_threats = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+        war_name = RUSSIAN_DEFENSE_EXTERNAL_THREATS
+
+		allowed = {
+            always = no
+		}
+
+		puppet = {
+            always = yes
+        }
+
+		puppet_cost = -50
+		take_states_cost = -25
+		force_government_cost = -75
+
+		threat = 0
+	}
+
+	anarchist_wargoal = {
+		# PREV = original target country
+		# ROOT = goal owner country
+
+		war_name = RUSSIAN_ANARCHIST_WARGOAL
+
+		allowed = {
+			tag = SOV
+			has_government = anarchy
+			has_completed_focus = SOV_anarchist_election
+			has_country_flag = can_infiltrate_foreign_countries_wargoal
+		}
+
+		available = {
+
+		}
+
+		take_states = {
+			is_owned_by = PREV
+			is_controlled_by = PREV
+		}
+
+		generate_base_cost = 50
+		generate_per_state_cost = 15
+
+        take_states_limit = 25
+		take_states_cost = -50
+
+		expire = 365
+
+		threat = 0.10
+	}
+}

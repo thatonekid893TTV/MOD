@@ -1,0 +1,811 @@
+###########################
+# French Events
+###########################
+
+add_namespace = russia2_france
+
+# Check if File is Loaded
+country_event = {
+	id = russia2_france.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_frances
+	}
+}
+
+# Invite France
+country_event = {
+	id = russia2_france.1
+	title = russia2_france.1.t
+	desc = russia2_france.1.d
+	picture = GFX_report_event_stalin_meeting
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 60
+			modifier = {
+				has_government = communism
+				factor = 2
+			}
+		}
+		name = russia2_france.1.a
+		SOV = { add_to_faction = FRA }
+		hidden_effect = {
+			news_event = { hours = 6 id = newsrussia2.19 }
+		}
+	}
+
+	option = {
+		ai_chance = {
+			base = 40
+			modifier = {
+				has_government = communism
+				factor = 0
+			}
+		}
+		name = russia2_france.1.b
+		hidden_effect = {
+			SOV = {
+				country_event = { id = russia2_france.2 days = 1 }
+			}
+		}
+	}
+}
+
+#France Refuse
+country_event = {
+	id = russia2_france.2
+	title = russia2_france.2.t
+	desc = russia2_france.2.d
+	picture = GFX_report_event_degaulle_churchill
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_france.2.a
+	}
+}
+
+# Ask France to remove its guarantees
+country_event = {
+	id = russia2_france.3
+	title = russia2_france.3.t
+	desc = russia2_france.3.d
+	picture = GFX_report_event_pierre_laval
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 75
+			modifier = {
+				has_war = yes
+				add = 25
+			}
+		}
+		name = russia2_france.3.a
+		custom_effect_tooltip = france_guarantee_cancel_tt
+		every_country = {
+			limit = {
+				is_guaranteed_by = FRA
+				any_state = {
+					has_state_flag = SOV_slavic_states
+					is_controlled_by = PREV
+				}
+			}
+			hidden_effect = {
+				FRA = {
+					diplomatic_relation = {
+						country = PREV
+					  	relation = guarantee
+					  	active = no
+					}
+					diplomatic_relation = {
+						country = ROM
+					  	relation = guarantee
+					  	active = no
+					}
+				}
+			}
+		}
+		diplomatic_relation = {
+			country = SOV
+			relation = non_aggression_pact
+			active = yes
+		}
+		set_country_flag = signed_slavic_pact
+		SOV = {
+			country_event = { id = russia2_france.4 days = 1 }
+		}
+		hidden_effect = {
+			news_event = {
+				id = newsrussia2.110 days = 2
+			}
+		}
+	}
+
+	option = {
+		ai_chance = {
+			base = 25
+			modifier = {
+				has_war = yes
+				factor = 0
+			}
+		}
+		name = russia2_france.3.b
+		SOV = {
+			country_event = { id = russia2_france.5 days = 1 }
+		}
+	}
+}
+
+#France Accepts
+country_event = {
+	id = russia2_france.4
+	title = russia2_france.4.t
+	desc = russia2_france.4.d
+	picture = GFX_report_event_degaulle_churchill
+
+	is_triggered_only = yes
+
+	option = { #Thank you
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_france.4.a
+	}
+}
+
+#France Refuses
+country_event = {
+	id = russia2_france.5
+	title = russia2_france.5.t
+	desc = russia2_france.5.d
+	picture = GFX_report_event_por_president_military_inspection
+
+	is_triggered_only = yes
+
+	option = { #Damn
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_france.5.a
+	}
+}
+
+#SOV Help Arrives
+country_event = {
+	id = russia2_france.6
+	title = russia2_france.6.t
+	desc = russia2_france.6.d
+	picture = GFX_report_event_generic_rifles
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_france.6.a
+		if = {
+			limit = {
+				has_capitulated = no
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 4000
+				producer = SOV
+			}
+			add_opinion_modifier = { target = FROM modifier = russian_help }
+		}
+		else_if = {
+			limit = {
+				has_capitulated = yes
+				NOT = { has_government = communism }
+			}
+			add_timed_idea = { idea = FRA_Russian_help days = 730 }
+			add_opinion_modifier = { target = FROM modifier = russian_help }
+		}
+		else_if = {
+			limit = {
+				has_capitulated = yes
+				has_government = communism
+			}
+			add_timed_idea = { idea = FRA_Russian_help2 days = 730 }
+			add_opinion_modifier = { target = FROM modifier = russian_help }
+		}
+	}
+}
+
+#SOV Send Ultimatum for France to Join their Faction
+country_event = {
+	id = russia2_france.7
+	title = russia2_france.7.t
+	desc = russia2_france.7.d
+	picture = GFX_report_event_military_planning
+
+	is_triggered_only = yes
+
+	option = {#Join
+		ai_chance = {
+			base = 75
+			modifier = {
+				add = -45
+				has_idea = SOV_Allies_menace
+			}
+		}
+		name = russia2_france.7.a
+		FRA = {
+			add_ai_strategy = {
+				type = alliance
+				id = SOV
+				value = 100
+			}
+		}
+		SOV = {
+			add_ai_strategy = {
+				type = alliance
+				id = FRA
+				value = 100
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_france.8 days = 1 }
+		}
+	}
+
+	option = {#No
+		ai_chance = {
+			base = 25
+			modifier = {
+				add = 45
+				has_idea = SOV_Allies_menace
+			}
+		}
+		name = russia2_france.7.b
+		SOV = {
+			country_event = { id = russia2_france.9 days = 1 }
+		}
+	}
+}
+
+#France Accept Ultimatum Faction
+country_event = {
+	id = russia2_france.8
+	title = russia2_france.8.t
+	desc = russia2_france.8.d
+	picture = GFX_report_event_gre_allied_diplomacy_military
+
+	is_triggered_only = yes
+
+	option = {#Join
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_france.8.a
+		if = {
+			limit = {
+				SOV = {
+					is_faction_leader = yes
+				}
+			}
+			SOV = {
+				add_to_faction = FRA
+			}
+		}
+		else = {
+			SOV = {
+				diplomatic_relation = {
+					country = FRA
+					relation = non_aggression_pact
+					active = yes
+				}
+			}
+		}
+	}
+}
+
+#France Refuse Ultimatum Faction
+country_event = {
+	id = russia2_france.9
+	title = russia2_france.9.t
+	desc = russia2_france.9.d
+	picture = GFX_report_event_french_british_officers
+
+	is_triggered_only = yes
+
+	option = {#Destroy
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_france.9.a
+		SOV = {
+			add_opinion_modifier = {
+				target = FRA
+				modifier = refused_russian_alliance
+			}
+		}
+	}
+}
+
+#SOV Fate of France United Russia
+country_event = {
+	id = russia2_france.10
+	title = russia2_france.10.t
+	desc = russia2_france.10.d
+	picture = GFX_report_event_generic_parliament
+
+	is_triggered_only = yes
+
+	option = {#Ultimatum for Puppet
+		ai_chance = {
+			base = 25
+			modifier = {
+				add = 65
+				has_idea = SOV_Allies_menace
+			}
+		}
+		name = russia2_france.10.a
+		FRA = {
+			country_event = { id = russia2_france.11 days = 1 }
+		}
+	}
+
+	option = {#Ultimatum for Alliance
+		ai_chance = {
+			base = 75
+			modifier = {
+				add = -65
+				has_idea = SOV_Allies_menace
+			}
+		}
+		name = russia2_france.10.b
+		FRA = {
+			country_event = { id = russia2_france.7 days = 1 }
+		}
+	}
+}
+
+#SOV Wants to take control of our government
+country_event = {
+	id = russia2_france.11
+	title = russia2_france.11.t
+	desc = russia2_france.11.d
+	picture = GFX_report_event_finnish_letter
+
+	is_triggered_only = yes
+
+	option = {#Accept
+		ai_chance = {
+			base = 15
+			modifier = {
+				add = 55
+				OR = {
+					SOV = {
+						OR = {
+							num_of_factories > 250
+							num_subjects > 10
+							strength_ratio = {
+								tag = FRA
+								ratio > 0.7
+							}
+						}
+					}
+					GER = {
+						is_subject_of = SOV
+					}
+				}
+			}
+		}
+		name = russia2_france.11.a
+		SOV = {
+			country_event = { id = russia2_france.12 days = 1 }
+			set_country_flag = france_is_puppet_united_russia
+		}
+	}
+
+	option = {#Refuse
+		ai_chance = {
+			base = 85
+			modifier = {
+				add = -60
+				OR = {
+					SOV = {
+						OR = {
+							num_of_factories > 250
+							num_subjects > 10
+							strength_ratio = {
+								tag = FRA
+								ratio > 0.7
+							}
+						}
+					}
+					GER = {
+						is_subject_of = SOV
+					}
+				}
+			}
+		}
+		name = russia2_france.11.b
+		SOV = {
+			country_event = { id = russia2_france.13 days = 1 }
+		}
+	}
+}
+
+#France Accept Puppet
+country_event = {
+	id = russia2_france.12
+	title = russia2_france.12.t
+	desc = russia2_france.12.d
+	picture = GFX_report_event_gre_cabinet_meeting
+
+	is_triggered_only = yes
+
+	option = {#Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_france.12.a
+		SOV = {
+			set_autonomy = {
+				target = FRA
+				autonomy_state = autonomy_russian_influence
+			}
+			set_variable = { france_puppetization_united_russia = 0 }
+		}
+	}
+}
+
+#France Refuse Puppet
+country_event = {
+	id = russia2_france.13
+	title = russia2_france.13.t
+	desc = russia2_france.13.d
+	picture = GFX_report_event_french_british_officers
+
+	is_triggered_only = yes
+
+	option = {#Damn
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_france.13.a
+		SOV = {
+			create_wargoal = {
+				target = FRA
+				type = puppet_wargoal_focus
+			}
+		}
+	}
+}
+
+#Receive Russian Factories
+country_event = {
+	id = russia2_france.14
+	title = russia2_france.14.t
+	desc = russia2_france.14.d
+	picture = GFX_report_event_generic_truck
+
+	is_triggered_only = yes
+
+	option = {#Sweet Factories
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_france.14.a
+		custom_effect_tooltip = gain_five_mil_factories
+		hidden_effect = {
+			random_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+
+#White Guard Accept offer
+country_event = {
+	id = russia2_france.15
+	title = russia2_france.15.t
+	desc = russia2_france.15.d
+	picture = GFX_report_event_canada_treaty
+
+	is_triggered_only = yes
+
+	option = {#Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_france.15.a
+		custom_effect_tooltip = if_we_accept_and_send_volunteers_gain_good_tt
+		custom_effect_tooltip = upon_start_civil_war_idea_tt
+		show_ideas_tooltip = SOV_Participation_russian_civil_war_foreign
+	}
+}
+
+#Monarchist Sentiments are rising
+country_event = {
+	id = russia2_france.16
+	title = russia2_france.16.t
+	desc = russia2_france.16.d
+	picture = GFX_report_event_canada_treaty
+
+	is_triggered_only = yes
+
+	option = {#Damn
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_france.16.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.1
+		}
+		add_ideas = SOV_french_monarchist_sentiment_idea
+	}
+}
+
+#Civil war French Monarchist
+country_event = {
+	id = russia2_france.17
+
+	is_triggered_only = yes
+
+	hidden = yes
+
+	immediate = {
+		every_country = {
+			limit = {
+				original_tag = FRA
+				has_government = neutrality
+			}
+			every_character = {
+				set_nationality = SOV
+				set_character_flag = former_french_monarchist_fighter
+			}
+			SOV = {
+				annex_country = {
+					target = PREV
+				}
+			}
+		}
+		SOV = {
+			release = FRA
+			every_character = {
+				limit = {
+					has_character_flag = former_french_monarchist_fighter
+				}
+				set_nationality = FRA
+			}
+		}
+		every_state = {
+			limit = {
+				has_state_flag = french_state_before_monarchist_war
+				NOT = {
+					is_owned_by = FRA
+				}
+			}
+			FRA = {
+				transfer_state = PREV
+			}
+		}
+		FRA = {
+			load_oob = "FRA_1939"
+			set_politics = {
+				ruling_party = neutrality
+			}
+			set_popularities = {
+				democratic = 30
+				neutrality = 50
+				fascism = 10
+				communism = 10
+			}
+			set_party_name = {
+				ideology = neutrality
+				long_name = FRA_orleanist_party_long
+				name = FRA_orleanist_party
+			}
+			set_cosmetic_tag = FRA_ORLEANS
+			if = {
+				limit = {
+					date < 1940.8.25
+				}
+				create_country_leader = {
+					name = "Jean III"
+					desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
+					picture = GFX_portrait_fra_jean_duke_of_guise
+					expire = "1965.1.1"
+					ideology = moderatism
+					traits = {
+						duke_of_orleans
+					}
+				}
+			}
+			else = {
+				create_country_leader = {
+					name = "Henri VI"
+					desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
+					picture = GFX_portrait_fra_henry_count_of_paris
+					expire = "1965.1.1"
+					ideology = moderatism
+					traits = {
+						count_of_paris
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					var = french_monarchist_leader_influence_var
+					value = 100
+					compare = greater_than_or_equals
+				}
+			}
+			SOV = {
+				set_autonomy = {
+					target = FRA
+					autonomy_state = autonomy_imperial_governorates
+				}
+			}
+			FRA = {
+				set_popularities = {
+					democratic = 10
+					neutrality = 70
+					fascism = 10
+					communism = 10
+				}
+			}
+		}
+		else = {
+			SOV = {
+				add_to_faction = FRA
+			}
+			FRA = {
+				add_ai_strategy = {
+					type = alliance
+					id = SOV
+					value = 100
+				}
+			}
+		}
+	}
+}
+
+#SOV Threatens
+country_event = {
+	id = russia2_france.18
+	title = russia2_france.18.t
+	desc = russia2_france.18.d
+	picture = GFX_report_event_british_artillery
+
+	is_triggered_only = yes
+
+	option = { #Okay...
+		name = russia2_france.18.a
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = 30
+				surrender_progress > 0.75
+			}
+		}
+		SOV = {
+			puppet = FRA
+			country_event = { id = russia2_france.19 days = 1 }
+		}
+	}
+
+	option = { #No!
+		name = russia2_france.18.b
+		ai_chance = {
+			base = 90
+			modifier = {
+				add = -30
+				surrender_progress > 0.25
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_france.20 days = 1 }
+		}
+	}
+}
+
+#FRA Accepts
+country_event = {
+	id = russia2_france.19
+	title = russia2_france.19.t
+	desc = russia2_france.19.d
+	picture = GFX_report_event_fascist_gathering
+
+	is_triggered_only = yes
+
+	option = { #Easy
+		name = russia2_france.19.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#FRA Refuses
+country_event = {
+	id = russia2_france.20
+	title = russia2_france.20.t
+	desc = russia2_france.20.d
+	picture = GFX_report_event_generic_panzer_attack
+
+	is_triggered_only = yes
+
+	option = { #You die then
+		name = russia2_france.20.a
+		ai_chance = {
+			base = 100
+		}
+		create_wargoal = {
+		    type = puppet_wargoal_focus
+		    target = FRA
+		}
+	}
+}

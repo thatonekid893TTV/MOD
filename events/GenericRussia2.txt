@@ -1,0 +1,3327 @@
+###########################
+# Generic/Special Events
+###########################
+
+add_namespace = russia2_generic
+
+# Check if File is Loaded
+country_event = {
+	id = russia2_generic.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_generics
+	}
+}
+
+# China Soviet-PRC Ultimatum
+country_event = {
+	id = russia2_generic.1
+	title = russia2_generic.1.t
+	desc = russia2_generic.1.d
+	picture = GFX_report_event_stalin_01
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 40
+		}
+		name = russia2_generic.1.a
+		every_owned_state = {
+			limit = {
+				is_core_of = PRC
+	        }
+	        FROM = {
+				transfer_state = PREV
+			}
+    	}
+    	if = {
+    		limit = {
+        		all_owned_state = {
+					is_core_of = PRC
+				}
+    		}
+    		custom_effect_tooltip = SOV_game_totally_over_TT
+    	}
+	}
+
+	option = {
+		ai_chance = {
+			base = 60
+		}
+		name = russia2_generic.1.b
+		FROM = {
+			create_wargoal = {
+				type = annex_everything
+				target = ROOT
+			}
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = ROOT
+			}
+		}
+	}
+}
+
+# Middle East Ultimatum
+country_event = {
+	id = russia2_generic.2
+	title = russia2_generic.2.t
+	desc = russia2_generic.2.d
+	picture = GFX_report_event_stalin_propaganda
+
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_generic.2.a
+		ai_chance = {
+			base = 45
+		}
+		if = {
+			limit = {
+				ROOT = {
+					has_full_control_of_state = 797
+				}
+			}
+			SOV = {
+				transfer_state = 797
+			}
+		}
+		SOV = { country_event = { days = 1 id = russia2_russia.39 } }
+	}
+
+	option = {
+		name = russia2_generic.2.b
+		ai_chance = {
+			base = 55
+		}
+		SOV = { country_event = { days = 1 id = russia2_russia.40 } }
+		add_opinion_modifier = { target = SOV modifier = soviet_threat }
+	}
+}
+
+#FROM Subject gets event to unify (Proletarian Union)
+country_event = {
+	id = russia2_generic.4
+	title = russia2_generic.4.t
+	desc = russia2_generic.4.d
+	picture = GFX_report_event_generic_parliament
+
+	is_triggered_only = yes
+
+	option = { #Join the Union
+		name = russia2_generic.4.a
+		ai_chance = {
+			base = 75
+		}
+		every_owned_state = {
+			limit = {
+				is_core_of = ROOT
+			}
+			add_core_of = SOV
+		}
+		SOV = {
+			country_event = { id = russia2_russia.87 days = 1 }
+		}
+		custom_effect_tooltip = SOV_game_totally_over_TT
+	}
+
+	option = { #No!
+		name = russia2_generic.4.b
+		ai_chance = {
+			base = 25
+		}
+		SOV = {
+			country_event = { id = russia2_russia.88 days = 1 }
+		}
+	}
+}
+
+#If SOV completed Post War Influence focus, any country they puppet will get this national spirit
+country_event = {
+	id = russia2_generic.5
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		add_ideas = SOV_Post_war_influence
+	}
+}
+
+#All the events below are here to trigger world events after a unique revolution happens (Operations in Trotsky's path)
+#This is somehow the best solution to trigger world events, as triggering them from the operation file either doesn't work or does weird results with FROM tag
+
+#Korea
+country_event = {
+	id = russia2_generic.6
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV = {
+				add_to_variable = { sov_trotsky_successful_revolution_count = 1 }
+				if = {
+					limit = {
+						check_variable = {
+							var = sov_trotsky_successful_revolution_count
+							value = 5
+							compare = greater_than_or_equals
+						}
+						NOT = {
+							is_in_array = { global.quick_revolution_achievement = THIS }
+						}
+					}
+					add_to_array = { global.quick_revolution_achievement = THIS }
+					set_variable = { global.quick_revolution_achievement_date@THIS = global.date }
+					set_country_flag = russia_reworked_new_achievement
+					if = {
+						limit = {
+							has_global_flag = russia_reworked_achievements_enabled
+						}
+						scoped_sound_effect = "russia_reworked_unlock_achievement"
+					}
+				}
+			}
+		}
+		news_event = { days = 1 id = newsrussia2.48 }
+	}
+}
+
+#Indochina
+country_event = {
+	id = russia2_generic.7
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV = {
+				add_to_variable = { sov_trotsky_successful_revolution_count = 1 }
+				if = {
+					limit = {
+						check_variable = {
+							var = sov_trotsky_successful_revolution_count
+							value = 5
+							compare = greater_than_or_equals
+						}
+						NOT = {
+							is_in_array = { global.quick_revolution_achievement = THIS }
+						}
+					}
+					add_to_array = { global.quick_revolution_achievement = THIS }
+					set_variable = { global.quick_revolution_achievement_date@THIS = global.date }
+					set_country_flag = russia_reworked_new_achievement
+					if = {
+						limit = {
+							has_global_flag = russia_reworked_achievements_enabled
+						}
+						scoped_sound_effect = "russia_reworked_unlock_achievement"
+					}
+				}
+			}
+		}
+		news_event = { days = 1 id = newsrussia2.49 }
+	}
+}
+
+#Tibet
+country_event = {
+	id = russia2_generic.8
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV = {
+				add_to_variable = { sov_trotsky_successful_revolution_count = 1 }
+				if = {
+					limit = {
+						check_variable = {
+							var = sov_trotsky_successful_revolution_count
+							value = 5
+							compare = greater_than_or_equals
+						}
+						NOT = {
+							is_in_array = { global.quick_revolution_achievement = THIS }
+						}
+					}
+					add_to_array = { global.quick_revolution_achievement = THIS }
+					set_variable = { global.quick_revolution_achievement_date@THIS = global.date }
+					set_country_flag = russia_reworked_new_achievement
+					if = {
+						limit = {
+							has_global_flag = russia_reworked_achievements_enabled
+						}
+						scoped_sound_effect = "russia_reworked_unlock_achievement"
+					}
+				}
+			}
+		}
+		news_event = { days = 1 id = newsrussia2.50 }
+	}
+}
+
+#Ethiopia
+country_event = {
+	id = russia2_generic.9
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV = {
+				add_to_variable = { sov_trotsky_successful_revolution_count = 1 }
+				if = {
+					limit = {
+						check_variable = {
+							var = sov_trotsky_successful_revolution_count
+							value = 5
+							compare = greater_than_or_equals
+						}
+						NOT = {
+							is_in_array = { global.quick_revolution_achievement = THIS }
+						}
+					}
+					add_to_array = { global.quick_revolution_achievement = THIS }
+					set_variable = { global.quick_revolution_achievement_date@THIS = global.date }
+					set_country_flag = russia_reworked_new_achievement
+					if = {
+						limit = {
+							has_global_flag = russia_reworked_achievements_enabled
+						}
+						scoped_sound_effect = "russia_reworked_unlock_achievement"
+					}
+				}
+			}
+		}
+		news_event = { days = 1 id = newsrussia2.51 }
+	}
+}
+
+#Egypt
+country_event = {
+	id = russia2_generic.10
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV = {
+				add_to_variable = { sov_trotsky_successful_revolution_count = 1 }
+				if = {
+					limit = {
+						check_variable = {
+							var = sov_trotsky_successful_revolution_count
+							value = 5
+							compare = greater_than_or_equals
+						}
+						NOT = {
+							is_in_array = { global.quick_revolution_achievement = THIS }
+						}
+					}
+					add_to_array = { global.quick_revolution_achievement = THIS }
+					set_variable = { global.quick_revolution_achievement_date@THIS = global.date }
+					set_country_flag = russia_reworked_new_achievement
+					if = {
+						limit = {
+							has_global_flag = russia_reworked_achievements_enabled
+						}
+						scoped_sound_effect = "russia_reworked_unlock_achievement"
+					}
+				}
+			}
+		}
+		news_event = { days = 1 id = newsrussia2.40 }
+	}
+}
+
+#Morocco
+country_event = {
+	id = russia2_generic.11
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV = {
+				add_to_variable = { sov_trotsky_successful_revolution_count = 1 }
+				if = {
+					limit = {
+						check_variable = {
+							var = sov_trotsky_successful_revolution_count
+							value = 5
+							compare = greater_than_or_equals
+						}
+						NOT = {
+							is_in_array = { global.quick_revolution_achievement = THIS }
+						}
+					}
+					add_to_array = { global.quick_revolution_achievement = THIS }
+					set_variable = { global.quick_revolution_achievement_date@THIS = global.date }
+					set_country_flag = russia_reworked_new_achievement
+					if = {
+						limit = {
+							has_global_flag = russia_reworked_achievements_enabled
+						}
+						scoped_sound_effect = "russia_reworked_unlock_achievement"
+					}
+				}
+			}
+		}
+		news_event = { days = 1 id = newsrussia2.52 }
+	}
+}
+
+#Yugoslavia
+country_event = {
+	id = russia2_generic.12
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV = {
+				add_to_variable = { sov_trotsky_successful_revolution_count = 1 }
+				if = {
+					limit = {
+						check_variable = {
+							var = sov_trotsky_successful_revolution_count
+							value = 5
+							compare = greater_than_or_equals
+						}
+						NOT = {
+							is_in_array = { global.quick_revolution_achievement = THIS }
+						}
+					}
+					add_to_array = { global.quick_revolution_achievement = THIS }
+					set_variable = { global.quick_revolution_achievement_date@THIS = global.date }
+					set_country_flag = russia_reworked_new_achievement
+					if = {
+						limit = {
+							has_global_flag = russia_reworked_achievements_enabled
+						}
+						scoped_sound_effect = "russia_reworked_unlock_achievement"
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				country_exists = YUG
+			}
+			news_event = { days = 1 id = newsrussia2.53 }
+		}
+		else = {
+			news_event = { days = 1 id = newsrussia2.63 } #news event if Yugoslavia was dismantled peacefully
+		}
+	}
+}
+
+#Spain
+country_event = {
+	id = russia2_generic.13
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV = {
+				add_to_variable = { sov_trotsky_successful_revolution_count = 1 }
+				if = {
+					limit = {
+						check_variable = {
+							var = sov_trotsky_successful_revolution_count
+							value = 5
+							compare = greater_than_or_equals
+						}
+						NOT = {
+							is_in_array = { global.quick_revolution_achievement = THIS }
+						}
+					}
+					add_to_array = { global.quick_revolution_achievement = THIS }
+					set_variable = { global.quick_revolution_achievement_date@THIS = global.date }
+					set_country_flag = russia_reworked_new_achievement
+					if = {
+						limit = {
+							has_global_flag = russia_reworked_achievements_enabled
+						}
+						scoped_sound_effect = "russia_reworked_unlock_achievement"
+					}
+				}
+			}
+		}
+		news_event = { days = 1 id = newsrussia2.55 }
+	}
+}
+
+#UK
+country_event = {
+	id = russia2_generic.14
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			SOV = {
+				add_to_variable = { sov_trotsky_successful_revolution_count = 1 }
+				if = {
+					limit = {
+						check_variable = {
+							var = sov_trotsky_successful_revolution_count
+							value = 5
+							compare = greater_than_or_equals
+						}
+						NOT = {
+							is_in_array = { global.quick_revolution_achievement = THIS }
+						}
+					}
+					add_to_array = { global.quick_revolution_achievement = THIS }
+					set_variable = { global.quick_revolution_achievement_date@THIS = global.date }
+					set_country_flag = russia_reworked_new_achievement
+					if = {
+						limit = {
+							has_global_flag = russia_reworked_achievements_enabled
+						}
+						scoped_sound_effect = "russia_reworked_unlock_achievement"
+					}
+				}
+			}
+		}
+		news_event = { days = 1 id = newsrussia2.54 }
+	}
+}
+
+#Country Holding Slavic Claim Gets Event
+country_event = {
+	id = russia2_generic.15
+	title = russia2_generic.15.t
+	desc = russia2_generic.15.d
+	picture = GFX_report_event_soviet_soldiers
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		trigger = {
+			is_subject = no
+		}
+		ai_chance = {
+			base = 75
+			modifier = {
+				add = 15
+				has_war = yes
+			}
+			modifier = {
+				add = -50
+				OR = {
+					is_major = yes
+					any_country = {
+						is_major = yes
+						is_in_faction_with = ROOT
+					}
+					any_country = {
+						is_major = yes
+						has_guaranteed = ROOT
+					}
+				}
+			}
+		}
+		name = russia2_generic.15.a
+		if = {
+			limit = {
+				tag = YUG
+				has_completed_focus = YUG_limited_self_government
+			}
+			every_country = {
+				limit = {
+					is_subject_of = YUG
+					OR = {
+						owns_state = 106
+						owns_state = 107
+						owns_state = 108
+						owns_state = 764
+						owns_state = 45
+						owns_state = 109
+						owns_state = 104
+						owns_state = 103
+						owns_state = 105
+						owns_state = 102
+						owns_state = 802
+						owns_state = 803
+						owns_state = 804
+						owns_state = 853
+					}
+				}
+				SOV = {
+					annex_country = {
+						target = PREV
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					is_subject_of = ROOT
+				}
+			}
+			custom_effect_tooltip = FROM_is_puppet_SOV_slavic_states
+			every_state = {
+				limit = {
+					is_controlled_by = FROM
+					OR = {
+						has_state_flag = SOV_slavic_states
+						has_state_flag = SOV_czech_slavic_states
+						has_state_flag = SOV_german_slavic_state
+					}
+				}
+				SOV = {
+					transfer_state = PREV
+				}
+			}
+			FROM = {
+				country_event = { id = russia2_generic.18 days = 1 }
+			}
+		}
+		else = {
+			every_state = {
+				limit = {
+					OR = {
+						has_state_flag = SOV_slavic_states
+						has_state_flag = SOV_czech_slavic_states
+						has_state_flag = SOV_german_slavic_state
+						has_state_flag = SOV_baltic_states_slav
+					}
+					OR = {
+						any_country = {
+							is_subject_of = ROOT
+							owns_state = PREV
+							NOT = { tag = ROOT }
+						}
+						is_controlled_by = ROOT
+					}
+				}
+				SOV = {
+					transfer_state = PREV
+				}
+			}
+			SOV = {
+				country_event = { id = russia2_generic.16 days = 1 }
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					has_state_flag = SOV_slavic_states
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = { #Refuse
+		trigger = {
+			is_subject = no
+		}
+		ai_chance = {
+			base = 25
+			modifier = {
+				add = -15
+				has_war = yes
+			}
+			modifier = {
+				add = 50
+				OR = {
+					is_major = yes
+					any_country = {
+						is_major = yes
+						is_in_faction_with = ROOT
+					}
+					any_country = {
+						is_major = yes
+						has_guaranteed = ROOT
+					}
+				}
+			}
+		}
+		name = russia2_generic.15.b
+		if = {
+			limit = {
+				FROM = {
+					is_subject_of = ROOT
+				}
+			}
+			custom_effect_tooltip = FROM_is_puppet_SOV_slavic_states
+			FROM = {
+				country_event = { id = russia2_generic.19 days = 1 }
+			}
+		}
+		else = {
+			SOV = {
+				country_event = { id = russia2_generic.17 days = 1 }
+			}
+		}
+	}
+
+	option = { #We should ask our master first
+		trigger = {
+			is_subject = yes
+			NOT = {
+				FROM = {
+					tag = OVERLORD
+				}
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.15.c
+		OVERLORD = {
+			country_event = { id = russia2_generic.15 days = 1 }
+		}
+	}
+}
+
+#Country Accepts
+country_event = {
+	id = russia2_generic.16
+	title = russia2_generic.16.t
+	desc = russia2_generic.16.d
+	picture = GFX_handshake_russia2
+
+	is_triggered_only = yes
+
+	option = { #Nice
+		name = russia2_generic.16.a
+	}
+}
+
+#Country Refuses
+country_event = {
+	id = russia2_generic.17
+	title = russia2_generic.17.t
+	desc = russia2_generic.17.d
+	picture = GFX_report_event_soviet_soldiers_tank
+
+	is_triggered_only = yes
+
+	option = { #Too bad
+		name = russia2_generic.17.a
+		create_wargoal = {
+		    type = annex_everything
+		    target = FROM
+		}
+	}
+}
+
+#We Accept (Puppet)
+country_event = {
+	id = russia2_generic.18
+	title = russia2_generic.18.t
+	desc = russia2_generic.18.d
+	picture = GFX_handshake_russia2
+
+	is_triggered_only = yes
+
+	option = { #Okay
+		name = russia2_generic.18.a
+		SOV = {
+			country_event = { id = russia2_generic.16 days = 1 }
+		}
+	}
+}
+
+#We Refuse (Puppet)
+country_event = {
+	id = russia2_generic.19
+	title = russia2_generic.19.t
+	desc = russia2_generic.19.d
+	picture = GFX_report_event_soviet_soldiers_tank
+
+	is_triggered_only = yes
+
+	option = { #Too bad
+		name = russia2_generic.19.a
+		SOV = {
+			country_event = { id = russia2_generic.17 days = 1 }
+		}
+	}
+}
+
+#Communist Exiles Arrive
+country_event = {
+	id = russia2_generic.20
+	title = russia2_generic.20.t
+	desc = russia2_generic.20.d
+	picture = GFX_report_event_soviet_soldiers_tank
+
+	is_triggered_only = yes
+
+	option = { #Oh
+		name = russia2_generic.20.a
+		add_popularity = {
+			ideology = communism
+			popularity = 0.05
+		}
+		add_war_support = 0.05
+		add_opinion_modifier = {
+			target = SOV
+			modifier = exiled_communist
+		}
+		SOV = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = exiled_communist
+			}
+		}
+	}
+}
+
+#Fascist Women Russia
+country_event = {
+	id = russia2_generic.21
+	title = russia2_generic.21.t
+	desc = russia2_generic.21.d
+	picture = GFX_womens_fascist_march_russia2
+
+	is_triggered_only = yes
+
+	option = { #Establish open borders
+		ai_chance = {
+			base = 80
+			modifier = {
+				add = -45
+				NOT = {
+					has_government = fascism
+				}
+			}
+		}
+		name = russia2_generic.21.a
+		set_country_flag = FROM_opened_manchurian_border
+		if = {
+			limit = {
+				tag = MAN
+				is_subject = yes
+				has_government = fascism
+			}
+			custom_effect_tooltip = might_help_against_japan_tt
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.1
+		}
+		diplomatic_relation = {
+			country = SOV
+			relation = military_access
+			active = yes
+		}
+		SOV = {
+			country_event = { id = russia2_generic.22 days = 1 }
+			set_country_flag = opened_manchurian_border
+		}
+	}
+
+	option = { #Authorize small exchanges
+		ai_chance = {
+			base = 20
+			modifier = {
+				add = 25
+				NOT = {
+					has_government = fascism
+				}
+			}
+		}
+		name = russia2_generic.21.b
+		set_country_flag = FROM_small_exchanges_manchurian_border
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.05
+		}
+		SOV = {
+			country_event = { id = russia2_generic.23 days = 1 }
+			set_country_flag = small_exchanges_manchurian_border
+		}
+	}
+
+	option = { #Refuse
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 20
+				NOT = {
+					has_government = fascism
+				}
+			}
+		}
+		name = russia2_generic.21.c
+		set_country_flag = FROM_refused_manchurian_border
+		add_stability = -0.1
+		SOV = {
+			country_event = { id = russia2_generic.24 days = 1 }
+			set_country_flag = refused_manchurian_border
+		}
+	}
+}
+
+#FROM Accepts Open Borders
+country_event = {
+	id = russia2_generic.22
+	title = russia2_generic.22.t
+	desc = russia2_generic.22.d
+	picture = GFX_handshake_russia2
+
+	is_triggered_only = yes
+
+	option = { #Yay
+		name = russia2_generic.22.a
+		diplomatic_relation = {
+			country = FROM
+			relation = military_access
+			active = yes
+		}
+		custom_effect_tooltip = fascist_movement_take_one_year
+	}
+}
+
+#FROM Accepts only small exchanges
+country_event = {
+	id = russia2_generic.23
+	title = russia2_generic.23.t
+	desc = russia2_generic.23.d
+	picture = GFX_cavalry_parade_russia2
+
+	is_triggered_only = yes
+
+	option = { #Uh
+		name = russia2_generic.23.a
+		custom_effect_tooltip = fascist_movement_take_two_year
+	}
+}
+
+#FROM Refuses
+country_event = {
+	id = russia2_generic.24
+	title = russia2_generic.24.t
+	desc = russia2_generic.24.d
+	picture = GFX_operation_barbarossa_russia2
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { #What
+		name = russia2_generic.24.a
+		add_state_claim = 761
+		custom_effect_tooltip = fascist_movement_no_transfer
+	}
+}
+
+#25% of the Fascists Exiles transfered
+country_event = {
+	id = russia2_generic.25
+	title = russia2_generic.25.t
+	desc = russia2_generic.25.d
+	picture = GFX_soldiers_parade_russia2
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		is_subject = no
+		has_government = fascism
+		OR = {
+			has_country_flag = {
+				flag = opened_manchurian_border
+				days > 91
+			}
+			has_country_flag = {
+				flag = small_exchanges_manchurian_border
+				days > 182
+			}
+		}
+		NOT = {
+			has_country_flag = captured_761_fascist_exiles
+		}
+	}
+
+	option = { #Good
+		name = russia2_generic.25.a
+		set_country_flag = SOV_25_percent_fascist_exile
+		unlock_decision_tooltip = SOV_organize_fascist_movement
+	}
+}
+
+#50% of the Fascists Exiles transfered
+country_event = {
+	id = russia2_generic.26
+	title = russia2_generic.26.t
+	desc = russia2_generic.26.d
+	picture = GFX_soldiers_parade_russia2
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		is_subject = no
+		has_government = fascism
+		OR = {
+			has_country_flag = {
+				flag = opened_manchurian_border
+				days > 182
+			}
+			has_country_flag = {
+				flag = small_exchanges_manchurian_border
+				days > 365
+			}
+		}
+		NOT = {
+			has_country_flag = captured_761_fascist_exiles
+		}
+	}
+
+	option = { #Good
+		name = russia2_generic.26.a
+		set_country_flag = SOV_50_percent_fascist_exile
+		unlock_decision_tooltip = SOV_organize_fascist_movement2
+	}
+}
+
+#75% of the Fascists Exiles transfered
+country_event = {
+	id = russia2_generic.27
+	title = russia2_generic.27.t
+	desc = russia2_generic.27.d
+	picture = GFX_soldiers_parade_russia2
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		is_subject = no
+		has_government = fascism
+		OR = {
+			has_country_flag = {
+				flag = opened_manchurian_border
+				days > 273
+			}
+			has_country_flag = {
+				flag = small_exchanges_manchurian_border
+				days > 546
+			}
+		}
+		NOT = {
+			has_country_flag = captured_761_fascist_exiles
+		}
+	}
+
+	option = { #Good
+		name = russia2_generic.27.a
+		set_country_flag = SOV_75_percent_fascist_exile
+		unlock_decision_tooltip = SOV_organize_fascist_movement3
+	}
+}
+
+#100% of the Fascists Exiles transfered
+country_event = {
+	id = russia2_generic.28
+	title = russia2_generic.28.t
+	desc = russia2_generic.28.d
+	picture = GFX_soldiers_parade_russia2
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		is_subject = no
+		has_government = fascism
+		OR = {
+			has_country_flag = {
+				flag = opened_manchurian_border
+				days > 365
+			}
+			has_country_flag = {
+				flag = small_exchanges_manchurian_border
+				days > 730
+			}
+		}
+		NOT = {
+			has_country_flag = captured_761_fascist_exiles
+		}
+	}
+
+	option = { #Good
+		name = russia2_generic.28.a
+		set_country_flag = SOV_100_percent_fascist_exile
+		unlock_decision_tooltip = SOV_organize_fascist_movement4
+	}
+}
+
+#Controls 761
+country_event = {
+	id = russia2_generic.29
+	title = russia2_generic.29.t
+	desc = russia2_generic.29.d
+	picture = GFX_report_event_soviet_soldiers_tank
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		is_subject = no
+		has_government = fascism
+		NOT = {
+			has_country_flag = {
+				flag = opened_manchurian_border
+				days > 365
+			}
+			has_country_flag = {
+				flag = small_exchanges_manchurian_border
+				days > 730
+			}
+			has_country_flag = SOV_100_percent_fascist_exile
+		}
+		OR = {
+			controls_state = 761
+			any_country = {
+				OR = {
+					is_subject_of = SOV
+					is_in_faction_with = SOV
+				}
+				controls_state = 761
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = captured_761_fascist_exiles
+		}
+	}
+
+	option = { #Good
+		name = russia2_generic.29.a
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = SOV_25_percent_fascist_exile
+				}
+			}
+			set_country_flag = SOV_25_percent_fascist_exile
+			unlock_decision_tooltip = SOV_organize_fascist_movement
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = SOV_50_percent_fascist_exile
+				}
+			}
+			set_country_flag = SOV_50_percent_fascist_exile
+			unlock_decision_tooltip = SOV_organize_fascist_movement2
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = SOV_75_percent_fascist_exile
+				}
+			}
+			set_country_flag = SOV_75_percent_fascist_exile
+			unlock_decision_tooltip = SOV_organize_fascist_movement3
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = SOV_100_percent_fascist_exile
+				}
+			}
+			set_country_flag = SOV_100_percent_fascist_exile
+			unlock_decision_tooltip = SOV_organize_fascist_movement4
+		}
+	}
+}
+
+#SOV Help Arrives
+country_event = {
+	id = russia2_generic.30
+	title = russia2_generic.30.t
+	desc = russia2_generic.30.d
+	picture = GFX_report_event_generic_rifles
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.30.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 2000
+			producer = SOV #Can't be ROOT, crashes the game
+		}
+		add_opinion_modifier = { target = FROM modifier = russian_help }
+	}
+}
+
+#SOV Ask for our support
+country_event = {
+	id = russia2_generic.31
+	title = russia2_generic.31.t
+	desc = russia2_generic.31.d
+	picture = GFX_russian_civil_war_russia2
+
+	is_triggered_only = yes
+
+	option = { #We Accept to Help them
+		ai_chance = {
+			base = 60
+			modifier = {
+				add = 20
+				tag = USA
+			}
+		}
+		name = russia2_generic.31.a
+		SOV = {
+			country_event = { id = russia2_generic.32 hours = 12 }
+			set_country_flag = sov_from_accepts_to_help_scw
+		}
+		custom_effect_tooltip = if_we_accept_and_send_volunteers_gain_good_tt
+		custom_effect_tooltip = upon_start_civil_war_idea_tt
+		show_ideas_tooltip = SOV_Participation_russian_civil_war_foreign
+	}
+
+	option = { #No, they will probably die again
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = 30
+				OR = {
+					AND = {
+						tag = GER
+						has_government = fascism
+					}
+					tag = JAP
+				}
+			}
+		}
+		trigger = {
+			OR = {
+				tag = GER
+				tag = JAP
+			}
+		}
+		name = russia2_generic.31.b
+		SOV = {
+			country_event = { id = russia2_generic.33 hours = 12 }
+		}
+	}
+
+	option = { #Only if we can get something in return
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = 30
+				tag = ITA
+			}
+		}
+		trigger = {
+			NOT = {
+				tag = GER
+				tag = JAP
+			}
+		}
+		name = russia2_generic.31.c
+		SOV = {
+			country_event = { id = russia2_generic.36 hours = 12 }
+		}
+		if = {
+			limit = {
+				tag = USA
+			}
+			custom_effect_tooltip = explain_player_receive_siberia
+		}
+		if = {
+			limit = {
+				tag = FRA
+			}
+			custom_effect_tooltip = explain_player_receive_industry
+		}
+		if = {
+			limit = {
+				tag = ITA
+			}
+			custom_effect_tooltip = explain_player_diplomatic_build_up
+		}
+		if = {
+			limit = {
+				tag = ENG
+			}
+			custom_effect_tooltip = explain_player_ressource_money
+		}
+	}
+}
+
+#FROM Accepts to Support our Cause
+country_event = {
+	id = russia2_generic.32
+	title = russia2_generic.32.t
+	desc = russia2_generic.32.d
+	picture = GFX_soldiers_handshaking_kolchak_russia2
+
+	is_triggered_only = yes
+
+	option = { #If From is Germany
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			FROM = {
+				tag = GER
+			}
+		}
+		name = russia2_generic.32.a
+		set_country_flag = can_purchase_panzer
+		unlock_decision_tooltip = SOV_purchase_panzer_elite_unit
+		custom_effect_tooltip = gains_token_to_buy_weapons
+		add_to_variable = {
+			var = token_buy_weapons
+			value = 1
+		}
+		GER = {
+			set_country_flag = help_whiteguard_during_russian_civil_war
+		}
+	}
+
+	option = { #If From is Japan
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			FROM = {
+				tag = JAP
+			}
+		}
+		name = russia2_generic.32.b
+		set_country_flag = can_recruit_japanese_volunteer
+		unlock_decision_tooltip = SOV_recruit_japanese_elite_unit
+		custom_effect_tooltip = gains_token_to_buy_weapons
+		add_to_variable = {
+			var = token_buy_weapons
+			value = 1
+		}
+		JAP = {
+			set_country_flag = help_whiteguard_during_russian_civil_war
+		}
+	}
+
+	option = { #If From is USA
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			FROM = {
+				tag = USA
+			}
+		}
+		name = russia2_generic.32.c
+		set_country_flag = can_buy_american_planes
+		unlock_decision_tooltip = SOV_buy_american_planes_cw
+		custom_effect_tooltip = gains_token_to_buy_weapons
+		add_to_variable = {
+			var = token_buy_weapons
+			value = 1
+		}
+		USA = {
+			set_country_flag = help_whiteguard_during_russian_civil_war
+		}
+	}
+
+	option = { #If From is FRA
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		name = russia2_generic.32.e
+		set_country_flag = can_buy_french_artillery
+		set_country_flag = can_buy_french_support_equipment
+		unlock_decision_tooltip = SOV_buy_french_artillery_cw
+		unlock_decision_tooltip = SOV_buy_french_support_equipment_cw
+		custom_effect_tooltip = gains_token_to_buy_weapons
+		add_to_variable = {
+			var = token_buy_weapons
+			value = 1
+		}
+		FRA = {
+			set_country_flag = help_whiteguard_during_russian_civil_war
+		}
+	}
+
+	option = { #If From is ITA
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		name = russia2_generic.32.f
+		set_country_flag = can_train_mountaineers
+		set_country_flag = can_engage_italian_volunteers
+		unlock_decision_tooltip = SOV_train_mountaineers_elite_unit
+		unlock_decision_tooltip = SOV_engage_italian_unit
+		custom_effect_tooltip = gains_token_to_buy_weapons
+		add_to_variable = {
+			var = token_buy_weapons
+			value = 1
+		}
+		ITA = {
+			set_country_flag = help_whiteguard_during_russian_civil_war
+		}
+	}
+
+	option = { #If From is ENG
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		name = russia2_generic.32.g
+		set_country_flag = can_buy_english_ships
+		set_country_flag = can_train_russian_marine
+		unlock_decision_tooltip = SOV_buy_english_ships_cw
+		unlock_decision_tooltip = SOV_train_russian_marine_cw
+		custom_effect_tooltip = gains_token_to_buy_weapons
+		add_to_variable = {
+			var = token_buy_weapons
+			value = 1
+		}
+		ENG = {
+			set_country_flag = help_whiteguard_during_russian_civil_war
+		}
+	}
+}
+
+#FROM Refuse to support our cause
+country_event = {
+	id = russia2_generic.33
+	title = russia2_generic.33.t
+	desc = russia2_generic.33.d
+	picture = GFX_operation_barbarossa_russia2
+
+	is_triggered_only = yes
+
+	option = { #Do not Negotiate
+		ai_chance = {
+			base = 50
+		}
+		name = russia2_generic.33.a
+
+	}
+
+	option = { #We should Negotiate with Germany - Oil Field or Resources
+		ai_chance = {
+			base = 50
+		}
+		trigger = {
+			FROM = {
+				tag = GER
+			}
+		}
+		name = russia2_generic.33.b
+		custom_effect_tooltip = if_germany_accept_we_will_have
+		custom_effect_tooltip = future_ocasion_to_cancel_deal
+		GER = {
+			country_event = { id = russia2_germany.24 hours = 16 }
+		}
+	}
+
+	option = { #We should Negotiate with Japan - propose North Sakhalin
+		ai_chance = {
+			base = 50
+		}
+		trigger = {
+			FROM = {
+				tag = JAP
+			}
+			NOT = {
+				has_country_flag = choose_option_a_japan_negotiation
+			}
+		}
+		name = russia2_generic.33.c
+		custom_effect_tooltip = if_japan_accept_we_will_have_sakhalin
+		set_country_flag = choose_option_a_japan_negotiation
+		JAP = {
+			country_event = { id = russia2_japan.23 hours = 16 }
+		}
+	}
+
+	option = { #We should Negotiate with Japan - propose Manchurian territory with Sakhalin
+		ai_chance = {
+			base = 50
+		}
+		trigger = {
+			FROM = {
+				tag = JAP
+			}
+		}
+		name = russia2_generic.33.e
+		custom_effect_tooltip = if_japan_accept_we_will_have_manchu
+		custom_effect_tooltip = future_ocasion_to_cancel_deal_japan_manchu
+		JAP = {
+			country_event = { id = russia2_japan.26 hours = 16 }
+		}
+	}
+}
+
+#We have to keep our promise - Treaty of vladivostok
+country_event = {
+	id = russia2_generic.34
+	title = russia2_generic.34.t
+	desc = russia2_generic.34.d
+	picture = GFX_report_event_generic_sign_treaty3
+
+	is_triggered_only = yes
+
+	option = { #Take back what we've lost in the future
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.34.a
+		if = {
+			limit = {
+				has_country_flag = has_negotiated_with_germany_ressource_rights
+				NOT = {
+					GER = {
+						has_civil_war = yes
+					}
+				}
+			}
+			give_resource_rights = { receiver = GER state = 582 }
+			give_resource_rights = { receiver = GER state = 573 }
+			give_resource_rights = { receiver = GER state = 581 }
+			give_resource_rights = { receiver = GER state = 564 }
+			give_resource_rights = { receiver = GER state = 232 }
+			give_resource_rights = { receiver = GER state = 234 }
+			give_resource_rights = { receiver = GER state = 821 }
+			give_resource_rights = { receiver = GER state = 828 }
+			give_resource_rights = { receiver = GER state = 827 }
+			give_resource_rights = { receiver = GER state = 233 }
+			give_resource_rights = { receiver = GER state = 398 }
+			SOV = {
+				set_country_flag = receive_payment_from_ger
+				add_ideas = SOV_Payment_russian_ressource_rus
+			}
+			GER = {
+				set_country_flag = is_paying_ressource_for_russia
+				add_ideas = SOV_Payment_russian_ressource_ger
+				hidden_effect = {
+					country_event = { id  = russia2_germany.33 days = 1 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = has_negotiated_with_germany_ressource_rights
+				GER = {
+					has_civil_war = yes
+				}
+			}
+			custom_effect_tooltip = germany_wont_receive_anything_cuz_cw
+		}
+		if = {
+			limit = {
+				has_country_flag = japan_accept_to_help_give_russian_far_east
+				JAP = {
+					NOT = {
+						has_civil_war = yes
+					}
+				}
+				MAN = {
+					is_subject_of = JAP
+				}
+			}
+			JAP = {
+				country_event = { id = russia2_japan.29 hours = 12 }
+			}
+			set_country_flag = japan_receive_far_east_generic
+			hidden_effect = {
+				remove_state_core = 408
+				remove_state_core = 409
+				remove_state_core = 560
+				remove_state_core = 657
+				remove_state_core = 561
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = japan_accept_to_help_give_russian_far_east
+				OR = {
+					JAP = {
+						has_civil_war = yes
+					}
+					NOT = {
+						MAN = {
+							is_subject_of = JAP
+						}
+					}
+				}
+			}
+			custom_effect_tooltip = japan_wont_receive_anything_cuz_cw_or_man
+		}
+		if = {
+			limit = {
+				has_country_flag = accept_american_occupation_siberia_after_cw
+				USA = {
+					NOT = {
+						has_civil_war = yes
+					}
+				}
+			}
+			set_country_flag = america_receive_siberia_generic
+			USA = {
+				country_event = { id = russia2_america.15 hours = 12 }
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = accept_american_occupation_siberia_after_cw
+				USA = {
+					has_civil_war = yes
+				}
+			}
+			custom_effect_tooltip = america_wont_receive_anything_cuz_cw
+		}
+		if = {
+			limit = {
+				has_country_flag = accept_french_factories_after_cw
+				FRA = {
+					NOT = {
+						has_civil_war = yes
+					}
+				}
+			}
+			custom_effect_tooltip = lose_five_mil_factories
+			hidden_effect = {
+				random_owned_state = {
+					limit = {
+						arms_factory > 0
+					}
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+				}
+				random_owned_state = {
+					limit = {
+						arms_factory > 0
+					}
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+				}
+				random_owned_state = {
+					limit = {
+						arms_factory > 0
+					}
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+				}
+				random_owned_state = {
+					limit = {
+						industrial_complex > 0
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 1
+					}
+				}
+				random_owned_state = {
+					limit = {
+						industrial_complex > 0
+					}
+					remove_building = {
+						type = industrial_complex
+						level = 1
+					}
+				}
+			}
+			hidden_effect = {
+				FRA = {
+					country_event = { id = russia2_france.14 days = 1 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = accept_french_factories_after_cw
+				FRA = {
+					has_civil_war = yes
+				}
+			}
+			custom_effect_tooltip = french_wont_get_any_factories_cw
+		}
+		if = {
+			limit = {
+				has_country_flag = accept_diplomatic_relation_with_italy
+			}
+			set_country_flag = enter_diplomatic_relation_with_italy_possible
+			SOV = {
+				diplomatic_relation = {
+					country = ITA
+					relation = non_aggression_pact
+					active = yes
+				}
+				add_ideas = SOV_Russian_italian_diplomacy_neutral
+			}
+			hidden_effect = {
+				ITA = {
+					add_ideas = SOV_Russian_italian_diplomacy_neutral
+				}
+			}
+			set_variable = { russian_italian_diplomacy_relation_var = 0 }
+		}
+		if = {
+			limit = {
+				has_country_flag = accept_english_help_for_shipment
+				NOT = {
+					ENG = {
+						has_civil_war = yes
+					}
+				}
+			}
+			set_country_flag = deliver_english_resources
+			SOV = {
+				add_ideas = SOV_Russian_concession_britain_civil_war
+			}
+			hidden_effect = {
+				ENG = {
+					country_event = { id = russia2_england.8 days = 1 }
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = accept_english_help_for_shipment
+				ENG = {
+					has_civil_war = yes
+				}
+			}
+			custom_effect_tooltip = english_wont_get_anything_cw
+		}
+	}
+}
+
+#End of the Russian civil war, we've helped them and we gain xp
+country_event = {
+	id = russia2_generic.35
+	title = russia2_generic.35.t
+	desc = russia2_generic.35.d
+	picture = GFX_menacing_tanks_russia2
+
+	is_triggered_only = yes
+
+	option = { #Sweet Exp
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.35.a
+		army_experience = 50
+		air_experience = 50
+		navy_experience = 50
+		add_doctrine_cost_reduction = {
+			name = SOV_tech_bonus_civil_war
+			cost_reduction = 0.5
+			uses = 1
+			category = air_doctrine
+		}
+		add_doctrine_cost_reduction = {
+			name = SOV_tech_bonus_civil_war
+			cost_reduction = 0.5
+			uses = 1
+			category = land_doctrine
+		}
+	}
+}
+
+#FROM Negotiate to Support our Cause
+country_event = {
+	id = russia2_generic.36
+	title = russia2_generic.36.t
+	desc = russia2_generic.36.d
+	picture = GFX_operation_barbarossa_russia2
+
+	is_triggered_only = yes
+
+	option = { #Do not Accept their Absurd Demand
+		ai_chance = {
+			base = 50
+		}
+		name = russia2_generic.36.a
+		FROM = {
+			country_event = { id = russia2_generic.37 days = 1 }
+		}
+	}
+
+	option = { #If From is USA - They Want To Occupy Eastern Siberia after War
+		ai_chance = {
+			base = 50
+		}
+		trigger = {
+			FROM = {
+				tag = USA
+			}
+		}
+		name = russia2_generic.36.b
+		set_country_flag = sov_from_accepts_to_help_scw
+		set_country_flag = can_buy_american_planes
+		set_country_flag = accept_american_occupation_siberia_after_cw
+		custom_effect_tooltip = if_we_accept_we_lose_eastern_siberia
+		custom_effect_tooltip = future_ocasion_to_get_back_siberia
+		unlock_decision_tooltip = SOV_buy_american_planes_cw
+		custom_effect_tooltip = gains_token_to_buy_weapons
+		add_to_variable = {
+			var = token_buy_weapons
+			value = 1
+		}
+		USA = {
+			set_country_flag = help_whiteguard_during_russian_civil_war
+			country_event = { id = russia2_america.14 days = 1 }
+		}
+	}
+
+	option = { #If From is FRA - They Want Factories after the CW
+		ai_chance = {
+			base = 50
+		}
+		trigger = {
+			FROM = {
+				tag = FRA
+			}
+		}
+		name = russia2_generic.36.c
+		set_country_flag = sov_from_accepts_to_help_scw
+		set_country_flag = can_buy_french_artillery
+		set_country_flag = can_buy_french_support_equipment
+		set_country_flag = accept_french_factories_after_cw
+		custom_effect_tooltip = if_we_accept_we_lose_factories
+		unlock_decision_tooltip = SOV_buy_french_artillery_cw
+		unlock_decision_tooltip = SOV_buy_french_support_equipment_cw
+		custom_effect_tooltip = gains_token_to_buy_weapons
+		add_to_variable = {
+			var = token_buy_weapons
+			value = 1
+		}
+		FRA = {
+			set_country_flag = help_whiteguard_during_russian_civil_war
+			country_event = { id = russia2_france.15 days = 1 }
+		}
+	}
+
+	option = { #If From is ITA - They Want to Re-open Diplomatic Relation
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			FROM = {
+				tag = ITA
+			}
+		}
+		name = russia2_generic.36.e
+		set_country_flag = sov_from_accepts_to_help_scw
+		set_country_flag = can_train_mountaineers
+		set_country_flag = can_engage_italian_volunteers
+		set_country_flag = accept_diplomatic_relation_with_italy
+		custom_effect_tooltip = if_we_accept_we_will_enter_diplomatic_relation_italy
+		unlock_decision_tooltip = SOV_train_mountaineers_elite_unit
+		unlock_decision_tooltip = SOV_engage_italian_unit
+		custom_effect_tooltip = gains_token_to_buy_weapons
+		add_to_variable = {
+			var = token_buy_weapons
+			value = 1
+		}
+		ITA = {
+			set_country_flag = help_whiteguard_during_russian_civil_war
+			country_event = { id = russia2_italy.15 days = 1 }
+		}
+	}
+
+	option = { #If From is ENG - They want Shipment of Resources and Money
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			FROM = {
+				tag = ENG
+			}
+		}
+		name = russia2_generic.36.f
+		set_country_flag = sov_from_accepts_to_help_scw
+		set_country_flag = can_buy_english_ships
+		set_country_flag = can_train_russian_marine
+		set_country_flag = accept_english_help_for_shipment
+		custom_effect_tooltip = if_we_accept_we_will_send_ressource_money_shipment_eng
+		unlock_decision_tooltip = SOV_buy_english_ships_cw
+		unlock_decision_tooltip = SOV_train_russian_marine_cw
+		custom_effect_tooltip = gains_token_to_buy_weapons
+		add_to_variable = {
+			var = token_buy_weapons
+			value = 1
+		}
+		ENG = {
+			set_country_flag = help_whiteguard_during_russian_civil_war
+			country_event = { id = russia2_england.7 days = 1 }
+		}
+	}
+}
+
+#The White Guard Refuses our demand
+country_event = {
+	id = russia2_generic.37
+	title = russia2_generic.37.t
+	desc = russia2_generic.37.d
+	picture = GFX_operation_barbarossa_russia2
+
+	is_triggered_only = yes
+
+	option = { #Then we will see how they will do without us
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.37.a
+	}
+}
+
+#Hidden Effect to Remove Anarchy Support
+country_event = {
+	id = russia2_generic.38
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		add_popularity = {
+			ideology = anarchy
+			popularity = -0.2
+		}
+	}
+}
+
+#FROM has broken Italian-Russian diplomacy
+country_event = {
+	id = russia2_generic.39
+	title = russia2_generic.39.t
+	desc = russia2_generic.39.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #We didn't have any choice
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.39.a
+		add_stability = -0.25
+		add_war_support = -0.25
+	}
+}
+
+#Slavic Empire Wants our Subjugation - Middle East
+country_event = {
+	id = russia2_generic.40
+	title = russia2_generic.40.t
+	desc = russia2_generic.40.d
+	picture = GFX_military_parade_kremlin_russia2
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		ai_chance = {
+			base = 70
+			modifier = {
+				add = -30
+				ROOT = {
+					strength_ratio = {
+						tag = SOV
+						ratio > 0.5
+					}
+				}
+			}
+		}
+		name = russia2_generic.40.a
+		SOV = {
+			country_event = { id = russia2_generic.41 days = 1 }
+		}
+		if = {
+			limit = {
+				ROOT = {
+					OR = {
+						owns_state = 341
+						owns_state = 797
+						owns_state = 354
+						owns_state = 800
+						owns_state = 353
+						owns_state = 352
+						owns_state = 419
+						owns_state = 420
+						owns_state = 266
+						owns_state = 416
+						owns_state = 418
+						owns_state = 1000
+						owns_state = 1004
+					}
+				}
+			}
+			every_state = {
+				limit = {
+					is_owned_by = ROOT
+					OR = {
+						state = 341
+						state = 797
+						state = 354
+						state = 800
+						state = 353
+						state = 352
+						state = 419
+						state = 420
+						state = 266
+						state = 416
+						state = 418
+						state = 1000
+						state = 1004
+					}
+				}
+				SOV = {
+					transfer_state = PREV
+				}
+			}
+		}
+	}
+
+	option = { #Refuse
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = 45
+				ROOT = {
+					strength_ratio = {
+						tag = SOV
+						ratio > 0.7
+					}
+				}
+			}
+		}
+		name = russia2_generic.40.b
+		SOV = {
+			country_event = { id = russia2_generic.42 days = 1 }
+		}
+	}
+}
+
+#FROM Accept
+country_event = {
+	id = russia2_generic.41
+	title = russia2_generic.41.t
+	desc = russia2_generic.41.d
+	picture = GFX_soldiers_handshaking_kolchak_russia2
+
+	is_triggered_only = yes
+
+	option = { #Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.41.a
+		SOV = {
+			set_autonomy = {
+				target = FROM
+				autonomy_state = autonomy_integrated_puppet
+			}
+		}
+		hidden_effect = {
+			FROM = {
+				set_popularities = {
+					democratic = 10
+					neutrality = 70
+					fascism = 10
+					communism = 10
+				}
+			}
+		}
+	}
+}
+
+#FROM Refuse
+country_event = {
+	id = russia2_generic.42
+	title = russia2_generic.42.t
+	desc = russia2_generic.42.d
+	picture = GFX_menacing_tanks_russia2
+
+	is_triggered_only = yes
+
+	option = { #Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.42.a
+		SOV = {
+			create_wargoal = {
+				target = FROM
+				type = annex_everything
+			}
+		}
+	}
+}
+
+#Gets Crimea's Navy
+country_event = {
+	id = russia2_generic.43
+	title = russia2_generic.43.t
+	desc = russia2_generic.43.d
+	picture = GFX_menacing_tanks_russia2
+
+	is_triggered_only = yes
+
+	option = { #Good
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.43.a
+	}
+}
+
+#Standoff Between Russia and Ukraine
+country_event = {
+	id = russia2_generic.44
+	title = russia2_generic.44.t
+	desc = russia2_generic.44.d
+	picture = GFX_menacing_tanks_russia2
+
+	is_triggered_only = yes
+
+	option = { #Declare war on them
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.44.a
+		SOV = {
+			for_each_scope_loop = {
+				array = global.russian_scw_participants_ukr
+				if = {
+					limit = {
+						exists = yes
+					}
+					SOV = {
+						declare_war_on = {
+							target = PREV
+							type = annex_everything
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				every_country = {
+					limit = {
+						is_in_faction_with = SOV
+						NOT = {
+							tag = SOV
+						}
+					}
+					add_to_war = {
+						targeted_alliance = SOV
+						enemy = UKR
+						hostility_reason = anti_soviet_alliance
+					}
+				}
+			}
+			if = {
+				limit = {
+					SOJ = {
+						is_subject_of = UKR
+					}
+				}
+				declare_war_on = {
+					target = SOJ
+					type = annex_everything
+				}
+				hidden_effect = {
+					every_country = {
+						limit = {
+							is_in_faction_with = SOV
+							NOT = {
+								tag = SOV
+							}
+						}
+						add_to_war = {
+							targeted_alliance = SOV
+							enemy = SOJ
+							hostility_reason = anti_soviet_alliance
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					BLR = {
+						is_subject_of = UKR
+					}
+				}
+				declare_war_on = {
+					target = BLR
+					type = annex_everything
+				}
+				hidden_effect = {
+					every_country = {
+						limit = {
+							is_in_faction_with = SOV
+							NOT = {
+								tag = SOV
+							}
+						}
+						add_to_war = {
+							targeted_alliance = SOV
+							enemy = BLR
+							hostility_reason = anti_soviet_alliance
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					FIN = {
+						is_in_faction_with = UKR
+					}
+				}
+				declare_war_on = {
+					target = FIN
+					type = annex_everything
+				}
+				hidden_effect = {
+					every_country = {
+						limit = {
+							is_in_faction_with = SOV
+							NOT = {
+								tag = SOV
+							}
+						}
+						add_to_war = {
+							targeted_alliance = SOV
+							enemy = FIN
+							hostility_reason = anti_soviet_alliance
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#Anarchist Uprising in Our Country
+country_event = {
+	id = russia2_generic.45
+	title = russia2_generic.45.t
+	desc = russia2_generic.45.d
+	picture = GFX_report_event_generic_riot
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.45.a
+		add_ideas = SOV_Anarchist_uprising
+		custom_effect_tooltip = this_idea_will_not_go_away_tt
+		custom_effect_tooltip = the_stronger_they_grow_tt
+	}
+}
+
+#Anarchist Protestors are Growing
+country_event = {
+	id = russia2_generic.46
+	title = russia2_generic.46.t
+	desc = russia2_generic.46.d
+	picture = GFX_report_event_generic_riot
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.46.a
+		swap_ideas = {
+			remove_idea = SOV_Anarchist_uprising
+			add_idea = SOV_Anarchist_uprising_2
+		}
+		custom_effect_tooltip = the_stronger_they_grow_tt
+	}
+}
+
+#Anarchist Protestors are Growing - Spread revolution to both variant
+country_event = {
+	id = russia2_generic.47
+	title = russia2_generic.46.t
+	desc = russia2_generic.46.d
+	picture = GFX_report_event_generic_riot
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.46.a
+		swap_ideas = {
+			remove_idea = SOV_Anarchist_uprising
+			add_idea = SOV_Anarchist_uprising_5
+		}
+		custom_effect_tooltip = the_stronger_they_grow_tt
+	}
+}
+
+#Anarchist Protestors are Growing level2
+country_event = {
+	id = russia2_generic.48
+	title = russia2_generic.46.t
+	desc = russia2_generic.46.d
+	picture = GFX_report_event_generic_riot
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.46.a
+		swap_ideas = {
+			remove_idea = SOV_Anarchist_uprising_2
+			add_idea = SOV_Anarchist_uprising_3
+		}
+		custom_effect_tooltip = the_stronger_they_grow_tt
+	}
+}
+
+#Anarchist Protestors are Growing level2 - Spread revolution to both variant
+country_event = {
+	id = russia2_generic.49
+	title = russia2_generic.46.t
+	desc = russia2_generic.46.d
+	picture = GFX_report_event_generic_riot
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.46.a
+		swap_ideas = {
+			remove_idea = SOV_Anarchist_uprising_5
+			add_idea = SOV_Anarchist_uprising_6
+		}
+		custom_effect_tooltip = the_stronger_they_grow_tt
+	}
+}
+
+#Anarchist Protestors are Growing level3
+country_event = {
+	id = russia2_generic.50
+	title = russia2_generic.46.t
+	desc = russia2_generic.46.d
+	picture = GFX_report_event_generic_riot
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.46.a
+		swap_ideas = {
+			remove_idea = SOV_Anarchist_uprising_3
+			add_idea = SOV_Anarchist_uprising_4
+		}
+	}
+}
+
+#Anarchist Protestors are Growing level3 - Spread revolution to both variant
+country_event = {
+	id = russia2_generic.51
+	title = russia2_generic.46.t
+	desc = russia2_generic.46.d
+	picture = GFX_report_event_generic_riot
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.46.a
+		swap_ideas = {
+			remove_idea = SOV_Anarchist_uprising_6
+			add_idea = SOV_Anarchist_uprising_7
+		}
+	}
+}
+
+#SOV Wants to Invite Us to their Faction
+country_event = {
+	id = russia2_generic.52
+	title = russia2_generic.52.t
+	desc = russia2_generic.52.d
+	picture = GFX_report_event_canada_treaty
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		ai_chance = {
+			base = 50
+			modifier = {
+				any_state = {
+					is_owned_by = ROOT
+					is_claimed_by = SOV
+				}
+				add = -30
+			}
+			modifier = {
+				OR = {
+					has_opinion = {
+						target = SOV
+						value > 50
+					}
+					is_neighbor_of = SOV
+				}
+				add = 30
+			}
+			modifier = {
+				is_major= yes
+				add = -20
+			}
+		}
+		name = russia2_generic.52.a
+		FROM = {
+			country_event = { id = russia2_generic.53 hours = 3 }
+		}
+	}
+
+	option = { #Refuse
+		ai_chance = {
+			base = 50
+			modifier = {
+				any_state = {
+					is_owned_by = ROOT
+					is_claimed_by = SOV
+				}
+				add = 30
+			}
+			modifier = {
+				OR = {
+					has_opinion = {
+						target = SOV
+						value > 50
+					}
+					is_neighbor_of = SOV
+				}
+				add = -30
+			}
+			modifier = {
+				is_major= yes
+				add = 20
+			}
+		}
+		name = russia2_generic.52.b
+		FROM = {
+			country_event = { id = russia2_generic.54 hours = 3 }
+		}
+	}
+}
+
+#FROM Accept to join our faction
+country_event = {
+	id = russia2_generic.53
+	title = russia2_generic.53.t
+	desc = russia2_generic.53.d
+	picture = GFX_handshake_russia2
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.53.a
+		SOV = {
+			add_to_faction = FROM
+		}
+	}
+}
+
+#FROM Refuse to join our faction
+country_event = {
+	id = russia2_generic.54
+	title = russia2_generic.54.t
+	desc = russia2_generic.54.d
+	picture = GFX_report_event_czech_soldiers_01
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.54.a
+	}
+}
+
+#SOV Ask to join our Faction
+country_event = {
+	id = russia2_generic.55
+	title = russia2_generic.55.t
+	desc = russia2_generic.55.d
+	picture = GFX_report_event_french_british_officers
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		ai_chance = {
+			base = 60
+			modifier = {
+				any_state = {
+					is_owned_by = ROOT
+					is_claimed_by = SOV
+				}
+				add = -30
+			}
+			modifier = {
+				OR = {
+					has_opinion = {
+						target = SOV
+						value > 60
+					}
+					is_neighbor_of = SOV
+				}
+				add = 30
+			}
+		}
+		name = russia2_generic.55.a
+		FROM = {
+			country_event = { id = russia2_generic.56 hours = 3 }
+		}
+	}
+
+	option = { #Refuse
+		ai_chance = {
+			base = 40
+			modifier = {
+				any_state = {
+					is_owned_by = ROOT
+					is_claimed_by = SOV
+				}
+				add = 30
+			}
+			modifier = {
+				OR = {
+					has_opinion = {
+						target = SOV
+						value > 60
+					}
+					is_neighbor_of = SOV
+				}
+				add = -30
+			}
+		}
+		name = russia2_generic.55.b
+		FROM = {
+			country_event = { id = russia2_generic.57 hours = 3 }
+		}
+	}
+}
+
+#FROM Accept to let us join their faction
+country_event = {
+	id = russia2_generic.56
+	title = russia2_generic.56.t
+	desc = russia2_generic.56.d
+	picture = GFX_handshake_russia2
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.56.a
+		SOV = {
+			clr_country_flag = cant_spam_join_faction_anarchist
+		}
+		FROM = {
+			add_to_faction = SOV
+		}
+	}
+}
+
+#FROM Refuse to let us join their faction
+country_event = {
+	id = russia2_generic.57
+	title = russia2_generic.57.t
+	desc = russia2_generic.57.d
+	picture = GFX_report_event_degaulle_churchill
+
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.57.a
+		SOV = {
+			clr_country_flag = cant_spam_join_faction_anarchist
+		}
+	}
+}
+
+#FROM Refuse to let us join their faction
+country_event = {
+	id = russia2_generic.58
+	title = russia2_generic.58.t
+	desc = russia2_generic.58.d
+	picture = GFX_report_event_german_polish_border
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = is_victim_of_russian_anarchism
+		activate_decision = SOV_anarchist_revolution_timeout
+	}
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.58.a
+		custom_effect_tooltip = revolution_start_70_days_tt
+	}
+}
+
+#Anarchist Influence is Spreading to Us !
+country_event = {
+	id = russia2_generic.59
+	title = russia2_generic.59.t
+	desc = russia2_generic.59.d
+	picture = GFX_report_event_gathering_protest
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					any_country = {
+						has_idea = SOV_Anarchist_uprising_2
+					}
+				}
+				add_ideas = SOV_Anarchist_uprising_2
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						has_idea = SOV_Anarchist_uprising_3
+					}
+				}
+				add_ideas = SOV_Anarchist_uprising_3
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						has_idea = SOV_Anarchist_uprising_4
+					}
+				}
+				add_ideas = SOV_Anarchist_uprising_4
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						has_idea = SOV_Anarchist_uprising_5
+					}
+				}
+				add_ideas = SOV_Anarchist_uprising_5
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						has_idea = SOV_Anarchist_uprising_6
+					}
+				}
+				add_ideas = SOV_Anarchist_uprising_6
+			}
+			else_if = {
+				limit = {
+					any_country = {
+						has_idea = SOV_Anarchist_uprising_7
+					}
+				}
+				add_ideas = SOV_Anarchist_uprising_7
+			}
+			else = {
+				add_ideas = SOV_Anarchist_uprising
+			}
+		}
+	}
+
+	option = {
+		ai_chance = {
+			base = 100
+		}
+		name = russia2_generic.59.a
+		if = {
+			limit = {
+				any_country = {
+					has_idea = SOV_Anarchist_uprising_2
+				}
+			}
+			show_ideas_tooltip = SOV_Anarchist_uprising_2
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					has_idea = SOV_Anarchist_uprising_3
+				}
+			}
+			show_ideas_tooltip = SOV_Anarchist_uprising_3
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					has_idea = SOV_Anarchist_uprising_4
+				}
+			}
+			show_ideas_tooltip = SOV_Anarchist_uprising_4
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					has_idea = SOV_Anarchist_uprising_5
+				}
+			}
+			show_ideas_tooltip = SOV_Anarchist_uprising_5
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					has_idea = SOV_Anarchist_uprising_6
+				}
+			}
+			show_ideas_tooltip = SOV_Anarchist_uprising_6
+		}
+		else_if = {
+			limit = {
+				any_country = {
+					has_idea = SOV_Anarchist_uprising_7
+				}
+			}
+			show_ideas_tooltip = SOV_Anarchist_uprising_7
+		}
+		else = {
+			show_ideas_tooltip = SOV_Anarchist_uprising
+		}
+	}
+}
+
+# Receive Event to Cede Land or to Be Annexed by EAC by Russia
+country_event = {
+	id = russia2_generic.60
+	title = russia2_generic.60.t
+	desc = russia2_generic.60.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_generic.60.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				is_core_of = EAC
+				is_owned_by = ROOT
+			}
+			EAC = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					is_core_of = EAC
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_generic.60.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+# Receive Event to Cede Land or to Be Annexed by NAC by Russia
+country_event = {
+	id = russia2_generic.61
+	title = russia2_generic.60.t
+	desc = russia2_generic.60.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_generic.60.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				is_core_of = NAC
+				is_owned_by = ROOT
+			}
+			NAC = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					is_core_of = NAC
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_generic.60.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+# Receive Event to Cede Land or to Be Annexed by WAC by Russia
+country_event = {
+	id = russia2_generic.62
+	title = russia2_generic.60.t
+	desc = russia2_generic.60.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_generic.60.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				is_core_of = WAC
+				is_owned_by = ROOT
+			}
+			WAC = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					is_core_of = WAC
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_generic.60.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+# Receive Event to Cede Land or to Be Annexed by SWA by Russia
+country_event = {
+	id = russia2_generic.63
+	title = russia2_generic.60.t
+	desc = russia2_generic.60.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_generic.60.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				is_core_of = SWA
+				is_owned_by = ROOT
+			}
+			SWA = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					is_core_of = SWA
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_generic.60.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+# Receive Event to Cede Land or to Be Annexed by AEA by Russia
+country_event = {
+	id = russia2_generic.64
+	title = russia2_generic.60.t
+	desc = russia2_generic.60.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_generic.60.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				is_core_of = AEA
+				is_owned_by = ROOT
+			}
+			AEA = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					is_core_of = AEA
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_generic.60.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+# Receive Event to Cede Land or to Be Annexed by SAE by Russia
+country_event = {
+	id = russia2_generic.65
+	title = russia2_generic.60.t
+	desc = russia2_generic.60.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_generic.60.a
+		ai_chance = {
+			base = 100
+		}
+		every_state = {
+			limit = {
+				is_core_of = SAE
+				is_owned_by = ROOT
+			}
+			SAE = {
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				all_owned_state = {
+					is_core_of = SAE
+				}
+			}
+			custom_effect_tooltip = SOV_game_totally_over_TT
+		}
+	}
+
+	option = {#Refuse
+		name = russia2_generic.60.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_continent.2 hours = 12 }
+		}
+	}
+}
+
+#Send Sergei Wojciechowski to the White Guard
+country_event = {
+	id = russia2_generic.66
+	title = russia2_generic.66.t
+	desc = russia2_generic.66.d
+	picture = GFX_report_event_bose_meeting
+
+	fire_only_once = yes
+
+	trigger = {
+		sov_in_scw = yes
+		has_global_flag = second_russian_civil_war_in_progress
+		SOV = {
+			has_war = yes
+			NOT = {
+				has_character = CZE_sergej_vojcechovsky
+			}
+		}
+		NOT = {
+			original_tag = SOV
+			has_government = communism
+			has_war_with = SOV
+		}
+		has_character = CZE_sergej_vojcechovsky
+	}
+
+	#Fulfill your destiny!
+	option = {
+		name = russia2_generic.66.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_war = yes
+				has_capitulated = no
+			}
+		}
+		add_stability = 0.05
+		add_war_support = 0.05
+		add_political_power = 50
+		custom_effect_tooltip = sov_sergej_vojcechovsky_stops_being_general
+		SOV = {
+			country_event = russia2_generic.67
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = sov_transferred_sergej_vojcechovsky
+			}
+		}
+		hidden_effect = {
+			CZE_sergej_vojcechovsky = {
+				set_nationality = SOV
+				set_leader_portrait = GFX_Portrait_Russia_Sergei_Wojciechowski
+			}
+		}
+	}
+
+	#No.
+	option = {
+		name = russia2_generic.66.b
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 100
+				has_war = yes
+				has_capitulated = no
+			}
+		}
+	}
+}
+
+#Sergei Wojciechowski Arrives
+country_event = {
+	id = russia2_generic.67
+	title = russia2_generic.67.t
+	desc = russia2_generic.67.d
+	picture = GFX_report_event_bose_meeting
+
+	is_triggered_only = yes
+
+	#Amazing
+	option = {
+		name = russia2_generic.67.a
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = sov_sergej_vojcechovsky_becomes_general
+		FROM = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = sov_received_sergej_vojcechovsky
+			}
+		}
+	}
+}
+
+#Give Back Controls of German State After Tsar Insurection
+country_event = {
+	id = russia2_generic.68
+
+	is_triggered_only = yes
+
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = ger_exiles_accept_puppet
+			}
+			release_autonomy = {
+				target = GER
+				autonomy_state = autonomy_imperial_governorates
+				freedom_level = 0.5
+			}
+			every_state = {
+				limit = {
+					is_core_of = GER
+					is_initial_core_of_ger = yes
+				}
+				GER = {
+					set_state_controller = PREV
+				}
+			}
+			GER = {
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+				hidden_effect = {
+					set_popularities = {
+						democratic = 10
+						neutrality = 70
+						fascism = 10
+						communism = 10
+					}
+				}
+				if = {
+					limit = {
+						date < 1941.06.04
+					}
+					create_country_leader = {
+						name = "Wilhelm II"
+						picture = GFX_portrait_ger_wilhelm_ii
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							anti_democrat imperial_connections
+						}
+					}
+				}
+				else = {
+					create_country_leader = {
+						name = "Wilhelm III"
+						picture = GFX_portrait_ger_wilhelm_iii
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							popular_figurehead2
+						}
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = ger_exiles_accept_puppet_reduced
+			}
+			release_autonomy = {
+				target = GER
+				autonomy_state = autonomy_dominion
+				freedom_level = 0.5
+			}
+			every_state = {
+				limit = {
+					is_core_of = GER
+					is_initial_core_of_ger = yes
+				}
+				GER = {
+					set_state_controller = PREV
+				}
+			}
+			GER = {
+				set_cosmetic_tag = GEC
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+				hidden_effect = {
+					set_popularities = {
+						democratic = 10
+						neutrality = 70
+						fascism = 10
+						communism = 10
+					}
+				}
+				if = {
+					limit = {
+						date < 1941.06.04
+					}
+					create_country_leader = {
+						name = "Wilhelm II"
+						picture = GFX_portrait_ger_wilhelm_ii
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							anti_democrat imperial_connections
+						}
+					}
+				}
+				else = {
+					create_country_leader = {
+						name = "Wilhelm III"
+						picture = GFX_portrait_ger_wilhelm_iii
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							popular_figurehead2
+						}
+					}
+				}
+				set_country_flag = GER_dominion_no_imperial
+				set_country_flag = germany_no_imperial_transform
+			}
+		}
+		else = {
+			release = GER
+			if = {
+				limit = {
+					NOT = {
+						SOV = { 
+							is_faction_leader = yes
+						}
+					}
+				}
+				create_faction = moscow_berlin_pact
+				add_to_faction = GER
+			}
+			else = {
+				add_to_faction = GER
+			}
+			every_state = {
+				limit = {
+					is_core_of = GER
+					is_initial_core_of_ger = yes
+				}
+				GER = {
+					set_state_controller = PREV
+				}
+			}
+			GER = {
+				add_ai_strategy = {
+					type = alliance
+					id = SOV
+					value = 300
+				}
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
+				}
+				hidden_effect = {
+					set_popularities = {
+						democratic = 10
+						neutrality = 70
+						fascism = 10
+						communism = 10
+					}
+				}
+				if = {
+					limit = {
+						date < 1941.06.04
+					}
+					create_country_leader = {
+						name = "Wilhelm II"
+						picture = GFX_portrait_ger_wilhelm_ii
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							anti_democrat imperial_connections
+						}
+					}
+				}
+				else = {
+					create_country_leader = {
+						name = "Wilhelm III"
+						picture = GFX_portrait_ger_wilhelm_iii
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							popular_figurehead2
+						}
+					}
+				}
+			}
+		}
+	}
+}

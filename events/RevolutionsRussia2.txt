@@ -1,0 +1,32 @@
+###########################
+# Revolutions Events
+###########################
+
+add_namespace = russia2_revolutions
+
+# Check if File is Loaded
+country_event = {
+	id = russia2_revolutions.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_revolutions
+	}
+}
+
+country_event = {
+	id = russia2_revolutions.1
+	title = russia2_revolutions.1.t
+	desc = russia2_revolutions.1.d
+	picture = GFX_report_event_saf_soldiers_3
+	
+	is_triggered_only = yes
+
+	option = {
+		name = russia2_revolutions.1.a
+		custom_effect_tooltip = revolutions_event_tt
+	}
+}

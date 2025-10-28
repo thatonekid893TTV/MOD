@@ -1,0 +1,2065 @@
+###########################
+# Chinese Events
+###########################
+
+add_namespace = russia2_china
+
+# Check if File is Loaded
+country_event = {
+	id = russia2_china.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_chinas
+	}
+}
+
+#SOV Gets Event to Choose their Stance on the Sino-Japanese Conflicts
+country_event = {
+	id = russia2_china.1
+	title = russia2_china.1.t
+	desc = {
+		text = russia2_china.1.d_1
+		trigger = {
+			JAP = {
+				NOT = {
+					has_war_with = event_target:WTT_current_china_leader
+				}
+			}
+		}
+	}
+	desc = {
+		text = russia2_china.1.d_2
+		trigger = {
+			JAP = {
+				has_war_with = event_target:WTT_current_china_leader
+			}
+		}
+	}
+	picture = GFX_report_event_chinese_soldiers_running
+
+	is_triggered_only = yes
+
+	option = { # Propose to Japan to Invade China
+		name = russia2_china.1.a
+		trigger = {
+			NOT = {
+				JAP = {
+					has_war_with = event_target:WTT_current_china_leader
+				}
+				event_target:WTT_current_china_leader = {
+					is_subject_of = JAP
+				}
+			}
+			country_exists = event_target:WTT_current_china_leader
+		}
+		ai_chance = {
+			base = 60
+		}
+		JAP = {
+			country_event = { id = russia2_japan.18 hours = 12 }
+		}
+	}
+
+	option = { #We Want to Help our Ally JAP - when JAP is in War Against China
+		name = russia2_china.1.b
+		trigger = {
+			JAP = {
+				has_war_with = event_target:WTT_current_china_leader
+			}
+			country_exists = event_target:WTT_current_china_leader
+		}
+		ai_chance = {
+			base = 60
+			modifier = {
+				add = -50
+				event_target:WTT_current_china_leader = {
+					is_in_faction_with = ENG
+				}
+			}
+		}
+		JAP = {
+			country_event = { id = russia2_japan.19 hours = 12 }
+		}
+	}
+
+	option = { #We Should Try to Appease the Situation - Trying to create Peace Between China and Jap
+		name = russia2_china.1.c
+		trigger = {
+			country_exists = event_target:WTT_current_china_leader
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				event_target:WTT_current_china_leader = {
+					surrender_progress > 0.75
+				}
+			}
+		}
+		event_target:WTT_current_china_leader = {
+			country_event = { id = russia2_china.6 hours = 12 }
+		}
+		custom_effect_tooltip = sino_japanese_negotiation_surrender
+	}
+
+	option = { #Do Nothing
+		name = russia2_china.1.e
+		ai_chance = {
+			base = 10
+			modifier = {
+				add = 80
+				OR = {
+					AND = {
+						event_target:WTT_current_china_leader = {
+							is_in_faction_with = ENG
+						}
+					}
+					AND = {
+						event_target:WTT_current_china_leader = {
+							surrender_progress > 0.75
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					NOT = {
+						country_exists = event_target:WTT_current_china_leader
+					}
+					event_target:WTT_current_china_leader = {
+						is_subject = yes
+					}
+				}
+			}
+			custom_effect_tooltip = china_not_exist_because_dead
+		}
+	}
+}
+
+#Japan Accept our Joint Invasion
+country_event = {
+	id = russia2_china.2
+	title = russia2_china.2.t
+	desc = russia2_china.2.d
+	picture = GFX_report_event_soviet_german_soldier_handshake
+
+	is_triggered_only = yes
+
+	option = { #Nice
+		name = russia2_china.2.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = event_target:WTT_current_china_leader
+			}
+			add_ai_strategy = {
+				type = conquer
+				id = event_target:WTT_current_china_leader
+				value = 100
+			}
+		}
+		JAP = {
+			create_wargoal = {
+				type = annex_everything
+				target = event_target:WTT_current_china_leader
+			}
+			add_ai_strategy = {
+				type = conquer
+				id = event_target:WTT_current_china_leader
+				value = 100
+			}
+		}
+		custom_effect_tooltip = china_and_other_chinese_nations_gets_buff
+		event_target:WTT_current_china_leader = {
+			add_ai_strategy = {
+				type = antagonize
+				id = SOV
+				value = 100
+			}
+			add_ai_strategy = {
+				type = antagonize
+				id = JAP
+				value = 100
+			}
+			hidden_effect = {
+				add_timed_idea = {
+					idea = SOV_Russian_japan_knocking_doors
+					days = 1460
+				}
+			}
+		}
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_literally_china = yes
+					is_in_faction_with = event_target:WTT_current_china_leader
+					NOT = {
+						tag = event_target:WTT_current_china_leader
+					}
+				}
+				add_timed_idea = {
+					idea = SOV_Russian_japan_knocking_doors
+					days = 1460
+				}
+			}
+			news_event = { id = newsrussia2.130 hours = 12 }
+		}
+	}
+}
+
+#Japan Refuse our Proposition of a Joint Invasion
+country_event = {
+	id = russia2_china.3
+	title = russia2_china.3.t
+	desc = russia2_china.3.d
+	picture = GFX_report_event_second_vienna_award_pact
+
+	is_triggered_only = yes
+
+	option = { #Coward !
+		name = russia2_china.3.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Japan Accept our Help
+country_event = {
+	id = russia2_china.4
+	title = russia2_china.4.t
+	desc = russia2_china.4.d
+	picture = GFX_report_event_soviet_soldiers
+
+	is_triggered_only = yes
+
+	option = { #Nice
+		name = russia2_china.4.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			declare_war_on = {
+				target = event_target:WTT_current_china_leader
+				type = annex_everything
+			}
+			add_ai_strategy = {
+				type = conquer
+				id = event_target:WTT_current_china_leader
+				value = 100
+			}
+		}
+		event_target:WTT_current_china_leader = {
+			add_ai_strategy = {
+				type = antagonize
+				id = SOV
+				value = 100
+			}
+		}
+		add_ideas = SOV_Army_not_ready_chi
+		hidden_effect = {
+			news_event = { id = newsrussia2.131 hours = 12 }
+		}
+	}
+}
+
+#Japan Refuse our Help
+country_event = {
+	id = russia2_china.5
+	title = russia2_china.5.t
+	desc = russia2_china.5.d
+	picture = GFX_report_event_hungary_refused
+
+	is_triggered_only = yes
+
+	option = { #Damn
+		name = russia2_china.5.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#China Gets Event From SOV to See if they Want Peace With the Japanese
+country_event = {
+	id = russia2_china.6
+	title = russia2_china.6.t
+	desc = {
+		text = russia2_china.6.d_1
+		trigger = {
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					has_war_with = JAP
+				}
+			}
+		}
+	}
+	desc = {
+		text = russia2_china.6.d_2
+		trigger = {
+			event_target:WTT_current_china_leader = {
+				has_war_with = JAP
+			}
+		}
+	}
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+
+	option = { #Accept the Negotiation
+		name = russia2_china.6.a
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = if_we_join_we_wont_leave_china
+		SOV = {
+			country_event = { id = russia2_china.7 hours = 16 }
+		}
+	}
+
+	option = { #Refuse to Negotiate
+		name = russia2_china.6.b
+		ai_chance = {
+			base = 0
+		}
+		SOV = {
+			country_event = { id = russia2_china.8 hours = 16 }
+		}
+	}
+}
+
+#China Accept the Negotiations
+country_event = {
+	id = russia2_china.7
+	title = russia2_china.7.t
+	desc = russia2_china.7.d
+	picture = GFX_report_event_china_politicians_captured
+
+	is_triggered_only = yes
+
+	option = { #Now to Japan
+		name = russia2_china.7.a
+		ai_chance = {
+			base = 100
+		}
+		JAP = {
+			country_event = { id = russia2_japan.20 hours = 16 }
+		}
+	}
+}
+
+#China Refuse the Negotiations
+country_event = {
+	id = russia2_china.8
+	title = russia2_china.8.t
+	desc = russia2_china.8.d
+	picture = GFX_report_event_china_politicians_captured
+
+	is_triggered_only = yes
+
+	option = { #Wut
+		name = russia2_china.8.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Japan Accept the Negotiations
+country_event = {
+	id = russia2_china.9
+	title = russia2_china.9.t
+	desc = russia2_china.9.d
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+	option = { #Now the Negotiation Begins
+		name = russia2_china.9.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			country_event = { id = russia2_china.11 days = 2 }
+		}
+		JAP = {
+			country_event = { id = russia2_china.12 days = 1 }
+		}
+		event_target:WTT_current_china_leader = {
+			country_event = { id = russia2_china.12 days = 1 }
+		}
+	}
+
+	option = { #Cancel the Negiotiation at the Last Second
+		name = russia2_china.9.b
+		ai_chance = {
+			base = 0
+		}
+		JAP = {
+			country_event = { id = russia2_china.13 hours = 16 }
+		}
+		event_target:WTT_current_china_leader = {
+			country_event = { id = russia2_china.13 hours = 16 }
+		}
+	}
+}
+
+#Japan Refuse the Negotiations
+country_event = {
+	id = russia2_china.10
+	title = russia2_china.10.t
+	desc = { #Is Russian
+		text = russia2_china.10.d_1
+		trigger = {
+			tag = SOV
+		}
+	}
+	desc = { #Is China
+		text = russia2_china.10.d_2
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+	}
+	picture = GFX_report_event_japanese_siam_politicians
+
+	is_triggered_only = yes
+
+	option = { #Rip the Negotiations
+		name = russia2_china.10.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Start of the Negotiation - Russia
+country_event = {
+	id = russia2_china.11
+	title = russia2_china.11.t
+	desc = russia2_china.11.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = { #Let the Conference Begins !
+		name = russia2_china.11.a
+		ai_chance = {
+			base = 100
+		}
+		custom_effect_tooltip = choose_carefully_your_alliance_sino_jap
+		SOV = {
+			country_event = { id = russia2_china.14 days = 1 }
+		}
+		hidden_effect = {
+			set_variable = {
+				var = china_conference_happy
+				value = 0
+			}
+			set_variable = {
+				var = japan_not_happy_conference
+				value = 0
+			}
+		}
+	}
+}
+
+#Event for Jap and China to receive to alert them that the negotiation are beginning
+country_event = {
+	id = russia2_china.12
+	title = russia2_china.12.t
+	desc = russia2_china.12.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = { #Let's Wait
+		name = russia2_china.12.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+
+#Event for Jap and China to alert them that the Russian dropped the Negotiation Offer
+country_event = {
+	id = russia2_china.13
+	title = russia2_china.13.t
+	desc = russia2_china.13.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = { #What a Waste of Time ...
+		name = russia2_china.13.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Fate of the Occupied territory
+country_event = {
+	id = russia2_china.14
+	title = russia2_china.14.t
+	desc = russia2_china.14.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = { #Give all the Claims
+		name = russia2_china.14.a
+		ai_chance = {
+			base = 30
+		}
+		trigger = {
+			country_exists = event_target:WTT_current_china_leader
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_china.18 days = 4 }
+		}
+		hidden_effect = {
+			event_target:WTT_current_china_leader = {
+				country_event = { id = russia2_china.15 days = 1 }
+			}
+			JAP = {
+				country_event = { id = russia2_china.15 days = 1 }
+			}
+			595 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			596 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			598 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			597 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			614 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			608 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			743 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			615 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			621 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			593 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			592 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			594 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			591 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+		}
+	}
+
+	option = { #Give Only Northern China
+		name = russia2_china.14.b
+		ai_chance = {
+			base = 50
+		}
+		trigger = {
+			country_exists = event_target:WTT_current_china_leader
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_china.18 days = 4 }
+		}
+		add_political_power = -75
+		hidden_effect = {
+			event_target:WTT_current_china_leader = {
+				country_event = { id = russia2_china.16 days = 1 }
+			}
+			JAP = {
+				country_event = { id = russia2_china.16 days = 1 }
+			}
+			608 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			614 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			597 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			743 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			615 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			621 = {
+				set_state_flag = japanese_claimed_land_treaty
+			}
+			add_to_variable = {
+			    var = china_conference_happy
+			    value = 1
+			}
+		}
+	}
+
+	option = { #China Shouldn't Give any land to Japan
+		name = russia2_china.14.c
+		ai_chance = {
+			base = 20
+		}
+		trigger = {
+			country_exists = event_target:WTT_current_china_leader
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_china.18 days = 4 }
+		}
+		hidden_effect = {
+			event_target:WTT_current_china_leader = {
+				country_event = { id = russia2_china.17 days = 1 }
+			}
+			JAP = {
+				country_event = { id = russia2_china.17 days = 1 }
+			}
+			add_to_variable = {
+			    var = china_conference_happy
+			    value = 1
+			}
+			add_to_variable = {
+			    var = japan_not_happy_conference
+			    value = 1
+			}
+		}
+	}
+
+	option = {
+		name = russia2_china.14.e
+		ai_chance = {
+			base = 1
+		}
+		trigger = {
+			OR = {
+				NOT = {
+					country_exists = event_target:WTT_current_china_leader
+				}
+				event_target:WTT_current_china_leader= {
+					is_subject = yes
+				}
+			}
+		}
+		custom_effect_tooltip = china_has_been_annexed_during_conference
+	}
+}
+
+#Russia Has Choosed Option A for the Land Problem - Jap and Chi gets notified
+country_event = {
+	id = russia2_china.15
+	title = russia2_china.15.t
+	desc = russia2_china.15.d
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+	option = { #Option for Japan
+		name = russia2_china.15.a
+		trigger = {
+			tag = JAP
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { #Option for China
+		name = russia2_china.15.b
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Russia Has Choosed Option B for the Land Problem - Jap and Chi gets notified
+country_event = {
+	id = russia2_china.16
+	title = russia2_china.16.t
+	desc = russia2_china.16.d
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+	option = { #Option for Japan
+		name = russia2_china.16.a
+		trigger = {
+			tag = JAP
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { #Option for China
+		name = russia2_china.16.b
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Russia Has Choosed Option C for the Land Problem - Jap and Chi gets notified
+country_event = {
+	id = russia2_china.17
+	title = russia2_china.17.t
+	desc = russia2_china.17.d
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+	option = { #Option for Japan
+		name = russia2_china.17.a
+		trigger = {
+			tag = JAP
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { #Option for China
+		name = russia2_china.17.b
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Question of the concessions
+country_event = {
+	id = russia2_china.18
+	title = russia2_china.18.t
+	desc = russia2_china.18.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = { #China Will Have to Pay Concessions
+		name = russia2_china.18.a
+		ai_chance = {
+			base = 30
+		}
+		trigger = {
+			country_exists = event_target:WTT_current_china_leader
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					MAN = {
+						is_subject_of = JAP
+					}
+					AND = {
+						716 = {
+							is_owned_by = JAP
+						}
+						328 = {
+							is_owned_by = JAP
+						}
+						717 = {
+							is_owned_by = JAP
+						}
+						714 = {
+							is_owned_by = JAP
+						}
+						761 = {
+							is_owned_by = JAP
+						}
+						715 = {
+							is_owned_by = JAP
+						}
+						610 = {
+							is_owned_by = JAP
+						}
+					}
+				}
+			}
+			SOV = {
+				country_event = { id = russia2_china.22 days = 4 }
+			}
+		}
+		else = {
+			SOV = {
+				country_event = { id = russia2_china.26 days = 4 }
+			}
+		}
+		hidden_effect = {
+			event_target:WTT_current_china_leader = {
+				country_event = { id = russia2_china.19 days = 1 }
+			}
+			JAP = {
+				country_event = { id = russia2_china.19 days = 1 }
+			}
+			set_country_flag = china_pay_concession_japan
+		}
+	}
+
+	option = { #We Will Pay the Concessions for China
+		name = russia2_china.18.b
+		ai_chance = {
+			base = 50
+		}
+		trigger = {
+			country_exists = event_target:WTT_current_china_leader
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					MAN = {
+						is_subject_of = JAP
+					}
+					AND = {
+						716 = {
+							is_owned_by = JAP
+						}
+						328 = {
+							is_owned_by = JAP
+						}
+						717 = {
+							is_owned_by = JAP
+						}
+						714 = {
+							is_owned_by = JAP
+						}
+						761 = {
+							is_owned_by = JAP
+						}
+						715 = {
+							is_owned_by = JAP
+						}
+						610 = {
+							is_owned_by = JAP
+						}
+					}
+				}
+			}
+			SOV = {
+				country_event = { id = russia2_china.22 days = 4 }
+			}
+		}
+		else = {
+			SOV = {
+				country_event = { id = russia2_china.26 days = 4 }
+			}
+		}
+		hidden_effect = {
+			event_target:WTT_current_china_leader = {
+				country_event = { id = russia2_china.20 days = 1 }
+			}
+			JAP = {
+				country_event = { id = russia2_china.20 days = 1 }
+			}
+			set_country_flag = russia_will_pay_concession_instead_china
+			add_to_variable = {
+			    var = china_conference_happy
+			    value = 1
+			}
+		}
+	}
+
+	option = { #China is not Going to pay Any Concession
+		name = russia2_china.18.c
+		ai_chance = {
+			base = 20
+		}
+		trigger = {
+			country_exists = event_target:WTT_current_china_leader
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					MAN = {
+						is_subject_of = JAP
+					}
+					AND = {
+						716 = {
+							is_owned_by = JAP
+						}
+						328 = {
+							is_owned_by = JAP
+						}
+						717 = {
+							is_owned_by = JAP
+						}
+						714 = {
+							is_owned_by = JAP
+						}
+						761 = {
+							is_owned_by = JAP
+						}
+						715 = {
+							is_owned_by = JAP
+						}
+						610 = {
+							is_owned_by = JAP
+						}
+					}
+				}
+			}
+			SOV = {
+				country_event = { id = russia2_china.22 days = 4 }
+			}
+		}
+		else = {
+			SOV = {
+				country_event = { id = russia2_china.26 days = 4 }
+			}
+		}
+		hidden_effect = {
+			event_target:WTT_current_china_leader = {
+				country_event = { id = russia2_china.21 days = 1 }
+			}
+			JAP = {
+				country_event = { id = russia2_china.21 days = 1 }
+			}
+			add_to_variable = {
+			    var = china_conference_happy
+			    value = 1
+			}
+			add_to_variable = {
+			    var = japan_not_happy_conference
+			    value = 1
+			}
+		}
+	}
+
+	option = { #China Is Dead
+		name = russia2_china.18.e
+		ai_chance = {
+			base = 1
+		}
+		trigger = {
+			OR = {
+				NOT = {
+					country_exists = event_target:WTT_current_china_leader
+				}
+				event_target:WTT_current_china_leader= {
+					is_subject = yes
+				}
+			}
+		}
+		custom_effect_tooltip = china_has_been_annexed_during_conference
+	}
+}
+
+#Russia Has Choosed Option A for the Concession Problem - Jap and Chi gets notified
+country_event = {
+	id = russia2_china.19
+	title = russia2_china.19.t
+	desc = russia2_china.19.d
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+	option = { #Option for Japan
+		name = russia2_china.19.a
+		trigger = {
+			tag = JAP
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { #Option for China
+		name = russia2_china.19.b
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Russia Has Choosed Option B for the Concession Problem - Jap and Chi gets notified
+country_event = {
+	id = russia2_china.20
+	title = russia2_china.20.t
+	desc = russia2_china.20.d
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+	option = { #Option for Japan
+		name = russia2_china.20.a
+		trigger = {
+			tag = JAP
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { #Option for China
+		name = russia2_china.20.b
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Russia Has Choosed Option C for the Concession Problem - Jap and Chi gets notified
+country_event = {
+	id = russia2_china.21
+	title = russia2_china.21.t
+	desc = russia2_china.21.d
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+	option = { #Option for Japan
+		name = russia2_china.21.a
+		trigger = {
+			tag = JAP
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { #Option for China
+		name = russia2_china.21.b
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Fate of Manchuko
+country_event = {
+	id = russia2_china.22
+	title = russia2_china.22.t
+	desc = russia2_china.22.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = { #This Has Nothing to do With our Condference
+		name = russia2_china.22.a
+		ai_chance = {
+			base = 30
+		}
+		trigger = {
+			country_exists = event_target:WTT_current_china_leader
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_china.26 days = 4 }
+		}
+		hidden_effect = {
+			event_target:WTT_current_china_leader = {
+				country_event = { id = russia2_china.23 days = 1 }
+			}
+			JAP = {
+				country_event = { id = russia2_china.23 days = 1 }
+			}
+		}
+	}
+
+	option = { #Open Borders for MAN
+		name = russia2_china.22.b
+		ai_chance = {
+			base = 50
+		}
+		trigger = {
+			country_exists = event_target:WTT_current_china_leader
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_china.26 days = 4 }
+		}
+		hidden_effect = {
+			event_target:WTT_current_china_leader = {
+				country_event = { id = russia2_china.24 days = 1 }
+			}
+			JAP = {
+				country_event = { id = russia2_china.24 days = 1 }
+			}
+			set_country_flag = open_borders_in_manchuria
+			add_to_variable = {
+			    var = china_conference_happy
+			    value = 1
+			}
+		}
+	}
+
+	option = { #Decrease Autonomy
+		name = russia2_china.22.c
+		ai_chance = {
+			base = 20
+		}
+		SOV = {
+			country_event = { id = russia2_china.26 days = 4 }
+		}
+		trigger = {
+			country_exists = event_target:WTT_current_china_leader
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:WTT_current_china_leader = {
+				country_event = { id = russia2_china.25 days = 1 }
+			}
+			JAP = {
+				country_event = { id = russia2_china.25 days = 1 }
+			}
+			set_country_flag = increase_manchu_autonomy
+			add_to_variable = {
+			    var = china_conference_happy
+			    value = 1
+			}
+			add_to_variable = {
+			    var = japan_not_happy_conference
+			    value = 1
+			}
+		}
+	}
+
+	option = { #China is Dead
+		name = russia2_china.22.e
+		ai_chance = {
+			base = 1
+		}
+		trigger = {
+			OR = {
+				NOT = {
+					country_exists = event_target:WTT_current_china_leader
+				}
+				event_target:WTT_current_china_leader= {
+					is_subject = yes
+				}
+			}
+		}
+		custom_effect_tooltip = china_has_been_annexed_during_conference
+	}
+}
+
+#Russia Has Choosed Option A for the Manchurian Problem - Jap and Chi gets notified
+country_event = {
+	id = russia2_china.23
+	title = russia2_china.23.t
+	desc = russia2_china.23.d
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+	option = { #Option for Japan
+		name = russia2_china.23.a
+		trigger = {
+			tag = JAP
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { #Option for China
+		name = russia2_china.23.b
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Russia Has Choosed Option B for the Manchurian Problem - Jap and Chi gets notified
+country_event = {
+	id = russia2_china.24
+	title = russia2_china.24.t
+	desc = russia2_china.24.d
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+	option = { #Option for Japan
+		name = russia2_china.24.a
+		trigger = {
+			tag = JAP
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { #Option for China
+		name = russia2_china.24.b
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Russia Has Choosed Option C for the Manchurian Problem - Jap and Chi gets notified
+country_event = {
+	id = russia2_china.25
+	title = russia2_china.25.t
+	desc = russia2_china.25.d
+	picture = GFX_report_event_japan_europe_pact
+
+	is_triggered_only = yes
+
+	option = { #Option for Japan
+		name = russia2_china.25.a
+		trigger = {
+			tag = JAP
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = { #Option for China
+		name = russia2_china.25.b
+		trigger = {
+			tag = event_target:WTT_current_china_leader
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#The Conference is Over
+country_event = {
+	id = russia2_china.26
+	title = russia2_china.26.t
+	desc = russia2_china.26.d
+	picture = GFX_report_event_japanese_chinese_surrender
+
+	is_triggered_only = yes
+
+	option = { #Let's hope this will Resolve the Conflict
+		name = russia2_china.26.a
+		ai_chance = {
+			base = 100
+		}
+		trigger = {
+			country_exists = event_target:WTT_current_china_leader
+			NOT = {
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				is_literally_china = yes
+				has_war_with = JAP
+				NOT = {
+					tag = MAN
+				}
+			}
+			white_peace = JAP
+		}
+		every_country = {
+			limit = {
+				tag = event_target:WTT_current_china_leader
+				is_in_faction = yes
+				NOT = {
+					is_faction_leader = yes
+				}
+			}
+			leave_faction = yes
+		}
+		custom_effect_tooltip = chinese_nation_leave_faction
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_literally_china = yes
+					is_in_faction = yes
+					NOT = {
+						is_in_faction_with = event_target:WTT_current_china_leader
+						has_war_with = event_target:WTT_current_china_leader
+					}
+					NOT = {
+						tag = MAN
+					}
+				}
+				leave_faction = yes
+				event_target:WTT_current_china_leader = {
+					add_to_faction = PREV
+				}
+			}
+		}
+		every_state = {
+			limit = {
+				has_state_flag = japanese_claimed_land_treaty
+				OR = {
+					any_country = {
+						OR = {
+							AND = {
+								is_literally_china = yes
+								is_in_faction_with = event_target:WTT_current_china_leader
+								is_ai = yes
+							}
+							tag = event_target:WTT_current_china_leader
+						}
+						owns_state = PREV
+					}
+				}
+			}
+			JAP = {
+				add_state_claim = PREV
+				transfer_state = PREV
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = china_pay_concession_japan
+			}
+			event_target:WTT_current_china_leader = {
+				add_timed_idea = {
+					idea = SOV_China_concession_japan_treaty
+					days = 930
+				}
+			}
+			custom_effect_tooltip = japan_idea_concession_china
+			hidden_effect = {
+				JAP = {
+					add_timed_idea = {
+						idea = SOV_Japan_receive_concessions_treaty
+						days = 930
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = russia_will_pay_concession_instead_china
+			}
+			SOV = {
+				add_timed_idea = {
+					idea = SOV_Russia_concession_japan_treaty
+					days = 930
+				}
+			}
+			custom_effect_tooltip = japan_idea_concession_china
+			hidden_effect = {
+				JAP = {
+					add_timed_idea = {
+						idea = SOV_Japan_receive_concessions_treaty
+						days = 930
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = open_borders_in_manchuria
+			}
+			every_country = { #Idea For China
+				limit = {
+					OR = {
+						AND = {
+							country_exists = MAN
+							tag = MAN
+						}
+						AND = {
+							tag = JAP
+							NOT = {
+								country_exists = MAN
+							}
+						}
+					}
+				}
+				add_timed_idea = {
+					idea = SOV_Open_borders_with_china
+					days = 720
+				}
+			}
+			event_target:WTT_current_china_leader = {
+				add_timed_idea = {
+					idea = CHI_Immigration_from_manchu
+					days = 720
+				}
+			}
+			SOV = {
+				add_timed_idea = {
+					idea = SOV_Mass_emmigration
+					days = 720
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = increase_manchu_autonomy
+				country_exists = MAN
+				MAN = {
+					is_subject_of = JAP
+				}
+			}
+			JAP = {
+				set_autonomy = {
+					target = MAN
+					autonomy_state = autonomy_wtt_imperial_associate
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = increase_manchu_autonomy
+				NOT = {
+					country_exists = MAN
+				}
+			}
+			JAP = {
+				release_autonomy = {
+					target = MAN
+					autonomy_state = autonomy_wtt_imperial_associate
+					freedom_level = 0.5
+				}
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = japan_not_happy_conference
+						value = 2
+						compare = greater_than_or_equals
+					}
+				}
+				JAP= {
+					country_event = { id = russia2_japan.21 days = 15 }
+				}
+			}
+			news_event = { id = newsrussia2.132 hours = 12 }
+		}
+	}
+
+	option = { #China is Dead
+		name = russia2_china.26.b
+		ai_chance = {
+			base = 1
+		}
+		trigger = {
+			OR = {
+				NOT = {
+					country_exists = event_target:WTT_current_china_leader
+				}
+				event_target:WTT_current_china_leader = {
+					is_subject = yes
+				}
+			}
+		}
+		custom_effect_tooltip = china_has_been_annexed_during_conference
+	}
+}
+
+#China Receive event to join Russian Faction
+country_event = {
+	id = russia2_china.27
+	title = russia2_china.27.t
+	desc = russia2_china.27.d
+	picture = GFX_report_event_generic_sign_treaty3
+
+	is_triggered_only = yes
+
+	option = { #Accept at a Price
+		name = russia2_china.27.a
+		ai_chance = {
+			base = 75
+		}
+		if = {
+			limit = {
+				SOV = {
+					NOT = {
+						is_in_faction = yes
+					}
+				}
+			}
+			create_faction = sino_russian_alliance
+		}
+		else_if = {
+			limit = {
+				SOV = {
+					is_in_faction = yes
+					is_faction_leader = yes
+					is_in_faction_with = JAP
+				}
+			}
+			SOV = {
+				set_faction_name = greater_asia_alliance
+			}
+		}
+		else = {
+			SOV = {
+				set_faction_name = sino_russian_alliance
+			}
+		}
+		SOV = {
+			country_event = { id = russia2_china.28 hours = 18 }
+			add_to_faction = event_target:WTT_current_china_leader
+		}
+		if = {
+			limit = {
+				JAP = {
+					is_in_faction_with = SOV
+				}
+			}
+			add_timed_idea = {
+				idea = CHI_unpopular_alliance
+				days = 730
+			}
+		}
+		custom_effect_tooltip = accept_send_ultimatum_warlords
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_literally_china = yes
+					NOT = {
+						tag = event_target:WTT_current_china_leader
+					}
+				}
+				country_event = { id = russia2_china.30 days = 2 }
+			}
+			news_event = { id = newsrussia2.133 hours = 12 }
+		}
+	}
+
+	option = { #Refuse
+		name = russia2_china.27.b
+		ai_chance = {
+			base = 25
+		}
+		SOV = {
+			country_event = { id = russia2_china.29 hours = 18 }
+		}
+	}
+}
+
+#China Accept to join Russian Faction
+country_event = {
+	id = russia2_china.28
+	title = russia2_china.28.t
+	desc = russia2_china.28.d
+	picture = GFX_report_event_japanese_chinese_surrender
+
+	is_triggered_only = yes
+
+	option = { #Good
+		name = russia2_china.28.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#China Refuse to join Russian Faction
+country_event = {
+	id = russia2_china.29
+	title = russia2_china.29.t
+	desc = russia2_china.29.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Not Good
+		name = russia2_china.29.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}
+
+#Chinese Warlords gets Ultimatum from China
+country_event = {
+	id = russia2_china.30
+	title = russia2_china.30.t
+	desc = russia2_china.30.d
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_china.30.a
+		ai_chance = {
+			base = 60
+		}
+		FROM = {
+			country_event = { id = russia2_china.31 hours = 5 }
+		}
+	}
+
+	option = { #No
+		name = russia2_china.30.b
+		ai_chance = {
+			base = 40
+		}
+		FROM = {
+			country_event = { id = russia2_china.32 hours = 5 }
+		}
+	}
+}
+
+#China Receive Positive Response from Warloard
+country_event = {
+	id = russia2_china.31
+	title = russia2_china.31.t
+	desc = russia2_china.31.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Good
+		name = russia2_china.31.a
+		ai_chance = {
+			base = 100
+		}
+		annex_country = {
+			target = FROM
+		}
+	}
+}
+
+#China Receive Negative Response from Warloard
+country_event = {
+	id = russia2_china.32
+	title = russia2_china.32.t
+	desc = russia2_china.32.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Not Good
+		name = russia2_china.32.a
+		ai_chance = {
+			base = 100
+		}
+		ROOT = {
+			create_wargoal = {
+				type = annex_everything
+				target = FROM
+			}
+		}
+	}
+}
+
+#Democratic Russia Asks for Democracy in China
+country_event = {
+	id = russia2_china.33
+	title = russia2_china.33.t
+	desc = russia2_china.33.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Yes
+		name = russia2_china.33.a
+		ai_chance = {
+			base = 80
+			modifier = {
+				add = 20
+				has_government = democratic
+			}
+		}
+		add_ideas = SOV_Democracy_china
+		FROM = {
+			add_to_faction = ROOT
+			add_ai_strategy = {
+				type = alliance
+				id = SOV
+				value = 250
+			}
+			country_event = { id = russia2_china.34 days = 1 }
+		}
+	}
+
+	option = { #No
+		name = russia2_china.33.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+		FROM = {
+			country_event = { id = russia2_china.35 days = 1 }
+		}
+	}
+}
+
+#China Accepts
+country_event = {
+	id = russia2_china.34
+	title = russia2_china.34.t
+	desc = russia2_china.34.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Perfect
+		name = russia2_china.34.a
+		ai_chance = {
+			base = 100
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = FROM
+			value = 250
+		}
+	}
+}
+
+#China Refuses
+country_event = {
+	id = russia2_china.35
+	title = russia2_china.35.t
+	desc = russia2_china.35.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Die
+		name = russia2_china.35.a
+		ai_chance = {
+			base = 100
+		}
+		ROOT = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FROM
+			}
+		}
+	}
+}
+
+#China Cancels Democracy
+country_event = {
+	id = russia2_china.36
+	title = russia2_china.36.t
+	desc = russia2_china.36.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Let it slide...
+		name = russia2_china.36.a
+		ai_chance = {
+			base = 75
+		}
+		add_political_power = -50
+		hidden_effect = {
+			var:SOV.current_china_democracy_target = {
+				country_event = { id = russia2_china.40 days = 1 }
+			}
+		}
+	}
+
+	option = { #Ask for Subjugation
+		name = russia2_china.36.b
+		ai_chance = {
+			base = 25
+		}
+		var:SOV.current_china_democracy_target = {
+			country_event = { id = russia2_china.37 days = 1 }
+		}
+	}
+}
+
+#Russia Asks for Subjugation
+country_event = {
+	id = russia2_china.37
+	title = russia2_china.37.t
+	desc = russia2_china.37.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Yes
+		name = russia2_china.37.a
+		ai_chance = {
+			base = 75
+		}
+		SOV = {
+			country_event = { id = russia2_china.38 days = 1 }
+		}
+	}
+
+	option = { #No
+		name = russia2_china.37.b
+		ai_chance = {
+			base = 25
+		}
+		SOV = {
+			country_event = { id = russia2_china.39 days = 1 }
+		}
+	}
+}
+
+#China Accepts Subjugation
+country_event = {
+	id = russia2_china.38
+	title = russia2_china.38.t
+	desc = russia2_china.38.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Die
+		name = russia2_china.38.a
+		ai_chance = {
+			base = 100
+		}
+		ROOT = {
+			set_autonomy = {
+				target = FROM
+				autonomy_state = autonomy_puppet
+			}
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							has_idea = SOV_Democracy_china
+						}
+					}
+				}
+				FROM = {
+					add_ideas = SOV_Democracy_china
+				}
+			}
+		}
+	}
+}
+
+#China Refuses Subjugation
+country_event = {
+	id = russia2_china.39
+	title = russia2_china.39.t
+	desc = russia2_china.39.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Die
+		name = russia2_china.39.a
+		ai_chance = {
+			base = 100
+		}
+		if = {
+			limit = {
+				FROM = {
+					is_in_faction_with = ROOT
+					NOT = {
+						is_faction_leader = yes
+					}
+				}
+			}
+			FROM = {
+				leave_faction = yes
+			}
+		}
+		else_if = {
+			limit = {
+				is_in_faction_with = FROM
+				NOT = {
+					is_faction_leader = yes
+				}
+			}
+			leave_faction = yes
+		}
+		ROOT = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FROM
+			}
+		}
+	}
+}
+
+#Russia Gives Up
+country_event = {
+	id = russia2_china.40
+	title = russia2_china.40.t
+	desc = russia2_china.40.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Cool
+		name = russia2_china.40.a
+		ai_chance = {
+			base = 100
+		}
+		add_political_power = 50
+	}
+}
+
+#New China Chooses to Stay with Democratic Russia or Not
+country_event = {
+	id = russia2_china.41
+	title = russia2_china.41.t
+	desc = russia2_china.41.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Yes
+		name = russia2_china.41.a
+		ai_chance = {
+			base = 80
+			modifier = {
+				add = 20
+				has_government = democratic
+			}
+		}
+		set_temp_variable = { pp_add_democracy = party_popularity_100@democratic }
+		add_political_power = var:pp_add_democracy
+		SOV = {
+			add_to_faction = ROOT
+			country_event = russia2_china.42
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = SOV
+			value = 250
+		}
+	}
+
+	option = { #No
+		name = russia2_china.41.b
+		ai_chance = {
+			base = 20
+			modifier = {
+				factor = 0
+				has_government = democratic
+			}
+		}
+		set_temp_variable = { pp_remove_democracy = party_popularity_100@democratic }
+		multiply_temp_variable = { pp_remove_democracy = -1 }
+		add_political_power = var:pp_remove_democracy
+		SOV = {
+			country_event = russia2_china.43
+		}
+	}
+}
+
+#New China Stays in Faction
+country_event = {
+	id = russia2_china.42
+	title = russia2_china.42.t
+	desc = russia2_china.42.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Cool
+		name = russia2_china.42.a
+		ai_chance = {
+			base = 100
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = FROM
+			value = 250
+		}
+	}
+}
+
+#New China Leaves Faction
+country_event = {
+	id = russia2_china.43
+	title = russia2_china.43.t
+	desc = russia2_china.43.d
+	picture = GFX_report_event_poland_rejects
+
+	is_triggered_only = yes
+
+	option = { #Uh...
+		name = russia2_china.43.a
+		ai_chance = {
+			base = 100
+		}
+	}
+}

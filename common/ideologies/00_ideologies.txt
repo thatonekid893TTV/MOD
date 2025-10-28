@@ -1,88 +1,19 @@
 ideologies = {
-
+	
 	democratic = {
 
 		types = {
 
 			conservatism = {
-				color = { 0 140 255 }
 			}
 
 			liberalism = {
-				color = { 255 209 130 }
 			}
 
 			socialism = {
-				color = { 255 158 198 }
 			}
 
 			populism = {
-				color = { 42 50 153 }
-			}
-
-			progressivism = {
-				can_be_randomly_selected = no
-				color = { 106 173 109 }
-			}
-
-			progressive_democrat = {
-				can_be_randomly_selected = no
-				color = { 106 173 170 }
-			}
-
-			democrat = {
-				can_be_randomly_selected = no
-				color = { 25 59 196 }
-			}
-
-			conservative_democrat = {
-				can_be_randomly_selected = no
-				color = { 25 132 196 }
-			}
-
-			liberal_republican = {
-				can_be_randomly_selected = no
-				color = { 255 150 102 }
-			}
-
-			republican = {
-				can_be_randomly_selected = no
-				color = { 226 62 34 }
-			}
-
-			libertarian = {
-				can_be_randomly_selected = no
-				color = { 224 186 17 }
-			}
-
-			anarcho_capitalism = {
-				can_be_randomly_selected = no
-				color = { 158 129 12 }
-			}
-			
-			conservative_republican = {
-				can_be_randomly_selected = no
-				color = { 26 66 119 }
-			}
-
-			neoconservative_republican = {
-				can_be_randomly_selected = no
-			}
-
-			trumpist_republican = {
-				can_be_randomly_selected = no
-			}
-			
-			reform = {
-				can_be_randomly_selected = no
-			}
-
-			progressive_independent = {
-				can_be_randomly_selected = no
-			}
-
-			neoprogressive_democrat = {
-				can_be_randomly_selected = no
 			}
 		}
 
@@ -95,14 +26,14 @@ ideologies = {
 			"FACTION_NAME_DEMOCRATIC_6"
 		}
 
-		color = { 0 100 255 }
+		color = { 0 0 255 }
 
 		rules = {
-			can_create_collaboration_government = yes
-			can_declare_war_on_same_ideology = yes
+			can_create_collaboration_government = no
+			can_declare_war_on_same_ideology = no
 			can_force_government = yes
-			can_send_volunteers = yes
-			can_puppet = yes
+			can_send_volunteers = no
+			can_puppet = no
 			can_lower_tension = yes
 			can_only_justify_war_on_threat_country = yes
 			can_guarantee_other_ideologies = yes
@@ -110,17 +41,15 @@ ideologies = {
 
 		can_host_government_in_exile = yes
 
-		can_collaborate = yes
-
 		war_impact_on_world_tension = 0.25		# no major danger, remember this this the 40s!
 		faction_impact_on_world_tension = 0.1
 
 		modifiers = {
-			generate_wargoal_tension = 0.50
-			join_faction_tension = 0.50
+			generate_wargoal_tension = 1.00
+			join_faction_tension = 0.80
 			lend_lease_tension = 0.50
 			send_volunteers_tension = 0.50
-			guarantee_tension = 0.4
+			guarantee_tension = 0.25
 			# annex_cost_factor = 0.5 # Deprecated, use common\peace_conference\00_generic_peace.txt instead
 			civilian_intel_to_others = 20.0
 			army_intel_to_others = 5.0
@@ -135,6 +64,8 @@ ideologies = {
 		}
 		ai_democratic = yes # uses the democratic AI behaviour
 		ai_ideology_wanted_units_factor = 1.10 # multiplies threat impact on number of desired units by this value, defaults to 1.0. If at war, the larger of this value and NDefines::NAI::WANTED_UNITS_WAR_THREAT_FACTOR will be used instead
+		
+		ai_give_core_state_control_threshold = 0 # Extra threshold value added to DIPLOMATIC_ACTION_PROPOSE_SCORE for this ideology to give back core state control to other country
 	}
 
 
@@ -143,63 +74,19 @@ ideologies = {
 		types = {
 
 			marxism = {
-				color = { 147 0 34 }
 			}
 
 			leninism = {
-				color = { 195 52 58 }
 			}
 
 			stalinism = {
-				color = { 110 0 0 }
 			}
 
 			anti_revisionism = {
-				color = { 165 57 57 }
 			}
 
 			anarchist_communism = {
-				color = { 60 0 0 }
 			}
-
-			democratic_socialism_ideology = {
-				color = { 186 0 82 }
-			}
-			social_democracy = {
-			}
-						military_communism = {
-				can_be_randomly_selected = no
-			}
-
-			monarcho_communism = {
-				can_be_randomly_selected = no
-			}
-
-			esoteric_marxism = {
-				can_be_randomly_selected = no
-			}
-
-			syndicalism = {
-			}
-
-			titoism = {
-			}
-
-			council_communism = {
-			}
-
-			goulash_communism_ideology = {
-				can_be_randomly_selected = no
-			}
-
-			old_bolshevism = {
-				can_be_randomly_selected = no
-			}
-
-			communist_thalassocracy = {
-				can_be_randomly_selected = no
-			}
-			
 		}
 
 		dynamic_faction_names = {
@@ -241,61 +128,32 @@ ideologies = {
 
 		}
 
+		ai_give_core_state_control_threshold = 10
 	}
 
 	fascism = {
-
+	
 		types = {
-
+		
 			nazism = {
-				color = { 58 37 37 }
 			}
 
 			gen_nazism = {
-				color = { 58 37 37 }
 			}
-
+			
 			fascism_ideology = {
-				color = { 122 61 0 }
 			}
-
+			
 			falangism = {
-				color = { 209 82 0 }
 			}
-
+			
 			rexism = {
-				color = { 61 0 53 }
-			}
-			tengri_rexism = {
-			}
-			esoteric_fascism = {
-				can_be_randomly_selected = no
-				color = { 0 0 56 }
 			}
 
-			national_syndicalism = {
-				can_be_randomly_selected = no
-			}
-
-			showa_nationalism = {
-				can_be_randomly_selected = no
-			}
-
-			imperial_cult = {
-				can_be_randomly_selected = no
-			}
-
-			national_populism = {
-				can_be_randomly_selected = no
-			}
-
-			managed_democracy = {
-				can_be_randomly_selected = no
-			}
-			ultra_nationalism = {
+			fascism_anastasy = {
 			}
 		}
-
+		
 		dynamic_faction_names = {
 			"FACTION_NAME_FASCIST_1"
 			"FACTION_NAME_FASCIST_2"
@@ -330,49 +188,32 @@ ideologies = {
 
 		ai_fascist = yes # uses the fascist AI behaviour
 		ai_ideology_wanted_units_factor = 1.65
+		
+		ai_give_core_state_control_threshold = 10000
 	}
-
+	
 	neutrality = {
-
+	
 		types = {
-
+		
 			despotism  = {
-				color = { 114 123 178 }
 			}
-
+			
 			oligarchism  = {
-				color = { 211 193 118 }
 			}
 
 			anarchism = {
 				can_be_randomly_selected = no # won't be assigned to randomly generated country leaders
-				color = { 0 0 0 }
 			}
 
+			military_junta_russia = {
+				can_be_randomly_selected = no
+			}
+			
 			moderatism = {
-				color = { 186 222 255 }
 			}
-
+			
 			centrism = {
-				color = { 222 255 211 }
-			}
-
-			longism = {
-				can_be_randomly_selected = no # won't be assigned to randomly generated country leaders
-			}
-
-			corporatist_dictatorship = {
-				can_be_randomly_selected = no # won't be assigned to randomly generated country leaders
-				color = { 159 168 183 }
-			}
-			monastic_feudalism = {
-			}
-			clerical_fascism_neutrality = {
-				can_be_randomly_selected = no
-			}
-
-			bonapartism = {
-				can_be_randomly_selected = no
 			}
 		}
 
@@ -415,5 +256,67 @@ ideologies = {
 
 		ai_neutral = yes #
 		ai_ideology_wanted_units_factor = 1.15
+
+		ai_give_core_state_control_threshold = 10000
+	}
+
+	anarchy = {
+	
+		types = {
+			anarchist = {
+				
+			}
+
+			anarcho_syndicalism_sub = {
+				can_be_randomly_selected = no
+			}
+
+			anarcho_communism_sub = {
+				can_be_randomly_selected = no
+			}
+
+			individualist_anarchism_sub = {
+				can_be_randomly_selected = no
+			}
+		}
+
+		dynamic_faction_names = {
+			"FACTION_NAME_ANARCHY_1"
+		}
+		
+		color = { 15 15 15 }
+		
+		war_impact_on_world_tension = 0.5
+		faction_impact_on_world_tension = 0.1
+		can_host_government_in_exile = no
+		
+		rules = {
+			can_send_volunteers = yes
+			can_force_government = no
+			can_puppet = no
+			can_create_collaboration_government = no
+			can_guarantee_other_ideologies  = no
+		}
+		
+		modifiers = {
+			justify_war_goal_time = -0.5
+			generate_wargoal_tension = 0
+			lend_lease_tension = 0.25
+			send_volunteers_tension = 0
+			guarantee_tension = 1
+			drift_defence_factor = 0.3
+			civilian_intel_to_others = 10.0
+			army_intel_to_others = 10.0
+			navy_intel_to_others = 10.0
+			airforce_intel_to_others = 10.0
+			hidden_modifier = {
+				join_faction_tension = -0.1
+			}
+		}
+		
+		faction_modifiers = {
+		}
+
+		ai_neutral = yes #change to fascism ?
 	}
 }

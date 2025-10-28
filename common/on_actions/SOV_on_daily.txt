@@ -1,0 +1,2569 @@
+on_actions = {
+	#Country Gets Event to Give Back Bulgarian Claim
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					is_in_faction_with = SOV
+					any_owned_state = {
+						has_state_flag = state_claimed_bulgaria_slavic_alliance
+					}
+					NOT = {
+						tag = BUL
+						has_country_flag = receive_event_bulgaria
+					}
+					BUL = {
+						is_subject = no
+						is_in_faction_with = SOV
+						has_country_flag = SOV_BUL_accepted_claim
+						NOT = {
+							has_country_flag = SOV_BUL_betrayed_claims
+						}
+					}
+				}
+				country_event = { id = russia2_bulgaria.4 }
+			}
+		}
+	}
+
+	#If SOV completed Post War Influence focus, any country they puppet will get this national spirit
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_completed_focus = SOV_post_war_influence
+					}
+					FROM = {
+						is_subject_of = SOV
+						NOT = {
+							has_idea = SOV_Post_war_influence
+						}
+					}
+				}
+				FROM = {
+					add_ideas = SOV_Post_war_influence
+				}
+			}
+		}
+	}
+
+	#Germany Slav Incident
+	on_weekly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = received_event_germany_slav
+						has_war = yes
+					}
+					is_in_faction_with = GER
+					has_completed_focus = SOV_alliance_with_germany_junta
+					has_country_flag = {
+						flag = german_alliance_incident
+						days > 210
+					}
+				}
+				SOV = {
+					country_event = { id = russia2_germany.12 }
+				}
+			}
+		}
+	}
+
+	#Add Country to the Russian Sphere Research Agreement
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					country_exists = SOV
+					SOV = {
+						has_completed_focus = SOV_keep_expanding_russian_sphere
+					}
+					NOT = {
+						tag = SOV
+						is_in_tech_sharing_group = sov_sphere_research
+					}
+					is_in_faction_with = SOV
+					OR = {
+						has_government = democratic
+						has_government = neutrality
+					}
+				}
+				FROM = {
+					add_to_tech_sharing_group = sov_sphere_research
+				}
+			}
+		}
+	}
+
+	#Remove Country from the Russian Sphere Research Agreement
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					is_in_tech_sharing_group = sov_sphere_research
+					OR = {
+						NOT = {
+							tag = SOV
+							is_in_faction_with = SOV
+						}
+						NOT = {
+							has_government = democratic
+							has_government = neutrality
+						}
+					}
+				}
+				FROM = {
+					remove_from_tech_sharing_group = sov_sphere_research
+				}
+			}
+		}
+	}
+
+	#Russian Culture Promoted!
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						is_subject = no
+						has_government = democratic
+						NOT = {
+							has_completed_focus = SOV_freedom_all
+						}
+					}
+					FROM = {
+						OR = {
+							tag = UKR
+							tag = BLR
+							tag = CIR
+							tag = CRI
+							tag = AZR
+							tag = GEO
+							tag = ARM
+							tag = DAG
+							tag = KAZ
+							tag = UZB
+							tag = KYR
+							tag = TMS
+							tag = TAJ
+						}
+					}
+					is_subject_of = SOV
+					has_country_flag = {
+						flag = russian_culture_promote
+						days > 365
+					}
+					NOT = {
+						has_country_flag = receive_promote_russian_culture_event
+					}
+				}
+				FROM = {
+					country_event = { id = russia2_russia.166 }
+				}
+			}
+		}
+	}
+
+	#Add Joint Military Idea
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					is_in_faction_with = SOV
+					SOV = {
+						has_completed_focus = SOV_propose_interventions
+					}
+				}
+				FROM = {
+					add_ideas = SOV_Joint_military_planning
+				}
+			}
+		}
+	}
+
+	#Remove Joint Military Idea
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					has_idea = SOV_Joint_military_planning
+					NOT = {
+						is_in_faction_with = SOV
+					}
+				}
+				FROM = {
+					remove_ideas = SOV_Joint_military_planning
+				}
+			}
+		}
+	}
+
+	#Add Country to the Slavic Research Agreement
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					country_exists = SOV
+					SOV = {
+						has_completed_focus = SOV_slavic_alliance
+					}
+					NOT = {
+						tag = SOV
+						is_in_tech_sharing_group = sov_slavic_research
+					}
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					add_to_tech_sharing_group = sov_slavic_research
+				}
+			}
+		}
+	}
+
+	#Remove Country from the Slavic Research Agreement
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					is_in_tech_sharing_group = sov_slavic_research
+					NOT = {
+						tag = SOV
+						is_in_faction_with = SOV
+					}
+				}
+				FROM = {
+					remove_from_tech_sharing_group = sov_slavic_research
+				}
+			}
+		}
+	}
+
+	#Add Country to the Research Agreement of Democratic Nations
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					country_exists = SOV
+					SOV = {
+						has_completed_focus = SOV_help_from_abroad
+					}
+					NOT = {
+						tag = SOV
+						is_in_tech_sharing_group = sov_progressive_research
+					}
+					is_in_faction_with = SOV
+				}
+				FROM = {
+					add_to_tech_sharing_group = sov_progressive_research
+				}
+			}
+		}
+	}
+
+	#Remove Country from the Research Agreement of Democratic Nations
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					is_in_tech_sharing_group = sov_progressive_research
+					NOT = {
+						tag = SOV
+						is_in_faction_with = SOV
+					}
+				}
+				FROM = {
+					remove_from_tech_sharing_group = sov_progressive_research
+				}
+			}
+		}
+	}
+
+	#Broken ROOT-Russian Agreement
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					has_idea = SOV_Root_russian_pact
+					has_war_with = SOV
+					NOT = {
+						has_country_flag = receive_broken_russia_agreement
+					}
+				}
+				FROM = {
+					country_event = { id = russia2_russia.313 }
+					set_country_flag = receive_broken_russia_agreement
+				}
+			}
+		}
+	}
+
+	#Undo the hostile behaviors towards Russian enemies
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = accepted_russian_root_agreement
+					NOT = {
+						has_idea = SOV_Root_russian_pact
+					}
+				}
+				FROM = {
+					clr_country_flag = accepted_russian_root_agreement
+				}
+				every_country = {
+					limit = {
+						has_country_flag = is_target_of_russia_with_agreement
+					}
+					ROOT = {
+						add_ai_strategy = {
+							type = support
+							id = PREV
+							value = 1000
+						}
+
+						add_ai_strategy = {
+							type = alliance
+							id = PREV
+							value = 1000
+						}
+
+						add_ai_strategy = {
+							type = send_volunteers_desire
+							id = PREV
+							value = 1000
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#Enforced military access ends!
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = {
+						flag = SOV_enforced_military_access
+						days > 730
+					}
+				}
+				FROM = {
+					country_event = { id = russia2_russia.329 }
+				}
+			}
+		}
+	}
+
+	#SOV ends enforced military access
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						gives_military_access_to = SOV
+					}
+					has_country_flag = SOV_enforced_military_access
+				}
+				FROM = {
+					country_event = { id = russia2_russia.330 }
+				}
+			}
+		}
+	}
+
+	#Cancel military access with SOV if war
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = SOV_enforced_military_access
+					has_war_with = SOV
+				}
+				FROM = {
+					country_event = { id = russia2_russia.334 }
+				}
+			}
+		}
+	}
+
+	#Communist Ultimatum
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						tag = SOV
+						is_in_faction_with = SOV
+						is_subject_of = SOV
+						has_government = communism
+						has_civil_war = yes
+						has_capitulated = yes
+					}
+					has_idea = SOV_Communist_influence_international_3
+					has_country_flag = can_be_target_international
+					NOT = {
+						has_country_flag = communist_ultimatum_triggered
+					}
+				}
+				FROM = {
+					country_event = { id = russia2_russia.367 }
+				}
+			}
+		}
+	}
+
+	#Give Ideas to other Russian puppets
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					is_subject_of = SOV
+					has_autonomy_state = autonomy_collaboration_government
+					OR = {
+						NOT = {
+							has_idea = SOV_Russian_overlord
+						}
+						NOT = {
+							has_idea = SOV_Russian_sphere_market
+						}
+						NOT = {
+							has_idea = SOV_Russian_military_training
+						}
+					}
+					SOV = {
+						has_completed_focus = SOV_freedom_all
+						has_government = democratic
+						is_subject = no
+						NOT = {
+							has_idea = SOV_Exiled_russia
+						}
+					}
+				}
+				FROM = {
+					country_event = { id = russia2_russia.393 }
+				}
+			}
+		}
+	}
+
+	#Give Guided by Russia to all the Puppets
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_completed_focus = SOV_create_russian_sphere
+						NOT = {
+							has_completed_focus = SOV_promote_russian_culture
+						}
+						is_subject = no
+						has_government = democratic
+					}
+					NOT = {
+						original_tag = SOV
+					}
+					is_subject_of = SOV
+					NOT = {
+						has_idea = SOV_Guided_by_russia
+					}
+				}
+				FROM = {
+					add_ideas = SOV_Guided_by_russia
+				}
+			}
+		}
+	}
+
+	#Give Guided by Russia 2 to all the Puppets
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_completed_focus = SOV_create_russian_sphere
+						has_completed_focus = SOV_promote_russian_culture
+						is_subject = no
+						has_government = democratic
+					}
+					NOT = {
+						original_tag = SOV
+					}
+					is_subject_of = SOV
+					NOT = {
+						has_idea = SOV_Guided_by_russia2
+					}
+				}
+				FROM = {
+					if = {
+						limit = {
+							has_idea = SOV_Guided_by_russia
+						}
+						swap_ideas = {
+							remove_idea = SOV_Guided_by_russia
+							add_idea = SOV_Guided_by_russia2
+						}
+					}
+					else = {
+						add_ideas = SOV_Guided_by_russia2
+					}
+				}
+			}
+		}
+	}
+
+	#Remove ai Factor if the country doesn't exist anymore
+	on_weekly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					tag = SOV
+					has_country_flag = SOV_AI_is_influencing_international
+					NOT = {
+						any_country = {
+							exists = yes
+							has_country_flag = SOV_AI_is_target_international
+						}
+					}
+				}
+				FROM = {
+					clr_country_flag = SOV_AI_is_influencing_international
+				}
+			}
+		}
+	}
+
+	#SOV Control any States that was Claimed by Ukraine
+	on_weekly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					tag = SOV
+					has_country_flag = ukr_accepted_puppet_united_russia
+					NOT = {
+						has_country_flag = receive_ukraine_complains_land_democratic_russia_united
+					}
+					UKR = {
+						is_subject_of = SOV
+						country_exists = UKR
+						any_state = {
+							has_state_flag = claim_by_ukr_dem_rus
+							is_owned_and_controlled_by = SOV
+						}
+					}
+					NOT = {
+						UKR = {
+							has_idea = SOV_Ukraininan_uprising
+						}
+						has_country_flag = ukr_core_claim_states
+					}
+				}
+				FROM = {
+					country_event = { id = russia2_russia.457 }
+				}
+			}
+		}
+	}
+
+	#SOV has puppet non Soviet Republic
+	on_weekly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					any_country = {
+						is_subject_of = SOV
+						NOT = {
+							has_autonomy_state = autonomy_soviet_republic
+						}
+					}
+					SOV = {
+						has_government = communism
+						is_subject = no
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject_of = SOV
+						NOT = {
+							has_autonomy_state = autonomy_soviet_republic
+						}
+					}
+					SOV = {
+						set_autonomy = {
+							target = PREV
+							autonomy_state = autonomy_soviet_republic
+							end_wars = no
+							end_civil_wars = no
+						}
+					}
+					set_popularities = {
+						democratic = 10
+						neutrality = 10
+						fascism = 10
+						communism = 70
+					}
+				}
+			}
+		}
+	}
+
+	#SOV has puppet non Russian Protectorate
+	on_weekly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					any_country = {
+						is_subject_of = SOV
+						NOT = {
+							has_autonomy_state = autonomy_russian_protectorate
+						}
+					}
+					SOV = {
+						has_completed_focus = SOV_freedom_all
+						has_government = democratic
+						is_subject = no
+						NOT = {
+							has_idea = SOV_Exiled_russia
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						OR = {
+							tag = UKR
+							tag = BLR
+							tag = ARM
+							tag = GEO
+							tag = AZR
+							tag = KAZ
+							tag = TMS
+							tag = UZB
+							tag = TAG
+							tag = KYR
+							tag = CIR
+							tag = CRI
+							tag = DAG
+							tag = KAL
+							tag = KAR
+							tag = KUB
+							tag = NOV
+							tag = PRM
+							tag = ROS
+							tag = SIB
+							tag = STP
+							tag = TAT
+							tag = URA
+							tag = VLG
+							tag = MON
+							tag = TAN
+							tag = EFR
+							tag = KMI
+							tag = VYA
+						}
+						is_subject_of = SOV
+						NOT = {
+							has_autonomy_state = autonomy_collaboration_government
+						}
+					}
+					SOV = {
+						set_autonomy = {
+							target = PREV
+							autonomy_state = autonomy_russian_protectorate
+							end_wars = no
+							end_civil_wars = no
+						}
+					}
+					set_popularities = {
+						democratic = 70
+						neutrality = 10
+						fascism = 10
+						communism = 10
+					}
+				}
+			}
+		}
+	}
+
+	#SOV has puppet non Imperial Governorate
+	on_weekly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					any_country = {
+						is_subject_of = SOV
+						NOT = {
+							has_autonomy_state = autonomy_imperial_governorates
+							has_country_flag = ukraine_no_imperial_govern
+							has_country_flag = germany_no_imperial_transform
+						}
+					}
+					SOV = {
+						has_government = neutrality
+						is_subject = no
+						has_idea = SOV_Tsar_we_trust
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject_of = SOV
+						NOT = {
+							has_autonomy_state = autonomy_imperial_governorates
+							has_civil_war = yes
+							has_country_flag = ukraine_no_imperial_govern
+							has_country_flag = germany_no_imperial_transform
+						}
+					}
+					SOV = {
+						set_autonomy = {
+							target = PREV
+							autonomy_state = autonomy_imperial_governorates
+							end_wars = no
+							end_civil_wars = no
+						}
+					}
+					set_popularities = {
+						democratic = 10
+						neutrality = 70
+						fascism = 10
+						communism = 10
+					}
+				}
+			}
+		}
+	}
+
+	#SOV has puppet non State Magistrate
+	on_weekly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					any_country = {
+						is_subject_of = SOV
+						NOT = {
+							has_autonomy_state = autonomy_state_magistrate
+						}
+					}
+					SOV = {
+						has_government = fascism
+						is_subject = no
+						has_idea = SOV_Impose_order
+					}
+				}
+				every_country = {
+					limit = {
+						is_subject_of = SOV
+						NOT = {
+							has_autonomy_state = autonomy_state_magistrate
+						}
+					}
+					SOV = {
+						set_autonomy = {
+							target = PREV
+							autonomy_state = autonomy_state_magistrate
+							end_wars = no
+							end_civil_wars = no
+						}
+					}
+					set_popularities = {
+						democratic = 10
+						neutrality = 10
+						fascism = 70
+						communism = 10
+					}
+				}
+			}
+		}
+	}
+
+	#If One of Yalta participant is at war with SOV and vice versa
+	on_daily_SOV = {
+		effect = {
+			if = {
+				limit = {
+					any_country = {
+						OR = {
+							tag = ENG
+							tag = USA
+							tag = FRA
+						}
+						has_country_flag = has_broken_yalta_pact_war
+						NOT = {
+							has_country_flag = eng_accepted_yalta_conference
+							has_country_flag = usa_accepted_yalta_conference
+							has_country_flag = fra_accepted_yalta_conference
+							has_country_flag = receive_new_status_yalta
+						}
+						has_war_with = SOV
+					}
+				}
+				every_country = {
+					limit = {
+						OR = {
+							tag = ENG
+							tag = USA
+							tag = FRA
+						}
+						NOT = {
+							has_country_flag = eng_accepted_yalta_conference
+							has_country_flag = usa_accepted_yalta_conference
+							has_country_flag = fra_accepted_yalta_conference
+							has_country_flag = receive_new_status_yalta
+						}
+						has_war_with = SOV
+					}
+					country_event = { id = russia2_yaltas.12 days = 1 }
+				}
+				SOV = {
+					if = {
+						limit = {
+							has_war_with = USA
+							USA = {
+								NOT = {
+									has_country_flag = receive_new_status_yalta
+								}
+							}
+						}
+						country_event = { id = russia2_yaltas.13 days = 1 }
+						USA = {
+							set_country_flag = receive_new_status_yalta
+						}
+					}
+					if = {
+						limit = {
+							has_war_with = ENG
+							ENG = {
+								NOT = {
+									has_country_flag = receive_new_status_yalta
+								}
+							}
+						}
+						country_event = { id = russia2_yaltas.14 days = 1 }
+						ENG = {
+							set_country_flag = receive_new_status_yalta
+						}
+					}
+					if = {
+						limit = {
+							has_war_with = FRA
+							FRA = {
+								NOT = {
+									has_country_flag = receive_new_status_yalta
+								}
+							}
+						}
+						country_event = { id = russia2_yaltas.15 days = 1 }
+						FRA = {
+							set_country_flag = receive_new_status_yalta
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#If Russia has Compromised Russian-Italia Diplomatic Relation
+	on_daily_SOV = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = has_compromised_russian_italian_relation
+				}
+				SOV = {
+					clr_country_flag = has_compromised_russian_italian_relation
+					clr_country_flag = accept_diplomatic_relation_with_italy
+					clr_country_flag = enter_diplomatic_relation_with_italy_possible
+					country_event = { id = russia2_generic.39 hours = 2 }
+				}
+			}
+		}
+	}
+
+	#If Russia has Compromised Russian-Italia Diplomatic Relation
+	on_daily_ITA = {
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = has_compromised_russian_italian_relation
+				}
+				ITA = {
+					clr_country_flag = has_compromised_russian_italian_relation
+					country_event = { id = russia2_generic.39 hours = 2 }
+				}
+				SOV = {
+					clr_country_flag = accept_diplomatic_relation_with_italy
+					clr_country_flag = enter_diplomatic_relation_with_italy_possible
+				}
+			}
+		}
+	}
+
+	#Anastasia Struggle
+	on_daily_SOV = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = sov_anna_anderson_struggle_over
+					}
+					has_country_flag = sov_anna_anderson_returns_russia
+					has_government = neutrality
+					is_subject = no
+					has_capitulated = no
+					has_completed_focus = SOV_restoration_tsar
+					OR = {
+						has_country_leader = {
+							character = SOV_Kirill_vladimirovich
+							ruling_only = yes
+						}
+						has_country_leader = {
+							character = SOV_Vladimir_kirillovich
+							ruling_only = yes
+						}
+					}
+					NOT = {
+						has_completed_focus = SOV_the_emperor
+						has_completed_focus = SOV_the_empress
+						has_country_leader = {
+							character = SOV_Anastasia_nikolaevna
+							ruling_only = yes
+						}
+					}
+				}
+				add_to_variable = { anna_anderson_legitimacy = var:anna_anderson_daily_legitimacy_gain }
+				clamp_variable = {
+					var = anna_anderson_legitimacy
+					min = 0
+					max = 1
+				}
+				set_variable = { anna_anderson_legitimacy_gui = anna_anderson_legitimacy }
+				multiply_variable = { anna_anderson_legitimacy_gui = 100 }
+				multiply_variable = { anna_anderson_legitimacy_gui = 2 }
+				round_variable = anna_anderson_legitimacy_gui
+				clamp_variable = {
+					var = anna_anderson_legitimacy
+					min = 0
+					max = 200
+				}
+			}
+		}
+	}
+
+	#The Great Purge (fire a random event OR fire the revolution)
+	on_monthly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					has_government = communism
+					is_subject = no
+					has_civil_war = no
+					has_idea = SOV_Great_purge_idea_russia2
+					has_country_flag = sov_purge_ongoing
+					NOT = {
+						has_country_flag = sov_purge_cancelled
+						has_country_flag = sov_purge_over
+						has_country_flag = sov_purge_failed
+					}
+				}
+				set_temp_variable = { purge_array_count = sov_great_purge_trigger^num }
+				multiply_temp_variable = { purge_array_count = 0.75 }
+				set_temp_variable = { purge_array_trigger_count = 0 }
+				for_each_loop = {
+					array = sov_great_purge_trigger
+
+					if = {
+						limit = {
+							check_variable = {
+								var = v
+								value = 1
+								compare = equals
+							}
+						}
+						add_to_temp_variable = { purge_array_trigger_count = 1 }
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = purge_array_trigger_count
+							value = purge_array_count
+							compare = greater_than
+						}
+						check_variable = {
+							var = sov_great_purge_completion
+							value = 80
+							compare = less_than
+						}
+					}
+					set_country_flag = sov_purge_failed
+					clr_country_flag = sov_purge_ongoing
+					sov_unlock_nkvd_chiefs = yes
+					country_event = russia2_russia.49
+				}
+				else_if = {
+					limit = {
+						check_variable = {
+							var = sov_great_purge_events^num
+							value = 1
+							compare = greater_than_or_equals
+						}
+					}
+					set_temp_variable = { random_purge_event = 0 }
+					randomize_temp_variable = {
+						var = random_purge_event
+						distribution = uniform
+						min = 0
+						max = sov_great_purge_events^num
+					}
+					round_temp_variable = random_purge_event
+					if = {
+						limit = {
+							check_variable = {
+								var = random_purge_event
+								value = sov_great_purge_events^num
+								compare = greater_than_or_equals
+							}
+						}
+						set_temp_variable = { random_purge_event = 0 }
+					}
+					set_temp_variable = { random_purge_event_id = sov_great_purge_events^var:random_purge_event }
+					meta_effect = {
+						text = {
+							country_event = [PURGE_EVENT]
+						}
+						PURGE_EVENT = "russia2_russia.[?random_purge_event_id]"
+					}
+					remove_from_array = {
+						array = sov_great_purge_events
+						index = random_purge_event
+					}
+				}
+				else = {
+					set_country_flag = sov_purge_failed
+					clr_country_flag = sov_purge_ongoing
+					country_event = russia2_russia.49
+				}
+			}
+		}
+	}
+
+	#Peasant Strike
+	on_monthly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					has_idea = SOV_Regular_peasants_strikes
+					has_country_flag = {
+						flag = sov_last_peasant_strike
+						days > 300
+					}
+				}
+				set_temp_variable = { peasant_strike_chance = 0 }
+				randomize_temp_variable = {
+					var = peasant_strike_chance
+					min = 0
+					max = 1
+					distribution = uniform
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = peasant_strike_chance
+							value = 0.5
+							compare = greater_than_or_equals
+						}
+					}
+					country_event = russia2_russia.93
+				}
+			}
+		}
+	}
+
+	#Remove Country who doesn't belong with SOV during Civil War
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							tag = SOV
+							tag = UKR
+							tag = BLR
+							tag = KAZ
+							tag = TMS
+							tag = GEO
+							tag = ARM
+							tag = AZR
+							tag = CRI
+							is_subject = yes
+						}
+						is_in_faction_with = SOV
+					}
+					SOV = {
+						has_global_flag = second_russian_civil_war_in_progress
+						OR = {
+							has_war_with = SOJ
+							has_war_with = UKR
+						}
+					}
+				}
+				FROM = {
+					leave_faction = yes
+					if = {
+						limit = {
+							has_war_with = SOJ
+						}
+						white_peace = SOJ
+					}
+					if = {
+						limit = {
+							has_war_with = UKR
+						}
+						white_peace = UKR
+					}
+				}
+			}
+		}
+	}
+
+	#Remove National Spirits if RCW is over
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						OR = {
+							has_idea = SOV_Supply_line
+							has_idea = SOV_Second_civil_war_idea_modifier
+							has_idea = SOV_Urals_secret
+							has_idea = SOV_Slow_industry
+							has_idea = SOV_Organize_volunteer_forces
+						}
+						has_global_flag = second_russian_civil_war_over
+						NOT = {
+							has_global_flag = second_russian_civil_war_in_progress
+						}
+					}
+				}
+				FROM = {
+					remove_ideas = SOV_Supply_line
+					remove_ideas = SOV_Second_civil_war_idea_modifier
+					remove_ideas = SOV_Urals_secret
+					remove_ideas = SOV_Slow_industry
+					remove_ideas = SOV_Organize_volunteer_forces
+				}
+			}
+		}
+	}
+
+	#Anarchist Ukraine
+	on_daily_UKR = {
+		effect = {
+			if = {
+				limit = {
+					has_government = anarchy
+					is_subject = no
+				}
+				ukr_update_anarchist_states = yes
+				ukr_update_state_cost = yes
+				ukr_add_daily_gain_anarchist_states = yes
+				ukr_update_current_view = yes
+			}
+		}
+	}
+
+	#Anarchist Ukraine
+	on_monthly_UKR = {
+		effect = {
+			if = {
+				limit = {
+					has_government = anarchy
+					is_subject = no
+					has_idea = UKR_Our_will_our_weapon
+				}
+				add_to_variable = { ukr.anarchist_coring_points = 2 }
+			}
+		}
+	}
+
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						has_country_leader_with_trait = russia2_soviet_puppet
+						has_country_leader_with_trait = russia2_russian_puppet
+						has_country_leader_with_trait = russia2_making_fun_of_me_uh
+					}
+					NOT = {
+						is_subject_of = SOV
+					}
+				}
+				if = {
+					limit = {
+						has_country_leader_with_trait = russia2_soviet_puppet
+					}
+					remove_country_leader_trait = russia2_soviet_puppet
+				}
+				if = {
+					limit = {
+						has_country_leader_with_trait = russia2_russian_puppet
+					}
+					remove_country_leader_trait = russia2_russian_puppet
+				}
+				if = {
+					limit = {
+						has_country_leader_with_trait = russia2_making_fun_of_me_uh
+					}
+					remove_country_leader_trait = russia2_making_fun_of_me_uh
+				}
+			}
+		}
+	}
+
+	#Death of Stalin (natural)
+	on_monthly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					has_government = communism
+					has_country_leader = {
+						character = SOV_Joseph_stalin
+						ruling_only = yes
+					}
+					date > 1944.12.1
+					NOT = {
+						has_country_flag = sov_stalin_dies_1945_event
+					}
+				}
+				set_variable = { sov_chance_stalin_not_death = 100 }
+				subtract_from_variable = { sov_chance_stalin_not_death = sov_chance_stalin_death }
+				random_list = {
+					var:sov_chance_stalin_death = {
+						country_event = russia2_russia.60
+					}
+
+					var:sov_chance_stalin_not_death = {
+						add_to_variable = { sov_chance_stalin_death = 4 }
+						clamp_variable = {
+							var = sov_chance_stalin_death
+							min = 10
+							max = 100
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#Death of Makhno
+	on_monthly_UKR = {
+		effect = {
+			if = {
+				limit = {
+					has_government = anarchy
+					has_country_flag = ukr_makhno_very_weak
+					has_character = UKR_Makhno_nestor
+					NOT = {
+						has_global_flag = ukr_makhno_dead
+					}
+				}
+				set_temp_variable = { ukr_chance_makhno_not_death = 100 }
+				subtract_from_temp_variable = { ukr_chance_makhno_not_death = ukr_chance_makhno_death }
+				random_list = {
+					var:ukr_chance_makhno_death = {
+						country_event = russia2_ukraine.89
+					}
+
+					var:ukr_chance_makhno_not_death = {
+						add_to_variable = { ukr_chance_makhno_death = 2.5 }
+						clamp_variable = {
+							var = sov_chance_makhno_death
+							min = 10
+							max = 100
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#Disable the damn resistance
+	on_daily_UKR = {
+		effect = {
+			if = {
+				limit = {
+					has_government = anarchy
+					any_state = {
+						is_controlled_by = ROOT
+						has_resistance = yes
+					}
+				}
+				every_controlled_state = {
+					limit = {
+						has_resistance = yes
+					}
+					cancel_resistance = yes
+				}
+			}
+		}
+	}
+
+	#Fuck Mutinies
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					has_government = anarchy
+					OR = {
+						has_idea = mutiny_1
+						has_idea = mutiny_2
+						has_idea = mutiny_3
+					}
+				}
+				country_event = russia2_ukraine.87
+			}
+			if = {
+				limit = {
+					has_government = anarchy
+					OR = {
+						has_idea = strikes_1
+						has_idea = strikes_2
+						has_idea = strikes_3
+					}
+				}
+				country_event = russia2_ukraine.88
+			}
+			if = {
+				limit = {
+					has_government = anarchy
+					OR = {
+						has_idea = draft_dodging
+						has_idea = draft_dodging_2
+						has_idea = draft_dodging_3
+					}
+				}
+				country_event = russia2_ukraine.92
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to the West
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_west
+						NOT = {
+							has_country_flag = anarchist_revolution_level_2
+							has_country_flag = anarchist_revolution_level_3
+							has_country_flag = anarchist_revolution_level_4
+						}
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital= yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							any_state = {
+								is_capital= yes
+								is_on_continent = europe
+								is_owned_by = FROM
+							}
+						}
+					}
+				}
+				FROM = {
+					add_ideas = SOV_Anarchist_uprising
+				}
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to the East
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_east
+						NOT = {
+							has_country_flag = anarchist_revolution_level_2
+							has_country_flag = anarchist_revolution_level_3
+							has_country_flag = anarchist_revolution_level_4
+						}
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					add_ideas = SOV_Anarchist_uprising
+				}
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to Both
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_both
+						NOT = {
+							has_country_flag = anarchist_revolution_level_2
+							has_country_flag = anarchist_revolution_level_3
+							has_country_flag = anarchist_revolution_level_4
+						}
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					add_ideas = SOV_Anarchist_uprising
+				}
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to the West and has level 2
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_west
+						has_country_flag = anarchist_revolution_level_2
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising_2
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital= yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							any_state = {
+								is_capital= yes
+								is_on_continent = europe
+								is_owned_by = FROM
+							}
+						}
+					}
+				}
+				FROM = {
+					if = {
+						limit = {
+							FROM = {
+								has_idea = SOV_Anarchist_uprising
+							}
+						}
+						swap_ideas = {
+							remove_idea = SOV_Anarchist_uprising
+							add_idea = SOV_Anarchist_uprising_2
+						}
+					}
+					else = {
+						add_ideas = SOV_Anarchist_uprising_2
+					}
+				}
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to the East has level 2
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_east
+						has_country_flag = anarchist_revolution_level_2
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising_2
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					if = {
+						limit = {
+							FROM = {
+								has_idea = SOV_Anarchist_uprising
+							}
+						}
+						swap_ideas = {
+							remove_idea = SOV_Anarchist_uprising
+							add_idea = SOV_Anarchist_uprising_2
+						}
+					}
+					else = {
+						add_ideas = SOV_Anarchist_uprising_2
+					}
+				}
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to Both and has level 2
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_both
+						has_country_flag = anarchist_revolution_level_2
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising_5
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					if = {
+						limit = {
+							FROM = {
+								has_idea = SOV_Anarchist_uprising
+							}
+						}
+						swap_ideas = {
+							remove_idea = SOV_Anarchist_uprising
+							add_idea = SOV_Anarchist_uprising_5
+						}
+					}
+					else = {
+						add_ideas = SOV_Anarchist_uprising_5
+					}
+				}
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to the West and has level 3
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_west
+						has_country_flag = anarchist_revolution_level_3
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising_3
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital= yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							any_state = {
+								is_capital= yes
+								is_on_continent = europe
+								is_owned_by = FROM
+							}
+						}
+					}
+				}
+				FROM = {
+					if = {
+						limit = {
+							FROM = {
+								has_idea = SOV_Anarchist_uprising_2
+							}
+						}
+						swap_ideas = {
+							remove_idea = SOV_Anarchist_uprising_2
+							add_idea = SOV_Anarchist_uprising_3
+						}
+					}
+					else = {
+						add_ideas = SOV_Anarchist_uprising_3
+					}
+				}
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to the East has level 3
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_east
+						has_country_flag = anarchist_revolution_level_3
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising_3
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					if = {
+						limit = {
+							FROM = {
+								has_idea = SOV_Anarchist_uprising_2
+							}
+						}
+						swap_ideas = {
+							remove_idea = SOV_Anarchist_uprising_2
+							add_idea = SOV_Anarchist_uprising_3
+						}
+					}
+					else = {
+						add_ideas = SOV_Anarchist_uprising_3
+					}
+				}
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to Both and has level 3
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_both
+						has_country_flag = anarchist_revolution_level_3
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising_6
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					if = {
+						limit = {
+							FROM = {
+								has_idea = SOV_Anarchist_uprising_5
+							}
+						}
+						swap_ideas = {
+							remove_idea = SOV_Anarchist_uprising_5
+							add_idea = SOV_Anarchist_uprising_6
+						}
+					}
+					else = {
+						add_ideas = SOV_Anarchist_uprising_6
+					}
+				}
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to the West and has level 4
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_west
+						has_country_flag = anarchist_revolution_level_4
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising_4
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital= yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							any_state = {
+								is_capital= yes
+								is_on_continent = europe
+								is_owned_by = FROM
+							}
+						}
+					}
+				}
+				FROM = {
+					if = {
+						limit = {
+							FROM = {
+								has_idea = SOV_Anarchist_uprising_3
+							}
+						}
+						swap_ideas = {
+							remove_idea = SOV_Anarchist_uprising_3
+							add_idea = SOV_Anarchist_uprising_4
+						}
+					}
+					else = {
+						add_ideas = SOV_Anarchist_uprising_4
+					}
+				}
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to the East has level 4
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_east
+						has_country_flag = anarchist_revolution_level_4
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising_4
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					if = {
+						limit = {
+							FROM = {
+								has_idea = SOV_Anarchist_uprising_3
+							}
+						}
+						swap_ideas = {
+							remove_idea = SOV_Anarchist_uprising_3
+							add_idea = SOV_Anarchist_uprising_4
+						}
+					}
+					else = {
+						add_ideas = SOV_Anarchist_uprising_4
+					}
+				}
+			}
+		}
+	}
+
+	#If Anarchist SOV completed Spread the Revolution to Both and has level 4
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					SOV = {
+						has_government = anarchy
+						exists = yes
+						has_completed_focus = SOV_spread_revolution_both
+						has_country_flag = anarchist_revolution_level_4
+					}
+					FROM = {
+						NOT = {
+							has_idea = SOV_Anarchist_uprising_7
+							is_in_faction_with = SOV
+							is_subject_of = SOV
+						}
+						NOT = {
+							tag = SOV
+						}
+						if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_land_fake_freedom
+									NOT = {
+										has_completed_focus = SOV_spread_revolution_everywhere
+									}
+								}
+							}
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = north_america
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital= yes
+									is_on_continent = south_america
+									is_owned_by = FROM
+								}
+							}
+						}
+						else_if = {
+							limit = {
+								SOV = {
+									has_completed_focus = SOV_spread_revolution_everywhere
+								}
+							}
+							exists = yes
+						}
+						else = {
+							OR = {
+								any_state = {
+									is_capital = yes
+									is_on_continent = europe
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = asia
+									is_owned_by = FROM
+								}
+								any_state = {
+									is_capital = yes
+									is_on_continent = middle_east
+									is_owned_by = FROM
+								}
+							}
+						}
+					}
+				}
+				FROM = {
+					if = {
+						limit = {
+							FROM = {
+								has_idea = SOV_Anarchist_uprising_6
+							}
+						}
+						swap_ideas = {
+							remove_idea = SOV_Anarchist_uprising_6
+							add_idea = SOV_Anarchist_uprising_7
+						}
+					}
+					else = {
+						add_ideas = SOV_Anarchist_uprising_7
+					}
+				}
+			}
+		}
+	}
+
+	#Anarchist Elections
+	on_monthly_SOV = {
+		effect = {
+			if = {
+				limit = {
+					has_government = anarchy
+					is_subject = no
+					has_completed_focus = SOV_anarchist_election
+				}
+				add_to_variable = { sov_anarchist_election_months_since_last_election = 1 }
+				if = {
+					limit = {
+						check_variable = {
+							var = sov_anarchist_election_months_since_last_election
+							value = 3
+							compare = greater_than_or_equals
+						}
+					}
+					set_variable = { sov_anarchist_election_months_since_last_election = 0 }
+					find_highest_in_array = {
+						array = sov_anarchist_election_parties
+						index = sov_anarchist_election_current_party_context_temp
+					}
+					set_variable = { sov_anarchist_election_current_party_context = sov_anarchist_election_current_party_context_temp }
+					set_variable_anarchist_election_to_0 = yes
+					country_event = russia2_russia.654
+				}
+				else = {
+					set_temp_variable = { random_party_index = sov_anarchist_election_parties^num }
+					add_to_temp_variable = { random_party_index = 0.49 }
+					randomize_variable = {
+						var = sov_anarchist_election_current_party_context
+						min = -0.5
+						max = var:sov_anarchist_election_parties^num
+						distribution = uniform
+					}
+					round_variable = sov_anarchist_election_current_party_context
+					clamp_variable = {
+						var = sov_anarchist_election_current_party_context
+						min = 0
+						max = var:sov_anarchist_election_parties^num
+					}
+					random_list = {
+						50 = {
+							country_event = russia2_russia.655
+						}
+						50 = {
+							country_event = russia2_russia.656
+						}
+					}
+					if = {
+						limit = {
+							check_variable = {
+								var = sov_anarchist_election_months_since_last_election
+								value = 2
+								compare = equals
+							}
+						}
+						country_event = { id = russia2_russia.658 days = 15 }
+					}
+				}
+			}
+		}
+	}
+
+	#Country Gets Event to Release Armenia if Russia is Neutral or Fascist (for england)
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					country_exists = SOV
+					country_exists = ARM
+					ARM = {
+						owns_state = 230
+						is_subject_of = ENG
+					}
+					NOT = {
+						SOV = {
+							is_subject = yes
+						}
+					}
+					OR = {
+						has_global_flag = second_russian_civil_war_over
+						SOV = {
+							has_completed_focus = SOV_create_russian_sphere
+							NOT = {
+								has_completed_focus = SOV_end_investments
+							}
+						}
+					}
+					ENG = {
+						has_country_flag = GRE_british_armenia
+					}
+				}
+				ENG = {
+					country_event = { id = russia2_russia.659 }
+				}
+			}
+		}
+	}
+}

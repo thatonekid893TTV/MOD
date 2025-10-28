@@ -1,0 +1,622 @@
+#Division Templates
+division_template = {
+	name = "Povstancheskaya Diviziya"
+	is_locked = yes
+	division_names_group = SOV_INF_BLACK_REVOLUTION_01
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 } 
+	}
+}
+
+division_template = {
+	name = "Gornostrelkovaya Diviziya"		# Mountain Division
+	is_locked = yes
+	division_names_group = SOV_MNT_BLACK_REVOLUTION_01
+
+	regiments = {
+		mountaineers = { x = 0 y = 0 }	
+		mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }	
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+		mountaineers = { x = 2 y = 0 }	
+		mountaineers = { x = 2 y = 1 }	
+		mountaineers = { x = 2 y = 2 }	
+		mountaineers = { x = 3 y = 0 }	
+	}
+	support = {
+		artillery = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Motorizirovannaya Povstancheskaya Diviziya"		# Motor Rifle Division
+	is_locked = yes
+	division_names_group = SOV_MOT_BLACK_REVOLUTION_01
+	regiments = {
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+		motorized = { x = 1 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Kavaleriyskaya Povstancheskaya Diviziya" 	# Cavalry Division
+	is_locked = yes
+	division_names_group = SOV_CAV_BLACK_REVOLUTION_01
+
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+		cavalry = { x = 2 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Tankovaya Povstancheskaya Diviziya" #Tank
+	is_locked = yes
+	division_names_group = SOV_ARM_BLACK_REVOLUTION_01
+	regiments = {
+		light_armor = { x = 0 y = 0 }
+		light_armor = { x = 0 y = 1 }
+		light_armor = { x = 1 y = 0 }		
+		light_armor = { x = 1 y = 1 }			
+		motorized = { x = 2 y = 0 }		
+		motorized = { x = 2 y = 1 }	
+		motorized = { x = 2 y = 2 }			
+	}
+}
+
+units = {
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 6380
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 6380
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 6380
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "2ya Povstancheskaya Diviziya"
+		location = 352
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "3ya Povstancheskaya Diviziya"
+		location = 9566
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "7ya Povstancheskaya Diviziya"
+		location = 11405
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "14ya Povstancheskaya Diviziya"
+		location = 11405
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "15ya Povstancheskaya Diviziya"
+		location = 11405
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "16ya Povstancheskaya Diviziya"
+		location = 3151
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "17ya Povstancheskaya Diviziya"
+		location = 3151
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "20ya Povstancheskaya Diviziya"
+		location = 3151
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 3151
+		division_template = "Tankovaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 6380
+		division_template = "Tankovaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 3529
+		division_template = "Tankovaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= { #Belarus
+		name = "19ya Povstancheskaya Diviziya"
+		location = 3529
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "18ya Povstancheskaya Diviziya"
+		location = 3529
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 17
+		}
+		location = 11234
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "2ya Povstancheskaya Diviziya"
+		location = 11234
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 11234
+		division_template = "Motorizirovannaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 6380
+		division_template = "Motorizirovannaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 4354
+		division_template = "Motorizirovannaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 11225
+		division_template = "Motorizirovannaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "1ya Motorizirovannaya Povstancheskaya Diviziya"
+		location = 3568
+		division_template = "Motorizirovannaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= { #Urals
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 1278
+		division_template = "Gornostrelkovaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 1278
+		division_template = "Gornostrelkovaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 3672
+		division_template = "Gornostrelkovaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 3672
+		division_template = "Gornostrelkovaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "Gornaya Diviziya Imeni Belasha"
+		location = 11696
+		division_template = "Gornostrelkovaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 23
+		}
+		location = 3529
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= { #Antartica
+		name = "1ya Diviziya Imeni Vdovichenko"
+		location = 7597
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "11ya Povstancheskaya Diviziya"
+		location = 7597
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "2ya Motorizirovannaya Povstancheskaya Diviziya"
+		location = 957
+		division_template = "Motorizirovannaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "3ya Motorizirovannaya Povstancheskaya Diviziya"
+		location = 12189
+		division_template = "Motorizirovannaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "4ya Motorizirovannaya Povstancheskaya Diviziya"
+		location = 3686
+		division_template = "Motorizirovannaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "5ya Motorizirovannaya Povstancheskaya Diviziya"
+		location = 3734
+		division_template = "Motorizirovannaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= { #Kuban
+		name = "12ya Povstancheskaya Diviziya"
+		location = 3734
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "13ya Povstancheskaya Diviziya"
+		location = 3686
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 27
+		}
+		location = 957
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 29
+		}
+		location = 10256
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 1614
+		division_template = "Kavaleriyskaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 1614
+		division_template = "Kavaleriyskaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 1517
+		division_template = "Kavaleriyskaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "Verhovaya Diviziya Imeni Shchusa"
+		location = 1517
+		division_template = "Kavaleriyskaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "1ya Kavaleriyskaya Povstancheskaya Diviziya"
+		location = 1239
+		division_template = "Kavaleriyskaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "2ya Kavaleriyskaya Povstancheskaya Diviziya"
+		location = 12329
+		division_template = "Kavaleriyskaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= { #Siberia
+		division_name = {
+			is_name_ordered = yes
+			name_order = 31
+		}
+		location = 957
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 34
+		}
+		location = 855
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 36
+		}
+		location = 675
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "21ya Povstancheskaya Diviziya"
+		location = 11696
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "22ya Povstancheskaya Diviziya"
+		location = 11696
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "23ya Povstancheskaya Diviziya"
+		location = 3134
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "24ya Povstancheskaya Diviziya"
+		location = 6245
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "25ya Povstancheskaya Diviziya"
+		location = 413
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}division= {
+		name = "26ya Povstancheskaya Diviziya"
+		location = 6502
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "27ya Povstancheskaya Diviziya"
+		location = 6502
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "28ya Povstancheskaya Diviziya"
+		location = 1826
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "29ya Povstancheskaya Diviziya"
+		location = 12441
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "30ya Povstancheskaya Diviziya"
+		location = 3653
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "31ya Povstancheskaya Diviziya"
+		location = 3653
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "32ya Povstancheskaya Diviziya"
+		location = 11674
+		division_template = "Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "6ya Motorizirovannaya Povstancheskaya Diviziya"
+		location = 11674
+		division_template = "Motorizirovannaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "7ya Motorizirovannaya Povstancheskaya Diviziya"
+		location = 3653
+		division_template = "Motorizirovannaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 6380
+		division_template = "Tankovaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 525
+		division_template = "Tankovaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "Mehanizirovannaya Diviziya Imeni Karetnikova"
+		location = 525
+		division_template = "Tankovaya Povstancheskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+}	

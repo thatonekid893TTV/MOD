@@ -1,0 +1,179 @@
+###########################
+# Spanish Events
+###########################
+
+add_namespace = russia2_spain
+
+# Check if File is Loaded
+country_event = {
+	id = russia2_spain.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_spains
+	}
+}
+
+#Spanish Invitation to the International
+country_event = {
+	id = russia2_spain.1
+	title = russia2_spain.1.t
+	desc = russia2_spain.1.d
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = { #Accepts
+		ai_chance = {
+			base = 65
+			modifier = {
+				has_government = communism
+				add = 35
+			}	
+		}	
+		name = russia2_spain.1.a
+		SOV = {
+			add_to_faction = SPR 
+			country_event = { id = russia2_spain.2 days = 1 }
+		}
+	}
+
+	option = { #Refuse
+		ai_chance = {
+			base = 35
+			modifier = {
+				has_government = communism
+				factor = 0
+			}			
+		}	
+		name = russia2_spain.1.b
+		SOV = {
+			country_event = { id = russia2_spain.3 days = 1 }
+		}
+	}
+}
+
+#Spain Accepts the Invitation
+country_event = {
+	id = russia2_spain.2
+	title = russia2_spain.2.t
+	desc = russia2_spain.2.d
+	picture = GFX_handshake_russia2
+	
+	is_triggered_only = yes
+	
+	option = { #Good
+		name = russia2_spain.2.a
+		hidden_effect = {
+			news_event = { id = newsrussia2.45 days = 1 }
+		}		
+	}
+}
+
+#Spain Refuse the Invitation
+country_event = {
+	id = russia2_spain.3
+	title = russia2_spain.3.t
+	desc = russia2_spain.3.d
+	picture = GFX_report_event_generic_parliament
+	
+	is_triggered_only = yes
+	
+	option = { #Bad
+		name = russia2_spain.3.a
+	}
+}
+
+#Spain gets Soviet Proposition for Volunteers
+country_event = {
+	id = russia2_spain.4
+	title = russia2_spain.4.t
+	desc = russia2_spain.4.d
+	picture = GFX_report_event_spr_solidify_the_frontlines
+
+	is_triggered_only = yes
+
+	option = { # Accept
+		ai_chance = { base = 80 }
+		name = russia2_spain.4.a	
+		ROOT = {
+			division_template = {
+				name = "Soviet Volunteers"
+				priority = 1
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+			set_division_template_lock = {
+			    division_template = "Soviet Volunteers"
+			    is_locked = yes
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Soviet Volunteers\" division_template = \"Soviet Volunteers\" start_experience_factor = 1.0 start_equipment_factor = 1.0"
+					owner = ROOT
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Soviet Volunteers\" division_template = \"Soviet Volunteers\" start_experience_factor = 1.0 start_equipment_factor = 1.0"
+					owner = ROOT
+				}
+			}
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "name = \"Soviet Volunteers\" division_template = \"Soviet Volunteers\" start_experience_factor = 1.0 start_equipment_factor = 1.0"
+					owner = ROOT
+				}	
+			}	
+		}
+		add_opinion_modifier = { target = FROM modifier = russian_help }
+		SOV = {
+			country_event = { id = russia2_spain.5 days = 1 }
+		}	
+	}
+
+	option = { #Refuse
+		ai_chance = { base = 20 }	
+		name = russia2_spain.4.b
+		SOV = {
+			country_event = { id = russia2_spain.6 days = 1 }
+		}	
+	}
+}
+
+#Spain Accepts
+country_event = {
+	id = russia2_spain.5
+	title = russia2_spain.5.t
+	desc = russia2_spain.5.d
+	picture = GFX_handshake_russia2
+	
+	is_triggered_only = yes
+	
+	option = { # Good
+		name = russia2_spain.5.a
+	}
+}
+
+#Spain Refuses
+country_event = {
+	id = russia2_spain.6
+	title = russia2_spain.6.t
+	desc = russia2_spain.6.d
+	picture = GFX_report_event_generic_parliament
+	
+	is_triggered_only = yes
+	
+	option = { # Good
+		name = russia2_spain.6.a
+	}
+}

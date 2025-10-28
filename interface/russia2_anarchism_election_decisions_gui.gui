@@ -1,0 +1,465 @@
+guiTypes = {
+    containerWindowType = {
+        name = "sov_anarchism_election_decision_main_gui"
+		position = { x = 0 y = 0 }
+		size = { width = 400 height = 700 }
+        orientation = center
+        origo = center
+        click_to_front = no
+        clipping = no
+
+        containerWindowType = { #Current Modifier
+            name = "sov_current_modifier_party_decision_gui"
+            position = { x = 5 y = 20 }
+            size = { width = 100%% height = 30 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            instantTextBoxType = {
+                name = "sov_current_modifier_party_decision_gui_text"
+                position = { x = 0 y = 0 }
+                font = "hoi_16mbs"
+                orientation = UPPER_LEFT
+                text = LOC_sov_current_modifier_party_decision_gui_text
+                format = left
+                alwaystransparent = yes
+                fixedsize = yes
+                maxWidth = 500
+            }
+        }
+
+        containerWindowType = { #Current Party
+            name = "sov_current_ruling_party_party_decision_gui"
+		    position = { x = 5 y = 125 }
+		    size = { width = 400 height = 20 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            instantTextBoxType = {
+                name = "sov_current_ruling_party_party_decision_gui_text"
+                position = { x = 0 y = 0 }
+                font = "hoi_24header"
+                orientation = UPPER_LEFT
+                text = LOC_sov_current_ruling_party_party_decision_gui_text
+                format = center
+                alwaystransparent = yes
+                fixedsize = yes
+                maxWidth = 480
+            }
+        }
+
+        containerWindowType = { #Intellect Party
+            name = "sov_intellect_party_decision_gui"
+		    position = { x = 0 y = 220 }
+		    size = { width = 400 height = 15 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            iconType = {
+                name = "sov_intellect_party_decision_gui_icon"
+                position = { x = 23 y = -9 }
+                orientation = left
+                alwaystransparent = yes
+                centerposition = yes
+                spriteType = GFX_intellect_party
+            }
+
+            buttonType = {
+                name = "sov_intellect_party_decision_gui_tooltip"
+                spriteType = "GFX_intellect_party"
+                position = { x = 23 y = -9 }
+                orientation = left
+                centerposition = yes
+                pdx_tooltip = "LOC_sov_intellect_party_decision_gui_text_desc"
+            }
+
+            instantTextBoxType = {
+                name = "sov_intellect_party_decision_gui_text"
+                position = { x = 40 y = 0 }
+                font = "hoi_18mbs"
+                orientation = left
+                text = LOC_sov_intellect_party_decision_gui_text
+                format = left
+                alwaystransparent = yes
+                fixedsize = yes
+                borderSize = {x = 0 y = -10}
+                maxWidth = 400
+            }
+        }
+
+        containerWindowType = { #Civilian Industry Party
+            name = "sov_civilian_party_decision_gui"
+		    position = { x = 0 y = 270 }
+		    size = { width = 400 height = 15 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            iconType = {
+                name = "sov_civilian_party_decision_gui_icon"
+                position = { x = 23 y = -5 }
+                orientation = left
+                alwaystransparent = yes
+                centerposition = yes
+                spriteType = GFX_civilian_industrialist_party
+            }
+
+            buttonType = {
+                name = "sov_civilian_party_decision_gui_tooltip"
+                spriteType = "GFX_civilian_industrialist_party"
+                position = { x = 23 y = -5 }
+                orientation = left
+                centerposition = yes
+                pdx_tooltip = "LOC_sov_civilian_party_decision_gui_text_desc"
+            }
+
+            instantTextBoxType = {
+                name = "sov_civilian_party_decision_gui_text"
+                position = { x = 40 y = 0 }
+                font = "hoi_18mbs"
+                orientation = left
+                text = LOC_sov_civilian_party_decision_gui_text
+                format = left
+                alwaystransparent = yes
+                fixedsize = yes
+                borderSize = {x = 0 y = -10}
+                maxWidth = 400
+            }
+        }
+
+        containerWindowType = { #Military Industry Party
+            name = "sov_military_party_decision_gui"
+		    position = { x = 0 y = 320 }
+		    size = { width = 400 height = 15 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            iconType = {
+                name = "sov_military_party_decision_gui_icon"
+                position = { x = 23 y = -5 }
+                orientation = left
+                alwaystransparent = yes
+                centerposition = yes
+                spriteType = GFX_military_industrialist_party
+            }
+
+            buttonType = {
+                name = "sov_military_party_decision_gui_tooltip"
+                spriteType = "GFX_military_industrialist_party"
+                position = { x = 23 y = -5 }
+                orientation = left
+                centerposition = yes
+                pdx_tooltip = "LOC_sov_military_party_decision_gui_text_desc"
+            }
+
+            instantTextBoxType = {
+                name = "sov_military_party_decision_gui_text"
+                position = { x = 40 y = 0 }
+                font = "hoi_18mbs"
+                orientation = left
+                text = LOC_sov_military_party_decision_gui_text
+                format = left
+                alwaystransparent = yes
+                fixedsize = yes
+                borderSize = {x = 0 y = -10}
+                maxWidth = 400
+            }
+        }
+
+        containerWindowType = { #Militarist Party
+            name = "sov_militarist_party_decision_gui"
+		    position = { x = 0 y = 370 }
+		    size = { width = 400 height = 15 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            iconType = {
+                name = "sov_militarist_party_decision_gui_icon"
+                position = { x = 23 y = -5 }
+                orientation = left
+                alwaystransparent = yes
+                centerposition = yes
+                spriteType = GFX_army_vigilance_icon
+            }
+
+            buttonType = {
+                name = "sov_militarist_party_decision_gui_tooltip"
+                spriteType = "GFX_army_vigilance_icon"
+                position = { x = 23 y = -5 }
+                orientation = left
+                centerposition = yes
+                pdx_tooltip = "LOC_sov_militarist_party_decision_gui_text_desc"
+            }
+
+            instantTextBoxType = {
+                name = "sov_militarist_party_decision_gui_text"
+                position = { x = 40 y = 0 }
+                font = "hoi_18mbs"
+                orientation = left
+                text = LOC_sov_militarist_party_decision_gui_text
+                format = left
+                alwaystransparent = yes
+                fixedsize = yes
+                borderSize = {x = 0 y = -10}
+                maxWidth = 400
+            }
+        }
+
+        containerWindowType = { #Aviation Party
+            name = "sov_aviation_party_decision_gui"
+		    position = { x = 0 y = 420 }
+		    size = { width = 400 height = 15 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            iconType = {
+                name = "sov_aviation_party_decision_gui_icon"
+                position = { x = 23 y = -5 }
+                orientation = left
+                alwaystransparent = yes
+                centerposition = yes
+                spriteType = GFX_aviation_party
+            }
+
+            buttonType = {
+                name = "sov_aviation_party_decision_gui_tooltip"
+                spriteType = "GFX_aviation_party"
+                position = { x = 23 y = -5 }
+                orientation = left
+                centerposition = yes
+                pdx_tooltip = "LOC_sov_aviation_party_decision_gui_text_desc"
+            }
+
+            instantTextBoxType = {
+                name = "sov_aviation_party_decision_gui_text"
+                position = { x = 40 y = 0 }
+                font = "hoi_18mbs"
+                orientation = left
+                text = LOC_sov_aviation_party_decision_gui_text
+                format = left
+                alwaystransparent = yes
+                fixedsize = yes
+                borderSize = {x = 0 y = -10}
+                maxWidth = 400
+            }
+        }
+
+        containerWindowType = { #Naval Party
+            name = "sov_naval_party_decision_gui"
+		    position = { x = 0 y = 470 }
+		    size = { width = 400 height = 15 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            iconType = {
+                name = "sov_naval_party_decision_gui_icon"
+                position = { x = 23 y = -5 }
+                orientation = left
+                alwaystransparent = yes
+                centerposition = yes
+                spriteType = GFX_naval_party
+            }
+
+            buttonType = {
+                name = "sov_naval_party_decision_gui_tooltip"
+                spriteType = "GFX_naval_party"
+                position = { x = 23 y = -5 }
+                orientation = left
+                centerposition = yes
+                pdx_tooltip = "LOC_sov_naval_party_decision_gui_text_desc"
+            }
+
+            instantTextBoxType = {
+                name = "sov_naval_party_decision_gui_text"
+                position = { x = 40 y = 0 }
+                font = "hoi_18mbs"
+                orientation = left
+                text = LOC_sov_naval_party_decision_gui_text
+                format = left
+                alwaystransparent = yes
+                fixedsize = yes
+                borderSize = {x = 0 y = -10}
+                maxWidth = 400
+            }
+        }
+
+        containerWindowType = { #Logistic Party
+            name = "sov_logistic_party_decision_gui"
+		    position = { x = 0 y = 520 }
+		    size = { width = 400 height = 15 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            iconType = {
+                name = "sov_logistic_party_decision_gui_icon"
+                position = { x = 23 y = -5 }
+                orientation = left
+                alwaystransparent = yes
+                centerposition = yes
+                spriteType = GFX_logistic_party
+            }
+
+            buttonType = {
+                name = "sov_logistic_party_decision_gui_tooltip"
+                spriteType = "GFX_logistic_party"
+                position = { x = 23 y = -5 }
+                orientation = left
+                centerposition = yes
+                pdx_tooltip = "LOC_sov_logistic_party_decision_gui_text_desc"
+            }
+
+            instantTextBoxType = {
+                name = "sov_logistic_party_decision_gui_text"
+                position = { x = 40 y = 0 }
+                font = "hoi_18mbs"
+                orientation = left
+                text = LOC_sov_logistic_party_decision_gui_text
+                format = left
+                alwaystransparent = yes
+                fixedsize = yes
+                borderSize = {x = 0 y = -10}
+                maxWidth = 400
+            }
+        }
+
+        containerWindowType = { #Internal Security Party
+            name = "sov_internal_security_party_decision_gui"
+		    position = { x = 0 y = 570 }
+		    size = { width = 400 height = 15 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            iconType = {
+                name = "sov_internal_security_party_decision_gui_icon"
+                position = { x = 23 y = -5 }
+                orientation = left
+                alwaystransparent = yes
+                centerposition = yes
+                spriteType = GFX_internal_security_party
+            }
+
+            buttonType = {
+                name = "sov_internal_security_party_decision_gui_tooltip"
+                spriteType = "GFX_internal_security_party"
+                position = { x = 23 y = -5 }
+                orientation = left
+                centerposition = yes
+                pdx_tooltip = "LOC_sov_internal_security_party_decision_gui_text_desc"
+            }
+
+            instantTextBoxType = {
+                name = "sov_internal_security_party_decision_gui_text"
+                position = { x = 40 y = 0 }
+                font = "hoi_18mbs"
+                orientation = left
+                text = LOC_sov_internal_security_party_decision_gui_text
+                format = left
+                alwaystransparent = yes
+                fixedsize = yes
+                borderSize = {x = 0 y = -10}
+                maxWidth = 400
+            }
+        }
+
+        containerWindowType = { #Countryside Party
+            name = "sov_countryside_party_decision_gui"
+		    position = { x = 0 y = 620 }
+		    size = { width = 400 height = 15 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            iconType = {
+                name = "sov_countryside_party_decision_gui_icon"
+                position = { x = 23 y = -5 }
+                orientation = left
+                alwaystransparent = yes
+                centerposition = yes
+                spriteType = GFX_countryside_party
+            }
+
+            buttonType = {
+                name = "sov_countryside_party_decision_gui_tooltip"
+                spriteType = "GFX_countryside_party"
+                position = { x = 23 y = -5 }
+                orientation = left
+                centerposition = yes
+                pdx_tooltip = "LOC_sov_countryside_party_decision_gui_text_desc"
+            }
+
+            instantTextBoxType = {
+                name = "sov_countryside_party_decision_gui_text"
+                position = { x = 40 y = 0 }
+                font = "hoi_18mbs"
+                orientation = left
+                text = LOC_sov_countryside_party_decision_gui_text
+                format = left
+                alwaystransparent = yes
+                fixedsize = yes
+                borderSize = {x = 0 y = -10}
+                maxWidth = 400
+            }
+        }
+
+        containerWindowType = { #Theorist Party
+            name = "sov_theorist_party_decision_gui"
+		    position = { x = 0 y = 670 }
+		    size = { width = 400 height = 15 }
+            orientation = UPPER_LEFT
+            origo = UPPER_LEFT
+            click_to_front = no
+            clipping = no
+
+            iconType = {
+                name = "sov_theorist_party_decision_gui_icon"
+                position = { x = 23 y = -5 }
+                orientation = left
+                alwaystransparent = yes
+                centerposition = yes
+                spriteType = GFX_theorist_party
+            }
+
+            buttonType = {
+                name = "sov_theorist_party_decision_gui_tooltip"
+                spriteType = "GFX_theorist_party"
+                position = { x = 23 y = -5 }
+                orientation = left
+                centerposition = yes
+                pdx_tooltip = "LOC_sov_theorist_party_decision_gui_text_desc"
+            }
+
+            instantTextBoxType = {
+                name = "sov_theorist_party_decision_gui_text"
+                position = { x = 40 y = 0 }
+                font = "hoi_18mbs"
+                orientation = left
+                text = LOC_sov_theorist_party_decision_gui_text
+                format = left
+                alwaystransparent = yes
+                fixedsize = yes
+                borderSize = {x = 0 y = -10}
+                maxWidth = 400
+            }
+        }
+    }
+}

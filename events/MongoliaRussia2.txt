@@ -1,0 +1,374 @@
+###########################
+# Mongolian Events
+###########################
+
+add_namespace = russia2_mongolia
+
+# Check if File is Loaded
+country_event = {
+	id = russia2_mongolia.2092066524
+
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = russia_reworked_events_loaded_mongolias
+	}
+}
+
+#Propose Mongolian Protection
+country_event = {
+	id = russia2_mongolia.1
+	title = russia2_mongolia.1.t
+	desc = russia2_mongolia.1.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { #Mongolia accepts
+		name = russia2_mongolia.1.a
+		ai_chance = { base = 90 }
+		SOV = {
+			country_event = { days = 1 id = russia2_russia.14 }
+		}
+		effect_tooltip = {
+			add_ideas = SOV_Russian_economic_aid
+		}
+	}
+
+	option = { #Mongolia refuses
+		name = russia2_mongolia.1.b
+		ai_chance = { base = 10 }
+		SOV = {
+			country_event = { days = 1 id = russia2_russia.13 }
+		}	
+	}
+}
+
+#4th International - Mongolia Invitation
+country_event = {
+	id = russia2_mongolia.2
+	title = russia2_mongolia.2.t
+	desc = russia2_mongolia.2.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { #Accept
+		name = russia2_mongolia.2.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 50
+				has_government = communism
+			}
+		}
+		SOV = { add_to_faction = MON }
+	}
+
+	option = {	#Refuse
+		name = russia2_mongolia.2.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_government = communism
+			}
+		}
+	}
+}
+
+#SOV Is Not Communist Anymore, Take Over the Communist Government?
+country_event = {
+	id = russia2_mongolia.3
+	title = russia2_mongolia.3.t
+	desc = russia2_mongolia.3.d
+	picture = GFX_report_event_generic_read_write
+	
+	trigger = {
+		tag = MON
+		has_government = communism
+		is_subject = no
+		has_civil_war = no
+		NOT = {
+			has_country_flag = minor_helped_soj_scw
+		}
+		SOV = {
+			NOT = {
+				has_government = communism
+				has_war_with = MON
+				is_subject = yes
+				has_civil_war = yes
+				has_global_flag = second_russian_civil_war_in_progress
+			}
+			OR = {
+				AND = {
+					has_completed_focus = SOV_launch_insurrection
+					has_government = democratic
+				}
+				AND = {
+					has_completed_focus = SOV_bring_back_old_life
+					has_government = neutrality
+				}
+				AND = {
+					has_completed_focus = SOV_night_manchurian_border
+					has_government = fascism
+				}
+			}
+		}
+	}
+
+	fire_only_once = yes
+	
+	option = { #Become Democratic
+		name = russia2_mongolia.3.a
+		ai_chance = {
+			base = 80
+		}
+		trigger = {
+			SOV = {
+				has_government = democratic
+			}
+		}
+		set_politics = {
+			ruling_party = democratic
+			elections_allowed = yes
+		}
+		set_popularities = {
+			democratic = 80
+			neutrality = 10
+			fascism = 5
+			communism = 5
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = SOV
+			value = 10
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = SOV
+			value = 100
+		}
+		SOV = {
+			add_ai_strategy = {
+				type = befriend
+				id = MON
+				value = 5
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = MON
+				value = 100
+			}
+		}
+	}
+
+	option = { #Become Non-Alligned
+		name = russia2_mongolia.3.b
+		ai_chance = {
+			base = 80
+		}
+		trigger = {
+			SOV = {
+				has_government = neutrality
+			}
+		}
+		set_politics = {
+			ruling_party = neutrality
+		}
+		set_popularities = {
+			democratic = 10
+			neutrality = 80
+			fascism = 5
+			communism = 5
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = SOV
+			value = 500
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = SOV
+			value = 500
+		}
+		SOV = {
+			add_ai_strategy = {
+				type = befriend
+				id = MON
+				value = 5
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = MON
+				value = 100
+			}
+		}
+	}
+
+	option = { #Become Fascist
+		name = russia2_mongolia.3.c
+		ai_chance = {
+			base = 60
+		}
+		trigger = {
+			SOV = {
+				has_government = fascism
+			}
+		}
+		set_politics = {
+			ruling_party = fascism
+		}
+		set_popularities = {
+			democratic = 5
+			neutrality = 5
+			fascism = 85
+			communism = 5
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = SOV
+			value = 500
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = SOV
+			value = 500
+		}
+		SOV = {
+			puppet = ROOT
+			country_event = { id = russia2_russia.265 days = 1 }
+			add_ai_strategy = {
+				type = befriend
+				id = MON
+				value = 5
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = MON
+				value = 100
+			}
+		}
+	}
+
+	option = { #Remain Communist
+		name = russia2_mongolia.3.e
+		ai_chance = {
+			base = 20
+			modifier = {
+				add = 20
+				SOV = {
+					has_government = fascism
+				}
+			}
+		}
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = SOV
+			value = -200
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = SOV
+			value = -200
+		}
+		SOV = {
+			add_ai_strategy = {
+				type = befriend
+				id = MON
+				value = -100
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = MON
+				value = -100
+			}
+		}
+	}
+}
+
+#SOV Ask Unification With MON
+country_event = {
+	id = russia2_mongolia.4
+	title = russia2_mongolia.4.t
+	desc = russia2_mongolia.4.d
+	picture = GFX_report_event_chinese_officers
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = russia2_mongolia.4.a
+		ai_chance = {
+			base = 75
+		}
+		SOV = {
+			country_event = { id = russia2_mongolia.5 days = 1 }
+		}
+	}
+
+	option = { #Refuse
+		name = russia2_mongolia.4.b
+		ai_chance = {
+			base = 25
+		}
+		SOV = {
+			country_event = { id = russia2_mongolia.6 days = 1 }
+		}
+	}
+}
+
+#MON Accept
+country_event = {
+	id = russia2_mongolia.5
+	title = russia2_mongolia.5.t
+	desc = russia2_mongolia.5.d
+	picture = GFX_report_event_chinese_japanese_handshake
+
+	is_triggered_only = yes
+
+	option = { #Good
+		name = russia2_mongolia.5.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			annex_country = {
+				target = FROM
+			}
+			add_state_core = 330
+			add_state_core = 820
+			add_state_core = 818
+			add_state_core = 817
+			add_state_core = 819
+		}
+	}
+}
+
+#MON Refuse
+country_event = {
+	id = russia2_mongolia.6
+	title = russia2_mongolia.6.t
+	desc = russia2_mongolia.6.d
+	picture = GFX_report_event_chinese_soldiers_01
+
+	is_triggered_only = yes
+
+	option = { #Damn
+		name = russia2_mongolia.6.a
+		ai_chance = {
+			base = 100
+		}
+		SOV = {
+			create_wargoal = {
+				type = annex_everything
+				target = FROM
+			}
+		}
+	}
+}

@@ -370,19 +370,9 @@ CHI_is_on_historical_plan_trigger = {
 	}
 }
 SOV_is_on_historical_plan_trigger = {
-	OR = {
-		AND = {
-			is_historical_focus_on = yes
-			has_game_rule = {
-				rule = SOV_ai_behavior
-				option = DEFAULT
-			}
-		}
-		has_country_flag = SOV_AI_RANDOM_COMMUNIST_HISTORICAL
-		has_game_rule = {
-			rule = SOV_ai_behavior
-			option = HISTORICAL
-		}
+	SOV = {
+		is_historical_focus_on = yes
+		has_country_flag = RUS_AI_JOSEPH_STALIN_COMMUNISM_BEHAVIOR
 	}
 }
 USA_is_on_historical_plan_trigger = {
@@ -595,7 +585,7 @@ enemy_has_equal_or_better_radar_tech_trigger = {
 				}
 			}
 			FROM = {
-				has_tech = centimetric_radar
+					has_tech = centimetric_radar
 			}
 		}
 		else_if = {
@@ -1027,9 +1017,7 @@ is_alpine_state = {
 			state = 152 #Upper Austria - AUS 
 			state = 4 #Lower Austria 
 			state = 975 #Burgenland
-			state = 736 #Steiermark-Kömten 
-			state = 853 #Steiermark-Kömten 
-			state = 102 #Steiermark-Kömten 
+			state = 976 #Steiermark-Kömten 
 		}
 	}
 }

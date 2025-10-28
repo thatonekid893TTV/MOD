@@ -1,0 +1,113 @@
+SCW_no_need_for_mary_garrisons  = {
+
+	enable = {
+		has_global_flag = second_russian_civil_war_in_progress
+        is_in_array = { global.russian_scw_participants = THIS.id }
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = garrison
+		value = -1000
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = -1000
+	}
+}
+
+SCW_BLR_defense_mode_activated = {
+
+    allowed = {
+		original_tag = BLR
+	}
+
+	enable = {
+		has_global_flag = second_russian_civil_war_in_progress
+        NOT = {
+            any_controlled_state = {
+                any_neighbor_state = {
+                    CONTROLLER = {
+                        is_in_faction_with = BLR
+                    }
+                }
+            }
+        }
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+
+		priority = 5000
+
+		execute_order = no
+		manual_attack = yes
+	}
+}
+
+SCW_help_SOV_against_SOJ = {
+
+	enable = {
+		has_global_flag = second_russian_civil_war_in_progress
+        is_in_faction_with = SOV
+        has_war_with = SOJ
+        NOT = {
+            tag = SOV
+        }
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = force_defend_ally_borders
+        value = 5000
+        id = SOV
+	}
+}
+
+SCW_coordinated_strike_again_SOJ  = {
+
+	enable = {
+		has_global_flag = second_russian_civil_war_in_progress
+		has_war_with = SOJ
+		soj_in_scw = yes
+		has_manpower > 100000
+		SOJ = {
+			has_capitulated = no
+			enemies_strength_ratio > 1
+		}
+		NOT = {
+			tag = SOJ
+		}
+		NOT = {
+			has_government = anarchy
+		}
+		OR = {
+			date > 1938.1.1
+			AND = {
+				sov_in_scw = yes
+				ukr_in_scw = yes
+			}
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+
+		priority = 10000
+
+		tag = SOJ
+
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+		manual_attack = yes
+	}
+}

@@ -1,0 +1,245 @@
+SOJ_send_volunteers_second_civil_war_soviet_union = {
+
+	enable = {
+		is_major = yes
+		has_government = SOJ
+		NOT = {
+			original_tag = SOV
+		}
+		has_global_flag = second_russian_civil_war_in_progress
+		NOT = {
+			has_country_flag = help_whiteguard_during_russian_civil_war
+		}
+		country_exists = SOJ
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SOJ"
+		value = 100
+	}
+
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = SOJ
+		value = 100
+	}
+}
+
+SOJ_focus_on_your_enemies = {
+
+    reversed = yes
+
+	enable = {
+		has_global_flag = second_russian_civil_war_in_progress
+        NOT = {
+            has_war_with = SOJ
+        }
+	}
+
+	enable_reverse = {
+        has_global_flag = second_russian_civil_war_in_progress
+        soj_in_scw = yes
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = conquer
+		id = SOJ
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = SOJ
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = declare_war
+		id = SOJ
+		value = -9999
+	}
+
+    ai_strategy = {
+		type = ignore
+		id = SOJ
+		value = 9999
+	}
+}
+
+SOJ_focus_only_scw  = {
+
+	allowed = {
+		original_tag = SOJ
+	}
+
+	reversed = yes
+
+	enable = {
+        has_global_flag = second_russian_civil_war_in_progress
+		has_war_with = SOJ
+	}
+
+	enable_reverse = {
+		tag = SOJ
+		has_global_flag = second_russian_civil_war_in_progress
+		soj_in_scw = yes
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+
+		priority = 1000
+
+		tag = SOJ
+
+		ordertype = front
+		execute_order = yes
+		manual_attack = yes
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+
+		tag = SOJ
+
+		value = 9999
+	}
+}
+
+SOJ_chill_scw = {
+
+	allowed = {
+		original_tag = SOJ
+	}
+
+	enable = {
+		has_global_flag = second_russian_civil_war_in_progress
+		date < 1939.3.1 #Just attack at this point
+		sov_in_scw = yes
+		soj_in_scw = yes
+		OR = {
+			has_manpower < 100000
+			AND = {
+				set_temp_variable = { sov_gun_deficit = var:sov.num_target_equipment_in_armies_k@infantry_equipment }
+				subtract_from_temp_variable = { sov_gun_deficit = var:sov.num_equipment_in_armies_k@infantry_equipment }
+				set_temp_variable = { soj_gun_deficit = var:soj.num_target_equipment_in_armies_k@infantry_equipment }
+				subtract_from_temp_variable = { soj_gun_deficit = var:soj.num_equipment_in_armies_k@infantry_equipment }
+				check_variable = {
+					var = soj_gun_deficit
+					value = sov_gun_deficit
+					compare = greater_than
+				}
+				if = {
+					limit = {
+						check_variable = {
+							var = soj_gun_deficit
+							value = 10
+							compare = less_than
+						}
+					}
+					check_variable = {
+						var = soj.num_divisions
+						value = var:sov.num_divisions
+						compare = less_than
+					}
+				}
+			}
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+
+		priority = 5000
+
+		state_trigger = {
+			SOV = {
+				PREV = {
+					is_in_home_area = yes
+				}
+			}
+		}
+
+		tag = SOV
+
+		execute_order = no
+		manual_attack = yes
+	}
+}
+
+SOJ_destroy_BLR_scw = {
+
+	allowed = {
+		original_tag = SOJ
+	}
+
+	enable = {
+        has_global_flag = second_russian_civil_war_in_progress
+		sov_in_scw = yes
+		soj_in_scw = yes
+		BLR = {
+			has_capitulated = no
+			has_war_with = SOJ
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+
+		priority = 800
+
+		tag = BLR
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+}
+
+SOJ_recover_land_from_ukr = {
+
+	allowed = {
+		original_tag = SOJ
+	}
+
+	enable = {
+        has_global_flag = second_russian_civil_war_in_progress
+		ukr_in_scw = yes
+		soj_in_scw = yes
+		UKR = {
+			any_state = {
+				is_in_home_area = no
+			}
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+
+		priority = 3000
+
+		state_trigger = {
+			is_controlled_by = UKR
+			is_in_home_area = no
+		}
+
+		tag = UKR
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+}

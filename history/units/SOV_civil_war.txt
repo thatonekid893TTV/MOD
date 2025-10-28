@@ -1,0 +1,909 @@
+#Division Templates
+division_template = {
+	name = "Pekhotnaya Diviziya"
+	is_locked = no
+	division_names_group = SOV_INF_CIV_WAR_01
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 } 
+	}
+}
+
+division_template = {
+	name = "Gornostrelkovaya Diviziya"		# Mountain Division
+	is_locked = no
+	division_names_group = SOV_MNT_01
+
+	regiments = {
+		mountaineers = { x = 0 y = 0 }	
+		mountaineers = { x = 0 y = 1 }
+		mountaineers = { x = 0 y = 2 }	
+		mountaineers = { x = 1 y = 0 }
+		mountaineers = { x = 1 y = 1 }
+		mountaineers = { x = 1 y = 2 }
+		mountaineers = { x = 2 y = 0 }	
+		mountaineers = { x = 2 y = 1 }	
+		mountaineers = { x = 2 y = 2 }	
+		mountaineers = { x = 3 y = 0 }	
+		mountaineers = { x = 3 y = 1 }	
+		mountaineers = { x = 3 y = 2 }	
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+		artillery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Motostrelkovaya Diviziya"		# Motor Rifle Division
+	is_locked = no
+	division_names_group = SOV_MOT_CIV_WAR_01
+	regiments = {
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+		motorized = { x = 1 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Kavaleriyskaya Diviziya" 	# Cavalry Division
+	is_locked = no
+	division_names_group = SOV_CAV_01
+
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Mekhanizirovaniy Korpus"
+	is_locked = no
+	division_names_group = SOV_MEC_01
+	regiments = {
+		light_armor = { x = 0 y = 0 }
+		light_armor = { x = 0 y = 1 }
+		light_armor = { x = 1 y = 0 }		
+		light_armor = { x = 1 y = 1 }		
+		light_armor = { x = 1 y = 2 }		
+		motorized = { x = 2 y = 0 }		
+		motorized = { x = 2 y = 1 }	
+		motorized = { x = 2 y = 2 }		
+		motorized = { x = 2 y = 3 }		
+	}
+}
+
+units = {
+	division= {
+		name = "1ya Gvardeyskaya Pekhotnaya Diviziya"
+		location = 4724
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 4724
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "16ya Sibirskaya Strelkovaya Diviziya"
+		location = 4724
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 1762
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "3ya Gvardeyskaya Pekhotnaya Diviziya"
+		location = 1762
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "18ya Sibirskaya Strelkovaya Diviziya"
+		location = 1762
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 7822
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		name = "2ya Grenaderskaya Diviziya"
+		location = 7822
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.75
+	}
+	division= {
+		name = "19ya Sibirskaya Strelkovaya Diviziya"
+		location = 7822
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 7805
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "4ya Gvardeyskaya Pekhotnaya Diviziya"
+		location = 7805
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+	division= {
+		name = "20ya Sibirskaya Strelkovaya Diviziya"
+		location = 7805
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 1816
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		name = "2ya Grenaderskaya Diviziya"
+		location = 1816
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "22ya Sibirskaya Strelkovaya Diviziya"
+		location = 1816
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 7849
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.75
+	}
+	division= {
+		name = "3ya Grenaderskaya Diviziya"
+		location = 7849
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 1768
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "4ya grenaderskaya diviziya"
+		location = 1768
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 12639
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		name = "5ya Gvardeyskaya Pekhotnaya Diviziya"
+		location = 12639
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 10529
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "6ya grenaderskaya diviziya"
+		location = 10529
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.75
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 12528
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 11
+		}
+		location = 7876
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 12
+		}
+		location = 10531
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "7ya Gvardeyskaya Pekhotnaya Diviziya"
+		location = 1818
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+		}
+		location = 10562
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "7ya Grenaderskaya Diviziya"
+		location = 1792
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 14
+		}
+		location = 4719
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		name = "8ya Gvardeyskaya Pekhotnaya Diviziya"
+		location = 1826
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 15
+		}
+		location = 4821
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		name = "1ya Sibirskaya Strelkovaya Diviziya"
+		location = 4868
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 16
+		}
+		location = 4674
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 17
+		}
+		location = 4674
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.80
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 18
+		}
+		location = 957
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		name = "2ya Sibirskaya Strelkovaya Diviziya"
+		location = 957
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 19
+		}
+		location = 10202
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "3ya Sibirskaya Strelkovaya Diviziya"
+		location = 4661
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 20
+		}
+		location = 7350
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "5ya Sibirskaya Strelkovaya Diviziya"
+		location = 12662
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.80
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 21
+		}
+		location = 1779
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "6ya Sibirskaya Strelkovaya Diviziya"
+		location = 1685
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.80
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 22
+		}
+		location = 9604
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.80
+	}
+	division= {
+		name = "8ya Sibirskaya Strelkovaya Diviziya"
+		location = 11719
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.80
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 23
+		}
+		location = 1239
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.80
+	}
+	division= {
+		name = "9ya Sibirskaya Strelkovaya Diviziya"
+		location = 1239
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 24
+		}
+		location = 1772
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		name = "11ya Sibirskaya Strelkovaya Diviziya"
+		location = 855
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 25
+		}
+		location = 12192
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "13ya Sibirskaya Strelkovaya Diviziya"
+		location = 7711
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 26
+		}
+		location = 3739
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		name = "15ya Sibirskaya Strelkovaya Diviziya"
+		location = 7795
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 27
+		}
+		location = 4690
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		name = "16ya Sibirskaya Strelkovaya Diviziya"
+		location = 10619
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 4764
+		division_template = "Kavaleriyskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 1794
+		division_template = "Kavaleriyskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 7757
+		division_template = "Kavaleriyskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 7789
+		division_template = "Kavaleriyskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 1797
+		division_template = "Kavaleriyskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 10696
+		division_template = "Kavaleriyskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 12652
+		division_template = "Kavaleriyskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 8
+		}
+		location = 12580
+		division_template = "Kavaleriyskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 9
+		}
+		location = 7800
+		division_template = "Kavaleriyskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 10
+		}
+		location = 12594
+		division_template = "Kavaleriyskaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.75
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 10626
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 4700
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 1709
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 12652
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.3
+		start_equipment_factor = 4
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 12580
+		division_template = "Motostrelkovaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 1860
+		division_template = "Mekhanizirovaniy Korpus"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 12606
+		division_template = "Mekhanizirovaniy Korpus"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 7825
+		division_template = "Mekhanizirovaniy Korpus"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 4366
+		division_template = "Mekhanizirovaniy Korpus"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 4840
+		division_template = "Mekhanizirovaniy Korpus"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 4734
+		division_template = "Mekhanizirovaniy Korpus"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.85
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 28
+		}
+		location = 12510
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 29
+		}
+		location = 4767
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 30
+		}
+		location = 4681
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 31
+		}
+		location = 4779
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 32
+		}
+		location = 10663
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 33
+		}
+		location = 1784
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 34
+		}
+		location = 7809
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 35
+		}
+		location = 12545
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 36
+		}
+		location = 10635
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 37
+		}
+		location = 12613
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 38
+		}
+		location = 10218
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 39
+		}
+		location = 10630
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 40
+		}
+		location = 10653
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+	division= {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 41
+		}
+		location = 1668
+		division_template = "Pekhotnaya Diviziya"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.70
+	}
+}

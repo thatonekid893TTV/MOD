@@ -1,0 +1,233 @@
+fascist_women_modifiers = {
+    enable = {
+		always = yes
+	}
+
+	fascism_drift = fascism_anastasy_konstantin
+    encryption_factor = encryption_anastasy_konstantin
+    operative_slot = operative_anastasy_konstantin
+    war_support_weekly = war_weekly_anastasy_konstantin
+    special_forces_attack_factor = special_attack_anastasy_konstantin
+    special_forces_defence_factor = special_defence_anastasy_konstantin
+}
+
+fascist_security_modifiers = {
+    enable = {
+		always = yes
+	}
+
+	fascism_drift = fascism_anastasy_konstantin
+    encryption_factor = encryption_anastasy_konstantin
+    operative_slot = operative_anastasy_konstantin
+    war_support_weekly = war_weekly_anastasy_konstantin
+    special_forces_attack_factor = special_attack_anastasy_konstantin
+    special_forces_defence_factor = special_defence_anastasy_konstantin
+}
+
+anarchist_black_guard_modifiers = {
+    enable = {
+		always = yes
+	}
+
+    no_supply_grace = no_supply_grace_black_guard
+    out_of_supply_factor = out_of_supply_factor_black_guard
+    army_attack_factor = army_attack_black_guard
+    pocket_penalty = pocket_penalty_black_guard
+    army_org_factor = army_org_factor_black_guard
+    army_org_regain = army_org_regain_black_guard
+    breakthrough_factor = army_breakthrough_black_guard
+}
+
+democratic_alaskan_puppet_modifiers = {
+    enable = {
+		always = yes
+	}
+
+    local_resources_factor = local_ressource_ice_puppet
+}
+
+democratic_alaska_immigration = {#Positive
+    enable = {
+		always = yes
+	}
+
+    weekly_manpower = alaska_immigration_calculation_demo
+}
+
+democratic_alaska_emigration = {#Negative
+    enable = {
+		always = yes
+	}
+
+    weekly_manpower = alaska_emigration_calculation_demo
+}
+
+church_power_control_modifiers = {
+    enable = {
+		always = yes
+	}
+
+    political_power_gain = pp_gain_church_power
+    stability_factor = stability_gain_church_power
+    war_support_factor = war_support_gain_church_power
+    army_core_attack_factor = army_core_attack_gain_church_power
+    army_core_defence_factor = army_core_defense_gain_church_power
+    mobilization_speed = mobilization_gain_church_power
+    production_speed_buildings_factor = building_gain_church_power
+    production_speed_infrastructure_factor = infrastructure_gain_church_power
+    industrial_capacity_factory = industrial_fac_gain_church_power
+    production_factory_max_efficiency_factor = efficiency_fac_gain_church_power
+    research_speed_factor = research_gain_church_power
+    resistance_target = resistance_gain_church_power
+}
+
+great_purge_modifiers = {
+    enable = {
+		always = yes
+	}
+
+    army_org_factor = army_org_factor_great_purge
+    send_volunteer_factor = send_volunteer_factor_great_purge
+    army_defence_factor = army_defence_factor_great_purge
+    army_attack_factor = army_attack_factor_great_purge
+    training_time_factor = training_time_factor_great_purge
+    political_advisor_cost_factor = political_advisor_cost_factor_great_purge
+    party_popularity_stability_factor = party_popularity_stability_factor_great_purge
+    experience_gain_army_factor = experience_gain_army_factor_great_purge
+}
+
+anti_anarchist_modifiers = { #To remove Anarchist support from countries who have been puppeted
+    enable = {
+		always = yes
+	}
+
+    anarchy_drift = -10
+}
+
+second_russian_civil_war_modifier = {
+    enable = {
+		always = yes
+	}
+
+    experience_gain_army_factor = -0.5
+    experience_gain_army_unit_factor = -0.33
+    stability_factor = 0.50
+    enemy_justify_war_goal_time = 3
+    ai_get_ally_desire_factor = -300
+    out_of_supply_factor = -0.50
+    supply_consumption_factor = -0.75
+    supply_node_range = 0.25
+}
+
+black_revolution_civil_war_buff = {
+    enable = {
+		always = yes
+	}
+    experience_gain_army_factor = -0.25
+    experience_gain_army_unit_factor = -0.33
+    supply_consumption_factor = -0.50
+    supply_node_range = 0.25
+}
+
+ukr_daily_anarchy_drift = {
+    anarchy_drift = ukr_anarchist_daily_gain
+}
+
+ukr_anarchist_state_non_converted = {
+	enable = {
+		always = yes
+	}
+
+    icon = GFX_modifiers_ukr_anarchist_state_non_converted_icon
+
+	local_factories = 0.5
+	local_resources = 0.5
+	local_manpower = 0.5
+	local_non_core_manpower = 0.5
+}
+
+ukr_anarchist_state_converted = {
+	enable = {
+		always = yes
+	}
+
+    icon = GFX_modifiers_ukr_anarchist_state_converted_icon
+
+	local_factories = 0.75
+	local_resources = 0.75
+	local_manpower = 0.75
+	local_non_core_manpower = 0.75
+}
+
+urals_secret = {
+    enable = {
+		always = yes
+	}
+
+    icon = GFX_modifiers_urals_secret_icon
+
+	army_speed_factor = 0.75
+	army_attack_factor = 0.8
+	attrition = -0.4
+	local_org_regain = 0.05
+}
+
+ukr_harmonious_anarchy = {
+    enable = {
+		always = yes
+	}
+
+    icon = GFX_modifiers_ukr_harmonious_anarchy_icon
+
+    local_building_slots = 5
+    local_factories = 0.25
+    local_resources = 0.25
+    local_manpower = 0.25
+    local_supplies = 0.25
+    mobilization_speed = 0.5
+}
+
+advisors_cost_reduction = {
+    political_advisor_cost_factor = -0.25
+    mobilization_laws_cost_factor = -0.25
+    economy_cost_factor = -0.25
+    theorist_cost_factor = -0.25
+    army_chief_cost_factor = -0.25
+    navy_chief_cost_factor = -0.25
+    air_chief_cost_factor = -0.25
+    high_command_cost_factor = -0.25
+    tank_manufacturer_cost_factor = -0.25
+    naval_manufacturer_cost_factor = -0.25
+    aircraft_manufacturer_cost_factor = -0.25
+    materiel_manufacturer_cost_factor = -0.25
+    industrial_concern_cost_factor = -0.25
+}
+
+anarchist_election_modifiers = {
+    research_speed_factor = anarchy_intellect_party_research
+    production_speed_industrial_complex_factor = anarchy_industry_party_factory
+    local_resources_factor = anarchy_industry_party_resources
+    production_speed_arms_factory_factor =  anarchy_military_industry_party_guns
+    industrial_capacity_factory = anarchy_military_industry_party_guns_fabrication
+    training_time_factor = anarchy_militarist_party_training
+    army_attack_factor  = anarchy_militarist_party_attack
+    army_defence_factor = anarchy_militarist_party_defence
+    army_org_factor = anarchy_militarist_party_organization
+    air_accidents_factor = anarchy_aviation_party_accident
+    air_ace_generation_chance_factor = anarchy_aviation_party_ace_generation
+    air_attack_factor = anarchy_aviation_party_attack
+    air_defence_factor = anarchy_aviation_party_defence
+    air_agility_factor = anarchy_aviation_party_agility
+    industrial_capacity_dockyard = anarchy_ship_party_dockyard_cap
+    production_speed_dockyard_factor = anarchy_ship_party_dockyard_speed
+    production_speed_infrastructure_factor = anarchy_logistic_infrastructure_build
+    production_speed_rail_way_factor = anarchy_logistic_railway_build
+    supply_consumption_factor = anarchy_logistic_supply_consumption
+    decryption_factor = anarchy_internal_sec_decryption_fac
+    encryption_factor = anarchy_internal_sec_encryption_fac
+    anarchy_drift = anarchy_internal_sec_anarchy_drift_fac
+    global_building_slots_factor = anarchy_country_side_party_globalbuilding_slot
+    production_speed_synthetic_refinery_factor = anarchy_theorist_party_refinery_speed
+    production_speed_nuclear_reactor_factor = anarchy_theorist_party_nuclear_speed
+    production_speed_rocket_site_factor  = anarchy_theorist_party_rocket_speed
+}

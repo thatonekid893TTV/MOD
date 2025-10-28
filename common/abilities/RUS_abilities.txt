@@ -1,0 +1,52 @@
+ability = {
+	russia_decoy_offensive = {
+		name = ABILITY_DECOY_OFFENSIVE
+		desc = ABILITY_DECOY_OFFENSIVE_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			is_leading_army_group = no
+			is_border_war = no
+			OWNER = {
+				has_completed_focus = SOV_close_cooperation_kenpeitai
+			}
+		}
+		
+		cost = 0.05
+		duration = 168
+
+		unit_modifiers = {
+			recon_factor = 0.05
+			encryption_factor = 0.2
+		}
+		
+		one_time_effect = {
+			add_temporary_buff_to_units = {
+				combat_offense = 0.2
+				
+				days = 7
+				tooltip = ABILITY_DECOY_OFFENSIVE_TOOLTIP
+			}
+		}
+		
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					has_war_support > 0.1
+					command_power > 1.5
+				}
+				check_variable = { num_units_offensive_combats > 6 }
+				
+				set_temp_variable = { temp = avg_offensive_combat_status }
+				check_variable = { temp > 0.45 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+add_namespace = NIR_Submission
+
+country_event = {
+	id = NIR_Submission.1
+	title = "Ireland Demands our Submission!"
+	desc = "Ireland, having had a claim on our land for some time, has demanded our integration into them."
+	picture = GFX_report_event_SWI_assembly_hall
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "No"
+		IRE = {
+			create_wargoal = {
+				target = NIR
+				type = annex_everything
+			}
+		}
+	}
+
+	option = {
+		name = "Okay"
+		IRE = {
+			annex_country = {
+				target = NIR
+				transfer_troops = yes
+			}
+		}
+	}
+
+	option = {
+		name = "A Compromise"
+	}
+}
