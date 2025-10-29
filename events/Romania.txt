@@ -1,0 +1,1215 @@
+﻿###########################
+# Romanian Events
+###########################
+
+add_namespace = romania
+
+# Soviet Union demands Bessarabia
+country_event = {
+	id = romania.1
+	title = romania.1.t
+	desc = romania.1.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # Accept demands
+		name = romania.1.a
+		ai_chance = {
+			factor = 90
+			modifier = { # Don't accept if in a faction that can protect them
+				factor = 0
+				has_war_with = FROM
+				NOT = { is_in_faction_with = FROM }
+				OR = {
+					any_other_country = {
+						is_major = yes
+						NOT = { tag = SOV }
+						OR = {
+							is_in_faction_with = ROM
+							has_guaranteed = ROM
+						}
+					}
+					has_idea = anti_soviet_pact
+				}
+			}
+			modifier = {
+				factor = 0.1
+				is_historical_focus_on = no #Romania will still cede on historical
+			}
+		}
+		if = {
+		  limit = { has_any_power_balance = yes  }
+		  add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = 0.3
+	        }
+		}
+		FROM = {
+			country_event = { days = 1 id = soviet.4 }
+		}
+		set_country_flag = bessarabia_ceded
+	}
+
+	option = { # Refuse
+		name = romania.1.b
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 10
+				is_in_faction = yes
+				NOT = { is_in_faction_with = FROM }
+			}
+
+			modifier = {
+				add = 100
+				has_war_with = FROM
+			}
+			modifier = {
+				is_historical_focus_on = yes
+				NOT = {has_war_with = FROM}
+				factor = 0
+			}
+			modifier = {
+				factor = 0
+				is_in_faction_with = FROM
+			}
+		}
+		if = {
+		  limit = { has_any_power_balance = yes  }
+		 add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = -0.3
+	        }
+		}
+		FROM = {
+			country_event = { days = 1 id = soviet.5 }
+			effect_tooltip = {
+				create_wargoal = {
+					type = take_state
+					target = ROOT
+					generator = { 78 }
+				}
+			}
+		}
+	}
+}
+
+# Second Vienna Award - Northern Transylvania
+country_event = {
+	id = romania.2
+	title = romania.2.t
+	desc = romania.2.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+	
+	option = { # Accept demands
+		name = romania.2.a
+		ai_chance = {
+			factor = 80
+			modifier = { # Don't accept if in a faction that can protect them
+				factor = 0
+				OR = {
+					is_in_faction_with = ENG
+					is_in_faction_with = FRA
+					is_in_faction_with = SOV
+				}
+			}
+		}
+		if = {
+		  limit = { has_any_power_balance = yes  }
+		  add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = 0.3
+	        }
+	    }
+		HUN = {
+			country_event = { days = 1 id = hungary.2 }
+		}
+		set_country_flag = second_vienna_accepted_north
+	}
+	option = { # Refuse
+		name = romania.2.b
+		ai_chance = { 
+			factor = 20 
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		if = {
+		  limit = { has_any_power_balance = yes  }
+		  add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = -0.2
+	        }
+	    }
+		HUN = {
+			country_event = { days = 1 id = hungary.4 }
+			effect_tooltip = { add_state_claim = 76 }
+		}
+		GER = {
+			country_event = { days = 1 id = germany.21 }
+			effect_tooltip = {
+				create_wargoal = {
+					type = take_state
+					target = ROM
+					generator = { 76 }
+				}
+			}
+		}
+	}
+}
+
+# Second Vienna Award - All of Transylvania
+country_event = {
+	id = romania.3
+	title = romania.2.t
+	desc = romania.3.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+	
+	option = { # Accept demands
+		name = romania.2.a
+		ai_chance = {
+			factor = 50
+			modifier = { # Don't accept if in a faction that can protect them
+				factor = 0
+				OR = {
+					is_in_faction_with = ENG
+					is_in_faction_with = FRA
+					is_in_faction_with = SOV
+				}
+			}
+		}
+		if = {
+		  limit = { has_any_power_balance = yes  }
+		  add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = 0.5
+	        }
+	    }
+		HUN = {
+			country_event = { days = 1 id = hungary.3 }
+		}
+		set_country_flag = second_vienna_accepted_all
+	}
+	option = { # Refuse
+		name = romania.2.b
+		ai_chance = { factor = 50 }
+		if = {
+		  limit = { has_any_power_balance = yes  }
+		  add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = -0.2
+	        }
+	    }
+		HUN = {
+			country_event = { days = 1 id = hungary.5 }
+			effect_tooltip = {
+				add_state_claim = 76
+				add_state_claim = 83
+				add_state_claim = 84
+			}
+		}
+		GER = {
+			country_event = { days = 1 id = germany.21 }
+			effect_tooltip = {
+				create_wargoal = {
+					type = take_state
+					target = ROM
+					generator = { 76 }
+				}
+			}
+		}
+	}
+}
+
+# Second Vienna Award - No Concessions
+country_event = {
+	id = romania.4
+	title = romania.4.t
+	desc = romania.4.d
+	picture = GFX_report_event_germany_politician_handshake
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = romania.4.a
+		if = {
+		  limit = { has_any_power_balance = yes  }
+		  add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = -0.2
+	        }
+	    }
+	}
+}
+
+# Treaty of Craiova - Bulgaria Demands Territory
+country_event = {
+	id = romania.5
+	title = romania.5.t
+	desc = romania.5.d
+	picture = GFX_report_event_hitler_croatia_handshake
+	
+	is_triggered_only = yes
+	
+	option = { # Accept
+		name = romania.5.a
+		ai_chance = { factor = 90 }
+		if = {
+		  limit = { has_any_power_balance = yes  }
+		  add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = 0.15
+	        }
+	    }
+		effect_tooltip = {
+			BUL = { transfer_state = 77 }
+		}
+		BUL = {
+			country_event = { days = 1 id = bulgaria.1 }
+		}
+	}
+	option = { # Refuse
+		name = romania.5.b
+		ai_chance = { 
+			factor = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			} 
+		}
+		if = {
+		  limit = { has_any_power_balance = yes  }
+		  add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = -0.15
+	        }
+	    }
+		BUL = {
+			country_event = { days = 1 id = bulgaria.2 }
+		}
+	}
+}
+
+# Seek an alliance - Since everyone is out to get us
+country_event = {
+	id = romania.6
+	title = romania.6.t
+	desc = romania.6.d
+	picture = GFX_report_event_hitler_croatia_handshake
+	
+	trigger = {
+		has_country_flag = bessarabia_ceded
+		is_in_faction = no
+		NOT = { GER = { is_in_faction_with = SOV } }
+		NOT = { has_war_with = GER }
+		NOT = { has_war_with = SOV }
+		NOT = { has_dlc = "Death or Dishonor" }
+	}
+	
+	mean_time_to_happen = { days = 7 }
+
+	fire_only_once = yes
+
+	option = { # Seek german alliance
+		name = romania.6.a
+		set_politics = {
+			ruling_party = fascism
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.35
+		}
+		add_opinion_modifier = { target = GER modifier = ROM_seek_alliance_GER }
+		add_ideas = ROM_revenge_against_soviet
+		ai_chance = { 
+			base = 2
+			modifier = {
+				factor = 0
+				has_war_with = GER
+			}
+		}
+	}
+	option = { # Seek soviet alliance
+		name = romania.6.b
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		add_popularity = {
+		ideology = communism
+			popularity = 0.5
+		}
+		add_opinion_modifier = { target = SOV modifier = ROM_seek_alliance_SOV }
+		add_ideas = ROM_revenge_against_germany
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				NOT = { has_war_with = GER }
+				has_war_with = SOV
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = { has_war_with = GER }
+			}
+		}
+	}
+	option = { # Dear democracy... NEVER GONNA GIVE YOU UP!
+		name = romania.6.c
+		ai_chance = {
+			base = 0
+		}
+		
+	}
+}
+
+
+#modded
+# The Romanian Bridgehead
+country_event = {
+	id = romania.7
+	title = romania.7.t
+	desc = romania.7.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	
+	trigger = { 
+	  POL = { 
+	    has_capitulated = yes
+        NOT = { has_war_with = ROM }
+        has_war_with = GER
+		is_government_in_exile = yes
+		}
+#					ROM = { has_completed_focus =  }
+        OR = { 
+			89 = { is_owned_by = POL }
+			91 = { is_owned_by = POL }
+		}
+		OR = { 
+			78 = { is_owned_and_controlled_by = ROM }
+			80 = { is_owned_and_controlled_by = ROM }
+			76 = { is_owned_and_controlled_by = ROM }
+		}
+	}
+	
+	option = { # Confiscate Weapons
+		name = romania.7.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.7
+				is_historical_focus_on = no 
+			}	
+		}
+		POL = { add_manpower = 23000 }
+		ROM_add_rom_bridgehead_equip = yes
+		
+		
+	}
+
+	option = { # Let them pass freely
+		name = romania.7.b
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 10
+				is_historical_focus_on = no 
+			}
+		}
+		POL = {
+			country_event = { days = 1 id = romania.8 }
+			effect_tooltip = {
+			    add_manpower = 23000
+				ROM_add_rom_bridgehead_equip = yes
+			}
+		}
+	}
+}
+
+# The Romanian Bridgehead - Poland keeps weapons
+country_event = {
+	id = romania.8
+	title = romania.8.t
+	desc = romania.8.d
+	picture = GFX_report_event_fighters
+	
+	is_triggered_only = yes
+	
+	option = { # Yeah
+		name = romania.8.a
+		ai_chance = {
+			factor = 100	
+		}
+		ROM_add_rom_bridgehead_equip = yes	
+		add_manpower = 23000
+	}
+}
+
+# Nicolae Ciupercă retires
+country_event = {
+	id = romania.9
+	title = romania.9.t
+	desc = romania.9.d
+	picture = GFX_report_event_military_planning
+	
+	trigger = { 
+	  original_tag = ROM
+	  has_war_with = SOV
+	  has_country_leader = {
+	    character = ROM_ion_antonescu
+	    ruling_only = yes
+       }
+	  date > 1941.10.01   #historically 1941.10.13
+	}
+	
+	fire_only_once = yes
+	
+	option = { # 
+		name = romania.9.a
+		ai_chance = {
+			factor = 100	
+		}
+		ROM_nicolae_ciuperca = { remove_unit_leader_role = yes }
+		add_war_support = -0.01
+	}
+}
+
+# Miron Cristea dies
+country_event = {
+	id = romania.10
+	title = romania.10.t
+	desc = romania.10.d
+	picture = GFX_report_event_poland_funeral
+	
+	trigger = { 
+	  original_tag = ROM
+	  date > 1939.01.15   #historically 1939.03.06
+	}
+	
+	fire_only_once = yes
+	
+	option = { # 
+		name = romania.10.a
+		ai_chance = {
+			factor = 100	
+		}
+		retire_character = ROM_miron_cristea
+		set_country_flag = ROM_cristea_dead
+	}
+}
+
+# Armand Calinescu Assasinated
+country_event = {
+	id = romania.11
+	title = romania.11.t
+	desc = romania.11.d
+	picture = GFX_report_event_poland_funeral
+	
+	is_triggered_only = yes
+	
+	option = { # 
+		name = romania.11.a
+		ai_chance = {
+			factor = 100	
+		}
+		retire_character = ROM_armand_calinescu
+		set_country_flag = ROM_calinescu_assasinated
+		add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = 0.1
+	        }
+	}
+}
+
+# Legionnaires' Rebellion
+country_event = {
+	id = romania.12
+	title = romania.12.t
+	desc = { 
+	  text = romania.12.d 
+        trigger = {
+         has_completed_focus = ROM_clamp_down_on_the_iron_guard
+       }
+	}  
+	desc = { 
+	  text = romania.12.d.b
+        trigger = {
+         has_completed_focus = ROM_lead_the_legionnaires
+       }
+	}
+	picture = GFX_report_event_ger_civil_war
+	
+	is_triggered_only = yes
+	
+	option = { #Antonescu
+		name = romania.12.a
+		trigger = { has_completed_focus = ROM_clamp_down_on_the_iron_guard }
+		ai_chance = {
+			factor = 100	
+		}
+		if = {
+		  limit = { has_character = ROM_corneliu_codreanu }
+		  retire_character = ROM_corneliu_codreanu
+		}
+		retire_character = ROM_horia_sima
+		add_popularity = {
+				popularity = -0.05
+				ideology = fascism
+			}
+		add_war_support = 0.05
+		add_manpower = -9000
+		46 = { add_manpower = -125 }
+		set_party_name = {
+				ideology = fascism
+				long_name = ROM_fascism_no_ig_long
+				name = ROM_fascism_no_ig
+			}
+		swap_ideas = {
+					remove_idea = ROM_iron_guard
+					add_idea = nationalist_sentiments
+				}
+	}
+	option = { #Sima
+		name = romania.12.b
+		trigger = { has_completed_focus = ROM_lead_the_legionnaires }
+		ai_chance = {
+			factor = 100	
+		}
+		retire_character = ROM_ion_antonescu
+		if = {
+		 limit = { 
+		   NOT = {
+		     has_country_leader = {
+				character = ROM_corneliu_codreanu
+				ruling_only = yes
+			}
+		   }
+		 }
+		add_country_leader_role = {
+         character = ROM_horia_sima
+         promote_leader = yes
+         country_leader = {
+           ideology = fascism_ideology
+           expire = "1993.05.23"
+           traits = {  }
+         }
+		 }
+        }
+		
+		 46 = { add_manpower = -2324 }
+		 add_popularity = {
+				popularity = 0.1
+				ideology = fascism
+			}
+		add_stability = -0.05
+		
+	}
+}
+
+# Romanian 1937 Election
+news_event = {
+	id = romania.13
+	title = romania.13.t
+	desc = { 
+	  text = romania.13.d 
+        trigger = {
+         has_completed_focus = ROM_clamp_down_on_the_iron_guard
+       }
+	}  
+	desc = { 
+	  text = romania.13.d.b
+        trigger = {
+         has_completed_focus = ROM_lead_the_legionnaires
+       }
+	}
+	picture = GFX_news_event_octavian_goga_government
+	
+	is_triggered_only = yes
+	
+	trigger = { 
+	  NOT = { has_completed_focus = ROM_institute_royal_dictatorship }
+	  date < 1939.01.01
+	}
+	
+	option = { #Carol II 
+		name = romania.13.a
+		trigger = { NOT = { has_completed_focus = ROM_goga_codreanu_pact } }
+		ai_chance = {
+			factor = 100	
+		}
+		complete_national_focus = ROM_institute_royal_dictatorship
+		add_political_power = -120
+		add_popularity = {
+				popularity = 0.1
+				ideology = fascism
+			}
+		
+	}
+	option = { #Goga
+		name = romania.13.b
+		trigger = { has_completed_focus = ROM_goga_codreanu_pact }
+		ai_chance = {
+			factor = 100	
+		}
+		ROM_octavian_goga = {
+				promote_character = {
+					ideology = fascism_ideology
+				}
+			}
+			set_party_name = {
+				ideology = fascism
+				long_name = ROM_fascism_party2_long
+				name = ROM_fascism_party2
+			}
+		set_politics = {
+					ruling_party = fascism
+					elections_allowed = no
+				}
+		add_political_power = 100
+	}
+}
+
+
+# Romania demands Turkish guarantee
+country_event = {
+	id = romania.14
+	title = romania.14.t
+	desc = romania.14.d
+	picture = GFX_report_event_generic_rally
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = romania.14.a
+		ai_chance = {
+			factor = 80
+			modifier = {
+				threat > 0.4
+				factor = 2
+			}
+			modifier = {
+				tag = TUR
+				has_government = neutrality
+				factor = 0.1
+			}
+		}
+		give_guarantee = ROM
+		ROM = { country_event = romania.15 }
+	}
+
+	option = { #no
+		name = romania.14.b
+		ai_chance = {
+			factor = 20
+			modifier = {
+				ROM = {
+					has_added_tension_amount > 0.01
+				}
+				factor = 1.5 #Romania was naughty
+			}
+		}
+		ROM = { country_event = romania.16 }	
+	}
+}
+#western guarantee - country agrees
+country_event = {
+	id = romania.15
+	title = romania.15.t
+	desc = romania.15.d
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = romania.15.a
+	}
+}
+
+#western guarantee - country refuses
+country_event = {
+	id = romania.16 
+	title = romania.16.t
+	desc = romania.16.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = romania.16.a
+		add_opinion_modifier = { target = FROM modifier = refused_alliance }
+	}
+}
+
+# Bessarabia for Industrial Support
+country_event = {
+	id = romania.17
+	title = romania.17.t
+	desc = romania.17.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = romania.17.a
+		ai_chance = {
+			factor = 100
+			modifier = {
+				focus_progress = {
+                 focus = SOV_claim_on_bessarabia
+                 progress > 0.7
+                }
+				factor = 0 #
+			}
+		}
+		80 = { remove_claim_by = SOV }
+		effect_tooltip = { 
+
+			    transfer_state = 78
+				transfer_state = 766
+			  
+			 ROM = {
+			 random_core_state = { 
+			   prioritize = { 79 81 84 83 }
+				limit = {
+					free_building_slots = {
+						building = industrial_complex 
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex 
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory 
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			 }
+			random_core_state = { 
+			    prioritize = { 46 }
+				limit = {
+					free_building_slots = {
+						building = dockyard 
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex 
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard 
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			 }
+			 }
+			}
+		ROM = { country_event = romania.18 }
+	}
+
+	option = { #no
+		name = romania.17.b
+		ai_chance = {
+			factor = 1
+		}
+		ROM = { country_event = romania.19 }	
+	}
+}
+# SOV takes Bessarabia
+country_event = {
+	id = romania.18
+	title = romania.18.t
+	desc = romania.18.d
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = romania.18.a
+		SOV = { 
+			    transfer_state = 78
+				transfer_state = 766
+			  }
+			 random_core_state = { 
+			   prioritize = { 79 81 84 83 }
+				limit = {
+					free_building_slots = {
+						building = industrial_complex 
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex 
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory 
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			 }
+			random_core_state = { 
+			    prioritize = { 46 }
+				limit = {
+					free_building_slots = {
+						building = dockyard 
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex 
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard 
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			 }
+	}
+}
+
+#SOV refuses Bessarabia
+country_event = {
+	id = romania.19
+	title = romania.19.t
+	desc = romania.19.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = romania.19.a
+		
+	}
+}
+
+# Request Moldovan ASSR
+country_event = {
+	id = romania.20
+	title = romania.20.t
+	desc = romania.20.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = romania.20.a
+		ai_chance = {
+			factor = 100
+			modifier = {
+				834 = { arms_factory > 1 }
+				factor = 0.5
+			}
+		}
+		effect_tooltip = { 
+          ROM = {  
+		    transfer_state = 834
+			add_state_core = 834
+		  }
+			}
+		ROM = { country_event = romania.21 }
+	}
+
+	option = { #no
+		name = romania.20.b
+		ai_chance = {
+			factor = 10
+		}
+		ROM = { country_event = romania.22 }	
+	}
+}
+# SOV gives Balta
+country_event = {
+	id = romania.21
+	title = romania.21.t
+	desc = romania.21.d
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = romania.21.a
+		transfer_state = 834
+	    add_state_core = 834
+	}
+}
+
+#SOV refuses Balta
+country_event = {
+	id = romania.22
+	title = romania.22.t
+	desc = romania.22.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = romania.22.a
+		
+	}
+}
+
+# event for GER, ROM demands Transylvania back
+country_event = {
+	id = romania.23
+	title = romania.23.t
+	desc = romania.23.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = romania.23.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+				has_opinion = {
+                target = ROM
+                value > 60
+                }
+				factor = 1.2
+			}
+			modifier = {
+				HUN = { is_ai = no }
+				factor = 0.1
+			}
+		}
+		effect_tooltip = { 
+		 every_state = { 
+			  limit = { OR = { state = 76 state = 84 state = 82 state = 83 } is_owned_by = HUN }
+			   transfer_state_to = ROM
+			}
+		  HUN = { 
+		    add_opinion_modifier = {
+              target = GER
+              modifier = ROM_ungreateful_ally
+             }
+		    add_war_support = -0.1 
+		  }
+		 ROM = { 
+		   add_stability = 0.1
+		 }
+		}
+		ROM = { country_event = romania.24 }
+	}
+
+	option = { #no
+		name = romania.23.b
+		ai_chance = {
+			factor = 50
+			modifier = {
+				HUN = { is_ai = yes }
+				ROM = { is_ai = no }
+				factor = 0
+			}
+			modifier = {
+				ROM = { is_major = yes }
+				factor = 0
+			}
+			modifier = {
+				HUN = { is_subject_of = ROOT }
+				factor = 0
+			}
+			modifier = {
+				ROM = { 
+				  strength_ratio = {
+                    tag = GER
+                    ratio > 2
+                   }
+				  }
+				factor = 0.1
+			}
+		}
+		effect_tooltip = { 
+		  ROM = { 
+		    add_opinion_modifier = {
+              target = GER
+              modifier = ROM_ungreateful_ally
+             }
+		    add_war_support = -0.05
+		  }
+		}
+		ROM = { country_event = romania.25 }	
+	}
+}
+# GER nullifies Second Vienna Award
+country_event = {
+	id = romania.24
+	title = romania.24.t
+	desc = romania.24.d
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = romania.24.a
+		trigger = { original_tag = ROM }
+		add_stability = 0.1
+		every_state = { 
+			  limit = { OR = { state = 76 state = 84 state = 82 state = 83 } is_owned_by = HUN }
+			   transfer_state_to = ROM
+			}
+	}
+	option = { #not so cool
+		name = romania.24.b
+		trigger = { original_tag = HUN }
+		add_opinion_modifier = {
+         target = GER
+         modifier = ROM_ungreateful_ally
+        }
+		add_opinion_modifier = {
+         target = ROM
+         modifier = ROM_ungreateful_ally
+        }
+		add_war_support = -0.1
+		effect_tooltip = { 
+		 every_state = { 
+			  limit = { OR = { state = 76 state = 84 state = 82 state = 83 } is_owned_by = HUN }
+			   transfer_state_to = ROM
+			}
+		}
+	}
+}
+
+#GER stands to Second Vienna Award
+country_event = {
+	id = romania.25
+	title = romania.25.t
+	desc = romania.25.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = romania.25.a
+		add_opinion_modifier = {
+         target = GER
+         modifier = ROM_ungreateful_ally
+        }
+		add_war_support = -0.05
+		
+	}
+}
+
+
+# Romania creates the Danubian Defense League - event to join
+country_event = {
+	id = romania.26
+	title = romania.26.t
+	desc = romania.26.d
+	picture = GFX_report_event_generic_conference
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = romania.26.a
+		ai_chance = {
+			factor = 70
+			modifier = {
+				threat > 0.3
+				add = 30
+			}
+			modifier = {
+				strength_ratio = {
+                  tag = ROM
+                  ratio < 0.5
+                 }
+				add = 15
+			}
+		}
+		ROM = { country_event = romania.27 }
+		add_ai_strategy = {
+					type = alliance
+					id = "ROM"
+					value = 200
+				}
+	}
+
+	option = { #no
+		name = romania.26.b
+		ai_chance = {
+			factor = 30
+			modifier = {
+				threat > 0.5
+				factor = 0
+			}
+		}
+		ROM = { country_event = romania.28 }	
+	}
+
+}
+#Danubian Defense League - country agrees
+country_event = {
+	id = romania.27
+	title = romania.27.t
+	desc = romania.27.d
+	picture = GFX_report_event_generic_sign_treaty3
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = romania.27.a
+		add_to_faction = FROM
+	}
+
+}
+
+#Danubian Defense League - country refuses
+country_event = {
+	id = romania.28
+	title = romania.28.t
+	desc = romania.28.d
+	picture = GFX_report_event_poland_rejects
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = romania.28.a
+		add_opinion_modifier = { target = FROM modifier = refused_alliance }
+	}
+
+}

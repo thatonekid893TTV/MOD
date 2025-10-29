@@ -1,0 +1,51 @@
+characters={		
+	
+	BBR_george_padmore={
+		name="George Padmore"
+		portraits={
+			civilian={
+				large="gfx/leaders/BBR/portrait_bbr_george_padmore.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_bbr_george_padmore.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = BBR_george_padmore
+			allowed  = {
+				OR = {
+					original_tag  = BBR
+					original_tag  = LIB
+				}
+			}
+			visible = {	
+			}
+			available = {
+				if = {
+					limit = {
+						LIB = { has_character = BBR_george_padmore }
+					}
+					has_completed_focus = LIB_empower_the_worker
+					NOT = {
+						has_country_leader = {
+							ruling_only = yes
+							character = BBR_george_padmore
+						}
+					}
+				}
+			}
+			traits  = {
+				socialist_journalist 
+			}
+			do_effect  = {
+				NOT = {
+					has_government  = communism 
+				}
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}		
+	}	
+}

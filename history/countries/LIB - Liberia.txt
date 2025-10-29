@@ -9,13 +9,15 @@ set_technology = {
 
 set_convoys = 10
 
+recruit_character = LIB_edwin_barclay
+recruit_character = LIB_stephen_a_tolbert
 recruit_character = LIB_edgar_cailloux
 recruit_character = LIB_andre_fields
 recruit_character = LIB_james_brooks
 recruit_character = LIB_won_loy_chan
 recruit_character = LIB_benton_stukes
 recruit_character = LIB_reginald_brandon
-recruit_character = LIB_aaron_pinn
+#recruit_character = LIB_aaron_pinn
 recruit_character = LIB_john__r_fox
 recruit_character = LIB_samuel_nell
 recruit_character = LIB_joseph_smith
@@ -23,11 +25,45 @@ recruit_character = LIB_stewart_holland
 recruit_character = LIB_benjamin_o_davis
 recruit_character = LIB_george_remond
 recruit_character = LIB_iver_virgin
+recruit_character = LIB_samuel_david_coleman
+recruit_character = LIB_solomon_carter_fuller
+recruit_character = LIB_c_frederick_taylor
+recruit_character = LIB_thomas_j_r_faulkner
+recruit_character = LIB_william_tubman
+recruit_character = LIB_communist_politician_1
+recruit_character = LIB_communist_politician_2
+recruit_character = LIB_peter_konneh
+recruit_character = LIB_anthony_ndebeh
+recruit_character = LIB_samuel_saywon
+recruit_character = LIB_didwho_welleh_twe
+recruit_character = LIB_communist_officer_1
+recruit_character = LIB_communist_officer_2
+recruit_character = LIB_communist_officer_3
+recruit_character = LIB_nationalist_officer_1
+recruit_character = LIB_fascist_politician_1
+recruit_character = LIB_fascist_politician_2
+recruit_character = LIB_fascist_officer_1
+recruit_character = LIB_fascist_officer_2
+recruit_character = LIB_fascist_officer_3
+recruit_character = harvey_firestone_jr
+recruit_character = LIB_alford_russ
+recruit_character = LIB_charles_db_king
+recruit_character = LIB_captain_of_industry
+recruit_character = LIB_fortification_engineer
+recruit_character = LIB_war_industrialist
+recruit_character = LIB_head_of_intelligence
+recruit_character = LIB_Allen_Yancy
+recruit_character = LIB_elwood_davis
+recruit_character = LIB_jenkins_yancey
+recruit_character = LIB_Henry_Too_wesley
+recruit_character = LIB_clarence_lorenzo_simpson
+recruit_character = LIB_Fatima_Massaquoi
+recruit_character = LIB_Louis_Grimes
+
 
 1939.1.1 = {
 
 	add_political_power = 1198
-	add_command_power = 100
 	
 	#generic focuses
 	complete_national_focus = army_effort
@@ -56,6 +92,7 @@ recruit_character = LIB_iver_virgin
 		#electronics
 		electronic_mechanical_engineering = 1
 		radio = 1
+		radio_detection = 1
 		mechanical_computing = 1
 
 		#industry
@@ -68,9 +105,6 @@ recruit_character = LIB_iver_virgin
 		dispersed_industry = 1
 		dispersed_industry2 = 1
 	}
-	complete_special_project = {
-		project = sp:sp_air_radar
-	}
 }
 
 set_politics = {
@@ -81,17 +115,15 @@ set_politics = {
 }
 set_popularities = {
 	democratic = 100
+
 }
 
-create_country_leader = {
-	name = "Edwin Barclay"
-	desc = "POLITICS_EDWIN_BARCLAY_DESC"
-	picture = "GFX_portrait_lib_edwin_barclay"
-	expire = "1965.1.1"
-	ideology = conservatism
-	traits = {
-		#
-	}
+add_ideas = {
+	depression_liberia
+        firestone_debt
+        corruption
+        indigenous_migration
+        harvey_firestone_jr
 }
 
 1939.1.1 = {

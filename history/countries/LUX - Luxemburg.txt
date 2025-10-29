@@ -1,4 +1,4 @@
-﻿capital = 8 # Luxembourg City
+﻿capital = 8
 
 oob = "LUX_1936"
 
@@ -6,14 +6,12 @@ oob = "LUX_1936"
 set_technology = {
 	infantry_weapons = 1
 	infantry_weapons1 = 1
-	tech_trucks = 1
 	gw_artillery = 1
 	tech_support = 1		
 	tech_engineers = 1
 	basic_train = 1
 }
-
-IF = {
+if = {
 	limit = {
 		NOT = { has_dlc = "By Blood Alone" }
 	}
@@ -21,9 +19,8 @@ IF = {
 		early_fighter = 1
 	}
 }
-
-set_war_support = 0.15
-set_stability = 0.7
+set_war_support = 0.1
+set_stability = 0.6
 
 recruit_character = LUX_joseph_bech
 recruit_character = LUX_charles_marx
@@ -31,6 +28,7 @@ recruit_character = LUX_damian_kratzenberg
 recruit_character = LUX_charlotte
 recruit_character = LUX_damien_roeser
 recruit_character = LUX_florent_destriveaux
+recruit_character = LUX_alexander_von_falkenhausen
 recruit_character = LUX_pierre_fischbach
 recruit_character = LUX_guillaume_soisson
 recruit_character = LUX_alex_federspiel
@@ -46,9 +44,13 @@ recruit_character = LUX_pierre_krier
 recruit_character = LUX_martin_karp
 recruit_character = LUX_guillaume_konsbruck
 recruit_character = LUX_felix_of_luxembourg
+recruit_character = LUX_council
+recruit_character = LUX_lux_crownguard
+recruit_character = LUX_wilhelm_ii
+recruit_character = LUX_wilhelmina
 
 
-# 1939 Scenario
+
 1939.1.1 = {
 
 	add_political_power = 1198
@@ -67,9 +69,9 @@ recruit_character = LUX_felix_of_luxembourg
 	complete_national_focus = production_effort
 	
 	oob = "LUX_1939"
-
 	set_technology = {
 		tech_recon = 1
+		fighter1 = 1
 		interwar_artillery = 1
 		interwar_antiair = 1
 		
@@ -83,6 +85,7 @@ recruit_character = LUX_felix_of_luxembourg
 		#electronics
 		electronic_mechanical_engineering = 1
 		radio = 1
+		radio_detection = 1
 		mechanical_computing = 1
 
 		#industry
@@ -108,30 +111,34 @@ recruit_character = LUX_felix_of_luxembourg
 	}
 }
 
+add_ideas = {
+	export_focus
+	limited_conscription
+	civilian_economy
+	lux_poor_industry
+	luxemburg_army
+	town_state
+	}
+
 set_politics = {
 	ruling_party = democratic
 	last_election = "1934.6.3"
 	election_frequency = 36
 	elections_allowed = yes
 }
-
 set_popularities = {
-	democratic = 70
-	neutrality = 15
-	fascism = 12
-	communism = 3
+	democratic = 92
+	fascism = 3
+	communism = 5
 }
 
 1939.1.1 = {
-
 	set_politics = {
 		ruling_party = democratic
 		last_election = "1937.6.6"
 		election_frequency = 36
 		elections_allowed = yes
 	}
-
 	promote_character = LUX_pierre_dupong
 	retire_character = LUX_joseph_bech
-
 }

@@ -1,40 +1,71 @@
 ﻿##### ROMANIA NAME LISTS #####
-
-### SUBMARINE NAMES ###
-ROM_SS_HISTORICAL = {
-	name = NAME_THEME_HISTORICAL_SUBMARINES
-
-	for_countries = { ROM }
-
-	type = ship
-	ship_types = { ship_hull_submarine submarine }
-
-	prefix = "NMS " #Nava Maiestatii Sale
-	fallback_name = "Submarin %s"
-
-	unique = {
-		"Delfinul" "Rechinul" "Marsuinul" "Stiuca" "Orca" "Caracatita" "Leul de Mare" "Foca" "Pastravul" "Somonul"
-	}
-}
-
-### DESTROYER NAMES ###
+### REGULAR DESTROYER NAMES###
 ROM_DD_HISTORICAL = {
 	name = NAME_THEME_HISTORICAL_DESTROYERS
 
 	for_countries = { ROM }
 
 	type = ship
-	ship_types = { ship_hull_light destroyer  ship_hull_civilian }
+	ship_types = { ship_hull_light destroyer }			
 
-	prefix = "NMS " #Nava Maiestatii Sale
-	fallback_name = "Distrugator %s"
+	prefix = "NMS "
+	fallback_name = "Distrugator %d"					
 
-	unique = {
-		"Regele Ferdinand" "Regina Maria" "Vifor" "Viscol" "Marasti" "Marasesti" "Oituz" "Zefirul" "Crivatul" "Austrul" "Prut" "Ialomita"
+	unique = {											
+		"Marasti" "Marasesti" "Regele Ferdinand" "Regina Maria" "Vifor" "Viscul"
+		#Gunboats
+		"Sublocotenent Ghiculescu" "Eugen Stihi" "Căpitan Dumitrescu"
+		#Corvettes
+		"Vice-Amiral Eugeniu Rosca" "Amiral Petre Barbuneanu" "Contraamiral Eustatiu Sebastian" "Contraamiral Horia Macellariu" "Zborul" "Pescărusul" "Lăstunul" 
+		#historical gunboats
+		"Grivița" "Oltul" "Siretul" "Bistrita" "Rahova" "Smârdan" "Opanez" "Silistra"
+		#river-monitors old/new
+		"I. C. Bratianu" "Al. Lahovari" "L. Catargiu" "M. Kogalniceanu"
+		"Mihail Kogălniceanu" "Ion C. Brătianu" "Lascăr Catargiu"
+		#other Commanders of the Navy
+		"Commodore Nicolae Negru" "Vice-Amiral Constantin Bălescu" "Contraamiral Constantin Niculescu-Rizea" "Vice-Amiral Vasile Scodrea" "Vice-Amiral Ioan Bălănescu"
 	}
 }
 
-### LIGHT CRUISER NAMES ###
+ROM_MTB_HISTORICAL = {
+	name = "Historical Motor Torpedo Boats"
+
+	for_countries = { ROM }
+
+	type = ship
+	ship_types = { ship_hull_light destroyer }			
+
+	prefix = "NMS "
+	fallback_name = "Barcă Torpiloare %d"					
+
+	unique = {											
+		"Sborul" "Viscolul" "Viforul" "Vijelia" "Vedenia"
+		#older and modern Torpedo Boats
+		"Smeul" "Năluca" "Sborul" "Major Ene" "Captain L. Bogdan" "Captain Romano" "Major Giurascu" "Major Sontu" "Major Gr. Ioan" "Lt. Calinescu" "Captain V Maracineanu"
+		"Vedea" "Argeșul" "Trotușul" "Teleorman" "Bujorescu" "Catinca" "Rândunica"
+		"Vulcanul"
+	}
+}
+
+ROM_ML_HISTORICAL = {
+	name = "Historical Minelayers"
+
+	for_countries = { ROM }
+
+	type = ship
+	ship_types = { ship_hull_light destroyer }			
+
+	prefix = "NMS "
+	fallback_name = "Fregata de Minare %d"					
+
+	unique = {											
+		"Amiral Murgescu" "Cetatea Albă" "Regele Carol I" "Viceamiral Constantin Bălescu" "Alexandru cel Bun"
+		#Minehunter
+		"Sublocotenent Ion Ghiculescu"
+	}
+}
+
+### LIGHT CRUISER NAMES###
 ROM_CL_HISTORICAL = {
 	name = NAME_THEME_HISTORICAL_CL
 
@@ -42,16 +73,16 @@ ROM_CL_HISTORICAL = {
 
 	type = ship
 	ship_types = { ship_hull_cruiser light_cruiser }
-
-	prefix = "NMS " #Nava Maiestatii Sale
-	fallback_name = "Crucisator %s"
+	
+	prefix = "NMS "
+	fallback_name = "Crucisator Lumina %d"
 
 	unique = {
-		"Amiral Emanoil Koslinski" "General Dumitrescu-Maican" "Amiral Murgescu" "Husi" "Ramnicu Sarat" "Targu Jiu" "Tecuci" "Slobozia" "Calarasi"
+		"Elisabeta" "Timosoara" "Arad" "Oradea" "Baia Mare" "Sighetu Marmatiei" "Bistrita" "Reghin" "Pitesti" "Rosiori de Vede" 
 	}
 }
 
-### HEAVY CRUISER NAMES ###
+### HEAVY CRUISER NAMES###
 ROM_CA_HISTORICAL = {
 	name = NAME_THEME_HISTORICAL_CA
 
@@ -59,12 +90,30 @@ ROM_CA_HISTORICAL = {
 
 	type = ship
 	ship_types = { ship_hull_cruiser heavy_cruiser }
-
-	prefix = "NMS " #Nava Maiestatii Sale
-	fallback_name = "Crucisator %s"
+	
+	prefix = "NMS "
+	fallback_name = "Crucisator Grea %d"
 
 	unique = {
-		"Calugareni" "Rovine" "Nicopole" "Razboieni" "Codrii Cosminului" "Neagoe Basarab" "Matei Basarab" "Vasile Lupu" "Vlad Calugarul"
+		"Elisabeta" "Timosoara" "Arad" "Oradea" "Baia Mare" "Sighetu Marmatiei" "Bistrita" "Reghin" "Pitesti" "Rosiori de Vede" 
+	}
+}
+
+
+### BATTLESHIP NAMES ###
+ROM_BB_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_BB
+
+	for_countries = { ROM }
+
+	type = ship
+	ship_types = { ship_hull_heavy battleship }
+	
+	prefix = "NMS "
+	fallback_name = "Vas de Razboi %d"		
+
+	unique = {
+		"Constanta" "Rahova" "Opanez" "Smârdan" "Posada" "Rovine" "Tirgu Mures" "Cluj Napoca" 
 	}
 }
 
@@ -76,29 +125,12 @@ ROM_BC_HISTORICAL = {
 
 	type = ship
 	ship_types = { ship_hull_heavy battle_cruiser }
-
-	prefix = "NMS " #Nava Maiestatii Sale
-	fallback_name = "Crucisator de linie %s"
-
-	unique = {
-		"Muntenia" "Moldova" "Oltenia" "Basarabia" "Dobrogea" "Transilvania" "Banat" "Crisana" "Maramures" "Bucovina" "Constantin Brancoveanu" "Dimitrie Cantemir" "Ioan Voda cel Viteaz" "Stefan cel Mare" "Mircea cel Batran"
-	}
-}
-
-### BATTLESHIP NAMES ###
-ROM_BB_HISTORICAL = {
-	name = NAME_THEME_HISTORICAL_BB
-
-	for_countries = { ROM }
-
-	type = ship
-	ship_types = { ship_hull_heavy battleship }
-
-	prefix = "NMS " #Nava Maiestatii Sale
-	fallback_name = "Cuirasat %s"
+	
+	prefix = "NMS "
+	fallback_name = "Crucisator Lupta %d"		
 
 	unique = {
-		"Romania" "Tricolorul" "Victoria" "Decebal" "Traian" "Burebista" "Hadrian" "Marcu Aureliu" "Mihai Viteazul" "Domitian" "Septimiu Sever" "Dacia" "Porolissensis" "Malvensis" "Apulensis"
+		"Constanta" "Rahova" "Opanez" "Smârdan" "Posada" "Rovine" "Tirgu Mures" "Cluj Napoca" 
 	}
 }
 
@@ -110,151 +142,61 @@ ROM_CV_HISTORICAL = {
 
 	type = ship
 	ship_types = { ship_hull_carrier carrier }
-
-	prefix = "NMS " #Nava Maiestatii Sale
-	fallback_name = "Portavion %s"
+	
+	prefix = "NMS "
+	fallback_name = "Portavion %d"	
 
 	unique = {
-		"Bucuresti" "Craiova" "Iasi" "Campulung" "Targoviste" "Constanta" "Curtea de Arges"
+		"Romania" "Bucuresti" "Banat" "Constanta" "Mangalia" "Sulina" "Navodari" 
 	}
 }
 
-### THEME: RIVERS ###
-ROM_RIVERS_TRANSYLVANIA = {
-	name = NAME_THEME_RIVERS
-
-	for_countries = { ROM }
-
-	can_use = {
-		owns_state = 84 #Transylvania
-	}
-
-	type = ship
-
-	prefix = "NMS " #Nava Maiestatii Sale
-
-	unique = {
-		"Olt" "Siret" "Dambovita" "Bahlui" "Jiu" "Arges" "Barlad" "Trotus" "Jijia" "Teleorman" "Dunarea" "Moldova" "Nistru" "Mures" "Bega" "Somes" "Crisul Alb" "Crisurile" "Tarnavele"
-	}
-}
-
-### THEME: COUNTIES ###
-ROM_COUNTIES = {
-	name = NAME_THEME_COUNTIES
+### SUBMARINES ###
+ROM_SS_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_SUBMARINES
 
 	for_countries = { ROM }
 
 	type = ship
-
-	prefix = "NMS " #Nava Maiestatii Sale
-
+	ship_types = { ship_hull_submarine submarine }
+	
+	prefix = "NMS "
+	fallback_name = "Submarin %d"
+	
 	unique = {
-		"Mehedinti" "Vlasca" "Romanati" "Gorj" "Dolj" "Muscel" "Ilfov" "Braila" "Tulcea" "Constanta" "Prahova" "Bacau" "Neamt" "Dorohoi" "Botosani" "Roman" "Tutova" "Falciu" "Cahul" "Ismail" "Putna" "Hotin" "Soroca" "Orhei" "Cetatea Alba" "Balti" "Chisinau" "Caliacra" "Durostor"
+		"Delfinul" "Rechinul" "Marsuinul" "Baracuda" "Narval" "Nautilus" "Somonul" "Peste-Spada" 
 	}
 }
 
-### THEME: KINGS ###
-ROM_KINGS = {
-	name = NAME_THEME_KINGS
+### THEME: ROMANIAN REGIONS ###
+ROM_REGIONS = {
+	name = NAME_THEME_REGIONS
 
 	for_countries = { ROM }
 
 	type = ship
 
-	prefix = "NMS " #Nava Maiestatii Sale
-
+	prefix = "NMS "
 	unique = {
-		"Dromihete" "Comosicus" "Deceneu" "Scorilo" "Diurpaneus"
+		"Bucuresti" "Muntenia" "Oltenia" "Banat" "Constanta" "Transilvania" "Moldova" "Dobruja" "Crisana" "Maramures" "Basarabia" "Bukovina" 
+		"Herta" "Budjak" 
 	}
 }
 
-### THEME: LEADERS ###
-ROM_LEADERS = {
-	name = NAME_THEME_LEADERS
+## THEME: ROMANIAN CITIES ###
+ROM_CITIES = {
+	name = NAME_THEME_CITIES
 
 	for_countries = { ROM }
 
 	type = ship
 
-	prefix = "NMS " #Nava Maiestatii Sale
-
+	prefix = "NMS "
 	unique = {
-		"Mihail Kogalniceanu" "Gheorghe Asachi" "Gheorghe Magheru" "Lascar Catargiu" "Alexandru Ioan Cuza" "Ion Ghica" "Constantin Alexandru Rosetti" "Ion Heliade Radulescu" "Nicolae Balcescu" "Cezar Bolliac"
-	}
-}
-
-### THEME: LITERARY FIGURES ###
-ROM_LITERARY_FIGURES = {
-	name = NAME_THEME_LITERARY_FIGURES
-
-	for_countries = { ROM }
-
-	type = ship
-
-	prefix = "NMS " #Nava Maiestatii Sale
-
-	unique = {
-		"Alexandru Vlahuta" "Vasile Alecsandri" "Mihai Eminescu" "Dimitrie Bolintineanu" "Grigore Alexandrescu" "Andrei Muresanu" "Constantin Negruzzi"
-	}
-}
-
-### THEME: BIRDS ###
-ROM_BIRDS = {
-	name = NAME_THEME_BIRDS
-
-	for_countries = { ROM }
-
-	type = ship
-
-	prefix = "NMS " #Nava Maiestatii Sale
-
-	unique = {
-		"Acvila" "Vulturul" "Soimul" "Eretele" "Uliul" "Pescarusul" "Lebada" "Pelicanul" "Cocorul" "Barza" "Vrabia" "Randunica"
-	}
-}
-
-### THEME: ANIMALS ###
-ROM_ANIMALS = {
-	name = NAME_THEME_ANIMALS
-
-	for_countries = { ROM }
-
-	type = ship
-
-	prefix = "NMS " #Nava Maiestatii Sale
-
-	unique = {
-		"Leul" "Tigrul" "Leopardul" "Ghepardul" "Rasul" "Ursul" "Vipera"
-	}
-}
-
-### THEME: MYTHOLOGY ###
-ROM_MYTHOLOGY = {
-	name = NAME_THEME_MYTHOLOGY
-
-	for_countries = { ROM }
-
-	type = ship
-
-	prefix = "NMS " #Nava Maiestatii Sale
-
-	unique = {
-		"Zmeul" "Zburatorul"
-	}
-}
-
-### THEME: SAINTS ###
-ROM_MYTHOLOGY = {
-	name = NAME_THEME_SAINTS
-
-	for_countries = { ROM }
-
-	type = ship
-
-	prefix = "NMS " #Nava Maiestatii Sale
-
-	unique = {
-		"Sfantul Gheorghe" "Sfantul Ilie" "Sfantul Pantelimon" "Sfantul Arhanghel Mihail" "Sfantul Arhanghel Gavriil" "Sfantul Petru" "Sfantul Pavel" "Sfantul Imparat Constantin" "Sfantul Stefan" "Sfantul Dumitru" "Sfantul Andrei" "Sfantul Iacob cel Mare" "Sfantul Ioan Botezatorul"
+		"Bucuresti" "Cluj" "Constanta" "Puebla" "Iasi" "Craiova" "Brasov" "Galati" "Ploiesti" "Oradea" "Arad" "Pitesti" "Brăila" "Sibiu" 
+		"Bacău" "Târgu Mures" "Baia Mare" "Buzău" "Botosani" "Satu Mare" "Râmnicu Vâlcea" "Piatra Neamt" "Piatra Neamt" "Târgu Jiu" "Târgoviste" "Focsani" "Bistrita" 
+		"Tulcea" "Resita" "Slatina" "Călărasi" "Alba Iulia" "Giurgiu" "Deva" "Zalău" "Sfântu Gheorghe" "Vaslui" "Slobozia" "Alexandria" 
+		"Miercurea Ciuc" 
 	}
 }
 

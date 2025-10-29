@@ -1,0 +1,42 @@
+on_actions = {
+	on_new_term_election = {
+		random_events = {
+			4000 = liberia_elections.1
+			4000 = liberia_elections.2
+			4000 = liberia_elections.3
+			4000 = liberia_elections.4
+			4000 = liberia_elections.5
+		}
+	}
+	on_startup = {
+		effect = {
+			LIB = {
+				if = {
+					limit = {
+						OR = {
+							AND = {
+								is_historical_focus_on = no
+								has_game_rule = {
+									rule = LIB_ai_behavior
+									option = DEFAULT
+								}
+							}
+							has_game_rule = {
+								rule = LIB_ai_behavior
+								option = RANDOM
+							}
+						}
+					}
+					random_list = {
+						5 = { LIB = { set_country_flag = LIB_AI_RANDOM_FASCIST } }
+						40 = { LIB = { set_country_flag = LIB_AI_DEMOCRATIC_HISTORICAL } }
+						25 = { LIB = { set_country_flag = LIB_AI_RANDOM_DEMOCRATIC } }
+						10 = { LIB = { set_country_flag = LIB_AI_RANDOM_COMMUNISM } }
+						5 = { LIB = { set_country_flag = LIB_AI_RANDOM_COMMUNIST_TROTSKYIST } }
+						15 = { LIB = { set_country_flag = LIB_AI_RANDOM_PAN_AFRICAN } }
+					}
+				}
+			}
+		}
+	}
+}

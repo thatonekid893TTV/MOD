@@ -1,0 +1,414 @@
+#####-----> LIB: Alternate AI Behavior <><> <><> <><> <><> <><>
+
+LIB_alternate_plan_1 = {
+	name = "Democratic Liberia Path 1"
+	desc = "Democratic Path 1"
+	
+    allowed = {
+        original_tag = LIB
+    }
+    enable = {
+        NOT = {
+            AND = {
+                is_historical_focus_on = yes
+                has_game_rule = {
+                    rule = LIB_ai_behavior
+                    option = DEFAULT
+                }
+            }
+        }
+        OR = {
+            has_country_flag = LIB_AI_RANDOM_DEMOCRATIC
+            has_game_rule = {
+                rule = LIB_ai_behavior
+                option = DEMOCRATIC
+            }
+        }
+    }
+    abort = {
+        OR = {
+            has_government = communism
+            has_government = fascism
+        }
+    }
+
+    ai_national_focuses = {
+        LIB_modernize_industry
+        LIB_government_reform
+        LIB_encourage_political_discourse
+        LIB_embrace_our_roots
+        LIB_seek_american_aid
+        LIB_adopt_american_dollar
+        LIB_pay_off_debt
+        LIB_adopt_american_dollar
+        LIB_reconcile_firestone
+        LIB_economic_measures
+        LIB_rubber_railway
+        LIB_industrial_expansion
+	LIB_expand_university_of_liberia
+	LIB_economic_triumph
+	LIB_war_preparations
+	LIB_us_infrastructure
+	LIB_roberts_international_airport
+	LIB_freeport_of_monrovia
+	LIB_open_iron_mines
+	LIB_join_allies
+	LIB_foreign_concession_agreements
+	LIB_integration_effort
+	LIB_us_defense_pact
+	LIB_purchase_sierra
+        LIB_end_migration
+    }
+	ideas = {
+		samuel_david_coleman = 100
+		solomon_carter_fuller = 100
+		c_frederick_taylor = 0
+		william_tubman = 50
+		peter_konneh = 0
+		anthony_ndebeh = 0
+		samuel_saywon = 0
+	}
+    # Keep small, as it is used as a factor for some things (such as research needs)
+    # Recommended around 1.0. Useful for relation between plans
+    weight = {
+        factor = 1.0
+        modifier = {
+            factor = 1.0
+        }
+    }
+}
+
+LIB_communist_plan = {
+	name = "Communist Liberia"
+	desc = "Communist path"
+	
+    allowed = {
+        original_tag = LIB
+    }
+    enable = {
+        NOT = {
+            AND = {
+                is_historical_focus_on = yes
+                has_game_rule = {
+                    rule = LIB_ai_behavior
+                    option = DEFAULT
+                }
+            }
+        }
+        OR = {
+            has_country_flag = LIB_AI_RANDOM_COMMUNIST
+            has_game_rule = {
+                rule = LIB_ai_behavior
+                option = COMMUNIST
+            }
+        }
+    }
+    abort = {
+        OR = {
+            has_government = neutrality
+            has_government = fascism
+        }
+    }
+
+    ai_national_focuses = {
+        LIB_modernize_industry
+        LIB_government_reform
+        LIB_encourage_political_discourse
+        LIB_empower_the_worker
+        LIB_peoples_committee
+        LIB_a_workers_liberia
+        LIB_indigenius_embrace
+        LIB_join_comintern
+        LIB_united_africa
+        LIB_international_research
+        LIB_construct_air_strips
+        LIB_purchase_foreign
+        LIB_nationalize_firestone_plant
+        LIB_lib_program        
+        LIB_light_focus
+        LIB_bomber_focus
+        LIB_peoples_liberation_army
+        LIB_Reestablish_port_authority
+        LIB_sub_effort
+        LIB_liberian_seadogs
+        LIB_naval_war_games
+        LIB_peoples_navy
+        LIB_organize_frontier_force
+        LIB_school_of_forestry
+        LIB_doctrine_effort
+        LIB_artilley_focus
+        LIB_motor_effort
+        LIB_doctrine_effort_2
+        LIB_arms_effort
+        LIB_liberate_africa
+    }
+	ideas = {
+		samuel_david_coleman = 0
+		solomon_carter_fuller = 100
+		c_frederick_taylor = 0
+		william_tubman = 0
+		peter_konneh = 1000
+		anthony_ndebeh = 0
+		samuel_saywon = 0
+	}
+    weight = {
+        factor = 1.0
+        modifier = {
+            factor = 1.0
+        }
+    }
+}
+
+LIB_communist_trotskyist_plan = {
+	name = "Trotskyist Liberia"
+	desc = "Trotskyist path"
+	
+    allowed = {
+        original_tag = LIB
+    }
+    enable = {
+        NOT = {
+            AND = {
+                is_historical_focus_on = yes
+                has_game_rule = {
+                    rule = LIB_ai_behavior
+                    option = DEFAULT
+                }
+            }
+        }
+        OR = {
+            has_country_flag = LIB_AI_RANDOM_COMMUNIST_TROTSKYIST
+            has_game_rule = {
+                rule = LIB_ai_behavior
+                option = COMMUNIST_TROTSKYIST
+            }
+        }
+    }
+    abort = {
+        OR = {
+            has_government = neutrality
+            has_government = fascism
+        }
+    }
+
+    ai_national_focuses = {
+        LIB_modernize_industry
+        LIB_government_reform
+        LIB_encourage_political_discourse
+        LIB_empower_the_worker
+        LIB_peoples_committee
+        LIB_a_workers_liberia
+        LIB_indigenius_embrace
+        LIB_Permanent_Revolution
+        LIB_A_Call_to_Struggle
+        LIB_united_africa
+        LIB_construct_air_strips
+        LIB_purchase_foreign
+        LIB_nationalize_firestone_plant
+        LIB_lib_program        
+        LIB_light_focus
+        LIB_bomber_focus
+        LIB_peoples_liberation_army
+        LIB_Reestablish_port_authority
+        LIB_sub_effort
+        LIB_liberian_seadogs
+        LIB_naval_war_games
+        LIB_peoples_navy
+        LIB_organize_frontier_force
+        LIB_school_of_forestry
+        LIB_doctrine_effort
+        LIB_artilley_focus
+        LIB_motor_effort
+        LIB_doctrine_effort_2
+        LIB_arms_effort
+        LIB_liberate_africa
+    }
+	ideas = {
+		samuel_david_coleman = 0
+		solomon_carter_fuller = 100
+		c_frederick_taylor = 0
+		william_tubman = 0
+		peter_konneh = 1000
+		anthony_ndebeh = 0
+		samuel_saywon = 0
+	}
+    weight = {
+        factor = 1.0
+        modifier = {
+            factor = 1.0
+        }
+    }
+}
+
+LIB_pan_african_plan = {
+	name = "Pan-African Liberia"
+	desc = "Pan-African path"
+	
+    allowed = {
+        original_tag = LIB
+    }
+    enable = {
+        NOT = {
+            AND = {
+                is_historical_focus_on = yes
+                has_game_rule = {
+                    rule = LIB_ai_behavior
+                    option = DEFAULT
+                }
+            }
+        }
+        OR = {
+            has_country_flag = LIB_AI_RANDOM_PAN_AFRICAN
+            has_game_rule = {
+                rule = LIB_ai_behavior
+                option = PAN_AFRICAN
+            }
+        }
+    }
+    abort = {
+        OR = {
+            has_government = fascism
+        }
+    }
+
+    ai_national_focuses = {
+        LIB_government_reform
+        LIB_encourage_political_discourse
+        LIB_the_african_nationalist
+  	LIB_establish_pan_africanist_liberian_state
+  	LIB_expel_firestone
+  	LIB_indigenius_embrace
+  	LIB_united_africa
+        LIB_modernize_industry
+        LIB_economic_measures
+        LIB_war_preparations
+  	LIB_promote_pan_africanism
+        LIB_rubber_railway
+        LIB_industrial_expansion
+        LIB_expand_university_of_liberia
+        LIB_liberate_africa
+        LIB_expand_the_african_union	
+        LIB_construct_air_strips
+        LIB_Reestablish_port_authority
+        LIB_sub_effort
+        LIB_liberian_seadogs
+        LIB_naval_war_games
+        LIB_peoples_navy
+        LIB_organize_frontier_force
+        LIB_school_of_forestry
+        LIB_doctrine_effort
+        LIB_artilley_focus
+        LIB_motor_effort
+        LIB_doctrine_effort_2
+        LIB_arms_effort
+        
+    }
+	ideas = {
+		samuel_david_coleman = 0
+		solomon_carter_fuller = 400
+		c_frederick_taylor = 4000
+		william_tubman = 0
+		peter_konneh = 0
+		anthony_ndebeh = 0
+		samuel_saywon = 0
+		LIB_thomas_j_r_faulkner = 1000
+	}
+    weight = {
+        factor = 1.0
+        modifier = {
+            factor = 1.0
+        }
+    }
+}
+
+LIB_fascist_plan = {
+	name = "Fascist Liberia"
+	desc = "Fascist path"
+	
+    allowed = {
+        original_tag = LIB
+    }
+    enable = {
+        NOT = {
+            AND = {
+                is_historical_focus_on = yes
+                has_game_rule = {
+                    rule = LIB_ai_behavior
+                    option = DEFAULT
+                }
+            }
+        }
+        OR = {
+            has_country_flag = LIB_AI_RANDOM_FASCIST
+            has_game_rule = {
+                rule = LIB_ai_behavior
+                option = FASCIST
+            }
+        }
+    }
+    abort = {
+        OR = {
+            has_government = communism
+            has_government = neutrality
+        }
+    }
+
+    ai_national_focuses = {
+        LIB_government_reform 
+        LIB_form_silvershirts
+        LIB_modernize_industry
+        LIB_war_preparations
+        LIB_us_defense_pact
+        LIB_us_infrastructure
+        LIB_roberts_international_airport
+        LIB_freeport_of_monrovia
+        LIB_establish_military_industrial_complex
+        LIB_silvershirt_volunteers
+        LIB_silver_coup
+        LIB_military_academies
+        LIB_end_migration
+        LIB_nationalize_firestone_plant
+        LIB_lib_program
+        LIB_liberian_lebensraum
+        LIB_join_axis
+        LIB_german_advisors
+        LIB_operation_schlange
+        LIB_liberianization
+        LIB_war_with_allies
+        LIB_construct_air_strips
+        LIB_light_focus
+        LIB_bomber_focus
+        LIB_Reestablish_port_authority
+        LIB_sub_effort
+        LIB_liberian_seadogs
+        LIB_naval_war_games
+        LIB_big_ship_focus
+        LIB_quality_over_quantity
+        LIB_trade_interdiction
+        LIB_organize_frontier_force
+        LIB_school_of_forestry
+        LIB_doctrine_effort
+        LIB_artilley_focus
+        LIB_motor_effort
+        LIB_doctrine_effort_2
+        LIB_arms_effort
+    }
+	ideas = {
+		samuel_david_coleman = 0
+		solomon_carter_fuller = 0
+		c_frederick_taylor = 0
+		william_tubman = 0
+		peter_konneh = 0
+		anthony_ndebeh = 1000
+		samuel_saywon = 500
+		LIB_fascist_officer_3 = 4000
+	}
+    weight = {
+        factor = 1.0
+        modifier = {
+            factor = 1.0
+        }
+    }
+}
+
+#####-----> End of File <><> <><> <><> <><> <><>

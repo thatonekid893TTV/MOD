@@ -1,0 +1,132 @@
+﻿add_namespace = andalusian
+
+country_event = {
+	id = andalusian.1
+	title = "Andalusia asks for help"
+	desc = "The newly liberated Andalusian asks for help"
+	picture = GFX_report_event_german_inspect_troops
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Sure"	#sounds good
+		ai_chance = { factor = 90 }
+		add_political_power = -10
+		add_ideas = END_muslim_happines
+		FROM = {
+			country_event = andalusian.3
+			add_political_power = 100
+			add_war_support = 0.025
+			
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2500
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 150
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 150
+			}
+			
+			add_equipment_to_stockpile = {
+				type = motorized_equipment_1
+				amount = 300
+			}
+		}
+
+	}
+	
+	option = {
+		name = "No way"	#no way 
+		ai_chance = { factor = 10 }
+		
+		FROM = {
+			country_event = { days = 1 id = SPR_Merc.17 }
+		}
+	}
+}
+country_event = {
+	id = andalusian.2
+	title = "Refused"
+	desc = ""
+	picture = GFX_report_event_german_inspect_troops
+	
+	is_triggered_only = yes
+	option = {
+		name = "Darn"	#no way 
+		ai_chance = { factor = 10 }
+	}
+}
+country_event = {
+	id = andalusian.3
+	title = "They accept"
+	desc = ""
+	picture = GFX_report_event_german_inspect_troops
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Sure"	#sounds good
+		ai_chance = { factor = 90 }
+ 
+	}
+}
+country_event = {
+	id = andalusian.4
+	title = "Andalusia became our puppet!"
+	desc = "Perfect"
+	picture = GFX_report_event_german_inspect_troops
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Perfect"	#sounds good
+		ai_chance = { factor = 100 }
+	}
+}
+country_event = {   
+	id = andalusian.5
+	title = "Andalusia wants independence"
+	desc = "We have provided so much support, ethical industry and military support in their civil wars, they want my independence!"
+	picture = GFX_report_event_generic_parliament
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "Sure"	#sounds good
+		ai_chance = { factor = 100 }
+		FROM = { end_puppet = ROOT }
+	}
+	
+	option = {
+		name = "No way"	#no way 
+		ai_chance = { factor = 0 }
+		add_stability = -0.50
+		FROM = {
+			country_event = { days = 1 id = andalusian.2 }
+		}
+	}
+}
+#into civil war
+country_event = {
+	id = andalusian.8
+	title = "Andalusian uprising has begun"
+	desc = "Andalusian uprising has begun!"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "I'am Andalusian"
+		add_war_support = 0.10
+		add_state_core = 173
+		ROOT = {
+			transfer_state = 173
+		}
+		add_ideas = END_sunni_state
+		set_capital = { state = 173 }
+		set_cosmetic_tag = SPR_andulusia
+	}
+}

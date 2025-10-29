@@ -214,6 +214,234 @@ leader_traits = {
 		army_attack_factor = 0.1
 		army_speed_factor = 0.1
 	}
+
+	
+ROM_conducator = {
+		random = no
+		political_power_gain = 0.1
+		mobilization_speed = 0.05
+		party_popularity_stability_factor = 0.15
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+ROM_commander_of_the_iron_guard = {
+		random = no
+		experience_gain_army_factor = 0.1
+		land_doctrine_cost_factor = -0.1
+		conscription = 0.015
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+ROM_liberator_of_the_nation = {
+		random = no
+		stability_factor = 0.1
+		army_core_attack_factor = 0.05
+		army_core_defence_factor = 0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+ROM_authoritarian_ruler = {
+		random = no
+		stability_factor = -0.05
+		political_power_factor = 0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+ROM_romanian_fuhrer = {
+		random = no
+		war_support_factor = 0.05
+		political_power_factor = 0.1
+		conscription = 0.005
+		justify_war_goal_time = -0.25
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+ROM_the_man_of_steel_trait = {
+		random = no
+		sprite = 13
+		power_balance_daily = -0.002
+		stability_factor = 0.05
+
+		ai_will_do = {
+			factor = 5
+		}
+	}
+	
+ROM_figurehead_of_romanian_unity = {
+		random = no
+		sprite = 13
+		democratic_drift = 0.05
+		army_core_defence_factor = 0.05
+		monthly_population = 0.05
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+ROM_democratic_industrialist = {
+		random = no
+		sprite = 13
+		democratic_drift = 0.05
+		production_speed_buildings_factor = 0.05
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+ROM_patriarch_of_romania = {
+		random = no
+		sprite = 13
+		neutrality_drift = 0.03
+		stability_factor = 0.1
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+ROM_iron_king = {
+		sprite = 10
+		random = no
+		consumer_goods_factor = -0.05
+		production_lack_of_resource_penalty_factor = -0.15
+
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0
+				NOT = { has_country_leader = { character = ROM_carol_ii ruling_only = yes} }
+			}
+		}
+	}
+	
+ROM_inudstrial_mogul = {
+		sprite = 10
+		random = no
+		consumer_goods_factor = -0.15
+
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0
+				NOT = { has_country_leader = { character = ROM_carol_ii ruling_only = yes} }
+			}
+		}
+	}
+	
+ROM_minister_of_the_court = {
+		random = no
+		sprite = 13
+		political_power_factor = 0.15
+		stability_factor = -0.1
+
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0
+				NOT = { has_country_leader = { character = ROM_carol_ii ruling_only = yes} }
+			}
+		}
+	}
+	
+ROM_police_prefect = {
+		random = no
+		sprite = 13
+		neutrality_drift = 0.02
+		resistance_damage_to_garrison = -0.1
+		root_out_resistance_effectiveness_factor = 0.1
+
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0
+				NOT = { has_country_leader = { character = ROM_carol_ii ruling_only = yes} }
+			}
+		}
+	}
+	
+ROM_fascist_paramilitarist = {
+		random = no
+		sprite = 13
+		fascism_drift = 0.05
+		mobilization_speed = 0.1
+		training_time_factor = -0.1
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 5
+				has_country_leader = { character = ROM_ion_antonescu ruling_only = yes} 
+			}
+		}
+	}
+	
+ROM_fascist_writer = {
+		random = no
+		sprite = 13
+		fascism_drift = 0.03
+		research_speed_factor = 0.02
+		war_support_factor = 0.05
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+ROM_fascist_economist = {
+		sprite = 10
+		random = no
+		fascism_drift = 0.03
+		consumer_goods_factor = -0.05
+		global_building_slots_factor = 0.1
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+generic_armaments_wagon_organization = {
+		random = no
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+railway_company_improved = {
+		random = no
+		production_speed_rail_way_factor = 0.25
+		production_speed_supply_node_factor = 0.25
+		equipment_bonus = {
+			train_equipment = {
+				instant = yes
+				build_cost_ic = -0.25
+				armor_value = 0.15
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+
+
 	
 
 }

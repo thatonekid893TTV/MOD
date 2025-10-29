@@ -1,0 +1,92 @@
+#####-----> LIB: Historical AI Behavior <><> <><> <><> <><> <><>
+
+LIB_historical_strategy_plan = {
+    name = "Liberia Historical Plan"
+    desc = "Historical behavior for Liberia"
+
+    allowed = {
+        original_tag = LIB
+    }
+	enable = {
+		OR = {
+			AND = {
+				is_historical_focus_on = yes
+				has_game_rule = {
+					rule = LIB_ai_behavior
+					option = DEFAULT
+				}	
+			}
+			has_country_flag = LIB_AI_DEMOCRATIC_HISTORICAL
+			has_game_rule = {
+				rule = LIB_ai_behavior
+				option = HISTORICAL
+			}
+		}
+
+	}    
+    
+    abort = {
+        OR = {
+            has_government = communism
+            has_government = fascism
+        }
+    }
+
+    ai_national_focuses = {
+    	LIB_organize_frontier_force
+    	LIB_school_of_forestry
+    	LIB_arms_effort
+    	LIB_doctrine_effort
+	LIB_Reestablish_port_authority
+        LIB_modernize_industry
+        LIB_seek_american_aid
+    	LIB_motor_effort
+    	LIB_doctrine_effort_2
+        #1943
+        LIB_adopt_american_dollar
+        LIB_economic_measures
+        LIB_rubber_railway
+        LIB_industrial_expansion
+        LIB_expand_university_of_liberia
+        LIB_economic_triumph
+        LIB_war_preparations
+        LIB_us_defense_pact
+        LIB_us_infrastructure
+        LIB_roberts_international_airport
+	LIB_construct_air_strips
+	LIB_purchase_foreign
+	LIB_light_focus
+        LIB_freeport_of_monrovia
+	LIB_big_ship_focus
+	LIB_quality_over_quantity
+	LIB_naval_war_games
+	LIB_demo_navy
+        LIB_government_reform
+        LIB_open_iron_mines
+        LIB_support_status_quo
+        LIB_establish_military_industrial_complex
+        #1944
+        LIB_join_allies
+        LIB_foreign_concession_agreements
+        LIB_integration_effort
+        #1942
+        LIB_us_defense_pact
+        LIB_pay_off_debt
+        LIB_reconcile_firestone
+    }
+    focus_factors = {
+	LIB_purchase_sierra = 0
+	LIB_purchase_french = 0
+	LIB_integration_effort = 0
+    }
+    # Keep small, as it is used as a factor for some things (such as research needs)
+    # Recommended around 1.0. Useful for relation between plans
+    weight = {
+        factor = 1.0
+        modifier = {
+            factor = 1.0
+        }
+    }
+}
+
+#####-----> End of File <><> <><> <><> <><> <><>

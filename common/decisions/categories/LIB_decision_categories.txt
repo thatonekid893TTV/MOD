@@ -1,0 +1,29 @@
+################
+##### LIB ######
+################
+
+LIB_anti_colonialism_category = { #### TODO_TA Remove - to be replaced by proper system
+	
+	icon = GFX_decision_category_saf_anti_colonialist_crusade # TODO_TA set correct image
+	
+	allowed = {
+		original_tag = LIB
+		
+	}
+
+	priority = {
+		base = 7 # TODO_TA set correct position 
+	}
+
+	visible = {
+		has_dlc = "By Blood Alone"
+		has_country_flag = LIB_anti_colonialism_flag 
+	}
+
+	on_map_area = {
+		target_array = ETH.african_colonial_states_array 
+		name = ETH_anti_colonialism_map_category_name
+		zoom = 150
+	}
+	visible_when_empty = yes 
+}

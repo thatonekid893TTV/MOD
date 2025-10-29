@@ -1,0 +1,43 @@
+
+
+LIB_set_up_african_resistance_states = {
+	
+	hidden_effect = {
+		for_each_scope_loop = {
+			array = global.countries 
+			IF = {
+				limit = {
+					# Find countries with cores in africa that do not already exist as free or puppeted nations
+					exists = no 
+					any_state = { 
+						is_core_of = PREV
+						is_on_continent = africa 
+						OWNER = {
+							NOT = { is_in_faction_with = ROOT }
+							NOT = { tag = ROOT }
+						}
+					}
+				}
+
+				# add African st ate of theirs to the array
+				every_core_state = {
+					limit = {  
+						OR = {
+							is_on_continent = africa 
+							is_core_of = PREV
+						}	
+						has_resistance = yes
+						NOT = { # no point adding if already in there
+							is_in_array = {
+								array = LIB.african_colonial_states_array
+								value = THIS 
+							}
+						}
+					}
+					add_to_array = { LIB.african_colonial_states_array = THIS }
+				}
+			}
+			
+		}
+	}
+}

@@ -1,0 +1,135 @@
+ROM_historical = {
+	name = "Romanian historical plan"
+	desc = ""
+
+	allowed = {
+		original_tag = ROM
+		has_dlc = "Death or Dishonor"
+	}
+	enable = {
+		OR = {
+			AND = {
+				is_historical_focus_on = yes
+				has_game_rule = {
+					rule = ROM_ai_behavior
+					option = DEFAULT
+				}
+			}
+			has_country_flag = ROM_AI_RANDOM_FASCIST_HISTORICAL
+			has_game_rule = {
+				rule = ROM_ai_behavior
+				option = FASCIST_HISTORICAL
+			}
+		}
+	}
+	abort = {
+		
+	}
+
+	ai_national_focuses = {
+		ROM_preserve_greater_romania #till 05.02.36
+		ROM_army_maneuvers #till 11.03.36
+		ROM_expand_the_air_force #till 15.04.36
+		ROM_civil_works #till 24.06.36
+		ROM_agrarian_reform #till 02.09.36
+		ROM_local_development #till 11.11.36
+		ROM_army_war_college #till 16.12.36
+		ROM_danubian_transport_network #till 20.01.37
+		ROM_malaxa #till 31.03.37
+		ROM_assure_the_romanian_bridgehead #till 05.05.37
+		ROM_expand_the_galati_shipyards #till 09.06.37
+		ROM_coastal_defense_navy #till 14.07.37
+		ROM_invest_in_the_iar #till 22.09.37
+		ROM_institute_royal_dictatorship #.12.37 #till 01.12.37      #to preempt the event
+		ROM_royal_guards_divisions #till 05.01.38
+		ROM_revise_the_constitution #1938 #till 16.03.38
+		ROM_crack_down_on_extremism #16.04.38  #till 20.04.38
+		ROM_flexible_foreign_policy #till 25.05.38
+		ROM_air_superiority #till 03.08.38
+		ROM_new_training_aircrafts #till 12.10.38
+		ROM_appoint_allied_friendly_government #till 16.11.38
+		ROM_the_zb_53 #till 21.12.38
+		ROM_arms_production_at_astra_works #till 01.03.39
+		ROM_trade_treaty_with_germany #23.03.39   #till 10.05.39
+		ROM_iar_80 #.04.39   #till 19.07.39
+		ROM_vanatori_de_munte #till 27.09.39                         #until here in 1936 start
+		ROM_hunedoara_steel_works #till 06.12.39
+		ROM_naval_rearmament_program_focus #till 10.01.40
+		ROM_coastal_defense_ships #till 20.03.40
+		ROM_appoint_german_friendly_government #04.07.1940  #till 24.04.40
+		ROM_iron_guard #till 03.07.40
+		ROM_force_abdication #06.09.40  #till 11.09.40
+		ROM_invite_german_advisors #.10.40  #till 20.11.40
+		ROM_purge_the_old_elites #till 25.12.40
+		ROM_clamp_down_on_the_iron_guard #21.01.41  #till 29.01.41
+		ROM_dictatorial_powers  #till 05.03.41
+		ROM_escort_minelayers #02.04.41  #till 09.04.41
+		ROM_join_axis #22.06.41  #till 18.06.41
+		ROM_demand_transnistria #02.07.41  #till 27.08.41
+		ROM_white_squadron_focus #till 01.10.41
+		ROM_declare_the_transnistria_governorate # 19.08.41  #till 10.12.41
+		ROM_crusade_against_judeo_bolshevism #till 14.01.42
+		ROM_cas #1941  #till 25.03.42
+		ROM_improve_the_railways #1940-42  #till 29.04.42
+		ROM_repatriation_of_germans #1941  #till 03.06.42
+		ROM_romanization_of_the_economy  #till 12.08.42
+		ROM_the_armored_division #till 16.09.42
+		ROM_expand_ploiesti_oil_production #till 25.11.42
+		ROM_german_romanian_oil_exploitation_company #till 03.02.43
+		ROM_expand_the_university_of_bucharest #till 14.04.43
+		ROM_labor_camps  #till 23.06.43
+		ROM_acquire_modern_tanks #till 28.07.43
+		ROM_artillery_modernization #till 06.10.43
+		ROM_mobile_tank_destroyers #1943  #till 10.11.43
+		ROM_mountain_artillery #till 15.12.43
+		ROM_reserve_divisions #till 23.02.44
+		ROM_license_german_equipment #till 29.03.44
+		ROM_the_maresal #.05.44  #till 03.05.44
+		ROM_air_defense #till 07.06.44
+		#Added Buffer Focuses as AI fails to do the necessary research for some focuses, leading to a way too early coup
+		ROM_torpedo_bombers
+		ROM_modern_destroyers
+		ROM_supporting_forces
+		ROM_torpedo_boats
+		#
+		ROM_king_michaels_coup #23.08.44  #till 16.08.44
+		ROM_cement_michaels_rule #till 25.10.44
+		ROM_liberate_europe #till 03.01.45
+		ROM_the_royal_foundation
+		ROM_resita_works_petroleum_extraction_equipment
+		 
+		#ROM_support_foreign_seperatists	
+	}
+
+	research = {
+		industry = 50.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+	}
+
+	ideas = {
+		
+	}
+
+	traits = {
+		captain_of_industry = 5
+		war_industrialist = 5
+		ROM_fascist_economist = 5
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+
+}
+

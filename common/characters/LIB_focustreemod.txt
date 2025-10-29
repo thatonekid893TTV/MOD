@@ -1,0 +1,1365 @@
+characters={	
+	LIB_samuel_david_coleman={
+		name=LIB_samuel_david_coleman
+		portraits={
+			civilian={
+				large=GFX_portrait_LIB_samuel_david_coleman
+			}
+			army={
+				small="GFX_idea_LIB_samuel_david_coleman_small"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = samuel_david_coleman
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {				
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_samuel_david_coleman
+					}
+				}
+				has_government = democratic
+				has_completed_focus = LIB_government_reform
+			}
+			traits  = {
+				democratic_reformer
+			}
+			do_effect  = {
+				NOT = {
+					has_government  = democratic 
+				}
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		
+		country_leader={
+			ideology=liberalism
+			traits={ democratic_reformer champion_of_national_cooperation }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	harvey_firestone_jr={
+		name="Harvey Firestone, Jr"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_lib_harvey_firestone_jr.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_lib_harvey_firestone_jr.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = harvey_firestone_jr
+			can_be_fired = no
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+				NOT = {
+					has_completed_focus = LIB_expel_firestone
+				}
+			}
+			available = {
+				NOT = {
+					has_completed_focus = LIB_nationalize_firestone_plant
+				}			
+				NOT = {
+					has_completed_focus = LIB_expel_firestone
+				}					
+			}
+			traits  = {
+				firestone_ceo
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		country_leader={
+			ideology=conservatism
+			traits={ firestone_ceo }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_didwho_welleh_twe={
+		name="Didwho Welleh Twe"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_lib_didwho_welleh_twe.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_lib_didwho_welleh_twe.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_didwho_welleh_twe
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {		
+				NOT = { has_government = fascism }
+			}
+			available = {
+				OR = {
+					has_completed_focus = LIB_integration_effort
+					has_completed_focus = LIB_indigenius_embrace
+				}
+				NOT = { has_government = fascism }
+					
+			}
+			traits  = {
+				native_rights_advocate
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		country_leader={
+			ideology=liberalism
+			traits={ native_rights_advocate wealthy_rubber_farmer }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_clarence_lorenzo_simpson={
+		name="Clarence Lorenzo Simpson"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/Portrait_LIB_Clarence_Simpson.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_lib_clarence_simpson.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_clarence_lorenzo_simpson
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {		
+			}
+			available = {
+				has_country_leader = {
+					character = LIB_edwin_barclay
+					ruling_only = yes
+				}
+			}
+			traits  = {
+				secretary_of_state
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		country_leader={
+			ideology=conservatism
+			traits={  }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_Fatima_Massaquoi={
+		name="Fatima Massaquoi"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/Portrait_LIB_Fatima_Massaquoi.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_lib_fatima_massaquoi.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_Fatima_Massaquoi
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {		
+			}
+			available = {
+				has_country_leader = {
+					character = LIB_william_tubman
+					ruling_only = yes
+				}
+			}
+			traits  = {
+				QBC_author
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		country_leader={
+			ideology=liberalism
+			traits={  }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_Louis_Grimes={
+		name="Louis Arthur Grimes"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/Portrait_LIB_Louis_Grimes.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_louis_grimes.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_Louis_Grimes
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {		
+			}
+			available = {
+				has_government = democratic
+			}
+			traits  = {
+				LIB_chief_justice
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		country_leader={
+			ideology=conservatism
+			traits={  }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_solomon_carter_fuller={
+		name=LIB_solomon_carter_fuller
+		portraits={
+			civilian={
+				large=GFX_portrait_LIB_solomon_carter_fuller
+			}
+			army={
+				small="GFX_idea_LIB_solomon_carter_fuller_small"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = solomon_carter_fuller
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {		
+			}
+			available = {
+			}
+			traits  = {
+				leading_neurologist
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+	}
+	LIB_c_frederick_taylor={
+		name=LIB_c_frederick_taylor
+		portraits={
+			civilian={
+				large=GFX_portrait_LIB_c_frederick_taylor
+			}
+			army={
+				small="GFX_idea_LIB_c_frederick_taylor_small"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = c_frederick_taylor
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {				
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_c_frederick_taylor
+					}
+				}
+				has_completed_focus = LIB_the_african_nationalist
+			}
+			traits  = {
+				pan_african_nationalist
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		
+		country_leader={
+			ideology=centrism
+			traits={ pan_african_nationalist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}	
+	LIB_william_tubman={
+		name=LIB_william_tubman
+		portraits={
+			civilian={
+				large=GFX_portrait_LIB_william_tubman
+			}
+			army={
+				small="GFX_idea_LIB_william_tubman_small"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = william_tubman
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {				
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_william_tubman
+					}
+				}
+				has_completed_focus = LIB_support_status_quo				
+			}
+			traits  = {
+				ICE_judge_and_editor
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		
+		country_leader={
+			ideology=conservatism
+			traits={ NOR_compliant_politician anti_communist_crusader }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_peter_konneh={
+		name=LIB_peter_konneh
+		portraits={
+			civilian={
+				large=GFX_portrait_LIB_peter_konnehn
+				small="GFX_idea_LIB_peter_konneh_small"
+			}
+			army={
+				small="gfx/interface/ideas/idea_lib_peter_konneh_army.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = peter_konneh
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_peter_konneh
+					}
+				}
+				has_completed_focus = LIB_empower_the_worker
+			}
+			traits  = {
+				communist_revolutionary
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		
+		country_leader={
+			ideology=marxism
+			traits={ communist_revolutionary }
+			expire="1965.1.1.1"
+			id=-1
+		}
+		field_marshal={
+			traits = { politically_connected }
+			skill=1
+			attack_skill=2
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=2
+			visible = { has_government = communism }
+			legacy_id=-1
+		}
+	}
+	LIB_anthony_ndebeh={
+		name=LIB_anthony_ndebeh
+		portraits={
+			civilian={
+				large=GFX_portrait_LIB_anthony_ndebeh
+			}
+			army={
+				small="GFX_idea_LIB_anthony_ndebeh_small"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = anthony_ndebeh
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {				
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_anthony_ndebeh
+					}
+				}
+				has_completed_focus = LIB_form_silvershirts
+			}
+			traits  = {
+				propaganda_expert 
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		
+		country_leader={
+			ideology=fascism_ideology
+			traits={ fascist_demagogue propaganda_expert }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_samuel_saywon={
+		name=LIB_samuel_saywon
+		portraits={
+			civilian={
+				large=GFX_portrait_LIB_samuel_saywon
+				small="GFX_idea_LIB_samuel_saywon_small"
+			}
+			army={
+				small="gfx/interface/ideas/idea_lib_samuel_saywon_army.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = samuel_saywon
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {			
+				has_government = fascism
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_samuel_saywon
+					}
+				}
+			}
+			traits  = {
+				prince_of_terror
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		field_marshal={
+			traits = { politically_connected }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			visible = { has_government = fascism }
+			legacy_id=-1
+		}
+		
+		country_leader={
+			ideology=fascism_ideology
+			traits={ fascist_demagogue prince_of_terror }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_communist_officer_1={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_communist_officer_1.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_communist_officer_1.dds"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = LIB_communist_officer_1
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {			
+				has_government = communism
+			}
+			traits  = {
+				army_chief_reform_2
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		corps_commander={
+			skill=3
+			attack_skill=2
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=1
+			visible = { has_government = communism }
+			legacy_id=-1
+		}
+	}
+	LIB_communist_officer_2={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_communist_officer_2.dds"
+				small="gfx/interface/ideas/idea_LIB_communist_officer_2.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_communist_officer_2_army.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_communist_officer_2
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {			
+				has_government = communism
+			}
+			traits  = {
+				prince_of_terror
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		corps_commander={
+			skill=2
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=1
+			visible = { has_government = communism }
+			legacy_id=-1
+		}
+	}
+	LIB_communist_officer_3={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_communist_officer_3.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_communist_officer_3.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = LIB_communist_officer_3
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {			
+				has_government = communism
+			}
+			traits  = {
+				army_entrenchment_2
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		corps_commander={
+			skill=1
+			attack_skill=1
+			defense_skill=3
+			planning_skill=1
+			logistics_skill=1
+			visible = { has_government = communism }
+			legacy_id=-1
+		}
+	}
+	LIB_communist_politician_1={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_communist_politician_1.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_communist_politician_1.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_communist_politician_1
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {			
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_communist_politician_1
+					}
+				}
+				has_completed_focus = LIB_empower_the_worker
+			}
+			traits  = {
+				colonial_communist
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		country_leader={
+			ideology=stalinism
+			traits={ communist_revolutionary colonial_communist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_communist_politician_2={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_communist_politician_2.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_communist_politician_2.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_communist_politician_2
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {			
+				has_government = communism
+			}
+			traits  = {
+				anti_stalinist_marxist
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		country_leader={
+			ideology=leninism
+			traits={ anti_stalinist_marxist war_industrialist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_nationalist_officer_1={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_nationalist_officer_1.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_nationalist_officer_1.dds"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = LIB_nationalist_officer_1
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {			
+				has_government = neutrality
+			}
+			traits  = {
+				army_chief_maneuver_2
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		corps_commander={
+			skill=2
+			attack_skill=3
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=2
+			visible = { has_government = neutrality }
+			legacy_id=-1
+		}
+	}
+	LIB_fascist_officer_1={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_fascist_officer_1.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_fascist_officer_1.dds"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = LIB_fascist_officer_1
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {			
+				has_government = fascism
+			}
+			traits  = {
+				army_chief_entrenchment_2
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		corps_commander={
+			skill=2
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=1
+			visible = { has_government = fascism }
+			legacy_id=-1
+		}
+	}
+	LIB_fascist_officer_2={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_fascist_officer_2.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_fascist_officer_2.dds"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = LIB_fascist_officer_2
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {			
+				has_government = fascism
+			}
+			traits  = {
+				army_artillery_2
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		corps_commander={
+			skill=3
+			attack_skill=3
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=2
+			visible = { has_government = fascism }
+			legacy_id=-1
+		}
+	}
+	LIB_fascist_officer_3={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_fascist_officer_3.dds"
+				small="gfx/interface/ideas/idea_LIB_fascist_officer_3.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_fascist_officer_3_army.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_fascist_officer_3
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {
+			}
+			available = {			
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_fascist_officer_3
+					}
+				}
+				has_completed_focus = LIB_form_silvershirts
+			}
+			traits  = {
+				fascist_demagogue
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		corps_commander={
+			skill=1
+			attack_skill=1
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=1
+			visible = { has_government = fascism }
+			legacy_id=-1
+		}
+	}
+	LIB_fascist_politician_1={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_fascist_politician_1.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_fascist_politician_1.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_fascist_politician_1
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {			
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_fascist_politician_1
+					}
+				}
+				has_government = fascism
+			}
+			traits  = {
+				fascist_corporatist
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		country_leader={
+			ideology=fascism_ideology
+			traits={ fascist_corporatist fascist_demagogue }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_fascist_politician_2={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_fascist_politician_2.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_fascist_politician_2.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_fascist_politician_2
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {			
+
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_fascist_politician_2
+					}
+				}
+				has_government = fascism
+			}
+			traits  = {
+				subservient_ultranationalist
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		country_leader={
+			ideology=fascism_ideology
+			traits={ subservient_ultranationalist }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_alford_russ={
+		name = "Alford Russ"
+
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_alford_russ.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_alford_russ.dds"
+			}
+		}
+		corps_commander={
+			traits = { jungle_rat }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 3
+			visible = { has_completed_focus = LIB_organize_frontier_force }
+			legacy_id=-1
+		}
+	}
+	LIB_stephen_a_tolbert={
+		name = "Stephen A. Tolbert"
+
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_stephen_a_tolbert.dds"
+				small="gfx/interface/ideas/idea_LIB_stephen_a_tolbert_civilian.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_stephen_a_tolbert.dds"
+			}
+		}
+		corps_commander={
+			traits = { jungle_rat }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			planning_skill = 1
+			logistics_skill = 1
+			legacy_id=-1
+		}
+	}
+	LIB_edwin_barclay={
+		name = "Edwin Barclay"
+		portraits={
+			civilian={
+				large="GFX_portrait_lib_edwin_barclay"
+				small="gfx/interface/ideas/idea_LIB_edwin_barclay.dds"
+			}
+		}
+		country_leader={
+			ideology=conservatism
+			traits={  }
+			desc = "POLITICS_EDWIN_BARCLAY_DESC"
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}	
+	LIB_Allen_Yancy ={
+		name="Allen Yancy"
+		portraits={
+			civilian={
+				small="gfx/interface/ideas/idea_LIB_Allen_Yancy.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_Allen_Yancy
+			allowed = {
+				original_tag = LIB
+			}
+			available = {
+				NOT = { has_government = communism }
+				has_completed_focus = LIB_end_migration				
+			}
+			visible = {
+			}
+			traits = {
+				corrupt_politician
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	LIB_elwood_davis={
+		name="Elwood Davis"
+		portraits={
+			army={
+				small="gfx/interface/ideas/idea_LIB_elwood_davis.dds"
+				large="gfx/leaders/LIB/Portrait_LIB_Elwood_Dawis.dds"
+			}
+		}
+		corps_commander={
+			traits={ jungle_rat }
+			skill=2
+			attack_skill=2
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=3
+			legacy_id=-1
+		}
+		advisor={
+			slot = high_command
+			idea_token = LIB_elwood_davis
+			ledger = army
+			allowed = {
+				original_tag = LIB
+			}
+			traits = {
+				army_commando_2
+			}
+		}
+	}
+	LIB_jenkins_yancey={
+		name="Jenkins Yancey"
+		portraits={
+			army={
+				small="gfx/interface/ideas/idea_LIB_Jenkins_Yancy.dds"
+				large="gfx/leaders/LIB/Portrait_LIB_Jenkins_Yancy.dds"
+			}
+		}
+		corps_commander={
+			traits={ infantry_officer }
+			skill=2
+			attack_skill=3
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=3
+			legacy_id=-1
+		}
+		advisor={
+			slot = theorist
+			idea_token = LIB_jenkins_yancey
+			ledger = army
+			allowed = {
+				original_tag = LIB
+			}
+			available = {
+				has_completed_focus = LIB_organize_frontier_force
+			}
+			traits = {
+				military_theorist
+			}
+		}
+	}
+	LIB_Henry_Too_wesley ={
+		name="Henry Too Wesley"
+		portraits={
+			civilian={
+				small="gfx/interface/ideas/idea_LIB_Henry_Too_wesley.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_Henry_Too_wesley
+			allowed = {
+				original_tag = LIB
+			}
+			available = {
+				has_completed_focus = LIB_integration_effort
+				NOT = { has_government = communism }
+			}
+			traits = {
+				lawyer
+			}
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	LIB_charles_db_king={
+		name="Charles D.B. King"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_charles_db_king.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_charles_db_king.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_charles_db_king
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_charles_db_king
+					}
+				}	
+			}
+			available = {				
+				NOT = {
+					has_country_leader = {
+						ruling_only = yes
+						character = LIB_charles_db_king
+					}
+				}					
+				has_completed_focus = LIB_end_migration				
+			}
+			traits  = {
+				silver_tongue_no_lar
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		
+		country_leader={
+			ideology=conservatism
+			traits={ incompetent_leader silver_tongue_no_lar }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_captain_of_industry={
+		name = "James F. Cooper"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_captain_of_industry.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_captain_of_industry.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_captain_of_industry
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {
+				NOT = {
+					has_country_leader = {
+						character = LIB_captain_of_industry
+						ruling_only = yes
+					}
+				}			
+			}
+			available = {
+				NOT = {
+					has_country_leader = {
+						character = LIB_captain_of_industry
+						ruling_only = yes
+					}
+				}
+			}
+			traits  = {
+				captain_of_industry
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}		
+		country_leader={
+			ideology=conservatism
+			traits={ captain_of_industry }
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+	LIB_fortification_engineer={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_fortification_engineer.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_fortification_engineer.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_fortification_engineer
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {
+			}
+			traits  = {
+				fortification_engineer
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+	}
+	LIB_war_industrialist={
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_war_industrialist.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_LIB_war_industrialist.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_war_industrialist
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {
+			}
+			traits  = {
+				war_industrialist
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+	}
+	LIB_head_of_intelligence={
+		portraits={
+			army={
+				small="gfx/interface/ideas/idea_LIB_head_of_intelligence.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_head_of_intelligence
+			allowed  = {
+				original_tag  = LIB
+			}
+			visible = {			
+			}
+			available = {
+			}
+			traits  = {
+				head_of_intelligence
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+	}
+	LIB_thomas_j_r_faulkner={
+		name = "Thomas J. R. Faulkner"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIB/portrait_LIB_thomas_j_r_faulkner.dds"
+			}
+			army={
+				small="gfx/interface/ideas/idea_lib_thomas_j_r_faulkner.dds"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = LIB_thomas_j_r_faulkner
+			allowed  = {
+				original_tag = LIB
+			}
+			visible = {			
+			}
+			available = {
+				has_completed_focus = LIB_the_african_nationalist
+			}
+			traits  = {
+				nationalist_engineer
+			}
+			do_effect  = {
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
+		
+		country_leader={
+			ideology=centrism
+			traits={ nationalist_engineer }
+			expire="1943.2.2.1"
+			id=-1
+		}
+	}
+}	

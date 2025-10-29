@@ -1,3063 +1,5205 @@
-ROM_integrate_conquered_lands_byzantium = {
-	ROM_integrate_yug_byzantium = {
-		priority = 100
+ROM_change_sides = {
+	
+	# Allies
 
-		icon = GFX_decision_hol_draw_up_staff_plans
+	ROM_change_sides_to_allies = {
 
-		cost = 50
+		icon = decision_generic_nationalism
 
-		fire_only_once = no
+		allowed = {
+			original_tag = ROM
+		}
 
 		available = {
-			has_completed_focus	= ROM_reconquer_the_western_balkans
-			OR = {
-				YUG = { is_subject_of = ROM }
-				YUG = {
-					all_core_state = {
-						is_fully_controlled_by = ROM
-					}
+			is_faction_leader = no
+			has_capitulated = no
+			any_country = {
+				is_faction_leader = yes
+				has_war_with = ROM
+				OR = {
+					has_government = democratic
+					original_tag = ENG
+					original_tag = USA
 				}
 			}
+			OR = {
+				has_country_leader = {
+					character = ROM_king_michael
+					ruling_only = yes
+				}
+				has_government = neutrality
+				has_government = democratic
+			}
+			NOT = {
+				FACTION_LEADER  = {
+					has_government = democratic
+				}
+			}
+			hidden_trigger = {
+				NOT = { has_country_flag = romania_has_flipped_sides } #Romania shouldn't be able to keep switching sides all the time
+			}
+		}
+		
+		visible = {
+			is_faction_leader = no # you shouldn't be able to betray your own faction
+			original_tag = ROM
+			NOT = { has_country_flag = romania_has_flipped_sides }
+			hidden_trigger = { has_country_flag = can_change_sides_dem }
 		}
 
-		days_remove = 30
+		cost = 0
+		
+		fire_only_once = yes
+		
+		remove_effect = {
+			hidden_effect = { clr_country_flag = can_change_sides_dem }
+		}
 
 		complete_effect = {
-
-		}
-
-		remove_effect = {
-			ROM = {
-				every_state = {
+			#save current faction leader for use in the event
+			hidden_effect = {
+				random_country = {
 					limit = {
-						is_core_of = YUG
+						is_in_faction_with = ROOT
+						is_faction_leader = yes
 					}
-					add_core_of = ROM
+					save_global_event_target_as = romania_former_ally_target
 				}
+			}
+			#top priority is joining the Allies if they still exist
+			if = {
+				limit = {
+					any_country = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = democratic
+						OR = {
+							original_tag = ENG
+							is_in_faction_with = ENG
+						}
+					}
+				}
+				random_enemy_country = {
+					limit = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = democratic
+						OR = {
+							original_tag = ENG
+							is_in_faction_with = ENG
+						}
+					}
+					save_event_target_as = romania_new_ally_target
+				}
+			}
+			#then attempts to join the USA's faction
+			else_if = {
+				limit = {
+					any_country = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = democratic
+						OR = {
+							original_tag = USA
+							is_in_faction_with = USA
+						}
+					}
+				}
+				random_enemy_country = {
+					limit = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = democratic
+						OR = {
+							original_tag = USA
+							is_in_faction_with = USA
+						}
+					}
+					save_event_target_as = romania_new_ally_target
+				}
+			}
+			#then attempts to join any democratic faction
+			else = {
+				random_enemy_country = {
+					limit = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = democratic
+					}
+					save_event_target_as = romania_new_ally_target
+				}
+			}
+			event_target:romania_new_ally_target = {
+				country_event = { id = DOD_romania.16 }
 			}
 			hidden_effect = {
-				annex_country = {
-					target = YUG
-					transfer_troops = yes
-				}
+				set_country_flag = romania_has_flipped_sides
 			}
 		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				is_historical_focus_on = no
+				factor = 0
+			}
+			modifier = {
+				is_historical_focus_on = yes
+				#NOT = { date > 1944.08.08 }
+				NOT = { has_completed_focus = ROM_king_michaels_coup }
+				factor = 0
+			}
+		}
+
 	}
-	ROM_integrate_alb_byzantium = {
-		priority = 100
+	
+	# Commintern
 
-		icon = GFX_decision_hol_draw_up_staff_plans
+	ROM_change_sides_to_commintern = {
 
-		cost = 50
+		icon = decision_generic_nationalism
 
-		fire_only_once = no
+		allowed = {
+			original_tag = ROM
+		}
 
 		available = {
-			has_completed_focus	= ROM_reconquer_the_western_balkans
-			OR = {
-				ALB = { is_subject_of = ROM }
-				ALB = {
-					all_core_state = {
-						is_fully_controlled_by = ROM
-					}
+			is_faction_leader = no
+			has_capitulated = no
+			any_country = {
+				is_faction_leader = yes
+				has_war_with = ROM
+				OR = {
+					has_government = communism
+					original_tag = SOV
 				}
 			}
+			OR = {
+				has_country_leader = {
+					character = ROM_king_michael
+					ruling_only = yes
+				}
+				has_government = communism
+			}
+			NOT = {
+				FACTION_LEADER  = {
+					has_government = communism
+				}
+			}
+			hidden_trigger = {
+				NOT = { has_country_flag = romania_has_flipped_sides } #Romania shouldn't be able to keep switching sides all the time
+			}
+		}
+		
+		visible = {
+			is_faction_leader = no # you shouldn't be able to betray your own faction
+			original_tag = ROM
+			NOT = { has_country_flag = romania_has_flipped_sides }
+			hidden_trigger = { has_country_flag = can_change_sides_com }
 		}
 
-		days_remove = 30
+		cost = 0
+		
+		fire_only_once = yes
+		
+		remove_effect = {
+			hidden_effect = { clr_country_flag = can_change_sides_com }
+		}
 
 		complete_effect = {
-
-		}
-
-		remove_effect = {
-			ROM = {
-				every_state = {
+			#save current faction leader for use in the event
+			hidden_effect = {
+				random_country = {
 					limit = {
-						is_core_of = ALB
+						is_in_faction_with = ROOT
+						is_faction_leader = yes
 					}
-					add_core_of = ROM
+					save_global_event_target_as = romania_former_ally_target
 				}
+			}
+			#top priority is joining the Commintern if they still exist
+			if = {
+				limit = {
+					any_country = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = communism
+						OR = {
+							original_tag = SOV
+							is_in_faction_with = SOV
+						}
+					}
+				}
+				random_enemy_country = {
+					limit = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = communism
+						OR = {
+							original_tag = SOV
+							is_in_faction_with = SOV
+						}
+					}
+					save_event_target_as = romania_new_ally_target
+				}
+			}
+			#then attempts to join any communist faction
+			else = {
+				random_enemy_country = {
+					limit = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = communism
+					}
+					save_event_target_as = romania_new_ally_target
+				}
+			}
+			event_target:romania_new_ally_target = {
+				country_event = { id = DOD_romania.16 }
 			}
 			hidden_effect = {
-				annex_country = {
-					target = ALB
-					transfer_troops = yes
-				}
+				set_country_flag = romania_has_flipped_sides
 			}
 		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
 	}
-	ROM_integrate_bul_byzantium = {
-		priority = 100
+	
+	# Axis
 
-		icon = GFX_decision_hol_draw_up_staff_plans
+	ROM_change_sides_to_axis = {
 
-		cost = 50
+		icon = decision_generic_nationalism
 
-		fire_only_once = no
+		allowed = {
+			original_tag = ROM
+		}
 
 		available = {
-			has_completed_focus	= ROM_reconquer_the_southern_balkans
-			OR = {
-				BUL = { is_subject_of = ROM }
-				BUL = {
-					all_core_state = {
-						is_fully_controlled_by = ROM
-					}
+			is_faction_leader = no
+			has_capitulated = no
+			any_country = {
+				is_faction_leader = yes
+				has_war_with = ROM
+				OR = {
+					has_government = fascism
+					original_tag = GER
+					original_tag = ITA
 				}
 			}
+			OR = {
+				has_country_leader = {
+					character = ROM_king_michael
+					ruling_only = yes
+				}
+				has_government = fascism
+			}
+			NOT = {
+				FACTION_LEADER  = {
+					has_government = fascism
+				}
+			}
+			hidden_trigger = {
+				NOT = { has_country_flag = romania_has_flipped_sides } #Romania shouldn't be able to keep switching sides all the time
+			}
+		}
+		
+		visible = {
+			is_faction_leader = no # you shouldn't be able to betray your own faction
+			original_tag = ROM
+			NOT = { has_country_flag = romania_has_flipped_sides }
+			hidden_trigger = { has_country_flag = can_change_sides_fas }
 		}
 
-		days_remove = 30
+		cost = 0
+		
+		fire_only_once = yes
+		
+		remove_effect = {
+			hidden_effect = { clr_country_flag = can_change_sides_fas }
+		}
 
 		complete_effect = {
-
-		}
-
-		remove_effect = {
-			ROM = {
-				every_state = {
+			#save current faction leader for use in the event
+			hidden_effect = {
+				random_country = {
 					limit = {
-						is_core_of = BUL
+						is_in_faction_with = ROOT
+						is_faction_leader = yes
 					}
-					add_core_of = ROM
+					save_global_event_target_as = romania_former_ally_target
 				}
+			}
+			#top priority is joining the Axis if they still exist
+			if = {
+				limit = {
+					any_country = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = fascism
+						OR = {
+							original_tag = GER
+							is_in_faction_with = GER
+						}
+					}
+				}
+				random_enemy_country = {
+					limit = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = fascism
+						OR = {
+							original_tag = GER
+							is_in_faction_with = GER
+						}
+					}
+					save_event_target_as = romania_new_ally_target
+				}
+			}
+			#then attempts to join Italy's faction
+			else_if = {
+				limit = {
+					any_country = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = fascism
+						OR = {
+							original_tag = ITA
+							is_in_faction_with = ITA
+						}
+					}
+				}
+				random_enemy_country = {
+					limit = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = fascism
+						OR = {
+							original_tag = ITA
+							is_in_faction_with = ITA
+						}
+					}
+					save_event_target_as = romania_new_ally_target
+				}
+			}
+			#then attempts to join any fascist faction
+			else = {
+				random_enemy_country = {
+					limit = {
+						is_faction_leader = yes
+						has_war_with = ROM
+						has_government = fascism
+					}
+					save_event_target_as = romania_new_ally_target
+				}
+			}
+			event_target:romania_new_ally_target = {
+				country_event = { id = DOD_romania.16 }
 			}
 			hidden_effect = {
-				annex_country = {
-					target = BUL
-					transfer_troops = yes
-				}
+				set_country_flag = romania_has_flipped_sides
 			}
 		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
 	}
-	ROM_integrate_gre_byzantium = {
-		priority = 100
+	
+}
 
-		icon = GFX_decision_hol_draw_up_staff_plans
+ROM_dividing_yugo = {
 
-		cost = 50
+	# Pressing claims
 
-		fire_only_once = no
+	ROM_present_ultimatum = {
+
+		icon = decision_generic_nationalism
+
+		allowed = {
+		}
 
 		available = {
-			has_completed_focus	= ROM_reconquer_the_southern_balkans
-			OR = {
-				GRE = { is_subject_of = ROM }
-				GRE = {
-					all_core_state = {
-						is_fully_controlled_by = ROM
+			all_state = {
+				OR = {
+					NOT = { owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				} }
+					OR = {
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_HUN
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ITA
+						AND = {
+							is_claimed_by = GER
+							GER = { has_country_flag = invited_to_split_yugo }
+						}
+						AND = {
+							is_claimed_by = ITA
+							ITA = { has_country_flag = invited_to_split_yugo }
+						}
+						AND = {
+							is_claimed_by = HUN
+							HUN = { has_country_flag = invited_to_split_yugo }
+						}
+						is_claimed_by = ROM
 					}
 				}
 			}
 		}
+		
+		visible = {
+			original_tag = ROM
+		}
 
-		days_remove = 30
+		cost = 0
+		
+		fire_only_once = yes
 
 		complete_effect = {
-
-		}
-
-		remove_effect = {
-			ROM = {
-				every_state = {
-					limit = {
-						is_core_of = GRE
-					}
-					add_core_of = ROM
-				}
-			}
-			hidden_effect = {
-				annex_country = {
-					target = GRE
-					transfer_troops = yes
-				}
+			YUG = {
+				country_event = DOD_romania.60
 			}
 		}
+
+		ai_will_do = {
+			factor = 100
+		}
+
 	}
-	ROM_integrate_tur_byzantium = {
-		priority = 100
 
-		icon = GFX_decision_hol_draw_up_staff_plans
+	# Invite Germany
 
-		cost = 50
+	ROM_invite_germany = {
 
-		fire_only_once = no
+		icon = decision_generic_nationalism
+
+		allowed = {
+		}
 
 		available = {
-			has_completed_focus	= ROM_reconquer_the_southern_balkans
-			OR = {
-				TUR = { is_subject_of = ROM }
-				TUR = {
-					all_core_state = {
-						is_fully_controlled_by = ROM
+			GER = {
+				NOT = { has_country_flag = invited_to_split_yugo }
+				any_owned_state = {
+					any_neighbor_state = {
+						owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
 					}
 				}
 			}
 		}
+		
+		visible = {
+			original_tag = ROM
+		}
 
-		days_remove = 30
+		cost = 0
+		
+		fire_only_once = yes
 
 		complete_effect = {
-
+			GER = {
+				country_event = DOD_romania.601
+			}
 		}
 
-		remove_effect = {
-			ROM = {
-				every_state = {
-					limit = {
-						is_core_of = TUR
+		ai_will_do = {
+			factor = 100
+		}
+
+	}
+
+	# Invite Italy
+
+	ROM_invite_italy = {
+
+		icon = decision_generic_nationalism
+
+		allowed = {
+		}
+
+		available = {
+			ITA = {
+				NOT = { has_country_flag = invited_to_split_yugo }
+				any_owned_state = {
+					any_neighbor_state = {
+						owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
 					}
-					add_core_of = ROM
 				}
-			}
-			hidden_effect = {
-				annex_country = {
-					target = GRE
-					transfer_troops = yes
+					}
 				}
 			}
 		}
+		
+		visible = {
+			original_tag = ROM
+		}
+
+		cost = 0
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			ITA = {
+				country_event = DOD_romania.601
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+
+	}
+
+	# Invite Hungary
+
+	ROM_invite_hungary = {
+
+		icon = decision_generic_nationalism
+
+		allowed = {
+		}
+
+		available = {
+			HUN = {
+				NOT = { has_country_flag = invited_to_split_yugo }
+				any_owned_state = {
+					any_neighbor_state = {
+						owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+					}
+				}
+			}
+		}
+		
+		visible = {
+			original_tag = ROM
+		}
+
+		cost = 0
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			HUN = {
+				country_event = DOD_romania.601
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+
+	}
+
+	# Claiming Vojvodina
+
+	ROM_claim_vojvodina = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				45 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				45 = {
+					45 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			45 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			45 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 45 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			45 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					45 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming Banat
+
+	ROM_claim_banat = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				764 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				764 = {
+					764 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			764 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			764 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 764 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			764 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					764 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming Serbia
+
+	ROM_claim_serbia = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				107 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				107 = {
+					107 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			107 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			107 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 107 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			107 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					107 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming morava
+
+	ROM_claim_morava = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				108 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				108 = {
+					108 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			108 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			108 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 108 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			108 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					108 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming kosovo
+
+	ROM_claim_kosovo = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				802 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				802 = {
+					802 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			802 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			802 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 802 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			802 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					802 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming south serbia
+
+	ROM_claim_south_serbia = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				803 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				803 = {
+					803 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			803 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			803 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 803 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			803 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					803 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming macedonia
+
+	ROM_claim_macedonia = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				106 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				106 = {
+					106 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			106 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			106 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 106 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			106 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					106 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming montenegro
+
+	ROM_claim_montenegro = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				105 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				105 = {
+					105 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			105 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			105 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 105 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			105 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					105 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming bosnia
+
+	ROM_claim_bosnia = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				104 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				104 = {
+					104 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			104 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			104 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 104 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			104 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					104 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming dalmatia
+
+	ROM_claim_dalmatia = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				103 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				103 = {
+					103 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			103 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			103 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 103 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			103 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					103 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming croatia
+
+	ROM_claim_croatia = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				109 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				109 = {
+					109 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			109 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			109 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 109 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			109 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					109 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming slovenia
+
+	ROM_claim_slovenia = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				102 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				102 = {
+					102 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			102 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			102 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 102 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			102 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					102 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+	# Claiming slovenia
+
+	ROM_claim_ljubljana = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				853 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				853 = {
+					853 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			853 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			853 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 853 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			853 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					853 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
+	}
+
+
+
+	# Claiming Herzegovina
+
+	ROM_claim_herzegovina = {
+
+		#ROM
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_4
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_ROM value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_3
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_ROM value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_2
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_ROM value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ROM
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ROM_claim_yugo_1
+			trigger = {
+				804 = {
+					NOT = {
+						has_state_flag = strongest_claimant_GER
+						has_state_flag = strongest_claimant_ROM
+						has_state_flag = strongest_claimant_ITA
+						has_state_flag = strongest_claimant_HUN
+					}
+				}
+			}
+		}
+
+		#ITA
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_4
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_ITA value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_3
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_ITA value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_ITA_claim_yugo_2
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_ITA value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_ITA
+				}
+			}
+		}
+
+		#HUN
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_4
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_HUN value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_3
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_HUN value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_HUN_claim_yugo_2
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_HUN value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_HUN
+				}
+			}
+		}
+
+		#GER
+		icon = {
+			key = GFX_decision_GER_claim_yugo_4
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_GER value = 3 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_3
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_GER value = 2 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_GER_claim_yugo_2
+			trigger = {
+				804 = {
+					804 = { check_variable = {  var = claim_strength_GER value = 1 compare = greater_than_or_equals } }
+					has_state_flag = strongest_claimant_GER
+				}
+			}
+		}
+
+		allowed = {
+		}
+
+		available = {
+			804 = {
+				has_anyone_else_claimed_ROM = yes
+			}
+			OR = {
+				GER = {
+					has_country_flag = invited_to_split_yugo
+				}
+				ITA = {
+					has_country_flag = invited_to_split_yugo
+				}
+				HUN = {
+					has_country_flag = invited_to_split_yugo
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = invited_to_split_yugo
+			hidden_trigger = {
+				NOT = { has_country_flag = claiming_a_yugoslav_state_flag }
+			}
+			804 = {
+				owner = {
+					OR = {
+						tag = YUG
+						is_subject_of = YUG
+					}
+				}
+			}
+		}
+		
+		highlight_states = {
+			highlight_states_trigger = { state = 804 }
+		}
+
+		on_map_mode = map_only
+
+		cost = 20
+		
+		fire_only_once = no
+		days_remove = 7
+		
+		remove_effect = {
+			804 = {
+				custom_effect_tooltip = romania_total_claims_tt
+				calculate_claimant_effect = yes
+			}
+			hidden_effect = { clr_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		complete_effect = {
+			hidden_effect = { set_country_flag = claiming_a_yugoslav_state_flag }
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				NOT = {
+					804 = {
+						any_neighbor_state = {
+							OR = {
+								AND = {
+									owner = {
+										OR = {
+											tag = YUG
+											is_subject_of = YUG
+										}
+									}
+									OR = {
+										is_claimed_by = ROOT
+										has_state_flag = strongest_claimant_@ROOT
+									}
+								}
+								is_owned_by = ROOT
+							}
+						}
+					}
+				}
+				factor = 0
+			}
+		}
+
 	}
 }
 
+ROM_naval_rearmament_program = { 
 
-ROM_imperial_court_byzantine = {
-	ROM_recruit_the_pretorian_guards = {
-		priority = 100
+ROM_acquire_light_cruiser_model = {
 
-		icon = GFX_decision_generic_independence
+		icon = SWE_set_navy_budget
 
-		cost = 50
-
-		fire_only_once = no
+		allowed = {
+			original_tag = ROM
+		}
 
 		available = {
-			has_completed_focus = ROM_prepare_the_pretorian_guard 
+			has_tech = improved_ship_hull_cruiser
+		}
+		
+		visible = {
+			has_dlc = "Man the Guns"
+			has_completed_focus = ROM_cruiser_plans
+		}
+
+		cost = 0
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			create_equipment_variant = {
+			name = "Capitani Romani Class"
+			type = ship_hull_cruiser_3
+			name_group = ROM_CL_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = dp_light_battery_3
+				fixed_ship_anti_air_slot = ship_anti_air_3
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_radar_2
+				fixed_ship_engine_slot = cruiser_ship_engine_3
+				fixed_ship_armor_slot = ship_armor_cruiser_1
+				front_1_custom_slot = ship_anti_air_2
+				mid_1_custom_slot = ship_torpedo_3
+				mid_2_custom_slot = ship_anti_air_3
+				rear_1_custom_slot = dp_light_battery_3
+				rear_2_custom_slot = ship_mine_layer_1
+			}
+		   }
+		   
+	add_equipment_production = {
+		equipment = {
+			type = ship_hull_cruiser_3
+			creator = "ROM" 
+			version_name = "Capitani Romani Class"
+		}
+		name = "NMS Contraamiral Koslinski"
+		requested_factories = 1
+		progress = 0.5
+		amount = 1
+	}
+		}
+
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+
+	}
+
+
+}
+
+ROM_border_fortification_cat = { 
+
+  ROM_fortify_the_hungarian_border = {
+		priority = 100
+
+		icon = GFX_decision_generic_fortification
+		
+		highlight_states = {
+         highlight_state_targets = {
+			 state = 83
+		    } 
+          }
+
+		ai_will_do = {
+			base = 1
+		}
+
+		allowed = {
+			original_tag = ROM
+		}
+
+		available = {
+		    NOT = { has_country_flag = ROM_fortfied_west }
+			NOT = { has_country_flag = ROM_fortifiying_border }
+			num_of_available_civilian_factories > 1
+			has_full_control_of_state = 76
+			has_full_control_of_state = 83
+			has_full_control_of_state = 82
 		}
 
 		visible = {
-
+			has_completed_focus = ROM_fortify_the_borders
+			NOT = { has_country_flag = ROM_fortfied_west }
 		}
+
+		cancel_trigger = {
+		  OR = { 
+		    NOT = { has_full_control_of_state = 76 }
+		    NOT = { has_full_control_of_state = 83 }
+			NOT = { has_full_control_of_state = 82 }
+		  }
+		}
+
+		cancel_effect = {
+			clr_country_flag = ROM_fortifiying_border
+		}
+
+		cost = 25
 
 		days_remove = 30
 
+		modifier = {
+			civilian_factory_use = 2
+		}
+
 		complete_effect = {
-			add_ideas = ROM_recruit_the_pretorian_guards
+			set_country_flag = ROM_fortifiying_border
 		}
 
 		remove_effect = {
-			remove_ideas = ROM_recruit_the_pretorian_guards
+			clr_country_flag = ROM_fortifiying_border
+			set_country_flag = ROM_fortfied_west
+			 custom_effect_tooltip = ROM_hungarian_border_forts_tt
+			 hidden_effect = { 
+			   76 = {
+					if = {
+						limit = { is_controlled_by = ROOT }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 3696
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 746  
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2 
+							province = 713
+							instant_build = yes
+						}
+					}
+			   }
+			   83 = {
+					if = {
+						limit = { is_controlled_by = ROOT }
+						add_building_construction = {
+							type = bunker
+							level = 2 
+							province = 6682
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 6697  
+							instant_build = yes
+						}
+					}
+			   }
+			   76 = {
+					if = {
+						limit = { is_controlled_by = ROOT NOT = { has_state_flag = banat_peak_fortified } }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 646 
+							instant_build = yes
+						}
+						set_state_flag = banat_peak_fortified
+					}
+			   }
 		}
 	}
-	ROM_imperial_decrees_of_governance = {
-		priority = 100
+	}
+	
+	ROM_fort_cluj = {
+		priority = 99
 
-		icon = GFX_decision_generic_independence
+		icon = GFX_decision_generic_mountain_fortification
+		
+		highlight_states = {
+         highlight_state_targets = {
+			 state = 76
+		    } 
+          }
 
-		cost = 50
+		ai_will_do = {
+			base = 1
+		}
 
-		fire_only_once = no
+		allowed = {
+			original_tag = ROM
+		}
 
 		available = {
-			has_completed_focus = ROM_imperial_decrees_of_governance
+		    NOT = { has_country_flag = ROM_fortfied_west }
+			NOT = { has_country_flag = ROM_fortifiying_border }
+			num_of_available_civilian_factories > 1
+			has_full_control_of_state = 76
+			has_full_control_of_state = 83
 		}
 
 		visible = {
-			
+			has_completed_focus = ROM_fortify_the_borders
+			NOT = { has_country_flag = ROM_fortfied_west }
 		}
+
+		cancel_trigger = {
+		 OR = { 
+		  NOT = { has_full_control_of_state = 76 }
+		  NOT = { has_full_control_of_state = 83 }
+		 }
+		  
+		}
+
+		cancel_effect = {
+			clr_country_flag = ROM_fortifiying_border
+		}
+
+		cost = 25
 
 		days_remove = 30
 
+		modifier = {
+			civilian_factory_use = 2
+		}
+
 		complete_effect = {
-			add_ideas = ROM_imperial_decrees_of_governance
+			set_country_flag = ROM_fortifiying_border
 		}
 
 		remove_effect = {
-			remove_ideas = ROM_imperial_decrees_of_governance
+			clr_country_flag = ROM_fortifiying_border
+			set_country_flag = ROM_fortfied_west
+			 custom_effect_tooltip = ROM_hungarian_border_cluj_tt
+			 hidden_effect = { 
+			   76 = {
+					if = {
+						limit = { is_controlled_by = ROOT }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 6714  
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2 
+							province = 3709
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 3
+							province = 6711
+							instant_build = yes
+						}
+					}
+			   }
+			   83 = {
+					if = {
+						limit = { is_controlled_by = ROOT }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 9640
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 696 
+							instant_build = yes
+						}
+					}
+			   }
 		}
 	}
-	ROM_council_of_imperial_governors = {
-		priority = 100
+	}
+	
+	ROM_fortify_the_bulgarian_border = {
+		priority = 98
 
-		icon = GFX_decision_generic_independence
+		icon = GFX_decision_generic_fortification
+		
+		highlight_states = {
+         highlight_state_targets = {
+			 state = 46
+		    } 
+          }
 
-		cost = 50
+		ai_will_do = {
+			base = 1
+		}
 
-		fire_only_once = no
+		allowed = {
+			original_tag = ROM
+		}
 
 		available = {
-			has_completed_focus = ROM_council_of_imperial_governors
+			NOT = { has_country_flag = ROM_fortifiying_border }
+			num_of_available_civilian_factories > 2
+			has_full_control_of_state = 81
+			has_full_control_of_state = 46
 		}
 
 		visible = {
-			
+			has_completed_focus = ROM_fortify_the_borders
+			NOT = { has_country_flag = ROM_fortfied_south }
 		}
 
-		days_remove = 30
+		cancel_trigger = {
+		 OR = { 
+		  NOT = { has_full_control_of_state = 46 }
+		  NOT = { has_full_control_of_state = 81 }
+		 }
+		  
+		}
+
+		cancel_effect = {
+			clr_country_flag = ROM_fortifiying_border
+		}
+
+		cost = 25
+
+		days_remove = 50
+
+		modifier = {
+			civilian_factory_use = 3
+		}
 
 		complete_effect = {
-			add_ideas = ROM_imperial_decrees_of_governance
+			set_country_flag = ROM_fortifiying_border
 		}
 
 		remove_effect = {
-			remove_ideas = ROM_imperial_decrees_of_governance
+			clr_country_flag = ROM_fortifiying_border
+			set_country_flag = ROM_fortfied_south
+			 custom_effect_tooltip = ROM_bulgarian_border_tt
+			 hidden_effect = { 
+			   81 = {
+					if = {
+						limit = { is_controlled_by = ROOT NOT = { has_state_flag = morava_peak_fortified } }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 11657 
+							instant_build = yes
+						}
+						set_state_flag = morava_peak_fortified
+					}
+			   }
+			    81 = {
+					if = {
+						limit = { is_controlled_by = ROOT  }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 3630 
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 11588 
+							instant_build = yes
+						}
+					}
+			   }
+			   77 = {
+					if = {
+						limit = { is_controlled_by = ROOT is_owned_by = ROOT }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 9614
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 11597 
+							instant_build = yes
+						}
+					}
+			   }
+			   46 = {
+					if = {
+						limit = { is_controlled_by = ROOT  }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 818 
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 6658 
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 11603 
+							instant_build = yes
+						}
+					}
+			   }
+			   46 = {
+					if = {
+						limit = { is_controlled_by = ROOT 77 = { NOT = { is_owned_by = ROOT } }  }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 6677 
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 657 
+							instant_build = yes
+						}
+					}
+			   }
 		}
 	}
-	ROM_leader_of_the_orthodox_world = {
-		priority = 100
+	}
+	
+	ROM_fortify_the_yugoslav_border = {
+		priority = 97
 
-		icon = GFX_decision_generic_independence
+		icon = GFX_decision_generic_fortification
+		
+		highlight_states = {
+         highlight_state_targets = {
+			 state = 82
+		    } 
+          }
 
-		cost = 50
+		ai_will_do = {
+			base = 1
+		}
 
-		fire_only_once = no
+		allowed = {
+			original_tag = ROM
+		}
 
 		available = {
-			has_completed_focus = ROM_leader_of_the_orthodox_world
+			NOT = { has_country_flag = ROM_fortifiying_border }
+			num_of_available_civilian_factories > 1
+			has_full_control_of_state = 82
+			has_full_control_of_state = 81
 		}
 
 		visible = {
-			
+			has_completed_focus = ROM_fortify_the_borders
+			NOT = { has_country_flag = ROM_fortfied_south_west }
 		}
+
+		cancel_trigger = {
+		 OR = { 
+		  NOT = { has_full_control_of_state = 82 }
+		  NOT = { has_full_control_of_state = 81 }
+		 }
+		  
+		}
+
+		cancel_effect = {
+			clr_country_flag = ROM_fortifiying_border
+		}
+
+		cost = 20
 
 		days_remove = 30
 
+		modifier = {
+			civilian_factory_use = 2
+		}
+
 		complete_effect = {
-			add_ideas = ROM_leader_of_the_orthodox_world
+			set_country_flag = ROM_fortifiying_border
 		}
 
 		remove_effect = {
-			remove_ideas = ROM_leader_of_the_orthodox_world
+			clr_country_flag = ROM_fortifiying_border
+			set_country_flag = ROM_fortfied_south_west
+			 custom_effect_tooltip = ROM_yugoslav_border_tt
+			 hidden_effect = { 
+			   81 = {
+					if = {
+						limit = { is_controlled_by = ROOT NOT = { has_state_flag = morava_peak_fortified } }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 11657 
+							instant_build = yes
+						}
+						set_state_flag = morava_peak_fortified
+					}
+			   }
+			  76 = {
+					if = {
+						limit = { is_controlled_by = ROOT NOT = { has_state_flag = banat_peak_fortified } }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 646 
+							instant_build = yes
+						}
+						set_state_flag = banat_peak_fortified
+					}
+			   }
+			   76 = {
+					if = {
+						limit = { is_controlled_by = ROOT }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 9606 
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 3649 
+							instant_build = yes
+						}
+					}
+			   }
+			   
+			   
 		}
 	}
-	ROM_orthodox_patriarchate_in_bucharest = {
-		priority = 100
+	}
+	
+	ROM_fortify_the_eastern_border = {
+		priority = 96
 
-		icon = GFX_decision_generic_independence
+		icon = GFX_decision_generic_fortification
+		
+		highlight_states = {
+         highlight_state_targets = {
+			 state = 78
+		    } 
+          }
 
-		cost = 50
+		ai_will_do = {
+			base = 1
+		}
 
-		fire_only_once = no
+		allowed = {
+			original_tag = ROM
+		}
 
 		available = {
-			has_completed_focus = ROM_orthodox_patriarchate_in_bucharest
+			NOT = { has_country_flag = ROM_fortifiying_border }
+			num_of_available_civilian_factories > 2
+			has_full_control_of_state = 78
+			has_full_control_of_state = 766
+			has_full_control_of_state = 80
 		}
 
 		visible = {
-			
+			has_completed_focus = ROM_fortify_the_borders
+			NOT = { has_country_flag = ROM_fortfied_east }
 		}
 
-		days_remove = 30
+		cancel_trigger = {
+		  OR = { 
+		    NOT = { has_full_control_of_state = 78 }
+		    NOT = { has_full_control_of_state = 766 }
+			NOT = { has_full_control_of_state = 80 }
+		  }
+		}
+
+		cancel_effect = {
+			clr_country_flag = ROM_fortifiying_border
+		}
+
+		cost = 25
+
+		days_remove = 60
+
+		modifier = {
+			civilian_factory_use = 3
+		}
 
 		complete_effect = {
-			add_ideas = ROM_orthodox_patriarchate_in_bucharest
+			set_country_flag = ROM_fortifiying_border
 		}
 
 		remove_effect = {
-			remove_ideas = ROM_orthodox_patriarchate_in_bucharest
+			clr_country_flag = ROM_fortifiying_border
+			set_country_flag = ROM_fortfied_east
+			 custom_effect_tooltip = ROM_eastern_border_forts_tt
+			 hidden_effect = { 
+			   78 = {
+					if = {
+						limit = { is_controlled_by = ROOT }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = {
+                              all_provinces = yes
+                              limit_to_border = yes
+                             }
+							instant_build = yes
+						}
+					}
+			   }
+			   766 = {
+					if = {
+						limit = { is_controlled_by = ROOT }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = {
+                              all_provinces = yes
+                              limit_to_border = yes
+                             }
+							instant_build = yes
+						}
+					}
+			   }
+			  80 = {
+					if = {
+						limit = { is_controlled_by = ROOT }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = {
+                              all_provinces = yes
+                              limit_to_border = yes
+                             }
+							instant_build = yes
+						}
+					}
+			   }
 		}
 	}
-	ROM_romanian_caesaropapism = {
+	}
+
+}
+
+ROM_balance_of_power_category = { 
+
+ ROM_bop_political_assasination = {
 		priority = 100
+		icon = GFX_decision_generic_assassination
 
-		icon = GFX_decision_generic_independence
+		allowed = {
+			original_tag = ROM
+		}
 
-		cost = 50
+		visible = {
+		}
+
+		available = {}
+
+		ai_hint_pp_cost = 20
+		custom_cost_trigger = {
+			has_political_power > 19
+			command_power > 9
+		}
+		custom_cost_text = decision_cost_CP_20_pp_10
+
+		days_re_enable = 90
+
+		complete_effect = {
+			add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = 0.05
+	        }
+			hidden_effect = {
+				add_political_power = -20
+				add_command_power = -10
+			}
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 5
+				power_balance_value = {
+					id = ROM_power_balance
+					value < 0.5
+				}
+			}
+			modifier = {
+				factor = 5
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	
+	ROM_bop_take_down_death_squad = {
+		priority = 98
+		icon = GFX_decision_generic_police_action
+
+		allowed = {
+			original_tag = ROM
+		}
+
+		visible = {
+		}
+
+		available = {}
+
+		ai_hint_pp_cost = 20
+		custom_cost_trigger = {
+			has_political_power > 19
+			command_power > 19
+		}
+		custom_cost_text = decision_cost_CP_20_pp_20
+
+		days_re_enable = 90
+
+		complete_effect = {
+			add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = -0.05
+	        }
+			hidden_effect = {
+				add_political_power = -20
+				add_command_power = -20
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 4
+				power_balance_value = {
+					id = ROM_power_balance
+					value > -0.4
+				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	
+	ROM_bop_gain_military_support = {
+		priority = 99
+		icon = GFX_decision_generic_military
+
+		allowed = {
+			original_tag = ROM
+		}
+
+		visible = {
+		}
+
+		available = {}
+
+		ai_hint_pp_cost = 25
+		custom_cost_trigger = {
+			has_political_power > 24
+			has_army_experience > 19
+		}
+		custom_cost_text = decision_cost_pp_25_ArmXP_20
+
+		days_re_enable = 180
+
+		complete_effect = {
+			add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = 0.1
+	        }
+			hidden_effect = {
+				add_political_power = -25
+				army_experience = -20
+			}
+		}
+
+		ai_will_do = {
+			base = 2
+			modifier = {
+				factor = 0.5
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 20
+				is_historical_focus_on = yes
+				NOT = { has_government = fascism }
+				date > 1940.06.01
+			}
+		}
+	}
+	
+	ROM_bop_arrest_ironguardists = {
+		priority = 97
+		icon = GFX_decision_generic_arrest
+
+		allowed = {
+			original_tag = ROM
+		}
+
+		visible = {
+		}
+
+		available = {}
+
+		ai_hint_pp_cost = 25
+		custom_cost_trigger = {
+			has_political_power > 24
+			command_power > 19
+		}
+		custom_cost_text = decision_cost_CP_20_pp_25
+
+		days_re_enable = 180
+
+		complete_effect = {
+			add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = -0.1
+	        }
+			hidden_effect = {
+				add_political_power = -25
+				add_command_power = -20
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	
+	ROM_bop_shut_down_ironguard_press = {
+		priority = 96
+		icon = GFX_decision_SWI_dismiss_council
+
+		allowed = {
+			original_tag = ROM
+		}
+
+		visible = {
+		}
+
+		available = {}
+
+		cost = 25
 
 		fire_only_once = yes
 
-		available = {
-			has_completed_focus = ROM_romanian_caesaropapism
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 30
-
 		complete_effect = {
-			add_ideas = ROM_romanian_caesaropapism
+			add_power_balance_value = {
+		      id = ROM_power_balance
+		      value = -0.1
+	        }
 		}
 
-		remove_effect = {
-			remove_ideas = ROM_romanian_caesaropapism
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 20
+				is_historical_focus_on = yes
+				date > 1938.01.01
+			}
 		}
 	}
+
+
 }
 
 
-ROM_secure_the_rights_of_the_true_heir_category = {
-	ROM_secure_the_roman_claim = {
-		priority = 100
-		
-		icon = GFX_decision_border_war
+ROM_legionnaire_rebellion_cat = { 
+  ROM_public_rallies = {
 
-		ai_will_do = {
-			
+		icon = GFX_decision_generic_political_rally
+
+		available = {
 		}
 
-		activation = {
-			has_completed_focus = ROM_the_double_headed_eagle_is_reborn
-			has_country_flag = ROM_the_double_headed_eagle_is_reborn_flag
-			NOT = {
-				has_country_flag = ROM_rome_decision_is_done
+		cancel_trigger = {
+		}
+		
+		visible = {
+			original_tag = ROM
+		has_completed_focus = ROM_lead_the_legionnaires
+		}
+		
+		fire_only_once = no
+		days_remove = 30
+
+		cost = 15
+
+		remove_effect = {
+			ROOT = {
+				add_to_variable = {
+					var = ROM_iron_guard_support
+					value = 5
+				}
+				clamp_variable = {
+					var = ROM_iron_guard_support
+					min = 0
+					max = 100
+				}
+				custom_effect_tooltip = add_5_public_support_tt
 			}
 		}
 
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = ROM_secure_the_roman_claim_tt     
-                check_variable = {
-                    var = ROM_roman_support_percent
-                    value = 65
-                    compare = greater_than_or_equals
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0
+				check_variable = {
+                 ROM_iron_guard_support > 99
                 }
 			}
 		}
 
-		is_good = no
-		
-		fire_only_once = yes
+	}
+	
+	ROM_slender_antonescu = {
 
-		days_mission_timeout = 365
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		available = {
+		}
+
+		cancel_trigger = {
+		}
 		
-		complete_effect = {
-			IF = {
-				limit = {
-					check_variable = {
-						var = ROM_roman_support_percent
-						value = 65
-						compare = greater_than_or_equals
-					}
+		visible = {
+			original_tag = ROM
+		has_completed_focus = ROM_lead_the_legionnaires
+		}
+		
+		fire_only_once = no
+		days_remove = 60
+
+		cost = 25
+
+		remove_effect = {
+			ROOT = {
+				add_to_variable = {
+					var = ROM_iron_guard_support
+					value = 10
 				}
-				
-			}
-			complete_national_focus = ROM_crowning_the_new_emperor
-			set_country_flag = ROM_rome_decision_is_done
-			hidden_effect = {
-				create_country_leader = {
-					name = "Caesar Nicolae"
-					desc = ""
-					picture = "gfx/leaders/ROM/ROM_leader_portrait_emperor_nicolae.png"
-					expire = "1965.1.1"
-					ideology = despotism
-					traits = {
-						LOR_roman_empire_claim
-					}   
+				clamp_variable = {
+					var = ROM_iron_guard_support
+					min = 0
+					max = 100
 				}
+				custom_effect_tooltip = add_10_public_support_tt
 			}
 		}
 
-		timeout_effect = {
-			country_event = LOR.96
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 0
+				check_variable = {
+                 ROM_iron_guard_support > 99
+                }
+			}
 		}
 
 	}
-	ROM_adopt_the_true_identity = {
+	
+	ROM_sway_military_general = {
+
+		icon = GFX_decision_generic_army_support
+
+		available = {
+		  custom_trigger_tooltip = {
+					tooltip = has_iron_guard_support_20_tt
+					check_variable = {
+						monarchist_support > 19
+					}
+				}
+		}
+
+		cancel_trigger = {
+		}
+		
+		visible = {
+			original_tag = ROM
+		has_completed_focus = ROM_lead_the_legionnaires
+		}
+		
+		fire_only_once = no
+		days_remove = 30
+
+		custom_cost_trigger = {
+			command_power > 14
+			has_political_power > 24
+		}
+		custom_cost_text = decision_cost_CP_15_pp_25
+		
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -15
+				add_political_power = -25
+			}
+		}
+
+		remove_effect = {
+			ROOT = {
+				add_to_variable = {
+					var = ROM_iron_guard_support
+					value = 10
+				}
+				clamp_variable = {
+					var = ROM_iron_guard_support
+					min = 0
+					max = 100
+				}
+				custom_effect_tooltip = add_10_public_support_tt
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				check_variable = {
+                 ROM_iron_guard_support > 99
+                }
+			}
+		}
+
+	}
+
+}
+
+ROM_transylvanian_diplomacy_cat = { 
+  ROM_transylvanian_strongholds = {
+		priority = 99
+
+		icon = GFX_decision_generic_mountain_fortification
+		
+		highlight_states = {
+         highlight_state_targets = {
+			 state = 76
+		    } 
+          }
+
+		ai_will_do = {
+			base = 1
+		}
+
+		allowed = {
+			original_tag = ROM
+		}
+
+		available = {
+			num_of_available_civilian_factories > 1
+			has_full_control_of_state = 76
+			has_full_control_of_state = 84
+		}
+
+		visible = {
+		}
+
+		cancel_trigger = {
+		 OR = { 
+		  NOT = { has_full_control_of_state = 76 }
+		  NOT = { has_full_control_of_state = 84 }
+		 }
+		  
+		}
+
+		cancel_effect = {
+			clr_country_flag = ROM_fortifiying_border
+		}
+
+		cost = 25
+
+		days_remove = 45
+		
+		fire_only_once = yes
+
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		complete_effect = {
+			set_country_flag = ROM_fortifiying_border
+		}
+
+		remove_effect = {
+			clr_country_flag = ROM_fortifiying_border 
+			   76 = {
+					if = {
+						limit = { is_controlled_by = ROOT }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 9704  
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2 
+							province = 11676
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 6714
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 6711
+							instant_build = yes
+						}
+					}
+			   }
+			   84 = {
+					if = {
+						limit = { is_controlled_by = ROOT }
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 693
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 11622 
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							level = 2
+							province = 9619 
+							instant_build = yes
+						}
+					}
+			   }
+	  }
+	}
+	
+	ROM_unite_the_banat = {
+		priority = 95
+
+		icon = GFX_decision_ROM_claim_yugo_4
+		
+		highlight_states = {
+         highlight_state_targets = {
+			 state = 764
+		    } 
+          }
+
+		ai_will_do = {
+			base = 1
+		}
+
+		allowed = {
+			original_tag = ROM
+		}
+
+
+		visible = {
+		}
+
+
+
+		cost = 50
+
+		days_remove = 30
+		
+		fire_only_once = yes
+
+		modifier = {
+			
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			764 = { add_claim_by = ROM add_core_of = ROM }
+	  }
+	}
+	
+	ROM_raise_local_militias = {
+		priority = 96
+
+		icon = GFX_decision_generic_military
+		
+		highlight_states = {
+         highlight_state_targets = {
+			 state = 84
+		    } 
+          }
+
+		ai_will_do = {
+			base = 1
+		}
+
+		allowed = {
+			original_tag = ROM
+		}
+
+
+		visible = {
+		}
+
+
+
+		cost = 25
+
+		days_remove = 30
+		
+		fire_only_once = yes
+
+		modifier = {
+			
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = ROM_raise_local_militias_template_tt
+			hidden_effect = {
+				add_to_variable = { ROM_lanceri_cap = 12 }
+				set_division_template_cap = {  division_template = "Brigada de Lăncieri" division_cap = ROM_lanceri_cap }
+
+				add_units_to_division_template = {
+					template_name = "Brigada de Lăncieri"
+					support = { 
+						engineer = 0
+					}
+				}
+			}
+			random_controlled_state = { 
+				limit = {
+					is_core_of = ROOT
+					is_fully_controlled_by = ROOT
+				}
+				prioritize = { 84 76 }
+				custom_effect_tooltip = ROM_expand_the_lanceri_tt
+				hidden_effect = {
+					create_unit = {
+						division = "division_template = \"Brigada de Lăncieri\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+						owner = ROOT
+						count = 3
+					}
+				}
+			}
+	  }
+	}
+	
+	ROM_expand_transylvanian_autonomy = {
+		priority = 97
+
+		icon = GFX_decision_generic_nationalism
+		
+		highlight_states = {
+         highlight_state_targets = {
+			 state = 84
+		    } 
+          }
+
+		ai_will_do = {
+			base = 1
+		}
+
+		allowed = {
+			original_tag = ROM
+		}
+		
+		available = {
+			has_full_control_of_state = 76
+			has_full_control_of_state = 84
+		}
+
+
+		visible = {
+		}
+
+
+
+		cost = 50
+
+		days_remove = 30
+		
+		fire_only_once = yes
+
+		modifier = {
+			
+		}
+
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			add_stability = 0.1
+			every_core_state = { 
+			 limit = { OR = { state = 76 state = 84 } }
+			   add_dynamic_modifier = { modifier = ROM_autonomous_region scope = ROM }
+			}
+	   }
+	}
+
+
+}
+
+
+ROM_transnistria_cat = { 
+    ROM_integrate_transnistria_governorate = {
 		priority = 100
 
 		icon = GFX_decision_generic_nationalism
-
-		cost = 150
-
-		fire_only_once = yes
-
-		visible = {
-			has_completed_focus = ROM_addopt_nicolae_true_identity
-		}
-
-		days_remove = 30
-
-		complete_effect = {
-			custom_effect_tooltip = ROM_roman_clain_power_third_tt
-		}
-
-		remove_effect = {
-			set_temp_variable = { amount = 25 }
-            ROM_roman_support = yes
-		}
-	}
-	ROM_claim_the_one_true_faith = {
-		priority = 100
-
-		icon = GFX_decision_generic_independence
-
-		cost = 50
-
-		fire_only_once = no
-
-		visible = {
-			has_completed_focus = ROM_united_by_one_church
-		}
-
-		days_remove = 30
-
-		complete_effect = {
-			custom_effect_tooltip = ROM_roman_clain_power_forth_tt
-		}
-
-		remove_effect = {
-			set_temp_variable = { amount = 5 }
-			ROM_roman_support = yes
-		}
-	}
-	ROM_prepare_the_coronation_ceremony = {
-		priority = 100
-
-		icon = GFX_decision_eng_ally_imperialist_coup
-
-		cost = 150
-
-		fire_only_once = yes
-
-		visible = {
-			has_completed_focus = ROM_prepare_the_coronation
-		}
-
-		days_remove = 30
-
-		complete_effect = {
-			custom_effect_tooltip = ROM_roman_clain_power_third_tt
-		}
-
-		remove_effect = {
-			set_temp_variable = { amount = 25 }
-			ROM_roman_support = yes
-		}
-	}
-	ROM_invite_the_attendants = {
-		priority = 100
-
-		icon = GFX_decision_ger_mefo_bills
-
-		cost = 50
-
-		#fire_only_once = no
-
-		visible = {
-			has_completed_focus = ROM_invite_the_attendents
-		}
-
-		days_remove = 30
-		complete_effect = {
-			custom_effect_tooltip = ROM_roman_clain_power_first_tt
-		}
-
-		remove_effect = {
 		
-		    set_temp_variable = { amount = 10 }
-            ROM_roman_support = yes
-		}
-	}
-	ROM_secure_the_rights_of_the_true_heir = {
-		priority = 100
-
-		icon = GFX_decision_eng_ally_imperialist_coup
-
-		cost = 50
-
-		fire_only_once = no
-
-		visible = {
-			has_completed_focus = ROM_secure_the_rights_of_the_true_heir
-		}
-
-		days_remove = 30
-
-		complete_effect = {
-			custom_effect_tooltip = ROM_roman_clain_power_two_tt
-		}
-
-		remove_effect = {
-			set_temp_variable = { amount = 15 }
-			ROM_roman_support = yes
-		}
-	}
-}
-
-
-
-ROM_balance_of_power_category = {
-	ROM_left_side_decision_1 = {
-		priority = 80
-
-		icon = x
+		highlight_states = {
+         highlight_state_targets = {
+			 state = 192
+		    } 
+          }
 
 		ai_will_do = {
-			
-		}
-
-		available = {
-		}
-		cost = 30
-
-
-		days_remove = 30
-
-		fire_only_once = no
-
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-			add_power_balance_value = {
-				id = ROM_power_balance
-				value = -0.05
-			}
-		}
-	}
-	ROM_left_side_decision_2 = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		available = {
-		}
-		cost = 50
-
-
-		days_remove = 30
-
-		fire_only_once = yes
-
-
-		complete_effect = {
-		
-		}
-
-		remove_effect = {
-			add_power_balance_value = {
-				id = ROM_power_balance
-				value = -0.15
-			}
-		}
-	}
-	ROM_left_side_decision_3 = {
-		priority = 60
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		available = {
-		}
-		cost = 50
-
-
-		days_remove = 30
-
-		fire_only_once = yes
-
-
-		complete_effect = {
-		
-		}
-
-		remove_effect = {
-			add_power_balance_value = {
-				id = ROM_power_balance
-				value = -0.15
-			}
-		}
-	}
-	ROM_right_side_decision_1 = {
-		priority = 50
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		available = {
-		}
-		cost = 30
-
-
-		days_remove = 30
-
-		fire_only_once = no
-
-
-		complete_effect = {
-		
-		}
-
-		remove_effect = {
-			add_power_balance_value = {
-				id = ROM_power_balance
-				value = 0.05
-			}
-		}
-	}
-	ROM_right_side_decision_2 = {
-		priority = 40
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		available = {
-		}
-		cost = 50
-
-
-		days_remove = 30
-
-		fire_only_once = yes
-
-
-		complete_effect = {
-		
-		}
-
-		remove_effect = {
-			add_power_balance_value = {
-				id = ROM_power_balance
-				value = 0.15
-			}
-		}
-	}
-	ROM_right_side_decision_3 = {
-		priority = 30
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		available = {
-		}
-		cost = 50
-
-
-		days_remove = 30
-
-		fire_only_once = yes
-
-
-		complete_effect = {
-		
-		}
-
-		remove_effect = {
-		add_power_balance_value = {
-				id = ROM_power_balance
-				value = 0.15
-			}
-		}
-	}
-}
-
-
-ROM_let_the_game_begin_new = {
-	ROM_integrate_austria_into_the_tsardom = {
-		priority = 100
-
-		icon = x
-
-		cost = 50
-
-		fire_only_once = yes
-
-		days_remove = 150
-
-		available = {
-			has_completed_focus	= ROM_austrian_place_in_the_tsardom
-			OR = {
-				AUS = { is_subject_of = ROM }
-				AUS = {
-					all_core_state = {
-						is_fully_controlled_by = ROM
-					}
-				}
-			}
-		}
-
-		remove_effect = {
-			annex_country = {
-				target = AUS
-				transfer_troops = yes
-			}
-			ROM = {
-				every_state = {
-					limit = {
-						is_core_of = AUS
-					}
-					add_core_of = ROM
-				}
-			}
-		}
-	}
-	ROM_integrate_hungarians_into_the_tsardom = {
-		priority = 100
-
-		icon = x
-
-		cost = 50
-
-		fire_only_once = yes
-
-		days_remove = 150
-
-		available = {
-			has_completed_focus	= ROM_hungarian_place_in_the_tsardom
-			OR = {
-				HUN = { is_subject_of = ROM }
-				HUN = {
-					all_core_state = {
-						is_fully_controlled_by = ROM
-					}
-				}
-			}
-		}
-
-		remove_effect = {
-			annex_country = {
-				target = HUN
-				transfer_troops = yes
-			}
-			ROM = {
-				every_state = {
-					limit = {
-						is_core_of = HUN
-					}
-					add_core_of = ROM
-				}
-			}
-		}
-	}
-	ROM_integrate_yugoslavia_into_the_tsardom = {
-		priority = 100
-
-		icon = x
-
-		cost = 50
-
-		fire_only_once = yes
-
-		#days_remove = 150
-
-		available = {
-			has_completed_focus	= ROM_yugoslav_place_in_the_tsardom
-			OR = {
-				YUG = { is_subject_of = ROM }
-				YUG = {
-					all_core_state = {
-						is_fully_controlled_by = ROM
-					}
-				}
-			}
-		}
-
-		remove_effect = {
-			annex_country = {
-				target = YUG
-				transfer_troops = yes
-			}
-			ROM = {
-				every_state = {
-					limit = {
-						is_core_of = YUG
-					}
-					add_core_of = ROM
-				}
-			}
-		}
-	}
-	ROM_integrate_ottomans_into_the_tsardom = {
-		priority = 100
-
-		icon = x
-
-		cost = 50
-
-		fire_only_once = yes
-
-		days_remove = 150
-
-		available = {
-			has_completed_focus	= ROM_ottoman_impailing_tragedy
-			OR = {
-				TUR = { is_subject_of = ROM }
-				TUR = {
-					all_core_state = {
-						is_fully_controlled_by = ROM
-					}
-				}
-			}
-		}
-
-		remove_effect = {
-			annex_country = {
-				target = TUR
-				transfer_troops = yes
-			}
-			ROM = {
-				every_state = {
-					limit = {
-						is_core_of = TUR
-					}
-					add_core_of = ROM
-				}
-			}
-		}
-	}
-	ROM_integrate_greece_into_the_tsardom = {
-		priority = 100
-
-		icon = x
-
-		cost = 50
-
-		fire_only_once = yes
-
-		days_remove = 150
-
-		available = {
-			has_completed_focus	= ROM_yugoslav_place_in_the_tsardom
-			OR = {
-				GRE = { is_subject_of = ROM }
-				GRE = {
-					all_core_state = {
-						is_fully_controlled_by = ROM
-					}
-				}
-			}
-		}
-
-		remove_effect = {
-			annex_country = {
-				target = GRE
-				transfer_troops = yes
-			}
-			ROM = {
-				every_state = {
-					limit = {
-						is_core_of = GRE
-					}
-					add_core_of = ROM
-				}
-			}
-		}
-	}
-}
-
-ROM_balkan_federation_cores = {
-	ROM_integrate_yug = {
-		priority = 100
-
-		icon = GFX_decision_eng_trade_unions_support
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		days_remove = 120
-
-		fire_only_once = yes
-
-		available = {
-			has_army_manpower = {
-			    size > 500000
-			}
-			has_completed_focus = ROM_propose_the_idea_to_yugoslavia
-			core_compliance = {
-				occupied_country_tag = YUG
-				value > 50
-			}
+			base = 1
 		}
 
 		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-
-			YUG = {
-				every_core_state = {
-					add_core_of = ROM
-				}
-			}
-		}
-	}
-	ROM_integrate_bul = {
-		priority = 100
-
-		icon = GFX_decision_eng_trade_unions_support
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		days_remove = 120
-
-		fire_only_once = yes
-
-		available = {
-			has_army_manpower = {
-			    size > 350000
-			}
-			has_completed_focus = ROM_propose_the_idea_to_bulgaria
-			core_compliance = {
-				occupied_country_tag = BUL
-				value > 50
-			}
-		}
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-
-			BUL = {
-				every_core_state = {
-					add_core_of = ROM
-				}
-			}
-		}
-	}
-	ROM_integrate_gre = {
-		priority = 100
-
-		icon = GFX_decision_eng_trade_unions_support
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		days_remove = 120
-
-		fire_only_once = yes
-
-		available = {
-			has_army_manpower = {
-			    size > 650000
-			}
-			has_completed_focus = ROM_propose_the_idea_to_greece
-			core_compliance = {
-				occupied_country_tag = GRE
-				value > 50
-			}
-		}
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-
-			GRE = {
-				every_core_state = {
-					add_core_of = ROM
-				}
-			}
-		}
-	}
-	ROM_integrate_alb = {
-		priority = 100
-
-		icon = GFX_decision_eng_trade_unions_support
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		days_remove = 120
-
-		fire_only_once = yes
-
-		available = {
-			has_army_manpower = {
-			    size > 250000
-			}
-			has_completed_focus = ROM_propose_the_idea_to_albania
-			core_compliance = {
-				occupied_country_tag = ALB
-				value > 50
-			}
-		}
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-
-			ALB = {
-				every_core_state = {
-					add_core_of = ROM
-				}
-			}
-		}
-	}
-}
-ROM_agrarian_reform = {
-	ROM_give_the_lands_to_the_veternas = {
-		priority = 100
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		days_remove = 30
-
-		fire_only_once = yes
-
-		available = {
-			has_completed_focus = ROM_solve_the_pesant_peverity
-		}
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		complete_effect = {
-			swap_ideas = {
-				remove_idea = agrarian_reform_1
-				add_idea = agrarian_reform_2
-			}
-		}
-
-		timeout_effect = {
-			
-		}
-	}
-	ROM_land_reforms_in_transylvania = {
-		priority = 90
-
-		icon = x
-
-		ai_will_do = {
-			
+			original_tag = ROM
 		}
 		
-		cost = 50
-
-		days_remove = 30
-
-		fire_only_once = yes
-
 		available = {
-			has_completed_focus = ROM_the_question_of_reforms_in_transylvania
-			NOT = {
-				has_idea = agrarian_reform_1
+			has_full_control_of_state = 192
+			has_full_control_of_state = 198
+			has_full_control_of_state = 834
+			OR = { 
+			  AND = {
+			   192 = { compliance > 59 }
+			   198 = { compliance > 59 }
+			   834 = { compliance > 59 }
+			   }
+			   NOT = { has_war_with = SOV }
 			}
 		}
 
-		allowed = {
-			
-		}
 
 		visible = {
+		}
+
+
+
+		cost = 50
+
+		days_remove = 60
+		
+		fire_only_once = yes
+
+		modifier = {
 			
 		}
 
 		complete_effect = {
-			swap_ideas = {
-				remove_idea = agrarian_reform_2
-				add_idea = agrarian_reform_3
-			}
-		}
-
-		timeout_effect = {
-			
-		}
-	}
-	ROM_land_reforms_in_bassarabia = {
-		priority = 80
-
-		icon = x
-
-		ai_will_do = {
 			
 		}
 
-		cost = 50
-
-		days_remove = 30
-
-		fire_only_once = yes
-
-		available = {
-			has_completed_focus = ROM_the_question_of_reforms_in_bassarabia
-			NOT = {
-				has_idea = agrarian_reform_2
-			}
-		}
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		complete_effect = {
-			swap_ideas = {
-				remove_idea = agrarian_reform_3
-				add_idea = agrarian_reform_4
-			}
-		}
-
-		timeout_effect = {
-			
-		}
-	}
-	ROM_the_reform_in_muntenia_and_moldova_and_oltenia = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		days_remove = 30
-
-		fire_only_once = yes
-
-		available = {
-			has_completed_focus = ROM_agrarian_reforms
-			NOT = {
-				has_idea = agrarian_reform_3
-			}
-		}
-
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		complete_effect = {
-			swap_ideas = {
-				remove_idea = agrarian_reform_4
-				add_idea = agrarian_reform
-			}
-		}
-
-		timeout_effect = {
-			
-		}
-	}
-}
-
-ROM_ussr_invasion = {
-	ROM_soviet_attack = {
-		priority = 70
-
-		icon = GFX_decision_generic_ignite_civil_war
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		days_remove = 150
-
-		fire_only_once = yes
-
-		available = {
-			GER = {
-				has_war_with = SOV
-			}
-			ROM = {
-				has_war_with = SOV
-			}
-			is_in_faction_with = GER
-		}
-
-
-		allowed = {
-			
-		}
-
-		visible = {
-			OR = {
-				has_completed_focus = ROM_legionary_axis_incorporate_trasnistria
-				has_completed_focus	= ROM_antonescu_incorporate_transnistria
-			}
-		}
-
-		targeted_modifier = {
-			tag = SOV
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-
-		timeout_effect = {
-		}
-	}
-	ROM_long_march_to_stalingrad = {
-		priority = 70
-
-		icon = generic_prepare_civil_war
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		days_remove = 150
-
-		fire_only_once = yes
-
-		available = {
-			GER = {
-				has_war_with = SOV
-			}
-			ROM = {
-				has_war_with = SOV
-				is_in_faction_with = GER
-				has_decision = ROM_soviet_attack
-				has_completed_focus	= ROM_legionary_axis_the_march_to_the_stalingrad
-			}
-		}
-
-
-		allowed = {
-			
-		}
-
-		visible = {
-			OR = {
-				has_completed_focus = ROM_antonescu_battle_for_stalingrad
-				has_completed_focus	= ROM_legionary_axis_the_march_to_the_stalingrad
-			}
-		}
-
-		targeted_modifier = {
-			tag = SOV
-			
-		}
-
-		timeout_effect = {
-		}
-	}
-	ROM_incorporate_transnistria = {
-		priority = 70
-
-		icon = generic_industry
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		days_remove = 150
-
-		fire_only_once = yes
-
-		available = {
-			GER = {
-				has_war_with = SOV
-			}
-			ROM = {
-				has_war_with = SOV
-				is_in_faction_with = GER
-				controls_state = 192
-				controls_state = 834
-				controls_state = 198
-			}
-		}
-
-
-		allowed = {
-			
-		}
-
-		visible = {
-			OR = {
-				has_completed_focus = ROM_legionary_axis_incorporate_trasnistria 
-				has_completed_focus	= ROM_antonescu_incorporate_transnistria
-			}
-		}
-
-		complete_effect = {
+		remove_effect = {
 			add_state_core = 192
-			add_state_core = 834
 			add_state_core = 198
-		}
-	}
-}
-
-ROM_expand_influence_in_balkans = {
-	socialist_ideas_in_bulgaria = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
+			add_state_core = 834
 			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
+			set_country_flag = ROM_transnistria_integrated
+	   }
+	}
 	
-		}
-
+	ROM_combat_local_resistance = {
+		priority = 98
+		icon = GFX_decision_generic_army_support
 
 		allowed = {
-			
+			original_tag = ROM
 		}
 
 		visible = {
-			
+		  NOT = { has_country_flag = ROM_transnistria_integrated }
 		}
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect  = {
-		BUL = {
-			add_timed_idea = {
-				idea = socialist_influence
-				days = 350
-				}
-			}
-		}
-	}
-	bulgaria_puppet = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
 
 		available = {
-		BUL = {
-			communism > 0.5
-			}
+		  has_full_control_of_state = 192
+			has_full_control_of_state = 198
+			has_full_control_of_state = 834
 		}
 
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect  = {
-			puppet = {
-				target = BUL
-				end_wars = yes
-			}
-		}
-	}
-	socialist_ideas_in_hungary = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-	
-		}
-
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect  = {
-		HUN = {
-			add_timed_idea = {
-				idea = socialist_influence
-				days = 350
-				}
-			}
-		}
-	}
-	hungarian_puppet = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-		HUN = {
-			communism > 0.5
-			}
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect  = {
-			puppet = {
-				target = HUN
-				end_wars = yes
-			}
-		}
-	}
-	socialist_ideas_in_yugoslavia = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-	
-		}
-
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect  = {
-		YUG = {
-			add_timed_idea = {
-				idea = socialist_influence
-				days = 350
-				}
-			}
-		}
-	}
-	yug_puppet = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-		YUG = {
-			communism > 0.5
-			}
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect  = {
-			puppet = {
-				target = YUG
-				end_wars = yes
-			}
-		}
-	}
-	socialist_ideas_in_greece = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-	
-		}
-
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect  = {
-		GRE = {
-			add_timed_idea = {
-				idea = socialist_influence
-				days = 350
-				}
-			}
-		}
-	}
-	greece_puppet = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-		GRE = {
-			communism > 0.5
-			}
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect  = {
-			puppet = {
-				target = GRE
-				end_wars = yes
-			}
-		}
-	}
-	socialist_ideas_in_albania = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-	
-		}
-
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect  = {
-		ALB = {
-			add_timed_idea = {
-				idea = socialist_influence
-				days = 350
-				}
-			}
-		}
-	}
-	albanian_puppet = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-		ALB = {
-			communism > 0.5
-			}
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect  = {
-			puppet = {
-				target = ALB
-				end_wars = yes
-			}
-		}
-	}
-}
-ROM_expand_cultural_legacy = {
-	ROM_promote_the_historical_culture_1 = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = no
-
-		available = {
-		
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-		days_remove = 70
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-			add_ideas = ROM_cultural_legacy_1
-		}
-
-		remove_effect = {
-			remove_ideas = ROM_cultural_legacy_1
-		}
-	}
-	ROM_promote_the_historical_culture_2 = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = no
-
-		available = {
-		
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 70
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-			add_ideas = ROM_cultural_legacy_2
-		}
-
-		remove_effect = {
-			remove_ideas = ROM_cultural_legacy_2
-		}
-	}
-	ROM_promote_the_historical_culture_3 = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = no
-
-		available = {
-		
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 70
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-			add_ideas = ROM_cultural_legacy_3
-		}
-
-		remove_effect = {
-			remove_ideas = ROM_cultural_legacy_3
-		}
-	}
-	ROM_promote_the_historical_culture_4 = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = no
-
-		available = {
-		
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 70
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-			add_ideas = ROM_cultural_legacy_4
-		}
-
-		remove_effect = {
-			remove_ideas = ROM_cultural_legacy_4
-		}
-	}
-	ROM_promote_the_historical_culture_5 = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = no
-
-		available = {
-		
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 70
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-			add_ideas = ROM_cultural_legacy_5
-		}
-
-		remove_effect = {
-			remove_ideas = ROM_cultural_legacy_5
-		}
-	}
-	ROM_promote_the_historical_culture_6 = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = no
-
-		available = {
-		
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 70
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-			add_ideas = ROM_cultural_legacy_6
-		}
-
-		remove_effect = {
-			remove_ideas = ROM_cultural_legacy_6
-		}
-	}
-}
-ROM_dacia_expansion_core = {
-	ROM_core_hungary = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-			ROM = {
-				owns_state = 155
-				owns_state = 43
-				owns_state = 154
-			}
-		}
-
-		allowed = {
-
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 60
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-		
-		}
-
-		remove_effect = {
-			ROM = {
-				add_state_core = 155
-				add_state_core = 43
-				add_state_core = 154
-			}
-		}
-	}
-	ROM_core_ruthenia = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-			IF = {
-				ROM = {
-					owns_state = 73
-				}
-			}
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 60
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-			ROM = {
-				add_state_core = 73
-			}
-		}
-	}
-	ROM_core_yugoslavia = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-			ROM = {
-				owns_state = 104  
-				owns_state = 103
-				owns_state = 804
-				owns_state = 802
-				owns_state = 853
-				owns_state = 106
-				owns_state = 105
-				owns_state = 108
-				owns_state = 109
-				owns_state = 102
-				owns_state = 107
-				owns_state = 803
-				owns_state = 45
-				owns_state = 764
-			}
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 60
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-	
-		}
-
-		remove_effect = {
-			ROM = {
-				add_state_core = 104  
-				add_state_core = 103
-				add_state_core = 804
-				add_state_core = 802
-				add_state_core = 853
-				add_state_core = 106
-				add_state_core = 105
-				add_state_core = 108
-				add_state_core = 109
-				add_state_core = 102
-				add_state_core = 107
-				add_state_core = 803
-				add_state_core = 45
-				add_state_core = 764
-			}
-		}
-	}
-	ROM_core_austria = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-			ROM = {
-				owns_state = 4  
-				owns_state = 152
-				owns_state = 153	
-				owns_state = 848		
-			}
-		}
-
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 60
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-			ROM = {
-				add_state_core = 4
-				add_state_core = 152
-				add_state_core = 153
-				add_state_core = 848
-			}
-		}
-
-		remove_effect = {
-			ROM = {
-				add_state_core = 4
-				add_state_core = 152
-				add_state_core = 153
-				add_state_core = 848
-			}
-		}
-	}
-	ROM_core_slovakia = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		
-
-		fire_only_once = yes
-
-		available = {
-			ROM = {
-				owns_state = 71  
-				owns_state = 70
-				owns_state = 664
-			}
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 60
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-			ROM = {
-				add_state_core = 71  
-				add_state_core = 70
-				add_state_core = 664
-			}
-		}
-	}
-}
-
-ROM_army_reorganisation = {
-	ROM_army_restructuration = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
+		ai_hint_pp_cost = 25
 		custom_cost_trigger = {
-    		has_army_experience > 50
+			has_political_power > 24
+			command_power > 24
 		}
-		custom_cost_text = army_ep_tt_new  
-
+		custom_cost_text = decision_cost_CP_25_pp_25
 		
-
-		fire_only_once = yes
-
-		available = {
-			
-		}
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 60
-
-		fire_only_once = yes
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-
-		}
-
-		remove_effect = {
-			army_experience = -50
-			swap_ideas = {
-				remove_idea = week_army
-				add_idea = mediocre_army
-			}
-		}
-	}
-	ROM_army_restructuration_2 = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		custom_cost_trigger = {
-    		has_army_experience > 50
-		}
-		custom_cost_text = army_ep_tt_new  
-
-		fire_only_once = yes
-
-		available = {
-			NOT = {
-				has_idea = week_army
-			}
-		}
-
-
-		allowed = {
-
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 60
-
-		fire_only_once = yes
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-			army_experience = -50
-			swap_ideas = {
-				remove_idea = mediocre_army
-				add_idea = untrained_army
-			}
-		}
-	}
-	ROM_army_restructuration_3 = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		custom_cost_trigger = {
-    		has_army_experience > 50
-		}
-		custom_cost_text = army_ep_tt_new  
-
-		fire_only_once = yes
-
-		available = {
-			NOT = {
-				has_idea = week_army
-				has_idea = mediocre_army
-			}
-		}
-
-
-		allowed = {
-			
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 60
-
-		fire_only_once = yes
-
-		targeted_modifier = {
-			
-		}
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-			army_experience = -50
-			remove_ideas = untrained_army
-		}
-	}
-}
-
-ROM_internal_power_struggle = {
-	ROM_keep_the_people_at_bay = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		fire_only_once = no
-
-		available = {
-			if = {
-				OR = {
-					YUG = {
-						all_controlled_state = {
-							is_fully_controlled_by = ROM
-						}
-					}
-					BUL = {
-						all_controlled_state = {
-							is_fully_controlled_by = ROM
-						}
-					}
-					ALB = {
-						all_controlled_state = {
-							is_fully_controlled_by = ROM
-						}
-					}
-					GRE = {
-						all_controlled_state = {
-							is_fully_controlled_by = ROM
-						}
-					}
-				}
-			}
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-		days_remove = 70
-
-		complete_effect = {
-			add_ideas = ROM_power_of_unity_in_the_balkans
-		}
-
-		remove_effect = {
-			remove_ideas = ROM_power_of_unity_in_the_balkans
-		}
-	}
-}
-
-ROM_final_solution = {
-	ROM_deport_gipsies_into_the_labour_camps = {
-		priority = 70
-
-		icon = generic_prepare_civil_war
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		fire_only_once = no
-
-		available = {
-			has_completed_focus = ROM_antonescu_deport_the_gypsies_into_the_working_camps
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 150
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-			swap_ideas = {
-				remove_idea = ROM_final_solution
-				add_idea = ROM_final_solution_2
-			}
-		}
-	}
-	ROM_deport_hungarians_into_the_labour_camps = {
-		priority = 70
-
-		icon = generic_prepare_civil_war
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		fire_only_once = no
-
-		available = {
-			has_completed_focus	= ROM_antonescu_deport_the_hungarians
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-		days_remove = 150
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-			swap_ideas = {
-				remove_idea = ROM_final_solution_2
-				add_idea = ROM_final_solution_3
-			}
-		}
-	}
-	ROM_deport_jews_into_the_labour_camps = {
-		priority = 70
-
-		icon = generic_prepare_civil_war
-
-		ai_will_do = {
-			
-		}
-
-		cost = 50
-
-		fire_only_once = no
-
-		available = {
-			has_completed_focus = ROM_antonescu_the_jews_are_enemy_of_the_state
-		}
-
-
-		allowed = {
-		
-		}
-
-		visible = {
-			
-		}
-		days_remove = 150
-
-		complete_effect = {
-			
-		}
-
-		remove_effect = {
-			swap_ideas = {
-				remove_idea = ROM_final_solution_3
-				add_idea = ROM_final_solution_4
-			}
-		}
-	}
-}
-
-ROM_bulgarian_showdown = {
-	ROM_first_moves_in_bulgaria = {
-
-		activation = {
-			has_completed_focus = ROM_vlaho_bulgarian_tsardom
-			has_country_flag = ROM_bulgarian_showdown_flag
-			#has_opinion = { target = BUL value > 70 }
-		}
-
-		complete_effect = {
-  			if = {
-	            limit = {
-	                check_variable = {
-	                    var = ROM_coup_support_bul
-	                    value = 75
-	                    compare = greater_than_or_equals
-	                }
-	            }
-        	}
-		}
-
-		timeout_effect = {
-				#to_do_the_event
-			BUL = {
-				declare_war_on = {
-	                target = ROM
-	                type = annex_everything
-            	}
-			}
-			add_opinion_modifier = {
-			    target = BUL
-			    modifier = rom_failed_coup_in_bulgaria
-			}
-			country_event = {
-				id = LOR.59
-				days = 3
-			}
-		} 
-		available = {
-			custom_trigger_tooltip = {
-                tooltip = ROM_end_decision_if_support_is_greater_then_70 
-                check_variable = {
-                    var = ROM_coup_support_bul
-                    value = 75
-                    compare = greater_than_or_equals
-                }
-            }
-		}
-
-		is_good = yes
-
-		days_mission_timeout = 365
-
-		fire_only_once = yes
-
-	    selectable_mission = no
-	}
-	ROM_prepare_the_agents = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		fire_only_once = yes
-
-		available = {
-			has_completed_focus = ROM_move_the_agents_in_key_places
-			has_country_flag = ROM_bulgarian_showdown_flag
-			
-		}
-
-		cost = 50
-
-		allowed = {
-
-		}
-
-		visible = {
-			
-		}
-
 		days_remove = 30
 
-		fire_only_once = yes
-
-
-
-		remove_effect = {
-	    custom_effect_tooltip = ROM_coup_agents_tt
-	        add_to_variable = {
-		        var = ROM_coup_support_bul
-		        value = 10
-	        }
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -25
+				add_command_power = -25
+			}
 		}
-
-	}
-	ROM_sway_the_bul_generals = {
-		priority = 70
-
-		icon = x
+		
+		remove_effect = {
+			every_state = { 
+			  limit = { OR = { state = 834 state = 192 state = 198 } }
+			   add_resistance = -5
+			}
+	   }
 
 		ai_will_do = {
-			
-		}
-
-
-		cost = 50
-
-		available = {
-			has_country_flag = ROM_bulgarian_showdown_flag
-			has_completed_focus	= ROM_prepare_the_coup_in_sofia
-		}
-
-		allowed = {
-
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 30
-
-		fire_only_once = yes
-
-		complete_effect = {
-		
-		}
-
-		remove_effect = {
-			random_list = {
-				50 = {
-					country_event = LOR.52
-				}
-				50 = {
-					country_event = LOR.53
-				}
+			base = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
 			}
 		}
 	}
-	ROM_bribe_the_bulgarian_government_officials = {
-		priority = 70
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		available = {
-			has_country_flag = ROM_bulgarian_showdown_flag
-		}
-
-		cost = 50
-
-		allowed = {
-
-		}
-
-		visible = {
-			
-		}
-
-		days_remove = 30
-
-		fire_only_once = no
-
-
-		remove_effect = {
-	    custom_effect_tooltip = ROM_coup_agents_tt
-	        add_to_variable = {
-		        var = ROM_coup_support_bul
-		        value = 20
-	        }
-		}
-
 	
-	}
-	ROM_meet_with_the_people = {
-		priority = 80
+	ROM_integration_campaigns = {
+		priority = 97
 
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		available = {
-		}
-		cost = 90
-
-		visible = {
-			has_completed_focus = ROM_royal_visits_in_the_sofia
-			has_country_flag = ROM_bulgarian_showdown_flag
-		}
-
-		days_remove = 30
-
-		fire_only_once = no
-
-
-		complete_effect = {
-		
-		}
-
-		remove_effect = {
-		custom_effect_tooltip = ROM_meet_with_the_people_tt
-	        add_to_variable = {
-		        var = ROM_coup_support_bul
-		        value = 15
-	        }
-		}
-	}
-	ROM_send_more_funds_into_bul = {
-		priority = 70
-
-		icon = x
+		icon = decision_category_generic_propaganda
 
 		ai_will_do = {
-			
+			base = 1
 		}
-
-
-		available = {
-			has_country_flag = ROM_bulgarian_showdown_flag
-		}
-
-		cost = 30
 
 		allowed = {
-
+			original_tag = ROM
 		}
-
-		visible = {
-			
-		}
-
-		days_remove = 30
-
-		fire_only_once = yes
-
-	
-
-		complete_effect = {
 		
-		}
-
-		remove_effect = {
-			custom_effect_tooltip = ROM_more_funds_into_bul_tt
-	        add_to_variable = {
-		        var = ROM_coup_support_bul
-		        value = 5
-	        }
-		}
-	}
-	ROM_launch_the_coup = {
-		priority = 100
-
-		icon = x
-
-		ai_will_do = {
-			
-		}
-
-		fire_only_once = yes
-
-
 		available = {
-	        custom_trigger_tooltip = {
-	        	tooltip = ROM_coup_support_bul_tt
-	        	check_variable = {
-	                var = ROM_coup_support_bul
-	                value = 75
-	                compare = greater_than_or_equals
-        		}
-	        }
-	        #has_completed_focus = ROM_let_the_game_begin
-	        has_government = neutrality
-	        has_country_flag = ROM_bulgarian_showdown_flag
-	        
+			has_full_control_of_state = 192
+			has_full_control_of_state = 198
+			has_full_control_of_state = 834
 		}
 
-		cost = 150
-
-		allowed = {
-
-		}
 
 		visible = {
+		  NOT = { has_country_flag = ROM_transnistria_integrated }
+		}
+
+		cost = 50
+
+		days_remove = 90
+		
+		fire_only_once = yes
+
+		modifier = {
 			
 		}
 
-		days_remove = 30
-
-		fire_only_once = yes
-
-
 		complete_effect = {
-			#to_do_the_event
-
+			
 		}
 
 		remove_effect = {
-		if = {
-			limit = {
-				has_dlc = "No Step Back"
-				has_dlc = "Together for Victory"
+			every_state = { 
+			  limit = { OR = { state = 834 state = 192 state = 198 } }
+			   add_compliance = 5
 			}
-			set_autonomy = {
-			    target = BUL
-			    autonomy_state = autonomy_personal_union
-			    end_wars = yes
-			    end_civil_wars = no
-			}
-		}
-		else = {
-			puppet = {
-				target = BUL
-				end_wars = no
-			}
-		}
-		BUL = {
-			start_civil_war = {
-			    ruling_party = neutrality
-			    ideology = neutrality
-			    size = 0.8
-			    capital = 282
-			    states = {
-			        48 801 
-			    }
-			}
-		}
+	   }
 	}
+
+
 }
+
+

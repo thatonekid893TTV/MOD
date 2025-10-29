@@ -1,50 +1,384 @@
-ROM_coup_support = {
-	add_to_variable = {
-   		var = ROM_coup_support_bul
-    	value = 0
-    }
-    clamp_variable = {
-        var = ROM_coup_support_bul
-        min = 0
-        max = 100
-    }
+###############################################################
+### calculating the effect of claim strength in Yugoslavia ####
+###############################################################
+
+calculate_claimant_effect = {	
+	if = {
+		limit = {
+			check_variable = { claim_strength_@PREV < 2 }
+		}
+		add_to_variable = { var = claim_strength_@PREV value = 1 }
+		custom_effect_tooltip = romania_add_claims_tt
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				any_country = {
+					has_country_flag = invited_to_split_yugo
+					PREV = {
+						is_claimed_by = PREV
+					}
+				}
+			}
+		}
+		add_to_variable = { var = claim_strength_@PREV value = 1 }
+		custom_effect_tooltip = newline_tt
+		add_claim_by = PREV
+	}
+	if = {
+		limit = {
+			check_variable = {claim_strength_ROM > claim_strength_HUN }
+			check_variable = {claim_strength_ROM > claim_strength_ITA }
+			check_variable = {claim_strength_ROM > claim_strength_GER }
+		}
+		set_state_flag = strongest_claimant_ROM
+		clr_state_flag = strongest_claimant_GER
+		clr_state_flag = strongest_claimant_ITA
+		clr_state_flag = strongest_claimant_HUN
+	}
+	if = {
+		limit = {
+			check_variable = {claim_strength_GER > claim_strength_HUN }
+			check_variable = {claim_strength_GER > claim_strength_ITA }
+			check_variable = {claim_strength_GER > claim_strength_ROM }
+		}
+		set_state_flag = strongest_claimant_GER
+		clr_state_flag = strongest_claimant_ROM
+		clr_state_flag = strongest_claimant_ITA
+		clr_state_flag = strongest_claimant_HUN
+	}
+	if = {
+		limit = {
+			check_variable = {claim_strength_ITA > claim_strength_HUN }
+			check_variable = {claim_strength_ITA > claim_strength_ROM }
+			check_variable = {claim_strength_ITA > claim_strength_GER }
+		}
+		set_state_flag = strongest_claimant_ITA
+		clr_state_flag = strongest_claimant_GER
+		clr_state_flag = strongest_claimant_ROM
+		clr_state_flag = strongest_claimant_HUN
+	}
+	if = {
+		limit = {
+			check_variable = {claim_strength_HUN > claim_strength_ROM }
+			check_variable = {claim_strength_HUN > claim_strength_ITA }
+			check_variable = {claim_strength_HUN > claim_strength_GER }
+		}
+		set_state_flag = strongest_claimant_HUN
+		clr_state_flag = strongest_claimant_GER
+		clr_state_flag = strongest_claimant_ITA
+		clr_state_flag = strongest_claimant_ROM
+	}
 }
 
 
-ROM_legionary_rebelion_support = {
-    add_to_variable = {
-        var = ROM_support_for_antonescu
-        value = 0
-    }
-    add_to_variable = {
-        var = ROM_support_for_the_iron_guard
-        value = 0
-    }
-    clamp_variable = {
-        var = ROM_support_for_the_iron_guard
-        min = 0
-        max = 100
-    }
-    clamp_variable = {
-        var = ROM_support_for_antonescu
-        min = 0
-        max = 100
-    }
+
+ROM_minelayer_design = { 
+   create_equipment_variant = {
+		      name = "Amiral Murgescu Class"	
+		      type = ship_hull_light_2
+		      name_group = ROM_ML_HISTORICAL
+		      parent_version = 0
+		      modules = {
+			   fixed_ship_battery_slot = dp_light_battery_1
+			   fixed_ship_anti_air_slot = ship_anti_air_3
+			   fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			   fixed_ship_radar_slot = empty
+			   fixed_ship_engine_slot = light_ship_engine_1
+			   fixed_ship_torpedo_slot = empty
+			   mid_1_custom_slot = ship_depth_charge_2
+			   rear_1_custom_slot = ship_mine_layer_1
+		      }
+	        }
+   if = { 
+     limit = { has_completed_focus = ROM_coastal_defense_navy }   
+	add_equipment_production = {
+		equipment = {
+			type = ship_hull_light_2
+			creator = "ROM" 
+			version_name = "Amiral Murgescu Class"
+		}
+		name = "NMS Amiral Murgescu"
+		requested_factories = 1
+		progress = 0.50
+		amount = 1
+		industrial_manufacturer = mio:ROM_galati_shipyard_organization
+	}
+	}
+	else = { 
+	 add_equipment_production = {
+		equipment = {
+			type = ship_hull_light_2
+			creator = "ROM" 
+			version_name = "Amiral Murgescu Class"
+		}
+		name = "NMS Amiral Murgescu"
+		requested_factories = 1
+		progress = 0.50
+		amount = 1
+	 }
+	}
+
+
 }
 
-ROM_roman_support_clamp = {
-    clamp_variable = {
-        var = ROM_roman_support_percent
-        min = 0
-        max = 100
-    }
+ROM_add_rom_bridgehead_equip = { 
+  add_equipment_to_stockpile = { 
+				type = infantry_equipment
+				amount = 3000
+				producer = POL
+			}
+		add_equipment_to_stockpile = { 
+				type = support_equipment
+				amount = 350
+				producer = POL
+			}
+		if = {
+		 limit = { has_dlc = "By Blood Alone" }
+		add_equipment_to_stockpile = { 
+					type = small_plane_airframe_0
+					amount = 36
+					producer = POL
+					variant_name = "PZL P.11"
+				}
+		add_equipment_to_stockpile = { 
+					type = small_plane_cas_airframe_1
+					amount = 21
+					producer = POL
+					variant_name = "PZL P.23"
+				}
+		 add_equipment_to_stockpile = { 
+					type = medium_plane_airframe_1
+					amount = 26
+					producer = POL
+					#variant_name = "PZL P.37"
+				}
+			}
+		 else = { 
+		  add_equipment_to_stockpile = {
+					type = fighter_equipment_0
+					amount = 36
+					producer = POL
+				}
+		  add_equipment_to_stockpile = {
+					type = CAS_equipment_1
+					amount = 21
+					producer = POL
+				}
+		  add_equipment_to_stockpile = {
+					type = tac_bomber_equipment_1
+					amount = 26
+					producer = POL
+				}
+		 }
+
 }
 
-ROM_roman_support = {
-    add_to_variable = {
-        var = ROM_roman_support_percent
-        value = amount
-    }
-    ROM_roman_support_clamp = yes
+ROM_unlock_iar_cas_design = { 
+   create_equipment_variant = {
+						name = "IAR 81"
+						type = small_plane_cas_airframe_2
+						modules = {
+							fixed_main_weapon_slot = bomb_locks
+							fixed_auxiliary_weapon_slot_1 = light_mg_2x
+							fixed_auxiliary_weapon_slot_2 = aircraft_cannon_1_2x
+							engine_type_slot = engine_3_1x
+							special_type_slot_1 = drop_tanks
+							special_type_slot_2 = radio_navigation_1
+						}
+						icon = "GFX_ROM_CAS2_medium"
+					}
+
 }
 
+ROM_unlock_iar_early_cas_design = { 
+  create_equipment_variant = {
+						name = "IAR 39"
+						type = small_plane_cas_airframe_1
+						modules = {
+							fixed_main_weapon_slot = bomb_locks
+							fixed_auxiliary_weapon_slot_1 = light_mg_2x #historically 3
+							engine_type_slot = engine_2_1x
+							special_type_slot_1 = empty
+						}
+						icon = "GFX_ROM_CAS1_medium"
+					}
+
+
+}
+
+ROM_add_med_bomber_design = { 
+  create_equipment_variant = {
+		name = "IAR 79" #
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_1 = torpedo_mounting
+			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_1_1x
+			engine_type_slot = engine_2_2x
+			special_type_slot_1 = lmg_defense_turret_2x
+		}
+		icon = "GFX_ROM_tactical_bomber1_medium"
+	}
+}
+
+
+ROM_create_lanceri = { 
+
+division_template = { #
+	name = "Brigada de Lăncieri" 
+	division_names_group = ROM_MIL_01
+	is_locked = yes
+	force_allow_recruiting = yes
+	division_cap = 12 
+
+	regiments = { 
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+	}
+	support = { 
+		recon = { x = 0 y = 0 }
+	}
+}
+
+
+set_division_template_cap = { 
+	division_template = "Brigada de Lăncieri" 
+	division_cap = ROM_lanceri_cap
+}
+
+random_owned_controlled_state = {
+				limit = {
+					is_capital = yes
+				}
+				custom_effect_tooltip = ROM_expand_the_lanceri_tt
+				hidden_effect = {
+					create_unit = { 
+						division = "division_template = \"Brigada de Lăncieri\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+						owner = ROOT
+						count = 3
+					}
+				}
+			}
+
+}
+
+ROM_add_soviet_tanks = { 
+create_equipment_variant = {
+		name = "BT-7"
+		type = light_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon_2
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 10
+			tank_nsb_armor_upgrade = 2
+		}
+		icon = "GFX_SOV_improved_light_tank_medium"
+	}
+	
+#T-34 tank template
+				if = {
+					limit = {
+						OR = {
+							has_tech = artillery3
+							has_tech = antitank3
+						}
+					}
+					create_equipment_variant = {
+						name = "T-34"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon_2
+							turret_type_slot = tank_medium_two_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_diesel_engine
+							special_type_slot_1 = sloped_armor
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 10
+							tank_nsb_armor_upgrade = 7
+						}
+						icon = "GFX_SOV_improved_medium_tank_medium"
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_tech = artillery1
+							has_tech = antitank1
+						}
+					}
+					create_equipment_variant = {
+						name = "T-34"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_medium_cannon
+							turret_type_slot = tank_medium_two_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_diesel_engine
+							special_type_slot_1 = sloped_armor
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 10
+							tank_nsb_armor_upgrade = 7
+						}
+						icon = "GFX_SOV_improved_medium_tank_medium"
+					}
+				}
+				else_if = { #Why? You ruined your T-34
+					limit = {
+						has_tech = interwar_artillery
+					}
+					create_equipment_variant = {
+						name = "T-34"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_small_cannon_2
+							turret_type_slot = tank_medium_two_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_diesel_engine
+							special_type_slot_1 = sloped_armor
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 10
+							tank_nsb_armor_upgrade = 7
+						}
+						icon = "GFX_SOV_improved_medium_tank_medium"
+					}
+				}
+				else = { #Don't do this to yourself dude
+					create_equipment_variant = {
+						name = "T-34"
+						type = medium_tank_chassis_2
+						parent_version = 0
+						modules = {
+							main_armament_slot = tank_small_cannon
+							turret_type_slot = tank_medium_two_man_tank_turret
+							suspension_type_slot = tank_christie_suspension
+							armor_type_slot = tank_welded_armor
+							engine_type_slot = tank_diesel_engine
+							special_type_slot_1 = sloped_armor
+						}
+						upgrades = {
+							tank_nsb_engine_upgrade = 10
+							tank_nsb_armor_upgrade = 7
+						}
+						icon = "GFX_SOV_improved_medium_tank_medium"
+					}
+				}
+
+}

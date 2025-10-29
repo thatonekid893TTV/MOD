@@ -1,0 +1,798 @@
+ROM_iron_guard = {
+	name = "The Legionnaire's Rebellion succeeds"
+	desc = ""
+
+	allowed = {
+		original_tag = ROM
+		has_dlc = "Death or Dishonor"
+	}
+	enable = {
+		OR = {
+			has_country_flag = ROM_AI_RANDOM_FASCIST_AHISTORICAL_1
+			has_game_rule = {
+				rule = ROM_ai_behavior
+				option = FASCIST_AHISTORICAL_1
+			}
+		}
+	}
+	abort = {
+		
+	}
+
+	ai_national_focuses = {
+		ROM_preserve_greater_romania #till 05.02.36
+		ROM_army_maneuvers #till 11.03.36
+		ROM_expand_the_air_force #till 15.04.36
+		ROM_civil_works #till 24.06.36
+		ROM_agrarian_reform #till 02.09.36
+		ROM_local_development #till 11.11.36
+		ROM_army_war_college #till 16.12.36
+		ROM_danubian_transport_network #till 20.01.37
+		ROM_malaxa #till 31.03.37
+		ROM_assure_the_romanian_bridgehead #till 05.05.37
+		ROM_expand_the_galati_shipyards #till 09.06.37
+		ROM_coastal_defense_navy #till 14.07.37
+		ROM_invest_in_the_iar #till 22.09.37
+		ROM_institute_royal_dictatorship #.12.37 #till 01.12.37      #to preempt the event
+		ROM_royal_guards_divisions #till 05.01.38
+		ROM_revise_the_constitution #1938 #till 16.03.38
+		ROM_crack_down_on_extremism #16.04.38  #till 20.04.38
+		ROM_flexible_foreign_policy #till 25.05.38
+		ROM_air_superiority #till 03.08.38
+		ROM_new_training_aircrafts #till 12.10.38
+		ROM_appoint_allied_friendly_government #till 16.11.38
+		ROM_the_zb_53 #till 21.12.38
+		ROM_arms_production_at_astra_works #till 01.03.39
+		ROM_trade_treaty_with_germany #23.03.39   #till 10.05.39
+		ROM_iar_80 #.04.39   #till 19.07.39
+		ROM_vanatori_de_munte #till 27.09.39                         #until here in 1936 start
+		ROM_hunedoara_steel_works #till 06.12.39
+		ROM_naval_rearmament_program_focus #till 10.01.40
+		ROM_coastal_defense_ships #till 20.03.40
+		ROM_appoint_german_friendly_government #04.07.1940  #till 24.04.40
+		ROM_iron_guard #till 03.07.40
+		ROM_force_abdication #06.09.40  #till 11.09.40
+		ROM_invite_german_advisors #.10.40  #till 20.11.40
+		ROM_purge_the_old_elites #till 25.12.40
+		ROM_lead_the_legionnaires #till 29.01.41
+		ROM_join_axis #till 09.04.41
+		ROM_cruiser_plans #till 18.06.41
+		ROM_leagionary_rebellion #till 23.07.41
+		ROM_national_legionary_state #till 01.10.41
+		ROM_demand_transnistria 
+		ROM_white_squadron_focus 
+		ROM_declare_the_transnistria_governorate 
+		ROM_crusade_against_judeo_bolshevism
+		ROM_cas 
+		ROM_repatriation_of_germans
+		ROM_centralize_the_economy
+		ROM_expand_ploiesti_oil_production 
+		ROM_german_romanian_oil_exploitation_company 
+		ROM_strive_for_autarky
+		ROM_improve_the_railways
+        ROM_expand_the_university_of_bucharest
+		ROM_resita_works_petroleum_extraction_equipment
+		ROM_artillery_modernization
+		ROM_reserve_divisions
+		ROM_demand_the_return_of_transylvania
+		ROM_modern_at_guns
+		ROM_mountain_artillery
+		ROM_the_maresal
+        ROM_acquire_modern_tanks
+		ROM_the_armored_division
+        ROM_air_defense
+		ROM_torpedo_bombers
+		ROM_the_royal_foundation
+		ROM_supporting_forces
+		ROM_modern_destroyers
+		ROM_torpedo_boats
+		ROM_king_michaels_coup
+		ROM_cement_michaels_rule
+		ROM_liberate_europe
+		
+	}
+
+	research = {
+		industry = 50.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+	}
+
+	ideas = {
+		
+	}
+
+	traits = {
+		captain_of_industry = 5
+		ROM_fascist_paramilitarist = 5
+		ROM_fascist_economist = 5
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+
+}
+
+ROM_national_christian_path = {
+	name = "National Christian Party"
+	desc = ""
+
+	allowed = {
+		original_tag = ROM
+		has_dlc = "Death or Dishonor"
+	}
+	enable = {
+		OR = {
+			has_country_flag = ROM_AI_RANDOM_FASCIST_AHISTORICAL_2
+			has_game_rule = {
+				rule = ROM_ai_behavior
+				option = FASCIST_AHISTORICAL_2
+			}
+		}
+	}
+	abort = {
+		
+	}
+
+	ai_national_focuses = {
+		ROM_preserve_greater_romania
+		ROM_army_maneuvers
+		ROM_expand_the_air_force
+		ROM_goga_codreanu_pact
+		ROM_civil_works
+		ROM_agrarian_reform
+		ROM_improve_the_railways #first 350 days over
+		ROM_expand_the_galati_shipyards
+		ROM_army_war_college
+		ROM_local_development
+		ROM_royal_guards_divisions
+		ROM_malaxa
+		ROM_invest_in_the_iar
+		ROM_resita_works_petroleum_extraction_equipment #second 350 days over
+		ROM_coastal_defense_navy
+		ROM_anti_semitic_laws
+		ROM_cultural_renaissance
+		ROM_guardians_of_tradition
+		ROM_trade_treaty_with_germany
+		ROM_promote_iron_guard_forces
+		ROM_the_orita #third 350 days over +35
+		ROM_hunedoara_steel_works
+		ROM_expand_the_lanceri
+		ROM_air_superiority
+		ROM_iar_80
+		ROM_rural_revival #fourth 350 days over
+		ROM_a_romanian_fuhrer
+		ROM_invite_german_advisors
+		ROM_military_buildup
+		ROM_arms_production_at_astra_works
+		ROM_artillery_modernization #fifth 350 days over
+		ROM_join_axis
+		ROM_vanatori_de_munte
+		ROM_support_nationalist_thinkers
+		ROM_economic_reforms #sixth 350 days over
+		ROM_anti_communist_crusade
+		ROM_reserve_divisions
+		ROM_expand_ploiesti_oil_production
+		ROM_expand_the_university_of_bucharest
+		ROM_romanian_autobahn #seventh 350 days over
+		ROM_crusade_against_judeo_bolshevism
+		ROM_demand_the_return_of_transylvania
+		ROM_voice_of_unity
+		ROM_white_squadron_focus
+		ROM_declare_the_transnistria_governorate
+		ROM_german_romanian_oil_exploitation_company
+		ROM_cas #8. 350 days over
+		ROM_modern_at_guns
+		ROM_air_defense
+		ROM_danubian_transport_network
+		ROM_strategic_bomber_force
+		ROM_the_maresal
+		ROM_naval_rearmament_program_focus
+		ROM_cruiser_plans #9. 350 days over
+		ROM_modern_submarines
+		ROM_the_armored_division
+		ROM_acquire_modern_tanks
+		ROM_license_german_equipment
+		ROM_modern_destroyers
+		ROM_mountain_artillery
+		ROM_supporting_forces #10. 350 days over
+		ROM_coastal_defense_ships
+		ROM_torpedo_boats
+		
+	}
+
+	research = {
+		industry = 55.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+	}
+
+	ideas = {
+		
+	}
+
+	traits = {
+		captain_of_industry = 5
+		ROM_fascist_paramilitarist = 5
+		ROM_fascist_writer = 5
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+
+}
+
+
+ROM_allies = {
+	name = "Romanian plan to join allies"
+	desc = ""
+
+	allowed = {
+		original_tag = ROM
+		has_dlc = "Death or Dishonor"
+	}
+	enable = {
+		OR = {
+			has_country_flag = ROM_AI_RANDOM_DEMOCRATIC
+			has_game_rule = {
+				rule = ROM_ai_behavior
+				option = DEMOCRATIC
+			}
+		}
+	}
+	abort = {
+		
+	}
+
+	ai_national_focuses = {
+	    ROM_preserve_greater_romania
+		ROM_civil_works
+		ROM_army_maneuvers
+		ROM_expand_the_air_force
+		ROM_agrarian_reform
+		ROM_local_development
+		ROM_army_war_college #first 350 days over
+		ROM_assure_the_romanian_bridgehead
+		ROM_danubian_transport_network
+		ROM_malaxa
+		ROM_institute_royal_dictatorship
+		ROM_renew_the_romanian_polish_alliance
+		ROM_revise_the_constitution
+		ROM_crack_down_on_extremism 
+		ROM_flexible_foreign_policy
+		ROM_appoint_allied_friendly_government
+		ROM_constitutional_guarantees
+		ROM_the_zb_53
+		ROM_arms_production_at_astra_works
+		ROM_royal_guards_divisions
+		ROM_hunedoara_steel_works #third 350 days over
+		ROM_handle_the_king
+		ROM_demand_a_western_guarantee
+		ROM_air_superiority
+		ROM_invest_in_the_iar
+		ROM_join_allies #4. 350 days over
+		ROM_iar_80
+		ROM_industrial_development
+		ROM_cas
+		ROM_expand_the_galati_shipyards
+		ROM_allied_defense_fundings
+		ROM_the_royal_foundation #5. 350 days over +35
+		ROM_combat_illiteracy
+		ROM_expand_ploiesti_oil_production
+		ROM_expand_the_university_of_bucharest
+		ROM_vanatori_de_munte
+		ROM_artillery_modernization #6. 350 days over +35
+		ROM_sponsor_scientific_advancements
+		ROM_reserve_divisions
+		ROM_acquire_modern_tanks
+		ROM_mobile_tank_destroyers
+		ROM_joint_allied_staff_college
+		ROM_secure_black_sea_supply_routes #7. 350 days over
+		ROM_nation_at_arms
+		ROM_the_maresal
+		ROM_coastal_defense_navy
+		ROM_naval_rearmament_program_focus
+		ROM_decentralization
+		ROM_the_armored_division
+		ROM_improve_the_railways
+		ROM_modern_destroyers  #8. 350 days over
+		ROM_escort_minelayers
+		ROM_mountain_artillery
+		ROM_new_training_aircrafts
+		ROM_air_defense
+		ROM_research_cooperation_program
+		ROM_modern_submarines
+		ROM_supporting_forces #9. 350 days over +35
+		ROM_resita_works_petroleum_extraction_equipment
+		ROM_coastal_defense_ships
+		ROM_torpedo_boats
+		ROM_military_modernization
+		ROM_torpedo_bombers #10. 350 days over
+		
+		
+		
+		
+		
+	}
+
+	research = {
+		industry = 50.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+		air_equipment = 5.0
+	}
+
+	ideas = {
+		
+	}
+	
+	traits = {
+		captain_of_industry = 5
+		ROM_figurehead_of_romanian_unity = 5
+		ROM_democratic_industrialist = 5
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+
+}
+
+ROM_dominance = {
+	name = "Romanian plan to dominante the balkans"
+	desc = ""
+
+	allowed = {
+		original_tag = ROM
+		has_dlc = "Death or Dishonor"
+	}
+	enable = {
+		OR = {
+			has_country_flag = ROM_AI_RANDOM_BALKAN_DOMINANCE_CAROL
+			has_game_rule = {
+				rule = ROM_ai_behavior
+				option = BALKAN_DOMINANCE_CAROL
+			}
+		}
+	}
+	abort = {
+		is_subject = yes
+	}
+
+	ai_national_focuses = {
+		ROM_balkans_dominance
+		ROM_national_defense_industry
+		ROM_agrarian_reform
+		ROM_army_maneuvers
+		ROM_expand_the_air_force
+		ROM_danubian_transport_network
+		ROM_malaxa  #first 350 days over
+		ROM_hunedoara_steel_works
+		ROM_institute_royal_dictatorship
+		ROM_revise_the_constitution
+		ROM_the_royal_foundation
+		ROM_local_development #second 350 days over
+		ROM_invest_in_the_iar
+		ROM_crack_down_on_extremism
+		ROM_leaders_of_the_balkans
+		ROM_army_war_college
+		ROM_the_zb_53
+		ROM_puppet_bulgaria
+		ROM_arms_production_at_astra_works #third 350 days over
+		ROM_fortify_the_borders
+		ROM_strict_way_of_neutrality
+		ROM_the_man_of_steel
+		ROM_study_our_neighbours
+		ROM_militarize_the_sentinels
+		ROM_royal_guards_divisions
+		ROM_his_majestys_loyal_government #4. 350 days over
+		ROM_all_parties_must_end
+		ROM_align_hungary
+		ROM_expand_ploiesti_oil_production
+		ROM_expand_the_university_of_bucharest
+		ROM_divide_yugoslavia
+		ROM_reserve_divisions #5. 350 days over +35
+		ROM_air_superiority
+		ROM_vanatori_de_munte
+		ROM_secure_greece
+		ROM_armored_forces
+		ROM_rule_with_an_iron_fist #6. 350 days over
+		ROM_artillery_modernization
+		ROM_mountain_artillery
+		ROM_collaborate_with_the_democrats
+		ROM_expand_the_galati_shipyards
+		ROM_war_preparations
+		ROM_support_industrialists
+		ROM_black_sea_dominance #7. 350 days over
+		ROM_naval_rearmament_program_focus
+		ROM_modern_destroyers
+		ROM_pan_balkan_companies
+		ROM_secure_the_bosporus
+		ROM_local_militias
+		ROM_iar_80 #8. 350 days over +35
+		ROM_cas
+		ROM_bulgarian_integration
+		ROM_keep_the_upper_hand
+		ROM_resita_works_electric_machinery
+		ROM_corporate_tax_breaks
+		ROM_acquire_modern_tanks #9. 350 days over
+		ROM_the_armored_division
+		ROM_mobile_tank_destroyers
+		ROM_the_maresal
+		ROM_capital_ships
+		ROM_cruiser_plans
+		ROM_air_defense
+		ROM_new_training_aircrafts #10. 350 days over
+		ROM_supporting_forces
+		ROM_strategic_bomber_force
+		ROM_modern_submarines
+		ROM_preemptive_strike_west
+		ROM_improve_the_railways	
+	}
+
+	research = {
+		industry = 50.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+		air_equipment = 5.0
+	}
+
+	ideas = {
+		
+	}
+	
+	traits = {
+		captain_of_industry = 5
+		ROM_the_man_of_steel_trait = 5
+		ROM_iron_king = 5
+		ROM_inudstrial_mogul = 2
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+
+}
+
+ROM_dominance_2 = {
+	name = "Romanian plan to dominante the balkans through alliances"
+	desc = ""
+
+	allowed = {
+		original_tag = ROM
+		has_dlc = "Death or Dishonor"
+	}
+	enable = {
+		OR = {
+			has_country_flag = ROM_AI_RANDOM_BALKAN_DOMINANCE_CALINESCU
+			has_game_rule = {
+				rule = ROM_ai_behavior
+				option = BALKAN_DOMINANCE_CALINESCU
+			}
+		}
+	}
+	abort = {
+		is_subject = yes
+	}
+
+	ai_national_focuses = {
+	    ROM_balkans_dominance
+	    ROM_national_defense_industry
+	    ROM_agrarian_reform
+		ROM_army_maneuvers
+		ROM_expand_the_air_force
+		ROM_danubian_transport_network
+		ROM_expand_the_galati_shipyards
+		ROM_army_war_college  #first 350 days over
+		ROM_institute_royal_dictatorship
+		ROM_revise_the_constitution
+		ROM_the_royal_foundation
+		ROM_the_zb_53
+		ROM_fortify_the_borders
+		ROM_strict_way_of_neutrality #second 350 days over
+		ROM_the_man_of_steel
+		ROM_handle_the_king
+		ROM_allies_on_the_danube
+		ROM_allies_to_the_south
+		ROM_malaxa 
+		ROM_hunedoara_steel_works #third 350 days over
+		ROM_militarize_the_sentinels
+		ROM_local_development
+		ROM_arms_production_at_astra_works
+		ROM_align_hungary
+		ROM_danube_transport_cooperation
+		ROM_royal_guards_divisions #4. 350 days over
+		ROM_danubian_industrialisation_plan
+		ROM_invest_in_the_iar
+		ROM_expand_ploiesti_oil_production
+		ROM_bulwark_of_democracy
+		ROM_industrial_development #5. 350 days over
+		ROM_danubian_defense_forces
+		ROM_military_reforms
+		ROM_expand_the_university_of_bucharest
+		ROM_banat_research_academy
+		ROM_reach_out_to_the_balkan_pact 
+		ROM_artillery_modernization
+		ROM_reserve_divisions
+		ROM_danubian_armaments_program
+		ROM_nation_at_arms
+		ROM_air_superiority #7. 350 days over
+		ROM_vanatori_de_munte
+		ROM_pan_balkan_companies
+		ROM_danubian_resource_network
+		ROM_iar_80
+		ROM_mountain_artillery
+		ROM_decentralization #8. 350 days over
+		ROM_military_research_exchange
+		ROM_improve_the_railways
+		ROM_bulgarian_integration
+		ROM_resita_works_petroleum_extraction_equipment
+		ROM_cas
+		ROM_black_sea_dominance
+		ROM_naval_rearmament_program_focus
+		ROM_acquire_modern_tanks #9. 350 days over
+		ROM_escort_minelayers
+		ROM_modern_submarines
+		ROM_modern_destroyers
+		ROM_mobile_tank_destroyers
+		ROM_the_maresal
+		ROM_air_defense
+		ROM_new_training_aircrafts #10. 350 days over
+		ROM_exploit_the_baita_mines
+		ROM_nuclear_bomb_project
+		ROM_supporting_forces
+		ROM_capital_ships
+		ROM_expand_the_marine_regiment #11. 350 days over
+		
+		
+		ROM_divide_yugoslavia
+		 #5. 350 days over +35
+		
+		
+		ROM_secure_greece
+		ROM_armored_forces
+		ROM_rule_with_an_iron_fist #6. 350 days over
+		
+		
+		ROM_collaborate_with_the_democrats
+		ROM_expand_the_galati_shipyards
+		ROM_war_preparations
+		ROM_support_industrialists
+		 #7. 350 days over
+		
+		ROM_modern_destroyers
+		
+		ROM_secure_the_bosporus
+		ROM_local_militias
+		 #8. 350 days over +35
+		
+		ROM_bulgarian_integration
+		ROM_keep_the_upper_hand
+		ROM_resita_works_electric_machinery
+		ROM_corporate_tax_breaks
+		ROM_acquire_modern_tanks #9. 350 days over
+		ROM_the_armored_division
+		ROM_mobile_tank_destroyers
+		
+		ROM_capital_ships
+		ROM_cruiser_plans
+		ROM_air_defense
+		ROM_new_training_aircrafts #10. 350 days over
+		ROM_supporting_forces
+		ROM_strategic_bomber_force
+		ROM_modern_submarines
+		ROM_preemptive_strike_west
+		ROM_improve_the_railways	
+	}
+
+	research = {
+		industry = 50.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+		air_equipment = 5.0
+	}
+
+	ideas = {
+		
+	}
+	
+	traits = {
+		captain_of_industry = 5
+		ROM_the_man_of_steel_trait = 5
+		ROM_iron_king = 5
+		ROM_democratic_industrialist = 2
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+		
+	}
+
+}
+
+ROM_communist = {
+	name = "Romanian plan to side with SOV"
+	desc = ""
+
+	allowed = {
+		original_tag = ROM
+		has_dlc = "Death or Dishonor"
+	}
+	enable = {
+		OR = {
+			has_country_flag = ROM_AI_RANDOM_COMMUNIST
+			has_game_rule = {
+				rule = ROM_ai_behavior
+				option = COMMUNIST
+			}
+		}
+	}
+	abort = {
+		is_subject = yes
+		OVERLORD = {
+			not = { has_government = communism }
+		}
+	}
+
+	ai_national_focuses = {
+		ROM_preserve_greater_romania
+		ROM_civil_works
+		ROM_agrarian_reform
+		ROM_danubian_transport_network
+		ROM_malaxa
+		ROM_hunedoara_steel_works  #first 350 days over
+		ROM_institute_royal_dictatorship
+		ROM_a_deal_with_the_devil
+		ROM_revise_the_constitution
+		ROM_crack_down_on_extremism
+		ROM_flexible_foreign_policy
+		ROM_appoint_soviet_friendly_government
+		ROM_army_maneuvers
+		ROM_expand_the_air_force #second 350 days over
+		ROM_form_peasant_militias
+		ROM_the_royal_foundation
+		ROM_basing_rights_for_soviet_union
+		ROM_expand_ploiesti_oil_production
+		ROM_army_war_college
+		ROM_acquire_licenses 
+		ROM_acquire_modern_tanks #third 350 days over
+		ROM_securitate
+		ROM_force_abdication
+		ROM_silence_dissent
+		ROM_royal_guards_divisions
+		ROM_reserve_divisions
+		ROM_join_comintern #4. 350 days over
+		ROM_the_orita
+		ROM_arms_production_at_astra_works
+		ROM_bucharest_to_moscow_railway
+		ROM_invite_soviet_tank_designers
+		ROM_agricultural_collectivization
+		ROM_request_the_moldovan_assr #5. 350 days over
+		ROM_romanian_volunteer_brigades
+		ROM_build_the_heavy_industry
+		ROM_invest_in_the_iar
+		ROM_the_armored_division
+		ROM_educational_reforms
+		ROM_romanian_peoples_army #6. 350 days over
+		ROM_expand_the_university_of_bucharest
+		ROM_artillery_modernization
+		ROM_invest_in_public_healthcare
+		ROM_air_defense
+		ROM_mobile_tank_destroyers
+		ROM_expand_intel_networks
+		ROM_resita_works_electric_machinery #7. 350 days over
+		ROM_white_squadron_focus
+		ROM_acquire_fighters
+		ROM_vanatori_de_munte
+		ROM_mountain_artillery
+		ROM_the_maresal
+		ROM_ground_support
+		ROM_foreign_dive_bombers #8. 350 days over
+		ROM_expand_contracting
+		ROM_expand_the_galati_shipyards
+		ROM_black_sea_dominance
+		ROM_naval_rearmament_program_focus
+		ROM_modern_submarines
+		ROM_enemies_in_the_west
+		ROM_improve_the_railways #9. 350 days over
+		ROM_exploit_the_baita_mines
+		ROM_nuclear_bomb_project
+		ROM_supporting_forces
+		ROM_new_training_aircrafts
+		ROM_escort_minelayers
+		ROM_modern_destroyers #10. 350 days over +35
+		ROM_capital_ships 
+		ROM_expand_the_marine_regiment
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+	research = {
+		industry = 50.0
+		infantry_tech = 15.0
+		artillery = 8.0
+		support_tech = 6.5
+		air_equipment = 5.0
+	}
+
+	ideas = {
+		
+	}
+	
+	traits = {
+		captain_of_industry = 5
+		war_industrialist = 5
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+	focus_factors = {
+	}
+
+}
+

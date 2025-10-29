@@ -1,0 +1,118 @@
+#####################
+
+###  ##  #  # # #  ## 
+ #  #  # ## # # # #   
+ #  #### # ## ##   #  
+ #  #  # #  # # #   # 
+ #  #  # #  # # # ## 
+
+ #################### 
+
+
+
+
+#####################
+
+ ## #  # ### ###   ## 
+#   #  #  #  #  # #   
+ #  ####  #  ###   #  
+  # #  #  #  #      # 
+##  #  # ### #    ##  
+ 
+#####################
+
+
+LIB_National_Port_Authority_organization = {
+	include = generic_escort_ship_organization
+	icon = GFX_idea_LIB_National_Port_Authority
+	allowed = {	
+		tag = LIB 
+	}
+	available = {
+		FROM = {
+			has_completed_focus = LIB_Reestablish_port_authority
+		}
+	}
+
+
+
+}
+
+
+################################### 
+
+#   #  ##  ### ### ###  ### ### #   
+## ## #  #  #  #   #  #  #  #   #   
+# # # ####  #  ##  ###   #  ##  #   
+#   # #  #  #  #   #  #  #  #   #   
+#   # #  #  #  ### #  # ### ### ### 
+
+
+###################################
+
+LIB_springfield_armory_organization = {
+	include = generic_infantry_equipment_organization
+	icon = GFX_idea_springfield_armory
+	
+	allowed = {	 
+		tag = LIB 
+	}
+	available = {
+		FROM = {
+			NOT = { has_war_with = USA }
+			has_completed_focus = LIB_arms_effort
+			has_completed_focus = LIB_us_defense_pact
+			has_completed_focus = LIB_seek_american_aid
+		}
+	}
+}
+
+LIB_ford_motor_company_organization = {
+	include = generic_motorized_mechanized_organization
+	icon = GFX_idea_ford_motor_company
+	
+	allowed = {	 
+		tag = LIB 
+	}
+	
+	visible = {
+	}
+	
+	available = {
+		FROM = {
+			NOT = { has_war_with = USA }
+			has_completed_focus = LIB_motor_effort
+			has_completed_focus = LIB_us_defense_pact
+			has_completed_focus = LIB_seek_american_aid
+		}
+	}
+	
+	initial_trait = {
+		equipment_bonus = {
+			build_cost_ic = -0.05
+		}
+	}
+}
+
+
+
+LIB_rock_island_arsenal_organization = {
+	include = generic_artillery_organization
+	icon = GFX_idea_rock_island_arsenal
+	
+	allowed = {	 
+		tag = LIB 
+	}
+	
+	visible = {
+	}
+	
+	available = {
+		FROM = {
+			NOT = { has_war_with = USA }
+			has_completed_focus = LIB_artilley_focus
+			has_completed_focus = LIB_us_defense_pact
+			has_completed_focus = LIB_seek_american_aid
+		}
+	}
+}
