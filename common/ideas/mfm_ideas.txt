@@ -1,0 +1,1373 @@
+ideas = {
+	country = {
+		luxembourg_mod_idea = {
+			picture = LUX_political_instability
+
+			modifier = {
+				communism_drift = 0.03
+				fascism_drift = 0.01
+				political_power_cost = 0.5
+				stability_factor = -0.20
+			}
+			allowed = { always = yes }
+		}
+		
+		luxembourg_mod_idea_1 = {
+			picture = generic_economic_crisis
+
+			modifier = {
+				communism_drift = 0.01
+				consumer_goods_factor = 0.2
+				stability_factor = -0.05
+			}
+			allowed = { always = yes }
+		}
+		
+		luxembourg_mod_idea_2 = {
+			picture = BEL_defensive_neutrality
+
+			modifier = {
+				local_resources_factor = 0.1
+				consumer_goods_factor = -0.04
+				production_speed_buildings_factor = 0.03
+				industrial_capacity_factory = 0.03
+			}
+			cancel_if_invalid = yes
+			allowed = {
+				always = no
+				tag = LUX
+			}
+			available = {
+				OR = {
+					has_government = democratic
+					has_government = neutrality
+					NOT = { has_war_with = BEL }
+				}
+				OR = {
+					has_idea = luxembourg_mod_idea_2
+					has_idea = luxembourg_mod_idea_57
+				}
+			}
+		}
+
+		luxembourg_mod_idea_3 = {
+			picture = FRA_scw_intervention_republicans_focus
+
+			modifier = {
+				recruitable_population_factor = -0.30
+				consumer_goods_factor = 0.2
+				production_speed_buildings_factor = -0.30
+				industrial_capacity_factory = -0.30
+				communism_drift = 0.05
+			}
+			allowed = { always = yes }
+		}
+
+		luxembourg_mod_idea_4 = {
+			picture = GER_limited_democratic_principles
+
+			modifier = {
+				consumer_goods_factor = 0.1
+				production_speed_buildings_factor = -0.05
+				industrial_capacity_factory = -0.05
+			}
+			allowed = { always = yes }
+		}
+
+		luxembourg_mod_idea_5 = {
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				surrender_limit = 0.1
+				enemy_justify_war_goal_time = 0.5
+				enemy_declare_war_tension = 0.5
+				generate_wargoal_tension = 1
+				join_faction_tension = 0.5
+				justify_war_goal_time = 1
+			}
+			allowed = { 
+				NOT = {
+					has_war = yes
+				} 	
+			}
+		}
+
+		luxembourg_mod_idea_6 = {
+			picture = GER_limited_democratic_principles
+
+			modifier = {
+				consumer_goods_factor = 0.05
+				stability_factor = 0.10
+			}
+			allowed = { always = yes }
+		}
+		
+		luxembourg_mod_idea_7 = {
+			picture = SWE_severe_lack_of_ammunition
+
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+			}
+			allowed = { always = yes }
+		}
+
+		luxembourg_mod_idea_8 = {
+			picture = tur_kemalist_neutrality
+
+			modifier = {
+				static_anti_air_damage_factor = 0.1
+				static_anti_air_hit_chance_factor = 0.1
+			}
+			allowed = { always = yes }
+		}
+
+		luxembourg_mod_idea_9 = {
+			picture = POL_disjointed_industry
+
+			modifier = {
+				production_speed_buildings_factor = 0.1
+			}
+			allowed = { always = yes }
+		}
+
+		luxembourg_mod_idea_10 = {
+			picture = prc_low_popular_support3
+
+			modifier = {
+				stability_factor = -0.20
+				recruitable_population_factor = -0.30
+				communism_drift = 0.05
+			}
+			allowed = { always = yes }
+		}
+
+		luxembourg_mod_idea_11 = {
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				surrender_limit = 0.2
+				enemy_justify_war_goal_time = 0.7
+				enemy_declare_war_tension = 0.7
+				generate_wargoal_tension = 2
+				join_faction_tension = 1
+				justify_war_goal_time = 1.5
+			}
+			allowed = { 
+				NOT = {
+					has_war = yes
+				} 	
+			}
+		}
+		luxembourg_mod_idea_12 = {
+			picture = generic_economic_crisis
+
+			modifier = {
+				consumer_goods_factor = 0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_13 = {
+			picture = SWE_varnplikt
+
+			modifier = {
+				monthly_population = 0.15
+				recruitable_population_factor = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_14 = {
+			picture = POL_the_peasants_strike
+
+			modifier = {
+				stability_factor = -0.20
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_15 = {
+			picture = LUX_political_instability
+
+			modifier = {
+				political_power_cost = 0.4
+				stability_factor = -0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_16 = {
+			picture = LUX_political_instability
+
+			modifier = {
+				political_power_cost = 0.2
+				stability_factor = -0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_17 = {
+			picture = SWE_varnplikt
+
+			modifier = {
+				monthly_population = 0.30
+				recruitable_population_factor = 0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_18 = {
+			picture = service_by_requirement
+
+			modifier = {
+				monthly_population = 0.30
+				recruitable_population_factor = 0.50
+			}
+			allowed = { always = yes }
+		}
+		LUX_operation_sea_lion_ns = {
+			picture = generic_naval_invade_britain
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			modifier = {
+				marines_special_forces_contribution_factor = -0.25
+				paratroopers_special_forces_contribution_factor = -0.25
+				naval_invasion_prep_speed = 0.25
+				shore_bombardment_bonus = 0.25
+				naval_invasion_penalty = -0.15
+				air_strategic_bomber_bombing_factor = 0.1
+			}
+		}
+		luxembourg_mod_idea_19 = {
+			picture = SOV_scientist_defect
+
+			modifier = {
+				own_operative_capture_chance_factor = -0.30
+				own_operative_detection_chance_factor = -0.5
+				new_operative_slot_bonus = 1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_20 = {
+			picture = SOV_vittoria_mutilata
+
+			modifier = {
+				conscription = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_21 = {
+			picture = tot_economic_mobilisation
+
+			modifier = {
+				conscription = 0.04
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_22 = {
+			picture = tot_economic_mobilisation
+
+			modifier = {
+				conscription = 0.08
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_23 = {
+			picture = AFG_adopt_nufus
+
+			modifier = {
+				dig_in_speed_factor = 0.30
+				max_dig_in = 20
+				conscription = 0.03
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_24 = {
+			picture = RAJ_circuvment_demobilization_restrictions
+
+			modifier = {
+				agency_upgrade_time = -0.2
+				own_operative_capture_chance_factor = -0.30
+				own_operative_detection_chance_factor = -0.5
+				new_operative_slot_bonus = 1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_25 = {
+			picture = FRA_scw_intervention_republicans_focus
+
+			modifier = {
+				recruitable_population_factor = -0.40
+				consumer_goods_factor = 0.3
+				production_speed_buildings_factor = -0.40
+				industrial_capacity_factory = -0.40
+				communism_drift = 0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_26 = {
+			picture = FRA_scw_intervention_republicans_focus
+
+			modifier = {
+				recruitable_population_factor = -0.10
+				production_speed_buildings_factor = -0.10
+				industrial_capacity_factory = -0.10
+				communism_drift = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_27 = {
+			picture = LUX_political_instability
+
+			modifier = {
+				political_power_cost = 0.5
+				stability_factor = -0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_28 = {
+			picture = LUX_political_instability
+
+			modifier = {
+				political_power_cost = 0.3
+				stability_factor = -0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_29 = {
+			picture = SWE_the_lion_of_the_north
+
+			modifier = {
+				stability_factor = 0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_30 = {
+			picture = SWE_varnplikt
+
+			modifier = {
+				resistance_growth_on_our_occupied_states = 0.2
+				resistance_target_on_our_occupied_states = 0.2
+				resistance_damage_to_garrison_on_our_occupied_states = -0.
+				resistance_damage_to_garrison = -0.3
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_31 = {
+			picture = FIN_german_threat
+
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_32 = {
+			picture = generic_women_in_the_army
+
+			modifier = {
+				conscription = 0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_33 = {
+			picture = SWE_neither_death_nor_dishonor
+
+			modifier = {
+				conscription = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_34 = {
+			picture = SWI_spirit_of_helvetia_aggressive_war
+
+			modifier = {
+				army_defence_factor = 0.25
+				dig_in_speed_factor = 0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_35 = {
+			picture = RAJ_circuvment_demobilization_restrictions
+
+			modifier = {
+				agency_upgrade_time = -0.2
+				own_operative_capture_chance_factor = -0.30
+				own_operative_detection_chance_factor = -0.5
+				new_operative_slot_bonus = 1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_36 = {
+			picture = generic_acquire_tanks
+
+			modifier = {
+				army_armor_defence_factor = 0.10
+				army_armor_attack_factor = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_37 = {
+			picture = ETH_conservative_high_command
+
+			modifier = {
+				production_factory_max_efficiency_factor = 0.2
+				production_factory_efficiency_gain_factor = 0.3
+				production_factory_start_efficiency_factor = 0.1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_38 = {
+			picture = generic_fortify_the_borders
+
+			modifier = {
+				production_speed_coastal_bunker_factor = 0.2
+		 		production_speed_bunker_factor = 0.2
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_39 = {
+			picture = FRA_scw_intervention_republicans_focus
+
+			modifier = {
+				recruitable_population_factor = -0.20
+				production_speed_buildings_factor = -0.20
+				industrial_capacity_factory = -0.20
+				communism_drift = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_40 = {
+			picture = generic_communism_banned
+
+			modifier = {
+				communism_drift = -0.15
+				fascism_drift = -0.15
+			}
+			allowed = { always = yes }
+		}
+		send_volunteers_cheat_idea = {
+			picture = hol_liberation
+			allowed = { always = yes }
+			visible = { always = no }
+			cancel_if_invalid = no
+		
+			modifier = {
+				send_volunteer_divisions_required = -1
+				send_volunteer_size = 5
+				send_volunteers_tension = -1
+				air_volunteer_cap = 100
+			}
+		}
+		luxembourg_mod_idea_41 = {
+			picture = springfield_armory
+
+			modifier = {
+				army_defence_factor = 0.25
+				dig_in_speed_factor = 0.10
+			}
+			allowed = { 
+				OR = {
+					tag = LUX
+					is_in_faction_with = LUX
+				}
+			}
+		}
+		luxembourg_mod_idea_42 = {
+			picture = HUN_the_rakosi_battalion_idea
+
+			modifier = {
+				stability_factor = -0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_43 = {
+			picture = RAJ_circuvment_demobilization_restrictions
+
+			modifier = {
+				agency_upgrade_time = -0.2
+				own_operative_capture_chance_factor = -0.30
+				own_operative_detection_chance_factor = -0.5
+				new_operative_slot_bonus = 1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_44 = {
+			picture = HUN_resurgent_communist_party_idea
+
+			modifier = {
+				research_speed_factor = 0.10
+				production_speed_industrial_complex_factor = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_45 = {
+			picture = HUN_revaluing_the_pengo
+
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_46 = {
+			picture = ARG_civilian_economy_boost
+
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_47 = {
+			picture = ARG_economic_reactivation
+
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_48 = {
+			picture = ast_volunteer_defence_corps
+
+			modifier = {
+				max_planning = 0.2
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.05 instant = yes
+				}
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_49 = {
+			picture = generic_research_bonus
+
+			modifier = {
+				research_speed_factor = 0.10
+				production_speed_industrial_complex_factor = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_50 = {
+			picture = man_five_year_plan_industry
+
+			modifier = {
+				consumer_goods_factor = -0.04
+				production_speed_buildings_factor = 0.03
+				industrial_capacity_factory = 0.03
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_51 = {
+			picture = man_five_year_plan_industry
+
+			modifier = {
+				consumer_goods_factor = -0.06
+				production_speed_buildings_factor = 0.06
+				industrial_capacity_factory = 0.06
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_52 = {
+			picture = generic_research_bonus
+
+			modifier = {
+				research_speed_factor = 0.05
+				production_speed_industrial_complex_factor = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_53 = {
+			picture = man_five_year_plan_industry
+
+			modifier = {
+				consumer_goods_factor = -0.10
+				production_speed_buildings_factor = 0.10
+				industrial_capacity_factory = 0.10
+				local_resources_factor = 0.1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_54 = {
+			picture = hun_hungarian_monarchy_democratic
+
+			modifier = {
+				democratic_drift = 0.10
+				neutrality_drift = 0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_55 = {
+			picture = RAJ_circuvment_demobilization_restrictions
+
+			modifier = {
+				agency_upgrade_time = -0.2
+				own_operative_capture_chance_factor = -0.30
+				own_operative_detection_chance_factor = -0.5
+				new_operative_slot_bonus = 1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_56 = {
+			picture = raj_rifle_factory_ishapore
+
+			modifier = {
+				compliance_growth_on_our_occupied_states = 0.20
+				required_garrison_factor = -0.20
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_57 = {
+			picture = BEL_defensive_neutrality
+
+			modifier = {
+				local_resources_factor = 0.15
+				consumer_goods_factor = -0.08
+				production_speed_buildings_factor = 0.06
+				industrial_capacity_factory = 0.06
+			}
+			allowed = {
+				always = no
+				tag = LUX
+			}
+			available = {
+				OR = {
+					NOT = { has_government = democratic }
+					NOT = { has_government = neutrality }
+					has_war_with = BEL
+				}
+				OR = {
+					has_idea = luxembourg_mod_idea_2
+					has_idea = luxembourg_mod_idea_57
+				}
+			}
+		}
+		luxembourg_mod_idea_58 = {
+			picture = spr_seize_the_gold_reserves
+
+			modifier = {
+				local_resources_factor = 0.05
+				consumer_goods_factor = -0.10
+				production_speed_buildings_factor = 0.03
+				industrial_capacity_factory = 0.03
+			}
+		}
+		luxembourg_mod_idea_59 = {
+			picture = NOR_printing_money
+
+			modifier = {
+				local_resources_factor = 0.05
+				consumer_goods_factor = -0.10
+			}
+		}
+		luxembourg_mod_idea_60 = {
+			picture = generic_research_bonus
+
+			modifier = {
+				research_speed_factor = 0.10
+				production_speed_industrial_complex_factor = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_61 = {
+			picture = LUX_integrationism
+
+			modifier = {
+				compliance_gain = 0.01
+				compliance_growth = 0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_62 = {
+			picture = new_economic_policy
+
+			modifier = {
+				production_factory_start_efficiency_factor = -0.05
+				production_factory_efficiency_gain_factor = -0.05
+				production_factory_max_efficiency_factor = -0.05
+				line_change_production_efficiency_factor = -0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_63 = {
+			picture = new_economic_policy
+
+			modifier = {
+				production_factory_start_efficiency_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.1
+				production_factory_max_efficiency_factor = 0.1
+				line_change_production_efficiency_factor = 0.1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_64 = {
+			picture = new_economic_policy
+
+			modifier = {
+				production_factory_start_efficiency_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				line_change_production_efficiency_factor = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_65 = {
+			picture = hol_haven_of_tolerance
+
+			modifier = {
+				experience_gain_factor = 0.10
+				max_commander_army_size = 6
+				sickness_chance = -0.5
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_66 = { 
+			picture = eng_for_the_good_of_the_revolution
+
+			modifier = {
+				army_speed_factor = 0.05
+				army_defence_factor = 0.1
+				dig_in_speed_factor = 0.2
+			}
+
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_67 = { 
+			picture = RAJ_independence_movement
+
+			modifier = {
+				stability_weekly = 0.01
+				war_support_weekly = 0.01
+			}
+
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_68 = {
+			picture = generic_communism_drift_bonus
+
+			modifier = {
+				communism_drift = 0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_69 = {
+			picture = hol_shell_shocked_spectator
+
+			modifier = {
+				consumer_goods_factor = -0.05
+				political_power_factor = 0.1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_70 = {
+			picture = FIN_lone_wolf
+
+			modifier = {
+				compliance_gain = 0.01
+				compliance_growth = 0.10
+				consumer_goods_factor = -0.1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_71 = {
+			picture = generic_volunteer_expedition_bonus
+
+			targeted_modifier = {
+				tag = FRA
+				attack_bonus_against = 0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_72 = {
+			picture = SPR_international_brigades
+
+			modifier = {
+				consumer_goods_factor = -0.15
+				political_power_factor = 0.2
+				stability_weekly = 0.01
+				war_support_weekly = 0.01
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_73 = {
+			picture = FRA_liberte_egalite_solidarite
+
+			modifier = {
+				industrial_capacity_dockyard = 0.1
+				industrial_capacity_factory = 0.1
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_74 = {
+			picture = generic_disjointed_gov
+
+			modifier = {
+				recruitable_population_factor = -0.40
+				consumer_goods_factor = 0.5
+				production_speed_buildings_factor = -0.50
+				industrial_capacity_dockyard = -1
+				industrial_capacity_factory = -0.5
+				political_power_cost = 0.8
+				stability_factor = -0.40
+				stability_weekly = -0.005
+				war_support_weekly = -0.005
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_75 = {
+			picture = generic_disjointed_gov
+
+			modifier = {
+				recruitable_population_factor = -0.35
+				consumer_goods_factor = 0.5
+				production_speed_buildings_factor = -0.50
+				industrial_capacity_dockyard = -1
+				industrial_capacity_factory = -0.5
+				political_power_cost = 0.6
+				stability_factor = -0.35
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_76 = {
+			picture = tur_coordinated_balkan_armed_forces
+
+			modifier = {
+				weekly_manpower = 130
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_77 = {
+			picture = generic_disjointed_gov
+
+			modifier = {
+				recruitable_population_factor = -0.20
+				consumer_goods_factor = 0.5
+				production_speed_buildings_factor = -0.45
+				industrial_capacity_dockyard = -1
+				industrial_capacity_factory = -0.5
+				political_power_cost = 0.5
+				stability_factor = -0.30
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_78 = {
+			picture = generic_local_self_management
+
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_79 = {
+			picture = generic_local_self_management
+
+			modifier = {
+				production_speed_buildings_factor = 0.1
+				industrial_capacity_factory = 0.1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_80 = {
+			picture = generic_flexible_foreign_policy
+
+			modifier = {
+				local_resources_factor = 0.1
+				consumer_goods_factor = -0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_81 = {
+			picture = generic_disjointed_gov
+
+			modifier = {
+				recruitable_population_factor = -0.15
+				consumer_goods_factor = 0.4
+				production_speed_buildings_factor = -0.35
+				industrial_capacity_dockyard = -1
+				industrial_capacity_factory = -0.45
+				political_power_cost = 0.45
+				stability_factor = -0.25
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_82 = {
+			picture = generic_disjointed_gov
+
+			modifier = {
+				recruitable_population_factor = -0.15
+				consumer_goods_factor = 0.3
+				production_speed_buildings_factor = -0.25
+				industrial_capacity_dockyard = -1
+				industrial_capacity_factory = -0.45
+				political_power_cost = 0.3
+				stability_factor = -0.30
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_83 = {
+			picture = generic_disjointed_gov
+
+			modifier = {
+				consumer_goods_factor = 0.3
+				production_speed_buildings_factor = -0.25
+				industrial_capacity_dockyard = -1
+				industrial_capacity_factory = -0.45
+				political_power_cost = 0.2
+				stability_factor = -0.20
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_84 = {
+			picture = FIN_german_threat
+
+			targeted_modifier = {
+				tag = GER
+				defense_bonus_against = 0.20
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_85 = {
+			picture = generic_morale_bonus
+
+			modifier = {
+				recruitable_population_factor = 0.15
+				consumer_goods_factor = -0.3
+				production_speed_buildings_factor = 0.10
+				industrial_capacity_factory = 0.15
+				stability_factor = 0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_86 = {
+			picture = generic_disjointed_gov
+
+			modifier = {
+				consumer_goods_factor = 0.25
+				production_speed_buildings_factor = -0.20
+				industrial_capacity_dockyard = -1
+				industrial_capacity_factory = -0.35
+				political_power_cost = 0.2
+				stability_factor = -0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_87 = {
+			picture = RAJ_circuvment_demobilization_restrictions
+
+			modifier = {
+				agency_upgrade_time = -0.2
+				own_operative_capture_chance_factor = -0.30
+				own_operative_detection_chance_factor = -0.5
+				new_operative_slot_bonus = 1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_88 = {
+			picture = saf_history_of_segregation_2
+
+			modifier = {
+				consumer_goods_factor = 0.10
+				production_speed_buildings_factor = -0.20
+				industrial_capacity_factory = -0.20
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_89 = {
+			picture = ast_abandon_the_westminster_system
+
+			modifier = {
+				justify_war_goal_time = -0.75
+				generate_wargoal_tension_against = -1
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_90 = {
+			picture = air_war_plans_division_focus
+
+			modifier = {
+				consumer_goods_factor = 0.50
+				production_speed_buildings_factor = -0.40
+				industrial_capacity_factory = -0.40
+				political_power_cost = 0.5
+				stability_factor = -0.30
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_91 = {
+			picture = air_war_plans_division_focus
+
+			modifier = {
+				political_power_cost = 0.05
+				stability_factor = -0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_92 = {
+			picture = generic_disjointed_gov
+
+			modifier = {
+				consumer_goods_factor = 0.20
+				production_speed_buildings_factor = -0.10
+				industrial_capacity_factory = -0.10
+				political_power_cost = 0.2
+				stability_factor = -0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_93 = {
+			picture = generic_disjointed_gov
+
+			modifier = {
+				consumer_goods_factor = 0.15
+				political_power_cost = 0.2
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_94 = {
+			picture = generic_disjointed_gov
+
+			modifier = {
+				consumer_goods_factor = -0.05
+				army_attack_factor = 0.05
+				army_defence_factor = 0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_95 = {
+			picture = raj_heavy_vehicles_factory_avadi
+
+			targeted_modifier = {
+				tag = FRA
+				attack_bonus_against = 0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_96 = {
+			picture = raj_ordnance_factory_medak
+
+			modifier = {
+				experience_gain_factor = 0.10
+				max_commander_army_size = 6
+				sickness_chance = -0.5
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_97 = {
+			picture = raj_heavy_vehicles_factory_avadi
+
+			modifier = {
+				consumer_goods_factor = -0.05
+				army_attack_factor = 0.03
+				army_defence_factor = 0.5
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_98 = {
+			picture = raj_rifle_factory_ishapore
+
+			targeted_modifier = {
+				tag = LUX
+				defense_bonus_against = -0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_99 = {
+			picture = generic_attack_soviet_union
+
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_100 = {
+			picture = SPA_maquis
+
+			targeted_modifier = {
+				tag = SPR
+				attack_bonus_against = 0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_101 = {
+			picture = LUX_luxembourgish_military
+
+			modifier = {
+				experience_gain_army_factor = -0.5
+				experience_gain_navy_factor = -0.5
+				experience_gain_air_factor = -0.5
+				training_time_factor = 0.10
+				training_time_army_factor = 0.30
+				army_attack_factor = -0.30
+				army_defence_factor = -0.30
+				army_speed_factor = -0.30
+				army_org_factor = -0.50
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_102 = {
+			picture = LUX_luxembourgish_military
+
+			modifier = {
+				experience_gain_army_factor = -0.4
+				experience_gain_navy_factor = -0.4
+				experience_gain_air_factor = -0.4
+				training_time_factor = 0.10
+				training_time_army_factor = 0.30
+				army_attack_factor = -0.25
+				army_defence_factor = -0.25
+				army_speed_factor = -0.25
+				army_org_factor = -0.40
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_103 = {
+			picture = LUX_luxembourgish_military
+
+			modifier = {
+				experience_gain_army_factor = -0.3
+				experience_gain_navy_factor = -0.3
+				experience_gain_air_factor = -0.3
+				training_time_factor = 0.10
+				training_time_army_factor = 0.20
+				army_attack_factor = -0.15
+				army_defence_factor = -0.15
+				army_speed_factor = -0.15
+				army_org_factor = -0.35
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_104 = {
+			picture = LUX_luxembourgish_military
+
+			modifier = {
+				experience_gain_army_factor = -0.2
+				experience_gain_navy_factor = -0.2
+				experience_gain_air_factor = -0.2
+				training_time_army_factor = 0.10
+				army_attack_factor = -0.10
+				army_defence_factor = -0.10
+				army_speed_factor = -0.10
+				army_org_factor = -0.25
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_105 = {
+			picture = LUX_luxembourgish_military
+
+			modifier = {
+				experience_gain_army_factor = -0.2
+				experience_gain_navy_factor = -0.2
+				experience_gain_air_factor = -0.2
+				army_attack_factor = -0.05
+				army_defence_factor = -0.10
+				army_speed_factor = -0.10
+				army_org_factor = -0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_106 = {
+			picture = LUX_luxembourgish_military
+
+			modifier = {
+				experience_gain_army_factor = -0.1
+				experience_gain_navy_factor = -0.1
+				experience_gain_air_factor = -0.1
+				army_attack_factor = -0.05
+				army_defence_factor = -0.05
+				army_speed_factor = -0.05
+				army_org_factor = -0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_107 = {
+			picture = LUX_luxembourgish_military
+
+			modifier = {
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_108 = {
+			picture = LUX_luxembourgish_military
+
+			modifier = {
+				army_artillery_defence_factor = 0.1
+				army_artillery_attack_factor = 0.1
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				army_speed_factor = 0.05
+				army_org_factor = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_109 = {
+			picture = LUX_luxembourgish_military
+
+			modifier = {
+				army_armor_defence_factor = 0.1
+				army_armor_attack_factor = 0.1
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
+				army_speed_factor = 0.05
+				army_org_factor = 0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_110 = {
+			picture = LUX_luxembourgish_industry
+
+			modifier = {
+				consumer_goods_factor = 0.30
+				production_speed_buildings_factor = -0.10
+				production_speed_industrial_complex_factor = -0.5
+				production_speed_arms_factory_factor = -0.5
+				production_factory_efficiency_gain_factor = -0.15
+				production_factory_max_efficiency_factor = -0.15
+				production_factory_start_efficiency_factor = -0.15
+				line_change_production_efficiency_factor = -0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_111 = {
+			picture = LUX_luxembourgish_industry
+
+			modifier = {
+				consumer_goods_factor = 0.25
+				production_speed_buildings_factor = -0.10
+				production_speed_industrial_complex_factor = -0.40
+				production_speed_arms_factory_factor = -0.40
+				production_factory_efficiency_gain_factor = -0.10
+				production_factory_max_efficiency_factor = -0.10
+				production_factory_start_efficiency_factor = -0.10
+				line_change_production_efficiency_factor = -0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_112 = {
+			picture = LUX_luxembourgish_industry
+
+			modifier = {
+				consumer_goods_factor = 0.20
+				production_speed_buildings_factor = -0.05
+				production_speed_industrial_complex_factor = -0.20
+				production_speed_arms_factory_factor = -0.20
+				production_factory_efficiency_gain_factor = -0.10
+				production_factory_max_efficiency_factor = -0.10
+				production_factory_start_efficiency_factor = -0.10
+				line_change_production_efficiency_factor = -0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_113 = {
+			picture = LUX_luxembourgish_industry
+
+			modifier = {
+				consumer_goods_factor = 0.10
+				production_speed_buildings_factor = -0.05
+				production_speed_industrial_complex_factor = -0.10
+				production_speed_arms_factory_factor = -0.10
+				production_factory_efficiency_gain_factor = -0.05
+				production_factory_max_efficiency_factor = -0.05
+				production_factory_start_efficiency_factor = -0.10
+				line_change_production_efficiency_factor = -0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_114 = {
+			picture = SWE_the_lion_of_the_north
+
+			modifier = {
+				stability_factor = 0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_115 = {
+			picture = generic_morale_bonus
+
+			modifier = {
+				consumer_goods_factor = 0.15
+				production_speed_buildings_factor = -0.05
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_116 = {
+			picture = generic_purge
+
+			modifier = {
+				stability_factor = -0.15
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_117 = {
+			picture = generic_purge
+
+			modifier = {
+				autonomy_gain = 0.4
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_118 = {
+			picture = generic_purge
+
+			modifier = {
+				autonomy_gain = 0.8
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_119 = {
+			picture = generic_disjointed_gov
+
+			modifier = {
+				consumer_goods_factor = -0.05
+				army_attack_factor = 0.05
+				army_defence_factor = 0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_120 = {
+			picture = tur_disorganised_armed_forces
+
+			modifier = {
+				political_power_cost = 1
+				experience_gain_army_factor = -0.5
+				experience_gain_navy_factor = -0.5
+				experience_gain_air_factor = -0.5
+				training_time_factor = 0.10
+				training_time_army_factor = 0.30
+				army_attack_factor = -0.30
+				army_defence_factor = -0.30
+				army_speed_factor = -0.30
+				army_org_factor = -0.50
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_121 = {
+			picture = saf_soviet_advisers
+
+			modifier = {
+				army_core_defence_factor = 0.20
+				army_core_attack_factor = 0.10
+				army_speed_factor = 0.05
+				army_org_factor = 0.10
+			}
+			allowed = { always = yes }
+		}
+		luxembourg_mod_idea_122 = {
+			picture = saf_soviet_advisers
+
+			modifier = {
+				communism_drift = 0.15
+			}
+			allowed = { always = yes }
+		}
+	}
+}

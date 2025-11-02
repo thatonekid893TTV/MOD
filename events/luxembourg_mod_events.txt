@@ -1,0 +1,2744 @@
+add_namespace = mod_event
+
+country_event = {
+	id = mod_event.1
+	title = mod_event.1.t
+	desc = mod_event.1.d
+	picture = GFX_report_event_french_resistance_01
+
+	trigger = {
+		tag = LUX
+	}
+	mean_time_to_happen = {
+		days = 10
+	}
+
+	fire_only_once = yes
+
+	option = {
+        name = mod_event.1.a
+        add_ideas = luxembourg_mod_idea_3
+		8 = {
+			add_dynamic_modifier = { 
+				modifier = LUX_uncontrolloed_nation_modifier
+			}
+		}
+	}
+}
+country_event = {
+	id = mod_event.2
+	title = mod_event.2.t
+	desc = mod_event.2.d
+	picture = GFX_report_event_finnish_letter
+	is_triggered_only = yes
+
+	trigger = {
+		tag = LUX
+		NOT = {
+			has_completed_focus = LUX_alt_focus_1
+		}
+	}
+	fire_only_once = yes
+
+	option = {
+        name = mod_event.2.a
+        add_ideas = luxembourg_mod_idea_10
+	}
+}
+country_event = {
+	id = mod_event.3
+	title = mod_event.3.t
+	desc = mod_event.3.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	mean_time_to_happen = {
+		months = 10
+	}
+
+	trigger = {
+		tag = LUX
+		NOT = {
+			has_completed_focus = LUX_alt_main_focus_1
+		}
+	}
+	fire_only_once = yes
+
+	option = {
+        name = mod_event.3.a
+        add_political_power = -30
+	}
+}
+country_event = {
+	id = mod_event.4
+	title = mod_event.4.t
+	desc = mod_event.4.d
+	picture = GFX_report_event_german_reichstag_gathering
+	is_triggered_only = yes
+
+	trigger = {
+		tag = LUX
+	}
+	fire_only_once = yes
+
+	option = {
+        name = mod_event.4.a
+        add_war_support = 0.10
+	}
+}
+country_event = {
+	id = mod_event.5
+	title = mod_event.5.t
+	desc = mod_event.5.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+
+	trigger = {
+		tag = LUX
+	}
+	fire_only_once = yes
+
+	option = {
+        name = mod_event.5.a
+        add_war_support = -0.10
+	}
+}
+country_event = {
+	id = mod_event.6
+	title = mod_event.6.t
+	desc = mod_event.6.d
+	picture = GFX_report_event_gre_political_upheaval
+	is_triggered_only = yes
+
+	trigger = {
+		tag = LUX
+	}
+	fire_only_once = yes
+
+	option = {
+        name = mod_event.6.a
+        add_war_support = 0.20
+	}
+}
+country_event = {
+	id = mod_event.7
+	title = mod_event.7.t
+	desc = mod_event.7.d
+	picture = GFX_report_event_gre_greece_and_turkey_relations
+	is_triggered_only = yes
+
+	trigger = {
+		tag = LUX
+	}
+	fire_only_once = yes
+
+	option = {
+        name = mod_event.7.a
+        swap_ideas = {
+			add_idea = luxembourg_mod_idea_25
+			remove_idea = luxembourg_mod_idea_3
+		}
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = no
+		}
+		add_stability = -0.10
+		complete_national_focus = LUX_alt_focus_1
+		set_country_flag = LUX_mod_event_7_a_taken
+	}
+	option = {
+        name = mod_event.7.b
+        swap_ideas = {
+			add_idea = luxembourg_mod_idea_25
+			remove_idea = luxembourg_mod_idea_3
+		}
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = no
+		}
+		add_stability = -0.10
+		complete_national_focus = LUX_commie_focus_1
+		set_country_flag = LUX_mod_event_7_b_taken
+	}
+}
+country_event = {
+	id = mod_event.8
+	title = mod_event.8.t
+	desc = mod_event.8.d
+	picture = GFX_report_event_king_speech
+	is_triggered_only = yes
+
+	trigger = {
+		tag = LUX
+	}
+	fire_only_once = yes
+
+	option = {
+        name = mod_event.8.a
+		add_stability = 0.05
+	}
+	option = {
+        name = mod_event.8.b
+		add_stability = -0.05
+		add_ideas = luxembourg_mod_idea_29
+	}
+}
+country_event = {
+	id = mod_event.9
+	title = mod_event.9.t
+	desc = mod_event.9.d
+	picture = GFX_report_event_hitler_china
+	is_triggered_only = yes
+
+	trigger = {
+		tag = LUX
+	}
+	fire_only_once = yes
+
+	option = {
+        name = mod_event.9.a
+		complete_national_focus = LUX_focus_84
+	}
+	option = {
+        name = mod_event.9.b
+		complete_national_focus = LUX_focus_83
+		GER = {
+			set_autonomy = {
+				target = LUX
+				autonomy_state = autonomy_puppet
+			}
+		}
+	}
+}
+country_event = {
+	id = mod_event.10
+	title = mod_event.10.t
+	desc = mod_event.10.d
+	picture = GFX_report_event_generic_army
+	is_triggered_only = yes
+
+	trigger = {
+		tag = LUX
+	}
+	fire_only_once = yes
+
+	option = {
+        name = mod_event.10.a
+		add_stability = -0.10
+		add_opinion_modifier = { target = GER modifier = large_decrease }
+		activate_mission = LUX_german_troops_decision
+	}
+}
+country_event = {
+    id = mod_event.11
+   	title = mod_event.11.t
+	desc = mod_event.11.d
+    picture = GFX_report_event_french_liberation
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.11.a
+    	white_peace = ENG
+        white_peace = FRA
+
+        if = {
+            limit = { has_war_with = USA }
+            white_peace = USA
+        }
+
+		transfer_state = 29
+		transfer_state = 785
+		transfer_state = 18
+		transfer_state = 17
+		transfer_state = 28
+        
+        add_state_core = 29
+        add_state_core = 785
+        add_state_core = 18
+        add_state_core = 17
+        add_state_core = 28
+    }
+}
+country_event = {
+    id = mod_event.12
+   	title = mod_event.12.t
+	desc = mod_event.12.d
+    picture = GFX_report_event_generic_handshake
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.12.a
+    	add_political_power = 50
+		769 = {
+			add_resistance = -30
+			add_compliance = 10
+		}
+		768 = {
+			add_resistance = -30
+			add_compliance = 10
+		}
+		remove_ideas = luxembourg_mod_idea_42
+    }
+}
+country_event = {
+    id = mod_event.13
+   	title = mod_event.13.t
+	desc = mod_event.13.d
+    picture = GFX_report_event_generic_handshake
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.13.a
+		activate_mission = LUX_burundi_breakaway_decision
+    	add_political_power = -50
+		769 = {
+			add_resistance = 30
+			add_compliance = -10
+		}
+		768 = {
+			add_resistance = 30
+			add_compliance = -10
+		}
+		set_country_flag = LUX_burundi_starts_to_breakaway
+    }
+}
+country_event = {
+    id = mod_event.14
+   	title = mod_event.14.t
+	desc = mod_event.14.d
+    picture = GFX_report_event_generic_handshake
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.14.a
+		activate_mission = LUX_burundi_decision
+		769 = {
+			add_resistance = 30
+			add_compliance = -10
+		}
+		768 = {
+			add_resistance = 30
+			add_compliance = -10
+		}
+    }
+}
+country_event = {
+    id = mod_event.15
+   	title = mod_event.15.t
+	desc = mod_event.15.d
+    picture = GFX_report_event_generic_handshake
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.15.a
+		activate_mission = LUX_burundi_breakaway_war_decision
+		release = BRD
+		create_wargoal = { type = annex_everything target = BRD }
+		BRD = {
+			transfer_state = 768
+			transfer_state = 890
+
+			add_state_core = 768
+        	add_state_core = 890
+		}
+		add_stability = -0.10
+		add_war_support = -0.10
+		set_country_flag = LUX_burundi_breaks_away
+    }
+}
+country_event = {
+    id = mod_event.16
+   	title = mod_event.16.t
+	desc = mod_event.16.d
+    picture = GFX_report_event_generic_handshake
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.16.a
+		add_political_power = 50
+		769 = {
+			add_resistance = -60
+			add_compliance = 10
+		}
+		768 = {
+			add_resistance = -60
+			add_compliance = 10
+		}
+		remove_ideas = luxembourg_mod_idea_42
+    }
+}
+country_event = {
+    id = mod_event.17
+   	title = mod_event.17.t
+	desc = mod_event.17.d
+    picture = GFX_report_event_generic_handshake
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.17.a
+		769 = {
+			add_compliance = 10
+		}
+		768 = {
+			add_compliance = 10
+		}
+		remove_ideas = luxembourg_mod_idea_42
+    }
+}
+country_event = {
+    id = mod_event.18
+   	title = mod_event.18.t
+	desc = mod_event.18.d
+    picture = GFX_report_event_generic_handshake
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.18.a
+		white_peace = BRD
+		BRD = {
+			transfer_state = 718
+			add_state_core = 718
+		}
+    }
+}
+country_event = {
+    id = mod_event.19
+   	title = mod_event.19.t
+	desc = mod_event.19.d
+    picture = GFX_report_event_crowd_in_prague
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.19.a
+		release = COG
+		LUX = {
+			set_autonomy = {
+				target = COG
+				autonomy_state = autonomy_puppet
+			}
+		}
+		COG = {
+			transfer_state = 769
+			add_state_core = 769
+
+			transfer_state = 768
+			add_state_core = 768
+		}
+    }
+}
+country_event = {
+    id = mod_event.20
+   	title = mod_event.20.t
+	desc = mod_event.20.d
+    picture = GFX_report_event_china_infiltration
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.20.a
+    	white_peace = GER
+        white_peace = ITA
+
+        if = {
+            limit = { 
+				OR = {
+					has_war_with = ROM
+					has_war_with = BUL
+					has_war_with = HUN
+					has_war_with = YUG
+				}
+			}
+            white_peace = ROM
+			white_peace = BUL
+			white_peace = HUN
+			white_peace = YUG
+        }
+
+		transfer_state = 42
+        
+        add_state_core = 42
+    }
+}
+country_event = {
+    id = mod_event.21
+   	title = mod_event.21.t
+	desc = mod_event.21.d
+    picture = GFX_report_event_ast_parliament_house
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.21.a
+		add_political_power = 100
+		42 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		51 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		57 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		58 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		56 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		59 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		55 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		909 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+    }
+}
+country_event = {
+    id = mod_event.22
+   	title = mod_event.22.t
+	desc = mod_event.22.d
+    picture = GFX_report_event_ast_parliament_house
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.22.a
+		add_political_power = 100
+		978 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		50 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		52 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		53 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		54 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		60 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		65 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+    }
+}
+country_event = {
+    id = mod_event.23
+   	title = mod_event.23.t
+	desc = mod_event.23.d
+    picture = GFX_report_event_bul_muraviev_protest
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.23.a
+		add_stability = 0.05
+		add_war_support = 0.05
+		add_political_power = 50
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.30
+		}
+    }
+}
+country_event = {
+    id = mod_event.24
+   	title = mod_event.24.t
+	desc = mod_event.24.d
+    picture = GFX_report_event_ITA_partisans
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.24.a
+		every_country = {
+			limit = {
+				controls_state = 8
+				NOT = { tag = LUX }
+			}
+			8 = {
+				remove_core_of = ROOT
+				remove_claim_by = ROOT
+			}
+		}
+		8 = {
+			add_resistance = 30
+		}
+		8 = {
+			add_compliance = -10
+		}
+    }
+}
+country_event = {
+    id = mod_event.25
+   	title = mod_event.25.t
+	desc = mod_event.25.d
+    picture = GFX_report_event_PER_persepolis_party
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.25.a
+		annex_country = {
+			target = BEL
+			transfer_troops = yes
+		}
+		custom_effect_tooltip = 5_LUX_tt
+		country_event = { 
+			id = mod_event.14
+			days = 1
+		}
+		add_ideas = luxembourg_mod_idea_42
+    }
+}
+country_event = {
+    id = mod_event.26
+   	title = mod_event.26.t
+	desc = mod_event.26.d
+    picture = GFX_report_event_tank_factory
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.26.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1000
+			producer = LUX
+		}
+		add_to_variable = { LUX_communist_strength = 5 }
+		custom_effect_tooltip = LUX_communism_strength_give_tt
+		hidden_effect = {
+			country_event = {
+				id = mod_event.27
+				days = 2
+			}
+		}
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.27
+   	title = mod_event.27.t
+	desc = mod_event.27.d
+    picture = GFX_report_event_spr_anarchist_uprising
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.27.a
+		add_to_variable = { LUX_communist_popularity = 5 }
+		custom_effect_tooltip = LUX_communism_strength_give_tt
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.28
+   	title = mod_event.28.t
+	desc = mod_event.28.d
+    picture = GFX_report_event_spr_anarchist_uprising
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.28.a
+		damage_building = {
+			type = industrial_complex
+			state = 8
+			damage = 0.4
+		}
+		add_to_variable = { LUX_communist_popularity = 5 }
+		custom_effect_tooltip = LUX_communism_popularity_give_tt
+		add_to_variable = { LUX_communist_strength = 5 }
+		custom_effect_tooltip = LUX_communism_strength_give_tt
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.29
+   	title = mod_event.29.t
+	desc = mod_event.29.d
+    picture = GFX_report_event_NOR_Nasjonal_samling_rally
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.29.a
+		add_political_power = -50
+		add_to_variable = { LUX_communist_popularity = 5 }
+		custom_effect_tooltip = LUX_communism_popularity_give_tt
+		add_to_variable = { LUX_communist_strength = 5 }
+		custom_effect_tooltip = LUX_communism_strength_give_tt
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.30
+   	title = mod_event.30.t
+	desc = mod_event.30.d
+    picture = GFX_report_event_AUS_military_march
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.30.a
+		add_opinion_modifier = { target = SOV modifier = large_decrease }
+		add_political_power = -25
+		add_to_variable = { LUX_communist_popularity = 5 }
+		custom_effect_tooltip = LUX_communism_popularity_give_tt
+		add_to_variable = { LUX_communist_strength = 5 }
+		custom_effect_tooltip = LUX_communism_strength_give_tt
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.31
+   	title = mod_event.31.t
+	desc = mod_event.31.d
+    picture = GFX_report_event_DEN_danish_troops
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.31.a
+		add_opinion_modifier = { target = SOV modifier = large_decrease }
+		add_political_power = -25
+		add_to_variable = { LUX_communist_popularity = 5 }
+		custom_effect_tooltip = LUX_communism_popularity_give_tt
+		add_to_variable = { LUX_communist_strength = 5 }
+		custom_effect_tooltip = LUX_communism_strength_give_tt
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.32
+   	title = mod_event.32.t
+	desc = mod_event.32.d
+    picture = GFX_report_event_FIN_petsamo_mine
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.32.a
+		damage_building = {
+			type = industrial_complex
+			state = 8
+			damage = 0.6
+		}
+		add_to_variable = { LUX_communist_strength = 5 }
+		custom_effect_tooltip = LUX_communism_strength_give_2_tt
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.33
+   	title = mod_event.33.t
+	desc = mod_event.33.d
+    picture = GFX_report_event_FIN_petsamo_mine
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.33.a
+		add_to_variable = { LUX_communist_popularity = 10 }
+		custom_effect_tooltip = LUX_communism_popularity_large_give_2_tt
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.34
+   	title = mod_event.34.t
+	desc = mod_event.34.d
+    picture = GFX_report_event_NOR_norway_exile_troops
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.34.a
+		add_to_variable = { LUX_communist_popularity = 10 }
+		custom_effect_tooltip = LUX_communism_popularity_large_give_2_tt
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.35
+   	title = mod_event.35.t
+	desc = mod_event.35.d
+    picture = GFX_report_event_NOR_norway_exile_troops
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.35.a
+		LUX = {
+			country_event = {
+				id = mod_event.36
+				days = 1
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -100
+			producer = ROOT
+		}
+		ai_chance = {
+			factor = 100
+		}
+    }
+}
+country_event = {
+    id = mod_event.36
+   	title = mod_event.36.t
+	desc = mod_event.36.d
+    picture = GFX_report_event_NOR_norway_exile_troops
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.36.a
+		add_to_variable = { LUX_communist_strength = 5 }
+		custom_effect_tooltip = LUX_communism_strength_give_2_tt
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 100
+			producer = LUX
+		}
+    }
+}
+country_event = {
+    id = mod_event.37
+   	title = mod_event.37.t
+	desc = mod_event.37.d
+    picture = GFX_report_event_PER_persepolis_party
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.37.a
+		add_to_variable = { LUX_communist_popularity = -10 }
+		custom_effect_tooltip = LUX_communism_popularity_large_lose_2_tt
+		add_manpower = -100
+		add_political_power = -50
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.38
+   	title = mod_event.38.t
+	desc = mod_event.38.d
+    picture = GFX_report_event_SOV_tank_column
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.38.a
+		add_to_variable = { LUX_communist_strength = -10 }
+		custom_effect_tooltip = LUX_communism_strength_large_lose_2_tt
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -247
+			producer = LUX
+		}
+		add_political_power = -50
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.39
+   	title = mod_event.39.t
+	desc = mod_event.39.d
+    picture = GFX_report_event_iww_demonstration
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.39.a
+		add_to_variable = { LUX_communist_popularity = -10 }
+		custom_effect_tooltip = LUX_communism_popularity_large_lose_2_tt
+		add_manpower = -2
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.40
+   	title = mod_event.40.t
+	desc = mod_event.40.d
+    picture = GFX_report_event_gathering_protest
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.40.a
+		add_to_variable = { LUX_communist_popularity = -10 }
+		custom_effect_tooltip = LUX_communism_popularity_large_lose_2_tt
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.41
+   	title = mod_event.41.t
+	desc = mod_event.41.d
+    picture = GFX_report_event_gathering_protest
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.41.a
+		add_to_variable = { LUX_communist_popularity = -5 }
+		custom_effect_tooltip = LUX_communism_popularity_lose_2_tt
+		add_to_variable = { LUX_communist_strength = -5 }
+		custom_effect_tooltip = LUX_communism_strength_lose_2_tt
+		add_stability = -0.03
+		add_war_support = -0.02
+    }
+}
+country_event = {
+    id = mod_event.42
+   	title = mod_event.42.t
+	desc = mod_event.42.d
+    picture = GFX_report_event_generic_riot
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.42.a
+		add_stability = 0.15
+		swap_ideas = {
+			remove_idea = luxembourg_mod_idea_62
+			add_idea = luxembourg_mod_idea_63
+		}
+		add_political_power = 100
+    }
+}
+country_event = {
+    id = mod_event.43
+   	title = mod_event.43.t
+	desc = mod_event.43.d
+    picture = GFX_report_event_gre_cabinet_meeting
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.43.a
+		remove_ideas = luxembourg_mod_idea_28
+    }
+}
+country_event = {
+    id = mod_event.44
+   	title = mod_event.44.t
+	desc = mod_event.44.d
+    picture = GFX_report_event_generic_defensive_preparations
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.44.a
+		transfer_state = 977
+		977 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		977 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		977 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = BEL
+		}
+		BEL = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+				producer = BEL
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.45
+   	title = mod_event.45.t
+	desc = mod_event.45.d
+    picture = GFX_report_event_generic_defensive_preparations
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.45.a
+		transfer_state = 980
+		980 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		980 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		980 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = BEL
+		}
+		BEL = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+				producer = BEL
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.46
+   	title = mod_event.46.t
+	desc = mod_event.46.d
+    picture = GFX_report_event_generic_defensive_preparations
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.46.a
+		transfer_state = 6
+		6 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		6 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		6 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		6 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = BEL
+		}
+		BEL = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+				producer = BEL
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.47
+   	title = mod_event.47.t
+	desc = mod_event.47.d
+    picture = GFX_report_event_french_liberation
+	trigger = {
+		has_completed_focus = LUX_commie_focus_31
+		980 = { controller = { NOT = { original_tag = BEL } } }
+		34 = { controller = { NOT = { original_tag = BEL } } }
+		6 = { controller = { NOT = { original_tag = BEL } } }
+		977 = { controller = { NOT = { original_tag = BEL } } }
+		35 = { controller = { NOT = { original_tag = BEL } } }
+		7 = { controller = { NOT = { original_tag = BEL } } }
+		36 = { controller = { NOT = { original_tag = BEL } } }
+		NOT = {
+			has_country_flag = mod_event_47_country_flag
+		}
+	}
+	mean_time_to_happen = {
+		days = 4
+	}
+
+    option = {
+        name = mod_event.47.a
+		annex_country = {
+			target = BEL
+			transfer_troops = yes
+		}
+		add_state_core = 980
+		add_state_core = 34
+		add_state_core = 6
+		add_state_core = 977
+		add_state_core = 35
+		add_state_core = 7
+		add_state_core = 36
+		set_country_flag = mod_event_47_country_flag
+    }
+}
+country_event = {
+    id = mod_event.48
+   	title = mod_event.48.t
+	desc = mod_event.48.d
+    picture = GFX_report_event_crowd_in_prague
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.48.a
+		LUX = {
+			set_autonomy = {
+				target = BEL
+				autonomy_state = autonomy_puppet
+			}
+			set_autonomy = {
+				target = HOL
+				autonomy_state = autonomy_puppet
+			}
+		}
+		BEL = {
+			set_cosmetic_tag = LUX_communist_greater_BEL
+		}
+		HOL = {
+			set_cosmetic_tag = LUX_communist_greater_HOL
+		}
+		add_stability = 0.05
+		add_war_support = 0.05
+		add_offsite_building = { type = industrial_complex level = 4 }
+		add_offsite_building = { type = arms_factory level = 3 }
+    }
+}
+country_event = {
+    id = mod_event.49
+   	title = mod_event.49.t
+	desc = mod_event.49.d
+    picture = GFX_report_event_generic_peaceful_annexation
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.49.a
+		add_stability = 0.05
+		add_war_support = 0.05
+		LUX = {
+			add_to_faction = SWE
+			set_autonomy = {
+				target = SWE
+				autonomy_state = autonomy_puppet
+			}
+			add_offsite_building = { type = industrial_complex level = 4 }
+			add_offsite_building = { type = arms_factory level = 3 }
+		}
+		SWE = {
+			annex_country = {
+				target = NOR
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_core_of = NOR
+				}
+				add_core_of = SWE
+			}
+			annex_country = {
+				target = DEN
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_core_of = DEN
+				}
+				add_core_of = SWE
+			}
+			annex_country = {
+				target = FIN
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_core_of = FIN
+				}
+				add_core_of = FIN
+			}
+			annex_country = {
+				target = ICE
+				transfer_troops = yes
+			}
+			every_state = {
+				limit = {
+					is_core_of = ICE
+				}
+				add_core_of = SWE
+			}
+			set_cosmetic_tag = LUX_communist_greater_SWE
+		}
+    }
+}
+country_event = {
+    id = mod_event.50
+   	title = mod_event.50.t
+	desc = mod_event.50.d
+    picture = GFX_report_event_generic_peaceful_annexation
+    is_triggered_only = yes
+
+	option = {
+		name = mod_event.50.a
+		add_stability = 0.05
+		add_war_support = 0.05
+		LUX = {
+			set_autonomy = {
+				target = LIB
+				autonomy_state = autonomy_puppet
+			}
+			country_event = {
+				id = mod_event.51
+				days = 1
+			}
+		}
+		set_cosmetic_tag = LUX_communist_greater_LIB
+		ai_chance = {
+			factor = 0
+			modifier = {
+				factor = 100
+				has_opinion = {
+					target = LUX
+					value > 29
+				}
+			}
+		}
+	}
+	option = {
+        name = mod_event.50.b
+		LUX = {
+			country_event = {
+				id = mod_event.52
+				days = 1
+			}
+		}
+		ai_chance = {
+			factor = 0
+            modifier = {
+        		factor = 100
+                has_opinion = {
+					target = LUX
+					value < 30
+				}
+            }
+		}
+    }
+}
+country_event = {
+    id = mod_event.51
+   	title = mod_event.51.t
+	desc = mod_event.51.d
+    picture = GFX_report_event_generic_peaceful_annexation
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.51.a
+		add_political_power = 50
+    }
+}
+country_event = {
+    id = mod_event.52
+   	title = mod_event.52.t
+	desc = mod_event.52.d
+    picture = GFX_report_event_generic_peaceful_annexation
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.52.a
+		add_political_power = -50
+    }
+}
+country_event = {
+    id = mod_event.53
+   	title = mod_event.53.t
+	desc = mod_event.53.d
+    picture = GFX_report_event_china_infiltration
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.53.a
+    	white_peace = GER
+        white_peace = ITA
+
+        if = {
+            limit = { 
+				OR = {
+					has_war_with = ROM
+					has_war_with = BUL
+					has_war_with = HUN
+					has_war_with = YUG
+				}
+			}
+            white_peace = ROM
+			white_peace = BUL
+			white_peace = HUN
+			white_peace = YUG
+        }
+    }
+}
+country_event = {
+    id = mod_event.54
+   	title = mod_event.54.t
+	desc = mod_event.54.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.54.a
+		transfer_state = 130
+		130 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		130 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		130 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		130 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		130 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		130 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = ENG
+		}
+		ENG = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+				producer = ENG
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.55
+   	title = mod_event.55.t
+	desc = mod_event.55.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.55.a
+		transfer_state = 62
+		62 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		62 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		62 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		62 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = GER
+		}
+		GER = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+				producer = GER
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.56
+   	title = mod_event.56.t
+	desc = mod_event.56.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.56.a
+		set_country_flag = mod_event_56_flag
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = LUX_charlotte_advisor
+		add_stability = -0.05
+		add_war_support = -0.05
+    }
+	option = {
+        name = mod_event.56.b
+		add_stability = 0.05
+		add_war_support = 0.05
+    }
+}
+country_event = {
+    id = mod_event.57
+   	title = mod_event.57.t
+	desc = mod_event.57.d
+    picture = GFX_report_event_worker_protests
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.57.a
+		add_timed_idea = {
+			idea = luxembourg_mod_idea_88
+			days = 45
+		}
+		add_stability = -0.02
+		add_war_support = -0.02
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = LUX_anarchy_focus_14
+					}
+				}
+				country_event = {
+					id = mod_event.57
+					days = 80
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_completed_focus = LUX_anarchy_focus_14
+			}
+			custom_effect_tooltip = mod_event_57_tooltip
+		}
+    }
+}
+country_event = {
+    id = mod_event.58
+   	title = mod_event.58.t
+	desc = mod_event.58.d
+    picture = GFX_report_event_spr_falange_troops
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.58.a
+		add_stability = 0.1
+		add_war_support = 0.02
+    }
+}
+country_event = {
+    id = mod_event.59
+   	title = mod_event.59.t
+	desc = mod_event.59.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.59.a
+		transfer_state = 785
+		785 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		785 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		785 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		785 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = FRA
+		}
+		FRA = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+				producer = FRA
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.60
+   	title = mod_event.60.t
+	desc = mod_event.60.d
+    picture = GFX_report_event_ast_parliament_house
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.60.a
+		add_political_power = 100
+		15 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		16 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		785 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		29 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		18 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		17 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		28 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+    }
+}
+country_event = {
+    id = mod_event.61
+   	title = mod_event.61.t
+	desc = mod_event.61.d
+    picture = GFX_report_event_ast_parliament_house
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.61.a
+		add_political_power = 100
+		14 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		30 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		24 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		27 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		23 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		33 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		26 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+    }
+}
+country_event = {
+    id = mod_event.62
+   	title = mod_event.62.t
+	desc = mod_event.62.d
+    picture = GFX_report_event_ast_parliament_house
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.62.a
+		add_political_power = 100
+		20 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		785 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		32 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		21 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		22 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		31 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		806 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		19 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+    }
+}
+country_event = {
+    id = mod_event.63
+   	title = mod_event.63.t
+	desc = mod_event.63.d
+    picture = GFX_report_event_ast_parliament_house
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.63.a
+		every_owned_state = {
+            limit = {
+                NOT = {
+                    is_core_of = LUX
+                }
+            }
+            add_compliance = 5
+        }
+    }
+}
+country_event = {
+    id = mod_event.64
+   	title = mod_event.64.t
+	desc = mod_event.64.d
+    picture = GFX_report_event_ast_parliament_house
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.64.a
+		add_political_power = 100
+		61 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		64 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		68 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		66 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		67 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		62 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+		63 = {
+			add_resistance = -10
+			add_compliance = 10
+		}
+    }
+}
+country_event = {
+    id = mod_event.65
+   	title = mod_event.65.t
+	desc = mod_event.65.d
+    picture = GFX_report_event_saf_soldiers_2
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.65.a
+		LUX = {
+			country_event = {
+				id = mod_event.66
+				days = 1
+			}
+		}
+		ai_chance = {
+            base = 10
+            modifier = {
+                add = 5
+            	has_opinion = {
+					target = LUX
+					value > 29
+				}
+            }
+			modifier = {
+				add = 85
+				strength_ratio = {
+					tag = LUX
+					ratio > 1
+				}
+			}
+        }
+    }
+	option = {
+        name = mod_event.65.b
+		LUX = {
+			country_event = {
+				id = mod_event.67
+				days = 1
+			}
+		}
+		ai_chance = {
+            base = 10
+            modifier = {
+                factor = 5
+            	has_opinion = {
+					target = LUX
+					value < 30
+				}
+            }
+			modifier = {
+				add = 85
+				strength_ratio = {
+					tag = LUX
+					ratio < 1
+				}
+			}
+        }
+    }
+}
+country_event = {
+    id = mod_event.66
+   	title = mod_event.66.t
+	desc = mod_event.66.d
+    picture = GFX_report_event_saf_soldiers_2
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.66.a
+		transfer_state = 28
+		add_state_core = 28
+    }
+}
+country_event = {
+    id = mod_event.67
+   	title = mod_event.67.t
+	desc = mod_event.67.d
+    picture = GFX_report_event_soldiers_marching
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.67.a
+		if = {
+			limit = {
+				NOT = {
+					has_war_with = FRA
+				}
+			}
+			create_wargoal = { type = annex_everything target = FRA }
+		}
+		add_timed_idea = { 
+			idea = luxembourg_mod_idea_71
+			days = 230
+		}
+		add_state_core = 28
+		add_state_core = 18
+    }
+}
+country_event = {
+    id = mod_event.68
+   	title = mod_event.68.t
+	desc = mod_event.68.d
+    picture = GFX_report_event_saf_soldiers_2
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.68.a
+		LUX = {
+			country_event = {
+				id = mod_event.69
+				days = 1
+			}
+		}
+		ai_chance = {
+            base = 10
+            modifier = {
+                add = 5
+            	has_opinion = {
+					target = LUX
+					value > 29
+				}
+            }
+			modifier = {
+				add = 85
+				strength_ratio = {
+					tag = LUX
+					ratio > 1
+				}
+			}
+        }
+    }
+	option = {
+        name = mod_event.68.b
+		LUX = {
+			country_event = {
+				id = mod_event.70
+				days = 1
+			}
+		}
+		ai_chance = {
+            base = 10
+            modifier = {
+                factor = 5
+            	has_opinion = {
+					target = LUX
+					value < 30
+				}
+            }
+			modifier = {
+				add = 85
+				strength_ratio = {
+					tag = LUX
+					ratio < 1
+				}
+			}
+        }
+    }
+}
+country_event = {
+    id = mod_event.69
+   	title = mod_event.69.t
+	desc = mod_event.69.d
+    picture = GFX_report_event_saf_soldiers_2
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.69.a
+		transfer_state = 165
+		transfer_state = 794
+    }
+}
+country_event = {
+    id = mod_event.70
+   	title = mod_event.70.t
+	desc = mod_event.70.d
+    picture = GFX_report_event_soldiers_marching
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.70.a
+		if = {
+			limit = {
+				NOT = {
+					has_war_with = SPR
+				}
+			}
+			create_wargoal = { type = annex_everything target = SPR }
+		}
+		add_timed_idea = { 
+			idea = luxembourg_mod_idea_100
+			days = 230
+		}
+    }
+}
+country_event = {
+    id = mod_event.71
+   	title = mod_event.71.t
+	desc = mod_event.71.d
+    picture = GFX_report_event_soldiers_marching
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.71.a
+		add_timed_idea = { 
+			idea = luxembourg_mod_idea_94
+			days = 230
+		}
+		transfer_state = 8
+		country_event = {
+			id = mod_event.72
+			days = 1
+		}
+    }
+}
+country_event = {
+    id = mod_event.72
+   	title = mod_event.72.t
+	desc = mod_event.72.d
+    picture = GFX_report_event_tur_machine_gunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.72.a
+		8 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		8 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		8 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		8 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		8 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.73
+   	title = mod_event.73.t
+	desc = mod_event.73.d
+    picture = GFX_report_event_long_march
+
+	trigger = {
+		tag = LUX
+		GER = {
+			has_completed_focus = GER_remilitarize_the_rhineland
+		}
+		NOT = {
+			has_country_flag = mod_event_73_taken
+		}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	fire_only_once = yes
+
+    option = {
+        name = mod_event.73.a
+		custom_effect_tooltip = LUX_support_germany_increase_tt
+		add_to_variable = { LUX_support_german = 5 }
+		set_country_flag = mod_event_73_taken
+    }
+}
+country_event = {
+    id = mod_event.74
+   	title = mod_event.74.t
+	desc = mod_event.74.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.74.a
+		transfer_state = 371
+		371 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		371 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		371 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		371 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		371 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		371 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = USA
+		}
+		USA = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+				producer = USA
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.75
+   	title = mod_event.75.t
+	desc = mod_event.75.d
+    picture = GFX_report_event_FIN_paasikivi_president
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.75.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.10
+		}
+		add_ideas = luxembourg_mod_idea_29
+		add_stability = -0.05
+		set_country_flag = mod_event_75_flag_a
+    }
+	option = {
+        name = mod_event.75.b
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.10
+		}
+		add_stability = 0.05
+		set_country_flag = mod_event_75_flag_b
+    }
+}
+country_event = {
+    id = mod_event.76
+   	title = mod_event.76.t
+	desc = mod_event.76.d
+    picture = GFX_report_event_SWE_baltic_extradition
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.76.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.10
+		}
+		add_timed_idea = { 
+			idea = luxembourg_mod_idea_115 
+			days = 75
+		}
+		8 = {
+			add_dynamic_modifier = { 
+				modifier = LUX_imperial_palace
+			}
+		}
+    }
+	option = {
+        name = mod_event.76.b
+		add_popularity = {
+			ideology = neutrality
+			popularity = -0.10
+		}
+    }
+}
+country_event = {
+    id = mod_event.77
+   	title = mod_event.77.t
+	desc = mod_event.77.d
+    picture = GFX_report_event_SWE_baltic_extradition
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.77.a
+		add_popularity = {
+			ideology = neutrality
+			popularity = 0.20
+		}
+    }
+}
+country_event = {
+    id = mod_event.78
+   	title = mod_event.78.t
+	desc = mod_event.78.d
+    picture = GFX_report_event_SWE_baltic_extradition
+	is_triggered_only = yes
+
+    option = {
+        name = mod_event.78.a
+		add_timed_idea = { 
+			idea = luxembourg_mod_idea_116
+			days = 40
+		}
+
+		add_manpower = -324
+		retire_character = LUX_charlotte
+    }
+}
+country_event = {
+    id = mod_event.79
+   	title = mod_event.79.t
+	desc = mod_event.79.d
+    picture = GFX_report_event_SWE_baltic_extradition
+	is_triggered_only = yes
+
+    option = {
+        name = mod_event.79.a
+		add_political_power = -30
+    }
+}
+country_event = {
+    id = mod_event.80
+   	title = mod_event.80.t
+	desc = mod_event.80.d
+    picture = GFX_report_event_SWE_baltic_extradition
+	trigger = {
+		tag = LUX
+		LUX = {
+			has_completed_focus = LUX_focus_161
+			NOT = {
+				is_subject_of = GER
+			}
+		}
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+
+    option = {
+        name = mod_event.80.a
+		set_country_flag = LUX_mod_event_80_flag
+		if = {
+			limit = {
+				is_in_faction_with = GER
+			}
+			GER = {
+				remove_from_faction = LUX
+			}
+		}
+		GER = { declare_war_on = { type = annex_everything target = LUX } }
+		if = {
+			limit = {
+				has_army_manpower = { size < 50000 }
+			}
+			8 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			8 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			8 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			8 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.81
+    title = mod_event.81.t
+    desc = mod_event.81.d
+    picture = GFX_report_event_swedish_soldier
+    is_triggered_only = yes
+
+    immediate = {
+		hidden_effect = {
+			set_variable = { assassination_chance = 5 }
+
+			if = {
+				limit = { GER = { surrender_progress > 0.20 } }
+				add_to_variable = { assassination_chance = 20 }
+			}
+			if = {
+				limit = { LUX = { has_country_flag = LUX_plans_for_hitler_assasination_taken } }
+				add_to_variable = { assassination_chance = 25 }
+			}
+			if = {
+				limit = { LUX = { has_country_flag = LUX_plans_for_hitler_assasination1_taken } }
+				add_to_variable = { assassination_chance = 30 }
+			}
+			if = {
+				limit = { GER = { has_war_with = SOV } }
+				add_to_variable = { assassination_chance = 10 }
+			}
+	
+			# Now roll a die
+			random = {
+				chance = assassination_chance
+				set_country_flag = hitler_assassination_successful
+			}
+		}
+    }
+
+    option = {
+        name = mod_event.81.a  # Success path
+        trigger = { has_country_flag = hitler_assassination_successful }
+        GER = {
+            retire_character = GER_adolf_hitler
+			add_stability = -0.15
+			add_timed_idea = {
+				idea = luxembourg_mod_idea_80
+				days = 30
+			}
+        }
+		hidden_effect = {
+			news_event = {
+				id = lux_news.5
+				days = 1
+			}
+		}
+    }
+
+    option = {
+        name = mod_event.81.b  # Failure path
+        trigger = { NOT = { has_country_flag = hitler_assassination_successful } }
+        GER = {
+            add_political_power = -50
+            add_stability = -0.05
+        }
+    }
+}
+country_event = {
+    id = mod_event.82
+   	title = mod_event.82.t
+	desc = mod_event.82.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.82.a
+		if = {
+			limit = {
+				GER = {
+					has_full_control_of_state = 16
+				}
+			}
+			transfer_state = 16
+			16 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			16 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			16 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			16 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			16 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			16 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 500
+				producer = GER
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -500
+					producer = GER
+				}
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.83
+   	title = mod_event.83.t
+	desc = mod_event.83.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.83.a
+		if = {
+			limit = {
+				GER = {
+					has_full_control_of_state = 7
+				}
+			}
+			transfer_state = 7
+			7 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			7 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			7 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			7 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			7 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			7 = {
+				create_unit = {
+					division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+					owner = LUX
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 500
+				producer = GER
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -500
+					producer = GER
+				}
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.84
+   	title = mod_event.84.t
+	desc = mod_event.84.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.84.a
+		set_country_flag = mod_event_84_flag
+		add_political_power = 50
+		8 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		8 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		8 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		8 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		8 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+		8 = {
+			create_unit = {
+				division = "name = \"Public Force\" division_template = \"Public Force\" start_experience_factor = 0.95" 
+				owner = LUX
+			}
+		}
+    }
+}
+country_event = {
+	id = mod_event.85
+	title = mod_event.85.t
+	desc = mod_event.85.d
+	picture = GFX_news_event_SOV_supreme_soviet
+	is_triggered_only = yes
+
+	trigger = {
+		tag = LUX
+	}
+	fire_only_once = yes
+
+	option = {
+        name = mod_event.85.a
+		add_opinion_modifier = { target = LUX modifier = large_decrease }
+	}
+}
+country_event = {
+    id = mod_event.86
+   	title = mod_event.86.t
+	desc = mod_event.86.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.86.a
+		transfer_state = 65
+		65 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		65 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		65 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		65 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		65 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		65 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.87
+   	title = mod_event.87.t
+	desc = mod_event.87.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.87.a
+		909 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		909 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		909 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		909 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		909 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		909 = {
+			create_unit = {
+				division = "name = \"Infanterie-Division\" division_template = \"Infanterie-Division\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.88
+   	title = mod_event.88.t
+	desc = mod_event.88.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.88.a
+		16 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		16 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		16 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		16 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		16 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		16 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.89
+   	title = mod_event.89.t
+	desc = mod_event.89.d
+    picture = GFX_report_event_generic_polish_machinegunners
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.89.a
+		transfer_state = 851
+		851 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		851 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		851 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		851 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		851 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+		851 = {
+			create_unit = {
+				division = "name = \"Division d'Infanterie\" division_template = \"Division d'Infanterie\" start_experience_factor = 0.95" 
+				owner = ROOT
+			}
+		}
+    }
+}
+country_event = {
+    id = mod_event.90
+   	title = mod_event.90.t
+	desc = mod_event.90.d
+    picture = GFX_report_event_generic_handshake
+    is_triggered_only = yes
+
+    option = {
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				LUX = {
+					is_major = yes
+				}
+			}
+		}
+        name = mod_event.90.a
+		LUX = {
+			country_event = {
+				id = mod_event.92
+				hours = 1
+			}
+		}
+    }
+	option = {
+		ai_chance = {
+			base = 10
+		}
+        name = mod_event.90.b
+		LUX = {
+            country_event = {
+                id = mod_event.91
+                hours = 1
+            }
+        }
+    }
+}
+country_event = {
+    id = mod_event.91
+   	title = mod_event.91.t
+	desc = mod_event.91.d
+    picture = GFX_report_event_generic_read_write
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.91.a
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+		}
+    }
+}
+country_event = {
+    id = mod_event.92
+   	title = mod_event.92.t
+	desc = mod_event.92.d
+    picture = GFX_report_event_generic_read_write
+    is_triggered_only = yes
+
+    option = {
+        name = mod_event.92.a
+		FROM = {
+			add_ideas = luxembourg_mod_idea_122
+		}
+    }
+}

@@ -1,0 +1,667 @@
+characters = {
+	LUX_communist_community_gov_char = {
+		name = LUX_communist_community_gov_char
+		portraits = {
+			civilian = {
+				large = GFX_portrait_LUX_communist_community_gov
+			}
+		}
+		country_leader = {
+			ideology = marxism
+			traits = { socialite_connections }
+			expire = "1965.1.1.1"
+			id = -1
+		}
+	}
+	LUX_anarchist_government_char = {
+		name = LUX_anarchist_government_char
+		portraits = {
+			civilian = {
+				large = GFX_portrait_LUX_anarchist_government
+			}
+		}
+		country_leader = {
+			ideology = anarchism
+			traits = { anarchist_zeal }
+			expire = "1965.1.1.1"
+			id = -1
+		}
+	}
+	LUX_maniel_dassa_char = {
+		name = LUX_maniel_dassa_char
+		portraits = {
+			civilian = {
+				large = GFX_portrait_LUX_italian_ruler
+			}
+		}
+		country_leader = {
+			ideology = despotism
+			traits = { LUX_roman_emperor LUX_born_in_slums }
+			expire = "1965.1.1.1"
+			id = -1
+		}
+	}
+	LUX_charlotte_advisor = {
+		name = LUX_charlotte_advisor
+		portraits = {
+			civilian = {
+				large = GFX_portrait_LUX_charlotte_wilhelmine
+				small = GFX_portrait_LUX_charlotte_wilhelmine_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			idea_token = LUX_charlotte_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_alt_focus_1
+						has_completed_focus = LUX_focus_31
+						has_completed_focus = LUX_commie_focus_14
+						has_completed_focus = LUX_anarchy_focus_1
+					}
+				}
+			}
+			available = {
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_alt_focus_1
+						has_completed_focus = LUX_focus_31
+						has_completed_focus = LUX_commie_focus_14
+					}
+				}
+				OR = {
+					NOT = {
+						has_completed_focus = LUX_anarchy_focus_1
+					}
+					has_country_flag = mod_event_56_flag
+				}
+			}
+			traits = {
+				popular_figurehead
+			}
+		}
+	}
+	LUX_charles_marx_advisor = {
+		name = LUX_charles_marx_advisor
+		portraits = {
+			civilian = {
+				large = GFX_portrait_LUX_charles_marx
+				small = GFX_portrait_LUX_charles_marx_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			idea_token = LUX_charles_marx_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					has_completed_focus = LUX_focus_32
+				}
+				NOT = {
+					has_completed_focus = LUX_commie_focus_1
+				}
+				NOT = {
+					has_completed_focus = LUX_anarchy_focus_1
+				}
+			}
+			available = {
+				NOT = {
+					has_completed_focus = LUX_focus_32
+				}
+				NOT = {
+					has_completed_focus = LUX_commie_focus_14
+				}
+				NOT = {
+					has_completed_focus = LUX_anarchy_focus_1
+				}
+				OR = {
+					has_completed_focus = LUX_focus_5
+					has_completed_focus = LUX_alt_focus_1
+				}
+			}
+			traits = {
+				industry_reformer
+			}
+		}
+	}
+	LUX_guillaumer_konsbruck_advisor = {
+		name = LUX_guillaumer_konsbruck_advisor
+		portraits = {
+			army = {
+				large = GFX_portrait_LUX_guillaume_konsbruck
+				small = GFX_portrait_LUX_guillaume_konsbruck_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 100
+			idea_token = LUX_guillaumer_konsbruck_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_32
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_main_focus_1
+					}
+				}
+			}
+			available = {
+				has_completed_focus = LUX_focus_31
+			}
+			traits = {
+				fascist_demagogue
+			}
+		}
+	}
+	LUX_dominique_urbany_advisor = {
+		name = LUX_dominique_urbany_advisor
+		portraits={
+			army={
+				small="GFX_idea_generic_political_advisor_europe_1"
+				large=GFX_portrait_FRA_jacques_duclos #Used only as Operative atm
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 100
+			idea_token = LUX_dominique_urbany_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					has_completed_focus = LUX_focus_29
+				}
+				NOT = {
+					has_completed_focus = LUX_focus_12
+				}
+				NOT = {
+					has_completed_focus = LUX_focus_10
+				}
+				NOT = {
+					has_completed_focus = LUX_alt_focus_1
+				}
+				NOT = {
+					has_completed_focus = LUX_anarchy_focus_1
+				}
+			}
+			available = {
+				OR = {
+					has_completed_focus = LUX_focus_31
+					has_completed_focus = LUX_commie_focus_6
+				}
+			}
+			traits = {
+				communist_revolutionary
+			}
+		}
+	}
+	LUX_zenon_bernard_advisor = {
+		name = LUX_zenon_bernard_advisor
+		portraits={
+			army={
+				small="GFX_idea_FRA_pierre_pucheu"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			idea_token = LUX_zenon_bernard_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_29
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available = {
+				OR = {
+					has_completed_focus = LUX_focus_49
+					has_completed_focus = LUX_commie_focus_15
+				}
+			}
+			traits = {
+				financial_expert
+			}
+		}
+	}
+	LUX_jean_pierre_meyer_advisor = {
+		name = LUX_jean_pierre_meyer_advisor
+		portraits = {
+			civilian = {
+				large = GFX_portrait_FRA_charles_maurras
+				small = GFX_portrait_FRA_charles_maurras_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			idea_token = LUX_jean_pierre_meyer_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_29
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available = {
+				OR = {
+					has_completed_focus = LUX_focus_107
+					has_completed_focus = LUX_commie_focus_23
+					has_completed_focus = LUX_anarchy_focus_11
+				}
+			}
+			traits = {
+				technocrat
+			}
+		}
+	}
+	LUX_albert_nuss_advisor = {
+		name = LUX_albert_nuss_advisor
+		portraits={
+			army={
+				small="GFX_idea_FRA_philippe_henriot"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			idea_token = LUX_albert_nuss_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_29
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available = {
+				OR = {
+					has_completed_focus = LUX_focus_109
+					has_completed_focus = LUX_commie_focus_13
+				}
+			}
+			traits = {
+				silent_workhorse
+			}
+		}
+	}
+	LUX_ernst_muller_advisor = {
+		name = LUX_ernst_muller_advisor
+		portraits = {
+			civilian = {	
+				large = GFX_portrait_FRA_marcel_bucard
+				small = GFX_portrait_FRA_marcel_bucard_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			idea_token = LUX_ernst_muller_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_32
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available = {
+				has_completed_focus = LUX_focus_115
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_32
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			traits = {
+				financial_expert
+			}
+		}
+	}
+	LUX_henri_kauffmann_advisor = {
+		name = LUX_henri_kauffmann_advisor
+		portraits = {
+			civilian = {	
+				large = GFX_portrait_FRA_marcel_bucard
+				small = GFX_portrait_FRA_marcel_bucard_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			idea_token = LUX_henri_kauffmann_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_32
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available = {
+				has_completed_focus = LUX_focus_116
+			}
+			traits = {
+				technocrat
+			}
+		}
+	}
+	LUX_nicolas_pfennig_advisor = {
+		name = LUX_nicolas_pfennig_advisor
+		portraits={
+			army={
+				small="GFX_idea_FRA_roger_salengro"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			idea_token = LUX_nicolas_pfennig_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_32
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available = {
+				has_completed_focus = LUX_focus_116
+			}
+			traits = {
+				silent_workhorse
+			}
+		}
+	}
+	LUX_felix_mancher_advisor = {
+		name = LUX_felix_mancher_advisor
+		portraits={
+			army={
+				small="GFX_idea_rene_massigli"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			idea_token = LUX_felix_mancher_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_32
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available = {
+				has_completed_focus = LUX_focus_116
+			}
+			traits = {
+				captain_of_industry
+			}
+		}
+	}
+	LUX_goerges_francois_advisor = {
+		name = LUX_goerges_francois_advisor
+		portraits={
+			army={
+				small="GFX_idea_FRA_paul_baudouin"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			idea_token = LUX_goerges_francois_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_32
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available = {
+				has_completed_focus = LUX_focus_116
+			}
+			traits = {
+				war_industrialist
+			}
+		}
+	}
+	LUX_rudolf_speer_advisor = {
+		name = LUX_rudolf_speer_advisor
+		portraits={
+			army={
+				small=GFX_portrait_FRA_paul_reynaud_small
+			}
+			civilian = {
+				large = GFX_portrait_FRA_paul_reynaud
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 100
+			idea_token = LUX_rudolf_speer_advisor
+			allowed = {
+				original_tag  = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_32
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available = {
+				has_completed_focus = LUX_focus_118
+			}
+			traits = {
+				economist
+			}
+		}
+	}
+	LUX_marcel_deat_advisor = {
+		name = LUX_marcel_deat_advisor
+		portraits = {
+			civilian = {	
+				large = GFX_portrait_FRA_marcel_deat
+				small = GFX_portrait_FRA_marcel_deat_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = LUX_marcel_deat_advisor
+			allowed  = {
+				original_tag = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_32
+						has_completed_focus = LUX_focus_12
+						has_completed_focus = LUX_focus_10
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available  = {
+				has_government = fascism
+				has_completed_focus = LUX_focus_119
+			}
+			cost = 150
+			traits  = {
+				FRA_neo_jacobin
+			}
+		}
+	}
+	LUX_pierre_jaipe_advisor = {
+		name = LUX_pierre_jaipe_advisor
+		portraits = {
+			army = {
+				small = GFX_idea_GER_julius_leber
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = LUX_pierre_jaipe_advisor
+			allowed  = {
+				original_tag = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_32
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available  = {
+				has_government = democratic
+				has_completed_focus = LUX_focus_17
+			}
+			cost = 150
+			traits  = {
+				economist
+			}
+		}
+	}
+	LUX_charles_rabmann_advisor = {
+		name = LUX_charles_rabmann_advisor
+		portraits = {
+			civilian = {	
+				large = GFX_portrait_FRA_marcel_bucard
+				small = GFX_portrait_FRA_marcel_bucard_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			cost = 150
+			idea_token = LUX_charles_rabmann_advisor
+			allowed  = {
+				original_tag = LUX
+				NOT = {
+					OR = {
+						has_completed_focus = LUX_focus_32
+						has_completed_focus = LUX_alt_focus_1
+					}
+				}
+			}
+			available  = {
+				has_government = democratic
+				has_completed_focus = LUX_focus_120
+			}
+			traits = {
+				technocrat
+			}
+		}
+	}
+	GER_carl_friedrich_goerdeler_advisor = {
+		name = GER_carl_friedrich_goerdeler_advisor
+		portraits = {
+			civilian = {
+				large = GFX_portrait_GER_carl_friedrich_goerdeler
+				small = GFX_portrait_GER_carl_friedrich_goerdeler_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = GER_carl_friedrich_goerdeler_advisor
+			allowed = {
+				original_tag = LUX
+			}
+			cost = 150
+			available = {
+				has_completed_focus = LUX_industry_focus_14
+			}
+			traits = {
+				GER_price_commissioner 
+			}
+		}	
+	}
+	GER_matias_di_domenico_advisor = {
+		name = GER_matias_di_domenico_advisor
+		portraits = {
+			civilian = {
+				large = "GFX_portrait_SOV_aleksey_rykov"
+			}
+			army = {
+				small = "GFX_idea_SOV_aleksey_rykov"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = GER_matias_di_domenico_advisor
+			allowed = {
+				original_tag = LUX
+			}
+			cost = 100
+			available = {
+				OR = {
+					has_completed_focus = LUX_focus_130
+					has_completed_focus = LUX_focus_120
+					has_completed_focus = LUX_focus_111
+					has_completed_focus = LUX_commie_focus_16
+					has_completed_focus = LUX_anarchy_focus_7
+				}
+			}
+			traits = {
+				economy_reformer 
+			}
+		}	
+	}
+	
+
+	LUX_emile_speller_advisor={
+		advisor={
+			slot = high_command
+			idea_token = LUX_emile_speller
+			ledger = army
+				allowed = {
+					original_tag = LUX
+				}
+				traits = {
+					army_entrenchment_2
+				}
+				cost = 100
+				ai_will_do = {
+					factor = 1.000
+				}
+		}
+		name= LUX_emile_speller_advisor
+		portraits={
+			army={
+				small="GFX_LUX_emile_speller"
+			}
+		}
+	}
+}

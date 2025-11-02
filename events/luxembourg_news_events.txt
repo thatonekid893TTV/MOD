@@ -1,0 +1,179 @@
+add_namespace = lux_news
+
+news_event = {
+	id = lux_news.1
+	title = lux_news.1.t
+	desc = lux_news.1.d
+	picture = GFX_report_event_german_treaty
+    fire_only_once = yes
+	major = yes  # ← This makes it global
+
+	is_triggered_only = yes
+
+	option = {
+		name = lux_news.1.a
+	}
+}
+news_event = {
+	id = lux_news.2
+	title = lux_news.2.t
+	desc = lux_news.2.d
+	picture = GFX_news_event_civil_war_turkey
+    fire_only_once = yes
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = lux_news.2.a
+	}
+}
+news_event = {
+	id = lux_news.3
+	title = lux_news.3.t
+	desc = lux_news.3.d
+	picture = GFX_news_event_bulgarian_troops
+    fire_only_once = yes
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = lux_news.3.a
+	}
+}
+news_event = {
+	id = lux_news.4
+	title = lux_news.4.t
+	desc = lux_news.4.d
+	picture = GFX_news_event_019
+    fire_only_once = yes
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = lux_news.4.a
+	}
+}
+news_event = {
+	id = lux_news.5
+	title = lux_news.5.t
+	desc = lux_news.5.d
+	picture = GFX_news_event_generic_funeral
+    fire_only_once = yes
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = lux_news.5.a
+		trigger = {
+			NOT = {
+				tag = GER
+			}
+		}
+	}
+	option = {
+		name = lux_news.5.b
+		trigger = {
+			tag = GER
+		}
+	}
+}
+news_event = {
+	id = lux_news.6
+	title = lux_news.6.t
+	desc = lux_news.6.d
+	picture = GFX_news_event_generic_funeral
+    fire_only_once = yes
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = lux_news.6.a
+		trigger = {
+			NOT = {
+				tag = GER
+				tag = LUX
+			}
+		}
+	}
+	option = {
+		name = lux_news.6.b
+		trigger = {
+			tag = GER
+		}
+	}
+	option = {
+		name = lux_news.6.c
+		trigger = {
+			tag = LUX
+		}
+	}
+}
+news_event = {
+	id = lux_news.7
+	title = lux_news.7.t
+	desc = lux_news.7.d
+	picture = GFX_news_event_ger_civil_war
+    fire_only_once = yes
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = lux_news.7.a
+		trigger = {
+			NOT = {
+				tag = GER
+				tag = LUX
+			}
+		}
+	}
+	option = {
+		name = lux_news.7.b
+		trigger = {
+			tag = GER
+		}
+	}
+	option = {
+		name = lux_news.7.c
+		trigger = {
+			tag = LUX
+		}
+	}
+}
+news_event = {
+	id = lux_news.8
+	title = lux_news.8.t
+	desc = lux_news.8.d
+	picture = GFX_news_event_generic_army
+    fire_only_once = yes
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = lux_news.8.a
+		trigger = {
+			NOT = {
+				tag = GER
+				tag = LUX
+			}
+		}
+	}
+	option = {
+		name = lux_news.8.b
+		trigger = {
+			tag = GER
+		}
+	}
+	option = {
+		name = lux_news.8.c
+		trigger = {
+			tag = LUX
+		}
+	}
+}

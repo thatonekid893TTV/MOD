@@ -1,4 +1,4 @@
-﻿capital = 8
+﻿capital = 8 # Luxembourg City
 
 oob = "LUX_1936"
 
@@ -6,12 +6,14 @@ oob = "LUX_1936"
 set_technology = {
 	infantry_weapons = 1
 	infantry_weapons1 = 1
+	tech_trucks = 1
 	gw_artillery = 1
 	tech_support = 1		
 	tech_engineers = 1
 	basic_train = 1
 }
-if = {
+
+IF = {
 	limit = {
 		NOT = { has_dlc = "By Blood Alone" }
 	}
@@ -19,8 +21,9 @@ if = {
 		early_fighter = 1
 	}
 }
-set_war_support = 0.1
-set_stability = 0.6
+
+set_war_support = 0.15
+set_stability = 0.7
 
 recruit_character = LUX_joseph_bech
 recruit_character = LUX_charles_marx
@@ -28,7 +31,6 @@ recruit_character = LUX_damian_kratzenberg
 recruit_character = LUX_charlotte
 recruit_character = LUX_damien_roeser
 recruit_character = LUX_florent_destriveaux
-recruit_character = LUX_alexander_von_falkenhausen
 recruit_character = LUX_pierre_fischbach
 recruit_character = LUX_guillaume_soisson
 recruit_character = LUX_alex_federspiel
@@ -39,39 +41,54 @@ recruit_character = LUX_aloyse_glodt
 recruit_character = LUX_nicolas_de_dixmude
 recruit_character = LUX_paul_medinger
 recruit_character = LUX_nicholas_diedrich
-recruit_character = LUX_pierre_dupong
 recruit_character = LUX_pierre_krier
 recruit_character = LUX_martin_karp
 recruit_character = LUX_guillaume_konsbruck
 recruit_character = LUX_felix_of_luxembourg
-recruit_character = LUX_council
-recruit_character = LUX_lux_crownguard
-recruit_character = LUX_wilhelm_ii
-recruit_character = LUX_wilhelmina
+recruit_character = LUX_pierre_dupong
+
+recruit_character = LUX_charlotte_advisor
+recruit_character = LUX_charles_marx_advisor
+recruit_character = LUX_emile_speller_advisor
+recruit_character = LUX_guillaumer_konsbruck_advisor
+recruit_character = LUX_dominique_urbany_advisor
+recruit_character = LUX_zenon_bernard_advisor
+recruit_character = LUX_jean_pierre_meyer_advisor
+recruit_character = LUX_albert_nuss_advisor
+recruit_character = LUX_ernst_muller_advisor
+recruit_character = LUX_henri_kauffmann_advisor
+recruit_character = LUX_nicolas_pfennig_advisor
+recruit_character = LUX_felix_mancher_advisor
+recruit_character = LUX_goerges_francois_advisor
+recruit_character = LUX_rudolf_speer_advisor
+recruit_character = LUX_marcel_deat_advisor
+recruit_character = LUX_pierre_jaipe_advisor
+recruit_character = LUX_charles_rabmann_advisor
+recruit_character = GER_carl_friedrich_goerdeler_advisor
+recruit_character = GER_matias_di_domenico_advisor
+recruit_character = LUX_communist_community_gov_char
+recruit_character = LUX_anarchist_government_char
+recruit_character = LUX_maniel_dassa_char
+
+set_variable = { LUX_support_german = 15 }
+set_variable = { LUX_support_french = 25 }
+set_variable = { LUX_support_neutral = 60 }
 
 
 
+# 1939 Scenario
 1939.1.1 = {
 
 	add_political_power = 1198
 	add_command_power = 100
 	
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = construction_effort_2
-	complete_national_focus = production_effort_2
-	complete_national_focus = infrastructure_effort
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	# complete_national_focus = 
 	
 	oob = "LUX_1939"
+
 	set_technology = {
 		tech_recon = 1
-		fighter1 = 1
 		interwar_artillery = 1
 		interwar_antiair = 1
 		
@@ -85,7 +102,6 @@ recruit_character = LUX_wilhelmina
 		#electronics
 		electronic_mechanical_engineering = 1
 		radio = 1
-		radio_detection = 1
 		mechanical_computing = 1
 
 		#industry
@@ -111,34 +127,25 @@ recruit_character = LUX_wilhelmina
 	}
 }
 
-add_ideas = {
-	export_focus
-	limited_conscription
-	civilian_economy
-	lux_poor_industry
-	luxemburg_army
-	town_state
-	}
-
 set_politics = {
 	ruling_party = democratic
 	last_election = "1934.6.3"
 	election_frequency = 36
 	elections_allowed = yes
 }
+
 set_popularities = {
-	democratic = 92
-	fascism = 3
-	communism = 5
+	democratic = 70
+	neutrality = 15
+	fascism = 12
+	communism = 3
 }
 
-1939.1.1 = {
-	set_politics = {
-		ruling_party = democratic
-		last_election = "1937.6.6"
-		election_frequency = 36
-		elections_allowed = yes
-	}
-	promote_character = LUX_pierre_dupong
-	retire_character = LUX_joseph_bech
+add_ideas = {
+	luxembourg_mod_idea
+	luxembourg_mod_idea_101
+	luxembourg_mod_idea_110
+	luxembourg_mod_idea_5
+	luxembourg_mod_idea_1
+	luxembourg_mod_idea_2
 }

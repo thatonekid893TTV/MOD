@@ -238,7 +238,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = LIB_modernize_industry
-		cost = 10
+		cost = 5
 		
                 available_if_capitulated = no
 
@@ -262,7 +262,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = LIB_economic_measures
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 4
 		}
@@ -367,7 +367,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = LIB_rubber_railway
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -435,7 +435,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = LIB_industrial_expansion
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}
@@ -454,7 +454,7 @@ focus_tree = {
 		x = 1
 		y = 2
 		relative_position_id = LIB_expand_university_of_liberia
-		cost = 10
+		cost = 5
 		ai_will_do = {
 		}
 
@@ -946,7 +946,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = LIB_expand_university_of_liberia
-		cost = 10
+		cost = 5
 		ai_will_do = {
 		}
 
@@ -967,7 +967,7 @@ focus_tree = {
                         }
                         add_resource = {
 				type = steel
-				amount = 2
+				amount = 64
 				state = 298
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
@@ -2859,6 +2859,31 @@ focus_tree = {
 			add_dynamic_modifier = {
 				modifier = african_union_defense_agreement_modifier
 			}
+		}
+	}
+	focus = {
+		id = LIB_liberate_the_world
+		icon = GFX_focus_spr_anarchism_knows_no_borders
+		relative_position_id = LIB_liberate_africa
+		x = 0
+		y = 1
+		cost = 20
+		prerequisite = {
+			focus = LIB_liberate_africa
+		}
+		completion_reward = {
+			every_country = {
+				LIB = {
+					create_wargoal = {
+						type = annex_everything
+						target = ROOT
+					}
+				}
+			}
+			every_state = {
+				add_state_core = LIB
+			}
+			add_manpower = 1000000
 		}
 	}
 #	focus = {

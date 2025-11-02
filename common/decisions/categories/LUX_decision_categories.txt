@@ -1,0 +1,102 @@
+LUX_mod_decisions_cat = {
+	icon = generic_political_actions
+	priority = 9
+	allowed = {
+		tag = LUX
+	}
+}
+
+LUX_mod_decisions_war_cat = {
+	priority = 7
+
+	icon = decision_generic_diplomacy
+	allowed = {
+		tag = LUX
+	}
+}
+
+LUX_mod_decisions_resistance_cat = {
+priority = 8
+
+	icon = decision_generic_diplomacy
+	allowed = {
+		tag = LUX
+	}
+}
+
+LUX_mod_decisions_core_cat = {
+	priority = 6
+
+	icon = generic_political_actions
+	allowed = {
+		tag = LUX
+	}
+}
+
+LUX_politcal_struggles_cat = {
+	priority = 10
+
+	icon = power_struggle
+
+	picture = GFX_decision_cat_picture_faction_management_bulgaria
+
+	scripted_gui = LUX_political_struggles_ui
+
+	visible = {
+		NOT = {
+			has_completed_focus = LUX_focus_29
+		}
+		NOT = {
+			has_completed_focus = LUX_focus_33
+		}
+		NOT = {
+			has_completed_focus = LUX_focus_57
+		}
+		NOT = {
+			has_completed_focus = LUX_alt_main_focus_1
+		}
+	}
+
+	allowed = {
+		original_tag = LUX
+	}
+}
+LUX_communist_struggles_cat = {
+	priority = 10
+
+	icon = GFX_decision_category_SOV_civil_puppet_interaction
+
+	picture = GFX_LUX_communist_banner
+
+	scripted_gui = LUX_communist_struggles_ui
+
+	visible = {
+		has_completed_focus = LUX_alt_main_focus_1
+		NOT = {
+			has_completed_focus = LUX_alt_focus_10
+		}
+		NOT = {
+			has_completed_focus = LUX_commie_focus_14
+		}
+		NOT = {
+			has_completed_focus = LUX_anarchy_focus_1
+		}
+	}
+
+	allowed = {
+		original_tag = LUX
+	}
+}
+LUX_foreign_policy_cat = {
+	priority = 7
+
+	icon = GFX_decision_category_SOV_civil_puppet_interaction
+
+	visible = {
+		tag = LUX
+	}
+
+	allowed = {
+		original_tag = LUX
+	}
+}
